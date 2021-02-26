@@ -79,19 +79,6 @@ void main() {
       expect(Escaper.escapeQueryComponent('a/b%c '), equals('a%2Fb%25c%20'));
     });
 
-    test('mapMap', () {
-      Map<String, dynamic> newTestMap() => {
-            's': 'string',
-            'i': 42,
-          };
-
-      final mod =
-          mapMap<dynamic, String>(newTestMap(), (dynamic x) => '$x foobar');
-      expect(mod, hasLength(2));
-      expect(mod['s'], equals('string foobar'));
-      expect(mod['i'], equals('42 foobar'));
-    });
-
     test('base64-encoder', () async {
       final base64encoder = Base64Encoder();
 

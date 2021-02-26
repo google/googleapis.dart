@@ -831,14 +831,3 @@ Stream<String>? _decodeStreamAsText(http.StreamedResponse response) {
     return null;
   }
 }
-
-/// Creates a new [Map] and inserts all entries of [source] into it,
-/// optionally calling [convert] on the values.
-Map<String, T> mapMap<F, T>(
-    Map<String, F> source, T Function(F source) convert) {
-  final result = <String, T>{};
-  source.forEach((String key, F value) {
-    result[key] = convert(value);
-  });
-  return result;
-}

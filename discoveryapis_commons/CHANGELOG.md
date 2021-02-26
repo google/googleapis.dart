@@ -3,6 +3,7 @@
 - Add support for null-safety.
 - Require Dart 2.12 or later.
 - Renamed static fields on `UploadOptions` and `DownloadOptions`.
+- Removed `mapMap` helper. No longer used.
 
 ## 0.2.0
 
