@@ -8,8 +8,10 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'request_headers.dart';
+import 'package:http_parser/http_parser.dart';
+import 'package:meta/meta.dart';
 
+import 'request_headers.dart';
 import 'requests.dart' as client_requests;
 
 const contentTypeJsonUtf8 = 'application/json; charset=utf-8';
@@ -823,11 +825,19 @@ Stream<String>? _decodeStreamAsText(http.StreamedResponse response) {
   // decoder.
   // Currently we assume that the api endpoint is responding with json
   // encoded in UTF8.
-  final contentType = response.headers['content-type'];
-  if (contentType != null &&
-      contentType.toLowerCase().startsWith('application/json')) {
+  if (isJson(response.headers['content-type'])) {
     return response.stream.transform(const Utf8Decoder(allowMalformed: true));
   } else {
     return null;
   }
+}
+
+/// Follows https://mimesniff.spec.whatwg.org/#json-mime-type
+@visibleForTesting
+bool isJson(String? contentType) {
+  if (contentType == null) return false;
+  final mediaType = MediaType.parse(contentType);
+  if (mediaType.mimeType == 'application/json') return true;
+  if (mediaType.mimeType == 'text/json') return true;
+  return mediaType.subtype.endsWith('+json');
 }
