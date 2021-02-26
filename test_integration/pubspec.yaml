@@ -1,0 +1,17 @@
+name: test_ingegration
+publish_to: none
+environment:
+  sdk: '>=2.12.0-0 <3.0.0'
+
+dev_dependencies:
+  googleapis: any
+  googleapis_auth: any
+  test: ^1.16.0
+
+dependency_overrides:
+  _discoveryapis_commons:
+    path: ../discoveryapis_commons
+  googleapis:
+    path: ../generated/googleapis
+  googleapis_auth:
+    path: ../googleapis_auth

@@ -1,0 +1,13 @@
+# See https://pub.dev/packages/mono_repo
+dart:
+- beta
+- dev
+
+stages:
+- analyze_and_format:
+  - group:
+    - dartfmt
+    - dartanalyzer: --fatal-infos .
+# Need to wire up Google auth on CI before we can test this on...CI
+#- unittest:
+#  - test:
