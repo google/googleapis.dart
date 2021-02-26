@@ -10,7 +10,6 @@ import 'package:http_parser/http_parser.dart';
 import 'package:meta/meta.dart';
 
 import 'multipart_media_uploader.dart';
-import 'request_headers.dart';
 import 'request_impl.dart';
 import 'requests.dart' as client_requests;
 import 'resumable_media_uploader.dart';
@@ -206,7 +205,6 @@ class ApiRequester {
 
       final headers = {
         'user-agent': _userAgent,
-        ...requestHeaders,
         'content-type': contentTypeJsonUtf8,
         'content-length': '$length',
         if (downloadRange != null)
