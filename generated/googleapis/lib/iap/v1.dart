@@ -110,8 +110,7 @@ class ProjectsBrandsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/brands';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/brands';
 
     final _response = await _requester.request(
       _url,
@@ -148,7 +147,7 @@ class ProjectsBrandsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -184,8 +183,7 @@ class ProjectsBrandsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/brands';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/brands';
 
     final _response = await _requester.request(
       _url,
@@ -237,9 +235,8 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/identityAwareProxyClients';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + '/identityAwareProxyClients';
 
     final _response = await _requester.request(
       _url,
@@ -283,7 +280,7 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -323,7 +320,7 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -375,9 +372,8 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/identityAwareProxyClients';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + '/identityAwareProxyClients';
 
     final _response = await _requester.request(
       _url,
@@ -423,8 +419,7 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':resetSecret';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':resetSecret';
 
     final _response = await _requester.request(
       _url,
@@ -477,9 +472,7 @@ class V1Resource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':getIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -517,8 +510,7 @@ class V1Resource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':iapSettings';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':iapSettings';
 
     final _response = await _requester.request(
       _url,
@@ -565,9 +557,7 @@ class V1Resource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':setIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -613,9 +603,8 @@ class V1Resource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':testIamPermissions';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
     final _response = await _requester.request(
       _url,
@@ -664,8 +653,7 @@ class V1Resource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':iapSettings';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':iapSettings';
 
     final _response = await _requester.request(
       _url,

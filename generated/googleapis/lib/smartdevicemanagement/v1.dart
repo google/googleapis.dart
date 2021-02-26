@@ -103,9 +103,7 @@ class EnterprisesDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':executeCommand';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':executeCommand';
 
     final _response = await _requester.request(
       _url,
@@ -143,7 +141,7 @@ class EnterprisesDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -194,8 +192,7 @@ class EnterprisesDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/devices';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/devices';
 
     final _response = await _requester.request(
       _url,
@@ -242,7 +239,7 @@ class EnterprisesStructuresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -292,9 +289,7 @@ class EnterprisesStructuresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/structures';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/structures';
 
     final _response = await _requester.request(
       _url,
@@ -339,7 +334,7 @@ class EnterprisesStructuresRoomsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -385,8 +380,7 @@ class EnterprisesStructuresRoomsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/rooms';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/rooms';
 
     final _response = await _requester.request(
       _url,

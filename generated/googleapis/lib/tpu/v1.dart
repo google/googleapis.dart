@@ -105,7 +105,7 @@ class ProjectsLocationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -152,8 +152,7 @@ class ProjectsLocationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
 
     final _response = await _requester.request(
       _url,
@@ -197,7 +196,7 @@ class ProjectsLocationsAcceleratorTypesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -250,9 +249,7 @@ class ProjectsLocationsAcceleratorTypesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/acceleratorTypes';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/acceleratorTypes';
 
     final _response = await _requester.request(
       _url,
@@ -303,8 +300,7 @@ class ProjectsLocationsNodesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/nodes';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/nodes';
 
     final _response = await _requester.request(
       _url,
@@ -341,7 +337,7 @@ class ProjectsLocationsNodesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -377,7 +373,7 @@ class ProjectsLocationsNodesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -421,8 +417,7 @@ class ProjectsLocationsNodesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/nodes';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/nodes';
 
     final _response = await _requester.request(
       _url,
@@ -463,8 +458,7 @@ class ProjectsLocationsNodesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':reimage';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':reimage';
 
     final _response = await _requester.request(
       _url,
@@ -505,8 +499,7 @@ class ProjectsLocationsNodesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':start';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':start';
 
     final _response = await _requester.request(
       _url,
@@ -547,8 +540,7 @@ class ProjectsLocationsNodesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':stop';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':stop';
 
     final _response = await _requester.request(
       _url,
@@ -601,8 +593,7 @@ class ProjectsLocationsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
 
     final _response = await _requester.request(
       _url,
@@ -642,7 +633,7 @@ class ProjectsLocationsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -681,7 +672,7 @@ class ProjectsLocationsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -737,8 +728,7 @@ class ProjectsLocationsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/operations';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
 
     final _response = await _requester.request(
       _url,
@@ -782,7 +772,7 @@ class ProjectsLocationsTensorflowVersionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -835,9 +825,7 @@ class ProjectsLocationsTensorflowVersionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/tensorflowVersions';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/tensorflowVersions';
 
     final _response = await _requester.request(
       _url,

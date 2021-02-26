@@ -189,7 +189,7 @@ class ControllerDebuggeesBreakpointsResource {
     };
 
     final _url = 'v2/controller/debuggees/' +
-        commons.Escaper.ecapeVariable('$debuggeeId') +
+        commons.escapeVariable('$debuggeeId') +
         '/breakpoints';
 
     final _response = await _requester.request(
@@ -240,9 +240,9 @@ class ControllerDebuggeesBreakpointsResource {
     };
 
     final _url = 'v2/controller/debuggees/' +
-        commons.Escaper.ecapeVariable('$debuggeeId') +
+        commons.escapeVariable('$debuggeeId') +
         '/breakpoints/' +
-        commons.Escaper.ecapeVariable('$id');
+        commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -359,9 +359,9 @@ class DebuggerDebuggeesBreakpointsResource {
     };
 
     final _url = 'v2/debugger/debuggees/' +
-        commons.Escaper.ecapeVariable('$debuggeeId') +
+        commons.escapeVariable('$debuggeeId') +
         '/breakpoints/' +
-        commons.Escaper.ecapeVariable('$breakpointId');
+        commons.escapeVariable('$breakpointId');
 
     final _response = await _requester.request(
       _url,
@@ -404,9 +404,9 @@ class DebuggerDebuggeesBreakpointsResource {
     };
 
     final _url = 'v2/debugger/debuggees/' +
-        commons.Escaper.ecapeVariable('$debuggeeId') +
+        commons.escapeVariable('$debuggeeId') +
         '/breakpoints/' +
-        commons.Escaper.ecapeVariable('$breakpointId');
+        commons.escapeVariable('$breakpointId');
 
     final _response = await _requester.request(
       _url,
@@ -483,7 +483,7 @@ class DebuggerDebuggeesBreakpointsResource {
     };
 
     final _url = 'v2/debugger/debuggees/' +
-        commons.Escaper.ecapeVariable('$debuggeeId') +
+        commons.escapeVariable('$debuggeeId') +
         '/breakpoints';
 
     final _response = await _requester.request(
@@ -544,7 +544,7 @@ class DebuggerDebuggeesBreakpointsResource {
     };
 
     final _url = 'v2/debugger/debuggees/' +
-        commons.Escaper.ecapeVariable('$debuggeeId') +
+        commons.escapeVariable('$debuggeeId') +
         '/breakpoints/set';
 
     final _response = await _requester.request(

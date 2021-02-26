@@ -105,7 +105,7 @@ class ProjectsLocationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta3/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta3/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -153,9 +153,7 @@ class ProjectsLocationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta3/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        '/locations';
+    final _url = 'v1beta3/' + core.Uri.encodeFull('$name') + '/locations';
 
     final _response = await _requester.request(
       _url,
@@ -202,7 +200,7 @@ class ProjectsLocationsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta3/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta3/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -259,9 +257,7 @@ class ProjectsLocationsProcessorsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta3/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':batchProcess';
+    final _url = 'v1beta3/' + core.Uri.encodeFull('$name') + ':batchProcess';
 
     final _response = await _requester.request(
       _url,
@@ -307,9 +303,7 @@ class ProjectsLocationsProcessorsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta3/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':process';
+    final _url = 'v1beta3/' + core.Uri.encodeFull('$name') + ':process';
 
     final _response = await _requester.request(
       _url,
@@ -363,7 +357,7 @@ class ProjectsLocationsProcessorsHumanReviewConfigResource {
     };
 
     final _url = 'v1beta3/' +
-        commons.Escaper.ecapeVariableReserved('$humanReviewConfig') +
+        core.Uri.encodeFull('$humanReviewConfig') +
         ':reviewDocument';
 
     final _response = await _requester.request(
@@ -418,9 +412,7 @@ class ProjectsLocationsProcessorsProcessorVersionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta3/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':batchProcess';
+    final _url = 'v1beta3/' + core.Uri.encodeFull('$name') + ':batchProcess';
 
     final _response = await _requester.request(
       _url,
@@ -466,9 +458,7 @@ class ProjectsLocationsProcessorsProcessorVersionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta3/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':process';
+    final _url = 'v1beta3/' + core.Uri.encodeFull('$name') + ':process';
 
     final _response = await _requester.request(
       _url,

@@ -102,7 +102,7 @@ class AccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId');
+    final _url = 'accounts/' + commons.escapeVariable('$accountId');
 
     final _response = await _requester.request(
       _url,
@@ -185,9 +185,9 @@ class AccountsAdclientsResource {
     };
 
     final _url = 'accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/adclients/' +
-        commons.Escaper.ecapeVariable('$adClientId');
+        commons.escapeVariable('$adClientId');
 
     final _response = await _requester.request(
       _url,
@@ -233,9 +233,8 @@ class AccountsAdclientsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
-        '/adclients';
+    final _url =
+        'accounts/' + commons.escapeVariable('$accountId') + '/adclients';
 
     final _response = await _requester.request(
       _url,
@@ -282,11 +281,11 @@ class AccountsAdunitsResource {
     };
 
     final _url = 'accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/adclients/' +
-        commons.Escaper.ecapeVariable('$adClientId') +
+        commons.escapeVariable('$adClientId') +
         '/adunits/' +
-        commons.Escaper.ecapeVariable('$adUnitId');
+        commons.escapeVariable('$adUnitId');
 
     final _response = await _requester.request(
       _url,
@@ -327,11 +326,11 @@ class AccountsAdunitsResource {
     };
 
     final _url = 'accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/adclients/' +
-        commons.Escaper.ecapeVariable('$adClientId') +
+        commons.escapeVariable('$adClientId') +
         '/adunits/' +
-        commons.Escaper.ecapeVariable('$adUnitId');
+        commons.escapeVariable('$adUnitId');
 
     final _response = await _requester.request(
       _url,
@@ -378,11 +377,11 @@ class AccountsAdunitsResource {
     };
 
     final _url = 'accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/adclients/' +
-        commons.Escaper.ecapeVariable('$adClientId') +
+        commons.escapeVariable('$adClientId') +
         '/adunits/' +
-        commons.Escaper.ecapeVariable('$adUnitId') +
+        commons.escapeVariable('$adUnitId') +
         '/adcode';
 
     final _response = await _requester.request(
@@ -425,9 +424,9 @@ class AccountsAdunitsResource {
     };
 
     final _url = 'accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/adclients/' +
-        commons.Escaper.ecapeVariable('$adClientId') +
+        commons.escapeVariable('$adClientId') +
         '/adunits';
 
     final _response = await _requester.request(
@@ -483,9 +482,9 @@ class AccountsAdunitsResource {
     };
 
     final _url = 'accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/adclients/' +
-        commons.Escaper.ecapeVariable('$adClientId') +
+        commons.escapeVariable('$adClientId') +
         '/adunits';
 
     final _response = await _requester.request(
@@ -534,9 +533,9 @@ class AccountsAdunitsResource {
     };
 
     final _url = 'accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/adclients/' +
-        commons.Escaper.ecapeVariable('$adClientId') +
+        commons.escapeVariable('$adClientId') +
         '/adunits';
 
     final _response = await _requester.request(
@@ -580,9 +579,9 @@ class AccountsAdunitsResource {
     };
 
     final _url = 'accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/adclients/' +
-        commons.Escaper.ecapeVariable('$adClientId') +
+        commons.escapeVariable('$adClientId') +
         '/adunits';
 
     final _response = await _requester.request(
@@ -681,7 +680,7 @@ class AccountsReportsResource {
     };
 
     final _url =
-        'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/reports';
+        'accounts/' + commons.escapeVariable('$accountId') + '/reports';
 
     final _response = await _requester.request(
       _url,
@@ -721,7 +720,7 @@ class AdclientsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'adclients/' + commons.Escaper.ecapeVariable('$adClientId');
+    final _url = 'adclients/' + commons.escapeVariable('$adClientId');
 
     final _response = await _requester.request(
       _url,
@@ -910,9 +909,9 @@ class CustomchannelsResource {
     };
 
     final _url = 'adclients/' +
-        commons.Escaper.ecapeVariable('$adClientId') +
+        commons.escapeVariable('$adClientId') +
         '/customchannels/' +
-        commons.Escaper.ecapeVariable('$customChannelId');
+        commons.escapeVariable('$customChannelId');
 
     final _response = await _requester.request(
       _url,
@@ -951,9 +950,9 @@ class CustomchannelsResource {
     };
 
     final _url = 'adclients/' +
-        commons.Escaper.ecapeVariable('$adClientId') +
+        commons.escapeVariable('$adClientId') +
         '/customchannels/' +
-        commons.Escaper.ecapeVariable('$customChannelId');
+        commons.escapeVariable('$customChannelId');
 
     final _response = await _requester.request(
       _url,
@@ -993,7 +992,7 @@ class CustomchannelsResource {
     };
 
     final _url = 'adclients/' +
-        commons.Escaper.ecapeVariable('$adClientId') +
+        commons.escapeVariable('$adClientId') +
         '/customchannels';
 
     final _response = await _requester.request(
@@ -1043,7 +1042,7 @@ class CustomchannelsResource {
     };
 
     final _url = 'adclients/' +
-        commons.Escaper.ecapeVariable('$adClientId') +
+        commons.escapeVariable('$adClientId') +
         '/customchannels';
 
     final _response = await _requester.request(
@@ -1090,7 +1089,7 @@ class CustomchannelsResource {
     };
 
     final _url = 'adclients/' +
-        commons.Escaper.ecapeVariable('$adClientId') +
+        commons.escapeVariable('$adClientId') +
         '/customchannels';
 
     final _response = await _requester.request(
@@ -1132,7 +1131,7 @@ class CustomchannelsResource {
     };
 
     final _url = 'adclients/' +
-        commons.Escaper.ecapeVariable('$adClientId') +
+        commons.escapeVariable('$adClientId') +
         '/customchannels';
 
     final _response = await _requester.request(
@@ -1272,9 +1271,9 @@ class UrlchannelsResource {
     };
 
     final _url = 'adclients/' +
-        commons.Escaper.ecapeVariable('$adClientId') +
+        commons.escapeVariable('$adClientId') +
         '/urlchannels/' +
-        commons.Escaper.ecapeVariable('$urlChannelId');
+        commons.escapeVariable('$urlChannelId');
 
     final _response = await _requester.request(
       _url,
@@ -1313,9 +1312,8 @@ class UrlchannelsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'adclients/' +
-        commons.Escaper.ecapeVariable('$adClientId') +
-        '/urlchannels';
+    final _url =
+        'adclients/' + commons.escapeVariable('$adClientId') + '/urlchannels';
 
     final _response = await _requester.request(
       _url,
@@ -1363,9 +1361,8 @@ class UrlchannelsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'adclients/' +
-        commons.Escaper.ecapeVariable('$adClientId') +
-        '/urlchannels';
+    final _url =
+        'adclients/' + commons.escapeVariable('$adClientId') + '/urlchannels';
 
     final _response = await _requester.request(
       _url,

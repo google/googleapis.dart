@@ -246,7 +246,7 @@ class CoursesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' + commons.Escaper.ecapeVariable('$id');
+    final _url = 'v1/courses/' + commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -285,7 +285,7 @@ class CoursesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' + commons.Escaper.ecapeVariable('$id');
+    final _url = 'v1/courses/' + commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -414,7 +414,7 @@ class CoursesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' + commons.Escaper.ecapeVariable('$id');
+    final _url = 'v1/courses/' + commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -460,7 +460,7 @@ class CoursesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' + commons.Escaper.ecapeVariable('$id');
+    final _url = 'v1/courses/' + commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -514,7 +514,7 @@ class CoursesAliasesResource {
     };
 
     final _url =
-        'v1/courses/' + commons.Escaper.ecapeVariable('$courseId') + '/aliases';
+        'v1/courses/' + commons.escapeVariable('$courseId') + '/aliases';
 
     final _response = await _requester.request(
       _url,
@@ -563,9 +563,9 @@ class CoursesAliasesResource {
     };
 
     final _url = 'v1/courses/' +
-        commons.Escaper.ecapeVariable('$courseId') +
+        commons.escapeVariable('$courseId') +
         '/aliases/' +
-        commons.Escaper.ecapeVariable('$alias');
+        commons.escapeVariable('$alias');
 
     final _response = await _requester.request(
       _url,
@@ -618,7 +618,7 @@ class CoursesAliasesResource {
     };
 
     final _url =
-        'v1/courses/' + commons.Escaper.ecapeVariable('$courseId') + '/aliases';
+        'v1/courses/' + commons.escapeVariable('$courseId') + '/aliases';
 
     final _response = await _requester.request(
       _url,
@@ -673,9 +673,8 @@ class CoursesAnnouncementsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' +
-        commons.Escaper.ecapeVariable('$courseId') +
-        '/announcements';
+    final _url =
+        'v1/courses/' + commons.escapeVariable('$courseId') + '/announcements';
 
     final _response = await _requester.request(
       _url,
@@ -726,9 +725,9 @@ class CoursesAnnouncementsResource {
     };
 
     final _url = 'v1/courses/' +
-        commons.Escaper.ecapeVariable('$courseId') +
+        commons.escapeVariable('$courseId') +
         '/announcements/' +
-        commons.Escaper.ecapeVariable('$id');
+        commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -773,9 +772,9 @@ class CoursesAnnouncementsResource {
     };
 
     final _url = 'v1/courses/' +
-        commons.Escaper.ecapeVariable('$courseId') +
+        commons.escapeVariable('$courseId') +
         '/announcements/' +
-        commons.Escaper.ecapeVariable('$id');
+        commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -845,9 +844,8 @@ class CoursesAnnouncementsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' +
-        commons.Escaper.ecapeVariable('$courseId') +
-        '/announcements';
+    final _url =
+        'v1/courses/' + commons.escapeVariable('$courseId') + '/announcements';
 
     final _response = await _requester.request(
       _url,
@@ -898,9 +896,9 @@ class CoursesAnnouncementsResource {
     };
 
     final _url = 'v1/courses/' +
-        commons.Escaper.ecapeVariable('$courseId') +
+        commons.escapeVariable('$courseId') +
         '/announcements/' +
-        commons.Escaper.ecapeVariable('$id') +
+        commons.escapeVariable('$id') +
         ':modifyAssignees';
 
     final _response = await _requester.request(
@@ -964,9 +962,9 @@ class CoursesAnnouncementsResource {
     };
 
     final _url = 'v1/courses/' +
-        commons.Escaper.ecapeVariable('$courseId') +
+        commons.escapeVariable('$courseId') +
         '/announcements/' +
-        commons.Escaper.ecapeVariable('$id');
+        commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -1029,9 +1027,8 @@ class CoursesCourseWorkResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' +
-        commons.Escaper.ecapeVariable('$courseId') +
-        '/courseWork';
+    final _url =
+        'v1/courses/' + commons.escapeVariable('$courseId') + '/courseWork';
 
     final _response = await _requester.request(
       _url,
@@ -1082,9 +1079,9 @@ class CoursesCourseWorkResource {
     };
 
     final _url = 'v1/courses/' +
-        commons.Escaper.ecapeVariable('$courseId') +
+        commons.escapeVariable('$courseId') +
         '/courseWork/' +
-        commons.Escaper.ecapeVariable('$id');
+        commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -1129,9 +1126,9 @@ class CoursesCourseWorkResource {
     };
 
     final _url = 'v1/courses/' +
-        commons.Escaper.ecapeVariable('$courseId') +
+        commons.escapeVariable('$courseId') +
         '/courseWork/' +
-        commons.Escaper.ecapeVariable('$id');
+        commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -1201,9 +1198,8 @@ class CoursesCourseWorkResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' +
-        commons.Escaper.ecapeVariable('$courseId') +
-        '/courseWork';
+    final _url =
+        'v1/courses/' + commons.escapeVariable('$courseId') + '/courseWork';
 
     final _response = await _requester.request(
       _url,
@@ -1254,9 +1250,9 @@ class CoursesCourseWorkResource {
     };
 
     final _url = 'v1/courses/' +
-        commons.Escaper.ecapeVariable('$courseId') +
+        commons.escapeVariable('$courseId') +
         '/courseWork/' +
-        commons.Escaper.ecapeVariable('$id') +
+        commons.escapeVariable('$id') +
         ':modifyAssignees';
 
     final _response = await _requester.request(
@@ -1327,9 +1323,9 @@ class CoursesCourseWorkResource {
     };
 
     final _url = 'v1/courses/' +
-        commons.Escaper.ecapeVariable('$courseId') +
+        commons.escapeVariable('$courseId') +
         '/courseWork/' +
-        commons.Escaper.ecapeVariable('$id');
+        commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -1385,11 +1381,11 @@ class CoursesCourseWorkStudentSubmissionsResource {
     };
 
     final _url = 'v1/courses/' +
-        commons.Escaper.ecapeVariable('$courseId') +
+        commons.escapeVariable('$courseId') +
         '/courseWork/' +
-        commons.Escaper.ecapeVariable('$courseWorkId') +
+        commons.escapeVariable('$courseWorkId') +
         '/studentSubmissions/' +
-        commons.Escaper.ecapeVariable('$id');
+        commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -1478,9 +1474,9 @@ class CoursesCourseWorkStudentSubmissionsResource {
     };
 
     final _url = 'v1/courses/' +
-        commons.Escaper.ecapeVariable('$courseId') +
+        commons.escapeVariable('$courseId') +
         '/courseWork/' +
-        commons.Escaper.ecapeVariable('$courseWorkId') +
+        commons.escapeVariable('$courseWorkId') +
         '/studentSubmissions';
 
     final _response = await _requester.request(
@@ -1540,11 +1536,11 @@ class CoursesCourseWorkStudentSubmissionsResource {
     };
 
     final _url = 'v1/courses/' +
-        commons.Escaper.ecapeVariable('$courseId') +
+        commons.escapeVariable('$courseId') +
         '/courseWork/' +
-        commons.Escaper.ecapeVariable('$courseWorkId') +
+        commons.escapeVariable('$courseWorkId') +
         '/studentSubmissions/' +
-        commons.Escaper.ecapeVariable('$id') +
+        commons.escapeVariable('$id') +
         ':modifyAttachments';
 
     final _response = await _requester.request(
@@ -1612,11 +1608,11 @@ class CoursesCourseWorkStudentSubmissionsResource {
     };
 
     final _url = 'v1/courses/' +
-        commons.Escaper.ecapeVariable('$courseId') +
+        commons.escapeVariable('$courseId') +
         '/courseWork/' +
-        commons.Escaper.ecapeVariable('$courseWorkId') +
+        commons.escapeVariable('$courseWorkId') +
         '/studentSubmissions/' +
-        commons.Escaper.ecapeVariable('$id');
+        commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -1678,11 +1674,11 @@ class CoursesCourseWorkStudentSubmissionsResource {
     };
 
     final _url = 'v1/courses/' +
-        commons.Escaper.ecapeVariable('$courseId') +
+        commons.escapeVariable('$courseId') +
         '/courseWork/' +
-        commons.Escaper.ecapeVariable('$courseWorkId') +
+        commons.escapeVariable('$courseWorkId') +
         '/studentSubmissions/' +
-        commons.Escaper.ecapeVariable('$id') +
+        commons.escapeVariable('$id') +
         ':reclaim';
 
     final _response = await _requester.request(
@@ -1744,11 +1740,11 @@ class CoursesCourseWorkStudentSubmissionsResource {
     };
 
     final _url = 'v1/courses/' +
-        commons.Escaper.ecapeVariable('$courseId') +
+        commons.escapeVariable('$courseId') +
         '/courseWork/' +
-        commons.Escaper.ecapeVariable('$courseWorkId') +
+        commons.escapeVariable('$courseWorkId') +
         '/studentSubmissions/' +
-        commons.Escaper.ecapeVariable('$id') +
+        commons.escapeVariable('$id') +
         ':return';
 
     final _response = await _requester.request(
@@ -1808,11 +1804,11 @@ class CoursesCourseWorkStudentSubmissionsResource {
     };
 
     final _url = 'v1/courses/' +
-        commons.Escaper.ecapeVariable('$courseId') +
+        commons.escapeVariable('$courseId') +
         '/courseWork/' +
-        commons.Escaper.ecapeVariable('$courseWorkId') +
+        commons.escapeVariable('$courseWorkId') +
         '/studentSubmissions/' +
-        commons.Escaper.ecapeVariable('$id') +
+        commons.escapeVariable('$id') +
         ':turnIn';
 
     final _response = await _requester.request(
@@ -1869,7 +1865,7 @@ class CoursesCourseWorkMaterialsResource {
     };
 
     final _url = 'v1/courses/' +
-        commons.Escaper.ecapeVariable('$courseId') +
+        commons.escapeVariable('$courseId') +
         '/courseWorkMaterials';
 
     final _response = await _requester.request(
@@ -1922,9 +1918,9 @@ class CoursesCourseWorkMaterialsResource {
     };
 
     final _url = 'v1/courses/' +
-        commons.Escaper.ecapeVariable('$courseId') +
+        commons.escapeVariable('$courseId') +
         '/courseWorkMaterials/' +
-        commons.Escaper.ecapeVariable('$id');
+        commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -1969,9 +1965,9 @@ class CoursesCourseWorkMaterialsResource {
     };
 
     final _url = 'v1/courses/' +
-        commons.Escaper.ecapeVariable('$courseId') +
+        commons.escapeVariable('$courseId') +
         '/courseWorkMaterials/' +
-        commons.Escaper.ecapeVariable('$id');
+        commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -2056,7 +2052,7 @@ class CoursesCourseWorkMaterialsResource {
     };
 
     final _url = 'v1/courses/' +
-        commons.Escaper.ecapeVariable('$courseId') +
+        commons.escapeVariable('$courseId') +
         '/courseWorkMaterials';
 
     final _response = await _requester.request(
@@ -2119,9 +2115,9 @@ class CoursesCourseWorkMaterialsResource {
     };
 
     final _url = 'v1/courses/' +
-        commons.Escaper.ecapeVariable('$courseId') +
+        commons.escapeVariable('$courseId') +
         '/courseWorkMaterials/' +
-        commons.Escaper.ecapeVariable('$id');
+        commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -2183,9 +2179,8 @@ class CoursesStudentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' +
-        commons.Escaper.ecapeVariable('$courseId') +
-        '/students';
+    final _url =
+        'v1/courses/' + commons.escapeVariable('$courseId') + '/students';
 
     final _response = await _requester.request(
       _url,
@@ -2233,9 +2228,9 @@ class CoursesStudentsResource {
     };
 
     final _url = 'v1/courses/' +
-        commons.Escaper.ecapeVariable('$courseId') +
+        commons.escapeVariable('$courseId') +
         '/students/' +
-        commons.Escaper.ecapeVariable('$userId');
+        commons.escapeVariable('$userId');
 
     final _response = await _requester.request(
       _url,
@@ -2282,9 +2277,9 @@ class CoursesStudentsResource {
     };
 
     final _url = 'v1/courses/' +
-        commons.Escaper.ecapeVariable('$courseId') +
+        commons.escapeVariable('$courseId') +
         '/students/' +
-        commons.Escaper.ecapeVariable('$userId');
+        commons.escapeVariable('$userId');
 
     final _response = await _requester.request(
       _url,
@@ -2336,9 +2331,8 @@ class CoursesStudentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' +
-        commons.Escaper.ecapeVariable('$courseId') +
-        '/students';
+    final _url =
+        'v1/courses/' + commons.escapeVariable('$courseId') + '/students';
 
     final _response = await _requester.request(
       _url,
@@ -2393,9 +2387,8 @@ class CoursesTeachersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' +
-        commons.Escaper.ecapeVariable('$courseId') +
-        '/teachers';
+    final _url =
+        'v1/courses/' + commons.escapeVariable('$courseId') + '/teachers';
 
     final _response = await _requester.request(
       _url,
@@ -2444,9 +2437,9 @@ class CoursesTeachersResource {
     };
 
     final _url = 'v1/courses/' +
-        commons.Escaper.ecapeVariable('$courseId') +
+        commons.escapeVariable('$courseId') +
         '/teachers/' +
-        commons.Escaper.ecapeVariable('$userId');
+        commons.escapeVariable('$userId');
 
     final _response = await _requester.request(
       _url,
@@ -2493,9 +2486,9 @@ class CoursesTeachersResource {
     };
 
     final _url = 'v1/courses/' +
-        commons.Escaper.ecapeVariable('$courseId') +
+        commons.escapeVariable('$courseId') +
         '/teachers/' +
-        commons.Escaper.ecapeVariable('$userId');
+        commons.escapeVariable('$userId');
 
     final _response = await _requester.request(
       _url,
@@ -2547,9 +2540,8 @@ class CoursesTeachersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' +
-        commons.Escaper.ecapeVariable('$courseId') +
-        '/teachers';
+    final _url =
+        'v1/courses/' + commons.escapeVariable('$courseId') + '/teachers';
 
     final _response = await _requester.request(
       _url,
@@ -2602,7 +2594,7 @@ class CoursesTopicsResource {
     };
 
     final _url =
-        'v1/courses/' + commons.Escaper.ecapeVariable('$courseId') + '/topics';
+        'v1/courses/' + commons.escapeVariable('$courseId') + '/topics';
 
     final _response = await _requester.request(
       _url,
@@ -2648,9 +2640,9 @@ class CoursesTopicsResource {
     };
 
     final _url = 'v1/courses/' +
-        commons.Escaper.ecapeVariable('$courseId') +
+        commons.escapeVariable('$courseId') +
         '/topics/' +
-        commons.Escaper.ecapeVariable('$id');
+        commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -2693,9 +2685,9 @@ class CoursesTopicsResource {
     };
 
     final _url = 'v1/courses/' +
-        commons.Escaper.ecapeVariable('$courseId') +
+        commons.escapeVariable('$courseId') +
         '/topics/' +
-        commons.Escaper.ecapeVariable('$id');
+        commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -2749,7 +2741,7 @@ class CoursesTopicsResource {
     };
 
     final _url =
-        'v1/courses/' + commons.Escaper.ecapeVariable('$courseId') + '/topics';
+        'v1/courses/' + commons.escapeVariable('$courseId') + '/topics';
 
     final _response = await _requester.request(
       _url,
@@ -2808,9 +2800,9 @@ class CoursesTopicsResource {
     };
 
     final _url = 'v1/courses/' +
-        commons.Escaper.ecapeVariable('$courseId') +
+        commons.escapeVariable('$courseId') +
         '/topics/' +
-        commons.Escaper.ecapeVariable('$id');
+        commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -2860,8 +2852,7 @@ class InvitationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/invitations/' + commons.Escaper.ecapeVariable('$id') + ':accept';
+    final _url = 'v1/invitations/' + commons.escapeVariable('$id') + ':accept';
 
     final _response = await _requester.request(
       _url,
@@ -2946,7 +2937,7 @@ class InvitationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/invitations/' + commons.Escaper.ecapeVariable('$id');
+    final _url = 'v1/invitations/' + commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -2985,7 +2976,7 @@ class InvitationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/invitations/' + commons.Escaper.ecapeVariable('$id');
+    final _url = 'v1/invitations/' + commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -3151,7 +3142,7 @@ class RegistrationsResource {
     };
 
     final _url =
-        'v1/registrations/' + commons.Escaper.ecapeVariable('$registrationId');
+        'v1/registrations/' + commons.escapeVariable('$registrationId');
 
     final _response = await _requester.request(
       _url,
@@ -3203,7 +3194,7 @@ class UserProfilesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/userProfiles/' + commons.Escaper.ecapeVariable('$userId');
+    final _url = 'v1/userProfiles/' + commons.escapeVariable('$userId');
 
     final _response = await _requester.request(
       _url,
@@ -3274,7 +3265,7 @@ class UserProfilesGuardianInvitationsResource {
     };
 
     final _url = 'v1/userProfiles/' +
-        commons.Escaper.ecapeVariable('$studentId') +
+        commons.escapeVariable('$studentId') +
         '/guardianInvitations';
 
     final _response = await _requester.request(
@@ -3327,9 +3318,9 @@ class UserProfilesGuardianInvitationsResource {
     };
 
     final _url = 'v1/userProfiles/' +
-        commons.Escaper.ecapeVariable('$studentId') +
+        commons.escapeVariable('$studentId') +
         '/guardianInvitations/' +
-        commons.Escaper.ecapeVariable('$invitationId');
+        commons.escapeVariable('$invitationId');
 
     final _response = await _requester.request(
       _url,
@@ -3407,7 +3398,7 @@ class UserProfilesGuardianInvitationsResource {
     };
 
     final _url = 'v1/userProfiles/' +
-        commons.Escaper.ecapeVariable('$studentId') +
+        commons.escapeVariable('$studentId') +
         '/guardianInvitations';
 
     final _response = await _requester.request(
@@ -3474,9 +3465,9 @@ class UserProfilesGuardianInvitationsResource {
     };
 
     final _url = 'v1/userProfiles/' +
-        commons.Escaper.ecapeVariable('$studentId') +
+        commons.escapeVariable('$studentId') +
         '/guardianInvitations/' +
-        commons.Escaper.ecapeVariable('$invitationId');
+        commons.escapeVariable('$invitationId');
 
     final _response = await _requester.request(
       _url,
@@ -3538,9 +3529,9 @@ class UserProfilesGuardiansResource {
     };
 
     final _url = 'v1/userProfiles/' +
-        commons.Escaper.ecapeVariable('$studentId') +
+        commons.escapeVariable('$studentId') +
         '/guardians/' +
-        commons.Escaper.ecapeVariable('$guardianId');
+        commons.escapeVariable('$guardianId');
 
     final _response = await _requester.request(
       _url,
@@ -3592,9 +3583,9 @@ class UserProfilesGuardiansResource {
     };
 
     final _url = 'v1/userProfiles/' +
-        commons.Escaper.ecapeVariable('$studentId') +
+        commons.escapeVariable('$studentId') +
         '/guardians/' +
-        commons.Escaper.ecapeVariable('$guardianId');
+        commons.escapeVariable('$guardianId');
 
     final _response = await _requester.request(
       _url,
@@ -3670,7 +3661,7 @@ class UserProfilesGuardiansResource {
     };
 
     final _url = 'v1/userProfiles/' +
-        commons.Escaper.ecapeVariable('$studentId') +
+        commons.escapeVariable('$studentId') +
         '/guardians';
 
     final _response = await _requester.request(

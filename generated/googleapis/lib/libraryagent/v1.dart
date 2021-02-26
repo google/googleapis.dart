@@ -86,7 +86,7 @@ class ShelvesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -179,8 +179,7 @@ class ShelvesBooksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':borrow';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':borrow';
 
     final _response = await _requester.request(
       _url,
@@ -218,7 +217,7 @@ class ShelvesBooksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -269,8 +268,7 @@ class ShelvesBooksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/books';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/books';
 
     final _response = await _requester.request(
       _url,
@@ -310,8 +308,7 @@ class ShelvesBooksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':return';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':return';
 
     final _response = await _requester.request(
       _url,

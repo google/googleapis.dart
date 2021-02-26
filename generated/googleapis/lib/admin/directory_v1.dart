@@ -245,9 +245,9 @@ class AspsResource {
     };
 
     final _url = 'admin/directory/v1/users/' +
-        commons.Escaper.ecapeVariable('$userKey') +
+        commons.escapeVariable('$userKey') +
         '/asps/' +
-        commons.Escaper.ecapeVariable('$codeId');
+        commons.escapeVariable('$codeId');
 
     await _requester.request(
       _url,
@@ -286,9 +286,9 @@ class AspsResource {
     };
 
     final _url = 'admin/directory/v1/users/' +
-        commons.Escaper.ecapeVariable('$userKey') +
+        commons.escapeVariable('$userKey') +
         '/asps/' +
-        commons.Escaper.ecapeVariable('$codeId');
+        commons.escapeVariable('$codeId');
 
     final _response = await _requester.request(
       _url,
@@ -324,7 +324,7 @@ class AspsResource {
     };
 
     final _url = 'admin/directory/v1/users/' +
-        commons.Escaper.ecapeVariable('$userKey') +
+        commons.escapeVariable('$userKey') +
         '/asps';
 
     final _response = await _requester.request(
@@ -428,9 +428,9 @@ class ChromeosdevicesResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customerId') +
+        commons.escapeVariable('$customerId') +
         '/devices/chromeos/' +
-        commons.Escaper.ecapeVariable('$resourceId') +
+        commons.escapeVariable('$resourceId') +
         '/action';
 
     await _requester.request(
@@ -487,9 +487,9 @@ class ChromeosdevicesResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customerId') +
+        commons.escapeVariable('$customerId') +
         '/devices/chromeos/' +
-        commons.Escaper.ecapeVariable('$deviceId');
+        commons.escapeVariable('$deviceId');
 
     final _response = await _requester.request(
       _url,
@@ -584,7 +584,7 @@ class ChromeosdevicesResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customerId') +
+        commons.escapeVariable('$customerId') +
         '/devices/chromeos';
 
     final _response = await _requester.request(
@@ -629,7 +629,7 @@ class ChromeosdevicesResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customerId') +
+        commons.escapeVariable('$customerId') +
         '/devices/chromeos/moveDevicesToOu';
 
     await _requester.request(
@@ -693,9 +693,9 @@ class ChromeosdevicesResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customerId') +
+        commons.escapeVariable('$customerId') +
         '/devices/chromeos/' +
-        commons.Escaper.ecapeVariable('$deviceId');
+        commons.escapeVariable('$deviceId');
 
     final _response = await _requester.request(
       _url,
@@ -756,9 +756,9 @@ class ChromeosdevicesResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customerId') +
+        commons.escapeVariable('$customerId') +
         '/devices/chromeos/' +
-        commons.Escaper.ecapeVariable('$deviceId');
+        commons.escapeVariable('$deviceId');
 
     final _response = await _requester.request(
       _url,
@@ -829,9 +829,9 @@ class CustomerDevicesChromeosResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customerId') +
+        commons.escapeVariable('$customerId') +
         '/devices/chromeos/' +
-        commons.Escaper.ecapeVariable('$deviceId') +
+        commons.escapeVariable('$deviceId') +
         ':issueCommand';
 
     final _response = await _requester.request(
@@ -882,11 +882,11 @@ class CustomerDevicesChromeosCommandsResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customerId') +
+        commons.escapeVariable('$customerId') +
         '/devices/chromeos/' +
-        commons.Escaper.ecapeVariable('$deviceId') +
+        commons.escapeVariable('$deviceId') +
         '/commands/' +
-        commons.Escaper.ecapeVariable('$commandId');
+        commons.escapeVariable('$commandId');
 
     final _response = await _requester.request(
       _url,
@@ -928,7 +928,7 @@ class CustomersResource {
     };
 
     final _url = 'admin/directory/v1/customers/' +
-        commons.Escaper.ecapeVariable('$customerKey');
+        commons.escapeVariable('$customerKey');
 
     final _response = await _requester.request(
       _url,
@@ -967,7 +967,7 @@ class CustomersResource {
     };
 
     final _url = 'admin/directory/v1/customers/' +
-        commons.Escaper.ecapeVariable('$customerKey');
+        commons.escapeVariable('$customerKey');
 
     final _response = await _requester.request(
       _url,
@@ -1007,7 +1007,7 @@ class CustomersResource {
     };
 
     final _url = 'admin/directory/v1/customers/' +
-        commons.Escaper.ecapeVariable('$customerKey');
+        commons.escapeVariable('$customerKey');
 
     final _response = await _requester.request(
       _url,
@@ -1050,9 +1050,9 @@ class DomainAliasesResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
+        commons.escapeVariable('$customer') +
         '/domainaliases/' +
-        commons.Escaper.ecapeVariable('$domainAliasName');
+        commons.escapeVariable('$domainAliasName');
 
     await _requester.request(
       _url,
@@ -1090,9 +1090,9 @@ class DomainAliasesResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
+        commons.escapeVariable('$customer') +
         '/domainaliases/' +
-        commons.Escaper.ecapeVariable('$domainAliasName');
+        commons.escapeVariable('$domainAliasName');
 
     final _response = await _requester.request(
       _url,
@@ -1132,7 +1132,7 @@ class DomainAliasesResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
+        commons.escapeVariable('$customer') +
         '/domainaliases';
 
     final _response = await _requester.request(
@@ -1175,7 +1175,7 @@ class DomainAliasesResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
+        commons.escapeVariable('$customer') +
         '/domainaliases';
 
     final _response = await _requester.request(
@@ -1219,9 +1219,9 @@ class DomainsResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
+        commons.escapeVariable('$customer') +
         '/domains/' +
-        commons.Escaper.ecapeVariable('$domainName');
+        commons.escapeVariable('$domainName');
 
     await _requester.request(
       _url,
@@ -1259,9 +1259,9 @@ class DomainsResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
+        commons.escapeVariable('$customer') +
         '/domains/' +
-        commons.Escaper.ecapeVariable('$domainName');
+        commons.escapeVariable('$domainName');
 
     final _response = await _requester.request(
       _url,
@@ -1300,7 +1300,7 @@ class DomainsResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
+        commons.escapeVariable('$customer') +
         '/domains';
 
     final _response = await _requester.request(
@@ -1337,7 +1337,7 @@ class DomainsResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
+        commons.escapeVariable('$customer') +
         '/domains';
 
     final _response = await _requester.request(
@@ -1379,8 +1379,8 @@ class GroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'admin/directory/v1/groups/' +
-        commons.Escaper.ecapeVariable('$groupKey');
+    final _url =
+        'admin/directory/v1/groups/' + commons.escapeVariable('$groupKey');
 
     await _requester.request(
       _url,
@@ -1415,8 +1415,8 @@ class GroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'admin/directory/v1/groups/' +
-        commons.Escaper.ecapeVariable('$groupKey');
+    final _url =
+        'admin/directory/v1/groups/' + commons.escapeVariable('$groupKey');
 
     final _response = await _requester.request(
       _url,
@@ -1577,8 +1577,8 @@ class GroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'admin/directory/v1/groups/' +
-        commons.Escaper.ecapeVariable('$groupKey');
+    final _url =
+        'admin/directory/v1/groups/' + commons.escapeVariable('$groupKey');
 
     final _response = await _requester.request(
       _url,
@@ -1618,8 +1618,8 @@ class GroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'admin/directory/v1/groups/' +
-        commons.Escaper.ecapeVariable('$groupKey');
+    final _url =
+        'admin/directory/v1/groups/' + commons.escapeVariable('$groupKey');
 
     final _response = await _requester.request(
       _url,
@@ -1663,9 +1663,9 @@ class GroupsAliasesResource {
     };
 
     final _url = 'admin/directory/v1/groups/' +
-        commons.Escaper.ecapeVariable('$groupKey') +
+        commons.escapeVariable('$groupKey') +
         '/aliases/' +
-        commons.Escaper.ecapeVariable('$alias');
+        commons.escapeVariable('$alias');
 
     await _requester.request(
       _url,
@@ -1705,7 +1705,7 @@ class GroupsAliasesResource {
     };
 
     final _url = 'admin/directory/v1/groups/' +
-        commons.Escaper.ecapeVariable('$groupKey') +
+        commons.escapeVariable('$groupKey') +
         '/aliases';
 
     final _response = await _requester.request(
@@ -1743,7 +1743,7 @@ class GroupsAliasesResource {
     };
 
     final _url = 'admin/directory/v1/groups/' +
-        commons.Escaper.ecapeVariable('$groupKey') +
+        commons.escapeVariable('$groupKey') +
         '/aliases';
 
     final _response = await _requester.request(
@@ -1789,9 +1789,9 @@ class MembersResource {
     };
 
     final _url = 'admin/directory/v1/groups/' +
-        commons.Escaper.ecapeVariable('$groupKey') +
+        commons.escapeVariable('$groupKey') +
         '/members/' +
-        commons.Escaper.ecapeVariable('$memberKey');
+        commons.escapeVariable('$memberKey');
 
     await _requester.request(
       _url,
@@ -1832,9 +1832,9 @@ class MembersResource {
     };
 
     final _url = 'admin/directory/v1/groups/' +
-        commons.Escaper.ecapeVariable('$groupKey') +
+        commons.escapeVariable('$groupKey') +
         '/members/' +
-        commons.Escaper.ecapeVariable('$memberKey');
+        commons.escapeVariable('$memberKey');
 
     final _response = await _requester.request(
       _url,
@@ -1876,9 +1876,9 @@ class MembersResource {
     };
 
     final _url = 'admin/directory/v1/groups/' +
-        commons.Escaper.ecapeVariable('$groupKey') +
+        commons.escapeVariable('$groupKey') +
         '/hasMember/' +
-        commons.Escaper.ecapeVariable('$memberKey');
+        commons.escapeVariable('$memberKey');
 
     final _response = await _requester.request(
       _url,
@@ -1919,7 +1919,7 @@ class MembersResource {
     };
 
     final _url = 'admin/directory/v1/groups/' +
-        commons.Escaper.ecapeVariable('$groupKey') +
+        commons.escapeVariable('$groupKey') +
         '/members';
 
     final _response = await _requester.request(
@@ -1977,7 +1977,7 @@ class MembersResource {
     };
 
     final _url = 'admin/directory/v1/groups/' +
-        commons.Escaper.ecapeVariable('$groupKey') +
+        commons.escapeVariable('$groupKey') +
         '/members';
 
     final _response = await _requester.request(
@@ -2026,9 +2026,9 @@ class MembersResource {
     };
 
     final _url = 'admin/directory/v1/groups/' +
-        commons.Escaper.ecapeVariable('$groupKey') +
+        commons.escapeVariable('$groupKey') +
         '/members/' +
-        commons.Escaper.ecapeVariable('$memberKey');
+        commons.escapeVariable('$memberKey');
 
     final _response = await _requester.request(
       _url,
@@ -2074,9 +2074,9 @@ class MembersResource {
     };
 
     final _url = 'admin/directory/v1/groups/' +
-        commons.Escaper.ecapeVariable('$groupKey') +
+        commons.escapeVariable('$groupKey') +
         '/members/' +
-        commons.Escaper.ecapeVariable('$memberKey');
+        commons.escapeVariable('$memberKey');
 
     final _response = await _requester.request(
       _url,
@@ -2130,9 +2130,9 @@ class MobiledevicesResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customerId') +
+        commons.escapeVariable('$customerId') +
         '/devices/mobile/' +
-        commons.Escaper.ecapeVariable('$resourceId') +
+        commons.escapeVariable('$resourceId') +
         '/action';
 
     await _requester.request(
@@ -2175,9 +2175,9 @@ class MobiledevicesResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customerId') +
+        commons.escapeVariable('$customerId') +
         '/devices/mobile/' +
-        commons.Escaper.ecapeVariable('$resourceId');
+        commons.escapeVariable('$resourceId');
 
     await _requester.request(
       _url,
@@ -2229,9 +2229,9 @@ class MobiledevicesResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customerId') +
+        commons.escapeVariable('$customerId') +
         '/devices/mobile/' +
-        commons.Escaper.ecapeVariable('$resourceId');
+        commons.escapeVariable('$resourceId');
 
     final _response = await _requester.request(
       _url,
@@ -2319,7 +2319,7 @@ class MobiledevicesResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customerId') +
+        commons.escapeVariable('$customerId') +
         '/devices/mobile';
 
     final _response = await _requester.request(
@@ -2373,9 +2373,9 @@ class OrgunitsResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customerId') +
+        commons.escapeVariable('$customerId') +
         '/orgunits/' +
-        commons.Escaper.ecapeVariableReserved('$orgUnitPath');
+        core.Uri.encodeFull('$orgUnitPath');
 
     await _requester.request(
       _url,
@@ -2423,9 +2423,9 @@ class OrgunitsResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customerId') +
+        commons.escapeVariable('$customerId') +
         '/orgunits/' +
-        commons.Escaper.ecapeVariableReserved('$orgUnitPath');
+        core.Uri.encodeFull('$orgUnitPath');
 
     final _response = await _requester.request(
       _url,
@@ -2468,7 +2468,7 @@ class OrgunitsResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customerId') +
+        commons.escapeVariable('$customerId') +
         '/orgunits';
 
     final _response = await _requester.request(
@@ -2523,7 +2523,7 @@ class OrgunitsResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customerId') +
+        commons.escapeVariable('$customerId') +
         '/orgunits';
 
     final _response = await _requester.request(
@@ -2579,9 +2579,9 @@ class OrgunitsResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customerId') +
+        commons.escapeVariable('$customerId') +
         '/orgunits/' +
-        commons.Escaper.ecapeVariableReserved('$orgUnitPath');
+        core.Uri.encodeFull('$orgUnitPath');
 
     final _response = await _requester.request(
       _url,
@@ -2634,9 +2634,9 @@ class OrgunitsResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customerId') +
+        commons.escapeVariable('$customerId') +
         '/orgunits/' +
-        commons.Escaper.ecapeVariableReserved('$orgUnitPath');
+        core.Uri.encodeFull('$orgUnitPath');
 
     final _response = await _requester.request(
       _url,
@@ -2678,7 +2678,7 @@ class PrivilegesResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
+        commons.escapeVariable('$customer') +
         '/roles/ALL/privileges';
 
     final _response = await _requester.request(
@@ -2737,9 +2737,9 @@ class ResourcesBuildingsResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
+        commons.escapeVariable('$customer') +
         '/resources/buildings/' +
-        commons.Escaper.ecapeVariable('$buildingId');
+        commons.escapeVariable('$buildingId');
 
     await _requester.request(
       _url,
@@ -2779,9 +2779,9 @@ class ResourcesBuildingsResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
+        commons.escapeVariable('$customer') +
         '/resources/buildings/' +
-        commons.Escaper.ecapeVariable('$buildingId');
+        commons.escapeVariable('$buildingId');
 
     final _response = await _requester.request(
       _url,
@@ -2835,7 +2835,7 @@ class ResourcesBuildingsResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
+        commons.escapeVariable('$customer') +
         '/resources/buildings';
 
     final _response = await _requester.request(
@@ -2883,7 +2883,7 @@ class ResourcesBuildingsResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
+        commons.escapeVariable('$customer') +
         '/resources/buildings';
 
     final _response = await _requester.request(
@@ -2941,9 +2941,9 @@ class ResourcesBuildingsResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
+        commons.escapeVariable('$customer') +
         '/resources/buildings/' +
-        commons.Escaper.ecapeVariable('$buildingId');
+        commons.escapeVariable('$buildingId');
 
     final _response = await _requester.request(
       _url,
@@ -3001,9 +3001,9 @@ class ResourcesBuildingsResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
+        commons.escapeVariable('$customer') +
         '/resources/buildings/' +
-        commons.Escaper.ecapeVariable('$buildingId');
+        commons.escapeVariable('$buildingId');
 
     final _response = await _requester.request(
       _url,
@@ -3048,9 +3048,9 @@ class ResourcesCalendarsResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
+        commons.escapeVariable('$customer') +
         '/resources/calendars/' +
-        commons.Escaper.ecapeVariable('$calendarResourceId');
+        commons.escapeVariable('$calendarResourceId');
 
     await _requester.request(
       _url,
@@ -3090,9 +3090,9 @@ class ResourcesCalendarsResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
+        commons.escapeVariable('$customer') +
         '/resources/calendars/' +
-        commons.Escaper.ecapeVariable('$calendarResourceId');
+        commons.escapeVariable('$calendarResourceId');
 
     final _response = await _requester.request(
       _url,
@@ -3134,7 +3134,7 @@ class ResourcesCalendarsResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
+        commons.escapeVariable('$customer') +
         '/resources/calendars';
 
     final _response = await _requester.request(
@@ -3206,7 +3206,7 @@ class ResourcesCalendarsResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
+        commons.escapeVariable('$customer') +
         '/resources/calendars';
 
     final _response = await _requester.request(
@@ -3252,9 +3252,9 @@ class ResourcesCalendarsResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
+        commons.escapeVariable('$customer') +
         '/resources/calendars/' +
-        commons.Escaper.ecapeVariable('$calendarResourceId');
+        commons.escapeVariable('$calendarResourceId');
 
     final _response = await _requester.request(
       _url,
@@ -3304,9 +3304,9 @@ class ResourcesCalendarsResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
+        commons.escapeVariable('$customer') +
         '/resources/calendars/' +
-        commons.Escaper.ecapeVariable('$calendarResourceId');
+        commons.escapeVariable('$calendarResourceId');
 
     final _response = await _requester.request(
       _url,
@@ -3352,9 +3352,9 @@ class ResourcesFeaturesResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
+        commons.escapeVariable('$customer') +
         '/resources/features/' +
-        commons.Escaper.ecapeVariable('$featureKey');
+        commons.escapeVariable('$featureKey');
 
     await _requester.request(
       _url,
@@ -3394,9 +3394,9 @@ class ResourcesFeaturesResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
+        commons.escapeVariable('$customer') +
         '/resources/features/' +
-        commons.Escaper.ecapeVariable('$featureKey');
+        commons.escapeVariable('$featureKey');
 
     final _response = await _requester.request(
       _url,
@@ -3437,7 +3437,7 @@ class ResourcesFeaturesResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
+        commons.escapeVariable('$customer') +
         '/resources/features';
 
     final _response = await _requester.request(
@@ -3485,7 +3485,7 @@ class ResourcesFeaturesResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
+        commons.escapeVariable('$customer') +
         '/resources/features';
 
     final _response = await _requester.request(
@@ -3530,9 +3530,9 @@ class ResourcesFeaturesResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
+        commons.escapeVariable('$customer') +
         '/resources/features/' +
-        commons.Escaper.ecapeVariable('$featureKey');
+        commons.escapeVariable('$featureKey');
 
     final _response = await _requester.request(
       _url,
@@ -3575,9 +3575,9 @@ class ResourcesFeaturesResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
+        commons.escapeVariable('$customer') +
         '/resources/features/' +
-        commons.Escaper.ecapeVariable('$oldName') +
+        commons.escapeVariable('$oldName') +
         '/rename';
 
     await _requester.request(
@@ -3623,9 +3623,9 @@ class ResourcesFeaturesResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
+        commons.escapeVariable('$customer') +
         '/resources/features/' +
-        commons.Escaper.ecapeVariable('$featureKey');
+        commons.escapeVariable('$featureKey');
 
     final _response = await _requester.request(
       _url,
@@ -3668,9 +3668,9 @@ class RoleAssignmentsResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
+        commons.escapeVariable('$customer') +
         '/roleassignments/' +
-        commons.Escaper.ecapeVariable('$roleAssignmentId');
+        commons.escapeVariable('$roleAssignmentId');
 
     await _requester.request(
       _url,
@@ -3708,9 +3708,9 @@ class RoleAssignmentsResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
+        commons.escapeVariable('$customer') +
         '/roleassignments/' +
-        commons.Escaper.ecapeVariable('$roleAssignmentId');
+        commons.escapeVariable('$roleAssignmentId');
 
     final _response = await _requester.request(
       _url,
@@ -3750,7 +3750,7 @@ class RoleAssignmentsResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
+        commons.escapeVariable('$customer') +
         '/roleassignments';
 
     final _response = await _requester.request(
@@ -3808,7 +3808,7 @@ class RoleAssignmentsResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
+        commons.escapeVariable('$customer') +
         '/roleassignments';
 
     final _response = await _requester.request(
@@ -3852,9 +3852,9 @@ class RolesResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
+        commons.escapeVariable('$customer') +
         '/roles/' +
-        commons.Escaper.ecapeVariable('$roleId');
+        commons.escapeVariable('$roleId');
 
     await _requester.request(
       _url,
@@ -3892,9 +3892,9 @@ class RolesResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
+        commons.escapeVariable('$customer') +
         '/roles/' +
-        commons.Escaper.ecapeVariable('$roleId');
+        commons.escapeVariable('$roleId');
 
     final _response = await _requester.request(
       _url,
@@ -3933,7 +3933,7 @@ class RolesResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
+        commons.escapeVariable('$customer') +
         '/roles';
 
     final _response = await _requester.request(
@@ -3979,7 +3979,7 @@ class RolesResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
+        commons.escapeVariable('$customer') +
         '/roles';
 
     final _response = await _requester.request(
@@ -4022,9 +4022,9 @@ class RolesResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
+        commons.escapeVariable('$customer') +
         '/roles/' +
-        commons.Escaper.ecapeVariable('$roleId');
+        commons.escapeVariable('$roleId');
 
     final _response = await _requester.request(
       _url,
@@ -4067,9 +4067,9 @@ class RolesResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
+        commons.escapeVariable('$customer') +
         '/roles/' +
-        commons.Escaper.ecapeVariable('$roleId');
+        commons.escapeVariable('$roleId');
 
     final _response = await _requester.request(
       _url,
@@ -4112,9 +4112,9 @@ class SchemasResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customerId') +
+        commons.escapeVariable('$customerId') +
         '/schemas/' +
-        commons.Escaper.ecapeVariable('$schemaKey');
+        commons.escapeVariable('$schemaKey');
 
     await _requester.request(
       _url,
@@ -4152,9 +4152,9 @@ class SchemasResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customerId') +
+        commons.escapeVariable('$customerId') +
         '/schemas/' +
-        commons.Escaper.ecapeVariable('$schemaKey');
+        commons.escapeVariable('$schemaKey');
 
     final _response = await _requester.request(
       _url,
@@ -4193,7 +4193,7 @@ class SchemasResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customerId') +
+        commons.escapeVariable('$customerId') +
         '/schemas';
 
     final _response = await _requester.request(
@@ -4230,7 +4230,7 @@ class SchemasResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customerId') +
+        commons.escapeVariable('$customerId') +
         '/schemas';
 
     final _response = await _requester.request(
@@ -4273,9 +4273,9 @@ class SchemasResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customerId') +
+        commons.escapeVariable('$customerId') +
         '/schemas/' +
-        commons.Escaper.ecapeVariable('$schemaKey');
+        commons.escapeVariable('$schemaKey');
 
     final _response = await _requester.request(
       _url,
@@ -4318,9 +4318,9 @@ class SchemasResource {
     };
 
     final _url = 'admin/directory/v1/customer/' +
-        commons.Escaper.ecapeVariable('$customerId') +
+        commons.escapeVariable('$customerId') +
         '/schemas/' +
-        commons.Escaper.ecapeVariable('$schemaKey');
+        commons.escapeVariable('$schemaKey');
 
     final _response = await _requester.request(
       _url,
@@ -4364,9 +4364,9 @@ class TokensResource {
     };
 
     final _url = 'admin/directory/v1/users/' +
-        commons.Escaper.ecapeVariable('$userKey') +
+        commons.escapeVariable('$userKey') +
         '/tokens/' +
-        commons.Escaper.ecapeVariable('$clientId');
+        commons.escapeVariable('$clientId');
 
     await _requester.request(
       _url,
@@ -4405,9 +4405,9 @@ class TokensResource {
     };
 
     final _url = 'admin/directory/v1/users/' +
-        commons.Escaper.ecapeVariable('$userKey') +
+        commons.escapeVariable('$userKey') +
         '/tokens/' +
-        commons.Escaper.ecapeVariable('$clientId');
+        commons.escapeVariable('$clientId');
 
     final _response = await _requester.request(
       _url,
@@ -4444,7 +4444,7 @@ class TokensResource {
     };
 
     final _url = 'admin/directory/v1/users/' +
-        commons.Escaper.ecapeVariable('$userKey') +
+        commons.escapeVariable('$userKey') +
         '/tokens';
 
     final _response = await _requester.request(
@@ -4486,7 +4486,7 @@ class TwoStepVerificationResource {
     };
 
     final _url = 'admin/directory/v1/users/' +
-        commons.Escaper.ecapeVariable('$userKey') +
+        commons.escapeVariable('$userKey') +
         '/twoStepVerification/turnOff';
 
     await _requester.request(
@@ -4530,7 +4530,7 @@ class UsersResource {
     };
 
     final _url =
-        'admin/directory/v1/users/' + commons.Escaper.ecapeVariable('$userKey');
+        'admin/directory/v1/users/' + commons.escapeVariable('$userKey');
 
     await _requester.request(
       _url,
@@ -4594,7 +4594,7 @@ class UsersResource {
     };
 
     final _url =
-        'admin/directory/v1/users/' + commons.Escaper.ecapeVariable('$userKey');
+        'admin/directory/v1/users/' + commons.escapeVariable('$userKey');
 
     final _response = await _requester.request(
       _url,
@@ -4782,7 +4782,7 @@ class UsersResource {
     };
 
     final _url = 'admin/directory/v1/users/' +
-        commons.Escaper.ecapeVariable('$userKey') +
+        commons.escapeVariable('$userKey') +
         '/makeAdmin';
 
     await _requester.request(
@@ -4829,7 +4829,7 @@ class UsersResource {
     };
 
     final _url =
-        'admin/directory/v1/users/' + commons.Escaper.ecapeVariable('$userKey');
+        'admin/directory/v1/users/' + commons.escapeVariable('$userKey');
 
     final _response = await _requester.request(
       _url,
@@ -4868,7 +4868,7 @@ class UsersResource {
     };
 
     final _url = 'admin/directory/v1/users/' +
-        commons.Escaper.ecapeVariable('$userKey') +
+        commons.escapeVariable('$userKey') +
         '/signOut';
 
     await _requester.request(
@@ -4906,7 +4906,7 @@ class UsersResource {
     };
 
     final _url = 'admin/directory/v1/users/' +
-        commons.Escaper.ecapeVariable('$userKey') +
+        commons.escapeVariable('$userKey') +
         '/undelete';
 
     await _requester.request(
@@ -4952,7 +4952,7 @@ class UsersResource {
     };
 
     final _url =
-        'admin/directory/v1/users/' + commons.Escaper.ecapeVariable('$userKey');
+        'admin/directory/v1/users/' + commons.escapeVariable('$userKey');
 
     final _response = await _requester.request(
       _url,
@@ -5118,9 +5118,9 @@ class UsersAliasesResource {
     };
 
     final _url = 'admin/directory/v1/users/' +
-        commons.Escaper.ecapeVariable('$userKey') +
+        commons.escapeVariable('$userKey') +
         '/aliases/' +
-        commons.Escaper.ecapeVariable('$alias');
+        commons.escapeVariable('$alias');
 
     await _requester.request(
       _url,
@@ -5160,7 +5160,7 @@ class UsersAliasesResource {
     };
 
     final _url = 'admin/directory/v1/users/' +
-        commons.Escaper.ecapeVariable('$userKey') +
+        commons.escapeVariable('$userKey') +
         '/aliases';
 
     final _response = await _requester.request(
@@ -5198,7 +5198,7 @@ class UsersAliasesResource {
     };
 
     final _url = 'admin/directory/v1/users/' +
-        commons.Escaper.ecapeVariable('$userKey') +
+        commons.escapeVariable('$userKey') +
         '/aliases';
 
     final _response = await _requester.request(
@@ -5246,7 +5246,7 @@ class UsersAliasesResource {
     };
 
     final _url = 'admin/directory/v1/users/' +
-        commons.Escaper.ecapeVariable('$userKey') +
+        commons.escapeVariable('$userKey') +
         '/aliases/watch';
 
     final _response = await _requester.request(
@@ -5288,7 +5288,7 @@ class UsersPhotosResource {
     };
 
     final _url = 'admin/directory/v1/users/' +
-        commons.Escaper.ecapeVariable('$userKey') +
+        commons.escapeVariable('$userKey') +
         '/photos/thumbnail';
 
     await _requester.request(
@@ -5325,7 +5325,7 @@ class UsersPhotosResource {
     };
 
     final _url = 'admin/directory/v1/users/' +
-        commons.Escaper.ecapeVariable('$userKey') +
+        commons.escapeVariable('$userKey') +
         '/photos/thumbnail';
 
     final _response = await _requester.request(
@@ -5369,7 +5369,7 @@ class UsersPhotosResource {
     };
 
     final _url = 'admin/directory/v1/users/' +
-        commons.Escaper.ecapeVariable('$userKey') +
+        commons.escapeVariable('$userKey') +
         '/photos/thumbnail';
 
     final _response = await _requester.request(
@@ -5411,7 +5411,7 @@ class UsersPhotosResource {
     };
 
     final _url = 'admin/directory/v1/users/' +
-        commons.Escaper.ecapeVariable('$userKey') +
+        commons.escapeVariable('$userKey') +
         '/photos/thumbnail';
 
     final _response = await _requester.request(
@@ -5452,7 +5452,7 @@ class VerificationCodesResource {
     };
 
     final _url = 'admin/directory/v1/users/' +
-        commons.Escaper.ecapeVariable('$userKey') +
+        commons.escapeVariable('$userKey') +
         '/verificationCodes/generate';
 
     await _requester.request(
@@ -5486,7 +5486,7 @@ class VerificationCodesResource {
     };
 
     final _url = 'admin/directory/v1/users/' +
-        commons.Escaper.ecapeVariable('$userKey') +
+        commons.escapeVariable('$userKey') +
         '/verificationCodes/invalidate';
 
     await _requester.request(
@@ -5524,7 +5524,7 @@ class VerificationCodesResource {
     };
 
     final _url = 'admin/directory/v1/users/' +
-        commons.Escaper.ecapeVariable('$userKey') +
+        commons.escapeVariable('$userKey') +
         '/verificationCodes';
 
     final _response = await _requester.request(

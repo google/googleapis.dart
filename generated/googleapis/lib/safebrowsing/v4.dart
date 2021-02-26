@@ -108,8 +108,8 @@ class EncodedFullHashesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v4/encodedFullHashes/' +
-        commons.Escaper.ecapeVariable('$encodedRequest');
+    final _url =
+        'v4/encodedFullHashes/' + commons.escapeVariable('$encodedRequest');
 
     final _response = await _requester.request(
       _url,
@@ -159,7 +159,7 @@ class EncodedUpdatesResource {
     };
 
     final _url =
-        'v4/encodedUpdates/' + commons.Escaper.ecapeVariable('$encodedRequest');
+        'v4/encodedUpdates/' + commons.escapeVariable('$encodedRequest');
 
     final _response = await _requester.request(
       _url,

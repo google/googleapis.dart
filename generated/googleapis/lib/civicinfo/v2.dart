@@ -302,8 +302,8 @@ class RepresentativesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'civicinfo/v2/representatives/' +
-        commons.Escaper.ecapeVariable('$ocdId');
+    final _url =
+        'civicinfo/v2/representatives/' + commons.escapeVariable('$ocdId');
 
     final _response = await _requester.request(
       _url,

@@ -98,7 +98,7 @@ class AchievementConfigurationsResource {
     };
 
     final _url = 'games/v1configuration/achievements/' +
-        commons.Escaper.ecapeVariable('$achievementId');
+        commons.escapeVariable('$achievementId');
 
     await _requester.request(
       _url,
@@ -133,7 +133,7 @@ class AchievementConfigurationsResource {
     };
 
     final _url = 'games/v1configuration/achievements/' +
-        commons.Escaper.ecapeVariable('$achievementId');
+        commons.escapeVariable('$achievementId');
 
     final _response = await _requester.request(
       _url,
@@ -174,7 +174,7 @@ class AchievementConfigurationsResource {
     };
 
     final _url = 'games/v1configuration/applications/' +
-        commons.Escaper.ecapeVariable('$applicationId') +
+        commons.escapeVariable('$applicationId') +
         '/achievements';
 
     final _response = await _requester.request(
@@ -223,7 +223,7 @@ class AchievementConfigurationsResource {
     };
 
     final _url = 'games/v1configuration/applications/' +
-        commons.Escaper.ecapeVariable('$applicationId') +
+        commons.escapeVariable('$applicationId') +
         '/achievements';
 
     final _response = await _requester.request(
@@ -264,7 +264,7 @@ class AchievementConfigurationsResource {
     };
 
     final _url = 'games/v1configuration/achievements/' +
-        commons.Escaper.ecapeVariable('$achievementId');
+        commons.escapeVariable('$achievementId');
 
     final _response = await _requester.request(
       _url,
@@ -320,14 +320,14 @@ class ImageConfigurationsResource {
     core.String _url;
     if (uploadMedia == null) {
       _url = 'games/v1configuration/images/' +
-          commons.Escaper.ecapeVariable('$resourceId') +
+          commons.escapeVariable('$resourceId') +
           '/imageType/' +
-          commons.Escaper.ecapeVariable('$imageType');
+          commons.escapeVariable('$imageType');
     } else {
       _url = '/upload/games/v1configuration/images/' +
-          commons.Escaper.ecapeVariable('$resourceId') +
+          commons.escapeVariable('$resourceId') +
           '/imageType/' +
-          commons.Escaper.ecapeVariable('$imageType');
+          commons.escapeVariable('$imageType');
     }
 
     final _response = await _requester.request(
@@ -371,7 +371,7 @@ class LeaderboardConfigurationsResource {
     };
 
     final _url = 'games/v1configuration/leaderboards/' +
-        commons.Escaper.ecapeVariable('$leaderboardId');
+        commons.escapeVariable('$leaderboardId');
 
     await _requester.request(
       _url,
@@ -406,7 +406,7 @@ class LeaderboardConfigurationsResource {
     };
 
     final _url = 'games/v1configuration/leaderboards/' +
-        commons.Escaper.ecapeVariable('$leaderboardId');
+        commons.escapeVariable('$leaderboardId');
 
     final _response = await _requester.request(
       _url,
@@ -447,7 +447,7 @@ class LeaderboardConfigurationsResource {
     };
 
     final _url = 'games/v1configuration/applications/' +
-        commons.Escaper.ecapeVariable('$applicationId') +
+        commons.escapeVariable('$applicationId') +
         '/leaderboards';
 
     final _response = await _requester.request(
@@ -496,7 +496,7 @@ class LeaderboardConfigurationsResource {
     };
 
     final _url = 'games/v1configuration/applications/' +
-        commons.Escaper.ecapeVariable('$applicationId') +
+        commons.escapeVariable('$applicationId') +
         '/leaderboards';
 
     final _response = await _requester.request(
@@ -537,7 +537,7 @@ class LeaderboardConfigurationsResource {
     };
 
     final _url = 'games/v1configuration/leaderboards/' +
-        commons.Escaper.ecapeVariable('$leaderboardId');
+        commons.escapeVariable('$leaderboardId');
 
     final _response = await _requester.request(
       _url,

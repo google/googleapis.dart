@@ -133,9 +133,8 @@ class ProjectsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
-        '/snapshots';
+    final _url =
+        'v1b3/projects/' + commons.escapeVariable('$projectId') + '/snapshots';
 
     final _response = await _requester.request(
       _url,
@@ -175,7 +174,7 @@ class ProjectsResource {
     };
 
     final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/WorkerMessages';
 
     final _response = await _requester.request(
@@ -232,8 +231,7 @@ class ProjectsCatalogTemplatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1b3/' + commons.Escaper.ecapeVariableReserved('$name') + ':commit';
+    final _url = 'v1b3/' + core.Uri.encodeFull('$name') + ':commit';
 
     final _response = await _requester.request(
       _url,
@@ -274,7 +272,7 @@ class ProjectsCatalogTemplatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1b3/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1b3/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -317,7 +315,7 @@ class ProjectsCatalogTemplatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1b3/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1b3/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -362,8 +360,7 @@ class ProjectsCatalogTemplatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1b3/' + commons.Escaper.ecapeVariableReserved('$name') + ':label';
+    final _url = 'v1b3/' + core.Uri.encodeFull('$name') + ':label';
 
     final _response = await _requester.request(
       _url,
@@ -411,8 +408,7 @@ class ProjectsCatalogTemplatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1b3/' + commons.Escaper.ecapeVariableReserved('$name') + ':tag';
+    final _url = 'v1b3/' + core.Uri.encodeFull('$name') + ':tag';
 
     final _response = await _requester.request(
       _url,
@@ -465,9 +461,7 @@ class ProjectsCatalogTemplatesTemplateVersionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1b3/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/templateVersions';
+    final _url = 'v1b3/' + core.Uri.encodeFull('$parent') + '/templateVersions';
 
     final _response = await _requester.request(
       _url,
@@ -562,7 +556,7 @@ class ProjectsJobsResource {
     };
 
     final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/jobs:aggregated';
 
     final _response = await _requester.request(
@@ -633,9 +627,8 @@ class ProjectsJobsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
-        '/jobs';
+    final _url =
+        'v1b3/projects/' + commons.escapeVariable('$projectId') + '/jobs';
 
     final _response = await _requester.request(
       _url,
@@ -701,9 +694,9 @@ class ProjectsJobsResource {
     };
 
     final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/jobs/' +
-        commons.Escaper.ecapeVariable('$jobId');
+        commons.escapeVariable('$jobId');
 
     final _response = await _requester.request(
       _url,
@@ -758,9 +751,9 @@ class ProjectsJobsResource {
     };
 
     final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/jobs/' +
-        commons.Escaper.ecapeVariable('$jobId') +
+        commons.escapeVariable('$jobId') +
         '/metrics';
 
     final _response = await _requester.request(
@@ -849,9 +842,8 @@ class ProjectsJobsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
-        '/jobs';
+    final _url =
+        'v1b3/projects/' + commons.escapeVariable('$projectId') + '/jobs';
 
     final _response = await _requester.request(
       _url,
@@ -894,9 +886,9 @@ class ProjectsJobsResource {
     };
 
     final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/jobs/' +
-        commons.Escaper.ecapeVariable('$jobId') +
+        commons.escapeVariable('$jobId') +
         ':snapshot';
 
     final _response = await _requester.request(
@@ -953,9 +945,9 @@ class ProjectsJobsResource {
     };
 
     final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/jobs/' +
-        commons.Escaper.ecapeVariable('$jobId');
+        commons.escapeVariable('$jobId');
 
     final _response = await _requester.request(
       _url,
@@ -1006,9 +998,9 @@ class ProjectsJobsDebugResource {
     };
 
     final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/jobs/' +
-        commons.Escaper.ecapeVariable('$jobId') +
+        commons.escapeVariable('$jobId') +
         '/debug/getConfig';
 
     final _response = await _requester.request(
@@ -1053,9 +1045,9 @@ class ProjectsJobsDebugResource {
     };
 
     final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/jobs/' +
-        commons.Escaper.ecapeVariable('$jobId') +
+        commons.escapeVariable('$jobId') +
         '/debug/sendCapture';
 
     final _response = await _requester.request(
@@ -1166,9 +1158,9 @@ class ProjectsJobsMessagesResource {
     };
 
     final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/jobs/' +
-        commons.Escaper.ecapeVariable('$jobId') +
+        commons.escapeVariable('$jobId') +
         '/messages';
 
     final _response = await _requester.request(
@@ -1219,9 +1211,9 @@ class ProjectsJobsWorkItemsResource {
     };
 
     final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/jobs/' +
-        commons.Escaper.ecapeVariable('$jobId') +
+        commons.escapeVariable('$jobId') +
         '/workItems:lease';
 
     final _response = await _requester.request(
@@ -1266,9 +1258,9 @@ class ProjectsJobsWorkItemsResource {
     };
 
     final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/jobs/' +
-        commons.Escaper.ecapeVariable('$jobId') +
+        commons.escapeVariable('$jobId') +
         '/workItems:reportStatus';
 
     final _response = await _requester.request(
@@ -1332,9 +1324,9 @@ class ProjectsLocationsResource {
     };
 
     final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/locations/' +
-        commons.Escaper.ecapeVariable('$location') +
+        commons.escapeVariable('$location') +
         '/WorkerMessages';
 
     final _response = await _requester.request(
@@ -1389,9 +1381,9 @@ class ProjectsLocationsFlexTemplatesResource {
     };
 
     final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/locations/' +
-        commons.Escaper.ecapeVariable('$location') +
+        commons.escapeVariable('$location') +
         '/flexTemplates:launch';
 
     final _response = await _requester.request(
@@ -1481,9 +1473,9 @@ class ProjectsLocationsJobsResource {
     };
 
     final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/locations/' +
-        commons.Escaper.ecapeVariable('$location') +
+        commons.escapeVariable('$location') +
         '/jobs';
 
     final _response = await _requester.request(
@@ -1549,11 +1541,11 @@ class ProjectsLocationsJobsResource {
     };
 
     final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/locations/' +
-        commons.Escaper.ecapeVariable('$location') +
+        commons.escapeVariable('$location') +
         '/jobs/' +
-        commons.Escaper.ecapeVariable('$jobId');
+        commons.escapeVariable('$jobId');
 
     final _response = await _requester.request(
       _url,
@@ -1610,11 +1602,11 @@ class ProjectsLocationsJobsResource {
     };
 
     final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/locations/' +
-        commons.Escaper.ecapeVariable('$location') +
+        commons.escapeVariable('$location') +
         '/jobs/' +
-        commons.Escaper.ecapeVariable('$jobId') +
+        commons.escapeVariable('$jobId') +
         '/executionDetails';
 
     final _response = await _requester.request(
@@ -1670,11 +1662,11 @@ class ProjectsLocationsJobsResource {
     };
 
     final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/locations/' +
-        commons.Escaper.ecapeVariable('$location') +
+        commons.escapeVariable('$location') +
         '/jobs/' +
-        commons.Escaper.ecapeVariable('$jobId') +
+        commons.escapeVariable('$jobId') +
         '/metrics';
 
     final _response = await _requester.request(
@@ -1763,9 +1755,9 @@ class ProjectsLocationsJobsResource {
     };
 
     final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/locations/' +
-        commons.Escaper.ecapeVariable('$location') +
+        commons.escapeVariable('$location') +
         '/jobs';
 
     final _response = await _requester.request(
@@ -1812,11 +1804,11 @@ class ProjectsLocationsJobsResource {
     };
 
     final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/locations/' +
-        commons.Escaper.ecapeVariable('$location') +
+        commons.escapeVariable('$location') +
         '/jobs/' +
-        commons.Escaper.ecapeVariable('$jobId') +
+        commons.escapeVariable('$jobId') +
         ':snapshot';
 
     final _response = await _requester.request(
@@ -1872,11 +1864,11 @@ class ProjectsLocationsJobsResource {
     };
 
     final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/locations/' +
-        commons.Escaper.ecapeVariable('$location') +
+        commons.escapeVariable('$location') +
         '/jobs/' +
-        commons.Escaper.ecapeVariable('$jobId');
+        commons.escapeVariable('$jobId');
 
     final _response = await _requester.request(
       _url,
@@ -1933,11 +1925,11 @@ class ProjectsLocationsJobsDebugResource {
     };
 
     final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/locations/' +
-        commons.Escaper.ecapeVariable('$location') +
+        commons.escapeVariable('$location') +
         '/jobs/' +
-        commons.Escaper.ecapeVariable('$jobId') +
+        commons.escapeVariable('$jobId') +
         '/debug/getConfig';
 
     final _response = await _requester.request(
@@ -1987,11 +1979,11 @@ class ProjectsLocationsJobsDebugResource {
     };
 
     final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/locations/' +
-        commons.Escaper.ecapeVariable('$location') +
+        commons.escapeVariable('$location') +
         '/jobs/' +
-        commons.Escaper.ecapeVariable('$jobId') +
+        commons.escapeVariable('$jobId') +
         '/debug/sendCapture';
 
     final _response = await _requester.request(
@@ -2101,11 +2093,11 @@ class ProjectsLocationsJobsMessagesResource {
     };
 
     final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/locations/' +
-        commons.Escaper.ecapeVariable('$location') +
+        commons.escapeVariable('$location') +
         '/jobs/' +
-        commons.Escaper.ecapeVariable('$jobId') +
+        commons.escapeVariable('$jobId') +
         '/messages';
 
     final _response = await _requester.request(
@@ -2155,11 +2147,11 @@ class ProjectsLocationsJobsSnapshotsResource {
     };
 
     final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/locations/' +
-        commons.Escaper.ecapeVariable('$location') +
+        commons.escapeVariable('$location') +
         '/jobs/' +
-        commons.Escaper.ecapeVariable('$jobId') +
+        commons.escapeVariable('$jobId') +
         '/snapshots';
 
     final _response = await _requester.request(
@@ -2237,13 +2229,13 @@ class ProjectsLocationsJobsStagesResource {
     };
 
     final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/locations/' +
-        commons.Escaper.ecapeVariable('$location') +
+        commons.escapeVariable('$location') +
         '/jobs/' +
-        commons.Escaper.ecapeVariable('$jobId') +
+        commons.escapeVariable('$jobId') +
         '/stages/' +
-        commons.Escaper.ecapeVariable('$stageId') +
+        commons.escapeVariable('$stageId') +
         '/executionDetails';
 
     final _response = await _requester.request(
@@ -2299,11 +2291,11 @@ class ProjectsLocationsJobsWorkItemsResource {
     };
 
     final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/locations/' +
-        commons.Escaper.ecapeVariable('$location') +
+        commons.escapeVariable('$location') +
         '/jobs/' +
-        commons.Escaper.ecapeVariable('$jobId') +
+        commons.escapeVariable('$jobId') +
         '/workItems:lease';
 
     final _response = await _requester.request(
@@ -2353,11 +2345,11 @@ class ProjectsLocationsJobsWorkItemsResource {
     };
 
     final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/locations/' +
-        commons.Escaper.ecapeVariable('$location') +
+        commons.escapeVariable('$location') +
         '/jobs/' +
-        commons.Escaper.ecapeVariable('$jobId') +
+        commons.escapeVariable('$jobId') +
         '/workItems:reportStatus';
 
     final _response = await _requester.request(
@@ -2409,11 +2401,11 @@ class ProjectsLocationsSnapshotsResource {
     };
 
     final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/locations/' +
-        commons.Escaper.ecapeVariable('$location') +
+        commons.escapeVariable('$location') +
         '/snapshots/' +
-        commons.Escaper.ecapeVariable('$snapshotId');
+        commons.escapeVariable('$snapshotId');
 
     final _response = await _requester.request(
       _url,
@@ -2456,11 +2448,11 @@ class ProjectsLocationsSnapshotsResource {
     };
 
     final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/locations/' +
-        commons.Escaper.ecapeVariable('$location') +
+        commons.escapeVariable('$location') +
         '/snapshots/' +
-        commons.Escaper.ecapeVariable('$snapshotId');
+        commons.escapeVariable('$snapshotId');
 
     final _response = await _requester.request(
       _url,
@@ -2502,9 +2494,9 @@ class ProjectsLocationsSnapshotsResource {
     };
 
     final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/locations/' +
-        commons.Escaper.ecapeVariable('$location') +
+        commons.escapeVariable('$location') +
         '/snapshots';
 
     final _response = await _requester.request(
@@ -2562,9 +2554,9 @@ class ProjectsLocationsSqlResource {
     };
 
     final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/locations/' +
-        commons.Escaper.ecapeVariable('$location') +
+        commons.escapeVariable('$location') +
         '/sql:validate';
 
     final _response = await _requester.request(
@@ -2618,9 +2610,9 @@ class ProjectsLocationsTemplatesResource {
     };
 
     final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/locations/' +
-        commons.Escaper.ecapeVariable('$location') +
+        commons.escapeVariable('$location') +
         '/templates';
 
     final _response = await _requester.request(
@@ -2675,9 +2667,9 @@ class ProjectsLocationsTemplatesResource {
     };
 
     final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/locations/' +
-        commons.Escaper.ecapeVariable('$location') +
+        commons.escapeVariable('$location') +
         '/templates:get';
 
     final _response = await _requester.request(
@@ -2746,9 +2738,9 @@ class ProjectsLocationsTemplatesResource {
     };
 
     final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/locations/' +
-        commons.Escaper.ecapeVariable('$location') +
+        commons.escapeVariable('$location') +
         '/templates:launch';
 
     final _response = await _requester.request(
@@ -2800,9 +2792,9 @@ class ProjectsSnapshotsResource {
     };
 
     final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/snapshots/' +
-        commons.Escaper.ecapeVariable('$snapshotId');
+        commons.escapeVariable('$snapshotId');
 
     final _response = await _requester.request(
       _url,
@@ -2844,9 +2836,8 @@ class ProjectsSnapshotsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
-        '/snapshots';
+    final _url =
+        'v1b3/projects/' + commons.escapeVariable('$projectId') + '/snapshots';
 
     final _response = await _requester.request(
       _url,
@@ -2904,9 +2895,7 @@ class ProjectsTemplateVersionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1b3/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/templateVersions';
+    final _url = 'v1b3/' + core.Uri.encodeFull('$parent') + '/templateVersions';
 
     final _response = await _requester.request(
       _url,
@@ -2952,9 +2941,8 @@ class ProjectsTemplatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
-        '/templates';
+    final _url =
+        'v1b3/projects/' + commons.escapeVariable('$projectId') + '/templates';
 
     final _response = await _requester.request(
       _url,
@@ -3009,7 +2997,7 @@ class ProjectsTemplatesResource {
     };
 
     final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/templates:get';
 
     final _response = await _requester.request(
@@ -3079,7 +3067,7 @@ class ProjectsTemplatesResource {
     };
 
     final _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/templates:launch';
 
     final _response = await _requester.request(

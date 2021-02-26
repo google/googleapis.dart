@@ -102,9 +102,7 @@ class ProjectsMessagesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/messages:send';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/messages:send';
 
     final _response = await _requester.request(
       _url,

@@ -408,7 +408,7 @@ class CaptionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'youtube/v3/captions/' + commons.Escaper.ecapeVariable('$id');
+    final _url = 'youtube/v3/captions/' + commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,

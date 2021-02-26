@@ -130,9 +130,7 @@ class ProjectsDataSourcesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':checkValidCreds';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':checkValidCreds';
 
     final _response = await _requester.request(
       _url,
@@ -172,7 +170,7 @@ class ProjectsDataSourcesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -223,9 +221,7 @@ class ProjectsDataSourcesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/dataSources';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/dataSources';
 
     final _response = await _requester.request(
       _url,
@@ -272,7 +268,7 @@ class ProjectsLocationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -319,8 +315,7 @@ class ProjectsLocationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
 
     final _response = await _requester.request(
       _url,
@@ -376,9 +371,7 @@ class ProjectsLocationsDataSourcesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':checkValidCreds';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':checkValidCreds';
 
     final _response = await _requester.request(
       _url,
@@ -419,7 +412,7 @@ class ProjectsLocationsDataSourcesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -470,9 +463,7 @@ class ProjectsLocationsDataSourcesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/dataSources';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/dataSources';
 
     final _response = await _requester.request(
       _url,
@@ -560,9 +551,7 @@ class ProjectsLocationsTransferConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/transferConfigs';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/transferConfigs';
 
     final _response = await _requester.request(
       _url,
@@ -603,7 +592,7 @@ class ProjectsLocationsTransferConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -641,7 +630,7 @@ class ProjectsLocationsTransferConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -696,9 +685,7 @@ class ProjectsLocationsTransferConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/transferConfigs';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/transferConfigs';
 
     final _response = await _requester.request(
       _url,
@@ -785,7 +772,7 @@ class ProjectsLocationsTransferConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -833,9 +820,7 @@ class ProjectsLocationsTransferConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        ':scheduleRuns';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + ':scheduleRuns';
 
     final _response = await _requester.request(
       _url,
@@ -884,9 +869,7 @@ class ProjectsLocationsTransferConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        ':startManualRuns';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + ':startManualRuns';
 
     final _response = await _requester.request(
       _url,
@@ -937,7 +920,7 @@ class ProjectsLocationsTransferConfigsRunsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -976,7 +959,7 @@ class ProjectsLocationsTransferConfigsRunsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1040,8 +1023,7 @@ class ProjectsLocationsTransferConfigsRunsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/runs';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/runs';
 
     final _response = await _requester.request(
       _url,
@@ -1105,9 +1087,7 @@ class ProjectsLocationsTransferConfigsRunsTransferLogsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/transferLogs';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/transferLogs';
 
     final _response = await _requester.request(
       _url,
@@ -1195,9 +1175,7 @@ class ProjectsTransferConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/transferConfigs';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/transferConfigs';
 
     final _response = await _requester.request(
       _url,
@@ -1237,7 +1215,7 @@ class ProjectsTransferConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1274,7 +1252,7 @@ class ProjectsTransferConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1329,9 +1307,7 @@ class ProjectsTransferConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/transferConfigs';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/transferConfigs';
 
     final _response = await _requester.request(
       _url,
@@ -1417,7 +1393,7 @@ class ProjectsTransferConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1464,9 +1440,7 @@ class ProjectsTransferConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        ':scheduleRuns';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + ':scheduleRuns';
 
     final _response = await _requester.request(
       _url,
@@ -1514,9 +1488,7 @@ class ProjectsTransferConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        ':startManualRuns';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + ':startManualRuns';
 
     final _response = await _requester.request(
       _url,
@@ -1567,7 +1539,7 @@ class ProjectsTransferConfigsRunsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1606,7 +1578,7 @@ class ProjectsTransferConfigsRunsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1669,8 +1641,7 @@ class ProjectsTransferConfigsRunsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/runs';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/runs';
 
     final _response = await _requester.request(
       _url,
@@ -1733,9 +1704,7 @@ class ProjectsTransferConfigsRunsTransferLogsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/transferLogs';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/transferLogs';
 
     final _response = await _requester.request(
       _url,

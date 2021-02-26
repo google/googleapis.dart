@@ -84,8 +84,8 @@ class TasklistsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tasks/v1/users/@me/lists/' +
-        commons.Escaper.ecapeVariable('$tasklist');
+    final _url =
+        'tasks/v1/users/@me/lists/' + commons.escapeVariable('$tasklist');
 
     await _requester.request(
       _url,
@@ -119,8 +119,8 @@ class TasklistsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tasks/v1/users/@me/lists/' +
-        commons.Escaper.ecapeVariable('$tasklist');
+    final _url =
+        'tasks/v1/users/@me/lists/' + commons.escapeVariable('$tasklist');
 
     final _response = await _requester.request(
       _url,
@@ -237,8 +237,8 @@ class TasklistsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tasks/v1/users/@me/lists/' +
-        commons.Escaper.ecapeVariable('$tasklist');
+    final _url =
+        'tasks/v1/users/@me/lists/' + commons.escapeVariable('$tasklist');
 
     final _response = await _requester.request(
       _url,
@@ -277,8 +277,8 @@ class TasklistsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tasks/v1/users/@me/lists/' +
-        commons.Escaper.ecapeVariable('$tasklist');
+    final _url =
+        'tasks/v1/users/@me/lists/' + commons.escapeVariable('$tasklist');
 
     final _response = await _requester.request(
       _url,
@@ -320,9 +320,8 @@ class TasksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tasks/v1/lists/' +
-        commons.Escaper.ecapeVariable('$tasklist') +
-        '/clear';
+    final _url =
+        'tasks/v1/lists/' + commons.escapeVariable('$tasklist') + '/clear';
 
     await _requester.request(
       _url,
@@ -358,9 +357,9 @@ class TasksResource {
     };
 
     final _url = 'tasks/v1/lists/' +
-        commons.Escaper.ecapeVariable('$tasklist') +
+        commons.escapeVariable('$tasklist') +
         '/tasks/' +
-        commons.Escaper.ecapeVariable('$task');
+        commons.escapeVariable('$task');
 
     await _requester.request(
       _url,
@@ -398,9 +397,9 @@ class TasksResource {
     };
 
     final _url = 'tasks/v1/lists/' +
-        commons.Escaper.ecapeVariable('$tasklist') +
+        commons.escapeVariable('$tasklist') +
         '/tasks/' +
-        commons.Escaper.ecapeVariable('$task');
+        commons.escapeVariable('$task');
 
     final _response = await _requester.request(
       _url,
@@ -449,9 +448,8 @@ class TasksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tasks/v1/lists/' +
-        commons.Escaper.ecapeVariable('$tasklist') +
-        '/tasks';
+    final _url =
+        'tasks/v1/lists/' + commons.escapeVariable('$tasklist') + '/tasks';
 
     final _response = await _requester.request(
       _url,
@@ -540,9 +538,8 @@ class TasksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tasks/v1/lists/' +
-        commons.Escaper.ecapeVariable('$tasklist') +
-        '/tasks';
+    final _url =
+        'tasks/v1/lists/' + commons.escapeVariable('$tasklist') + '/tasks';
 
     final _response = await _requester.request(
       _url,
@@ -594,9 +591,9 @@ class TasksResource {
     };
 
     final _url = 'tasks/v1/lists/' +
-        commons.Escaper.ecapeVariable('$tasklist') +
+        commons.escapeVariable('$tasklist') +
         '/tasks/' +
-        commons.Escaper.ecapeVariable('$task') +
+        commons.escapeVariable('$task') +
         '/move';
 
     final _response = await _requester.request(
@@ -641,9 +638,9 @@ class TasksResource {
     };
 
     final _url = 'tasks/v1/lists/' +
-        commons.Escaper.ecapeVariable('$tasklist') +
+        commons.escapeVariable('$tasklist') +
         '/tasks/' +
-        commons.Escaper.ecapeVariable('$task');
+        commons.escapeVariable('$task');
 
     final _response = await _requester.request(
       _url,
@@ -686,9 +683,9 @@ class TasksResource {
     };
 
     final _url = 'tasks/v1/lists/' +
-        commons.Escaper.ecapeVariable('$tasklist') +
+        commons.escapeVariable('$tasklist') +
         '/tasks/' +
-        commons.Escaper.ecapeVariable('$task');
+        commons.escapeVariable('$task');
 
     final _response = await _requester.request(
       _url,

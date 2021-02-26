@@ -394,7 +394,7 @@ class ProjectsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$scriptId');
+    final _url = 'v1/projects/' + commons.escapeVariable('$scriptId');
 
     final _response = await _requester.request(
       _url,
@@ -434,9 +434,8 @@ class ProjectsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$scriptId') +
-        '/content';
+    final _url =
+        'v1/projects/' + commons.escapeVariable('$scriptId') + '/content';
 
     final _response = await _requester.request(
       _url,
@@ -488,9 +487,8 @@ class ProjectsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$scriptId') +
-        '/metrics';
+    final _url =
+        'v1/projects/' + commons.escapeVariable('$scriptId') + '/metrics';
 
     final _response = await _requester.request(
       _url,
@@ -533,9 +531,8 @@ class ProjectsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$scriptId') +
-        '/content';
+    final _url =
+        'v1/projects/' + commons.escapeVariable('$scriptId') + '/content';
 
     final _response = await _requester.request(
       _url,
@@ -581,9 +578,8 @@ class ProjectsDeploymentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$scriptId') +
-        '/deployments';
+    final _url =
+        'v1/projects/' + commons.escapeVariable('$scriptId') + '/deployments';
 
     final _response = await _requester.request(
       _url,
@@ -623,9 +619,9 @@ class ProjectsDeploymentsResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$scriptId') +
+        commons.escapeVariable('$scriptId') +
         '/deployments/' +
-        commons.Escaper.ecapeVariable('$deploymentId');
+        commons.escapeVariable('$deploymentId');
 
     final _response = await _requester.request(
       _url,
@@ -663,9 +659,9 @@ class ProjectsDeploymentsResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$scriptId') +
+        commons.escapeVariable('$scriptId') +
         '/deployments/' +
-        commons.Escaper.ecapeVariable('$deploymentId');
+        commons.escapeVariable('$deploymentId');
 
     final _response = await _requester.request(
       _url,
@@ -711,9 +707,8 @@ class ProjectsDeploymentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$scriptId') +
-        '/deployments';
+    final _url =
+        'v1/projects/' + commons.escapeVariable('$scriptId') + '/deployments';
 
     final _response = await _requester.request(
       _url,
@@ -756,9 +751,9 @@ class ProjectsDeploymentsResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$scriptId') +
+        commons.escapeVariable('$scriptId') +
         '/deployments/' +
-        commons.Escaper.ecapeVariable('$deploymentId');
+        commons.escapeVariable('$deploymentId');
 
     final _response = await _requester.request(
       _url,
@@ -805,9 +800,8 @@ class ProjectsVersionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$scriptId') +
-        '/versions';
+    final _url =
+        'v1/projects/' + commons.escapeVariable('$scriptId') + '/versions';
 
     final _response = await _requester.request(
       _url,
@@ -846,9 +840,9 @@ class ProjectsVersionsResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$scriptId') +
+        commons.escapeVariable('$scriptId') +
         '/versions/' +
-        commons.Escaper.ecapeVariable('$versionNumber');
+        commons.escapeVariable('$versionNumber');
 
     final _response = await _requester.request(
       _url,
@@ -893,9 +887,8 @@ class ProjectsVersionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$scriptId') +
-        '/versions';
+    final _url =
+        'v1/projects/' + commons.escapeVariable('$scriptId') + '/versions';
 
     final _response = await _requester.request(
       _url,
@@ -953,8 +946,7 @@ class ScriptsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/scripts/' + commons.Escaper.ecapeVariable('$scriptId') + ':run';
+    final _url = 'v1/scripts/' + commons.escapeVariable('$scriptId') + ':run';
 
     final _response = await _requester.request(
       _url,

@@ -101,8 +101,7 @@ class OperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
 
     final _response = await _requester.request(
       _url,
@@ -142,7 +141,7 @@ class OperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -180,7 +179,7 @@ class OperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -236,7 +235,7 @@ class OperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -311,8 +310,7 @@ class ServicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + ':search';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + ':search';
 
     final _response = await _requester.request(
       _url,
@@ -366,9 +364,7 @@ class ServicesTenancyUnitsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        ':addProject';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + ':addProject';
 
     final _response = await _requester.request(
       _url,
@@ -425,9 +421,7 @@ class ServicesTenancyUnitsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':applyProjectConfig';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':applyProjectConfig';
 
     final _response = await _requester.request(
       _url,
@@ -479,9 +473,7 @@ class ServicesTenancyUnitsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':attachProject';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':attachProject';
 
     final _response = await _requester.request(
       _url,
@@ -531,9 +523,7 @@ class ServicesTenancyUnitsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/tenancyUnits';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/tenancyUnits';
 
     final _response = await _requester.request(
       _url,
@@ -574,7 +564,7 @@ class ServicesTenancyUnitsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -624,9 +614,7 @@ class ServicesTenancyUnitsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':deleteProject';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':deleteProject';
 
     final _response = await _requester.request(
       _url,
@@ -688,9 +676,7 @@ class ServicesTenancyUnitsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/tenancyUnits';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/tenancyUnits';
 
     final _response = await _requester.request(
       _url,
@@ -740,9 +726,7 @@ class ServicesTenancyUnitsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':removeProject';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':removeProject';
 
     final _response = await _requester.request(
       _url,
@@ -789,9 +773,7 @@ class ServicesTenancyUnitsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':undeleteProject';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':undeleteProject';
 
     final _response = await _requester.request(
       _url,

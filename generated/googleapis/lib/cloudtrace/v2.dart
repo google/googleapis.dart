@@ -115,9 +115,7 @@ class ProjectsTracesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        '/traces:batchWrite';
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/traces:batchWrite';
 
     final _response = await _requester.request(
       _url,
@@ -169,7 +167,7 @@ class ProjectsTracesSpansResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,

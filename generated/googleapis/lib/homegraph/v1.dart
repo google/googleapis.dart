@@ -92,7 +92,7 @@ class AgentUsersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$agentUserId');
+    final _url = 'v1/' + core.Uri.encodeFull('$agentUserId');
 
     final _response = await _requester.request(
       _url,

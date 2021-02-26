@@ -199,8 +199,7 @@ class V1Resource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariable('$dynamicLink') + '/linkStats';
+    final _url = 'v1/' + commons.escapeVariable('$dynamicLink') + '/linkStats';
 
     final _response = await _requester.request(
       _url,

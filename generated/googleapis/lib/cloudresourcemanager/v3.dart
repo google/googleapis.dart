@@ -141,7 +141,7 @@ class LiensResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v3/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -180,7 +180,7 @@ class LiensResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v3/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -278,7 +278,7 @@ class OperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v3/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -363,7 +363,7 @@ class TagBindingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v3/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -517,7 +517,7 @@ class TagKeysResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v3/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -556,7 +556,7 @@ class TagKeysResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v3/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -603,9 +603,7 @@ class TagKeysResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':getIamPolicy';
+    final _url = 'v3/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -707,7 +705,7 @@ class TagKeysResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v3/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -754,9 +752,7 @@ class TagKeysResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':setIamPolicy';
+    final _url = 'v3/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -802,9 +798,8 @@ class TagKeysResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':testIamPermissions';
+    final _url =
+        'v3/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
     final _response = await _requester.request(
       _url,
@@ -905,7 +900,7 @@ class TagValuesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v3/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -944,7 +939,7 @@ class TagValuesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v3/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -991,9 +986,7 @@ class TagValuesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':getIamPolicy';
+    final _url = 'v3/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -1092,7 +1085,7 @@ class TagValuesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v3/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1140,9 +1133,7 @@ class TagValuesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':setIamPolicy';
+    final _url = 'v3/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -1188,9 +1179,8 @@ class TagValuesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':testIamPermissions';
+    final _url =
+        'v3/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
     final _response = await _requester.request(
       _url,

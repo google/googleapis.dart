@@ -100,8 +100,7 @@ class OperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
 
     final _response = await _requester.request(
       _url,
@@ -141,7 +140,7 @@ class OperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -179,7 +178,7 @@ class OperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -235,7 +234,7 @@ class OperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -295,9 +294,7 @@ class UsersEnvironmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$environment') +
-        ':addPublicKey';
+    final _url = 'v1/' + core.Uri.encodeFull('$environment') + ':addPublicKey';
 
     final _response = await _requester.request(
       _url,
@@ -343,8 +340,7 @@ class UsersEnvironmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':authorize';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':authorize';
 
     final _response = await _requester.request(
       _url,
@@ -384,7 +380,7 @@ class UsersEnvironmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -429,9 +425,8 @@ class UsersEnvironmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$environment') +
-        ':removePublicKey';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$environment') + ':removePublicKey';
 
     final _response = await _requester.request(
       _url,
@@ -479,8 +474,7 @@ class UsersEnvironmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':start';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':start';
 
     final _response = await _requester.request(
       _url,

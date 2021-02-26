@@ -102,8 +102,7 @@ class OperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
 
     final _response = await _requester.request(
       _url,
@@ -142,7 +141,7 @@ class OperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -201,9 +200,9 @@ class ProjectsBuildsResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/builds/' +
-        commons.Escaper.ecapeVariable('$id') +
+        commons.escapeVariable('$id') +
         ':cancel';
 
     final _response = await _requester.request(
@@ -252,9 +251,8 @@ class ProjectsBuildsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
-        '/builds';
+    final _url =
+        'v1/projects/' + commons.escapeVariable('$projectId') + '/builds';
 
     final _response = await _requester.request(
       _url,
@@ -301,9 +299,9 @@ class ProjectsBuildsResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/builds/' +
-        commons.Escaper.ecapeVariable('$id');
+        commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -361,9 +359,8 @@ class ProjectsBuildsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
-        '/builds';
+    final _url =
+        'v1/projects/' + commons.escapeVariable('$projectId') + '/builds';
 
     final _response = await _requester.request(
       _url,
@@ -423,9 +420,9 @@ class ProjectsBuildsResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/builds/' +
-        commons.Escaper.ecapeVariable('$id') +
+        commons.escapeVariable('$id') +
         ':retry';
 
     final _response = await _requester.request(
@@ -486,8 +483,7 @@ class ProjectsLocationsBuildsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
 
     final _response = await _requester.request(
       _url,
@@ -536,8 +532,7 @@ class ProjectsLocationsBuildsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/builds';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/builds';
 
     final _response = await _requester.request(
       _url,
@@ -586,7 +581,7 @@ class ProjectsLocationsBuildsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -645,8 +640,7 @@ class ProjectsLocationsBuildsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/builds';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/builds';
 
     final _response = await _requester.request(
       _url,
@@ -705,8 +699,7 @@ class ProjectsLocationsBuildsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':retry';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':retry';
 
     final _response = await _requester.request(
       _url,
@@ -763,8 +756,7 @@ class ProjectsLocationsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
 
     final _response = await _requester.request(
       _url,
@@ -804,7 +796,7 @@ class ProjectsLocationsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -851,9 +843,8 @@ class ProjectsTriggersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
-        '/triggers';
+    final _url =
+        'v1/projects/' + commons.escapeVariable('$projectId') + '/triggers';
 
     final _response = await _requester.request(
       _url,
@@ -895,9 +886,9 @@ class ProjectsTriggersResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/triggers/' +
-        commons.Escaper.ecapeVariable('$triggerId');
+        commons.escapeVariable('$triggerId');
 
     final _response = await _requester.request(
       _url,
@@ -938,9 +929,9 @@ class ProjectsTriggersResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/triggers/' +
-        commons.Escaper.ecapeVariable('$triggerId');
+        commons.escapeVariable('$triggerId');
 
     final _response = await _requester.request(
       _url,
@@ -985,9 +976,8 @@ class ProjectsTriggersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
-        '/triggers';
+    final _url =
+        'v1/projects/' + commons.escapeVariable('$projectId') + '/triggers';
 
     final _response = await _requester.request(
       _url,
@@ -1032,9 +1022,9 @@ class ProjectsTriggersResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/triggers/' +
-        commons.Escaper.ecapeVariable('$triggerId');
+        commons.escapeVariable('$triggerId');
 
     final _response = await _requester.request(
       _url,
@@ -1078,9 +1068,9 @@ class ProjectsTriggersResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/triggers/' +
-        commons.Escaper.ecapeVariable('$triggerId') +
+        commons.escapeVariable('$triggerId') +
         ':run';
 
     final _response = await _requester.request(
@@ -1130,9 +1120,9 @@ class ProjectsTriggersResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/triggers/' +
-        commons.Escaper.ecapeVariable('$trigger') +
+        commons.escapeVariable('$trigger') +
         ':webhook';
 
     final _response = await _requester.request(

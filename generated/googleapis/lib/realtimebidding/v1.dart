@@ -154,8 +154,7 @@ class BiddersCreativesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/creatives';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/creatives';
 
     final _response = await _requester.request(
       _url,
@@ -203,9 +202,7 @@ class BiddersCreativesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/creatives:watch';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/creatives:watch';
 
     final _response = await _requester.request(
       _url,
@@ -254,8 +251,7 @@ class BiddersPretargetingConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':activate';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':activate';
 
     final _response = await _requester.request(
       _url,
@@ -298,9 +294,8 @@ class BiddersPretargetingConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$pretargetingConfig') +
-        ':addTargetedApps';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$pretargetingConfig') + ':addTargetedApps';
 
     final _response = await _requester.request(
       _url,
@@ -344,7 +339,7 @@ class BiddersPretargetingConfigsResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$pretargetingConfig') +
+        core.Uri.encodeFull('$pretargetingConfig') +
         ':addTargetedPublishers';
 
     final _response = await _requester.request(
@@ -389,7 +384,7 @@ class BiddersPretargetingConfigsResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$pretargetingConfig') +
+        core.Uri.encodeFull('$pretargetingConfig') +
         ':addTargetedSites';
 
     final _response = await _requester.request(
@@ -437,9 +432,8 @@ class BiddersPretargetingConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/pretargetingConfigs';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + '/pretargetingConfigs';
 
     final _response = await _requester.request(
       _url,
@@ -477,7 +471,7 @@ class BiddersPretargetingConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -513,7 +507,7 @@ class BiddersPretargetingConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -562,9 +556,8 @@ class BiddersPretargetingConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/pretargetingConfigs';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + '/pretargetingConfigs';
 
     final _response = await _requester.request(
       _url,
@@ -610,7 +603,7 @@ class BiddersPretargetingConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -654,7 +647,7 @@ class BiddersPretargetingConfigsResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$pretargetingConfig') +
+        core.Uri.encodeFull('$pretargetingConfig') +
         ':removeTargetedApps';
 
     final _response = await _requester.request(
@@ -699,7 +692,7 @@ class BiddersPretargetingConfigsResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$pretargetingConfig') +
+        core.Uri.encodeFull('$pretargetingConfig') +
         ':removeTargetedPublishers';
 
     final _response = await _requester.request(
@@ -744,7 +737,7 @@ class BiddersPretargetingConfigsResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$pretargetingConfig') +
+        core.Uri.encodeFull('$pretargetingConfig') +
         ':removeTargetedSites';
 
     final _response = await _requester.request(
@@ -787,8 +780,7 @@ class BiddersPretargetingConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':suspend';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':suspend';
 
     final _response = await _requester.request(
       _url,
@@ -844,9 +836,7 @@ class BuyersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':getRemarketingTag';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':getRemarketingTag';
 
     final _response = await _requester.request(
       _url,
@@ -897,8 +887,7 @@ class BuyersCreativesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/creatives';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/creatives';
 
     final _response = await _requester.request(
       _url,
@@ -948,7 +937,7 @@ class BuyersCreativesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1029,8 +1018,7 @@ class BuyersCreativesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/creatives';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/creatives';
 
     final _response = await _requester.request(
       _url,
@@ -1078,7 +1066,7 @@ class BuyersCreativesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1126,8 +1114,7 @@ class BuyersUserListsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':close';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':close';
 
     final _response = await _requester.request(
       _url,
@@ -1172,8 +1159,7 @@ class BuyersUserListsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/userLists';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/userLists';
 
     final _response = await _requester.request(
       _url,
@@ -1210,7 +1196,7 @@ class BuyersUserListsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1255,9 +1241,7 @@ class BuyersUserListsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':getRemarketingTag';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':getRemarketingTag';
 
     final _response = await _requester.request(
       _url,
@@ -1307,8 +1291,7 @@ class BuyersUserListsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/userLists';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/userLists';
 
     final _response = await _requester.request(
       _url,
@@ -1350,8 +1333,7 @@ class BuyersUserListsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':open';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':open';
 
     final _response = await _requester.request(
       _url,
@@ -1398,7 +1380,7 @@ class BuyersUserListsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,

@@ -108,7 +108,7 @@ class SearchanalyticsResource {
     };
 
     final _url = 'webmasters/v3/sites/' +
-        commons.Escaper.ecapeVariable('$siteUrl') +
+        commons.escapeVariable('$siteUrl') +
         '/searchAnalytics/query';
 
     final _response = await _requester.request(
@@ -155,9 +155,9 @@ class SitemapsResource {
     };
 
     final _url = 'webmasters/v3/sites/' +
-        commons.Escaper.ecapeVariable('$siteUrl') +
+        commons.escapeVariable('$siteUrl') +
         '/sitemaps/' +
-        commons.Escaper.ecapeVariable('$feedpath');
+        commons.escapeVariable('$feedpath');
 
     await _requester.request(
       _url,
@@ -197,9 +197,9 @@ class SitemapsResource {
     };
 
     final _url = 'webmasters/v3/sites/' +
-        commons.Escaper.ecapeVariable('$siteUrl') +
+        commons.escapeVariable('$siteUrl') +
         '/sitemaps/' +
-        commons.Escaper.ecapeVariable('$feedpath');
+        commons.escapeVariable('$feedpath');
 
     final _response = await _requester.request(
       _url,
@@ -243,7 +243,7 @@ class SitemapsResource {
     };
 
     final _url = 'webmasters/v3/sites/' +
-        commons.Escaper.ecapeVariable('$siteUrl') +
+        commons.escapeVariable('$siteUrl') +
         '/sitemaps';
 
     final _response = await _requester.request(
@@ -283,9 +283,9 @@ class SitemapsResource {
     };
 
     final _url = 'webmasters/v3/sites/' +
-        commons.Escaper.ecapeVariable('$siteUrl') +
+        commons.escapeVariable('$siteUrl') +
         '/sitemaps/' +
-        commons.Escaper.ecapeVariable('$feedpath');
+        commons.escapeVariable('$feedpath');
 
     await _requester.request(
       _url,
@@ -323,8 +323,7 @@ class SitesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'webmasters/v3/sites/' + commons.Escaper.ecapeVariable('$siteUrl');
+    final _url = 'webmasters/v3/sites/' + commons.escapeVariable('$siteUrl');
 
     await _requester.request(
       _url,
@@ -357,8 +356,7 @@ class SitesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'webmasters/v3/sites/' + commons.Escaper.ecapeVariable('$siteUrl');
+    final _url = 'webmasters/v3/sites/' + commons.escapeVariable('$siteUrl');
 
     await _requester.request(
       _url,
@@ -393,8 +391,7 @@ class SitesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'webmasters/v3/sites/' + commons.Escaper.ecapeVariable('$siteUrl');
+    final _url = 'webmasters/v3/sites/' + commons.escapeVariable('$siteUrl');
 
     final _response = await _requester.request(
       _url,

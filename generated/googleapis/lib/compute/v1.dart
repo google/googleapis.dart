@@ -371,7 +371,7 @@ class AcceleratorTypesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/aggregated/acceleratorTypes';
 
     final _response = await _requester.request(
@@ -419,11 +419,11 @@ class AcceleratorTypesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/acceleratorTypes/' +
-        commons.Escaper.ecapeVariable('$acceleratorType');
+        commons.escapeVariable('$acceleratorType');
 
     final _response = await _requester.request(
       _url,
@@ -525,9 +525,9 @@ class AcceleratorTypesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/acceleratorTypes';
 
     final _response = await _requester.request(
@@ -641,7 +641,7 @@ class AddressesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/aggregated/addresses';
 
     final _response = await _requester.request(
@@ -704,11 +704,11 @@ class AddressesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/addresses/' +
-        commons.Escaper.ecapeVariable('$address');
+        commons.escapeVariable('$address');
 
     final _response = await _requester.request(
       _url,
@@ -754,11 +754,11 @@ class AddressesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/addresses/' +
-        commons.Escaper.ecapeVariable('$address');
+        commons.escapeVariable('$address');
 
     final _response = await _requester.request(
       _url,
@@ -819,9 +819,9 @@ class AddressesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/addresses';
 
     final _response = await _requester.request(
@@ -923,9 +923,9 @@ class AddressesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/addresses';
 
     final _response = await _requester.request(
@@ -1039,7 +1039,7 @@ class AutoscalersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/aggregated/autoscalers';
 
     final _response = await _requester.request(
@@ -1102,11 +1102,11 @@ class AutoscalersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/autoscalers/' +
-        commons.Escaper.ecapeVariable('$autoscaler');
+        commons.escapeVariable('$autoscaler');
 
     final _response = await _requester.request(
       _url,
@@ -1154,11 +1154,11 @@ class AutoscalersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/autoscalers/' +
-        commons.Escaper.ecapeVariable('$autoscaler');
+        commons.escapeVariable('$autoscaler');
 
     final _response = await _requester.request(
       _url,
@@ -1220,9 +1220,9 @@ class AutoscalersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/autoscalers';
 
     final _response = await _requester.request(
@@ -1324,9 +1324,9 @@ class AutoscalersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/autoscalers';
 
     final _response = await _requester.request(
@@ -1398,9 +1398,9 @@ class AutoscalersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/autoscalers';
 
     final _response = await _requester.request(
@@ -1469,9 +1469,9 @@ class AutoscalersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/autoscalers';
 
     final _response = await _requester.request(
@@ -1540,9 +1540,9 @@ class BackendBucketsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/backendBuckets/' +
-        commons.Escaper.ecapeVariable('$backendBucket') +
+        commons.escapeVariable('$backendBucket') +
         '/addSignedUrlKey';
 
     final _response = await _requester.request(
@@ -1601,9 +1601,9 @@ class BackendBucketsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/backendBuckets/' +
-        commons.Escaper.ecapeVariable('$backendBucket');
+        commons.escapeVariable('$backendBucket');
 
     final _response = await _requester.request(
       _url,
@@ -1664,9 +1664,9 @@ class BackendBucketsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/backendBuckets/' +
-        commons.Escaper.ecapeVariable('$backendBucket') +
+        commons.escapeVariable('$backendBucket') +
         '/deleteSignedUrlKey';
 
     final _response = await _requester.request(
@@ -1711,9 +1711,9 @@ class BackendBucketsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/backendBuckets/' +
-        commons.Escaper.ecapeVariable('$backendBucket');
+        commons.escapeVariable('$backendBucket');
 
     final _response = await _requester.request(
       _url,
@@ -1771,7 +1771,7 @@ class BackendBucketsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/backendBuckets';
 
     final _response = await _requester.request(
@@ -1870,7 +1870,7 @@ class BackendBucketsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/backendBuckets';
 
     final _response = await _requester.request(
@@ -1937,9 +1937,9 @@ class BackendBucketsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/backendBuckets/' +
-        commons.Escaper.ecapeVariable('$backendBucket');
+        commons.escapeVariable('$backendBucket');
 
     final _response = await _requester.request(
       _url,
@@ -2002,9 +2002,9 @@ class BackendBucketsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/backendBuckets/' +
-        commons.Escaper.ecapeVariable('$backendBucket');
+        commons.escapeVariable('$backendBucket');
 
     final _response = await _requester.request(
       _url,
@@ -2072,9 +2072,9 @@ class BackendServicesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/backendServices/' +
-        commons.Escaper.ecapeVariable('$backendService') +
+        commons.escapeVariable('$backendService') +
         '/addSignedUrlKey';
 
     final _response = await _requester.request(
@@ -2183,7 +2183,7 @@ class BackendServicesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/aggregated/backendServices';
 
     final _response = await _requester.request(
@@ -2242,9 +2242,9 @@ class BackendServicesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/backendServices/' +
-        commons.Escaper.ecapeVariable('$backendService');
+        commons.escapeVariable('$backendService');
 
     final _response = await _requester.request(
       _url,
@@ -2305,9 +2305,9 @@ class BackendServicesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/backendServices/' +
-        commons.Escaper.ecapeVariable('$backendService') +
+        commons.escapeVariable('$backendService') +
         '/deleteSignedUrlKey';
 
     final _response = await _requester.request(
@@ -2352,9 +2352,9 @@ class BackendServicesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/backendServices/' +
-        commons.Escaper.ecapeVariable('$backendService');
+        commons.escapeVariable('$backendService');
 
     final _response = await _requester.request(
       _url,
@@ -2406,9 +2406,9 @@ class BackendServicesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/backendServices/' +
-        commons.Escaper.ecapeVariable('$backendService') +
+        commons.escapeVariable('$backendService') +
         '/getHealth';
 
     final _response = await _requester.request(
@@ -2470,7 +2470,7 @@ class BackendServicesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/backendServices';
 
     final _response = await _requester.request(
@@ -2569,7 +2569,7 @@ class BackendServicesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/backendServices';
 
     final _response = await _requester.request(
@@ -2636,9 +2636,9 @@ class BackendServicesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/backendServices/' +
-        commons.Escaper.ecapeVariable('$backendService');
+        commons.escapeVariable('$backendService');
 
     final _response = await _requester.request(
       _url,
@@ -2699,9 +2699,9 @@ class BackendServicesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/backendServices/' +
-        commons.Escaper.ecapeVariable('$backendService') +
+        commons.escapeVariable('$backendService') +
         '/setSecurityPolicy';
 
     final _response = await _requester.request(
@@ -2767,9 +2767,9 @@ class BackendServicesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/backendServices/' +
-        commons.Escaper.ecapeVariable('$backendService');
+        commons.escapeVariable('$backendService');
 
     final _response = await _requester.request(
       _url,
@@ -2882,7 +2882,7 @@ class DiskTypesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/aggregated/diskTypes';
 
     final _response = await _requester.request(
@@ -2932,11 +2932,11 @@ class DiskTypesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/diskTypes/' +
-        commons.Escaper.ecapeVariable('$diskType');
+        commons.escapeVariable('$diskType');
 
     final _response = await _requester.request(
       _url,
@@ -3036,9 +3036,9 @@ class DiskTypesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/diskTypes';
 
     final _response = await _requester.request(
@@ -3114,11 +3114,11 @@ class DisksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/disks/' +
-        commons.Escaper.ecapeVariable('$disk') +
+        commons.escapeVariable('$disk') +
         '/addResourcePolicies';
 
     final _response = await _requester.request(
@@ -3225,9 +3225,8 @@ class DisksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
-        '/aggregated/disks';
+    final _url =
+        'projects/' + commons.escapeVariable('$project') + '/aggregated/disks';
 
     final _response = await _requester.request(
       _url,
@@ -3300,11 +3299,11 @@ class DisksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/disks/' +
-        commons.Escaper.ecapeVariable('$disk') +
+        commons.escapeVariable('$disk') +
         '/createSnapshot';
 
     final _response = await _requester.request(
@@ -3369,11 +3368,11 @@ class DisksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/disks/' +
-        commons.Escaper.ecapeVariable('$disk');
+        commons.escapeVariable('$disk');
 
     final _response = await _requester.request(
       _url,
@@ -3421,11 +3420,11 @@ class DisksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/disks/' +
-        commons.Escaper.ecapeVariable('$disk');
+        commons.escapeVariable('$disk');
 
     final _response = await _requester.request(
       _url,
@@ -3478,11 +3477,11 @@ class DisksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/disks/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/getIamPolicy';
 
     final _response = await _requester.request(
@@ -3554,9 +3553,9 @@ class DisksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/disks';
 
     final _response = await _requester.request(
@@ -3658,9 +3657,9 @@ class DisksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/disks';
 
     final _response = await _requester.request(
@@ -3726,11 +3725,11 @@ class DisksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/disks/' +
-        commons.Escaper.ecapeVariable('$disk') +
+        commons.escapeVariable('$disk') +
         '/removeResourcePolicies';
 
     final _response = await _requester.request(
@@ -3799,11 +3798,11 @@ class DisksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/disks/' +
-        commons.Escaper.ecapeVariable('$disk') +
+        commons.escapeVariable('$disk') +
         '/resize';
 
     final _response = await _requester.request(
@@ -3857,11 +3856,11 @@ class DisksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/disks/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/setIamPolicy';
 
     final _response = await _requester.request(
@@ -3930,11 +3929,11 @@ class DisksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/disks/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/setLabels';
 
     final _response = await _requester.request(
@@ -3986,11 +3985,11 @@ class DisksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/disks/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/testIamPermissions';
 
     final _response = await _requester.request(
@@ -4056,9 +4055,9 @@ class ExternalVpnGatewaysResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/externalVpnGateways/' +
-        commons.Escaper.ecapeVariable('$externalVpnGateway');
+        commons.escapeVariable('$externalVpnGateway');
 
     final _response = await _requester.request(
       _url,
@@ -4101,9 +4100,9 @@ class ExternalVpnGatewaysResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/externalVpnGateways/' +
-        commons.Escaper.ecapeVariable('$externalVpnGateway');
+        commons.escapeVariable('$externalVpnGateway');
 
     final _response = await _requester.request(
       _url,
@@ -4161,7 +4160,7 @@ class ExternalVpnGatewaysResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/externalVpnGateways';
 
     final _response = await _requester.request(
@@ -4260,7 +4259,7 @@ class ExternalVpnGatewaysResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/externalVpnGateways';
 
     final _response = await _requester.request(
@@ -4310,9 +4309,9 @@ class ExternalVpnGatewaysResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/externalVpnGateways/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/setLabels';
 
     final _response = await _requester.request(
@@ -4360,9 +4359,9 @@ class ExternalVpnGatewaysResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/externalVpnGateways/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/testIamPermissions';
 
     final _response = await _requester.request(
@@ -4433,7 +4432,7 @@ class FirewallPoliciesResource {
     };
 
     final _url = 'locations/global/firewallPolicies/' +
-        commons.Escaper.ecapeVariable('$firewallPolicy') +
+        commons.escapeVariable('$firewallPolicy') +
         '/addAssociation';
 
     final _response = await _requester.request(
@@ -4490,7 +4489,7 @@ class FirewallPoliciesResource {
     };
 
     final _url = 'locations/global/firewallPolicies/' +
-        commons.Escaper.ecapeVariable('$firewallPolicy') +
+        commons.escapeVariable('$firewallPolicy') +
         '/addRule';
 
     final _response = await _requester.request(
@@ -4548,7 +4547,7 @@ class FirewallPoliciesResource {
     };
 
     final _url = 'locations/global/firewallPolicies/' +
-        commons.Escaper.ecapeVariable('$firewallPolicy') +
+        commons.escapeVariable('$firewallPolicy') +
         '/cloneRules';
 
     final _response = await _requester.request(
@@ -4600,7 +4599,7 @@ class FirewallPoliciesResource {
     };
 
     final _url = 'locations/global/firewallPolicies/' +
-        commons.Escaper.ecapeVariable('$firewallPolicy');
+        commons.escapeVariable('$firewallPolicy');
 
     final _response = await _requester.request(
       _url,
@@ -4636,7 +4635,7 @@ class FirewallPoliciesResource {
     };
 
     final _url = 'locations/global/firewallPolicies/' +
-        commons.Escaper.ecapeVariable('$firewallPolicy');
+        commons.escapeVariable('$firewallPolicy');
 
     final _response = await _requester.request(
       _url,
@@ -4678,7 +4677,7 @@ class FirewallPoliciesResource {
     };
 
     final _url = 'locations/global/firewallPolicies/' +
-        commons.Escaper.ecapeVariable('$firewallPolicy') +
+        commons.escapeVariable('$firewallPolicy') +
         '/getAssociation';
 
     final _response = await _requester.request(
@@ -4723,7 +4722,7 @@ class FirewallPoliciesResource {
     };
 
     final _url = 'locations/global/firewallPolicies/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/getIamPolicy';
 
     final _response = await _requester.request(
@@ -4765,7 +4764,7 @@ class FirewallPoliciesResource {
     };
 
     final _url = 'locations/global/firewallPolicies/' +
-        commons.Escaper.ecapeVariable('$firewallPolicy') +
+        commons.escapeVariable('$firewallPolicy') +
         '/getRule';
 
     final _response = await _requester.request(
@@ -5013,7 +5012,7 @@ class FirewallPoliciesResource {
     };
 
     final _url = 'locations/global/firewallPolicies/' +
-        commons.Escaper.ecapeVariable('$firewallPolicy') +
+        commons.escapeVariable('$firewallPolicy') +
         '/move';
 
     final _response = await _requester.request(
@@ -5069,7 +5068,7 @@ class FirewallPoliciesResource {
     };
 
     final _url = 'locations/global/firewallPolicies/' +
-        commons.Escaper.ecapeVariable('$firewallPolicy');
+        commons.escapeVariable('$firewallPolicy');
 
     final _response = await _requester.request(
       _url,
@@ -5129,7 +5128,7 @@ class FirewallPoliciesResource {
     };
 
     final _url = 'locations/global/firewallPolicies/' +
-        commons.Escaper.ecapeVariable('$firewallPolicy') +
+        commons.escapeVariable('$firewallPolicy') +
         '/patchRule';
 
     final _response = await _requester.request(
@@ -5186,7 +5185,7 @@ class FirewallPoliciesResource {
     };
 
     final _url = 'locations/global/firewallPolicies/' +
-        commons.Escaper.ecapeVariable('$firewallPolicy') +
+        commons.escapeVariable('$firewallPolicy') +
         '/removeAssociation';
 
     final _response = await _requester.request(
@@ -5242,7 +5241,7 @@ class FirewallPoliciesResource {
     };
 
     final _url = 'locations/global/firewallPolicies/' +
-        commons.Escaper.ecapeVariable('$firewallPolicy') +
+        commons.escapeVariable('$firewallPolicy') +
         '/removeRule';
 
     final _response = await _requester.request(
@@ -5285,7 +5284,7 @@ class FirewallPoliciesResource {
     };
 
     final _url = 'locations/global/firewallPolicies/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/setIamPolicy';
 
     final _response = await _requester.request(
@@ -5327,7 +5326,7 @@ class FirewallPoliciesResource {
     };
 
     final _url = 'locations/global/firewallPolicies/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/testIamPermissions';
 
     final _response = await _requester.request(
@@ -5393,9 +5392,9 @@ class FirewallsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/firewalls/' +
-        commons.Escaper.ecapeVariable('$firewall');
+        commons.escapeVariable('$firewall');
 
     final _response = await _requester.request(
       _url,
@@ -5437,9 +5436,9 @@ class FirewallsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/firewalls/' +
-        commons.Escaper.ecapeVariable('$firewall');
+        commons.escapeVariable('$firewall');
 
     final _response = await _requester.request(
       _url,
@@ -5495,9 +5494,8 @@ class FirewallsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
-        '/global/firewalls';
+    final _url =
+        'projects/' + commons.escapeVariable('$project') + '/global/firewalls';
 
     final _response = await _requester.request(
       _url,
@@ -5593,9 +5591,8 @@ class FirewallsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
-        '/global/firewalls';
+    final _url =
+        'projects/' + commons.escapeVariable('$project') + '/global/firewalls';
 
     final _response = await _requester.request(
       _url,
@@ -5660,9 +5657,9 @@ class FirewallsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/firewalls/' +
-        commons.Escaper.ecapeVariable('$firewall');
+        commons.escapeVariable('$firewall');
 
     final _response = await _requester.request(
       _url,
@@ -5727,9 +5724,9 @@ class FirewallsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/firewalls/' +
-        commons.Escaper.ecapeVariable('$firewall');
+        commons.escapeVariable('$firewall');
 
     final _response = await _requester.request(
       _url,
@@ -5842,7 +5839,7 @@ class ForwardingRulesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/aggregated/forwardingRules';
 
     final _response = await _requester.request(
@@ -5905,11 +5902,11 @@ class ForwardingRulesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/forwardingRules/' +
-        commons.Escaper.ecapeVariable('$forwardingRule');
+        commons.escapeVariable('$forwardingRule');
 
     final _response = await _requester.request(
       _url,
@@ -5955,11 +5952,11 @@ class ForwardingRulesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/forwardingRules/' +
-        commons.Escaper.ecapeVariable('$forwardingRule');
+        commons.escapeVariable('$forwardingRule');
 
     final _response = await _requester.request(
       _url,
@@ -6021,9 +6018,9 @@ class ForwardingRulesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/forwardingRules';
 
     final _response = await _requester.request(
@@ -6126,9 +6123,9 @@ class ForwardingRulesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/forwardingRules';
 
     final _response = await _requester.request(
@@ -6200,11 +6197,11 @@ class ForwardingRulesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/forwardingRules/' +
-        commons.Escaper.ecapeVariable('$forwardingRule');
+        commons.escapeVariable('$forwardingRule');
 
     final _response = await _requester.request(
       _url,
@@ -6272,11 +6269,11 @@ class ForwardingRulesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/forwardingRules/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/setLabels';
 
     final _response = await _requester.request(
@@ -6346,11 +6343,11 @@ class ForwardingRulesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/forwardingRules/' +
-        commons.Escaper.ecapeVariable('$forwardingRule') +
+        commons.escapeVariable('$forwardingRule') +
         '/setTarget';
 
     final _response = await _requester.request(
@@ -6415,9 +6412,9 @@ class GlobalAddressesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/addresses/' +
-        commons.Escaper.ecapeVariable('$address');
+        commons.escapeVariable('$address');
 
     final _response = await _requester.request(
       _url,
@@ -6461,9 +6458,9 @@ class GlobalAddressesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/addresses/' +
-        commons.Escaper.ecapeVariable('$address');
+        commons.escapeVariable('$address');
 
     final _response = await _requester.request(
       _url,
@@ -6519,9 +6516,8 @@ class GlobalAddressesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
-        '/global/addresses';
+    final _url =
+        'projects/' + commons.escapeVariable('$project') + '/global/addresses';
 
     final _response = await _requester.request(
       _url,
@@ -6617,9 +6613,8 @@ class GlobalAddressesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
-        '/global/addresses';
+    final _url =
+        'projects/' + commons.escapeVariable('$project') + '/global/addresses';
 
     final _response = await _requester.request(
       _url,
@@ -6684,9 +6679,9 @@ class GlobalForwardingRulesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/forwardingRules/' +
-        commons.Escaper.ecapeVariable('$forwardingRule');
+        commons.escapeVariable('$forwardingRule');
 
     final _response = await _requester.request(
       _url,
@@ -6730,9 +6725,9 @@ class GlobalForwardingRulesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/forwardingRules/' +
-        commons.Escaper.ecapeVariable('$forwardingRule');
+        commons.escapeVariable('$forwardingRule');
 
     final _response = await _requester.request(
       _url,
@@ -6790,7 +6785,7 @@ class GlobalForwardingRulesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/forwardingRules';
 
     final _response = await _requester.request(
@@ -6889,7 +6884,7 @@ class GlobalForwardingRulesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/forwardingRules';
 
     final _response = await _requester.request(
@@ -6957,9 +6952,9 @@ class GlobalForwardingRulesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/forwardingRules/' +
-        commons.Escaper.ecapeVariable('$forwardingRule');
+        commons.escapeVariable('$forwardingRule');
 
     final _response = await _requester.request(
       _url,
@@ -7008,9 +7003,9 @@ class GlobalForwardingRulesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/forwardingRules/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/setLabels';
 
     final _response = await _requester.request(
@@ -7076,9 +7071,9 @@ class GlobalForwardingRulesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/forwardingRules/' +
-        commons.Escaper.ecapeVariable('$forwardingRule') +
+        commons.escapeVariable('$forwardingRule') +
         '/setTarget';
 
     final _response = await _requester.request(
@@ -7147,9 +7142,9 @@ class GlobalNetworkEndpointGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/networkEndpointGroups/' +
-        commons.Escaper.ecapeVariable('$networkEndpointGroup') +
+        commons.escapeVariable('$networkEndpointGroup') +
         '/attachNetworkEndpoints';
 
     final _response = await _requester.request(
@@ -7208,9 +7203,9 @@ class GlobalNetworkEndpointGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/networkEndpointGroups/' +
-        commons.Escaper.ecapeVariable('$networkEndpointGroup');
+        commons.escapeVariable('$networkEndpointGroup');
 
     final _response = await _requester.request(
       _url,
@@ -7270,9 +7265,9 @@ class GlobalNetworkEndpointGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/networkEndpointGroups/' +
-        commons.Escaper.ecapeVariable('$networkEndpointGroup') +
+        commons.escapeVariable('$networkEndpointGroup') +
         '/detachNetworkEndpoints';
 
     final _response = await _requester.request(
@@ -7318,9 +7313,9 @@ class GlobalNetworkEndpointGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/networkEndpointGroups/' +
-        commons.Escaper.ecapeVariable('$networkEndpointGroup');
+        commons.escapeVariable('$networkEndpointGroup');
 
     final _response = await _requester.request(
       _url,
@@ -7378,7 +7373,7 @@ class GlobalNetworkEndpointGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/networkEndpointGroups';
 
     final _response = await _requester.request(
@@ -7477,7 +7472,7 @@ class GlobalNetworkEndpointGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/networkEndpointGroups';
 
     final _response = await _requester.request(
@@ -7580,9 +7575,9 @@ class GlobalNetworkEndpointGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/networkEndpointGroups/' +
-        commons.Escaper.ecapeVariable('$networkEndpointGroup') +
+        commons.escapeVariable('$networkEndpointGroup') +
         '/listNetworkEndpoints';
 
     final _response = await _requester.request(
@@ -7696,7 +7691,7 @@ class GlobalOperationsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/aggregated/operations';
 
     final _response = await _requester.request(
@@ -7738,9 +7733,9 @@ class GlobalOperationsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/operations/' +
-        commons.Escaper.ecapeVariable('$operation');
+        commons.escapeVariable('$operation');
 
     await _requester.request(
       _url,
@@ -7784,9 +7779,9 @@ class GlobalOperationsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/operations/' +
-        commons.Escaper.ecapeVariable('$operation');
+        commons.escapeVariable('$operation');
 
     final _response = await _requester.request(
       _url,
@@ -7882,9 +7877,8 @@ class GlobalOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
-        '/global/operations';
+    final _url =
+        'projects/' + commons.escapeVariable('$project') + '/global/operations';
 
     final _response = await _requester.request(
       _url,
@@ -7941,9 +7935,9 @@ class GlobalOperationsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/operations/' +
-        commons.Escaper.ecapeVariable('$operation') +
+        commons.escapeVariable('$operation') +
         '/wait';
 
     final _response = await _requester.request(
@@ -7989,8 +7983,8 @@ class GlobalOrganizationOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'locations/global/operations/' +
-        commons.Escaper.ecapeVariable('$operation');
+    final _url =
+        'locations/global/operations/' + commons.escapeVariable('$operation');
 
     await _requester.request(
       _url,
@@ -8032,8 +8026,8 @@ class GlobalOrganizationOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'locations/global/operations/' +
-        commons.Escaper.ecapeVariable('$operation');
+    final _url =
+        'locations/global/operations/' + commons.escapeVariable('$operation');
 
     final _response = await _requester.request(
       _url,
@@ -8242,7 +8236,7 @@ class HealthChecksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/aggregated/healthChecks';
 
     final _response = await _requester.request(
@@ -8301,9 +8295,9 @@ class HealthChecksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/healthChecks/' +
-        commons.Escaper.ecapeVariable('$healthCheck');
+        commons.escapeVariable('$healthCheck');
 
     final _response = await _requester.request(
       _url,
@@ -8347,9 +8341,9 @@ class HealthChecksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/healthChecks/' +
-        commons.Escaper.ecapeVariable('$healthCheck');
+        commons.escapeVariable('$healthCheck');
 
     final _response = await _requester.request(
       _url,
@@ -8407,7 +8401,7 @@ class HealthChecksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/healthChecks';
 
     final _response = await _requester.request(
@@ -8506,7 +8500,7 @@ class HealthChecksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/healthChecks';
 
     final _response = await _requester.request(
@@ -8573,9 +8567,9 @@ class HealthChecksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/healthChecks/' +
-        commons.Escaper.ecapeVariable('$healthCheck');
+        commons.escapeVariable('$healthCheck');
 
     final _response = await _requester.request(
       _url,
@@ -8638,9 +8632,9 @@ class HealthChecksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/healthChecks/' +
-        commons.Escaper.ecapeVariable('$healthCheck');
+        commons.escapeVariable('$healthCheck');
 
     final _response = await _requester.request(
       _url,
@@ -8704,9 +8698,9 @@ class HttpHealthChecksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/httpHealthChecks/' +
-        commons.Escaper.ecapeVariable('$httpHealthCheck');
+        commons.escapeVariable('$httpHealthCheck');
 
     final _response = await _requester.request(
       _url,
@@ -8750,9 +8744,9 @@ class HttpHealthChecksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/httpHealthChecks/' +
-        commons.Escaper.ecapeVariable('$httpHealthCheck');
+        commons.escapeVariable('$httpHealthCheck');
 
     final _response = await _requester.request(
       _url,
@@ -8810,7 +8804,7 @@ class HttpHealthChecksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/httpHealthChecks';
 
     final _response = await _requester.request(
@@ -8909,7 +8903,7 @@ class HttpHealthChecksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/httpHealthChecks';
 
     final _response = await _requester.request(
@@ -8976,9 +8970,9 @@ class HttpHealthChecksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/httpHealthChecks/' +
-        commons.Escaper.ecapeVariable('$httpHealthCheck');
+        commons.escapeVariable('$httpHealthCheck');
 
     final _response = await _requester.request(
       _url,
@@ -9041,9 +9035,9 @@ class HttpHealthChecksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/httpHealthChecks/' +
-        commons.Escaper.ecapeVariable('$httpHealthCheck');
+        commons.escapeVariable('$httpHealthCheck');
 
     final _response = await _requester.request(
       _url,
@@ -9107,9 +9101,9 @@ class HttpsHealthChecksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/httpsHealthChecks/' +
-        commons.Escaper.ecapeVariable('$httpsHealthCheck');
+        commons.escapeVariable('$httpsHealthCheck');
 
     final _response = await _requester.request(
       _url,
@@ -9153,9 +9147,9 @@ class HttpsHealthChecksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/httpsHealthChecks/' +
-        commons.Escaper.ecapeVariable('$httpsHealthCheck');
+        commons.escapeVariable('$httpsHealthCheck');
 
     final _response = await _requester.request(
       _url,
@@ -9213,7 +9207,7 @@ class HttpsHealthChecksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/httpsHealthChecks';
 
     final _response = await _requester.request(
@@ -9312,7 +9306,7 @@ class HttpsHealthChecksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/httpsHealthChecks';
 
     final _response = await _requester.request(
@@ -9379,9 +9373,9 @@ class HttpsHealthChecksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/httpsHealthChecks/' +
-        commons.Escaper.ecapeVariable('$httpsHealthCheck');
+        commons.escapeVariable('$httpsHealthCheck');
 
     final _response = await _requester.request(
       _url,
@@ -9444,9 +9438,9 @@ class HttpsHealthChecksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/httpsHealthChecks/' +
-        commons.Escaper.ecapeVariable('$httpsHealthCheck');
+        commons.escapeVariable('$httpsHealthCheck');
 
     final _response = await _requester.request(
       _url,
@@ -9510,9 +9504,9 @@ class ImagesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/images/' +
-        commons.Escaper.ecapeVariable('$image');
+        commons.escapeVariable('$image');
 
     final _response = await _requester.request(
       _url,
@@ -9575,9 +9569,9 @@ class ImagesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/images/' +
-        commons.Escaper.ecapeVariable('$image') +
+        commons.escapeVariable('$image') +
         '/deprecate';
 
     final _response = await _requester.request(
@@ -9623,9 +9617,9 @@ class ImagesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/images/' +
-        commons.Escaper.ecapeVariable('$image');
+        commons.escapeVariable('$image');
 
     final _response = await _requester.request(
       _url,
@@ -9668,9 +9662,9 @@ class ImagesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/images/family/' +
-        commons.Escaper.ecapeVariable('$family');
+        commons.escapeVariable('$family');
 
     final _response = await _requester.request(
       _url,
@@ -9719,9 +9713,9 @@ class ImagesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/images/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/getIamPolicy';
 
     final _response = await _requester.request(
@@ -9782,9 +9776,8 @@ class ImagesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
-        '/global/images';
+    final _url =
+        'projects/' + commons.escapeVariable('$project') + '/global/images';
 
     final _response = await _requester.request(
       _url,
@@ -9886,9 +9879,8 @@ class ImagesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
-        '/global/images';
+    final _url =
+        'projects/' + commons.escapeVariable('$project') + '/global/images';
 
     final _response = await _requester.request(
       _url,
@@ -9952,9 +9944,9 @@ class ImagesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/images/' +
-        commons.Escaper.ecapeVariable('$image');
+        commons.escapeVariable('$image');
 
     final _response = await _requester.request(
       _url,
@@ -10003,9 +9995,9 @@ class ImagesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/images/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/setIamPolicy';
 
     final _response = await _requester.request(
@@ -10055,9 +10047,9 @@ class ImagesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/images/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/setLabels';
 
     final _response = await _requester.request(
@@ -10105,9 +10097,9 @@ class ImagesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/images/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/testIamPermissions';
 
     final _response = await _requester.request(
@@ -10194,11 +10186,11 @@ class InstanceGroupManagersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instanceGroupManagers/' +
-        commons.Escaper.ecapeVariable('$instanceGroupManager') +
+        commons.escapeVariable('$instanceGroupManager') +
         '/abandonInstances';
 
     final _response = await _requester.request(
@@ -10306,7 +10298,7 @@ class InstanceGroupManagersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/aggregated/instanceGroupManagers';
 
     final _response = await _requester.request(
@@ -10359,11 +10351,11 @@ class InstanceGroupManagersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instanceGroupManagers/' +
-        commons.Escaper.ecapeVariable('$instanceGroupManager') +
+        commons.escapeVariable('$instanceGroupManager') +
         '/applyUpdatesToInstances';
 
     final _response = await _requester.request(
@@ -10435,11 +10427,11 @@ class InstanceGroupManagersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instanceGroupManagers/' +
-        commons.Escaper.ecapeVariable('$instanceGroupManager') +
+        commons.escapeVariable('$instanceGroupManager') +
         '/createInstances';
 
     final _response = await _requester.request(
@@ -10503,11 +10495,11 @@ class InstanceGroupManagersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instanceGroupManagers/' +
-        commons.Escaper.ecapeVariable('$instanceGroupManager');
+        commons.escapeVariable('$instanceGroupManager');
 
     final _response = await _requester.request(
       _url,
@@ -10583,11 +10575,11 @@ class InstanceGroupManagersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instanceGroupManagers/' +
-        commons.Escaper.ecapeVariable('$instanceGroupManager') +
+        commons.escapeVariable('$instanceGroupManager') +
         '/deleteInstances';
 
     final _response = await _requester.request(
@@ -10638,11 +10630,11 @@ class InstanceGroupManagersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instanceGroupManagers/' +
-        commons.Escaper.ecapeVariable('$instanceGroupManager') +
+        commons.escapeVariable('$instanceGroupManager') +
         '/deletePerInstanceConfigs';
 
     final _response = await _requester.request(
@@ -10690,11 +10682,11 @@ class InstanceGroupManagersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instanceGroupManagers/' +
-        commons.Escaper.ecapeVariable('$instanceGroupManager');
+        commons.escapeVariable('$instanceGroupManager');
 
     final _response = await _requester.request(
       _url,
@@ -10765,9 +10757,9 @@ class InstanceGroupManagersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instanceGroupManagers';
 
     final _response = await _requester.request(
@@ -10869,9 +10861,9 @@ class InstanceGroupManagersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instanceGroupManagers';
 
     final _response = await _requester.request(
@@ -10982,11 +10974,11 @@ class InstanceGroupManagersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instanceGroupManagers/' +
-        commons.Escaper.ecapeVariable('$instanceGroupManager') +
+        commons.escapeVariable('$instanceGroupManager') +
         '/listErrors';
 
     final _response = await _requester.request(
@@ -11097,11 +11089,11 @@ class InstanceGroupManagersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instanceGroupManagers/' +
-        commons.Escaper.ecapeVariable('$instanceGroupManager') +
+        commons.escapeVariable('$instanceGroupManager') +
         '/listManagedInstances';
 
     final _response = await _requester.request(
@@ -11211,11 +11203,11 @@ class InstanceGroupManagersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instanceGroupManagers/' +
-        commons.Escaper.ecapeVariable('$instanceGroupManager') +
+        commons.escapeVariable('$instanceGroupManager') +
         '/listPerInstanceConfigs';
 
     final _response = await _requester.request(
@@ -11287,11 +11279,11 @@ class InstanceGroupManagersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instanceGroupManagers/' +
-        commons.Escaper.ecapeVariable('$instanceGroupManager');
+        commons.escapeVariable('$instanceGroupManager');
 
     final _response = await _requester.request(
       _url,
@@ -11359,11 +11351,11 @@ class InstanceGroupManagersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instanceGroupManagers/' +
-        commons.Escaper.ecapeVariable('$instanceGroupManager') +
+        commons.escapeVariable('$instanceGroupManager') +
         '/patchPerInstanceConfigs';
 
     final _response = await _requester.request(
@@ -11440,11 +11432,11 @@ class InstanceGroupManagersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instanceGroupManagers/' +
-        commons.Escaper.ecapeVariable('$instanceGroupManager') +
+        commons.escapeVariable('$instanceGroupManager') +
         '/recreateInstances';
 
     final _response = await _requester.request(
@@ -11531,11 +11523,11 @@ class InstanceGroupManagersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instanceGroupManagers/' +
-        commons.Escaper.ecapeVariable('$instanceGroupManager') +
+        commons.escapeVariable('$instanceGroupManager') +
         '/resize';
 
     final _response = await _requester.request(
@@ -11603,11 +11595,11 @@ class InstanceGroupManagersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instanceGroupManagers/' +
-        commons.Escaper.ecapeVariable('$instanceGroupManager') +
+        commons.escapeVariable('$instanceGroupManager') +
         '/setInstanceTemplate';
 
     final _response = await _requester.request(
@@ -11678,11 +11670,11 @@ class InstanceGroupManagersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instanceGroupManagers/' +
-        commons.Escaper.ecapeVariable('$instanceGroupManager') +
+        commons.escapeVariable('$instanceGroupManager') +
         '/setTargetPools';
 
     final _response = await _requester.request(
@@ -11751,11 +11743,11 @@ class InstanceGroupManagersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instanceGroupManagers/' +
-        commons.Escaper.ecapeVariable('$instanceGroupManager') +
+        commons.escapeVariable('$instanceGroupManager') +
         '/updatePerInstanceConfigs';
 
     final _response = await _requester.request(
@@ -11829,11 +11821,11 @@ class InstanceGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instanceGroups/' +
-        commons.Escaper.ecapeVariable('$instanceGroup') +
+        commons.escapeVariable('$instanceGroup') +
         '/addInstances';
 
     final _response = await _requester.request(
@@ -11941,7 +11933,7 @@ class InstanceGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/aggregated/instanceGroups';
 
     final _response = await _requester.request(
@@ -12005,11 +11997,11 @@ class InstanceGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instanceGroups/' +
-        commons.Escaper.ecapeVariable('$instanceGroup');
+        commons.escapeVariable('$instanceGroup');
 
     final _response = await _requester.request(
       _url,
@@ -12057,11 +12049,11 @@ class InstanceGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instanceGroups/' +
-        commons.Escaper.ecapeVariable('$instanceGroup');
+        commons.escapeVariable('$instanceGroup');
 
     final _response = await _requester.request(
       _url,
@@ -12122,9 +12114,9 @@ class InstanceGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instanceGroups';
 
     final _response = await _requester.request(
@@ -12229,9 +12221,9 @@ class InstanceGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instanceGroups';
 
     final _response = await _requester.request(
@@ -12342,11 +12334,11 @@ class InstanceGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instanceGroups/' +
-        commons.Escaper.ecapeVariable('$instanceGroup') +
+        commons.escapeVariable('$instanceGroup') +
         '/listInstances';
 
     final _response = await _requester.request(
@@ -12417,11 +12409,11 @@ class InstanceGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instanceGroups/' +
-        commons.Escaper.ecapeVariable('$instanceGroup') +
+        commons.escapeVariable('$instanceGroup') +
         '/removeInstances';
 
     final _response = await _requester.request(
@@ -12486,11 +12478,11 @@ class InstanceGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instanceGroups/' +
-        commons.Escaper.ecapeVariable('$instanceGroup') +
+        commons.escapeVariable('$instanceGroup') +
         '/setNamedPorts';
 
     final _response = await _requester.request(
@@ -12559,9 +12551,9 @@ class InstanceTemplatesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/instanceTemplates/' +
-        commons.Escaper.ecapeVariable('$instanceTemplate');
+        commons.escapeVariable('$instanceTemplate');
 
     final _response = await _requester.request(
       _url,
@@ -12605,9 +12597,9 @@ class InstanceTemplatesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/instanceTemplates/' +
-        commons.Escaper.ecapeVariable('$instanceTemplate');
+        commons.escapeVariable('$instanceTemplate');
 
     final _response = await _requester.request(
       _url,
@@ -12657,9 +12649,9 @@ class InstanceTemplatesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/instanceTemplates/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/getIamPolicy';
 
     final _response = await _requester.request(
@@ -12721,7 +12713,7 @@ class InstanceTemplatesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/instanceTemplates';
 
     final _response = await _requester.request(
@@ -12820,7 +12812,7 @@ class InstanceTemplatesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/instanceTemplates';
 
     final _response = await _requester.request(
@@ -12870,9 +12862,9 @@ class InstanceTemplatesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/instanceTemplates/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/setIamPolicy';
 
     final _response = await _requester.request(
@@ -12920,9 +12912,9 @@ class InstanceTemplatesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/instanceTemplates/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/testIamPermissions';
 
     final _response = await _requester.request(
@@ -13001,11 +12993,11 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/addAccessConfig';
 
     final _response = await _requester.request(
@@ -13075,11 +13067,11 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/addResourcePolicies';
 
     final _response = await _requester.request(
@@ -13188,7 +13180,7 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/aggregated/instances';
 
     final _response = await _requester.request(
@@ -13265,11 +13257,11 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/attachDisk';
 
     final _response = await _requester.request(
@@ -13333,9 +13325,9 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instances/bulkInsert';
 
     final _response = await _requester.request(
@@ -13400,11 +13392,11 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance');
+        commons.escapeVariable('$instance');
 
     final _response = await _requester.request(
       _url,
@@ -13473,11 +13465,11 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/deleteAccessConfig';
 
     final _response = await _requester.request(
@@ -13544,11 +13536,11 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/detachDisk';
 
     final _response = await _requester.request(
@@ -13597,11 +13589,11 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance');
+        commons.escapeVariable('$instance');
 
     final _response = await _requester.request(
       _url,
@@ -13651,11 +13643,11 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/getEffectiveFirewalls';
 
     final _response = await _requester.request(
@@ -13711,11 +13703,11 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/getGuestAttributes';
 
     final _response = await _requester.request(
@@ -13770,11 +13762,11 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/getIamPolicy';
 
     final _response = await _requester.request(
@@ -13821,11 +13813,11 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/screenshot';
 
     final _response = await _requester.request(
@@ -13896,11 +13888,11 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/serialPort';
 
     final _response = await _requester.request(
@@ -13948,11 +13940,11 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/getShieldedInstanceIdentity';
 
     final _response = await _requester.request(
@@ -14028,9 +14020,9 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instances';
 
     final _response = await _requester.request(
@@ -14132,9 +14124,9 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instances';
 
     final _response = await _requester.request(
@@ -14247,11 +14239,11 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/referrers';
 
     final _response = await _requester.request(
@@ -14318,11 +14310,11 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/removeResourcePolicies';
 
     final _response = await _requester.request(
@@ -14388,11 +14380,11 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/reset';
 
     final _response = await _requester.request(
@@ -14460,11 +14452,11 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/setDeletionProtection';
 
     final _response = await _requester.request(
@@ -14537,11 +14529,11 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/setDiskAutoDelete';
 
     final _response = await _requester.request(
@@ -14594,11 +14586,11 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/setIamPolicy';
 
     final _response = await _requester.request(
@@ -14667,11 +14659,11 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/setLabels';
 
     final _response = await _requester.request(
@@ -14739,11 +14731,11 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/setMachineResources';
 
     final _response = await _requester.request(
@@ -14811,11 +14803,11 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/setMachineType';
 
     final _response = await _requester.request(
@@ -14883,11 +14875,11 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/setMetadata';
 
     final _response = await _requester.request(
@@ -14957,11 +14949,11 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/setMinCpuPlatform';
 
     final _response = await _requester.request(
@@ -15032,11 +15024,11 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/setScheduling';
 
     final _response = await _requester.request(
@@ -15106,11 +15098,11 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/setServiceAccount';
 
     final _response = await _requester.request(
@@ -15180,11 +15172,11 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/setShieldedInstanceIntegrityPolicy';
 
     final _response = await _requester.request(
@@ -15252,11 +15244,11 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/setTags';
 
     final _response = await _requester.request(
@@ -15304,11 +15296,11 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/simulateMaintenanceEvent';
 
     final _response = await _requester.request(
@@ -15372,11 +15364,11 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/start';
 
     final _response = await _requester.request(
@@ -15444,11 +15436,11 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/startWithEncryptionKey';
 
     final _response = await _requester.request(
@@ -15517,11 +15509,11 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/stop';
 
     final _response = await _requester.request(
@@ -15572,11 +15564,11 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/testIamPermissions';
 
     final _response = await _requester.request(
@@ -15673,11 +15665,11 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance');
+        commons.escapeVariable('$instance');
 
     final _response = await _requester.request(
       _url,
@@ -15752,11 +15744,11 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/updateAccessConfig';
 
     final _response = await _requester.request(
@@ -15826,11 +15818,11 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/updateDisplayDevice';
 
     final _response = await _requester.request(
@@ -15907,11 +15899,11 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/updateNetworkInterface';
 
     final _response = await _requester.request(
@@ -15981,11 +15973,11 @@ class InstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/updateShieldedInstanceConfig';
 
     final _response = await _requester.request(
@@ -16100,7 +16092,7 @@ class InterconnectAttachmentsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/aggregated/interconnectAttachments';
 
     final _response = await _requester.request(
@@ -16163,11 +16155,11 @@ class InterconnectAttachmentsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/interconnectAttachments/' +
-        commons.Escaper.ecapeVariable('$interconnectAttachment');
+        commons.escapeVariable('$interconnectAttachment');
 
     final _response = await _requester.request(
       _url,
@@ -16213,11 +16205,11 @@ class InterconnectAttachmentsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/interconnectAttachments/' +
-        commons.Escaper.ecapeVariable('$interconnectAttachment');
+        commons.escapeVariable('$interconnectAttachment');
 
     final _response = await _requester.request(
       _url,
@@ -16283,9 +16275,9 @@ class InterconnectAttachmentsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/interconnectAttachments';
 
     final _response = await _requester.request(
@@ -16388,9 +16380,9 @@ class InterconnectAttachmentsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/interconnectAttachments';
 
     final _response = await _requester.request(
@@ -16461,11 +16453,11 @@ class InterconnectAttachmentsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/interconnectAttachments/' +
-        commons.Escaper.ecapeVariable('$interconnectAttachment');
+        commons.escapeVariable('$interconnectAttachment');
 
     final _response = await _requester.request(
       _url,
@@ -16518,9 +16510,9 @@ class InterconnectLocationsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/interconnectLocations/' +
-        commons.Escaper.ecapeVariable('$interconnectLocation');
+        commons.escapeVariable('$interconnectLocation');
 
     final _response = await _requester.request(
       _url,
@@ -16618,7 +16610,7 @@ class InterconnectLocationsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/interconnectLocations';
 
     final _response = await _requester.request(
@@ -16683,9 +16675,9 @@ class InterconnectsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/interconnects/' +
-        commons.Escaper.ecapeVariable('$interconnect');
+        commons.escapeVariable('$interconnect');
 
     final _response = await _requester.request(
       _url,
@@ -16729,9 +16721,9 @@ class InterconnectsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/interconnects/' +
-        commons.Escaper.ecapeVariable('$interconnect');
+        commons.escapeVariable('$interconnect');
 
     final _response = await _requester.request(
       _url,
@@ -16774,9 +16766,9 @@ class InterconnectsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/interconnects/' +
-        commons.Escaper.ecapeVariable('$interconnect') +
+        commons.escapeVariable('$interconnect') +
         '/getDiagnostics';
 
     final _response = await _requester.request(
@@ -16835,7 +16827,7 @@ class InterconnectsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/interconnects';
 
     final _response = await _requester.request(
@@ -16933,7 +16925,7 @@ class InterconnectsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/interconnects';
 
     final _response = await _requester.request(
@@ -16999,9 +16991,9 @@ class InterconnectsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/interconnects/' +
-        commons.Escaper.ecapeVariable('$interconnect');
+        commons.escapeVariable('$interconnect');
 
     final _response = await _requester.request(
       _url,
@@ -17054,9 +17046,9 @@ class LicenseCodesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/licenseCodes/' +
-        commons.Escaper.ecapeVariable('$licenseCode');
+        commons.escapeVariable('$licenseCode');
 
     final _response = await _requester.request(
       _url,
@@ -17106,9 +17098,9 @@ class LicenseCodesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/licenseCodes/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/testIamPermissions';
 
     final _response = await _requester.request(
@@ -17177,9 +17169,9 @@ class LicensesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/licenses/' +
-        commons.Escaper.ecapeVariable('$license');
+        commons.escapeVariable('$license');
 
     final _response = await _requester.request(
       _url,
@@ -17224,9 +17216,9 @@ class LicensesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/licenses/' +
-        commons.Escaper.ecapeVariable('$license');
+        commons.escapeVariable('$license');
 
     final _response = await _requester.request(
       _url,
@@ -17277,9 +17269,9 @@ class LicensesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/licenses/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/getIamPolicy';
 
     final _response = await _requester.request(
@@ -17338,9 +17330,8 @@ class LicensesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
-        '/global/licenses';
+    final _url =
+        'projects/' + commons.escapeVariable('$project') + '/global/licenses';
 
     final _response = await _requester.request(
       _url,
@@ -17443,9 +17434,8 @@ class LicensesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
-        '/global/licenses';
+    final _url =
+        'projects/' + commons.escapeVariable('$project') + '/global/licenses';
 
     final _response = await _requester.request(
       _url,
@@ -17495,9 +17485,9 @@ class LicensesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/licenses/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/setIamPolicy';
 
     final _response = await _requester.request(
@@ -17548,9 +17538,9 @@ class LicensesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/licenses/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/testIamPermissions';
 
     final _response = await _requester.request(
@@ -17665,7 +17655,7 @@ class MachineTypesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/aggregated/machineTypes';
 
     final _response = await _requester.request(
@@ -17715,11 +17705,11 @@ class MachineTypesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/machineTypes/' +
-        commons.Escaper.ecapeVariable('$machineType');
+        commons.escapeVariable('$machineType');
 
     final _response = await _requester.request(
       _url,
@@ -17820,9 +17810,9 @@ class MachineTypesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/machineTypes';
 
     final _response = await _requester.request(
@@ -17937,7 +17927,7 @@ class NetworkEndpointGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/aggregated/networkEndpointGroups';
 
     final _response = await _requester.request(
@@ -18004,11 +17994,11 @@ class NetworkEndpointGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/networkEndpointGroups/' +
-        commons.Escaper.ecapeVariable('$networkEndpointGroup') +
+        commons.escapeVariable('$networkEndpointGroup') +
         '/attachNetworkEndpoints';
 
     final _response = await _requester.request(
@@ -18074,11 +18064,11 @@ class NetworkEndpointGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/networkEndpointGroups/' +
-        commons.Escaper.ecapeVariable('$networkEndpointGroup');
+        commons.escapeVariable('$networkEndpointGroup');
 
     final _response = await _requester.request(
       _url,
@@ -18143,11 +18133,11 @@ class NetworkEndpointGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/networkEndpointGroups/' +
-        commons.Escaper.ecapeVariable('$networkEndpointGroup') +
+        commons.escapeVariable('$networkEndpointGroup') +
         '/detachNetworkEndpoints';
 
     final _response = await _requester.request(
@@ -18197,11 +18187,11 @@ class NetworkEndpointGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/networkEndpointGroups/' +
-        commons.Escaper.ecapeVariable('$networkEndpointGroup');
+        commons.escapeVariable('$networkEndpointGroup');
 
     final _response = await _requester.request(
       _url,
@@ -18263,9 +18253,9 @@ class NetworkEndpointGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/networkEndpointGroups';
 
     final _response = await _requester.request(
@@ -18368,9 +18358,9 @@ class NetworkEndpointGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/networkEndpointGroups';
 
     final _response = await _requester.request(
@@ -18481,11 +18471,11 @@ class NetworkEndpointGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/networkEndpointGroups/' +
-        commons.Escaper.ecapeVariable('$networkEndpointGroup') +
+        commons.escapeVariable('$networkEndpointGroup') +
         '/listNetworkEndpoints';
 
     final _response = await _requester.request(
@@ -18538,11 +18528,11 @@ class NetworkEndpointGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/networkEndpointGroups/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/testIamPermissions';
 
     final _response = await _requester.request(
@@ -18612,9 +18602,9 @@ class NetworksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/networks/' +
-        commons.Escaper.ecapeVariable('$network') +
+        commons.escapeVariable('$network') +
         '/addPeering';
 
     final _response = await _requester.request(
@@ -18673,9 +18663,9 @@ class NetworksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/networks/' +
-        commons.Escaper.ecapeVariable('$network');
+        commons.escapeVariable('$network');
 
     final _response = await _requester.request(
       _url,
@@ -18719,9 +18709,9 @@ class NetworksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/networks/' +
-        commons.Escaper.ecapeVariable('$network');
+        commons.escapeVariable('$network');
 
     final _response = await _requester.request(
       _url,
@@ -18762,9 +18752,9 @@ class NetworksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/networks/' +
-        commons.Escaper.ecapeVariable('$network') +
+        commons.escapeVariable('$network') +
         '/getEffectiveFirewalls';
 
     final _response = await _requester.request(
@@ -18822,9 +18812,8 @@ class NetworksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
-        '/global/networks';
+    final _url =
+        'projects/' + commons.escapeVariable('$project') + '/global/networks';
 
     final _response = await _requester.request(
       _url,
@@ -18920,9 +18909,8 @@ class NetworksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
-        '/global/networks';
+    final _url =
+        'projects/' + commons.escapeVariable('$project') + '/global/networks';
 
     final _response = await _requester.request(
       _url,
@@ -19040,9 +19028,9 @@ class NetworksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/networks/' +
-        commons.Escaper.ecapeVariable('$network') +
+        commons.escapeVariable('$network') +
         '/listPeeringRoutes';
 
     final _response = await _requester.request(
@@ -19107,9 +19095,9 @@ class NetworksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/networks/' +
-        commons.Escaper.ecapeVariable('$network');
+        commons.escapeVariable('$network');
 
     final _response = await _requester.request(
       _url,
@@ -19171,9 +19159,9 @@ class NetworksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/networks/' +
-        commons.Escaper.ecapeVariable('$network') +
+        commons.escapeVariable('$network') +
         '/removePeering';
 
     final _response = await _requester.request(
@@ -19232,9 +19220,9 @@ class NetworksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/networks/' +
-        commons.Escaper.ecapeVariable('$network') +
+        commons.escapeVariable('$network') +
         '/switchToCustomMode';
 
     final _response = await _requester.request(
@@ -19300,9 +19288,9 @@ class NetworksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/networks/' +
-        commons.Escaper.ecapeVariable('$network') +
+        commons.escapeVariable('$network') +
         '/updatePeering';
 
     final _response = await _requester.request(
@@ -19375,11 +19363,11 @@ class NodeGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/nodeGroups/' +
-        commons.Escaper.ecapeVariable('$nodeGroup') +
+        commons.escapeVariable('$nodeGroup') +
         '/addNodes';
 
     final _response = await _requester.request(
@@ -19489,7 +19477,7 @@ class NodeGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/aggregated/nodeGroups';
 
     final _response = await _requester.request(
@@ -19552,11 +19540,11 @@ class NodeGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/nodeGroups/' +
-        commons.Escaper.ecapeVariable('$nodeGroup');
+        commons.escapeVariable('$nodeGroup');
 
     final _response = await _requester.request(
       _url,
@@ -19621,11 +19609,11 @@ class NodeGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/nodeGroups/' +
-        commons.Escaper.ecapeVariable('$nodeGroup') +
+        commons.escapeVariable('$nodeGroup') +
         '/deleteNodes';
 
     final _response = await _requester.request(
@@ -19676,11 +19664,11 @@ class NodeGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/nodeGroups/' +
-        commons.Escaper.ecapeVariable('$nodeGroup');
+        commons.escapeVariable('$nodeGroup');
 
     final _response = await _requester.request(
       _url,
@@ -19733,11 +19721,11 @@ class NodeGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/nodeGroups/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/getIamPolicy';
 
     final _response = await _requester.request(
@@ -19803,9 +19791,9 @@ class NodeGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/nodeGroups';
 
     final _response = await _requester.request(
@@ -19909,9 +19897,9 @@ class NodeGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/nodeGroups';
 
     final _response = await _requester.request(
@@ -20018,11 +20006,11 @@ class NodeGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/nodeGroups/' +
-        commons.Escaper.ecapeVariable('$nodeGroup') +
+        commons.escapeVariable('$nodeGroup') +
         '/listNodes';
 
     final _response = await _requester.request(
@@ -20089,11 +20077,11 @@ class NodeGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/nodeGroups/' +
-        commons.Escaper.ecapeVariable('$nodeGroup');
+        commons.escapeVariable('$nodeGroup');
 
     final _response = await _requester.request(
       _url,
@@ -20146,11 +20134,11 @@ class NodeGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/nodeGroups/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/setIamPolicy';
 
     final _response = await _requester.request(
@@ -20217,11 +20205,11 @@ class NodeGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/nodeGroups/' +
-        commons.Escaper.ecapeVariable('$nodeGroup') +
+        commons.escapeVariable('$nodeGroup') +
         '/setNodeTemplate';
 
     final _response = await _requester.request(
@@ -20273,11 +20261,11 @@ class NodeGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/nodeGroups/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/testIamPermissions';
 
     final _response = await _requester.request(
@@ -20392,7 +20380,7 @@ class NodeTemplatesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/aggregated/nodeTemplates';
 
     final _response = await _requester.request(
@@ -20455,11 +20443,11 @@ class NodeTemplatesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/nodeTemplates/' +
-        commons.Escaper.ecapeVariable('$nodeTemplate');
+        commons.escapeVariable('$nodeTemplate');
 
     final _response = await _requester.request(
       _url,
@@ -20507,11 +20495,11 @@ class NodeTemplatesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/nodeTemplates/' +
-        commons.Escaper.ecapeVariable('$nodeTemplate');
+        commons.escapeVariable('$nodeTemplate');
 
     final _response = await _requester.request(
       _url,
@@ -20565,11 +20553,11 @@ class NodeTemplatesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/nodeTemplates/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/getIamPolicy';
 
     final _response = await _requester.request(
@@ -20631,9 +20619,9 @@ class NodeTemplatesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/nodeTemplates';
 
     final _response = await _requester.request(
@@ -20735,9 +20723,9 @@ class NodeTemplatesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/nodeTemplates';
 
     final _response = await _requester.request(
@@ -20791,11 +20779,11 @@ class NodeTemplatesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/nodeTemplates/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/setIamPolicy';
 
     final _response = await _requester.request(
@@ -20847,11 +20835,11 @@ class NodeTemplatesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/nodeTemplates/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/testIamPermissions';
 
     final _response = await _requester.request(
@@ -20966,7 +20954,7 @@ class NodeTypesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/aggregated/nodeTypes';
 
     final _response = await _requester.request(
@@ -21016,11 +21004,11 @@ class NodeTypesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/nodeTypes/' +
-        commons.Escaper.ecapeVariable('$nodeType');
+        commons.escapeVariable('$nodeType');
 
     final _response = await _requester.request(
       _url,
@@ -21120,9 +21108,9 @@ class NodeTypesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/nodeTypes';
 
     final _response = await _requester.request(
@@ -21236,7 +21224,7 @@ class PacketMirroringsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/aggregated/packetMirrorings';
 
     final _response = await _requester.request(
@@ -21299,11 +21287,11 @@ class PacketMirroringsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/packetMirrorings/' +
-        commons.Escaper.ecapeVariable('$packetMirroring');
+        commons.escapeVariable('$packetMirroring');
 
     final _response = await _requester.request(
       _url,
@@ -21349,11 +21337,11 @@ class PacketMirroringsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/packetMirrorings/' +
-        commons.Escaper.ecapeVariable('$packetMirroring');
+        commons.escapeVariable('$packetMirroring');
 
     final _response = await _requester.request(
       _url,
@@ -21415,9 +21403,9 @@ class PacketMirroringsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/packetMirrorings';
 
     final _response = await _requester.request(
@@ -21520,9 +21508,9 @@ class PacketMirroringsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/packetMirrorings';
 
     final _response = await _requester.request(
@@ -21593,11 +21581,11 @@ class PacketMirroringsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/packetMirrorings/' +
-        commons.Escaper.ecapeVariable('$packetMirroring');
+        commons.escapeVariable('$packetMirroring');
 
     final _response = await _requester.request(
       _url,
@@ -21648,11 +21636,11 @@ class PacketMirroringsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/packetMirrorings/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/testIamPermissions';
 
     final _response = await _requester.request(
@@ -21712,9 +21700,8 @@ class ProjectsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
-        '/disableXpnHost';
+    final _url =
+        'projects/' + commons.escapeVariable('$project') + '/disableXpnHost';
 
     final _response = await _requester.request(
       _url,
@@ -21771,7 +21758,7 @@ class ProjectsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/disableXpnResource';
 
     final _response = await _requester.request(
@@ -21824,9 +21811,8 @@ class ProjectsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
-        '/enableXpnHost';
+    final _url =
+        'projects/' + commons.escapeVariable('$project') + '/enableXpnHost';
 
     final _response = await _requester.request(
       _url,
@@ -21883,9 +21869,8 @@ class ProjectsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
-        '/enableXpnResource';
+    final _url =
+        'projects/' + commons.escapeVariable('$project') + '/enableXpnResource';
 
     final _response = await _requester.request(
       _url,
@@ -21922,7 +21907,7 @@ class ProjectsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'projects/' + commons.Escaper.ecapeVariable('$project');
+    final _url = 'projects/' + commons.escapeVariable('$project');
 
     final _response = await _requester.request(
       _url,
@@ -21961,7 +21946,7 @@ class ProjectsResource {
     };
 
     final _url =
-        'projects/' + commons.Escaper.ecapeVariable('$project') + '/getXpnHost';
+        'projects/' + commons.escapeVariable('$project') + '/getXpnHost';
 
     final _response = await _requester.request(
       _url,
@@ -22057,9 +22042,8 @@ class ProjectsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
-        '/getXpnResources';
+    final _url =
+        'projects/' + commons.escapeVariable('$project') + '/getXpnResources';
 
     final _response = await _requester.request(
       _url,
@@ -22159,9 +22143,8 @@ class ProjectsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
-        '/listXpnHosts';
+    final _url =
+        'projects/' + commons.escapeVariable('$project') + '/listXpnHosts';
 
     final _response = await _requester.request(
       _url,
@@ -22218,8 +22201,7 @@ class ProjectsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'projects/' + commons.Escaper.ecapeVariable('$project') + '/moveDisk';
+    final _url = 'projects/' + commons.escapeVariable('$project') + '/moveDisk';
 
     final _response = await _requester.request(
       _url,
@@ -22276,9 +22258,8 @@ class ProjectsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
-        '/moveInstance';
+    final _url =
+        'projects/' + commons.escapeVariable('$project') + '/moveInstance';
 
     final _response = await _requester.request(
       _url,
@@ -22336,7 +22317,7 @@ class ProjectsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/setCommonInstanceMetadata';
 
     final _response = await _requester.request(
@@ -22397,7 +22378,7 @@ class ProjectsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/setDefaultNetworkTier';
 
     final _response = await _requester.request(
@@ -22459,7 +22440,7 @@ class ProjectsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/setUsageExportBucket';
 
     final _response = await _requester.request(
@@ -22528,11 +22509,11 @@ class RegionAutoscalersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/autoscalers/' +
-        commons.Escaper.ecapeVariable('$autoscaler');
+        commons.escapeVariable('$autoscaler');
 
     final _response = await _requester.request(
       _url,
@@ -22578,11 +22559,11 @@ class RegionAutoscalersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/autoscalers/' +
-        commons.Escaper.ecapeVariable('$autoscaler');
+        commons.escapeVariable('$autoscaler');
 
     final _response = await _requester.request(
       _url,
@@ -22644,9 +22625,9 @@ class RegionAutoscalersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/autoscalers';
 
     final _response = await _requester.request(
@@ -22748,9 +22729,9 @@ class RegionAutoscalersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/autoscalers';
 
     final _response = await _requester.request(
@@ -22822,9 +22803,9 @@ class RegionAutoscalersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/autoscalers';
 
     final _response = await _requester.request(
@@ -22893,9 +22874,9 @@ class RegionAutoscalersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/autoscalers';
 
     final _response = await _requester.request(
@@ -22965,11 +22946,11 @@ class RegionBackendServicesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/backendServices/' +
-        commons.Escaper.ecapeVariable('$backendService');
+        commons.escapeVariable('$backendService');
 
     final _response = await _requester.request(
       _url,
@@ -23015,11 +22996,11 @@ class RegionBackendServicesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/backendServices/' +
-        commons.Escaper.ecapeVariable('$backendService');
+        commons.escapeVariable('$backendService');
 
     final _response = await _requester.request(
       _url,
@@ -23072,11 +23053,11 @@ class RegionBackendServicesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/backendServices/' +
-        commons.Escaper.ecapeVariable('$backendService') +
+        commons.escapeVariable('$backendService') +
         '/getHealth';
 
     final _response = await _requester.request(
@@ -23142,9 +23123,9 @@ class RegionBackendServicesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/backendServices';
 
     final _response = await _requester.request(
@@ -23247,9 +23228,9 @@ class RegionBackendServicesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/backendServices';
 
     final _response = await _requester.request(
@@ -23321,11 +23302,11 @@ class RegionBackendServicesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/backendServices/' +
-        commons.Escaper.ecapeVariable('$backendService');
+        commons.escapeVariable('$backendService');
 
     final _response = await _requester.request(
       _url,
@@ -23394,11 +23375,11 @@ class RegionBackendServicesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/backendServices/' +
-        commons.Escaper.ecapeVariable('$backendService');
+        commons.escapeVariable('$backendService');
 
     final _response = await _requester.request(
       _url,
@@ -23511,7 +23492,7 @@ class RegionCommitmentsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/aggregated/commitments';
 
     final _response = await _requester.request(
@@ -23561,11 +23542,11 @@ class RegionCommitmentsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/commitments/' +
-        commons.Escaper.ecapeVariable('$commitment');
+        commons.escapeVariable('$commitment');
 
     final _response = await _requester.request(
       _url,
@@ -23627,9 +23608,9 @@ class RegionCommitmentsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/commitments';
 
     final _response = await _requester.request(
@@ -23731,9 +23712,9 @@ class RegionCommitmentsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/commitments';
 
     final _response = await _requester.request(
@@ -23789,11 +23770,11 @@ class RegionDiskTypesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/diskTypes/' +
-        commons.Escaper.ecapeVariable('$diskType');
+        commons.escapeVariable('$diskType');
 
     final _response = await _requester.request(
       _url,
@@ -23894,9 +23875,9 @@ class RegionDiskTypesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/diskTypes';
 
     final _response = await _requester.request(
@@ -23972,11 +23953,11 @@ class RegionDisksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/disks/' +
-        commons.Escaper.ecapeVariable('$disk') +
+        commons.escapeVariable('$disk') +
         '/addResourcePolicies';
 
     final _response = await _requester.request(
@@ -24043,11 +24024,11 @@ class RegionDisksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/disks/' +
-        commons.Escaper.ecapeVariable('$disk') +
+        commons.escapeVariable('$disk') +
         '/createSnapshot';
 
     final _response = await _requester.request(
@@ -24113,11 +24094,11 @@ class RegionDisksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/disks/' +
-        commons.Escaper.ecapeVariable('$disk');
+        commons.escapeVariable('$disk');
 
     final _response = await _requester.request(
       _url,
@@ -24163,11 +24144,11 @@ class RegionDisksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/disks/' +
-        commons.Escaper.ecapeVariable('$disk');
+        commons.escapeVariable('$disk');
 
     final _response = await _requester.request(
       _url,
@@ -24220,11 +24201,11 @@ class RegionDisksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/disks/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/getIamPolicy';
 
     final _response = await _requester.request(
@@ -24291,9 +24272,9 @@ class RegionDisksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/disks';
 
     final _response = await _requester.request(
@@ -24396,9 +24377,9 @@ class RegionDisksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/disks';
 
     final _response = await _requester.request(
@@ -24464,11 +24445,11 @@ class RegionDisksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/disks/' +
-        commons.Escaper.ecapeVariable('$disk') +
+        commons.escapeVariable('$disk') +
         '/removeResourcePolicies';
 
     final _response = await _requester.request(
@@ -24535,11 +24516,11 @@ class RegionDisksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/disks/' +
-        commons.Escaper.ecapeVariable('$disk') +
+        commons.escapeVariable('$disk') +
         '/resize';
 
     final _response = await _requester.request(
@@ -24593,11 +24574,11 @@ class RegionDisksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/disks/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/setIamPolicy';
 
     final _response = await _requester.request(
@@ -24664,11 +24645,11 @@ class RegionDisksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/disks/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/setLabels';
 
     final _response = await _requester.request(
@@ -24720,11 +24701,11 @@ class RegionDisksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/disks/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/testIamPermissions';
 
     final _response = await _requester.request(
@@ -24794,11 +24775,11 @@ class RegionHealthCheckServicesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/healthCheckServices/' +
-        commons.Escaper.ecapeVariable('$healthCheckService');
+        commons.escapeVariable('$healthCheckService');
 
     final _response = await _requester.request(
       _url,
@@ -24843,11 +24824,11 @@ class RegionHealthCheckServicesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/healthCheckServices/' +
-        commons.Escaper.ecapeVariable('$healthCheckService');
+        commons.escapeVariable('$healthCheckService');
 
     final _response = await _requester.request(
       _url,
@@ -24909,9 +24890,9 @@ class RegionHealthCheckServicesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/healthCheckServices';
 
     final _response = await _requester.request(
@@ -25014,9 +24995,9 @@ class RegionHealthCheckServicesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/healthCheckServices';
 
     final _response = await _requester.request(
@@ -25086,11 +25067,11 @@ class RegionHealthCheckServicesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/healthCheckServices/' +
-        commons.Escaper.ecapeVariable('$healthCheckService');
+        commons.escapeVariable('$healthCheckService');
 
     final _response = await _requester.request(
       _url,
@@ -25158,11 +25139,11 @@ class RegionHealthChecksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/healthChecks/' +
-        commons.Escaper.ecapeVariable('$healthCheck');
+        commons.escapeVariable('$healthCheck');
 
     final _response = await _requester.request(
       _url,
@@ -25210,11 +25191,11 @@ class RegionHealthChecksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/healthChecks/' +
-        commons.Escaper.ecapeVariable('$healthCheck');
+        commons.escapeVariable('$healthCheck');
 
     final _response = await _requester.request(
       _url,
@@ -25276,9 +25257,9 @@ class RegionHealthChecksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/healthChecks';
 
     final _response = await _requester.request(
@@ -25381,9 +25362,9 @@ class RegionHealthChecksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/healthChecks';
 
     final _response = await _requester.request(
@@ -25454,11 +25435,11 @@ class RegionHealthChecksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/healthChecks/' +
-        commons.Escaper.ecapeVariable('$healthCheck');
+        commons.escapeVariable('$healthCheck');
 
     final _response = await _requester.request(
       _url,
@@ -25525,11 +25506,11 @@ class RegionHealthChecksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/healthChecks/' +
-        commons.Escaper.ecapeVariable('$healthCheck');
+        commons.escapeVariable('$healthCheck');
 
     final _response = await _requester.request(
       _url,
@@ -25614,11 +25595,11 @@ class RegionInstanceGroupManagersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/instanceGroupManagers/' +
-        commons.Escaper.ecapeVariable('$instanceGroupManager') +
+        commons.escapeVariable('$instanceGroupManager') +
         '/abandonInstances';
 
     final _response = await _requester.request(
@@ -25669,11 +25650,11 @@ class RegionInstanceGroupManagersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/instanceGroupManagers/' +
-        commons.Escaper.ecapeVariable('$instanceGroupManager') +
+        commons.escapeVariable('$instanceGroupManager') +
         '/applyUpdatesToInstances';
 
     final _response = await _requester.request(
@@ -25745,11 +25726,11 @@ class RegionInstanceGroupManagersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/instanceGroupManagers/' +
-        commons.Escaper.ecapeVariable('$instanceGroupManager') +
+        commons.escapeVariable('$instanceGroupManager') +
         '/createInstances';
 
     final _response = await _requester.request(
@@ -25810,11 +25791,11 @@ class RegionInstanceGroupManagersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/instanceGroupManagers/' +
-        commons.Escaper.ecapeVariable('$instanceGroupManager');
+        commons.escapeVariable('$instanceGroupManager');
 
     final _response = await _requester.request(
       _url,
@@ -25890,11 +25871,11 @@ class RegionInstanceGroupManagersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/instanceGroupManagers/' +
-        commons.Escaper.ecapeVariable('$instanceGroupManager') +
+        commons.escapeVariable('$instanceGroupManager') +
         '/deleteInstances';
 
     final _response = await _requester.request(
@@ -25945,11 +25926,11 @@ class RegionInstanceGroupManagersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/instanceGroupManagers/' +
-        commons.Escaper.ecapeVariable('$instanceGroupManager') +
+        commons.escapeVariable('$instanceGroupManager') +
         '/deletePerInstanceConfigs';
 
     final _response = await _requester.request(
@@ -25994,11 +25975,11 @@ class RegionInstanceGroupManagersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/instanceGroupManagers/' +
-        commons.Escaper.ecapeVariable('$instanceGroupManager');
+        commons.escapeVariable('$instanceGroupManager');
 
     final _response = await _requester.request(
       _url,
@@ -26067,9 +26048,9 @@ class RegionInstanceGroupManagersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/instanceGroupManagers';
 
     final _response = await _requester.request(
@@ -26171,9 +26152,9 @@ class RegionInstanceGroupManagersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/instanceGroupManagers';
 
     final _response = await _requester.request(
@@ -26284,11 +26265,11 @@ class RegionInstanceGroupManagersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/instanceGroupManagers/' +
-        commons.Escaper.ecapeVariable('$instanceGroupManager') +
+        commons.escapeVariable('$instanceGroupManager') +
         '/listErrors';
 
     final _response = await _requester.request(
@@ -26397,11 +26378,11 @@ class RegionInstanceGroupManagersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/instanceGroupManagers/' +
-        commons.Escaper.ecapeVariable('$instanceGroupManager') +
+        commons.escapeVariable('$instanceGroupManager') +
         '/listManagedInstances';
 
     final _response = await _requester.request(
@@ -26511,11 +26492,11 @@ class RegionInstanceGroupManagersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/instanceGroupManagers/' +
-        commons.Escaper.ecapeVariable('$instanceGroupManager') +
+        commons.escapeVariable('$instanceGroupManager') +
         '/listPerInstanceConfigs';
 
     final _response = await _requester.request(
@@ -26586,11 +26567,11 @@ class RegionInstanceGroupManagersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/instanceGroupManagers/' +
-        commons.Escaper.ecapeVariable('$instanceGroupManager');
+        commons.escapeVariable('$instanceGroupManager');
 
     final _response = await _requester.request(
       _url,
@@ -26658,11 +26639,11 @@ class RegionInstanceGroupManagersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/instanceGroupManagers/' +
-        commons.Escaper.ecapeVariable('$instanceGroupManager') +
+        commons.escapeVariable('$instanceGroupManager') +
         '/patchPerInstanceConfigs';
 
     final _response = await _requester.request(
@@ -26739,11 +26720,11 @@ class RegionInstanceGroupManagersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/instanceGroupManagers/' +
-        commons.Escaper.ecapeVariable('$instanceGroupManager') +
+        commons.escapeVariable('$instanceGroupManager') +
         '/recreateInstances';
 
     final _response = await _requester.request(
@@ -26821,11 +26802,11 @@ class RegionInstanceGroupManagersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/instanceGroupManagers/' +
-        commons.Escaper.ecapeVariable('$instanceGroupManager') +
+        commons.escapeVariable('$instanceGroupManager') +
         '/resize';
 
     final _response = await _requester.request(
@@ -26891,11 +26872,11 @@ class RegionInstanceGroupManagersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/instanceGroupManagers/' +
-        commons.Escaper.ecapeVariable('$instanceGroupManager') +
+        commons.escapeVariable('$instanceGroupManager') +
         '/setInstanceTemplate';
 
     final _response = await _requester.request(
@@ -26962,11 +26943,11 @@ class RegionInstanceGroupManagersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/instanceGroupManagers/' +
-        commons.Escaper.ecapeVariable('$instanceGroupManager') +
+        commons.escapeVariable('$instanceGroupManager') +
         '/setTargetPools';
 
     final _response = await _requester.request(
@@ -27035,11 +27016,11 @@ class RegionInstanceGroupManagersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/instanceGroupManagers/' +
-        commons.Escaper.ecapeVariable('$instanceGroupManager') +
+        commons.escapeVariable('$instanceGroupManager') +
         '/updatePerInstanceConfigs';
 
     final _response = await _requester.request(
@@ -27091,11 +27072,11 @@ class RegionInstanceGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/instanceGroups/' +
-        commons.Escaper.ecapeVariable('$instanceGroup');
+        commons.escapeVariable('$instanceGroup');
 
     final _response = await _requester.request(
       _url,
@@ -27196,9 +27177,9 @@ class RegionInstanceGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/instanceGroups';
 
     final _response = await _requester.request(
@@ -27312,11 +27293,11 @@ class RegionInstanceGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/instanceGroups/' +
-        commons.Escaper.ecapeVariable('$instanceGroup') +
+        commons.escapeVariable('$instanceGroup') +
         '/listInstances';
 
     final _response = await _requester.request(
@@ -27382,11 +27363,11 @@ class RegionInstanceGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/instanceGroups/' +
-        commons.Escaper.ecapeVariable('$instanceGroup') +
+        commons.escapeVariable('$instanceGroup') +
         '/setNamedPorts';
 
     final _response = await _requester.request(
@@ -27456,9 +27437,9 @@ class RegionInstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/instances/bulkInsert';
 
     final _response = await _requester.request(
@@ -27530,11 +27511,11 @@ class RegionNetworkEndpointGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/networkEndpointGroups/' +
-        commons.Escaper.ecapeVariable('$networkEndpointGroup');
+        commons.escapeVariable('$networkEndpointGroup');
 
     final _response = await _requester.request(
       _url,
@@ -27582,11 +27563,11 @@ class RegionNetworkEndpointGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/networkEndpointGroups/' +
-        commons.Escaper.ecapeVariable('$networkEndpointGroup');
+        commons.escapeVariable('$networkEndpointGroup');
 
     final _response = await _requester.request(
       _url,
@@ -27648,9 +27629,9 @@ class RegionNetworkEndpointGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/networkEndpointGroups';
 
     final _response = await _requester.request(
@@ -27753,9 +27734,9 @@ class RegionNetworkEndpointGroupsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/networkEndpointGroups';
 
     final _response = await _requester.request(
@@ -27826,11 +27807,11 @@ class RegionNotificationEndpointsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/notificationEndpoints/' +
-        commons.Escaper.ecapeVariable('$notificationEndpoint');
+        commons.escapeVariable('$notificationEndpoint');
 
     final _response = await _requester.request(
       _url,
@@ -27877,11 +27858,11 @@ class RegionNotificationEndpointsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/notificationEndpoints/' +
-        commons.Escaper.ecapeVariable('$notificationEndpoint');
+        commons.escapeVariable('$notificationEndpoint');
 
     final _response = await _requester.request(
       _url,
@@ -27943,9 +27924,9 @@ class RegionNotificationEndpointsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/notificationEndpoints';
 
     final _response = await _requester.request(
@@ -28047,9 +28028,9 @@ class RegionNotificationEndpointsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/notificationEndpoints';
 
     final _response = await _requester.request(
@@ -28101,11 +28082,11 @@ class RegionOperationsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/operations/' +
-        commons.Escaper.ecapeVariable('$operation');
+        commons.escapeVariable('$operation');
 
     await _requester.request(
       _url,
@@ -28151,11 +28132,11 @@ class RegionOperationsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/operations/' +
-        commons.Escaper.ecapeVariable('$operation');
+        commons.escapeVariable('$operation');
 
     final _response = await _requester.request(
       _url,
@@ -28256,9 +28237,9 @@ class RegionOperationsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/operations';
 
     final _response = await _requester.request(
@@ -28320,11 +28301,11 @@ class RegionOperationsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/operations/' +
-        commons.Escaper.ecapeVariable('$operation') +
+        commons.escapeVariable('$operation') +
         '/wait';
 
     final _response = await _requester.request(
@@ -28393,11 +28374,11 @@ class RegionSslCertificatesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/sslCertificates/' +
-        commons.Escaper.ecapeVariable('$sslCertificate');
+        commons.escapeVariable('$sslCertificate');
 
     final _response = await _requester.request(
       _url,
@@ -28445,11 +28426,11 @@ class RegionSslCertificatesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/sslCertificates/' +
-        commons.Escaper.ecapeVariable('$sslCertificate');
+        commons.escapeVariable('$sslCertificate');
 
     final _response = await _requester.request(
       _url,
@@ -28511,9 +28492,9 @@ class RegionSslCertificatesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/sslCertificates';
 
     final _response = await _requester.request(
@@ -28616,9 +28597,9 @@ class RegionSslCertificatesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/sslCertificates';
 
     final _response = await _requester.request(
@@ -28688,11 +28669,11 @@ class RegionTargetHttpProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/targetHttpProxies/' +
-        commons.Escaper.ecapeVariable('$targetHttpProxy');
+        commons.escapeVariable('$targetHttpProxy');
 
     final _response = await _requester.request(
       _url,
@@ -28740,11 +28721,11 @@ class RegionTargetHttpProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/targetHttpProxies/' +
-        commons.Escaper.ecapeVariable('$targetHttpProxy');
+        commons.escapeVariable('$targetHttpProxy');
 
     final _response = await _requester.request(
       _url,
@@ -28806,9 +28787,9 @@ class RegionTargetHttpProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/targetHttpProxies';
 
     final _response = await _requester.request(
@@ -28911,9 +28892,9 @@ class RegionTargetHttpProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/targetHttpProxies';
 
     final _response = await _requester.request(
@@ -28980,11 +28961,11 @@ class RegionTargetHttpProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/targetHttpProxies/' +
-        commons.Escaper.ecapeVariable('$targetHttpProxy') +
+        commons.escapeVariable('$targetHttpProxy') +
         '/setUrlMap';
 
     final _response = await _requester.request(
@@ -29054,11 +29035,11 @@ class RegionTargetHttpsProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/targetHttpsProxies/' +
-        commons.Escaper.ecapeVariable('$targetHttpsProxy');
+        commons.escapeVariable('$targetHttpsProxy');
 
     final _response = await _requester.request(
       _url,
@@ -29106,11 +29087,11 @@ class RegionTargetHttpsProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/targetHttpsProxies/' +
-        commons.Escaper.ecapeVariable('$targetHttpsProxy');
+        commons.escapeVariable('$targetHttpsProxy');
 
     final _response = await _requester.request(
       _url,
@@ -29172,9 +29153,9 @@ class RegionTargetHttpsProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/targetHttpsProxies';
 
     final _response = await _requester.request(
@@ -29277,9 +29258,9 @@ class RegionTargetHttpsProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/targetHttpsProxies';
 
     final _response = await _requester.request(
@@ -29347,11 +29328,11 @@ class RegionTargetHttpsProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/targetHttpsProxies/' +
-        commons.Escaper.ecapeVariable('$targetHttpsProxy') +
+        commons.escapeVariable('$targetHttpsProxy') +
         '/setSslCertificates';
 
     final _response = await _requester.request(
@@ -29418,11 +29399,11 @@ class RegionTargetHttpsProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/targetHttpsProxies/' +
-        commons.Escaper.ecapeVariable('$targetHttpsProxy') +
+        commons.escapeVariable('$targetHttpsProxy') +
         '/setUrlMap';
 
     final _response = await _requester.request(
@@ -29481,11 +29462,11 @@ class RegionUrlMapsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/urlMaps/' +
-        commons.Escaper.ecapeVariable('$urlMap');
+        commons.escapeVariable('$urlMap');
 
     final _response = await _requester.request(
       _url,
@@ -29533,11 +29514,11 @@ class RegionUrlMapsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/urlMaps/' +
-        commons.Escaper.ecapeVariable('$urlMap');
+        commons.escapeVariable('$urlMap');
 
     final _response = await _requester.request(
       _url,
@@ -29588,9 +29569,9 @@ class RegionUrlMapsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/urlMaps';
 
     final _response = await _requester.request(
@@ -29693,9 +29674,9 @@ class RegionUrlMapsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/urlMaps';
 
     final _response = await _requester.request(
@@ -29756,11 +29737,11 @@ class RegionUrlMapsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/urlMaps/' +
-        commons.Escaper.ecapeVariable('$urlMap');
+        commons.escapeVariable('$urlMap');
 
     final _response = await _requester.request(
       _url,
@@ -29817,11 +29798,11 @@ class RegionUrlMapsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/urlMaps/' +
-        commons.Escaper.ecapeVariable('$urlMap');
+        commons.escapeVariable('$urlMap');
 
     final _response = await _requester.request(
       _url,
@@ -29875,11 +29856,11 @@ class RegionUrlMapsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/urlMaps/' +
-        commons.Escaper.ecapeVariable('$urlMap') +
+        commons.escapeVariable('$urlMap') +
         '/validate';
 
     final _response = await _requester.request(
@@ -29932,9 +29913,9 @@ class RegionsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region');
+        commons.escapeVariable('$region');
 
     final _response = await _requester.request(
       _url,
@@ -30029,8 +30010,7 @@ class RegionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'projects/' + commons.Escaper.ecapeVariable('$project') + '/regions';
+    final _url = 'projects/' + commons.escapeVariable('$project') + '/regions';
 
     final _response = await _requester.request(
       _url,
@@ -30143,7 +30123,7 @@ class ReservationsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/aggregated/reservations';
 
     final _response = await _requester.request(
@@ -30206,11 +30186,11 @@ class ReservationsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/reservations/' +
-        commons.Escaper.ecapeVariable('$reservation');
+        commons.escapeVariable('$reservation');
 
     final _response = await _requester.request(
       _url,
@@ -30256,11 +30236,11 @@ class ReservationsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/reservations/' +
-        commons.Escaper.ecapeVariable('$reservation');
+        commons.escapeVariable('$reservation');
 
     final _response = await _requester.request(
       _url,
@@ -30314,11 +30294,11 @@ class ReservationsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/reservations/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/getIamPolicy';
 
     final _response = await _requester.request(
@@ -30381,9 +30361,9 @@ class ReservationsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/reservations';
 
     final _response = await _requester.request(
@@ -30486,9 +30466,9 @@ class ReservationsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/reservations';
 
     final _response = await _requester.request(
@@ -30556,11 +30536,11 @@ class ReservationsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/reservations/' +
-        commons.Escaper.ecapeVariable('$reservation') +
+        commons.escapeVariable('$reservation') +
         '/resize';
 
     final _response = await _requester.request(
@@ -30614,11 +30594,11 @@ class ReservationsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/reservations/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/setIamPolicy';
 
     final _response = await _requester.request(
@@ -30670,11 +30650,11 @@ class ReservationsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/reservations/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/testIamPermissions';
 
     final _response = await _requester.request(
@@ -30789,7 +30769,7 @@ class ResourcePoliciesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/aggregated/resourcePolicies';
 
     final _response = await _requester.request(
@@ -30852,11 +30832,11 @@ class ResourcePoliciesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/resourcePolicies/' +
-        commons.Escaper.ecapeVariable('$resourcePolicy');
+        commons.escapeVariable('$resourcePolicy');
 
     final _response = await _requester.request(
       _url,
@@ -30902,11 +30882,11 @@ class ResourcePoliciesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/resourcePolicies/' +
-        commons.Escaper.ecapeVariable('$resourcePolicy');
+        commons.escapeVariable('$resourcePolicy');
 
     final _response = await _requester.request(
       _url,
@@ -30960,11 +30940,11 @@ class ResourcePoliciesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/resourcePolicies/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/getIamPolicy';
 
     final _response = await _requester.request(
@@ -31025,9 +31005,9 @@ class ResourcePoliciesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/resourcePolicies';
 
     final _response = await _requester.request(
@@ -31130,9 +31110,9 @@ class ResourcePoliciesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/resourcePolicies';
 
     final _response = await _requester.request(
@@ -31186,11 +31166,11 @@ class ResourcePoliciesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/resourcePolicies/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/setIamPolicy';
 
     final _response = await _requester.request(
@@ -31242,11 +31222,11 @@ class ResourcePoliciesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/resourcePolicies/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/testIamPermissions';
 
     final _response = await _requester.request(
@@ -31361,7 +31341,7 @@ class RoutersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/aggregated/routers';
 
     final _response = await _requester.request(
@@ -31424,11 +31404,11 @@ class RoutersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/routers/' +
-        commons.Escaper.ecapeVariable('$router');
+        commons.escapeVariable('$router');
 
     final _response = await _requester.request(
       _url,
@@ -31476,11 +31456,11 @@ class RoutersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/routers/' +
-        commons.Escaper.ecapeVariable('$router');
+        commons.escapeVariable('$router');
 
     final _response = await _requester.request(
       _url,
@@ -31586,11 +31566,11 @@ class RoutersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/routers/' +
-        commons.Escaper.ecapeVariable('$router') +
+        commons.escapeVariable('$router') +
         '/getNatMappingInfo';
 
     final _response = await _requester.request(
@@ -31638,11 +31618,11 @@ class RoutersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/routers/' +
-        commons.Escaper.ecapeVariable('$router') +
+        commons.escapeVariable('$router') +
         '/getRouterStatus';
 
     final _response = await _requester.request(
@@ -31705,9 +31685,9 @@ class RoutersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/routers';
 
     final _response = await _requester.request(
@@ -31809,9 +31789,9 @@ class RoutersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/routers';
 
     final _response = await _requester.request(
@@ -31882,11 +31862,11 @@ class RoutersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/routers/' +
-        commons.Escaper.ecapeVariable('$router');
+        commons.escapeVariable('$router');
 
     final _response = await _requester.request(
       _url,
@@ -31939,11 +31919,11 @@ class RoutersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/routers/' +
-        commons.Escaper.ecapeVariable('$router') +
+        commons.escapeVariable('$router') +
         '/preview';
 
     final _response = await _requester.request(
@@ -32016,11 +31996,11 @@ class RoutersResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/routers/' +
-        commons.Escaper.ecapeVariable('$router');
+        commons.escapeVariable('$router');
 
     final _response = await _requester.request(
       _url,
@@ -32084,9 +32064,9 @@ class RoutesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/routes/' +
-        commons.Escaper.ecapeVariable('$route');
+        commons.escapeVariable('$route');
 
     final _response = await _requester.request(
       _url,
@@ -32130,9 +32110,9 @@ class RoutesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/routes/' +
-        commons.Escaper.ecapeVariable('$route');
+        commons.escapeVariable('$route');
 
     final _response = await _requester.request(
       _url,
@@ -32188,9 +32168,8 @@ class RoutesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
-        '/global/routes';
+    final _url =
+        'projects/' + commons.escapeVariable('$project') + '/global/routes';
 
     final _response = await _requester.request(
       _url,
@@ -32286,9 +32265,8 @@ class RoutesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
-        '/global/routes';
+    final _url =
+        'projects/' + commons.escapeVariable('$project') + '/global/routes';
 
     final _response = await _requester.request(
       _url,
@@ -32340,9 +32318,9 @@ class SecurityPoliciesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/securityPolicies/' +
-        commons.Escaper.ecapeVariable('$securityPolicy') +
+        commons.escapeVariable('$securityPolicy') +
         '/addRule';
 
     final _response = await _requester.request(
@@ -32401,9 +32379,9 @@ class SecurityPoliciesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/securityPolicies/' +
-        commons.Escaper.ecapeVariable('$securityPolicy');
+        commons.escapeVariable('$securityPolicy');
 
     final _response = await _requester.request(
       _url,
@@ -32445,9 +32423,9 @@ class SecurityPoliciesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/securityPolicies/' +
-        commons.Escaper.ecapeVariable('$securityPolicy');
+        commons.escapeVariable('$securityPolicy');
 
     final _response = await _requester.request(
       _url,
@@ -32495,9 +32473,9 @@ class SecurityPoliciesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/securityPolicies/' +
-        commons.Escaper.ecapeVariable('$securityPolicy') +
+        commons.escapeVariable('$securityPolicy') +
         '/getRule';
 
     final _response = await _requester.request(
@@ -32556,7 +32534,7 @@ class SecurityPoliciesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/securityPolicies';
 
     final _response = await _requester.request(
@@ -32654,7 +32632,7 @@ class SecurityPoliciesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/securityPolicies';
 
     final _response = await _requester.request(
@@ -32755,7 +32733,7 @@ class SecurityPoliciesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/securityPolicies/listPreconfiguredExpressionSets';
 
     final _response = await _requester.request(
@@ -32821,9 +32799,9 @@ class SecurityPoliciesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/securityPolicies/' +
-        commons.Escaper.ecapeVariable('$securityPolicy');
+        commons.escapeVariable('$securityPolicy');
 
     final _response = await _requester.request(
       _url,
@@ -32874,9 +32852,9 @@ class SecurityPoliciesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/securityPolicies/' +
-        commons.Escaper.ecapeVariable('$securityPolicy') +
+        commons.escapeVariable('$securityPolicy') +
         '/patchRule';
 
     final _response = await _requester.request(
@@ -32924,9 +32902,9 @@ class SecurityPoliciesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/securityPolicies/' +
-        commons.Escaper.ecapeVariable('$securityPolicy') +
+        commons.escapeVariable('$securityPolicy') +
         '/removeRule';
 
     final _response = await _requester.request(
@@ -32997,9 +32975,9 @@ class SnapshotsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/snapshots/' +
-        commons.Escaper.ecapeVariable('$snapshot');
+        commons.escapeVariable('$snapshot');
 
     final _response = await _requester.request(
       _url,
@@ -33043,9 +33021,9 @@ class SnapshotsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/snapshots/' +
-        commons.Escaper.ecapeVariable('$snapshot');
+        commons.escapeVariable('$snapshot');
 
     final _response = await _requester.request(
       _url,
@@ -33094,9 +33072,9 @@ class SnapshotsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/snapshots/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/getIamPolicy';
 
     final _response = await _requester.request(
@@ -33193,9 +33171,8 @@ class SnapshotsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
-        '/global/snapshots';
+    final _url =
+        'projects/' + commons.escapeVariable('$project') + '/global/snapshots';
 
     final _response = await _requester.request(
       _url,
@@ -33244,9 +33221,9 @@ class SnapshotsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/snapshots/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/setIamPolicy';
 
     final _response = await _requester.request(
@@ -33296,9 +33273,9 @@ class SnapshotsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/snapshots/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/setLabels';
 
     final _response = await _requester.request(
@@ -33346,9 +33323,9 @@ class SnapshotsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/snapshots/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/testIamPermissions';
 
     final _response = await _requester.request(
@@ -33464,7 +33441,7 @@ class SslCertificatesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/aggregated/sslCertificates';
 
     final _response = await _requester.request(
@@ -33523,9 +33500,9 @@ class SslCertificatesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/sslCertificates/' +
-        commons.Escaper.ecapeVariable('$sslCertificate');
+        commons.escapeVariable('$sslCertificate');
 
     final _response = await _requester.request(
       _url,
@@ -33569,9 +33546,9 @@ class SslCertificatesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/sslCertificates/' +
-        commons.Escaper.ecapeVariable('$sslCertificate');
+        commons.escapeVariable('$sslCertificate');
 
     final _response = await _requester.request(
       _url,
@@ -33629,7 +33606,7 @@ class SslCertificatesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/sslCertificates';
 
     final _response = await _requester.request(
@@ -33728,7 +33705,7 @@ class SslCertificatesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/sslCertificates';
 
     final _response = await _requester.request(
@@ -33795,9 +33772,9 @@ class SslPoliciesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/sslPolicies/' +
-        commons.Escaper.ecapeVariable('$sslPolicy');
+        commons.escapeVariable('$sslPolicy');
 
     final _response = await _requester.request(
       _url,
@@ -33838,9 +33815,9 @@ class SslPoliciesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/sslPolicies/' +
-        commons.Escaper.ecapeVariable('$sslPolicy');
+        commons.escapeVariable('$sslPolicy');
 
     final _response = await _requester.request(
       _url,
@@ -33898,7 +33875,7 @@ class SslPoliciesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/sslPolicies';
 
     final _response = await _requester.request(
@@ -33997,7 +33974,7 @@ class SslPoliciesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/sslPolicies';
 
     final _response = await _requester.request(
@@ -34096,7 +34073,7 @@ class SslPoliciesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/sslPolicies/listAvailableFeatures';
 
     final _response = await _requester.request(
@@ -34158,9 +34135,9 @@ class SslPoliciesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/sslPolicies/' +
-        commons.Escaper.ecapeVariable('$sslPolicy');
+        commons.escapeVariable('$sslPolicy');
 
     final _response = await _requester.request(
       _url,
@@ -34273,7 +34250,7 @@ class SubnetworksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/aggregated/subnetworks';
 
     final _response = await _requester.request(
@@ -34336,11 +34313,11 @@ class SubnetworksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/subnetworks/' +
-        commons.Escaper.ecapeVariable('$subnetwork');
+        commons.escapeVariable('$subnetwork');
 
     final _response = await _requester.request(
       _url,
@@ -34405,11 +34382,11 @@ class SubnetworksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/subnetworks/' +
-        commons.Escaper.ecapeVariable('$subnetwork') +
+        commons.escapeVariable('$subnetwork') +
         '/expandIpCidrRange';
 
     final _response = await _requester.request(
@@ -34459,11 +34436,11 @@ class SubnetworksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/subnetworks/' +
-        commons.Escaper.ecapeVariable('$subnetwork');
+        commons.escapeVariable('$subnetwork');
 
     final _response = await _requester.request(
       _url,
@@ -34517,11 +34494,11 @@ class SubnetworksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/subnetworks/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/getIamPolicy';
 
     final _response = await _requester.request(
@@ -34583,9 +34560,9 @@ class SubnetworksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/subnetworks';
 
     final _response = await _requester.request(
@@ -34687,9 +34664,9 @@ class SubnetworksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/subnetworks';
 
     final _response = await _requester.request(
@@ -34787,7 +34764,7 @@ class SubnetworksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/aggregated/subnetworks/listUsable';
 
     final _response = await _requester.request(
@@ -34870,11 +34847,11 @@ class SubnetworksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/subnetworks/' +
-        commons.Escaper.ecapeVariable('$subnetwork');
+        commons.escapeVariable('$subnetwork');
 
     final _response = await _requester.request(
       _url,
@@ -34927,11 +34904,11 @@ class SubnetworksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/subnetworks/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/setIamPolicy';
 
     final _response = await _requester.request(
@@ -34999,11 +34976,11 @@ class SubnetworksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/subnetworks/' +
-        commons.Escaper.ecapeVariable('$subnetwork') +
+        commons.escapeVariable('$subnetwork') +
         '/setPrivateIpGoogleAccess';
 
     final _response = await _requester.request(
@@ -35055,11 +35032,11 @@ class SubnetworksResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/subnetworks/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/testIamPermissions';
 
     final _response = await _requester.request(
@@ -35125,9 +35102,9 @@ class TargetGrpcProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/targetGrpcProxies/' +
-        commons.Escaper.ecapeVariable('$targetGrpcProxy');
+        commons.escapeVariable('$targetGrpcProxy');
 
     final _response = await _requester.request(
       _url,
@@ -35169,9 +35146,9 @@ class TargetGrpcProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/targetGrpcProxies/' +
-        commons.Escaper.ecapeVariable('$targetGrpcProxy');
+        commons.escapeVariable('$targetGrpcProxy');
 
     final _response = await _requester.request(
       _url,
@@ -35229,7 +35206,7 @@ class TargetGrpcProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/targetGrpcProxies';
 
     final _response = await _requester.request(
@@ -35327,7 +35304,7 @@ class TargetGrpcProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/targetGrpcProxies';
 
     final _response = await _requester.request(
@@ -35394,9 +35371,9 @@ class TargetGrpcProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/targetGrpcProxies/' +
-        commons.Escaper.ecapeVariable('$targetGrpcProxy');
+        commons.escapeVariable('$targetGrpcProxy');
 
     final _response = await _requester.request(
       _url,
@@ -35510,7 +35487,7 @@ class TargetHttpProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/aggregated/targetHttpProxies';
 
     final _response = await _requester.request(
@@ -35569,9 +35546,9 @@ class TargetHttpProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/targetHttpProxies/' +
-        commons.Escaper.ecapeVariable('$targetHttpProxy');
+        commons.escapeVariable('$targetHttpProxy');
 
     final _response = await _requester.request(
       _url,
@@ -35615,9 +35592,9 @@ class TargetHttpProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/targetHttpProxies/' +
-        commons.Escaper.ecapeVariable('$targetHttpProxy');
+        commons.escapeVariable('$targetHttpProxy');
 
     final _response = await _requester.request(
       _url,
@@ -35675,7 +35652,7 @@ class TargetHttpProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/targetHttpProxies';
 
     final _response = await _requester.request(
@@ -35774,7 +35751,7 @@ class TargetHttpProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/targetHttpProxies';
 
     final _response = await _requester.request(
@@ -35841,9 +35818,9 @@ class TargetHttpProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/targetHttpProxies/' +
-        commons.Escaper.ecapeVariable('$targetHttpProxy');
+        commons.escapeVariable('$targetHttpProxy');
 
     final _response = await _requester.request(
       _url,
@@ -35905,9 +35882,9 @@ class TargetHttpProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/targetHttpProxies/' +
-        commons.Escaper.ecapeVariable('$targetHttpProxy') +
+        commons.escapeVariable('$targetHttpProxy') +
         '/setUrlMap';
 
     final _response = await _requester.request(
@@ -36022,7 +35999,7 @@ class TargetHttpsProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/aggregated/targetHttpsProxies';
 
     final _response = await _requester.request(
@@ -36081,9 +36058,9 @@ class TargetHttpsProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/targetHttpsProxies/' +
-        commons.Escaper.ecapeVariable('$targetHttpsProxy');
+        commons.escapeVariable('$targetHttpsProxy');
 
     final _response = await _requester.request(
       _url,
@@ -36127,9 +36104,9 @@ class TargetHttpsProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/targetHttpsProxies/' +
-        commons.Escaper.ecapeVariable('$targetHttpsProxy');
+        commons.escapeVariable('$targetHttpsProxy');
 
     final _response = await _requester.request(
       _url,
@@ -36187,7 +36164,7 @@ class TargetHttpsProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/targetHttpsProxies';
 
     final _response = await _requester.request(
@@ -36286,7 +36263,7 @@ class TargetHttpsProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/targetHttpsProxies';
 
     final _response = await _requester.request(
@@ -36353,9 +36330,9 @@ class TargetHttpsProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/targetHttpsProxies/' +
-        commons.Escaper.ecapeVariable('$targetHttpsProxy');
+        commons.escapeVariable('$targetHttpsProxy');
 
     final _response = await _requester.request(
       _url,
@@ -36416,9 +36393,9 @@ class TargetHttpsProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/targetHttpsProxies/' +
-        commons.Escaper.ecapeVariable('$targetHttpsProxy') +
+        commons.escapeVariable('$targetHttpsProxy') +
         '/setQuicOverride';
 
     final _response = await _requester.request(
@@ -36482,9 +36459,9 @@ class TargetHttpsProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/targetHttpsProxies/' +
-        commons.Escaper.ecapeVariable('$targetHttpsProxy') +
+        commons.escapeVariable('$targetHttpsProxy') +
         '/setSslCertificates';
 
     final _response = await _requester.request(
@@ -36552,9 +36529,9 @@ class TargetHttpsProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/targetHttpsProxies/' +
-        commons.Escaper.ecapeVariable('$targetHttpsProxy') +
+        commons.escapeVariable('$targetHttpsProxy') +
         '/setSslPolicy';
 
     final _response = await _requester.request(
@@ -36618,9 +36595,9 @@ class TargetHttpsProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/targetHttpsProxies/' +
-        commons.Escaper.ecapeVariable('$targetHttpsProxy') +
+        commons.escapeVariable('$targetHttpsProxy') +
         '/setUrlMap';
 
     final _response = await _requester.request(
@@ -36734,7 +36711,7 @@ class TargetInstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/aggregated/targetInstances';
 
     final _response = await _requester.request(
@@ -36797,11 +36774,11 @@ class TargetInstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/targetInstances/' +
-        commons.Escaper.ecapeVariable('$targetInstance');
+        commons.escapeVariable('$targetInstance');
 
     final _response = await _requester.request(
       _url,
@@ -36849,11 +36826,11 @@ class TargetInstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/targetInstances/' +
-        commons.Escaper.ecapeVariable('$targetInstance');
+        commons.escapeVariable('$targetInstance');
 
     final _response = await _requester.request(
       _url,
@@ -36915,9 +36892,9 @@ class TargetInstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/targetInstances';
 
     final _response = await _requester.request(
@@ -37020,9 +36997,9 @@ class TargetInstancesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/targetInstances';
 
     final _response = await _requester.request(
@@ -37095,11 +37072,11 @@ class TargetPoolsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/targetPools/' +
-        commons.Escaper.ecapeVariable('$targetPool') +
+        commons.escapeVariable('$targetPool') +
         '/addHealthCheck';
 
     final _response = await _requester.request(
@@ -37166,11 +37143,11 @@ class TargetPoolsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/targetPools/' +
-        commons.Escaper.ecapeVariable('$targetPool') +
+        commons.escapeVariable('$targetPool') +
         '/addInstance';
 
     final _response = await _requester.request(
@@ -37278,7 +37255,7 @@ class TargetPoolsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/aggregated/targetPools';
 
     final _response = await _requester.request(
@@ -37341,11 +37318,11 @@ class TargetPoolsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/targetPools/' +
-        commons.Escaper.ecapeVariable('$targetPool');
+        commons.escapeVariable('$targetPool');
 
     final _response = await _requester.request(
       _url,
@@ -37393,11 +37370,11 @@ class TargetPoolsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/targetPools/' +
-        commons.Escaper.ecapeVariable('$targetPool');
+        commons.escapeVariable('$targetPool');
 
     final _response = await _requester.request(
       _url,
@@ -37450,11 +37427,11 @@ class TargetPoolsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/targetPools/' +
-        commons.Escaper.ecapeVariable('$targetPool') +
+        commons.escapeVariable('$targetPool') +
         '/getHealth';
 
     final _response = await _requester.request(
@@ -37518,9 +37495,9 @@ class TargetPoolsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/targetPools';
 
     final _response = await _requester.request(
@@ -37623,9 +37600,9 @@ class TargetPoolsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/targetPools';
 
     final _response = await _requester.request(
@@ -37692,11 +37669,11 @@ class TargetPoolsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/targetPools/' +
-        commons.Escaper.ecapeVariable('$targetPool') +
+        commons.escapeVariable('$targetPool') +
         '/removeHealthCheck';
 
     final _response = await _requester.request(
@@ -37763,11 +37740,11 @@ class TargetPoolsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/targetPools/' +
-        commons.Escaper.ecapeVariable('$targetPool') +
+        commons.escapeVariable('$targetPool') +
         '/removeInstance';
 
     final _response = await _requester.request(
@@ -37838,11 +37815,11 @@ class TargetPoolsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/targetPools/' +
-        commons.Escaper.ecapeVariable('$targetPool') +
+        commons.escapeVariable('$targetPool') +
         '/setBackup';
 
     final _response = await _requester.request(
@@ -37907,9 +37884,9 @@ class TargetSslProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/targetSslProxies/' +
-        commons.Escaper.ecapeVariable('$targetSslProxy');
+        commons.escapeVariable('$targetSslProxy');
 
     final _response = await _requester.request(
       _url,
@@ -37953,9 +37930,9 @@ class TargetSslProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/targetSslProxies/' +
-        commons.Escaper.ecapeVariable('$targetSslProxy');
+        commons.escapeVariable('$targetSslProxy');
 
     final _response = await _requester.request(
       _url,
@@ -38013,7 +37990,7 @@ class TargetSslProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/targetSslProxies';
 
     final _response = await _requester.request(
@@ -38112,7 +38089,7 @@ class TargetSslProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/targetSslProxies';
 
     final _response = await _requester.request(
@@ -38176,9 +38153,9 @@ class TargetSslProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/targetSslProxies/' +
-        commons.Escaper.ecapeVariable('$targetSslProxy') +
+        commons.escapeVariable('$targetSslProxy') +
         '/setBackendService';
 
     final _response = await _requester.request(
@@ -38242,9 +38219,9 @@ class TargetSslProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/targetSslProxies/' +
-        commons.Escaper.ecapeVariable('$targetSslProxy') +
+        commons.escapeVariable('$targetSslProxy') +
         '/setProxyHeader';
 
     final _response = await _requester.request(
@@ -38308,9 +38285,9 @@ class TargetSslProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/targetSslProxies/' +
-        commons.Escaper.ecapeVariable('$targetSslProxy') +
+        commons.escapeVariable('$targetSslProxy') +
         '/setSslCertificates';
 
     final _response = await _requester.request(
@@ -38376,9 +38353,9 @@ class TargetSslProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/targetSslProxies/' +
-        commons.Escaper.ecapeVariable('$targetSslProxy') +
+        commons.escapeVariable('$targetSslProxy') +
         '/setSslPolicy';
 
     final _response = await _requester.request(
@@ -38443,9 +38420,9 @@ class TargetTcpProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/targetTcpProxies/' +
-        commons.Escaper.ecapeVariable('$targetTcpProxy');
+        commons.escapeVariable('$targetTcpProxy');
 
     final _response = await _requester.request(
       _url,
@@ -38489,9 +38466,9 @@ class TargetTcpProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/targetTcpProxies/' +
-        commons.Escaper.ecapeVariable('$targetTcpProxy');
+        commons.escapeVariable('$targetTcpProxy');
 
     final _response = await _requester.request(
       _url,
@@ -38549,7 +38526,7 @@ class TargetTcpProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/targetTcpProxies';
 
     final _response = await _requester.request(
@@ -38648,7 +38625,7 @@ class TargetTcpProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/targetTcpProxies';
 
     final _response = await _requester.request(
@@ -38712,9 +38689,9 @@ class TargetTcpProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/targetTcpProxies/' +
-        commons.Escaper.ecapeVariable('$targetTcpProxy') +
+        commons.escapeVariable('$targetTcpProxy') +
         '/setBackendService';
 
     final _response = await _requester.request(
@@ -38778,9 +38755,9 @@ class TargetTcpProxiesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/targetTcpProxies/' +
-        commons.Escaper.ecapeVariable('$targetTcpProxy') +
+        commons.escapeVariable('$targetTcpProxy') +
         '/setProxyHeader';
 
     final _response = await _requester.request(
@@ -38894,7 +38871,7 @@ class TargetVpnGatewaysResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/aggregated/targetVpnGateways';
 
     final _response = await _requester.request(
@@ -38957,11 +38934,11 @@ class TargetVpnGatewaysResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/targetVpnGateways/' +
-        commons.Escaper.ecapeVariable('$targetVpnGateway');
+        commons.escapeVariable('$targetVpnGateway');
 
     final _response = await _requester.request(
       _url,
@@ -39009,11 +38986,11 @@ class TargetVpnGatewaysResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/targetVpnGateways/' +
-        commons.Escaper.ecapeVariable('$targetVpnGateway');
+        commons.escapeVariable('$targetVpnGateway');
 
     final _response = await _requester.request(
       _url,
@@ -39075,9 +39052,9 @@ class TargetVpnGatewaysResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/targetVpnGateways';
 
     final _response = await _requester.request(
@@ -39180,9 +39157,9 @@ class TargetVpnGatewaysResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/targetVpnGateways';
 
     final _response = await _requester.request(
@@ -39297,7 +39274,7 @@ class UrlMapsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/aggregated/urlMaps';
 
     final _response = await _requester.request(
@@ -39356,9 +39333,9 @@ class UrlMapsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/urlMaps/' +
-        commons.Escaper.ecapeVariable('$urlMap');
+        commons.escapeVariable('$urlMap');
 
     final _response = await _requester.request(
       _url,
@@ -39402,9 +39379,9 @@ class UrlMapsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/urlMaps/' +
-        commons.Escaper.ecapeVariable('$urlMap');
+        commons.escapeVariable('$urlMap');
 
     final _response = await _requester.request(
       _url,
@@ -39460,9 +39437,8 @@ class UrlMapsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
-        '/global/urlMaps';
+    final _url =
+        'projects/' + commons.escapeVariable('$project') + '/global/urlMaps';
 
     final _response = await _requester.request(
       _url,
@@ -39528,9 +39504,9 @@ class UrlMapsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/urlMaps/' +
-        commons.Escaper.ecapeVariable('$urlMap') +
+        commons.escapeVariable('$urlMap') +
         '/invalidateCache';
 
     final _response = await _requester.request(
@@ -39627,9 +39603,8 @@ class UrlMapsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
-        '/global/urlMaps';
+    final _url =
+        'projects/' + commons.escapeVariable('$project') + '/global/urlMaps';
 
     final _response = await _requester.request(
       _url,
@@ -39695,9 +39670,9 @@ class UrlMapsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/urlMaps/' +
-        commons.Escaper.ecapeVariable('$urlMap');
+        commons.escapeVariable('$urlMap');
 
     final _response = await _requester.request(
       _url,
@@ -39760,9 +39735,9 @@ class UrlMapsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/urlMaps/' +
-        commons.Escaper.ecapeVariable('$urlMap');
+        commons.escapeVariable('$urlMap');
 
     final _response = await _requester.request(
       _url,
@@ -39812,9 +39787,9 @@ class UrlMapsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/urlMaps/' +
-        commons.Escaper.ecapeVariable('$urlMap') +
+        commons.escapeVariable('$urlMap') +
         '/validate';
 
     final _response = await _requester.request(
@@ -39929,7 +39904,7 @@ class VpnGatewaysResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/aggregated/vpnGateways';
 
     final _response = await _requester.request(
@@ -39992,11 +39967,11 @@ class VpnGatewaysResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/vpnGateways/' +
-        commons.Escaper.ecapeVariable('$vpnGateway');
+        commons.escapeVariable('$vpnGateway');
 
     final _response = await _requester.request(
       _url,
@@ -40044,11 +40019,11 @@ class VpnGatewaysResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/vpnGateways/' +
-        commons.Escaper.ecapeVariable('$vpnGateway');
+        commons.escapeVariable('$vpnGateway');
 
     final _response = await _requester.request(
       _url,
@@ -40095,11 +40070,11 @@ class VpnGatewaysResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/vpnGateways/' +
-        commons.Escaper.ecapeVariable('$vpnGateway') +
+        commons.escapeVariable('$vpnGateway') +
         '/getStatus';
 
     final _response = await _requester.request(
@@ -40162,9 +40137,9 @@ class VpnGatewaysResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/vpnGateways';
 
     final _response = await _requester.request(
@@ -40267,9 +40242,9 @@ class VpnGatewaysResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/vpnGateways';
 
     final _response = await _requester.request(
@@ -40338,11 +40313,11 @@ class VpnGatewaysResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/vpnGateways/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/setLabels';
 
     final _response = await _requester.request(
@@ -40394,11 +40369,11 @@ class VpnGatewaysResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/vpnGateways/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/testIamPermissions';
 
     final _response = await _requester.request(
@@ -40513,7 +40488,7 @@ class VpnTunnelsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/aggregated/vpnTunnels';
 
     final _response = await _requester.request(
@@ -40576,11 +40551,11 @@ class VpnTunnelsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/vpnTunnels/' +
-        commons.Escaper.ecapeVariable('$vpnTunnel');
+        commons.escapeVariable('$vpnTunnel');
 
     final _response = await _requester.request(
       _url,
@@ -40628,11 +40603,11 @@ class VpnTunnelsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/vpnTunnels/' +
-        commons.Escaper.ecapeVariable('$vpnTunnel');
+        commons.escapeVariable('$vpnTunnel');
 
     final _response = await _requester.request(
       _url,
@@ -40693,9 +40668,9 @@ class VpnTunnelsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/vpnTunnels';
 
     final _response = await _requester.request(
@@ -40798,9 +40773,9 @@ class VpnTunnelsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/vpnTunnels';
 
     final _response = await _requester.request(
@@ -40852,11 +40827,11 @@ class ZoneOperationsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/operations/' +
-        commons.Escaper.ecapeVariable('$operation');
+        commons.escapeVariable('$operation');
 
     await _requester.request(
       _url,
@@ -40902,11 +40877,11 @@ class ZoneOperationsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/operations/' +
-        commons.Escaper.ecapeVariable('$operation');
+        commons.escapeVariable('$operation');
 
     final _response = await _requester.request(
       _url,
@@ -41007,9 +40982,9 @@ class ZoneOperationsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/operations';
 
     final _response = await _requester.request(
@@ -41071,11 +41046,11 @@ class ZoneOperationsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/operations/' +
-        commons.Escaper.ecapeVariable('$operation') +
+        commons.escapeVariable('$operation') +
         '/wait';
 
     final _response = await _requester.request(
@@ -41126,9 +41101,9 @@ class ZonesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone');
+        commons.escapeVariable('$zone');
 
     final _response = await _requester.request(
       _url,
@@ -41223,8 +41198,7 @@ class ZonesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'projects/' + commons.Escaper.ecapeVariable('$project') + '/zones';
+    final _url = 'projects/' + commons.escapeVariable('$project') + '/zones';
 
     final _response = await _requester.request(
       _url,

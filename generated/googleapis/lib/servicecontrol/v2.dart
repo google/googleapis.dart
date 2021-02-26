@@ -110,9 +110,8 @@ class ServicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/services/' +
-        commons.Escaper.ecapeVariable('$serviceName') +
-        ':check';
+    final _url =
+        'v2/services/' + commons.escapeVariable('$serviceName') + ':check';
 
     final _response = await _requester.request(
       _url,
@@ -167,9 +166,8 @@ class ServicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/services/' +
-        commons.Escaper.ecapeVariable('$serviceName') +
-        ':report';
+    final _url =
+        'v2/services/' + commons.escapeVariable('$serviceName') + ':report';
 
     final _response = await _requester.request(
       _url,

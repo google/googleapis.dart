@@ -112,7 +112,7 @@ class ProjectsLocationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -159,9 +159,7 @@ class ProjectsLocationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        '/locations';
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name') + '/locations';
 
     final _response = await _requester.request(
       _url,
@@ -224,9 +222,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':activate';
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name') + ':activate';
 
     final _response = await _requester.request(
       _url,
@@ -287,9 +283,8 @@ class ProjectsLocationsCertificateAuthoritiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/certificateAuthorities';
+    final _url =
+        'v1beta1/' + core.Uri.encodeFull('$parent') + '/certificateAuthorities';
 
     final _response = await _requester.request(
       _url,
@@ -331,9 +326,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':disable';
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name') + ':disable';
 
     final _response = await _requester.request(
       _url,
@@ -375,8 +368,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name') + ':enable';
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name') + ':enable';
 
     final _response = await _requester.request(
       _url,
@@ -419,8 +411,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name') + ':fetch';
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name') + ':fetch';
 
     final _response = await _requester.request(
       _url,
@@ -457,7 +448,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -510,9 +501,8 @@ class ProjectsLocationsCertificateAuthoritiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':getIamPolicy';
+    final _url =
+        'v1beta1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -570,9 +560,8 @@ class ProjectsLocationsCertificateAuthoritiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/certificateAuthorities';
+    final _url =
+        'v1beta1/' + core.Uri.encodeFull('$parent') + '/certificateAuthorities';
 
     final _response = await _requester.request(
       _url,
@@ -632,7 +621,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -674,9 +663,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':restore';
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name') + ':restore';
 
     final _response = await _requester.request(
       _url,
@@ -718,9 +705,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':scheduleDelete';
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name') + ':scheduleDelete';
 
     final _response = await _requester.request(
       _url,
@@ -766,9 +751,8 @@ class ProjectsLocationsCertificateAuthoritiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':setIamPolicy';
+    final _url =
+        'v1beta1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -816,9 +800,8 @@ class ProjectsLocationsCertificateAuthoritiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':testIamPermissions';
+    final _url =
+        'v1beta1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
     final _response = await _requester.request(
       _url,
@@ -864,7 +847,7 @@ class ProjectsLocationsCertificateAuthoritiesCertificateRevocationListsResource 
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -917,9 +900,8 @@ class ProjectsLocationsCertificateAuthoritiesCertificateRevocationListsResource 
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':getIamPolicy';
+    final _url =
+        'v1beta1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -980,7 +962,7 @@ class ProjectsLocationsCertificateAuthoritiesCertificateRevocationListsResource 
     };
 
     final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/certificateRevocationLists';
 
     final _response = await _requester.request(
@@ -1042,7 +1024,7 @@ class ProjectsLocationsCertificateAuthoritiesCertificateRevocationListsResource 
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1088,9 +1070,8 @@ class ProjectsLocationsCertificateAuthoritiesCertificateRevocationListsResource 
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':setIamPolicy';
+    final _url =
+        'v1beta1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -1138,9 +1119,8 @@ class ProjectsLocationsCertificateAuthoritiesCertificateRevocationListsResource 
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':testIamPermissions';
+    final _url =
+        'v1beta1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
     final _response = await _requester.request(
       _url,
@@ -1214,9 +1194,7 @@ class ProjectsLocationsCertificateAuthoritiesCertificatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/certificates';
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/certificates';
 
     final _response = await _requester.request(
       _url,
@@ -1254,7 +1232,7 @@ class ProjectsLocationsCertificateAuthoritiesCertificatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1317,9 +1295,7 @@ class ProjectsLocationsCertificateAuthoritiesCertificatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/certificates';
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/certificates';
 
     final _response = await _requester.request(
       _url,
@@ -1382,7 +1358,7 @@ class ProjectsLocationsCertificateAuthoritiesCertificatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1426,8 +1402,7 @@ class ProjectsLocationsCertificateAuthoritiesCertificatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name') + ':revoke';
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name') + ':revoke';
 
     final _response = await _requester.request(
       _url,
@@ -1485,8 +1460,7 @@ class ProjectsLocationsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name') + ':cancel';
 
     final _response = await _requester.request(
       _url,
@@ -1527,7 +1501,7 @@ class ProjectsLocationsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1566,7 +1540,7 @@ class ProjectsLocationsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1622,9 +1596,7 @@ class ProjectsLocationsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        '/operations';
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name') + '/operations';
 
     final _response = await _requester.request(
       _url,
@@ -1668,7 +1640,7 @@ class ProjectsLocationsReusableConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1721,9 +1693,8 @@ class ProjectsLocationsReusableConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':getIamPolicy';
+    final _url =
+        'v1beta1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -1780,9 +1751,8 @@ class ProjectsLocationsReusableConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/reusableConfigs';
+    final _url =
+        'v1beta1/' + core.Uri.encodeFull('$parent') + '/reusableConfigs';
 
     final _response = await _requester.request(
       _url,
@@ -1828,9 +1798,8 @@ class ProjectsLocationsReusableConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':setIamPolicy';
+    final _url =
+        'v1beta1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -1878,9 +1847,8 @@ class ProjectsLocationsReusableConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':testIamPermissions';
+    final _url =
+        'v1beta1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
     final _response = await _requester.request(
       _url,

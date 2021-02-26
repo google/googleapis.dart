@@ -229,7 +229,7 @@ class ContactGroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName');
+    final _url = 'v1/' + core.Uri.encodeFull('$resourceName');
 
     final _response = await _requester.request(
       _url,
@@ -277,7 +277,7 @@ class ContactGroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName');
+    final _url = 'v1/' + core.Uri.encodeFull('$resourceName');
 
     final _response = await _requester.request(
       _url,
@@ -379,7 +379,7 @@ class ContactGroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName');
+    final _url = 'v1/' + core.Uri.encodeFull('$resourceName');
 
     final _response = await _requester.request(
       _url,
@@ -432,9 +432,8 @@ class ContactGroupsMembersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resourceName') +
-        '/members:modify';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$resourceName') + '/members:modify';
 
     final _response = await _requester.request(
       _url,
@@ -484,7 +483,7 @@ class OtherContactsResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resourceName') +
+        core.Uri.encodeFull('$resourceName') +
         ':copyOtherContactToMyContactsGroup';
 
     final _response = await _requester.request(
@@ -710,9 +709,8 @@ class PeopleResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resourceName') +
-        ':deleteContact';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$resourceName') + ':deleteContact';
 
     final _response = await _requester.request(
       _url,
@@ -765,9 +763,8 @@ class PeopleResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resourceName') +
-        ':deleteContactPhoto';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$resourceName') + ':deleteContactPhoto';
 
     final _response = await _requester.request(
       _url,
@@ -834,7 +831,7 @@ class PeopleResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName');
+    final _url = 'v1/' + core.Uri.encodeFull('$resourceName');
 
     final _response = await _requester.request(
       _url,
@@ -1197,9 +1194,8 @@ class PeopleResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resourceName') +
-        ':updateContact';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$resourceName') + ':updateContact';
 
     final _response = await _requester.request(
       _url,
@@ -1239,9 +1235,8 @@ class PeopleResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resourceName') +
-        ':updateContactPhoto';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$resourceName') + ':updateContactPhoto';
 
     final _response = await _requester.request(
       _url,
@@ -1359,9 +1354,7 @@ class PeopleConnectionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resourceName') +
-        '/connections';
+    final _url = 'v1/' + core.Uri.encodeFull('$resourceName') + '/connections';
 
     final _response = await _requester.request(
       _url,

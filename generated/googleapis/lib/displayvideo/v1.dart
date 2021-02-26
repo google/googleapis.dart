@@ -199,9 +199,8 @@ class AdvertisersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
-        ':audit';
+    final _url =
+        'v1/advertisers/' + core.Uri.encodeFull('$advertiserId') + ':audit';
 
     final _response = await _requester.request(
       _url,
@@ -248,7 +247,7 @@ class AdvertisersResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         ':bulkEditAdvertiserAssignedTargetingOptions';
 
     final _response = await _requester.request(
@@ -320,7 +319,7 @@ class AdvertisersResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         ':bulkListAdvertiserAssignedTargetingOptions';
 
     final _response = await _requester.request(
@@ -401,8 +400,7 @@ class AdvertisersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId');
+    final _url = 'v1/advertisers/' + core.Uri.encodeFull('$advertiserId');
 
     final _response = await _requester.request(
       _url,
@@ -437,8 +435,7 @@ class AdvertisersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId');
+    final _url = 'v1/advertisers/' + core.Uri.encodeFull('$advertiserId');
 
     final _response = await _requester.request(
       _url,
@@ -564,8 +561,7 @@ class AdvertisersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId');
+    final _url = 'v1/advertisers/' + core.Uri.encodeFull('$advertiserId');
 
     final _response = await _requester.request(
       _url,
@@ -621,12 +617,11 @@ class AdvertisersAssetsResource {
 
     core.String _url;
     if (uploadMedia == null) {
-      _url = 'v1/advertisers/' +
-          commons.Escaper.ecapeVariableReserved('$advertiserId') +
-          '/assets';
+      _url =
+          'v1/advertisers/' + core.Uri.encodeFull('$advertiserId') + '/assets';
     } else {
       _url = '/upload/v1/advertisers/' +
-          commons.Escaper.ecapeVariableReserved('$advertiserId') +
+          core.Uri.encodeFull('$advertiserId') +
           '/assets';
     }
 
@@ -681,9 +676,8 @@ class AdvertisersCampaignsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
-        '/campaigns';
+    final _url =
+        'v1/advertisers/' + core.Uri.encodeFull('$advertiserId') + '/campaigns';
 
     final _response = await _requester.request(
       _url,
@@ -728,9 +722,9 @@ class AdvertisersCampaignsResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/campaigns/' +
-        commons.Escaper.ecapeVariableReserved('$campaignId');
+        core.Uri.encodeFull('$campaignId');
 
     final _response = await _requester.request(
       _url,
@@ -771,9 +765,9 @@ class AdvertisersCampaignsResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/campaigns/' +
-        commons.Escaper.ecapeVariableReserved('$campaignId');
+        core.Uri.encodeFull('$campaignId');
 
     final _response = await _requester.request(
       _url,
@@ -852,9 +846,8 @@ class AdvertisersCampaignsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
-        '/campaigns';
+    final _url =
+        'v1/advertisers/' + core.Uri.encodeFull('$advertiserId') + '/campaigns';
 
     final _response = await _requester.request(
       _url,
@@ -907,9 +900,9 @@ class AdvertisersCampaignsResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/campaigns/' +
-        commons.Escaper.ecapeVariableReserved('$campaignId');
+        core.Uri.encodeFull('$campaignId');
 
     final _response = await _requester.request(
       _url,
@@ -965,9 +958,8 @@ class AdvertisersChannelsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
-        '/channels';
+    final _url =
+        'v1/advertisers/' + core.Uri.encodeFull('$advertiserId') + '/channels';
 
     final _response = await _requester.request(
       _url,
@@ -1012,9 +1004,9 @@ class AdvertisersChannelsResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/channels/' +
-        commons.Escaper.ecapeVariableReserved('$channelId');
+        core.Uri.encodeFull('$channelId');
 
     final _response = await _requester.request(
       _url,
@@ -1083,9 +1075,8 @@ class AdvertisersChannelsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
-        '/channels';
+    final _url =
+        'v1/advertisers/' + core.Uri.encodeFull('$advertiserId') + '/channels';
 
     final _response = await _requester.request(
       _url,
@@ -1140,9 +1131,9 @@ class AdvertisersChannelsResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/channels/' +
-        commons.Escaper.ecapeVariable('$channelId');
+        commons.escapeVariable('$channelId');
 
     final _response = await _requester.request(
       _url,
@@ -1198,9 +1189,9 @@ class AdvertisersChannelsSitesResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariable('$advertiserId') +
+        commons.escapeVariable('$advertiserId') +
         '/channels/' +
-        commons.Escaper.ecapeVariableReserved('$channelId') +
+        core.Uri.encodeFull('$channelId') +
         '/sites:bulkEdit';
 
     final _response = await _requester.request(
@@ -1251,9 +1242,9 @@ class AdvertisersChannelsSitesResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariable('$advertiserId') +
+        commons.escapeVariable('$advertiserId') +
         '/channels/' +
-        commons.Escaper.ecapeVariableReserved('$channelId') +
+        core.Uri.encodeFull('$channelId') +
         '/sites';
 
     final _response = await _requester.request(
@@ -1303,11 +1294,11 @@ class AdvertisersChannelsSitesResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariable('$advertiserId') +
+        commons.escapeVariable('$advertiserId') +
         '/channels/' +
-        commons.Escaper.ecapeVariableReserved('$channelId') +
+        core.Uri.encodeFull('$channelId') +
         '/sites/' +
-        commons.Escaper.ecapeVariableReserved('$urlOrAppId');
+        core.Uri.encodeFull('$urlOrAppId');
 
     final _response = await _requester.request(
       _url,
@@ -1381,9 +1372,9 @@ class AdvertisersChannelsSitesResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/channels/' +
-        commons.Escaper.ecapeVariableReserved('$channelId') +
+        core.Uri.encodeFull('$channelId') +
         '/sites';
 
     final _response = await _requester.request(
@@ -1434,9 +1425,8 @@ class AdvertisersCreativesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
-        '/creatives';
+    final _url =
+        'v1/advertisers/' + core.Uri.encodeFull('$advertiserId') + '/creatives';
 
     final _response = await _requester.request(
       _url,
@@ -1481,9 +1471,9 @@ class AdvertisersCreativesResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/creatives/' +
-        commons.Escaper.ecapeVariableReserved('$creativeId');
+        core.Uri.encodeFull('$creativeId');
 
     final _response = await _requester.request(
       _url,
@@ -1524,9 +1514,9 @@ class AdvertisersCreativesResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/creatives/' +
-        commons.Escaper.ecapeVariableReserved('$creativeId');
+        core.Uri.encodeFull('$creativeId');
 
     final _response = await _requester.request(
       _url,
@@ -1619,9 +1609,8 @@ class AdvertisersCreativesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
-        '/creatives';
+    final _url =
+        'v1/advertisers/' + core.Uri.encodeFull('$advertiserId') + '/creatives';
 
     final _response = await _requester.request(
       _url,
@@ -1674,9 +1663,9 @@ class AdvertisersCreativesResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/creatives/' +
-        commons.Escaper.ecapeVariableReserved('$creativeId');
+        core.Uri.encodeFull('$creativeId');
 
     final _response = await _requester.request(
       _url,
@@ -1767,9 +1756,9 @@ class AdvertisersInsertionOrdersResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/insertionOrders/' +
-        commons.Escaper.ecapeVariableReserved('$insertionOrderId') +
+        core.Uri.encodeFull('$insertionOrderId') +
         ':bulkListInsertionOrderAssignedTargetingOptions';
 
     final _response = await _requester.request(
@@ -1814,7 +1803,7 @@ class AdvertisersInsertionOrdersResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/insertionOrders';
 
     final _response = await _requester.request(
@@ -1861,9 +1850,9 @@ class AdvertisersInsertionOrdersResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/insertionOrders/' +
-        commons.Escaper.ecapeVariableReserved('$insertionOrderId');
+        core.Uri.encodeFull('$insertionOrderId');
 
     final _response = await _requester.request(
       _url,
@@ -1906,9 +1895,9 @@ class AdvertisersInsertionOrdersResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/insertionOrders/' +
-        commons.Escaper.ecapeVariableReserved('$insertionOrderId');
+        core.Uri.encodeFull('$insertionOrderId');
 
     final _response = await _requester.request(
       _url,
@@ -1998,7 +1987,7 @@ class AdvertisersInsertionOrdersResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/insertionOrders';
 
     final _response = await _requester.request(
@@ -2052,9 +2041,9 @@ class AdvertisersInsertionOrdersResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/insertionOrders/' +
-        commons.Escaper.ecapeVariableReserved('$insertionOrderId');
+        core.Uri.encodeFull('$insertionOrderId');
 
     final _response = await _requester.request(
       _url,
@@ -2208,13 +2197,13 @@ class AdvertisersInsertionOrdersTargetingTypesAssignedTargetingOptionsResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/insertionOrders/' +
-        commons.Escaper.ecapeVariableReserved('$insertionOrderId') +
+        core.Uri.encodeFull('$insertionOrderId') +
         '/targetingTypes/' +
-        commons.Escaper.ecapeVariableReserved('$targetingType') +
+        core.Uri.encodeFull('$targetingType') +
         '/assignedTargetingOptions/' +
-        commons.Escaper.ecapeVariableReserved('$assignedTargetingOptionId');
+        core.Uri.encodeFull('$assignedTargetingOptionId');
 
     final _response = await _requester.request(
       _url,
@@ -2375,11 +2364,11 @@ class AdvertisersInsertionOrdersTargetingTypesAssignedTargetingOptionsResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/insertionOrders/' +
-        commons.Escaper.ecapeVariableReserved('$insertionOrderId') +
+        core.Uri.encodeFull('$insertionOrderId') +
         '/targetingTypes/' +
-        commons.Escaper.ecapeVariableReserved('$targetingType') +
+        core.Uri.encodeFull('$targetingType') +
         '/assignedTargetingOptions';
 
     final _response = await _requester.request(
@@ -2443,9 +2432,9 @@ class AdvertisersLineItemsResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/lineItems/' +
-        commons.Escaper.ecapeVariableReserved('$lineItemId') +
+        core.Uri.encodeFull('$lineItemId') +
         ':bulkEditLineItemAssignedTargetingOptions';
 
     final _response = await _requester.request(
@@ -2527,9 +2516,9 @@ class AdvertisersLineItemsResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/lineItems/' +
-        commons.Escaper.ecapeVariableReserved('$lineItemId') +
+        core.Uri.encodeFull('$lineItemId') +
         ':bulkListLineItemAssignedTargetingOptions';
 
     final _response = await _requester.request(
@@ -2573,9 +2562,8 @@ class AdvertisersLineItemsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
-        '/lineItems';
+    final _url =
+        'v1/advertisers/' + core.Uri.encodeFull('$advertiserId') + '/lineItems';
 
     final _response = await _requester.request(
       _url,
@@ -2620,9 +2608,9 @@ class AdvertisersLineItemsResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/lineItems/' +
-        commons.Escaper.ecapeVariableReserved('$lineItemId');
+        core.Uri.encodeFull('$lineItemId');
 
     final _response = await _requester.request(
       _url,
@@ -2663,9 +2651,9 @@ class AdvertisersLineItemsResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/lineItems/' +
-        commons.Escaper.ecapeVariableReserved('$lineItemId');
+        core.Uri.encodeFull('$lineItemId');
 
     final _response = await _requester.request(
       _url,
@@ -2759,9 +2747,8 @@ class AdvertisersLineItemsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
-        '/lineItems';
+    final _url =
+        'v1/advertisers/' + core.Uri.encodeFull('$advertiserId') + '/lineItems';
 
     final _response = await _requester.request(
       _url,
@@ -2814,9 +2801,9 @@ class AdvertisersLineItemsResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/lineItems/' +
-        commons.Escaper.ecapeVariableReserved('$lineItemId');
+        core.Uri.encodeFull('$lineItemId');
 
     final _response = await _requester.request(
       _url,
@@ -2969,11 +2956,11 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/lineItems/' +
-        commons.Escaper.ecapeVariableReserved('$lineItemId') +
+        core.Uri.encodeFull('$lineItemId') +
         '/targetingTypes/' +
-        commons.Escaper.ecapeVariableReserved('$targetingType') +
+        core.Uri.encodeFull('$targetingType') +
         '/assignedTargetingOptions';
 
     final _response = await _requester.request(
@@ -3107,13 +3094,13 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/lineItems/' +
-        commons.Escaper.ecapeVariableReserved('$lineItemId') +
+        core.Uri.encodeFull('$lineItemId') +
         '/targetingTypes/' +
-        commons.Escaper.ecapeVariableReserved('$targetingType') +
+        core.Uri.encodeFull('$targetingType') +
         '/assignedTargetingOptions/' +
-        commons.Escaper.ecapeVariableReserved('$assignedTargetingOptionId');
+        core.Uri.encodeFull('$assignedTargetingOptionId');
 
     final _response = await _requester.request(
       _url,
@@ -3245,13 +3232,13 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/lineItems/' +
-        commons.Escaper.ecapeVariableReserved('$lineItemId') +
+        core.Uri.encodeFull('$lineItemId') +
         '/targetingTypes/' +
-        commons.Escaper.ecapeVariableReserved('$targetingType') +
+        core.Uri.encodeFull('$targetingType') +
         '/assignedTargetingOptions/' +
-        commons.Escaper.ecapeVariableReserved('$assignedTargetingOptionId');
+        core.Uri.encodeFull('$assignedTargetingOptionId');
 
     final _response = await _requester.request(
       _url,
@@ -3412,11 +3399,11 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/lineItems/' +
-        commons.Escaper.ecapeVariableReserved('$lineItemId') +
+        core.Uri.encodeFull('$lineItemId') +
         '/targetingTypes/' +
-        commons.Escaper.ecapeVariableReserved('$targetingType') +
+        core.Uri.encodeFull('$targetingType') +
         '/assignedTargetingOptions';
 
     final _response = await _requester.request(
@@ -3471,7 +3458,7 @@ class AdvertisersLocationListsResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/locationLists';
 
     final _response = await _requester.request(
@@ -3515,9 +3502,9 @@ class AdvertisersLocationListsResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/locationLists/' +
-        commons.Escaper.ecapeVariableReserved('$locationListId');
+        core.Uri.encodeFull('$locationListId');
 
     final _response = await _requester.request(
       _url,
@@ -3586,7 +3573,7 @@ class AdvertisersLocationListsResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/locationLists';
 
     final _response = await _requester.request(
@@ -3639,9 +3626,9 @@ class AdvertisersLocationListsResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/locationLists/' +
-        commons.Escaper.ecapeVariable('$locationListId');
+        commons.escapeVariable('$locationListId');
 
     final _response = await _requester.request(
       _url,
@@ -3701,9 +3688,9 @@ class AdvertisersLocationListsAssignedLocationsResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariable('$advertiserId') +
+        commons.escapeVariable('$advertiserId') +
         '/locationLists/' +
-        commons.Escaper.ecapeVariableReserved('$locationListId') +
+        core.Uri.encodeFull('$locationListId') +
         '/assignedLocations:bulkEdit';
 
     final _response = await _requester.request(
@@ -3750,9 +3737,9 @@ class AdvertisersLocationListsAssignedLocationsResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariable('$advertiserId') +
+        commons.escapeVariable('$advertiserId') +
         '/locationLists/' +
-        commons.Escaper.ecapeVariable('$locationListId') +
+        commons.escapeVariable('$locationListId') +
         '/assignedLocations';
 
     final _response = await _requester.request(
@@ -3800,11 +3787,11 @@ class AdvertisersLocationListsAssignedLocationsResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariable('$advertiserId') +
+        commons.escapeVariable('$advertiserId') +
         '/locationLists/' +
-        commons.Escaper.ecapeVariable('$locationListId') +
+        commons.escapeVariable('$locationListId') +
         '/assignedLocations/' +
-        commons.Escaper.ecapeVariableReserved('$assignedLocationId');
+        core.Uri.encodeFull('$assignedLocationId');
 
     final _response = await _requester.request(
       _url,
@@ -3873,9 +3860,9 @@ class AdvertisersLocationListsAssignedLocationsResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariable('$advertiserId') +
+        commons.escapeVariable('$advertiserId') +
         '/locationLists/' +
-        commons.Escaper.ecapeVariable('$locationListId') +
+        commons.escapeVariable('$locationListId') +
         '/assignedLocations';
 
     final _response = await _requester.request(
@@ -3932,9 +3919,9 @@ class AdvertisersManualTriggersResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/manualTriggers/' +
-        commons.Escaper.ecapeVariableReserved('$triggerId') +
+        core.Uri.encodeFull('$triggerId') +
         ':activate';
 
     final _response = await _requester.request(
@@ -3980,7 +3967,7 @@ class AdvertisersManualTriggersResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/manualTriggers';
 
     final _response = await _requester.request(
@@ -4028,9 +4015,9 @@ class AdvertisersManualTriggersResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/manualTriggers/' +
-        commons.Escaper.ecapeVariableReserved('$triggerId') +
+        core.Uri.encodeFull('$triggerId') +
         ':deactivate';
 
     final _response = await _requester.request(
@@ -4074,9 +4061,9 @@ class AdvertisersManualTriggersResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/manualTriggers/' +
-        commons.Escaper.ecapeVariableReserved('$triggerId');
+        core.Uri.encodeFull('$triggerId');
 
     final _response = await _requester.request(
       _url,
@@ -4148,7 +4135,7 @@ class AdvertisersManualTriggersResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/manualTriggers';
 
     final _response = await _requester.request(
@@ -4201,9 +4188,9 @@ class AdvertisersManualTriggersResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/manualTriggers/' +
-        commons.Escaper.ecapeVariableReserved('$triggerId');
+        core.Uri.encodeFull('$triggerId');
 
     final _response = await _requester.request(
       _url,
@@ -4259,7 +4246,7 @@ class AdvertisersNegativeKeywordListsResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/negativeKeywordLists';
 
     final _response = await _requester.request(
@@ -4305,9 +4292,9 @@ class AdvertisersNegativeKeywordListsResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/negativeKeywordLists/' +
-        commons.Escaper.ecapeVariableReserved('$negativeKeywordListId');
+        core.Uri.encodeFull('$negativeKeywordListId');
 
     final _response = await _requester.request(
       _url,
@@ -4350,9 +4337,9 @@ class AdvertisersNegativeKeywordListsResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/negativeKeywordLists/' +
-        commons.Escaper.ecapeVariableReserved('$negativeKeywordListId');
+        core.Uri.encodeFull('$negativeKeywordListId');
 
     final _response = await _requester.request(
       _url,
@@ -4403,7 +4390,7 @@ class AdvertisersNegativeKeywordListsResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/negativeKeywordLists';
 
     final _response = await _requester.request(
@@ -4456,9 +4443,9 @@ class AdvertisersNegativeKeywordListsResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/negativeKeywordLists/' +
-        commons.Escaper.ecapeVariable('$negativeKeywordListId');
+        commons.escapeVariable('$negativeKeywordListId');
 
     final _response = await _requester.request(
       _url,
@@ -4520,9 +4507,9 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariable('$advertiserId') +
+        commons.escapeVariable('$advertiserId') +
         '/negativeKeywordLists/' +
-        commons.Escaper.ecapeVariableReserved('$negativeKeywordListId') +
+        core.Uri.encodeFull('$negativeKeywordListId') +
         '/negativeKeywords:bulkEdit';
 
     final _response = await _requester.request(
@@ -4570,9 +4557,9 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariable('$advertiserId') +
+        commons.escapeVariable('$advertiserId') +
         '/negativeKeywordLists/' +
-        commons.Escaper.ecapeVariableReserved('$negativeKeywordListId') +
+        core.Uri.encodeFull('$negativeKeywordListId') +
         '/negativeKeywords';
 
     final _response = await _requester.request(
@@ -4621,11 +4608,11 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariable('$advertiserId') +
+        commons.escapeVariable('$advertiserId') +
         '/negativeKeywordLists/' +
-        commons.Escaper.ecapeVariableReserved('$negativeKeywordListId') +
+        core.Uri.encodeFull('$negativeKeywordListId') +
         '/negativeKeywords/' +
-        commons.Escaper.ecapeVariableReserved('$keywordValue');
+        core.Uri.encodeFull('$keywordValue');
 
     final _response = await _requester.request(
       _url,
@@ -4696,9 +4683,9 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/negativeKeywordLists/' +
-        commons.Escaper.ecapeVariableReserved('$negativeKeywordListId') +
+        core.Uri.encodeFull('$negativeKeywordListId') +
         '/negativeKeywords';
 
     final _response = await _requester.request(
@@ -4847,9 +4834,9 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/targetingTypes/' +
-        commons.Escaper.ecapeVariableReserved('$targetingType') +
+        core.Uri.encodeFull('$targetingType') +
         '/assignedTargetingOptions';
 
     final _response = await _requester.request(
@@ -4979,11 +4966,11 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/targetingTypes/' +
-        commons.Escaper.ecapeVariableReserved('$targetingType') +
+        core.Uri.encodeFull('$targetingType') +
         '/assignedTargetingOptions/' +
-        commons.Escaper.ecapeVariableReserved('$assignedTargetingOptionId');
+        core.Uri.encodeFull('$assignedTargetingOptionId');
 
     final _response = await _requester.request(
       _url,
@@ -5111,11 +5098,11 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/targetingTypes/' +
-        commons.Escaper.ecapeVariableReserved('$targetingType') +
+        core.Uri.encodeFull('$targetingType') +
         '/assignedTargetingOptions/' +
-        commons.Escaper.ecapeVariableReserved('$assignedTargetingOptionId');
+        core.Uri.encodeFull('$assignedTargetingOptionId');
 
     final _response = await _requester.request(
       _url,
@@ -5269,9 +5256,9 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
     };
 
     final _url = 'v1/advertisers/' +
-        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/targetingTypes/' +
-        commons.Escaper.ecapeVariableReserved('$targetingType') +
+        core.Uri.encodeFull('$targetingType') +
         '/assignedTargetingOptions';
 
     final _response = await _requester.request(
@@ -5324,8 +5311,8 @@ class CombinedAudiencesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/combinedAudiences/' +
-        commons.Escaper.ecapeVariableReserved('$combinedAudienceId');
+    final _url =
+        'v1/combinedAudiences/' + core.Uri.encodeFull('$combinedAudienceId');
 
     final _response = await _requester.request(
       _url,
@@ -5454,7 +5441,7 @@ class CustomBiddingAlgorithmsResource {
     };
 
     final _url = 'v1/customBiddingAlgorithms/' +
-        commons.Escaper.ecapeVariableReserved('$customBiddingAlgorithmId');
+        core.Uri.encodeFull('$customBiddingAlgorithmId');
 
     final _response = await _requester.request(
       _url,
@@ -5585,8 +5572,7 @@ class CustomListsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/customLists/' +
-        commons.Escaper.ecapeVariableReserved('$customListId');
+    final _url = 'v1/customLists/' + core.Uri.encodeFull('$customListId');
 
     final _response = await _requester.request(
       _url,
@@ -5710,7 +5696,7 @@ class FirstAndThirdPartyAudiencesResource {
     };
 
     final _url = 'v1/firstAndThirdPartyAudiences/' +
-        commons.Escaper.ecapeVariableReserved('$firstAndThirdPartyAudienceId');
+        core.Uri.encodeFull('$firstAndThirdPartyAudienceId');
 
     final _response = await _requester.request(
       _url,
@@ -5833,8 +5819,8 @@ class FloodlightGroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/floodlightGroups/' +
-        commons.Escaper.ecapeVariableReserved('$floodlightGroupId');
+    final _url =
+        'v1/floodlightGroups/' + core.Uri.encodeFull('$floodlightGroupId');
 
     final _response = await _requester.request(
       _url,
@@ -5885,8 +5871,8 @@ class FloodlightGroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/floodlightGroups/' +
-        commons.Escaper.ecapeVariable('$floodlightGroupId');
+    final _url =
+        'v1/floodlightGroups/' + commons.escapeVariable('$floodlightGroupId');
 
     final _response = await _requester.request(
       _url,
@@ -5939,8 +5925,8 @@ class GoogleAudiencesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/googleAudiences/' +
-        commons.Escaper.ecapeVariableReserved('$googleAudienceId');
+    final _url =
+        'v1/googleAudiences/' + core.Uri.encodeFull('$googleAudienceId');
 
     final _response = await _requester.request(
       _url,
@@ -6124,7 +6110,7 @@ class InventorySourceGroupsResource {
     };
 
     final _url = 'v1/inventorySourceGroups/' +
-        commons.Escaper.ecapeVariableReserved('$inventorySourceGroupId');
+        core.Uri.encodeFull('$inventorySourceGroupId');
 
     final _response = await _requester.request(
       _url,
@@ -6173,7 +6159,7 @@ class InventorySourceGroupsResource {
     };
 
     final _url = 'v1/inventorySourceGroups/' +
-        commons.Escaper.ecapeVariableReserved('$inventorySourceGroupId');
+        core.Uri.encodeFull('$inventorySourceGroupId');
 
     final _response = await _requester.request(
       _url,
@@ -6305,7 +6291,7 @@ class InventorySourceGroupsResource {
     };
 
     final _url = 'v1/inventorySourceGroups/' +
-        commons.Escaper.ecapeVariable('$inventorySourceGroupId');
+        commons.escapeVariable('$inventorySourceGroupId');
 
     final _response = await _requester.request(
       _url,
@@ -6362,7 +6348,7 @@ class InventorySourceGroupsAssignedInventorySourcesResource {
     };
 
     final _url = 'v1/inventorySourceGroups/' +
-        commons.Escaper.ecapeVariableReserved('$inventorySourceGroupId') +
+        core.Uri.encodeFull('$inventorySourceGroupId') +
         '/assignedInventorySources:bulkEdit';
 
     final _response = await _requester.request(
@@ -6419,7 +6405,7 @@ class InventorySourceGroupsAssignedInventorySourcesResource {
     };
 
     final _url = 'v1/inventorySourceGroups/' +
-        commons.Escaper.ecapeVariableReserved('$inventorySourceGroupId') +
+        core.Uri.encodeFull('$inventorySourceGroupId') +
         '/assignedInventorySources';
 
     final _response = await _requester.request(
@@ -6477,9 +6463,9 @@ class InventorySourceGroupsAssignedInventorySourcesResource {
     };
 
     final _url = 'v1/inventorySourceGroups/' +
-        commons.Escaper.ecapeVariableReserved('$inventorySourceGroupId') +
+        core.Uri.encodeFull('$inventorySourceGroupId') +
         '/assignedInventorySources/' +
-        commons.Escaper.ecapeVariableReserved('$assignedInventorySourceId');
+        core.Uri.encodeFull('$assignedInventorySourceId');
 
     final _response = await _requester.request(
       _url,
@@ -6559,7 +6545,7 @@ class InventorySourceGroupsAssignedInventorySourcesResource {
     };
 
     final _url = 'v1/inventorySourceGroups/' +
-        commons.Escaper.ecapeVariableReserved('$inventorySourceGroupId') +
+        core.Uri.encodeFull('$inventorySourceGroupId') +
         '/assignedInventorySources';
 
     final _response = await _requester.request(
@@ -6607,8 +6593,8 @@ class InventorySourcesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/inventorySources/' +
-        commons.Escaper.ecapeVariableReserved('$inventorySourceId');
+    final _url =
+        'v1/inventorySources/' + core.Uri.encodeFull('$inventorySourceId');
 
     final _response = await _requester.request(
       _url,
@@ -6743,8 +6729,7 @@ class MediaResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'download/' + commons.Escaper.ecapeVariableReserved('$resourceName');
+    final _url = 'download/' + core.Uri.encodeFull('$resourceName');
 
     final _response = await _requester.request(
       _url,
@@ -6806,7 +6791,7 @@ class PartnersResource {
     };
 
     final _url = 'v1/partners/' +
-        commons.Escaper.ecapeVariableReserved('$partnerId') +
+        core.Uri.encodeFull('$partnerId') +
         ':bulkEditPartnerAssignedTargetingOptions';
 
     final _response = await _requester.request(
@@ -6844,8 +6829,7 @@ class PartnersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/partners/' + commons.Escaper.ecapeVariableReserved('$partnerId');
+    final _url = 'v1/partners/' + core.Uri.encodeFull('$partnerId');
 
     final _response = await _requester.request(
       _url,
@@ -6963,9 +6947,8 @@ class PartnersChannelsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/partners/' +
-        commons.Escaper.ecapeVariableReserved('$partnerId') +
-        '/channels';
+    final _url =
+        'v1/partners/' + core.Uri.encodeFull('$partnerId') + '/channels';
 
     final _response = await _requester.request(
       _url,
@@ -7010,9 +6993,9 @@ class PartnersChannelsResource {
     };
 
     final _url = 'v1/partners/' +
-        commons.Escaper.ecapeVariableReserved('$partnerId') +
+        core.Uri.encodeFull('$partnerId') +
         '/channels/' +
-        commons.Escaper.ecapeVariableReserved('$channelId');
+        core.Uri.encodeFull('$channelId');
 
     final _response = await _requester.request(
       _url,
@@ -7081,9 +7064,8 @@ class PartnersChannelsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/partners/' +
-        commons.Escaper.ecapeVariableReserved('$partnerId') +
-        '/channels';
+    final _url =
+        'v1/partners/' + core.Uri.encodeFull('$partnerId') + '/channels';
 
     final _response = await _requester.request(
       _url,
@@ -7138,9 +7120,9 @@ class PartnersChannelsResource {
     };
 
     final _url = 'v1/partners/' +
-        commons.Escaper.ecapeVariableReserved('$partnerId') +
+        core.Uri.encodeFull('$partnerId') +
         '/channels/' +
-        commons.Escaper.ecapeVariable('$channelId');
+        commons.escapeVariable('$channelId');
 
     final _response = await _requester.request(
       _url,
@@ -7196,9 +7178,9 @@ class PartnersChannelsSitesResource {
     };
 
     final _url = 'v1/partners/' +
-        commons.Escaper.ecapeVariable('$partnerId') +
+        commons.escapeVariable('$partnerId') +
         '/channels/' +
-        commons.Escaper.ecapeVariableReserved('$channelId') +
+        core.Uri.encodeFull('$channelId') +
         '/sites:bulkEdit';
 
     final _response = await _requester.request(
@@ -7249,9 +7231,9 @@ class PartnersChannelsSitesResource {
     };
 
     final _url = 'v1/partners/' +
-        commons.Escaper.ecapeVariable('$partnerId') +
+        commons.escapeVariable('$partnerId') +
         '/channels/' +
-        commons.Escaper.ecapeVariableReserved('$channelId') +
+        core.Uri.encodeFull('$channelId') +
         '/sites';
 
     final _response = await _requester.request(
@@ -7301,11 +7283,11 @@ class PartnersChannelsSitesResource {
     };
 
     final _url = 'v1/partners/' +
-        commons.Escaper.ecapeVariable('$partnerId') +
+        commons.escapeVariable('$partnerId') +
         '/channels/' +
-        commons.Escaper.ecapeVariableReserved('$channelId') +
+        core.Uri.encodeFull('$channelId') +
         '/sites/' +
-        commons.Escaper.ecapeVariableReserved('$urlOrAppId');
+        core.Uri.encodeFull('$urlOrAppId');
 
     final _response = await _requester.request(
       _url,
@@ -7379,9 +7361,9 @@ class PartnersChannelsSitesResource {
     };
 
     final _url = 'v1/partners/' +
-        commons.Escaper.ecapeVariableReserved('$partnerId') +
+        core.Uri.encodeFull('$partnerId') +
         '/channels/' +
-        commons.Escaper.ecapeVariableReserved('$channelId') +
+        core.Uri.encodeFull('$channelId') +
         '/sites';
 
     final _response = await _requester.request(
@@ -7528,9 +7510,9 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
     };
 
     final _url = 'v1/partners/' +
-        commons.Escaper.ecapeVariableReserved('$partnerId') +
+        core.Uri.encodeFull('$partnerId') +
         '/targetingTypes/' +
-        commons.Escaper.ecapeVariableReserved('$targetingType') +
+        core.Uri.encodeFull('$targetingType') +
         '/assignedTargetingOptions';
 
     final _response = await _requester.request(
@@ -7658,11 +7640,11 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
     };
 
     final _url = 'v1/partners/' +
-        commons.Escaper.ecapeVariableReserved('$partnerId') +
+        core.Uri.encodeFull('$partnerId') +
         '/targetingTypes/' +
-        commons.Escaper.ecapeVariableReserved('$targetingType') +
+        core.Uri.encodeFull('$targetingType') +
         '/assignedTargetingOptions/' +
-        commons.Escaper.ecapeVariableReserved('$assignedTargetingOptionId');
+        core.Uri.encodeFull('$assignedTargetingOptionId');
 
     final _response = await _requester.request(
       _url,
@@ -7788,11 +7770,11 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
     };
 
     final _url = 'v1/partners/' +
-        commons.Escaper.ecapeVariableReserved('$partnerId') +
+        core.Uri.encodeFull('$partnerId') +
         '/targetingTypes/' +
-        commons.Escaper.ecapeVariableReserved('$targetingType') +
+        core.Uri.encodeFull('$targetingType') +
         '/assignedTargetingOptions/' +
-        commons.Escaper.ecapeVariableReserved('$assignedTargetingOptionId');
+        core.Uri.encodeFull('$assignedTargetingOptionId');
 
     final _response = await _requester.request(
       _url,
@@ -7944,9 +7926,9 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
     };
 
     final _url = 'v1/partners/' +
-        commons.Escaper.ecapeVariableReserved('$partnerId') +
+        core.Uri.encodeFull('$partnerId') +
         '/targetingTypes/' +
-        commons.Escaper.ecapeVariableReserved('$targetingType') +
+        core.Uri.encodeFull('$targetingType') +
         '/assignedTargetingOptions';
 
     final _response = await _requester.request(
@@ -8045,7 +8027,7 @@ class SdfdownloadtasksOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -8186,9 +8168,9 @@ class TargetingTypesTargetingOptionsResource {
     };
 
     final _url = 'v1/targetingTypes/' +
-        commons.Escaper.ecapeVariableReserved('$targetingType') +
+        core.Uri.encodeFull('$targetingType') +
         '/targetingOptions/' +
-        commons.Escaper.ecapeVariableReserved('$targetingOptionId');
+        core.Uri.encodeFull('$targetingOptionId');
 
     final _response = await _requester.request(
       _url,
@@ -8346,7 +8328,7 @@ class TargetingTypesTargetingOptionsResource {
     };
 
     final _url = 'v1/targetingTypes/' +
-        commons.Escaper.ecapeVariableReserved('$targetingType') +
+        core.Uri.encodeFull('$targetingType') +
         '/targetingOptions';
 
     final _response = await _requester.request(
@@ -8469,7 +8451,7 @@ class TargetingTypesTargetingOptionsResource {
     };
 
     final _url = 'v1/targetingTypes/' +
-        commons.Escaper.ecapeVariableReserved('$targetingType') +
+        core.Uri.encodeFull('$targetingType') +
         '/targetingOptions:search';
 
     final _response = await _requester.request(
@@ -8524,7 +8506,7 @@ class UsersResource {
     };
 
     final _url = 'v1/users/' +
-        commons.Escaper.ecapeVariableReserved('$userId') +
+        core.Uri.encodeFull('$userId') +
         ':bulkEditAssignedUserRoles';
 
     final _response = await _requester.request(
@@ -8600,7 +8582,7 @@ class UsersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/users/' + commons.Escaper.ecapeVariableReserved('$userId');
+    final _url = 'v1/users/' + core.Uri.encodeFull('$userId');
 
     final _response = await _requester.request(
       _url,
@@ -8635,7 +8617,7 @@ class UsersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/users/' + commons.Escaper.ecapeVariableReserved('$userId');
+    final _url = 'v1/users/' + core.Uri.encodeFull('$userId');
 
     final _response = await _requester.request(
       _url,
@@ -8760,7 +8742,7 @@ class UsersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/users/' + commons.Escaper.ecapeVariableReserved('$userId');
+    final _url = 'v1/users/' + core.Uri.encodeFull('$userId');
 
     final _response = await _requester.request(
       _url,

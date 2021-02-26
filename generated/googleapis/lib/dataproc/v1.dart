@@ -123,9 +123,8 @@ class ProjectsLocationsAutoscalingPoliciesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/autoscalingPolicies';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + '/autoscalingPolicies';
 
     final _response = await _requester.request(
       _url,
@@ -173,7 +172,7 @@ class ProjectsLocationsAutoscalingPoliciesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -216,7 +215,7 @@ class ProjectsLocationsAutoscalingPoliciesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -262,9 +261,7 @@ class ProjectsLocationsAutoscalingPoliciesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':getIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -316,9 +313,8 @@ class ProjectsLocationsAutoscalingPoliciesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/autoscalingPolicies';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + '/autoscalingPolicies';
 
     final _response = await _requester.request(
       _url,
@@ -364,9 +360,7 @@ class ProjectsLocationsAutoscalingPoliciesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':setIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -414,9 +408,8 @@ class ProjectsLocationsAutoscalingPoliciesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':testIamPermissions';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
     final _response = await _requester.request(
       _url,
@@ -466,7 +459,7 @@ class ProjectsLocationsAutoscalingPoliciesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -520,9 +513,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/workflowTemplates';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/workflowTemplates';
 
     final _response = await _requester.request(
       _url,
@@ -575,7 +566,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -625,7 +616,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -671,9 +662,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':getIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -731,8 +720,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':instantiate';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':instantiate';
 
     final _response = await _requester.request(
       _url,
@@ -802,7 +790,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/workflowTemplates:instantiateInline';
 
     final _response = await _requester.request(
@@ -855,9 +843,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/workflowTemplates';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/workflowTemplates';
 
     final _response = await _requester.request(
       _url,
@@ -903,9 +889,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':setIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -953,9 +937,8 @@ class ProjectsLocationsWorkflowTemplatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':testIamPermissions';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
     final _response = await _requester.request(
       _url,
@@ -1007,7 +990,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1078,9 +1061,8 @@ class ProjectsRegionsAutoscalingPoliciesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/autoscalingPolicies';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + '/autoscalingPolicies';
 
     final _response = await _requester.request(
       _url,
@@ -1128,7 +1110,7 @@ class ProjectsRegionsAutoscalingPoliciesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1171,7 +1153,7 @@ class ProjectsRegionsAutoscalingPoliciesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1217,9 +1199,7 @@ class ProjectsRegionsAutoscalingPoliciesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':getIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -1271,9 +1251,8 @@ class ProjectsRegionsAutoscalingPoliciesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/autoscalingPolicies';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + '/autoscalingPolicies';
 
     final _response = await _requester.request(
       _url,
@@ -1319,9 +1298,7 @@ class ProjectsRegionsAutoscalingPoliciesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':setIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -1369,9 +1346,8 @@ class ProjectsRegionsAutoscalingPoliciesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':testIamPermissions';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
     final _response = await _requester.request(
       _url,
@@ -1421,7 +1397,7 @@ class ProjectsRegionsAutoscalingPoliciesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1488,9 +1464,9 @@ class ProjectsRegionsClustersResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/clusters';
 
     final _response = await _requester.request(
@@ -1554,11 +1530,11 @@ class ProjectsRegionsClustersResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/clusters/' +
-        commons.Escaper.ecapeVariable('$clusterName');
+        commons.escapeVariable('$clusterName');
 
     final _response = await _requester.request(
       _url,
@@ -1610,11 +1586,11 @@ class ProjectsRegionsClustersResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/clusters/' +
-        commons.Escaper.ecapeVariable('$clusterName') +
+        commons.escapeVariable('$clusterName') +
         ':diagnose';
 
     final _response = await _requester.request(
@@ -1658,11 +1634,11 @@ class ProjectsRegionsClustersResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/clusters/' +
-        commons.Escaper.ecapeVariable('$clusterName');
+        commons.escapeVariable('$clusterName');
 
     final _response = await _requester.request(
       _url,
@@ -1707,9 +1683,7 @@ class ProjectsRegionsClustersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':getIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -1762,11 +1736,11 @@ class ProjectsRegionsClustersResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$project') +
+        core.Uri.encodeFull('$project') +
         '/' +
-        commons.Escaper.ecapeVariableReserved('$region') +
+        core.Uri.encodeFull('$region') +
         '/' +
-        commons.Escaper.ecapeVariableReserved('$cluster') +
+        core.Uri.encodeFull('$cluster') +
         ':injectCredentials';
 
     final _response = await _requester.request(
@@ -1830,9 +1804,9 @@ class ProjectsRegionsClustersResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/clusters';
 
     final _response = await _requester.request(
@@ -1926,11 +1900,11 @@ class ProjectsRegionsClustersResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/clusters/' +
-        commons.Escaper.ecapeVariable('$clusterName');
+        commons.escapeVariable('$clusterName');
 
     final _response = await _requester.request(
       _url,
@@ -1976,9 +1950,7 @@ class ProjectsRegionsClustersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':setIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -2025,11 +1997,11 @@ class ProjectsRegionsClustersResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/clusters/' +
-        commons.Escaper.ecapeVariable('$clusterName') +
+        commons.escapeVariable('$clusterName') +
         ':start';
 
     final _response = await _requester.request(
@@ -2077,11 +2049,11 @@ class ProjectsRegionsClustersResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/clusters/' +
-        commons.Escaper.ecapeVariable('$clusterName') +
+        commons.escapeVariable('$clusterName') +
         ':stop';
 
     final _response = await _requester.request(
@@ -2130,9 +2102,8 @@ class ProjectsRegionsClustersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':testIamPermissions';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
     final _response = await _requester.request(
       _url,
@@ -2193,11 +2164,11 @@ class ProjectsRegionsJobsResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/jobs/' +
-        commons.Escaper.ecapeVariable('$jobId') +
+        commons.escapeVariable('$jobId') +
         ':cancel';
 
     final _response = await _requester.request(
@@ -2244,11 +2215,11 @@ class ProjectsRegionsJobsResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/jobs/' +
-        commons.Escaper.ecapeVariable('$jobId');
+        commons.escapeVariable('$jobId');
 
     final _response = await _requester.request(
       _url,
@@ -2290,11 +2261,11 @@ class ProjectsRegionsJobsResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/jobs/' +
-        commons.Escaper.ecapeVariable('$jobId');
+        commons.escapeVariable('$jobId');
 
     final _response = await _requester.request(
       _url,
@@ -2338,9 +2309,7 @@ class ProjectsRegionsJobsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':getIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -2417,9 +2386,9 @@ class ProjectsRegionsJobsResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/jobs';
 
     final _response = await _requester.request(
@@ -2475,11 +2444,11 @@ class ProjectsRegionsJobsResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/jobs/' +
-        commons.Escaper.ecapeVariable('$jobId');
+        commons.escapeVariable('$jobId');
 
     final _response = await _requester.request(
       _url,
@@ -2524,9 +2493,7 @@ class ProjectsRegionsJobsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':setIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -2570,9 +2537,9 @@ class ProjectsRegionsJobsResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/jobs:submit';
 
     final _response = await _requester.request(
@@ -2617,9 +2584,9 @@ class ProjectsRegionsJobsResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$region') +
+        commons.escapeVariable('$region') +
         '/jobs:submitAsOperation';
 
     final _response = await _requester.request(
@@ -2667,9 +2634,8 @@ class ProjectsRegionsJobsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':testIamPermissions';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
     final _response = await _requester.request(
       _url,
@@ -2723,8 +2689,7 @@ class ProjectsRegionsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
 
     final _response = await _requester.request(
       _url,
@@ -2764,7 +2729,7 @@ class ProjectsRegionsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2803,7 +2768,7 @@ class ProjectsRegionsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2848,9 +2813,7 @@ class ProjectsRegionsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':getIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -2907,7 +2870,7 @@ class ProjectsRegionsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2953,9 +2916,7 @@ class ProjectsRegionsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':setIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -3003,9 +2964,8 @@ class ProjectsRegionsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':testIamPermissions';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
     final _response = await _requester.request(
       _url,
@@ -3059,9 +3019,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/workflowTemplates';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/workflowTemplates';
 
     final _response = await _requester.request(
       _url,
@@ -3114,7 +3072,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -3164,7 +3122,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -3210,9 +3168,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':getIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -3270,8 +3226,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':instantiate';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':instantiate';
 
     final _response = await _requester.request(
       _url,
@@ -3341,7 +3296,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/workflowTemplates:instantiateInline';
 
     final _response = await _requester.request(
@@ -3394,9 +3349,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/workflowTemplates';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/workflowTemplates';
 
     final _response = await _requester.request(
       _url,
@@ -3442,9 +3395,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':setIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -3492,9 +3443,8 @@ class ProjectsRegionsWorkflowTemplatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':testIamPermissions';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
     final _response = await _requester.request(
       _url,
@@ -3546,7 +3496,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,

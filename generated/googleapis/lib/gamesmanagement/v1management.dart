@@ -95,7 +95,7 @@ class AchievementsResource {
     };
 
     final _url = 'games/v1management/achievements/' +
-        commons.Escaper.ecapeVariable('$achievementId') +
+        commons.escapeVariable('$achievementId') +
         '/reset';
 
     final _response = await _requester.request(
@@ -200,7 +200,7 @@ class AchievementsResource {
     };
 
     final _url = 'games/v1management/achievements/' +
-        commons.Escaper.ecapeVariable('$achievementId') +
+        commons.escapeVariable('$achievementId') +
         '/resetForAllPlayers';
 
     await _requester.request(
@@ -292,7 +292,7 @@ class ApplicationsResource {
     };
 
     final _url = 'games/v1management/applications/' +
-        commons.Escaper.ecapeVariable('$applicationId') +
+        commons.escapeVariable('$applicationId') +
         '/players/hidden';
 
     final _response = await _requester.request(
@@ -337,7 +337,7 @@ class EventsResource {
     };
 
     final _url = 'games/v1management/events/' +
-        commons.Escaper.ecapeVariable('$eventId') +
+        commons.escapeVariable('$eventId') +
         '/reset';
 
     await _requester.request(
@@ -438,7 +438,7 @@ class EventsResource {
     };
 
     final _url = 'games/v1management/events/' +
-        commons.Escaper.ecapeVariable('$eventId') +
+        commons.escapeVariable('$eventId') +
         '/resetForAllPlayers';
 
     await _requester.request(
@@ -522,9 +522,9 @@ class PlayersResource {
     };
 
     final _url = 'games/v1management/applications/' +
-        commons.Escaper.ecapeVariable('$applicationId') +
+        commons.escapeVariable('$applicationId') +
         '/players/hidden/' +
-        commons.Escaper.ecapeVariable('$playerId');
+        commons.escapeVariable('$playerId');
 
     await _requester.request(
       _url,
@@ -564,9 +564,9 @@ class PlayersResource {
     };
 
     final _url = 'games/v1management/applications/' +
-        commons.Escaper.ecapeVariable('$applicationId') +
+        commons.escapeVariable('$applicationId') +
         '/players/hidden/' +
-        commons.Escaper.ecapeVariable('$playerId');
+        commons.escapeVariable('$playerId');
 
     await _requester.request(
       _url,
@@ -611,7 +611,7 @@ class ScoresResource {
     };
 
     final _url = 'games/v1management/leaderboards/' +
-        commons.Escaper.ecapeVariable('$leaderboardId') +
+        commons.escapeVariable('$leaderboardId') +
         '/scores/reset';
 
     final _response = await _requester.request(
@@ -716,7 +716,7 @@ class ScoresResource {
     };
 
     final _url = 'games/v1management/leaderboards/' +
-        commons.Escaper.ecapeVariable('$leaderboardId') +
+        commons.escapeVariable('$leaderboardId') +
         '/scores/resetForAllPlayers';
 
     await _requester.request(

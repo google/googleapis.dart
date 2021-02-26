@@ -88,8 +88,7 @@ class OperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/operations/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/operations/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,

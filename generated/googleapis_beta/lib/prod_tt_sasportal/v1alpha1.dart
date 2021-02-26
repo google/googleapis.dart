@@ -108,7 +108,7 @@ class CustomersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -193,7 +193,7 @@ class CustomersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -245,9 +245,7 @@ class CustomersDeploymentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/deployments';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/deployments';
 
     final _response = await _requester.request(
       _url,
@@ -284,7 +282,7 @@ class CustomersDeploymentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -320,7 +318,7 @@ class CustomersDeploymentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -372,9 +370,7 @@ class CustomersDeploymentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/deployments';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/deployments';
 
     final _response = await _requester.request(
       _url,
@@ -414,8 +410,7 @@ class CustomersDeploymentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name') + ':move';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':move';
 
     final _response = await _requester.request(
       _url,
@@ -460,7 +455,7 @@ class CustomersDeploymentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -508,9 +503,7 @@ class CustomersDeploymentsDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/devices';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
 
     final _response = await _requester.request(
       _url,
@@ -551,9 +544,8 @@ class CustomersDeploymentsDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/devices:createSigned';
+    final _url =
+        'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices:createSigned';
 
     final _response = await _requester.request(
       _url,
@@ -607,9 +599,7 @@ class CustomersDeploymentsDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/devices';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
 
     final _response = await _requester.request(
       _url,
@@ -655,9 +645,7 @@ class CustomersDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/devices';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
 
     final _response = await _requester.request(
       _url,
@@ -698,9 +686,8 @@ class CustomersDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/devices:createSigned';
+    final _url =
+        'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices:createSigned';
 
     final _response = await _requester.request(
       _url,
@@ -737,7 +724,7 @@ class CustomersDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -773,7 +760,7 @@ class CustomersDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -826,9 +813,7 @@ class CustomersDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/devices';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
 
     final _response = await _requester.request(
       _url,
@@ -868,8 +853,7 @@ class CustomersDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name') + ':move';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':move';
 
     final _response = await _requester.request(
       _url,
@@ -914,7 +898,7 @@ class CustomersDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -955,9 +939,7 @@ class CustomersDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':signDevice';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':signDevice';
 
     final _response = await _requester.request(
       _url,
@@ -998,9 +980,7 @@ class CustomersDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':updateSigned';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':updateSigned';
 
     final _response = await _requester.request(
       _url,
@@ -1055,9 +1035,7 @@ class CustomersNodesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/nodes';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/nodes';
 
     final _response = await _requester.request(
       _url,
@@ -1094,7 +1072,7 @@ class CustomersNodesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1130,7 +1108,7 @@ class CustomersNodesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1181,9 +1159,7 @@ class CustomersNodesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/nodes';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/nodes';
 
     final _response = await _requester.request(
       _url,
@@ -1223,8 +1199,7 @@ class CustomersNodesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name') + ':move';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':move';
 
     final _response = await _requester.request(
       _url,
@@ -1269,7 +1244,7 @@ class CustomersNodesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1318,9 +1293,7 @@ class CustomersNodesDeploymentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/deployments';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/deployments';
 
     final _response = await _requester.request(
       _url,
@@ -1373,9 +1346,7 @@ class CustomersNodesDeploymentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/deployments';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/deployments';
 
     final _response = await _requester.request(
       _url,
@@ -1422,9 +1393,7 @@ class CustomersNodesDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/devices';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
 
     final _response = await _requester.request(
       _url,
@@ -1465,9 +1434,8 @@ class CustomersNodesDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/devices:createSigned';
+    final _url =
+        'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices:createSigned';
 
     final _response = await _requester.request(
       _url,
@@ -1521,9 +1489,7 @@ class CustomersNodesDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/devices';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
 
     final _response = await _requester.request(
       _url,
@@ -1571,9 +1537,7 @@ class CustomersNodesNodesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/nodes';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/nodes';
 
     final _response = await _requester.request(
       _url,
@@ -1625,9 +1589,7 @@ class CustomersNodesNodesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/nodes';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/nodes';
 
     final _response = await _requester.request(
       _url,
@@ -1672,7 +1634,7 @@ class DeploymentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1714,7 +1676,7 @@ class DeploymentsDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1750,7 +1712,7 @@ class DeploymentsDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1790,8 +1752,7 @@ class DeploymentsDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name') + ':move';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':move';
 
     final _response = await _requester.request(
       _url,
@@ -1836,7 +1797,7 @@ class DeploymentsDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1877,9 +1838,7 @@ class DeploymentsDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':signDevice';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':signDevice';
 
     final _response = await _requester.request(
       _url,
@@ -1920,9 +1879,7 @@ class DeploymentsDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':updateSigned';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':updateSigned';
 
     final _response = await _requester.request(
       _url,
@@ -2050,7 +2007,7 @@ class NodesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2095,7 +2052,7 @@ class NodesDeploymentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2131,7 +2088,7 @@ class NodesDeploymentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2183,9 +2140,7 @@ class NodesDeploymentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/deployments';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/deployments';
 
     final _response = await _requester.request(
       _url,
@@ -2225,8 +2180,7 @@ class NodesDeploymentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name') + ':move';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':move';
 
     final _response = await _requester.request(
       _url,
@@ -2271,7 +2225,7 @@ class NodesDeploymentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2319,9 +2273,7 @@ class NodesDeploymentsDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/devices';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
 
     final _response = await _requester.request(
       _url,
@@ -2362,9 +2314,8 @@ class NodesDeploymentsDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/devices:createSigned';
+    final _url =
+        'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices:createSigned';
 
     final _response = await _requester.request(
       _url,
@@ -2418,9 +2369,7 @@ class NodesDeploymentsDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/devices';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
 
     final _response = await _requester.request(
       _url,
@@ -2466,9 +2415,7 @@ class NodesDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/devices';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
 
     final _response = await _requester.request(
       _url,
@@ -2509,9 +2456,8 @@ class NodesDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/devices:createSigned';
+    final _url =
+        'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices:createSigned';
 
     final _response = await _requester.request(
       _url,
@@ -2548,7 +2494,7 @@ class NodesDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2584,7 +2530,7 @@ class NodesDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2637,9 +2583,7 @@ class NodesDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/devices';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
 
     final _response = await _requester.request(
       _url,
@@ -2679,8 +2623,7 @@ class NodesDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name') + ':move';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':move';
 
     final _response = await _requester.request(
       _url,
@@ -2725,7 +2668,7 @@ class NodesDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2766,9 +2709,7 @@ class NodesDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':signDevice';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':signDevice';
 
     final _response = await _requester.request(
       _url,
@@ -2809,9 +2750,7 @@ class NodesDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':updateSigned';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':updateSigned';
 
     final _response = await _requester.request(
       _url,
@@ -2865,9 +2804,7 @@ class NodesNodesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/nodes';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/nodes';
 
     final _response = await _requester.request(
       _url,
@@ -2904,7 +2841,7 @@ class NodesNodesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2940,7 +2877,7 @@ class NodesNodesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2991,9 +2928,7 @@ class NodesNodesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/nodes';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/nodes';
 
     final _response = await _requester.request(
       _url,
@@ -3033,8 +2968,7 @@ class NodesNodesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name') + ':move';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':move';
 
     final _response = await _requester.request(
       _url,
@@ -3079,7 +3013,7 @@ class NodesNodesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -3128,9 +3062,7 @@ class NodesNodesDeploymentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/deployments';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/deployments';
 
     final _response = await _requester.request(
       _url,
@@ -3183,9 +3115,7 @@ class NodesNodesDeploymentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/deployments';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/deployments';
 
     final _response = await _requester.request(
       _url,
@@ -3231,9 +3161,7 @@ class NodesNodesDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/devices';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
 
     final _response = await _requester.request(
       _url,
@@ -3274,9 +3202,8 @@ class NodesNodesDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/devices:createSigned';
+    final _url =
+        'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices:createSigned';
 
     final _response = await _requester.request(
       _url,
@@ -3330,9 +3257,7 @@ class NodesNodesDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/devices';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
 
     final _response = await _requester.request(
       _url,
@@ -3379,9 +3304,7 @@ class NodesNodesNodesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/nodes';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/nodes';
 
     final _response = await _requester.request(
       _url,
@@ -3433,9 +3356,7 @@ class NodesNodesNodesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/nodes';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/nodes';
 
     final _response = await _requester.request(
       _url,

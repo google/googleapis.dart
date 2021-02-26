@@ -140,9 +140,7 @@ class FoldersLocationsReplaysResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/replays';
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/replays';
 
     final _response = await _requester.request(
       _url,
@@ -187,7 +185,7 @@ class FoldersLocationsReplaysResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -250,9 +248,7 @@ class FoldersLocationsReplaysResultsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/results';
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/results';
 
     final _response = await _requester.request(
       _url,
@@ -297,7 +293,7 @@ class OperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -425,9 +421,7 @@ class OrganizationsLocationsReplaysResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/replays';
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/replays';
 
     final _response = await _requester.request(
       _url,
@@ -472,7 +466,7 @@ class OrganizationsLocationsReplaysResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -535,9 +529,7 @@ class OrganizationsLocationsReplaysResultsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/results';
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/results';
 
     final _response = await _requester.request(
       _url,
@@ -607,9 +599,7 @@ class ProjectsLocationsReplaysResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/replays';
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/replays';
 
     final _response = await _requester.request(
       _url,
@@ -654,7 +644,7 @@ class ProjectsLocationsReplaysResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -717,9 +707,7 @@ class ProjectsLocationsReplaysResultsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/results';
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/results';
 
     final _response = await _requester.request(
       _url,

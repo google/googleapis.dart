@@ -104,7 +104,7 @@ class ProjectsLocationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -157,8 +157,7 @@ class ProjectsLocationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
 
     final _response = await _requester.request(
       _url,
@@ -214,9 +213,8 @@ class ProjectsLocationsGameServerDeploymentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/gameServerDeployments';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + '/gameServerDeployments';
 
     final _response = await _requester.request(
       _url,
@@ -255,7 +253,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -301,9 +299,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':fetchDeploymentState';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':fetchDeploymentState';
 
     final _response = await _requester.request(
       _url,
@@ -343,7 +339,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -396,9 +392,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':getIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -436,8 +430,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/rollout';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/rollout';
 
     final _response = await _requester.request(
       _url,
@@ -496,9 +489,8 @@ class ProjectsLocationsGameServerDeploymentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/gameServerDeployments';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + '/gameServerDeployments';
 
     final _response = await _requester.request(
       _url,
@@ -549,7 +541,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -607,9 +599,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        '/rollout:preview';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/rollout:preview';
 
     final _response = await _requester.request(
       _url,
@@ -656,9 +646,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':setIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -706,9 +694,8 @@ class ProjectsLocationsGameServerDeploymentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':testIamPermissions';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
     final _response = await _requester.request(
       _url,
@@ -766,8 +753,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/rollout';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/rollout';
 
     final _response = await _requester.request(
       _url,
@@ -826,8 +812,7 @@ class ProjectsLocationsGameServerDeploymentsConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/configs';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/configs';
 
     final _response = await _requester.request(
       _url,
@@ -869,7 +854,7 @@ class ProjectsLocationsGameServerDeploymentsConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -907,7 +892,7 @@ class ProjectsLocationsGameServerDeploymentsConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -969,8 +954,7 @@ class ProjectsLocationsGameServerDeploymentsConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/configs';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/configs';
 
     final _response = await _requester.request(
       _url,
@@ -1027,8 +1011,7 @@ class ProjectsLocationsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
 
     final _response = await _requester.request(
       _url,
@@ -1069,7 +1052,7 @@ class ProjectsLocationsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1108,7 +1091,7 @@ class ProjectsLocationsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1164,8 +1147,7 @@ class ProjectsLocationsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/operations';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
 
     final _response = await _requester.request(
       _url,
@@ -1220,8 +1202,7 @@ class ProjectsLocationsRealmsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/realms';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/realms';
 
     final _response = await _requester.request(
       _url,
@@ -1259,7 +1240,7 @@ class ProjectsLocationsRealmsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1296,7 +1277,7 @@ class ProjectsLocationsRealmsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1353,8 +1334,7 @@ class ProjectsLocationsRealmsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/realms';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/realms';
 
     final _response = await _requester.request(
       _url,
@@ -1403,7 +1383,7 @@ class ProjectsLocationsRealmsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1456,9 +1436,7 @@ class ProjectsLocationsRealmsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':previewUpdate';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':previewUpdate';
 
     final _response = await _requester.request(
       _url,
@@ -1514,9 +1492,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/gameServerClusters';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/gameServerClusters';
 
     final _response = await _requester.request(
       _url,
@@ -1555,7 +1531,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1593,7 +1569,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1653,9 +1629,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/gameServerClusters';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/gameServerClusters';
 
     final _response = await _requester.request(
       _url,
@@ -1706,7 +1680,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1760,7 +1734,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/gameServerClusters:previewCreate';
 
     final _response = await _requester.request(
@@ -1805,9 +1779,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':previewDelete';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':previewDelete';
 
     final _response = await _requester.request(
       _url,
@@ -1862,9 +1834,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':previewUpdate';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':previewUpdate';
 
     final _response = await _requester.request(
       _url,

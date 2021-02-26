@@ -129,11 +129,11 @@ class DevicesResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/devices/' +
-        commons.Escaper.ecapeVariable('$deviceId') +
+        commons.escapeVariable('$deviceId') +
         '/forceReportUpload';
 
     await _requester.request(
@@ -175,11 +175,11 @@ class DevicesResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/devices/' +
-        commons.Escaper.ecapeVariable('$deviceId');
+        commons.escapeVariable('$deviceId');
 
     final _response = await _requester.request(
       _url,
@@ -226,11 +226,11 @@ class DevicesResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/devices/' +
-        commons.Escaper.ecapeVariable('$deviceId') +
+        commons.escapeVariable('$deviceId') +
         '/state';
 
     final _response = await _requester.request(
@@ -270,9 +270,9 @@ class DevicesResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/devices';
 
     final _response = await _requester.request(
@@ -324,11 +324,11 @@ class DevicesResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/devices/' +
-        commons.Escaper.ecapeVariable('$deviceId') +
+        commons.escapeVariable('$deviceId') +
         '/state';
 
     final _response = await _requester.request(
@@ -387,11 +387,11 @@ class DevicesResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/devices/' +
-        commons.Escaper.ecapeVariable('$deviceId');
+        commons.escapeVariable('$deviceId');
 
     final _response = await _requester.request(
       _url,
@@ -522,7 +522,7 @@ class EnterprisesResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/createWebToken';
 
     final _response = await _requester.request(
@@ -645,7 +645,7 @@ class EnterprisesResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId');
+        commons.escapeVariable('$enterpriseId');
 
     final _response = await _requester.request(
       _url,
@@ -704,7 +704,7 @@ class EnterprisesResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/serviceAccount';
 
     final _response = await _requester.request(
@@ -744,7 +744,7 @@ class EnterprisesResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/storeLayout';
 
     final _response = await _requester.request(
@@ -886,7 +886,7 @@ class EnterprisesResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/sendTestPushNotification';
 
     final _response = await _requester.request(
@@ -928,7 +928,7 @@ class EnterprisesResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/account';
 
     final _response = await _requester.request(
@@ -978,7 +978,7 @@ class EnterprisesResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/storeLayout';
 
     final _response = await _requester.request(
@@ -1014,7 +1014,7 @@ class EnterprisesResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/unenroll';
 
     await _requester.request(
@@ -1061,11 +1061,11 @@ class EntitlementsResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/entitlements/' +
-        commons.Escaper.ecapeVariable('$entitlementId');
+        commons.escapeVariable('$entitlementId');
 
     await _requester.request(
       _url,
@@ -1107,11 +1107,11 @@ class EntitlementsResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/entitlements/' +
-        commons.Escaper.ecapeVariable('$entitlementId');
+        commons.escapeVariable('$entitlementId');
 
     final _response = await _requester.request(
       _url,
@@ -1152,9 +1152,9 @@ class EntitlementsResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/entitlements';
 
     final _response = await _requester.request(
@@ -1209,11 +1209,11 @@ class EntitlementsResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/entitlements/' +
-        commons.Escaper.ecapeVariable('$entitlementId');
+        commons.escapeVariable('$entitlementId');
 
     final _response = await _requester.request(
       _url,
@@ -1260,9 +1260,9 @@ class GrouplicensesResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/groupLicenses/' +
-        commons.Escaper.ecapeVariable('$groupLicenseId');
+        commons.escapeVariable('$groupLicenseId');
 
     final _response = await _requester.request(
       _url,
@@ -1299,7 +1299,7 @@ class GrouplicensesResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/groupLicenses';
 
     final _response = await _requester.request(
@@ -1347,9 +1347,9 @@ class GrouplicenseusersResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/groupLicenses/' +
-        commons.Escaper.ecapeVariable('$groupLicenseId') +
+        commons.escapeVariable('$groupLicenseId') +
         '/users';
 
     final _response = await _requester.request(
@@ -1403,13 +1403,13 @@ class InstallsResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/devices/' +
-        commons.Escaper.ecapeVariable('$deviceId') +
+        commons.escapeVariable('$deviceId') +
         '/installs/' +
-        commons.Escaper.ecapeVariable('$installId');
+        commons.escapeVariable('$installId');
 
     await _requester.request(
       _url,
@@ -1454,13 +1454,13 @@ class InstallsResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/devices/' +
-        commons.Escaper.ecapeVariable('$deviceId') +
+        commons.escapeVariable('$deviceId') +
         '/installs/' +
-        commons.Escaper.ecapeVariable('$installId');
+        commons.escapeVariable('$installId');
 
     final _response = await _requester.request(
       _url,
@@ -1501,11 +1501,11 @@ class InstallsResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/devices/' +
-        commons.Escaper.ecapeVariable('$deviceId') +
+        commons.escapeVariable('$deviceId') +
         '/installs';
 
     final _response = await _requester.request(
@@ -1559,13 +1559,13 @@ class InstallsResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/devices/' +
-        commons.Escaper.ecapeVariable('$deviceId') +
+        commons.escapeVariable('$deviceId') +
         '/installs/' +
-        commons.Escaper.ecapeVariable('$installId');
+        commons.escapeVariable('$installId');
 
     final _response = await _requester.request(
       _url,
@@ -1617,13 +1617,13 @@ class ManagedconfigurationsfordeviceResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/devices/' +
-        commons.Escaper.ecapeVariable('$deviceId') +
+        commons.escapeVariable('$deviceId') +
         '/managedConfigurationsForDevice/' +
-        commons.Escaper.ecapeVariable('$managedConfigurationForDeviceId');
+        commons.escapeVariable('$managedConfigurationForDeviceId');
 
     await _requester.request(
       _url,
@@ -1668,13 +1668,13 @@ class ManagedconfigurationsfordeviceResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/devices/' +
-        commons.Escaper.ecapeVariable('$deviceId') +
+        commons.escapeVariable('$deviceId') +
         '/managedConfigurationsForDevice/' +
-        commons.Escaper.ecapeVariable('$managedConfigurationForDeviceId');
+        commons.escapeVariable('$managedConfigurationForDeviceId');
 
     final _response = await _requester.request(
       _url,
@@ -1718,11 +1718,11 @@ class ManagedconfigurationsfordeviceResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/devices/' +
-        commons.Escaper.ecapeVariable('$deviceId') +
+        commons.escapeVariable('$deviceId') +
         '/managedConfigurationsForDevice';
 
     final _response = await _requester.request(
@@ -1774,13 +1774,13 @@ class ManagedconfigurationsfordeviceResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/devices/' +
-        commons.Escaper.ecapeVariable('$deviceId') +
+        commons.escapeVariable('$deviceId') +
         '/managedConfigurationsForDevice/' +
-        commons.Escaper.ecapeVariable('$managedConfigurationForDeviceId');
+        commons.escapeVariable('$managedConfigurationForDeviceId');
 
     final _response = await _requester.request(
       _url,
@@ -1830,11 +1830,11 @@ class ManagedconfigurationsforuserResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/managedConfigurationsForUser/' +
-        commons.Escaper.ecapeVariable('$managedConfigurationForUserId');
+        commons.escapeVariable('$managedConfigurationForUserId');
 
     await _requester.request(
       _url,
@@ -1877,11 +1877,11 @@ class ManagedconfigurationsforuserResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/managedConfigurationsForUser/' +
-        commons.Escaper.ecapeVariable('$managedConfigurationForUserId');
+        commons.escapeVariable('$managedConfigurationForUserId');
 
     final _response = await _requester.request(
       _url,
@@ -1922,9 +1922,9 @@ class ManagedconfigurationsforuserResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/managedConfigurationsForUser';
 
     final _response = await _requester.request(
@@ -1978,11 +1978,11 @@ class ManagedconfigurationsforuserResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/managedConfigurationsForUser/' +
-        commons.Escaper.ecapeVariable('$managedConfigurationForUserId');
+        commons.escapeVariable('$managedConfigurationForUserId');
 
     final _response = await _requester.request(
       _url,
@@ -2030,9 +2030,9 @@ class ManagedconfigurationssettingsResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/products/' +
-        commons.Escaper.ecapeVariable('$productId') +
+        commons.escapeVariable('$productId') +
         '/managedConfigurationsSettings';
 
     final _response = await _requester.request(
@@ -2081,7 +2081,7 @@ class PermissionsResource {
     };
 
     final _url = 'androidenterprise/v1/permissions/' +
-        commons.Escaper.ecapeVariable('$permissionId');
+        commons.escapeVariable('$permissionId');
 
     final _response = await _requester.request(
       _url,
@@ -2133,9 +2133,9 @@ class ProductsResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/products/' +
-        commons.Escaper.ecapeVariable('$productId') +
+        commons.escapeVariable('$productId') +
         '/approve';
 
     await _requester.request(
@@ -2189,9 +2189,9 @@ class ProductsResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/products/' +
-        commons.Escaper.ecapeVariable('$productId') +
+        commons.escapeVariable('$productId') +
         '/generateApprovalUrl';
 
     final _response = await _requester.request(
@@ -2236,9 +2236,9 @@ class ProductsResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/products/' +
-        commons.Escaper.ecapeVariable('$productId');
+        commons.escapeVariable('$productId');
 
     final _response = await _requester.request(
       _url,
@@ -2288,9 +2288,9 @@ class ProductsResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/products/' +
-        commons.Escaper.ecapeVariable('$productId') +
+        commons.escapeVariable('$productId') +
         '/appRestrictionsSchema';
 
     final _response = await _requester.request(
@@ -2330,9 +2330,9 @@ class ProductsResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/products/' +
-        commons.Escaper.ecapeVariable('$productId') +
+        commons.escapeVariable('$productId') +
         '/permissions';
 
     final _response = await _requester.request(
@@ -2399,7 +2399,7 @@ class ProductsResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/products';
 
     final _response = await _requester.request(
@@ -2438,9 +2438,9 @@ class ProductsResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/products/' +
-        commons.Escaper.ecapeVariable('$productId') +
+        commons.escapeVariable('$productId') +
         '/unapprove';
 
     await _requester.request(
@@ -2488,9 +2488,9 @@ class ServiceaccountkeysResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/serviceAccountKeys/' +
-        commons.Escaper.ecapeVariable('$keyId');
+        commons.escapeVariable('$keyId');
 
     await _requester.request(
       _url,
@@ -2535,7 +2535,7 @@ class ServiceaccountkeysResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/serviceAccountKeys';
 
     final _response = await _requester.request(
@@ -2579,7 +2579,7 @@ class ServiceaccountkeysResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/serviceAccountKeys';
 
     final _response = await _requester.request(
@@ -2627,11 +2627,11 @@ class StorelayoutclustersResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/storeLayout/pages/' +
-        commons.Escaper.ecapeVariable('$pageId') +
+        commons.escapeVariable('$pageId') +
         '/clusters/' +
-        commons.Escaper.ecapeVariable('$clusterId');
+        commons.escapeVariable('$clusterId');
 
     await _requester.request(
       _url,
@@ -2672,11 +2672,11 @@ class StorelayoutclustersResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/storeLayout/pages/' +
-        commons.Escaper.ecapeVariable('$pageId') +
+        commons.escapeVariable('$pageId') +
         '/clusters/' +
-        commons.Escaper.ecapeVariable('$clusterId');
+        commons.escapeVariable('$clusterId');
 
     final _response = await _requester.request(
       _url,
@@ -2719,9 +2719,9 @@ class StorelayoutclustersResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/storeLayout/pages/' +
-        commons.Escaper.ecapeVariable('$pageId') +
+        commons.escapeVariable('$pageId') +
         '/clusters';
 
     final _response = await _requester.request(
@@ -2762,9 +2762,9 @@ class StorelayoutclustersResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/storeLayout/pages/' +
-        commons.Escaper.ecapeVariable('$pageId') +
+        commons.escapeVariable('$pageId') +
         '/clusters';
 
     final _response = await _requester.request(
@@ -2811,11 +2811,11 @@ class StorelayoutclustersResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/storeLayout/pages/' +
-        commons.Escaper.ecapeVariable('$pageId') +
+        commons.escapeVariable('$pageId') +
         '/clusters/' +
-        commons.Escaper.ecapeVariable('$clusterId');
+        commons.escapeVariable('$clusterId');
 
     final _response = await _requester.request(
       _url,
@@ -2859,9 +2859,9 @@ class StorelayoutpagesResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/storeLayout/pages/' +
-        commons.Escaper.ecapeVariable('$pageId');
+        commons.escapeVariable('$pageId');
 
     await _requester.request(
       _url,
@@ -2899,9 +2899,9 @@ class StorelayoutpagesResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/storeLayout/pages/' +
-        commons.Escaper.ecapeVariable('$pageId');
+        commons.escapeVariable('$pageId');
 
     final _response = await _requester.request(
       _url,
@@ -2940,7 +2940,7 @@ class StorelayoutpagesResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/storeLayout/pages';
 
     final _response = await _requester.request(
@@ -2977,7 +2977,7 @@ class StorelayoutpagesResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/storeLayout/pages';
 
     final _response = await _requester.request(
@@ -3021,9 +3021,9 @@ class StorelayoutpagesResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/storeLayout/pages/' +
-        commons.Escaper.ecapeVariable('$pageId');
+        commons.escapeVariable('$pageId');
 
     final _response = await _requester.request(
       _url,
@@ -3066,9 +3066,9 @@ class UsersResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/users/' +
-        commons.Escaper.ecapeVariable('$userId');
+        commons.escapeVariable('$userId');
 
     await _requester.request(
       _url,
@@ -3111,9 +3111,9 @@ class UsersResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/authenticationToken';
 
     final _response = await _requester.request(
@@ -3153,9 +3153,9 @@ class UsersResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/users/' +
-        commons.Escaper.ecapeVariable('$userId');
+        commons.escapeVariable('$userId');
 
     final _response = await _requester.request(
       _url,
@@ -3193,9 +3193,9 @@ class UsersResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/availableProductSet';
 
     final _response = await _requester.request(
@@ -3241,7 +3241,7 @@ class UsersResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/users';
 
     final _response = await _requester.request(
@@ -3287,7 +3287,7 @@ class UsersResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/users';
 
     final _response = await _requester.request(
@@ -3328,9 +3328,9 @@ class UsersResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/deviceAccess';
 
     await _requester.request(
@@ -3377,9 +3377,9 @@ class UsersResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/availableProductSet';
 
     final _response = await _requester.request(
@@ -3429,9 +3429,9 @@ class UsersResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/users/' +
-        commons.Escaper.ecapeVariable('$userId');
+        commons.escapeVariable('$userId');
 
     final _response = await _requester.request(
       _url,
@@ -3474,9 +3474,9 @@ class WebappsResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/webApps/' +
-        commons.Escaper.ecapeVariable('$webAppId');
+        commons.escapeVariable('$webAppId');
 
     await _requester.request(
       _url,
@@ -3514,9 +3514,9 @@ class WebappsResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/webApps/' +
-        commons.Escaper.ecapeVariable('$webAppId');
+        commons.escapeVariable('$webAppId');
 
     final _response = await _requester.request(
       _url,
@@ -3555,7 +3555,7 @@ class WebappsResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/webApps';
 
     final _response = await _requester.request(
@@ -3592,7 +3592,7 @@ class WebappsResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/webApps';
 
     final _response = await _requester.request(
@@ -3636,9 +3636,9 @@ class WebappsResource {
     };
 
     final _url = 'androidenterprise/v1/enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
+        commons.escapeVariable('$enterpriseId') +
         '/webApps/' +
-        commons.Escaper.ecapeVariable('$webAppId');
+        commons.escapeVariable('$webAppId');
 
     final _response = await _requester.request(
       _url,

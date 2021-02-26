@@ -125,9 +125,7 @@ class ProjectsDatabasesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':exportDocuments';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':exportDocuments';
 
     final _response = await _requester.request(
       _url,
@@ -175,9 +173,7 @@ class ProjectsDatabasesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':importDocuments';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':importDocuments';
 
     final _response = await _requester.request(
       _url,
@@ -235,7 +231,7 @@ class ProjectsDatabasesCollectionGroupsFieldsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -295,8 +291,7 @@ class ProjectsDatabasesCollectionGroupsFieldsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/fields';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/fields';
 
     final _response = await _requester.request(
       _url,
@@ -370,7 +365,7 @@ class ProjectsDatabasesCollectionGroupsFieldsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -424,8 +419,7 @@ class ProjectsDatabasesCollectionGroupsIndexesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/indexes';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/indexes';
 
     final _response = await _requester.request(
       _url,
@@ -464,7 +458,7 @@ class ProjectsDatabasesCollectionGroupsIndexesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -501,7 +495,7 @@ class ProjectsDatabasesCollectionGroupsIndexesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -553,8 +547,7 @@ class ProjectsDatabasesCollectionGroupsIndexesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/indexes';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/indexes';
 
     final _response = await _requester.request(
       _url,
@@ -605,9 +598,8 @@ class ProjectsDatabasesDocumentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$database') +
-        '/documents:batchGet';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$database') + '/documents:batchGet';
 
     final _response = await _requester.request(
       _url,
@@ -655,9 +647,8 @@ class ProjectsDatabasesDocumentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$database') +
-        '/documents:batchWrite';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$database') + '/documents:batchWrite';
 
     final _response = await _requester.request(
       _url,
@@ -700,7 +691,7 @@ class ProjectsDatabasesDocumentsResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$database') +
+        core.Uri.encodeFull('$database') +
         '/documents:beginTransaction';
 
     final _response = await _requester.request(
@@ -743,9 +734,7 @@ class ProjectsDatabasesDocumentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$database') +
-        '/documents:commit';
+    final _url = 'v1/' + core.Uri.encodeFull('$database') + '/documents:commit';
 
     final _response = await _requester.request(
       _url,
@@ -804,9 +793,9 @@ class ProjectsDatabasesDocumentsResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/' +
-        commons.Escaper.ecapeVariable('$collectionId');
+        commons.escapeVariable('$collectionId');
 
     final _response = await _requester.request(
       _url,
@@ -857,7 +846,7 @@ class ProjectsDatabasesDocumentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -909,7 +898,7 @@ class ProjectsDatabasesDocumentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -990,9 +979,9 @@ class ProjectsDatabasesDocumentsResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/' +
-        commons.Escaper.ecapeVariable('$collectionId');
+        commons.escapeVariable('$collectionId');
 
     final _response = await _requester.request(
       _url,
@@ -1036,9 +1025,7 @@ class ProjectsDatabasesDocumentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        ':listCollectionIds';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + ':listCollectionIds';
 
     final _response = await _requester.request(
       _url,
@@ -1080,9 +1067,7 @@ class ProjectsDatabasesDocumentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$database') +
-        '/documents:listen';
+    final _url = 'v1/' + core.Uri.encodeFull('$database') + '/documents:listen';
 
     final _response = await _requester.request(
       _url,
@@ -1131,9 +1116,7 @@ class ProjectsDatabasesDocumentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        ':partitionQuery';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + ':partitionQuery';
 
     final _response = await _requester.request(
       _url,
@@ -1199,7 +1182,7 @@ class ProjectsDatabasesDocumentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1240,9 +1223,8 @@ class ProjectsDatabasesDocumentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$database') +
-        '/documents:rollback';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$database') + '/documents:rollback';
 
     final _response = await _requester.request(
       _url,
@@ -1287,8 +1269,7 @@ class ProjectsDatabasesDocumentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + ':runQuery';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + ':runQuery';
 
     final _response = await _requester.request(
       _url,
@@ -1331,9 +1312,7 @@ class ProjectsDatabasesDocumentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$database') +
-        '/documents:write';
+    final _url = 'v1/' + core.Uri.encodeFull('$database') + '/documents:write';
 
     final _response = await _requester.request(
       _url,
@@ -1391,8 +1370,7 @@ class ProjectsDatabasesOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
 
     final _response = await _requester.request(
       _url,
@@ -1433,7 +1411,7 @@ class ProjectsDatabasesOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1472,7 +1450,7 @@ class ProjectsDatabasesOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1529,8 +1507,7 @@ class ProjectsDatabasesOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/operations';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
 
     final _response = await _requester.request(
       _url,
@@ -1572,7 +1549,7 @@ class ProjectsLocationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1619,8 +1596,7 @@ class ProjectsLocationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
 
     final _response = await _requester.request(
       _url,

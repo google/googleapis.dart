@@ -125,11 +125,11 @@ class ActionResultsResource {
     };
 
     final _url = 'v2/' +
-        commons.Escaper.ecapeVariableReserved('$instanceName') +
+        core.Uri.encodeFull('$instanceName') +
         '/actionResults/' +
-        commons.Escaper.ecapeVariable('$hash') +
+        commons.escapeVariable('$hash') +
         '/' +
-        commons.Escaper.ecapeVariable('$sizeBytes');
+        commons.escapeVariable('$sizeBytes');
 
     final _response = await _requester.request(
       _url,
@@ -201,11 +201,11 @@ class ActionResultsResource {
     };
 
     final _url = 'v2/' +
-        commons.Escaper.ecapeVariableReserved('$instanceName') +
+        core.Uri.encodeFull('$instanceName') +
         '/actionResults/' +
-        commons.Escaper.ecapeVariable('$hash') +
+        commons.escapeVariable('$hash') +
         '/' +
-        commons.Escaper.ecapeVariable('$sizeBytes');
+        commons.escapeVariable('$sizeBytes');
 
     final _response = await _requester.request(
       _url,
@@ -298,9 +298,8 @@ class ActionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' +
-        commons.Escaper.ecapeVariableReserved('$instanceName') +
-        '/actions:execute';
+    final _url =
+        'v2/' + core.Uri.encodeFull('$instanceName') + '/actions:execute';
 
     final _response = await _requester.request(
       _url,
@@ -361,9 +360,8 @@ class BlobsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' +
-        commons.Escaper.ecapeVariableReserved('$instanceName') +
-        '/blobs:batchRead';
+    final _url =
+        'v2/' + core.Uri.encodeFull('$instanceName') + '/blobs:batchRead';
 
     final _response = await _requester.request(
       _url,
@@ -420,9 +418,8 @@ class BlobsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' +
-        commons.Escaper.ecapeVariableReserved('$instanceName') +
-        '/blobs:batchUpdate';
+    final _url =
+        'v2/' + core.Uri.encodeFull('$instanceName') + '/blobs:batchUpdate';
 
     final _response = await _requester.request(
       _url,
@@ -472,9 +469,8 @@ class BlobsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' +
-        commons.Escaper.ecapeVariableReserved('$instanceName') +
-        '/blobs:findMissing';
+    final _url =
+        'v2/' + core.Uri.encodeFull('$instanceName') + '/blobs:findMissing';
 
     final _response = await _requester.request(
       _url,
@@ -550,11 +546,11 @@ class BlobsResource {
     };
 
     final _url = 'v2/' +
-        commons.Escaper.ecapeVariableReserved('$instanceName') +
+        core.Uri.encodeFull('$instanceName') +
         '/blobs/' +
-        commons.Escaper.ecapeVariable('$hash') +
+        commons.escapeVariable('$hash') +
         '/' +
-        commons.Escaper.ecapeVariable('$sizeBytes') +
+        commons.escapeVariable('$sizeBytes') +
         ':getTree';
 
     final _response = await _requester.request(
@@ -608,9 +604,7 @@ class OperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':waitExecution';
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + ':waitExecution';
 
     final _response = await _requester.request(
       _url,
@@ -664,9 +658,7 @@ class V2Resource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' +
-        commons.Escaper.ecapeVariableReserved('$instanceName') +
-        '/capabilities';
+    final _url = 'v2/' + core.Uri.encodeFull('$instanceName') + '/capabilities';
 
     final _response = await _requester.request(
       _url,

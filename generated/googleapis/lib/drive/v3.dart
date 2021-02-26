@@ -498,8 +498,7 @@ class CommentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments';
+    final _url = 'files/' + commons.escapeVariable('$fileId') + '/comments';
 
     final _response = await _requester.request(
       _url,
@@ -536,9 +535,9 @@ class CommentsResource {
     };
 
     final _url = 'files/' +
-        commons.Escaper.ecapeVariable('$fileId') +
+        commons.escapeVariable('$fileId') +
         '/comments/' +
-        commons.Escaper.ecapeVariable('$commentId');
+        commons.escapeVariable('$commentId');
 
     await _requester.request(
       _url,
@@ -581,9 +580,9 @@ class CommentsResource {
     };
 
     final _url = 'files/' +
-        commons.Escaper.ecapeVariable('$fileId') +
+        commons.escapeVariable('$fileId') +
         '/comments/' +
-        commons.Escaper.ecapeVariable('$commentId');
+        commons.escapeVariable('$commentId');
 
     final _response = await _requester.request(
       _url,
@@ -638,8 +637,7 @@ class CommentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments';
+    final _url = 'files/' + commons.escapeVariable('$fileId') + '/comments';
 
     final _response = await _requester.request(
       _url,
@@ -682,9 +680,9 @@ class CommentsResource {
     };
 
     final _url = 'files/' +
-        commons.Escaper.ecapeVariable('$fileId') +
+        commons.escapeVariable('$fileId') +
         '/comments/' +
-        commons.Escaper.ecapeVariable('$commentId');
+        commons.escapeVariable('$commentId');
 
     final _response = await _requester.request(
       _url,
@@ -769,7 +767,7 @@ class DrivesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'drives/' + commons.Escaper.ecapeVariable('$driveId');
+    final _url = 'drives/' + commons.escapeVariable('$driveId');
 
     await _requester.request(
       _url,
@@ -810,7 +808,7 @@ class DrivesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'drives/' + commons.Escaper.ecapeVariable('$driveId');
+    final _url = 'drives/' + commons.escapeVariable('$driveId');
 
     final _response = await _requester.request(
       _url,
@@ -844,8 +842,7 @@ class DrivesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'drives/' + commons.Escaper.ecapeVariable('$driveId') + '/hide';
+    final _url = 'drives/' + commons.escapeVariable('$driveId') + '/hide';
 
     final _response = await _requester.request(
       _url,
@@ -930,8 +927,7 @@ class DrivesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'drives/' + commons.Escaper.ecapeVariable('$driveId') + '/unhide';
+    final _url = 'drives/' + commons.escapeVariable('$driveId') + '/unhide';
 
     final _response = await _requester.request(
       _url,
@@ -976,7 +972,7 @@ class DrivesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'drives/' + commons.Escaper.ecapeVariable('$driveId');
+    final _url = 'drives/' + commons.escapeVariable('$driveId');
 
     final _response = await _requester.request(
       _url,
@@ -1069,7 +1065,7 @@ class FilesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/copy';
+    final _url = 'files/' + commons.escapeVariable('$fileId') + '/copy';
 
     final _response = await _requester.request(
       _url,
@@ -1229,7 +1225,7 @@ class FilesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'files/' + commons.Escaper.ecapeVariable('$fileId');
+    final _url = 'files/' + commons.escapeVariable('$fileId');
 
     await _requester.request(
       _url,
@@ -1309,8 +1305,7 @@ class FilesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'files/' + commons.Escaper.ecapeVariable('$fileId') + '/export';
+    final _url = 'files/' + commons.escapeVariable('$fileId') + '/export';
 
     final _response = await _requester.request(
       _url,
@@ -1424,7 +1419,7 @@ class FilesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'files/' + commons.Escaper.ecapeVariable('$fileId');
+    final _url = 'files/' + commons.escapeVariable('$fileId');
 
     final _response = await _requester.request(
       _url,
@@ -1650,13 +1645,12 @@ class FilesResource {
 
     core.String _url;
     if (uploadMedia == null) {
-      _url = 'files/' + commons.Escaper.ecapeVariable('$fileId');
+      _url = 'files/' + commons.escapeVariable('$fileId');
     } else if (uploadOptions is commons.ResumableUploadOptions) {
       _url = '/resumable/upload/drive/v3/files/' +
-          commons.Escaper.ecapeVariable('$fileId');
+          commons.escapeVariable('$fileId');
     } else {
-      _url =
-          '/upload/drive/v3/files/' + commons.Escaper.ecapeVariable('$fileId');
+      _url = '/upload/drive/v3/files/' + commons.escapeVariable('$fileId');
     }
 
     final _response = await _requester.request(
@@ -1730,7 +1724,7 @@ class FilesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/watch';
+    final _url = 'files/' + commons.escapeVariable('$fileId') + '/watch';
 
     final _response = await _requester.request(
       _url,
@@ -1833,8 +1827,7 @@ class PermissionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'files/' + commons.Escaper.ecapeVariable('$fileId') + '/permissions';
+    final _url = 'files/' + commons.escapeVariable('$fileId') + '/permissions';
 
     final _response = await _requester.request(
       _url,
@@ -1891,9 +1884,9 @@ class PermissionsResource {
     };
 
     final _url = 'files/' +
-        commons.Escaper.ecapeVariable('$fileId') +
+        commons.escapeVariable('$fileId') +
         '/permissions/' +
-        commons.Escaper.ecapeVariable('$permissionId');
+        commons.escapeVariable('$permissionId');
 
     await _requester.request(
       _url,
@@ -1950,9 +1943,9 @@ class PermissionsResource {
     };
 
     final _url = 'files/' +
-        commons.Escaper.ecapeVariable('$fileId') +
+        commons.escapeVariable('$fileId') +
         '/permissions/' +
-        commons.Escaper.ecapeVariable('$permissionId');
+        commons.escapeVariable('$permissionId');
 
     final _response = await _requester.request(
       _url,
@@ -2026,8 +2019,7 @@ class PermissionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'files/' + commons.Escaper.ecapeVariable('$fileId') + '/permissions';
+    final _url = 'files/' + commons.escapeVariable('$fileId') + '/permissions';
 
     final _response = await _requester.request(
       _url,
@@ -2100,9 +2092,9 @@ class PermissionsResource {
     };
 
     final _url = 'files/' +
-        commons.Escaper.ecapeVariable('$fileId') +
+        commons.escapeVariable('$fileId') +
         '/permissions/' +
-        commons.Escaper.ecapeVariable('$permissionId');
+        commons.escapeVariable('$permissionId');
 
     final _response = await _requester.request(
       _url,
@@ -2152,9 +2144,9 @@ class RepliesResource {
     };
 
     final _url = 'files/' +
-        commons.Escaper.ecapeVariable('$fileId') +
+        commons.escapeVariable('$fileId') +
         '/comments/' +
-        commons.Escaper.ecapeVariable('$commentId') +
+        commons.escapeVariable('$commentId') +
         '/replies';
 
     final _response = await _requester.request(
@@ -2195,11 +2187,11 @@ class RepliesResource {
     };
 
     final _url = 'files/' +
-        commons.Escaper.ecapeVariable('$fileId') +
+        commons.escapeVariable('$fileId') +
         '/comments/' +
-        commons.Escaper.ecapeVariable('$commentId') +
+        commons.escapeVariable('$commentId') +
         '/replies/' +
-        commons.Escaper.ecapeVariable('$replyId');
+        commons.escapeVariable('$replyId');
 
     await _requester.request(
       _url,
@@ -2245,11 +2237,11 @@ class RepliesResource {
     };
 
     final _url = 'files/' +
-        commons.Escaper.ecapeVariable('$fileId') +
+        commons.escapeVariable('$fileId') +
         '/comments/' +
-        commons.Escaper.ecapeVariable('$commentId') +
+        commons.escapeVariable('$commentId') +
         '/replies/' +
-        commons.Escaper.ecapeVariable('$replyId');
+        commons.escapeVariable('$replyId');
 
     final _response = await _requester.request(
       _url,
@@ -2303,9 +2295,9 @@ class RepliesResource {
     };
 
     final _url = 'files/' +
-        commons.Escaper.ecapeVariable('$fileId') +
+        commons.escapeVariable('$fileId') +
         '/comments/' +
-        commons.Escaper.ecapeVariable('$commentId') +
+        commons.escapeVariable('$commentId') +
         '/replies';
 
     final _response = await _requester.request(
@@ -2351,11 +2343,11 @@ class RepliesResource {
     };
 
     final _url = 'files/' +
-        commons.Escaper.ecapeVariable('$fileId') +
+        commons.escapeVariable('$fileId') +
         '/comments/' +
-        commons.Escaper.ecapeVariable('$commentId') +
+        commons.escapeVariable('$commentId') +
         '/replies/' +
-        commons.Escaper.ecapeVariable('$replyId');
+        commons.escapeVariable('$replyId');
 
     final _response = await _requester.request(
       _url,
@@ -2402,9 +2394,9 @@ class RevisionsResource {
     };
 
     final _url = 'files/' +
-        commons.Escaper.ecapeVariable('$fileId') +
+        commons.escapeVariable('$fileId') +
         '/revisions/' +
-        commons.Escaper.ecapeVariable('$revisionId');
+        commons.escapeVariable('$revisionId');
 
     await _requester.request(
       _url,
@@ -2457,9 +2449,9 @@ class RevisionsResource {
     };
 
     final _url = 'files/' +
-        commons.Escaper.ecapeVariable('$fileId') +
+        commons.escapeVariable('$fileId') +
         '/revisions/' +
-        commons.Escaper.ecapeVariable('$revisionId');
+        commons.escapeVariable('$revisionId');
 
     final _response = await _requester.request(
       _url,
@@ -2510,8 +2502,7 @@ class RevisionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'files/' + commons.Escaper.ecapeVariable('$fileId') + '/revisions';
+    final _url = 'files/' + commons.escapeVariable('$fileId') + '/revisions';
 
     final _response = await _requester.request(
       _url,
@@ -2554,9 +2545,9 @@ class RevisionsResource {
     };
 
     final _url = 'files/' +
-        commons.Escaper.ecapeVariable('$fileId') +
+        commons.escapeVariable('$fileId') +
         '/revisions/' +
-        commons.Escaper.ecapeVariable('$revisionId');
+        commons.escapeVariable('$revisionId');
 
     final _response = await _requester.request(
       _url,
@@ -2639,7 +2630,7 @@ class TeamdrivesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'teamdrives/' + commons.Escaper.ecapeVariable('$teamDriveId');
+    final _url = 'teamdrives/' + commons.escapeVariable('$teamDriveId');
 
     await _requester.request(
       _url,
@@ -2680,7 +2671,7 @@ class TeamdrivesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'teamdrives/' + commons.Escaper.ecapeVariable('$teamDriveId');
+    final _url = 'teamdrives/' + commons.escapeVariable('$teamDriveId');
 
     final _response = await _requester.request(
       _url,
@@ -2777,7 +2768,7 @@ class TeamdrivesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'teamdrives/' + commons.Escaper.ecapeVariable('$teamDriveId');
+    final _url = 'teamdrives/' + commons.escapeVariable('$teamDriveId');
 
     final _response = await _requester.request(
       _url,

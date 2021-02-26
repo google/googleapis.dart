@@ -98,7 +98,7 @@ class ProjectsResource {
     };
 
     final _url = 'toolresults/v1beta3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/settings';
 
     final _response = await _requester.request(
@@ -154,7 +154,7 @@ class ProjectsResource {
     };
 
     final _url = 'toolresults/v1beta3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         ':initializeSettings';
 
     final _response = await _requester.request(
@@ -214,7 +214,7 @@ class ProjectsHistoriesResource {
     };
 
     final _url = 'toolresults/v1beta3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/histories';
 
     final _response = await _requester.request(
@@ -258,9 +258,9 @@ class ProjectsHistoriesResource {
     };
 
     final _url = 'toolresults/v1beta3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/histories/' +
-        commons.Escaper.ecapeVariable('$historyId');
+        commons.escapeVariable('$historyId');
 
     final _response = await _requester.request(
       _url,
@@ -318,7 +318,7 @@ class ProjectsHistoriesResource {
     };
 
     final _url = 'toolresults/v1beta3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/histories';
 
     final _response = await _requester.request(
@@ -386,9 +386,9 @@ class ProjectsHistoriesExecutionsResource {
     };
 
     final _url = 'toolresults/v1beta3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/histories/' +
-        commons.Escaper.ecapeVariable('$historyId') +
+        commons.escapeVariable('$historyId') +
         '/executions';
 
     final _response = await _requester.request(
@@ -435,11 +435,11 @@ class ProjectsHistoriesExecutionsResource {
     };
 
     final _url = 'toolresults/v1beta3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/histories/' +
-        commons.Escaper.ecapeVariable('$historyId') +
+        commons.escapeVariable('$historyId') +
         '/executions/' +
-        commons.Escaper.ecapeVariable('$executionId');
+        commons.escapeVariable('$executionId');
 
     final _response = await _requester.request(
       _url,
@@ -495,9 +495,9 @@ class ProjectsHistoriesExecutionsResource {
     };
 
     final _url = 'toolresults/v1beta3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/histories/' +
-        commons.Escaper.ecapeVariable('$historyId') +
+        commons.escapeVariable('$historyId') +
         '/executions';
 
     final _response = await _requester.request(
@@ -555,11 +555,11 @@ class ProjectsHistoriesExecutionsResource {
     };
 
     final _url = 'toolresults/v1beta3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/histories/' +
-        commons.Escaper.ecapeVariable('$historyId') +
+        commons.escapeVariable('$historyId') +
         '/executions/' +
-        commons.Escaper.ecapeVariable('$executionId');
+        commons.escapeVariable('$executionId');
 
     final _response = await _requester.request(
       _url,
@@ -611,13 +611,13 @@ class ProjectsHistoriesExecutionsClustersResource {
     };
 
     final _url = 'toolresults/v1beta3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/histories/' +
-        commons.Escaper.ecapeVariable('$historyId') +
+        commons.escapeVariable('$historyId') +
         '/executions/' +
-        commons.Escaper.ecapeVariable('$executionId') +
+        commons.escapeVariable('$executionId') +
         '/clusters/' +
-        commons.Escaper.ecapeVariable('$clusterId');
+        commons.escapeVariable('$clusterId');
 
     final _response = await _requester.request(
       _url,
@@ -666,11 +666,11 @@ class ProjectsHistoriesExecutionsClustersResource {
     };
 
     final _url = 'toolresults/v1beta3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/histories/' +
-        commons.Escaper.ecapeVariable('$historyId') +
+        commons.escapeVariable('$historyId') +
         '/executions/' +
-        commons.Escaper.ecapeVariable('$executionId') +
+        commons.escapeVariable('$executionId') +
         '/clusters';
 
     final _response = await _requester.request(
@@ -727,13 +727,13 @@ class ProjectsHistoriesExecutionsEnvironmentsResource {
     };
 
     final _url = 'toolresults/v1beta3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/histories/' +
-        commons.Escaper.ecapeVariable('$historyId') +
+        commons.escapeVariable('$historyId') +
         '/executions/' +
-        commons.Escaper.ecapeVariable('$executionId') +
+        commons.escapeVariable('$executionId') +
         '/environments/' +
-        commons.Escaper.ecapeVariable('$environmentId');
+        commons.escapeVariable('$environmentId');
 
     final _response = await _requester.request(
       _url,
@@ -790,11 +790,11 @@ class ProjectsHistoriesExecutionsEnvironmentsResource {
     };
 
     final _url = 'toolresults/v1beta3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/histories/' +
-        commons.Escaper.ecapeVariable('$historyId') +
+        commons.escapeVariable('$historyId') +
         '/executions/' +
-        commons.Escaper.ecapeVariable('$executionId') +
+        commons.escapeVariable('$executionId') +
         '/environments';
 
     final _response = await _requester.request(
@@ -867,7 +867,7 @@ class ProjectsHistoriesExecutionsStepsResource {
     };
 
     final _url = 'toolresults/v1beta3/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
+        core.Uri.encodeFull('$name') +
         ':accessibilityClusters';
 
     final _response = await _requester.request(
@@ -925,11 +925,11 @@ class ProjectsHistoriesExecutionsStepsResource {
     };
 
     final _url = 'toolresults/v1beta3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/histories/' +
-        commons.Escaper.ecapeVariable('$historyId') +
+        commons.escapeVariable('$historyId') +
         '/executions/' +
-        commons.Escaper.ecapeVariable('$executionId') +
+        commons.escapeVariable('$executionId') +
         '/steps';
 
     final _response = await _requester.request(
@@ -979,13 +979,13 @@ class ProjectsHistoriesExecutionsStepsResource {
     };
 
     final _url = 'toolresults/v1beta3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/histories/' +
-        commons.Escaper.ecapeVariable('$historyId') +
+        commons.escapeVariable('$historyId') +
         '/executions/' +
-        commons.Escaper.ecapeVariable('$executionId') +
+        commons.escapeVariable('$executionId') +
         '/steps/' +
-        commons.Escaper.ecapeVariable('$stepId');
+        commons.escapeVariable('$stepId');
 
     final _response = await _requester.request(
       _url,
@@ -1032,13 +1032,13 @@ class ProjectsHistoriesExecutionsStepsResource {
     };
 
     final _url = 'toolresults/v1beta3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/histories/' +
-        commons.Escaper.ecapeVariable('$historyId') +
+        commons.escapeVariable('$historyId') +
         '/executions/' +
-        commons.Escaper.ecapeVariable('$executionId') +
+        commons.escapeVariable('$executionId') +
         '/steps/' +
-        commons.Escaper.ecapeVariable('$stepId') +
+        commons.escapeVariable('$stepId') +
         '/perfMetricsSummary';
 
     final _response = await _requester.request(
@@ -1100,11 +1100,11 @@ class ProjectsHistoriesExecutionsStepsResource {
     };
 
     final _url = 'toolresults/v1beta3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/histories/' +
-        commons.Escaper.ecapeVariable('$historyId') +
+        commons.escapeVariable('$historyId') +
         '/executions/' +
-        commons.Escaper.ecapeVariable('$executionId') +
+        commons.escapeVariable('$executionId') +
         '/steps';
 
     final _response = await _requester.request(
@@ -1166,13 +1166,13 @@ class ProjectsHistoriesExecutionsStepsResource {
     };
 
     final _url = 'toolresults/v1beta3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/histories/' +
-        commons.Escaper.ecapeVariable('$historyId') +
+        commons.escapeVariable('$historyId') +
         '/executions/' +
-        commons.Escaper.ecapeVariable('$executionId') +
+        commons.escapeVariable('$executionId') +
         '/steps/' +
-        commons.Escaper.ecapeVariable('$stepId');
+        commons.escapeVariable('$stepId');
 
     final _response = await _requester.request(
       _url,
@@ -1228,13 +1228,13 @@ class ProjectsHistoriesExecutionsStepsResource {
     };
 
     final _url = 'toolresults/v1beta3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/histories/' +
-        commons.Escaper.ecapeVariable('$historyId') +
+        commons.escapeVariable('$historyId') +
         '/executions/' +
-        commons.Escaper.ecapeVariable('$executionId') +
+        commons.escapeVariable('$executionId') +
         '/steps/' +
-        commons.Escaper.ecapeVariable('$stepId') +
+        commons.escapeVariable('$stepId') +
         ':publishXunitXmlFiles';
 
     final _response = await _requester.request(
@@ -1296,13 +1296,13 @@ class ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResource {
     };
 
     final _url = 'toolresults/v1beta3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/histories/' +
-        commons.Escaper.ecapeVariable('$historyId') +
+        commons.escapeVariable('$historyId') +
         '/executions/' +
-        commons.Escaper.ecapeVariable('$executionId') +
+        commons.escapeVariable('$executionId') +
         '/steps/' +
-        commons.Escaper.ecapeVariable('$stepId') +
+        commons.escapeVariable('$stepId') +
         '/perfMetricsSummary';
 
     final _response = await _requester.request(
@@ -1369,13 +1369,13 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
     };
 
     final _url = 'toolresults/v1beta3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/histories/' +
-        commons.Escaper.ecapeVariable('$historyId') +
+        commons.escapeVariable('$historyId') +
         '/executions/' +
-        commons.Escaper.ecapeVariable('$executionId') +
+        commons.escapeVariable('$executionId') +
         '/steps/' +
-        commons.Escaper.ecapeVariable('$stepId') +
+        commons.escapeVariable('$stepId') +
         '/perfSampleSeries';
 
     final _response = await _requester.request(
@@ -1428,15 +1428,15 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
     };
 
     final _url = 'toolresults/v1beta3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/histories/' +
-        commons.Escaper.ecapeVariable('$historyId') +
+        commons.escapeVariable('$historyId') +
         '/executions/' +
-        commons.Escaper.ecapeVariable('$executionId') +
+        commons.escapeVariable('$executionId') +
         '/steps/' +
-        commons.Escaper.ecapeVariable('$stepId') +
+        commons.escapeVariable('$stepId') +
         '/perfSampleSeries/' +
-        commons.Escaper.ecapeVariable('$sampleSeriesId');
+        commons.escapeVariable('$sampleSeriesId');
 
     final _response = await _requester.request(
       _url,
@@ -1492,13 +1492,13 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
     };
 
     final _url = 'toolresults/v1beta3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/histories/' +
-        commons.Escaper.ecapeVariable('$historyId') +
+        commons.escapeVariable('$historyId') +
         '/executions/' +
-        commons.Escaper.ecapeVariable('$executionId') +
+        commons.escapeVariable('$executionId') +
         '/steps/' +
-        commons.Escaper.ecapeVariable('$stepId') +
+        commons.escapeVariable('$stepId') +
         '/perfSampleSeries';
 
     final _response = await _requester.request(
@@ -1568,15 +1568,15 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource {
     };
 
     final _url = 'toolresults/v1beta3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/histories/' +
-        commons.Escaper.ecapeVariable('$historyId') +
+        commons.escapeVariable('$historyId') +
         '/executions/' +
-        commons.Escaper.ecapeVariable('$executionId') +
+        commons.escapeVariable('$executionId') +
         '/steps/' +
-        commons.Escaper.ecapeVariable('$stepId') +
+        commons.escapeVariable('$stepId') +
         '/perfSampleSeries/' +
-        commons.Escaper.ecapeVariable('$sampleSeriesId') +
+        commons.escapeVariable('$sampleSeriesId') +
         '/samples:batchCreate';
 
     final _response = await _requester.request(
@@ -1645,15 +1645,15 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource {
     };
 
     final _url = 'toolresults/v1beta3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/histories/' +
-        commons.Escaper.ecapeVariable('$historyId') +
+        commons.escapeVariable('$historyId') +
         '/executions/' +
-        commons.Escaper.ecapeVariable('$executionId') +
+        commons.escapeVariable('$executionId') +
         '/steps/' +
-        commons.Escaper.ecapeVariable('$stepId') +
+        commons.escapeVariable('$stepId') +
         '/perfSampleSeries/' +
-        commons.Escaper.ecapeVariable('$sampleSeriesId') +
+        commons.escapeVariable('$sampleSeriesId') +
         '/samples';
 
     final _response = await _requester.request(
@@ -1715,15 +1715,15 @@ class ProjectsHistoriesExecutionsStepsTestCasesResource {
     };
 
     final _url = 'toolresults/v1beta3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/histories/' +
-        commons.Escaper.ecapeVariable('$historyId') +
+        commons.escapeVariable('$historyId') +
         '/executions/' +
-        commons.Escaper.ecapeVariable('$executionId') +
+        commons.escapeVariable('$executionId') +
         '/steps/' +
-        commons.Escaper.ecapeVariable('$stepId') +
+        commons.escapeVariable('$stepId') +
         '/testCases/' +
-        commons.Escaper.ecapeVariable('$testCaseId');
+        commons.escapeVariable('$testCaseId');
 
     final _response = await _requester.request(
       _url,
@@ -1784,13 +1784,13 @@ class ProjectsHistoriesExecutionsStepsTestCasesResource {
     };
 
     final _url = 'toolresults/v1beta3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/histories/' +
-        commons.Escaper.ecapeVariable('$historyId') +
+        commons.escapeVariable('$historyId') +
         '/executions/' +
-        commons.Escaper.ecapeVariable('$executionId') +
+        commons.escapeVariable('$executionId') +
         '/steps/' +
-        commons.Escaper.ecapeVariable('$stepId') +
+        commons.escapeVariable('$stepId') +
         '/testCases';
 
     final _response = await _requester.request(
@@ -1860,13 +1860,13 @@ class ProjectsHistoriesExecutionsStepsThumbnailsResource {
     };
 
     final _url = 'toolresults/v1beta3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/histories/' +
-        commons.Escaper.ecapeVariable('$historyId') +
+        commons.escapeVariable('$historyId') +
         '/executions/' +
-        commons.Escaper.ecapeVariable('$executionId') +
+        commons.escapeVariable('$executionId') +
         '/steps/' +
-        commons.Escaper.ecapeVariable('$stepId') +
+        commons.escapeVariable('$stepId') +
         '/thumbnails';
 
     final _response = await _requester.request(

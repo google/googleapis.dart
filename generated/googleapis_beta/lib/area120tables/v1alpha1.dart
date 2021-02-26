@@ -106,7 +106,7 @@ class TablesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -197,9 +197,8 @@ class TablesRowsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/rows:batchCreate';
+    final _url =
+        'v1alpha1/' + core.Uri.encodeFull('$parent') + '/rows:batchCreate';
 
     final _response = await _requester.request(
       _url,
@@ -241,9 +240,8 @@ class TablesRowsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/rows:batchDelete';
+    final _url =
+        'v1alpha1/' + core.Uri.encodeFull('$parent') + '/rows:batchDelete';
 
     final _response = await _requester.request(
       _url,
@@ -284,9 +282,8 @@ class TablesRowsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/rows:batchUpdate';
+    final _url =
+        'v1alpha1/' + core.Uri.encodeFull('$parent') + '/rows:batchUpdate';
 
     final _response = await _requester.request(
       _url,
@@ -337,9 +334,7 @@ class TablesRowsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/rows';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/rows';
 
     final _response = await _requester.request(
       _url,
@@ -376,7 +371,7 @@ class TablesRowsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -423,7 +418,7 @@ class TablesRowsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -488,9 +483,7 @@ class TablesRowsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/rows';
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/rows';
 
     final _response = await _requester.request(
       _url,
@@ -544,7 +537,7 @@ class TablesRowsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -589,7 +582,7 @@ class WorkspacesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,

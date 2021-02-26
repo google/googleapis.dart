@@ -177,7 +177,7 @@ class AchievementsResource {
     };
 
     final _url = 'games/v1/achievements/' +
-        commons.Escaper.ecapeVariable('$achievementId') +
+        commons.escapeVariable('$achievementId') +
         '/increment';
 
     final _response = await _requester.request(
@@ -242,7 +242,7 @@ class AchievementsResource {
     };
 
     final _url = 'games/v1/players/' +
-        commons.Escaper.ecapeVariable('$playerId') +
+        commons.escapeVariable('$playerId') +
         '/achievements';
 
     final _response = await _requester.request(
@@ -280,7 +280,7 @@ class AchievementsResource {
     };
 
     final _url = 'games/v1/achievements/' +
-        commons.Escaper.ecapeVariable('$achievementId') +
+        commons.escapeVariable('$achievementId') +
         '/reveal';
 
     final _response = await _requester.request(
@@ -326,7 +326,7 @@ class AchievementsResource {
     };
 
     final _url = 'games/v1/achievements/' +
-        commons.Escaper.ecapeVariable('$achievementId') +
+        commons.escapeVariable('$achievementId') +
         '/setStepsAtLeast';
 
     final _response = await _requester.request(
@@ -363,7 +363,7 @@ class AchievementsResource {
     };
 
     final _url = 'games/v1/achievements/' +
-        commons.Escaper.ecapeVariable('$achievementId') +
+        commons.escapeVariable('$achievementId') +
         '/unlock';
 
     final _response = await _requester.request(
@@ -461,8 +461,8 @@ class ApplicationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'games/v1/applications/' +
-        commons.Escaper.ecapeVariable('$applicationId');
+    final _url =
+        'games/v1/applications/' + commons.escapeVariable('$applicationId');
 
     final _response = await _requester.request(
       _url,
@@ -575,7 +575,7 @@ class ApplicationsResource {
     };
 
     final _url = 'games/v1/applications/' +
-        commons.Escaper.ecapeVariable('$applicationId') +
+        commons.escapeVariable('$applicationId') +
         '/verify';
 
     final _response = await _requester.request(
@@ -766,8 +766,8 @@ class LeaderboardsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'games/v1/leaderboards/' +
-        commons.Escaper.ecapeVariable('$leaderboardId');
+    final _url =
+        'games/v1/leaderboards/' + commons.escapeVariable('$leaderboardId');
 
     final _response = await _requester.request(
       _url,
@@ -912,9 +912,9 @@ class MetagameResource {
     };
 
     final _url = 'games/v1/players/' +
-        commons.Escaper.ecapeVariable('$playerId') +
+        commons.escapeVariable('$playerId') +
         '/categories/' +
-        commons.Escaper.ecapeVariable('$collection');
+        commons.escapeVariable('$collection');
 
     final _response = await _requester.request(
       _url,
@@ -964,8 +964,7 @@ class PlayersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'games/v1/players/' + commons.Escaper.ecapeVariable('$playerId');
+    final _url = 'games/v1/players/' + commons.escapeVariable('$playerId');
 
     final _response = await _requester.request(
       _url,
@@ -1021,8 +1020,8 @@ class PlayersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'games/v1/players/me/players/' +
-        commons.Escaper.ecapeVariable('$collection');
+    final _url =
+        'games/v1/players/me/players/' + commons.escapeVariable('$collection');
 
     final _response = await _requester.request(
       _url,
@@ -1159,11 +1158,11 @@ class ScoresResource {
     };
 
     final _url = 'games/v1/players/' +
-        commons.Escaper.ecapeVariable('$playerId') +
+        commons.escapeVariable('$playerId') +
         '/leaderboards/' +
-        commons.Escaper.ecapeVariable('$leaderboardId') +
+        commons.escapeVariable('$leaderboardId') +
         '/scores/' +
-        commons.Escaper.ecapeVariable('$timeSpan');
+        commons.escapeVariable('$timeSpan');
 
     final _response = await _requester.request(
       _url,
@@ -1231,9 +1230,9 @@ class ScoresResource {
     };
 
     final _url = 'games/v1/leaderboards/' +
-        commons.Escaper.ecapeVariable('$leaderboardId') +
+        commons.escapeVariable('$leaderboardId') +
         '/scores/' +
-        commons.Escaper.ecapeVariable('$collection');
+        commons.escapeVariable('$collection');
 
     final _response = await _requester.request(
       _url,
@@ -1314,9 +1313,9 @@ class ScoresResource {
     };
 
     final _url = 'games/v1/leaderboards/' +
-        commons.Escaper.ecapeVariable('$leaderboardId') +
+        commons.escapeVariable('$leaderboardId') +
         '/window/' +
-        commons.Escaper.ecapeVariable('$collection');
+        commons.escapeVariable('$collection');
 
     final _response = await _requester.request(
       _url,
@@ -1373,7 +1372,7 @@ class ScoresResource {
     };
 
     final _url = 'games/v1/leaderboards/' +
-        commons.Escaper.ecapeVariable('$leaderboardId') +
+        commons.escapeVariable('$leaderboardId') +
         '/scores';
 
     final _response = await _requester.request(
@@ -1462,8 +1461,7 @@ class SnapshotsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'games/v1/snapshots/' + commons.Escaper.ecapeVariable('$snapshotId');
+    final _url = 'games/v1/snapshots/' + commons.escapeVariable('$snapshotId');
 
     final _response = await _requester.request(
       _url,
@@ -1515,7 +1513,7 @@ class SnapshotsResource {
     };
 
     final _url = 'games/v1/players/' +
-        commons.Escaper.ecapeVariable('$playerId') +
+        commons.escapeVariable('$playerId') +
         '/snapshots';
 
     final _response = await _requester.request(
@@ -1564,7 +1562,7 @@ class SnapshotsExtendedResource {
     };
 
     final _url = 'games/v1/snapshotsExtended/' +
-        commons.Escaper.ecapeVariable('$snapshotName') +
+        commons.escapeVariable('$snapshotName') +
         ':resolveHead';
 
     final _response = await _requester.request(

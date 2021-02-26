@@ -101,7 +101,7 @@ class ProjectsLocationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2beta/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -148,9 +148,7 @@ class ProjectsLocationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        '/locations';
+    final _url = 'v2beta/' + core.Uri.encodeFull('$name') + '/locations';
 
     final _response = await _requester.request(
       _url,
@@ -205,8 +203,7 @@ class ProjectsLocationsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v2beta/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
+    final _url = 'v2beta/' + core.Uri.encodeFull('$name') + ':cancel';
 
     final _response = await _requester.request(
       _url,
@@ -248,7 +245,7 @@ class ProjectsLocationsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2beta/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -308,9 +305,7 @@ class ProjectsLocationsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        '/operations';
+    final _url = 'v2beta/' + core.Uri.encodeFull('$name') + '/operations';
 
     final _response = await _requester.request(
       _url,
@@ -371,9 +366,7 @@ class ProjectsLocationsPipelinesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/pipelines:run';
+    final _url = 'v2beta/' + core.Uri.encodeFull('$parent') + '/pipelines:run';
 
     final _response = await _requester.request(
       _url,

@@ -96,12 +96,11 @@ class ArchiveResource {
 
     core.String _url;
     if (uploadMedia == null) {
-      _url = 'groups/v1/groups/' +
-          commons.Escaper.ecapeVariable('$groupId') +
-          '/archive';
+      _url =
+          'groups/v1/groups/' + commons.escapeVariable('$groupId') + '/archive';
     } else {
       _url = '/upload/groups/v1/groups/' +
-          commons.Escaper.ecapeVariable('$groupId') +
+          commons.escapeVariable('$groupId') +
           '/archive';
     }
 

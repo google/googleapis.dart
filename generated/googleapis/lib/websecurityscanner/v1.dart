@@ -107,9 +107,7 @@ class ProjectsScanConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/scanConfigs';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/scanConfigs';
 
     final _response = await _requester.request(
       _url,
@@ -148,7 +146,7 @@ class ProjectsScanConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -185,7 +183,7 @@ class ProjectsScanConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -234,9 +232,7 @@ class ProjectsScanConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/scanConfigs';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/scanConfigs';
 
     final _response = await _requester.request(
       _url,
@@ -286,7 +282,7 @@ class ProjectsScanConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -329,8 +325,7 @@ class ProjectsScanConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':start';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':start';
 
     final _response = await _requester.request(
       _url,
@@ -383,7 +378,7 @@ class ProjectsScanConfigsScanRunsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -433,8 +428,7 @@ class ProjectsScanConfigsScanRunsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/scanRuns';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/scanRuns';
 
     final _response = await _requester.request(
       _url,
@@ -479,8 +473,7 @@ class ProjectsScanConfigsScanRunsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':stop';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':stop';
 
     final _response = await _requester.request(
       _url,
@@ -538,9 +531,7 @@ class ProjectsScanConfigsScanRunsCrawledUrlsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/crawledUrls';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/crawledUrls';
 
     final _response = await _requester.request(
       _url,
@@ -587,9 +578,7 @@ class ProjectsScanConfigsScanRunsFindingTypeStatsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/findingTypeStats';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/findingTypeStats';
 
     final _response = await _requester.request(
       _url,
@@ -635,7 +624,7 @@ class ProjectsScanConfigsScanRunsFindingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -690,8 +679,7 @@ class ProjectsScanConfigsScanRunsFindingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/findings';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/findings';
 
     final _response = await _requester.request(
       _url,

@@ -119,9 +119,9 @@ class ChangesResource {
     };
 
     final _url = 'dns/v1/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/managedZones/' +
-        commons.Escaper.ecapeVariable('$managedZone') +
+        commons.escapeVariable('$managedZone') +
         '/changes';
 
     final _response = await _requester.request(
@@ -172,11 +172,11 @@ class ChangesResource {
     };
 
     final _url = 'dns/v1/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/managedZones/' +
-        commons.Escaper.ecapeVariable('$managedZone') +
+        commons.escapeVariable('$managedZone') +
         '/changes/' +
-        commons.Escaper.ecapeVariable('$changeId');
+        commons.escapeVariable('$changeId');
 
     final _response = await _requester.request(
       _url,
@@ -235,9 +235,9 @@ class ChangesResource {
     };
 
     final _url = 'dns/v1/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/managedZones/' +
-        commons.Escaper.ecapeVariable('$managedZone') +
+        commons.escapeVariable('$managedZone') +
         '/changes';
 
     final _response = await _requester.request(
@@ -299,11 +299,11 @@ class DnsKeysResource {
     };
 
     final _url = 'dns/v1/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/managedZones/' +
-        commons.Escaper.ecapeVariable('$managedZone') +
+        commons.escapeVariable('$managedZone') +
         '/dnsKeys/' +
-        commons.Escaper.ecapeVariable('$dnsKeyId');
+        commons.escapeVariable('$dnsKeyId');
 
     final _response = await _requester.request(
       _url,
@@ -358,9 +358,9 @@ class DnsKeysResource {
     };
 
     final _url = 'dns/v1/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/managedZones/' +
-        commons.Escaper.ecapeVariable('$managedZone') +
+        commons.escapeVariable('$managedZone') +
         '/dnsKeys';
 
     final _response = await _requester.request(
@@ -417,11 +417,11 @@ class ManagedZoneOperationsResource {
     };
 
     final _url = 'dns/v1/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/managedZones/' +
-        commons.Escaper.ecapeVariable('$managedZone') +
+        commons.escapeVariable('$managedZone') +
         '/operations/' +
-        commons.Escaper.ecapeVariable('$operation');
+        commons.escapeVariable('$operation');
 
     final _response = await _requester.request(
       _url,
@@ -477,9 +477,9 @@ class ManagedZoneOperationsResource {
     };
 
     final _url = 'dns/v1/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/managedZones/' +
-        commons.Escaper.ecapeVariable('$managedZone') +
+        commons.escapeVariable('$managedZone') +
         '/operations';
 
     final _response = await _requester.request(
@@ -532,7 +532,7 @@ class ManagedZonesResource {
     };
 
     final _url = 'dns/v1/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/managedZones';
 
     final _response = await _requester.request(
@@ -578,9 +578,9 @@ class ManagedZonesResource {
     };
 
     final _url = 'dns/v1/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/managedZones/' +
-        commons.Escaper.ecapeVariable('$managedZone');
+        commons.escapeVariable('$managedZone');
 
     await _requester.request(
       _url,
@@ -625,9 +625,9 @@ class ManagedZonesResource {
     };
 
     final _url = 'dns/v1/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/managedZones/' +
-        commons.Escaper.ecapeVariable('$managedZone');
+        commons.escapeVariable('$managedZone');
 
     final _response = await _requester.request(
       _url,
@@ -677,7 +677,7 @@ class ManagedZonesResource {
     };
 
     final _url = 'dns/v1/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/managedZones';
 
     final _response = await _requester.request(
@@ -728,9 +728,9 @@ class ManagedZonesResource {
     };
 
     final _url = 'dns/v1/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/managedZones/' +
-        commons.Escaper.ecapeVariable('$managedZone');
+        commons.escapeVariable('$managedZone');
 
     final _response = await _requester.request(
       _url,
@@ -780,9 +780,9 @@ class ManagedZonesResource {
     };
 
     final _url = 'dns/v1/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/managedZones/' +
-        commons.Escaper.ecapeVariable('$managedZone');
+        commons.escapeVariable('$managedZone');
 
     final _response = await _requester.request(
       _url,
@@ -833,9 +833,8 @@ class PoliciesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'dns/v1/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
-        '/policies';
+    final _url =
+        'dns/v1/projects/' + commons.escapeVariable('$project') + '/policies';
 
     final _response = await _requester.request(
       _url,
@@ -881,9 +880,9 @@ class PoliciesResource {
     };
 
     final _url = 'dns/v1/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/policies/' +
-        commons.Escaper.ecapeVariable('$policy');
+        commons.escapeVariable('$policy');
 
     await _requester.request(
       _url,
@@ -928,9 +927,9 @@ class PoliciesResource {
     };
 
     final _url = 'dns/v1/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/policies/' +
-        commons.Escaper.ecapeVariable('$policy');
+        commons.escapeVariable('$policy');
 
     final _response = await _requester.request(
       _url,
@@ -974,9 +973,8 @@ class PoliciesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'dns/v1/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
-        '/policies';
+    final _url =
+        'dns/v1/projects/' + commons.escapeVariable('$project') + '/policies';
 
     final _response = await _requester.request(
       _url,
@@ -1026,9 +1024,9 @@ class PoliciesResource {
     };
 
     final _url = 'dns/v1/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/policies/' +
-        commons.Escaper.ecapeVariable('$policy');
+        commons.escapeVariable('$policy');
 
     final _response = await _requester.request(
       _url,
@@ -1079,9 +1077,9 @@ class PoliciesResource {
     };
 
     final _url = 'dns/v1/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/policies/' +
-        commons.Escaper.ecapeVariable('$policy');
+        commons.escapeVariable('$policy');
 
     final _response = await _requester.request(
       _url,
@@ -1129,7 +1127,7 @@ class ProjectsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'dns/v1/projects/' + commons.Escaper.ecapeVariable('$project');
+    final _url = 'dns/v1/projects/' + commons.escapeVariable('$project');
 
     final _response = await _requester.request(
       _url,
@@ -1194,9 +1192,9 @@ class ResourceRecordSetsResource {
     };
 
     final _url = 'dns/v1/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/managedZones/' +
-        commons.Escaper.ecapeVariable('$managedZone') +
+        commons.escapeVariable('$managedZone') +
         '/rrsets';
 
     final _response = await _requester.request(

@@ -116,9 +116,9 @@ class AclResource {
     };
 
     final _url = 'calendars/' +
-        commons.Escaper.ecapeVariable('$calendarId') +
+        commons.escapeVariable('$calendarId') +
         '/acl/' +
-        commons.Escaper.ecapeVariable('$ruleId');
+        commons.escapeVariable('$ruleId');
 
     await _requester.request(
       _url,
@@ -158,9 +158,9 @@ class AclResource {
     };
 
     final _url = 'calendars/' +
-        commons.Escaper.ecapeVariable('$calendarId') +
+        commons.escapeVariable('$calendarId') +
         '/acl/' +
-        commons.Escaper.ecapeVariable('$ruleId');
+        commons.escapeVariable('$ruleId');
 
     final _response = await _requester.request(
       _url,
@@ -206,8 +206,7 @@ class AclResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/acl';
+    final _url = 'calendars/' + commons.escapeVariable('$calendarId') + '/acl';
 
     final _response = await _requester.request(
       _url,
@@ -273,8 +272,7 @@ class AclResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/acl';
+    final _url = 'calendars/' + commons.escapeVariable('$calendarId') + '/acl';
 
     final _response = await _requester.request(
       _url,
@@ -327,9 +325,9 @@ class AclResource {
     };
 
     final _url = 'calendars/' +
-        commons.Escaper.ecapeVariable('$calendarId') +
+        commons.escapeVariable('$calendarId') +
         '/acl/' +
-        commons.Escaper.ecapeVariable('$ruleId');
+        commons.escapeVariable('$ruleId');
 
     final _response = await _requester.request(
       _url,
@@ -381,9 +379,9 @@ class AclResource {
     };
 
     final _url = 'calendars/' +
-        commons.Escaper.ecapeVariable('$calendarId') +
+        commons.escapeVariable('$calendarId') +
         '/acl/' +
-        commons.Escaper.ecapeVariable('$ruleId');
+        commons.escapeVariable('$ruleId');
 
     final _response = await _requester.request(
       _url,
@@ -453,9 +451,8 @@ class AclResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'calendars/' +
-        commons.Escaper.ecapeVariable('$calendarId') +
-        '/acl/watch';
+    final _url =
+        'calendars/' + commons.escapeVariable('$calendarId') + '/acl/watch';
 
     final _response = await _requester.request(
       _url,
@@ -497,7 +494,7 @@ class CalendarListResource {
     };
 
     final _url =
-        'users/me/calendarList/' + commons.Escaper.ecapeVariable('$calendarId');
+        'users/me/calendarList/' + commons.escapeVariable('$calendarId');
 
     await _requester.request(
       _url,
@@ -534,7 +531,7 @@ class CalendarListResource {
     };
 
     final _url =
-        'users/me/calendarList/' + commons.Escaper.ecapeVariable('$calendarId');
+        'users/me/calendarList/' + commons.escapeVariable('$calendarId');
 
     final _response = await _requester.request(
       _url,
@@ -708,7 +705,7 @@ class CalendarListResource {
     };
 
     final _url =
-        'users/me/calendarList/' + commons.Escaper.ecapeVariable('$calendarId');
+        'users/me/calendarList/' + commons.escapeVariable('$calendarId');
 
     final _response = await _requester.request(
       _url,
@@ -758,7 +755,7 @@ class CalendarListResource {
     };
 
     final _url =
-        'users/me/calendarList/' + commons.Escaper.ecapeVariable('$calendarId');
+        'users/me/calendarList/' + commons.escapeVariable('$calendarId');
 
     final _response = await _requester.request(
       _url,
@@ -887,7 +884,7 @@ class CalendarsResource {
     };
 
     final _url =
-        'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/clear';
+        'calendars/' + commons.escapeVariable('$calendarId') + '/clear';
 
     await _requester.request(
       _url,
@@ -923,7 +920,7 @@ class CalendarsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId');
+    final _url = 'calendars/' + commons.escapeVariable('$calendarId');
 
     await _requester.request(
       _url,
@@ -959,7 +956,7 @@ class CalendarsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId');
+    final _url = 'calendars/' + commons.escapeVariable('$calendarId');
 
     final _response = await _requester.request(
       _url,
@@ -1037,7 +1034,7 @@ class CalendarsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId');
+    final _url = 'calendars/' + commons.escapeVariable('$calendarId');
 
     final _response = await _requester.request(
       _url,
@@ -1078,7 +1075,7 @@ class CalendarsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId');
+    final _url = 'calendars/' + commons.escapeVariable('$calendarId');
 
     final _response = await _requester.request(
       _url,
@@ -1221,9 +1218,9 @@ class EventsResource {
     };
 
     final _url = 'calendars/' +
-        commons.Escaper.ecapeVariable('$calendarId') +
+        commons.escapeVariable('$calendarId') +
         '/events/' +
-        commons.Escaper.ecapeVariable('$eventId');
+        commons.escapeVariable('$eventId');
 
     await _requester.request(
       _url,
@@ -1282,9 +1279,9 @@ class EventsResource {
     };
 
     final _url = 'calendars/' +
-        commons.Escaper.ecapeVariable('$calendarId') +
+        commons.escapeVariable('$calendarId') +
         '/events/' +
-        commons.Escaper.ecapeVariable('$eventId');
+        commons.escapeVariable('$eventId');
 
     final _response = await _requester.request(
       _url,
@@ -1343,9 +1340,8 @@ class EventsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'calendars/' +
-        commons.Escaper.ecapeVariable('$calendarId') +
-        '/events/import';
+    final _url =
+        'calendars/' + commons.escapeVariable('$calendarId') + '/events/import';
 
     final _response = await _requester.request(
       _url,
@@ -1431,7 +1427,7 @@ class EventsResource {
     };
 
     final _url =
-        'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events';
+        'calendars/' + commons.escapeVariable('$calendarId') + '/events';
 
     final _response = await _requester.request(
       _url,
@@ -1525,9 +1521,9 @@ class EventsResource {
     };
 
     final _url = 'calendars/' +
-        commons.Escaper.ecapeVariable('$calendarId') +
+        commons.escapeVariable('$calendarId') +
         '/events/' +
-        commons.Escaper.ecapeVariable('$eventId') +
+        commons.escapeVariable('$eventId') +
         '/instances';
 
     final _response = await _requester.request(
@@ -1704,7 +1700,7 @@ class EventsResource {
     };
 
     final _url =
-        'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events';
+        'calendars/' + commons.escapeVariable('$calendarId') + '/events';
 
     final _response = await _requester.request(
       _url,
@@ -1769,9 +1765,9 @@ class EventsResource {
     };
 
     final _url = 'calendars/' +
-        commons.Escaper.ecapeVariable('$calendarId') +
+        commons.escapeVariable('$calendarId') +
         '/events/' +
-        commons.Escaper.ecapeVariable('$eventId') +
+        commons.escapeVariable('$eventId') +
         '/move';
 
     final _response = await _requester.request(
@@ -1869,9 +1865,9 @@ class EventsResource {
     };
 
     final _url = 'calendars/' +
-        commons.Escaper.ecapeVariable('$calendarId') +
+        commons.escapeVariable('$calendarId') +
         '/events/' +
-        commons.Escaper.ecapeVariable('$eventId');
+        commons.escapeVariable('$eventId');
 
     final _response = await _requester.request(
       _url,
@@ -1934,7 +1930,7 @@ class EventsResource {
     };
 
     final _url = 'calendars/' +
-        commons.Escaper.ecapeVariable('$calendarId') +
+        commons.escapeVariable('$calendarId') +
         '/events/quickAdd';
 
     final _response = await _requester.request(
@@ -2030,9 +2026,9 @@ class EventsResource {
     };
 
     final _url = 'calendars/' +
-        commons.Escaper.ecapeVariable('$calendarId') +
+        commons.escapeVariable('$calendarId') +
         '/events/' +
-        commons.Escaper.ecapeVariable('$eventId');
+        commons.escapeVariable('$eventId');
 
     final _response = await _requester.request(
       _url,
@@ -2212,9 +2208,8 @@ class EventsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'calendars/' +
-        commons.Escaper.ecapeVariable('$calendarId') +
-        '/events/watch';
+    final _url =
+        'calendars/' + commons.escapeVariable('$calendarId') + '/events/watch';
 
     final _response = await _requester.request(
       _url,
@@ -2298,8 +2293,7 @@ class SettingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'users/me/settings/' + commons.Escaper.ecapeVariable('$setting');
+    final _url = 'users/me/settings/' + commons.escapeVariable('$setting');
 
     final _response = await _requester.request(
       _url,

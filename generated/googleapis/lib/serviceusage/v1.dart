@@ -109,8 +109,7 @@ class OperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
 
     final _response = await _requester.request(
       _url,
@@ -150,7 +149,7 @@ class OperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -188,7 +187,7 @@ class OperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -296,9 +295,8 @@ class ServicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/services:batchEnable';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + '/services:batchEnable';
 
     final _response = await _requester.request(
       _url,
@@ -345,9 +343,7 @@ class ServicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/services:batchGet';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/services:batchGet';
 
     final _response = await _requester.request(
       _url,
@@ -396,8 +392,7 @@ class ServicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':disable';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':disable';
 
     final _response = await _requester.request(
       _url,
@@ -442,8 +437,7 @@ class ServicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':enable';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':enable';
 
     final _response = await _requester.request(
       _url,
@@ -482,7 +476,7 @@ class ServicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -544,8 +538,7 @@ class ServicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/services';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/services';
 
     final _response = await _requester.request(
       _url,

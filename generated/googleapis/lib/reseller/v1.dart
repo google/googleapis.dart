@@ -101,8 +101,8 @@ class CustomersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'apps/reseller/v1/customers/' +
-        commons.Escaper.ecapeVariable('$customerId');
+    final _url =
+        'apps/reseller/v1/customers/' + commons.escapeVariable('$customerId');
 
     final _response = await _requester.request(
       _url,
@@ -208,8 +208,8 @@ class CustomersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'apps/reseller/v1/customers/' +
-        commons.Escaper.ecapeVariable('$customerId');
+    final _url =
+        'apps/reseller/v1/customers/' + commons.escapeVariable('$customerId');
 
     final _response = await _requester.request(
       _url,
@@ -254,8 +254,8 @@ class CustomersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'apps/reseller/v1/customers/' +
-        commons.Escaper.ecapeVariable('$customerId');
+    final _url =
+        'apps/reseller/v1/customers/' + commons.escapeVariable('$customerId');
 
     final _response = await _requester.request(
       _url,
@@ -425,9 +425,9 @@ class SubscriptionsResource {
     };
 
     final _url = 'apps/reseller/v1/customers/' +
-        commons.Escaper.ecapeVariable('$customerId') +
+        commons.escapeVariable('$customerId') +
         '/subscriptions/' +
-        commons.Escaper.ecapeVariable('$subscriptionId') +
+        commons.escapeVariable('$subscriptionId') +
         '/activate';
 
     final _response = await _requester.request(
@@ -484,9 +484,9 @@ class SubscriptionsResource {
     };
 
     final _url = 'apps/reseller/v1/customers/' +
-        commons.Escaper.ecapeVariable('$customerId') +
+        commons.escapeVariable('$customerId') +
         '/subscriptions/' +
-        commons.Escaper.ecapeVariable('$subscriptionId') +
+        commons.escapeVariable('$subscriptionId') +
         '/changePlan';
 
     final _response = await _requester.request(
@@ -542,9 +542,9 @@ class SubscriptionsResource {
     };
 
     final _url = 'apps/reseller/v1/customers/' +
-        commons.Escaper.ecapeVariable('$customerId') +
+        commons.escapeVariable('$customerId') +
         '/subscriptions/' +
-        commons.Escaper.ecapeVariable('$subscriptionId') +
+        commons.escapeVariable('$subscriptionId') +
         '/changeRenewalSettings';
 
     final _response = await _requester.request(
@@ -600,9 +600,9 @@ class SubscriptionsResource {
     };
 
     final _url = 'apps/reseller/v1/customers/' +
-        commons.Escaper.ecapeVariable('$customerId') +
+        commons.escapeVariable('$customerId') +
         '/subscriptions/' +
-        commons.Escaper.ecapeVariable('$subscriptionId') +
+        commons.escapeVariable('$subscriptionId') +
         '/changeSeats';
 
     final _response = await _requester.request(
@@ -662,9 +662,9 @@ class SubscriptionsResource {
     };
 
     final _url = 'apps/reseller/v1/customers/' +
-        commons.Escaper.ecapeVariable('$customerId') +
+        commons.escapeVariable('$customerId') +
         '/subscriptions/' +
-        commons.Escaper.ecapeVariable('$subscriptionId');
+        commons.escapeVariable('$subscriptionId');
 
     await _requester.request(
       _url,
@@ -715,9 +715,9 @@ class SubscriptionsResource {
     };
 
     final _url = 'apps/reseller/v1/customers/' +
-        commons.Escaper.ecapeVariable('$customerId') +
+        commons.escapeVariable('$customerId') +
         '/subscriptions/' +
-        commons.Escaper.ecapeVariable('$subscriptionId');
+        commons.escapeVariable('$subscriptionId');
 
     final _response = await _requester.request(
       _url,
@@ -783,7 +783,7 @@ class SubscriptionsResource {
     };
 
     final _url = 'apps/reseller/v1/customers/' +
-        commons.Escaper.ecapeVariable('$customerId') +
+        commons.escapeVariable('$customerId') +
         '/subscriptions';
 
     final _response = await _requester.request(
@@ -912,9 +912,9 @@ class SubscriptionsResource {
     };
 
     final _url = 'apps/reseller/v1/customers/' +
-        commons.Escaper.ecapeVariable('$customerId') +
+        commons.escapeVariable('$customerId') +
         '/subscriptions/' +
-        commons.Escaper.ecapeVariable('$subscriptionId') +
+        commons.escapeVariable('$subscriptionId') +
         '/startPaidService';
 
     final _response = await _requester.request(
@@ -972,9 +972,9 @@ class SubscriptionsResource {
     };
 
     final _url = 'apps/reseller/v1/customers/' +
-        commons.Escaper.ecapeVariable('$customerId') +
+        commons.escapeVariable('$customerId') +
         '/subscriptions/' +
-        commons.Escaper.ecapeVariable('$subscriptionId') +
+        commons.escapeVariable('$subscriptionId') +
         '/suspend';
 
     final _response = await _requester.request(

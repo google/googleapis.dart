@@ -103,9 +103,9 @@ class AccountsProductsResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/products/' +
-        commons.Escaper.ecapeVariableReserved('$name');
+        core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -163,9 +163,9 @@ class AccountsProductsResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/products/' +
-        commons.Escaper.ecapeVariableReserved('$name');
+        core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -215,8 +215,7 @@ class AccountsProductsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/products';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/products';
 
     final _response = await _requester.request(
       _url,
@@ -281,9 +280,9 @@ class AccountsProductsResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/products/' +
-        commons.Escaper.ecapeVariableReserved('$name');
+        core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,

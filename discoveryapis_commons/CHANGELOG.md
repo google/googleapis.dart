@@ -4,6 +4,8 @@
 - Require Dart 2.12 or later.
 - Renamed static fields on `UploadOptions` and `DownloadOptions`.
 - Removed `mapMap` helper. No longer used.
+- Removed `Escaper` class. Now expose a single `escapeVariable` top-level
+  function.
 
 ## 0.2.0
 

@@ -118,9 +118,9 @@ class DeploymentsResource {
     };
 
     final _url = 'deploymentmanager/v2/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/deployments/' +
-        commons.Escaper.ecapeVariable('$deployment') +
+        commons.escapeVariable('$deployment') +
         '/cancelPreview';
 
     final _response = await _requester.request(
@@ -169,9 +169,9 @@ class DeploymentsResource {
     };
 
     final _url = 'deploymentmanager/v2/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/deployments/' +
-        commons.Escaper.ecapeVariable('$deployment');
+        commons.escapeVariable('$deployment');
 
     final _response = await _requester.request(
       _url,
@@ -212,9 +212,9 @@ class DeploymentsResource {
     };
 
     final _url = 'deploymentmanager/v2/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/deployments/' +
-        commons.Escaper.ecapeVariable('$deployment');
+        commons.escapeVariable('$deployment');
 
     final _response = await _requester.request(
       _url,
@@ -264,9 +264,9 @@ class DeploymentsResource {
     };
 
     final _url = 'deploymentmanager/v2/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/deployments/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/getIamPolicy';
 
     final _response = await _requester.request(
@@ -327,7 +327,7 @@ class DeploymentsResource {
     };
 
     final _url = 'deploymentmanager/v2/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/deployments';
 
     final _response = await _requester.request(
@@ -411,7 +411,7 @@ class DeploymentsResource {
     };
 
     final _url = 'deploymentmanager/v2/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/deployments';
 
     final _response = await _requester.request(
@@ -486,9 +486,9 @@ class DeploymentsResource {
     };
 
     final _url = 'deploymentmanager/v2/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/deployments/' +
-        commons.Escaper.ecapeVariable('$deployment');
+        commons.escapeVariable('$deployment');
 
     final _response = await _requester.request(
       _url,
@@ -537,9 +537,9 @@ class DeploymentsResource {
     };
 
     final _url = 'deploymentmanager/v2/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/deployments/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/setIamPolicy';
 
     final _response = await _requester.request(
@@ -589,9 +589,9 @@ class DeploymentsResource {
     };
 
     final _url = 'deploymentmanager/v2/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/deployments/' +
-        commons.Escaper.ecapeVariable('$deployment') +
+        commons.escapeVariable('$deployment') +
         '/stop';
 
     final _response = await _requester.request(
@@ -639,9 +639,9 @@ class DeploymentsResource {
     };
 
     final _url = 'deploymentmanager/v2/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/deployments/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/testIamPermissions';
 
     final _response = await _requester.request(
@@ -717,9 +717,9 @@ class DeploymentsResource {
     };
 
     final _url = 'deploymentmanager/v2/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/deployments/' +
-        commons.Escaper.ecapeVariable('$deployment');
+        commons.escapeVariable('$deployment');
 
     final _response = await _requester.request(
       _url,
@@ -771,11 +771,11 @@ class ManifestsResource {
     };
 
     final _url = 'deploymentmanager/v2/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/deployments/' +
-        commons.Escaper.ecapeVariable('$deployment') +
+        commons.escapeVariable('$deployment') +
         '/manifests/' +
-        commons.Escaper.ecapeVariable('$manifest');
+        commons.escapeVariable('$manifest');
 
     final _response = await _requester.request(
       _url,
@@ -861,9 +861,9 @@ class ManifestsResource {
     };
 
     final _url = 'deploymentmanager/v2/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/deployments/' +
-        commons.Escaper.ecapeVariable('$deployment') +
+        commons.escapeVariable('$deployment') +
         '/manifests';
 
     final _response = await _requester.request(
@@ -911,9 +911,9 @@ class OperationsResource {
     };
 
     final _url = 'deploymentmanager/v2/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/operations/' +
-        commons.Escaper.ecapeVariable('$operation');
+        commons.escapeVariable('$operation');
 
     final _response = await _requester.request(
       _url,
@@ -995,7 +995,7 @@ class OperationsResource {
     };
 
     final _url = 'deploymentmanager/v2/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/operations';
 
     final _response = await _requester.request(
@@ -1047,11 +1047,11 @@ class ResourcesResource {
     };
 
     final _url = 'deploymentmanager/v2/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/deployments/' +
-        commons.Escaper.ecapeVariable('$deployment') +
+        commons.escapeVariable('$deployment') +
         '/resources/' +
-        commons.Escaper.ecapeVariable('$resource');
+        commons.escapeVariable('$resource');
 
     final _response = await _requester.request(
       _url,
@@ -1137,9 +1137,9 @@ class ResourcesResource {
     };
 
     final _url = 'deploymentmanager/v2/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/deployments/' +
-        commons.Escaper.ecapeVariable('$deployment') +
+        commons.escapeVariable('$deployment') +
         '/resources';
 
     final _response = await _requester.request(
@@ -1229,7 +1229,7 @@ class TypesResource {
     };
 
     final _url = 'deploymentmanager/v2/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/global/types';
 
     final _response = await _requester.request(

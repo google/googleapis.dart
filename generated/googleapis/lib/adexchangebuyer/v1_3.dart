@@ -98,7 +98,7 @@ class AccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'accounts/' + commons.Escaper.ecapeVariable('$id');
+    final _url = 'accounts/' + commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -170,7 +170,7 @@ class AccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'accounts/' + commons.Escaper.ecapeVariable('$id');
+    final _url = 'accounts/' + commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -209,7 +209,7 @@ class AccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'accounts/' + commons.Escaper.ecapeVariable('$id');
+    final _url = 'accounts/' + commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -250,7 +250,7 @@ class BillingInfoResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'billinginfo/' + commons.Escaper.ecapeVariable('$accountId');
+    final _url = 'billinginfo/' + commons.escapeVariable('$accountId');
 
     final _response = await _requester.request(
       _url,
@@ -329,9 +329,9 @@ class BudgetResource {
     };
 
     final _url = 'billinginfo/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/' +
-        commons.Escaper.ecapeVariable('$billingId');
+        commons.escapeVariable('$billingId');
 
     final _response = await _requester.request(
       _url,
@@ -376,9 +376,9 @@ class BudgetResource {
     };
 
     final _url = 'billinginfo/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/' +
-        commons.Escaper.ecapeVariable('$billingId');
+        commons.escapeVariable('$billingId');
 
     final _response = await _requester.request(
       _url,
@@ -422,9 +422,9 @@ class BudgetResource {
     };
 
     final _url = 'billinginfo/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/' +
-        commons.Escaper.ecapeVariable('$billingId');
+        commons.escapeVariable('$billingId');
 
     final _response = await _requester.request(
       _url,
@@ -471,9 +471,9 @@ class CreativesResource {
     };
 
     final _url = 'creatives/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/' +
-        commons.Escaper.ecapeVariable('$buyerCreativeId');
+        commons.escapeVariable('$buyerCreativeId');
 
     final _response = await _requester.request(
       _url,
@@ -615,7 +615,7 @@ class DirectDealsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'directdeals/' + commons.Escaper.ecapeVariable('$id');
+    final _url = 'directdeals/' + commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -754,9 +754,9 @@ class PretargetingConfigResource {
     };
 
     final _url = 'pretargetingconfigs/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/' +
-        commons.Escaper.ecapeVariable('$configId');
+        commons.escapeVariable('$configId');
 
     await _requester.request(
       _url,
@@ -794,9 +794,9 @@ class PretargetingConfigResource {
     };
 
     final _url = 'pretargetingconfigs/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/' +
-        commons.Escaper.ecapeVariable('$configId');
+        commons.escapeVariable('$configId');
 
     final _response = await _requester.request(
       _url,
@@ -835,8 +835,7 @@ class PretargetingConfigResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'pretargetingconfigs/' + commons.Escaper.ecapeVariable('$accountId');
+    final _url = 'pretargetingconfigs/' + commons.escapeVariable('$accountId');
 
     final _response = await _requester.request(
       _url,
@@ -872,8 +871,7 @@ class PretargetingConfigResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'pretargetingconfigs/' + commons.Escaper.ecapeVariable('$accountId');
+    final _url = 'pretargetingconfigs/' + commons.escapeVariable('$accountId');
 
     final _response = await _requester.request(
       _url,
@@ -918,9 +916,9 @@ class PretargetingConfigResource {
     };
 
     final _url = 'pretargetingconfigs/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/' +
-        commons.Escaper.ecapeVariable('$configId');
+        commons.escapeVariable('$configId');
 
     final _response = await _requester.request(
       _url,
@@ -964,9 +962,9 @@ class PretargetingConfigResource {
     };
 
     final _url = 'pretargetingconfigs/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/' +
-        commons.Escaper.ecapeVariable('$configId');
+        commons.escapeVariable('$configId');
 
     final _response = await _requester.request(
       _url,

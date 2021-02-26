@@ -125,7 +125,7 @@ class AccountsResource {
     };
 
     final _url =
-        'tagmanager/v1/accounts/' + commons.Escaper.ecapeVariable('$accountId');
+        'tagmanager/v1/accounts/' + commons.escapeVariable('$accountId');
 
     final _response = await _requester.request(
       _url,
@@ -201,7 +201,7 @@ class AccountsResource {
     };
 
     final _url =
-        'tagmanager/v1/accounts/' + commons.Escaper.ecapeVariable('$accountId');
+        'tagmanager/v1/accounts/' + commons.escapeVariable('$accountId');
 
     final _response = await _requester.request(
       _url,
@@ -265,7 +265,7 @@ class AccountsContainersResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/containers';
 
     final _response = await _requester.request(
@@ -303,9 +303,9 @@ class AccountsContainersResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/containers/' +
-        commons.Escaper.ecapeVariable('$containerId');
+        commons.escapeVariable('$containerId');
 
     await _requester.request(
       _url,
@@ -343,9 +343,9 @@ class AccountsContainersResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/containers/' +
-        commons.Escaper.ecapeVariable('$containerId');
+        commons.escapeVariable('$containerId');
 
     final _response = await _requester.request(
       _url,
@@ -380,7 +380,7 @@ class AccountsContainersResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/containers';
 
     final _response = await _requester.request(
@@ -429,9 +429,9 @@ class AccountsContainersResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/containers/' +
-        commons.Escaper.ecapeVariable('$containerId');
+        commons.escapeVariable('$containerId');
 
     final _response = await _requester.request(
       _url,
@@ -481,9 +481,9 @@ class AccountsContainersEnvironmentsResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/containers/' +
-        commons.Escaper.ecapeVariable('$containerId') +
+        commons.escapeVariable('$containerId') +
         '/environments';
 
     final _response = await _requester.request(
@@ -525,11 +525,11 @@ class AccountsContainersEnvironmentsResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/containers/' +
-        commons.Escaper.ecapeVariable('$containerId') +
+        commons.escapeVariable('$containerId') +
         '/environments/' +
-        commons.Escaper.ecapeVariable('$environmentId');
+        commons.escapeVariable('$environmentId');
 
     await _requester.request(
       _url,
@@ -570,11 +570,11 @@ class AccountsContainersEnvironmentsResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/containers/' +
-        commons.Escaper.ecapeVariable('$containerId') +
+        commons.escapeVariable('$containerId') +
         '/environments/' +
-        commons.Escaper.ecapeVariable('$environmentId');
+        commons.escapeVariable('$environmentId');
 
     final _response = await _requester.request(
       _url,
@@ -613,9 +613,9 @@ class AccountsContainersEnvironmentsResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/containers/' +
-        commons.Escaper.ecapeVariable('$containerId') +
+        commons.escapeVariable('$containerId') +
         '/environments';
 
     final _response = await _requester.request(
@@ -667,11 +667,11 @@ class AccountsContainersEnvironmentsResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/containers/' +
-        commons.Escaper.ecapeVariable('$containerId') +
+        commons.escapeVariable('$containerId') +
         '/environments/' +
-        commons.Escaper.ecapeVariable('$environmentId');
+        commons.escapeVariable('$environmentId');
 
     final _response = await _requester.request(
       _url,
@@ -725,9 +725,9 @@ class AccountsContainersFoldersResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/containers/' +
-        commons.Escaper.ecapeVariable('$containerId') +
+        commons.escapeVariable('$containerId') +
         '/folders';
 
     final _response = await _requester.request(
@@ -768,11 +768,11 @@ class AccountsContainersFoldersResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/containers/' +
-        commons.Escaper.ecapeVariable('$containerId') +
+        commons.escapeVariable('$containerId') +
         '/folders/' +
-        commons.Escaper.ecapeVariable('$folderId');
+        commons.escapeVariable('$folderId');
 
     await _requester.request(
       _url,
@@ -813,11 +813,11 @@ class AccountsContainersFoldersResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/containers/' +
-        commons.Escaper.ecapeVariable('$containerId') +
+        commons.escapeVariable('$containerId') +
         '/folders/' +
-        commons.Escaper.ecapeVariable('$folderId');
+        commons.escapeVariable('$folderId');
 
     final _response = await _requester.request(
       _url,
@@ -855,9 +855,9 @@ class AccountsContainersFoldersResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/containers/' +
-        commons.Escaper.ecapeVariable('$containerId') +
+        commons.escapeVariable('$containerId') +
         '/folders';
 
     final _response = await _requester.request(
@@ -909,11 +909,11 @@ class AccountsContainersFoldersResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/containers/' +
-        commons.Escaper.ecapeVariable('$containerId') +
+        commons.escapeVariable('$containerId') +
         '/folders/' +
-        commons.Escaper.ecapeVariable('$folderId');
+        commons.escapeVariable('$folderId');
 
     final _response = await _requester.request(
       _url,
@@ -962,11 +962,11 @@ class AccountsContainersFoldersEntitiesResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/containers/' +
-        commons.Escaper.ecapeVariable('$containerId') +
+        commons.escapeVariable('$containerId') +
         '/folders/' +
-        commons.Escaper.ecapeVariable('$folderId') +
+        commons.escapeVariable('$folderId') +
         '/entities';
 
     final _response = await _requester.request(
@@ -1030,11 +1030,11 @@ class AccountsContainersMoveFoldersResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/containers/' +
-        commons.Escaper.ecapeVariable('$containerId') +
+        commons.escapeVariable('$containerId') +
         '/move_folders/' +
-        commons.Escaper.ecapeVariable('$folderId');
+        commons.escapeVariable('$folderId');
 
     await _requester.request(
       _url,
@@ -1087,11 +1087,11 @@ class AccountsContainersReauthorizeEnvironmentsResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/containers/' +
-        commons.Escaper.ecapeVariable('$containerId') +
+        commons.escapeVariable('$containerId') +
         '/reauthorize_environments/' +
-        commons.Escaper.ecapeVariable('$environmentId');
+        commons.escapeVariable('$environmentId');
 
     final _response = await _requester.request(
       _url,
@@ -1142,9 +1142,9 @@ class AccountsContainersTagsResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/containers/' +
-        commons.Escaper.ecapeVariable('$containerId') +
+        commons.escapeVariable('$containerId') +
         '/tags';
 
     final _response = await _requester.request(
@@ -1185,11 +1185,11 @@ class AccountsContainersTagsResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/containers/' +
-        commons.Escaper.ecapeVariable('$containerId') +
+        commons.escapeVariable('$containerId') +
         '/tags/' +
-        commons.Escaper.ecapeVariable('$tagId');
+        commons.escapeVariable('$tagId');
 
     await _requester.request(
       _url,
@@ -1230,11 +1230,11 @@ class AccountsContainersTagsResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/containers/' +
-        commons.Escaper.ecapeVariable('$containerId') +
+        commons.escapeVariable('$containerId') +
         '/tags/' +
-        commons.Escaper.ecapeVariable('$tagId');
+        commons.escapeVariable('$tagId');
 
     final _response = await _requester.request(
       _url,
@@ -1272,9 +1272,9 @@ class AccountsContainersTagsResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/containers/' +
-        commons.Escaper.ecapeVariable('$containerId') +
+        commons.escapeVariable('$containerId') +
         '/tags';
 
     final _response = await _requester.request(
@@ -1326,11 +1326,11 @@ class AccountsContainersTagsResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/containers/' +
-        commons.Escaper.ecapeVariable('$containerId') +
+        commons.escapeVariable('$containerId') +
         '/tags/' +
-        commons.Escaper.ecapeVariable('$tagId');
+        commons.escapeVariable('$tagId');
 
     final _response = await _requester.request(
       _url,
@@ -1380,9 +1380,9 @@ class AccountsContainersTriggersResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/containers/' +
-        commons.Escaper.ecapeVariable('$containerId') +
+        commons.escapeVariable('$containerId') +
         '/triggers';
 
     final _response = await _requester.request(
@@ -1423,11 +1423,11 @@ class AccountsContainersTriggersResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/containers/' +
-        commons.Escaper.ecapeVariable('$containerId') +
+        commons.escapeVariable('$containerId') +
         '/triggers/' +
-        commons.Escaper.ecapeVariable('$triggerId');
+        commons.escapeVariable('$triggerId');
 
     await _requester.request(
       _url,
@@ -1468,11 +1468,11 @@ class AccountsContainersTriggersResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/containers/' +
-        commons.Escaper.ecapeVariable('$containerId') +
+        commons.escapeVariable('$containerId') +
         '/triggers/' +
-        commons.Escaper.ecapeVariable('$triggerId');
+        commons.escapeVariable('$triggerId');
 
     final _response = await _requester.request(
       _url,
@@ -1510,9 +1510,9 @@ class AccountsContainersTriggersResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/containers/' +
-        commons.Escaper.ecapeVariable('$containerId') +
+        commons.escapeVariable('$containerId') +
         '/triggers';
 
     final _response = await _requester.request(
@@ -1564,11 +1564,11 @@ class AccountsContainersTriggersResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/containers/' +
-        commons.Escaper.ecapeVariable('$containerId') +
+        commons.escapeVariable('$containerId') +
         '/triggers/' +
-        commons.Escaper.ecapeVariable('$triggerId');
+        commons.escapeVariable('$triggerId');
 
     final _response = await _requester.request(
       _url,
@@ -1618,9 +1618,9 @@ class AccountsContainersVariablesResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/containers/' +
-        commons.Escaper.ecapeVariable('$containerId') +
+        commons.escapeVariable('$containerId') +
         '/variables';
 
     final _response = await _requester.request(
@@ -1661,11 +1661,11 @@ class AccountsContainersVariablesResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/containers/' +
-        commons.Escaper.ecapeVariable('$containerId') +
+        commons.escapeVariable('$containerId') +
         '/variables/' +
-        commons.Escaper.ecapeVariable('$variableId');
+        commons.escapeVariable('$variableId');
 
     await _requester.request(
       _url,
@@ -1706,11 +1706,11 @@ class AccountsContainersVariablesResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/containers/' +
-        commons.Escaper.ecapeVariable('$containerId') +
+        commons.escapeVariable('$containerId') +
         '/variables/' +
-        commons.Escaper.ecapeVariable('$variableId');
+        commons.escapeVariable('$variableId');
 
     final _response = await _requester.request(
       _url,
@@ -1748,9 +1748,9 @@ class AccountsContainersVariablesResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/containers/' +
-        commons.Escaper.ecapeVariable('$containerId') +
+        commons.escapeVariable('$containerId') +
         '/variables';
 
     final _response = await _requester.request(
@@ -1802,11 +1802,11 @@ class AccountsContainersVariablesResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/containers/' +
-        commons.Escaper.ecapeVariable('$containerId') +
+        commons.escapeVariable('$containerId') +
         '/variables/' +
-        commons.Escaper.ecapeVariable('$variableId');
+        commons.escapeVariable('$variableId');
 
     final _response = await _requester.request(
       _url,
@@ -1856,9 +1856,9 @@ class AccountsContainersVersionsResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/containers/' +
-        commons.Escaper.ecapeVariable('$containerId') +
+        commons.escapeVariable('$containerId') +
         '/versions';
 
     final _response = await _requester.request(
@@ -1900,11 +1900,11 @@ class AccountsContainersVersionsResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/containers/' +
-        commons.Escaper.ecapeVariable('$containerId') +
+        commons.escapeVariable('$containerId') +
         '/versions/' +
-        commons.Escaper.ecapeVariable('$containerVersionId');
+        commons.escapeVariable('$containerVersionId');
 
     await _requester.request(
       _url,
@@ -1946,11 +1946,11 @@ class AccountsContainersVersionsResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/containers/' +
-        commons.Escaper.ecapeVariable('$containerId') +
+        commons.escapeVariable('$containerId') +
         '/versions/' +
-        commons.Escaper.ecapeVariable('$containerVersionId');
+        commons.escapeVariable('$containerVersionId');
 
     final _response = await _requester.request(
       _url,
@@ -1997,9 +1997,9 @@ class AccountsContainersVersionsResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/containers/' +
-        commons.Escaper.ecapeVariable('$containerId') +
+        commons.escapeVariable('$containerId') +
         '/versions';
 
     final _response = await _requester.request(
@@ -2047,11 +2047,11 @@ class AccountsContainersVersionsResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/containers/' +
-        commons.Escaper.ecapeVariable('$containerId') +
+        commons.escapeVariable('$containerId') +
         '/versions/' +
-        commons.Escaper.ecapeVariable('$containerVersionId') +
+        commons.escapeVariable('$containerVersionId') +
         '/publish';
 
     final _response = await _requester.request(
@@ -2098,11 +2098,11 @@ class AccountsContainersVersionsResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/containers/' +
-        commons.Escaper.ecapeVariable('$containerId') +
+        commons.escapeVariable('$containerId') +
         '/versions/' +
-        commons.Escaper.ecapeVariable('$containerVersionId') +
+        commons.escapeVariable('$containerVersionId') +
         '/restore';
 
     final _response = await _requester.request(
@@ -2145,11 +2145,11 @@ class AccountsContainersVersionsResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/containers/' +
-        commons.Escaper.ecapeVariable('$containerId') +
+        commons.escapeVariable('$containerId') +
         '/versions/' +
-        commons.Escaper.ecapeVariable('$containerVersionId') +
+        commons.escapeVariable('$containerVersionId') +
         '/undelete';
 
     final _response = await _requester.request(
@@ -2201,11 +2201,11 @@ class AccountsContainersVersionsResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/containers/' +
-        commons.Escaper.ecapeVariable('$containerId') +
+        commons.escapeVariable('$containerId') +
         '/versions/' +
-        commons.Escaper.ecapeVariable('$containerVersionId');
+        commons.escapeVariable('$containerVersionId');
 
     final _response = await _requester.request(
       _url,
@@ -2253,7 +2253,7 @@ class AccountsPermissionsResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/permissions';
 
     final _response = await _requester.request(
@@ -2293,9 +2293,9 @@ class AccountsPermissionsResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/permissions/' +
-        commons.Escaper.ecapeVariable('$permissionId');
+        commons.escapeVariable('$permissionId');
 
     await _requester.request(
       _url,
@@ -2333,9 +2333,9 @@ class AccountsPermissionsResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/permissions/' +
-        commons.Escaper.ecapeVariable('$permissionId');
+        commons.escapeVariable('$permissionId');
 
     final _response = await _requester.request(
       _url,
@@ -2372,7 +2372,7 @@ class AccountsPermissionsResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/permissions';
 
     final _response = await _requester.request(
@@ -2416,9 +2416,9 @@ class AccountsPermissionsResource {
     };
 
     final _url = 'tagmanager/v1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/permissions/' +
-        commons.Escaper.ecapeVariable('$permissionId');
+        commons.escapeVariable('$permissionId');
 
     final _response = await _requester.request(
       _url,

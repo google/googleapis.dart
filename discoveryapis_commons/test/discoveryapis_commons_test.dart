@@ -105,10 +105,7 @@ void main() {
   });
 
   test('escaper', () {
-    expect(Escaper.ecapePathComponent('a/b%c '), equals('a%2Fb%25c%20'));
-    expect(Escaper.ecapeVariable('a/b%c '), equals('a%2Fb%25c%20'));
-    expect(Escaper.ecapeVariableReserved('a/b%c+ '), equals('a/b%25c+%20'));
-    expect(Escaper.escapeQueryComponent('a/b%c '), equals('a%2Fb%25c%20'));
+    expect(escapeVariable('a/b%c '), equals('a%2Fb%25c%20'));
   });
 
   test('base64-encoder', () async {

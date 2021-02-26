@@ -106,7 +106,7 @@ class OperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -261,7 +261,7 @@ class ServicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/services/' + commons.Escaper.ecapeVariable('$serviceName');
+    final _url = 'v1/services/' + commons.escapeVariable('$serviceName');
 
     final _response = await _requester.request(
       _url,
@@ -303,9 +303,8 @@ class ServicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/services/' +
-        commons.Escaper.ecapeVariable('$serviceName') +
-        ':enable';
+    final _url =
+        'v1/services/' + commons.escapeVariable('$serviceName') + ':enable';
 
     final _response = await _requester.request(
       _url,
@@ -390,7 +389,7 @@ class ServicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/services/' + commons.Escaper.ecapeVariable('$serviceName');
+    final _url = 'v1/services/' + commons.escapeVariable('$serviceName');
 
     final _response = await _requester.request(
       _url,
@@ -444,9 +443,8 @@ class ServicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/services/' +
-        commons.Escaper.ecapeVariable('$serviceName') +
-        '/config';
+    final _url =
+        'v1/services/' + commons.escapeVariable('$serviceName') + '/config';
 
     final _response = await _requester.request(
       _url,
@@ -490,9 +488,7 @@ class ServicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':getIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -595,9 +591,7 @@ class ServicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':setIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -644,9 +638,8 @@ class ServicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':testIamPermissions';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
     final _response = await _requester.request(
       _url,
@@ -688,9 +681,8 @@ class ServicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/services/' +
-        commons.Escaper.ecapeVariable('$serviceName') +
-        ':undelete';
+    final _url =
+        'v1/services/' + commons.escapeVariable('$serviceName') + ':undelete';
 
     final _response = await _requester.request(
       _url,
@@ -741,9 +733,8 @@ class ServicesConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/services/' +
-        commons.Escaper.ecapeVariable('$serviceName') +
-        '/configs';
+    final _url =
+        'v1/services/' + commons.escapeVariable('$serviceName') + '/configs';
 
     final _response = await _requester.request(
       _url,
@@ -797,9 +788,9 @@ class ServicesConfigsResource {
     };
 
     final _url = 'v1/services/' +
-        commons.Escaper.ecapeVariable('$serviceName') +
+        commons.escapeVariable('$serviceName') +
         '/configs/' +
-        commons.Escaper.ecapeVariable('$configId');
+        commons.escapeVariable('$configId');
 
     final _response = await _requester.request(
       _url,
@@ -845,9 +836,8 @@ class ServicesConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/services/' +
-        commons.Escaper.ecapeVariable('$serviceName') +
-        '/configs';
+    final _url =
+        'v1/services/' + commons.escapeVariable('$serviceName') + '/configs';
 
     final _response = await _requester.request(
       _url,
@@ -898,7 +888,7 @@ class ServicesConfigsResource {
     };
 
     final _url = 'v1/services/' +
-        commons.Escaper.ecapeVariable('$serviceName') +
+        commons.escapeVariable('$serviceName') +
         '/configs:submit';
 
     final _response = await _requester.request(
@@ -950,9 +940,7 @@ class ServicesConsumersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':getIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -997,9 +985,7 @@ class ServicesConsumersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':setIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -1046,9 +1032,8 @@ class ServicesConsumersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':testIamPermissions';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
     final _response = await _requester.request(
       _url,
@@ -1105,9 +1090,8 @@ class ServicesRolloutsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/services/' +
-        commons.Escaper.ecapeVariable('$serviceName') +
-        '/rollouts';
+    final _url =
+        'v1/services/' + commons.escapeVariable('$serviceName') + '/rollouts';
 
     final _response = await _requester.request(
       _url,
@@ -1148,9 +1132,9 @@ class ServicesRolloutsResource {
     };
 
     final _url = 'v1/services/' +
-        commons.Escaper.ecapeVariable('$serviceName') +
+        commons.escapeVariable('$serviceName') +
         '/rollouts/' +
-        commons.Escaper.ecapeVariable('$rolloutId');
+        commons.escapeVariable('$rolloutId');
 
     final _response = await _requester.request(
       _url,
@@ -1205,9 +1189,8 @@ class ServicesRolloutsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/services/' +
-        commons.Escaper.ecapeVariable('$serviceName') +
-        '/rollouts';
+    final _url =
+        'v1/services/' + commons.escapeVariable('$serviceName') + '/rollouts';
 
     final _response = await _requester.request(
       _url,

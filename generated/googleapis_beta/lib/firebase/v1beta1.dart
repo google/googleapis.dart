@@ -170,7 +170,7 @@ class OperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -256,9 +256,7 @@ class ProjectsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$project') +
-        ':addFirebase';
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$project') + ':addFirebase';
 
     final _response = await _requester.request(
       _url,
@@ -339,9 +337,8 @@ class ProjectsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        ':addGoogleAnalytics';
+    final _url =
+        'v1beta1/' + core.Uri.encodeFull('$parent') + ':addGoogleAnalytics';
 
     final _response = await _requester.request(
       _url,
@@ -380,7 +377,7 @@ class ProjectsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -424,7 +421,7 @@ class ProjectsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -467,7 +464,7 @@ class ProjectsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -575,7 +572,7 @@ class ProjectsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -632,9 +629,8 @@ class ProjectsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        ':removeAnalytics';
+    final _url =
+        'v1beta1/' + core.Uri.encodeFull('$parent') + ':removeAnalytics';
 
     final _response = await _requester.request(
       _url,
@@ -712,9 +708,7 @@ class ProjectsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        ':searchApps';
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + ':searchApps';
 
     final _response = await _requester.request(
       _url,
@@ -773,9 +767,7 @@ class ProjectsAndroidAppsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/androidApps';
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/androidApps';
 
     final _response = await _requester.request(
       _url,
@@ -816,7 +808,7 @@ class ProjectsAndroidAppsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -858,7 +850,7 @@ class ProjectsAndroidAppsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -913,9 +905,7 @@ class ProjectsAndroidAppsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/androidApps';
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/androidApps';
 
     final _response = await _requester.request(
       _url,
@@ -970,7 +960,7 @@ class ProjectsAndroidAppsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1024,8 +1014,7 @@ class ProjectsAndroidAppsShaResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/sha';
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/sha';
 
     final _response = await _requester.request(
       _url,
@@ -1070,7 +1059,7 @@ class ProjectsAndroidAppsShaResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1111,8 +1100,7 @@ class ProjectsAndroidAppsShaResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/sha';
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/sha';
 
     final _response = await _requester.request(
       _url,
@@ -1190,9 +1178,8 @@ class ProjectsAvailableLocationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/availableLocations';
+    final _url =
+        'v1beta1/' + core.Uri.encodeFull('$parent') + '/availableLocations';
 
     final _response = await _requester.request(
       _url,
@@ -1272,7 +1259,7 @@ class ProjectsDefaultLocationResource {
     };
 
     final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/defaultLocation:finalize';
 
     final _response = await _requester.request(
@@ -1327,9 +1314,7 @@ class ProjectsIosAppsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/iosApps';
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/iosApps';
 
     final _response = await _requester.request(
       _url,
@@ -1370,7 +1355,7 @@ class ProjectsIosAppsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1410,7 +1395,7 @@ class ProjectsIosAppsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1465,9 +1450,7 @@ class ProjectsIosAppsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/iosApps';
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/iosApps';
 
     final _response = await _requester.request(
       _url,
@@ -1522,7 +1505,7 @@ class ProjectsIosAppsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1576,9 +1559,7 @@ class ProjectsWebAppsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/webApps';
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/webApps';
 
     final _response = await _requester.request(
       _url,
@@ -1619,7 +1600,7 @@ class ProjectsWebAppsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1659,7 +1640,7 @@ class ProjectsWebAppsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1714,9 +1695,7 @@ class ProjectsWebAppsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/webApps';
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/webApps';
 
     final _response = await _requester.request(
       _url,
@@ -1771,7 +1750,7 @@ class ProjectsWebAppsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,

@@ -112,8 +112,7 @@ class OperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
 
     final _response = await _requester.request(
       _url,
@@ -153,7 +152,7 @@ class OperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -191,7 +190,7 @@ class OperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -247,7 +246,7 @@ class OperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -317,9 +316,7 @@ class ServicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        ':addSubnetwork';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + ':addSubnetwork';
 
     final _response = await _requester.request(
       _url,
@@ -361,9 +358,8 @@ class ServicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        ':disableVpcServiceControls';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + ':disableVpcServiceControls';
 
     final _response = await _requester.request(
       _url,
@@ -405,9 +401,8 @@ class ServicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        ':enableVpcServiceControls';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + ':enableVpcServiceControls';
 
     final _response = await _requester.request(
       _url,
@@ -455,9 +450,7 @@ class ServicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        ':searchRange';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + ':searchRange';
 
     final _response = await _requester.request(
       _url,
@@ -504,8 +497,7 @@ class ServicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + ':validate';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + ':validate';
 
     final _response = await _requester.request(
       _url,
@@ -562,9 +554,7 @@ class ServicesConnectionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/connections';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/connections';
 
     final _response = await _requester.request(
       _url,
@@ -614,9 +604,7 @@ class ServicesConnectionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/connections';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/connections';
 
     final _response = await _requester.request(
       _url,
@@ -671,7 +659,7 @@ class ServicesConnectionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -721,9 +709,7 @@ class ServicesDnsRecordSetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/dnsRecordSets:add';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/dnsRecordSets:add';
 
     final _response = await _requester.request(
       _url,
@@ -766,9 +752,8 @@ class ServicesDnsRecordSetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/dnsRecordSets:remove';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + '/dnsRecordSets:remove';
 
     final _response = await _requester.request(
       _url,
@@ -811,9 +796,8 @@ class ServicesDnsRecordSetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/dnsRecordSets:update';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + '/dnsRecordSets:update';
 
     final _response = await _requester.request(
       _url,
@@ -863,9 +847,7 @@ class ServicesDnsZonesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/dnsZones:add';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/dnsZones:add';
 
     final _response = await _requester.request(
       _url,
@@ -909,9 +891,7 @@ class ServicesDnsZonesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/dnsZones:remove';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/dnsZones:remove';
 
     final _response = await _requester.request(
       _url,
@@ -985,7 +965,7 @@ class ServicesProjectsGlobalNetworksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1036,9 +1016,8 @@ class ServicesProjectsGlobalNetworksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        ':updateConsumerConfig';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + ':updateConsumerConfig';
 
     final _response = await _requester.request(
       _url,
@@ -1097,9 +1076,7 @@ class ServicesProjectsGlobalNetworksPeeredDnsDomainsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/peeredDnsDomains';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/peeredDnsDomains';
 
     final _response = await _requester.request(
       _url,
@@ -1144,7 +1121,7 @@ class ServicesProjectsGlobalNetworksPeeredDnsDomainsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1187,9 +1164,7 @@ class ServicesProjectsGlobalNetworksPeeredDnsDomainsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/peeredDnsDomains';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/peeredDnsDomains';
 
     final _response = await _requester.request(
       _url,
@@ -1242,8 +1217,7 @@ class ServicesRolesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/roles:add';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/roles:add';
 
     final _response = await _requester.request(
       _url,

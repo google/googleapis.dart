@@ -111,7 +111,7 @@ class AccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'accounts/' + commons.Escaper.ecapeVariable('$id');
+    final _url = 'accounts/' + commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -189,7 +189,7 @@ class AccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'accounts/' + commons.Escaper.ecapeVariable('$id');
+    final _url = 'accounts/' + commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -234,7 +234,7 @@ class AccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'accounts/' + commons.Escaper.ecapeVariable('$id');
+    final _url = 'accounts/' + commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -275,7 +275,7 @@ class BillingInfoResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'billinginfo/' + commons.Escaper.ecapeVariable('$accountId');
+    final _url = 'billinginfo/' + commons.escapeVariable('$accountId');
 
     final _response = await _requester.request(
       _url,
@@ -354,9 +354,9 @@ class BudgetResource {
     };
 
     final _url = 'billinginfo/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/' +
-        commons.Escaper.ecapeVariable('$billingId');
+        commons.escapeVariable('$billingId');
 
     final _response = await _requester.request(
       _url,
@@ -401,9 +401,9 @@ class BudgetResource {
     };
 
     final _url = 'billinginfo/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/' +
-        commons.Escaper.ecapeVariable('$billingId');
+        commons.escapeVariable('$billingId');
 
     final _response = await _requester.request(
       _url,
@@ -447,9 +447,9 @@ class BudgetResource {
     };
 
     final _url = 'billinginfo/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/' +
-        commons.Escaper.ecapeVariable('$billingId');
+        commons.escapeVariable('$billingId');
 
     final _response = await _requester.request(
       _url,
@@ -495,11 +495,11 @@ class CreativesResource {
     };
 
     final _url = 'creatives/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/' +
-        commons.Escaper.ecapeVariable('$buyerCreativeId') +
+        commons.escapeVariable('$buyerCreativeId') +
         '/addDeal/' +
-        commons.Escaper.ecapeVariable('$dealId');
+        commons.escapeVariable('$dealId');
 
     await _requester.request(
       _url,
@@ -539,9 +539,9 @@ class CreativesResource {
     };
 
     final _url = 'creatives/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/' +
-        commons.Escaper.ecapeVariable('$buyerCreativeId');
+        commons.escapeVariable('$buyerCreativeId');
 
     final _response = await _requester.request(
       _url,
@@ -698,9 +698,9 @@ class CreativesResource {
     };
 
     final _url = 'creatives/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/' +
-        commons.Escaper.ecapeVariable('$buyerCreativeId') +
+        commons.escapeVariable('$buyerCreativeId') +
         '/listDeals';
 
     final _response = await _requester.request(
@@ -741,11 +741,11 @@ class CreativesResource {
     };
 
     final _url = 'creatives/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/' +
-        commons.Escaper.ecapeVariable('$buyerCreativeId') +
+        commons.escapeVariable('$buyerCreativeId') +
         '/removeDeal/' +
-        commons.Escaper.ecapeVariable('$dealId');
+        commons.escapeVariable('$dealId');
 
     await _requester.request(
       _url,
@@ -789,9 +789,8 @@ class MarketplacedealsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'proposals/' +
-        commons.Escaper.ecapeVariable('$proposalId') +
-        '/deals/delete';
+    final _url =
+        'proposals/' + commons.escapeVariable('$proposalId') + '/deals/delete';
 
     final _response = await _requester.request(
       _url,
@@ -831,9 +830,8 @@ class MarketplacedealsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'proposals/' +
-        commons.Escaper.ecapeVariable('$proposalId') +
-        '/deals/insert';
+    final _url =
+        'proposals/' + commons.escapeVariable('$proposalId') + '/deals/insert';
 
     final _response = await _requester.request(
       _url,
@@ -875,7 +873,7 @@ class MarketplacedealsResource {
     };
 
     final _url =
-        'proposals/' + commons.Escaper.ecapeVariable('$proposalId') + '/deals';
+        'proposals/' + commons.escapeVariable('$proposalId') + '/deals';
 
     final _response = await _requester.request(
       _url,
@@ -914,9 +912,8 @@ class MarketplacedealsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'proposals/' +
-        commons.Escaper.ecapeVariable('$proposalId') +
-        '/deals/update';
+    final _url =
+        'proposals/' + commons.escapeVariable('$proposalId') + '/deals/update';
 
     final _response = await _requester.request(
       _url,
@@ -962,9 +959,8 @@ class MarketplacenotesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'proposals/' +
-        commons.Escaper.ecapeVariable('$proposalId') +
-        '/notes/insert';
+    final _url =
+        'proposals/' + commons.escapeVariable('$proposalId') + '/notes/insert';
 
     final _response = await _requester.request(
       _url,
@@ -1008,7 +1004,7 @@ class MarketplacenotesResource {
     };
 
     final _url =
-        'proposals/' + commons.Escaper.ecapeVariable('$proposalId') + '/notes';
+        'proposals/' + commons.escapeVariable('$proposalId') + '/notes';
 
     final _response = await _requester.request(
       _url,
@@ -1053,7 +1049,7 @@ class MarketplaceprivateauctionResource {
     };
 
     final _url = 'privateauction/' +
-        commons.Escaper.ecapeVariable('$privateAuctionId') +
+        commons.escapeVariable('$privateAuctionId') +
         '/updateproposal';
 
     await _requester.request(
@@ -1161,9 +1157,9 @@ class PretargetingConfigResource {
     };
 
     final _url = 'pretargetingconfigs/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/' +
-        commons.Escaper.ecapeVariable('$configId');
+        commons.escapeVariable('$configId');
 
     await _requester.request(
       _url,
@@ -1201,9 +1197,9 @@ class PretargetingConfigResource {
     };
 
     final _url = 'pretargetingconfigs/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/' +
-        commons.Escaper.ecapeVariable('$configId');
+        commons.escapeVariable('$configId');
 
     final _response = await _requester.request(
       _url,
@@ -1242,8 +1238,7 @@ class PretargetingConfigResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'pretargetingconfigs/' + commons.Escaper.ecapeVariable('$accountId');
+    final _url = 'pretargetingconfigs/' + commons.escapeVariable('$accountId');
 
     final _response = await _requester.request(
       _url,
@@ -1279,8 +1274,7 @@ class PretargetingConfigResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'pretargetingconfigs/' + commons.Escaper.ecapeVariable('$accountId');
+    final _url = 'pretargetingconfigs/' + commons.escapeVariable('$accountId');
 
     final _response = await _requester.request(
       _url,
@@ -1325,9 +1319,9 @@ class PretargetingConfigResource {
     };
 
     final _url = 'pretargetingconfigs/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/' +
-        commons.Escaper.ecapeVariable('$configId');
+        commons.escapeVariable('$configId');
 
     final _response = await _requester.request(
       _url,
@@ -1371,9 +1365,9 @@ class PretargetingConfigResource {
     };
 
     final _url = 'pretargetingconfigs/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/' +
-        commons.Escaper.ecapeVariable('$configId');
+        commons.escapeVariable('$configId');
 
     final _response = await _requester.request(
       _url,
@@ -1415,7 +1409,7 @@ class ProductsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'products/' + commons.Escaper.ecapeVariable('$productId');
+    final _url = 'products/' + commons.escapeVariable('$productId');
 
     final _response = await _requester.request(
       _url,
@@ -1491,7 +1485,7 @@ class ProposalsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'proposals/' + commons.Escaper.ecapeVariable('$proposalId');
+    final _url = 'proposals/' + commons.escapeVariable('$proposalId');
 
     final _response = await _requester.request(
       _url,
@@ -1586,11 +1580,11 @@ class ProposalsResource {
     };
 
     final _url = 'proposals/' +
-        commons.Escaper.ecapeVariable('$proposalId') +
+        commons.escapeVariable('$proposalId') +
         '/' +
-        commons.Escaper.ecapeVariable('$revisionNumber') +
+        commons.escapeVariable('$revisionNumber') +
         '/' +
-        commons.Escaper.ecapeVariable('$updateAction');
+        commons.escapeVariable('$updateAction');
 
     final _response = await _requester.request(
       _url,
@@ -1659,9 +1653,8 @@ class ProposalsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'proposals/' +
-        commons.Escaper.ecapeVariable('$proposalId') +
-        '/setupcomplete';
+    final _url =
+        'proposals/' + commons.escapeVariable('$proposalId') + '/setupcomplete';
 
     await _requester.request(
       _url,
@@ -1717,11 +1710,11 @@ class ProposalsResource {
     };
 
     final _url = 'proposals/' +
-        commons.Escaper.ecapeVariable('$proposalId') +
+        commons.escapeVariable('$proposalId') +
         '/' +
-        commons.Escaper.ecapeVariable('$revisionNumber') +
+        commons.escapeVariable('$revisionNumber') +
         '/' +
-        commons.Escaper.ecapeVariable('$updateAction');
+        commons.escapeVariable('$updateAction');
 
     final _response = await _requester.request(
       _url,
@@ -1762,9 +1755,8 @@ class PubprofilesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'publisher/' +
-        commons.Escaper.ecapeVariable('$accountId') +
-        '/profiles';
+    final _url =
+        'publisher/' + commons.escapeVariable('$accountId') + '/profiles';
 
     final _response = await _requester.request(
       _url,

@@ -86,7 +86,7 @@ class AssetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -260,8 +260,7 @@ class UsersAssetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/assets';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/assets';
 
     final _response = await _requester.request(
       _url,
@@ -330,8 +329,7 @@ class UsersLikedassetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/likedassets';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/likedassets';
 
     final _response = await _requester.request(
       _url,

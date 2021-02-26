@@ -127,7 +127,7 @@ class PresentationsResource {
     };
 
     final _url = 'v1/presentations/' +
-        commons.Escaper.ecapeVariable('$presentationId') +
+        commons.escapeVariable('$presentationId') +
         ':batchUpdate';
 
     final _response = await _requester.request(
@@ -207,8 +207,7 @@ class PresentationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/presentations/' +
-        commons.Escaper.ecapeVariableReserved('$presentationId');
+    final _url = 'v1/presentations/' + core.Uri.encodeFull('$presentationId');
 
     final _response = await _requester.request(
       _url,
@@ -253,9 +252,9 @@ class PresentationsPagesResource {
     };
 
     final _url = 'v1/presentations/' +
-        commons.Escaper.ecapeVariable('$presentationId') +
+        commons.escapeVariable('$presentationId') +
         '/pages/' +
-        commons.Escaper.ecapeVariable('$pageObjectId');
+        commons.escapeVariable('$pageObjectId');
 
     final _response = await _requester.request(
       _url,
@@ -321,9 +320,9 @@ class PresentationsPagesResource {
     };
 
     final _url = 'v1/presentations/' +
-        commons.Escaper.ecapeVariable('$presentationId') +
+        commons.escapeVariable('$presentationId') +
         '/pages/' +
-        commons.Escaper.ecapeVariable('$pageObjectId') +
+        commons.escapeVariable('$pageObjectId') +
         '/thumbnail';
 
     final _response = await _requester.request(

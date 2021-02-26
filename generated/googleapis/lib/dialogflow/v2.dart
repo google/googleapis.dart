@@ -110,8 +110,7 @@ class ProjectsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/agent';
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/agent';
 
     final _response = await _requester.request(
       _url,
@@ -148,8 +147,7 @@ class ProjectsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/agent';
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/agent';
 
     final _response = await _requester.request(
       _url,
@@ -193,8 +191,7 @@ class ProjectsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/agent';
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/agent';
 
     final _response = await _requester.request(
       _url,
@@ -253,9 +250,7 @@ class ProjectsAgentResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/agent:export';
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/agent:export';
 
     final _response = await _requester.request(
       _url,
@@ -293,7 +288,7 @@ class ProjectsAgentResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -341,9 +336,8 @@ class ProjectsAgentResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/agent/validationResult';
+    final _url =
+        'v2/' + core.Uri.encodeFull('$parent') + '/agent/validationResult';
 
     final _response = await _requester.request(
       _url,
@@ -394,9 +388,7 @@ class ProjectsAgentResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/agent:import';
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/agent:import';
 
     final _response = await _requester.request(
       _url,
@@ -447,9 +439,7 @@ class ProjectsAgentResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/agent:restore';
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/agent:restore';
 
     final _response = await _requester.request(
       _url,
@@ -502,9 +492,7 @@ class ProjectsAgentResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/agent:search';
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/agent:search';
 
     final _response = await _requester.request(
       _url,
@@ -547,9 +535,7 @@ class ProjectsAgentResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/agent:train';
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/agent:train';
 
     final _response = await _requester.request(
       _url,
@@ -596,7 +582,7 @@ class ProjectsAgentResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -650,9 +636,8 @@ class ProjectsAgentEntityTypesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/entityTypes:batchDelete';
+    final _url =
+        'v2/' + core.Uri.encodeFull('$parent') + '/entityTypes:batchDelete';
 
     final _response = await _requester.request(
       _url,
@@ -696,9 +681,8 @@ class ProjectsAgentEntityTypesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/entityTypes:batchUpdate';
+    final _url =
+        'v2/' + core.Uri.encodeFull('$parent') + '/entityTypes:batchUpdate';
 
     final _response = await _requester.request(
       _url,
@@ -747,9 +731,7 @@ class ProjectsAgentEntityTypesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/entityTypes';
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/entityTypes';
 
     final _response = await _requester.request(
       _url,
@@ -787,7 +769,7 @@ class ProjectsAgentEntityTypesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -831,7 +813,7 @@ class ProjectsAgentEntityTypesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -885,9 +867,7 @@ class ProjectsAgentEntityTypesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/entityTypes';
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/entityTypes';
 
     final _response = await _requester.request(
       _url,
@@ -940,7 +920,7 @@ class ProjectsAgentEntityTypesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -991,9 +971,8 @@ class ProjectsAgentEntityTypesEntitiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/entities:batchCreate';
+    final _url =
+        'v2/' + core.Uri.encodeFull('$parent') + '/entities:batchCreate';
 
     final _response = await _requester.request(
       _url,
@@ -1037,9 +1016,8 @@ class ProjectsAgentEntityTypesEntitiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/entities:batchDelete';
+    final _url =
+        'v2/' + core.Uri.encodeFull('$parent') + '/entities:batchDelete';
 
     final _response = await _requester.request(
       _url,
@@ -1084,9 +1062,8 @@ class ProjectsAgentEntityTypesEntitiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/entities:batchUpdate';
+    final _url =
+        'v2/' + core.Uri.encodeFull('$parent') + '/entities:batchUpdate';
 
     final _response = await _requester.request(
       _url,
@@ -1146,9 +1123,7 @@ class ProjectsAgentEnvironmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/environments';
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/environments';
 
     final _response = await _requester.request(
       _url,
@@ -1218,8 +1193,7 @@ class ProjectsAgentEnvironmentsIntentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/intents';
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/intents';
 
     final _response = await _requester.request(
       _url,
@@ -1282,8 +1256,7 @@ class ProjectsAgentEnvironmentsUsersSessionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/contexts';
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/contexts';
 
     final _response = await _requester.request(
       _url,
@@ -1342,9 +1315,7 @@ class ProjectsAgentEnvironmentsUsersSessionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' +
-        commons.Escaper.ecapeVariableReserved('$session') +
-        ':detectIntent';
+    final _url = 'v2/' + core.Uri.encodeFull('$session') + ':detectIntent';
 
     final _response = await _requester.request(
       _url,
@@ -1400,8 +1371,7 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/contexts';
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/contexts';
 
     final _response = await _requester.request(
       _url,
@@ -1443,7 +1413,7 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1484,7 +1454,7 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1535,8 +1505,7 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/contexts';
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/contexts';
 
     final _response = await _requester.request(
       _url,
@@ -1590,7 +1559,7 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1649,9 +1618,7 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/entityTypes';
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/entityTypes';
 
     final _response = await _requester.request(
       _url,
@@ -1697,7 +1664,7 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1742,7 +1709,7 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1797,9 +1764,7 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/entityTypes';
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/entityTypes';
 
     final _response = await _requester.request(
       _url,
@@ -1854,7 +1819,7 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1905,9 +1870,8 @@ class ProjectsAgentIntentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/intents:batchDelete';
+    final _url =
+        'v2/' + core.Uri.encodeFull('$parent') + '/intents:batchDelete';
 
     final _response = await _requester.request(
       _url,
@@ -1951,9 +1915,8 @@ class ProjectsAgentIntentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/intents:batchUpdate';
+    final _url =
+        'v2/' + core.Uri.encodeFull('$parent') + '/intents:batchUpdate';
 
     final _response = await _requester.request(
       _url,
@@ -2011,8 +1974,7 @@ class ProjectsAgentIntentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/intents';
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/intents';
 
     final _response = await _requester.request(
       _url,
@@ -2051,7 +2013,7 @@ class ProjectsAgentIntentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2104,7 +2066,7 @@ class ProjectsAgentIntentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2167,8 +2129,7 @@ class ProjectsAgentIntentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/intents';
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/intents';
 
     final _response = await _requester.request(
       _url,
@@ -2230,7 +2191,7 @@ class ProjectsAgentIntentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2283,8 +2244,7 @@ class ProjectsAgentSessionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/contexts';
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/contexts';
 
     final _response = await _requester.request(
       _url,
@@ -2342,9 +2302,7 @@ class ProjectsAgentSessionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' +
-        commons.Escaper.ecapeVariableReserved('$session') +
-        ':detectIntent';
+    final _url = 'v2/' + core.Uri.encodeFull('$session') + ':detectIntent';
 
     final _response = await _requester.request(
       _url,
@@ -2398,8 +2356,7 @@ class ProjectsAgentSessionsContextsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/contexts';
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/contexts';
 
     final _response = await _requester.request(
       _url,
@@ -2441,7 +2398,7 @@ class ProjectsAgentSessionsContextsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2482,7 +2439,7 @@ class ProjectsAgentSessionsContextsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2532,8 +2489,7 @@ class ProjectsAgentSessionsContextsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/contexts';
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/contexts';
 
     final _response = await _requester.request(
       _url,
@@ -2587,7 +2543,7 @@ class ProjectsAgentSessionsContextsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2644,9 +2600,7 @@ class ProjectsAgentSessionsEntityTypesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/entityTypes';
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/entityTypes';
 
     final _response = await _requester.request(
       _url,
@@ -2692,7 +2646,7 @@ class ProjectsAgentSessionsEntityTypesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2737,7 +2691,7 @@ class ProjectsAgentSessionsEntityTypesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2791,9 +2745,7 @@ class ProjectsAgentSessionsEntityTypesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/entityTypes';
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/entityTypes';
 
     final _response = await _requester.request(
       _url,
@@ -2848,7 +2800,7 @@ class ProjectsAgentSessionsEntityTypesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2911,8 +2863,7 @@ class ProjectsLocationsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + ':cancel';
 
     final _response = await _requester.request(
       _url,
@@ -2952,7 +2903,7 @@ class ProjectsLocationsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -3009,8 +2960,7 @@ class ProjectsLocationsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v2/' + commons.Escaper.ecapeVariableReserved('$name') + '/operations';
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/operations';
 
     final _response = await _requester.request(
       _url,
@@ -3061,8 +3011,7 @@ class ProjectsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + ':cancel';
 
     final _response = await _requester.request(
       _url,
@@ -3101,7 +3050,7 @@ class ProjectsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -3158,8 +3107,7 @@ class ProjectsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v2/' + commons.Escaper.ecapeVariableReserved('$name') + '/operations';
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/operations';
 
     final _response = await _requester.request(
       _url,

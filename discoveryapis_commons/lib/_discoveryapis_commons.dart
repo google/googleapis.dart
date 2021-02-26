@@ -2,5 +2,5 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-export 'src/clients.dart' show ApiRequester, Escaper;
+export 'src/clients.dart' show ApiRequester, escapeVariable;
 export 'src/requests.dart';

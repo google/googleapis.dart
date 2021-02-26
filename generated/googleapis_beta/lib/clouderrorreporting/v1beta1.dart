@@ -97,9 +97,7 @@ class ProjectsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$projectName') +
-        '/events';
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$projectName') + '/events';
 
     final _response = await _requester.request(
       _url,
@@ -192,9 +190,7 @@ class ProjectsEventsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$projectName') +
-        '/events';
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$projectName') + '/events';
 
     final _response = await _requester.request(
       _url,
@@ -248,9 +244,8 @@ class ProjectsEventsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$projectName') +
-        '/events:report';
+    final _url =
+        'v1beta1/' + core.Uri.encodeFull('$projectName') + '/events:report';
 
     final _response = await _requester.request(
       _url,
@@ -390,9 +385,8 @@ class ProjectsGroupStatsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$projectName') +
-        '/groupStats';
+    final _url =
+        'v1beta1/' + core.Uri.encodeFull('$projectName') + '/groupStats';
 
     final _response = await _requester.request(
       _url,
@@ -438,8 +432,7 @@ class ProjectsGroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1beta1/' + commons.Escaper.ecapeVariableReserved('$groupName');
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$groupName');
 
     final _response = await _requester.request(
       _url,
@@ -482,7 +475,7 @@ class ProjectsGroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,

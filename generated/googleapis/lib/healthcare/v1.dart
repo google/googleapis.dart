@@ -107,7 +107,7 @@ class ProjectsLocationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -154,8 +154,7 @@ class ProjectsLocationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
 
     final _response = await _requester.request(
       _url,
@@ -223,8 +222,7 @@ class ProjectsLocationsDatasetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/datasets';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/datasets';
 
     final _response = await _requester.request(
       _url,
@@ -275,9 +273,7 @@ class ProjectsLocationsDatasetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$sourceDataset') +
-        ':deidentify';
+    final _url = 'v1/' + core.Uri.encodeFull('$sourceDataset') + ':deidentify';
 
     final _response = await _requester.request(
       _url,
@@ -319,7 +315,7 @@ class ProjectsLocationsDatasetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -356,7 +352,7 @@ class ProjectsLocationsDatasetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -408,9 +404,7 @@ class ProjectsLocationsDatasetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':getIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -456,8 +450,7 @@ class ProjectsLocationsDatasetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/datasets';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/datasets';
 
     final _response = await _requester.request(
       _url,
@@ -505,7 +498,7 @@ class ProjectsLocationsDatasetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -551,9 +544,7 @@ class ProjectsLocationsDatasetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':setIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -601,9 +592,8 @@ class ProjectsLocationsDatasetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':testIamPermissions';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
     final _response = await _requester.request(
       _url,
@@ -664,9 +654,7 @@ class ProjectsLocationsDatasetsConsentStoresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':getIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -711,9 +699,7 @@ class ProjectsLocationsDatasetsConsentStoresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':setIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -761,9 +747,8 @@ class ProjectsLocationsDatasetsConsentStoresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':testIamPermissions';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
     final _response = await _requester.request(
       _url,
@@ -820,9 +805,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/dicomStores';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/dicomStores';
 
     final _response = await _requester.request(
       _url,
@@ -874,9 +857,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$sourceStore') +
-        ':deidentify';
+    final _url = 'v1/' + core.Uri.encodeFull('$sourceStore') + ':deidentify';
 
     final _response = await _requester.request(
       _url,
@@ -914,7 +895,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -961,8 +942,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':export';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':export';
 
     final _response = await _requester.request(
       _url,
@@ -999,7 +979,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1052,9 +1032,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':getIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -1100,8 +1078,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':import';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':import';
 
     final _response = await _requester.request(
       _url,
@@ -1175,9 +1152,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/dicomStores';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/dicomStores';
 
     final _response = await _requester.request(
       _url,
@@ -1225,7 +1200,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1280,9 +1255,9 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/dicomWeb/' +
-        commons.Escaper.ecapeVariableReserved('$dicomWebPath');
+        core.Uri.encodeFull('$dicomWebPath');
 
     final _response = await _requester.request(
       _url,
@@ -1334,9 +1309,9 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/dicomWeb/' +
-        commons.Escaper.ecapeVariableReserved('$dicomWebPath');
+        core.Uri.encodeFull('$dicomWebPath');
 
     final _response = await _requester.request(
       _url,
@@ -1388,9 +1363,9 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/dicomWeb/' +
-        commons.Escaper.ecapeVariableReserved('$dicomWebPath');
+        core.Uri.encodeFull('$dicomWebPath');
 
     final _response = await _requester.request(
       _url,
@@ -1435,9 +1410,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':setIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -1495,9 +1468,9 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/dicomWeb/' +
-        commons.Escaper.ecapeVariableReserved('$dicomWebPath');
+        core.Uri.encodeFull('$dicomWebPath');
 
     final _response = await _requester.request(
       _url,
@@ -1545,9 +1518,8 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':testIamPermissions';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
     final _response = await _requester.request(
       _url,
@@ -1611,9 +1583,9 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/dicomWeb/' +
-        commons.Escaper.ecapeVariableReserved('$dicomWebPath');
+        core.Uri.encodeFull('$dicomWebPath');
 
     final _response = await _requester.request(
       _url,
@@ -1666,9 +1638,9 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/dicomWeb/' +
-        commons.Escaper.ecapeVariableReserved('$dicomWebPath');
+        core.Uri.encodeFull('$dicomWebPath');
 
     final _response = await _requester.request(
       _url,
@@ -1720,9 +1692,9 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/dicomWeb/' +
-        commons.Escaper.ecapeVariableReserved('$dicomWebPath');
+        core.Uri.encodeFull('$dicomWebPath');
 
     final _response = await _requester.request(
       _url,
@@ -1775,9 +1747,9 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/dicomWeb/' +
-        commons.Escaper.ecapeVariableReserved('$dicomWebPath');
+        core.Uri.encodeFull('$dicomWebPath');
 
     final _response = await _requester.request(
       _url,
@@ -1829,9 +1801,9 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/dicomWeb/' +
-        commons.Escaper.ecapeVariableReserved('$dicomWebPath');
+        core.Uri.encodeFull('$dicomWebPath');
 
     final _response = await _requester.request(
       _url,
@@ -1888,9 +1860,9 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/dicomWeb/' +
-        commons.Escaper.ecapeVariableReserved('$dicomWebPath');
+        core.Uri.encodeFull('$dicomWebPath');
 
     final _response = await _requester.request(
       _url,
@@ -1957,9 +1929,9 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/dicomWeb/' +
-        commons.Escaper.ecapeVariableReserved('$dicomWebPath');
+        core.Uri.encodeFull('$dicomWebPath');
 
     final _response = await _requester.request(
       _url,
@@ -2012,9 +1984,9 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/dicomWeb/' +
-        commons.Escaper.ecapeVariableReserved('$dicomWebPath');
+        core.Uri.encodeFull('$dicomWebPath');
 
     final _response = await _requester.request(
       _url,
@@ -2066,9 +2038,9 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/dicomWeb/' +
-        commons.Escaper.ecapeVariableReserved('$dicomWebPath');
+        core.Uri.encodeFull('$dicomWebPath');
 
     final _response = await _requester.request(
       _url,
@@ -2121,9 +2093,9 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/dicomWeb/' +
-        commons.Escaper.ecapeVariableReserved('$dicomWebPath');
+        core.Uri.encodeFull('$dicomWebPath');
 
     final _response = await _requester.request(
       _url,
@@ -2188,9 +2160,9 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/dicomWeb/' +
-        commons.Escaper.ecapeVariableReserved('$dicomWebPath');
+        core.Uri.encodeFull('$dicomWebPath');
 
     final _response = await _requester.request(
       _url,
@@ -2247,9 +2219,9 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/dicomWeb/' +
-        commons.Escaper.ecapeVariableReserved('$dicomWebPath');
+        core.Uri.encodeFull('$dicomWebPath');
 
     final _response = await _requester.request(
       _url,
@@ -2305,9 +2277,9 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/dicomWeb/' +
-        commons.Escaper.ecapeVariableReserved('$dicomWebPath');
+        core.Uri.encodeFull('$dicomWebPath');
 
     final _response = await _requester.request(
       _url,
@@ -2362,9 +2334,9 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/dicomWeb/' +
-        commons.Escaper.ecapeVariableReserved('$dicomWebPath');
+        core.Uri.encodeFull('$dicomWebPath');
 
     final _response = await _requester.request(
       _url,
@@ -2427,9 +2399,9 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/dicomWeb/' +
-        commons.Escaper.ecapeVariableReserved('$dicomWebPath');
+        core.Uri.encodeFull('$dicomWebPath');
 
     final _response = await _requester.request(
       _url,
@@ -2485,9 +2457,9 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/dicomWeb/' +
-        commons.Escaper.ecapeVariableReserved('$dicomWebPath');
+        core.Uri.encodeFull('$dicomWebPath');
 
     final _response = await _requester.request(
       _url,
@@ -2542,9 +2514,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/fhirStores';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/fhirStores';
 
     final _response = await _requester.request(
       _url,
@@ -2592,9 +2562,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$sourceStore') +
-        ':deidentify';
+    final _url = 'v1/' + core.Uri.encodeFull('$sourceStore') + ':deidentify';
 
     final _response = await _requester.request(
       _url,
@@ -2631,7 +2599,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2681,8 +2649,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':export';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':export';
 
     final _response = await _requester.request(
       _url,
@@ -2719,7 +2686,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2771,9 +2738,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':getIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -2871,8 +2836,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':import';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':import';
 
     final _response = await _requester.request(
       _url,
@@ -2945,9 +2909,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/fhirStores';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/fhirStores';
 
     final _response = await _requester.request(
       _url,
@@ -2995,7 +2957,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -3041,9 +3003,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':setIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -3091,9 +3051,8 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':testIamPermissions';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
     final _response = await _requester.request(
       _url,
@@ -3196,9 +3155,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        '/\$everything';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/\$everything';
 
     final _response = await _requester.request(
       _url,
@@ -3241,8 +3198,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/\$purge';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/\$purge';
 
     final _response = await _requester.request(
       _url,
@@ -3292,9 +3248,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        '/fhir/metadata';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/fhir/metadata';
 
     final _response = await _requester.request(
       _url,
@@ -3360,9 +3314,9 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/fhir/' +
-        commons.Escaper.ecapeVariableReserved('$type');
+        core.Uri.encodeFull('$type');
 
     final _response = await _requester.request(
       _url,
@@ -3410,7 +3364,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -3477,8 +3431,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/fhir';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/fhir';
 
     final _response = await _requester.request(
       _url,
@@ -3560,8 +3513,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/_history';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/_history';
 
     final _response = await _requester.request(
       _url,
@@ -3617,7 +3569,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -3672,7 +3624,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -3758,9 +3710,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/fhir/_search';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/fhir/_search';
 
     final _response = await _requester.request(
       _url,
@@ -3855,9 +3805,9 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/fhir/' +
-        commons.Escaper.ecapeVariable('$resourceType') +
+        commons.escapeVariable('$resourceType') +
         '/_search';
 
     final _response = await _requester.request(
@@ -3922,7 +3872,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -3972,7 +3922,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -4027,9 +3977,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/hl7V2Stores';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/hl7V2Stores';
 
     final _response = await _requester.request(
       _url,
@@ -4068,7 +4016,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -4104,7 +4052,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -4157,9 +4105,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':getIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -4232,9 +4178,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/hl7V2Stores';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/hl7V2Stores';
 
     final _response = await _requester.request(
       _url,
@@ -4282,7 +4226,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -4329,9 +4273,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':setIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -4379,9 +4321,8 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':testIamPermissions';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
     final _response = await _requester.request(
       _url,
@@ -4438,8 +4379,7 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/messages';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/messages';
 
     final _response = await _requester.request(
       _url,
@@ -4476,7 +4416,7 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -4525,7 +4465,7 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -4575,9 +4515,7 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/messages:ingest';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/messages:ingest';
 
     final _response = await _requester.request(
       _url,
@@ -4691,8 +4629,7 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/messages';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/messages';
 
     final _response = await _requester.request(
       _url,
@@ -4747,7 +4684,7 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -4804,8 +4741,7 @@ class ProjectsLocationsDatasetsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
 
     final _response = await _requester.request(
       _url,
@@ -4845,7 +4781,7 @@ class ProjectsLocationsDatasetsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -4902,8 +4838,7 @@ class ProjectsLocationsDatasetsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/operations';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
 
     final _response = await _requester.request(
       _url,

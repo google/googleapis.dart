@@ -97,7 +97,7 @@ class ProjectsLocationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -144,8 +144,7 @@ class ProjectsLocationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v2/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/locations';
 
     final _response = await _requester.request(
       _url,
@@ -206,8 +205,7 @@ class ProjectsLocationsQueuesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/queues';
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/queues';
 
     final _response = await _requester.request(
       _url,
@@ -253,7 +251,7 @@ class ProjectsLocationsQueuesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -290,7 +288,7 @@ class ProjectsLocationsQueuesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -337,9 +335,7 @@ class ProjectsLocationsQueuesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':getIamPolicy';
+    final _url = 'v2/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -403,8 +399,7 @@ class ProjectsLocationsQueuesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/queues';
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/queues';
 
     final _response = await _requester.request(
       _url,
@@ -470,7 +465,7 @@ class ProjectsLocationsQueuesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -516,8 +511,7 @@ class ProjectsLocationsQueuesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':pause';
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + ':pause';
 
     final _response = await _requester.request(
       _url,
@@ -563,8 +557,7 @@ class ProjectsLocationsQueuesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':purge';
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + ':purge';
 
     final _response = await _requester.request(
       _url,
@@ -613,8 +606,7 @@ class ProjectsLocationsQueuesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':resume';
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + ':resume';
 
     final _response = await _requester.request(
       _url,
@@ -663,9 +655,7 @@ class ProjectsLocationsQueuesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':setIamPolicy';
+    final _url = 'v2/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -713,9 +703,8 @@ class ProjectsLocationsQueuesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':testIamPermissions';
+    final _url =
+        'v2/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
     final _response = await _requester.request(
       _url,
@@ -769,8 +758,7 @@ class ProjectsLocationsQueuesTasksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/tasks';
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/tasks';
 
     final _response = await _requester.request(
       _url,
@@ -811,7 +799,7 @@ class ProjectsLocationsQueuesTasksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -869,7 +857,7 @@ class ProjectsLocationsQueuesTasksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -947,8 +935,7 @@ class ProjectsLocationsQueuesTasksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/tasks';
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/tasks';
 
     final _response = await _requester.request(
       _url,
@@ -1003,8 +990,7 @@ class ProjectsLocationsQueuesTasksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':run';
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + ':run';
 
     final _response = await _requester.request(
       _url,

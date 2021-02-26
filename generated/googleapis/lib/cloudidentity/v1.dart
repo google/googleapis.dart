@@ -118,8 +118,7 @@ class DevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancelWipe';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':cancelWipe';
 
     final _response = await _requester.request(
       _url,
@@ -217,7 +216,7 @@ class DevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -265,7 +264,7 @@ class DevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -392,8 +391,7 @@ class DevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':wipe';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':wipe';
 
     final _response = await _requester.request(
       _url,
@@ -446,8 +444,7 @@ class DevicesDeviceUsersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':approve';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':approve';
 
     final _response = await _requester.request(
       _url,
@@ -491,8 +488,7 @@ class DevicesDeviceUsersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':block';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':block';
 
     final _response = await _requester.request(
       _url,
@@ -539,8 +535,7 @@ class DevicesDeviceUsersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancelWipe';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':cancelWipe';
 
     final _response = await _requester.request(
       _url,
@@ -591,7 +586,7 @@ class DevicesDeviceUsersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -639,7 +634,7 @@ class DevicesDeviceUsersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -711,9 +706,7 @@ class DevicesDeviceUsersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/deviceUsers';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/deviceUsers';
 
     final _response = await _requester.request(
       _url,
@@ -796,8 +789,7 @@ class DevicesDeviceUsersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + ':lookup';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + ':lookup';
 
     final _response = await _requester.request(
       _url,
@@ -848,8 +840,7 @@ class DevicesDeviceUsersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':wipe';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':wipe';
 
     final _response = await _requester.request(
       _url,
@@ -913,7 +904,7 @@ class DevicesDeviceUsersClientStatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -979,9 +970,7 @@ class DevicesDeviceUsersClientStatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/clientStates';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/clientStates';
 
     final _response = await _requester.request(
       _url,
@@ -1055,7 +1044,7 @@ class DevicesDeviceUsersClientStatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1150,7 +1139,7 @@ class GroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1187,7 +1176,7 @@ class GroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1346,7 +1335,7 @@ class GroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1474,7 +1463,7 @@ class GroupsMembershipsResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/memberships:checkTransitiveMembership';
 
     final _response = await _requester.request(
@@ -1516,9 +1505,7 @@ class GroupsMembershipsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/memberships';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/memberships';
 
     final _response = await _requester.request(
       _url,
@@ -1557,7 +1544,7 @@ class GroupsMembershipsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1595,7 +1582,7 @@ class GroupsMembershipsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1656,7 +1643,7 @@ class GroupsMembershipsResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/memberships:getMembershipGraph';
 
     final _response = await _requester.request(
@@ -1717,9 +1704,7 @@ class GroupsMembershipsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/memberships';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/memberships';
 
     final _response = await _requester.request(
       _url,
@@ -1775,9 +1760,7 @@ class GroupsMembershipsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/memberships:lookup';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/memberships:lookup';
 
     final _response = await _requester.request(
       _url,
@@ -1820,9 +1803,8 @@ class GroupsMembershipsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':modifyMembershipRoles';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$name') + ':modifyMembershipRoles';
 
     final _response = await _requester.request(
       _url,
@@ -1890,7 +1872,7 @@ class GroupsMembershipsResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/memberships:searchTransitiveGroups';
 
     final _response = await _requester.request(
@@ -1948,7 +1930,7 @@ class GroupsMembershipsResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/memberships:searchTransitiveMemberships';
 
     final _response = await _requester.request(

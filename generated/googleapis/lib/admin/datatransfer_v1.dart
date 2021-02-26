@@ -93,7 +93,7 @@ class ApplicationsResource {
     };
 
     final _url = 'admin/datatransfer/v1/applications/' +
-        commons.Escaper.ecapeVariable('$applicationId');
+        commons.escapeVariable('$applicationId');
 
     final _response = await _requester.request(
       _url,
@@ -181,7 +181,7 @@ class TransfersResource {
     };
 
     final _url = 'admin/datatransfer/v1/transfers/' +
-        commons.Escaper.ecapeVariable('$dataTransferId');
+        commons.escapeVariable('$dataTransferId');
 
     final _response = await _requester.request(
       _url,

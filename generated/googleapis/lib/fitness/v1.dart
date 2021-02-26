@@ -232,7 +232,7 @@ class UsersDataSourcesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources';
+    final _url = commons.escapeVariable('$userId') + '/dataSources';
 
     final _response = await _requester.request(
       _url,
@@ -274,9 +274,9 @@ class UsersDataSourcesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = commons.Escaper.ecapeVariable('$userId') +
+    final _url = commons.escapeVariable('$userId') +
         '/dataSources/' +
-        commons.Escaper.ecapeVariable('$dataSourceId');
+        commons.escapeVariable('$dataSourceId');
 
     final _response = await _requester.request(
       _url,
@@ -315,9 +315,9 @@ class UsersDataSourcesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = commons.Escaper.ecapeVariable('$userId') +
+    final _url = commons.escapeVariable('$userId') +
         '/dataSources/' +
-        commons.Escaper.ecapeVariable('$dataSourceId');
+        commons.escapeVariable('$dataSourceId');
 
     final _response = await _requester.request(
       _url,
@@ -362,7 +362,7 @@ class UsersDataSourcesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources';
+    final _url = commons.escapeVariable('$userId') + '/dataSources';
 
     final _response = await _requester.request(
       _url,
@@ -409,9 +409,9 @@ class UsersDataSourcesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = commons.Escaper.ecapeVariable('$userId') +
+    final _url = commons.escapeVariable('$userId') +
         '/dataSources/' +
-        commons.Escaper.ecapeVariable('$dataSourceId');
+        commons.escapeVariable('$dataSourceId');
 
     final _response = await _requester.request(
       _url,
@@ -470,9 +470,9 @@ class UsersDataSourcesDataPointChangesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = commons.Escaper.ecapeVariable('$userId') +
+    final _url = commons.escapeVariable('$userId') +
         '/dataSources/' +
-        commons.Escaper.ecapeVariable('$dataSourceId') +
+        commons.escapeVariable('$dataSourceId') +
         '/dataPointChanges';
 
     final _response = await _requester.request(
@@ -541,11 +541,11 @@ class UsersDataSourcesDatasetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = commons.Escaper.ecapeVariable('$userId') +
+    final _url = commons.escapeVariable('$userId') +
         '/dataSources/' +
-        commons.Escaper.ecapeVariable('$dataSourceId') +
+        commons.escapeVariable('$dataSourceId') +
         '/datasets/' +
-        commons.Escaper.ecapeVariable('$datasetId');
+        commons.escapeVariable('$datasetId');
 
     await _requester.request(
       _url,
@@ -612,11 +612,11 @@ class UsersDataSourcesDatasetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = commons.Escaper.ecapeVariable('$userId') +
+    final _url = commons.escapeVariable('$userId') +
         '/dataSources/' +
-        commons.Escaper.ecapeVariable('$dataSourceId') +
+        commons.escapeVariable('$dataSourceId') +
         '/datasets/' +
-        commons.Escaper.ecapeVariable('$datasetId');
+        commons.escapeVariable('$datasetId');
 
     final _response = await _requester.request(
       _url,
@@ -674,11 +674,11 @@ class UsersDataSourcesDatasetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = commons.Escaper.ecapeVariable('$userId') +
+    final _url = commons.escapeVariable('$userId') +
         '/dataSources/' +
-        commons.Escaper.ecapeVariable('$dataSourceId') +
+        commons.escapeVariable('$dataSourceId') +
         '/datasets/' +
-        commons.Escaper.ecapeVariable('$datasetId');
+        commons.escapeVariable('$datasetId');
 
     final _response = await _requester.request(
       _url,
@@ -728,8 +728,7 @@ class UsersDatasetResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        commons.Escaper.ecapeVariable('$userId') + '/dataset:aggregate';
+    final _url = commons.escapeVariable('$userId') + '/dataset:aggregate';
 
     final _response = await _requester.request(
       _url,
@@ -778,9 +777,9 @@ class UsersSessionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = commons.Escaper.ecapeVariable('$userId') +
+    final _url = commons.escapeVariable('$userId') +
         '/sessions/' +
-        commons.Escaper.ecapeVariable('$sessionId');
+        commons.escapeVariable('$sessionId');
 
     await _requester.request(
       _url,
@@ -849,7 +848,7 @@ class UsersSessionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = commons.Escaper.ecapeVariable('$userId') + '/sessions';
+    final _url = commons.escapeVariable('$userId') + '/sessions';
 
     final _response = await _requester.request(
       _url,
@@ -897,9 +896,9 @@ class UsersSessionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = commons.Escaper.ecapeVariable('$userId') +
+    final _url = commons.escapeVariable('$userId') +
         '/sessions/' +
-        commons.Escaper.ecapeVariable('$sessionId');
+        commons.escapeVariable('$sessionId');
 
     final _response = await _requester.request(
       _url,

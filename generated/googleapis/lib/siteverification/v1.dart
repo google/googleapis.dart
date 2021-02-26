@@ -83,7 +83,7 @@ class WebResourceResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'webResource/' + commons.Escaper.ecapeVariable('$id');
+    final _url = 'webResource/' + commons.escapeVariable('$id');
 
     await _requester.request(
       _url,
@@ -117,7 +117,7 @@ class WebResourceResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'webResource/' + commons.Escaper.ecapeVariable('$id');
+    final _url = 'webResource/' + commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -268,7 +268,7 @@ class WebResourceResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'webResource/' + commons.Escaper.ecapeVariable('$id');
+    final _url = 'webResource/' + commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -308,7 +308,7 @@ class WebResourceResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'webResource/' + commons.Escaper.ecapeVariable('$id');
+    final _url = 'webResource/' + commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,

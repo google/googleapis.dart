@@ -154,7 +154,7 @@ class JobsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/jobs/' + commons.Escaper.ecapeVariable('$jobId');
+    final _url = 'v1/jobs/' + commons.escapeVariable('$jobId');
 
     final _response = await _requester.request(
       _url,
@@ -195,7 +195,7 @@ class JobsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/jobs/' + commons.Escaper.ecapeVariable('$jobId');
+    final _url = 'v1/jobs/' + commons.escapeVariable('$jobId');
 
     final _response = await _requester.request(
       _url,
@@ -304,9 +304,9 @@ class JobsReportsResource {
     };
 
     final _url = 'v1/jobs/' +
-        commons.Escaper.ecapeVariable('$jobId') +
+        commons.escapeVariable('$jobId') +
         '/reports/' +
-        commons.Escaper.ecapeVariable('$reportId');
+        commons.escapeVariable('$reportId');
 
     final _response = await _requester.request(
       _url,
@@ -377,8 +377,7 @@ class JobsReportsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/reports';
+    final _url = 'v1/jobs/' + commons.escapeVariable('$jobId') + '/reports';
 
     final _response = await _requester.request(
       _url,
@@ -431,8 +430,7 @@ class MediaResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/media/' + commons.Escaper.ecapeVariableReserved('$resourceName');
+    final _url = 'v1/media/' + core.Uri.encodeFull('$resourceName');
 
     final _response = await _requester.request(
       _url,

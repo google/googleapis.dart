@@ -148,9 +148,8 @@ class AccountsClientsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
-        '/clients';
+    final _url =
+        'v2beta1/accounts/' + commons.escapeVariable('$accountId') + '/clients';
 
     final _response = await _requester.request(
       _url,
@@ -191,9 +190,9 @@ class AccountsClientsResource {
     };
 
     final _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/clients/' +
-        commons.Escaper.ecapeVariable('$clientAccountId');
+        commons.escapeVariable('$clientAccountId');
 
     final _response = await _requester.request(
       _url,
@@ -245,9 +244,8 @@ class AccountsClientsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
-        '/clients';
+    final _url =
+        'v2beta1/accounts/' + commons.escapeVariable('$accountId') + '/clients';
 
     final _response = await _requester.request(
       _url,
@@ -293,9 +291,9 @@ class AccountsClientsResource {
     };
 
     final _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/clients/' +
-        commons.Escaper.ecapeVariable('$clientAccountId');
+        commons.escapeVariable('$clientAccountId');
 
     final _response = await _requester.request(
       _url,
@@ -348,9 +346,9 @@ class AccountsClientsInvitationsResource {
     };
 
     final _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/clients/' +
-        commons.Escaper.ecapeVariable('$clientAccountId') +
+        commons.escapeVariable('$clientAccountId') +
         '/invitations';
 
     final _response = await _requester.request(
@@ -397,11 +395,11 @@ class AccountsClientsInvitationsResource {
     };
 
     final _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/clients/' +
-        commons.Escaper.ecapeVariable('$clientAccountId') +
+        commons.escapeVariable('$clientAccountId') +
         '/invitations/' +
-        commons.Escaper.ecapeVariable('$invitationId');
+        commons.escapeVariable('$invitationId');
 
     final _response = await _requester.request(
       _url,
@@ -457,9 +455,9 @@ class AccountsClientsInvitationsResource {
     };
 
     final _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/clients/' +
-        commons.Escaper.ecapeVariable('$clientAccountId') +
+        commons.escapeVariable('$clientAccountId') +
         '/invitations';
 
     final _response = await _requester.request(
@@ -511,11 +509,11 @@ class AccountsClientsUsersResource {
     };
 
     final _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/clients/' +
-        commons.Escaper.ecapeVariable('$clientAccountId') +
+        commons.escapeVariable('$clientAccountId') +
         '/users/' +
-        commons.Escaper.ecapeVariable('$userId');
+        commons.escapeVariable('$userId');
 
     final _response = await _requester.request(
       _url,
@@ -570,9 +568,9 @@ class AccountsClientsUsersResource {
     };
 
     final _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/clients/' +
-        commons.Escaper.ecapeVariable('$clientAccountId') +
+        commons.escapeVariable('$clientAccountId') +
         '/users';
 
     final _response = await _requester.request(
@@ -623,11 +621,11 @@ class AccountsClientsUsersResource {
     };
 
     final _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/clients/' +
-        commons.Escaper.ecapeVariable('$clientAccountId') +
+        commons.escapeVariable('$clientAccountId') +
         '/users/' +
-        commons.Escaper.ecapeVariable('$userId');
+        commons.escapeVariable('$userId');
 
     final _response = await _requester.request(
       _url,
@@ -692,7 +690,7 @@ class AccountsCreativesResource {
     };
 
     final _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/creatives';
 
     final _response = await _requester.request(
@@ -732,9 +730,9 @@ class AccountsCreativesResource {
     };
 
     final _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/creatives/' +
-        commons.Escaper.ecapeVariable('$creativeId');
+        commons.escapeVariable('$creativeId');
 
     final _response = await _requester.request(
       _url,
@@ -796,7 +794,7 @@ class AccountsCreativesResource {
     };
 
     final _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/creatives';
 
     final _response = await _requester.request(
@@ -844,9 +842,9 @@ class AccountsCreativesResource {
     };
 
     final _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/creatives/' +
-        commons.Escaper.ecapeVariable('$creativeId') +
+        commons.escapeVariable('$creativeId') +
         ':stopWatching';
 
     final _response = await _requester.request(
@@ -892,9 +890,9 @@ class AccountsCreativesResource {
     };
 
     final _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/creatives/' +
-        commons.Escaper.ecapeVariable('$creativeId');
+        commons.escapeVariable('$creativeId');
 
     final _response = await _requester.request(
       _url,
@@ -943,9 +941,9 @@ class AccountsCreativesResource {
     };
 
     final _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/creatives/' +
-        commons.Escaper.ecapeVariable('$creativeId') +
+        commons.escapeVariable('$creativeId') +
         ':watch';
 
     final _response = await _requester.request(
@@ -996,9 +994,9 @@ class AccountsCreativesDealAssociationsResource {
     };
 
     final _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/creatives/' +
-        commons.Escaper.ecapeVariable('$creativeId') +
+        commons.escapeVariable('$creativeId') +
         '/dealAssociations:add';
 
     final _response = await _requester.request(
@@ -1062,9 +1060,9 @@ class AccountsCreativesDealAssociationsResource {
     };
 
     final _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/creatives/' +
-        commons.Escaper.ecapeVariable('$creativeId') +
+        commons.escapeVariable('$creativeId') +
         '/dealAssociations';
 
     final _response = await _requester.request(
@@ -1108,9 +1106,9 @@ class AccountsCreativesDealAssociationsResource {
     };
 
     final _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/creatives/' +
-        commons.Escaper.ecapeVariable('$creativeId') +
+        commons.escapeVariable('$creativeId') +
         '/dealAssociations:remove';
 
     final _response = await _requester.request(
@@ -1186,7 +1184,7 @@ class AccountsFinalizedProposalsResource {
     };
 
     final _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/finalizedProposals';
 
     final _response = await _requester.request(
@@ -1232,9 +1230,9 @@ class AccountsProductsResource {
     };
 
     final _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/products/' +
-        commons.Escaper.ecapeVariable('$productId');
+        commons.escapeVariable('$productId');
 
     final _response = await _requester.request(
       _url,
@@ -1286,7 +1284,7 @@ class AccountsProductsResource {
     };
 
     final _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/products';
 
     final _response = await _requester.request(
@@ -1342,9 +1340,9 @@ class AccountsProposalsResource {
     };
 
     final _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/proposals/' +
-        commons.Escaper.ecapeVariable('$proposalId') +
+        commons.escapeVariable('$proposalId') +
         ':accept';
 
     final _response = await _requester.request(
@@ -1391,9 +1389,9 @@ class AccountsProposalsResource {
     };
 
     final _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/proposals/' +
-        commons.Escaper.ecapeVariable('$proposalId') +
+        commons.escapeVariable('$proposalId') +
         ':addNote';
 
     final _response = await _requester.request(
@@ -1440,9 +1438,9 @@ class AccountsProposalsResource {
     };
 
     final _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/proposals/' +
-        commons.Escaper.ecapeVariable('$proposalId') +
+        commons.escapeVariable('$proposalId') +
         ':cancelNegotiation';
 
     final _response = await _requester.request(
@@ -1492,9 +1490,9 @@ class AccountsProposalsResource {
     };
 
     final _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/proposals/' +
-        commons.Escaper.ecapeVariable('$proposalId') +
+        commons.escapeVariable('$proposalId') +
         ':completeSetup';
 
     final _response = await _requester.request(
@@ -1538,7 +1536,7 @@ class AccountsProposalsResource {
     };
 
     final _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/proposals';
 
     final _response = await _requester.request(
@@ -1580,9 +1578,9 @@ class AccountsProposalsResource {
     };
 
     final _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/proposals/' +
-        commons.Escaper.ecapeVariable('$proposalId');
+        commons.escapeVariable('$proposalId');
 
     final _response = await _requester.request(
       _url,
@@ -1653,7 +1651,7 @@ class AccountsProposalsResource {
     };
 
     final _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/proposals';
 
     final _response = await _requester.request(
@@ -1703,9 +1701,9 @@ class AccountsProposalsResource {
     };
 
     final _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/proposals/' +
-        commons.Escaper.ecapeVariable('$proposalId') +
+        commons.escapeVariable('$proposalId') +
         ':pause';
 
     final _response = await _requester.request(
@@ -1756,9 +1754,9 @@ class AccountsProposalsResource {
     };
 
     final _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/proposals/' +
-        commons.Escaper.ecapeVariable('$proposalId') +
+        commons.escapeVariable('$proposalId') +
         ':resume';
 
     final _response = await _requester.request(
@@ -1812,9 +1810,9 @@ class AccountsProposalsResource {
     };
 
     final _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/proposals/' +
-        commons.Escaper.ecapeVariable('$proposalId');
+        commons.escapeVariable('$proposalId');
 
     final _response = await _requester.request(
       _url,
@@ -1860,9 +1858,9 @@ class AccountsPublisherProfilesResource {
     };
 
     final _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/publisherProfiles/' +
-        commons.Escaper.ecapeVariable('$publisherProfileId');
+        commons.escapeVariable('$publisherProfileId');
 
     final _response = await _requester.request(
       _url,
@@ -1906,7 +1904,7 @@ class AccountsPublisherProfilesResource {
     };
 
     final _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/publisherProfiles';
 
     final _response = await _requester.request(
@@ -2005,9 +2003,7 @@ class BiddersAccountsFilterSetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/' +
-        commons.Escaper.ecapeVariableReserved('$ownerName') +
-        '/filterSets';
+    final _url = 'v2beta1/' + core.Uri.encodeFull('$ownerName') + '/filterSets';
 
     final _response = await _requester.request(
       _url,
@@ -2050,7 +2046,7 @@ class BiddersAccountsFilterSetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2beta1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2092,7 +2088,7 @@ class BiddersAccountsFilterSetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2beta1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2144,9 +2140,7 @@ class BiddersAccountsFilterSetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/' +
-        commons.Escaper.ecapeVariableReserved('$ownerName') +
-        '/filterSets';
+    final _url = 'v2beta1/' + core.Uri.encodeFull('$ownerName') + '/filterSets';
 
     final _response = await _requester.request(
       _url,
@@ -2208,9 +2202,8 @@ class BiddersAccountsFilterSetsBidMetricsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/' +
-        commons.Escaper.ecapeVariableReserved('$filterSetName') +
-        '/bidMetrics';
+    final _url =
+        'v2beta1/' + core.Uri.encodeFull('$filterSetName') + '/bidMetrics';
 
     final _response = await _requester.request(
       _url,
@@ -2275,7 +2268,7 @@ class BiddersAccountsFilterSetsBidResponseErrorsResource {
     };
 
     final _url = 'v2beta1/' +
-        commons.Escaper.ecapeVariableReserved('$filterSetName') +
+        core.Uri.encodeFull('$filterSetName') +
         '/bidResponseErrors';
 
     final _response = await _requester.request(
@@ -2342,7 +2335,7 @@ class BiddersAccountsFilterSetsBidResponsesWithoutBidsResource {
     };
 
     final _url = 'v2beta1/' +
-        commons.Escaper.ecapeVariableReserved('$filterSetName') +
+        core.Uri.encodeFull('$filterSetName') +
         '/bidResponsesWithoutBids';
 
     final _response = await _requester.request(
@@ -2408,7 +2401,7 @@ class BiddersAccountsFilterSetsFilteredBidRequestsResource {
     };
 
     final _url = 'v2beta1/' +
-        commons.Escaper.ecapeVariableReserved('$filterSetName') +
+        core.Uri.encodeFull('$filterSetName') +
         '/filteredBidRequests';
 
     final _response = await _requester.request(
@@ -2477,9 +2470,8 @@ class BiddersAccountsFilterSetsFilteredBidsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/' +
-        commons.Escaper.ecapeVariableReserved('$filterSetName') +
-        '/filteredBids';
+    final _url =
+        'v2beta1/' + core.Uri.encodeFull('$filterSetName') + '/filteredBids';
 
     final _response = await _requester.request(
       _url,
@@ -2549,9 +2541,9 @@ class BiddersAccountsFilterSetsFilteredBidsCreativesResource {
     };
 
     final _url = 'v2beta1/' +
-        commons.Escaper.ecapeVariableReserved('$filterSetName') +
+        core.Uri.encodeFull('$filterSetName') +
         '/filteredBids/' +
-        commons.Escaper.ecapeVariable('$creativeStatusId') +
+        commons.escapeVariable('$creativeStatusId') +
         '/creatives';
 
     final _response = await _requester.request(
@@ -2624,9 +2616,9 @@ class BiddersAccountsFilterSetsFilteredBidsDetailsResource {
     };
 
     final _url = 'v2beta1/' +
-        commons.Escaper.ecapeVariableReserved('$filterSetName') +
+        core.Uri.encodeFull('$filterSetName') +
         '/filteredBids/' +
-        commons.Escaper.ecapeVariable('$creativeStatusId') +
+        commons.escapeVariable('$creativeStatusId') +
         '/details';
 
     final _response = await _requester.request(
@@ -2691,7 +2683,7 @@ class BiddersAccountsFilterSetsImpressionMetricsResource {
     };
 
     final _url = 'v2beta1/' +
-        commons.Escaper.ecapeVariableReserved('$filterSetName') +
+        core.Uri.encodeFull('$filterSetName') +
         '/impressionMetrics';
 
     final _response = await _requester.request(
@@ -2755,9 +2747,8 @@ class BiddersAccountsFilterSetsLosingBidsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/' +
-        commons.Escaper.ecapeVariableReserved('$filterSetName') +
-        '/losingBids';
+    final _url =
+        'v2beta1/' + core.Uri.encodeFull('$filterSetName') + '/losingBids';
 
     final _response = await _requester.request(
       _url,
@@ -2822,7 +2813,7 @@ class BiddersAccountsFilterSetsNonBillableWinningBidsResource {
     };
 
     final _url = 'v2beta1/' +
-        commons.Escaper.ecapeVariableReserved('$filterSetName') +
+        core.Uri.encodeFull('$filterSetName') +
         '/nonBillableWinningBids';
 
     final _response = await _requester.request(
@@ -2899,9 +2890,7 @@ class BiddersFilterSetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/' +
-        commons.Escaper.ecapeVariableReserved('$ownerName') +
-        '/filterSets';
+    final _url = 'v2beta1/' + core.Uri.encodeFull('$ownerName') + '/filterSets';
 
     final _response = await _requester.request(
       _url,
@@ -2943,7 +2932,7 @@ class BiddersFilterSetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2beta1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2984,7 +2973,7 @@ class BiddersFilterSetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2beta1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -3036,9 +3025,7 @@ class BiddersFilterSetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/' +
-        commons.Escaper.ecapeVariableReserved('$ownerName') +
-        '/filterSets';
+    final _url = 'v2beta1/' + core.Uri.encodeFull('$ownerName') + '/filterSets';
 
     final _response = await _requester.request(
       _url,
@@ -3099,9 +3086,8 @@ class BiddersFilterSetsBidMetricsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/' +
-        commons.Escaper.ecapeVariableReserved('$filterSetName') +
-        '/bidMetrics';
+    final _url =
+        'v2beta1/' + core.Uri.encodeFull('$filterSetName') + '/bidMetrics';
 
     final _response = await _requester.request(
       _url,
@@ -3164,7 +3150,7 @@ class BiddersFilterSetsBidResponseErrorsResource {
     };
 
     final _url = 'v2beta1/' +
-        commons.Escaper.ecapeVariableReserved('$filterSetName') +
+        core.Uri.encodeFull('$filterSetName') +
         '/bidResponseErrors';
 
     final _response = await _requester.request(
@@ -3229,7 +3215,7 @@ class BiddersFilterSetsBidResponsesWithoutBidsResource {
     };
 
     final _url = 'v2beta1/' +
-        commons.Escaper.ecapeVariableReserved('$filterSetName') +
+        core.Uri.encodeFull('$filterSetName') +
         '/bidResponsesWithoutBids';
 
     final _response = await _requester.request(
@@ -3293,7 +3279,7 @@ class BiddersFilterSetsFilteredBidRequestsResource {
     };
 
     final _url = 'v2beta1/' +
-        commons.Escaper.ecapeVariableReserved('$filterSetName') +
+        core.Uri.encodeFull('$filterSetName') +
         '/filteredBidRequests';
 
     final _response = await _requester.request(
@@ -3361,9 +3347,8 @@ class BiddersFilterSetsFilteredBidsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/' +
-        commons.Escaper.ecapeVariableReserved('$filterSetName') +
-        '/filteredBids';
+    final _url =
+        'v2beta1/' + core.Uri.encodeFull('$filterSetName') + '/filteredBids';
 
     final _response = await _requester.request(
       _url,
@@ -3431,9 +3416,9 @@ class BiddersFilterSetsFilteredBidsCreativesResource {
     };
 
     final _url = 'v2beta1/' +
-        commons.Escaper.ecapeVariableReserved('$filterSetName') +
+        core.Uri.encodeFull('$filterSetName') +
         '/filteredBids/' +
-        commons.Escaper.ecapeVariable('$creativeStatusId') +
+        commons.escapeVariable('$creativeStatusId') +
         '/creatives';
 
     final _response = await _requester.request(
@@ -3504,9 +3489,9 @@ class BiddersFilterSetsFilteredBidsDetailsResource {
     };
 
     final _url = 'v2beta1/' +
-        commons.Escaper.ecapeVariableReserved('$filterSetName') +
+        core.Uri.encodeFull('$filterSetName') +
         '/filteredBids/' +
-        commons.Escaper.ecapeVariable('$creativeStatusId') +
+        commons.escapeVariable('$creativeStatusId') +
         '/details';
 
     final _response = await _requester.request(
@@ -3569,7 +3554,7 @@ class BiddersFilterSetsImpressionMetricsResource {
     };
 
     final _url = 'v2beta1/' +
-        commons.Escaper.ecapeVariableReserved('$filterSetName') +
+        core.Uri.encodeFull('$filterSetName') +
         '/impressionMetrics';
 
     final _response = await _requester.request(
@@ -3632,9 +3617,8 @@ class BiddersFilterSetsLosingBidsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/' +
-        commons.Escaper.ecapeVariableReserved('$filterSetName') +
-        '/losingBids';
+    final _url =
+        'v2beta1/' + core.Uri.encodeFull('$filterSetName') + '/losingBids';
 
     final _response = await _requester.request(
       _url,
@@ -3697,7 +3681,7 @@ class BiddersFilterSetsNonBillableWinningBidsResource {
     };
 
     final _url = 'v2beta1/' +
-        commons.Escaper.ecapeVariableReserved('$filterSetName') +
+        core.Uri.encodeFull('$filterSetName') +
         '/nonBillableWinningBids';
 
     final _response = await _requester.request(

@@ -127,8 +127,7 @@ class AccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
 
     final _response = await _requester.request(
       _url,
@@ -208,8 +207,7 @@ class AccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
 
     final _response = await _requester.request(
       _url,
@@ -265,9 +263,8 @@ class AccountsContainersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/containers';
+    final _url =
+        'tagmanager/v2/' + core.Uri.encodeFull('$parent') + '/containers';
 
     final _response = await _requester.request(
       _url,
@@ -302,8 +299,7 @@ class AccountsContainersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
 
     await _requester.request(
       _url,
@@ -339,8 +335,7 @@ class AccountsContainersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
 
     final _response = await _requester.request(
       _url,
@@ -380,9 +375,8 @@ class AccountsContainersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/containers';
+    final _url =
+        'tagmanager/v2/' + core.Uri.encodeFull('$parent') + '/containers';
 
     final _response = await _requester.request(
       _url,
@@ -428,8 +422,7 @@ class AccountsContainersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
 
     final _response = await _requester.request(
       _url,
@@ -477,9 +470,8 @@ class AccountsContainersEnvironmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/environments';
+    final _url =
+        'tagmanager/v2/' + core.Uri.encodeFull('$parent') + '/environments';
 
     final _response = await _requester.request(
       _url,
@@ -516,8 +508,7 @@ class AccountsContainersEnvironmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
 
     await _requester.request(
       _url,
@@ -554,8 +545,7 @@ class AccountsContainersEnvironmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
 
     final _response = await _requester.request(
       _url,
@@ -596,9 +586,8 @@ class AccountsContainersEnvironmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/environments';
+    final _url =
+        'tagmanager/v2/' + core.Uri.encodeFull('$parent') + '/environments';
 
     final _response = await _requester.request(
       _url,
@@ -640,9 +629,8 @@ class AccountsContainersEnvironmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$path') +
-        ':reauthorize';
+    final _url =
+        'tagmanager/v2/' + core.Uri.encodeFull('$path') + ':reauthorize';
 
     final _response = await _requester.request(
       _url,
@@ -690,8 +678,7 @@ class AccountsContainersEnvironmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
 
     final _response = await _requester.request(
       _url,
@@ -737,7 +724,7 @@ class AccountsContainersVersionHeadersResource {
     };
 
     final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/version_headers:latest';
 
     final _response = await _requester.request(
@@ -783,9 +770,8 @@ class AccountsContainersVersionHeadersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/version_headers';
+    final _url =
+        'tagmanager/v2/' + core.Uri.encodeFull('$parent') + '/version_headers';
 
     final _response = await _requester.request(
       _url,
@@ -828,8 +814,7 @@ class AccountsContainersVersionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
 
     await _requester.request(
       _url,
@@ -872,8 +857,7 @@ class AccountsContainersVersionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
 
     final _response = await _requester.request(
       _url,
@@ -910,9 +894,8 @@ class AccountsContainersVersionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/versions:live';
+    final _url =
+        'tagmanager/v2/' + core.Uri.encodeFull('$parent') + '/versions:live';
 
     final _response = await _requester.request(
       _url,
@@ -955,9 +938,7 @@ class AccountsContainersVersionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$path') +
-        ':publish';
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path') + ':publish';
 
     final _response = await _requester.request(
       _url,
@@ -996,9 +977,8 @@ class AccountsContainersVersionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$path') +
-        ':set_latest';
+    final _url =
+        'tagmanager/v2/' + core.Uri.encodeFull('$path') + ':set_latest';
 
     final _response = await _requester.request(
       _url,
@@ -1036,9 +1016,7 @@ class AccountsContainersVersionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$path') +
-        ':undelete';
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path') + ':undelete';
 
     final _response = await _requester.request(
       _url,
@@ -1085,8 +1063,7 @@ class AccountsContainersVersionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
 
     final _response = await _requester.request(
       _url,
@@ -1150,9 +1127,8 @@ class AccountsContainersWorkspacesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/workspaces';
+    final _url =
+        'tagmanager/v2/' + core.Uri.encodeFull('$parent') + '/workspaces';
 
     final _response = await _requester.request(
       _url,
@@ -1196,9 +1172,8 @@ class AccountsContainersWorkspacesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$path') +
-        ':create_version';
+    final _url =
+        'tagmanager/v2/' + core.Uri.encodeFull('$path') + ':create_version';
 
     final _response = await _requester.request(
       _url,
@@ -1235,8 +1210,7 @@ class AccountsContainersWorkspacesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
 
     await _requester.request(
       _url,
@@ -1273,8 +1247,7 @@ class AccountsContainersWorkspacesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
 
     final _response = await _requester.request(
       _url,
@@ -1311,9 +1284,7 @@ class AccountsContainersWorkspacesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$path') +
-        '/status';
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path') + '/status';
 
     final _response = await _requester.request(
       _url,
@@ -1354,9 +1325,8 @@ class AccountsContainersWorkspacesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/workspaces';
+    final _url =
+        'tagmanager/v2/' + core.Uri.encodeFull('$parent') + '/workspaces';
 
     final _response = await _requester.request(
       _url,
@@ -1395,9 +1365,8 @@ class AccountsContainersWorkspacesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$path') +
-        ':quick_preview';
+    final _url =
+        'tagmanager/v2/' + core.Uri.encodeFull('$path') + ':quick_preview';
 
     final _response = await _requester.request(
       _url,
@@ -1443,9 +1412,8 @@ class AccountsContainersWorkspacesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$path') +
-        ':resolve_conflict';
+    final _url =
+        'tagmanager/v2/' + core.Uri.encodeFull('$path') + ':resolve_conflict';
 
     await _requester.request(
       _url,
@@ -1485,9 +1453,7 @@ class AccountsContainersWorkspacesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$path') +
-        ':sync';
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path') + ':sync';
 
     final _response = await _requester.request(
       _url,
@@ -1534,8 +1500,7 @@ class AccountsContainersWorkspacesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
 
     final _response = await _requester.request(
       _url,
@@ -1586,7 +1551,7 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
     };
 
     final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/built_in_variables';
 
     final _response = await _requester.request(
@@ -1627,8 +1592,7 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
 
     await _requester.request(
       _url,
@@ -1670,7 +1634,7 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
     };
 
     final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/built_in_variables';
 
     final _response = await _requester.request(
@@ -1825,7 +1789,7 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
     };
 
     final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$path') +
+        core.Uri.encodeFull('$path') +
         '/built_in_variables:revert';
 
     final _response = await _requester.request(
@@ -1875,9 +1839,7 @@ class AccountsContainersWorkspacesFoldersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/folders';
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$parent') + '/folders';
 
     final _response = await _requester.request(
       _url,
@@ -1913,8 +1875,7 @@ class AccountsContainersWorkspacesFoldersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
 
     await _requester.request(
       _url,
@@ -1955,9 +1916,7 @@ class AccountsContainersWorkspacesFoldersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$path') +
-        ':entities';
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path') + ':entities';
 
     final _response = await _requester.request(
       _url,
@@ -1995,8 +1954,7 @@ class AccountsContainersWorkspacesFoldersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
 
     final _response = await _requester.request(
       _url,
@@ -2037,9 +1995,7 @@ class AccountsContainersWorkspacesFoldersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/folders';
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$parent') + '/folders';
 
     final _response = await _requester.request(
       _url,
@@ -2092,7 +2048,7 @@ class AccountsContainersWorkspacesFoldersResource {
     };
 
     final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$path') +
+        core.Uri.encodeFull('$path') +
         ':move_entities_to_folder';
 
     await _requester.request(
@@ -2136,9 +2092,7 @@ class AccountsContainersWorkspacesFoldersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$path') +
-        ':revert';
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path') + ':revert';
 
     final _response = await _requester.request(
       _url,
@@ -2185,8 +2139,7 @@ class AccountsContainersWorkspacesFoldersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
 
     final _response = await _requester.request(
       _url,
@@ -2235,9 +2188,7 @@ class AccountsContainersWorkspacesTagsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/tags';
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$parent') + '/tags';
 
     final _response = await _requester.request(
       _url,
@@ -2273,8 +2224,7 @@ class AccountsContainersWorkspacesTagsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
 
     await _requester.request(
       _url,
@@ -2311,8 +2261,7 @@ class AccountsContainersWorkspacesTagsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
 
     final _response = await _requester.request(
       _url,
@@ -2353,9 +2302,7 @@ class AccountsContainersWorkspacesTagsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/tags';
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$parent') + '/tags';
 
     final _response = await _requester.request(
       _url,
@@ -2398,9 +2345,7 @@ class AccountsContainersWorkspacesTagsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$path') +
-        ':revert';
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path') + ':revert';
 
     final _response = await _requester.request(
       _url,
@@ -2447,8 +2392,7 @@ class AccountsContainersWorkspacesTagsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
 
     final _response = await _requester.request(
       _url,
@@ -2497,9 +2441,8 @@ class AccountsContainersWorkspacesTemplatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/templates';
+    final _url =
+        'tagmanager/v2/' + core.Uri.encodeFull('$parent') + '/templates';
 
     final _response = await _requester.request(
       _url,
@@ -2536,8 +2479,7 @@ class AccountsContainersWorkspacesTemplatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
 
     await _requester.request(
       _url,
@@ -2574,8 +2516,7 @@ class AccountsContainersWorkspacesTemplatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
 
     final _response = await _requester.request(
       _url,
@@ -2617,9 +2558,8 @@ class AccountsContainersWorkspacesTemplatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/templates';
+    final _url =
+        'tagmanager/v2/' + core.Uri.encodeFull('$parent') + '/templates';
 
     final _response = await _requester.request(
       _url,
@@ -2662,9 +2602,7 @@ class AccountsContainersWorkspacesTemplatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$path') +
-        ':revert';
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path') + ':revert';
 
     final _response = await _requester.request(
       _url,
@@ -2711,8 +2649,7 @@ class AccountsContainersWorkspacesTemplatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
 
     final _response = await _requester.request(
       _url,
@@ -2762,9 +2699,8 @@ class AccountsContainersWorkspacesTriggersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/triggers';
+    final _url =
+        'tagmanager/v2/' + core.Uri.encodeFull('$parent') + '/triggers';
 
     final _response = await _requester.request(
       _url,
@@ -2800,8 +2736,7 @@ class AccountsContainersWorkspacesTriggersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
 
     await _requester.request(
       _url,
@@ -2838,8 +2773,7 @@ class AccountsContainersWorkspacesTriggersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
 
     final _response = await _requester.request(
       _url,
@@ -2880,9 +2814,8 @@ class AccountsContainersWorkspacesTriggersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/triggers';
+    final _url =
+        'tagmanager/v2/' + core.Uri.encodeFull('$parent') + '/triggers';
 
     final _response = await _requester.request(
       _url,
@@ -2925,9 +2858,7 @@ class AccountsContainersWorkspacesTriggersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$path') +
-        ':revert';
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path') + ':revert';
 
     final _response = await _requester.request(
       _url,
@@ -2974,8 +2905,7 @@ class AccountsContainersWorkspacesTriggersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
 
     final _response = await _requester.request(
       _url,
@@ -3024,9 +2954,8 @@ class AccountsContainersWorkspacesVariablesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/variables';
+    final _url =
+        'tagmanager/v2/' + core.Uri.encodeFull('$parent') + '/variables';
 
     final _response = await _requester.request(
       _url,
@@ -3062,8 +2991,7 @@ class AccountsContainersWorkspacesVariablesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
 
     await _requester.request(
       _url,
@@ -3100,8 +3028,7 @@ class AccountsContainersWorkspacesVariablesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
 
     final _response = await _requester.request(
       _url,
@@ -3142,9 +3069,8 @@ class AccountsContainersWorkspacesVariablesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/variables';
+    final _url =
+        'tagmanager/v2/' + core.Uri.encodeFull('$parent') + '/variables';
 
     final _response = await _requester.request(
       _url,
@@ -3187,9 +3113,7 @@ class AccountsContainersWorkspacesVariablesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$path') +
-        ':revert';
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path') + ':revert';
 
     final _response = await _requester.request(
       _url,
@@ -3236,8 +3160,7 @@ class AccountsContainersWorkspacesVariablesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
 
     final _response = await _requester.request(
       _url,
@@ -3286,9 +3209,7 @@ class AccountsContainersWorkspacesZonesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/zones';
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$parent') + '/zones';
 
     final _response = await _requester.request(
       _url,
@@ -3324,8 +3245,7 @@ class AccountsContainersWorkspacesZonesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
 
     await _requester.request(
       _url,
@@ -3362,8 +3282,7 @@ class AccountsContainersWorkspacesZonesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
 
     final _response = await _requester.request(
       _url,
@@ -3404,9 +3323,7 @@ class AccountsContainersWorkspacesZonesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/zones';
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$parent') + '/zones';
 
     final _response = await _requester.request(
       _url,
@@ -3449,9 +3366,7 @@ class AccountsContainersWorkspacesZonesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$path') +
-        ':revert';
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path') + ':revert';
 
     final _response = await _requester.request(
       _url,
@@ -3498,8 +3413,7 @@ class AccountsContainersWorkspacesZonesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
 
     final _response = await _requester.request(
       _url,
@@ -3546,9 +3460,8 @@ class AccountsUserPermissionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/user_permissions';
+    final _url =
+        'tagmanager/v2/' + core.Uri.encodeFull('$parent') + '/user_permissions';
 
     final _response = await _requester.request(
       _url,
@@ -3585,8 +3498,7 @@ class AccountsUserPermissionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
 
     await _requester.request(
       _url,
@@ -3622,8 +3534,7 @@ class AccountsUserPermissionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
 
     final _response = await _requester.request(
       _url,
@@ -3665,9 +3576,8 @@ class AccountsUserPermissionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/user_permissions';
+    final _url =
+        'tagmanager/v2/' + core.Uri.encodeFull('$parent') + '/user_permissions';
 
     final _response = await _requester.request(
       _url,
@@ -3708,8 +3618,7 @@ class AccountsUserPermissionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
 
     final _response = await _requester.request(
       _url,

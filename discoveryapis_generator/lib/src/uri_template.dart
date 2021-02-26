@@ -38,7 +38,7 @@ class VariableExpression extends Part {
 
   @override
   String stringExpression(Identifier variable) =>
-      "${imports.commons}.Escaper.ecapeVariable('\$$variable')";
+      "${imports.commons.ref()}escapeVariable('\$$variable')";
 }
 
 /// Represents a URI Template variable expression of the form {/var*}
@@ -49,7 +49,7 @@ class PathVariableExpression extends Part {
   @override
   String stringExpression(Identifier variable) =>
       "'/' + ($variable).map((item) => "
-      "${imports.commons}.Escaper.ecapePathComponent(item)).join('/')";
+      "${imports.commons.ref()}escapeVariable(item)).join('/')";
 }
 
 /// Represents a URI Template variable expression of the form {+var}
@@ -59,7 +59,7 @@ class ReservedExpansionExpression extends Part {
 
   @override
   String stringExpression(Identifier variable) =>
-      "${imports.commons}.Escaper.ecapeVariableReserved('\$$variable')";
+      "${imports.core.ref()}Uri.encodeFull('\$$variable')";
 }
 
 /// Represents a URI Template as defined in RFC 6570.

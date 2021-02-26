@@ -153,9 +153,7 @@ class CustomersConfigurationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/configurations';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/configurations';
 
     final _response = await _requester.request(
       _url,
@@ -197,7 +195,7 @@ class CustomersConfigurationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -233,7 +231,7 @@ class CustomersConfigurationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -270,9 +268,7 @@ class CustomersConfigurationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/configurations';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/configurations';
 
     final _response = await _requester.request(
       _url,
@@ -322,7 +318,7 @@ class CustomersConfigurationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -374,9 +370,8 @@ class CustomersDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/devices:applyConfiguration';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + '/devices:applyConfiguration';
 
     final _response = await _requester.request(
       _url,
@@ -413,7 +408,7 @@ class CustomersDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -458,8 +453,7 @@ class CustomersDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/devices';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/devices';
 
     final _response = await _requester.request(
       _url,
@@ -500,9 +494,8 @@ class CustomersDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/devices:removeConfiguration';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + '/devices:removeConfiguration';
 
     final _response = await _requester.request(
       _url,
@@ -547,9 +540,7 @@ class CustomersDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/devices:unclaim';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/devices:unclaim';
 
     final _response = await _requester.request(
       _url,
@@ -593,8 +584,7 @@ class CustomersDpcsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/dpcs';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/dpcs';
 
     final _response = await _requester.request(
       _url,
@@ -639,7 +629,7 @@ class OperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -701,8 +691,7 @@ class PartnersCustomersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/customers';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/customers';
 
     final _response = await _requester.request(
       _url,
@@ -752,9 +741,8 @@ class PartnersCustomersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/partners/' +
-        commons.Escaper.ecapeVariableReserved('$partnerId') +
-        '/customers';
+    final _url =
+        'v1/partners/' + core.Uri.encodeFull('$partnerId') + '/customers';
 
     final _response = await _requester.request(
       _url,
@@ -803,9 +791,8 @@ class PartnersDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/partners/' +
-        commons.Escaper.ecapeVariableReserved('$partnerId') +
-        '/devices:claim';
+    final _url =
+        'v1/partners/' + core.Uri.encodeFull('$partnerId') + '/devices:claim';
 
     final _response = await _requester.request(
       _url,
@@ -851,7 +838,7 @@ class PartnersDevicesResource {
     };
 
     final _url = 'v1/partners/' +
-        commons.Escaper.ecapeVariableReserved('$partnerId') +
+        core.Uri.encodeFull('$partnerId') +
         '/devices:claimAsync';
 
     final _response = await _requester.request(
@@ -893,7 +880,7 @@ class PartnersDevicesResource {
     };
 
     final _url = 'v1/partners/' +
-        commons.Escaper.ecapeVariableReserved('$partnerId') +
+        core.Uri.encodeFull('$partnerId') +
         '/devices:findByIdentifier';
 
     final _response = await _requester.request(
@@ -940,7 +927,7 @@ class PartnersDevicesResource {
     };
 
     final _url = 'v1/partners/' +
-        commons.Escaper.ecapeVariableReserved('$partnerId') +
+        core.Uri.encodeFull('$partnerId') +
         '/devices:findByOwner';
 
     final _response = await _requester.request(
@@ -979,7 +966,7 @@ class PartnersDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1024,9 +1011,9 @@ class PartnersDevicesResource {
     };
 
     final _url = 'v1/partners/' +
-        commons.Escaper.ecapeVariableReserved('$metadataOwnerId') +
+        core.Uri.encodeFull('$metadataOwnerId') +
         '/devices/' +
-        commons.Escaper.ecapeVariableReserved('$deviceId') +
+        core.Uri.encodeFull('$deviceId') +
         '/metadata';
 
     final _response = await _requester.request(
@@ -1069,9 +1056,8 @@ class PartnersDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/partners/' +
-        commons.Escaper.ecapeVariableReserved('$partnerId') +
-        '/devices:unclaim';
+    final _url =
+        'v1/partners/' + core.Uri.encodeFull('$partnerId') + '/devices:unclaim';
 
     final _response = await _requester.request(
       _url,
@@ -1116,7 +1102,7 @@ class PartnersDevicesResource {
     };
 
     final _url = 'v1/partners/' +
-        commons.Escaper.ecapeVariableReserved('$partnerId') +
+        core.Uri.encodeFull('$partnerId') +
         '/devices:unclaimAsync';
 
     final _response = await _requester.request(
@@ -1162,7 +1148,7 @@ class PartnersDevicesResource {
     };
 
     final _url = 'v1/partners/' +
-        commons.Escaper.ecapeVariableReserved('$partnerId') +
+        core.Uri.encodeFull('$partnerId') +
         '/devices:updateMetadataAsync';
 
     final _response = await _requester.request(
@@ -1218,8 +1204,7 @@ class PartnersVendorsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/vendors';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/vendors';
 
     final _response = await _requester.request(
       _url,
@@ -1272,8 +1257,7 @@ class PartnersVendorsCustomersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/customers';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/customers';
 
     final _response = await _requester.request(
       _url,

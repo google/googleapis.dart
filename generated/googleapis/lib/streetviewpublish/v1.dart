@@ -143,7 +143,7 @@ class PhotoResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/photo/' + commons.Escaper.ecapeVariable('$photoId');
+    final _url = 'v1/photo/' + commons.escapeVariable('$photoId');
 
     final _response = await _requester.request(
       _url,
@@ -201,7 +201,7 @@ class PhotoResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/photo/' + commons.Escaper.ecapeVariable('$photoId');
+    final _url = 'v1/photo/' + commons.escapeVariable('$photoId');
 
     final _response = await _requester.request(
       _url,
@@ -311,7 +311,7 @@ class PhotoResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/photo/' + commons.Escaper.ecapeVariable('$id');
+    final _url = 'v1/photo/' + commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,

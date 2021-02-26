@@ -114,7 +114,7 @@ class DocumentsResource {
     };
 
     final _url = 'v1/documents/' +
-        commons.Escaper.ecapeVariable('$documentId') +
+        commons.escapeVariable('$documentId') +
         ':batchUpdate';
 
     final _response = await _requester.request(
@@ -214,7 +214,7 @@ class DocumentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/documents/' + commons.Escaper.ecapeVariable('$documentId');
+    final _url = 'v1/documents/' + commons.escapeVariable('$documentId');
 
     final _response = await _requester.request(
       _url,

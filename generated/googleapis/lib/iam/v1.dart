@@ -219,8 +219,7 @@ class OrganizationsRolesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/roles';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/roles';
 
     final _response = await _requester.request(
       _url,
@@ -285,7 +284,7 @@ class OrganizationsRolesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -341,7 +340,7 @@ class OrganizationsRolesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -421,8 +420,7 @@ class OrganizationsRolesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/roles';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/roles';
 
     final _response = await _requester.request(
       _url,
@@ -482,7 +480,7 @@ class OrganizationsRolesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -538,8 +536,7 @@ class OrganizationsRolesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':undelete';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':undelete';
 
     final _response = await _requester.request(
       _url,
@@ -669,9 +666,8 @@ class ProjectsLocationsWorkloadIdentityPoolsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/workloadIdentityPools';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + '/workloadIdentityPools';
 
     final _response = await _requester.request(
       _url,
@@ -716,7 +712,7 @@ class ProjectsLocationsWorkloadIdentityPoolsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -752,7 +748,7 @@ class ProjectsLocationsWorkloadIdentityPoolsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -806,9 +802,8 @@ class ProjectsLocationsWorkloadIdentityPoolsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/workloadIdentityPools';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + '/workloadIdentityPools';
 
     final _response = await _requester.request(
       _url,
@@ -853,7 +848,7 @@ class ProjectsLocationsWorkloadIdentityPoolsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -895,8 +890,7 @@ class ProjectsLocationsWorkloadIdentityPoolsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':undelete';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':undelete';
 
     final _response = await _requester.request(
       _url,
@@ -944,7 +938,7 @@ class ProjectsLocationsWorkloadIdentityPoolsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1008,8 +1002,7 @@ class ProjectsLocationsWorkloadIdentityPoolsProvidersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/providers';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/providers';
 
     final _response = await _requester.request(
       _url,
@@ -1051,7 +1044,7 @@ class ProjectsLocationsWorkloadIdentityPoolsProvidersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1087,7 +1080,7 @@ class ProjectsLocationsWorkloadIdentityPoolsProvidersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1144,8 +1137,7 @@ class ProjectsLocationsWorkloadIdentityPoolsProvidersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/providers';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/providers';
 
     final _response = await _requester.request(
       _url,
@@ -1190,7 +1182,7 @@ class ProjectsLocationsWorkloadIdentityPoolsProvidersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1232,8 +1224,7 @@ class ProjectsLocationsWorkloadIdentityPoolsProvidersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':undelete';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':undelete';
 
     final _response = await _requester.request(
       _url,
@@ -1281,7 +1272,7 @@ class ProjectsLocationsWorkloadIdentityPoolsProvidersOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1340,8 +1331,7 @@ class ProjectsRolesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/roles';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/roles';
 
     final _response = await _requester.request(
       _url,
@@ -1406,7 +1396,7 @@ class ProjectsRolesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1462,7 +1452,7 @@ class ProjectsRolesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1542,8 +1532,7 @@ class ProjectsRolesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/roles';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/roles';
 
     final _response = await _requester.request(
       _url,
@@ -1603,7 +1592,7 @@ class ProjectsRolesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1659,8 +1648,7 @@ class ProjectsRolesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':undelete';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':undelete';
 
     final _response = await _requester.request(
       _url,
@@ -1711,9 +1699,7 @@ class ProjectsServiceAccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        '/serviceAccounts';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/serviceAccounts';
 
     final _response = await _requester.request(
       _url,
@@ -1765,7 +1751,7 @@ class ProjectsServiceAccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1820,8 +1806,7 @@ class ProjectsServiceAccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':disable';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':disable';
 
     final _response = await _requester.request(
       _url,
@@ -1870,8 +1855,7 @@ class ProjectsServiceAccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':enable';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':enable';
 
     final _response = await _requester.request(
       _url,
@@ -1911,7 +1895,7 @@ class ProjectsServiceAccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1969,9 +1953,7 @@ class ProjectsServiceAccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':getIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -2019,9 +2001,7 @@ class ProjectsServiceAccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        '/serviceAccounts';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/serviceAccounts';
 
     final _response = await _requester.request(
       _url,
@@ -2072,7 +2052,7 @@ class ProjectsServiceAccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2125,9 +2105,7 @@ class ProjectsServiceAccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':setIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -2181,8 +2159,7 @@ class ProjectsServiceAccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':signBlob';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':signBlob';
 
     final _response = await _requester.request(
       _url,
@@ -2237,8 +2214,7 @@ class ProjectsServiceAccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':signJwt';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':signJwt';
 
     final _response = await _requester.request(
       _url,
@@ -2282,9 +2258,8 @@ class ProjectsServiceAccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':testIamPermissions';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
     final _response = await _requester.request(
       _url,
@@ -2333,8 +2308,7 @@ class ProjectsServiceAccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':undelete';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':undelete';
 
     final _response = await _requester.request(
       _url,
@@ -2389,7 +2363,7 @@ class ProjectsServiceAccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2441,8 +2415,7 @@ class ProjectsServiceAccountsKeysResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/keys';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/keys';
 
     final _response = await _requester.request(
       _url,
@@ -2488,7 +2461,7 @@ class ProjectsServiceAccountsKeysResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2538,7 +2511,7 @@ class ProjectsServiceAccountsKeysResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2584,8 +2557,7 @@ class ProjectsServiceAccountsKeysResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/keys';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/keys';
 
     final _response = await _requester.request(
       _url,
@@ -2629,8 +2601,7 @@ class ProjectsServiceAccountsKeysResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/keys:upload';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/keys:upload';
 
     final _response = await _requester.request(
       _url,
@@ -2694,7 +2665,7 @@ class RolesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,

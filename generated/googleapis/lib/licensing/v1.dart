@@ -98,11 +98,11 @@ class LicenseAssignmentsResource {
     };
 
     final _url = 'apps/licensing/v1/product/' +
-        commons.Escaper.ecapeVariable('$productId') +
+        commons.escapeVariable('$productId') +
         '/sku/' +
-        commons.Escaper.ecapeVariable('$skuId') +
+        commons.escapeVariable('$skuId') +
         '/user/' +
-        commons.Escaper.ecapeVariable('$userId');
+        commons.escapeVariable('$userId');
 
     final _response = await _requester.request(
       _url,
@@ -149,11 +149,11 @@ class LicenseAssignmentsResource {
     };
 
     final _url = 'apps/licensing/v1/product/' +
-        commons.Escaper.ecapeVariable('$productId') +
+        commons.escapeVariable('$productId') +
         '/sku/' +
-        commons.Escaper.ecapeVariable('$skuId') +
+        commons.escapeVariable('$skuId') +
         '/user/' +
-        commons.Escaper.ecapeVariable('$userId');
+        commons.escapeVariable('$userId');
 
     final _response = await _requester.request(
       _url,
@@ -198,9 +198,9 @@ class LicenseAssignmentsResource {
     };
 
     final _url = 'apps/licensing/v1/product/' +
-        commons.Escaper.ecapeVariable('$productId') +
+        commons.escapeVariable('$productId') +
         '/sku/' +
-        commons.Escaper.ecapeVariable('$skuId') +
+        commons.escapeVariable('$skuId') +
         '/user';
 
     final _response = await _requester.request(
@@ -259,7 +259,7 @@ class LicenseAssignmentsResource {
     };
 
     final _url = 'apps/licensing/v1/product/' +
-        commons.Escaper.ecapeVariable('$productId') +
+        commons.escapeVariable('$productId') +
         '/users';
 
     final _response = await _requester.request(
@@ -321,9 +321,9 @@ class LicenseAssignmentsResource {
     };
 
     final _url = 'apps/licensing/v1/product/' +
-        commons.Escaper.ecapeVariable('$productId') +
+        commons.escapeVariable('$productId') +
         '/sku/' +
-        commons.Escaper.ecapeVariable('$skuId') +
+        commons.escapeVariable('$skuId') +
         '/users';
 
     final _response = await _requester.request(
@@ -378,11 +378,11 @@ class LicenseAssignmentsResource {
     };
 
     final _url = 'apps/licensing/v1/product/' +
-        commons.Escaper.ecapeVariable('$productId') +
+        commons.escapeVariable('$productId') +
         '/sku/' +
-        commons.Escaper.ecapeVariable('$skuId') +
+        commons.escapeVariable('$skuId') +
         '/user/' +
-        commons.Escaper.ecapeVariable('$userId');
+        commons.escapeVariable('$userId');
 
     final _response = await _requester.request(
       _url,
@@ -435,11 +435,11 @@ class LicenseAssignmentsResource {
     };
 
     final _url = 'apps/licensing/v1/product/' +
-        commons.Escaper.ecapeVariable('$productId') +
+        commons.escapeVariable('$productId') +
         '/sku/' +
-        commons.Escaper.ecapeVariable('$skuId') +
+        commons.escapeVariable('$skuId') +
         '/user/' +
-        commons.Escaper.ecapeVariable('$userId');
+        commons.escapeVariable('$userId');
 
     final _response = await _requester.request(
       _url,

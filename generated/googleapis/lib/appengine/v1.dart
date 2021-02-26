@@ -155,7 +155,7 @@ class AppsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId');
+    final _url = 'v1/apps/' + commons.escapeVariable('$appsId');
 
     final _response = await _requester.request(
       _url,
@@ -203,7 +203,7 @@ class AppsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId');
+    final _url = 'v1/apps/' + commons.escapeVariable('$appsId');
 
     final _response = await _requester.request(
       _url,
@@ -253,8 +253,7 @@ class AppsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + ':repair';
+    final _url = 'v1/apps/' + commons.escapeVariable('$appsId') + ':repair';
 
     final _response = await _requester.request(
       _url,
@@ -302,7 +301,7 @@ class AppsAuthorizedCertificatesResource {
     };
 
     final _url = 'v1/apps/' +
-        commons.Escaper.ecapeVariable('$appsId') +
+        commons.escapeVariable('$appsId') +
         '/authorizedCertificates';
 
     final _response = await _requester.request(
@@ -345,9 +344,9 @@ class AppsAuthorizedCertificatesResource {
     };
 
     final _url = 'v1/apps/' +
-        commons.Escaper.ecapeVariable('$appsId') +
+        commons.escapeVariable('$appsId') +
         '/authorizedCertificates/' +
-        commons.Escaper.ecapeVariable('$authorizedCertificatesId');
+        commons.escapeVariable('$authorizedCertificatesId');
 
     final _response = await _requester.request(
       _url,
@@ -397,9 +396,9 @@ class AppsAuthorizedCertificatesResource {
     };
 
     final _url = 'v1/apps/' +
-        commons.Escaper.ecapeVariable('$appsId') +
+        commons.escapeVariable('$appsId') +
         '/authorizedCertificates/' +
-        commons.Escaper.ecapeVariable('$authorizedCertificatesId');
+        commons.escapeVariable('$authorizedCertificatesId');
 
     final _response = await _requester.request(
       _url,
@@ -454,7 +453,7 @@ class AppsAuthorizedCertificatesResource {
     };
 
     final _url = 'v1/apps/' +
-        commons.Escaper.ecapeVariable('$appsId') +
+        commons.escapeVariable('$appsId') +
         '/authorizedCertificates';
 
     final _response = await _requester.request(
@@ -511,9 +510,9 @@ class AppsAuthorizedCertificatesResource {
     };
 
     final _url = 'v1/apps/' +
-        commons.Escaper.ecapeVariable('$appsId') +
+        commons.escapeVariable('$appsId') +
         '/authorizedCertificates/' +
-        commons.Escaper.ecapeVariable('$authorizedCertificatesId');
+        commons.escapeVariable('$authorizedCertificatesId');
 
     final _response = await _requester.request(
       _url,
@@ -565,9 +564,8 @@ class AppsAuthorizedDomainsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/apps/' +
-        commons.Escaper.ecapeVariable('$appsId') +
-        '/authorizedDomains';
+    final _url =
+        'v1/apps/' + commons.escapeVariable('$appsId') + '/authorizedDomains';
 
     final _response = await _requester.request(
       _url,
@@ -632,9 +630,8 @@ class AppsDomainMappingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/apps/' +
-        commons.Escaper.ecapeVariable('$appsId') +
-        '/domainMappings';
+    final _url =
+        'v1/apps/' + commons.escapeVariable('$appsId') + '/domainMappings';
 
     final _response = await _requester.request(
       _url,
@@ -677,9 +674,9 @@ class AppsDomainMappingsResource {
     };
 
     final _url = 'v1/apps/' +
-        commons.Escaper.ecapeVariable('$appsId') +
+        commons.escapeVariable('$appsId') +
         '/domainMappings/' +
-        commons.Escaper.ecapeVariable('$domainMappingsId');
+        commons.escapeVariable('$domainMappingsId');
 
     final _response = await _requester.request(
       _url,
@@ -718,9 +715,9 @@ class AppsDomainMappingsResource {
     };
 
     final _url = 'v1/apps/' +
-        commons.Escaper.ecapeVariable('$appsId') +
+        commons.escapeVariable('$appsId') +
         '/domainMappings/' +
-        commons.Escaper.ecapeVariable('$domainMappingsId');
+        commons.escapeVariable('$domainMappingsId');
 
     final _response = await _requester.request(
       _url,
@@ -764,9 +761,8 @@ class AppsDomainMappingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/apps/' +
-        commons.Escaper.ecapeVariable('$appsId') +
-        '/domainMappings';
+    final _url =
+        'v1/apps/' + commons.escapeVariable('$appsId') + '/domainMappings';
 
     final _response = await _requester.request(
       _url,
@@ -819,9 +815,9 @@ class AppsDomainMappingsResource {
     };
 
     final _url = 'v1/apps/' +
-        commons.Escaper.ecapeVariable('$appsId') +
+        commons.escapeVariable('$appsId') +
         '/domainMappings/' +
-        commons.Escaper.ecapeVariable('$domainMappingsId');
+        commons.escapeVariable('$domainMappingsId');
 
     final _response = await _requester.request(
       _url,
@@ -883,7 +879,7 @@ class AppsFirewallIngressRulesResource {
     };
 
     final _url = 'v1/apps/' +
-        commons.Escaper.ecapeVariable('$appsId') +
+        commons.escapeVariable('$appsId') +
         '/firewall/ingressRules:batchUpdate';
 
     final _response = await _requester.request(
@@ -926,7 +922,7 @@ class AppsFirewallIngressRulesResource {
     };
 
     final _url = 'v1/apps/' +
-        commons.Escaper.ecapeVariable('$appsId') +
+        commons.escapeVariable('$appsId') +
         '/firewall/ingressRules';
 
     final _response = await _requester.request(
@@ -968,9 +964,9 @@ class AppsFirewallIngressRulesResource {
     };
 
     final _url = 'v1/apps/' +
-        commons.Escaper.ecapeVariable('$appsId') +
+        commons.escapeVariable('$appsId') +
         '/firewall/ingressRules/' +
-        commons.Escaper.ecapeVariable('$ingressRulesId');
+        commons.escapeVariable('$ingressRulesId');
 
     final _response = await _requester.request(
       _url,
@@ -1009,9 +1005,9 @@ class AppsFirewallIngressRulesResource {
     };
 
     final _url = 'v1/apps/' +
-        commons.Escaper.ecapeVariable('$appsId') +
+        commons.escapeVariable('$appsId') +
         '/firewall/ingressRules/' +
-        commons.Escaper.ecapeVariable('$ingressRulesId');
+        commons.escapeVariable('$ingressRulesId');
 
     final _response = await _requester.request(
       _url,
@@ -1062,7 +1058,7 @@ class AppsFirewallIngressRulesResource {
     };
 
     final _url = 'v1/apps/' +
-        commons.Escaper.ecapeVariable('$appsId') +
+        commons.escapeVariable('$appsId') +
         '/firewall/ingressRules';
 
     final _response = await _requester.request(
@@ -1111,9 +1107,9 @@ class AppsFirewallIngressRulesResource {
     };
 
     final _url = 'v1/apps/' +
-        commons.Escaper.ecapeVariable('$appsId') +
+        commons.escapeVariable('$appsId') +
         '/firewall/ingressRules/' +
-        commons.Escaper.ecapeVariable('$ingressRulesId');
+        commons.escapeVariable('$ingressRulesId');
 
     final _response = await _requester.request(
       _url,
@@ -1159,9 +1155,9 @@ class AppsLocationsResource {
     };
 
     final _url = 'v1/apps/' +
-        commons.Escaper.ecapeVariable('$appsId') +
+        commons.escapeVariable('$appsId') +
         '/locations/' +
-        commons.Escaper.ecapeVariable('$locationsId');
+        commons.escapeVariable('$locationsId');
 
     final _response = await _requester.request(
       _url,
@@ -1208,8 +1204,7 @@ class AppsLocationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/locations';
+    final _url = 'v1/apps/' + commons.escapeVariable('$appsId') + '/locations';
 
     final _response = await _requester.request(
       _url,
@@ -1257,9 +1252,9 @@ class AppsOperationsResource {
     };
 
     final _url = 'v1/apps/' +
-        commons.Escaper.ecapeVariable('$appsId') +
+        commons.escapeVariable('$appsId') +
         '/operations/' +
-        commons.Escaper.ecapeVariable('$operationsId');
+        commons.escapeVariable('$operationsId');
 
     final _response = await _requester.request(
       _url,
@@ -1314,8 +1309,7 @@ class AppsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/operations';
+    final _url = 'v1/apps/' + commons.escapeVariable('$appsId') + '/operations';
 
     final _response = await _requester.request(
       _url,
@@ -1364,9 +1358,9 @@ class AppsServicesResource {
     };
 
     final _url = 'v1/apps/' +
-        commons.Escaper.ecapeVariable('$appsId') +
+        commons.escapeVariable('$appsId') +
         '/services/' +
-        commons.Escaper.ecapeVariable('$servicesId');
+        commons.escapeVariable('$servicesId');
 
     final _response = await _requester.request(
       _url,
@@ -1405,9 +1399,9 @@ class AppsServicesResource {
     };
 
     final _url = 'v1/apps/' +
-        commons.Escaper.ecapeVariable('$appsId') +
+        commons.escapeVariable('$appsId') +
         '/services/' +
-        commons.Escaper.ecapeVariable('$servicesId');
+        commons.escapeVariable('$servicesId');
 
     final _response = await _requester.request(
       _url,
@@ -1450,8 +1444,7 @@ class AppsServicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/services';
+    final _url = 'v1/apps/' + commons.escapeVariable('$appsId') + '/services';
 
     final _response = await _requester.request(
       _url,
@@ -1515,9 +1508,9 @@ class AppsServicesResource {
     };
 
     final _url = 'v1/apps/' +
-        commons.Escaper.ecapeVariable('$appsId') +
+        commons.escapeVariable('$appsId') +
         '/services/' +
-        commons.Escaper.ecapeVariable('$servicesId');
+        commons.escapeVariable('$servicesId');
 
     final _response = await _requester.request(
       _url,
@@ -1571,9 +1564,9 @@ class AppsServicesVersionsResource {
     };
 
     final _url = 'v1/apps/' +
-        commons.Escaper.ecapeVariable('$appsId') +
+        commons.escapeVariable('$appsId') +
         '/services/' +
-        commons.Escaper.ecapeVariable('$servicesId') +
+        commons.escapeVariable('$servicesId') +
         '/versions';
 
     final _response = await _requester.request(
@@ -1617,11 +1610,11 @@ class AppsServicesVersionsResource {
     };
 
     final _url = 'v1/apps/' +
-        commons.Escaper.ecapeVariable('$appsId') +
+        commons.escapeVariable('$appsId') +
         '/services/' +
-        commons.Escaper.ecapeVariable('$servicesId') +
+        commons.escapeVariable('$servicesId') +
         '/versions/' +
-        commons.Escaper.ecapeVariable('$versionsId');
+        commons.escapeVariable('$versionsId');
 
     final _response = await _requester.request(
       _url,
@@ -1676,11 +1669,11 @@ class AppsServicesVersionsResource {
     };
 
     final _url = 'v1/apps/' +
-        commons.Escaper.ecapeVariable('$appsId') +
+        commons.escapeVariable('$appsId') +
         '/services/' +
-        commons.Escaper.ecapeVariable('$servicesId') +
+        commons.escapeVariable('$servicesId') +
         '/versions/' +
-        commons.Escaper.ecapeVariable('$versionsId');
+        commons.escapeVariable('$versionsId');
 
     final _response = await _requester.request(
       _url,
@@ -1737,9 +1730,9 @@ class AppsServicesVersionsResource {
     };
 
     final _url = 'v1/apps/' +
-        commons.Escaper.ecapeVariable('$appsId') +
+        commons.escapeVariable('$appsId') +
         '/services/' +
-        commons.Escaper.ecapeVariable('$servicesId') +
+        commons.escapeVariable('$servicesId') +
         '/versions';
 
     final _response = await _requester.request(
@@ -1824,11 +1817,11 @@ class AppsServicesVersionsResource {
     };
 
     final _url = 'v1/apps/' +
-        commons.Escaper.ecapeVariable('$appsId') +
+        commons.escapeVariable('$appsId') +
         '/services/' +
-        commons.Escaper.ecapeVariable('$servicesId') +
+        commons.escapeVariable('$servicesId') +
         '/versions/' +
-        commons.Escaper.ecapeVariable('$versionsId');
+        commons.escapeVariable('$versionsId');
 
     final _response = await _requester.request(
       _url,
@@ -1892,13 +1885,13 @@ class AppsServicesVersionsInstancesResource {
     };
 
     final _url = 'v1/apps/' +
-        commons.Escaper.ecapeVariable('$appsId') +
+        commons.escapeVariable('$appsId') +
         '/services/' +
-        commons.Escaper.ecapeVariable('$servicesId') +
+        commons.escapeVariable('$servicesId') +
         '/versions/' +
-        commons.Escaper.ecapeVariable('$versionsId') +
+        commons.escapeVariable('$versionsId') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instancesId') +
+        commons.escapeVariable('$instancesId') +
         ':debug';
 
     final _response = await _requester.request(
@@ -1957,13 +1950,13 @@ class AppsServicesVersionsInstancesResource {
     };
 
     final _url = 'v1/apps/' +
-        commons.Escaper.ecapeVariable('$appsId') +
+        commons.escapeVariable('$appsId') +
         '/services/' +
-        commons.Escaper.ecapeVariable('$servicesId') +
+        commons.escapeVariable('$servicesId') +
         '/versions/' +
-        commons.Escaper.ecapeVariable('$versionsId') +
+        commons.escapeVariable('$versionsId') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instancesId');
+        commons.escapeVariable('$instancesId');
 
     final _response = await _requester.request(
       _url,
@@ -2008,13 +2001,13 @@ class AppsServicesVersionsInstancesResource {
     };
 
     final _url = 'v1/apps/' +
-        commons.Escaper.ecapeVariable('$appsId') +
+        commons.escapeVariable('$appsId') +
         '/services/' +
-        commons.Escaper.ecapeVariable('$servicesId') +
+        commons.escapeVariable('$servicesId') +
         '/versions/' +
-        commons.Escaper.ecapeVariable('$versionsId') +
+        commons.escapeVariable('$versionsId') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instancesId');
+        commons.escapeVariable('$instancesId');
 
     final _response = await _requester.request(
       _url,
@@ -2066,11 +2059,11 @@ class AppsServicesVersionsInstancesResource {
     };
 
     final _url = 'v1/apps/' +
-        commons.Escaper.ecapeVariable('$appsId') +
+        commons.escapeVariable('$appsId') +
         '/services/' +
-        commons.Escaper.ecapeVariable('$servicesId') +
+        commons.escapeVariable('$servicesId') +
         '/versions/' +
-        commons.Escaper.ecapeVariable('$versionsId') +
+        commons.escapeVariable('$versionsId') +
         '/instances';
 
     final _response = await _requester.request(

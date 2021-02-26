@@ -124,9 +124,8 @@ class ProjectsLocationsRegistriesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        ':bindDeviceToGateway';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + ':bindDeviceToGateway';
 
     final _response = await _requester.request(
       _url,
@@ -169,9 +168,7 @@ class ProjectsLocationsRegistriesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/registries';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/registries';
 
     final _response = await _requester.request(
       _url,
@@ -210,7 +207,7 @@ class ProjectsLocationsRegistriesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -247,7 +244,7 @@ class ProjectsLocationsRegistriesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -293,9 +290,7 @@ class ProjectsLocationsRegistriesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':getIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -346,9 +341,7 @@ class ProjectsLocationsRegistriesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/registries';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/registries';
 
     final _response = await _requester.request(
       _url,
@@ -398,7 +391,7 @@ class ProjectsLocationsRegistriesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -444,9 +437,7 @@ class ProjectsLocationsRegistriesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':setIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -492,9 +483,8 @@ class ProjectsLocationsRegistriesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':testIamPermissions';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
     final _response = await _requester.request(
       _url,
@@ -537,9 +527,8 @@ class ProjectsLocationsRegistriesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        ':unbindDeviceFromGateway';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + ':unbindDeviceFromGateway';
 
     final _response = await _requester.request(
       _url,
@@ -595,8 +584,7 @@ class ProjectsLocationsRegistriesDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/devices';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/devices';
 
     final _response = await _requester.request(
       _url,
@@ -636,7 +624,7 @@ class ProjectsLocationsRegistriesDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -682,7 +670,7 @@ class ProjectsLocationsRegistriesDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -784,8 +772,7 @@ class ProjectsLocationsRegistriesDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/devices';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/devices';
 
     final _response = await _requester.request(
       _url,
@@ -832,9 +819,8 @@ class ProjectsLocationsRegistriesDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':modifyCloudToDeviceConfig';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$name') + ':modifyCloudToDeviceConfig';
 
     final _response = await _requester.request(
       _url,
@@ -887,7 +873,7 @@ class ProjectsLocationsRegistriesDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -944,9 +930,7 @@ class ProjectsLocationsRegistriesDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':sendCommandToDevice';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':sendCommandToDevice';
 
     final _response = await _requester.request(
       _url,
@@ -1003,9 +987,7 @@ class ProjectsLocationsRegistriesDevicesConfigVersionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        '/configVersions';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/configVersions';
 
     final _response = await _requester.request(
       _url,
@@ -1059,8 +1041,7 @@ class ProjectsLocationsRegistriesDevicesStatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/states';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/states';
 
     final _response = await _requester.request(
       _url,
@@ -1116,9 +1097,7 @@ class ProjectsLocationsRegistriesGroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':getIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -1163,9 +1142,7 @@ class ProjectsLocationsRegistriesGroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':setIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -1211,9 +1188,8 @@ class ProjectsLocationsRegistriesGroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':testIamPermissions';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
     final _response = await _requester.request(
       _url,
@@ -1324,8 +1300,7 @@ class ProjectsLocationsRegistriesGroupsDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/devices';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/devices';
 
     final _response = await _requester.request(
       _url,

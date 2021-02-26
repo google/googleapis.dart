@@ -92,7 +92,7 @@ class AutnumResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/autnum/' + commons.Escaper.ecapeVariable('$autnumId');
+    final _url = 'v1/autnum/' + commons.escapeVariable('$autnumId');
 
     final _response = await _requester.request(
       _url,
@@ -134,8 +134,7 @@ class DomainResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/domain/' + commons.Escaper.ecapeVariableReserved('$domainName');
+    final _url = 'v1/domain/' + core.Uri.encodeFull('$domainName');
 
     final _response = await _requester.request(
       _url,
@@ -178,7 +177,7 @@ class EntityResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/entity/' + commons.Escaper.ecapeVariable('$entityId');
+    final _url = 'v1/entity/' + commons.escapeVariable('$entityId');
 
     final _response = await _requester.request(
       _url,
@@ -226,9 +225,9 @@ class IpResource {
     };
 
     final _url = 'v1/ip/' +
-        commons.Escaper.ecapeVariable('$ipId') +
+        commons.escapeVariable('$ipId') +
         '/' +
-        commons.Escaper.ecapeVariable('$ipId1');
+        commons.escapeVariable('$ipId1');
 
     final _response = await _requester.request(
       _url,
@@ -272,8 +271,7 @@ class NameserverResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/nameserver/' + commons.Escaper.ecapeVariable('$nameserverId');
+    final _url = 'v1/nameserver/' + commons.escapeVariable('$nameserverId');
 
     final _response = await _requester.request(
       _url,

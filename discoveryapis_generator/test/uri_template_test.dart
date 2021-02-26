@@ -33,7 +33,7 @@ void main() {
 
       expect(() => template.stringExpression({}), throwsA(isArgumentError));
       expect(template.stringExpression({'My_var123': id('abc')}),
-          equals("commons.Escaper.ecapeVariable('\$abc')"));
+          equals("commons.escapeVariable('\$abc')"));
     });
 
     test('path-variable-expr', () {
@@ -46,7 +46,7 @@ void main() {
       expect(
           template.stringExpression({'myvar': id('abc')}),
           equals("'/' + (abc).map((item) => "
-              'commons.Escaper.ecapePathComponent(item))'
+              'commons.escapeVariable(item))'
               ".join('/')"));
     });
 
@@ -57,8 +57,10 @@ void main() {
       expect(template.parts.first.templateVar, equals('myvar'));
 
       expect(() => template.stringExpression({}), throwsA(isArgumentError));
-      expect(template.stringExpression({'myvar': id('abc')}),
-          equals("commons.Escaper.ecapeVariableReserved('\$abc')"));
+      expect(
+        template.stringExpression({'myvar': id('abc')}),
+        equals("core.Uri.encodeFull('\$abc')"),
+      );
     });
 
     test('reserved-expansion-expr', () {

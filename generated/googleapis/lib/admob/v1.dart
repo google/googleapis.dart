@@ -96,7 +96,7 @@ class AccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -193,9 +193,8 @@ class AccountsMediationReportResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/mediationReport:generate';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + '/mediationReport:generate';
 
     final _response = await _requester.request(
       _url,
@@ -248,9 +247,8 @@ class AccountsNetworkReportResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/networkReport:generate';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + '/networkReport:generate';
 
     final _response = await _requester.request(
       _url,

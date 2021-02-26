@@ -109,9 +109,9 @@ class BlogUserInfosResource {
     };
 
     final _url = 'v3/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/blogs/' +
-        commons.Escaper.ecapeVariable('$blogId');
+        commons.escapeVariable('$blogId');
 
     final _response = await _requester.request(
       _url,
@@ -165,7 +165,7 @@ class BlogsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId');
+    final _url = 'v3/blogs/' + commons.escapeVariable('$blogId');
 
     final _response = await _requester.request(
       _url,
@@ -264,8 +264,7 @@ class BlogsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v3/users/' + commons.Escaper.ecapeVariable('$userId') + '/blogs';
+    final _url = 'v3/users/' + commons.escapeVariable('$userId') + '/blogs';
 
     final _response = await _requester.request(
       _url,
@@ -312,11 +311,11 @@ class CommentsResource {
     };
 
     final _url = 'v3/blogs/' +
-        commons.Escaper.ecapeVariable('$blogId') +
+        commons.escapeVariable('$blogId') +
         '/posts/' +
-        commons.Escaper.ecapeVariable('$postId') +
+        commons.escapeVariable('$postId') +
         '/comments/' +
-        commons.Escaper.ecapeVariable('$commentId') +
+        commons.escapeVariable('$commentId') +
         '/approve';
 
     final _response = await _requester.request(
@@ -356,11 +355,11 @@ class CommentsResource {
     };
 
     final _url = 'v3/blogs/' +
-        commons.Escaper.ecapeVariable('$blogId') +
+        commons.escapeVariable('$blogId') +
         '/posts/' +
-        commons.Escaper.ecapeVariable('$postId') +
+        commons.escapeVariable('$postId') +
         '/comments/' +
-        commons.Escaper.ecapeVariable('$commentId');
+        commons.escapeVariable('$commentId');
 
     await _requester.request(
       _url,
@@ -410,11 +409,11 @@ class CommentsResource {
     };
 
     final _url = 'v3/blogs/' +
-        commons.Escaper.ecapeVariable('$blogId') +
+        commons.escapeVariable('$blogId') +
         '/posts/' +
-        commons.Escaper.ecapeVariable('$postId') +
+        commons.escapeVariable('$postId') +
         '/comments/' +
-        commons.Escaper.ecapeVariable('$commentId');
+        commons.escapeVariable('$commentId');
 
     final _response = await _requester.request(
       _url,
@@ -490,9 +489,9 @@ class CommentsResource {
     };
 
     final _url = 'v3/blogs/' +
-        commons.Escaper.ecapeVariable('$blogId') +
+        commons.escapeVariable('$blogId') +
         '/posts/' +
-        commons.Escaper.ecapeVariable('$postId') +
+        commons.escapeVariable('$postId') +
         '/comments';
 
     final _response = await _requester.request(
@@ -552,8 +551,7 @@ class CommentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/comments';
+    final _url = 'v3/blogs/' + commons.escapeVariable('$blogId') + '/comments';
 
     final _response = await _requester.request(
       _url,
@@ -595,11 +593,11 @@ class CommentsResource {
     };
 
     final _url = 'v3/blogs/' +
-        commons.Escaper.ecapeVariable('$blogId') +
+        commons.escapeVariable('$blogId') +
         '/posts/' +
-        commons.Escaper.ecapeVariable('$postId') +
+        commons.escapeVariable('$postId') +
         '/comments/' +
-        commons.Escaper.ecapeVariable('$commentId') +
+        commons.escapeVariable('$commentId') +
         '/spam';
 
     final _response = await _requester.request(
@@ -641,11 +639,11 @@ class CommentsResource {
     };
 
     final _url = 'v3/blogs/' +
-        commons.Escaper.ecapeVariable('$blogId') +
+        commons.escapeVariable('$blogId') +
         '/posts/' +
-        commons.Escaper.ecapeVariable('$postId') +
+        commons.escapeVariable('$postId') +
         '/comments/' +
-        commons.Escaper.ecapeVariable('$commentId') +
+        commons.escapeVariable('$commentId') +
         '/removecontent';
 
     final _response = await _requester.request(
@@ -690,8 +688,7 @@ class PageViewsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pageviews';
+    final _url = 'v3/blogs/' + commons.escapeVariable('$blogId') + '/pageviews';
 
     final _response = await _requester.request(
       _url,
@@ -733,9 +730,9 @@ class PagesResource {
     };
 
     final _url = 'v3/blogs/' +
-        commons.Escaper.ecapeVariable('$blogId') +
+        commons.escapeVariable('$blogId') +
         '/pages/' +
-        commons.Escaper.ecapeVariable('$pageId');
+        commons.escapeVariable('$pageId');
 
     await _requester.request(
       _url,
@@ -782,9 +779,9 @@ class PagesResource {
     };
 
     final _url = 'v3/blogs/' +
-        commons.Escaper.ecapeVariable('$blogId') +
+        commons.escapeVariable('$blogId') +
         '/pages/' +
-        commons.Escaper.ecapeVariable('$pageId');
+        commons.escapeVariable('$pageId');
 
     final _response = await _requester.request(
       _url,
@@ -826,8 +823,7 @@ class PagesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pages';
+    final _url = 'v3/blogs/' + commons.escapeVariable('$blogId') + '/pages';
 
     final _response = await _requester.request(
       _url,
@@ -887,8 +883,7 @@ class PagesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pages';
+    final _url = 'v3/blogs/' + commons.escapeVariable('$blogId') + '/pages';
 
     final _response = await _requester.request(
       _url,
@@ -938,9 +933,9 @@ class PagesResource {
     };
 
     final _url = 'v3/blogs/' +
-        commons.Escaper.ecapeVariable('$blogId') +
+        commons.escapeVariable('$blogId') +
         '/pages/' +
-        commons.Escaper.ecapeVariable('$pageId');
+        commons.escapeVariable('$pageId');
 
     final _response = await _requester.request(
       _url,
@@ -979,9 +974,9 @@ class PagesResource {
     };
 
     final _url = 'v3/blogs/' +
-        commons.Escaper.ecapeVariable('$blogId') +
+        commons.escapeVariable('$blogId') +
         '/pages/' +
-        commons.Escaper.ecapeVariable('$pageId') +
+        commons.escapeVariable('$pageId') +
         '/publish';
 
     final _response = await _requester.request(
@@ -1020,9 +1015,9 @@ class PagesResource {
     };
 
     final _url = 'v3/blogs/' +
-        commons.Escaper.ecapeVariable('$blogId') +
+        commons.escapeVariable('$blogId') +
         '/pages/' +
-        commons.Escaper.ecapeVariable('$pageId') +
+        commons.escapeVariable('$pageId') +
         '/revert';
 
     final _response = await _requester.request(
@@ -1073,9 +1068,9 @@ class PagesResource {
     };
 
     final _url = 'v3/blogs/' +
-        commons.Escaper.ecapeVariable('$blogId') +
+        commons.escapeVariable('$blogId') +
         '/pages/' +
-        commons.Escaper.ecapeVariable('$pageId');
+        commons.escapeVariable('$pageId');
 
     final _response = await _requester.request(
       _url,
@@ -1127,11 +1122,11 @@ class PostUserInfosResource {
     };
 
     final _url = 'v3/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/blogs/' +
-        commons.Escaper.ecapeVariable('$blogId') +
+        commons.escapeVariable('$blogId') +
         '/posts/' +
-        commons.Escaper.ecapeVariable('$postId');
+        commons.escapeVariable('$postId');
 
     final _response = await _requester.request(
       _url,
@@ -1215,9 +1210,9 @@ class PostUserInfosResource {
     };
 
     final _url = 'v3/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/blogs/' +
-        commons.Escaper.ecapeVariable('$blogId') +
+        commons.escapeVariable('$blogId') +
         '/posts';
 
     final _response = await _requester.request(
@@ -1261,9 +1256,9 @@ class PostsResource {
     };
 
     final _url = 'v3/blogs/' +
-        commons.Escaper.ecapeVariable('$blogId') +
+        commons.escapeVariable('$blogId') +
         '/posts/' +
-        commons.Escaper.ecapeVariable('$postId');
+        commons.escapeVariable('$postId');
 
     await _requester.request(
       _url,
@@ -1322,9 +1317,9 @@ class PostsResource {
     };
 
     final _url = 'v3/blogs/' +
-        commons.Escaper.ecapeVariable('$blogId') +
+        commons.escapeVariable('$blogId') +
         '/posts/' +
-        commons.Escaper.ecapeVariable('$postId');
+        commons.escapeVariable('$postId');
 
     final _response = await _requester.request(
       _url,
@@ -1375,9 +1370,8 @@ class PostsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/blogs/' +
-        commons.Escaper.ecapeVariable('$blogId') +
-        '/posts/bypath';
+    final _url =
+        'v3/blogs/' + commons.escapeVariable('$blogId') + '/posts/bypath';
 
     final _response = await _requester.request(
       _url,
@@ -1427,8 +1421,7 @@ class PostsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts';
+    final _url = 'v3/blogs/' + commons.escapeVariable('$blogId') + '/posts';
 
     final _response = await _requester.request(
       _url,
@@ -1512,8 +1505,7 @@ class PostsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts';
+    final _url = 'v3/blogs/' + commons.escapeVariable('$blogId') + '/posts';
 
     final _response = await _requester.request(
       _url,
@@ -1575,9 +1567,9 @@ class PostsResource {
     };
 
     final _url = 'v3/blogs/' +
-        commons.Escaper.ecapeVariable('$blogId') +
+        commons.escapeVariable('$blogId') +
         '/posts/' +
-        commons.Escaper.ecapeVariable('$postId');
+        commons.escapeVariable('$postId');
 
     final _response = await _requester.request(
       _url,
@@ -1620,9 +1612,9 @@ class PostsResource {
     };
 
     final _url = 'v3/blogs/' +
-        commons.Escaper.ecapeVariable('$blogId') +
+        commons.escapeVariable('$blogId') +
         '/posts/' +
-        commons.Escaper.ecapeVariable('$postId') +
+        commons.escapeVariable('$postId') +
         '/publish';
 
     final _response = await _requester.request(
@@ -1661,9 +1653,9 @@ class PostsResource {
     };
 
     final _url = 'v3/blogs/' +
-        commons.Escaper.ecapeVariable('$blogId') +
+        commons.escapeVariable('$blogId') +
         '/posts/' +
-        commons.Escaper.ecapeVariable('$postId') +
+        commons.escapeVariable('$postId') +
         '/revert';
 
     final _response = await _requester.request(
@@ -1714,9 +1706,8 @@ class PostsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/blogs/' +
-        commons.Escaper.ecapeVariable('$blogId') +
-        '/posts/search';
+    final _url =
+        'v3/blogs/' + commons.escapeVariable('$blogId') + '/posts/search';
 
     final _response = await _requester.request(
       _url,
@@ -1778,9 +1769,9 @@ class PostsResource {
     };
 
     final _url = 'v3/blogs/' +
-        commons.Escaper.ecapeVariable('$blogId') +
+        commons.escapeVariable('$blogId') +
         '/posts/' +
-        commons.Escaper.ecapeVariable('$postId');
+        commons.escapeVariable('$postId');
 
     final _response = await _requester.request(
       _url,
@@ -1821,7 +1812,7 @@ class UsersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/users/' + commons.Escaper.ecapeVariable('$userId');
+    final _url = 'v3/users/' + commons.escapeVariable('$userId');
 
     final _response = await _requester.request(
       _url,

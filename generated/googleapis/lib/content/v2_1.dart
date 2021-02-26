@@ -205,9 +205,9 @@ class AccountsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/claimwebsite';
 
     final _response = await _requester.request(
@@ -289,9 +289,9 @@ class AccountsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId');
+        commons.escapeVariable('$accountId');
 
     await _requester.request(
       _url,
@@ -339,9 +339,9 @@ class AccountsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId');
+        commons.escapeVariable('$accountId');
 
     final _response = await _requester.request(
       _url,
@@ -380,9 +380,8 @@ class AccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
-        '/accounts';
+    final _url =
+        'content/v2.1/' + commons.escapeVariable('$merchantId') + '/accounts';
 
     final _response = await _requester.request(
       _url,
@@ -428,9 +427,9 @@ class AccountsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/link';
 
     final _response = await _requester.request(
@@ -490,9 +489,8 @@ class AccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
-        '/accounts';
+    final _url =
+        'content/v2.1/' + commons.escapeVariable('$merchantId') + '/accounts';
 
     final _response = await _requester.request(
       _url,
@@ -542,9 +540,9 @@ class AccountsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/listlinks';
 
     final _response = await _requester.request(
@@ -592,9 +590,9 @@ class AccountsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId');
+        commons.escapeVariable('$accountId');
 
     final _response = await _requester.request(
       _url,
@@ -638,9 +636,9 @@ class AccountsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/updatelabels';
 
     final _response = await _requester.request(
@@ -688,7 +686,7 @@ class AccountsLabelsResource {
     };
 
     final _url = 'content/v2.1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/labels';
 
     final _response = await _requester.request(
@@ -727,9 +725,9 @@ class AccountsLabelsResource {
     };
 
     final _url = 'content/v2.1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/labels/' +
-        commons.Escaper.ecapeVariable('$labelId');
+        commons.escapeVariable('$labelId');
 
     await _requester.request(
       _url,
@@ -778,7 +776,7 @@ class AccountsLabelsResource {
     };
 
     final _url = 'content/v2.1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/labels';
 
     final _response = await _requester.request(
@@ -822,9 +820,9 @@ class AccountsLabelsResource {
     };
 
     final _url = 'content/v2.1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/labels/' +
-        commons.Escaper.ecapeVariable('$labelId');
+        commons.escapeVariable('$labelId');
 
     final _response = await _requester.request(
       _url,
@@ -873,7 +871,7 @@ class AccountsReturncarrierResource {
     };
 
     final _url = 'content/v2.1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/returncarrier';
 
     final _response = await _requester.request(
@@ -914,9 +912,9 @@ class AccountsReturncarrierResource {
     };
 
     final _url = 'content/v2.1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/returncarrier/' +
-        commons.Escaper.ecapeVariable('$carrierAccountId');
+        commons.escapeVariable('$carrierAccountId');
 
     await _requester.request(
       _url,
@@ -952,7 +950,7 @@ class AccountsReturncarrierResource {
     };
 
     final _url = 'content/v2.1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/returncarrier';
 
     final _response = await _requester.request(
@@ -998,9 +996,9 @@ class AccountsReturncarrierResource {
     };
 
     final _url = 'content/v2.1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/returncarrier/' +
-        commons.Escaper.ecapeVariable('$carrierAccountId');
+        commons.escapeVariable('$carrierAccountId');
 
     final _response = await _requester.request(
       _url,
@@ -1092,9 +1090,9 @@ class AccountstatusesResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/accountstatuses/' +
-        commons.Escaper.ecapeVariable('$accountId');
+        commons.escapeVariable('$accountId');
 
     final _response = await _requester.request(
       _url,
@@ -1145,7 +1143,7 @@ class AccountstatusesResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/accountstatuses';
 
     final _response = await _requester.request(
@@ -1232,9 +1230,9 @@ class AccounttaxResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/accounttax/' +
-        commons.Escaper.ecapeVariable('$accountId');
+        commons.escapeVariable('$accountId');
 
     final _response = await _requester.request(
       _url,
@@ -1280,9 +1278,8 @@ class AccounttaxResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
-        '/accounttax';
+    final _url =
+        'content/v2.1/' + commons.escapeVariable('$merchantId') + '/accounttax';
 
     final _response = await _requester.request(
       _url,
@@ -1330,9 +1327,9 @@ class AccounttaxResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/accounttax/' +
-        commons.Escaper.ecapeVariable('$accountId');
+        commons.escapeVariable('$accountId');
 
     final _response = await _requester.request(
       _url,
@@ -1381,9 +1378,9 @@ class BuyongoogleprogramsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/buyongoogleprograms/' +
-        commons.Escaper.ecapeVariable('$regionCode');
+        commons.escapeVariable('$regionCode');
 
     final _response = await _requester.request(
       _url,
@@ -1428,9 +1425,9 @@ class BuyongoogleprogramsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/buyongoogleprograms/' +
-        commons.Escaper.ecapeVariable('$regionCode') +
+        commons.escapeVariable('$regionCode') +
         '/onboard';
 
     await _requester.request(
@@ -1482,7 +1479,7 @@ class CollectionsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/collections';
 
     final _response = await _requester.request(
@@ -1523,9 +1520,9 @@ class CollectionsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/collections/' +
-        commons.Escaper.ecapeVariable('$collectionId');
+        commons.escapeVariable('$collectionId');
 
     await _requester.request(
       _url,
@@ -1564,9 +1561,9 @@ class CollectionsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/collections/' +
-        commons.Escaper.ecapeVariable('$collectionId');
+        commons.escapeVariable('$collectionId');
 
     final _response = await _requester.request(
       _url,
@@ -1618,7 +1615,7 @@ class CollectionsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/collections';
 
     final _response = await _requester.request(
@@ -1666,9 +1663,9 @@ class CollectionstatusesResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/collectionstatuses/' +
-        commons.Escaper.ecapeVariable('$collectionId');
+        commons.escapeVariable('$collectionId');
 
     final _response = await _requester.request(
       _url,
@@ -1717,7 +1714,7 @@ class CollectionstatusesResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/collectionstatuses';
 
     final _response = await _requester.request(
@@ -1766,9 +1763,9 @@ class CssesResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$cssGroupId') +
+        commons.escapeVariable('$cssGroupId') +
         '/csses/' +
-        commons.Escaper.ecapeVariable('$cssDomainId');
+        commons.escapeVariable('$cssDomainId');
 
     final _response = await _requester.request(
       _url,
@@ -1816,9 +1813,8 @@ class CssesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$cssGroupId') +
-        '/csses';
+    final _url =
+        'content/v2.1/' + commons.escapeVariable('$cssGroupId') + '/csses';
 
     final _response = await _requester.request(
       _url,
@@ -1861,9 +1857,9 @@ class CssesResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$cssGroupId') +
+        commons.escapeVariable('$cssGroupId') +
         '/csses/' +
-        commons.Escaper.ecapeVariable('$cssDomainId') +
+        commons.escapeVariable('$cssDomainId') +
         '/updatelabels';
 
     final _response = await _requester.request(
@@ -1946,9 +1942,9 @@ class DatafeedsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/datafeeds/' +
-        commons.Escaper.ecapeVariable('$datafeedId');
+        commons.escapeVariable('$datafeedId');
 
     await _requester.request(
       _url,
@@ -1990,9 +1986,9 @@ class DatafeedsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/datafeeds/' +
-        commons.Escaper.ecapeVariable('$datafeedId') +
+        commons.escapeVariable('$datafeedId') +
         '/fetchNow';
 
     final _response = await _requester.request(
@@ -2033,9 +2029,9 @@ class DatafeedsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/datafeeds/' +
-        commons.Escaper.ecapeVariable('$datafeedId');
+        commons.escapeVariable('$datafeedId');
 
     final _response = await _requester.request(
       _url,
@@ -2074,9 +2070,8 @@ class DatafeedsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
-        '/datafeeds';
+    final _url =
+        'content/v2.1/' + commons.escapeVariable('$merchantId') + '/datafeeds';
 
     final _response = await _requester.request(
       _url,
@@ -2121,9 +2116,8 @@ class DatafeedsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
-        '/datafeeds';
+    final _url =
+        'content/v2.1/' + commons.escapeVariable('$merchantId') + '/datafeeds';
 
     final _response = await _requester.request(
       _url,
@@ -2169,9 +2163,9 @@ class DatafeedsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/datafeeds/' +
-        commons.Escaper.ecapeVariable('$datafeedId');
+        commons.escapeVariable('$datafeedId');
 
     final _response = await _requester.request(
       _url,
@@ -2268,9 +2262,9 @@ class DatafeedstatusesResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/datafeedstatuses/' +
-        commons.Escaper.ecapeVariable('$datafeedId');
+        commons.escapeVariable('$datafeedId');
 
     final _response = await _requester.request(
       _url,
@@ -2316,7 +2310,7 @@ class DatafeedstatusesResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/datafeedstatuses';
 
     final _response = await _requester.request(
@@ -2403,9 +2397,9 @@ class LiasettingsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/liasettings/' +
-        commons.Escaper.ecapeVariable('$accountId');
+        commons.escapeVariable('$accountId');
 
     final _response = await _requester.request(
       _url,
@@ -2448,9 +2442,9 @@ class LiasettingsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/liasettings/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/accessiblegmbaccounts';
 
     final _response = await _requester.request(
@@ -2498,7 +2492,7 @@ class LiasettingsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/liasettings';
 
     final _response = await _requester.request(
@@ -2577,9 +2571,9 @@ class LiasettingsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/liasettings/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/requestgmbaccess';
 
     final _response = await _requester.request(
@@ -2626,11 +2620,11 @@ class LiasettingsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/liasettings/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/requestinventoryverification/' +
-        commons.Escaper.ecapeVariable('$country');
+        commons.escapeVariable('$country');
 
     final _response = await _requester.request(
       _url,
@@ -2689,9 +2683,9 @@ class LiasettingsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/liasettings/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/setinventoryverificationcontact';
 
     final _response = await _requester.request(
@@ -2748,9 +2742,9 @@ class LiasettingsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/liasettings/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/setposdataprovider';
 
     final _response = await _requester.request(
@@ -2799,9 +2793,9 @@ class LiasettingsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/liasettings/' +
-        commons.Escaper.ecapeVariable('$accountId');
+        commons.escapeVariable('$accountId');
 
     final _response = await _requester.request(
       _url,
@@ -2891,9 +2885,9 @@ class LocalinventoryResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/products/' +
-        commons.Escaper.ecapeVariable('$productId') +
+        commons.escapeVariable('$productId') +
         '/localinventory';
 
     final _response = await _requester.request(
@@ -2946,9 +2940,9 @@ class OrderinvoicesResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/orderinvoices/' +
-        commons.Escaper.ecapeVariable('$orderId') +
+        commons.escapeVariable('$orderId') +
         '/createChargeInvoice';
 
     final _response = await _requester.request(
@@ -2999,9 +2993,9 @@ class OrderinvoicesResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/orderinvoices/' +
-        commons.Escaper.ecapeVariable('$orderId') +
+        commons.escapeVariable('$orderId') +
         '/createRefundInvoice';
 
     final _response = await _requester.request(
@@ -3067,7 +3061,7 @@ class OrderreportsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/orderreports/disbursements';
 
     final _response = await _requester.request(
@@ -3131,9 +3125,9 @@ class OrderreportsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/orderreports/disbursements/' +
-        commons.Escaper.ecapeVariable('$disbursementId') +
+        commons.escapeVariable('$disbursementId') +
         '/transactions';
 
     final _response = await _requester.request(
@@ -3184,9 +3178,9 @@ class OrderreturnsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/orderreturns/' +
-        commons.Escaper.ecapeVariable('$returnId') +
+        commons.escapeVariable('$returnId') +
         '/acknowledge';
 
     final _response = await _requester.request(
@@ -3229,7 +3223,7 @@ class OrderreturnsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/orderreturns/createOrderReturn';
 
     final _response = await _requester.request(
@@ -3271,9 +3265,9 @@ class OrderreturnsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/orderreturns/' +
-        commons.Escaper.ecapeVariable('$returnId');
+        commons.escapeVariable('$returnId');
 
     final _response = await _requester.request(
       _url,
@@ -3386,7 +3380,7 @@ class OrderreturnsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/orderreturns';
 
     final _response = await _requester.request(
@@ -3431,9 +3425,9 @@ class OrderreturnsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/orderreturns/' +
-        commons.Escaper.ecapeVariable('$returnId') +
+        commons.escapeVariable('$returnId') +
         '/process';
 
     final _response = await _requester.request(
@@ -3485,9 +3479,9 @@ class OrdersResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/orders/' +
-        commons.Escaper.ecapeVariable('$orderId') +
+        commons.escapeVariable('$orderId') +
         '/acknowledge';
 
     final _response = await _requester.request(
@@ -3531,9 +3525,9 @@ class OrdersResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/testorders/' +
-        commons.Escaper.ecapeVariable('$orderId') +
+        commons.escapeVariable('$orderId') +
         '/advance';
 
     final _response = await _requester.request(
@@ -3578,9 +3572,9 @@ class OrdersResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/orders/' +
-        commons.Escaper.ecapeVariable('$orderId') +
+        commons.escapeVariable('$orderId') +
         '/cancel';
 
     final _response = await _requester.request(
@@ -3626,9 +3620,9 @@ class OrdersResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/orders/' +
-        commons.Escaper.ecapeVariable('$orderId') +
+        commons.escapeVariable('$orderId') +
         '/cancelLineItem';
 
     final _response = await _requester.request(
@@ -3677,9 +3671,9 @@ class OrdersResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/testorders/' +
-        commons.Escaper.ecapeVariable('$orderId') +
+        commons.escapeVariable('$orderId') +
         '/cancelByCustomer';
 
     final _response = await _requester.request(
@@ -3723,9 +3717,8 @@ class OrdersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
-        '/testorders';
+    final _url =
+        'content/v2.1/' + commons.escapeVariable('$merchantId') + '/testorders';
 
     final _response = await _requester.request(
       _url,
@@ -3772,9 +3765,9 @@ class OrdersResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/orders/' +
-        commons.Escaper.ecapeVariable('$orderId') +
+        commons.escapeVariable('$orderId') +
         '/testreturn';
 
     final _response = await _requester.request(
@@ -3816,9 +3809,9 @@ class OrdersResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/orders/' +
-        commons.Escaper.ecapeVariable('$orderId');
+        commons.escapeVariable('$orderId');
 
     final _response = await _requester.request(
       _url,
@@ -3857,9 +3850,9 @@ class OrdersResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/ordersbymerchantid/' +
-        commons.Escaper.ecapeVariable('$merchantOrderId');
+        commons.escapeVariable('$merchantOrderId');
 
     final _response = await _requester.request(
       _url,
@@ -3913,9 +3906,9 @@ class OrdersResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/testordertemplates/' +
-        commons.Escaper.ecapeVariable('$templateName');
+        commons.escapeVariable('$templateName');
 
     final _response = await _requester.request(
       _url,
@@ -3969,9 +3962,9 @@ class OrdersResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/orders/' +
-        commons.Escaper.ecapeVariable('$orderId') +
+        commons.escapeVariable('$orderId') +
         '/inStoreRefundLineItem';
 
     final _response = await _requester.request(
@@ -4050,9 +4043,8 @@ class OrdersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
-        '/orders';
+    final _url =
+        'content/v2.1/' + commons.escapeVariable('$merchantId') + '/orders';
 
     final _response = await _requester.request(
       _url,
@@ -4096,9 +4088,9 @@ class OrdersResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/orders/' +
-        commons.Escaper.ecapeVariable('$orderId') +
+        commons.escapeVariable('$orderId') +
         '/refunditem';
 
     final _response = await _requester.request(
@@ -4144,9 +4136,9 @@ class OrdersResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/orders/' +
-        commons.Escaper.ecapeVariable('$orderId') +
+        commons.escapeVariable('$orderId') +
         '/refundorder';
 
     final _response = await _requester.request(
@@ -4192,9 +4184,9 @@ class OrdersResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/orders/' +
-        commons.Escaper.ecapeVariable('$orderId') +
+        commons.escapeVariable('$orderId') +
         '/rejectReturnLineItem';
 
     final _response = await _requester.request(
@@ -4247,9 +4239,9 @@ class OrdersResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/orders/' +
-        commons.Escaper.ecapeVariable('$orderId') +
+        commons.escapeVariable('$orderId') +
         '/returnRefundLineItem';
 
     final _response = await _requester.request(
@@ -4300,9 +4292,9 @@ class OrdersResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/orders/' +
-        commons.Escaper.ecapeVariable('$orderId') +
+        commons.escapeVariable('$orderId') +
         '/setLineItemMetadata';
 
     final _response = await _requester.request(
@@ -4348,9 +4340,9 @@ class OrdersResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/orders/' +
-        commons.Escaper.ecapeVariable('$orderId') +
+        commons.escapeVariable('$orderId') +
         '/shipLineItems';
 
     final _response = await _requester.request(
@@ -4397,9 +4389,9 @@ class OrdersResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/orders/' +
-        commons.Escaper.ecapeVariable('$orderId') +
+        commons.escapeVariable('$orderId') +
         '/updateLineItemShippingDetails';
 
     final _response = await _requester.request(
@@ -4445,9 +4437,9 @@ class OrdersResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/orders/' +
-        commons.Escaper.ecapeVariable('$orderId') +
+        commons.escapeVariable('$orderId') +
         '/updateMerchantOrderId';
 
     final _response = await _requester.request(
@@ -4493,9 +4485,9 @@ class OrdersResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/orders/' +
-        commons.Escaper.ecapeVariable('$orderId') +
+        commons.escapeVariable('$orderId') +
         '/updateShipment';
 
     final _response = await _requester.request(
@@ -4545,7 +4537,7 @@ class OrdertrackingsignalsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/ordertrackingsignals';
 
     final _response = await _requester.request(
@@ -4630,11 +4622,11 @@ class PosResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/pos/' +
-        commons.Escaper.ecapeVariable('$targetMerchantId') +
+        commons.escapeVariable('$targetMerchantId') +
         '/store/' +
-        commons.Escaper.ecapeVariable('$storeCode');
+        commons.escapeVariable('$storeCode');
 
     await _requester.request(
       _url,
@@ -4675,11 +4667,11 @@ class PosResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/pos/' +
-        commons.Escaper.ecapeVariable('$targetMerchantId') +
+        commons.escapeVariable('$targetMerchantId') +
         '/store/' +
-        commons.Escaper.ecapeVariable('$storeCode');
+        commons.escapeVariable('$storeCode');
 
     final _response = await _requester.request(
       _url,
@@ -4721,9 +4713,9 @@ class PosResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/pos/' +
-        commons.Escaper.ecapeVariable('$targetMerchantId') +
+        commons.escapeVariable('$targetMerchantId') +
         '/store';
 
     final _response = await _requester.request(
@@ -4767,9 +4759,9 @@ class PosResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/pos/' +
-        commons.Escaper.ecapeVariable('$targetMerchantId') +
+        commons.escapeVariable('$targetMerchantId') +
         '/inventory';
 
     final _response = await _requester.request(
@@ -4810,9 +4802,9 @@ class PosResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/pos/' +
-        commons.Escaper.ecapeVariable('$targetMerchantId') +
+        commons.escapeVariable('$targetMerchantId') +
         '/store';
 
     final _response = await _requester.request(
@@ -4856,9 +4848,9 @@ class PosResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/pos/' +
-        commons.Escaper.ecapeVariable('$targetMerchantId') +
+        commons.escapeVariable('$targetMerchantId') +
         '/sale';
 
     final _response = await _requester.request(
@@ -4945,9 +4937,9 @@ class ProductsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/products/' +
-        commons.Escaper.ecapeVariable('$productId');
+        commons.escapeVariable('$productId');
 
     await _requester.request(
       _url,
@@ -4986,9 +4978,9 @@ class ProductsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/products/' +
-        commons.Escaper.ecapeVariable('$productId');
+        commons.escapeVariable('$productId');
 
     final _response = await _requester.request(
       _url,
@@ -5034,9 +5026,8 @@ class ProductsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
-        '/products';
+    final _url =
+        'content/v2.1/' + commons.escapeVariable('$merchantId') + '/products';
 
     final _response = await _requester.request(
       _url,
@@ -5084,9 +5075,8 @@ class ProductsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
-        '/products';
+    final _url =
+        'content/v2.1/' + commons.escapeVariable('$merchantId') + '/products';
 
     final _response = await _requester.request(
       _url,
@@ -5177,9 +5167,9 @@ class ProductstatusesResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/productstatuses/' +
-        commons.Escaper.ecapeVariable('$productId');
+        commons.escapeVariable('$productId');
 
     final _response = await _requester.request(
       _url,
@@ -5230,7 +5220,7 @@ class ProductstatusesResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/productstatuses';
 
     final _response = await _requester.request(
@@ -5311,9 +5301,9 @@ class ProductstatusesRepricingreportsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/productstatuses/' +
-        commons.Escaper.ecapeVariable('$productId') +
+        commons.escapeVariable('$productId') +
         '/repricingreports';
 
     final _response = await _requester.request(
@@ -5358,7 +5348,7 @@ class PubsubnotificationsettingsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/pubsubnotificationsettings';
 
     final _response = await _requester.request(
@@ -5401,7 +5391,7 @@ class PubsubnotificationsettingsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/pubsubnotificationsettings';
 
     final _response = await _requester.request(
@@ -5496,9 +5486,9 @@ class RegionalinventoryResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/products/' +
-        commons.Escaper.ecapeVariable('$productId') +
+        commons.escapeVariable('$productId') +
         '/regionalinventory';
 
     final _response = await _requester.request(
@@ -5550,9 +5540,8 @@ class RegionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
-        '/regions';
+    final _url =
+        'content/v2.1/' + commons.escapeVariable('$merchantId') + '/regions';
 
     final _response = await _requester.request(
       _url,
@@ -5590,9 +5579,9 @@ class RegionsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$regionId');
+        commons.escapeVariable('$regionId');
 
     await _requester.request(
       _url,
@@ -5631,9 +5620,9 @@ class RegionsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$regionId');
+        commons.escapeVariable('$regionId');
 
     final _response = await _requester.request(
       _url,
@@ -5682,9 +5671,8 @@ class RegionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
-        '/regions';
+    final _url =
+        'content/v2.1/' + commons.escapeVariable('$merchantId') + '/regions';
 
     final _response = await _requester.request(
       _url,
@@ -5732,9 +5720,9 @@ class RegionsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/regions/' +
-        commons.Escaper.ecapeVariable('$regionId');
+        commons.escapeVariable('$regionId');
 
     final _response = await _requester.request(
       _url,
@@ -5782,7 +5770,7 @@ class ReportsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/reports/search';
 
     final _response = await _requester.request(
@@ -5838,7 +5826,7 @@ class RepricingrulesResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/repricingrules';
 
     final _response = await _requester.request(
@@ -5878,9 +5866,9 @@ class RepricingrulesResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/repricingrules/' +
-        commons.Escaper.ecapeVariable('$ruleId');
+        commons.escapeVariable('$ruleId');
 
     await _requester.request(
       _url,
@@ -5919,9 +5907,9 @@ class RepricingrulesResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/repricingrules/' +
-        commons.Escaper.ecapeVariable('$ruleId');
+        commons.escapeVariable('$ruleId');
 
     final _response = await _requester.request(
       _url,
@@ -5983,7 +5971,7 @@ class RepricingrulesResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/repricingrules';
 
     final _response = await _requester.request(
@@ -6033,9 +6021,9 @@ class RepricingrulesResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/repricingrules/' +
-        commons.Escaper.ecapeVariable('$ruleId');
+        commons.escapeVariable('$ruleId');
 
     final _response = await _requester.request(
       _url,
@@ -6108,9 +6096,9 @@ class RepricingrulesRepricingreportsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/repricingrules/' +
-        commons.Escaper.ecapeVariable('$ruleId') +
+        commons.escapeVariable('$ruleId') +
         '/repricingreports';
 
     final _response = await _requester.request(
@@ -6192,9 +6180,9 @@ class ReturnaddressResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/returnaddress/' +
-        commons.Escaper.ecapeVariable('$returnAddressId');
+        commons.escapeVariable('$returnAddressId');
 
     await _requester.request(
       _url,
@@ -6232,9 +6220,9 @@ class ReturnaddressResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/returnaddress/' +
-        commons.Escaper.ecapeVariable('$returnAddressId');
+        commons.escapeVariable('$returnAddressId');
 
     final _response = await _requester.request(
       _url,
@@ -6274,7 +6262,7 @@ class ReturnaddressResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/returnaddress';
 
     final _response = await _requester.request(
@@ -6326,7 +6314,7 @@ class ReturnaddressResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/returnaddress';
 
     final _response = await _requester.request(
@@ -6408,9 +6396,9 @@ class ReturnpolicyResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/returnpolicy/' +
-        commons.Escaper.ecapeVariable('$returnPolicyId');
+        commons.escapeVariable('$returnPolicyId');
 
     await _requester.request(
       _url,
@@ -6448,9 +6436,9 @@ class ReturnpolicyResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/returnpolicy/' +
-        commons.Escaper.ecapeVariable('$returnPolicyId');
+        commons.escapeVariable('$returnPolicyId');
 
     final _response = await _requester.request(
       _url,
@@ -6490,7 +6478,7 @@ class ReturnpolicyResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/returnpolicy';
 
     final _response = await _requester.request(
@@ -6528,7 +6516,7 @@ class ReturnpolicyResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/returnpolicy';
 
     final _response = await _requester.request(
@@ -6576,7 +6564,7 @@ class ReturnpolicyonlineResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/returnpolicyonline';
 
     final _response = await _requester.request(
@@ -6616,9 +6604,9 @@ class ReturnpolicyonlineResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/returnpolicyonline/' +
-        commons.Escaper.ecapeVariable('$returnPolicyId');
+        commons.escapeVariable('$returnPolicyId');
 
     await _requester.request(
       _url,
@@ -6657,9 +6645,9 @@ class ReturnpolicyonlineResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/returnpolicyonline/' +
-        commons.Escaper.ecapeVariable('$returnPolicyId');
+        commons.escapeVariable('$returnPolicyId');
 
     final _response = await _requester.request(
       _url,
@@ -6696,7 +6684,7 @@ class ReturnpolicyonlineResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/returnpolicyonline';
 
     final _response = await _requester.request(
@@ -6741,9 +6729,9 @@ class ReturnpolicyonlineResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/returnpolicyonline/' +
-        commons.Escaper.ecapeVariable('$returnPolicyId');
+        commons.escapeVariable('$returnPolicyId');
 
     final _response = await _requester.request(
       _url,
@@ -6789,9 +6777,9 @@ class SettlementreportsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/settlementreports/' +
-        commons.Escaper.ecapeVariable('$settlementId');
+        commons.escapeVariable('$settlementId');
 
     final _response = await _requester.request(
       _url,
@@ -6847,7 +6835,7 @@ class SettlementreportsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/settlementreports';
 
     final _response = await _requester.request(
@@ -6909,9 +6897,9 @@ class SettlementtransactionsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/settlementreports/' +
-        commons.Escaper.ecapeVariable('$settlementId') +
+        commons.escapeVariable('$settlementId') +
         '/transactions';
 
     final _response = await _requester.request(
@@ -6998,9 +6986,9 @@ class ShippingsettingsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/shippingsettings/' +
-        commons.Escaper.ecapeVariable('$accountId');
+        commons.escapeVariable('$accountId');
 
     final _response = await _requester.request(
       _url,
@@ -7038,7 +7026,7 @@ class ShippingsettingsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/supportedCarriers';
 
     final _response = await _requester.request(
@@ -7077,7 +7065,7 @@ class ShippingsettingsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/supportedHolidays';
 
     final _response = await _requester.request(
@@ -7116,7 +7104,7 @@ class ShippingsettingsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/supportedPickupServices';
 
     final _response = await _requester.request(
@@ -7164,7 +7152,7 @@ class ShippingsettingsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/shippingsettings';
 
     final _response = await _requester.request(
@@ -7213,9 +7201,9 @@ class ShippingsettingsResource {
     };
 
     final _url = 'content/v2.1/' +
-        commons.Escaper.ecapeVariable('$merchantId') +
+        commons.escapeVariable('$merchantId') +
         '/shippingsettings/' +
-        commons.Escaper.ecapeVariable('$accountId');
+        commons.escapeVariable('$accountId');
 
     final _response = await _requester.request(
       _url,

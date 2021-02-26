@@ -257,9 +257,9 @@ class ToyApi {
     };
 
     final _url = 'hello/' +
-        commons.Escaper.ecapeVariable('$name') +
+        commons.escapeVariable('$name') +
         '/age/' +
-        commons.Escaper.ecapeVariable('$age');
+        commons.escapeVariable('$age');
 
     final _response = await _requester.request(
       _url,
@@ -296,7 +296,7 @@ class ToyApi {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'helloPost/' + commons.Escaper.ecapeVariable('$name');
+    final _url = 'helloPost/' + commons.escapeVariable('$name');
 
     final _response = await _requester.request(
       _url,
@@ -338,7 +338,7 @@ class ToyApi {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'helloQuery/' + commons.Escaper.ecapeVariable('$name');
+    final _url = 'helloQuery/' + commons.escapeVariable('$name');
 
     final _response = await _requester.request(
       _url,
@@ -716,8 +716,7 @@ class ComputeResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/media/' + commons.Escaper.ecapeVariableReserved('$resourceName');
+    final _url = 'v1/media/' + core.Uri.encodeFull('$resourceName');
 
     final _response = await _requester.request(
       _url,
@@ -767,8 +766,7 @@ class ComputeResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'files/' + commons.Escaper.ecapeVariable('$fileId') + '/export';
+    final _url = 'files/' + commons.escapeVariable('$fileId') + '/export';
 
     final _response = await _requester.request(
       _url,
@@ -810,9 +808,9 @@ class ComputeResource {
     };
 
     final _url = 'toyresource/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/compute/' +
-        commons.Escaper.ecapeVariable('$compute');
+        commons.escapeVariable('$compute');
 
     final _response = await _requester.request(
       _url,
@@ -857,9 +855,9 @@ class StorageResource {
     };
 
     final _url = 'toyresource/' +
-        commons.Escaper.ecapeVariable('$resource') +
+        commons.escapeVariable('$resource') +
         '/storage/' +
-        commons.Escaper.ecapeVariable('$storage');
+        commons.escapeVariable('$storage');
 
     final _response = await _requester.request(
       _url,

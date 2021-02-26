@@ -139,9 +139,7 @@ class ProjectsLocationsInstancesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/instances';
+    final _url = 'v1beta/' + core.Uri.encodeFull('$parent') + '/instances';
 
     final _response = await _requester.request(
       _url,
@@ -186,7 +184,7 @@ class ProjectsLocationsInstancesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -233,8 +231,7 @@ class ProjectsLocationsInstancesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1beta/' + commons.Escaper.ecapeVariableReserved('$name') + ':disable';
+    final _url = 'v1beta/' + core.Uri.encodeFull('$name') + ':disable';
 
     final _response = await _requester.request(
       _url,
@@ -279,7 +276,7 @@ class ProjectsLocationsInstancesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -337,9 +334,7 @@ class ProjectsLocationsInstancesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/instances';
+    final _url = 'v1beta/' + core.Uri.encodeFull('$parent') + '/instances';
 
     final _response = await _requester.request(
       _url,
@@ -386,9 +381,7 @@ class ProjectsLocationsInstancesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':reenable';
+    final _url = 'v1beta/' + core.Uri.encodeFull('$name') + ':reenable';
 
     final _response = await _requester.request(
       _url,

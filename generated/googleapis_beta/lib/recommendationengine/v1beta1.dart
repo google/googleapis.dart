@@ -143,9 +143,7 @@ class ProjectsLocationsCatalogsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/catalogs';
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/catalogs';
 
     final _response = await _requester.request(
       _url,
@@ -193,7 +191,7 @@ class ProjectsLocationsCatalogsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -243,9 +241,7 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/catalogItems';
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/catalogItems';
 
     final _response = await _requester.request(
       _url,
@@ -285,7 +281,7 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -324,7 +320,7 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -373,9 +369,8 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/catalogItems:import';
+    final _url =
+        'v1beta1/' + core.Uri.encodeFull('$parent') + '/catalogItems:import';
 
     final _response = await _requester.request(
       _url,
@@ -430,9 +425,7 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/catalogItems';
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/catalogItems';
 
     final _response = await _requester.request(
       _url,
@@ -482,7 +475,7 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -549,7 +542,7 @@ class ProjectsLocationsCatalogsEventStoresOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -607,9 +600,7 @@ class ProjectsLocationsCatalogsEventStoresOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        '/operations';
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name') + '/operations';
 
     final _response = await _requester.request(
       _url,
@@ -682,9 +673,7 @@ class ProjectsLocationsCatalogsEventStoresPlacementsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':predict';
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name') + ':predict';
 
     final _response = await _requester.request(
       _url,
@@ -740,7 +729,7 @@ class ProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsResource 
     };
 
     final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/predictionApiKeyRegistrations';
 
     final _response = await _requester.request(
@@ -781,7 +770,7 @@ class ProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsResource 
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -833,7 +822,7 @@ class ProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsResource 
     };
 
     final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/predictionApiKeyRegistrations';
 
     final _response = await _requester.request(
@@ -901,9 +890,8 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/userEvents:collect';
+    final _url =
+        'v1beta1/' + core.Uri.encodeFull('$parent') + '/userEvents:collect';
 
     final _response = await _requester.request(
       _url,
@@ -951,9 +939,8 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/userEvents:import';
+    final _url =
+        'v1beta1/' + core.Uri.encodeFull('$parent') + '/userEvents:import';
 
     final _response = await _requester.request(
       _url,
@@ -1035,9 +1022,7 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/userEvents';
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/userEvents';
 
     final _response = await _requester.request(
       _url,
@@ -1084,9 +1069,8 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/userEvents:purge';
+    final _url =
+        'v1beta1/' + core.Uri.encodeFull('$parent') + '/userEvents:purge';
 
     final _response = await _requester.request(
       _url,
@@ -1137,9 +1121,8 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/userEvents:rejoin';
+    final _url =
+        'v1beta1/' + core.Uri.encodeFull('$parent') + '/userEvents:rejoin';
 
     final _response = await _requester.request(
       _url,
@@ -1182,9 +1165,8 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/userEvents:write';
+    final _url =
+        'v1beta1/' + core.Uri.encodeFull('$parent') + '/userEvents:write';
 
     final _response = await _requester.request(
       _url,
@@ -1232,7 +1214,7 @@ class ProjectsLocationsCatalogsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1290,9 +1272,7 @@ class ProjectsLocationsCatalogsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        '/operations';
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name') + '/operations';
 
     final _response = await _requester.request(
       _url,

@@ -139,7 +139,7 @@ class ProjectsAggregatedUsableSubnetworksResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/aggregated/usableSubnetworks';
 
     final _response = await _requester.request(
@@ -201,9 +201,7 @@ class ProjectsLocationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        '/serverConfig';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/serverConfig';
 
     final _response = await _requester.request(
       _url,
@@ -258,9 +256,7 @@ class ProjectsLocationsClustersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':completeIpRotation';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':completeIpRotation';
 
     final _response = await _requester.request(
       _url,
@@ -310,8 +306,7 @@ class ProjectsLocationsClustersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/clusters';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/clusters';
 
     final _response = await _requester.request(
       _url,
@@ -373,7 +368,7 @@ class ProjectsLocationsClustersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -428,7 +423,7 @@ class ProjectsLocationsClustersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -469,8 +464,7 @@ class ProjectsLocationsClustersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/jwks';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/jwks';
 
     final _response = await _requester.request(
       _url,
@@ -522,8 +516,7 @@ class ProjectsLocationsClustersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/clusters';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/clusters';
 
     final _response = await _requester.request(
       _url,
@@ -566,8 +559,7 @@ class ProjectsLocationsClustersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':setAddons';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':setAddons';
 
     final _response = await _requester.request(
       _url,
@@ -610,9 +602,7 @@ class ProjectsLocationsClustersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':setLegacyAbac';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':setLegacyAbac';
 
     final _response = await _requester.request(
       _url,
@@ -659,9 +649,7 @@ class ProjectsLocationsClustersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':setLocations';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':setLocations';
 
     final _response = await _requester.request(
       _url,
@@ -704,8 +692,7 @@ class ProjectsLocationsClustersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':setLogging';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':setLogging';
 
     final _response = await _requester.request(
       _url,
@@ -748,9 +735,7 @@ class ProjectsLocationsClustersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':setMaintenancePolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':setMaintenancePolicy';
 
     final _response = await _requester.request(
       _url,
@@ -795,9 +780,7 @@ class ProjectsLocationsClustersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':setMasterAuth';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':setMasterAuth';
 
     final _response = await _requester.request(
       _url,
@@ -840,9 +823,7 @@ class ProjectsLocationsClustersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':setMonitoring';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':setMonitoring';
 
     final _response = await _requester.request(
       _url,
@@ -885,9 +866,7 @@ class ProjectsLocationsClustersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':setNetworkPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':setNetworkPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -930,9 +909,7 @@ class ProjectsLocationsClustersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':setResourceLabels';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':setResourceLabels';
 
     final _response = await _requester.request(
       _url,
@@ -975,9 +952,7 @@ class ProjectsLocationsClustersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':startIpRotation';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':startIpRotation';
 
     final _response = await _requester.request(
       _url,
@@ -1019,7 +994,7 @@ class ProjectsLocationsClustersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1061,9 +1036,7 @@ class ProjectsLocationsClustersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':updateMaster';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':updateMaster';
 
     final _response = await _requester.request(
       _url,
@@ -1113,8 +1086,7 @@ class ProjectsLocationsClustersNodePoolsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/nodePools';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/nodePools';
 
     final _response = await _requester.request(
       _url,
@@ -1176,7 +1148,7 @@ class ProjectsLocationsClustersNodePoolsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1237,7 +1209,7 @@ class ProjectsLocationsClustersNodePoolsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1293,8 +1265,7 @@ class ProjectsLocationsClustersNodePoolsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/nodePools';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/nodePools';
 
     final _response = await _requester.request(
       _url,
@@ -1339,8 +1310,7 @@ class ProjectsLocationsClustersNodePoolsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':rollback';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':rollback';
 
     final _response = await _requester.request(
       _url,
@@ -1383,9 +1353,7 @@ class ProjectsLocationsClustersNodePoolsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':setAutoscaling';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':setAutoscaling';
 
     final _response = await _requester.request(
       _url,
@@ -1428,9 +1396,7 @@ class ProjectsLocationsClustersNodePoolsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':setManagement';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':setManagement';
 
     final _response = await _requester.request(
       _url,
@@ -1476,8 +1442,7 @@ class ProjectsLocationsClustersNodePoolsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':setSize';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':setSize';
 
     final _response = await _requester.request(
       _url,
@@ -1520,7 +1485,7 @@ class ProjectsLocationsClustersNodePoolsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1572,7 +1537,7 @@ class ProjectsLocationsClustersWellKnownResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         '/.well-known/openid-configuration';
 
     final _response = await _requester.request(
@@ -1623,8 +1588,7 @@ class ProjectsLocationsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
 
     final _response = await _requester.request(
       _url,
@@ -1681,7 +1645,7 @@ class ProjectsLocationsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1731,9 +1695,7 @@ class ProjectsLocationsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/operations';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/operations';
 
     final _response = await _requester.request(
       _url,
@@ -1793,9 +1755,9 @@ class ProjectsZonesResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/serverconfig';
 
     final _response = await _requester.request(
@@ -1858,11 +1820,11 @@ class ProjectsZonesClustersResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/clusters/' +
-        commons.Escaper.ecapeVariable('$clusterId') +
+        commons.escapeVariable('$clusterId') +
         '/addons';
 
     final _response = await _requester.request(
@@ -1915,11 +1877,11 @@ class ProjectsZonesClustersResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/clusters/' +
-        commons.Escaper.ecapeVariable('$clusterId') +
+        commons.escapeVariable('$clusterId') +
         ':completeIpRotation';
 
     final _response = await _requester.request(
@@ -1977,9 +1939,9 @@ class ProjectsZonesClustersResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/clusters';
 
     final _response = await _requester.request(
@@ -2039,11 +2001,11 @@ class ProjectsZonesClustersResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/clusters/' +
-        commons.Escaper.ecapeVariable('$clusterId');
+        commons.escapeVariable('$clusterId');
 
     final _response = await _requester.request(
       _url,
@@ -2095,11 +2057,11 @@ class ProjectsZonesClustersResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/clusters/' +
-        commons.Escaper.ecapeVariable('$clusterId');
+        commons.escapeVariable('$clusterId');
 
     final _response = await _requester.request(
       _url,
@@ -2150,11 +2112,11 @@ class ProjectsZonesClustersResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/clusters/' +
-        commons.Escaper.ecapeVariable('$clusterId') +
+        commons.escapeVariable('$clusterId') +
         '/legacyAbac';
 
     final _response = await _requester.request(
@@ -2206,9 +2168,9 @@ class ProjectsZonesClustersResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/clusters';
 
     final _response = await _requester.request(
@@ -2265,11 +2227,11 @@ class ProjectsZonesClustersResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/clusters/' +
-        commons.Escaper.ecapeVariable('$clusterId') +
+        commons.escapeVariable('$clusterId') +
         '/locations';
 
     final _response = await _requester.request(
@@ -2322,11 +2284,11 @@ class ProjectsZonesClustersResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/clusters/' +
-        commons.Escaper.ecapeVariable('$clusterId') +
+        commons.escapeVariable('$clusterId') +
         '/logging';
 
     final _response = await _requester.request(
@@ -2379,11 +2341,11 @@ class ProjectsZonesClustersResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/clusters/' +
-        commons.Escaper.ecapeVariable('$clusterId') +
+        commons.escapeVariable('$clusterId') +
         '/master';
 
     final _response = await _requester.request(
@@ -2436,11 +2398,11 @@ class ProjectsZonesClustersResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/clusters/' +
-        commons.Escaper.ecapeVariable('$clusterId') +
+        commons.escapeVariable('$clusterId') +
         '/monitoring';
 
     final _response = await _requester.request(
@@ -2493,11 +2455,11 @@ class ProjectsZonesClustersResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/clusters/' +
-        commons.Escaper.ecapeVariable('$clusterId') +
+        commons.escapeVariable('$clusterId') +
         '/resourceLabels';
 
     final _response = await _requester.request(
@@ -2547,11 +2509,11 @@ class ProjectsZonesClustersResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/clusters/' +
-        commons.Escaper.ecapeVariable('$clusterId') +
+        commons.escapeVariable('$clusterId') +
         ':setMaintenancePolicy';
 
     final _response = await _requester.request(
@@ -2607,11 +2569,11 @@ class ProjectsZonesClustersResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/clusters/' +
-        commons.Escaper.ecapeVariable('$clusterId') +
+        commons.escapeVariable('$clusterId') +
         ':setMasterAuth';
 
     final _response = await _requester.request(
@@ -2664,11 +2626,11 @@ class ProjectsZonesClustersResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/clusters/' +
-        commons.Escaper.ecapeVariable('$clusterId') +
+        commons.escapeVariable('$clusterId') +
         ':setNetworkPolicy';
 
     final _response = await _requester.request(
@@ -2721,11 +2683,11 @@ class ProjectsZonesClustersResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/clusters/' +
-        commons.Escaper.ecapeVariable('$clusterId') +
+        commons.escapeVariable('$clusterId') +
         ':startIpRotation';
 
     final _response = await _requester.request(
@@ -2778,11 +2740,11 @@ class ProjectsZonesClustersResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/clusters/' +
-        commons.Escaper.ecapeVariable('$clusterId');
+        commons.escapeVariable('$clusterId');
 
     final _response = await _requester.request(
       _url,
@@ -2845,13 +2807,13 @@ class ProjectsZonesClustersNodePoolsResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/clusters/' +
-        commons.Escaper.ecapeVariable('$clusterId') +
+        commons.escapeVariable('$clusterId') +
         '/nodePools/' +
-        commons.Escaper.ecapeVariable('$nodePoolId') +
+        commons.escapeVariable('$nodePoolId') +
         '/autoscaling';
 
     final _response = await _requester.request(
@@ -2904,11 +2866,11 @@ class ProjectsZonesClustersNodePoolsResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/clusters/' +
-        commons.Escaper.ecapeVariable('$clusterId') +
+        commons.escapeVariable('$clusterId') +
         '/nodePools';
 
     final _response = await _requester.request(
@@ -2967,13 +2929,13 @@ class ProjectsZonesClustersNodePoolsResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/clusters/' +
-        commons.Escaper.ecapeVariable('$clusterId') +
+        commons.escapeVariable('$clusterId') +
         '/nodePools/' +
-        commons.Escaper.ecapeVariable('$nodePoolId');
+        commons.escapeVariable('$nodePoolId');
 
     final _response = await _requester.request(
       _url,
@@ -3030,13 +2992,13 @@ class ProjectsZonesClustersNodePoolsResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/clusters/' +
-        commons.Escaper.ecapeVariable('$clusterId') +
+        commons.escapeVariable('$clusterId') +
         '/nodePools/' +
-        commons.Escaper.ecapeVariable('$nodePoolId');
+        commons.escapeVariable('$nodePoolId');
 
     final _response = await _requester.request(
       _url,
@@ -3089,11 +3051,11 @@ class ProjectsZonesClustersNodePoolsResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/clusters/' +
-        commons.Escaper.ecapeVariable('$clusterId') +
+        commons.escapeVariable('$clusterId') +
         '/nodePools';
 
     final _response = await _requester.request(
@@ -3152,13 +3114,13 @@ class ProjectsZonesClustersNodePoolsResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/clusters/' +
-        commons.Escaper.ecapeVariable('$clusterId') +
+        commons.escapeVariable('$clusterId') +
         '/nodePools/' +
-        commons.Escaper.ecapeVariable('$nodePoolId') +
+        commons.escapeVariable('$nodePoolId') +
         ':rollback';
 
     final _response = await _requester.request(
@@ -3215,13 +3177,13 @@ class ProjectsZonesClustersNodePoolsResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/clusters/' +
-        commons.Escaper.ecapeVariable('$clusterId') +
+        commons.escapeVariable('$clusterId') +
         '/nodePools/' +
-        commons.Escaper.ecapeVariable('$nodePoolId') +
+        commons.escapeVariable('$nodePoolId') +
         '/setManagement';
 
     final _response = await _requester.request(
@@ -3281,13 +3243,13 @@ class ProjectsZonesClustersNodePoolsResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/clusters/' +
-        commons.Escaper.ecapeVariable('$clusterId') +
+        commons.escapeVariable('$clusterId') +
         '/nodePools/' +
-        commons.Escaper.ecapeVariable('$nodePoolId') +
+        commons.escapeVariable('$nodePoolId') +
         '/setSize';
 
     final _response = await _requester.request(
@@ -3344,13 +3306,13 @@ class ProjectsZonesClustersNodePoolsResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/clusters/' +
-        commons.Escaper.ecapeVariable('$clusterId') +
+        commons.escapeVariable('$clusterId') +
         '/nodePools/' +
-        commons.Escaper.ecapeVariable('$nodePoolId') +
+        commons.escapeVariable('$nodePoolId') +
         '/update';
 
     final _response = await _requester.request(
@@ -3410,11 +3372,11 @@ class ProjectsZonesOperationsResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/operations/' +
-        commons.Escaper.ecapeVariable('$operationId') +
+        commons.escapeVariable('$operationId') +
         ':cancel';
 
     final _response = await _requester.request(
@@ -3469,11 +3431,11 @@ class ProjectsZonesOperationsResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/operations/' +
-        commons.Escaper.ecapeVariable('$operationId');
+        commons.escapeVariable('$operationId');
 
     final _response = await _requester.request(
       _url,
@@ -3522,9 +3484,9 @@ class ProjectsZonesOperationsResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/zones/' +
-        commons.Escaper.ecapeVariable('$zone') +
+        commons.escapeVariable('$zone') +
         '/operations';
 
     final _response = await _requester.request(

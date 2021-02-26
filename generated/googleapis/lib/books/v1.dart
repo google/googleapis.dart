@@ -129,9 +129,9 @@ class BookshelvesResource {
     };
 
     final _url = 'books/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/bookshelves/' +
-        commons.Escaper.ecapeVariable('$shelf');
+        commons.escapeVariable('$shelf');
 
     final _response = await _requester.request(
       _url,
@@ -169,9 +169,8 @@ class BookshelvesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'books/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
-        '/bookshelves';
+    final _url =
+        'books/v1/users/' + commons.escapeVariable('$userId') + '/bookshelves';
 
     final _response = await _requester.request(
       _url,
@@ -233,9 +232,9 @@ class BookshelvesVolumesResource {
     };
 
     final _url = 'books/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/bookshelves/' +
-        commons.Escaper.ecapeVariable('$shelf') +
+        commons.escapeVariable('$shelf') +
         '/volumes';
 
     final _response = await _requester.request(
@@ -596,9 +595,9 @@ class LayersResource {
     };
 
     final _url = 'books/v1/volumes/' +
-        commons.Escaper.ecapeVariable('$volumeId') +
+        commons.escapeVariable('$volumeId') +
         '/layersummary/' +
-        commons.Escaper.ecapeVariable('$summaryId');
+        commons.escapeVariable('$summaryId');
 
     final _response = await _requester.request(
       _url,
@@ -651,7 +650,7 @@ class LayersResource {
     };
 
     final _url = 'books/v1/volumes/' +
-        commons.Escaper.ecapeVariable('$volumeId') +
+        commons.escapeVariable('$volumeId') +
         '/layersummary';
 
     final _response = await _requester.request(
@@ -735,11 +734,11 @@ class LayersAnnotationDataResource {
     };
 
     final _url = 'books/v1/volumes/' +
-        commons.Escaper.ecapeVariable('$volumeId') +
+        commons.escapeVariable('$volumeId') +
         '/layers/' +
-        commons.Escaper.ecapeVariable('$layerId') +
+        commons.escapeVariable('$layerId') +
         '/data/' +
-        commons.Escaper.ecapeVariable('$annotationDataId');
+        commons.escapeVariable('$annotationDataId');
 
     final _response = await _requester.request(
       _url,
@@ -829,9 +828,9 @@ class LayersAnnotationDataResource {
     };
 
     final _url = 'books/v1/volumes/' +
-        commons.Escaper.ecapeVariable('$volumeId') +
+        commons.escapeVariable('$volumeId') +
         '/layers/' +
-        commons.Escaper.ecapeVariable('$layerId') +
+        commons.escapeVariable('$layerId') +
         '/data';
 
     final _response = await _requester.request(
@@ -890,11 +889,11 @@ class LayersVolumeAnnotationsResource {
     };
 
     final _url = 'books/v1/volumes/' +
-        commons.Escaper.ecapeVariable('$volumeId') +
+        commons.escapeVariable('$volumeId') +
         '/layers/' +
-        commons.Escaper.ecapeVariable('$layerId') +
+        commons.escapeVariable('$layerId') +
         '/annotations/' +
-        commons.Escaper.ecapeVariable('$annotationId');
+        commons.escapeVariable('$annotationId');
 
     final _response = await _requester.request(
       _url,
@@ -992,9 +991,9 @@ class LayersVolumeAnnotationsResource {
     };
 
     final _url = 'books/v1/volumes/' +
-        commons.Escaper.ecapeVariable('$volumeId') +
+        commons.escapeVariable('$volumeId') +
         '/layers/' +
-        commons.Escaper.ecapeVariable('$layerId');
+        commons.escapeVariable('$layerId');
 
     final _response = await _requester.request(
       _url,
@@ -1321,7 +1320,7 @@ class MylibraryAnnotationsResource {
     };
 
     final _url = 'books/v1/mylibrary/annotations/' +
-        commons.Escaper.ecapeVariable('$annotationId');
+        commons.escapeVariable('$annotationId');
 
     final _response = await _requester.request(
       _url,
@@ -1538,7 +1537,7 @@ class MylibraryAnnotationsResource {
     };
 
     final _url = 'books/v1/mylibrary/annotations/' +
-        commons.Escaper.ecapeVariable('$annotationId');
+        commons.escapeVariable('$annotationId');
 
     final _response = await _requester.request(
       _url,
@@ -1602,7 +1601,7 @@ class MylibraryBookshelvesResource {
     };
 
     final _url = 'books/v1/mylibrary/bookshelves/' +
-        commons.Escaper.ecapeVariable('$shelf') +
+        commons.escapeVariable('$shelf') +
         '/addVolume';
 
     final _response = await _requester.request(
@@ -1642,7 +1641,7 @@ class MylibraryBookshelvesResource {
     };
 
     final _url = 'books/v1/mylibrary/bookshelves/' +
-        commons.Escaper.ecapeVariable('$shelf') +
+        commons.escapeVariable('$shelf') +
         '/clearVolumes';
 
     final _response = await _requester.request(
@@ -1682,8 +1681,8 @@ class MylibraryBookshelvesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'books/v1/mylibrary/bookshelves/' +
-        commons.Escaper.ecapeVariable('$shelf');
+    final _url =
+        'books/v1/mylibrary/bookshelves/' + commons.escapeVariable('$shelf');
 
     final _response = await _requester.request(
       _url,
@@ -1768,7 +1767,7 @@ class MylibraryBookshelvesResource {
     };
 
     final _url = 'books/v1/mylibrary/bookshelves/' +
-        commons.Escaper.ecapeVariable('$shelf') +
+        commons.escapeVariable('$shelf') +
         '/moveVolume';
 
     final _response = await _requester.request(
@@ -1819,7 +1818,7 @@ class MylibraryBookshelvesResource {
     };
 
     final _url = 'books/v1/mylibrary/bookshelves/' +
-        commons.Escaper.ecapeVariable('$shelf') +
+        commons.escapeVariable('$shelf') +
         '/removeVolume';
 
     final _response = await _requester.request(
@@ -1895,7 +1894,7 @@ class MylibraryBookshelvesVolumesResource {
     };
 
     final _url = 'books/v1/mylibrary/bookshelves/' +
-        commons.Escaper.ecapeVariable('$shelf') +
+        commons.escapeVariable('$shelf') +
         '/volumes';
 
     final _response = await _requester.request(
@@ -1947,7 +1946,7 @@ class MylibraryReadingpositionsResource {
     };
 
     final _url = 'books/v1/mylibrary/readingpositions/' +
-        commons.Escaper.ecapeVariable('$volumeId');
+        commons.escapeVariable('$volumeId');
 
     final _response = await _requester.request(
       _url,
@@ -2017,7 +2016,7 @@ class MylibraryReadingpositionsResource {
     };
 
     final _url = 'books/v1/mylibrary/readingpositions/' +
-        commons.Escaper.ecapeVariable('$volumeId') +
+        commons.escapeVariable('$volumeId') +
         '/setPosition';
 
     final _response = await _requester.request(
@@ -2588,8 +2587,7 @@ class VolumesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'books/v1/volumes/' + commons.Escaper.ecapeVariable('$volumeId');
+    final _url = 'books/v1/volumes/' + commons.escapeVariable('$volumeId');
 
     final _response = await _requester.request(
       _url,
@@ -2782,7 +2780,7 @@ class VolumesAssociatedResource {
     };
 
     final _url = 'books/v1/volumes/' +
-        commons.Escaper.ecapeVariable('$volumeId') +
+        commons.escapeVariable('$volumeId') +
         '/associated';
 
     final _response = await _requester.request(

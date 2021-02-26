@@ -82,7 +82,7 @@ class GroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = commons.Escaper.ecapeVariable('$groupUniqueId');
+    final _url = commons.escapeVariable('$groupUniqueId');
 
     final _response = await _requester.request(
       _url,
@@ -122,7 +122,7 @@ class GroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = commons.Escaper.ecapeVariable('$groupUniqueId');
+    final _url = commons.escapeVariable('$groupUniqueId');
 
     final _response = await _requester.request(
       _url,
@@ -161,7 +161,7 @@ class GroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = commons.Escaper.ecapeVariable('$groupUniqueId');
+    final _url = commons.escapeVariable('$groupUniqueId');
 
     final _response = await _requester.request(
       _url,

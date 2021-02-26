@@ -113,8 +113,7 @@ class ProjectsProfilesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/profiles';
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/profiles';
 
     final _response = await _requester.request(
       _url,
@@ -157,9 +156,8 @@ class ProjectsProfilesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/profiles:createOffline';
+    final _url =
+        'v2/' + core.Uri.encodeFull('$parent') + '/profiles:createOffline';
 
     final _response = await _requester.request(
       _url,
@@ -211,7 +209,7 @@ class ProjectsProfilesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,

@@ -212,7 +212,7 @@ class QueriesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'query/' + commons.Escaper.ecapeVariable('$queryId');
+    final _url = 'query/' + commons.escapeVariable('$queryId');
 
     await _requester.request(
       _url,
@@ -246,7 +246,7 @@ class QueriesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'query/' + commons.Escaper.ecapeVariable('$queryId');
+    final _url = 'query/' + commons.escapeVariable('$queryId');
 
     final _response = await _requester.request(
       _url,
@@ -327,7 +327,7 @@ class QueriesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'query/' + commons.Escaper.ecapeVariable('$queryId');
+    final _url = 'query/' + commons.escapeVariable('$queryId');
 
     await _requester.request(
       _url,
@@ -377,8 +377,7 @@ class ReportsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'queries/' + commons.Escaper.ecapeVariable('$queryId') + '/reports';
+    final _url = 'queries/' + commons.escapeVariable('$queryId') + '/reports';
 
     final _response = await _requester.request(
       _url,

@@ -115,15 +115,15 @@ class AccountsCustomAppsResource {
     core.String _url;
     if (uploadMedia == null) {
       _url = 'playcustomapp/v1/accounts/' +
-          commons.Escaper.ecapeVariable('$account') +
+          commons.escapeVariable('$account') +
           '/customApps';
     } else if (uploadOptions is commons.ResumableUploadOptions) {
       _url = '/resumable/upload/playcustomapp/v1/accounts/' +
-          commons.Escaper.ecapeVariable('$account') +
+          commons.escapeVariable('$account') +
           '/customApps';
     } else {
       _url = '/upload/playcustomapp/v1/accounts/' +
-          commons.Escaper.ecapeVariable('$account') +
+          commons.escapeVariable('$account') +
           '/customApps';
     }
 

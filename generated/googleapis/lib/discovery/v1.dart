@@ -82,9 +82,9 @@ class ApisResource {
     };
 
     final _url = 'apis/' +
-        commons.Escaper.ecapeVariable('$api') +
+        commons.escapeVariable('$api') +
         '/' +
-        commons.Escaper.ecapeVariable('$version') +
+        commons.escapeVariable('$version') +
         '/rest';
 
     final _response = await _requester.request(

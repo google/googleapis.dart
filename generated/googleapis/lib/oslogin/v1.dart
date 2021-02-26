@@ -100,9 +100,7 @@ class UsersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        '/loginProfile';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/loginProfile';
 
     final _response = await _requester.request(
       _url,
@@ -149,9 +147,7 @@ class UsersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        ':importSshPublicKey';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + ':importSshPublicKey';
 
     final _response = await _requester.request(
       _url,
@@ -197,7 +193,7 @@ class UsersProjectsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -240,7 +236,7 @@ class UsersSshPublicKeysResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -277,7 +273,7 @@ class UsersSshPublicKeysResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -326,7 +322,7 @@ class UsersSshPublicKeysResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,

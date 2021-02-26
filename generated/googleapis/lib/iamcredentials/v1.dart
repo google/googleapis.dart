@@ -104,9 +104,7 @@ class ProjectsServiceAccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':generateAccessToken';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':generateAccessToken';
 
     final _response = await _requester.request(
       _url,
@@ -150,9 +148,7 @@ class ProjectsServiceAccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':generateIdToken';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':generateIdToken';
 
     final _response = await _requester.request(
       _url,
@@ -196,8 +192,7 @@ class ProjectsServiceAccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':signBlob';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':signBlob';
 
     final _response = await _requester.request(
       _url,
@@ -241,8 +236,7 @@ class ProjectsServiceAccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':signJwt';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':signJwt';
 
     final _response = await _requester.request(
       _url,

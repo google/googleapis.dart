@@ -110,7 +110,7 @@ class AccountsResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         ':checkCloudIdentityAccountsExist';
 
     final _response = await _requester.request(
@@ -173,9 +173,7 @@ class AccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$account') +
-        ':listSubscribers';
+    final _url = 'v1/' + core.Uri.encodeFull('$account') + ':listSubscribers';
 
     final _response = await _requester.request(
       _url,
@@ -227,9 +225,8 @@ class AccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        ':listTransferableOffers';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + ':listTransferableOffers';
 
     final _response = await _requester.request(
       _url,
@@ -283,9 +280,8 @@ class AccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        ':listTransferableSkus';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + ':listTransferableSkus';
 
     final _response = await _requester.request(
       _url,
@@ -338,8 +334,7 @@ class AccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$account') + ':register';
+    final _url = 'v1/' + core.Uri.encodeFull('$account') + ':register';
 
     final _response = await _requester.request(
       _url,
@@ -395,9 +390,7 @@ class AccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$account') +
-        ':unregister';
+    final _url = 'v1/' + core.Uri.encodeFull('$account') + ':unregister';
 
     final _response = await _requester.request(
       _url,
@@ -463,9 +456,8 @@ class AccountsChannelPartnerLinksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/channelPartnerLinks';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + '/channelPartnerLinks';
 
     final _response = await _requester.request(
       _url,
@@ -524,7 +516,7 @@ class AccountsChannelPartnerLinksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -592,9 +584,8 @@ class AccountsChannelPartnerLinksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/channelPartnerLinks';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + '/channelPartnerLinks';
 
     final _response = await _requester.request(
       _url,
@@ -651,7 +642,7 @@ class AccountsChannelPartnerLinksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -709,8 +700,7 @@ class AccountsCustomersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/customers';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/customers';
 
     final _response = await _requester.request(
       _url,
@@ -753,7 +743,7 @@ class AccountsCustomersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -797,7 +787,7 @@ class AccountsCustomersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -854,8 +844,7 @@ class AccountsCustomersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/customers';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/customers';
 
     final _response = await _requester.request(
       _url,
@@ -937,9 +926,8 @@ class AccountsCustomersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$customer') +
-        ':listPurchasableOffers';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$customer') + ':listPurchasableOffers';
 
     final _response = await _requester.request(
       _url,
@@ -1026,9 +1014,8 @@ class AccountsCustomersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$customer') +
-        ':listPurchasableSkus';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$customer') + ':listPurchasableSkus';
 
     final _response = await _requester.request(
       _url,
@@ -1081,7 +1068,7 @@ class AccountsCustomersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1137,9 +1124,8 @@ class AccountsCustomersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$customer') +
-        ':provisionCloudIdentity';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$customer') + ':provisionCloudIdentity';
 
     final _response = await _requester.request(
       _url,
@@ -1203,9 +1189,8 @@ class AccountsCustomersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        ':transferEntitlements';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + ':transferEntitlements';
 
     final _response = await _requester.request(
       _url,
@@ -1270,7 +1255,7 @@ class AccountsCustomersResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
+        core.Uri.encodeFull('$parent') +
         ':transferEntitlementsToGoogle';
 
     final _response = await _requester.request(
@@ -1342,8 +1327,7 @@ class AccountsCustomersEntitlementsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':activate';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':activate';
 
     final _response = await _requester.request(
       _url,
@@ -1405,8 +1389,7 @@ class AccountsCustomersEntitlementsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
 
     final _response = await _requester.request(
       _url,
@@ -1462,8 +1445,7 @@ class AccountsCustomersEntitlementsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':changeOffer';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':changeOffer';
 
     final _response = await _requester.request(
       _url,
@@ -1522,9 +1504,7 @@ class AccountsCustomersEntitlementsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':changeParameters';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':changeParameters';
 
     final _response = await _requester.request(
       _url,
@@ -1582,9 +1562,8 @@ class AccountsCustomersEntitlementsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':changeRenewalSettings';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$name') + ':changeRenewalSettings';
 
     final _response = await _requester.request(
       _url,
@@ -1653,9 +1632,7 @@ class AccountsCustomersEntitlementsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/entitlements';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/entitlements';
 
     final _response = await _requester.request(
       _url,
@@ -1701,7 +1678,7 @@ class AccountsCustomersEntitlementsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1758,9 +1735,7 @@ class AccountsCustomersEntitlementsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/entitlements';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/entitlements';
 
     final _response = await _requester.request(
       _url,
@@ -1818,9 +1793,7 @@ class AccountsCustomersEntitlementsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':startPaidService';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':startPaidService';
 
     final _response = await _requester.request(
       _url,
@@ -1876,8 +1849,7 @@ class AccountsCustomersEntitlementsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':suspend';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':suspend';
 
     final _response = await _requester.request(
       _url,
@@ -1949,8 +1921,7 @@ class AccountsOffersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/offers';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/offers';
 
     final _response = await _requester.request(
       _url,
@@ -2005,8 +1976,7 @@ class OperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
 
     final _response = await _requester.request(
       _url,
@@ -2047,7 +2017,7 @@ class OperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2086,7 +2056,7 @@ class OperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2143,7 +2113,7 @@ class OperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2278,8 +2248,7 @@ class ProductsSkusResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/skus';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/skus';
 
     final _response = await _requester.request(
       _url,

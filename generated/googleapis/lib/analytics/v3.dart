@@ -550,9 +550,9 @@ class ManagementAccountUserLinksResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/entityUserLinks/' +
-        commons.Escaper.ecapeVariable('$linkId');
+        commons.escapeVariable('$linkId');
 
     await _requester.request(
       _url,
@@ -591,7 +591,7 @@ class ManagementAccountUserLinksResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/entityUserLinks';
 
     final _response = await _requester.request(
@@ -640,7 +640,7 @@ class ManagementAccountUserLinksResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/entityUserLinks';
 
     final _response = await _requester.request(
@@ -684,9 +684,9 @@ class ManagementAccountUserLinksResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/entityUserLinks/' +
-        commons.Escaper.ecapeVariable('$linkId');
+        commons.escapeVariable('$linkId');
 
     final _response = await _requester.request(
       _url,
@@ -835,9 +835,9 @@ class ManagementCustomDataSourcesResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/customDataSources';
 
     final _response = await _requester.request(
@@ -887,11 +887,11 @@ class ManagementCustomDimensionsResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/customDimensions/' +
-        commons.Escaper.ecapeVariable('$customDimensionId');
+        commons.escapeVariable('$customDimensionId');
 
     final _response = await _requester.request(
       _url,
@@ -934,9 +934,9 @@ class ManagementCustomDimensionsResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/customDimensions';
 
     final _response = await _requester.request(
@@ -987,9 +987,9 @@ class ManagementCustomDimensionsResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/customDimensions';
 
     final _response = await _requester.request(
@@ -1046,11 +1046,11 @@ class ManagementCustomDimensionsResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/customDimensions/' +
-        commons.Escaper.ecapeVariable('$customDimensionId');
+        commons.escapeVariable('$customDimensionId');
 
     final _response = await _requester.request(
       _url,
@@ -1105,11 +1105,11 @@ class ManagementCustomDimensionsResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/customDimensions/' +
-        commons.Escaper.ecapeVariable('$customDimensionId');
+        commons.escapeVariable('$customDimensionId');
 
     final _response = await _requester.request(
       _url,
@@ -1159,11 +1159,11 @@ class ManagementCustomMetricsResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/customMetrics/' +
-        commons.Escaper.ecapeVariable('$customMetricId');
+        commons.escapeVariable('$customMetricId');
 
     final _response = await _requester.request(
       _url,
@@ -1206,9 +1206,9 @@ class ManagementCustomMetricsResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/customMetrics';
 
     final _response = await _requester.request(
@@ -1259,9 +1259,9 @@ class ManagementCustomMetricsResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/customMetrics';
 
     final _response = await _requester.request(
@@ -1317,11 +1317,11 @@ class ManagementCustomMetricsResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/customMetrics/' +
-        commons.Escaper.ecapeVariable('$customMetricId');
+        commons.escapeVariable('$customMetricId');
 
     final _response = await _requester.request(
       _url,
@@ -1375,11 +1375,11 @@ class ManagementCustomMetricsResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/customMetrics/' +
-        commons.Escaper.ecapeVariable('$customMetricId');
+        commons.escapeVariable('$customMetricId');
 
     final _response = await _requester.request(
       _url,
@@ -1430,13 +1430,13 @@ class ManagementExperimentsResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/profiles/' +
-        commons.Escaper.ecapeVariable('$profileId') +
+        commons.escapeVariable('$profileId') +
         '/experiments/' +
-        commons.Escaper.ecapeVariable('$experimentId');
+        commons.escapeVariable('$experimentId');
 
     await _requester.request(
       _url,
@@ -1480,13 +1480,13 @@ class ManagementExperimentsResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/profiles/' +
-        commons.Escaper.ecapeVariable('$profileId') +
+        commons.escapeVariable('$profileId') +
         '/experiments/' +
-        commons.Escaper.ecapeVariable('$experimentId');
+        commons.escapeVariable('$experimentId');
 
     final _response = await _requester.request(
       _url,
@@ -1532,11 +1532,11 @@ class ManagementExperimentsResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/profiles/' +
-        commons.Escaper.ecapeVariable('$profileId') +
+        commons.escapeVariable('$profileId') +
         '/experiments';
 
     final _response = await _requester.request(
@@ -1593,11 +1593,11 @@ class ManagementExperimentsResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/profiles/' +
-        commons.Escaper.ecapeVariable('$profileId') +
+        commons.escapeVariable('$profileId') +
         '/experiments';
 
     final _response = await _requester.request(
@@ -1649,13 +1649,13 @@ class ManagementExperimentsResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/profiles/' +
-        commons.Escaper.ecapeVariable('$profileId') +
+        commons.escapeVariable('$profileId') +
         '/experiments/' +
-        commons.Escaper.ecapeVariable('$experimentId');
+        commons.escapeVariable('$experimentId');
 
     final _response = await _requester.request(
       _url,
@@ -1705,13 +1705,13 @@ class ManagementExperimentsResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/profiles/' +
-        commons.Escaper.ecapeVariable('$profileId') +
+        commons.escapeVariable('$profileId') +
         '/experiments/' +
-        commons.Escaper.ecapeVariable('$experimentId');
+        commons.escapeVariable('$experimentId');
 
     final _response = await _requester.request(
       _url,
@@ -1757,9 +1757,9 @@ class ManagementFiltersResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/filters/' +
-        commons.Escaper.ecapeVariable('$filterId');
+        commons.escapeVariable('$filterId');
 
     final _response = await _requester.request(
       _url,
@@ -1797,9 +1797,9 @@ class ManagementFiltersResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/filters/' +
-        commons.Escaper.ecapeVariable('$filterId');
+        commons.escapeVariable('$filterId');
 
     final _response = await _requester.request(
       _url,
@@ -1838,7 +1838,7 @@ class ManagementFiltersResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/filters';
 
     final _response = await _requester.request(
@@ -1885,7 +1885,7 @@ class ManagementFiltersResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/filters';
 
     final _response = await _requester.request(
@@ -1930,9 +1930,9 @@ class ManagementFiltersResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/filters/' +
-        commons.Escaper.ecapeVariable('$filterId');
+        commons.escapeVariable('$filterId');
 
     final _response = await _requester.request(
       _url,
@@ -1975,9 +1975,9 @@ class ManagementFiltersResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/filters/' +
-        commons.Escaper.ecapeVariable('$filterId');
+        commons.escapeVariable('$filterId');
 
     final _response = await _requester.request(
       _url,
@@ -2028,13 +2028,13 @@ class ManagementGoalsResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/profiles/' +
-        commons.Escaper.ecapeVariable('$profileId') +
+        commons.escapeVariable('$profileId') +
         '/goals/' +
-        commons.Escaper.ecapeVariable('$goalId');
+        commons.escapeVariable('$goalId');
 
     final _response = await _requester.request(
       _url,
@@ -2079,11 +2079,11 @@ class ManagementGoalsResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/profiles/' +
-        commons.Escaper.ecapeVariable('$profileId') +
+        commons.escapeVariable('$profileId') +
         '/goals';
 
     final _response = await _requester.request(
@@ -2141,11 +2141,11 @@ class ManagementGoalsResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/profiles/' +
-        commons.Escaper.ecapeVariable('$profileId') +
+        commons.escapeVariable('$profileId') +
         '/goals';
 
     final _response = await _requester.request(
@@ -2196,13 +2196,13 @@ class ManagementGoalsResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/profiles/' +
-        commons.Escaper.ecapeVariable('$profileId') +
+        commons.escapeVariable('$profileId') +
         '/goals/' +
-        commons.Escaper.ecapeVariable('$goalId');
+        commons.escapeVariable('$goalId');
 
     final _response = await _requester.request(
       _url,
@@ -2251,13 +2251,13 @@ class ManagementGoalsResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/profiles/' +
-        commons.Escaper.ecapeVariable('$profileId') +
+        commons.escapeVariable('$profileId') +
         '/goals/' +
-        commons.Escaper.ecapeVariable('$goalId');
+        commons.escapeVariable('$goalId');
 
     final _response = await _requester.request(
       _url,
@@ -2312,13 +2312,13 @@ class ManagementProfileFilterLinksResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/profiles/' +
-        commons.Escaper.ecapeVariable('$profileId') +
+        commons.escapeVariable('$profileId') +
         '/profileFilterLinks/' +
-        commons.Escaper.ecapeVariable('$linkId');
+        commons.escapeVariable('$linkId');
 
     await _requester.request(
       _url,
@@ -2366,13 +2366,13 @@ class ManagementProfileFilterLinksResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/profiles/' +
-        commons.Escaper.ecapeVariable('$profileId') +
+        commons.escapeVariable('$profileId') +
         '/profileFilterLinks/' +
-        commons.Escaper.ecapeVariable('$linkId');
+        commons.escapeVariable('$linkId');
 
     final _response = await _requester.request(
       _url,
@@ -2421,11 +2421,11 @@ class ManagementProfileFilterLinksResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/profiles/' +
-        commons.Escaper.ecapeVariable('$profileId') +
+        commons.escapeVariable('$profileId') +
         '/profileFilterLinks';
 
     final _response = await _requester.request(
@@ -2484,11 +2484,11 @@ class ManagementProfileFilterLinksResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/profiles/' +
-        commons.Escaper.ecapeVariable('$profileId') +
+        commons.escapeVariable('$profileId') +
         '/profileFilterLinks';
 
     final _response = await _requester.request(
@@ -2544,13 +2544,13 @@ class ManagementProfileFilterLinksResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/profiles/' +
-        commons.Escaper.ecapeVariable('$profileId') +
+        commons.escapeVariable('$profileId') +
         '/profileFilterLinks/' +
-        commons.Escaper.ecapeVariable('$linkId');
+        commons.escapeVariable('$linkId');
 
     final _response = await _requester.request(
       _url,
@@ -2604,13 +2604,13 @@ class ManagementProfileFilterLinksResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/profiles/' +
-        commons.Escaper.ecapeVariable('$profileId') +
+        commons.escapeVariable('$profileId') +
         '/profileFilterLinks/' +
-        commons.Escaper.ecapeVariable('$linkId');
+        commons.escapeVariable('$linkId');
 
     final _response = await _requester.request(
       _url,
@@ -2661,13 +2661,13 @@ class ManagementProfileUserLinksResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/profiles/' +
-        commons.Escaper.ecapeVariable('$profileId') +
+        commons.escapeVariable('$profileId') +
         '/entityUserLinks/' +
-        commons.Escaper.ecapeVariable('$linkId');
+        commons.escapeVariable('$linkId');
 
     await _requester.request(
       _url,
@@ -2712,11 +2712,11 @@ class ManagementProfileUserLinksResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/profiles/' +
-        commons.Escaper.ecapeVariable('$profileId') +
+        commons.escapeVariable('$profileId') +
         '/entityUserLinks';
 
     final _response = await _requester.request(
@@ -2775,11 +2775,11 @@ class ManagementProfileUserLinksResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/profiles/' +
-        commons.Escaper.ecapeVariable('$profileId') +
+        commons.escapeVariable('$profileId') +
         '/entityUserLinks';
 
     final _response = await _requester.request(
@@ -2829,13 +2829,13 @@ class ManagementProfileUserLinksResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/profiles/' +
-        commons.Escaper.ecapeVariable('$profileId') +
+        commons.escapeVariable('$profileId') +
         '/entityUserLinks/' +
-        commons.Escaper.ecapeVariable('$linkId');
+        commons.escapeVariable('$linkId');
 
     final _response = await _requester.request(
       _url,
@@ -2882,11 +2882,11 @@ class ManagementProfilesResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/profiles/' +
-        commons.Escaper.ecapeVariable('$profileId');
+        commons.escapeVariable('$profileId');
 
     await _requester.request(
       _url,
@@ -2930,11 +2930,11 @@ class ManagementProfilesResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/profiles/' +
-        commons.Escaper.ecapeVariable('$profileId');
+        commons.escapeVariable('$profileId');
 
     final _response = await _requester.request(
       _url,
@@ -2976,9 +2976,9 @@ class ManagementProfilesResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/profiles';
 
     final _response = await _requester.request(
@@ -3032,9 +3032,9 @@ class ManagementProfilesResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/profiles';
 
     final _response = await _requester.request(
@@ -3082,11 +3082,11 @@ class ManagementProfilesResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/profiles/' +
-        commons.Escaper.ecapeVariable('$profileId');
+        commons.escapeVariable('$profileId');
 
     final _response = await _requester.request(
       _url,
@@ -3132,11 +3132,11 @@ class ManagementProfilesResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/profiles/' +
-        commons.Escaper.ecapeVariable('$profileId');
+        commons.escapeVariable('$profileId');
 
     final _response = await _requester.request(
       _url,
@@ -3184,11 +3184,11 @@ class ManagementRemarketingAudienceResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/remarketingAudiences/' +
-        commons.Escaper.ecapeVariable('$remarketingAudienceId');
+        commons.escapeVariable('$remarketingAudienceId');
 
     await _requester.request(
       _url,
@@ -3230,11 +3230,11 @@ class ManagementRemarketingAudienceResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/remarketingAudiences/' +
-        commons.Escaper.ecapeVariable('$remarketingAudienceId');
+        commons.escapeVariable('$remarketingAudienceId');
 
     final _response = await _requester.request(
       _url,
@@ -3278,9 +3278,9 @@ class ManagementRemarketingAudienceResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/remarketingAudiences';
 
     final _response = await _requester.request(
@@ -3336,9 +3336,9 @@ class ManagementRemarketingAudienceResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/remarketingAudiences';
 
     final _response = await _requester.request(
@@ -3388,11 +3388,11 @@ class ManagementRemarketingAudienceResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/remarketingAudiences/' +
-        commons.Escaper.ecapeVariable('$remarketingAudienceId');
+        commons.escapeVariable('$remarketingAudienceId');
 
     final _response = await _requester.request(
       _url,
@@ -3440,11 +3440,11 @@ class ManagementRemarketingAudienceResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/remarketingAudiences/' +
-        commons.Escaper.ecapeVariable('$remarketingAudienceId');
+        commons.escapeVariable('$remarketingAudienceId');
 
     final _response = await _requester.request(
       _url,
@@ -3541,13 +3541,13 @@ class ManagementUnsampledReportsResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/profiles/' +
-        commons.Escaper.ecapeVariable('$profileId') +
+        commons.escapeVariable('$profileId') +
         '/unsampledReports/' +
-        commons.Escaper.ecapeVariable('$unsampledReportId');
+        commons.escapeVariable('$unsampledReportId');
 
     await _requester.request(
       _url,
@@ -3591,13 +3591,13 @@ class ManagementUnsampledReportsResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/profiles/' +
-        commons.Escaper.ecapeVariable('$profileId') +
+        commons.escapeVariable('$profileId') +
         '/unsampledReports/' +
-        commons.Escaper.ecapeVariable('$unsampledReportId');
+        commons.escapeVariable('$unsampledReportId');
 
     final _response = await _requester.request(
       _url,
@@ -3643,11 +3643,11 @@ class ManagementUnsampledReportsResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/profiles/' +
-        commons.Escaper.ecapeVariable('$profileId') +
+        commons.escapeVariable('$profileId') +
         '/unsampledReports';
 
     final _response = await _requester.request(
@@ -3705,11 +3705,11 @@ class ManagementUnsampledReportsResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/profiles/' +
-        commons.Escaper.ecapeVariable('$profileId') +
+        commons.escapeVariable('$profileId') +
         '/unsampledReports';
 
     final _response = await _requester.request(
@@ -3764,11 +3764,11 @@ class ManagementUploadsResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/customDataSources/' +
-        commons.Escaper.ecapeVariable('$customDataSourceId') +
+        commons.escapeVariable('$customDataSourceId') +
         '/deleteUploadData';
 
     await _requester.request(
@@ -3818,13 +3818,13 @@ class ManagementUploadsResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/customDataSources/' +
-        commons.Escaper.ecapeVariable('$customDataSourceId') +
+        commons.escapeVariable('$customDataSourceId') +
         '/uploads/' +
-        commons.Escaper.ecapeVariable('$uploadId');
+        commons.escapeVariable('$uploadId');
 
     final _response = await _requester.request(
       _url,
@@ -3877,11 +3877,11 @@ class ManagementUploadsResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/customDataSources/' +
-        commons.Escaper.ecapeVariable('$customDataSourceId') +
+        commons.escapeVariable('$customDataSourceId') +
         '/uploads';
 
     final _response = await _requester.request(
@@ -3936,27 +3936,27 @@ class ManagementUploadsResource {
     core.String _url;
     if (uploadMedia == null) {
       _url = 'management/accounts/' +
-          commons.Escaper.ecapeVariable('$accountId') +
+          commons.escapeVariable('$accountId') +
           '/webproperties/' +
-          commons.Escaper.ecapeVariable('$webPropertyId') +
+          commons.escapeVariable('$webPropertyId') +
           '/customDataSources/' +
-          commons.Escaper.ecapeVariable('$customDataSourceId') +
+          commons.escapeVariable('$customDataSourceId') +
           '/uploads';
     } else if (uploadOptions is commons.ResumableUploadOptions) {
       _url = '/resumable/upload/analytics/v3/management/accounts/' +
-          commons.Escaper.ecapeVariable('$accountId') +
+          commons.escapeVariable('$accountId') +
           '/webproperties/' +
-          commons.Escaper.ecapeVariable('$webPropertyId') +
+          commons.escapeVariable('$webPropertyId') +
           '/customDataSources/' +
-          commons.Escaper.ecapeVariable('$customDataSourceId') +
+          commons.escapeVariable('$customDataSourceId') +
           '/uploads';
     } else {
       _url = '/upload/analytics/v3/management/accounts/' +
-          commons.Escaper.ecapeVariable('$accountId') +
+          commons.escapeVariable('$accountId') +
           '/webproperties/' +
-          commons.Escaper.ecapeVariable('$webPropertyId') +
+          commons.escapeVariable('$webPropertyId') +
           '/customDataSources/' +
-          commons.Escaper.ecapeVariable('$customDataSourceId') +
+          commons.escapeVariable('$customDataSourceId') +
           '/uploads';
     }
 
@@ -4006,11 +4006,11 @@ class ManagementWebPropertyAdWordsLinksResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/entityAdWordsLinks/' +
-        commons.Escaper.ecapeVariable('$webPropertyAdWordsLinkId');
+        commons.escapeVariable('$webPropertyAdWordsLinkId');
 
     await _requester.request(
       _url,
@@ -4051,11 +4051,11 @@ class ManagementWebPropertyAdWordsLinksResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/entityAdWordsLinks/' +
-        commons.Escaper.ecapeVariable('$webPropertyAdWordsLinkId');
+        commons.escapeVariable('$webPropertyAdWordsLinkId');
 
     final _response = await _requester.request(
       _url,
@@ -4098,9 +4098,9 @@ class ManagementWebPropertyAdWordsLinksResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/entityAdWordsLinks';
 
     final _response = await _requester.request(
@@ -4153,9 +4153,9 @@ class ManagementWebPropertyAdWordsLinksResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/entityAdWordsLinks';
 
     final _response = await _requester.request(
@@ -4204,11 +4204,11 @@ class ManagementWebPropertyAdWordsLinksResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/entityAdWordsLinks/' +
-        commons.Escaper.ecapeVariable('$webPropertyAdWordsLinkId');
+        commons.escapeVariable('$webPropertyAdWordsLinkId');
 
     final _response = await _requester.request(
       _url,
@@ -4255,11 +4255,11 @@ class ManagementWebPropertyAdWordsLinksResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/entityAdWordsLinks/' +
-        commons.Escaper.ecapeVariable('$webPropertyAdWordsLinkId');
+        commons.escapeVariable('$webPropertyAdWordsLinkId');
 
     final _response = await _requester.request(
       _url,
@@ -4308,9 +4308,9 @@ class ManagementWebpropertiesResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId');
+        commons.escapeVariable('$webPropertyId');
 
     final _response = await _requester.request(
       _url,
@@ -4353,7 +4353,7 @@ class ManagementWebpropertiesResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties';
 
     final _response = await _requester.request(
@@ -4403,7 +4403,7 @@ class ManagementWebpropertiesResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties';
 
     final _response = await _requester.request(
@@ -4449,9 +4449,9 @@ class ManagementWebpropertiesResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId');
+        commons.escapeVariable('$webPropertyId');
 
     final _response = await _requester.request(
       _url,
@@ -4495,9 +4495,9 @@ class ManagementWebpropertiesResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId');
+        commons.escapeVariable('$webPropertyId');
 
     final _response = await _requester.request(
       _url,
@@ -4545,11 +4545,11 @@ class ManagementWebpropertyUserLinksResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/entityUserLinks/' +
-        commons.Escaper.ecapeVariable('$linkId');
+        commons.escapeVariable('$linkId');
 
     await _requester.request(
       _url,
@@ -4591,9 +4591,9 @@ class ManagementWebpropertyUserLinksResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/entityUserLinks';
 
     final _response = await _requester.request(
@@ -4647,9 +4647,9 @@ class ManagementWebpropertyUserLinksResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/entityUserLinks';
 
     final _response = await _requester.request(
@@ -4696,11 +4696,11 @@ class ManagementWebpropertyUserLinksResource {
     };
 
     final _url = 'management/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+        commons.escapeVariable('$accountId') +
         '/webproperties/' +
-        commons.Escaper.ecapeVariable('$webPropertyId') +
+        commons.escapeVariable('$webPropertyId') +
         '/entityUserLinks/' +
-        commons.Escaper.ecapeVariable('$linkId');
+        commons.escapeVariable('$linkId');
 
     final _response = await _requester.request(
       _url,
@@ -4753,7 +4753,7 @@ class MetadataColumnsResource {
     };
 
     final _url =
-        'metadata/' + commons.Escaper.ecapeVariable('$reportType') + '/columns';
+        'metadata/' + commons.escapeVariable('$reportType') + '/columns';
 
     final _response = await _requester.request(
       _url,

@@ -143,9 +143,9 @@ class DatasetsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/datasets/' +
-        commons.Escaper.ecapeVariable('$datasetId');
+        commons.escapeVariable('$datasetId');
 
     await _requester.request(
       _url,
@@ -183,9 +183,9 @@ class DatasetsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/datasets/' +
-        commons.Escaper.ecapeVariable('$datasetId');
+        commons.escapeVariable('$datasetId');
 
     final _response = await _requester.request(
       _url,
@@ -224,7 +224,7 @@ class DatasetsResource {
     };
 
     final _url =
-        'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/datasets';
+        'projects/' + commons.escapeVariable('$projectId') + '/datasets';
 
     final _response = await _requester.request(
       _url,
@@ -282,7 +282,7 @@ class DatasetsResource {
     };
 
     final _url =
-        'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/datasets';
+        'projects/' + commons.escapeVariable('$projectId') + '/datasets';
 
     final _response = await _requester.request(
       _url,
@@ -329,9 +329,9 @@ class DatasetsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/datasets/' +
-        commons.Escaper.ecapeVariable('$datasetId');
+        commons.escapeVariable('$datasetId');
 
     final _response = await _requester.request(
       _url,
@@ -378,9 +378,9 @@ class DatasetsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/datasets/' +
-        commons.Escaper.ecapeVariable('$datasetId');
+        commons.escapeVariable('$datasetId');
 
     final _response = await _requester.request(
       _url,
@@ -435,9 +435,9 @@ class JobsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/jobs/' +
-        commons.Escaper.ecapeVariable('$jobId') +
+        commons.escapeVariable('$jobId') +
         '/cancel';
 
     final _response = await _requester.request(
@@ -487,9 +487,9 @@ class JobsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/jobs/' +
-        commons.Escaper.ecapeVariable('$jobId');
+        commons.escapeVariable('$jobId');
 
     final _response = await _requester.request(
       _url,
@@ -552,9 +552,9 @@ class JobsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/queries/' +
-        commons.Escaper.ecapeVariable('$jobId');
+        commons.escapeVariable('$jobId');
 
     final _response = await _requester.request(
       _url,
@@ -605,15 +605,14 @@ class JobsResource {
 
     core.String _url;
     if (uploadMedia == null) {
-      _url =
-          'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs';
+      _url = 'projects/' + commons.escapeVariable('$projectId') + '/jobs';
     } else if (uploadOptions is commons.ResumableUploadOptions) {
       _url = '/resumable/upload/bigquery/v2/projects/' +
-          commons.Escaper.ecapeVariable('$projectId') +
+          commons.escapeVariable('$projectId') +
           '/jobs';
     } else {
       _url = '/upload/bigquery/v2/projects/' +
-          commons.Escaper.ecapeVariable('$projectId') +
+          commons.escapeVariable('$projectId') +
           '/jobs';
     }
 
@@ -699,8 +698,7 @@ class JobsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs';
+    final _url = 'projects/' + commons.escapeVariable('$projectId') + '/jobs';
 
     final _response = await _requester.request(
       _url,
@@ -740,7 +738,7 @@ class JobsResource {
     };
 
     final _url =
-        'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/queries';
+        'projects/' + commons.escapeVariable('$projectId') + '/queries';
 
     final _response = await _requester.request(
       _url,
@@ -790,11 +788,11 @@ class ModelsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariableReserved('$projectId') +
+        core.Uri.encodeFull('$projectId') +
         '/datasets/' +
-        commons.Escaper.ecapeVariableReserved('$datasetId') +
+        core.Uri.encodeFull('$datasetId') +
         '/models/' +
-        commons.Escaper.ecapeVariableReserved('$modelId');
+        core.Uri.encodeFull('$modelId');
 
     await _requester.request(
       _url,
@@ -838,11 +836,11 @@ class ModelsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariableReserved('$projectId') +
+        core.Uri.encodeFull('$projectId') +
         '/datasets/' +
-        commons.Escaper.ecapeVariableReserved('$datasetId') +
+        core.Uri.encodeFull('$datasetId') +
         '/models/' +
-        commons.Escaper.ecapeVariableReserved('$modelId');
+        core.Uri.encodeFull('$modelId');
 
     final _response = await _requester.request(
       _url,
@@ -895,9 +893,9 @@ class ModelsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariableReserved('$projectId') +
+        core.Uri.encodeFull('$projectId') +
         '/datasets/' +
-        commons.Escaper.ecapeVariableReserved('$datasetId') +
+        core.Uri.encodeFull('$datasetId') +
         '/models';
 
     final _response = await _requester.request(
@@ -947,11 +945,11 @@ class ModelsResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariableReserved('$projectId') +
+        core.Uri.encodeFull('$projectId') +
         '/datasets/' +
-        commons.Escaper.ecapeVariableReserved('$datasetId') +
+        core.Uri.encodeFull('$datasetId') +
         '/models/' +
-        commons.Escaper.ecapeVariableReserved('$modelId');
+        core.Uri.encodeFull('$modelId');
 
     final _response = await _requester.request(
       _url,
@@ -993,9 +991,8 @@ class ProjectsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
-        '/serviceAccount';
+    final _url =
+        'projects/' + commons.escapeVariable('$projectId') + '/serviceAccount';
 
     final _response = await _requester.request(
       _url,
@@ -1085,11 +1082,11 @@ class RoutinesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariableReserved('$projectId') +
+        core.Uri.encodeFull('$projectId') +
         '/datasets/' +
-        commons.Escaper.ecapeVariableReserved('$datasetId') +
+        core.Uri.encodeFull('$datasetId') +
         '/routines/' +
-        commons.Escaper.ecapeVariableReserved('$routineId');
+        core.Uri.encodeFull('$routineId');
 
     await _requester.request(
       _url,
@@ -1138,11 +1135,11 @@ class RoutinesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariableReserved('$projectId') +
+        core.Uri.encodeFull('$projectId') +
         '/datasets/' +
-        commons.Escaper.ecapeVariableReserved('$datasetId') +
+        core.Uri.encodeFull('$datasetId') +
         '/routines/' +
-        commons.Escaper.ecapeVariableReserved('$routineId');
+        core.Uri.encodeFull('$routineId');
 
     final _response = await _requester.request(
       _url,
@@ -1186,9 +1183,9 @@ class RoutinesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariableReserved('$projectId') +
+        core.Uri.encodeFull('$projectId') +
         '/datasets/' +
-        commons.Escaper.ecapeVariableReserved('$datasetId') +
+        core.Uri.encodeFull('$datasetId') +
         '/routines';
 
     final _response = await _requester.request(
@@ -1258,9 +1255,9 @@ class RoutinesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariableReserved('$projectId') +
+        core.Uri.encodeFull('$projectId') +
         '/datasets/' +
-        commons.Escaper.ecapeVariableReserved('$datasetId') +
+        core.Uri.encodeFull('$datasetId') +
         '/routines';
 
     final _response = await _requester.request(
@@ -1312,11 +1309,11 @@ class RoutinesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariableReserved('$projectId') +
+        core.Uri.encodeFull('$projectId') +
         '/datasets/' +
-        commons.Escaper.ecapeVariableReserved('$datasetId') +
+        core.Uri.encodeFull('$datasetId') +
         '/routines/' +
-        commons.Escaper.ecapeVariableReserved('$routineId');
+        core.Uri.encodeFull('$routineId');
 
     final _response = await _requester.request(
       _url,
@@ -1368,8 +1365,7 @@ class RowAccessPoliciesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        commons.Escaper.ecapeVariableReserved('$resource') + ':getIamPolicy';
+    final _url = core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -1424,11 +1420,11 @@ class RowAccessPoliciesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariableReserved('$projectId') +
+        core.Uri.encodeFull('$projectId') +
         '/datasets/' +
-        commons.Escaper.ecapeVariableReserved('$datasetId') +
+        core.Uri.encodeFull('$datasetId') +
         '/tables/' +
-        commons.Escaper.ecapeVariableReserved('$tableId') +
+        core.Uri.encodeFull('$tableId') +
         '/rowAccessPolicies';
 
     final _response = await _requester.request(
@@ -1475,8 +1471,7 @@ class RowAccessPoliciesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        commons.Escaper.ecapeVariableReserved('$resource') + ':setIamPolicy';
+    final _url = core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -1524,8 +1519,7 @@ class RowAccessPoliciesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = commons.Escaper.ecapeVariableReserved('$resource') +
-        ':testIamPermissions';
+    final _url = core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
     final _response = await _requester.request(
       _url,
@@ -1581,11 +1575,11 @@ class TabledataResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/datasets/' +
-        commons.Escaper.ecapeVariable('$datasetId') +
+        commons.escapeVariable('$datasetId') +
         '/tables/' +
-        commons.Escaper.ecapeVariable('$tableId') +
+        commons.escapeVariable('$tableId') +
         '/insertAll';
 
     final _response = await _requester.request(
@@ -1649,11 +1643,11 @@ class TabledataResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/datasets/' +
-        commons.Escaper.ecapeVariable('$datasetId') +
+        commons.escapeVariable('$datasetId') +
         '/tables/' +
-        commons.Escaper.ecapeVariable('$tableId') +
+        commons.escapeVariable('$tableId') +
         '/data';
 
     final _response = await _requester.request(
@@ -1702,11 +1696,11 @@ class TablesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/datasets/' +
-        commons.Escaper.ecapeVariable('$datasetId') +
+        commons.escapeVariable('$datasetId') +
         '/tables/' +
-        commons.Escaper.ecapeVariable('$tableId');
+        commons.escapeVariable('$tableId');
 
     await _requester.request(
       _url,
@@ -1755,11 +1749,11 @@ class TablesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/datasets/' +
-        commons.Escaper.ecapeVariable('$datasetId') +
+        commons.escapeVariable('$datasetId') +
         '/tables/' +
-        commons.Escaper.ecapeVariable('$tableId');
+        commons.escapeVariable('$tableId');
 
     final _response = await _requester.request(
       _url,
@@ -1804,8 +1798,7 @@ class TablesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        commons.Escaper.ecapeVariableReserved('$resource') + ':getIamPolicy';
+    final _url = core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -1848,9 +1841,9 @@ class TablesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/datasets/' +
-        commons.Escaper.ecapeVariable('$datasetId') +
+        commons.escapeVariable('$datasetId') +
         '/tables';
 
     final _response = await _requester.request(
@@ -1901,9 +1894,9 @@ class TablesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/datasets/' +
-        commons.Escaper.ecapeVariable('$datasetId') +
+        commons.escapeVariable('$datasetId') +
         '/tables';
 
     final _response = await _requester.request(
@@ -1953,11 +1946,11 @@ class TablesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/datasets/' +
-        commons.Escaper.ecapeVariable('$datasetId') +
+        commons.escapeVariable('$datasetId') +
         '/tables/' +
-        commons.Escaper.ecapeVariable('$tableId');
+        commons.escapeVariable('$tableId');
 
     final _response = await _requester.request(
       _url,
@@ -2003,8 +1996,7 @@ class TablesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        commons.Escaper.ecapeVariableReserved('$resource') + ':setIamPolicy';
+    final _url = core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -2052,8 +2044,7 @@ class TablesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = commons.Escaper.ecapeVariableReserved('$resource') +
-        ':testIamPermissions';
+    final _url = core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
     final _response = await _requester.request(
       _url,
@@ -2104,11 +2095,11 @@ class TablesResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/datasets/' +
-        commons.Escaper.ecapeVariable('$datasetId') +
+        commons.escapeVariable('$datasetId') +
         '/tables/' +
-        commons.Escaper.ecapeVariable('$tableId');
+        commons.escapeVariable('$tableId');
 
     final _response = await _requester.request(
       _url,

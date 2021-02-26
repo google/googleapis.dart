@@ -99,9 +99,8 @@ class MattersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/matters/' +
-        commons.Escaper.ecapeVariable('$matterId') +
-        ':addPermissions';
+    final _url =
+        'v1/matters/' + commons.escapeVariable('$matterId') + ':addPermissions';
 
     final _response = await _requester.request(
       _url,
@@ -143,8 +142,7 @@ class MattersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/matters/' + commons.Escaper.ecapeVariable('$matterId') + ':close';
+    final _url = 'v1/matters/' + commons.escapeVariable('$matterId') + ':close';
 
     final _response = await _requester.request(
       _url,
@@ -185,8 +183,7 @@ class MattersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/matters/' + commons.Escaper.ecapeVariable('$matterId') + ':count';
+    final _url = 'v1/matters/' + commons.escapeVariable('$matterId') + ':count';
 
     final _response = await _requester.request(
       _url,
@@ -262,7 +259,7 @@ class MattersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/matters/' + commons.Escaper.ecapeVariable('$matterId');
+    final _url = 'v1/matters/' + commons.escapeVariable('$matterId');
 
     final _response = await _requester.request(
       _url,
@@ -306,7 +303,7 @@ class MattersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/matters/' + commons.Escaper.ecapeVariable('$matterId');
+    final _url = 'v1/matters/' + commons.escapeVariable('$matterId');
 
     final _response = await _requester.request(
       _url,
@@ -406,7 +403,7 @@ class MattersResource {
     };
 
     final _url = 'v1/matters/' +
-        commons.Escaper.ecapeVariable('$matterId') +
+        commons.escapeVariable('$matterId') +
         ':removePermissions';
 
     final _response = await _requester.request(
@@ -449,7 +446,7 @@ class MattersResource {
     };
 
     final _url =
-        'v1/matters/' + commons.Escaper.ecapeVariable('$matterId') + ':reopen';
+        'v1/matters/' + commons.escapeVariable('$matterId') + ':reopen';
 
     final _response = await _requester.request(
       _url,
@@ -491,9 +488,8 @@ class MattersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/matters/' +
-        commons.Escaper.ecapeVariable('$matterId') +
-        ':undelete';
+    final _url =
+        'v1/matters/' + commons.escapeVariable('$matterId') + ':undelete';
 
     final _response = await _requester.request(
       _url,
@@ -536,7 +532,7 @@ class MattersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/matters/' + commons.Escaper.ecapeVariable('$matterId');
+    final _url = 'v1/matters/' + commons.escapeVariable('$matterId');
 
     final _response = await _requester.request(
       _url,
@@ -582,7 +578,7 @@ class MattersExportsResource {
     };
 
     final _url =
-        'v1/matters/' + commons.Escaper.ecapeVariable('$matterId') + '/exports';
+        'v1/matters/' + commons.escapeVariable('$matterId') + '/exports';
 
     final _response = await _requester.request(
       _url,
@@ -621,9 +617,9 @@ class MattersExportsResource {
     };
 
     final _url = 'v1/matters/' +
-        commons.Escaper.ecapeVariable('$matterId') +
+        commons.escapeVariable('$matterId') +
         '/exports/' +
-        commons.Escaper.ecapeVariable('$exportId');
+        commons.escapeVariable('$exportId');
 
     final _response = await _requester.request(
       _url,
@@ -661,9 +657,9 @@ class MattersExportsResource {
     };
 
     final _url = 'v1/matters/' +
-        commons.Escaper.ecapeVariable('$matterId') +
+        commons.escapeVariable('$matterId') +
         '/exports/' +
-        commons.Escaper.ecapeVariable('$exportId');
+        commons.escapeVariable('$exportId');
 
     final _response = await _requester.request(
       _url,
@@ -706,7 +702,7 @@ class MattersExportsResource {
     };
 
     final _url =
-        'v1/matters/' + commons.Escaper.ecapeVariable('$matterId') + '/exports';
+        'v1/matters/' + commons.escapeVariable('$matterId') + '/exports';
 
     final _response = await _requester.request(
       _url,
@@ -761,9 +757,9 @@ class MattersHoldsResource {
     };
 
     final _url = 'v1/matters/' +
-        commons.Escaper.ecapeVariable('$matterId') +
+        commons.escapeVariable('$matterId') +
         '/holds/' +
-        commons.Escaper.ecapeVariable('$holdId') +
+        commons.escapeVariable('$holdId') +
         ':addHeldAccounts';
 
     final _response = await _requester.request(
@@ -804,8 +800,7 @@ class MattersHoldsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/matters/' + commons.Escaper.ecapeVariable('$matterId') + '/holds';
+    final _url = 'v1/matters/' + commons.escapeVariable('$matterId') + '/holds';
 
     final _response = await _requester.request(
       _url,
@@ -846,9 +841,9 @@ class MattersHoldsResource {
     };
 
     final _url = 'v1/matters/' +
-        commons.Escaper.ecapeVariable('$matterId') +
+        commons.escapeVariable('$matterId') +
         '/holds/' +
-        commons.Escaper.ecapeVariable('$holdId');
+        commons.escapeVariable('$holdId');
 
     final _response = await _requester.request(
       _url,
@@ -898,9 +893,9 @@ class MattersHoldsResource {
     };
 
     final _url = 'v1/matters/' +
-        commons.Escaper.ecapeVariable('$matterId') +
+        commons.escapeVariable('$matterId') +
         '/holds/' +
-        commons.Escaper.ecapeVariable('$holdId');
+        commons.escapeVariable('$holdId');
 
     final _response = await _requester.request(
       _url,
@@ -959,8 +954,7 @@ class MattersHoldsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/matters/' + commons.Escaper.ecapeVariable('$matterId') + '/holds';
+    final _url = 'v1/matters/' + commons.escapeVariable('$matterId') + '/holds';
 
     final _response = await _requester.request(
       _url,
@@ -1007,9 +1001,9 @@ class MattersHoldsResource {
     };
 
     final _url = 'v1/matters/' +
-        commons.Escaper.ecapeVariable('$matterId') +
+        commons.escapeVariable('$matterId') +
         '/holds/' +
-        commons.Escaper.ecapeVariable('$holdId') +
+        commons.escapeVariable('$holdId') +
         ':removeHeldAccounts';
 
     final _response = await _requester.request(
@@ -1058,9 +1052,9 @@ class MattersHoldsResource {
     };
 
     final _url = 'v1/matters/' +
-        commons.Escaper.ecapeVariable('$matterId') +
+        commons.escapeVariable('$matterId') +
         '/holds/' +
-        commons.Escaper.ecapeVariable('$holdId');
+        commons.escapeVariable('$holdId');
 
     final _response = await _requester.request(
       _url,
@@ -1113,9 +1107,9 @@ class MattersHoldsAccountsResource {
     };
 
     final _url = 'v1/matters/' +
-        commons.Escaper.ecapeVariable('$matterId') +
+        commons.escapeVariable('$matterId') +
         '/holds/' +
-        commons.Escaper.ecapeVariable('$holdId') +
+        commons.escapeVariable('$holdId') +
         '/accounts';
 
     final _response = await _requester.request(
@@ -1162,11 +1156,11 @@ class MattersHoldsAccountsResource {
     };
 
     final _url = 'v1/matters/' +
-        commons.Escaper.ecapeVariable('$matterId') +
+        commons.escapeVariable('$matterId') +
         '/holds/' +
-        commons.Escaper.ecapeVariable('$holdId') +
+        commons.escapeVariable('$holdId') +
         '/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId');
+        commons.escapeVariable('$accountId');
 
     final _response = await _requester.request(
       _url,
@@ -1207,9 +1201,9 @@ class MattersHoldsAccountsResource {
     };
 
     final _url = 'v1/matters/' +
-        commons.Escaper.ecapeVariable('$matterId') +
+        commons.escapeVariable('$matterId') +
         '/holds/' +
-        commons.Escaper.ecapeVariable('$holdId') +
+        commons.escapeVariable('$holdId') +
         '/accounts';
 
     final _response = await _requester.request(
@@ -1257,9 +1251,8 @@ class MattersSavedQueriesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/matters/' +
-        commons.Escaper.ecapeVariable('$matterId') +
-        '/savedQueries';
+    final _url =
+        'v1/matters/' + commons.escapeVariable('$matterId') + '/savedQueries';
 
     final _response = await _requester.request(
       _url,
@@ -1300,9 +1293,9 @@ class MattersSavedQueriesResource {
     };
 
     final _url = 'v1/matters/' +
-        commons.Escaper.ecapeVariable('$matterId') +
+        commons.escapeVariable('$matterId') +
         '/savedQueries/' +
-        commons.Escaper.ecapeVariable('$savedQueryId');
+        commons.escapeVariable('$savedQueryId');
 
     final _response = await _requester.request(
       _url,
@@ -1341,9 +1334,9 @@ class MattersSavedQueriesResource {
     };
 
     final _url = 'v1/matters/' +
-        commons.Escaper.ecapeVariable('$matterId') +
+        commons.escapeVariable('$matterId') +
         '/savedQueries/' +
-        commons.Escaper.ecapeVariable('$savedQueryId');
+        commons.escapeVariable('$savedQueryId');
 
     final _response = await _requester.request(
       _url,
@@ -1391,9 +1384,8 @@ class MattersSavedQueriesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/matters/' +
-        commons.Escaper.ecapeVariable('$matterId') +
-        '/savedQueries';
+    final _url =
+        'v1/matters/' + commons.escapeVariable('$matterId') + '/savedQueries';
 
     final _response = await _requester.request(
       _url,
@@ -1448,8 +1440,7 @@ class OperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
 
     final _response = await _requester.request(
       _url,
@@ -1489,7 +1480,7 @@ class OperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1527,7 +1518,7 @@ class OperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1583,7 +1574,7 @@ class OperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,

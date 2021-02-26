@@ -162,9 +162,8 @@ class UsersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
-        '/profile';
+    final _url =
+        'gmail/v1/users/' + commons.escapeVariable('$userId') + '/profile';
 
     final _response = await _requester.request(
       _url,
@@ -198,7 +197,7 @@ class UsersResource {
     };
 
     final _url =
-        'gmail/v1/users/' + commons.Escaper.ecapeVariable('$userId') + '/stop';
+        'gmail/v1/users/' + commons.escapeVariable('$userId') + '/stop';
 
     await _requester.request(
       _url,
@@ -238,7 +237,7 @@ class UsersResource {
     };
 
     final _url =
-        'gmail/v1/users/' + commons.Escaper.ecapeVariable('$userId') + '/watch';
+        'gmail/v1/users/' + commons.escapeVariable('$userId') + '/watch';
 
     final _response = await _requester.request(
       _url,
@@ -295,16 +294,14 @@ class UsersDraftsResource {
 
     core.String _url;
     if (uploadMedia == null) {
-      _url = 'gmail/v1/users/' +
-          commons.Escaper.ecapeVariable('$userId') +
-          '/drafts';
+      _url = 'gmail/v1/users/' + commons.escapeVariable('$userId') + '/drafts';
     } else if (uploadOptions is commons.ResumableUploadOptions) {
       _url = '/resumable/upload/gmail/v1/users/' +
-          commons.Escaper.ecapeVariable('$userId') +
+          commons.escapeVariable('$userId') +
           '/drafts';
     } else {
       _url = '/upload/gmail/v1/users/' +
-          commons.Escaper.ecapeVariable('$userId') +
+          commons.escapeVariable('$userId') +
           '/drafts';
     }
 
@@ -348,9 +345,9 @@ class UsersDraftsResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/drafts/' +
-        commons.Escaper.ecapeVariable('$id');
+        commons.escapeVariable('$id');
 
     await _requester.request(
       _url,
@@ -404,9 +401,9 @@ class UsersDraftsResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/drafts/' +
-        commons.Escaper.ecapeVariable('$id');
+        commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -461,9 +458,8 @@ class UsersDraftsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
-        '/drafts';
+    final _url =
+        'gmail/v1/users/' + commons.escapeVariable('$userId') + '/drafts';
 
     final _response = await _requester.request(
       _url,
@@ -515,15 +511,15 @@ class UsersDraftsResource {
     core.String _url;
     if (uploadMedia == null) {
       _url = 'gmail/v1/users/' +
-          commons.Escaper.ecapeVariable('$userId') +
+          commons.escapeVariable('$userId') +
           '/drafts/send';
     } else if (uploadOptions is commons.ResumableUploadOptions) {
       _url = '/resumable/upload/gmail/v1/users/' +
-          commons.Escaper.ecapeVariable('$userId') +
+          commons.escapeVariable('$userId') +
           '/drafts/send';
     } else {
       _url = '/upload/gmail/v1/users/' +
-          commons.Escaper.ecapeVariable('$userId') +
+          commons.escapeVariable('$userId') +
           '/drafts/send';
     }
 
@@ -581,19 +577,19 @@ class UsersDraftsResource {
     core.String _url;
     if (uploadMedia == null) {
       _url = 'gmail/v1/users/' +
-          commons.Escaper.ecapeVariable('$userId') +
+          commons.escapeVariable('$userId') +
           '/drafts/' +
-          commons.Escaper.ecapeVariable('$id');
+          commons.escapeVariable('$id');
     } else if (uploadOptions is commons.ResumableUploadOptions) {
       _url = '/resumable/upload/gmail/v1/users/' +
-          commons.Escaper.ecapeVariable('$userId') +
+          commons.escapeVariable('$userId') +
           '/drafts/' +
-          commons.Escaper.ecapeVariable('$id');
+          commons.escapeVariable('$id');
     } else {
       _url = '/upload/gmail/v1/users/' +
-          commons.Escaper.ecapeVariable('$userId') +
+          commons.escapeVariable('$userId') +
           '/drafts/' +
-          commons.Escaper.ecapeVariable('$id');
+          commons.escapeVariable('$id');
     }
 
     final _response = await _requester.request(
@@ -672,9 +668,8 @@ class UsersHistoryResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
-        '/history';
+    final _url =
+        'gmail/v1/users/' + commons.escapeVariable('$userId') + '/history';
 
     final _response = await _requester.request(
       _url,
@@ -720,9 +715,8 @@ class UsersLabelsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
-        '/labels';
+    final _url =
+        'gmail/v1/users/' + commons.escapeVariable('$userId') + '/labels';
 
     final _response = await _requester.request(
       _url,
@@ -761,9 +755,9 @@ class UsersLabelsResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/labels/' +
-        commons.Escaper.ecapeVariable('$id');
+        commons.escapeVariable('$id');
 
     await _requester.request(
       _url,
@@ -802,9 +796,9 @@ class UsersLabelsResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/labels/' +
-        commons.Escaper.ecapeVariable('$id');
+        commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -839,9 +833,8 @@ class UsersLabelsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
-        '/labels';
+    final _url =
+        'gmail/v1/users/' + commons.escapeVariable('$userId') + '/labels';
 
     final _response = await _requester.request(
       _url,
@@ -885,9 +878,9 @@ class UsersLabelsResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/labels/' +
-        commons.Escaper.ecapeVariable('$id');
+        commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -931,9 +924,9 @@ class UsersLabelsResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/labels/' +
-        commons.Escaper.ecapeVariable('$id');
+        commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -984,7 +977,7 @@ class UsersMessagesResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/messages/batchDelete';
 
     await _requester.request(
@@ -1024,7 +1017,7 @@ class UsersMessagesResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/messages/batchModify';
 
     await _requester.request(
@@ -1065,9 +1058,9 @@ class UsersMessagesResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/messages/' +
-        commons.Escaper.ecapeVariable('$id');
+        commons.escapeVariable('$id');
 
     await _requester.request(
       _url,
@@ -1128,9 +1121,9 @@ class UsersMessagesResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/messages/' +
-        commons.Escaper.ecapeVariable('$id');
+        commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -1211,15 +1204,15 @@ class UsersMessagesResource {
     core.String _url;
     if (uploadMedia == null) {
       _url = 'gmail/v1/users/' +
-          commons.Escaper.ecapeVariable('$userId') +
+          commons.escapeVariable('$userId') +
           '/messages/import';
     } else if (uploadOptions is commons.ResumableUploadOptions) {
       _url = '/resumable/upload/gmail/v1/users/' +
-          commons.Escaper.ecapeVariable('$userId') +
+          commons.escapeVariable('$userId') +
           '/messages/import';
     } else {
       _url = '/upload/gmail/v1/users/' +
-          commons.Escaper.ecapeVariable('$userId') +
+          commons.escapeVariable('$userId') +
           '/messages/import';
     }
 
@@ -1292,16 +1285,15 @@ class UsersMessagesResource {
 
     core.String _url;
     if (uploadMedia == null) {
-      _url = 'gmail/v1/users/' +
-          commons.Escaper.ecapeVariable('$userId') +
-          '/messages';
+      _url =
+          'gmail/v1/users/' + commons.escapeVariable('$userId') + '/messages';
     } else if (uploadOptions is commons.ResumableUploadOptions) {
       _url = '/resumable/upload/gmail/v1/users/' +
-          commons.Escaper.ecapeVariable('$userId') +
+          commons.escapeVariable('$userId') +
           '/messages';
     } else {
       _url = '/upload/gmail/v1/users/' +
-          commons.Escaper.ecapeVariable('$userId') +
+          commons.escapeVariable('$userId') +
           '/messages';
     }
 
@@ -1367,9 +1359,8 @@ class UsersMessagesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
-        '/messages';
+    final _url =
+        'gmail/v1/users/' + commons.escapeVariable('$userId') + '/messages';
 
     final _response = await _requester.request(
       _url,
@@ -1413,9 +1404,9 @@ class UsersMessagesResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/messages/' +
-        commons.Escaper.ecapeVariable('$id') +
+        commons.escapeVariable('$id') +
         '/modify';
 
     final _response = await _requester.request(
@@ -1468,15 +1459,15 @@ class UsersMessagesResource {
     core.String _url;
     if (uploadMedia == null) {
       _url = 'gmail/v1/users/' +
-          commons.Escaper.ecapeVariable('$userId') +
+          commons.escapeVariable('$userId') +
           '/messages/send';
     } else if (uploadOptions is commons.ResumableUploadOptions) {
       _url = '/resumable/upload/gmail/v1/users/' +
-          commons.Escaper.ecapeVariable('$userId') +
+          commons.escapeVariable('$userId') +
           '/messages/send';
     } else {
       _url = '/upload/gmail/v1/users/' +
-          commons.Escaper.ecapeVariable('$userId') +
+          commons.escapeVariable('$userId') +
           '/messages/send';
     }
 
@@ -1520,9 +1511,9 @@ class UsersMessagesResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/messages/' +
-        commons.Escaper.ecapeVariable('$id') +
+        commons.escapeVariable('$id') +
         '/trash';
 
     final _response = await _requester.request(
@@ -1562,9 +1553,9 @@ class UsersMessagesResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/messages/' +
-        commons.Escaper.ecapeVariable('$id') +
+        commons.escapeVariable('$id') +
         '/untrash';
 
     final _response = await _requester.request(
@@ -1614,11 +1605,11 @@ class UsersMessagesAttachmentsResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/messages/' +
-        commons.Escaper.ecapeVariable('$messageId') +
+        commons.escapeVariable('$messageId') +
         '/attachments/' +
-        commons.Escaper.ecapeVariable('$id');
+        commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -1670,7 +1661,7 @@ class UsersSettingsResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/settings/autoForwarding';
 
     final _response = await _requester.request(
@@ -1708,7 +1699,7 @@ class UsersSettingsResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/settings/imap';
 
     final _response = await _requester.request(
@@ -1746,7 +1737,7 @@ class UsersSettingsResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/settings/language';
 
     final _response = await _requester.request(
@@ -1783,9 +1774,8 @@ class UsersSettingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
-        '/settings/pop';
+    final _url =
+        'gmail/v1/users/' + commons.escapeVariable('$userId') + '/settings/pop';
 
     final _response = await _requester.request(
       _url,
@@ -1822,7 +1812,7 @@ class UsersSettingsResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/settings/vacation';
 
     final _response = await _requester.request(
@@ -1868,7 +1858,7 @@ class UsersSettingsResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/settings/autoForwarding';
 
     final _response = await _requester.request(
@@ -1911,7 +1901,7 @@ class UsersSettingsResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/settings/imap';
 
     final _response = await _requester.request(
@@ -1960,7 +1950,7 @@ class UsersSettingsResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/settings/language';
 
     final _response = await _requester.request(
@@ -2002,9 +1992,8 @@ class UsersSettingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
-        '/settings/pop';
+    final _url =
+        'gmail/v1/users/' + commons.escapeVariable('$userId') + '/settings/pop';
 
     final _response = await _requester.request(
       _url,
@@ -2046,7 +2035,7 @@ class UsersSettingsResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/settings/vacation';
 
     final _response = await _requester.request(
@@ -2108,7 +2097,7 @@ class UsersSettingsDelegatesResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/settings/delegates';
 
     final _response = await _requester.request(
@@ -2153,9 +2142,9 @@ class UsersSettingsDelegatesResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/settings/delegates/' +
-        commons.Escaper.ecapeVariable('$delegateEmail');
+        commons.escapeVariable('$delegateEmail');
 
     await _requester.request(
       _url,
@@ -2199,9 +2188,9 @@ class UsersSettingsDelegatesResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/settings/delegates/' +
-        commons.Escaper.ecapeVariable('$delegateEmail');
+        commons.escapeVariable('$delegateEmail');
 
     final _response = await _requester.request(
       _url,
@@ -2240,7 +2229,7 @@ class UsersSettingsDelegatesResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/settings/delegates';
 
     final _response = await _requester.request(
@@ -2291,7 +2280,7 @@ class UsersSettingsFiltersResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/settings/filters';
 
     final _response = await _requester.request(
@@ -2330,9 +2319,9 @@ class UsersSettingsFiltersResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/settings/filters/' +
-        commons.Escaper.ecapeVariable('$id');
+        commons.escapeVariable('$id');
 
     await _requester.request(
       _url,
@@ -2371,9 +2360,9 @@ class UsersSettingsFiltersResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/settings/filters/' +
-        commons.Escaper.ecapeVariable('$id');
+        commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -2409,7 +2398,7 @@ class UsersSettingsFiltersResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/settings/filters';
 
     final _response = await _requester.request(
@@ -2464,7 +2453,7 @@ class UsersSettingsForwardingAddressesResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/settings/forwardingAddresses';
 
     final _response = await _requester.request(
@@ -2508,9 +2497,9 @@ class UsersSettingsForwardingAddressesResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/settings/forwardingAddresses/' +
-        commons.Escaper.ecapeVariable('$forwardingEmail');
+        commons.escapeVariable('$forwardingEmail');
 
     await _requester.request(
       _url,
@@ -2549,9 +2538,9 @@ class UsersSettingsForwardingAddressesResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/settings/forwardingAddresses/' +
-        commons.Escaper.ecapeVariable('$forwardingEmail');
+        commons.escapeVariable('$forwardingEmail');
 
     final _response = await _requester.request(
       _url,
@@ -2588,7 +2577,7 @@ class UsersSettingsForwardingAddressesResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/settings/forwardingAddresses';
 
     final _response = await _requester.request(
@@ -2649,7 +2638,7 @@ class UsersSettingsSendAsResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/settings/sendAs';
 
     final _response = await _requester.request(
@@ -2692,9 +2681,9 @@ class UsersSettingsSendAsResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/settings/sendAs/' +
-        commons.Escaper.ecapeVariable('$sendAsEmail');
+        commons.escapeVariable('$sendAsEmail');
 
     await _requester.request(
       _url,
@@ -2736,9 +2725,9 @@ class UsersSettingsSendAsResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/settings/sendAs/' +
-        commons.Escaper.ecapeVariable('$sendAsEmail');
+        commons.escapeVariable('$sendAsEmail');
 
     final _response = await _requester.request(
       _url,
@@ -2777,7 +2766,7 @@ class UsersSettingsSendAsResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/settings/sendAs';
 
     final _response = await _requester.request(
@@ -2822,9 +2811,9 @@ class UsersSettingsSendAsResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/settings/sendAs/' +
-        commons.Escaper.ecapeVariable('$sendAsEmail');
+        commons.escapeVariable('$sendAsEmail');
 
     final _response = await _requester.request(
       _url,
@@ -2873,9 +2862,9 @@ class UsersSettingsSendAsResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/settings/sendAs/' +
-        commons.Escaper.ecapeVariable('$sendAsEmail');
+        commons.escapeVariable('$sendAsEmail');
 
     final _response = await _requester.request(
       _url,
@@ -2916,9 +2905,9 @@ class UsersSettingsSendAsResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/settings/sendAs/' +
-        commons.Escaper.ecapeVariable('$sendAsEmail') +
+        commons.escapeVariable('$sendAsEmail') +
         '/verify';
 
     await _requester.request(
@@ -2967,11 +2956,11 @@ class UsersSettingsSendAsSmimeInfoResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/settings/sendAs/' +
-        commons.Escaper.ecapeVariable('$sendAsEmail') +
+        commons.escapeVariable('$sendAsEmail') +
         '/smimeInfo/' +
-        commons.Escaper.ecapeVariable('$id');
+        commons.escapeVariable('$id');
 
     await _requester.request(
       _url,
@@ -3014,11 +3003,11 @@ class UsersSettingsSendAsSmimeInfoResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/settings/sendAs/' +
-        commons.Escaper.ecapeVariable('$sendAsEmail') +
+        commons.escapeVariable('$sendAsEmail') +
         '/smimeInfo/' +
-        commons.Escaper.ecapeVariable('$id');
+        commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -3064,9 +3053,9 @@ class UsersSettingsSendAsSmimeInfoResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/settings/sendAs/' +
-        commons.Escaper.ecapeVariable('$sendAsEmail') +
+        commons.escapeVariable('$sendAsEmail') +
         '/smimeInfo';
 
     final _response = await _requester.request(
@@ -3108,9 +3097,9 @@ class UsersSettingsSendAsSmimeInfoResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/settings/sendAs/' +
-        commons.Escaper.ecapeVariable('$sendAsEmail') +
+        commons.escapeVariable('$sendAsEmail') +
         '/smimeInfo';
 
     final _response = await _requester.request(
@@ -3153,11 +3142,11 @@ class UsersSettingsSendAsSmimeInfoResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/settings/sendAs/' +
-        commons.Escaper.ecapeVariable('$sendAsEmail') +
+        commons.escapeVariable('$sendAsEmail') +
         '/smimeInfo/' +
-        commons.Escaper.ecapeVariable('$id') +
+        commons.escapeVariable('$id') +
         '/setDefault';
 
     await _requester.request(
@@ -3203,9 +3192,9 @@ class UsersThreadsResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/threads/' +
-        commons.Escaper.ecapeVariable('$id');
+        commons.escapeVariable('$id');
 
     await _requester.request(
       _url,
@@ -3260,9 +3249,9 @@ class UsersThreadsResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/threads/' +
-        commons.Escaper.ecapeVariable('$id');
+        commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -3323,9 +3312,8 @@ class UsersThreadsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
-        '/threads';
+    final _url =
+        'gmail/v1/users/' + commons.escapeVariable('$userId') + '/threads';
 
     final _response = await _requester.request(
       _url,
@@ -3371,9 +3359,9 @@ class UsersThreadsResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/threads/' +
-        commons.Escaper.ecapeVariable('$id') +
+        commons.escapeVariable('$id') +
         '/modify';
 
     final _response = await _requester.request(
@@ -3414,9 +3402,9 @@ class UsersThreadsResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/threads/' +
-        commons.Escaper.ecapeVariable('$id') +
+        commons.escapeVariable('$id') +
         '/trash';
 
     final _response = await _requester.request(
@@ -3456,9 +3444,9 @@ class UsersThreadsResource {
     };
 
     final _url = 'gmail/v1/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
+        commons.escapeVariable('$userId') +
         '/threads/' +
-        commons.Escaper.ecapeVariable('$id') +
+        commons.escapeVariable('$id') +
         '/untrash';
 
     final _response = await _requester.request(

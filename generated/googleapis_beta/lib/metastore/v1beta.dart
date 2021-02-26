@@ -102,7 +102,7 @@ class ProjectsLocationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -149,9 +149,7 @@ class ProjectsLocationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        '/locations';
+    final _url = 'v1beta/' + core.Uri.encodeFull('$name') + '/locations';
 
     final _response = await _requester.request(
       _url,
@@ -199,7 +197,7 @@ class ProjectsLocationsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -238,7 +236,7 @@ class ProjectsLocationsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -294,9 +292,7 @@ class ProjectsLocationsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        '/operations';
+    final _url = 'v1beta/' + core.Uri.encodeFull('$name') + '/operations';
 
     final _response = await _requester.request(
       _url,
@@ -368,9 +364,7 @@ class ProjectsLocationsServicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/services';
+    final _url = 'v1beta/' + core.Uri.encodeFull('$parent') + '/services';
 
     final _response = await _requester.request(
       _url,
@@ -421,7 +415,7 @@ class ProjectsLocationsServicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -463,9 +457,8 @@ class ProjectsLocationsServicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' +
-        commons.Escaper.ecapeVariableReserved('$service') +
-        ':exportMetadata';
+    final _url =
+        'v1beta/' + core.Uri.encodeFull('$service') + ':exportMetadata';
 
     final _response = await _requester.request(
       _url,
@@ -504,7 +497,7 @@ class ProjectsLocationsServicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -556,9 +549,7 @@ class ProjectsLocationsServicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':getIamPolicy';
+    final _url = 'v1beta/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -621,9 +612,7 @@ class ProjectsLocationsServicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/services';
+    final _url = 'v1beta/' + core.Uri.encodeFull('$parent') + '/services';
 
     final _response = await _requester.request(
       _url,
@@ -685,7 +674,7 @@ class ProjectsLocationsServicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -731,9 +720,7 @@ class ProjectsLocationsServicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':setIamPolicy';
+    final _url = 'v1beta/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -781,9 +768,8 @@ class ProjectsLocationsServicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':testIamPermissions';
+    final _url =
+        'v1beta/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
     final _response = await _requester.request(
       _url,
@@ -854,9 +840,8 @@ class ProjectsLocationsServicesMetadataImportsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/metadataImports';
+    final _url =
+        'v1beta/' + core.Uri.encodeFull('$parent') + '/metadataImports';
 
     final _response = await _requester.request(
       _url,
@@ -895,7 +880,7 @@ class ProjectsLocationsServicesMetadataImportsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -960,9 +945,8 @@ class ProjectsLocationsServicesMetadataImportsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/metadataImports';
+    final _url =
+        'v1beta/' + core.Uri.encodeFull('$parent') + '/metadataImports';
 
     final _response = await _requester.request(
       _url,
@@ -1026,7 +1010,7 @@ class ProjectsLocationsServicesMetadataImportsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,

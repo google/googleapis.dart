@@ -131,9 +131,9 @@ class EditsResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/edits/' +
-        commons.Escaper.ecapeVariable('$editId') +
+        commons.escapeVariable('$editId') +
         ':commit';
 
     final _response = await _requester.request(
@@ -170,9 +170,9 @@ class EditsResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/edits/' +
-        commons.Escaper.ecapeVariable('$editId');
+        commons.escapeVariable('$editId');
 
     await _requester.request(
       _url,
@@ -210,9 +210,9 @@ class EditsResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/edits/' +
-        commons.Escaper.ecapeVariable('$editId');
+        commons.escapeVariable('$editId');
 
     final _response = await _requester.request(
       _url,
@@ -251,7 +251,7 @@ class EditsResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/edits';
 
     final _response = await _requester.request(
@@ -291,9 +291,9 @@ class EditsResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/edits/' +
-        commons.Escaper.ecapeVariable('$editId') +
+        commons.escapeVariable('$editId') +
         ':validate';
 
     final _response = await _requester.request(
@@ -346,9 +346,9 @@ class EditsApksResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/edits/' +
-        commons.Escaper.ecapeVariable('$editId') +
+        commons.escapeVariable('$editId') +
         '/apks/externallyHosted';
 
     final _response = await _requester.request(
@@ -389,9 +389,9 @@ class EditsApksResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/edits/' +
-        commons.Escaper.ecapeVariable('$editId') +
+        commons.escapeVariable('$editId') +
         '/apks';
 
     final _response = await _requester.request(
@@ -441,21 +441,21 @@ class EditsApksResource {
     core.String _url;
     if (uploadMedia == null) {
       _url = 'androidpublisher/v3/applications/' +
-          commons.Escaper.ecapeVariable('$packageName') +
+          commons.escapeVariable('$packageName') +
           '/edits/' +
-          commons.Escaper.ecapeVariable('$editId') +
+          commons.escapeVariable('$editId') +
           '/apks';
     } else if (uploadOptions is commons.ResumableUploadOptions) {
       _url = '/resumable/upload/androidpublisher/v3/applications/' +
-          commons.Escaper.ecapeVariable('$packageName') +
+          commons.escapeVariable('$packageName') +
           '/edits/' +
-          commons.Escaper.ecapeVariable('$editId') +
+          commons.escapeVariable('$editId') +
           '/apks';
     } else {
       _url = '/upload/androidpublisher/v3/applications/' +
-          commons.Escaper.ecapeVariable('$packageName') +
+          commons.escapeVariable('$packageName') +
           '/edits/' +
-          commons.Escaper.ecapeVariable('$editId') +
+          commons.escapeVariable('$editId') +
           '/apks';
     }
 
@@ -503,9 +503,9 @@ class EditsBundlesResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/edits/' +
-        commons.Escaper.ecapeVariable('$editId') +
+        commons.escapeVariable('$editId') +
         '/bundles';
 
     final _response = await _requester.request(
@@ -568,21 +568,21 @@ class EditsBundlesResource {
     core.String _url;
     if (uploadMedia == null) {
       _url = 'androidpublisher/v3/applications/' +
-          commons.Escaper.ecapeVariable('$packageName') +
+          commons.escapeVariable('$packageName') +
           '/edits/' +
-          commons.Escaper.ecapeVariable('$editId') +
+          commons.escapeVariable('$editId') +
           '/bundles';
     } else if (uploadOptions is commons.ResumableUploadOptions) {
       _url = '/resumable/upload/androidpublisher/v3/applications/' +
-          commons.Escaper.ecapeVariable('$packageName') +
+          commons.escapeVariable('$packageName') +
           '/edits/' +
-          commons.Escaper.ecapeVariable('$editId') +
+          commons.escapeVariable('$editId') +
           '/bundles';
     } else {
       _url = '/upload/androidpublisher/v3/applications/' +
-          commons.Escaper.ecapeVariable('$packageName') +
+          commons.escapeVariable('$packageName') +
           '/edits/' +
-          commons.Escaper.ecapeVariable('$editId') +
+          commons.escapeVariable('$editId') +
           '/bundles';
     }
 
@@ -653,31 +653,31 @@ class EditsDeobfuscationfilesResource {
     core.String _url;
     if (uploadMedia == null) {
       _url = 'androidpublisher/v3/applications/' +
-          commons.Escaper.ecapeVariable('$packageName') +
+          commons.escapeVariable('$packageName') +
           '/edits/' +
-          commons.Escaper.ecapeVariable('$editId') +
+          commons.escapeVariable('$editId') +
           '/apks/' +
-          commons.Escaper.ecapeVariable('$apkVersionCode') +
+          commons.escapeVariable('$apkVersionCode') +
           '/deobfuscationFiles/' +
-          commons.Escaper.ecapeVariable('$deobfuscationFileType');
+          commons.escapeVariable('$deobfuscationFileType');
     } else if (uploadOptions is commons.ResumableUploadOptions) {
       _url = '/resumable/upload/androidpublisher/v3/applications/' +
-          commons.Escaper.ecapeVariable('$packageName') +
+          commons.escapeVariable('$packageName') +
           '/edits/' +
-          commons.Escaper.ecapeVariable('$editId') +
+          commons.escapeVariable('$editId') +
           '/apks/' +
-          commons.Escaper.ecapeVariable('$apkVersionCode') +
+          commons.escapeVariable('$apkVersionCode') +
           '/deobfuscationFiles/' +
-          commons.Escaper.ecapeVariable('$deobfuscationFileType');
+          commons.escapeVariable('$deobfuscationFileType');
     } else {
       _url = '/upload/androidpublisher/v3/applications/' +
-          commons.Escaper.ecapeVariable('$packageName') +
+          commons.escapeVariable('$packageName') +
           '/edits/' +
-          commons.Escaper.ecapeVariable('$editId') +
+          commons.escapeVariable('$editId') +
           '/apks/' +
-          commons.Escaper.ecapeVariable('$apkVersionCode') +
+          commons.escapeVariable('$apkVersionCode') +
           '/deobfuscationFiles/' +
-          commons.Escaper.ecapeVariable('$deobfuscationFileType');
+          commons.escapeVariable('$deobfuscationFileType');
     }
 
     final _response = await _requester.request(
@@ -725,9 +725,9 @@ class EditsDetailsResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/edits/' +
-        commons.Escaper.ecapeVariable('$editId') +
+        commons.escapeVariable('$editId') +
         '/details';
 
     final _response = await _requester.request(
@@ -771,9 +771,9 @@ class EditsDetailsResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/edits/' +
-        commons.Escaper.ecapeVariable('$editId') +
+        commons.escapeVariable('$editId') +
         '/details';
 
     final _response = await _requester.request(
@@ -818,9 +818,9 @@ class EditsDetailsResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/edits/' +
-        commons.Escaper.ecapeVariable('$editId') +
+        commons.escapeVariable('$editId') +
         '/details';
 
     final _response = await _requester.request(
@@ -880,13 +880,13 @@ class EditsExpansionfilesResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/edits/' +
-        commons.Escaper.ecapeVariable('$editId') +
+        commons.escapeVariable('$editId') +
         '/apks/' +
-        commons.Escaper.ecapeVariable('$apkVersionCode') +
+        commons.escapeVariable('$apkVersionCode') +
         '/expansionFiles/' +
-        commons.Escaper.ecapeVariable('$expansionFileType');
+        commons.escapeVariable('$expansionFileType');
 
     final _response = await _requester.request(
       _url,
@@ -944,13 +944,13 @@ class EditsExpansionfilesResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/edits/' +
-        commons.Escaper.ecapeVariable('$editId') +
+        commons.escapeVariable('$editId') +
         '/apks/' +
-        commons.Escaper.ecapeVariable('$apkVersionCode') +
+        commons.escapeVariable('$apkVersionCode') +
         '/expansionFiles/' +
-        commons.Escaper.ecapeVariable('$expansionFileType');
+        commons.escapeVariable('$expansionFileType');
 
     final _response = await _requester.request(
       _url,
@@ -1009,13 +1009,13 @@ class EditsExpansionfilesResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/edits/' +
-        commons.Escaper.ecapeVariable('$editId') +
+        commons.escapeVariable('$editId') +
         '/apks/' +
-        commons.Escaper.ecapeVariable('$apkVersionCode') +
+        commons.escapeVariable('$apkVersionCode') +
         '/expansionFiles/' +
-        commons.Escaper.ecapeVariable('$expansionFileType');
+        commons.escapeVariable('$expansionFileType');
 
     final _response = await _requester.request(
       _url,
@@ -1077,31 +1077,31 @@ class EditsExpansionfilesResource {
     core.String _url;
     if (uploadMedia == null) {
       _url = 'androidpublisher/v3/applications/' +
-          commons.Escaper.ecapeVariable('$packageName') +
+          commons.escapeVariable('$packageName') +
           '/edits/' +
-          commons.Escaper.ecapeVariable('$editId') +
+          commons.escapeVariable('$editId') +
           '/apks/' +
-          commons.Escaper.ecapeVariable('$apkVersionCode') +
+          commons.escapeVariable('$apkVersionCode') +
           '/expansionFiles/' +
-          commons.Escaper.ecapeVariable('$expansionFileType');
+          commons.escapeVariable('$expansionFileType');
     } else if (uploadOptions is commons.ResumableUploadOptions) {
       _url = '/resumable/upload/androidpublisher/v3/applications/' +
-          commons.Escaper.ecapeVariable('$packageName') +
+          commons.escapeVariable('$packageName') +
           '/edits/' +
-          commons.Escaper.ecapeVariable('$editId') +
+          commons.escapeVariable('$editId') +
           '/apks/' +
-          commons.Escaper.ecapeVariable('$apkVersionCode') +
+          commons.escapeVariable('$apkVersionCode') +
           '/expansionFiles/' +
-          commons.Escaper.ecapeVariable('$expansionFileType');
+          commons.escapeVariable('$expansionFileType');
     } else {
       _url = '/upload/androidpublisher/v3/applications/' +
-          commons.Escaper.ecapeVariable('$packageName') +
+          commons.escapeVariable('$packageName') +
           '/edits/' +
-          commons.Escaper.ecapeVariable('$editId') +
+          commons.escapeVariable('$editId') +
           '/apks/' +
-          commons.Escaper.ecapeVariable('$apkVersionCode') +
+          commons.escapeVariable('$apkVersionCode') +
           '/expansionFiles/' +
-          commons.Escaper.ecapeVariable('$expansionFileType');
+          commons.escapeVariable('$expansionFileType');
     }
 
     final _response = await _requester.request(
@@ -1168,15 +1168,15 @@ class EditsImagesResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/edits/' +
-        commons.Escaper.ecapeVariable('$editId') +
+        commons.escapeVariable('$editId') +
         '/listings/' +
-        commons.Escaper.ecapeVariable('$language') +
+        commons.escapeVariable('$language') +
         '/' +
-        commons.Escaper.ecapeVariable('$imageType') +
+        commons.escapeVariable('$imageType') +
         '/' +
-        commons.Escaper.ecapeVariable('$imageId');
+        commons.escapeVariable('$imageId');
 
     await _requester.request(
       _url,
@@ -1235,13 +1235,13 @@ class EditsImagesResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/edits/' +
-        commons.Escaper.ecapeVariable('$editId') +
+        commons.escapeVariable('$editId') +
         '/listings/' +
-        commons.Escaper.ecapeVariable('$language') +
+        commons.escapeVariable('$language') +
         '/' +
-        commons.Escaper.ecapeVariable('$imageType');
+        commons.escapeVariable('$imageType');
 
     final _response = await _requester.request(
       _url,
@@ -1301,13 +1301,13 @@ class EditsImagesResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/edits/' +
-        commons.Escaper.ecapeVariable('$editId') +
+        commons.escapeVariable('$editId') +
         '/listings/' +
-        commons.Escaper.ecapeVariable('$language') +
+        commons.escapeVariable('$language') +
         '/' +
-        commons.Escaper.ecapeVariable('$imageType');
+        commons.escapeVariable('$imageType');
 
     final _response = await _requester.request(
       _url,
@@ -1375,31 +1375,31 @@ class EditsImagesResource {
     core.String _url;
     if (uploadMedia == null) {
       _url = 'androidpublisher/v3/applications/' +
-          commons.Escaper.ecapeVariable('$packageName') +
+          commons.escapeVariable('$packageName') +
           '/edits/' +
-          commons.Escaper.ecapeVariable('$editId') +
+          commons.escapeVariable('$editId') +
           '/listings/' +
-          commons.Escaper.ecapeVariable('$language') +
+          commons.escapeVariable('$language') +
           '/' +
-          commons.Escaper.ecapeVariable('$imageType');
+          commons.escapeVariable('$imageType');
     } else if (uploadOptions is commons.ResumableUploadOptions) {
       _url = '/resumable/upload/androidpublisher/v3/applications/' +
-          commons.Escaper.ecapeVariable('$packageName') +
+          commons.escapeVariable('$packageName') +
           '/edits/' +
-          commons.Escaper.ecapeVariable('$editId') +
+          commons.escapeVariable('$editId') +
           '/listings/' +
-          commons.Escaper.ecapeVariable('$language') +
+          commons.escapeVariable('$language') +
           '/' +
-          commons.Escaper.ecapeVariable('$imageType');
+          commons.escapeVariable('$imageType');
     } else {
       _url = '/upload/androidpublisher/v3/applications/' +
-          commons.Escaper.ecapeVariable('$packageName') +
+          commons.escapeVariable('$packageName') +
           '/edits/' +
-          commons.Escaper.ecapeVariable('$editId') +
+          commons.escapeVariable('$editId') +
           '/listings/' +
-          commons.Escaper.ecapeVariable('$language') +
+          commons.escapeVariable('$language') +
           '/' +
-          commons.Escaper.ecapeVariable('$imageType');
+          commons.escapeVariable('$imageType');
     }
 
     final _response = await _requester.request(
@@ -1449,11 +1449,11 @@ class EditsListingsResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/edits/' +
-        commons.Escaper.ecapeVariable('$editId') +
+        commons.escapeVariable('$editId') +
         '/listings/' +
-        commons.Escaper.ecapeVariable('$language');
+        commons.escapeVariable('$language');
 
     await _requester.request(
       _url,
@@ -1489,9 +1489,9 @@ class EditsListingsResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/edits/' +
-        commons.Escaper.ecapeVariable('$editId') +
+        commons.escapeVariable('$editId') +
         '/listings';
 
     await _requester.request(
@@ -1534,11 +1534,11 @@ class EditsListingsResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/edits/' +
-        commons.Escaper.ecapeVariable('$editId') +
+        commons.escapeVariable('$editId') +
         '/listings/' +
-        commons.Escaper.ecapeVariable('$language');
+        commons.escapeVariable('$language');
 
     final _response = await _requester.request(
       _url,
@@ -1576,9 +1576,9 @@ class EditsListingsResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/edits/' +
-        commons.Escaper.ecapeVariable('$editId') +
+        commons.escapeVariable('$editId') +
         '/listings';
 
     final _response = await _requester.request(
@@ -1626,11 +1626,11 @@ class EditsListingsResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/edits/' +
-        commons.Escaper.ecapeVariable('$editId') +
+        commons.escapeVariable('$editId') +
         '/listings/' +
-        commons.Escaper.ecapeVariable('$language');
+        commons.escapeVariable('$language');
 
     final _response = await _requester.request(
       _url,
@@ -1677,11 +1677,11 @@ class EditsListingsResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/edits/' +
-        commons.Escaper.ecapeVariable('$editId') +
+        commons.escapeVariable('$editId') +
         '/listings/' +
-        commons.Escaper.ecapeVariable('$language');
+        commons.escapeVariable('$language');
 
     final _response = await _requester.request(
       _url,
@@ -1729,11 +1729,11 @@ class EditsTestersResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/edits/' +
-        commons.Escaper.ecapeVariable('$editId') +
+        commons.escapeVariable('$editId') +
         '/testers/' +
-        commons.Escaper.ecapeVariable('$track');
+        commons.escapeVariable('$track');
 
     final _response = await _requester.request(
       _url,
@@ -1778,11 +1778,11 @@ class EditsTestersResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/edits/' +
-        commons.Escaper.ecapeVariable('$editId') +
+        commons.escapeVariable('$editId') +
         '/testers/' +
-        commons.Escaper.ecapeVariable('$track');
+        commons.escapeVariable('$track');
 
     final _response = await _requester.request(
       _url,
@@ -1828,11 +1828,11 @@ class EditsTestersResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/edits/' +
-        commons.Escaper.ecapeVariable('$editId') +
+        commons.escapeVariable('$editId') +
         '/testers/' +
-        commons.Escaper.ecapeVariable('$track');
+        commons.escapeVariable('$track');
 
     final _response = await _requester.request(
       _url,
@@ -1880,11 +1880,11 @@ class EditsTracksResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/edits/' +
-        commons.Escaper.ecapeVariable('$editId') +
+        commons.escapeVariable('$editId') +
         '/tracks/' +
-        commons.Escaper.ecapeVariable('$track');
+        commons.escapeVariable('$track');
 
     final _response = await _requester.request(
       _url,
@@ -1922,9 +1922,9 @@ class EditsTracksResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/edits/' +
-        commons.Escaper.ecapeVariable('$editId') +
+        commons.escapeVariable('$editId') +
         '/tracks';
 
     final _response = await _requester.request(
@@ -1971,11 +1971,11 @@ class EditsTracksResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/edits/' +
-        commons.Escaper.ecapeVariable('$editId') +
+        commons.escapeVariable('$editId') +
         '/tracks/' +
-        commons.Escaper.ecapeVariable('$track');
+        commons.escapeVariable('$track');
 
     final _response = await _requester.request(
       _url,
@@ -2021,11 +2021,11 @@ class EditsTracksResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/edits/' +
-        commons.Escaper.ecapeVariable('$editId') +
+        commons.escapeVariable('$editId') +
         '/tracks/' +
-        commons.Escaper.ecapeVariable('$track');
+        commons.escapeVariable('$track');
 
     final _response = await _requester.request(
       _url,
@@ -2068,9 +2068,9 @@ class InappproductsResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/inappproducts/' +
-        commons.Escaper.ecapeVariable('$sku');
+        commons.escapeVariable('$sku');
 
     await _requester.request(
       _url,
@@ -2108,9 +2108,9 @@ class InappproductsResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/inappproducts/' +
-        commons.Escaper.ecapeVariable('$sku');
+        commons.escapeVariable('$sku');
 
     final _response = await _requester.request(
       _url,
@@ -2158,7 +2158,7 @@ class InappproductsResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/inappproducts';
 
     final _response = await _requester.request(
@@ -2208,7 +2208,7 @@ class InappproductsResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/inappproducts';
 
     final _response = await _requester.request(
@@ -2260,9 +2260,9 @@ class InappproductsResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/inappproducts/' +
-        commons.Escaper.ecapeVariable('$sku');
+        commons.escapeVariable('$sku');
 
     final _response = await _requester.request(
       _url,
@@ -2314,9 +2314,9 @@ class InappproductsResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/inappproducts/' +
-        commons.Escaper.ecapeVariable('$sku');
+        commons.escapeVariable('$sku');
 
     final _response = await _requester.request(
       _url,
@@ -2376,16 +2376,16 @@ class InternalappsharingartifactsResource {
     core.String _url;
     if (uploadMedia == null) {
       _url = 'androidpublisher/v3/applications/internalappsharing/' +
-          commons.Escaper.ecapeVariable('$packageName') +
+          commons.escapeVariable('$packageName') +
           '/artifacts/apk';
     } else if (uploadOptions is commons.ResumableUploadOptions) {
       _url =
           '/resumable/upload/androidpublisher/v3/applications/internalappsharing/' +
-              commons.Escaper.ecapeVariable('$packageName') +
+              commons.escapeVariable('$packageName') +
               '/artifacts/apk';
     } else {
       _url = '/upload/androidpublisher/v3/applications/internalappsharing/' +
-          commons.Escaper.ecapeVariable('$packageName') +
+          commons.escapeVariable('$packageName') +
           '/artifacts/apk';
     }
 
@@ -2441,16 +2441,16 @@ class InternalappsharingartifactsResource {
     core.String _url;
     if (uploadMedia == null) {
       _url = 'androidpublisher/v3/applications/internalappsharing/' +
-          commons.Escaper.ecapeVariable('$packageName') +
+          commons.escapeVariable('$packageName') +
           '/artifacts/bundle';
     } else if (uploadOptions is commons.ResumableUploadOptions) {
       _url =
           '/resumable/upload/androidpublisher/v3/applications/internalappsharing/' +
-              commons.Escaper.ecapeVariable('$packageName') +
+              commons.escapeVariable('$packageName') +
               '/artifacts/bundle';
     } else {
       _url = '/upload/androidpublisher/v3/applications/internalappsharing/' +
-          commons.Escaper.ecapeVariable('$packageName') +
+          commons.escapeVariable('$packageName') +
           '/artifacts/bundle';
     }
 
@@ -2507,9 +2507,9 @@ class OrdersResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/orders/' +
-        commons.Escaper.ecapeVariable('$orderId') +
+        commons.escapeVariable('$orderId') +
         ':refund';
 
     await _requester.request(
@@ -2575,11 +2575,11 @@ class PurchasesProductsResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/purchases/products/' +
-        commons.Escaper.ecapeVariable('$productId') +
+        commons.escapeVariable('$productId') +
         '/tokens/' +
-        commons.Escaper.ecapeVariable('$token') +
+        commons.escapeVariable('$token') +
         ':acknowledge';
 
     await _requester.request(
@@ -2625,11 +2625,11 @@ class PurchasesProductsResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/purchases/products/' +
-        commons.Escaper.ecapeVariable('$productId') +
+        commons.escapeVariable('$productId') +
         '/tokens/' +
-        commons.Escaper.ecapeVariable('$token');
+        commons.escapeVariable('$token');
 
     final _response = await _requester.request(
       _url,
@@ -2683,11 +2683,11 @@ class PurchasesSubscriptionsResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/purchases/subscriptions/' +
-        commons.Escaper.ecapeVariable('$subscriptionId') +
+        commons.escapeVariable('$subscriptionId') +
         '/tokens/' +
-        commons.Escaper.ecapeVariable('$token') +
+        commons.escapeVariable('$token') +
         ':acknowledge';
 
     await _requester.request(
@@ -2733,11 +2733,11 @@ class PurchasesSubscriptionsResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/purchases/subscriptions/' +
-        commons.Escaper.ecapeVariable('$subscriptionId') +
+        commons.escapeVariable('$subscriptionId') +
         '/tokens/' +
-        commons.Escaper.ecapeVariable('$token') +
+        commons.escapeVariable('$token') +
         ':cancel';
 
     await _requester.request(
@@ -2787,11 +2787,11 @@ class PurchasesSubscriptionsResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/purchases/subscriptions/' +
-        commons.Escaper.ecapeVariable('$subscriptionId') +
+        commons.escapeVariable('$subscriptionId') +
         '/tokens/' +
-        commons.Escaper.ecapeVariable('$token') +
+        commons.escapeVariable('$token') +
         ':defer';
 
     final _response = await _requester.request(
@@ -2839,11 +2839,11 @@ class PurchasesSubscriptionsResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/purchases/subscriptions/' +
-        commons.Escaper.ecapeVariable('$subscriptionId') +
+        commons.escapeVariable('$subscriptionId') +
         '/tokens/' +
-        commons.Escaper.ecapeVariable('$token');
+        commons.escapeVariable('$token');
 
     final _response = await _requester.request(
       _url,
@@ -2887,11 +2887,11 @@ class PurchasesSubscriptionsResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/purchases/subscriptions/' +
-        commons.Escaper.ecapeVariable('$subscriptionId') +
+        commons.escapeVariable('$subscriptionId') +
         '/tokens/' +
-        commons.Escaper.ecapeVariable('$token') +
+        commons.escapeVariable('$token') +
         ':refund';
 
     await _requester.request(
@@ -2937,11 +2937,11 @@ class PurchasesSubscriptionsResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/purchases/subscriptions/' +
-        commons.Escaper.ecapeVariable('$subscriptionId') +
+        commons.escapeVariable('$subscriptionId') +
         '/tokens/' +
-        commons.Escaper.ecapeVariable('$token') +
+        commons.escapeVariable('$token') +
         ':revoke';
 
     await _requester.request(
@@ -3030,7 +3030,7 @@ class PurchasesVoidedpurchasesResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/purchases/voidedpurchases';
 
     final _response = await _requester.request(
@@ -3081,9 +3081,9 @@ class ReviewsResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/reviews/' +
-        commons.Escaper.ecapeVariable('$reviewId');
+        commons.escapeVariable('$reviewId');
 
     final _response = await _requester.request(
       _url,
@@ -3135,7 +3135,7 @@ class ReviewsResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/reviews';
 
     final _response = await _requester.request(
@@ -3179,9 +3179,9 @@ class ReviewsResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/reviews/' +
-        commons.Escaper.ecapeVariable('$reviewId') +
+        commons.escapeVariable('$reviewId') +
         ':reply';
 
     final _response = await _requester.request(
@@ -3242,9 +3242,9 @@ class SystemapksVariantsResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/systemApks/' +
-        commons.Escaper.ecapeVariable('$versionCode') +
+        commons.escapeVariable('$versionCode') +
         '/variants';
 
     final _response = await _requester.request(
@@ -3291,11 +3291,11 @@ class SystemapksVariantsResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/systemApks/' +
-        commons.Escaper.ecapeVariable('$versionCode') +
+        commons.escapeVariable('$versionCode') +
         '/variants/' +
-        commons.Escaper.ecapeVariable('$variantId') +
+        commons.escapeVariable('$variantId') +
         ':download';
 
     final _response = await _requester.request(
@@ -3342,11 +3342,11 @@ class SystemapksVariantsResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/systemApks/' +
-        commons.Escaper.ecapeVariable('$versionCode') +
+        commons.escapeVariable('$versionCode') +
         '/variants/' +
-        commons.Escaper.ecapeVariable('$variantId');
+        commons.escapeVariable('$variantId');
 
     final _response = await _requester.request(
       _url,
@@ -3384,9 +3384,9 @@ class SystemapksVariantsResource {
     };
 
     final _url = 'androidpublisher/v3/applications/' +
-        commons.Escaper.ecapeVariable('$packageName') +
+        commons.escapeVariable('$packageName') +
         '/systemApks/' +
-        commons.Escaper.ecapeVariable('$versionCode') +
+        commons.escapeVariable('$versionCode') +
         '/variants';
 
     final _response = await _requester.request(

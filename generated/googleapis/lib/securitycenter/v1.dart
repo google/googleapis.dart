@@ -115,9 +115,7 @@ class FoldersAssetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/assets:group';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/assets:group';
 
     final _response = await _requester.request(
       _url,
@@ -254,8 +252,7 @@ class FoldersAssetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/assets';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/assets';
 
     final _response = await _requester.request(
       _url,
@@ -312,7 +309,7 @@ class FoldersAssetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -371,8 +368,7 @@ class FoldersSourcesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/sources';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/sources';
 
     final _response = await _requester.request(
       _url,
@@ -431,9 +427,7 @@ class FoldersSourcesFindingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/findings:group';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/findings:group';
 
     final _response = await _requester.request(
       _url,
@@ -565,8 +559,7 @@ class FoldersSourcesFindingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/findings';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/findings';
 
     final _response = await _requester.request(
       _url,
@@ -620,7 +613,7 @@ class FoldersSourcesFindingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -664,8 +657,7 @@ class FoldersSourcesFindingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':setState';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':setState';
 
     final _response = await _requester.request(
       _url,
@@ -723,7 +715,7 @@ class FoldersSourcesFindingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -777,7 +769,7 @@ class OrganizationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -824,7 +816,7 @@ class OrganizationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -875,9 +867,7 @@ class OrganizationsAssetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/assets:group';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/assets:group';
 
     final _response = await _requester.request(
       _url,
@@ -1014,8 +1004,7 @@ class OrganizationsAssetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/assets';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/assets';
 
     final _response = await _requester.request(
       _url,
@@ -1060,9 +1049,8 @@ class OrganizationsAssetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/assets:runDiscovery';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + '/assets:runDiscovery';
 
     final _response = await _requester.request(
       _url,
@@ -1120,7 +1108,7 @@ class OrganizationsAssetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1175,9 +1163,8 @@ class OrganizationsNotificationConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/notificationConfigs';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + '/notificationConfigs';
 
     final _response = await _requester.request(
       _url,
@@ -1216,7 +1203,7 @@ class OrganizationsNotificationConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1253,7 +1240,7 @@ class OrganizationsNotificationConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1302,9 +1289,8 @@ class OrganizationsNotificationConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/notificationConfigs';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + '/notificationConfigs';
 
     final _response = await _requester.request(
       _url,
@@ -1356,7 +1342,7 @@ class OrganizationsNotificationConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1409,8 +1395,7 @@ class OrganizationsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
 
     final _response = await _requester.request(
       _url,
@@ -1449,7 +1434,7 @@ class OrganizationsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1487,7 +1472,7 @@ class OrganizationsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1543,7 +1528,7 @@ class OrganizationsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1594,8 +1579,7 @@ class OrganizationsSourcesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/sources';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/sources';
 
     final _response = await _requester.request(
       _url,
@@ -1632,7 +1616,7 @@ class OrganizationsSourcesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1673,9 +1657,7 @@ class OrganizationsSourcesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':getIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -1724,8 +1706,7 @@ class OrganizationsSourcesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/sources';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/sources';
 
     final _response = await _requester.request(
       _url,
@@ -1772,7 +1753,7 @@ class OrganizationsSourcesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1814,9 +1795,7 @@ class OrganizationsSourcesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':setIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -1858,9 +1837,8 @@ class OrganizationsSourcesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':testIamPermissions';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
     final _response = await _requester.request(
       _url,
@@ -1917,8 +1895,7 @@ class OrganizationsSourcesFindingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/findings';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/findings';
 
     final _response = await _requester.request(
       _url,
@@ -1970,9 +1947,7 @@ class OrganizationsSourcesFindingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/findings:group';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/findings:group';
 
     final _response = await _requester.request(
       _url,
@@ -2104,8 +2079,7 @@ class OrganizationsSourcesFindingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/findings';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/findings';
 
     final _response = await _requester.request(
       _url,
@@ -2159,7 +2133,7 @@ class OrganizationsSourcesFindingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2203,8 +2177,7 @@ class OrganizationsSourcesFindingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':setState';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':setState';
 
     final _response = await _requester.request(
       _url,
@@ -2262,7 +2235,7 @@ class OrganizationsSourcesFindingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2321,9 +2294,7 @@ class ProjectsAssetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/assets:group';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/assets:group';
 
     final _response = await _requester.request(
       _url,
@@ -2460,8 +2431,7 @@ class ProjectsAssetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/assets';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/assets';
 
     final _response = await _requester.request(
       _url,
@@ -2518,7 +2488,7 @@ class ProjectsAssetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2577,8 +2547,7 @@ class ProjectsSourcesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/sources';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/sources';
 
     final _response = await _requester.request(
       _url,
@@ -2637,9 +2606,7 @@ class ProjectsSourcesFindingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/findings:group';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/findings:group';
 
     final _response = await _requester.request(
       _url,
@@ -2771,8 +2738,7 @@ class ProjectsSourcesFindingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/findings';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/findings';
 
     final _response = await _requester.request(
       _url,
@@ -2826,7 +2792,7 @@ class ProjectsSourcesFindingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2870,8 +2836,7 @@ class ProjectsSourcesFindingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':setState';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':setState';
 
     final _response = await _requester.request(
       _url,
@@ -2929,7 +2894,7 @@ class ProjectsSourcesFindingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,

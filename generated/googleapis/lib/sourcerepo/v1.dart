@@ -100,8 +100,7 @@ class ProjectsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/config';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/config';
 
     final _response = await _requester.request(
       _url,
@@ -142,8 +141,7 @@ class ProjectsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/config';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/config';
 
     final _response = await _requester.request(
       _url,
@@ -194,8 +192,7 @@ class ProjectsReposResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/repos';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/repos';
 
     final _response = await _requester.request(
       _url,
@@ -232,7 +229,7 @@ class ProjectsReposResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -268,7 +265,7 @@ class ProjectsReposResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -319,9 +316,7 @@ class ProjectsReposResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':getIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -371,8 +366,7 @@ class ProjectsReposResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/repos';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/repos';
 
     final _response = await _requester.request(
       _url,
@@ -413,7 +407,7 @@ class ProjectsReposResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -457,9 +451,7 @@ class ProjectsReposResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':setIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -502,8 +494,7 @@ class ProjectsReposResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':sync';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':sync';
 
     final _response = await _requester.request(
       _url,
@@ -548,9 +539,8 @@ class ProjectsReposResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$resource') +
-        ':testIamPermissions';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
     final _response = await _requester.request(
       _url,

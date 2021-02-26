@@ -137,9 +137,8 @@ class AdminProjectsLocationsSubscriptionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/admin/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/subscriptions';
+    final _url =
+        'v1/admin/' + core.Uri.encodeFull('$parent') + '/subscriptions';
 
     final _response = await _requester.request(
       _url,
@@ -177,7 +176,7 @@ class AdminProjectsLocationsSubscriptionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/admin/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/admin/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -214,7 +213,7 @@ class AdminProjectsLocationsSubscriptionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/admin/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/admin/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -264,9 +263,8 @@ class AdminProjectsLocationsSubscriptionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/admin/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/subscriptions';
+    final _url =
+        'v1/admin/' + core.Uri.encodeFull('$parent') + '/subscriptions';
 
     final _response = await _requester.request(
       _url,
@@ -313,7 +311,7 @@ class AdminProjectsLocationsSubscriptionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/admin/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/admin/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -371,9 +369,7 @@ class AdminProjectsLocationsTopicsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/admin/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/topics';
+    final _url = 'v1/admin/' + core.Uri.encodeFull('$parent') + '/topics';
 
     final _response = await _requester.request(
       _url,
@@ -410,7 +406,7 @@ class AdminProjectsLocationsTopicsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/admin/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/admin/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -446,7 +442,7 @@ class AdminProjectsLocationsTopicsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/admin/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/admin/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -482,9 +478,7 @@ class AdminProjectsLocationsTopicsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/admin/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        '/partitions';
+    final _url = 'v1/admin/' + core.Uri.encodeFull('$name') + '/partitions';
 
     final _response = await _requester.request(
       _url,
@@ -534,9 +528,7 @@ class AdminProjectsLocationsTopicsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/admin/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/topics';
+    final _url = 'v1/admin/' + core.Uri.encodeFull('$parent') + '/topics';
 
     final _response = await _requester.request(
       _url,
@@ -582,7 +574,7 @@ class AdminProjectsLocationsTopicsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/admin/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/admin/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -639,9 +631,7 @@ class AdminProjectsLocationsTopicsSubscriptionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/admin/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        '/subscriptions';
+    final _url = 'v1/admin/' + core.Uri.encodeFull('$name') + '/subscriptions';
 
     final _response = await _requester.request(
       _url,
@@ -738,9 +728,7 @@ class CursorProjectsLocationsSubscriptionsCursorsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/cursor/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/cursors';
+    final _url = 'v1/cursor/' + core.Uri.encodeFull('$parent') + '/cursors';
 
     final _response = await _requester.request(
       _url,
@@ -821,9 +809,8 @@ class TopicStatsProjectsLocationsTopicsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/topicStats/' +
-        commons.Escaper.ecapeVariableReserved('$topic') +
-        ':computeHeadCursor';
+    final _url =
+        'v1/topicStats/' + core.Uri.encodeFull('$topic') + ':computeHeadCursor';
 
     final _response = await _requester.request(
       _url,
@@ -867,7 +854,7 @@ class TopicStatsProjectsLocationsTopicsResource {
     };
 
     final _url = 'v1/topicStats/' +
-        commons.Escaper.ecapeVariableReserved('$topic') +
+        core.Uri.encodeFull('$topic') +
         ':computeMessageStats';
 
     final _response = await _requester.request(

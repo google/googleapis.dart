@@ -168,7 +168,7 @@ class AccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -205,7 +205,7 @@ class AccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -246,7 +246,7 @@ class AccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -350,7 +350,7 @@ class AccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -444,9 +444,8 @@ class AccountsUserLinksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/userLinks:audit';
+    final _url =
+        'v1alpha/' + core.Uri.encodeFull('$parent') + '/userLinks:audit';
 
     final _response = await _requester.request(
       _url,
@@ -495,9 +494,8 @@ class AccountsUserLinksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/userLinks:batchCreate';
+    final _url =
+        'v1alpha/' + core.Uri.encodeFull('$parent') + '/userLinks:batchCreate';
 
     final _response = await _requester.request(
       _url,
@@ -540,9 +538,8 @@ class AccountsUserLinksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/userLinks:batchDelete';
+    final _url =
+        'v1alpha/' + core.Uri.encodeFull('$parent') + '/userLinks:batchDelete';
 
     final _response = await _requester.request(
       _url,
@@ -587,9 +584,8 @@ class AccountsUserLinksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/userLinks:batchGet';
+    final _url =
+        'v1alpha/' + core.Uri.encodeFull('$parent') + '/userLinks:batchGet';
 
     final _response = await _requester.request(
       _url,
@@ -633,9 +629,8 @@ class AccountsUserLinksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/userLinks:batchUpdate';
+    final _url =
+        'v1alpha/' + core.Uri.encodeFull('$parent') + '/userLinks:batchUpdate';
 
     final _response = await _requester.request(
       _url,
@@ -685,9 +680,7 @@ class AccountsUserLinksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/userLinks';
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$parent') + '/userLinks';
 
     final _response = await _requester.request(
       _url,
@@ -724,7 +717,7 @@ class AccountsUserLinksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -760,7 +753,7 @@ class AccountsUserLinksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -810,9 +803,7 @@ class AccountsUserLinksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/userLinks';
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$parent') + '/userLinks';
 
     final _response = await _requester.request(
       _url,
@@ -852,7 +843,7 @@ class AccountsUserLinksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -953,7 +944,7 @@ class PropertiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -990,7 +981,7 @@ class PropertiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1106,7 +1097,7 @@ class PropertiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1161,9 +1152,8 @@ class PropertiesAndroidAppDataStreamsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/androidAppDataStreams';
+    final _url =
+        'v1alpha/' + core.Uri.encodeFull('$parent') + '/androidAppDataStreams';
 
     final _response = await _requester.request(
       _url,
@@ -1203,7 +1193,7 @@ class PropertiesAndroidAppDataStreamsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1242,7 +1232,7 @@ class PropertiesAndroidAppDataStreamsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1298,9 +1288,8 @@ class PropertiesAndroidAppDataStreamsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/androidAppDataStreams';
+    final _url =
+        'v1alpha/' + core.Uri.encodeFull('$parent') + '/androidAppDataStreams';
 
     final _response = await _requester.request(
       _url,
@@ -1350,7 +1339,7 @@ class PropertiesAndroidAppDataStreamsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1401,9 +1390,7 @@ class PropertiesFirebaseLinksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/firebaseLinks';
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$parent') + '/firebaseLinks';
 
     final _response = await _requester.request(
       _url,
@@ -1442,7 +1429,7 @@ class PropertiesFirebaseLinksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1495,9 +1482,7 @@ class PropertiesFirebaseLinksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/firebaseLinks';
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$parent') + '/firebaseLinks';
 
     final _response = await _requester.request(
       _url,
@@ -1544,7 +1529,7 @@ class PropertiesFirebaseLinksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1592,9 +1577,8 @@ class PropertiesGoogleAdsLinksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/googleAdsLinks';
+    final _url =
+        'v1alpha/' + core.Uri.encodeFull('$parent') + '/googleAdsLinks';
 
     final _response = await _requester.request(
       _url,
@@ -1631,7 +1615,7 @@ class PropertiesGoogleAdsLinksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1680,9 +1664,8 @@ class PropertiesGoogleAdsLinksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/googleAdsLinks';
+    final _url =
+        'v1alpha/' + core.Uri.encodeFull('$parent') + '/googleAdsLinks';
 
     final _response = await _requester.request(
       _url,
@@ -1731,7 +1714,7 @@ class PropertiesGoogleAdsLinksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1786,9 +1769,8 @@ class PropertiesIosAppDataStreamsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/iosAppDataStreams';
+    final _url =
+        'v1alpha/' + core.Uri.encodeFull('$parent') + '/iosAppDataStreams';
 
     final _response = await _requester.request(
       _url,
@@ -1827,7 +1809,7 @@ class PropertiesIosAppDataStreamsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1865,7 +1847,7 @@ class PropertiesIosAppDataStreamsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1919,9 +1901,8 @@ class PropertiesIosAppDataStreamsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/iosAppDataStreams';
+    final _url =
+        'v1alpha/' + core.Uri.encodeFull('$parent') + '/iosAppDataStreams';
 
     final _response = await _requester.request(
       _url,
@@ -1970,7 +1951,7 @@ class PropertiesIosAppDataStreamsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2026,9 +2007,8 @@ class PropertiesUserLinksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/userLinks:audit';
+    final _url =
+        'v1alpha/' + core.Uri.encodeFull('$parent') + '/userLinks:audit';
 
     final _response = await _requester.request(
       _url,
@@ -2077,9 +2057,8 @@ class PropertiesUserLinksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/userLinks:batchCreate';
+    final _url =
+        'v1alpha/' + core.Uri.encodeFull('$parent') + '/userLinks:batchCreate';
 
     final _response = await _requester.request(
       _url,
@@ -2122,9 +2101,8 @@ class PropertiesUserLinksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/userLinks:batchDelete';
+    final _url =
+        'v1alpha/' + core.Uri.encodeFull('$parent') + '/userLinks:batchDelete';
 
     final _response = await _requester.request(
       _url,
@@ -2169,9 +2147,8 @@ class PropertiesUserLinksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/userLinks:batchGet';
+    final _url =
+        'v1alpha/' + core.Uri.encodeFull('$parent') + '/userLinks:batchGet';
 
     final _response = await _requester.request(
       _url,
@@ -2215,9 +2192,8 @@ class PropertiesUserLinksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/userLinks:batchUpdate';
+    final _url =
+        'v1alpha/' + core.Uri.encodeFull('$parent') + '/userLinks:batchUpdate';
 
     final _response = await _requester.request(
       _url,
@@ -2267,9 +2243,7 @@ class PropertiesUserLinksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/userLinks';
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$parent') + '/userLinks';
 
     final _response = await _requester.request(
       _url,
@@ -2306,7 +2280,7 @@ class PropertiesUserLinksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2342,7 +2316,7 @@ class PropertiesUserLinksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2392,9 +2366,7 @@ class PropertiesUserLinksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/userLinks';
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$parent') + '/userLinks';
 
     final _response = await _requester.request(
       _url,
@@ -2434,7 +2406,7 @@ class PropertiesUserLinksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2483,9 +2455,8 @@ class PropertiesWebDataStreamsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/webDataStreams';
+    final _url =
+        'v1alpha/' + core.Uri.encodeFull('$parent') + '/webDataStreams';
 
     final _response = await _requester.request(
       _url,
@@ -2524,7 +2495,7 @@ class PropertiesWebDataStreamsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2562,7 +2533,7 @@ class PropertiesWebDataStreamsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2605,7 +2576,7 @@ class PropertiesWebDataStreamsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2647,7 +2618,7 @@ class PropertiesWebDataStreamsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2700,9 +2671,8 @@ class PropertiesWebDataStreamsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/webDataStreams';
+    final _url =
+        'v1alpha/' + core.Uri.encodeFull('$parent') + '/webDataStreams';
 
     final _response = await _requester.request(
       _url,
@@ -2751,7 +2721,7 @@ class PropertiesWebDataStreamsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2806,7 +2776,7 @@ class PropertiesWebDataStreamsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,

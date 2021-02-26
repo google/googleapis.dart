@@ -143,7 +143,7 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -207,8 +207,7 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/insights';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/insights';
 
     final _response = await _requester.request(
       _url,
@@ -255,9 +254,7 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':markAccepted';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':markAccepted';
 
     final _response = await _requester.request(
       _url,
@@ -318,7 +315,7 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -383,9 +380,7 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/recommendations';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/recommendations';
 
     final _response = await _requester.request(
       _url,
@@ -434,8 +429,7 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':markClaimed';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':markClaimed';
 
     final _response = await _requester.request(
       _url,
@@ -485,8 +479,7 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':markFailed';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':markFailed';
 
     final _response = await _requester.request(
       _url,
@@ -536,9 +529,7 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':markSucceeded';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':markSucceeded';
 
     final _response = await _requester.request(
       _url,
@@ -616,7 +607,7 @@ class FoldersLocationsInsightTypesInsightsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -680,8 +671,7 @@ class FoldersLocationsInsightTypesInsightsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/insights';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/insights';
 
     final _response = await _requester.request(
       _url,
@@ -728,9 +718,7 @@ class FoldersLocationsInsightTypesInsightsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':markAccepted';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':markAccepted';
 
     final _response = await _requester.request(
       _url,
@@ -789,7 +777,7 @@ class FoldersLocationsRecommendersRecommendationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -854,9 +842,7 @@ class FoldersLocationsRecommendersRecommendationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/recommendations';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/recommendations';
 
     final _response = await _requester.request(
       _url,
@@ -905,8 +891,7 @@ class FoldersLocationsRecommendersRecommendationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':markClaimed';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':markClaimed';
 
     final _response = await _requester.request(
       _url,
@@ -956,8 +941,7 @@ class FoldersLocationsRecommendersRecommendationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':markFailed';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':markFailed';
 
     final _response = await _requester.request(
       _url,
@@ -1007,9 +991,7 @@ class FoldersLocationsRecommendersRecommendationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':markSucceeded';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':markSucceeded';
 
     final _response = await _requester.request(
       _url,
@@ -1089,7 +1071,7 @@ class OrganizationsLocationsInsightTypesInsightsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1153,8 +1135,7 @@ class OrganizationsLocationsInsightTypesInsightsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/insights';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/insights';
 
     final _response = await _requester.request(
       _url,
@@ -1201,9 +1182,7 @@ class OrganizationsLocationsInsightTypesInsightsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':markAccepted';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':markAccepted';
 
     final _response = await _requester.request(
       _url,
@@ -1263,7 +1242,7 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1328,9 +1307,7 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/recommendations';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/recommendations';
 
     final _response = await _requester.request(
       _url,
@@ -1379,8 +1356,7 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':markClaimed';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':markClaimed';
 
     final _response = await _requester.request(
       _url,
@@ -1430,8 +1406,7 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':markFailed';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':markFailed';
 
     final _response = await _requester.request(
       _url,
@@ -1481,9 +1456,7 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':markSucceeded';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':markSucceeded';
 
     final _response = await _requester.request(
       _url,
@@ -1561,7 +1534,7 @@ class ProjectsLocationsInsightTypesInsightsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1625,8 +1598,7 @@ class ProjectsLocationsInsightTypesInsightsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/insights';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/insights';
 
     final _response = await _requester.request(
       _url,
@@ -1673,9 +1645,7 @@ class ProjectsLocationsInsightTypesInsightsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':markAccepted';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':markAccepted';
 
     final _response = await _requester.request(
       _url,
@@ -1734,7 +1704,7 @@ class ProjectsLocationsRecommendersRecommendationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1799,9 +1769,7 @@ class ProjectsLocationsRecommendersRecommendationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/recommendations';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/recommendations';
 
     final _response = await _requester.request(
       _url,
@@ -1850,8 +1818,7 @@ class ProjectsLocationsRecommendersRecommendationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':markClaimed';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':markClaimed';
 
     final _response = await _requester.request(
       _url,
@@ -1901,8 +1868,7 @@ class ProjectsLocationsRecommendersRecommendationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':markFailed';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':markFailed';
 
     final _response = await _requester.request(
       _url,
@@ -1952,9 +1918,7 @@ class ProjectsLocationsRecommendersRecommendationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':markSucceeded';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':markSucceeded';
 
     final _response = await _requester.request(
       _url,

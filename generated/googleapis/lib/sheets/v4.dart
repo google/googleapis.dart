@@ -124,7 +124,7 @@ class SpreadsheetsResource {
     };
 
     final _url = 'v4/spreadsheets/' +
-        commons.Escaper.ecapeVariable('$spreadsheetId') +
+        commons.escapeVariable('$spreadsheetId') +
         ':batchUpdate';
 
     final _response = await _requester.request(
@@ -218,8 +218,7 @@ class SpreadsheetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v4/spreadsheets/' + commons.Escaper.ecapeVariable('$spreadsheetId');
+    final _url = 'v4/spreadsheets/' + commons.escapeVariable('$spreadsheetId');
 
     final _response = await _requester.request(
       _url,
@@ -272,7 +271,7 @@ class SpreadsheetsResource {
     };
 
     final _url = 'v4/spreadsheets/' +
-        commons.Escaper.ecapeVariable('$spreadsheetId') +
+        commons.escapeVariable('$spreadsheetId') +
         ':getByDataFilter';
 
     final _response = await _requester.request(
@@ -323,9 +322,9 @@ class SpreadsheetsDeveloperMetadataResource {
     };
 
     final _url = 'v4/spreadsheets/' +
-        commons.Escaper.ecapeVariable('$spreadsheetId') +
+        commons.escapeVariable('$spreadsheetId') +
         '/developerMetadata/' +
-        commons.Escaper.ecapeVariable('$metadataId');
+        commons.escapeVariable('$metadataId');
 
     final _response = await _requester.request(
       _url,
@@ -370,7 +369,7 @@ class SpreadsheetsDeveloperMetadataResource {
     };
 
     final _url = 'v4/spreadsheets/' +
-        commons.Escaper.ecapeVariable('$spreadsheetId') +
+        commons.escapeVariable('$spreadsheetId') +
         '/developerMetadata:search';
 
     final _response = await _requester.request(
@@ -423,9 +422,9 @@ class SpreadsheetsSheetsResource {
     };
 
     final _url = 'v4/spreadsheets/' +
-        commons.Escaper.ecapeVariable('$spreadsheetId') +
+        commons.escapeVariable('$spreadsheetId') +
         '/sheets/' +
-        commons.Escaper.ecapeVariable('$sheetId') +
+        commons.escapeVariable('$sheetId') +
         ':copyTo';
 
     final _response = await _requester.request(
@@ -556,9 +555,9 @@ class SpreadsheetsValuesResource {
     };
 
     final _url = 'v4/spreadsheets/' +
-        commons.Escaper.ecapeVariable('$spreadsheetId') +
+        commons.escapeVariable('$spreadsheetId') +
         '/values/' +
-        commons.Escaper.ecapeVariable('$range') +
+        commons.escapeVariable('$range') +
         ':append';
 
     final _response = await _requester.request(
@@ -604,7 +603,7 @@ class SpreadsheetsValuesResource {
     };
 
     final _url = 'v4/spreadsheets/' +
-        commons.Escaper.ecapeVariable('$spreadsheetId') +
+        commons.escapeVariable('$spreadsheetId') +
         '/values:batchClear';
 
     final _response = await _requester.request(
@@ -651,7 +650,7 @@ class SpreadsheetsValuesResource {
     };
 
     final _url = 'v4/spreadsheets/' +
-        commons.Escaper.ecapeVariable('$spreadsheetId') +
+        commons.escapeVariable('$spreadsheetId') +
         '/values:batchClearByDataFilter';
 
     final _response = await _requester.request(
@@ -744,7 +743,7 @@ class SpreadsheetsValuesResource {
     };
 
     final _url = 'v4/spreadsheets/' +
-        commons.Escaper.ecapeVariable('$spreadsheetId') +
+        commons.escapeVariable('$spreadsheetId') +
         '/values:batchGet';
 
     final _response = await _requester.request(
@@ -789,7 +788,7 @@ class SpreadsheetsValuesResource {
     };
 
     final _url = 'v4/spreadsheets/' +
-        commons.Escaper.ecapeVariable('$spreadsheetId') +
+        commons.escapeVariable('$spreadsheetId') +
         '/values:batchGetByDataFilter';
 
     final _response = await _requester.request(
@@ -834,7 +833,7 @@ class SpreadsheetsValuesResource {
     };
 
     final _url = 'v4/spreadsheets/' +
-        commons.Escaper.ecapeVariable('$spreadsheetId') +
+        commons.escapeVariable('$spreadsheetId') +
         '/values:batchUpdate';
 
     final _response = await _requester.request(
@@ -879,7 +878,7 @@ class SpreadsheetsValuesResource {
     };
 
     final _url = 'v4/spreadsheets/' +
-        commons.Escaper.ecapeVariable('$spreadsheetId') +
+        commons.escapeVariable('$spreadsheetId') +
         '/values:batchUpdateByDataFilter';
 
     final _response = await _requester.request(
@@ -928,9 +927,9 @@ class SpreadsheetsValuesResource {
     };
 
     final _url = 'v4/spreadsheets/' +
-        commons.Escaper.ecapeVariable('$spreadsheetId') +
+        commons.escapeVariable('$spreadsheetId') +
         '/values/' +
-        commons.Escaper.ecapeVariable('$range') +
+        commons.escapeVariable('$range') +
         ':clear';
 
     final _response = await _requester.request(
@@ -1022,9 +1021,9 @@ class SpreadsheetsValuesResource {
     };
 
     final _url = 'v4/spreadsheets/' +
-        commons.Escaper.ecapeVariable('$spreadsheetId') +
+        commons.escapeVariable('$spreadsheetId') +
         '/values/' +
-        commons.Escaper.ecapeVariable('$range');
+        commons.escapeVariable('$range');
 
     final _response = await _requester.request(
       _url,
@@ -1130,9 +1129,9 @@ class SpreadsheetsValuesResource {
     };
 
     final _url = 'v4/spreadsheets/' +
-        commons.Escaper.ecapeVariable('$spreadsheetId') +
+        commons.escapeVariable('$spreadsheetId') +
         '/values/' +
-        commons.Escaper.ecapeVariable('$range');
+        commons.escapeVariable('$range');
 
     final _response = await _requester.request(
       _url,

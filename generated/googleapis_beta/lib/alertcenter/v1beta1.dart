@@ -171,7 +171,7 @@ class AlertsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/alerts/' + commons.Escaper.ecapeVariable('$alertId');
+    final _url = 'v1beta1/alerts/' + commons.escapeVariable('$alertId');
 
     final _response = await _requester.request(
       _url,
@@ -213,7 +213,7 @@ class AlertsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/alerts/' + commons.Escaper.ecapeVariable('$alertId');
+    final _url = 'v1beta1/alerts/' + commons.escapeVariable('$alertId');
 
     final _response = await _requester.request(
       _url,
@@ -257,9 +257,8 @@ class AlertsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/alerts/' +
-        commons.Escaper.ecapeVariable('$alertId') +
-        '/metadata';
+    final _url =
+        'v1beta1/alerts/' + commons.escapeVariable('$alertId') + '/metadata';
 
     final _response = await _requester.request(
       _url,
@@ -370,9 +369,8 @@ class AlertsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/alerts/' +
-        commons.Escaper.ecapeVariable('$alertId') +
-        ':undelete';
+    final _url =
+        'v1beta1/alerts/' + commons.escapeVariable('$alertId') + ':undelete';
 
     final _response = await _requester.request(
       _url,
@@ -428,9 +426,8 @@ class AlertsFeedbackResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/alerts/' +
-        commons.Escaper.ecapeVariable('$alertId') +
-        '/feedback';
+    final _url =
+        'v1beta1/alerts/' + commons.escapeVariable('$alertId') + '/feedback';
 
     final _response = await _requester.request(
       _url,
@@ -484,9 +481,8 @@ class AlertsFeedbackResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/alerts/' +
-        commons.Escaper.ecapeVariable('$alertId') +
-        '/feedback';
+    final _url =
+        'v1beta1/alerts/' + commons.escapeVariable('$alertId') + '/feedback';
 
     final _response = await _requester.request(
       _url,

@@ -98,7 +98,7 @@ class FoldersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -133,7 +133,7 @@ class FoldersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -189,7 +189,7 @@ class FoldersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -240,8 +240,7 @@ class FoldersApprovalRequestsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':approve';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':approve';
 
     final _response = await _requester.request(
       _url,
@@ -288,8 +287,7 @@ class FoldersApprovalRequestsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':dismiss';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':dismiss';
 
     final _response = await _requester.request(
       _url,
@@ -328,7 +326,7 @@ class FoldersApprovalRequestsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -388,9 +386,7 @@ class FoldersApprovalRequestsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/approvalRequests';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/approvalRequests';
 
     final _response = await _requester.request(
       _url,
@@ -441,7 +437,7 @@ class OrganizationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -476,7 +472,7 @@ class OrganizationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -532,7 +528,7 @@ class OrganizationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -584,8 +580,7 @@ class OrganizationsApprovalRequestsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':approve';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':approve';
 
     final _response = await _requester.request(
       _url,
@@ -633,8 +628,7 @@ class OrganizationsApprovalRequestsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':dismiss';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':dismiss';
 
     final _response = await _requester.request(
       _url,
@@ -674,7 +668,7 @@ class OrganizationsApprovalRequestsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -734,9 +728,7 @@ class OrganizationsApprovalRequestsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/approvalRequests';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/approvalRequests';
 
     final _response = await _requester.request(
       _url,
@@ -787,7 +779,7 @@ class ProjectsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -822,7 +814,7 @@ class ProjectsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -878,7 +870,7 @@ class ProjectsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -929,8 +921,7 @@ class ProjectsApprovalRequestsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':approve';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':approve';
 
     final _response = await _requester.request(
       _url,
@@ -977,8 +968,7 @@ class ProjectsApprovalRequestsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':dismiss';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':dismiss';
 
     final _response = await _requester.request(
       _url,
@@ -1017,7 +1007,7 @@ class ProjectsApprovalRequestsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1077,9 +1067,7 @@ class ProjectsApprovalRequestsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/approvalRequests';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/approvalRequests';
 
     final _response = await _requester.request(
       _url,

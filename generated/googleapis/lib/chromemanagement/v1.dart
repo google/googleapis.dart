@@ -116,7 +116,7 @@ class CustomersReportsResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$customer') +
+        core.Uri.encodeFull('$customer') +
         '/reports:countChromeVersions';
 
     final _response = await _requester.request(
@@ -183,7 +183,7 @@ class CustomersReportsResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$customer') +
+        core.Uri.encodeFull('$customer') +
         '/reports:countInstalledApps';
 
     final _response = await _requester.request(
@@ -265,7 +265,7 @@ class CustomersReportsResource {
     };
 
     final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$customer') +
+        core.Uri.encodeFull('$customer') +
         '/reports:findInstalledAppDevices';
 
     final _response = await _requester.request(

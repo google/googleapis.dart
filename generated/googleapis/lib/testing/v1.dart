@@ -158,9 +158,9 @@ class ProjectsTestMatricesResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/testMatrices/' +
-        commons.Escaper.ecapeVariable('$testMatrixId') +
+        commons.escapeVariable('$testMatrixId') +
         ':cancel';
 
     final _response = await _requester.request(
@@ -212,9 +212,8 @@ class ProjectsTestMatricesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
-        '/testMatrices';
+    final _url =
+        'v1/projects/' + commons.escapeVariable('$projectId') + '/testMatrices';
 
     final _response = await _requester.request(
       _url,
@@ -258,9 +257,9 @@ class ProjectsTestMatricesResource {
     };
 
     final _url = 'v1/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/testMatrices/' +
-        commons.Escaper.ecapeVariable('$testMatrixId');
+        commons.escapeVariable('$testMatrixId');
 
     final _response = await _requester.request(
       _url,
@@ -323,7 +322,7 @@ class TestEnvironmentCatalogResource {
     };
 
     final _url = 'v1/testEnvironmentCatalog/' +
-        commons.Escaper.ecapeVariable('$environmentType');
+        commons.escapeVariable('$environmentType');
 
     final _response = await _requester.request(
       _url,

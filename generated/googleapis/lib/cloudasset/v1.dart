@@ -96,8 +96,7 @@ class FeedsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/feeds';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/feeds';
 
     final _response = await _requester.request(
       _url,
@@ -135,7 +134,7 @@ class FeedsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -172,7 +171,7 @@ class FeedsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -210,8 +209,7 @@ class FeedsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/feeds';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/feeds';
 
     final _response = await _requester.request(
       _url,
@@ -256,7 +254,7 @@ class FeedsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -301,7 +299,7 @@ class OperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -488,9 +486,7 @@ class V1Resource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$scope') +
-        ':analyzeIamPolicy';
+    final _url = 'v1/' + core.Uri.encodeFull('$scope') + ':analyzeIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -547,9 +543,8 @@ class V1Resource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$scope') +
-        ':analyzeIamPolicyLongrunning';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$scope') + ':analyzeIamPolicyLongrunning';
 
     final _response = await _requester.request(
       _url,
@@ -626,9 +621,8 @@ class V1Resource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        ':batchGetAssetsHistory';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + ':batchGetAssetsHistory';
 
     final _response = await _requester.request(
       _url,
@@ -681,9 +675,7 @@ class V1Resource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        ':exportAssets';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + ':exportAssets';
 
     final _response = await _requester.request(
       _url,
@@ -780,9 +772,8 @@ class V1Resource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$scope') +
-        ':searchAllIamPolicies';
+    final _url =
+        'v1/' + core.Uri.encodeFull('$scope') + ':searchAllIamPolicies';
 
     final _response = await _requester.request(
       _url,
@@ -900,9 +891,7 @@ class V1Resource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$scope') +
-        ':searchAllResources';
+    final _url = 'v1/' + core.Uri.encodeFull('$scope') + ':searchAllResources';
 
     final _response = await _requester.request(
       _url,

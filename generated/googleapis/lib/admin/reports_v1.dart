@@ -288,9 +288,9 @@ class ActivitiesResource {
     };
 
     final _url = 'admin/reports/v1/activity/users/' +
-        commons.Escaper.ecapeVariable('$userKey') +
+        commons.escapeVariable('$userKey') +
         '/applications/' +
-        commons.Escaper.ecapeVariable('$applicationName');
+        commons.escapeVariable('$applicationName');
 
     final _response = await _requester.request(
       _url,
@@ -512,9 +512,9 @@ class ActivitiesResource {
     };
 
     final _url = 'admin/reports/v1/activity/users/' +
-        commons.Escaper.ecapeVariable('$userKey') +
+        commons.escapeVariable('$userKey') +
         '/applications/' +
-        commons.Escaper.ecapeVariable('$applicationName') +
+        commons.escapeVariable('$applicationName') +
         '/watch';
 
     final _response = await _requester.request(
@@ -637,8 +637,8 @@ class CustomerUsageReportsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'admin/reports/v1/usage/dates/' +
-        commons.Escaper.ecapeVariable('$date');
+    final _url =
+        'admin/reports/v1/usage/dates/' + commons.escapeVariable('$date');
 
     final _response = await _requester.request(
       _url,
@@ -762,11 +762,11 @@ class EntityUsageReportsResource {
     };
 
     final _url = 'admin/reports/v1/usage/' +
-        commons.Escaper.ecapeVariable('$entityType') +
+        commons.escapeVariable('$entityType') +
         '/' +
-        commons.Escaper.ecapeVariable('$entityKey') +
+        commons.escapeVariable('$entityKey') +
         '/dates/' +
-        commons.Escaper.ecapeVariable('$date');
+        commons.escapeVariable('$date');
 
     final _response = await _requester.request(
       _url,
@@ -898,9 +898,9 @@ class UserUsageReportResource {
     };
 
     final _url = 'admin/reports/v1/usage/users/' +
-        commons.Escaper.ecapeVariable('$userKey') +
+        commons.escapeVariable('$userKey') +
         '/dates/' +
-        commons.Escaper.ecapeVariable('$date');
+        commons.escapeVariable('$date');
 
     final _response = await _requester.request(
       _url,

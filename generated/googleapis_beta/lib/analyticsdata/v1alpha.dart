@@ -103,7 +103,7 @@ class PropertiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -148,9 +148,8 @@ class PropertiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha/' +
-        commons.Escaper.ecapeVariableReserved('$property') +
-        ':runRealtimeReport';
+    final _url =
+        'v1alpha/' + core.Uri.encodeFull('$property') + ':runRealtimeReport';
 
     final _response = await _requester.request(
       _url,

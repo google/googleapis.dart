@@ -141,11 +141,11 @@ class ConversionResource {
     };
 
     final _url = 'doubleclicksearch/v2/agency/' +
-        commons.Escaper.ecapeVariable('$agencyId') +
+        commons.escapeVariable('$agencyId') +
         '/advertiser/' +
-        commons.Escaper.ecapeVariable('$advertiserId') +
+        commons.escapeVariable('$advertiserId') +
         '/engine/' +
-        commons.Escaper.ecapeVariable('$engineAccountId') +
+        commons.escapeVariable('$engineAccountId') +
         '/conversion';
 
     final _response = await _requester.request(
@@ -335,8 +335,8 @@ class ReportsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'doubleclicksearch/v2/reports/' +
-        commons.Escaper.ecapeVariable('$reportId');
+    final _url =
+        'doubleclicksearch/v2/reports/' + commons.escapeVariable('$reportId');
 
     final _response = await _requester.request(
       _url,
@@ -377,9 +377,9 @@ class ReportsResource {
     };
 
     final _url = 'doubleclicksearch/v2/reports/' +
-        commons.Escaper.ecapeVariable('$reportId') +
+        commons.escapeVariable('$reportId') +
         '/files/' +
-        commons.Escaper.ecapeVariable('$reportFragment');
+        commons.escapeVariable('$reportFragment');
 
     final _response = await _requester.request(
       _url,
@@ -464,9 +464,9 @@ class SavedColumnsResource {
     };
 
     final _url = 'doubleclicksearch/v2/agency/' +
-        commons.Escaper.ecapeVariable('$agencyId') +
+        commons.escapeVariable('$agencyId') +
         '/advertiser/' +
-        commons.Escaper.ecapeVariable('$advertiserId') +
+        commons.escapeVariable('$advertiserId') +
         '/savedcolumns';
 
     final _response = await _requester.request(

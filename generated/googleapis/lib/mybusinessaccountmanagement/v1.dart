@@ -137,7 +137,7 @@ class AccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -251,7 +251,7 @@ class AccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -303,8 +303,7 @@ class AccountsAdminsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/admins';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/admins';
 
     final _response = await _requester.request(
       _url,
@@ -341,7 +340,7 @@ class AccountsAdminsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -377,8 +376,7 @@ class AccountsAdminsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/admins';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/admins';
 
     final _response = await _requester.request(
       _url,
@@ -426,7 +424,7 @@ class AccountsAdminsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -474,8 +472,7 @@ class AccountsInvitationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':accept';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':accept';
 
     final _response = await _requester.request(
       _url,
@@ -516,8 +513,7 @@ class AccountsInvitationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':decline';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':decline';
 
     final _response = await _requester.request(
       _url,
@@ -559,9 +555,7 @@ class AccountsInvitationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/invitations';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/invitations';
 
     final _response = await _requester.request(
       _url,
@@ -621,8 +615,7 @@ class LocationsAdminsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/admins';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/admins';
 
     final _response = await _requester.request(
       _url,
@@ -659,7 +652,7 @@ class LocationsAdminsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -695,8 +688,7 @@ class LocationsAdminsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/admins';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/admins';
 
     final _response = await _requester.request(
       _url,
@@ -746,7 +738,7 @@ class LocationsAdminsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,

@@ -112,9 +112,7 @@ class ProjectsPatchDeploymentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/patchDeployments';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/patchDeployments';
 
     final _response = await _requester.request(
       _url,
@@ -152,7 +150,7 @@ class ProjectsPatchDeploymentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -188,7 +186,7 @@ class ProjectsPatchDeploymentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -236,9 +234,7 @@ class ProjectsPatchDeploymentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/patchDeployments';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/patchDeployments';
 
     final _response = await _requester.request(
       _url,
@@ -290,8 +286,7 @@ class ProjectsPatchJobsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
 
     final _response = await _requester.request(
       _url,
@@ -332,9 +327,7 @@ class ProjectsPatchJobsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/patchJobs:execute';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/patchJobs:execute';
 
     final _response = await _requester.request(
       _url,
@@ -374,7 +367,7 @@ class ProjectsPatchJobsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -424,8 +417,7 @@ class ProjectsPatchJobsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/patchJobs';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/patchJobs';
 
     final _response = await _requester.request(
       _url,
@@ -485,9 +477,7 @@ class ProjectsPatchJobsInstanceDetailsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        '/instanceDetails';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/instanceDetails';
 
     final _response = await _requester.request(
       _url,

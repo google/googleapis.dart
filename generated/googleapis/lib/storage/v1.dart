@@ -142,9 +142,9 @@ class BucketAccessControlsResource {
     };
 
     final _url = 'b/' +
-        commons.Escaper.ecapeVariable('$bucket') +
+        commons.escapeVariable('$bucket') +
         '/acl/' +
-        commons.Escaper.ecapeVariable('$entity');
+        commons.escapeVariable('$entity');
 
     await _requester.request(
       _url,
@@ -195,9 +195,9 @@ class BucketAccessControlsResource {
     };
 
     final _url = 'b/' +
-        commons.Escaper.ecapeVariable('$bucket') +
+        commons.escapeVariable('$bucket') +
         '/acl/' +
-        commons.Escaper.ecapeVariable('$entity');
+        commons.escapeVariable('$entity');
 
     final _response = await _requester.request(
       _url,
@@ -247,7 +247,7 @@ class BucketAccessControlsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/acl';
+    final _url = 'b/' + commons.escapeVariable('$bucket') + '/acl';
 
     final _response = await _requester.request(
       _url,
@@ -294,7 +294,7 @@ class BucketAccessControlsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/acl';
+    final _url = 'b/' + commons.escapeVariable('$bucket') + '/acl';
 
     final _response = await _requester.request(
       _url,
@@ -350,9 +350,9 @@ class BucketAccessControlsResource {
     };
 
     final _url = 'b/' +
-        commons.Escaper.ecapeVariable('$bucket') +
+        commons.escapeVariable('$bucket') +
         '/acl/' +
-        commons.Escaper.ecapeVariable('$entity');
+        commons.escapeVariable('$entity');
 
     final _response = await _requester.request(
       _url,
@@ -409,9 +409,9 @@ class BucketAccessControlsResource {
     };
 
     final _url = 'b/' +
-        commons.Escaper.ecapeVariable('$bucket') +
+        commons.escapeVariable('$bucket') +
         '/acl/' +
-        commons.Escaper.ecapeVariable('$entity');
+        commons.escapeVariable('$entity');
 
     final _response = await _requester.request(
       _url,
@@ -474,7 +474,7 @@ class BucketsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'b/' + commons.Escaper.ecapeVariable('$bucket');
+    final _url = 'b/' + commons.escapeVariable('$bucket');
 
     await _requester.request(
       _url,
@@ -540,7 +540,7 @@ class BucketsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'b/' + commons.Escaper.ecapeVariable('$bucket');
+    final _url = 'b/' + commons.escapeVariable('$bucket');
 
     final _response = await _requester.request(
       _url,
@@ -592,7 +592,7 @@ class BucketsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/iam';
+    final _url = 'b/' + commons.escapeVariable('$bucket') + '/iam';
 
     final _response = await _requester.request(
       _url,
@@ -800,9 +800,8 @@ class BucketsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'b/' +
-        commons.Escaper.ecapeVariable('$bucket') +
-        '/lockRetentionPolicy';
+    final _url =
+        'b/' + commons.escapeVariable('$bucket') + '/lockRetentionPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -908,7 +907,7 @@ class BucketsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'b/' + commons.Escaper.ecapeVariable('$bucket');
+    final _url = 'b/' + commons.escapeVariable('$bucket');
 
     final _response = await _requester.request(
       _url,
@@ -958,7 +957,7 @@ class BucketsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/iam';
+    final _url = 'b/' + commons.escapeVariable('$bucket') + '/iam';
 
     final _response = await _requester.request(
       _url,
@@ -1012,9 +1011,8 @@ class BucketsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'b/' +
-        commons.Escaper.ecapeVariable('$bucket') +
-        '/iam/testPermissions';
+    final _url =
+        'b/' + commons.escapeVariable('$bucket') + '/iam/testPermissions';
 
     final _response = await _requester.request(
       _url,
@@ -1121,7 +1119,7 @@ class BucketsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'b/' + commons.Escaper.ecapeVariable('$bucket');
+    final _url = 'b/' + commons.escapeVariable('$bucket');
 
     final _response = await _requester.request(
       _url,
@@ -1219,9 +1217,9 @@ class DefaultObjectAccessControlsResource {
     };
 
     final _url = 'b/' +
-        commons.Escaper.ecapeVariable('$bucket') +
+        commons.escapeVariable('$bucket') +
         '/defaultObjectAcl/' +
-        commons.Escaper.ecapeVariable('$entity');
+        commons.escapeVariable('$entity');
 
     await _requester.request(
       _url,
@@ -1273,9 +1271,9 @@ class DefaultObjectAccessControlsResource {
     };
 
     final _url = 'b/' +
-        commons.Escaper.ecapeVariable('$bucket') +
+        commons.escapeVariable('$bucket') +
         '/defaultObjectAcl/' +
-        commons.Escaper.ecapeVariable('$entity');
+        commons.escapeVariable('$entity');
 
     final _response = await _requester.request(
       _url,
@@ -1325,8 +1323,7 @@ class DefaultObjectAccessControlsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'b/' + commons.Escaper.ecapeVariable('$bucket') + '/defaultObjectAcl';
+    final _url = 'b/' + commons.escapeVariable('$bucket') + '/defaultObjectAcl';
 
     final _response = await _requester.request(
       _url,
@@ -1385,8 +1382,7 @@ class DefaultObjectAccessControlsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'b/' + commons.Escaper.ecapeVariable('$bucket') + '/defaultObjectAcl';
+    final _url = 'b/' + commons.escapeVariable('$bucket') + '/defaultObjectAcl';
 
     final _response = await _requester.request(
       _url,
@@ -1442,9 +1438,9 @@ class DefaultObjectAccessControlsResource {
     };
 
     final _url = 'b/' +
-        commons.Escaper.ecapeVariable('$bucket') +
+        commons.escapeVariable('$bucket') +
         '/defaultObjectAcl/' +
-        commons.Escaper.ecapeVariable('$entity');
+        commons.escapeVariable('$entity');
 
     final _response = await _requester.request(
       _url,
@@ -1501,9 +1497,9 @@ class DefaultObjectAccessControlsResource {
     };
 
     final _url = 'b/' +
-        commons.Escaper.ecapeVariable('$bucket') +
+        commons.escapeVariable('$bucket') +
         '/defaultObjectAcl/' +
-        commons.Escaper.ecapeVariable('$entity');
+        commons.escapeVariable('$entity');
 
     final _response = await _requester.request(
       _url,
@@ -1558,9 +1554,9 @@ class NotificationsResource {
     };
 
     final _url = 'b/' +
-        commons.Escaper.ecapeVariable('$bucket') +
+        commons.escapeVariable('$bucket') +
         '/notificationConfigs/' +
-        commons.Escaper.ecapeVariable('$notification');
+        commons.escapeVariable('$notification');
 
     await _requester.request(
       _url,
@@ -1609,9 +1605,9 @@ class NotificationsResource {
     };
 
     final _url = 'b/' +
-        commons.Escaper.ecapeVariable('$bucket') +
+        commons.escapeVariable('$bucket') +
         '/notificationConfigs/' +
-        commons.Escaper.ecapeVariable('$notification');
+        commons.escapeVariable('$notification');
 
     final _response = await _requester.request(
       _url,
@@ -1661,9 +1657,8 @@ class NotificationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'b/' +
-        commons.Escaper.ecapeVariable('$bucket') +
-        '/notificationConfigs';
+    final _url =
+        'b/' + commons.escapeVariable('$bucket') + '/notificationConfigs';
 
     final _response = await _requester.request(
       _url,
@@ -1710,9 +1705,8 @@ class NotificationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'b/' +
-        commons.Escaper.ecapeVariable('$bucket') +
-        '/notificationConfigs';
+    final _url =
+        'b/' + commons.escapeVariable('$bucket') + '/notificationConfigs';
 
     final _response = await _requester.request(
       _url,
@@ -1779,11 +1773,11 @@ class ObjectAccessControlsResource {
     };
 
     final _url = 'b/' +
-        commons.Escaper.ecapeVariable('$bucket') +
+        commons.escapeVariable('$bucket') +
         '/o/' +
-        commons.Escaper.ecapeVariable('$object') +
+        commons.escapeVariable('$object') +
         '/acl/' +
-        commons.Escaper.ecapeVariable('$entity');
+        commons.escapeVariable('$entity');
 
     await _requester.request(
       _url,
@@ -1843,11 +1837,11 @@ class ObjectAccessControlsResource {
     };
 
     final _url = 'b/' +
-        commons.Escaper.ecapeVariable('$bucket') +
+        commons.escapeVariable('$bucket') +
         '/o/' +
-        commons.Escaper.ecapeVariable('$object') +
+        commons.escapeVariable('$object') +
         '/acl/' +
-        commons.Escaper.ecapeVariable('$entity');
+        commons.escapeVariable('$entity');
 
     final _response = await _requester.request(
       _url,
@@ -1907,9 +1901,9 @@ class ObjectAccessControlsResource {
     };
 
     final _url = 'b/' +
-        commons.Escaper.ecapeVariable('$bucket') +
+        commons.escapeVariable('$bucket') +
         '/o/' +
-        commons.Escaper.ecapeVariable('$object') +
+        commons.escapeVariable('$object') +
         '/acl';
 
     final _response = await _requester.request(
@@ -1967,9 +1961,9 @@ class ObjectAccessControlsResource {
     };
 
     final _url = 'b/' +
-        commons.Escaper.ecapeVariable('$bucket') +
+        commons.escapeVariable('$bucket') +
         '/o/' +
-        commons.Escaper.ecapeVariable('$object') +
+        commons.escapeVariable('$object') +
         '/acl';
 
     final _response = await _requester.request(
@@ -2035,11 +2029,11 @@ class ObjectAccessControlsResource {
     };
 
     final _url = 'b/' +
-        commons.Escaper.ecapeVariable('$bucket') +
+        commons.escapeVariable('$bucket') +
         '/o/' +
-        commons.Escaper.ecapeVariable('$object') +
+        commons.escapeVariable('$object') +
         '/acl/' +
-        commons.Escaper.ecapeVariable('$entity');
+        commons.escapeVariable('$entity');
 
     final _response = await _requester.request(
       _url,
@@ -2105,11 +2099,11 @@ class ObjectAccessControlsResource {
     };
 
     final _url = 'b/' +
-        commons.Escaper.ecapeVariable('$bucket') +
+        commons.escapeVariable('$bucket') +
         '/o/' +
-        commons.Escaper.ecapeVariable('$object') +
+        commons.escapeVariable('$object') +
         '/acl/' +
-        commons.Escaper.ecapeVariable('$entity');
+        commons.escapeVariable('$entity');
 
     final _response = await _requester.request(
       _url,
@@ -2210,9 +2204,9 @@ class ObjectsResource {
     };
 
     final _url = 'b/' +
-        commons.Escaper.ecapeVariable('$destinationBucket') +
+        commons.escapeVariable('$destinationBucket') +
         '/o/' +
-        commons.Escaper.ecapeVariable('$destinationObject') +
+        commons.escapeVariable('$destinationObject') +
         '/compose';
 
     final _response = await _requester.request(
@@ -2373,13 +2367,13 @@ class ObjectsResource {
     };
 
     final _url = 'b/' +
-        commons.Escaper.ecapeVariable('$sourceBucket') +
+        commons.escapeVariable('$sourceBucket') +
         '/o/' +
-        commons.Escaper.ecapeVariable('$sourceObject') +
+        commons.escapeVariable('$sourceObject') +
         '/copyTo/b/' +
-        commons.Escaper.ecapeVariable('$destinationBucket') +
+        commons.escapeVariable('$destinationBucket') +
         '/o/' +
-        commons.Escaper.ecapeVariable('$destinationObject');
+        commons.escapeVariable('$destinationObject');
 
     final _response = await _requester.request(
       _url,
@@ -2462,9 +2456,9 @@ class ObjectsResource {
     };
 
     final _url = 'b/' +
-        commons.Escaper.ecapeVariable('$bucket') +
+        commons.escapeVariable('$bucket') +
         '/o/' +
-        commons.Escaper.ecapeVariable('$object');
+        commons.escapeVariable('$object');
 
     await _requester.request(
       _url,
@@ -2561,9 +2555,9 @@ class ObjectsResource {
     };
 
     final _url = 'b/' +
-        commons.Escaper.ecapeVariable('$bucket') +
+        commons.escapeVariable('$bucket') +
         '/o/' +
-        commons.Escaper.ecapeVariable('$object');
+        commons.escapeVariable('$object');
 
     final _response = await _requester.request(
       _url,
@@ -2623,9 +2617,9 @@ class ObjectsResource {
     };
 
     final _url = 'b/' +
-        commons.Escaper.ecapeVariable('$bucket') +
+        commons.escapeVariable('$bucket') +
         '/o/' +
-        commons.Escaper.ecapeVariable('$object') +
+        commons.escapeVariable('$object') +
         '/iam';
 
     final _response = await _requester.request(
@@ -2759,15 +2753,13 @@ class ObjectsResource {
 
     core.String _url;
     if (uploadMedia == null) {
-      _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o';
+      _url = 'b/' + commons.escapeVariable('$bucket') + '/o';
     } else if (uploadOptions is commons.ResumableUploadOptions) {
       _url = '/resumable/upload/storage/v1/b/' +
-          commons.Escaper.ecapeVariable('$bucket') +
+          commons.escapeVariable('$bucket') +
           '/o';
     } else {
-      _url = '/upload/storage/v1/b/' +
-          commons.Escaper.ecapeVariable('$bucket') +
-          '/o';
+      _url = '/upload/storage/v1/b/' + commons.escapeVariable('$bucket') + '/o';
     }
 
     final _response = await _requester.request(
@@ -2872,7 +2864,7 @@ class ObjectsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o';
+    final _url = 'b/' + commons.escapeVariable('$bucket') + '/o';
 
     final _response = await _requester.request(
       _url,
@@ -2981,9 +2973,9 @@ class ObjectsResource {
     };
 
     final _url = 'b/' +
-        commons.Escaper.ecapeVariable('$bucket') +
+        commons.escapeVariable('$bucket') +
         '/o/' +
-        commons.Escaper.ecapeVariable('$object');
+        commons.escapeVariable('$object');
 
     final _response = await _requester.request(
       _url,
@@ -3160,13 +3152,13 @@ class ObjectsResource {
     };
 
     final _url = 'b/' +
-        commons.Escaper.ecapeVariable('$sourceBucket') +
+        commons.escapeVariable('$sourceBucket') +
         '/o/' +
-        commons.Escaper.ecapeVariable('$sourceObject') +
+        commons.escapeVariable('$sourceObject') +
         '/rewriteTo/b/' +
-        commons.Escaper.ecapeVariable('$destinationBucket') +
+        commons.escapeVariable('$destinationBucket') +
         '/o/' +
-        commons.Escaper.ecapeVariable('$destinationObject');
+        commons.escapeVariable('$destinationObject');
 
     final _response = await _requester.request(
       _url,
@@ -3227,9 +3219,9 @@ class ObjectsResource {
     };
 
     final _url = 'b/' +
-        commons.Escaper.ecapeVariable('$bucket') +
+        commons.escapeVariable('$bucket') +
         '/o/' +
-        commons.Escaper.ecapeVariable('$object') +
+        commons.escapeVariable('$object') +
         '/iam';
 
     final _response = await _requester.request(
@@ -3294,9 +3286,9 @@ class ObjectsResource {
     };
 
     final _url = 'b/' +
-        commons.Escaper.ecapeVariable('$bucket') +
+        commons.escapeVariable('$bucket') +
         '/o/' +
-        commons.Escaper.ecapeVariable('$object') +
+        commons.escapeVariable('$object') +
         '/iam/testPermissions';
 
     final _response = await _requester.request(
@@ -3407,9 +3399,9 @@ class ObjectsResource {
     };
 
     final _url = 'b/' +
-        commons.Escaper.ecapeVariable('$bucket') +
+        commons.escapeVariable('$bucket') +
         '/o/' +
-        commons.Escaper.ecapeVariable('$object');
+        commons.escapeVariable('$object');
 
     final _response = await _requester.request(
       _url,
@@ -3515,7 +3507,7 @@ class ObjectsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o/watch';
+    final _url = 'b/' + commons.escapeVariable('$bucket') + '/o/watch';
 
     final _response = await _requester.request(
       _url,
@@ -3575,7 +3567,7 @@ class ProjectsHmacKeysResource {
     };
 
     final _url =
-        'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/hmacKeys';
+        'projects/' + commons.escapeVariable('$projectId') + '/hmacKeys';
 
     final _response = await _requester.request(
       _url,
@@ -3615,9 +3607,9 @@ class ProjectsHmacKeysResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/hmacKeys/' +
-        commons.Escaper.ecapeVariable('$accessId');
+        commons.escapeVariable('$accessId');
 
     await _requester.request(
       _url,
@@ -3659,9 +3651,9 @@ class ProjectsHmacKeysResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/hmacKeys/' +
-        commons.Escaper.ecapeVariable('$accessId');
+        commons.escapeVariable('$accessId');
 
     final _response = await _requester.request(
       _url,
@@ -3725,7 +3717,7 @@ class ProjectsHmacKeysResource {
     };
 
     final _url =
-        'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/hmacKeys';
+        'projects/' + commons.escapeVariable('$projectId') + '/hmacKeys';
 
     final _response = await _requester.request(
       _url,
@@ -3774,9 +3766,9 @@ class ProjectsHmacKeysResource {
     };
 
     final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
+        commons.escapeVariable('$projectId') +
         '/hmacKeys/' +
-        commons.Escaper.ecapeVariable('$accessId');
+        commons.escapeVariable('$accessId');
 
     final _response = await _requester.request(
       _url,
@@ -3830,9 +3822,8 @@ class ProjectsServiceAccountResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
-        '/serviceAccount';
+    final _url =
+        'projects/' + commons.escapeVariable('$projectId') + '/serviceAccount';
 
     final _response = await _requester.request(
       _url,

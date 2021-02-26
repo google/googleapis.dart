@@ -118,8 +118,7 @@ class DmsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/messages';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/messages';
 
     final _response = await _requester.request(
       _url,
@@ -173,8 +172,7 @@ class DmsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/webhooks';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/webhooks';
 
     final _response = await _requester.request(
       _url,
@@ -234,8 +232,7 @@ class DmsConversationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/messages';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/messages';
 
     final _response = await _requester.request(
       _url,
@@ -289,8 +286,7 @@ class MediaResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/media/' + commons.Escaper.ecapeVariableReserved('$resourceName');
+    final _url = 'v1/media/' + core.Uri.encodeFull('$resourceName');
 
     final _response = await _requester.request(
       _url,
@@ -357,8 +353,7 @@ class RoomsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/messages';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/messages';
 
     final _response = await _requester.request(
       _url,
@@ -412,8 +407,7 @@ class RoomsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/webhooks';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/webhooks';
 
     final _response = await _requester.request(
       _url,
@@ -473,8 +467,7 @@ class RoomsConversationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/messages';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/messages';
 
     final _response = await _requester.request(
       _url,
@@ -520,7 +513,7 @@ class SpacesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -616,8 +609,7 @@ class SpacesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/webhooks';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/webhooks';
 
     final _response = await _requester.request(
       _url,
@@ -661,7 +653,7 @@ class SpacesMembersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -710,8 +702,7 @@ class SpacesMembersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/members';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/members';
 
     final _response = await _requester.request(
       _url,
@@ -772,8 +763,7 @@ class SpacesMessagesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/messages';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/messages';
 
     final _response = await _requester.request(
       _url,
@@ -811,7 +801,7 @@ class SpacesMessagesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -848,7 +838,7 @@ class SpacesMessagesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -893,7 +883,7 @@ class SpacesMessagesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -940,7 +930,7 @@ class SpacesMessagesAttachmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,

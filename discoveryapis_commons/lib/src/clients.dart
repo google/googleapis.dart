@@ -166,8 +166,8 @@ class ApiRequester {
 
     var containsQueryParameter = path.contains('?');
     void addQueryParameter(String name, String value) {
-      name = Escaper.escapeQueryComponent(name);
-      value = Escaper.escapeQueryComponent(value);
+      name = escapeVariable(name);
+      value = escapeVariable(value);
       if (containsQueryParameter) {
         path = '$path&$name=$value';
       } else {
@@ -743,45 +743,6 @@ class _RequestImpl extends http.BaseRequest {
   }
 }
 
-class Escaper {
-  // Character class definitions from RFC 6570
-  // (see http://tools.ietf.org/html/rfc6570)
-  // ALPHA          =  %x41-5A / %x61-7A   ; A-Z / a-z
-  // DIGIT          =  %x30-39             ; 0
-  // HEXDIG         =  DIGIT / "A" / "B" / "C" / "D" / "E" / "F"
-  // pct-encoded    =  "%" HEXDIG HEXDIG
-  // unreserved     =  ALPHA / DIGIT / "-" / "." / "_" / "~"
-  // reserved       =  gen-delims / sub-delims
-  // gen-delims     =  ":" / "/" / "?" / "#" / "[" / "]" / "@"
-  // sub-delims     =  "!" / "$" / "&" / "'" / "(" / ")"
-  //                /  "*" / "+" / "," / ";" / "="
-
-  // NOTE: Uri.encodeQueryComponent() does the following:
-  // ...
-  // Then the resulting bytes are "percent-encoded". This transforms spaces
-  // (U+0020) to a plus sign ('+') and all bytes that are not the ASCII decimal
-  // digits, letters or one of '-._~' are written as a percent sign '%'
-  // followed by the two-digit hexadecimal representation of the byte.
-  // ...
-
-  // NOTE: Uri.encodeFull() does the following:
-  // ...
-  // All characters except uppercase and lowercase letters, digits and the
-  // characters !#$&'()*+,-./:;=?@_~ are percent-encoded.
-  // ...
-
-  static String ecapeVariableReserved(String name) => Uri.encodeFull(name);
-
-  static String ecapePathComponent(String name) => _encodeUnreserved(name);
-
-  static String ecapeVariable(String name) => _encodeUnreserved(name);
-
-  static String escapeQueryComponent(String name) => _encodeUnreserved(name);
-
-  static String _encodeUnreserved(String name) =>
-      Uri.encodeQueryComponent(name).replaceAll('+', '%20');
-}
-
 Future<http.StreamedResponse> _validateResponse(
   http.StreamedResponse response,
 ) async {
@@ -841,3 +802,6 @@ bool isJson(String? contentType) {
   if (mediaType.mimeType == 'text/json') return true;
   return mediaType.subtype.endsWith('+json');
 }
+
+String escapeVariable(String name) =>
+    Uri.encodeQueryComponent(name).replaceAll('+', '%20');

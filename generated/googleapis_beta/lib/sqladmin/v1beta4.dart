@@ -110,11 +110,11 @@ class BackupRunsResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/backupRuns/' +
-        commons.Escaper.ecapeVariable('$id');
+        commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -155,11 +155,11 @@ class BackupRunsResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/backupRuns/' +
-        commons.Escaper.ecapeVariable('$id');
+        commons.escapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -203,9 +203,9 @@ class BackupRunsResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/backupRuns';
 
     final _response = await _requester.request(
@@ -255,9 +255,9 @@ class BackupRunsResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/backupRuns';
 
     final _response = await _requester.request(
@@ -306,11 +306,11 @@ class DatabasesResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/databases/' +
-        commons.Escaper.ecapeVariable('$database');
+        commons.escapeVariable('$database');
 
     final _response = await _requester.request(
       _url,
@@ -352,11 +352,11 @@ class DatabasesResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/databases/' +
-        commons.Escaper.ecapeVariable('$database');
+        commons.escapeVariable('$database');
 
     final _response = await _requester.request(
       _url,
@@ -399,9 +399,9 @@ class DatabasesResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/databases';
 
     final _response = await _requester.request(
@@ -441,9 +441,9 @@ class DatabasesResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/databases';
 
     final _response = await _requester.request(
@@ -493,11 +493,11 @@ class DatabasesResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/databases/' +
-        commons.Escaper.ecapeVariable('$database');
+        commons.escapeVariable('$database');
 
     final _response = await _requester.request(
       _url,
@@ -544,11 +544,11 @@ class DatabasesResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/databases/' +
-        commons.Escaper.ecapeVariable('$database');
+        commons.escapeVariable('$database');
 
     final _response = await _requester.request(
       _url,
@@ -643,9 +643,9 @@ class InstancesResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/addServerCa';
 
     final _response = await _requester.request(
@@ -692,9 +692,9 @@ class InstancesResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/clone';
 
     final _response = await _requester.request(
@@ -735,9 +735,9 @@ class InstancesResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance');
+        commons.escapeVariable('$instance');
 
     final _response = await _requester.request(
       _url,
@@ -780,9 +780,9 @@ class InstancesResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/demoteMaster';
 
     final _response = await _requester.request(
@@ -828,9 +828,9 @@ class InstancesResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/export';
 
     final _response = await _requester.request(
@@ -876,9 +876,9 @@ class InstancesResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/failover';
 
     final _response = await _requester.request(
@@ -918,9 +918,9 @@ class InstancesResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance');
+        commons.escapeVariable('$instance');
 
     final _response = await _requester.request(
       _url,
@@ -964,9 +964,9 @@ class InstancesResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/import';
 
     final _response = await _requester.request(
@@ -1008,7 +1008,7 @@ class InstancesResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances';
 
     final _response = await _requester.request(
@@ -1065,7 +1065,7 @@ class InstancesResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances';
 
     final _response = await _requester.request(
@@ -1111,9 +1111,9 @@ class InstancesResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/listServerCas';
 
     final _response = await _requester.request(
@@ -1159,9 +1159,9 @@ class InstancesResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance');
+        commons.escapeVariable('$instance');
 
     final _response = await _requester.request(
       _url,
@@ -1202,9 +1202,9 @@ class InstancesResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/promoteReplica';
 
     final _response = await _requester.request(
@@ -1244,9 +1244,9 @@ class InstancesResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/resetSslConfig';
 
     final _response = await _requester.request(
@@ -1286,9 +1286,9 @@ class InstancesResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/restart';
 
     final _response = await _requester.request(
@@ -1333,9 +1333,9 @@ class InstancesResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/restoreBackup';
 
     final _response = await _requester.request(
@@ -1380,9 +1380,9 @@ class InstancesResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/rotateServerCa';
 
     final _response = await _requester.request(
@@ -1422,9 +1422,9 @@ class InstancesResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/startReplica';
 
     final _response = await _requester.request(
@@ -1463,9 +1463,9 @@ class InstancesResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/stopReplica';
 
     final _response = await _requester.request(
@@ -1508,9 +1508,9 @@ class InstancesResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/truncateLog';
 
     final _response = await _requester.request(
@@ -1556,9 +1556,9 @@ class InstancesResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance');
+        commons.escapeVariable('$instance');
 
     final _response = await _requester.request(
       _url,
@@ -1603,9 +1603,9 @@ class OperationsResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/operations/' +
-        commons.Escaper.ecapeVariable('$operation');
+        commons.escapeVariable('$operation');
 
     final _response = await _requester.request(
       _url,
@@ -1654,7 +1654,7 @@ class OperationsResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/operations';
 
     final _response = await _requester.request(
@@ -1713,9 +1713,9 @@ class ProjectsInstancesResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/rescheduleMaintenance';
 
     final _response = await _requester.request(
@@ -1770,9 +1770,9 @@ class ProjectsInstancesResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/startExternalSync';
 
     final _response = await _requester.request(
@@ -1828,9 +1828,9 @@ class ProjectsInstancesResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/verifyExternalSyncSettings';
 
     final _response = await _requester.request(
@@ -1884,9 +1884,9 @@ class SslCertsResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/createEphemeral';
 
     final _response = await _requester.request(
@@ -1932,11 +1932,11 @@ class SslCertsResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/sslCerts/' +
-        commons.Escaper.ecapeVariable('$sha1Fingerprint');
+        commons.escapeVariable('$sha1Fingerprint');
 
     final _response = await _requester.request(
       _url,
@@ -1980,11 +1980,11 @@ class SslCertsResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/sslCerts/' +
-        commons.Escaper.ecapeVariable('$sha1Fingerprint');
+        commons.escapeVariable('$sha1Fingerprint');
 
     final _response = await _requester.request(
       _url,
@@ -2029,9 +2029,9 @@ class SslCertsResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/sslCerts';
 
     final _response = await _requester.request(
@@ -2072,9 +2072,9 @@ class SslCertsResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/sslCerts';
 
     final _response = await _requester.request(
@@ -2119,9 +2119,8 @@ class TiersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
-        '/tiers';
+    final _url =
+        'sql/v1beta4/projects/' + commons.escapeVariable('$project') + '/tiers';
 
     final _response = await _requester.request(
       _url,
@@ -2174,9 +2173,9 @@ class UsersResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/users';
 
     final _response = await _requester.request(
@@ -2219,9 +2218,9 @@ class UsersResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/users';
 
     final _response = await _requester.request(
@@ -2261,9 +2260,9 @@ class UsersResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/users';
 
     final _response = await _requester.request(
@@ -2315,9 +2314,9 @@ class UsersResource {
     };
 
     final _url = 'sql/v1beta4/projects/' +
-        commons.Escaper.ecapeVariable('$project') +
+        commons.escapeVariable('$project') +
         '/instances/' +
-        commons.Escaper.ecapeVariable('$instance') +
+        commons.escapeVariable('$instance') +
         '/users';
 
     final _response = await _requester.request(
