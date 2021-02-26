@@ -16,6 +16,9 @@ import 'requests.dart' as client_requests;
 
 const contentTypeJsonUtf8 = 'application/json; charset=utf-8';
 
+int lengthOfBase64Stream(int lengthOfByteStream) =>
+    ((lengthOfByteStream + 2) ~/ 3) * 4;
+
 /// List of headers that is forbidden in current execution context.
 ///
 /// In a browser context we're not allowed to set `user-agent` and
@@ -271,7 +274,7 @@ class ApiRequester {
 /// Does media uploads using the multipart upload protocol.
 class MultipartMediaUploader {
   static const _boundary = '314159265358979323846';
-  static final _base64Encoder = Base64Encoder();
+  static const _base64Encoder = Base64Encoder();
 
   final http.Client _httpClient;
   final client_requests.Media _uploadMedia;
@@ -286,8 +289,7 @@ class MultipartMediaUploader {
   Future<http.StreamedResponse> upload() {
     final base64MediaStream =
         _uploadMedia.stream.transform(_base64Encoder).transform(ascii.encoder);
-    final base64MediaStreamLength =
-        Base64Encoder.lengthOfBase64Stream(_uploadMedia.length!);
+    final base64MediaStreamLength = lengthOfBase64Stream(_uploadMedia.length!);
 
     // NOTE: We assume that [_body] is encoded JSON without any \r or \n in it.
     // This guarantees us that [_body] cannot contain a valid multipart
@@ -322,83 +324,6 @@ class MultipartMediaUploader {
     final request = _RequestImpl(_method, _uri, bodyStream);
     request.headers.addAll(headers);
     return _httpClient.send(request);
-  }
-}
-
-/// Base64 encodes a stream of bytes.
-class Base64Encoder extends StreamTransformerBase<List<int>, String> {
-  static int lengthOfBase64Stream(int lengthOfByteStream) =>
-      ((lengthOfByteStream + 2) ~/ 3) * 4;
-
-  @override
-  Stream<String> bind(Stream<List<int>> stream) {
-    late StreamController<String> controller;
-
-    // Holds between 0 and 3 bytes and is used as a buffer.
-    final remainingBytes = <int>[];
-
-    void onData(List<int> bytes) {
-      if ((remainingBytes.length + bytes.length) < 3) {
-        remainingBytes.addAll(bytes);
-        return;
-      }
-      late int start;
-      if (remainingBytes.isEmpty) {
-        start = 0;
-      } else if (remainingBytes.length == 1) {
-        remainingBytes..add(bytes[0])..add(bytes[1]);
-        start = 2;
-      } else if (remainingBytes.length == 2) {
-        remainingBytes.add(bytes[0]);
-        start = 1;
-      }
-
-      // Convert & Send bytes from buffer (if necessary).
-      if (remainingBytes.isNotEmpty) {
-        controller.add(base64.encode(remainingBytes));
-        remainingBytes.clear();
-      }
-
-      final chunksOf3 = (bytes.length - start) ~/ 3;
-      final end = start + 3 * chunksOf3;
-
-      // Convert & Send main bytes.
-      if (start == 0 && end == bytes.length) {
-        // Fast path if [bytes] are divisible by 3.
-        controller.add(base64.encode(bytes));
-      } else {
-        controller.add(base64.encode(bytes.sublist(start, end)));
-
-        // Buffer remaining bytes if necessary.
-        if (end < bytes.length) {
-          remainingBytes.addAll(bytes.sublist(end));
-        }
-      }
-    }
-
-    void onError(Object? error, StackTrace stack) {
-      controller.addError(error ?? NullThrownError(), stack);
-    }
-
-    void onDone() {
-      if (remainingBytes.isNotEmpty) {
-        controller.add(base64.encode(remainingBytes));
-        remainingBytes.clear();
-      }
-      controller.close();
-    }
-
-    late StreamSubscription subscription;
-    controller = StreamController<String>(onListen: () {
-      subscription = stream.listen(onData, onError: onError, onDone: onDone);
-    }, onPause: () {
-      subscription.pause();
-    }, onResume: () {
-      subscription.resume();
-    }, onCancel: () {
-      subscription.cancel();
-    });
-    return controller.stream;
   }
 }
 
