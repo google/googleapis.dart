@@ -6,13 +6,13 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:http_parser/http_parser.dart';
-import 'package:meta/meta.dart';
 
 import 'multipart_media_uploader.dart';
 import 'request_impl.dart';
 import 'requests.dart' as client_requests;
 import 'resumable_media_uploader.dart';
+
+import 'utils.dart';
 
 /// Base class for all API clients, offering generic methods for
 /// HTTP Requests to the API
@@ -322,16 +322,3 @@ Stream<String>? _decodeStreamAsText(http.StreamedResponse response) {
 const _forbiddenHeaders = bool.fromEnvironment('dart.library.html')
     ? <String>{'user-agent', 'content-length'}
     : <String>{};
-
-/// Follows https://mimesniff.spec.whatwg.org/#json-mime-type
-@visibleForTesting
-bool isJson(String? contentType) {
-  if (contentType == null) return false;
-  final mediaType = MediaType.parse(contentType);
-  if (mediaType.mimeType == 'application/json') return true;
-  if (mediaType.mimeType == 'text/json') return true;
-  return mediaType.subtype.endsWith('+json');
-}
-
-String escapeVariable(String name) =>
-    Uri.encodeQueryComponent(name).replaceAll('+', '%20');

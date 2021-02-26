@@ -2,8 +2,6 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-library discoveryapis_commons_test;
-
 import 'dart:async';
 import 'dart:convert' hide Base64Encoder;
 import 'dart:convert';
@@ -12,6 +10,7 @@ import 'package:_discoveryapis_commons/src/api_requester.dart';
 import 'package:_discoveryapis_commons/src/multipart_media_uploader.dart';
 import 'package:_discoveryapis_commons/src/requests.dart';
 import 'package:_discoveryapis_commons/src/resumable_media_uploader.dart';
+import 'package:_discoveryapis_commons/src/utils.dart';
 import 'package:http/http.dart' as http;
 import 'package:test/test.dart';
 
