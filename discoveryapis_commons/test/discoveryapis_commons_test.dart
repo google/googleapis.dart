@@ -8,8 +8,10 @@ import 'dart:async';
 import 'dart:convert' hide Base64Encoder;
 import 'dart:convert';
 
-import 'package:_discoveryapis_commons/src/clients.dart';
+import 'package:_discoveryapis_commons/src/api_requester.dart';
+import 'package:_discoveryapis_commons/src/multipart_media_uploader.dart';
 import 'package:_discoveryapis_commons/src/requests.dart';
+import 'package:_discoveryapis_commons/src/resumable_media_uploader.dart';
 import 'package:http/http.dart' as http;
 import 'package:test/test.dart';
 
@@ -107,53 +109,6 @@ void main() {
 
   test('escaper', () {
     expect(escapeVariable('a/b%c '), equals('a%2Fb%25c%20'));
-  });
-
-  test('base64-encoder', () async {
-    const base64encoder = Base64Encoder();
-
-    Future<void> testString(String msg, String expectedBase64) async {
-      final msgBytes = utf8.encode(msg);
-
-      Stream<List<int>> singleByteStream(List<int> msgBytes) {
-        final controller = StreamController<List<int>>();
-        for (var byte in msgBytes) {
-          controller.add([byte]);
-        }
-        controller.close();
-        return controller.stream;
-      }
-
-      Stream<List<int>> allByteStream(List<int> msgBytes) {
-        final controller = StreamController<List<int>>()
-          ..add(msgBytes)
-          ..close();
-        return controller.stream;
-      }
-
-      expect(
-        await singleByteStream(msgBytes).transform(base64encoder).join(),
-        equals(expectedBase64),
-      );
-
-      expect(
-        await allByteStream(msgBytes).transform(base64encoder).join(),
-        equals(expectedBase64),
-      );
-
-      /*
-      expect(
-        Base64Encoder.lengthOfBase64Stream(msg.length),
-        equals(expectedBase64.length),
-      );*/
-    }
-
-    await testString('pleasure.', 'cGxlYXN1cmUu');
-    await testString('leasure.', 'bGVhc3VyZS4=');
-    await testString('easure.', 'ZWFzdXJlLg==');
-    await testString('asure.', 'YXN1cmUu');
-    await testString('sure.', 'c3VyZS4=');
-    await testString('', '');
   });
 
   group('chunk-stack', () {
