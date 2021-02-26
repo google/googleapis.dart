@@ -28,10 +28,6 @@ class MultipartMediaUploader {
       this._uri, this._method, this._userAgent);
 
   Future<http.StreamedResponse> upload() {
-    final base64MediaStream =
-        _uploadMedia.stream.transform(_base64Encoder).transform(ascii.encoder);
-    final base64MediaStreamLength = _lengthOfBase64Stream(_uploadMedia.length!);
-
     // NOTE: We assume that [_body] is encoded JSON without any \r or \n in it.
     // This guarantees us that [_body] cannot contain a valid multipart
     // boundary.
@@ -42,18 +38,26 @@ class MultipartMediaUploader {
         'Content-Transfer-Encoding: base64\r\n\r\n';
     const bodyTail = '\r\n--$_boundary--';
 
-    final totalLength =
-        bodyHead.length + base64MediaStreamLength + bodyTail.length;
+    final totalLength = bodyHead.length +
+        _lengthOfBase64Stream(_uploadMedia.length!) +
+        bodyTail.length;
 
     final bodyController = StreamController<List<int>>()
-      ..add(utf8.encode(bodyHead));
-    bodyController.addStream(base64MediaStream).then((_) {
-      bodyController.add(utf8.encode(bodyTail));
-    }).catchError((Object e) {
-      bodyController.addError(e);
-      return null;
-    }).then((_) {
-      bodyController.close();
+      ..add(ascii.encode(bodyHead));
+
+    Future.microtask(() async {
+      try {
+        await bodyController.addStream(
+          _uploadMedia.stream
+              .transform(_base64Encoder)
+              .transform(ascii.encoder),
+        );
+        bodyController.add(ascii.encode(bodyTail));
+      } catch (e, stack) {
+        bodyController.addError(e, stack);
+      } finally {
+        await bodyController.close();
+      }
     });
 
     final headers = {
