@@ -48,7 +48,7 @@ class AcceleratedmobilepageurlApi {
       {core.String rootUrl = 'https://acceleratedmobilepageurl.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class AmpUrlsResource {

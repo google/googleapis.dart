@@ -21,7 +21,7 @@ class ResumableMediaUploader {
   final String? _body;
   final String _method;
   final client_requests.ResumableUploadOptions _options;
-  final String _userAgent;
+  final Map<String, String> _requestHeaders;
 
   ResumableMediaUploader(
     this._httpClient,
@@ -30,7 +30,7 @@ class ResumableMediaUploader {
     this._uri,
     this._method,
     this._options,
-    this._userAgent,
+    this._requestHeaders,
   );
 
   /// Returns the final [http.StreamedResponse] if the upload succeed and
@@ -141,7 +141,7 @@ class ResumableMediaUploader {
 
     final request = RequestImpl(_method, _uri, bodyStream);
     request.headers.addAll({
-      'user-agent': _userAgent,
+      ..._requestHeaders,
       'content-type': contentTypeJsonUtf8,
       'content-length': '$length',
       'x-upload-content-type': _uploadMedia.contentType,
@@ -238,7 +238,7 @@ class ResumableMediaUploader {
     }
 
     final headers = {
-      'user-agent': _userAgent,
+      ..._requestHeaders,
       'content-type': _uploadMedia.contentType,
       'content-length': '${chunk.length}',
       'content-range':

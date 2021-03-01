@@ -53,7 +53,7 @@ class CloudIAPApi {
       {core.String rootUrl = 'https://iap.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ProjectsResource {

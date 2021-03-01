@@ -60,7 +60,7 @@ class PubsubApi {
       {core.String rootUrl = 'https://pubsub.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ProjectsResource {

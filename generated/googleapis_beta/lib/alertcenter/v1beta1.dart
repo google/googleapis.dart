@@ -52,7 +52,7 @@ class AlertCenterApi {
       {core.String rootUrl = 'https://alertcenter.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class AlertsResource {

@@ -49,7 +49,7 @@ class LibraryagentApi {
       {core.String rootUrl = 'https://libraryagent.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ShelvesResource {

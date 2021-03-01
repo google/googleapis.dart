@@ -54,7 +54,7 @@ class TasksApi {
       {core.String rootUrl = 'https://tasks.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class TasklistsResource {

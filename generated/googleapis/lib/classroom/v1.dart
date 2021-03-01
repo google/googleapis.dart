@@ -153,7 +153,7 @@ class ClassroomApi {
       {core.String rootUrl = 'https://classroom.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class CoursesResource {

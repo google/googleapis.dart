@@ -66,7 +66,7 @@ class AdExchangeBuyerApi {
       {core.String rootUrl = 'https://www.googleapis.com/',
       core.String servicePath = 'adexchangebuyer/v1.3/'})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class AccountsResource {

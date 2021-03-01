@@ -17,7 +17,10 @@ import 'package:test/test.dart';
 typedef ServerMockCallback<T> = Future<http.StreamedResponse> Function(
     http.BaseRequest request, dynamic json);
 
-const String _userAgent = 'google-api-dart-client test.client/0.1.0-dev';
+const _requestHeaders = {
+  'user-agent': 'google-api-dart-client/package-version',
+  'x-goog-api-client': 'gl-dart/dart-version gdcl/package-version',
+};
 
 class HttpServerMock extends http.BaseClient {
   late ServerMockCallback _callback;
@@ -255,7 +258,7 @@ void main() {
       httpMock = HttpServerMock();
       rootUrl = 'http://example.com/';
       basePath = 'base/';
-      requester = ApiRequester(httpMock, rootUrl, basePath, _userAgent);
+      requester = ApiRequester(httpMock, rootUrl, basePath, _requestHeaders);
     });
 
     // Tests for Request, Response

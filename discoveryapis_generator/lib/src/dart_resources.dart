@@ -530,7 +530,7 @@ class DartApiClass extends DartResourceClass {
 
     str.writeln('  $className(${imports.http}.Client client, {$parameters}) :');
     str.write('      _requester = ${imports.commons}.ApiRequester'
-        '(client, rootUrl, servicePath, userAgent)');
+        '(client, rootUrl, servicePath, requestHeaders)');
     str.writeln(';');
     return '$str';
   }

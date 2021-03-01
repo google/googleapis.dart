@@ -116,7 +116,7 @@ class DriveApi {
       {core.String rootUrl = 'https://www.googleapis.com/',
       core.String servicePath = 'drive/v2/'})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class AboutResource {

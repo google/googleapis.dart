@@ -54,7 +54,7 @@ class IdentityToolkitApi {
       {core.String rootUrl = 'https://www.googleapis.com/',
       core.String servicePath = 'identitytoolkit/v3/relyingparty/'})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class RelyingpartyResource {

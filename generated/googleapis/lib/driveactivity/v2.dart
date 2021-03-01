@@ -53,7 +53,7 @@ class DriveActivityApi {
       {core.String rootUrl = 'https://driveactivity.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ActivityResource {

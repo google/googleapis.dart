@@ -53,7 +53,7 @@ class SiteVerificationApi {
       {core.String rootUrl = 'https://www.googleapis.com/',
       core.String servicePath = 'siteVerification/v1/'})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class WebResourceResource {

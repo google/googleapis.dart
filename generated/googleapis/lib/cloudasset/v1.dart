@@ -54,7 +54,7 @@ class CloudAssetApi {
       {core.String rootUrl = 'https://cloudasset.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class FeedsResource {

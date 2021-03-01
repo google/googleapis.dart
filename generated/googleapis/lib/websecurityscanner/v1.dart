@@ -55,7 +55,7 @@ class WebSecurityScannerApi {
       {core.String rootUrl = 'https://websecurityscanner.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ProjectsResource {

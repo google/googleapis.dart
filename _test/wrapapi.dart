@@ -24,7 +24,11 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const userAgent = 'dart-api-client wrapApi/0.1';
+/// Request headers used by all libraries in this package
+final requestHeaders = {
+  'user-agent': 'google-api-dart-client/0.1',
+  'x-goog-api-client': 'gl-dart/${commons.dartVersion} gdcl/0.1',
+};
 
 class WrapApi {
   final commons.ApiRequester _requester;
@@ -33,7 +37,7 @@ class WrapApi {
       {core.String rootUrl = 'http://localhost:9090/',
       core.String servicePath = 'api/wrapApi/0.1/'})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 
   /// [request] - The metadata request object.
   ///

@@ -50,7 +50,7 @@ class ManufacturerCenterApi {
       {core.String rootUrl = 'https://manufacturers.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class AccountsResource {

@@ -55,7 +55,7 @@ class AnalyticsDataApi {
       {core.String rootUrl = 'https://analyticsdata.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class PropertiesResource {

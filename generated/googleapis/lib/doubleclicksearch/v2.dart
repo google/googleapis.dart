@@ -64,7 +64,7 @@ class DoubleclicksearchApi {
       {core.String rootUrl = 'https://doubleclicksearch.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ConversionResource {

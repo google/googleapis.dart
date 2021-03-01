@@ -52,7 +52,7 @@ class FirebaseCloudMessagingApi {
       {core.String rootUrl = 'https://fcm.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ProjectsResource {

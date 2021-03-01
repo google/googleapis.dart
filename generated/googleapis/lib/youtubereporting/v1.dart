@@ -70,7 +70,7 @@ class YouTubeReportingApi {
       {core.String rootUrl = 'https://youtubereporting.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class JobsResource {

@@ -71,7 +71,7 @@ class BigQueryDataTransferApi {
       {core.String rootUrl = 'https://bigquerydatatransfer.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ProjectsResource {

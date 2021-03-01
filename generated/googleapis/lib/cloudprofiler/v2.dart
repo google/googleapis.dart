@@ -58,7 +58,7 @@ class CloudProfilerApi {
       {core.String rootUrl = 'https://cloudprofiler.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ProjectsResource {

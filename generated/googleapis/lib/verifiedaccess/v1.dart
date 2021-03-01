@@ -52,7 +52,7 @@ class VerifiedaccessApi {
       {core.String rootUrl = 'https://verifiedaccess.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ChallengeResource {

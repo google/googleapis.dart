@@ -223,7 +223,7 @@ class DfareportingApi {
       {core.String rootUrl = 'https://dfareporting.googleapis.com/',
       core.String servicePath = 'dfareporting/v3.4/'})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class AccountActiveAdSummariesResource {

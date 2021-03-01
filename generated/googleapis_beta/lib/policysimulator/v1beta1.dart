@@ -79,7 +79,7 @@ class PolicySimulatorApi {
       {core.String rootUrl = 'https://policysimulator.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class FoldersResource {

@@ -3,5 +3,6 @@
 // BSD-style license that can be found in the LICENSE file.
 
 export 'src/api_requester.dart' show ApiRequester;
+export 'src/dart_version.dart' show dartVersion;
 export 'src/requests.dart';
 export 'src/utils.dart' show escapeVariable;

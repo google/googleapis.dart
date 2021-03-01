@@ -22,10 +22,16 @@ class MultipartMediaUploader {
   final Uri _uri;
   final String _body;
   final String _method;
-  final String _userAgent;
+  final Map<String, String> _requestHeaders;
 
-  MultipartMediaUploader(this._httpClient, this._uploadMedia, this._body,
-      this._uri, this._method, this._userAgent);
+  MultipartMediaUploader(
+    this._httpClient,
+    this._uploadMedia,
+    this._body,
+    this._uri,
+    this._method,
+    this._requestHeaders,
+  );
 
   Future<http.StreamedResponse> upload() {
     // NOTE: We assume that [_body] is encoded JSON without any \r or \n in it.
@@ -61,7 +67,7 @@ class MultipartMediaUploader {
     });
 
     final headers = {
-      'user-agent': _userAgent,
+      ..._requestHeaders,
       'content-type': 'multipart/related; boundary=\"$_boundary\"',
       'content-length': '$totalLength'
     };

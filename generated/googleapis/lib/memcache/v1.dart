@@ -55,7 +55,7 @@ class CloudMemorystoreForMemcachedApi {
       {core.String rootUrl = 'https://memcache.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ProjectsResource {

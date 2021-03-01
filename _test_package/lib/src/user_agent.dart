@@ -1,2 +1,7 @@
-/// User-Agent request header used by all libraries in this package
-const userAgent = 'Dart package:test_package / 0.1.0-dev';
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+
+/// Request headers used by all libraries in this package
+final requestHeaders = {
+  'user-agent': 'google-api-dart-client/0.1.0-dev',
+  'x-goog-api-client': 'gl-dart/${commons.dartVersion} gdcl/0.1.0-dev',
+};
