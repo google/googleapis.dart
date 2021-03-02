@@ -1228,7 +1228,10 @@ class PartitionConfig {
 
   /// The number of partitions in the topic.
   ///
-  /// Must be at least 1.
+  /// Must be at least 1. Once a topic has been created the number of partitions
+  /// can be increased but not decreased. Message ordering is not guaranteed
+  /// across a topic resize. For more information see
+  /// https://cloud.google.com/pubsub/lite/docs/topics#scaling_capacity
   core.String? count;
 
   /// DEPRECATED: Use capacity instead which can express a superset of

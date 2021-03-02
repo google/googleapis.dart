@@ -45,6 +45,11 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// administrators to view, manage and gain insights on their Chrome OS and
 /// Chrome Browser devices and users.
 class ChromeManagementApi {
+  /// See reports about devices and Chrome browsers managed within your
+  /// organization
+  static const chromeManagementReportsReadonlyScope =
+      'https://www.googleapis.com/auth/chrome.management.reports.readonly';
+
   final commons.ApiRequester _requester;
 
   CustomersResource get customers => CustomersResource(_requester);

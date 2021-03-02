@@ -2269,6 +2269,7 @@ api.ExternalDataConfiguration buildExternalDataConfiguration() {
     o.hivePartitioningOptions = buildHivePartitioningOptions();
     o.ignoreUnknownValues = true;
     o.maxBadRecords = 42;
+    o.parquetOptions = buildParquetOptions();
     o.schema = buildTableSchema();
     o.sourceFormat = 'foo';
     o.sourceUris = buildUnnamed1393();
@@ -2299,6 +2300,7 @@ void checkExternalDataConfiguration(api.ExternalDataConfiguration o) {
       o.maxBadRecords!,
       unittest.equals(42),
     );
+    checkParquetOptions(o.parquetOptions! as api.ParquetOptions);
     checkTableSchema(o.schema! as api.TableSchema);
     unittest.expect(
       o.sourceFormat!,
@@ -2953,6 +2955,7 @@ api.JobConfigurationLoad buildJobConfigurationLoad() {
     o.jsonExtension = 'foo';
     o.maxBadRecords = 42;
     o.nullMarker = 'foo';
+    o.parquetOptions = buildParquetOptions();
     o.projectionFields = buildUnnamed1402();
     o.quote = 'foo';
     o.rangePartitioning = buildRangePartitioning();
@@ -3011,6 +3014,7 @@ void checkJobConfigurationLoad(api.JobConfigurationLoad o) {
       o.nullMarker!,
       unittest.equals('foo'),
     );
+    checkParquetOptions(o.parquetOptions! as api.ParquetOptions);
     checkUnnamed1402(o.projectionFields!);
     unittest.expect(
       o.quote!,
@@ -4370,6 +4374,27 @@ void checkMultiClassClassificationMetrics(
     checkUnnamed1431(o.confusionMatrixList!);
   }
   buildCounterMultiClassClassificationMetrics--;
+}
+
+core.int buildCounterParquetOptions = 0;
+api.ParquetOptions buildParquetOptions() {
+  var o = api.ParquetOptions();
+  buildCounterParquetOptions++;
+  if (buildCounterParquetOptions < 3) {
+    o.enableListInference = true;
+    o.enumAsString = true;
+  }
+  buildCounterParquetOptions--;
+  return o;
+}
+
+void checkParquetOptions(api.ParquetOptions o) {
+  buildCounterParquetOptions++;
+  if (buildCounterParquetOptions < 3) {
+    unittest.expect(o.enableListInference!, unittest.isTrue);
+    unittest.expect(o.enumAsString!, unittest.isTrue);
+  }
+  buildCounterParquetOptions--;
 }
 
 core.List<api.AuditConfig> buildUnnamed1432() {
@@ -7765,6 +7790,16 @@ void main() {
           oJson as core.Map<core.String, core.dynamic>);
       checkMultiClassClassificationMetrics(
           od as api.MultiClassClassificationMetrics);
+    });
+  });
+
+  unittest.group('obj-schema-ParquetOptions', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildParquetOptions();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ParquetOptions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkParquetOptions(od as api.ParquetOptions);
     });
   });
 

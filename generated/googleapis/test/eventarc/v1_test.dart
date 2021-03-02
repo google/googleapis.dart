@@ -1013,6 +1013,25 @@ void checkUnnamed2583(core.List<api.EventFilter> o) {
   checkEventFilter(o[1] as api.EventFilter);
 }
 
+core.Map<core.String, core.String> buildUnnamed2584() {
+  var o = <core.String, core.String>{};
+  o['x'] = 'foo';
+  o['y'] = 'foo';
+  return o;
+}
+
+void checkUnnamed2584(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterTrigger = 0;
 api.Trigger buildTrigger() {
   var o = api.Trigger();
@@ -1022,6 +1041,7 @@ api.Trigger buildTrigger() {
     o.destination = buildDestination();
     o.etag = 'foo';
     o.eventFilters = buildUnnamed2583();
+    o.labels = buildUnnamed2584();
     o.name = 'foo';
     o.serviceAccount = 'foo';
     o.transport = buildTransport();
@@ -1045,6 +1065,7 @@ void checkTrigger(api.Trigger o) {
       unittest.equals('foo'),
     );
     checkUnnamed2583(o.eventFilters!);
+    checkUnnamed2584(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),

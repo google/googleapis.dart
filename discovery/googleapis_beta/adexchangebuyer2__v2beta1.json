@@ -2437,7 +2437,7 @@
             }
         }
     },
-    "revision": "20210225",
+    "revision": "20210227",
     "rootUrl": "https://adexchangebuyer.googleapis.com/",
     "schemas": {
         "AbsoluteDateRange": {

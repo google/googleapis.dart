@@ -1042,6 +1042,7 @@ api.Restore buildRestore() {
   buildCounterRestore++;
   if (buildCounterRestore < 3) {
     o.backup = 'foo';
+    o.details = 'foo';
     o.endTime = 'foo';
     o.startTime = 'foo';
     o.state = 'foo';
@@ -1056,6 +1057,10 @@ void checkRestore(api.Restore o) {
   if (buildCounterRestore < 3) {
     unittest.expect(
       o.backup!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.details!,
       unittest.equals('foo'),
     );
     unittest.expect(

@@ -107,9 +107,11 @@ class AccountsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// List the AdMob publisher account accessible with the client credential.
+  /// Lists the AdMob publisher account that was most recently signed in to from
+  /// the AdMob UI.
   ///
-  /// Currently, all credentials have access to at most one AdMob account.
+  /// For more information, see
+  /// https://support.google.com/admob/answer/10243672.
   ///
   /// Request parameters:
   ///

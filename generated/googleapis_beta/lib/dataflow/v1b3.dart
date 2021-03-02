@@ -4532,6 +4532,11 @@ class Environment {
   core.String? dataset;
 
   /// The list of experiments to enable.
+  ///
+  /// This field should be used for SDK related experiments and not for service
+  /// related experiments. The proper field for service related experiments is
+  /// service_options. For more details see the rationale at
+  /// go/user-specified-service-options.
   core.List<core.String>? experiments;
 
   /// Which Flexible Resource Scheduling mode to run in.
@@ -4568,6 +4573,14 @@ class Environment {
   /// Format:
   /// projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
   core.String? serviceKmsKeyName;
+
+  /// The list of service options to enable.
+  ///
+  /// This field should be used for service related experiments only. These
+  /// experiments, when graduating to GA, should be replaced by dedicated fields
+  /// or become default (i.e. always on). For more details see the rationale at
+  /// go/user-specified-service-options.
+  core.List<core.String>? serviceOptions;
 
   /// The shuffle mode used for the job.
   ///
@@ -4670,6 +4683,11 @@ class Environment {
     if (_json.containsKey('serviceKmsKeyName')) {
       serviceKmsKeyName = _json['serviceKmsKeyName'] as core.String;
     }
+    if (_json.containsKey('serviceOptions')) {
+      serviceOptions = (_json['serviceOptions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
     if (_json.containsKey('shuffleMode')) {
       shuffleMode = _json['shuffleMode'] as core.String;
     }
@@ -4721,6 +4739,7 @@ class Environment {
         if (serviceAccountEmail != null)
           'serviceAccountEmail': serviceAccountEmail!,
         if (serviceKmsKeyName != null) 'serviceKmsKeyName': serviceKmsKeyName!,
+        if (serviceOptions != null) 'serviceOptions': serviceOptions!,
         if (shuffleMode != null) 'shuffleMode': shuffleMode!,
         if (tempStoragePrefix != null) 'tempStoragePrefix': tempStoragePrefix!,
         if (userAgent != null) 'userAgent': userAgent!,

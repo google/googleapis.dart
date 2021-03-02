@@ -1770,13 +1770,18 @@ class Trigger {
   /// Output only.
   core.String? etag;
 
-  /// The list of filters that applies to event attributes.
+  /// null The list of filters that applies to event attributes.
   ///
   /// Only events that match all the provided filters will be sent to the
   /// destination.
   ///
   /// Required.
   core.List<EventFilter>? eventFilters;
+
+  /// User labels attached to the triggers that can be used to group resources.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
 
   /// The resource name of the trigger.
   ///
@@ -1797,7 +1802,7 @@ class Trigger {
   /// https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account
   /// for information on how to invoke authenticated Cloud Run services. In
   /// order to create Audit Log triggers, the service account should also have
-  /// 'eventarc.events.receiveAuditLogV1Written' permission.
+  /// `roles/eventarc.eventReceiver` IAM role.
   ///
   /// Optional.
   core.String? serviceAccount;
@@ -1843,6 +1848,14 @@ class Trigger {
               value as core.Map<core.String, core.dynamic>))
           .toList();
     }
+    if (_json.containsKey('labels')) {
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
+    }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
@@ -1867,6 +1880,7 @@ class Trigger {
         if (etag != null) 'etag': etag!,
         if (eventFilters != null)
           'eventFilters': eventFilters!.map((value) => value.toJson()).toList(),
+        if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (transport != null) 'transport': transport!.toJson(),
