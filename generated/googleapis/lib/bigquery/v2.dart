@@ -2435,7 +2435,11 @@ class ArimaModelInfo {
   /// Repeated because multiple periods are supported for one time series.
   core.List<core.String>? seasonalPeriods;
 
-  /// The id to indicate different time series.
+  /// The time_series_id value for this time series.
+  ///
+  /// It will be one of the unique values from the time_series_id_column
+  /// specified during ARIMA model training. Only present when
+  /// time_series_id_column training option was used.
   core.String? timeSeriesId;
 
   ArimaModelInfo();
@@ -2569,7 +2573,11 @@ class ArimaSingleModelForecastingMetrics {
   /// Repeated because multiple periods are supported for one time series.
   core.List<core.String>? seasonalPeriods;
 
-  /// The id to indicate different time series.
+  /// The time_series_id value for this time series.
+  ///
+  /// It will be one of the unique values from the time_series_id_column
+  /// specified during ARIMA model training. Only present when
+  /// time_series_id_column training option was used.
   core.String? timeSeriesId;
 
   ArimaSingleModelForecastingMetrics();
@@ -4902,6 +4910,9 @@ class ExternalDataConfiguration {
   /// Optional.
   core.int? maxBadRecords;
 
+  /// Additional properties to set if sourceFormat is set to Parquet.
+  ParquetOptions? parquetOptions;
+
   /// The schema for the data.
   ///
   /// Schema is required for CSV and JSON formats. Schema is disallowed for
@@ -4969,6 +4980,10 @@ class ExternalDataConfiguration {
     if (_json.containsKey('maxBadRecords')) {
       maxBadRecords = _json['maxBadRecords'] as core.int;
     }
+    if (_json.containsKey('parquetOptions')) {
+      parquetOptions = ParquetOptions.fromJson(
+          _json['parquetOptions'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('schema')) {
       schema = TableSchema.fromJson(
           _json['schema'] as core.Map<core.String, core.dynamic>);
@@ -4997,6 +5012,7 @@ class ExternalDataConfiguration {
         if (ignoreUnknownValues != null)
           'ignoreUnknownValues': ignoreUnknownValues!,
         if (maxBadRecords != null) 'maxBadRecords': maxBadRecords!,
+        if (parquetOptions != null) 'parquetOptions': parquetOptions!.toJson(),
         if (schema != null) 'schema': schema!.toJson(),
         if (sourceFormat != null) 'sourceFormat': sourceFormat!,
         if (sourceUris != null) 'sourceUris': sourceUris!,
@@ -5916,6 +5932,11 @@ class JobConfigurationLoad {
   /// Optional.
   core.String? nullMarker;
 
+  /// Options to configure parquet support.
+  ///
+  /// Optional.
+  ParquetOptions? parquetOptions;
+
   /// If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity
   /// properties to load into BigQuery from a Cloud Datastore backup.
   ///
@@ -6096,6 +6117,10 @@ class JobConfigurationLoad {
     if (_json.containsKey('nullMarker')) {
       nullMarker = _json['nullMarker'] as core.String;
     }
+    if (_json.containsKey('parquetOptions')) {
+      parquetOptions = ParquetOptions.fromJson(
+          _json['parquetOptions'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('projectionFields')) {
       projectionFields = (_json['projectionFields'] as core.List)
           .map<core.String>((value) => value as core.String)
@@ -6171,6 +6196,7 @@ class JobConfigurationLoad {
         if (jsonExtension != null) 'jsonExtension': jsonExtension!,
         if (maxBadRecords != null) 'maxBadRecords': maxBadRecords!,
         if (nullMarker != null) 'nullMarker': nullMarker!,
+        if (parquetOptions != null) 'parquetOptions': parquetOptions!.toJson(),
         if (projectionFields != null) 'projectionFields': projectionFields!,
         if (quote != null) 'quote': quote!,
         if (rangePartitioning != null)
@@ -7965,6 +7991,37 @@ class MultiClassClassificationMetrics {
         if (confusionMatrixList != null)
           'confusionMatrixList':
               confusionMatrixList!.map((value) => value.toJson()).toList(),
+      };
+}
+
+class ParquetOptions {
+  /// Indicates whether to use schema inference specifically for Parquet LIST
+  /// logical type.
+  ///
+  /// Optional.
+  core.bool? enableListInference;
+
+  /// Indicates whether to infer Parquet ENUM logical type as STRING instead of
+  /// BYTES by default.
+  ///
+  /// Optional.
+  core.bool? enumAsString;
+
+  ParquetOptions();
+
+  ParquetOptions.fromJson(core.Map _json) {
+    if (_json.containsKey('enableListInference')) {
+      enableListInference = _json['enableListInference'] as core.bool;
+    }
+    if (_json.containsKey('enumAsString')) {
+      enumAsString = _json['enumAsString'] as core.bool;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableListInference != null)
+          'enableListInference': enableListInference!,
+        if (enumAsString != null) 'enumAsString': enumAsString!,
       };
 }
 
@@ -10967,8 +11024,7 @@ class TrainingOptions {
   /// Column to be designated as time series data for ARIMA model.
   core.String? timeSeriesDataColumn;
 
-  /// The id column that will be used to indicate different time series to
-  /// forecast in parallel.
+  /// The time series id column that was used during ARIMA model training.
   core.String? timeSeriesIdColumn;
 
   /// Column to be designated as time series timestamp for ARIMA model.

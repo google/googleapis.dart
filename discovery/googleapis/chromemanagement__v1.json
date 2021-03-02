@@ -1,4 +1,13 @@
 {
+    "auth": {
+        "oauth2": {
+            "scopes": {
+                "https://www.googleapis.com/auth/chrome.management.reports.readonly": {
+                    "description": "See reports about devices and Chrome browsers managed within your organization"
+                }
+            }
+        }
+    },
     "basePath": "",
     "baseUrl": "https://chromemanagement.googleapis.com/",
     "batchPath": "batch",
@@ -138,7 +147,10 @@
                             "path": "v1/{+customer}/reports:countChromeVersions",
                             "response": {
                                 "$ref": "GoogleChromeManagementV1CountChromeVersionsResponse"
-                            }
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/chrome.management.reports.readonly"
+                            ]
                         },
                         "countInstalledApps": {
                             "description": "Generate report of app installations.",
@@ -185,7 +197,10 @@
                             "path": "v1/{+customer}/reports:countInstalledApps",
                             "response": {
                                 "$ref": "GoogleChromeManagementV1CountInstalledAppsResponse"
-                            }
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/chrome.management.reports.readonly"
+                            ]
                         },
                         "findInstalledAppDevices": {
                             "description": "Generate report of devices that have a specified app installed.",
@@ -258,14 +273,17 @@
                             "path": "v1/{+customer}/reports:findInstalledAppDevices",
                             "response": {
                                 "$ref": "GoogleChromeManagementV1FindInstalledAppDevicesResponse"
-                            }
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/chrome.management.reports.readonly"
+                            ]
                         }
                     }
                 }
             }
         }
     },
-    "revision": "20210224",
+    "revision": "20210227",
     "rootUrl": "https://chromemanagement.googleapis.com/",
     "schemas": {
         "GoogleChromeManagementV1BrowserVersion": {

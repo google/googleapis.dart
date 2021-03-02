@@ -191,7 +191,7 @@ Official API documentation: https://cloud.google.com/api-gateway/docs
 
 #### Apigee API - apigee v1
 
-Use the Apigee API to programmatically develop and manage APIs with a set of RESTful operations. Develop and secure API proxies, deploy and undeploy API proxy revisions, monitor APIs, configure environments, manage users, and more. Get started using the APIs. *Note:* This product is available as a free trial for a time period of 60 days.
+Use the Apigee API to programmatically develop and manage APIs with a set of RESTful operations. Develop and secure API proxies, deploy and undeploy API proxy revisions, monitor APIs, configure environments, manage users, and more. Note: This product is available as a free trial for a time period of 60 days.
 
 Official API documentation: https://cloud.google.com/apigee-api-management/
 

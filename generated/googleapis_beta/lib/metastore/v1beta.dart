@@ -2124,6 +2124,12 @@ class Restore {
   /// Output only.
   core.String? backup;
 
+  /// The restore details containing the revision of the service to be restored
+  /// to, in format of JSON.
+  ///
+  /// Output only.
+  core.String? details;
+
   /// The time when the restore ended.
   ///
   /// Output only.
@@ -2160,6 +2166,9 @@ class Restore {
     if (_json.containsKey('backup')) {
       backup = _json['backup'] as core.String;
     }
+    if (_json.containsKey('details')) {
+      details = _json['details'] as core.String;
+    }
     if (_json.containsKey('endTime')) {
       endTime = _json['endTime'] as core.String;
     }
@@ -2176,6 +2185,7 @@ class Restore {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (backup != null) 'backup': backup!,
+        if (details != null) 'details': details!,
         if (endTime != null) 'endTime': endTime!,
         if (startTime != null) 'startTime': startTime!,
         if (state != null) 'state': state!,

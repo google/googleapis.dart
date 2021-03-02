@@ -2306,6 +2306,9 @@ class ExecutionTemplate {
   /// gs://{project_id}/{folder} Ex: gs://notebook_user/scheduled_notebooks
   core.String? outputNotebookFolder;
 
+  /// Parameters used within the 'input_notebook_file' notebook.
+  core.String? parameters;
+
   /// Parameters to be overridden in the notebook during execution.
   ///
   /// Ref https://papermill.readthedocs.io/en/latest/usage-parameterize.html on
@@ -2371,6 +2374,9 @@ class ExecutionTemplate {
     if (_json.containsKey('outputNotebookFolder')) {
       outputNotebookFolder = _json['outputNotebookFolder'] as core.String;
     }
+    if (_json.containsKey('parameters')) {
+      parameters = _json['parameters'] as core.String;
+    }
     if (_json.containsKey('paramsYamlFile')) {
       paramsYamlFile = _json['paramsYamlFile'] as core.String;
     }
@@ -2388,6 +2394,7 @@ class ExecutionTemplate {
         if (masterType != null) 'masterType': masterType!,
         if (outputNotebookFolder != null)
           'outputNotebookFolder': outputNotebookFolder!,
+        if (parameters != null) 'parameters': parameters!,
         if (paramsYamlFile != null) 'paramsYamlFile': paramsYamlFile!,
         if (scaleTier != null) 'scaleTier': scaleTier!,
       };
@@ -3610,6 +3617,12 @@ class Schedule {
   /// Output only.
   core.String? name;
 
+  /// The most recent execution names triggered from this schedule and their
+  /// corresponding states.
+  ///
+  /// Output only.
+  core.List<Execution>? recentExecutions;
+
   ///
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Unspecified state.
@@ -3633,7 +3646,7 @@ class Schedule {
   /// will be in UTC (also known as GMT).
   core.String? timeZone;
 
-  /// TIme the schedule was last updated.
+  /// Time the schedule was last updated.
   ///
   /// Output only.
   core.String? updateTime;
@@ -3660,6 +3673,12 @@ class Schedule {
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
+    if (_json.containsKey('recentExecutions')) {
+      recentExecutions = (_json['recentExecutions'] as core.List)
+          .map<Execution>((value) =>
+              Execution.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
     if (_json.containsKey('state')) {
       state = _json['state'] as core.String;
     }
@@ -3679,6 +3698,9 @@ class Schedule {
         if (executionTemplate != null)
           'executionTemplate': executionTemplate!.toJson(),
         if (name != null) 'name': name!,
+        if (recentExecutions != null)
+          'recentExecutions':
+              recentExecutions!.map((value) => value.toJson()).toList(),
         if (state != null) 'state': state!,
         if (timeZone != null) 'timeZone': timeZone!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -4057,6 +4079,9 @@ class UpgradeHistoryEntry {
   /// Format: ainotebooks-vm/project/image-name/name.
   core.String? targetImage;
 
+  /// Target VM Version, like m63.
+  core.String? targetVersion;
+
   /// The version of the notebook instance before this upgrade.
   core.String? version;
 
@@ -4087,6 +4112,9 @@ class UpgradeHistoryEntry {
     if (_json.containsKey('targetImage')) {
       targetImage = _json['targetImage'] as core.String;
     }
+    if (_json.containsKey('targetVersion')) {
+      targetVersion = _json['targetVersion'] as core.String;
+    }
     if (_json.containsKey('version')) {
       version = _json['version'] as core.String;
     }
@@ -4103,6 +4131,7 @@ class UpgradeHistoryEntry {
         if (snapshot != null) 'snapshot': snapshot!,
         if (state != null) 'state': state!,
         if (targetImage != null) 'targetImage': targetImage!,
+        if (targetVersion != null) 'targetVersion': targetVersion!,
         if (version != null) 'version': version!,
         if (vmImage != null) 'vmImage': vmImage!,
       };

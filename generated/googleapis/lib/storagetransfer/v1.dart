@@ -1847,7 +1847,11 @@ class TransferJob {
   /// The ID of the Google Cloud Platform Project that owns the job.
   core.String? projectId;
 
-  /// Schedule specification.
+  /// Specifies schedule for the transfer job.
+  ///
+  /// This is an optional field. When the field is not set, the job will never
+  /// execute a transfer, unless you invoke RunTransferJob or update the job to
+  /// have a non-empty schedule.
   Schedule? schedule;
 
   /// Status of the job.
@@ -2168,8 +2172,8 @@ class UpdateTransferJobRequest {
   ///
   /// `transferJob` is expected to specify only four fields: description,
   /// transfer_spec, notification_config, and status. An
-  /// `UpdateTransferJobRequest` that specifies other fields will be rejected
-  /// with the error INVALID_ARGUMENT. Updating a job satus to DELETED requires
+  /// `UpdateTransferJobRequest` that specifies other fields are rejected with
+  /// the error INVALID_ARGUMENT. Updating a job satus to DELETED requires
   /// `storagetransfer.jobs.delete` permissions.
   ///
   /// Required.
@@ -2181,7 +2185,7 @@ class UpdateTransferJobRequest {
   /// Fields in `transferJob` that can be updated are: description,
   /// transfer_spec, notification_config, and status. To update the
   /// `transfer_spec` of the job, a complete transfer specification must be
-  /// provided. An incomplete specification missing any required fields will be
+  /// provided. An incomplete specification missing any required fields is
   /// rejected with the error INVALID_ARGUMENT.
   core.String? updateTransferJobFieldMask;
 

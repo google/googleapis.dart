@@ -17,8 +17,8 @@
 /// Use the Apigee API to programmatically develop and manage APIs with a set of
 /// RESTful operations. Develop and secure API proxies, deploy and undeploy API
 /// proxy revisions, monitor APIs, configure environments, manage users, and
-/// more. Get started using the APIs. *Note:* This product is available as a
-/// free trial for a time period of 60 days.
+/// more. Note: This product is available as a free trial for a time period of
+/// 60 days.
 ///
 /// For more information, see <https://cloud.google.com/apigee-api-management/>
 ///
@@ -108,9 +108,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// RESTful operations.
 ///
 /// Develop and secure API proxies, deploy and undeploy API proxy revisions,
-/// monitor APIs, configure environments, manage users, and more. Get started
-/// using the APIs. *Note:* This product is available as a free trial for a time
-/// period of 60 days.
+/// monitor APIs, configure environments, manage users, and more. Note: This
+/// product is available as a free trial for a time period of 60 days.
 class ApigeeApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
@@ -5170,22 +5169,24 @@ class OrganizationsEnvironmentsApisRevisionsResource {
   /// `^organizations/\[^/\]+/environments/\[^/\]+/apis/\[^/\]+/revisions/\[^/\]+$`.
   ///
   /// [override] - Flag that specifies whether the new deployment replaces other
-  /// deployed revisions of the API proxy in the environment. Set override to
-  /// true to replace other deployed revisions. By default, override is false
-  /// and the deployment is rejected if other revisions of the API proxy are
-  /// deployed in the environment.
+  /// deployed revisions of the API proxy in the environment. Set `override` to
+  /// `true` to replace other deployed revisions. By default, `override` is
+  /// `false` and the deployment is rejected if other revisions of the API proxy
+  /// are deployed in the environment.
   ///
-  /// [sequencedRollout] - If true, a best-effort attempt will be made to roll
-  /// out the routing rules corresponding to this deployment and the environment
+  /// [sequencedRollout] - Flag that specifies whether to enable sequenced
+  /// rollout. If set to `true`, a best-effort attempt will be made to roll out
+  /// the routing rules corresponding to this deployment and the environment
   /// changes to add this deployment in a safe order. This reduces the risk of
   /// downtime that could be caused by changing the environment group's routing
   /// before the new destination for the affected traffic is ready to receive
   /// it. This should only be necessary if the new deployment will be capturing
   /// traffic from another environment under a shared environment group or if
-  /// traffic will be rerouted to a different environment due to a basepath
-  /// removal. The GenerateDeployChangeReport API may be used to examine routing
-  /// changes before issuing the deployment request, and its response will
-  /// indicate if a sequenced rollout is recommended for the deployment.
+  /// traffic will be rerouted to a different environment due to a base path
+  /// removal. The \[GenerateDeployChangeReport
+  /// API\](GenerateDeployChangeReport) may be used to examine routing changes
+  /// before issuing the deployment request, and its response will indicate if a
+  /// sequenced rollout is recommended for the deployment.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5277,15 +5278,17 @@ class OrganizationsEnvironmentsApisRevisionsResource {
   /// Value must have pattern
   /// `^organizations/\[^/\]+/environments/\[^/\]+/apis/\[^/\]+/revisions/\[^/\]+$`.
   ///
-  /// [sequencedRollout] - If true, a best-effort attempt will be made to remove
+  /// [sequencedRollout] - Flag that specifies whether to enable sequenced
+  /// rollout. If set to `true`, a best-effort attempt will be made to remove
   /// the environment group routing rules corresponding to this deployment
   /// before removing the deployment from the runtime. This is likely to be a
   /// rare use case; it is only needed when the intended effect of undeploying
   /// this proxy is to cause the traffic it currently handles to be rerouted to
   /// some other existing proxy in the environment group. The
-  /// GenerateUndeployChangeReport API may be used to examine routing changes
-  /// before issuing the undeployment request, and its response will indicate if
-  /// a sequenced rollout is recommended for the undeployment.
+  /// \[GenerateUndeployChangeReport API\](GenerateUndeployChangeReport) may be
+  /// used to examine routing changes before issuing the undeployment request,
+  /// and its response will indicate if a sequenced rollout is recommended for
+  /// the undeployment.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7357,13 +7360,11 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResource {
   /// Value must have pattern
   /// `^organizations/\[^/\]+/environments/\[^/\]+/sharedflows/\[^/\]+/revisions/\[^/\]+$`.
   ///
-  /// [override] - Flag that specifies whether to force the deployment of the
-  /// new revision over the currently deployed revision by overriding conflict
-  /// checks. If an existing shared flow revision is deployed, to ensure
-  /// seamless deployment with no downtime, set this parameter to `true`. In
-  /// this case, hybrid deploys the new revision fully before undeploying the
-  /// existing revision. If set to `false`, you must undeploy the existing
-  /// revision before deploying the new revision.
+  /// [override] - Flag that specifies whether the new deployment replaces other
+  /// deployed revisions of the shared flow in the environment. Set `override`
+  /// to `true` to replace other deployed revisions. By default, `override` is
+  /// `false` and the deployment is rejected if other revisions of the shared
+  /// flow are deployed in the environment.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -12509,7 +12510,9 @@ class GoogleCloudApigeeV1Deployment {
 
   /// Status reported by runtime pods.
   ///
-  /// This field is not populated for List APIs.
+  /// This field is not populated for List APIs. **Note**: **This field is
+  /// deprecated**. Runtime versions 1.3 and above report instance level status
+  /// rather than pod status.
   core.List<GoogleCloudApigeeV1PodStatus>? pods;
 
   /// API proxy revision.
@@ -12517,11 +12520,11 @@ class GoogleCloudApigeeV1Deployment {
 
   /// Conflicts in the desired state routing configuration.
   ///
-  /// The presence of conflicts does not cause the state to be ERROR, but it
-  /// will mean that some of the deployments basepaths are not routed to its
+  /// The presence of conflicts does not cause the state to be `ERROR`, but it
+  /// will mean that some of the deployment's base paths are not routed to its
   /// environment. If the conflicts change, the state will transition to
-  /// PROGRESSING until the latest configuration is rolled out to all instances.
-  /// This field is not populated in List APIs.
+  /// `PROGRESSING` until the latest configuration is rolled out to all
+  /// instances. This field is not populated in List APIs.
   core.List<GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict>?
       routeConflicts;
 
@@ -12530,9 +12533,9 @@ class GoogleCloudApigeeV1Deployment {
   /// This field is not populated in List APIs.
   /// Possible string values are:
   /// - "RUNTIME_STATE_UNSPECIFIED" : This value should never be returned.
-  /// - "READY" : The runtime has loaded the deployment.
-  /// - "PROGRESSING" : The deployment is not fully ready in the runtime.
-  /// - "ERROR" : There is an error with the deployment that requires
+  /// - "READY" : Runtime has loaded the deployment.
+  /// - "PROGRESSING" : Deployment is not fully ready in the runtime.
+  /// - "ERROR" : Encountered an error with the deployment that requires
   /// intervention.
   core.String? state;
 
@@ -12610,16 +12613,16 @@ class GoogleCloudApigeeV1Deployment {
 /// of the deployment request is to effect a routing change. The primary
 /// purposes of the routing messages are: 1) To inform users of routing changes
 /// that may have an effect on traffic currently being routed to other existing
-/// deployments. 2) To warn users if some basepath in the proxy will not receive
-/// traffic due to an existing deployment having already claimed that basepath.
-/// The presence of routing conflicts/changes will not cause non-dry-run
-/// DeployApiProxy/UndeployApiProxy requests to be rejected.
+/// deployments. 2) To warn users if some base path in the proxy will not
+/// receive traffic due to an existing deployment having already claimed that
+/// base path. The presence of routing conflicts/changes will not cause
+/// non-dry-run DeployApiProxy/UndeployApiProxy requests to be rejected.
 class GoogleCloudApigeeV1DeploymentChangeReport {
   /// All routing changes that may result from a deployment request.
   core.List<GoogleCloudApigeeV1DeploymentChangeReportRoutingChange>?
       routingChanges;
 
-  /// All basepath conflicts detected for a deployment request.
+  /// All base path conflicts detected for a deployment request.
   core.List<GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict>?
       routingConflicts;
 
@@ -12666,22 +12669,23 @@ class GoogleCloudApigeeV1DeploymentChangeReport {
 /// Describes a potential routing change that may occur as a result of some
 /// deployment operation.
 class GoogleCloudApigeeV1DeploymentChangeReportRoutingChange {
-  /// A human-readable description of this routing change.
+  /// Human-readable description of this routing change.
   core.String? description;
 
-  /// The name of the environment group affected by this routing change.
+  /// Name of the environment group affected by this routing change.
   core.String? environmentGroup;
 
-  /// The basepath/deployment that may stop receiving some traffic.
+  /// Base path/deployment that may stop receiving some traffic.
   GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment? fromDeployment;
 
-  /// True if using sequenced rollout would make this routing change safer.
+  /// Set to `true` if using sequenced rollout would make this routing change
+  /// safer.
   ///
-  /// Note: this does not necessarily imply that automated sequenced rollout
+  /// **Note**: This does not necessarily imply that automated sequenced rollout
   /// mode is supported for the operation.
   core.bool? shouldSequenceRollout;
 
-  /// The basepath/deployment that may start receiving that traffic.
+  /// Base path/deployment that may start receiving that traffic.
   ///
   /// May be null if no deployment is able to receive the traffic.
   GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment? toDeployment;
@@ -12722,16 +12726,16 @@ class GoogleCloudApigeeV1DeploymentChangeReportRoutingChange {
 }
 
 /// Describes a routing conflict that may cause a deployment not to receive
-/// traffic at some basepath.
+/// traffic at some base path.
 class GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict {
-  /// The existing basepath/deployment causing the conflict.
+  /// Existing base path/deployment causing the conflict.
   GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment?
       conflictingDeployment;
 
-  /// A human-readable description of this conflict.
+  /// Human-readable description of this conflict.
   core.String? description;
 
-  /// The name of the environment group in which this conflict exists.
+  /// Name of the environment group in which this conflict exists.
   core.String? environmentGroup;
 
   GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict();
@@ -12760,18 +12764,18 @@ class GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict {
       };
 }
 
-/// A tuple representing a basepath and the deployment containing it.
+/// Tuple representing a base path and the deployment containing it.
 class GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment {
-  /// The name of the deployed proxy revision containing the basepath.
+  /// Name of the deployed API proxy revision containing the base path.
   core.String? apiProxy;
 
-  /// The basepath receiving traffic.
+  /// Base path receiving traffic.
   core.String? basepath;
 
-  /// The name of the environment in which the proxy is deployed.
+  /// Name of the environment in which the proxy is deployed.
   core.String? environment;
 
-  /// The name of the deployed proxy revision containing the basepath.
+  /// Name of the deployed API proxy revision containing the base path.
   core.String? revision;
 
   GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment();
@@ -13911,7 +13915,7 @@ class GoogleCloudApigeeV1FlowHook {
   /// throws an exception.
   ///
   /// Set to `true` to continue execution. Set to `false` to stop execution if
-  /// the flow hook throws an exception.Defaults to `true`.
+  /// the flow hook throws an exception. Defaults to `true`.
   ///
   /// Optional.
   core.bool? continueOnError;
@@ -14086,7 +14090,7 @@ class GoogleCloudApigeeV1Instance {
   /// Optional.
   core.String? displayName;
 
-  /// Hostname or IP address of the exposed Apigee endpoint used by clients to
+  /// Internal hostname or IP address of the Apigee endpoint used by clients to
   /// connect to the service.
   ///
   /// Output only.
@@ -14109,15 +14113,16 @@ class GoogleCloudApigeeV1Instance {
   /// Required.
   core.String? name;
 
-  /// The size of the CIDR block range that will be reserved by the instance.
+  /// Size of the CIDR block range that will be reserved by the instance.
   ///
-  /// If not specified, default to SLASH_16.
+  /// PAID organizations support `SLASH_16` to `SLASH_20` and defaults to
+  /// `SLASH_16`. Evaluation organizations support only `SLASH_23`.
   ///
   /// Optional.
   /// Possible string values are:
   /// - "CIDR_RANGE_UNSPECIFIED" : Range not specified.
-  /// - "SLASH_16" : The "/16" CIDR range.
-  /// - "SLASH_20" : The "/20" CIDR range.
+  /// - "SLASH_16" : `/16` CIDR range.
+  /// - "SLASH_20" : `/20` CIDR range.
   core.String? peeringCidrRange;
 
   /// Port number of the exposed Apigee endpoint.
@@ -14127,7 +14132,7 @@ class GoogleCloudApigeeV1Instance {
 
   /// State of the instance.
   ///
-  /// Values other than ACTIVE means the resource is not ready to use.
+  /// Values other than `ACTIVE` means the resource is not ready to use.
   ///
   /// Output only.
   /// Possible string values are:
@@ -14234,9 +14239,9 @@ class GoogleCloudApigeeV1InstanceDeploymentStatus {
   core.List<GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision>?
       deployedRevisions;
 
-  /// The current routes deployed in the ingress routing table.
+  /// Current routes deployed in the ingress routing table.
   ///
-  /// A route which is missing will appear in missing_routes.
+  /// A route which is missing will appear in `missing_routes`.
   core.List<GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute>?
       deployedRoutes;
 
@@ -14280,10 +14285,10 @@ class GoogleCloudApigeeV1InstanceDeploymentStatus {
 
 /// Revisions deployed in the MPs.
 class GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision {
-  /// The percentage of MP replicas reporting this revision
+  /// Percentage of MP replicas reporting this revision.
   core.int? percentage;
 
-  /// The proxy revision reported as deployed.
+  /// API proxy revision reported as deployed.
   core.String? revision;
 
   GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision();
@@ -14304,20 +14309,20 @@ class GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision {
       };
 }
 
-/// A route deployed in the ingress routing table.
+/// Route deployed in the ingress routing table.
 class GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute {
-  /// The basepath in the routing table.
+  /// Base path in the routing table.
   core.String? basepath;
 
-  /// The envgroup where this route is installed.
+  /// Environment group where this route is installed.
   core.String? envgroup;
 
-  /// The destination environment.
+  /// Destination environment.
   ///
   /// This will be empty if the route is not yet reported.
   core.String? environment;
 
-  /// The percentage of ingress replicas reporting this route.
+  /// Percentage of ingress replicas reporting this route.
   core.int? percentage;
 
   GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute();
@@ -15139,7 +15144,7 @@ class GoogleCloudApigeeV1Metric {
 class GoogleCloudApigeeV1NatAddress {
   /// The static IPV4 address.
   ///
-  /// Required.
+  /// Output only.
   core.String? ipAddress;
 
   /// Resource ID of the NAT address.
@@ -15149,7 +15154,7 @@ class GoogleCloudApigeeV1NatAddress {
 
   /// State of the nat address.
   ///
-  /// Required.
+  /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : The resource is in an unspecified state.
   /// - "CREATING" : The NAT address is being created.
@@ -15538,6 +15543,11 @@ class GoogleCloudApigeeV1Organization {
   /// Output only.
   core.List<core.String>? environments;
 
+  /// Time that the Apigee organization is scheduled for deletion.
+  ///
+  /// Output only.
+  core.String? expiresAt;
+
   /// Time that the Apigee organization was last modified in milliseconds since
   /// epoch.
   ///
@@ -15649,6 +15659,9 @@ class GoogleCloudApigeeV1Organization {
           .map<core.String>((value) => value as core.String)
           .toList();
     }
+    if (_json.containsKey('expiresAt')) {
+      expiresAt = _json['expiresAt'] as core.String;
+    }
     if (_json.containsKey('lastModifiedAt')) {
       lastModifiedAt = _json['lastModifiedAt'] as core.String;
     }
@@ -15691,6 +15704,7 @@ class GoogleCloudApigeeV1Organization {
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (environments != null) 'environments': environments!,
+        if (expiresAt != null) 'expiresAt': expiresAt!,
         if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt!,
         if (name != null) 'name': name!,
         if (projectId != null) 'projectId': projectId!,

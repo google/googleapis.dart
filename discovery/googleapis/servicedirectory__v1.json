@@ -857,7 +857,7 @@
             }
         }
     },
-    "revision": "20210211",
+    "revision": "20210213",
     "rootUrl": "https://servicedirectory.googleapis.com/",
     "schemas": {
         "Binding": {

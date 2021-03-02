@@ -102,14 +102,14 @@ void checkApplicationSettings(api.ApplicationSettings o) {
   buildCounterApplicationSettings--;
 }
 
-core.List<core.String> buildUnnamed3211() {
+core.List<core.String> buildUnnamed3212() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed3211(core.List<core.String> o) {
+void checkUnnamed3212(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -127,7 +127,7 @@ api.Binding buildBinding() {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     o.condition = buildExpr();
-    o.members = buildUnnamed3211();
+    o.members = buildUnnamed3212();
     o.role = 'foo';
   }
   buildCounterBinding--;
@@ -138,7 +138,7 @@ void checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     checkExpr(o.condition! as api.Expr);
-    checkUnnamed3211(o.members!);
+    checkUnnamed3212(o.members!);
     unittest.expect(
       o.role!,
       unittest.equals('foo'),
@@ -274,14 +274,14 @@ void checkExpr(api.Expr o) {
   buildCounterExpr--;
 }
 
-core.List<core.String> buildUnnamed3212() {
+core.List<core.String> buildUnnamed3213() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed3212(core.List<core.String> o) {
+void checkUnnamed3213(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -299,7 +299,7 @@ api.GcipSettings buildGcipSettings() {
   buildCounterGcipSettings++;
   if (buildCounterGcipSettings < 3) {
     o.loginPageUri = 'foo';
-    o.tenantIds = buildUnnamed3212();
+    o.tenantIds = buildUnnamed3213();
   }
   buildCounterGcipSettings--;
   return o;
@@ -312,7 +312,7 @@ void checkGcipSettings(api.GcipSettings o) {
       o.loginPageUri!,
       unittest.equals('foo'),
     );
-    checkUnnamed3212(o.tenantIds!);
+    checkUnnamed3213(o.tenantIds!);
   }
   buildCounterGcipSettings--;
 }
@@ -416,14 +416,14 @@ void checkIdentityAwareProxyClient(api.IdentityAwareProxyClient o) {
   buildCounterIdentityAwareProxyClient--;
 }
 
-core.List<api.Brand> buildUnnamed3213() {
+core.List<api.Brand> buildUnnamed3214() {
   var o = <api.Brand>[];
   o.add(buildBrand());
   o.add(buildBrand());
   return o;
 }
 
-void checkUnnamed3213(core.List<api.Brand> o) {
+void checkUnnamed3214(core.List<api.Brand> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBrand(o[0] as api.Brand);
   checkBrand(o[1] as api.Brand);
@@ -434,7 +434,7 @@ api.ListBrandsResponse buildListBrandsResponse() {
   var o = api.ListBrandsResponse();
   buildCounterListBrandsResponse++;
   if (buildCounterListBrandsResponse < 3) {
-    o.brands = buildUnnamed3213();
+    o.brands = buildUnnamed3214();
   }
   buildCounterListBrandsResponse--;
   return o;
@@ -443,19 +443,19 @@ api.ListBrandsResponse buildListBrandsResponse() {
 void checkListBrandsResponse(api.ListBrandsResponse o) {
   buildCounterListBrandsResponse++;
   if (buildCounterListBrandsResponse < 3) {
-    checkUnnamed3213(o.brands!);
+    checkUnnamed3214(o.brands!);
   }
   buildCounterListBrandsResponse--;
 }
 
-core.List<api.IdentityAwareProxyClient> buildUnnamed3214() {
+core.List<api.IdentityAwareProxyClient> buildUnnamed3215() {
   var o = <api.IdentityAwareProxyClient>[];
   o.add(buildIdentityAwareProxyClient());
   o.add(buildIdentityAwareProxyClient());
   return o;
 }
 
-void checkUnnamed3214(core.List<api.IdentityAwareProxyClient> o) {
+void checkUnnamed3215(core.List<api.IdentityAwareProxyClient> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkIdentityAwareProxyClient(o[0] as api.IdentityAwareProxyClient);
   checkIdentityAwareProxyClient(o[1] as api.IdentityAwareProxyClient);
@@ -467,7 +467,7 @@ api.ListIdentityAwareProxyClientsResponse
   var o = api.ListIdentityAwareProxyClientsResponse();
   buildCounterListIdentityAwareProxyClientsResponse++;
   if (buildCounterListIdentityAwareProxyClientsResponse < 3) {
-    o.identityAwareProxyClients = buildUnnamed3214();
+    o.identityAwareProxyClients = buildUnnamed3215();
     o.nextPageToken = 'foo';
   }
   buildCounterListIdentityAwareProxyClientsResponse--;
@@ -478,7 +478,7 @@ void checkListIdentityAwareProxyClientsResponse(
     api.ListIdentityAwareProxyClientsResponse o) {
   buildCounterListIdentityAwareProxyClientsResponse++;
   if (buildCounterListIdentityAwareProxyClientsResponse < 3) {
-    checkUnnamed3214(o.identityAwareProxyClients!);
+    checkUnnamed3215(o.identityAwareProxyClients!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -509,14 +509,14 @@ void checkOAuthSettings(api.OAuthSettings o) {
   buildCounterOAuthSettings--;
 }
 
-core.List<api.Binding> buildUnnamed3215() {
+core.List<api.Binding> buildUnnamed3216() {
   var o = <api.Binding>[];
   o.add(buildBinding());
   o.add(buildBinding());
   return o;
 }
 
-void checkUnnamed3215(core.List<api.Binding> o) {
+void checkUnnamed3216(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0] as api.Binding);
   checkBinding(o[1] as api.Binding);
@@ -527,7 +527,7 @@ api.Policy buildPolicy() {
   var o = api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.bindings = buildUnnamed3215();
+    o.bindings = buildUnnamed3216();
     o.etag = 'foo';
     o.version = 42;
   }
@@ -538,7 +538,7 @@ api.Policy buildPolicy() {
 void checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed3215(o.bindings!);
+    checkUnnamed3216(o.bindings!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -631,14 +631,14 @@ void checkResetIdentityAwareProxyClientSecretRequest(
   buildCounterResetIdentityAwareProxyClientSecretRequest--;
 }
 
-core.Map<core.String, core.String> buildUnnamed3216() {
+core.Map<core.String, core.String> buildUnnamed3217() {
   var o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
 }
 
-void checkUnnamed3216(core.Map<core.String, core.String> o) {
+void checkUnnamed3217(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -655,7 +655,7 @@ api.Resource buildResource() {
   var o = api.Resource();
   buildCounterResource++;
   if (buildCounterResource < 3) {
-    o.labels = buildUnnamed3216();
+    o.labels = buildUnnamed3217();
     o.name = 'foo';
     o.service = 'foo';
     o.type = 'foo';
@@ -667,7 +667,7 @@ api.Resource buildResource() {
 void checkResource(api.Resource o) {
   buildCounterResource++;
   if (buildCounterResource < 3) {
-    checkUnnamed3216(o.labels!);
+    checkUnnamed3217(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -703,44 +703,6 @@ void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest--;
 }
 
-core.List<core.String> buildUnnamed3217() {
-  var o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
-
-void checkUnnamed3217(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterTestIamPermissionsRequest = 0;
-api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
-  var o = api.TestIamPermissionsRequest();
-  buildCounterTestIamPermissionsRequest++;
-  if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed3217();
-  }
-  buildCounterTestIamPermissionsRequest--;
-  return o;
-}
-
-void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
-  buildCounterTestIamPermissionsRequest++;
-  if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed3217(o.permissions!);
-  }
-  buildCounterTestIamPermissionsRequest--;
-}
-
 core.List<core.String> buildUnnamed3218() {
   var o = <core.String>[];
   o.add('foo');
@@ -760,12 +722,50 @@ void checkUnnamed3218(core.List<core.String> o) {
   );
 }
 
+core.int buildCounterTestIamPermissionsRequest = 0;
+api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
+  var o = api.TestIamPermissionsRequest();
+  buildCounterTestIamPermissionsRequest++;
+  if (buildCounterTestIamPermissionsRequest < 3) {
+    o.permissions = buildUnnamed3218();
+  }
+  buildCounterTestIamPermissionsRequest--;
+  return o;
+}
+
+void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
+  buildCounterTestIamPermissionsRequest++;
+  if (buildCounterTestIamPermissionsRequest < 3) {
+    checkUnnamed3218(o.permissions!);
+  }
+  buildCounterTestIamPermissionsRequest--;
+}
+
+core.List<core.String> buildUnnamed3219() {
+  var o = <core.String>[];
+  o.add('foo');
+  o.add('foo');
+  return o;
+}
+
+void checkUnnamed3219(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterTestIamPermissionsResponse = 0;
 api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
   var o = api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed3218();
+    o.permissions = buildUnnamed3219();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -774,7 +774,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
 void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed3218(o.permissions!);
+    checkUnnamed3219(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
 }

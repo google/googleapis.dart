@@ -4267,10 +4267,9 @@ class GoogleCloudChannelV1Period {
 ///
 /// Describes how to make a payment.
 class GoogleCloudChannelV1Plan {
-  /// Reseller Billing account that will be charged when this offer is
-  /// transacted.
+  /// Reseller Billing account to charge after an offer transaction.
   ///
-  /// Only present for GCP offers.
+  /// Only present for Google Cloud Platform offers.
   core.String? billingAccount;
 
   /// Describes how frequently the reseller will be billed, such as once per

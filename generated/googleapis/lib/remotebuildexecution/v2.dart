@@ -70,8 +70,8 @@ class ActionResultsResource {
   ///
   /// Implementations SHOULD ensure that any blobs referenced from the
   /// ContentAddressableStorage are available at the time of returning the
-  /// ActionResult and will be for some period of time afterwards. The TTLs of
-  /// the referenced blobs SHOULD be increased if necessary and applicable.
+  /// ActionResult and will be for some period of time afterwards. The lifetimes
+  /// of the referenced blobs SHOULD be increased if necessary and applicable.
   /// Errors: * `NOT_FOUND`: The requested `ActionResult` is not in the cache.
   ///
   /// Request parameters:
@@ -89,8 +89,9 @@ class ActionResultsResource {
   /// [sizeBytes] - The size of the blob, in bytes.
   ///
   /// [inlineOutputFiles] - A hint to the server to inline the contents of the
-  /// listed output files. Each path needs to exactly match one path in
-  /// `output_files` in the Command message.
+  /// listed output files. Each path needs to exactly match one file path in
+  /// either `output_paths` or `output_files` (DEPRECATED since v2.1) in the
+  /// Command message.
   ///
   /// [inlineStderr] - A hint to the server to request inlining stderr in the
   /// ActionResult message.
@@ -145,11 +146,12 @@ class ActionResultsResource {
   /// In order to allow the server to perform access control based on the type
   /// of action, and to assist with client debugging, the client MUST first
   /// upload the Action that produced the result, along with its Command, into
-  /// the `ContentAddressableStorage`. Errors: * `INVALID_ARGUMENT`: One or more
-  /// arguments are invalid. * `FAILED_PRECONDITION`: One or more errors
-  /// occurred in updating the action result, such as a missing command or
-  /// action. * `RESOURCE_EXHAUSTED`: There is insufficient storage space to add
-  /// the entry to the cache.
+  /// the `ContentAddressableStorage`. Server implementations MAY modify the
+  /// `UpdateActionResultRequest.action_result` and return an equivalent value.
+  /// Errors: * `INVALID_ARGUMENT`: One or more arguments are invalid. *
+  /// `FAILED_PRECONDITION`: One or more errors occurred in updating the action
+  /// result, such as a missing command or action. * `RESOURCE_EXHAUSTED`: There
+  /// is insufficient storage space to add the entry to the cache.
   ///
   /// [request] - The metadata request object.
   ///
@@ -265,7 +267,11 @@ class ActionsResource {
   /// command, the server SHOULD additionally send a PreconditionFailure error
   /// detail where, for each requested blob not present in the CAS, there is a
   /// `Violation` with a `type` of `MISSING` and a `subject` of
-  /// `"blobs/{hash}/{size}"` indicating the digest of the missing blob.
+  /// `"blobs/{hash}/{size}"` indicating the digest of the missing blob. The
+  /// server does not need to guarantee that a call to this method leads to at
+  /// most one execution of the action. The server MAY execute the action
+  /// multiple times, potentially in parallel. These redundant executions MAY
+  /// continue to run, even if the operation is completed.
   ///
   /// [request] - The metadata request object.
   ///
@@ -435,8 +441,8 @@ class BlobsResource {
   ///
   /// Clients can use this API before uploading blobs to determine which ones
   /// are already present in the CAS and do not need to be uploaded again.
-  /// Servers SHOULD increase the TTLs of the referenced blobs if necessary and
-  /// applicable. There are no method-specific errors.
+  /// Servers SHOULD increase the lifetimes of the referenced blobs if necessary
+  /// and applicable. There are no method-specific errors.
   ///
   /// [request] - The metadata request object.
   ///
@@ -702,15 +708,31 @@ class BuildBazelRemoteExecutionV2Action {
   /// ContentAddressableStorage.
   BuildBazelRemoteExecutionV2Digest? inputRootDigest;
 
-  /// List of required supported NodeProperty keys.
+  /// The optional platform requirements for the execution environment.
   ///
-  /// In order to ensure that equivalent `Action`s always hash to the same
-  /// value, the supported node properties MUST be lexicographically sorted by
-  /// name. Sorting of strings is done by code point, equivalently, by the UTF-8
-  /// bytes. The interpretation of these properties is server-dependent. If a
-  /// property is not recognized by the server, the server will return an
-  /// `INVALID_ARGUMENT` error.
-  core.List<core.String>? outputNodeProperties;
+  /// The server MAY choose to execute the action on any worker satisfying the
+  /// requirements, so the client SHOULD ensure that running the action on any
+  /// such worker will have the same result. A detailed lexicon for this can be
+  /// found in the accompanying platform.md. New in version 2.2: clients SHOULD
+  /// set these platform properties as well as those in the Command. Servers
+  /// SHOULD prefer those set here.
+  BuildBazelRemoteExecutionV2Platform? platform;
+
+  /// An optional additional salt value used to place this `Action` into a
+  /// separate cache namespace from other instances having the same field
+  /// contents.
+  ///
+  /// This salt typically comes from operational configuration specific to
+  /// sources such as repo and service configuration, and allows disowning an
+  /// entire set of ActionResults that might have been poisoned by buggy
+  /// software or tool failures.
+  core.String? salt;
+  core.List<core.int> get saltAsBytes => convert.base64.decode(salt!);
+
+  set saltAsBytes(core.List<core.int> _bytes) {
+    salt =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
 
   /// A timeout after which the execution should be killed.
   ///
@@ -743,10 +765,12 @@ class BuildBazelRemoteExecutionV2Action {
       inputRootDigest = BuildBazelRemoteExecutionV2Digest.fromJson(
           _json['inputRootDigest'] as core.Map<core.String, core.dynamic>);
     }
-    if (_json.containsKey('outputNodeProperties')) {
-      outputNodeProperties = (_json['outputNodeProperties'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
+    if (_json.containsKey('platform')) {
+      platform = BuildBazelRemoteExecutionV2Platform.fromJson(
+          _json['platform'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('salt')) {
+      salt = _json['salt'] as core.String;
     }
     if (_json.containsKey('timeout')) {
       timeout = _json['timeout'] as core.String;
@@ -758,8 +782,8 @@ class BuildBazelRemoteExecutionV2Action {
         if (doNotCache != null) 'doNotCache': doNotCache!,
         if (inputRootDigest != null)
           'inputRootDigest': inputRootDigest!.toJson(),
-        if (outputNodeProperties != null)
-          'outputNodeProperties': outputNodeProperties!,
+        if (platform != null) 'platform': platform!.toJson(),
+        if (salt != null) 'salt': salt!,
         if (timeout != null) 'timeout': timeout!,
       };
 }
@@ -783,6 +807,11 @@ class BuildBazelRemoteExecutionV2ActionCacheUpdateCapabilities {
 }
 
 /// An ActionResult represents the result of an Action being run.
+///
+/// It is advised that at least one field (for example
+/// `ActionResult.execution_metadata.Worker`) have a non-default value, to
+/// ensure that the serialized value is non-empty, which can then be used as a
+/// basic data sanity check.
 class BuildBazelRemoteExecutionV2ActionResult {
   /// The details of the execution that originally produced this result.
   BuildBazelRemoteExecutionV2ExecutedActionMetadata? executionMetadata;
@@ -1348,6 +1377,18 @@ class BuildBazelRemoteExecutionV2Command {
   /// `output_paths` instead.
   core.List<core.String>? outputFiles;
 
+  /// A list of keys for node properties the client expects to retrieve for
+  /// output files and directories.
+  ///
+  /// Keys are either names of string-based NodeProperty or names of fields in
+  /// NodeProperties. In order to ensure that equivalent `Action`s always hash
+  /// to the same value, the node properties MUST be lexicographically sorted by
+  /// name. Sorting of strings is done by code point, equivalently, by the UTF-8
+  /// bytes. The interpretation of string-based properties is server-dependent.
+  /// If a property is not recognized by the server, the server will return an
+  /// `INVALID_ARGUMENT`.
+  core.List<core.String>? outputNodeProperties;
+
   /// A list of the output paths that the client expects to retrieve from the
   /// action.
   ///
@@ -1377,7 +1418,9 @@ class BuildBazelRemoteExecutionV2Command {
   /// The server MAY choose to execute the action on any worker satisfying the
   /// requirements, so the client SHOULD ensure that running the action on any
   /// such worker will have the same result. A detailed lexicon for this can be
-  /// found in the accompanying platform.md.
+  /// found in the accompanying platform.md. DEPRECATED as of v2.2: platform
+  /// properties are now specified directly in the action. See documentation
+  /// note in the Action for migration.
   BuildBazelRemoteExecutionV2Platform? platform;
 
   /// The working directory, relative to the input root, for the command to run
@@ -1412,6 +1455,11 @@ class BuildBazelRemoteExecutionV2Command {
           .map<core.String>((value) => value as core.String)
           .toList();
     }
+    if (_json.containsKey('outputNodeProperties')) {
+      outputNodeProperties = (_json['outputNodeProperties'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
     if (_json.containsKey('outputPaths')) {
       outputPaths = (_json['outputPaths'] as core.List)
           .map<core.String>((value) => value as core.String)
@@ -1433,6 +1481,8 @@ class BuildBazelRemoteExecutionV2Command {
               environmentVariables!.map((value) => value.toJson()).toList(),
         if (outputDirectories != null) 'outputDirectories': outputDirectories!,
         if (outputFiles != null) 'outputFiles': outputFiles!,
+        if (outputNodeProperties != null)
+          'outputNodeProperties': outputNodeProperties!,
         if (outputPaths != null) 'outputPaths': outputPaths!,
         if (platform != null) 'platform': platform!.toJson(),
         if (workingDirectory != null) 'workingDirectory': workingDirectory!,
@@ -1554,9 +1604,7 @@ class BuildBazelRemoteExecutionV2Directory {
 
   /// The files in the directory.
   core.List<BuildBazelRemoteExecutionV2FileNode>? files;
-
-  /// The node properties of the Directory.
-  core.List<BuildBazelRemoteExecutionV2NodeProperty>? nodeProperties;
+  BuildBazelRemoteExecutionV2NodeProperties? nodeProperties;
 
   /// The symlinks in the directory.
   core.List<BuildBazelRemoteExecutionV2SymlinkNode>? symlinks;
@@ -1579,11 +1627,8 @@ class BuildBazelRemoteExecutionV2Directory {
           .toList();
     }
     if (_json.containsKey('nodeProperties')) {
-      nodeProperties = (_json['nodeProperties'] as core.List)
-          .map<BuildBazelRemoteExecutionV2NodeProperty>((value) =>
-              BuildBazelRemoteExecutionV2NodeProperty.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
+      nodeProperties = BuildBazelRemoteExecutionV2NodeProperties.fromJson(
+          _json['nodeProperties'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('symlinks')) {
       symlinks = (_json['symlinks'] as core.List)
@@ -1599,9 +1644,7 @@ class BuildBazelRemoteExecutionV2Directory {
           'directories': directories!.map((value) => value.toJson()).toList(),
         if (files != null)
           'files': files!.map((value) => value.toJson()).toList(),
-        if (nodeProperties != null)
-          'nodeProperties':
-              nodeProperties!.map((value) => value.toJson()).toList(),
+        if (nodeProperties != null) 'nodeProperties': nodeProperties!.toJson(),
         if (symlinks != null)
           'symlinks': symlinks!.map((value) => value.toJson()).toList(),
       };
@@ -1652,12 +1695,12 @@ class BuildBazelRemoteExecutionV2ExecuteOperationMetadata {
   /// - "COMPLETED" : Finished execution.
   core.String? stage;
 
-  /// If set, the client can use this name with ByteStream.Read to stream the
-  /// standard error.
+  /// If set, the client can use this resource name with ByteStream.Read to
+  /// stream the standard error from the endpoint hosting streamed responses.
   core.String? stderrStreamName;
 
-  /// If set, the client can use this name with ByteStream.Read to stream the
-  /// standard output.
+  /// If set, the client can use this resource name with ByteStream.Read to
+  /// stream the standard output from the endpoint hosting streamed responses.
   core.String? stdoutStreamName;
 
   BuildBazelRemoteExecutionV2ExecuteOperationMetadata();
@@ -1828,6 +1871,15 @@ class BuildBazelRemoteExecutionV2ExecuteResponse {
 
 /// ExecutedActionMetadata contains details about a completed execution.
 class BuildBazelRemoteExecutionV2ExecutedActionMetadata {
+  /// Details that are specific to the kind of worker used.
+  ///
+  /// For example, on POSIX-like systems this could contain a message with
+  /// getrusage(2) statistics.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Map<core.String, core.Object>>? auxiliaryMetadata;
+
   /// When the worker completed executing the action command.
   core.String? executionCompletedTimestamp;
 
@@ -1861,6 +1913,17 @@ class BuildBazelRemoteExecutionV2ExecutedActionMetadata {
   BuildBazelRemoteExecutionV2ExecutedActionMetadata();
 
   BuildBazelRemoteExecutionV2ExecutedActionMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey('auxiliaryMetadata')) {
+      auxiliaryMetadata = (_json['auxiliaryMetadata'] as core.List)
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
+                    (key, item) => core.MapEntry(
+                      key,
+                      item as core.Object,
+                    ),
+                  ))
+          .toList();
+    }
     if (_json.containsKey('executionCompletedTimestamp')) {
       executionCompletedTimestamp =
           _json['executionCompletedTimestamp'] as core.String;
@@ -1900,6 +1963,7 @@ class BuildBazelRemoteExecutionV2ExecutedActionMetadata {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (auxiliaryMetadata != null) 'auxiliaryMetadata': auxiliaryMetadata!,
         if (executionCompletedTimestamp != null)
           'executionCompletedTimestamp': executionCompletedTimestamp!,
         if (executionStartTimestamp != null)
@@ -1934,6 +1998,10 @@ class BuildBazelRemoteExecutionV2ExecutionCapabilities {
   /// .
   /// - "SHA384" : The SHA-384 digest function.
   /// - "SHA512" : The SHA-512 digest function.
+  /// - "MURMUR3" : Murmur3 128-bit digest function, x64 variant. Note that this
+  /// is not a cryptographic hash function and its collision properties are not
+  /// strongly guaranteed. See
+  /// https://github.com/aappleby/smhasher/wiki/MurmurHash3 .
   core.String? digestFunction;
 
   /// Whether remote execution is enabled for the particular server/instance.
@@ -2016,9 +2084,7 @@ class BuildBazelRemoteExecutionV2FileNode {
 
   /// The name of the file.
   core.String? name;
-
-  /// The node properties of the FileNode.
-  core.List<BuildBazelRemoteExecutionV2NodeProperty>? nodeProperties;
+  BuildBazelRemoteExecutionV2NodeProperties? nodeProperties;
 
   BuildBazelRemoteExecutionV2FileNode();
 
@@ -2034,11 +2100,8 @@ class BuildBazelRemoteExecutionV2FileNode {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('nodeProperties')) {
-      nodeProperties = (_json['nodeProperties'] as core.List)
-          .map<BuildBazelRemoteExecutionV2NodeProperty>((value) =>
-              BuildBazelRemoteExecutionV2NodeProperty.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
+      nodeProperties = BuildBazelRemoteExecutionV2NodeProperties.fromJson(
+          _json['nodeProperties'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2046,9 +2109,7 @@ class BuildBazelRemoteExecutionV2FileNode {
         if (digest != null) 'digest': digest!.toJson(),
         if (isExecutable != null) 'isExecutable': isExecutable!,
         if (name != null) 'name': name!,
-        if (nodeProperties != null)
-          'nodeProperties':
-              nodeProperties!.map((value) => value.toJson()).toList(),
+        if (nodeProperties != null) 'nodeProperties': nodeProperties!.toJson(),
       };
 }
 
@@ -2164,6 +2225,45 @@ class BuildBazelRemoteExecutionV2LogFile {
       };
 }
 
+/// Node properties for FileNodes, DirectoryNodes, and SymlinkNodes.
+///
+/// The server is responsible for specifying the properties that it accepts.
+class BuildBazelRemoteExecutionV2NodeProperties {
+  /// The file's last modification timestamp.
+  core.String? mtime;
+
+  /// A list of string-based NodeProperties.
+  core.List<BuildBazelRemoteExecutionV2NodeProperty>? properties;
+
+  /// The UNIX file mode, e.g., 0755.
+  core.int? unixMode;
+
+  BuildBazelRemoteExecutionV2NodeProperties();
+
+  BuildBazelRemoteExecutionV2NodeProperties.fromJson(core.Map _json) {
+    if (_json.containsKey('mtime')) {
+      mtime = _json['mtime'] as core.String;
+    }
+    if (_json.containsKey('properties')) {
+      properties = (_json['properties'] as core.List)
+          .map<BuildBazelRemoteExecutionV2NodeProperty>((value) =>
+              BuildBazelRemoteExecutionV2NodeProperty.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('unixMode')) {
+      unixMode = _json['unixMode'] as core.int;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mtime != null) 'mtime': mtime!,
+        if (properties != null)
+          'properties': properties!.map((value) => value.toJson()).toList(),
+        if (unixMode != null) 'unixMode': unixMode!,
+      };
+}
+
 /// A single property for FileNodes, DirectoryNodes, and SymlinkNodes.
 ///
 /// The server is responsible for specifying the property `name`s that it
@@ -2248,10 +2348,7 @@ class BuildBazelRemoteExecutionV2OutputFile {
 
   /// True if file is executable, false otherwise.
   core.bool? isExecutable;
-
-  /// The supported node properties of the OutputFile, if requested by the
-  /// Action.
-  core.List<BuildBazelRemoteExecutionV2NodeProperty>? nodeProperties;
+  BuildBazelRemoteExecutionV2NodeProperties? nodeProperties;
 
   /// The full path of the file relative to the working directory, including the
   /// filename.
@@ -2274,11 +2371,8 @@ class BuildBazelRemoteExecutionV2OutputFile {
       isExecutable = _json['isExecutable'] as core.bool;
     }
     if (_json.containsKey('nodeProperties')) {
-      nodeProperties = (_json['nodeProperties'] as core.List)
-          .map<BuildBazelRemoteExecutionV2NodeProperty>((value) =>
-              BuildBazelRemoteExecutionV2NodeProperty.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
+      nodeProperties = BuildBazelRemoteExecutionV2NodeProperties.fromJson(
+          _json['nodeProperties'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('path')) {
       path = _json['path'] as core.String;
@@ -2289,9 +2383,7 @@ class BuildBazelRemoteExecutionV2OutputFile {
         if (contents != null) 'contents': contents!,
         if (digest != null) 'digest': digest!.toJson(),
         if (isExecutable != null) 'isExecutable': isExecutable!,
-        if (nodeProperties != null)
-          'nodeProperties':
-              nodeProperties!.map((value) => value.toJson()).toList(),
+        if (nodeProperties != null) 'nodeProperties': nodeProperties!.toJson(),
         if (path != null) 'path': path!,
       };
 }
@@ -2301,9 +2393,7 @@ class BuildBazelRemoteExecutionV2OutputFile {
 ///
 /// `OutputSymlink` is binary-compatible with `SymlinkNode`.
 class BuildBazelRemoteExecutionV2OutputSymlink {
-  /// The supported node properties of the OutputSymlink, if requested by the
-  /// Action.
-  core.List<BuildBazelRemoteExecutionV2NodeProperty>? nodeProperties;
+  BuildBazelRemoteExecutionV2NodeProperties? nodeProperties;
 
   /// The full path of the symlink relative to the working directory, including
   /// the filename.
@@ -2317,20 +2407,15 @@ class BuildBazelRemoteExecutionV2OutputSymlink {
   /// The path separator is a forward slash `/`. The target path can be relative
   /// to the parent directory of the symlink or it can be an absolute path
   /// starting with `/`. Support for absolute paths can be checked using the
-  /// Capabilities API. The canonical form forbids the substrings `/./` and `//`
-  /// in the target path. `..` components are allowed anywhere in the target
-  /// path.
+  /// Capabilities API. `..` components are allowed anywhere in the target path.
   core.String? target;
 
   BuildBazelRemoteExecutionV2OutputSymlink();
 
   BuildBazelRemoteExecutionV2OutputSymlink.fromJson(core.Map _json) {
     if (_json.containsKey('nodeProperties')) {
-      nodeProperties = (_json['nodeProperties'] as core.List)
-          .map<BuildBazelRemoteExecutionV2NodeProperty>((value) =>
-              BuildBazelRemoteExecutionV2NodeProperty.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
+      nodeProperties = BuildBazelRemoteExecutionV2NodeProperties.fromJson(
+          _json['nodeProperties'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('path')) {
       path = _json['path'] as core.String;
@@ -2341,9 +2426,7 @@ class BuildBazelRemoteExecutionV2OutputSymlink {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nodeProperties != null)
-          'nodeProperties':
-              nodeProperties!.map((value) => value.toJson()).toList(),
+        if (nodeProperties != null) 'nodeProperties': nodeProperties!.toJson(),
         if (path != null) 'path': path!,
         if (target != null) 'target': target!,
       };
@@ -2393,7 +2476,10 @@ class BuildBazelRemoteExecutionV2Platform {
 /// the OS environment on which the action must be performed may require an
 /// exact match with the worker's OS. The server MAY use the `value` of one or
 /// more properties to determine how it sets up the execution environment, such
-/// as by making specific system files available to the worker.
+/// as by making specific system files available to the worker. Both names and
+/// values are typically case-sensitive. Note that the platform is implicitly
+/// part of the action digest, so even tiny changes in the names or values (like
+/// changing case) may result in different action cache entries.
 class BuildBazelRemoteExecutionV2PlatformProperty {
   /// The property name.
   core.String? name;
@@ -2418,8 +2504,8 @@ class BuildBazelRemoteExecutionV2PlatformProperty {
       };
 }
 
-/// Allowed values for priority in ResultsCachePolicy Used for querying both
-/// cache and execution valid priority ranges.
+/// Allowed values for priority in ResultsCachePolicy and ExecutionPolicy Used
+/// for querying both cache and execution valid priority ranges.
 class BuildBazelRemoteExecutionV2PriorityCapabilities {
   core.List<BuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange>?
       priorities;
@@ -2445,7 +2531,12 @@ class BuildBazelRemoteExecutionV2PriorityCapabilities {
 
 /// Supported range of priorities, including boundaries.
 class BuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange {
+  /// The maximum numeric value for this priority range, which represents the
+  /// least urgent task or shortest retained item.
   core.int? maxPriority;
+
+  /// The minimum numeric value for this priority range, which represents the
+  /// most urgent task or longest retained item.
   core.int? minPriority;
 
   BuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange();
@@ -2612,18 +2703,18 @@ class BuildBazelRemoteExecutionV2ServerCapabilities {
 class BuildBazelRemoteExecutionV2SymlinkNode {
   /// The name of the symlink.
   core.String? name;
-
-  /// The node properties of the SymlinkNode.
-  core.List<BuildBazelRemoteExecutionV2NodeProperty>? nodeProperties;
+  BuildBazelRemoteExecutionV2NodeProperties? nodeProperties;
 
   /// The target path of the symlink.
   ///
   /// The path separator is a forward slash `/`. The target path can be relative
   /// to the parent directory of the symlink or it can be an absolute path
   /// starting with `/`. Support for absolute paths can be checked using the
-  /// Capabilities API. The canonical form forbids the substrings `/./` and `//`
-  /// in the target path. `..` components are allowed anywhere in the target
-  /// path.
+  /// Capabilities API. `..` components are allowed anywhere in the target path
+  /// as logical canonicalization may lead to different behavior in the presence
+  /// of directory symlinks (e.g. `foo/../bar` may not be the same as `bar`). To
+  /// reduce potential cache misses, canonicalization is still recommended where
+  /// this is possible without impacting correctness.
   core.String? target;
 
   BuildBazelRemoteExecutionV2SymlinkNode();
@@ -2633,11 +2724,8 @@ class BuildBazelRemoteExecutionV2SymlinkNode {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('nodeProperties')) {
-      nodeProperties = (_json['nodeProperties'] as core.List)
-          .map<BuildBazelRemoteExecutionV2NodeProperty>((value) =>
-              BuildBazelRemoteExecutionV2NodeProperty.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
+      nodeProperties = BuildBazelRemoteExecutionV2NodeProperties.fromJson(
+          _json['nodeProperties'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('target')) {
       target = _json['target'] as core.String;
@@ -2646,9 +2734,7 @@ class BuildBazelRemoteExecutionV2SymlinkNode {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
-        if (nodeProperties != null)
-          'nodeProperties':
-              nodeProperties!.map((value) => value.toJson()).toList(),
+        if (nodeProperties != null) 'nodeProperties': nodeProperties!.toJson(),
         if (target != null) 'target': target!,
       };
 }
@@ -2772,6 +2858,9 @@ class BuildBazelSemverSemVer {
 /// CommandDuration contains the various duration metrics tracked when a bot
 /// performs a command.
 class GoogleDevtoolsRemotebuildbotCommandDurations {
+  /// The time spent to release the CAS blobs used by the task.
+  core.String? casRelease;
+
   /// The time spent waiting for Container Manager to assign an asynchronous
   /// container for execution.
   core.String? cmWaitForAssignment;
@@ -2814,6 +2903,9 @@ class GoogleDevtoolsRemotebuildbotCommandDurations {
   GoogleDevtoolsRemotebuildbotCommandDurations();
 
   GoogleDevtoolsRemotebuildbotCommandDurations.fromJson(core.Map _json) {
+    if (_json.containsKey('casRelease')) {
+      casRelease = _json['casRelease'] as core.String;
+    }
     if (_json.containsKey('cmWaitForAssignment')) {
       cmWaitForAssignment = _json['cmWaitForAssignment'] as core.String;
     }
@@ -2853,6 +2945,7 @@ class GoogleDevtoolsRemotebuildbotCommandDurations {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (casRelease != null) 'casRelease': casRelease!,
         if (cmWaitForAssignment != null)
           'cmWaitForAssignment': cmWaitForAssignment!,
         if (dockerPrep != null) 'dockerPrep': dockerPrep!,

@@ -49,27 +49,27 @@ void checkAddProductToProductSetRequest(api.AddProductToProductSetRequest o) {
   buildCounterAddProductToProductSetRequest--;
 }
 
-core.List<api.Feature> buildUnnamed3386() {
+core.List<api.Feature> buildUnnamed3387() {
   var o = <api.Feature>[];
   o.add(buildFeature());
   o.add(buildFeature());
   return o;
 }
 
-void checkUnnamed3386(core.List<api.Feature> o) {
+void checkUnnamed3387(core.List<api.Feature> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFeature(o[0] as api.Feature);
   checkFeature(o[1] as api.Feature);
 }
 
-core.List<core.int> buildUnnamed3387() {
+core.List<core.int> buildUnnamed3388() {
   var o = <core.int>[];
   o.add(42);
   o.add(42);
   return o;
 }
 
-void checkUnnamed3387(core.List<core.int> o) {
+void checkUnnamed3388(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -86,10 +86,10 @@ api.AnnotateFileRequest buildAnnotateFileRequest() {
   var o = api.AnnotateFileRequest();
   buildCounterAnnotateFileRequest++;
   if (buildCounterAnnotateFileRequest < 3) {
-    o.features = buildUnnamed3386();
+    o.features = buildUnnamed3387();
     o.imageContext = buildImageContext();
     o.inputConfig = buildInputConfig();
-    o.pages = buildUnnamed3387();
+    o.pages = buildUnnamed3388();
   }
   buildCounterAnnotateFileRequest--;
   return o;
@@ -98,22 +98,22 @@ api.AnnotateFileRequest buildAnnotateFileRequest() {
 void checkAnnotateFileRequest(api.AnnotateFileRequest o) {
   buildCounterAnnotateFileRequest++;
   if (buildCounterAnnotateFileRequest < 3) {
-    checkUnnamed3386(o.features!);
+    checkUnnamed3387(o.features!);
     checkImageContext(o.imageContext! as api.ImageContext);
     checkInputConfig(o.inputConfig! as api.InputConfig);
-    checkUnnamed3387(o.pages!);
+    checkUnnamed3388(o.pages!);
   }
   buildCounterAnnotateFileRequest--;
 }
 
-core.List<api.AnnotateImageResponse> buildUnnamed3388() {
+core.List<api.AnnotateImageResponse> buildUnnamed3389() {
   var o = <api.AnnotateImageResponse>[];
   o.add(buildAnnotateImageResponse());
   o.add(buildAnnotateImageResponse());
   return o;
 }
 
-void checkUnnamed3388(core.List<api.AnnotateImageResponse> o) {
+void checkUnnamed3389(core.List<api.AnnotateImageResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAnnotateImageResponse(o[0] as api.AnnotateImageResponse);
   checkAnnotateImageResponse(o[1] as api.AnnotateImageResponse);
@@ -126,7 +126,7 @@ api.AnnotateFileResponse buildAnnotateFileResponse() {
   if (buildCounterAnnotateFileResponse < 3) {
     o.error = buildStatus();
     o.inputConfig = buildInputConfig();
-    o.responses = buildUnnamed3388();
+    o.responses = buildUnnamed3389();
     o.totalPages = 42;
   }
   buildCounterAnnotateFileResponse--;
@@ -138,7 +138,7 @@ void checkAnnotateFileResponse(api.AnnotateFileResponse o) {
   if (buildCounterAnnotateFileResponse < 3) {
     checkStatus(o.error! as api.Status);
     checkInputConfig(o.inputConfig! as api.InputConfig);
-    checkUnnamed3388(o.responses!);
+    checkUnnamed3389(o.responses!);
     unittest.expect(
       o.totalPages!,
       unittest.equals(42),
@@ -147,14 +147,14 @@ void checkAnnotateFileResponse(api.AnnotateFileResponse o) {
   buildCounterAnnotateFileResponse--;
 }
 
-core.List<api.Feature> buildUnnamed3389() {
+core.List<api.Feature> buildUnnamed3390() {
   var o = <api.Feature>[];
   o.add(buildFeature());
   o.add(buildFeature());
   return o;
 }
 
-void checkUnnamed3389(core.List<api.Feature> o) {
+void checkUnnamed3390(core.List<api.Feature> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFeature(o[0] as api.Feature);
   checkFeature(o[1] as api.Feature);
@@ -165,7 +165,7 @@ api.AnnotateImageRequest buildAnnotateImageRequest() {
   var o = api.AnnotateImageRequest();
   buildCounterAnnotateImageRequest++;
   if (buildCounterAnnotateImageRequest < 3) {
-    o.features = buildUnnamed3389();
+    o.features = buildUnnamed3390();
     o.image = buildImage();
     o.imageContext = buildImageContext();
   }
@@ -176,37 +176,24 @@ api.AnnotateImageRequest buildAnnotateImageRequest() {
 void checkAnnotateImageRequest(api.AnnotateImageRequest o) {
   buildCounterAnnotateImageRequest++;
   if (buildCounterAnnotateImageRequest < 3) {
-    checkUnnamed3389(o.features!);
+    checkUnnamed3390(o.features!);
     checkImage(o.image! as api.Image);
     checkImageContext(o.imageContext! as api.ImageContext);
   }
   buildCounterAnnotateImageRequest--;
 }
 
-core.List<api.FaceAnnotation> buildUnnamed3390() {
+core.List<api.FaceAnnotation> buildUnnamed3391() {
   var o = <api.FaceAnnotation>[];
   o.add(buildFaceAnnotation());
   o.add(buildFaceAnnotation());
   return o;
 }
 
-void checkUnnamed3390(core.List<api.FaceAnnotation> o) {
+void checkUnnamed3391(core.List<api.FaceAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFaceAnnotation(o[0] as api.FaceAnnotation);
   checkFaceAnnotation(o[1] as api.FaceAnnotation);
-}
-
-core.List<api.EntityAnnotation> buildUnnamed3391() {
-  var o = <api.EntityAnnotation>[];
-  o.add(buildEntityAnnotation());
-  o.add(buildEntityAnnotation());
-  return o;
-}
-
-void checkUnnamed3391(core.List<api.EntityAnnotation> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkEntityAnnotation(o[0] as api.EntityAnnotation);
-  checkEntityAnnotation(o[1] as api.EntityAnnotation);
 }
 
 core.List<api.EntityAnnotation> buildUnnamed3392() {
@@ -222,30 +209,30 @@ void checkUnnamed3392(core.List<api.EntityAnnotation> o) {
   checkEntityAnnotation(o[1] as api.EntityAnnotation);
 }
 
-core.List<api.LocalizedObjectAnnotation> buildUnnamed3393() {
-  var o = <api.LocalizedObjectAnnotation>[];
-  o.add(buildLocalizedObjectAnnotation());
-  o.add(buildLocalizedObjectAnnotation());
-  return o;
-}
-
-void checkUnnamed3393(core.List<api.LocalizedObjectAnnotation> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkLocalizedObjectAnnotation(o[0] as api.LocalizedObjectAnnotation);
-  checkLocalizedObjectAnnotation(o[1] as api.LocalizedObjectAnnotation);
-}
-
-core.List<api.EntityAnnotation> buildUnnamed3394() {
+core.List<api.EntityAnnotation> buildUnnamed3393() {
   var o = <api.EntityAnnotation>[];
   o.add(buildEntityAnnotation());
   o.add(buildEntityAnnotation());
   return o;
 }
 
-void checkUnnamed3394(core.List<api.EntityAnnotation> o) {
+void checkUnnamed3393(core.List<api.EntityAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEntityAnnotation(o[0] as api.EntityAnnotation);
   checkEntityAnnotation(o[1] as api.EntityAnnotation);
+}
+
+core.List<api.LocalizedObjectAnnotation> buildUnnamed3394() {
+  var o = <api.LocalizedObjectAnnotation>[];
+  o.add(buildLocalizedObjectAnnotation());
+  o.add(buildLocalizedObjectAnnotation());
+  return o;
+}
+
+void checkUnnamed3394(core.List<api.LocalizedObjectAnnotation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkLocalizedObjectAnnotation(o[0] as api.LocalizedObjectAnnotation);
+  checkLocalizedObjectAnnotation(o[1] as api.LocalizedObjectAnnotation);
 }
 
 core.List<api.EntityAnnotation> buildUnnamed3395() {
@@ -261,6 +248,19 @@ void checkUnnamed3395(core.List<api.EntityAnnotation> o) {
   checkEntityAnnotation(o[1] as api.EntityAnnotation);
 }
 
+core.List<api.EntityAnnotation> buildUnnamed3396() {
+  var o = <api.EntityAnnotation>[];
+  o.add(buildEntityAnnotation());
+  o.add(buildEntityAnnotation());
+  return o;
+}
+
+void checkUnnamed3396(core.List<api.EntityAnnotation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkEntityAnnotation(o[0] as api.EntityAnnotation);
+  checkEntityAnnotation(o[1] as api.EntityAnnotation);
+}
+
 core.int buildCounterAnnotateImageResponse = 0;
 api.AnnotateImageResponse buildAnnotateImageResponse() {
   var o = api.AnnotateImageResponse();
@@ -269,16 +269,16 @@ api.AnnotateImageResponse buildAnnotateImageResponse() {
     o.context = buildImageAnnotationContext();
     o.cropHintsAnnotation = buildCropHintsAnnotation();
     o.error = buildStatus();
-    o.faceAnnotations = buildUnnamed3390();
+    o.faceAnnotations = buildUnnamed3391();
     o.fullTextAnnotation = buildTextAnnotation();
     o.imagePropertiesAnnotation = buildImageProperties();
-    o.labelAnnotations = buildUnnamed3391();
-    o.landmarkAnnotations = buildUnnamed3392();
-    o.localizedObjectAnnotations = buildUnnamed3393();
-    o.logoAnnotations = buildUnnamed3394();
+    o.labelAnnotations = buildUnnamed3392();
+    o.landmarkAnnotations = buildUnnamed3393();
+    o.localizedObjectAnnotations = buildUnnamed3394();
+    o.logoAnnotations = buildUnnamed3395();
     o.productSearchResults = buildProductSearchResults();
     o.safeSearchAnnotation = buildSafeSearchAnnotation();
-    o.textAnnotations = buildUnnamed3395();
+    o.textAnnotations = buildUnnamed3396();
     o.webDetection = buildWebDetection();
   }
   buildCounterAnnotateImageResponse--;
@@ -291,31 +291,31 @@ void checkAnnotateImageResponse(api.AnnotateImageResponse o) {
     checkImageAnnotationContext(o.context! as api.ImageAnnotationContext);
     checkCropHintsAnnotation(o.cropHintsAnnotation! as api.CropHintsAnnotation);
     checkStatus(o.error! as api.Status);
-    checkUnnamed3390(o.faceAnnotations!);
+    checkUnnamed3391(o.faceAnnotations!);
     checkTextAnnotation(o.fullTextAnnotation! as api.TextAnnotation);
     checkImageProperties(o.imagePropertiesAnnotation! as api.ImageProperties);
-    checkUnnamed3391(o.labelAnnotations!);
-    checkUnnamed3392(o.landmarkAnnotations!);
-    checkUnnamed3393(o.localizedObjectAnnotations!);
-    checkUnnamed3394(o.logoAnnotations!);
+    checkUnnamed3392(o.labelAnnotations!);
+    checkUnnamed3393(o.landmarkAnnotations!);
+    checkUnnamed3394(o.localizedObjectAnnotations!);
+    checkUnnamed3395(o.logoAnnotations!);
     checkProductSearchResults(
         o.productSearchResults! as api.ProductSearchResults);
     checkSafeSearchAnnotation(
         o.safeSearchAnnotation! as api.SafeSearchAnnotation);
-    checkUnnamed3395(o.textAnnotations!);
+    checkUnnamed3396(o.textAnnotations!);
     checkWebDetection(o.webDetection! as api.WebDetection);
   }
   buildCounterAnnotateImageResponse--;
 }
 
-core.List<api.Feature> buildUnnamed3396() {
+core.List<api.Feature> buildUnnamed3397() {
   var o = <api.Feature>[];
   o.add(buildFeature());
   o.add(buildFeature());
   return o;
 }
 
-void checkUnnamed3396(core.List<api.Feature> o) {
+void checkUnnamed3397(core.List<api.Feature> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFeature(o[0] as api.Feature);
   checkFeature(o[1] as api.Feature);
@@ -326,7 +326,7 @@ api.AsyncAnnotateFileRequest buildAsyncAnnotateFileRequest() {
   var o = api.AsyncAnnotateFileRequest();
   buildCounterAsyncAnnotateFileRequest++;
   if (buildCounterAsyncAnnotateFileRequest < 3) {
-    o.features = buildUnnamed3396();
+    o.features = buildUnnamed3397();
     o.imageContext = buildImageContext();
     o.inputConfig = buildInputConfig();
     o.outputConfig = buildOutputConfig();
@@ -338,7 +338,7 @@ api.AsyncAnnotateFileRequest buildAsyncAnnotateFileRequest() {
 void checkAsyncAnnotateFileRequest(api.AsyncAnnotateFileRequest o) {
   buildCounterAsyncAnnotateFileRequest++;
   if (buildCounterAsyncAnnotateFileRequest < 3) {
-    checkUnnamed3396(o.features!);
+    checkUnnamed3397(o.features!);
     checkImageContext(o.imageContext! as api.ImageContext);
     checkInputConfig(o.inputConfig! as api.InputConfig);
     checkOutputConfig(o.outputConfig! as api.OutputConfig);
@@ -365,14 +365,14 @@ void checkAsyncAnnotateFileResponse(api.AsyncAnnotateFileResponse o) {
   buildCounterAsyncAnnotateFileResponse--;
 }
 
-core.List<api.AsyncAnnotateFileRequest> buildUnnamed3397() {
+core.List<api.AsyncAnnotateFileRequest> buildUnnamed3398() {
   var o = <api.AsyncAnnotateFileRequest>[];
   o.add(buildAsyncAnnotateFileRequest());
   o.add(buildAsyncAnnotateFileRequest());
   return o;
 }
 
-void checkUnnamed3397(core.List<api.AsyncAnnotateFileRequest> o) {
+void checkUnnamed3398(core.List<api.AsyncAnnotateFileRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAsyncAnnotateFileRequest(o[0] as api.AsyncAnnotateFileRequest);
   checkAsyncAnnotateFileRequest(o[1] as api.AsyncAnnotateFileRequest);
@@ -384,7 +384,7 @@ api.AsyncBatchAnnotateFilesRequest buildAsyncBatchAnnotateFilesRequest() {
   buildCounterAsyncBatchAnnotateFilesRequest++;
   if (buildCounterAsyncBatchAnnotateFilesRequest < 3) {
     o.parent = 'foo';
-    o.requests = buildUnnamed3397();
+    o.requests = buildUnnamed3398();
   }
   buildCounterAsyncBatchAnnotateFilesRequest--;
   return o;
@@ -397,19 +397,19 @@ void checkAsyncBatchAnnotateFilesRequest(api.AsyncBatchAnnotateFilesRequest o) {
       o.parent!,
       unittest.equals('foo'),
     );
-    checkUnnamed3397(o.requests!);
+    checkUnnamed3398(o.requests!);
   }
   buildCounterAsyncBatchAnnotateFilesRequest--;
 }
 
-core.List<api.AsyncAnnotateFileResponse> buildUnnamed3398() {
+core.List<api.AsyncAnnotateFileResponse> buildUnnamed3399() {
   var o = <api.AsyncAnnotateFileResponse>[];
   o.add(buildAsyncAnnotateFileResponse());
   o.add(buildAsyncAnnotateFileResponse());
   return o;
 }
 
-void checkUnnamed3398(core.List<api.AsyncAnnotateFileResponse> o) {
+void checkUnnamed3399(core.List<api.AsyncAnnotateFileResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAsyncAnnotateFileResponse(o[0] as api.AsyncAnnotateFileResponse);
   checkAsyncAnnotateFileResponse(o[1] as api.AsyncAnnotateFileResponse);
@@ -420,7 +420,7 @@ api.AsyncBatchAnnotateFilesResponse buildAsyncBatchAnnotateFilesResponse() {
   var o = api.AsyncBatchAnnotateFilesResponse();
   buildCounterAsyncBatchAnnotateFilesResponse++;
   if (buildCounterAsyncBatchAnnotateFilesResponse < 3) {
-    o.responses = buildUnnamed3398();
+    o.responses = buildUnnamed3399();
   }
   buildCounterAsyncBatchAnnotateFilesResponse--;
   return o;
@@ -430,19 +430,19 @@ void checkAsyncBatchAnnotateFilesResponse(
     api.AsyncBatchAnnotateFilesResponse o) {
   buildCounterAsyncBatchAnnotateFilesResponse++;
   if (buildCounterAsyncBatchAnnotateFilesResponse < 3) {
-    checkUnnamed3398(o.responses!);
+    checkUnnamed3399(o.responses!);
   }
   buildCounterAsyncBatchAnnotateFilesResponse--;
 }
 
-core.List<api.AnnotateImageRequest> buildUnnamed3399() {
+core.List<api.AnnotateImageRequest> buildUnnamed3400() {
   var o = <api.AnnotateImageRequest>[];
   o.add(buildAnnotateImageRequest());
   o.add(buildAnnotateImageRequest());
   return o;
 }
 
-void checkUnnamed3399(core.List<api.AnnotateImageRequest> o) {
+void checkUnnamed3400(core.List<api.AnnotateImageRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAnnotateImageRequest(o[0] as api.AnnotateImageRequest);
   checkAnnotateImageRequest(o[1] as api.AnnotateImageRequest);
@@ -455,7 +455,7 @@ api.AsyncBatchAnnotateImagesRequest buildAsyncBatchAnnotateImagesRequest() {
   if (buildCounterAsyncBatchAnnotateImagesRequest < 3) {
     o.outputConfig = buildOutputConfig();
     o.parent = 'foo';
-    o.requests = buildUnnamed3399();
+    o.requests = buildUnnamed3400();
   }
   buildCounterAsyncBatchAnnotateImagesRequest--;
   return o;
@@ -470,7 +470,7 @@ void checkAsyncBatchAnnotateImagesRequest(
       o.parent!,
       unittest.equals('foo'),
     );
-    checkUnnamed3399(o.requests!);
+    checkUnnamed3400(o.requests!);
   }
   buildCounterAsyncBatchAnnotateImagesRequest--;
 }
@@ -495,14 +495,14 @@ void checkAsyncBatchAnnotateImagesResponse(
   buildCounterAsyncBatchAnnotateImagesResponse--;
 }
 
-core.List<api.AnnotateFileRequest> buildUnnamed3400() {
+core.List<api.AnnotateFileRequest> buildUnnamed3401() {
   var o = <api.AnnotateFileRequest>[];
   o.add(buildAnnotateFileRequest());
   o.add(buildAnnotateFileRequest());
   return o;
 }
 
-void checkUnnamed3400(core.List<api.AnnotateFileRequest> o) {
+void checkUnnamed3401(core.List<api.AnnotateFileRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAnnotateFileRequest(o[0] as api.AnnotateFileRequest);
   checkAnnotateFileRequest(o[1] as api.AnnotateFileRequest);
@@ -514,7 +514,7 @@ api.BatchAnnotateFilesRequest buildBatchAnnotateFilesRequest() {
   buildCounterBatchAnnotateFilesRequest++;
   if (buildCounterBatchAnnotateFilesRequest < 3) {
     o.parent = 'foo';
-    o.requests = buildUnnamed3400();
+    o.requests = buildUnnamed3401();
   }
   buildCounterBatchAnnotateFilesRequest--;
   return o;
@@ -527,19 +527,19 @@ void checkBatchAnnotateFilesRequest(api.BatchAnnotateFilesRequest o) {
       o.parent!,
       unittest.equals('foo'),
     );
-    checkUnnamed3400(o.requests!);
+    checkUnnamed3401(o.requests!);
   }
   buildCounterBatchAnnotateFilesRequest--;
 }
 
-core.List<api.AnnotateFileResponse> buildUnnamed3401() {
+core.List<api.AnnotateFileResponse> buildUnnamed3402() {
   var o = <api.AnnotateFileResponse>[];
   o.add(buildAnnotateFileResponse());
   o.add(buildAnnotateFileResponse());
   return o;
 }
 
-void checkUnnamed3401(core.List<api.AnnotateFileResponse> o) {
+void checkUnnamed3402(core.List<api.AnnotateFileResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAnnotateFileResponse(o[0] as api.AnnotateFileResponse);
   checkAnnotateFileResponse(o[1] as api.AnnotateFileResponse);
@@ -550,7 +550,7 @@ api.BatchAnnotateFilesResponse buildBatchAnnotateFilesResponse() {
   var o = api.BatchAnnotateFilesResponse();
   buildCounterBatchAnnotateFilesResponse++;
   if (buildCounterBatchAnnotateFilesResponse < 3) {
-    o.responses = buildUnnamed3401();
+    o.responses = buildUnnamed3402();
   }
   buildCounterBatchAnnotateFilesResponse--;
   return o;
@@ -559,19 +559,19 @@ api.BatchAnnotateFilesResponse buildBatchAnnotateFilesResponse() {
 void checkBatchAnnotateFilesResponse(api.BatchAnnotateFilesResponse o) {
   buildCounterBatchAnnotateFilesResponse++;
   if (buildCounterBatchAnnotateFilesResponse < 3) {
-    checkUnnamed3401(o.responses!);
+    checkUnnamed3402(o.responses!);
   }
   buildCounterBatchAnnotateFilesResponse--;
 }
 
-core.List<api.AnnotateImageRequest> buildUnnamed3402() {
+core.List<api.AnnotateImageRequest> buildUnnamed3403() {
   var o = <api.AnnotateImageRequest>[];
   o.add(buildAnnotateImageRequest());
   o.add(buildAnnotateImageRequest());
   return o;
 }
 
-void checkUnnamed3402(core.List<api.AnnotateImageRequest> o) {
+void checkUnnamed3403(core.List<api.AnnotateImageRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAnnotateImageRequest(o[0] as api.AnnotateImageRequest);
   checkAnnotateImageRequest(o[1] as api.AnnotateImageRequest);
@@ -583,7 +583,7 @@ api.BatchAnnotateImagesRequest buildBatchAnnotateImagesRequest() {
   buildCounterBatchAnnotateImagesRequest++;
   if (buildCounterBatchAnnotateImagesRequest < 3) {
     o.parent = 'foo';
-    o.requests = buildUnnamed3402();
+    o.requests = buildUnnamed3403();
   }
   buildCounterBatchAnnotateImagesRequest--;
   return o;
@@ -596,19 +596,19 @@ void checkBatchAnnotateImagesRequest(api.BatchAnnotateImagesRequest o) {
       o.parent!,
       unittest.equals('foo'),
     );
-    checkUnnamed3402(o.requests!);
+    checkUnnamed3403(o.requests!);
   }
   buildCounterBatchAnnotateImagesRequest--;
 }
 
-core.List<api.AnnotateImageResponse> buildUnnamed3403() {
+core.List<api.AnnotateImageResponse> buildUnnamed3404() {
   var o = <api.AnnotateImageResponse>[];
   o.add(buildAnnotateImageResponse());
   o.add(buildAnnotateImageResponse());
   return o;
 }
 
-void checkUnnamed3403(core.List<api.AnnotateImageResponse> o) {
+void checkUnnamed3404(core.List<api.AnnotateImageResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAnnotateImageResponse(o[0] as api.AnnotateImageResponse);
   checkAnnotateImageResponse(o[1] as api.AnnotateImageResponse);
@@ -619,7 +619,7 @@ api.BatchAnnotateImagesResponse buildBatchAnnotateImagesResponse() {
   var o = api.BatchAnnotateImagesResponse();
   buildCounterBatchAnnotateImagesResponse++;
   if (buildCounterBatchAnnotateImagesResponse < 3) {
-    o.responses = buildUnnamed3403();
+    o.responses = buildUnnamed3404();
   }
   buildCounterBatchAnnotateImagesResponse--;
   return o;
@@ -628,7 +628,7 @@ api.BatchAnnotateImagesResponse buildBatchAnnotateImagesResponse() {
 void checkBatchAnnotateImagesResponse(api.BatchAnnotateImagesResponse o) {
   buildCounterBatchAnnotateImagesResponse++;
   if (buildCounterBatchAnnotateImagesResponse < 3) {
-    checkUnnamed3403(o.responses!);
+    checkUnnamed3404(o.responses!);
   }
   buildCounterBatchAnnotateImagesResponse--;
 }
@@ -665,14 +665,14 @@ void checkBatchOperationMetadata(api.BatchOperationMetadata o) {
   buildCounterBatchOperationMetadata--;
 }
 
-core.List<api.Paragraph> buildUnnamed3404() {
+core.List<api.Paragraph> buildUnnamed3405() {
   var o = <api.Paragraph>[];
   o.add(buildParagraph());
   o.add(buildParagraph());
   return o;
 }
 
-void checkUnnamed3404(core.List<api.Paragraph> o) {
+void checkUnnamed3405(core.List<api.Paragraph> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkParagraph(o[0] as api.Paragraph);
   checkParagraph(o[1] as api.Paragraph);
@@ -686,7 +686,7 @@ api.Block buildBlock() {
     o.blockType = 'foo';
     o.boundingBox = buildBoundingPoly();
     o.confidence = 42.0;
-    o.paragraphs = buildUnnamed3404();
+    o.paragraphs = buildUnnamed3405();
     o.property = buildTextProperty();
   }
   buildCounterBlock--;
@@ -705,33 +705,33 @@ void checkBlock(api.Block o) {
       o.confidence!,
       unittest.equals(42.0),
     );
-    checkUnnamed3404(o.paragraphs!);
+    checkUnnamed3405(o.paragraphs!);
     checkTextProperty(o.property! as api.TextProperty);
   }
   buildCounterBlock--;
 }
 
-core.List<api.NormalizedVertex> buildUnnamed3405() {
+core.List<api.NormalizedVertex> buildUnnamed3406() {
   var o = <api.NormalizedVertex>[];
   o.add(buildNormalizedVertex());
   o.add(buildNormalizedVertex());
   return o;
 }
 
-void checkUnnamed3405(core.List<api.NormalizedVertex> o) {
+void checkUnnamed3406(core.List<api.NormalizedVertex> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNormalizedVertex(o[0] as api.NormalizedVertex);
   checkNormalizedVertex(o[1] as api.NormalizedVertex);
 }
 
-core.List<api.Vertex> buildUnnamed3406() {
+core.List<api.Vertex> buildUnnamed3407() {
   var o = <api.Vertex>[];
   o.add(buildVertex());
   o.add(buildVertex());
   return o;
 }
 
-void checkUnnamed3406(core.List<api.Vertex> o) {
+void checkUnnamed3407(core.List<api.Vertex> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVertex(o[0] as api.Vertex);
   checkVertex(o[1] as api.Vertex);
@@ -742,8 +742,8 @@ api.BoundingPoly buildBoundingPoly() {
   var o = api.BoundingPoly();
   buildCounterBoundingPoly++;
   if (buildCounterBoundingPoly < 3) {
-    o.normalizedVertices = buildUnnamed3405();
-    o.vertices = buildUnnamed3406();
+    o.normalizedVertices = buildUnnamed3406();
+    o.vertices = buildUnnamed3407();
   }
   buildCounterBoundingPoly--;
   return o;
@@ -752,8 +752,8 @@ api.BoundingPoly buildBoundingPoly() {
 void checkBoundingPoly(api.BoundingPoly o) {
   buildCounterBoundingPoly++;
   if (buildCounterBoundingPoly < 3) {
-    checkUnnamed3405(o.normalizedVertices!);
-    checkUnnamed3406(o.vertices!);
+    checkUnnamed3406(o.normalizedVertices!);
+    checkUnnamed3407(o.vertices!);
   }
   buildCounterBoundingPoly--;
 }
@@ -868,14 +868,14 @@ void checkCropHint(api.CropHint o) {
   buildCounterCropHint--;
 }
 
-core.List<api.CropHint> buildUnnamed3407() {
+core.List<api.CropHint> buildUnnamed3408() {
   var o = <api.CropHint>[];
   o.add(buildCropHint());
   o.add(buildCropHint());
   return o;
 }
 
-void checkUnnamed3407(core.List<api.CropHint> o) {
+void checkUnnamed3408(core.List<api.CropHint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCropHint(o[0] as api.CropHint);
   checkCropHint(o[1] as api.CropHint);
@@ -886,7 +886,7 @@ api.CropHintsAnnotation buildCropHintsAnnotation() {
   var o = api.CropHintsAnnotation();
   buildCounterCropHintsAnnotation++;
   if (buildCounterCropHintsAnnotation < 3) {
-    o.cropHints = buildUnnamed3407();
+    o.cropHints = buildUnnamed3408();
   }
   buildCounterCropHintsAnnotation--;
   return o;
@@ -895,19 +895,19 @@ api.CropHintsAnnotation buildCropHintsAnnotation() {
 void checkCropHintsAnnotation(api.CropHintsAnnotation o) {
   buildCounterCropHintsAnnotation++;
   if (buildCounterCropHintsAnnotation < 3) {
-    checkUnnamed3407(o.cropHints!);
+    checkUnnamed3408(o.cropHints!);
   }
   buildCounterCropHintsAnnotation--;
 }
 
-core.List<core.double> buildUnnamed3408() {
+core.List<core.double> buildUnnamed3409() {
   var o = <core.double>[];
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-void checkUnnamed3408(core.List<core.double> o) {
+void checkUnnamed3409(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -924,7 +924,7 @@ api.CropHintsParams buildCropHintsParams() {
   var o = api.CropHintsParams();
   buildCounterCropHintsParams++;
   if (buildCounterCropHintsParams < 3) {
-    o.aspectRatios = buildUnnamed3408();
+    o.aspectRatios = buildUnnamed3409();
   }
   buildCounterCropHintsParams--;
   return o;
@@ -933,7 +933,7 @@ api.CropHintsParams buildCropHintsParams() {
 void checkCropHintsParams(api.CropHintsParams o) {
   buildCounterCropHintsParams++;
   if (buildCounterCropHintsParams < 3) {
-    checkUnnamed3408(o.aspectRatios!);
+    checkUnnamed3409(o.aspectRatios!);
   }
   buildCounterCropHintsParams--;
 }
@@ -989,14 +989,14 @@ void checkDetectedLanguage(api.DetectedLanguage o) {
   buildCounterDetectedLanguage--;
 }
 
-core.List<api.ColorInfo> buildUnnamed3409() {
+core.List<api.ColorInfo> buildUnnamed3410() {
   var o = <api.ColorInfo>[];
   o.add(buildColorInfo());
   o.add(buildColorInfo());
   return o;
 }
 
-void checkUnnamed3409(core.List<api.ColorInfo> o) {
+void checkUnnamed3410(core.List<api.ColorInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkColorInfo(o[0] as api.ColorInfo);
   checkColorInfo(o[1] as api.ColorInfo);
@@ -1007,7 +1007,7 @@ api.DominantColorsAnnotation buildDominantColorsAnnotation() {
   var o = api.DominantColorsAnnotation();
   buildCounterDominantColorsAnnotation++;
   if (buildCounterDominantColorsAnnotation < 3) {
-    o.colors = buildUnnamed3409();
+    o.colors = buildUnnamed3410();
   }
   buildCounterDominantColorsAnnotation--;
   return o;
@@ -1016,7 +1016,7 @@ api.DominantColorsAnnotation buildDominantColorsAnnotation() {
 void checkDominantColorsAnnotation(api.DominantColorsAnnotation o) {
   buildCounterDominantColorsAnnotation++;
   if (buildCounterDominantColorsAnnotation < 3) {
-    checkUnnamed3409(o.colors!);
+    checkUnnamed3410(o.colors!);
   }
   buildCounterDominantColorsAnnotation--;
 }
@@ -1036,27 +1036,27 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-core.List<api.LocationInfo> buildUnnamed3410() {
+core.List<api.LocationInfo> buildUnnamed3411() {
   var o = <api.LocationInfo>[];
   o.add(buildLocationInfo());
   o.add(buildLocationInfo());
   return o;
 }
 
-void checkUnnamed3410(core.List<api.LocationInfo> o) {
+void checkUnnamed3411(core.List<api.LocationInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocationInfo(o[0] as api.LocationInfo);
   checkLocationInfo(o[1] as api.LocationInfo);
 }
 
-core.List<api.Property> buildUnnamed3411() {
+core.List<api.Property> buildUnnamed3412() {
   var o = <api.Property>[];
   o.add(buildProperty());
   o.add(buildProperty());
   return o;
 }
 
-void checkUnnamed3411(core.List<api.Property> o) {
+void checkUnnamed3412(core.List<api.Property> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProperty(o[0] as api.Property);
   checkProperty(o[1] as api.Property);
@@ -1071,9 +1071,9 @@ api.EntityAnnotation buildEntityAnnotation() {
     o.confidence = 42.0;
     o.description = 'foo';
     o.locale = 'foo';
-    o.locations = buildUnnamed3410();
+    o.locations = buildUnnamed3411();
     o.mid = 'foo';
-    o.properties = buildUnnamed3411();
+    o.properties = buildUnnamed3412();
     o.score = 42.0;
     o.topicality = 42.0;
   }
@@ -1097,12 +1097,12 @@ void checkEntityAnnotation(api.EntityAnnotation o) {
       o.locale!,
       unittest.equals('foo'),
     );
-    checkUnnamed3410(o.locations!);
+    checkUnnamed3411(o.locations!);
     unittest.expect(
       o.mid!,
       unittest.equals('foo'),
     );
-    checkUnnamed3411(o.properties!);
+    checkUnnamed3412(o.properties!);
     unittest.expect(
       o.score!,
       unittest.equals(42.0),
@@ -1115,14 +1115,14 @@ void checkEntityAnnotation(api.EntityAnnotation o) {
   buildCounterEntityAnnotation--;
 }
 
-core.List<api.Landmark> buildUnnamed3412() {
+core.List<api.Landmark> buildUnnamed3413() {
   var o = <api.Landmark>[];
   o.add(buildLandmark());
   o.add(buildLandmark());
   return o;
 }
 
-void checkUnnamed3412(core.List<api.Landmark> o) {
+void checkUnnamed3413(core.List<api.Landmark> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLandmark(o[0] as api.Landmark);
   checkLandmark(o[1] as api.Landmark);
@@ -1141,7 +1141,7 @@ api.FaceAnnotation buildFaceAnnotation() {
     o.headwearLikelihood = 'foo';
     o.joyLikelihood = 'foo';
     o.landmarkingConfidence = 42.0;
-    o.landmarks = buildUnnamed3412();
+    o.landmarks = buildUnnamed3413();
     o.panAngle = 42.0;
     o.rollAngle = 42.0;
     o.sorrowLikelihood = 'foo';
@@ -1182,7 +1182,7 @@ void checkFaceAnnotation(api.FaceAnnotation o) {
       o.landmarkingConfidence!,
       unittest.equals(42.0),
     );
-    checkUnnamed3412(o.landmarks!);
+    checkUnnamed3413(o.landmarks!);
     unittest.expect(
       o.panAngle!,
       unittest.equals(42.0),
@@ -1288,14 +1288,14 @@ void checkGcsSource(api.GcsSource o) {
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1AnnotateImageResponse>
-    buildUnnamed3413() {
+    buildUnnamed3414() {
   var o = <api.GoogleCloudVisionV1p1beta1AnnotateImageResponse>[];
   o.add(buildGoogleCloudVisionV1p1beta1AnnotateImageResponse());
   o.add(buildGoogleCloudVisionV1p1beta1AnnotateImageResponse());
   return o;
 }
 
-void checkUnnamed3413(
+void checkUnnamed3414(
     core.List<api.GoogleCloudVisionV1p1beta1AnnotateImageResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p1beta1AnnotateImageResponse(
@@ -1312,7 +1312,7 @@ api.GoogleCloudVisionV1p1beta1AnnotateFileResponse
   if (buildCounterGoogleCloudVisionV1p1beta1AnnotateFileResponse < 3) {
     o.error = buildStatus();
     o.inputConfig = buildGoogleCloudVisionV1p1beta1InputConfig();
-    o.responses = buildUnnamed3413();
+    o.responses = buildUnnamed3414();
     o.totalPages = 42;
   }
   buildCounterGoogleCloudVisionV1p1beta1AnnotateFileResponse--;
@@ -1326,7 +1326,7 @@ void checkGoogleCloudVisionV1p1beta1AnnotateFileResponse(
     checkStatus(o.error! as api.Status);
     checkGoogleCloudVisionV1p1beta1InputConfig(
         o.inputConfig! as api.GoogleCloudVisionV1p1beta1InputConfig);
-    checkUnnamed3413(o.responses!);
+    checkUnnamed3414(o.responses!);
     unittest.expect(
       o.totalPages!,
       unittest.equals(42),
@@ -1335,36 +1335,20 @@ void checkGoogleCloudVisionV1p1beta1AnnotateFileResponse(
   buildCounterGoogleCloudVisionV1p1beta1AnnotateFileResponse--;
 }
 
-core.List<api.GoogleCloudVisionV1p1beta1FaceAnnotation> buildUnnamed3414() {
+core.List<api.GoogleCloudVisionV1p1beta1FaceAnnotation> buildUnnamed3415() {
   var o = <api.GoogleCloudVisionV1p1beta1FaceAnnotation>[];
   o.add(buildGoogleCloudVisionV1p1beta1FaceAnnotation());
   o.add(buildGoogleCloudVisionV1p1beta1FaceAnnotation());
   return o;
 }
 
-void checkUnnamed3414(
+void checkUnnamed3415(
     core.List<api.GoogleCloudVisionV1p1beta1FaceAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p1beta1FaceAnnotation(
       o[0] as api.GoogleCloudVisionV1p1beta1FaceAnnotation);
   checkGoogleCloudVisionV1p1beta1FaceAnnotation(
       o[1] as api.GoogleCloudVisionV1p1beta1FaceAnnotation);
-}
-
-core.List<api.GoogleCloudVisionV1p1beta1EntityAnnotation> buildUnnamed3415() {
-  var o = <api.GoogleCloudVisionV1p1beta1EntityAnnotation>[];
-  o.add(buildGoogleCloudVisionV1p1beta1EntityAnnotation());
-  o.add(buildGoogleCloudVisionV1p1beta1EntityAnnotation());
-  return o;
-}
-
-void checkUnnamed3415(
-    core.List<api.GoogleCloudVisionV1p1beta1EntityAnnotation> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p1beta1EntityAnnotation(
-      o[0] as api.GoogleCloudVisionV1p1beta1EntityAnnotation);
-  checkGoogleCloudVisionV1p1beta1EntityAnnotation(
-      o[1] as api.GoogleCloudVisionV1p1beta1EntityAnnotation);
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1EntityAnnotation> buildUnnamed3416() {
@@ -1383,37 +1367,37 @@ void checkUnnamed3416(
       o[1] as api.GoogleCloudVisionV1p1beta1EntityAnnotation);
 }
 
-core.List<api.GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation>
-    buildUnnamed3417() {
-  var o = <api.GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation>[];
-  o.add(buildGoogleCloudVisionV1p1beta1LocalizedObjectAnnotation());
-  o.add(buildGoogleCloudVisionV1p1beta1LocalizedObjectAnnotation());
-  return o;
-}
-
-void checkUnnamed3417(
-    core.List<api.GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p1beta1LocalizedObjectAnnotation(
-      o[0] as api.GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation);
-  checkGoogleCloudVisionV1p1beta1LocalizedObjectAnnotation(
-      o[1] as api.GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation);
-}
-
-core.List<api.GoogleCloudVisionV1p1beta1EntityAnnotation> buildUnnamed3418() {
+core.List<api.GoogleCloudVisionV1p1beta1EntityAnnotation> buildUnnamed3417() {
   var o = <api.GoogleCloudVisionV1p1beta1EntityAnnotation>[];
   o.add(buildGoogleCloudVisionV1p1beta1EntityAnnotation());
   o.add(buildGoogleCloudVisionV1p1beta1EntityAnnotation());
   return o;
 }
 
-void checkUnnamed3418(
+void checkUnnamed3417(
     core.List<api.GoogleCloudVisionV1p1beta1EntityAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p1beta1EntityAnnotation(
       o[0] as api.GoogleCloudVisionV1p1beta1EntityAnnotation);
   checkGoogleCloudVisionV1p1beta1EntityAnnotation(
       o[1] as api.GoogleCloudVisionV1p1beta1EntityAnnotation);
+}
+
+core.List<api.GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation>
+    buildUnnamed3418() {
+  var o = <api.GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation>[];
+  o.add(buildGoogleCloudVisionV1p1beta1LocalizedObjectAnnotation());
+  o.add(buildGoogleCloudVisionV1p1beta1LocalizedObjectAnnotation());
+  return o;
+}
+
+void checkUnnamed3418(
+    core.List<api.GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudVisionV1p1beta1LocalizedObjectAnnotation(
+      o[0] as api.GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation);
+  checkGoogleCloudVisionV1p1beta1LocalizedObjectAnnotation(
+      o[1] as api.GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation);
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1EntityAnnotation> buildUnnamed3419() {
@@ -1432,6 +1416,22 @@ void checkUnnamed3419(
       o[1] as api.GoogleCloudVisionV1p1beta1EntityAnnotation);
 }
 
+core.List<api.GoogleCloudVisionV1p1beta1EntityAnnotation> buildUnnamed3420() {
+  var o = <api.GoogleCloudVisionV1p1beta1EntityAnnotation>[];
+  o.add(buildGoogleCloudVisionV1p1beta1EntityAnnotation());
+  o.add(buildGoogleCloudVisionV1p1beta1EntityAnnotation());
+  return o;
+}
+
+void checkUnnamed3420(
+    core.List<api.GoogleCloudVisionV1p1beta1EntityAnnotation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudVisionV1p1beta1EntityAnnotation(
+      o[0] as api.GoogleCloudVisionV1p1beta1EntityAnnotation);
+  checkGoogleCloudVisionV1p1beta1EntityAnnotation(
+      o[1] as api.GoogleCloudVisionV1p1beta1EntityAnnotation);
+}
+
 core.int buildCounterGoogleCloudVisionV1p1beta1AnnotateImageResponse = 0;
 api.GoogleCloudVisionV1p1beta1AnnotateImageResponse
     buildGoogleCloudVisionV1p1beta1AnnotateImageResponse() {
@@ -1442,19 +1442,19 @@ api.GoogleCloudVisionV1p1beta1AnnotateImageResponse
     o.cropHintsAnnotation =
         buildGoogleCloudVisionV1p1beta1CropHintsAnnotation();
     o.error = buildStatus();
-    o.faceAnnotations = buildUnnamed3414();
+    o.faceAnnotations = buildUnnamed3415();
     o.fullTextAnnotation = buildGoogleCloudVisionV1p1beta1TextAnnotation();
     o.imagePropertiesAnnotation =
         buildGoogleCloudVisionV1p1beta1ImageProperties();
-    o.labelAnnotations = buildUnnamed3415();
-    o.landmarkAnnotations = buildUnnamed3416();
-    o.localizedObjectAnnotations = buildUnnamed3417();
-    o.logoAnnotations = buildUnnamed3418();
+    o.labelAnnotations = buildUnnamed3416();
+    o.landmarkAnnotations = buildUnnamed3417();
+    o.localizedObjectAnnotations = buildUnnamed3418();
+    o.logoAnnotations = buildUnnamed3419();
     o.productSearchResults =
         buildGoogleCloudVisionV1p1beta1ProductSearchResults();
     o.safeSearchAnnotation =
         buildGoogleCloudVisionV1p1beta1SafeSearchAnnotation();
-    o.textAnnotations = buildUnnamed3419();
+    o.textAnnotations = buildUnnamed3420();
     o.webDetection = buildGoogleCloudVisionV1p1beta1WebDetection();
   }
   buildCounterGoogleCloudVisionV1p1beta1AnnotateImageResponse--;
@@ -1470,20 +1470,20 @@ void checkGoogleCloudVisionV1p1beta1AnnotateImageResponse(
     checkGoogleCloudVisionV1p1beta1CropHintsAnnotation(o.cropHintsAnnotation!
         as api.GoogleCloudVisionV1p1beta1CropHintsAnnotation);
     checkStatus(o.error! as api.Status);
-    checkUnnamed3414(o.faceAnnotations!);
+    checkUnnamed3415(o.faceAnnotations!);
     checkGoogleCloudVisionV1p1beta1TextAnnotation(
         o.fullTextAnnotation! as api.GoogleCloudVisionV1p1beta1TextAnnotation);
     checkGoogleCloudVisionV1p1beta1ImageProperties(o.imagePropertiesAnnotation!
         as api.GoogleCloudVisionV1p1beta1ImageProperties);
-    checkUnnamed3415(o.labelAnnotations!);
-    checkUnnamed3416(o.landmarkAnnotations!);
-    checkUnnamed3417(o.localizedObjectAnnotations!);
-    checkUnnamed3418(o.logoAnnotations!);
+    checkUnnamed3416(o.labelAnnotations!);
+    checkUnnamed3417(o.landmarkAnnotations!);
+    checkUnnamed3418(o.localizedObjectAnnotations!);
+    checkUnnamed3419(o.logoAnnotations!);
     checkGoogleCloudVisionV1p1beta1ProductSearchResults(o.productSearchResults!
         as api.GoogleCloudVisionV1p1beta1ProductSearchResults);
     checkGoogleCloudVisionV1p1beta1SafeSearchAnnotation(o.safeSearchAnnotation!
         as api.GoogleCloudVisionV1p1beta1SafeSearchAnnotation);
-    checkUnnamed3419(o.textAnnotations!);
+    checkUnnamed3420(o.textAnnotations!);
     checkGoogleCloudVisionV1p1beta1WebDetection(
         o.webDetection! as api.GoogleCloudVisionV1p1beta1WebDetection);
   }
@@ -1513,14 +1513,14 @@ void checkGoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse(
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse>
-    buildUnnamed3420() {
+    buildUnnamed3421() {
   var o = <api.GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse>[];
   o.add(buildGoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse());
   o.add(buildGoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse());
   return o;
 }
 
-void checkUnnamed3420(
+void checkUnnamed3421(
     core.List<api.GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse(
@@ -1537,7 +1537,7 @@ api.GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse
   buildCounterGoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse++;
   if (buildCounterGoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse <
       3) {
-    o.responses = buildUnnamed3420();
+    o.responses = buildUnnamed3421();
   }
   buildCounterGoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse--;
   return o;
@@ -1548,19 +1548,19 @@ void checkGoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse(
   buildCounterGoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse++;
   if (buildCounterGoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse <
       3) {
-    checkUnnamed3420(o.responses!);
+    checkUnnamed3421(o.responses!);
   }
   buildCounterGoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse--;
 }
 
-core.List<api.GoogleCloudVisionV1p1beta1Paragraph> buildUnnamed3421() {
+core.List<api.GoogleCloudVisionV1p1beta1Paragraph> buildUnnamed3422() {
   var o = <api.GoogleCloudVisionV1p1beta1Paragraph>[];
   o.add(buildGoogleCloudVisionV1p1beta1Paragraph());
   o.add(buildGoogleCloudVisionV1p1beta1Paragraph());
   return o;
 }
 
-void checkUnnamed3421(core.List<api.GoogleCloudVisionV1p1beta1Paragraph> o) {
+void checkUnnamed3422(core.List<api.GoogleCloudVisionV1p1beta1Paragraph> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p1beta1Paragraph(
       o[0] as api.GoogleCloudVisionV1p1beta1Paragraph);
@@ -1576,7 +1576,7 @@ api.GoogleCloudVisionV1p1beta1Block buildGoogleCloudVisionV1p1beta1Block() {
     o.blockType = 'foo';
     o.boundingBox = buildGoogleCloudVisionV1p1beta1BoundingPoly();
     o.confidence = 42.0;
-    o.paragraphs = buildUnnamed3421();
+    o.paragraphs = buildUnnamed3422();
     o.property = buildGoogleCloudVisionV1p1beta1TextAnnotationTextProperty();
   }
   buildCounterGoogleCloudVisionV1p1beta1Block--;
@@ -1597,21 +1597,21 @@ void checkGoogleCloudVisionV1p1beta1Block(
       o.confidence!,
       unittest.equals(42.0),
     );
-    checkUnnamed3421(o.paragraphs!);
+    checkUnnamed3422(o.paragraphs!);
     checkGoogleCloudVisionV1p1beta1TextAnnotationTextProperty(o.property!
         as api.GoogleCloudVisionV1p1beta1TextAnnotationTextProperty);
   }
   buildCounterGoogleCloudVisionV1p1beta1Block--;
 }
 
-core.List<api.GoogleCloudVisionV1p1beta1NormalizedVertex> buildUnnamed3422() {
+core.List<api.GoogleCloudVisionV1p1beta1NormalizedVertex> buildUnnamed3423() {
   var o = <api.GoogleCloudVisionV1p1beta1NormalizedVertex>[];
   o.add(buildGoogleCloudVisionV1p1beta1NormalizedVertex());
   o.add(buildGoogleCloudVisionV1p1beta1NormalizedVertex());
   return o;
 }
 
-void checkUnnamed3422(
+void checkUnnamed3423(
     core.List<api.GoogleCloudVisionV1p1beta1NormalizedVertex> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p1beta1NormalizedVertex(
@@ -1620,14 +1620,14 @@ void checkUnnamed3422(
       o[1] as api.GoogleCloudVisionV1p1beta1NormalizedVertex);
 }
 
-core.List<api.GoogleCloudVisionV1p1beta1Vertex> buildUnnamed3423() {
+core.List<api.GoogleCloudVisionV1p1beta1Vertex> buildUnnamed3424() {
   var o = <api.GoogleCloudVisionV1p1beta1Vertex>[];
   o.add(buildGoogleCloudVisionV1p1beta1Vertex());
   o.add(buildGoogleCloudVisionV1p1beta1Vertex());
   return o;
 }
 
-void checkUnnamed3423(core.List<api.GoogleCloudVisionV1p1beta1Vertex> o) {
+void checkUnnamed3424(core.List<api.GoogleCloudVisionV1p1beta1Vertex> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p1beta1Vertex(
       o[0] as api.GoogleCloudVisionV1p1beta1Vertex);
@@ -1641,8 +1641,8 @@ api.GoogleCloudVisionV1p1beta1BoundingPoly
   var o = api.GoogleCloudVisionV1p1beta1BoundingPoly();
   buildCounterGoogleCloudVisionV1p1beta1BoundingPoly++;
   if (buildCounterGoogleCloudVisionV1p1beta1BoundingPoly < 3) {
-    o.normalizedVertices = buildUnnamed3422();
-    o.vertices = buildUnnamed3423();
+    o.normalizedVertices = buildUnnamed3423();
+    o.vertices = buildUnnamed3424();
   }
   buildCounterGoogleCloudVisionV1p1beta1BoundingPoly--;
   return o;
@@ -1652,8 +1652,8 @@ void checkGoogleCloudVisionV1p1beta1BoundingPoly(
     api.GoogleCloudVisionV1p1beta1BoundingPoly o) {
   buildCounterGoogleCloudVisionV1p1beta1BoundingPoly++;
   if (buildCounterGoogleCloudVisionV1p1beta1BoundingPoly < 3) {
-    checkUnnamed3422(o.normalizedVertices!);
-    checkUnnamed3423(o.vertices!);
+    checkUnnamed3423(o.normalizedVertices!);
+    checkUnnamed3424(o.vertices!);
   }
   buildCounterGoogleCloudVisionV1p1beta1BoundingPoly--;
 }
@@ -1721,14 +1721,14 @@ void checkGoogleCloudVisionV1p1beta1CropHint(
   buildCounterGoogleCloudVisionV1p1beta1CropHint--;
 }
 
-core.List<api.GoogleCloudVisionV1p1beta1CropHint> buildUnnamed3424() {
+core.List<api.GoogleCloudVisionV1p1beta1CropHint> buildUnnamed3425() {
   var o = <api.GoogleCloudVisionV1p1beta1CropHint>[];
   o.add(buildGoogleCloudVisionV1p1beta1CropHint());
   o.add(buildGoogleCloudVisionV1p1beta1CropHint());
   return o;
 }
 
-void checkUnnamed3424(core.List<api.GoogleCloudVisionV1p1beta1CropHint> o) {
+void checkUnnamed3425(core.List<api.GoogleCloudVisionV1p1beta1CropHint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p1beta1CropHint(
       o[0] as api.GoogleCloudVisionV1p1beta1CropHint);
@@ -1742,7 +1742,7 @@ api.GoogleCloudVisionV1p1beta1CropHintsAnnotation
   var o = api.GoogleCloudVisionV1p1beta1CropHintsAnnotation();
   buildCounterGoogleCloudVisionV1p1beta1CropHintsAnnotation++;
   if (buildCounterGoogleCloudVisionV1p1beta1CropHintsAnnotation < 3) {
-    o.cropHints = buildUnnamed3424();
+    o.cropHints = buildUnnamed3425();
   }
   buildCounterGoogleCloudVisionV1p1beta1CropHintsAnnotation--;
   return o;
@@ -1752,19 +1752,19 @@ void checkGoogleCloudVisionV1p1beta1CropHintsAnnotation(
     api.GoogleCloudVisionV1p1beta1CropHintsAnnotation o) {
   buildCounterGoogleCloudVisionV1p1beta1CropHintsAnnotation++;
   if (buildCounterGoogleCloudVisionV1p1beta1CropHintsAnnotation < 3) {
-    checkUnnamed3424(o.cropHints!);
+    checkUnnamed3425(o.cropHints!);
   }
   buildCounterGoogleCloudVisionV1p1beta1CropHintsAnnotation--;
 }
 
-core.List<api.GoogleCloudVisionV1p1beta1ColorInfo> buildUnnamed3425() {
+core.List<api.GoogleCloudVisionV1p1beta1ColorInfo> buildUnnamed3426() {
   var o = <api.GoogleCloudVisionV1p1beta1ColorInfo>[];
   o.add(buildGoogleCloudVisionV1p1beta1ColorInfo());
   o.add(buildGoogleCloudVisionV1p1beta1ColorInfo());
   return o;
 }
 
-void checkUnnamed3425(core.List<api.GoogleCloudVisionV1p1beta1ColorInfo> o) {
+void checkUnnamed3426(core.List<api.GoogleCloudVisionV1p1beta1ColorInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p1beta1ColorInfo(
       o[0] as api.GoogleCloudVisionV1p1beta1ColorInfo);
@@ -1778,7 +1778,7 @@ api.GoogleCloudVisionV1p1beta1DominantColorsAnnotation
   var o = api.GoogleCloudVisionV1p1beta1DominantColorsAnnotation();
   buildCounterGoogleCloudVisionV1p1beta1DominantColorsAnnotation++;
   if (buildCounterGoogleCloudVisionV1p1beta1DominantColorsAnnotation < 3) {
-    o.colors = buildUnnamed3425();
+    o.colors = buildUnnamed3426();
   }
   buildCounterGoogleCloudVisionV1p1beta1DominantColorsAnnotation--;
   return o;
@@ -1788,19 +1788,19 @@ void checkGoogleCloudVisionV1p1beta1DominantColorsAnnotation(
     api.GoogleCloudVisionV1p1beta1DominantColorsAnnotation o) {
   buildCounterGoogleCloudVisionV1p1beta1DominantColorsAnnotation++;
   if (buildCounterGoogleCloudVisionV1p1beta1DominantColorsAnnotation < 3) {
-    checkUnnamed3425(o.colors!);
+    checkUnnamed3426(o.colors!);
   }
   buildCounterGoogleCloudVisionV1p1beta1DominantColorsAnnotation--;
 }
 
-core.List<api.GoogleCloudVisionV1p1beta1LocationInfo> buildUnnamed3426() {
+core.List<api.GoogleCloudVisionV1p1beta1LocationInfo> buildUnnamed3427() {
   var o = <api.GoogleCloudVisionV1p1beta1LocationInfo>[];
   o.add(buildGoogleCloudVisionV1p1beta1LocationInfo());
   o.add(buildGoogleCloudVisionV1p1beta1LocationInfo());
   return o;
 }
 
-void checkUnnamed3426(core.List<api.GoogleCloudVisionV1p1beta1LocationInfo> o) {
+void checkUnnamed3427(core.List<api.GoogleCloudVisionV1p1beta1LocationInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p1beta1LocationInfo(
       o[0] as api.GoogleCloudVisionV1p1beta1LocationInfo);
@@ -1808,14 +1808,14 @@ void checkUnnamed3426(core.List<api.GoogleCloudVisionV1p1beta1LocationInfo> o) {
       o[1] as api.GoogleCloudVisionV1p1beta1LocationInfo);
 }
 
-core.List<api.GoogleCloudVisionV1p1beta1Property> buildUnnamed3427() {
+core.List<api.GoogleCloudVisionV1p1beta1Property> buildUnnamed3428() {
   var o = <api.GoogleCloudVisionV1p1beta1Property>[];
   o.add(buildGoogleCloudVisionV1p1beta1Property());
   o.add(buildGoogleCloudVisionV1p1beta1Property());
   return o;
 }
 
-void checkUnnamed3427(core.List<api.GoogleCloudVisionV1p1beta1Property> o) {
+void checkUnnamed3428(core.List<api.GoogleCloudVisionV1p1beta1Property> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p1beta1Property(
       o[0] as api.GoogleCloudVisionV1p1beta1Property);
@@ -1833,9 +1833,9 @@ api.GoogleCloudVisionV1p1beta1EntityAnnotation
     o.confidence = 42.0;
     o.description = 'foo';
     o.locale = 'foo';
-    o.locations = buildUnnamed3426();
+    o.locations = buildUnnamed3427();
     o.mid = 'foo';
-    o.properties = buildUnnamed3427();
+    o.properties = buildUnnamed3428();
     o.score = 42.0;
     o.topicality = 42.0;
   }
@@ -1861,12 +1861,12 @@ void checkGoogleCloudVisionV1p1beta1EntityAnnotation(
       o.locale!,
       unittest.equals('foo'),
     );
-    checkUnnamed3426(o.locations!);
+    checkUnnamed3427(o.locations!);
     unittest.expect(
       o.mid!,
       unittest.equals('foo'),
     );
-    checkUnnamed3427(o.properties!);
+    checkUnnamed3428(o.properties!);
     unittest.expect(
       o.score!,
       unittest.equals(42.0),
@@ -1880,14 +1880,14 @@ void checkGoogleCloudVisionV1p1beta1EntityAnnotation(
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1FaceAnnotationLandmark>
-    buildUnnamed3428() {
+    buildUnnamed3429() {
   var o = <api.GoogleCloudVisionV1p1beta1FaceAnnotationLandmark>[];
   o.add(buildGoogleCloudVisionV1p1beta1FaceAnnotationLandmark());
   o.add(buildGoogleCloudVisionV1p1beta1FaceAnnotationLandmark());
   return o;
 }
 
-void checkUnnamed3428(
+void checkUnnamed3429(
     core.List<api.GoogleCloudVisionV1p1beta1FaceAnnotationLandmark> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p1beta1FaceAnnotationLandmark(
@@ -1910,7 +1910,7 @@ api.GoogleCloudVisionV1p1beta1FaceAnnotation
     o.headwearLikelihood = 'foo';
     o.joyLikelihood = 'foo';
     o.landmarkingConfidence = 42.0;
-    o.landmarks = buildUnnamed3428();
+    o.landmarks = buildUnnamed3429();
     o.panAngle = 42.0;
     o.rollAngle = 42.0;
     o.sorrowLikelihood = 'foo';
@@ -1954,7 +1954,7 @@ void checkGoogleCloudVisionV1p1beta1FaceAnnotation(
       o.landmarkingConfidence!,
       unittest.equals(42.0),
     );
-    checkUnnamed3428(o.landmarks!);
+    checkUnnamed3429(o.landmarks!);
     unittest.expect(
       o.panAngle!,
       unittest.equals(42.0),
@@ -2295,14 +2295,14 @@ void checkGoogleCloudVisionV1p1beta1OutputConfig(
   buildCounterGoogleCloudVisionV1p1beta1OutputConfig--;
 }
 
-core.List<api.GoogleCloudVisionV1p1beta1Block> buildUnnamed3429() {
+core.List<api.GoogleCloudVisionV1p1beta1Block> buildUnnamed3430() {
   var o = <api.GoogleCloudVisionV1p1beta1Block>[];
   o.add(buildGoogleCloudVisionV1p1beta1Block());
   o.add(buildGoogleCloudVisionV1p1beta1Block());
   return o;
 }
 
-void checkUnnamed3429(core.List<api.GoogleCloudVisionV1p1beta1Block> o) {
+void checkUnnamed3430(core.List<api.GoogleCloudVisionV1p1beta1Block> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p1beta1Block(
       o[0] as api.GoogleCloudVisionV1p1beta1Block);
@@ -2315,7 +2315,7 @@ api.GoogleCloudVisionV1p1beta1Page buildGoogleCloudVisionV1p1beta1Page() {
   var o = api.GoogleCloudVisionV1p1beta1Page();
   buildCounterGoogleCloudVisionV1p1beta1Page++;
   if (buildCounterGoogleCloudVisionV1p1beta1Page < 3) {
-    o.blocks = buildUnnamed3429();
+    o.blocks = buildUnnamed3430();
     o.confidence = 42.0;
     o.height = 42;
     o.property = buildGoogleCloudVisionV1p1beta1TextAnnotationTextProperty();
@@ -2328,7 +2328,7 @@ api.GoogleCloudVisionV1p1beta1Page buildGoogleCloudVisionV1p1beta1Page() {
 void checkGoogleCloudVisionV1p1beta1Page(api.GoogleCloudVisionV1p1beta1Page o) {
   buildCounterGoogleCloudVisionV1p1beta1Page++;
   if (buildCounterGoogleCloudVisionV1p1beta1Page < 3) {
-    checkUnnamed3429(o.blocks!);
+    checkUnnamed3430(o.blocks!);
     unittest.expect(
       o.confidence!,
       unittest.equals(42.0),
@@ -2347,14 +2347,14 @@ void checkGoogleCloudVisionV1p1beta1Page(api.GoogleCloudVisionV1p1beta1Page o) {
   buildCounterGoogleCloudVisionV1p1beta1Page--;
 }
 
-core.List<api.GoogleCloudVisionV1p1beta1Word> buildUnnamed3430() {
+core.List<api.GoogleCloudVisionV1p1beta1Word> buildUnnamed3431() {
   var o = <api.GoogleCloudVisionV1p1beta1Word>[];
   o.add(buildGoogleCloudVisionV1p1beta1Word());
   o.add(buildGoogleCloudVisionV1p1beta1Word());
   return o;
 }
 
-void checkUnnamed3430(core.List<api.GoogleCloudVisionV1p1beta1Word> o) {
+void checkUnnamed3431(core.List<api.GoogleCloudVisionV1p1beta1Word> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p1beta1Word(
       o[0] as api.GoogleCloudVisionV1p1beta1Word);
@@ -2371,7 +2371,7 @@ api.GoogleCloudVisionV1p1beta1Paragraph
     o.boundingBox = buildGoogleCloudVisionV1p1beta1BoundingPoly();
     o.confidence = 42.0;
     o.property = buildGoogleCloudVisionV1p1beta1TextAnnotationTextProperty();
-    o.words = buildUnnamed3430();
+    o.words = buildUnnamed3431();
   }
   buildCounterGoogleCloudVisionV1p1beta1Paragraph--;
   return o;
@@ -2389,7 +2389,7 @@ void checkGoogleCloudVisionV1p1beta1Paragraph(
     );
     checkGoogleCloudVisionV1p1beta1TextAnnotationTextProperty(o.property!
         as api.GoogleCloudVisionV1p1beta1TextAnnotationTextProperty);
-    checkUnnamed3430(o.words!);
+    checkUnnamed3431(o.words!);
   }
   buildCounterGoogleCloudVisionV1p1beta1Paragraph--;
 }
@@ -2428,14 +2428,14 @@ void checkGoogleCloudVisionV1p1beta1Position(
   buildCounterGoogleCloudVisionV1p1beta1Position--;
 }
 
-core.List<api.GoogleCloudVisionV1p1beta1ProductKeyValue> buildUnnamed3431() {
+core.List<api.GoogleCloudVisionV1p1beta1ProductKeyValue> buildUnnamed3432() {
   var o = <api.GoogleCloudVisionV1p1beta1ProductKeyValue>[];
   o.add(buildGoogleCloudVisionV1p1beta1ProductKeyValue());
   o.add(buildGoogleCloudVisionV1p1beta1ProductKeyValue());
   return o;
 }
 
-void checkUnnamed3431(
+void checkUnnamed3432(
     core.List<api.GoogleCloudVisionV1p1beta1ProductKeyValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p1beta1ProductKeyValue(
@@ -2453,7 +2453,7 @@ api.GoogleCloudVisionV1p1beta1Product buildGoogleCloudVisionV1p1beta1Product() {
     o.displayName = 'foo';
     o.name = 'foo';
     o.productCategory = 'foo';
-    o.productLabels = buildUnnamed3431();
+    o.productLabels = buildUnnamed3432();
   }
   buildCounterGoogleCloudVisionV1p1beta1Product--;
   return o;
@@ -2479,7 +2479,7 @@ void checkGoogleCloudVisionV1p1beta1Product(
       o.productCategory!,
       unittest.equals('foo'),
     );
-    checkUnnamed3431(o.productLabels!);
+    checkUnnamed3432(o.productLabels!);
   }
   buildCounterGoogleCloudVisionV1p1beta1Product--;
 }
@@ -2514,14 +2514,14 @@ void checkGoogleCloudVisionV1p1beta1ProductKeyValue(
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult>
-    buildUnnamed3432() {
+    buildUnnamed3433() {
   var o = <api.GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult>[];
   o.add(buildGoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult());
   o.add(buildGoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult());
   return o;
 }
 
-void checkUnnamed3432(
+void checkUnnamed3433(
     core.List<api.GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2532,14 +2532,14 @@ void checkUnnamed3432(
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1ProductSearchResultsResult>
-    buildUnnamed3433() {
+    buildUnnamed3434() {
   var o = <api.GoogleCloudVisionV1p1beta1ProductSearchResultsResult>[];
   o.add(buildGoogleCloudVisionV1p1beta1ProductSearchResultsResult());
   o.add(buildGoogleCloudVisionV1p1beta1ProductSearchResultsResult());
   return o;
 }
 
-void checkUnnamed3433(
+void checkUnnamed3434(
     core.List<api.GoogleCloudVisionV1p1beta1ProductSearchResultsResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p1beta1ProductSearchResultsResult(
@@ -2555,8 +2555,8 @@ api.GoogleCloudVisionV1p1beta1ProductSearchResults
   buildCounterGoogleCloudVisionV1p1beta1ProductSearchResults++;
   if (buildCounterGoogleCloudVisionV1p1beta1ProductSearchResults < 3) {
     o.indexTime = 'foo';
-    o.productGroupedResults = buildUnnamed3432();
-    o.results = buildUnnamed3433();
+    o.productGroupedResults = buildUnnamed3433();
+    o.results = buildUnnamed3434();
   }
   buildCounterGoogleCloudVisionV1p1beta1ProductSearchResults--;
   return o;
@@ -2570,14 +2570,14 @@ void checkGoogleCloudVisionV1p1beta1ProductSearchResults(
       o.indexTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed3432(o.productGroupedResults!);
-    checkUnnamed3433(o.results!);
+    checkUnnamed3433(o.productGroupedResults!);
+    checkUnnamed3434(o.results!);
   }
   buildCounterGoogleCloudVisionV1p1beta1ProductSearchResults--;
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation>
-    buildUnnamed3434() {
+    buildUnnamed3435() {
   var o =
       <api.GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation>[];
   o.add(buildGoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation());
@@ -2585,7 +2585,7 @@ core.List<api.GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation>
   return o;
 }
 
-void checkUnnamed3434(
+void checkUnnamed3435(
     core.List<
             api.GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation>
         o) {
@@ -2597,14 +2597,14 @@ void checkUnnamed3434(
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1ProductSearchResultsResult>
-    buildUnnamed3435() {
+    buildUnnamed3436() {
   var o = <api.GoogleCloudVisionV1p1beta1ProductSearchResultsResult>[];
   o.add(buildGoogleCloudVisionV1p1beta1ProductSearchResultsResult());
   o.add(buildGoogleCloudVisionV1p1beta1ProductSearchResultsResult());
   return o;
 }
 
-void checkUnnamed3435(
+void checkUnnamed3436(
     core.List<api.GoogleCloudVisionV1p1beta1ProductSearchResultsResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p1beta1ProductSearchResultsResult(
@@ -2622,8 +2622,8 @@ api.GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult
   if (buildCounterGoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult <
       3) {
     o.boundingPoly = buildGoogleCloudVisionV1p1beta1BoundingPoly();
-    o.objectAnnotations = buildUnnamed3434();
-    o.results = buildUnnamed3435();
+    o.objectAnnotations = buildUnnamed3435();
+    o.results = buildUnnamed3436();
   }
   buildCounterGoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult--;
   return o;
@@ -2636,8 +2636,8 @@ void checkGoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult(
       3) {
     checkGoogleCloudVisionV1p1beta1BoundingPoly(
         o.boundingPoly! as api.GoogleCloudVisionV1p1beta1BoundingPoly);
-    checkUnnamed3434(o.objectAnnotations!);
-    checkUnnamed3435(o.results!);
+    checkUnnamed3435(o.objectAnnotations!);
+    checkUnnamed3436(o.results!);
   }
   buildCounterGoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult--;
 }
@@ -2829,14 +2829,14 @@ void checkGoogleCloudVisionV1p1beta1Symbol(
   buildCounterGoogleCloudVisionV1p1beta1Symbol--;
 }
 
-core.List<api.GoogleCloudVisionV1p1beta1Page> buildUnnamed3436() {
+core.List<api.GoogleCloudVisionV1p1beta1Page> buildUnnamed3437() {
   var o = <api.GoogleCloudVisionV1p1beta1Page>[];
   o.add(buildGoogleCloudVisionV1p1beta1Page());
   o.add(buildGoogleCloudVisionV1p1beta1Page());
   return o;
 }
 
-void checkUnnamed3436(core.List<api.GoogleCloudVisionV1p1beta1Page> o) {
+void checkUnnamed3437(core.List<api.GoogleCloudVisionV1p1beta1Page> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p1beta1Page(
       o[0] as api.GoogleCloudVisionV1p1beta1Page);
@@ -2850,7 +2850,7 @@ api.GoogleCloudVisionV1p1beta1TextAnnotation
   var o = api.GoogleCloudVisionV1p1beta1TextAnnotation();
   buildCounterGoogleCloudVisionV1p1beta1TextAnnotation++;
   if (buildCounterGoogleCloudVisionV1p1beta1TextAnnotation < 3) {
-    o.pages = buildUnnamed3436();
+    o.pages = buildUnnamed3437();
     o.text = 'foo';
   }
   buildCounterGoogleCloudVisionV1p1beta1TextAnnotation--;
@@ -2861,7 +2861,7 @@ void checkGoogleCloudVisionV1p1beta1TextAnnotation(
     api.GoogleCloudVisionV1p1beta1TextAnnotation o) {
   buildCounterGoogleCloudVisionV1p1beta1TextAnnotation++;
   if (buildCounterGoogleCloudVisionV1p1beta1TextAnnotation < 3) {
-    checkUnnamed3436(o.pages!);
+    checkUnnamed3437(o.pages!);
     unittest.expect(
       o.text!,
       unittest.equals('foo'),
@@ -2929,14 +2929,14 @@ void checkGoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage(
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage>
-    buildUnnamed3437() {
+    buildUnnamed3438() {
   var o = <api.GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage>[];
   o.add(buildGoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage());
   o.add(buildGoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage());
   return o;
 }
 
-void checkUnnamed3437(
+void checkUnnamed3438(
     core.List<api.GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage(
@@ -2953,7 +2953,7 @@ api.GoogleCloudVisionV1p1beta1TextAnnotationTextProperty
   if (buildCounterGoogleCloudVisionV1p1beta1TextAnnotationTextProperty < 3) {
     o.detectedBreak =
         buildGoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak();
-    o.detectedLanguages = buildUnnamed3437();
+    o.detectedLanguages = buildUnnamed3438();
   }
   buildCounterGoogleCloudVisionV1p1beta1TextAnnotationTextProperty--;
   return o;
@@ -2965,7 +2965,7 @@ void checkGoogleCloudVisionV1p1beta1TextAnnotationTextProperty(
   if (buildCounterGoogleCloudVisionV1p1beta1TextAnnotationTextProperty < 3) {
     checkGoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak(o.detectedBreak!
         as api.GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak);
-    checkUnnamed3437(o.detectedLanguages!);
+    checkUnnamed3438(o.detectedLanguages!);
   }
   buildCounterGoogleCloudVisionV1p1beta1TextAnnotationTextProperty--;
 }
@@ -2999,14 +2999,14 @@ void checkGoogleCloudVisionV1p1beta1Vertex(
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebLabel>
-    buildUnnamed3438() {
+    buildUnnamed3439() {
   var o = <api.GoogleCloudVisionV1p1beta1WebDetectionWebLabel>[];
   o.add(buildGoogleCloudVisionV1p1beta1WebDetectionWebLabel());
   o.add(buildGoogleCloudVisionV1p1beta1WebDetectionWebLabel());
   return o;
 }
 
-void checkUnnamed3438(
+void checkUnnamed3439(
     core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebLabel> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p1beta1WebDetectionWebLabel(
@@ -3016,14 +3016,14 @@ void checkUnnamed3438(
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebImage>
-    buildUnnamed3439() {
+    buildUnnamed3440() {
   var o = <api.GoogleCloudVisionV1p1beta1WebDetectionWebImage>[];
   o.add(buildGoogleCloudVisionV1p1beta1WebDetectionWebImage());
   o.add(buildGoogleCloudVisionV1p1beta1WebDetectionWebImage());
   return o;
 }
 
-void checkUnnamed3439(
+void checkUnnamed3440(
     core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebImage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p1beta1WebDetectionWebImage(
@@ -3033,37 +3033,20 @@ void checkUnnamed3439(
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebPage>
-    buildUnnamed3440() {
+    buildUnnamed3441() {
   var o = <api.GoogleCloudVisionV1p1beta1WebDetectionWebPage>[];
   o.add(buildGoogleCloudVisionV1p1beta1WebDetectionWebPage());
   o.add(buildGoogleCloudVisionV1p1beta1WebDetectionWebPage());
   return o;
 }
 
-void checkUnnamed3440(
+void checkUnnamed3441(
     core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebPage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p1beta1WebDetectionWebPage(
       o[0] as api.GoogleCloudVisionV1p1beta1WebDetectionWebPage);
   checkGoogleCloudVisionV1p1beta1WebDetectionWebPage(
       o[1] as api.GoogleCloudVisionV1p1beta1WebDetectionWebPage);
-}
-
-core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebImage>
-    buildUnnamed3441() {
-  var o = <api.GoogleCloudVisionV1p1beta1WebDetectionWebImage>[];
-  o.add(buildGoogleCloudVisionV1p1beta1WebDetectionWebImage());
-  o.add(buildGoogleCloudVisionV1p1beta1WebDetectionWebImage());
-  return o;
-}
-
-void checkUnnamed3441(
-    core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebImage> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p1beta1WebDetectionWebImage(
-      o[0] as api.GoogleCloudVisionV1p1beta1WebDetectionWebImage);
-  checkGoogleCloudVisionV1p1beta1WebDetectionWebImage(
-      o[1] as api.GoogleCloudVisionV1p1beta1WebDetectionWebImage);
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebImage>
@@ -3083,15 +3066,32 @@ void checkUnnamed3442(
       o[1] as api.GoogleCloudVisionV1p1beta1WebDetectionWebImage);
 }
 
-core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebEntity>
+core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebImage>
     buildUnnamed3443() {
+  var o = <api.GoogleCloudVisionV1p1beta1WebDetectionWebImage>[];
+  o.add(buildGoogleCloudVisionV1p1beta1WebDetectionWebImage());
+  o.add(buildGoogleCloudVisionV1p1beta1WebDetectionWebImage());
+  return o;
+}
+
+void checkUnnamed3443(
+    core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebImage> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudVisionV1p1beta1WebDetectionWebImage(
+      o[0] as api.GoogleCloudVisionV1p1beta1WebDetectionWebImage);
+  checkGoogleCloudVisionV1p1beta1WebDetectionWebImage(
+      o[1] as api.GoogleCloudVisionV1p1beta1WebDetectionWebImage);
+}
+
+core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebEntity>
+    buildUnnamed3444() {
   var o = <api.GoogleCloudVisionV1p1beta1WebDetectionWebEntity>[];
   o.add(buildGoogleCloudVisionV1p1beta1WebDetectionWebEntity());
   o.add(buildGoogleCloudVisionV1p1beta1WebDetectionWebEntity());
   return o;
 }
 
-void checkUnnamed3443(
+void checkUnnamed3444(
     core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebEntity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p1beta1WebDetectionWebEntity(
@@ -3106,12 +3106,12 @@ api.GoogleCloudVisionV1p1beta1WebDetection
   var o = api.GoogleCloudVisionV1p1beta1WebDetection();
   buildCounterGoogleCloudVisionV1p1beta1WebDetection++;
   if (buildCounterGoogleCloudVisionV1p1beta1WebDetection < 3) {
-    o.bestGuessLabels = buildUnnamed3438();
-    o.fullMatchingImages = buildUnnamed3439();
-    o.pagesWithMatchingImages = buildUnnamed3440();
-    o.partialMatchingImages = buildUnnamed3441();
-    o.visuallySimilarImages = buildUnnamed3442();
-    o.webEntities = buildUnnamed3443();
+    o.bestGuessLabels = buildUnnamed3439();
+    o.fullMatchingImages = buildUnnamed3440();
+    o.pagesWithMatchingImages = buildUnnamed3441();
+    o.partialMatchingImages = buildUnnamed3442();
+    o.visuallySimilarImages = buildUnnamed3443();
+    o.webEntities = buildUnnamed3444();
   }
   buildCounterGoogleCloudVisionV1p1beta1WebDetection--;
   return o;
@@ -3121,12 +3121,12 @@ void checkGoogleCloudVisionV1p1beta1WebDetection(
     api.GoogleCloudVisionV1p1beta1WebDetection o) {
   buildCounterGoogleCloudVisionV1p1beta1WebDetection++;
   if (buildCounterGoogleCloudVisionV1p1beta1WebDetection < 3) {
-    checkUnnamed3438(o.bestGuessLabels!);
-    checkUnnamed3439(o.fullMatchingImages!);
-    checkUnnamed3440(o.pagesWithMatchingImages!);
-    checkUnnamed3441(o.partialMatchingImages!);
-    checkUnnamed3442(o.visuallySimilarImages!);
-    checkUnnamed3443(o.webEntities!);
+    checkUnnamed3439(o.bestGuessLabels!);
+    checkUnnamed3440(o.fullMatchingImages!);
+    checkUnnamed3441(o.pagesWithMatchingImages!);
+    checkUnnamed3442(o.partialMatchingImages!);
+    checkUnnamed3443(o.visuallySimilarImages!);
+    checkUnnamed3444(o.webEntities!);
   }
   buildCounterGoogleCloudVisionV1p1beta1WebDetection--;
 }
@@ -3224,23 +3224,6 @@ void checkGoogleCloudVisionV1p1beta1WebDetectionWebLabel(
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebImage>
-    buildUnnamed3444() {
-  var o = <api.GoogleCloudVisionV1p1beta1WebDetectionWebImage>[];
-  o.add(buildGoogleCloudVisionV1p1beta1WebDetectionWebImage());
-  o.add(buildGoogleCloudVisionV1p1beta1WebDetectionWebImage());
-  return o;
-}
-
-void checkUnnamed3444(
-    core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebImage> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p1beta1WebDetectionWebImage(
-      o[0] as api.GoogleCloudVisionV1p1beta1WebDetectionWebImage);
-  checkGoogleCloudVisionV1p1beta1WebDetectionWebImage(
-      o[1] as api.GoogleCloudVisionV1p1beta1WebDetectionWebImage);
-}
-
-core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebImage>
     buildUnnamed3445() {
   var o = <api.GoogleCloudVisionV1p1beta1WebDetectionWebImage>[];
   o.add(buildGoogleCloudVisionV1p1beta1WebDetectionWebImage());
@@ -3257,15 +3240,32 @@ void checkUnnamed3445(
       o[1] as api.GoogleCloudVisionV1p1beta1WebDetectionWebImage);
 }
 
+core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebImage>
+    buildUnnamed3446() {
+  var o = <api.GoogleCloudVisionV1p1beta1WebDetectionWebImage>[];
+  o.add(buildGoogleCloudVisionV1p1beta1WebDetectionWebImage());
+  o.add(buildGoogleCloudVisionV1p1beta1WebDetectionWebImage());
+  return o;
+}
+
+void checkUnnamed3446(
+    core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebImage> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudVisionV1p1beta1WebDetectionWebImage(
+      o[0] as api.GoogleCloudVisionV1p1beta1WebDetectionWebImage);
+  checkGoogleCloudVisionV1p1beta1WebDetectionWebImage(
+      o[1] as api.GoogleCloudVisionV1p1beta1WebDetectionWebImage);
+}
+
 core.int buildCounterGoogleCloudVisionV1p1beta1WebDetectionWebPage = 0;
 api.GoogleCloudVisionV1p1beta1WebDetectionWebPage
     buildGoogleCloudVisionV1p1beta1WebDetectionWebPage() {
   var o = api.GoogleCloudVisionV1p1beta1WebDetectionWebPage();
   buildCounterGoogleCloudVisionV1p1beta1WebDetectionWebPage++;
   if (buildCounterGoogleCloudVisionV1p1beta1WebDetectionWebPage < 3) {
-    o.fullMatchingImages = buildUnnamed3444();
+    o.fullMatchingImages = buildUnnamed3445();
     o.pageTitle = 'foo';
-    o.partialMatchingImages = buildUnnamed3445();
+    o.partialMatchingImages = buildUnnamed3446();
     o.score = 42.0;
     o.url = 'foo';
   }
@@ -3277,12 +3277,12 @@ void checkGoogleCloudVisionV1p1beta1WebDetectionWebPage(
     api.GoogleCloudVisionV1p1beta1WebDetectionWebPage o) {
   buildCounterGoogleCloudVisionV1p1beta1WebDetectionWebPage++;
   if (buildCounterGoogleCloudVisionV1p1beta1WebDetectionWebPage < 3) {
-    checkUnnamed3444(o.fullMatchingImages!);
+    checkUnnamed3445(o.fullMatchingImages!);
     unittest.expect(
       o.pageTitle!,
       unittest.equals('foo'),
     );
-    checkUnnamed3445(o.partialMatchingImages!);
+    checkUnnamed3446(o.partialMatchingImages!);
     unittest.expect(
       o.score!,
       unittest.equals(42.0),
@@ -3295,14 +3295,14 @@ void checkGoogleCloudVisionV1p1beta1WebDetectionWebPage(
   buildCounterGoogleCloudVisionV1p1beta1WebDetectionWebPage--;
 }
 
-core.List<api.GoogleCloudVisionV1p1beta1Symbol> buildUnnamed3446() {
+core.List<api.GoogleCloudVisionV1p1beta1Symbol> buildUnnamed3447() {
   var o = <api.GoogleCloudVisionV1p1beta1Symbol>[];
   o.add(buildGoogleCloudVisionV1p1beta1Symbol());
   o.add(buildGoogleCloudVisionV1p1beta1Symbol());
   return o;
 }
 
-void checkUnnamed3446(core.List<api.GoogleCloudVisionV1p1beta1Symbol> o) {
+void checkUnnamed3447(core.List<api.GoogleCloudVisionV1p1beta1Symbol> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p1beta1Symbol(
       o[0] as api.GoogleCloudVisionV1p1beta1Symbol);
@@ -3318,7 +3318,7 @@ api.GoogleCloudVisionV1p1beta1Word buildGoogleCloudVisionV1p1beta1Word() {
     o.boundingBox = buildGoogleCloudVisionV1p1beta1BoundingPoly();
     o.confidence = 42.0;
     o.property = buildGoogleCloudVisionV1p1beta1TextAnnotationTextProperty();
-    o.symbols = buildUnnamed3446();
+    o.symbols = buildUnnamed3447();
   }
   buildCounterGoogleCloudVisionV1p1beta1Word--;
   return o;
@@ -3335,20 +3335,20 @@ void checkGoogleCloudVisionV1p1beta1Word(api.GoogleCloudVisionV1p1beta1Word o) {
     );
     checkGoogleCloudVisionV1p1beta1TextAnnotationTextProperty(o.property!
         as api.GoogleCloudVisionV1p1beta1TextAnnotationTextProperty);
-    checkUnnamed3446(o.symbols!);
+    checkUnnamed3447(o.symbols!);
   }
   buildCounterGoogleCloudVisionV1p1beta1Word--;
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1AnnotateImageResponse>
-    buildUnnamed3447() {
+    buildUnnamed3448() {
   var o = <api.GoogleCloudVisionV1p2beta1AnnotateImageResponse>[];
   o.add(buildGoogleCloudVisionV1p2beta1AnnotateImageResponse());
   o.add(buildGoogleCloudVisionV1p2beta1AnnotateImageResponse());
   return o;
 }
 
-void checkUnnamed3447(
+void checkUnnamed3448(
     core.List<api.GoogleCloudVisionV1p2beta1AnnotateImageResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p2beta1AnnotateImageResponse(
@@ -3365,7 +3365,7 @@ api.GoogleCloudVisionV1p2beta1AnnotateFileResponse
   if (buildCounterGoogleCloudVisionV1p2beta1AnnotateFileResponse < 3) {
     o.error = buildStatus();
     o.inputConfig = buildGoogleCloudVisionV1p2beta1InputConfig();
-    o.responses = buildUnnamed3447();
+    o.responses = buildUnnamed3448();
     o.totalPages = 42;
   }
   buildCounterGoogleCloudVisionV1p2beta1AnnotateFileResponse--;
@@ -3379,7 +3379,7 @@ void checkGoogleCloudVisionV1p2beta1AnnotateFileResponse(
     checkStatus(o.error! as api.Status);
     checkGoogleCloudVisionV1p2beta1InputConfig(
         o.inputConfig! as api.GoogleCloudVisionV1p2beta1InputConfig);
-    checkUnnamed3447(o.responses!);
+    checkUnnamed3448(o.responses!);
     unittest.expect(
       o.totalPages!,
       unittest.equals(42),
@@ -3388,36 +3388,20 @@ void checkGoogleCloudVisionV1p2beta1AnnotateFileResponse(
   buildCounterGoogleCloudVisionV1p2beta1AnnotateFileResponse--;
 }
 
-core.List<api.GoogleCloudVisionV1p2beta1FaceAnnotation> buildUnnamed3448() {
+core.List<api.GoogleCloudVisionV1p2beta1FaceAnnotation> buildUnnamed3449() {
   var o = <api.GoogleCloudVisionV1p2beta1FaceAnnotation>[];
   o.add(buildGoogleCloudVisionV1p2beta1FaceAnnotation());
   o.add(buildGoogleCloudVisionV1p2beta1FaceAnnotation());
   return o;
 }
 
-void checkUnnamed3448(
+void checkUnnamed3449(
     core.List<api.GoogleCloudVisionV1p2beta1FaceAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p2beta1FaceAnnotation(
       o[0] as api.GoogleCloudVisionV1p2beta1FaceAnnotation);
   checkGoogleCloudVisionV1p2beta1FaceAnnotation(
       o[1] as api.GoogleCloudVisionV1p2beta1FaceAnnotation);
-}
-
-core.List<api.GoogleCloudVisionV1p2beta1EntityAnnotation> buildUnnamed3449() {
-  var o = <api.GoogleCloudVisionV1p2beta1EntityAnnotation>[];
-  o.add(buildGoogleCloudVisionV1p2beta1EntityAnnotation());
-  o.add(buildGoogleCloudVisionV1p2beta1EntityAnnotation());
-  return o;
-}
-
-void checkUnnamed3449(
-    core.List<api.GoogleCloudVisionV1p2beta1EntityAnnotation> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p2beta1EntityAnnotation(
-      o[0] as api.GoogleCloudVisionV1p2beta1EntityAnnotation);
-  checkGoogleCloudVisionV1p2beta1EntityAnnotation(
-      o[1] as api.GoogleCloudVisionV1p2beta1EntityAnnotation);
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1EntityAnnotation> buildUnnamed3450() {
@@ -3436,37 +3420,37 @@ void checkUnnamed3450(
       o[1] as api.GoogleCloudVisionV1p2beta1EntityAnnotation);
 }
 
-core.List<api.GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation>
-    buildUnnamed3451() {
-  var o = <api.GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation>[];
-  o.add(buildGoogleCloudVisionV1p2beta1LocalizedObjectAnnotation());
-  o.add(buildGoogleCloudVisionV1p2beta1LocalizedObjectAnnotation());
-  return o;
-}
-
-void checkUnnamed3451(
-    core.List<api.GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p2beta1LocalizedObjectAnnotation(
-      o[0] as api.GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation);
-  checkGoogleCloudVisionV1p2beta1LocalizedObjectAnnotation(
-      o[1] as api.GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation);
-}
-
-core.List<api.GoogleCloudVisionV1p2beta1EntityAnnotation> buildUnnamed3452() {
+core.List<api.GoogleCloudVisionV1p2beta1EntityAnnotation> buildUnnamed3451() {
   var o = <api.GoogleCloudVisionV1p2beta1EntityAnnotation>[];
   o.add(buildGoogleCloudVisionV1p2beta1EntityAnnotation());
   o.add(buildGoogleCloudVisionV1p2beta1EntityAnnotation());
   return o;
 }
 
-void checkUnnamed3452(
+void checkUnnamed3451(
     core.List<api.GoogleCloudVisionV1p2beta1EntityAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p2beta1EntityAnnotation(
       o[0] as api.GoogleCloudVisionV1p2beta1EntityAnnotation);
   checkGoogleCloudVisionV1p2beta1EntityAnnotation(
       o[1] as api.GoogleCloudVisionV1p2beta1EntityAnnotation);
+}
+
+core.List<api.GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation>
+    buildUnnamed3452() {
+  var o = <api.GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation>[];
+  o.add(buildGoogleCloudVisionV1p2beta1LocalizedObjectAnnotation());
+  o.add(buildGoogleCloudVisionV1p2beta1LocalizedObjectAnnotation());
+  return o;
+}
+
+void checkUnnamed3452(
+    core.List<api.GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudVisionV1p2beta1LocalizedObjectAnnotation(
+      o[0] as api.GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation);
+  checkGoogleCloudVisionV1p2beta1LocalizedObjectAnnotation(
+      o[1] as api.GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation);
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1EntityAnnotation> buildUnnamed3453() {
@@ -3485,6 +3469,22 @@ void checkUnnamed3453(
       o[1] as api.GoogleCloudVisionV1p2beta1EntityAnnotation);
 }
 
+core.List<api.GoogleCloudVisionV1p2beta1EntityAnnotation> buildUnnamed3454() {
+  var o = <api.GoogleCloudVisionV1p2beta1EntityAnnotation>[];
+  o.add(buildGoogleCloudVisionV1p2beta1EntityAnnotation());
+  o.add(buildGoogleCloudVisionV1p2beta1EntityAnnotation());
+  return o;
+}
+
+void checkUnnamed3454(
+    core.List<api.GoogleCloudVisionV1p2beta1EntityAnnotation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudVisionV1p2beta1EntityAnnotation(
+      o[0] as api.GoogleCloudVisionV1p2beta1EntityAnnotation);
+  checkGoogleCloudVisionV1p2beta1EntityAnnotation(
+      o[1] as api.GoogleCloudVisionV1p2beta1EntityAnnotation);
+}
+
 core.int buildCounterGoogleCloudVisionV1p2beta1AnnotateImageResponse = 0;
 api.GoogleCloudVisionV1p2beta1AnnotateImageResponse
     buildGoogleCloudVisionV1p2beta1AnnotateImageResponse() {
@@ -3495,19 +3495,19 @@ api.GoogleCloudVisionV1p2beta1AnnotateImageResponse
     o.cropHintsAnnotation =
         buildGoogleCloudVisionV1p2beta1CropHintsAnnotation();
     o.error = buildStatus();
-    o.faceAnnotations = buildUnnamed3448();
+    o.faceAnnotations = buildUnnamed3449();
     o.fullTextAnnotation = buildGoogleCloudVisionV1p2beta1TextAnnotation();
     o.imagePropertiesAnnotation =
         buildGoogleCloudVisionV1p2beta1ImageProperties();
-    o.labelAnnotations = buildUnnamed3449();
-    o.landmarkAnnotations = buildUnnamed3450();
-    o.localizedObjectAnnotations = buildUnnamed3451();
-    o.logoAnnotations = buildUnnamed3452();
+    o.labelAnnotations = buildUnnamed3450();
+    o.landmarkAnnotations = buildUnnamed3451();
+    o.localizedObjectAnnotations = buildUnnamed3452();
+    o.logoAnnotations = buildUnnamed3453();
     o.productSearchResults =
         buildGoogleCloudVisionV1p2beta1ProductSearchResults();
     o.safeSearchAnnotation =
         buildGoogleCloudVisionV1p2beta1SafeSearchAnnotation();
-    o.textAnnotations = buildUnnamed3453();
+    o.textAnnotations = buildUnnamed3454();
     o.webDetection = buildGoogleCloudVisionV1p2beta1WebDetection();
   }
   buildCounterGoogleCloudVisionV1p2beta1AnnotateImageResponse--;
@@ -3523,20 +3523,20 @@ void checkGoogleCloudVisionV1p2beta1AnnotateImageResponse(
     checkGoogleCloudVisionV1p2beta1CropHintsAnnotation(o.cropHintsAnnotation!
         as api.GoogleCloudVisionV1p2beta1CropHintsAnnotation);
     checkStatus(o.error! as api.Status);
-    checkUnnamed3448(o.faceAnnotations!);
+    checkUnnamed3449(o.faceAnnotations!);
     checkGoogleCloudVisionV1p2beta1TextAnnotation(
         o.fullTextAnnotation! as api.GoogleCloudVisionV1p2beta1TextAnnotation);
     checkGoogleCloudVisionV1p2beta1ImageProperties(o.imagePropertiesAnnotation!
         as api.GoogleCloudVisionV1p2beta1ImageProperties);
-    checkUnnamed3449(o.labelAnnotations!);
-    checkUnnamed3450(o.landmarkAnnotations!);
-    checkUnnamed3451(o.localizedObjectAnnotations!);
-    checkUnnamed3452(o.logoAnnotations!);
+    checkUnnamed3450(o.labelAnnotations!);
+    checkUnnamed3451(o.landmarkAnnotations!);
+    checkUnnamed3452(o.localizedObjectAnnotations!);
+    checkUnnamed3453(o.logoAnnotations!);
     checkGoogleCloudVisionV1p2beta1ProductSearchResults(o.productSearchResults!
         as api.GoogleCloudVisionV1p2beta1ProductSearchResults);
     checkGoogleCloudVisionV1p2beta1SafeSearchAnnotation(o.safeSearchAnnotation!
         as api.GoogleCloudVisionV1p2beta1SafeSearchAnnotation);
-    checkUnnamed3453(o.textAnnotations!);
+    checkUnnamed3454(o.textAnnotations!);
     checkGoogleCloudVisionV1p2beta1WebDetection(
         o.webDetection! as api.GoogleCloudVisionV1p2beta1WebDetection);
   }
@@ -3566,14 +3566,14 @@ void checkGoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse(
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse>
-    buildUnnamed3454() {
+    buildUnnamed3455() {
   var o = <api.GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse>[];
   o.add(buildGoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse());
   o.add(buildGoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse());
   return o;
 }
 
-void checkUnnamed3454(
+void checkUnnamed3455(
     core.List<api.GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse(
@@ -3590,7 +3590,7 @@ api.GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse
   buildCounterGoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse++;
   if (buildCounterGoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse <
       3) {
-    o.responses = buildUnnamed3454();
+    o.responses = buildUnnamed3455();
   }
   buildCounterGoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse--;
   return o;
@@ -3601,19 +3601,19 @@ void checkGoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse(
   buildCounterGoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse++;
   if (buildCounterGoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse <
       3) {
-    checkUnnamed3454(o.responses!);
+    checkUnnamed3455(o.responses!);
   }
   buildCounterGoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse--;
 }
 
-core.List<api.GoogleCloudVisionV1p2beta1Paragraph> buildUnnamed3455() {
+core.List<api.GoogleCloudVisionV1p2beta1Paragraph> buildUnnamed3456() {
   var o = <api.GoogleCloudVisionV1p2beta1Paragraph>[];
   o.add(buildGoogleCloudVisionV1p2beta1Paragraph());
   o.add(buildGoogleCloudVisionV1p2beta1Paragraph());
   return o;
 }
 
-void checkUnnamed3455(core.List<api.GoogleCloudVisionV1p2beta1Paragraph> o) {
+void checkUnnamed3456(core.List<api.GoogleCloudVisionV1p2beta1Paragraph> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p2beta1Paragraph(
       o[0] as api.GoogleCloudVisionV1p2beta1Paragraph);
@@ -3629,7 +3629,7 @@ api.GoogleCloudVisionV1p2beta1Block buildGoogleCloudVisionV1p2beta1Block() {
     o.blockType = 'foo';
     o.boundingBox = buildGoogleCloudVisionV1p2beta1BoundingPoly();
     o.confidence = 42.0;
-    o.paragraphs = buildUnnamed3455();
+    o.paragraphs = buildUnnamed3456();
     o.property = buildGoogleCloudVisionV1p2beta1TextAnnotationTextProperty();
   }
   buildCounterGoogleCloudVisionV1p2beta1Block--;
@@ -3650,21 +3650,21 @@ void checkGoogleCloudVisionV1p2beta1Block(
       o.confidence!,
       unittest.equals(42.0),
     );
-    checkUnnamed3455(o.paragraphs!);
+    checkUnnamed3456(o.paragraphs!);
     checkGoogleCloudVisionV1p2beta1TextAnnotationTextProperty(o.property!
         as api.GoogleCloudVisionV1p2beta1TextAnnotationTextProperty);
   }
   buildCounterGoogleCloudVisionV1p2beta1Block--;
 }
 
-core.List<api.GoogleCloudVisionV1p2beta1NormalizedVertex> buildUnnamed3456() {
+core.List<api.GoogleCloudVisionV1p2beta1NormalizedVertex> buildUnnamed3457() {
   var o = <api.GoogleCloudVisionV1p2beta1NormalizedVertex>[];
   o.add(buildGoogleCloudVisionV1p2beta1NormalizedVertex());
   o.add(buildGoogleCloudVisionV1p2beta1NormalizedVertex());
   return o;
 }
 
-void checkUnnamed3456(
+void checkUnnamed3457(
     core.List<api.GoogleCloudVisionV1p2beta1NormalizedVertex> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p2beta1NormalizedVertex(
@@ -3673,14 +3673,14 @@ void checkUnnamed3456(
       o[1] as api.GoogleCloudVisionV1p2beta1NormalizedVertex);
 }
 
-core.List<api.GoogleCloudVisionV1p2beta1Vertex> buildUnnamed3457() {
+core.List<api.GoogleCloudVisionV1p2beta1Vertex> buildUnnamed3458() {
   var o = <api.GoogleCloudVisionV1p2beta1Vertex>[];
   o.add(buildGoogleCloudVisionV1p2beta1Vertex());
   o.add(buildGoogleCloudVisionV1p2beta1Vertex());
   return o;
 }
 
-void checkUnnamed3457(core.List<api.GoogleCloudVisionV1p2beta1Vertex> o) {
+void checkUnnamed3458(core.List<api.GoogleCloudVisionV1p2beta1Vertex> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p2beta1Vertex(
       o[0] as api.GoogleCloudVisionV1p2beta1Vertex);
@@ -3694,8 +3694,8 @@ api.GoogleCloudVisionV1p2beta1BoundingPoly
   var o = api.GoogleCloudVisionV1p2beta1BoundingPoly();
   buildCounterGoogleCloudVisionV1p2beta1BoundingPoly++;
   if (buildCounterGoogleCloudVisionV1p2beta1BoundingPoly < 3) {
-    o.normalizedVertices = buildUnnamed3456();
-    o.vertices = buildUnnamed3457();
+    o.normalizedVertices = buildUnnamed3457();
+    o.vertices = buildUnnamed3458();
   }
   buildCounterGoogleCloudVisionV1p2beta1BoundingPoly--;
   return o;
@@ -3705,8 +3705,8 @@ void checkGoogleCloudVisionV1p2beta1BoundingPoly(
     api.GoogleCloudVisionV1p2beta1BoundingPoly o) {
   buildCounterGoogleCloudVisionV1p2beta1BoundingPoly++;
   if (buildCounterGoogleCloudVisionV1p2beta1BoundingPoly < 3) {
-    checkUnnamed3456(o.normalizedVertices!);
-    checkUnnamed3457(o.vertices!);
+    checkUnnamed3457(o.normalizedVertices!);
+    checkUnnamed3458(o.vertices!);
   }
   buildCounterGoogleCloudVisionV1p2beta1BoundingPoly--;
 }
@@ -3774,14 +3774,14 @@ void checkGoogleCloudVisionV1p2beta1CropHint(
   buildCounterGoogleCloudVisionV1p2beta1CropHint--;
 }
 
-core.List<api.GoogleCloudVisionV1p2beta1CropHint> buildUnnamed3458() {
+core.List<api.GoogleCloudVisionV1p2beta1CropHint> buildUnnamed3459() {
   var o = <api.GoogleCloudVisionV1p2beta1CropHint>[];
   o.add(buildGoogleCloudVisionV1p2beta1CropHint());
   o.add(buildGoogleCloudVisionV1p2beta1CropHint());
   return o;
 }
 
-void checkUnnamed3458(core.List<api.GoogleCloudVisionV1p2beta1CropHint> o) {
+void checkUnnamed3459(core.List<api.GoogleCloudVisionV1p2beta1CropHint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p2beta1CropHint(
       o[0] as api.GoogleCloudVisionV1p2beta1CropHint);
@@ -3795,7 +3795,7 @@ api.GoogleCloudVisionV1p2beta1CropHintsAnnotation
   var o = api.GoogleCloudVisionV1p2beta1CropHintsAnnotation();
   buildCounterGoogleCloudVisionV1p2beta1CropHintsAnnotation++;
   if (buildCounterGoogleCloudVisionV1p2beta1CropHintsAnnotation < 3) {
-    o.cropHints = buildUnnamed3458();
+    o.cropHints = buildUnnamed3459();
   }
   buildCounterGoogleCloudVisionV1p2beta1CropHintsAnnotation--;
   return o;
@@ -3805,19 +3805,19 @@ void checkGoogleCloudVisionV1p2beta1CropHintsAnnotation(
     api.GoogleCloudVisionV1p2beta1CropHintsAnnotation o) {
   buildCounterGoogleCloudVisionV1p2beta1CropHintsAnnotation++;
   if (buildCounterGoogleCloudVisionV1p2beta1CropHintsAnnotation < 3) {
-    checkUnnamed3458(o.cropHints!);
+    checkUnnamed3459(o.cropHints!);
   }
   buildCounterGoogleCloudVisionV1p2beta1CropHintsAnnotation--;
 }
 
-core.List<api.GoogleCloudVisionV1p2beta1ColorInfo> buildUnnamed3459() {
+core.List<api.GoogleCloudVisionV1p2beta1ColorInfo> buildUnnamed3460() {
   var o = <api.GoogleCloudVisionV1p2beta1ColorInfo>[];
   o.add(buildGoogleCloudVisionV1p2beta1ColorInfo());
   o.add(buildGoogleCloudVisionV1p2beta1ColorInfo());
   return o;
 }
 
-void checkUnnamed3459(core.List<api.GoogleCloudVisionV1p2beta1ColorInfo> o) {
+void checkUnnamed3460(core.List<api.GoogleCloudVisionV1p2beta1ColorInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p2beta1ColorInfo(
       o[0] as api.GoogleCloudVisionV1p2beta1ColorInfo);
@@ -3831,7 +3831,7 @@ api.GoogleCloudVisionV1p2beta1DominantColorsAnnotation
   var o = api.GoogleCloudVisionV1p2beta1DominantColorsAnnotation();
   buildCounterGoogleCloudVisionV1p2beta1DominantColorsAnnotation++;
   if (buildCounterGoogleCloudVisionV1p2beta1DominantColorsAnnotation < 3) {
-    o.colors = buildUnnamed3459();
+    o.colors = buildUnnamed3460();
   }
   buildCounterGoogleCloudVisionV1p2beta1DominantColorsAnnotation--;
   return o;
@@ -3841,19 +3841,19 @@ void checkGoogleCloudVisionV1p2beta1DominantColorsAnnotation(
     api.GoogleCloudVisionV1p2beta1DominantColorsAnnotation o) {
   buildCounterGoogleCloudVisionV1p2beta1DominantColorsAnnotation++;
   if (buildCounterGoogleCloudVisionV1p2beta1DominantColorsAnnotation < 3) {
-    checkUnnamed3459(o.colors!);
+    checkUnnamed3460(o.colors!);
   }
   buildCounterGoogleCloudVisionV1p2beta1DominantColorsAnnotation--;
 }
 
-core.List<api.GoogleCloudVisionV1p2beta1LocationInfo> buildUnnamed3460() {
+core.List<api.GoogleCloudVisionV1p2beta1LocationInfo> buildUnnamed3461() {
   var o = <api.GoogleCloudVisionV1p2beta1LocationInfo>[];
   o.add(buildGoogleCloudVisionV1p2beta1LocationInfo());
   o.add(buildGoogleCloudVisionV1p2beta1LocationInfo());
   return o;
 }
 
-void checkUnnamed3460(core.List<api.GoogleCloudVisionV1p2beta1LocationInfo> o) {
+void checkUnnamed3461(core.List<api.GoogleCloudVisionV1p2beta1LocationInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p2beta1LocationInfo(
       o[0] as api.GoogleCloudVisionV1p2beta1LocationInfo);
@@ -3861,14 +3861,14 @@ void checkUnnamed3460(core.List<api.GoogleCloudVisionV1p2beta1LocationInfo> o) {
       o[1] as api.GoogleCloudVisionV1p2beta1LocationInfo);
 }
 
-core.List<api.GoogleCloudVisionV1p2beta1Property> buildUnnamed3461() {
+core.List<api.GoogleCloudVisionV1p2beta1Property> buildUnnamed3462() {
   var o = <api.GoogleCloudVisionV1p2beta1Property>[];
   o.add(buildGoogleCloudVisionV1p2beta1Property());
   o.add(buildGoogleCloudVisionV1p2beta1Property());
   return o;
 }
 
-void checkUnnamed3461(core.List<api.GoogleCloudVisionV1p2beta1Property> o) {
+void checkUnnamed3462(core.List<api.GoogleCloudVisionV1p2beta1Property> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p2beta1Property(
       o[0] as api.GoogleCloudVisionV1p2beta1Property);
@@ -3886,9 +3886,9 @@ api.GoogleCloudVisionV1p2beta1EntityAnnotation
     o.confidence = 42.0;
     o.description = 'foo';
     o.locale = 'foo';
-    o.locations = buildUnnamed3460();
+    o.locations = buildUnnamed3461();
     o.mid = 'foo';
-    o.properties = buildUnnamed3461();
+    o.properties = buildUnnamed3462();
     o.score = 42.0;
     o.topicality = 42.0;
   }
@@ -3914,12 +3914,12 @@ void checkGoogleCloudVisionV1p2beta1EntityAnnotation(
       o.locale!,
       unittest.equals('foo'),
     );
-    checkUnnamed3460(o.locations!);
+    checkUnnamed3461(o.locations!);
     unittest.expect(
       o.mid!,
       unittest.equals('foo'),
     );
-    checkUnnamed3461(o.properties!);
+    checkUnnamed3462(o.properties!);
     unittest.expect(
       o.score!,
       unittest.equals(42.0),
@@ -3933,14 +3933,14 @@ void checkGoogleCloudVisionV1p2beta1EntityAnnotation(
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1FaceAnnotationLandmark>
-    buildUnnamed3462() {
+    buildUnnamed3463() {
   var o = <api.GoogleCloudVisionV1p2beta1FaceAnnotationLandmark>[];
   o.add(buildGoogleCloudVisionV1p2beta1FaceAnnotationLandmark());
   o.add(buildGoogleCloudVisionV1p2beta1FaceAnnotationLandmark());
   return o;
 }
 
-void checkUnnamed3462(
+void checkUnnamed3463(
     core.List<api.GoogleCloudVisionV1p2beta1FaceAnnotationLandmark> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p2beta1FaceAnnotationLandmark(
@@ -3963,7 +3963,7 @@ api.GoogleCloudVisionV1p2beta1FaceAnnotation
     o.headwearLikelihood = 'foo';
     o.joyLikelihood = 'foo';
     o.landmarkingConfidence = 42.0;
-    o.landmarks = buildUnnamed3462();
+    o.landmarks = buildUnnamed3463();
     o.panAngle = 42.0;
     o.rollAngle = 42.0;
     o.sorrowLikelihood = 'foo';
@@ -4007,7 +4007,7 @@ void checkGoogleCloudVisionV1p2beta1FaceAnnotation(
       o.landmarkingConfidence!,
       unittest.equals(42.0),
     );
-    checkUnnamed3462(o.landmarks!);
+    checkUnnamed3463(o.landmarks!);
     unittest.expect(
       o.panAngle!,
       unittest.equals(42.0),
@@ -4348,14 +4348,14 @@ void checkGoogleCloudVisionV1p2beta1OutputConfig(
   buildCounterGoogleCloudVisionV1p2beta1OutputConfig--;
 }
 
-core.List<api.GoogleCloudVisionV1p2beta1Block> buildUnnamed3463() {
+core.List<api.GoogleCloudVisionV1p2beta1Block> buildUnnamed3464() {
   var o = <api.GoogleCloudVisionV1p2beta1Block>[];
   o.add(buildGoogleCloudVisionV1p2beta1Block());
   o.add(buildGoogleCloudVisionV1p2beta1Block());
   return o;
 }
 
-void checkUnnamed3463(core.List<api.GoogleCloudVisionV1p2beta1Block> o) {
+void checkUnnamed3464(core.List<api.GoogleCloudVisionV1p2beta1Block> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p2beta1Block(
       o[0] as api.GoogleCloudVisionV1p2beta1Block);
@@ -4368,7 +4368,7 @@ api.GoogleCloudVisionV1p2beta1Page buildGoogleCloudVisionV1p2beta1Page() {
   var o = api.GoogleCloudVisionV1p2beta1Page();
   buildCounterGoogleCloudVisionV1p2beta1Page++;
   if (buildCounterGoogleCloudVisionV1p2beta1Page < 3) {
-    o.blocks = buildUnnamed3463();
+    o.blocks = buildUnnamed3464();
     o.confidence = 42.0;
     o.height = 42;
     o.property = buildGoogleCloudVisionV1p2beta1TextAnnotationTextProperty();
@@ -4381,7 +4381,7 @@ api.GoogleCloudVisionV1p2beta1Page buildGoogleCloudVisionV1p2beta1Page() {
 void checkGoogleCloudVisionV1p2beta1Page(api.GoogleCloudVisionV1p2beta1Page o) {
   buildCounterGoogleCloudVisionV1p2beta1Page++;
   if (buildCounterGoogleCloudVisionV1p2beta1Page < 3) {
-    checkUnnamed3463(o.blocks!);
+    checkUnnamed3464(o.blocks!);
     unittest.expect(
       o.confidence!,
       unittest.equals(42.0),
@@ -4400,14 +4400,14 @@ void checkGoogleCloudVisionV1p2beta1Page(api.GoogleCloudVisionV1p2beta1Page o) {
   buildCounterGoogleCloudVisionV1p2beta1Page--;
 }
 
-core.List<api.GoogleCloudVisionV1p2beta1Word> buildUnnamed3464() {
+core.List<api.GoogleCloudVisionV1p2beta1Word> buildUnnamed3465() {
   var o = <api.GoogleCloudVisionV1p2beta1Word>[];
   o.add(buildGoogleCloudVisionV1p2beta1Word());
   o.add(buildGoogleCloudVisionV1p2beta1Word());
   return o;
 }
 
-void checkUnnamed3464(core.List<api.GoogleCloudVisionV1p2beta1Word> o) {
+void checkUnnamed3465(core.List<api.GoogleCloudVisionV1p2beta1Word> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p2beta1Word(
       o[0] as api.GoogleCloudVisionV1p2beta1Word);
@@ -4424,7 +4424,7 @@ api.GoogleCloudVisionV1p2beta1Paragraph
     o.boundingBox = buildGoogleCloudVisionV1p2beta1BoundingPoly();
     o.confidence = 42.0;
     o.property = buildGoogleCloudVisionV1p2beta1TextAnnotationTextProperty();
-    o.words = buildUnnamed3464();
+    o.words = buildUnnamed3465();
   }
   buildCounterGoogleCloudVisionV1p2beta1Paragraph--;
   return o;
@@ -4442,7 +4442,7 @@ void checkGoogleCloudVisionV1p2beta1Paragraph(
     );
     checkGoogleCloudVisionV1p2beta1TextAnnotationTextProperty(o.property!
         as api.GoogleCloudVisionV1p2beta1TextAnnotationTextProperty);
-    checkUnnamed3464(o.words!);
+    checkUnnamed3465(o.words!);
   }
   buildCounterGoogleCloudVisionV1p2beta1Paragraph--;
 }
@@ -4481,14 +4481,14 @@ void checkGoogleCloudVisionV1p2beta1Position(
   buildCounterGoogleCloudVisionV1p2beta1Position--;
 }
 
-core.List<api.GoogleCloudVisionV1p2beta1ProductKeyValue> buildUnnamed3465() {
+core.List<api.GoogleCloudVisionV1p2beta1ProductKeyValue> buildUnnamed3466() {
   var o = <api.GoogleCloudVisionV1p2beta1ProductKeyValue>[];
   o.add(buildGoogleCloudVisionV1p2beta1ProductKeyValue());
   o.add(buildGoogleCloudVisionV1p2beta1ProductKeyValue());
   return o;
 }
 
-void checkUnnamed3465(
+void checkUnnamed3466(
     core.List<api.GoogleCloudVisionV1p2beta1ProductKeyValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p2beta1ProductKeyValue(
@@ -4506,7 +4506,7 @@ api.GoogleCloudVisionV1p2beta1Product buildGoogleCloudVisionV1p2beta1Product() {
     o.displayName = 'foo';
     o.name = 'foo';
     o.productCategory = 'foo';
-    o.productLabels = buildUnnamed3465();
+    o.productLabels = buildUnnamed3466();
   }
   buildCounterGoogleCloudVisionV1p2beta1Product--;
   return o;
@@ -4532,7 +4532,7 @@ void checkGoogleCloudVisionV1p2beta1Product(
       o.productCategory!,
       unittest.equals('foo'),
     );
-    checkUnnamed3465(o.productLabels!);
+    checkUnnamed3466(o.productLabels!);
   }
   buildCounterGoogleCloudVisionV1p2beta1Product--;
 }
@@ -4567,14 +4567,14 @@ void checkGoogleCloudVisionV1p2beta1ProductKeyValue(
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult>
-    buildUnnamed3466() {
+    buildUnnamed3467() {
   var o = <api.GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult>[];
   o.add(buildGoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult());
   o.add(buildGoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult());
   return o;
 }
 
-void checkUnnamed3466(
+void checkUnnamed3467(
     core.List<api.GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -4585,14 +4585,14 @@ void checkUnnamed3466(
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1ProductSearchResultsResult>
-    buildUnnamed3467() {
+    buildUnnamed3468() {
   var o = <api.GoogleCloudVisionV1p2beta1ProductSearchResultsResult>[];
   o.add(buildGoogleCloudVisionV1p2beta1ProductSearchResultsResult());
   o.add(buildGoogleCloudVisionV1p2beta1ProductSearchResultsResult());
   return o;
 }
 
-void checkUnnamed3467(
+void checkUnnamed3468(
     core.List<api.GoogleCloudVisionV1p2beta1ProductSearchResultsResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p2beta1ProductSearchResultsResult(
@@ -4608,8 +4608,8 @@ api.GoogleCloudVisionV1p2beta1ProductSearchResults
   buildCounterGoogleCloudVisionV1p2beta1ProductSearchResults++;
   if (buildCounterGoogleCloudVisionV1p2beta1ProductSearchResults < 3) {
     o.indexTime = 'foo';
-    o.productGroupedResults = buildUnnamed3466();
-    o.results = buildUnnamed3467();
+    o.productGroupedResults = buildUnnamed3467();
+    o.results = buildUnnamed3468();
   }
   buildCounterGoogleCloudVisionV1p2beta1ProductSearchResults--;
   return o;
@@ -4623,14 +4623,14 @@ void checkGoogleCloudVisionV1p2beta1ProductSearchResults(
       o.indexTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed3466(o.productGroupedResults!);
-    checkUnnamed3467(o.results!);
+    checkUnnamed3467(o.productGroupedResults!);
+    checkUnnamed3468(o.results!);
   }
   buildCounterGoogleCloudVisionV1p2beta1ProductSearchResults--;
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation>
-    buildUnnamed3468() {
+    buildUnnamed3469() {
   var o =
       <api.GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation>[];
   o.add(buildGoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation());
@@ -4638,7 +4638,7 @@ core.List<api.GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation>
   return o;
 }
 
-void checkUnnamed3468(
+void checkUnnamed3469(
     core.List<
             api.GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation>
         o) {
@@ -4650,14 +4650,14 @@ void checkUnnamed3468(
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1ProductSearchResultsResult>
-    buildUnnamed3469() {
+    buildUnnamed3470() {
   var o = <api.GoogleCloudVisionV1p2beta1ProductSearchResultsResult>[];
   o.add(buildGoogleCloudVisionV1p2beta1ProductSearchResultsResult());
   o.add(buildGoogleCloudVisionV1p2beta1ProductSearchResultsResult());
   return o;
 }
 
-void checkUnnamed3469(
+void checkUnnamed3470(
     core.List<api.GoogleCloudVisionV1p2beta1ProductSearchResultsResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p2beta1ProductSearchResultsResult(
@@ -4675,8 +4675,8 @@ api.GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult
   if (buildCounterGoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult <
       3) {
     o.boundingPoly = buildGoogleCloudVisionV1p2beta1BoundingPoly();
-    o.objectAnnotations = buildUnnamed3468();
-    o.results = buildUnnamed3469();
+    o.objectAnnotations = buildUnnamed3469();
+    o.results = buildUnnamed3470();
   }
   buildCounterGoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult--;
   return o;
@@ -4689,8 +4689,8 @@ void checkGoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult(
       3) {
     checkGoogleCloudVisionV1p2beta1BoundingPoly(
         o.boundingPoly! as api.GoogleCloudVisionV1p2beta1BoundingPoly);
-    checkUnnamed3468(o.objectAnnotations!);
-    checkUnnamed3469(o.results!);
+    checkUnnamed3469(o.objectAnnotations!);
+    checkUnnamed3470(o.results!);
   }
   buildCounterGoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult--;
 }
@@ -4882,14 +4882,14 @@ void checkGoogleCloudVisionV1p2beta1Symbol(
   buildCounterGoogleCloudVisionV1p2beta1Symbol--;
 }
 
-core.List<api.GoogleCloudVisionV1p2beta1Page> buildUnnamed3470() {
+core.List<api.GoogleCloudVisionV1p2beta1Page> buildUnnamed3471() {
   var o = <api.GoogleCloudVisionV1p2beta1Page>[];
   o.add(buildGoogleCloudVisionV1p2beta1Page());
   o.add(buildGoogleCloudVisionV1p2beta1Page());
   return o;
 }
 
-void checkUnnamed3470(core.List<api.GoogleCloudVisionV1p2beta1Page> o) {
+void checkUnnamed3471(core.List<api.GoogleCloudVisionV1p2beta1Page> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p2beta1Page(
       o[0] as api.GoogleCloudVisionV1p2beta1Page);
@@ -4903,7 +4903,7 @@ api.GoogleCloudVisionV1p2beta1TextAnnotation
   var o = api.GoogleCloudVisionV1p2beta1TextAnnotation();
   buildCounterGoogleCloudVisionV1p2beta1TextAnnotation++;
   if (buildCounterGoogleCloudVisionV1p2beta1TextAnnotation < 3) {
-    o.pages = buildUnnamed3470();
+    o.pages = buildUnnamed3471();
     o.text = 'foo';
   }
   buildCounterGoogleCloudVisionV1p2beta1TextAnnotation--;
@@ -4914,7 +4914,7 @@ void checkGoogleCloudVisionV1p2beta1TextAnnotation(
     api.GoogleCloudVisionV1p2beta1TextAnnotation o) {
   buildCounterGoogleCloudVisionV1p2beta1TextAnnotation++;
   if (buildCounterGoogleCloudVisionV1p2beta1TextAnnotation < 3) {
-    checkUnnamed3470(o.pages!);
+    checkUnnamed3471(o.pages!);
     unittest.expect(
       o.text!,
       unittest.equals('foo'),
@@ -4982,14 +4982,14 @@ void checkGoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage(
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage>
-    buildUnnamed3471() {
+    buildUnnamed3472() {
   var o = <api.GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage>[];
   o.add(buildGoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage());
   o.add(buildGoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage());
   return o;
 }
 
-void checkUnnamed3471(
+void checkUnnamed3472(
     core.List<api.GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage(
@@ -5006,7 +5006,7 @@ api.GoogleCloudVisionV1p2beta1TextAnnotationTextProperty
   if (buildCounterGoogleCloudVisionV1p2beta1TextAnnotationTextProperty < 3) {
     o.detectedBreak =
         buildGoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak();
-    o.detectedLanguages = buildUnnamed3471();
+    o.detectedLanguages = buildUnnamed3472();
   }
   buildCounterGoogleCloudVisionV1p2beta1TextAnnotationTextProperty--;
   return o;
@@ -5018,7 +5018,7 @@ void checkGoogleCloudVisionV1p2beta1TextAnnotationTextProperty(
   if (buildCounterGoogleCloudVisionV1p2beta1TextAnnotationTextProperty < 3) {
     checkGoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak(o.detectedBreak!
         as api.GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak);
-    checkUnnamed3471(o.detectedLanguages!);
+    checkUnnamed3472(o.detectedLanguages!);
   }
   buildCounterGoogleCloudVisionV1p2beta1TextAnnotationTextProperty--;
 }
@@ -5052,14 +5052,14 @@ void checkGoogleCloudVisionV1p2beta1Vertex(
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebLabel>
-    buildUnnamed3472() {
+    buildUnnamed3473() {
   var o = <api.GoogleCloudVisionV1p2beta1WebDetectionWebLabel>[];
   o.add(buildGoogleCloudVisionV1p2beta1WebDetectionWebLabel());
   o.add(buildGoogleCloudVisionV1p2beta1WebDetectionWebLabel());
   return o;
 }
 
-void checkUnnamed3472(
+void checkUnnamed3473(
     core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebLabel> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p2beta1WebDetectionWebLabel(
@@ -5069,14 +5069,14 @@ void checkUnnamed3472(
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebImage>
-    buildUnnamed3473() {
+    buildUnnamed3474() {
   var o = <api.GoogleCloudVisionV1p2beta1WebDetectionWebImage>[];
   o.add(buildGoogleCloudVisionV1p2beta1WebDetectionWebImage());
   o.add(buildGoogleCloudVisionV1p2beta1WebDetectionWebImage());
   return o;
 }
 
-void checkUnnamed3473(
+void checkUnnamed3474(
     core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebImage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p2beta1WebDetectionWebImage(
@@ -5086,37 +5086,20 @@ void checkUnnamed3473(
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebPage>
-    buildUnnamed3474() {
+    buildUnnamed3475() {
   var o = <api.GoogleCloudVisionV1p2beta1WebDetectionWebPage>[];
   o.add(buildGoogleCloudVisionV1p2beta1WebDetectionWebPage());
   o.add(buildGoogleCloudVisionV1p2beta1WebDetectionWebPage());
   return o;
 }
 
-void checkUnnamed3474(
+void checkUnnamed3475(
     core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebPage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p2beta1WebDetectionWebPage(
       o[0] as api.GoogleCloudVisionV1p2beta1WebDetectionWebPage);
   checkGoogleCloudVisionV1p2beta1WebDetectionWebPage(
       o[1] as api.GoogleCloudVisionV1p2beta1WebDetectionWebPage);
-}
-
-core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebImage>
-    buildUnnamed3475() {
-  var o = <api.GoogleCloudVisionV1p2beta1WebDetectionWebImage>[];
-  o.add(buildGoogleCloudVisionV1p2beta1WebDetectionWebImage());
-  o.add(buildGoogleCloudVisionV1p2beta1WebDetectionWebImage());
-  return o;
-}
-
-void checkUnnamed3475(
-    core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebImage> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p2beta1WebDetectionWebImage(
-      o[0] as api.GoogleCloudVisionV1p2beta1WebDetectionWebImage);
-  checkGoogleCloudVisionV1p2beta1WebDetectionWebImage(
-      o[1] as api.GoogleCloudVisionV1p2beta1WebDetectionWebImage);
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebImage>
@@ -5136,15 +5119,32 @@ void checkUnnamed3476(
       o[1] as api.GoogleCloudVisionV1p2beta1WebDetectionWebImage);
 }
 
-core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebEntity>
+core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebImage>
     buildUnnamed3477() {
+  var o = <api.GoogleCloudVisionV1p2beta1WebDetectionWebImage>[];
+  o.add(buildGoogleCloudVisionV1p2beta1WebDetectionWebImage());
+  o.add(buildGoogleCloudVisionV1p2beta1WebDetectionWebImage());
+  return o;
+}
+
+void checkUnnamed3477(
+    core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebImage> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudVisionV1p2beta1WebDetectionWebImage(
+      o[0] as api.GoogleCloudVisionV1p2beta1WebDetectionWebImage);
+  checkGoogleCloudVisionV1p2beta1WebDetectionWebImage(
+      o[1] as api.GoogleCloudVisionV1p2beta1WebDetectionWebImage);
+}
+
+core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebEntity>
+    buildUnnamed3478() {
   var o = <api.GoogleCloudVisionV1p2beta1WebDetectionWebEntity>[];
   o.add(buildGoogleCloudVisionV1p2beta1WebDetectionWebEntity());
   o.add(buildGoogleCloudVisionV1p2beta1WebDetectionWebEntity());
   return o;
 }
 
-void checkUnnamed3477(
+void checkUnnamed3478(
     core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebEntity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p2beta1WebDetectionWebEntity(
@@ -5159,12 +5159,12 @@ api.GoogleCloudVisionV1p2beta1WebDetection
   var o = api.GoogleCloudVisionV1p2beta1WebDetection();
   buildCounterGoogleCloudVisionV1p2beta1WebDetection++;
   if (buildCounterGoogleCloudVisionV1p2beta1WebDetection < 3) {
-    o.bestGuessLabels = buildUnnamed3472();
-    o.fullMatchingImages = buildUnnamed3473();
-    o.pagesWithMatchingImages = buildUnnamed3474();
-    o.partialMatchingImages = buildUnnamed3475();
-    o.visuallySimilarImages = buildUnnamed3476();
-    o.webEntities = buildUnnamed3477();
+    o.bestGuessLabels = buildUnnamed3473();
+    o.fullMatchingImages = buildUnnamed3474();
+    o.pagesWithMatchingImages = buildUnnamed3475();
+    o.partialMatchingImages = buildUnnamed3476();
+    o.visuallySimilarImages = buildUnnamed3477();
+    o.webEntities = buildUnnamed3478();
   }
   buildCounterGoogleCloudVisionV1p2beta1WebDetection--;
   return o;
@@ -5174,12 +5174,12 @@ void checkGoogleCloudVisionV1p2beta1WebDetection(
     api.GoogleCloudVisionV1p2beta1WebDetection o) {
   buildCounterGoogleCloudVisionV1p2beta1WebDetection++;
   if (buildCounterGoogleCloudVisionV1p2beta1WebDetection < 3) {
-    checkUnnamed3472(o.bestGuessLabels!);
-    checkUnnamed3473(o.fullMatchingImages!);
-    checkUnnamed3474(o.pagesWithMatchingImages!);
-    checkUnnamed3475(o.partialMatchingImages!);
-    checkUnnamed3476(o.visuallySimilarImages!);
-    checkUnnamed3477(o.webEntities!);
+    checkUnnamed3473(o.bestGuessLabels!);
+    checkUnnamed3474(o.fullMatchingImages!);
+    checkUnnamed3475(o.pagesWithMatchingImages!);
+    checkUnnamed3476(o.partialMatchingImages!);
+    checkUnnamed3477(o.visuallySimilarImages!);
+    checkUnnamed3478(o.webEntities!);
   }
   buildCounterGoogleCloudVisionV1p2beta1WebDetection--;
 }
@@ -5277,23 +5277,6 @@ void checkGoogleCloudVisionV1p2beta1WebDetectionWebLabel(
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebImage>
-    buildUnnamed3478() {
-  var o = <api.GoogleCloudVisionV1p2beta1WebDetectionWebImage>[];
-  o.add(buildGoogleCloudVisionV1p2beta1WebDetectionWebImage());
-  o.add(buildGoogleCloudVisionV1p2beta1WebDetectionWebImage());
-  return o;
-}
-
-void checkUnnamed3478(
-    core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebImage> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p2beta1WebDetectionWebImage(
-      o[0] as api.GoogleCloudVisionV1p2beta1WebDetectionWebImage);
-  checkGoogleCloudVisionV1p2beta1WebDetectionWebImage(
-      o[1] as api.GoogleCloudVisionV1p2beta1WebDetectionWebImage);
-}
-
-core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebImage>
     buildUnnamed3479() {
   var o = <api.GoogleCloudVisionV1p2beta1WebDetectionWebImage>[];
   o.add(buildGoogleCloudVisionV1p2beta1WebDetectionWebImage());
@@ -5310,15 +5293,32 @@ void checkUnnamed3479(
       o[1] as api.GoogleCloudVisionV1p2beta1WebDetectionWebImage);
 }
 
+core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebImage>
+    buildUnnamed3480() {
+  var o = <api.GoogleCloudVisionV1p2beta1WebDetectionWebImage>[];
+  o.add(buildGoogleCloudVisionV1p2beta1WebDetectionWebImage());
+  o.add(buildGoogleCloudVisionV1p2beta1WebDetectionWebImage());
+  return o;
+}
+
+void checkUnnamed3480(
+    core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebImage> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudVisionV1p2beta1WebDetectionWebImage(
+      o[0] as api.GoogleCloudVisionV1p2beta1WebDetectionWebImage);
+  checkGoogleCloudVisionV1p2beta1WebDetectionWebImage(
+      o[1] as api.GoogleCloudVisionV1p2beta1WebDetectionWebImage);
+}
+
 core.int buildCounterGoogleCloudVisionV1p2beta1WebDetectionWebPage = 0;
 api.GoogleCloudVisionV1p2beta1WebDetectionWebPage
     buildGoogleCloudVisionV1p2beta1WebDetectionWebPage() {
   var o = api.GoogleCloudVisionV1p2beta1WebDetectionWebPage();
   buildCounterGoogleCloudVisionV1p2beta1WebDetectionWebPage++;
   if (buildCounterGoogleCloudVisionV1p2beta1WebDetectionWebPage < 3) {
-    o.fullMatchingImages = buildUnnamed3478();
+    o.fullMatchingImages = buildUnnamed3479();
     o.pageTitle = 'foo';
-    o.partialMatchingImages = buildUnnamed3479();
+    o.partialMatchingImages = buildUnnamed3480();
     o.score = 42.0;
     o.url = 'foo';
   }
@@ -5330,12 +5330,12 @@ void checkGoogleCloudVisionV1p2beta1WebDetectionWebPage(
     api.GoogleCloudVisionV1p2beta1WebDetectionWebPage o) {
   buildCounterGoogleCloudVisionV1p2beta1WebDetectionWebPage++;
   if (buildCounterGoogleCloudVisionV1p2beta1WebDetectionWebPage < 3) {
-    checkUnnamed3478(o.fullMatchingImages!);
+    checkUnnamed3479(o.fullMatchingImages!);
     unittest.expect(
       o.pageTitle!,
       unittest.equals('foo'),
     );
-    checkUnnamed3479(o.partialMatchingImages!);
+    checkUnnamed3480(o.partialMatchingImages!);
     unittest.expect(
       o.score!,
       unittest.equals(42.0),
@@ -5348,14 +5348,14 @@ void checkGoogleCloudVisionV1p2beta1WebDetectionWebPage(
   buildCounterGoogleCloudVisionV1p2beta1WebDetectionWebPage--;
 }
 
-core.List<api.GoogleCloudVisionV1p2beta1Symbol> buildUnnamed3480() {
+core.List<api.GoogleCloudVisionV1p2beta1Symbol> buildUnnamed3481() {
   var o = <api.GoogleCloudVisionV1p2beta1Symbol>[];
   o.add(buildGoogleCloudVisionV1p2beta1Symbol());
   o.add(buildGoogleCloudVisionV1p2beta1Symbol());
   return o;
 }
 
-void checkUnnamed3480(core.List<api.GoogleCloudVisionV1p2beta1Symbol> o) {
+void checkUnnamed3481(core.List<api.GoogleCloudVisionV1p2beta1Symbol> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p2beta1Symbol(
       o[0] as api.GoogleCloudVisionV1p2beta1Symbol);
@@ -5371,7 +5371,7 @@ api.GoogleCloudVisionV1p2beta1Word buildGoogleCloudVisionV1p2beta1Word() {
     o.boundingBox = buildGoogleCloudVisionV1p2beta1BoundingPoly();
     o.confidence = 42.0;
     o.property = buildGoogleCloudVisionV1p2beta1TextAnnotationTextProperty();
-    o.symbols = buildUnnamed3480();
+    o.symbols = buildUnnamed3481();
   }
   buildCounterGoogleCloudVisionV1p2beta1Word--;
   return o;
@@ -5388,20 +5388,20 @@ void checkGoogleCloudVisionV1p2beta1Word(api.GoogleCloudVisionV1p2beta1Word o) {
     );
     checkGoogleCloudVisionV1p2beta1TextAnnotationTextProperty(o.property!
         as api.GoogleCloudVisionV1p2beta1TextAnnotationTextProperty);
-    checkUnnamed3480(o.symbols!);
+    checkUnnamed3481(o.symbols!);
   }
   buildCounterGoogleCloudVisionV1p2beta1Word--;
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1AnnotateImageResponse>
-    buildUnnamed3481() {
+    buildUnnamed3482() {
   var o = <api.GoogleCloudVisionV1p3beta1AnnotateImageResponse>[];
   o.add(buildGoogleCloudVisionV1p3beta1AnnotateImageResponse());
   o.add(buildGoogleCloudVisionV1p3beta1AnnotateImageResponse());
   return o;
 }
 
-void checkUnnamed3481(
+void checkUnnamed3482(
     core.List<api.GoogleCloudVisionV1p3beta1AnnotateImageResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p3beta1AnnotateImageResponse(
@@ -5418,7 +5418,7 @@ api.GoogleCloudVisionV1p3beta1AnnotateFileResponse
   if (buildCounterGoogleCloudVisionV1p3beta1AnnotateFileResponse < 3) {
     o.error = buildStatus();
     o.inputConfig = buildGoogleCloudVisionV1p3beta1InputConfig();
-    o.responses = buildUnnamed3481();
+    o.responses = buildUnnamed3482();
     o.totalPages = 42;
   }
   buildCounterGoogleCloudVisionV1p3beta1AnnotateFileResponse--;
@@ -5432,7 +5432,7 @@ void checkGoogleCloudVisionV1p3beta1AnnotateFileResponse(
     checkStatus(o.error! as api.Status);
     checkGoogleCloudVisionV1p3beta1InputConfig(
         o.inputConfig! as api.GoogleCloudVisionV1p3beta1InputConfig);
-    checkUnnamed3481(o.responses!);
+    checkUnnamed3482(o.responses!);
     unittest.expect(
       o.totalPages!,
       unittest.equals(42),
@@ -5441,36 +5441,20 @@ void checkGoogleCloudVisionV1p3beta1AnnotateFileResponse(
   buildCounterGoogleCloudVisionV1p3beta1AnnotateFileResponse--;
 }
 
-core.List<api.GoogleCloudVisionV1p3beta1FaceAnnotation> buildUnnamed3482() {
+core.List<api.GoogleCloudVisionV1p3beta1FaceAnnotation> buildUnnamed3483() {
   var o = <api.GoogleCloudVisionV1p3beta1FaceAnnotation>[];
   o.add(buildGoogleCloudVisionV1p3beta1FaceAnnotation());
   o.add(buildGoogleCloudVisionV1p3beta1FaceAnnotation());
   return o;
 }
 
-void checkUnnamed3482(
+void checkUnnamed3483(
     core.List<api.GoogleCloudVisionV1p3beta1FaceAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p3beta1FaceAnnotation(
       o[0] as api.GoogleCloudVisionV1p3beta1FaceAnnotation);
   checkGoogleCloudVisionV1p3beta1FaceAnnotation(
       o[1] as api.GoogleCloudVisionV1p3beta1FaceAnnotation);
-}
-
-core.List<api.GoogleCloudVisionV1p3beta1EntityAnnotation> buildUnnamed3483() {
-  var o = <api.GoogleCloudVisionV1p3beta1EntityAnnotation>[];
-  o.add(buildGoogleCloudVisionV1p3beta1EntityAnnotation());
-  o.add(buildGoogleCloudVisionV1p3beta1EntityAnnotation());
-  return o;
-}
-
-void checkUnnamed3483(
-    core.List<api.GoogleCloudVisionV1p3beta1EntityAnnotation> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p3beta1EntityAnnotation(
-      o[0] as api.GoogleCloudVisionV1p3beta1EntityAnnotation);
-  checkGoogleCloudVisionV1p3beta1EntityAnnotation(
-      o[1] as api.GoogleCloudVisionV1p3beta1EntityAnnotation);
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1EntityAnnotation> buildUnnamed3484() {
@@ -5489,37 +5473,37 @@ void checkUnnamed3484(
       o[1] as api.GoogleCloudVisionV1p3beta1EntityAnnotation);
 }
 
-core.List<api.GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation>
-    buildUnnamed3485() {
-  var o = <api.GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation>[];
-  o.add(buildGoogleCloudVisionV1p3beta1LocalizedObjectAnnotation());
-  o.add(buildGoogleCloudVisionV1p3beta1LocalizedObjectAnnotation());
-  return o;
-}
-
-void checkUnnamed3485(
-    core.List<api.GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p3beta1LocalizedObjectAnnotation(
-      o[0] as api.GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation);
-  checkGoogleCloudVisionV1p3beta1LocalizedObjectAnnotation(
-      o[1] as api.GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation);
-}
-
-core.List<api.GoogleCloudVisionV1p3beta1EntityAnnotation> buildUnnamed3486() {
+core.List<api.GoogleCloudVisionV1p3beta1EntityAnnotation> buildUnnamed3485() {
   var o = <api.GoogleCloudVisionV1p3beta1EntityAnnotation>[];
   o.add(buildGoogleCloudVisionV1p3beta1EntityAnnotation());
   o.add(buildGoogleCloudVisionV1p3beta1EntityAnnotation());
   return o;
 }
 
-void checkUnnamed3486(
+void checkUnnamed3485(
     core.List<api.GoogleCloudVisionV1p3beta1EntityAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p3beta1EntityAnnotation(
       o[0] as api.GoogleCloudVisionV1p3beta1EntityAnnotation);
   checkGoogleCloudVisionV1p3beta1EntityAnnotation(
       o[1] as api.GoogleCloudVisionV1p3beta1EntityAnnotation);
+}
+
+core.List<api.GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation>
+    buildUnnamed3486() {
+  var o = <api.GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation>[];
+  o.add(buildGoogleCloudVisionV1p3beta1LocalizedObjectAnnotation());
+  o.add(buildGoogleCloudVisionV1p3beta1LocalizedObjectAnnotation());
+  return o;
+}
+
+void checkUnnamed3486(
+    core.List<api.GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudVisionV1p3beta1LocalizedObjectAnnotation(
+      o[0] as api.GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation);
+  checkGoogleCloudVisionV1p3beta1LocalizedObjectAnnotation(
+      o[1] as api.GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation);
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1EntityAnnotation> buildUnnamed3487() {
@@ -5538,6 +5522,22 @@ void checkUnnamed3487(
       o[1] as api.GoogleCloudVisionV1p3beta1EntityAnnotation);
 }
 
+core.List<api.GoogleCloudVisionV1p3beta1EntityAnnotation> buildUnnamed3488() {
+  var o = <api.GoogleCloudVisionV1p3beta1EntityAnnotation>[];
+  o.add(buildGoogleCloudVisionV1p3beta1EntityAnnotation());
+  o.add(buildGoogleCloudVisionV1p3beta1EntityAnnotation());
+  return o;
+}
+
+void checkUnnamed3488(
+    core.List<api.GoogleCloudVisionV1p3beta1EntityAnnotation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudVisionV1p3beta1EntityAnnotation(
+      o[0] as api.GoogleCloudVisionV1p3beta1EntityAnnotation);
+  checkGoogleCloudVisionV1p3beta1EntityAnnotation(
+      o[1] as api.GoogleCloudVisionV1p3beta1EntityAnnotation);
+}
+
 core.int buildCounterGoogleCloudVisionV1p3beta1AnnotateImageResponse = 0;
 api.GoogleCloudVisionV1p3beta1AnnotateImageResponse
     buildGoogleCloudVisionV1p3beta1AnnotateImageResponse() {
@@ -5548,19 +5548,19 @@ api.GoogleCloudVisionV1p3beta1AnnotateImageResponse
     o.cropHintsAnnotation =
         buildGoogleCloudVisionV1p3beta1CropHintsAnnotation();
     o.error = buildStatus();
-    o.faceAnnotations = buildUnnamed3482();
+    o.faceAnnotations = buildUnnamed3483();
     o.fullTextAnnotation = buildGoogleCloudVisionV1p3beta1TextAnnotation();
     o.imagePropertiesAnnotation =
         buildGoogleCloudVisionV1p3beta1ImageProperties();
-    o.labelAnnotations = buildUnnamed3483();
-    o.landmarkAnnotations = buildUnnamed3484();
-    o.localizedObjectAnnotations = buildUnnamed3485();
-    o.logoAnnotations = buildUnnamed3486();
+    o.labelAnnotations = buildUnnamed3484();
+    o.landmarkAnnotations = buildUnnamed3485();
+    o.localizedObjectAnnotations = buildUnnamed3486();
+    o.logoAnnotations = buildUnnamed3487();
     o.productSearchResults =
         buildGoogleCloudVisionV1p3beta1ProductSearchResults();
     o.safeSearchAnnotation =
         buildGoogleCloudVisionV1p3beta1SafeSearchAnnotation();
-    o.textAnnotations = buildUnnamed3487();
+    o.textAnnotations = buildUnnamed3488();
     o.webDetection = buildGoogleCloudVisionV1p3beta1WebDetection();
   }
   buildCounterGoogleCloudVisionV1p3beta1AnnotateImageResponse--;
@@ -5576,20 +5576,20 @@ void checkGoogleCloudVisionV1p3beta1AnnotateImageResponse(
     checkGoogleCloudVisionV1p3beta1CropHintsAnnotation(o.cropHintsAnnotation!
         as api.GoogleCloudVisionV1p3beta1CropHintsAnnotation);
     checkStatus(o.error! as api.Status);
-    checkUnnamed3482(o.faceAnnotations!);
+    checkUnnamed3483(o.faceAnnotations!);
     checkGoogleCloudVisionV1p3beta1TextAnnotation(
         o.fullTextAnnotation! as api.GoogleCloudVisionV1p3beta1TextAnnotation);
     checkGoogleCloudVisionV1p3beta1ImageProperties(o.imagePropertiesAnnotation!
         as api.GoogleCloudVisionV1p3beta1ImageProperties);
-    checkUnnamed3483(o.labelAnnotations!);
-    checkUnnamed3484(o.landmarkAnnotations!);
-    checkUnnamed3485(o.localizedObjectAnnotations!);
-    checkUnnamed3486(o.logoAnnotations!);
+    checkUnnamed3484(o.labelAnnotations!);
+    checkUnnamed3485(o.landmarkAnnotations!);
+    checkUnnamed3486(o.localizedObjectAnnotations!);
+    checkUnnamed3487(o.logoAnnotations!);
     checkGoogleCloudVisionV1p3beta1ProductSearchResults(o.productSearchResults!
         as api.GoogleCloudVisionV1p3beta1ProductSearchResults);
     checkGoogleCloudVisionV1p3beta1SafeSearchAnnotation(o.safeSearchAnnotation!
         as api.GoogleCloudVisionV1p3beta1SafeSearchAnnotation);
-    checkUnnamed3487(o.textAnnotations!);
+    checkUnnamed3488(o.textAnnotations!);
     checkGoogleCloudVisionV1p3beta1WebDetection(
         o.webDetection! as api.GoogleCloudVisionV1p3beta1WebDetection);
   }
@@ -5619,14 +5619,14 @@ void checkGoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse(
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse>
-    buildUnnamed3488() {
+    buildUnnamed3489() {
   var o = <api.GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse>[];
   o.add(buildGoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse());
   o.add(buildGoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse());
   return o;
 }
 
-void checkUnnamed3488(
+void checkUnnamed3489(
     core.List<api.GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse(
@@ -5643,7 +5643,7 @@ api.GoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse
   buildCounterGoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse++;
   if (buildCounterGoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse <
       3) {
-    o.responses = buildUnnamed3488();
+    o.responses = buildUnnamed3489();
   }
   buildCounterGoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse--;
   return o;
@@ -5654,7 +5654,7 @@ void checkGoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse(
   buildCounterGoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse++;
   if (buildCounterGoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse <
       3) {
-    checkUnnamed3488(o.responses!);
+    checkUnnamed3489(o.responses!);
   }
   buildCounterGoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse--;
 }
@@ -5693,14 +5693,14 @@ void checkGoogleCloudVisionV1p3beta1BatchOperationMetadata(
   buildCounterGoogleCloudVisionV1p3beta1BatchOperationMetadata--;
 }
 
-core.List<api.GoogleCloudVisionV1p3beta1Paragraph> buildUnnamed3489() {
+core.List<api.GoogleCloudVisionV1p3beta1Paragraph> buildUnnamed3490() {
   var o = <api.GoogleCloudVisionV1p3beta1Paragraph>[];
   o.add(buildGoogleCloudVisionV1p3beta1Paragraph());
   o.add(buildGoogleCloudVisionV1p3beta1Paragraph());
   return o;
 }
 
-void checkUnnamed3489(core.List<api.GoogleCloudVisionV1p3beta1Paragraph> o) {
+void checkUnnamed3490(core.List<api.GoogleCloudVisionV1p3beta1Paragraph> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p3beta1Paragraph(
       o[0] as api.GoogleCloudVisionV1p3beta1Paragraph);
@@ -5716,7 +5716,7 @@ api.GoogleCloudVisionV1p3beta1Block buildGoogleCloudVisionV1p3beta1Block() {
     o.blockType = 'foo';
     o.boundingBox = buildGoogleCloudVisionV1p3beta1BoundingPoly();
     o.confidence = 42.0;
-    o.paragraphs = buildUnnamed3489();
+    o.paragraphs = buildUnnamed3490();
     o.property = buildGoogleCloudVisionV1p3beta1TextAnnotationTextProperty();
   }
   buildCounterGoogleCloudVisionV1p3beta1Block--;
@@ -5737,21 +5737,21 @@ void checkGoogleCloudVisionV1p3beta1Block(
       o.confidence!,
       unittest.equals(42.0),
     );
-    checkUnnamed3489(o.paragraphs!);
+    checkUnnamed3490(o.paragraphs!);
     checkGoogleCloudVisionV1p3beta1TextAnnotationTextProperty(o.property!
         as api.GoogleCloudVisionV1p3beta1TextAnnotationTextProperty);
   }
   buildCounterGoogleCloudVisionV1p3beta1Block--;
 }
 
-core.List<api.GoogleCloudVisionV1p3beta1NormalizedVertex> buildUnnamed3490() {
+core.List<api.GoogleCloudVisionV1p3beta1NormalizedVertex> buildUnnamed3491() {
   var o = <api.GoogleCloudVisionV1p3beta1NormalizedVertex>[];
   o.add(buildGoogleCloudVisionV1p3beta1NormalizedVertex());
   o.add(buildGoogleCloudVisionV1p3beta1NormalizedVertex());
   return o;
 }
 
-void checkUnnamed3490(
+void checkUnnamed3491(
     core.List<api.GoogleCloudVisionV1p3beta1NormalizedVertex> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p3beta1NormalizedVertex(
@@ -5760,14 +5760,14 @@ void checkUnnamed3490(
       o[1] as api.GoogleCloudVisionV1p3beta1NormalizedVertex);
 }
 
-core.List<api.GoogleCloudVisionV1p3beta1Vertex> buildUnnamed3491() {
+core.List<api.GoogleCloudVisionV1p3beta1Vertex> buildUnnamed3492() {
   var o = <api.GoogleCloudVisionV1p3beta1Vertex>[];
   o.add(buildGoogleCloudVisionV1p3beta1Vertex());
   o.add(buildGoogleCloudVisionV1p3beta1Vertex());
   return o;
 }
 
-void checkUnnamed3491(core.List<api.GoogleCloudVisionV1p3beta1Vertex> o) {
+void checkUnnamed3492(core.List<api.GoogleCloudVisionV1p3beta1Vertex> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p3beta1Vertex(
       o[0] as api.GoogleCloudVisionV1p3beta1Vertex);
@@ -5781,8 +5781,8 @@ api.GoogleCloudVisionV1p3beta1BoundingPoly
   var o = api.GoogleCloudVisionV1p3beta1BoundingPoly();
   buildCounterGoogleCloudVisionV1p3beta1BoundingPoly++;
   if (buildCounterGoogleCloudVisionV1p3beta1BoundingPoly < 3) {
-    o.normalizedVertices = buildUnnamed3490();
-    o.vertices = buildUnnamed3491();
+    o.normalizedVertices = buildUnnamed3491();
+    o.vertices = buildUnnamed3492();
   }
   buildCounterGoogleCloudVisionV1p3beta1BoundingPoly--;
   return o;
@@ -5792,8 +5792,8 @@ void checkGoogleCloudVisionV1p3beta1BoundingPoly(
     api.GoogleCloudVisionV1p3beta1BoundingPoly o) {
   buildCounterGoogleCloudVisionV1p3beta1BoundingPoly++;
   if (buildCounterGoogleCloudVisionV1p3beta1BoundingPoly < 3) {
-    checkUnnamed3490(o.normalizedVertices!);
-    checkUnnamed3491(o.vertices!);
+    checkUnnamed3491(o.normalizedVertices!);
+    checkUnnamed3492(o.vertices!);
   }
   buildCounterGoogleCloudVisionV1p3beta1BoundingPoly--;
 }
@@ -5861,14 +5861,14 @@ void checkGoogleCloudVisionV1p3beta1CropHint(
   buildCounterGoogleCloudVisionV1p3beta1CropHint--;
 }
 
-core.List<api.GoogleCloudVisionV1p3beta1CropHint> buildUnnamed3492() {
+core.List<api.GoogleCloudVisionV1p3beta1CropHint> buildUnnamed3493() {
   var o = <api.GoogleCloudVisionV1p3beta1CropHint>[];
   o.add(buildGoogleCloudVisionV1p3beta1CropHint());
   o.add(buildGoogleCloudVisionV1p3beta1CropHint());
   return o;
 }
 
-void checkUnnamed3492(core.List<api.GoogleCloudVisionV1p3beta1CropHint> o) {
+void checkUnnamed3493(core.List<api.GoogleCloudVisionV1p3beta1CropHint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p3beta1CropHint(
       o[0] as api.GoogleCloudVisionV1p3beta1CropHint);
@@ -5882,7 +5882,7 @@ api.GoogleCloudVisionV1p3beta1CropHintsAnnotation
   var o = api.GoogleCloudVisionV1p3beta1CropHintsAnnotation();
   buildCounterGoogleCloudVisionV1p3beta1CropHintsAnnotation++;
   if (buildCounterGoogleCloudVisionV1p3beta1CropHintsAnnotation < 3) {
-    o.cropHints = buildUnnamed3492();
+    o.cropHints = buildUnnamed3493();
   }
   buildCounterGoogleCloudVisionV1p3beta1CropHintsAnnotation--;
   return o;
@@ -5892,19 +5892,19 @@ void checkGoogleCloudVisionV1p3beta1CropHintsAnnotation(
     api.GoogleCloudVisionV1p3beta1CropHintsAnnotation o) {
   buildCounterGoogleCloudVisionV1p3beta1CropHintsAnnotation++;
   if (buildCounterGoogleCloudVisionV1p3beta1CropHintsAnnotation < 3) {
-    checkUnnamed3492(o.cropHints!);
+    checkUnnamed3493(o.cropHints!);
   }
   buildCounterGoogleCloudVisionV1p3beta1CropHintsAnnotation--;
 }
 
-core.List<api.GoogleCloudVisionV1p3beta1ColorInfo> buildUnnamed3493() {
+core.List<api.GoogleCloudVisionV1p3beta1ColorInfo> buildUnnamed3494() {
   var o = <api.GoogleCloudVisionV1p3beta1ColorInfo>[];
   o.add(buildGoogleCloudVisionV1p3beta1ColorInfo());
   o.add(buildGoogleCloudVisionV1p3beta1ColorInfo());
   return o;
 }
 
-void checkUnnamed3493(core.List<api.GoogleCloudVisionV1p3beta1ColorInfo> o) {
+void checkUnnamed3494(core.List<api.GoogleCloudVisionV1p3beta1ColorInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p3beta1ColorInfo(
       o[0] as api.GoogleCloudVisionV1p3beta1ColorInfo);
@@ -5918,7 +5918,7 @@ api.GoogleCloudVisionV1p3beta1DominantColorsAnnotation
   var o = api.GoogleCloudVisionV1p3beta1DominantColorsAnnotation();
   buildCounterGoogleCloudVisionV1p3beta1DominantColorsAnnotation++;
   if (buildCounterGoogleCloudVisionV1p3beta1DominantColorsAnnotation < 3) {
-    o.colors = buildUnnamed3493();
+    o.colors = buildUnnamed3494();
   }
   buildCounterGoogleCloudVisionV1p3beta1DominantColorsAnnotation--;
   return o;
@@ -5928,19 +5928,19 @@ void checkGoogleCloudVisionV1p3beta1DominantColorsAnnotation(
     api.GoogleCloudVisionV1p3beta1DominantColorsAnnotation o) {
   buildCounterGoogleCloudVisionV1p3beta1DominantColorsAnnotation++;
   if (buildCounterGoogleCloudVisionV1p3beta1DominantColorsAnnotation < 3) {
-    checkUnnamed3493(o.colors!);
+    checkUnnamed3494(o.colors!);
   }
   buildCounterGoogleCloudVisionV1p3beta1DominantColorsAnnotation--;
 }
 
-core.List<api.GoogleCloudVisionV1p3beta1LocationInfo> buildUnnamed3494() {
+core.List<api.GoogleCloudVisionV1p3beta1LocationInfo> buildUnnamed3495() {
   var o = <api.GoogleCloudVisionV1p3beta1LocationInfo>[];
   o.add(buildGoogleCloudVisionV1p3beta1LocationInfo());
   o.add(buildGoogleCloudVisionV1p3beta1LocationInfo());
   return o;
 }
 
-void checkUnnamed3494(core.List<api.GoogleCloudVisionV1p3beta1LocationInfo> o) {
+void checkUnnamed3495(core.List<api.GoogleCloudVisionV1p3beta1LocationInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p3beta1LocationInfo(
       o[0] as api.GoogleCloudVisionV1p3beta1LocationInfo);
@@ -5948,14 +5948,14 @@ void checkUnnamed3494(core.List<api.GoogleCloudVisionV1p3beta1LocationInfo> o) {
       o[1] as api.GoogleCloudVisionV1p3beta1LocationInfo);
 }
 
-core.List<api.GoogleCloudVisionV1p3beta1Property> buildUnnamed3495() {
+core.List<api.GoogleCloudVisionV1p3beta1Property> buildUnnamed3496() {
   var o = <api.GoogleCloudVisionV1p3beta1Property>[];
   o.add(buildGoogleCloudVisionV1p3beta1Property());
   o.add(buildGoogleCloudVisionV1p3beta1Property());
   return o;
 }
 
-void checkUnnamed3495(core.List<api.GoogleCloudVisionV1p3beta1Property> o) {
+void checkUnnamed3496(core.List<api.GoogleCloudVisionV1p3beta1Property> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p3beta1Property(
       o[0] as api.GoogleCloudVisionV1p3beta1Property);
@@ -5973,9 +5973,9 @@ api.GoogleCloudVisionV1p3beta1EntityAnnotation
     o.confidence = 42.0;
     o.description = 'foo';
     o.locale = 'foo';
-    o.locations = buildUnnamed3494();
+    o.locations = buildUnnamed3495();
     o.mid = 'foo';
-    o.properties = buildUnnamed3495();
+    o.properties = buildUnnamed3496();
     o.score = 42.0;
     o.topicality = 42.0;
   }
@@ -6001,12 +6001,12 @@ void checkGoogleCloudVisionV1p3beta1EntityAnnotation(
       o.locale!,
       unittest.equals('foo'),
     );
-    checkUnnamed3494(o.locations!);
+    checkUnnamed3495(o.locations!);
     unittest.expect(
       o.mid!,
       unittest.equals('foo'),
     );
-    checkUnnamed3495(o.properties!);
+    checkUnnamed3496(o.properties!);
     unittest.expect(
       o.score!,
       unittest.equals(42.0),
@@ -6020,14 +6020,14 @@ void checkGoogleCloudVisionV1p3beta1EntityAnnotation(
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1FaceAnnotationLandmark>
-    buildUnnamed3496() {
+    buildUnnamed3497() {
   var o = <api.GoogleCloudVisionV1p3beta1FaceAnnotationLandmark>[];
   o.add(buildGoogleCloudVisionV1p3beta1FaceAnnotationLandmark());
   o.add(buildGoogleCloudVisionV1p3beta1FaceAnnotationLandmark());
   return o;
 }
 
-void checkUnnamed3496(
+void checkUnnamed3497(
     core.List<api.GoogleCloudVisionV1p3beta1FaceAnnotationLandmark> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p3beta1FaceAnnotationLandmark(
@@ -6050,7 +6050,7 @@ api.GoogleCloudVisionV1p3beta1FaceAnnotation
     o.headwearLikelihood = 'foo';
     o.joyLikelihood = 'foo';
     o.landmarkingConfidence = 42.0;
-    o.landmarks = buildUnnamed3496();
+    o.landmarks = buildUnnamed3497();
     o.panAngle = 42.0;
     o.rollAngle = 42.0;
     o.sorrowLikelihood = 'foo';
@@ -6094,7 +6094,7 @@ void checkGoogleCloudVisionV1p3beta1FaceAnnotation(
       o.landmarkingConfidence!,
       unittest.equals(42.0),
     );
-    checkUnnamed3496(o.landmarks!);
+    checkUnnamed3497(o.landmarks!);
     unittest.expect(
       o.panAngle!,
       unittest.equals(42.0),
@@ -6250,14 +6250,14 @@ void checkGoogleCloudVisionV1p3beta1ImageProperties(
   buildCounterGoogleCloudVisionV1p3beta1ImageProperties--;
 }
 
-core.List<api.GoogleCloudVisionV1p3beta1ReferenceImage> buildUnnamed3497() {
+core.List<api.GoogleCloudVisionV1p3beta1ReferenceImage> buildUnnamed3498() {
   var o = <api.GoogleCloudVisionV1p3beta1ReferenceImage>[];
   o.add(buildGoogleCloudVisionV1p3beta1ReferenceImage());
   o.add(buildGoogleCloudVisionV1p3beta1ReferenceImage());
   return o;
 }
 
-void checkUnnamed3497(
+void checkUnnamed3498(
     core.List<api.GoogleCloudVisionV1p3beta1ReferenceImage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p3beta1ReferenceImage(
@@ -6266,14 +6266,14 @@ void checkUnnamed3497(
       o[1] as api.GoogleCloudVisionV1p3beta1ReferenceImage);
 }
 
-core.List<api.Status> buildUnnamed3498() {
+core.List<api.Status> buildUnnamed3499() {
   var o = <api.Status>[];
   o.add(buildStatus());
   o.add(buildStatus());
   return o;
 }
 
-void checkUnnamed3498(core.List<api.Status> o) {
+void checkUnnamed3499(core.List<api.Status> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStatus(o[0] as api.Status);
   checkStatus(o[1] as api.Status);
@@ -6285,8 +6285,8 @@ api.GoogleCloudVisionV1p3beta1ImportProductSetsResponse
   var o = api.GoogleCloudVisionV1p3beta1ImportProductSetsResponse();
   buildCounterGoogleCloudVisionV1p3beta1ImportProductSetsResponse++;
   if (buildCounterGoogleCloudVisionV1p3beta1ImportProductSetsResponse < 3) {
-    o.referenceImages = buildUnnamed3497();
-    o.statuses = buildUnnamed3498();
+    o.referenceImages = buildUnnamed3498();
+    o.statuses = buildUnnamed3499();
   }
   buildCounterGoogleCloudVisionV1p3beta1ImportProductSetsResponse--;
   return o;
@@ -6296,8 +6296,8 @@ void checkGoogleCloudVisionV1p3beta1ImportProductSetsResponse(
     api.GoogleCloudVisionV1p3beta1ImportProductSetsResponse o) {
   buildCounterGoogleCloudVisionV1p3beta1ImportProductSetsResponse++;
   if (buildCounterGoogleCloudVisionV1p3beta1ImportProductSetsResponse < 3) {
-    checkUnnamed3497(o.referenceImages!);
-    checkUnnamed3498(o.statuses!);
+    checkUnnamed3498(o.referenceImages!);
+    checkUnnamed3499(o.statuses!);
   }
   buildCounterGoogleCloudVisionV1p3beta1ImportProductSetsResponse--;
 }
@@ -6487,14 +6487,14 @@ void checkGoogleCloudVisionV1p3beta1OutputConfig(
   buildCounterGoogleCloudVisionV1p3beta1OutputConfig--;
 }
 
-core.List<api.GoogleCloudVisionV1p3beta1Block> buildUnnamed3499() {
+core.List<api.GoogleCloudVisionV1p3beta1Block> buildUnnamed3500() {
   var o = <api.GoogleCloudVisionV1p3beta1Block>[];
   o.add(buildGoogleCloudVisionV1p3beta1Block());
   o.add(buildGoogleCloudVisionV1p3beta1Block());
   return o;
 }
 
-void checkUnnamed3499(core.List<api.GoogleCloudVisionV1p3beta1Block> o) {
+void checkUnnamed3500(core.List<api.GoogleCloudVisionV1p3beta1Block> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p3beta1Block(
       o[0] as api.GoogleCloudVisionV1p3beta1Block);
@@ -6507,7 +6507,7 @@ api.GoogleCloudVisionV1p3beta1Page buildGoogleCloudVisionV1p3beta1Page() {
   var o = api.GoogleCloudVisionV1p3beta1Page();
   buildCounterGoogleCloudVisionV1p3beta1Page++;
   if (buildCounterGoogleCloudVisionV1p3beta1Page < 3) {
-    o.blocks = buildUnnamed3499();
+    o.blocks = buildUnnamed3500();
     o.confidence = 42.0;
     o.height = 42;
     o.property = buildGoogleCloudVisionV1p3beta1TextAnnotationTextProperty();
@@ -6520,7 +6520,7 @@ api.GoogleCloudVisionV1p3beta1Page buildGoogleCloudVisionV1p3beta1Page() {
 void checkGoogleCloudVisionV1p3beta1Page(api.GoogleCloudVisionV1p3beta1Page o) {
   buildCounterGoogleCloudVisionV1p3beta1Page++;
   if (buildCounterGoogleCloudVisionV1p3beta1Page < 3) {
-    checkUnnamed3499(o.blocks!);
+    checkUnnamed3500(o.blocks!);
     unittest.expect(
       o.confidence!,
       unittest.equals(42.0),
@@ -6539,14 +6539,14 @@ void checkGoogleCloudVisionV1p3beta1Page(api.GoogleCloudVisionV1p3beta1Page o) {
   buildCounterGoogleCloudVisionV1p3beta1Page--;
 }
 
-core.List<api.GoogleCloudVisionV1p3beta1Word> buildUnnamed3500() {
+core.List<api.GoogleCloudVisionV1p3beta1Word> buildUnnamed3501() {
   var o = <api.GoogleCloudVisionV1p3beta1Word>[];
   o.add(buildGoogleCloudVisionV1p3beta1Word());
   o.add(buildGoogleCloudVisionV1p3beta1Word());
   return o;
 }
 
-void checkUnnamed3500(core.List<api.GoogleCloudVisionV1p3beta1Word> o) {
+void checkUnnamed3501(core.List<api.GoogleCloudVisionV1p3beta1Word> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p3beta1Word(
       o[0] as api.GoogleCloudVisionV1p3beta1Word);
@@ -6563,7 +6563,7 @@ api.GoogleCloudVisionV1p3beta1Paragraph
     o.boundingBox = buildGoogleCloudVisionV1p3beta1BoundingPoly();
     o.confidence = 42.0;
     o.property = buildGoogleCloudVisionV1p3beta1TextAnnotationTextProperty();
-    o.words = buildUnnamed3500();
+    o.words = buildUnnamed3501();
   }
   buildCounterGoogleCloudVisionV1p3beta1Paragraph--;
   return o;
@@ -6581,7 +6581,7 @@ void checkGoogleCloudVisionV1p3beta1Paragraph(
     );
     checkGoogleCloudVisionV1p3beta1TextAnnotationTextProperty(o.property!
         as api.GoogleCloudVisionV1p3beta1TextAnnotationTextProperty);
-    checkUnnamed3500(o.words!);
+    checkUnnamed3501(o.words!);
   }
   buildCounterGoogleCloudVisionV1p3beta1Paragraph--;
 }
@@ -6620,14 +6620,14 @@ void checkGoogleCloudVisionV1p3beta1Position(
   buildCounterGoogleCloudVisionV1p3beta1Position--;
 }
 
-core.List<api.GoogleCloudVisionV1p3beta1ProductKeyValue> buildUnnamed3501() {
+core.List<api.GoogleCloudVisionV1p3beta1ProductKeyValue> buildUnnamed3502() {
   var o = <api.GoogleCloudVisionV1p3beta1ProductKeyValue>[];
   o.add(buildGoogleCloudVisionV1p3beta1ProductKeyValue());
   o.add(buildGoogleCloudVisionV1p3beta1ProductKeyValue());
   return o;
 }
 
-void checkUnnamed3501(
+void checkUnnamed3502(
     core.List<api.GoogleCloudVisionV1p3beta1ProductKeyValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p3beta1ProductKeyValue(
@@ -6645,7 +6645,7 @@ api.GoogleCloudVisionV1p3beta1Product buildGoogleCloudVisionV1p3beta1Product() {
     o.displayName = 'foo';
     o.name = 'foo';
     o.productCategory = 'foo';
-    o.productLabels = buildUnnamed3501();
+    o.productLabels = buildUnnamed3502();
   }
   buildCounterGoogleCloudVisionV1p3beta1Product--;
   return o;
@@ -6671,7 +6671,7 @@ void checkGoogleCloudVisionV1p3beta1Product(
       o.productCategory!,
       unittest.equals('foo'),
     );
-    checkUnnamed3501(o.productLabels!);
+    checkUnnamed3502(o.productLabels!);
   }
   buildCounterGoogleCloudVisionV1p3beta1Product--;
 }
@@ -6706,14 +6706,14 @@ void checkGoogleCloudVisionV1p3beta1ProductKeyValue(
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult>
-    buildUnnamed3502() {
+    buildUnnamed3503() {
   var o = <api.GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult>[];
   o.add(buildGoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult());
   o.add(buildGoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult());
   return o;
 }
 
-void checkUnnamed3502(
+void checkUnnamed3503(
     core.List<api.GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -6724,14 +6724,14 @@ void checkUnnamed3502(
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1ProductSearchResultsResult>
-    buildUnnamed3503() {
+    buildUnnamed3504() {
   var o = <api.GoogleCloudVisionV1p3beta1ProductSearchResultsResult>[];
   o.add(buildGoogleCloudVisionV1p3beta1ProductSearchResultsResult());
   o.add(buildGoogleCloudVisionV1p3beta1ProductSearchResultsResult());
   return o;
 }
 
-void checkUnnamed3503(
+void checkUnnamed3504(
     core.List<api.GoogleCloudVisionV1p3beta1ProductSearchResultsResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p3beta1ProductSearchResultsResult(
@@ -6747,8 +6747,8 @@ api.GoogleCloudVisionV1p3beta1ProductSearchResults
   buildCounterGoogleCloudVisionV1p3beta1ProductSearchResults++;
   if (buildCounterGoogleCloudVisionV1p3beta1ProductSearchResults < 3) {
     o.indexTime = 'foo';
-    o.productGroupedResults = buildUnnamed3502();
-    o.results = buildUnnamed3503();
+    o.productGroupedResults = buildUnnamed3503();
+    o.results = buildUnnamed3504();
   }
   buildCounterGoogleCloudVisionV1p3beta1ProductSearchResults--;
   return o;
@@ -6762,14 +6762,14 @@ void checkGoogleCloudVisionV1p3beta1ProductSearchResults(
       o.indexTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed3502(o.productGroupedResults!);
-    checkUnnamed3503(o.results!);
+    checkUnnamed3503(o.productGroupedResults!);
+    checkUnnamed3504(o.results!);
   }
   buildCounterGoogleCloudVisionV1p3beta1ProductSearchResults--;
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation>
-    buildUnnamed3504() {
+    buildUnnamed3505() {
   var o =
       <api.GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation>[];
   o.add(buildGoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation());
@@ -6777,7 +6777,7 @@ core.List<api.GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation>
   return o;
 }
 
-void checkUnnamed3504(
+void checkUnnamed3505(
     core.List<
             api.GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation>
         o) {
@@ -6789,14 +6789,14 @@ void checkUnnamed3504(
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1ProductSearchResultsResult>
-    buildUnnamed3505() {
+    buildUnnamed3506() {
   var o = <api.GoogleCloudVisionV1p3beta1ProductSearchResultsResult>[];
   o.add(buildGoogleCloudVisionV1p3beta1ProductSearchResultsResult());
   o.add(buildGoogleCloudVisionV1p3beta1ProductSearchResultsResult());
   return o;
 }
 
-void checkUnnamed3505(
+void checkUnnamed3506(
     core.List<api.GoogleCloudVisionV1p3beta1ProductSearchResultsResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p3beta1ProductSearchResultsResult(
@@ -6814,8 +6814,8 @@ api.GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult
   if (buildCounterGoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult <
       3) {
     o.boundingPoly = buildGoogleCloudVisionV1p3beta1BoundingPoly();
-    o.objectAnnotations = buildUnnamed3504();
-    o.results = buildUnnamed3505();
+    o.objectAnnotations = buildUnnamed3505();
+    o.results = buildUnnamed3506();
   }
   buildCounterGoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult--;
   return o;
@@ -6828,8 +6828,8 @@ void checkGoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult(
       3) {
     checkGoogleCloudVisionV1p3beta1BoundingPoly(
         o.boundingPoly! as api.GoogleCloudVisionV1p3beta1BoundingPoly);
-    checkUnnamed3504(o.objectAnnotations!);
-    checkUnnamed3505(o.results!);
+    checkUnnamed3505(o.objectAnnotations!);
+    checkUnnamed3506(o.results!);
   }
   buildCounterGoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult--;
 }
@@ -6943,14 +6943,14 @@ void checkGoogleCloudVisionV1p3beta1Property(
   buildCounterGoogleCloudVisionV1p3beta1Property--;
 }
 
-core.List<api.GoogleCloudVisionV1p3beta1BoundingPoly> buildUnnamed3506() {
+core.List<api.GoogleCloudVisionV1p3beta1BoundingPoly> buildUnnamed3507() {
   var o = <api.GoogleCloudVisionV1p3beta1BoundingPoly>[];
   o.add(buildGoogleCloudVisionV1p3beta1BoundingPoly());
   o.add(buildGoogleCloudVisionV1p3beta1BoundingPoly());
   return o;
 }
 
-void checkUnnamed3506(core.List<api.GoogleCloudVisionV1p3beta1BoundingPoly> o) {
+void checkUnnamed3507(core.List<api.GoogleCloudVisionV1p3beta1BoundingPoly> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p3beta1BoundingPoly(
       o[0] as api.GoogleCloudVisionV1p3beta1BoundingPoly);
@@ -6964,7 +6964,7 @@ api.GoogleCloudVisionV1p3beta1ReferenceImage
   var o = api.GoogleCloudVisionV1p3beta1ReferenceImage();
   buildCounterGoogleCloudVisionV1p3beta1ReferenceImage++;
   if (buildCounterGoogleCloudVisionV1p3beta1ReferenceImage < 3) {
-    o.boundingPolys = buildUnnamed3506();
+    o.boundingPolys = buildUnnamed3507();
     o.name = 'foo';
     o.uri = 'foo';
   }
@@ -6976,7 +6976,7 @@ void checkGoogleCloudVisionV1p3beta1ReferenceImage(
     api.GoogleCloudVisionV1p3beta1ReferenceImage o) {
   buildCounterGoogleCloudVisionV1p3beta1ReferenceImage++;
   if (buildCounterGoogleCloudVisionV1p3beta1ReferenceImage < 3) {
-    checkUnnamed3506(o.boundingPolys!);
+    checkUnnamed3507(o.boundingPolys!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -7067,14 +7067,14 @@ void checkGoogleCloudVisionV1p3beta1Symbol(
   buildCounterGoogleCloudVisionV1p3beta1Symbol--;
 }
 
-core.List<api.GoogleCloudVisionV1p3beta1Page> buildUnnamed3507() {
+core.List<api.GoogleCloudVisionV1p3beta1Page> buildUnnamed3508() {
   var o = <api.GoogleCloudVisionV1p3beta1Page>[];
   o.add(buildGoogleCloudVisionV1p3beta1Page());
   o.add(buildGoogleCloudVisionV1p3beta1Page());
   return o;
 }
 
-void checkUnnamed3507(core.List<api.GoogleCloudVisionV1p3beta1Page> o) {
+void checkUnnamed3508(core.List<api.GoogleCloudVisionV1p3beta1Page> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p3beta1Page(
       o[0] as api.GoogleCloudVisionV1p3beta1Page);
@@ -7088,7 +7088,7 @@ api.GoogleCloudVisionV1p3beta1TextAnnotation
   var o = api.GoogleCloudVisionV1p3beta1TextAnnotation();
   buildCounterGoogleCloudVisionV1p3beta1TextAnnotation++;
   if (buildCounterGoogleCloudVisionV1p3beta1TextAnnotation < 3) {
-    o.pages = buildUnnamed3507();
+    o.pages = buildUnnamed3508();
     o.text = 'foo';
   }
   buildCounterGoogleCloudVisionV1p3beta1TextAnnotation--;
@@ -7099,7 +7099,7 @@ void checkGoogleCloudVisionV1p3beta1TextAnnotation(
     api.GoogleCloudVisionV1p3beta1TextAnnotation o) {
   buildCounterGoogleCloudVisionV1p3beta1TextAnnotation++;
   if (buildCounterGoogleCloudVisionV1p3beta1TextAnnotation < 3) {
-    checkUnnamed3507(o.pages!);
+    checkUnnamed3508(o.pages!);
     unittest.expect(
       o.text!,
       unittest.equals('foo'),
@@ -7167,14 +7167,14 @@ void checkGoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage(
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage>
-    buildUnnamed3508() {
+    buildUnnamed3509() {
   var o = <api.GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage>[];
   o.add(buildGoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage());
   o.add(buildGoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage());
   return o;
 }
 
-void checkUnnamed3508(
+void checkUnnamed3509(
     core.List<api.GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage(
@@ -7191,7 +7191,7 @@ api.GoogleCloudVisionV1p3beta1TextAnnotationTextProperty
   if (buildCounterGoogleCloudVisionV1p3beta1TextAnnotationTextProperty < 3) {
     o.detectedBreak =
         buildGoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak();
-    o.detectedLanguages = buildUnnamed3508();
+    o.detectedLanguages = buildUnnamed3509();
   }
   buildCounterGoogleCloudVisionV1p3beta1TextAnnotationTextProperty--;
   return o;
@@ -7203,7 +7203,7 @@ void checkGoogleCloudVisionV1p3beta1TextAnnotationTextProperty(
   if (buildCounterGoogleCloudVisionV1p3beta1TextAnnotationTextProperty < 3) {
     checkGoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak(o.detectedBreak!
         as api.GoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak);
-    checkUnnamed3508(o.detectedLanguages!);
+    checkUnnamed3509(o.detectedLanguages!);
   }
   buildCounterGoogleCloudVisionV1p3beta1TextAnnotationTextProperty--;
 }
@@ -7237,14 +7237,14 @@ void checkGoogleCloudVisionV1p3beta1Vertex(
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebLabel>
-    buildUnnamed3509() {
+    buildUnnamed3510() {
   var o = <api.GoogleCloudVisionV1p3beta1WebDetectionWebLabel>[];
   o.add(buildGoogleCloudVisionV1p3beta1WebDetectionWebLabel());
   o.add(buildGoogleCloudVisionV1p3beta1WebDetectionWebLabel());
   return o;
 }
 
-void checkUnnamed3509(
+void checkUnnamed3510(
     core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebLabel> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p3beta1WebDetectionWebLabel(
@@ -7254,14 +7254,14 @@ void checkUnnamed3509(
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebImage>
-    buildUnnamed3510() {
+    buildUnnamed3511() {
   var o = <api.GoogleCloudVisionV1p3beta1WebDetectionWebImage>[];
   o.add(buildGoogleCloudVisionV1p3beta1WebDetectionWebImage());
   o.add(buildGoogleCloudVisionV1p3beta1WebDetectionWebImage());
   return o;
 }
 
-void checkUnnamed3510(
+void checkUnnamed3511(
     core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebImage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p3beta1WebDetectionWebImage(
@@ -7271,37 +7271,20 @@ void checkUnnamed3510(
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebPage>
-    buildUnnamed3511() {
+    buildUnnamed3512() {
   var o = <api.GoogleCloudVisionV1p3beta1WebDetectionWebPage>[];
   o.add(buildGoogleCloudVisionV1p3beta1WebDetectionWebPage());
   o.add(buildGoogleCloudVisionV1p3beta1WebDetectionWebPage());
   return o;
 }
 
-void checkUnnamed3511(
+void checkUnnamed3512(
     core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebPage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p3beta1WebDetectionWebPage(
       o[0] as api.GoogleCloudVisionV1p3beta1WebDetectionWebPage);
   checkGoogleCloudVisionV1p3beta1WebDetectionWebPage(
       o[1] as api.GoogleCloudVisionV1p3beta1WebDetectionWebPage);
-}
-
-core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebImage>
-    buildUnnamed3512() {
-  var o = <api.GoogleCloudVisionV1p3beta1WebDetectionWebImage>[];
-  o.add(buildGoogleCloudVisionV1p3beta1WebDetectionWebImage());
-  o.add(buildGoogleCloudVisionV1p3beta1WebDetectionWebImage());
-  return o;
-}
-
-void checkUnnamed3512(
-    core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebImage> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p3beta1WebDetectionWebImage(
-      o[0] as api.GoogleCloudVisionV1p3beta1WebDetectionWebImage);
-  checkGoogleCloudVisionV1p3beta1WebDetectionWebImage(
-      o[1] as api.GoogleCloudVisionV1p3beta1WebDetectionWebImage);
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebImage>
@@ -7321,15 +7304,32 @@ void checkUnnamed3513(
       o[1] as api.GoogleCloudVisionV1p3beta1WebDetectionWebImage);
 }
 
-core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebEntity>
+core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebImage>
     buildUnnamed3514() {
+  var o = <api.GoogleCloudVisionV1p3beta1WebDetectionWebImage>[];
+  o.add(buildGoogleCloudVisionV1p3beta1WebDetectionWebImage());
+  o.add(buildGoogleCloudVisionV1p3beta1WebDetectionWebImage());
+  return o;
+}
+
+void checkUnnamed3514(
+    core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebImage> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudVisionV1p3beta1WebDetectionWebImage(
+      o[0] as api.GoogleCloudVisionV1p3beta1WebDetectionWebImage);
+  checkGoogleCloudVisionV1p3beta1WebDetectionWebImage(
+      o[1] as api.GoogleCloudVisionV1p3beta1WebDetectionWebImage);
+}
+
+core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebEntity>
+    buildUnnamed3515() {
   var o = <api.GoogleCloudVisionV1p3beta1WebDetectionWebEntity>[];
   o.add(buildGoogleCloudVisionV1p3beta1WebDetectionWebEntity());
   o.add(buildGoogleCloudVisionV1p3beta1WebDetectionWebEntity());
   return o;
 }
 
-void checkUnnamed3514(
+void checkUnnamed3515(
     core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebEntity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p3beta1WebDetectionWebEntity(
@@ -7344,12 +7344,12 @@ api.GoogleCloudVisionV1p3beta1WebDetection
   var o = api.GoogleCloudVisionV1p3beta1WebDetection();
   buildCounterGoogleCloudVisionV1p3beta1WebDetection++;
   if (buildCounterGoogleCloudVisionV1p3beta1WebDetection < 3) {
-    o.bestGuessLabels = buildUnnamed3509();
-    o.fullMatchingImages = buildUnnamed3510();
-    o.pagesWithMatchingImages = buildUnnamed3511();
-    o.partialMatchingImages = buildUnnamed3512();
-    o.visuallySimilarImages = buildUnnamed3513();
-    o.webEntities = buildUnnamed3514();
+    o.bestGuessLabels = buildUnnamed3510();
+    o.fullMatchingImages = buildUnnamed3511();
+    o.pagesWithMatchingImages = buildUnnamed3512();
+    o.partialMatchingImages = buildUnnamed3513();
+    o.visuallySimilarImages = buildUnnamed3514();
+    o.webEntities = buildUnnamed3515();
   }
   buildCounterGoogleCloudVisionV1p3beta1WebDetection--;
   return o;
@@ -7359,12 +7359,12 @@ void checkGoogleCloudVisionV1p3beta1WebDetection(
     api.GoogleCloudVisionV1p3beta1WebDetection o) {
   buildCounterGoogleCloudVisionV1p3beta1WebDetection++;
   if (buildCounterGoogleCloudVisionV1p3beta1WebDetection < 3) {
-    checkUnnamed3509(o.bestGuessLabels!);
-    checkUnnamed3510(o.fullMatchingImages!);
-    checkUnnamed3511(o.pagesWithMatchingImages!);
-    checkUnnamed3512(o.partialMatchingImages!);
-    checkUnnamed3513(o.visuallySimilarImages!);
-    checkUnnamed3514(o.webEntities!);
+    checkUnnamed3510(o.bestGuessLabels!);
+    checkUnnamed3511(o.fullMatchingImages!);
+    checkUnnamed3512(o.pagesWithMatchingImages!);
+    checkUnnamed3513(o.partialMatchingImages!);
+    checkUnnamed3514(o.visuallySimilarImages!);
+    checkUnnamed3515(o.webEntities!);
   }
   buildCounterGoogleCloudVisionV1p3beta1WebDetection--;
 }
@@ -7462,23 +7462,6 @@ void checkGoogleCloudVisionV1p3beta1WebDetectionWebLabel(
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebImage>
-    buildUnnamed3515() {
-  var o = <api.GoogleCloudVisionV1p3beta1WebDetectionWebImage>[];
-  o.add(buildGoogleCloudVisionV1p3beta1WebDetectionWebImage());
-  o.add(buildGoogleCloudVisionV1p3beta1WebDetectionWebImage());
-  return o;
-}
-
-void checkUnnamed3515(
-    core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebImage> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p3beta1WebDetectionWebImage(
-      o[0] as api.GoogleCloudVisionV1p3beta1WebDetectionWebImage);
-  checkGoogleCloudVisionV1p3beta1WebDetectionWebImage(
-      o[1] as api.GoogleCloudVisionV1p3beta1WebDetectionWebImage);
-}
-
-core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebImage>
     buildUnnamed3516() {
   var o = <api.GoogleCloudVisionV1p3beta1WebDetectionWebImage>[];
   o.add(buildGoogleCloudVisionV1p3beta1WebDetectionWebImage());
@@ -7495,15 +7478,32 @@ void checkUnnamed3516(
       o[1] as api.GoogleCloudVisionV1p3beta1WebDetectionWebImage);
 }
 
+core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebImage>
+    buildUnnamed3517() {
+  var o = <api.GoogleCloudVisionV1p3beta1WebDetectionWebImage>[];
+  o.add(buildGoogleCloudVisionV1p3beta1WebDetectionWebImage());
+  o.add(buildGoogleCloudVisionV1p3beta1WebDetectionWebImage());
+  return o;
+}
+
+void checkUnnamed3517(
+    core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebImage> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudVisionV1p3beta1WebDetectionWebImage(
+      o[0] as api.GoogleCloudVisionV1p3beta1WebDetectionWebImage);
+  checkGoogleCloudVisionV1p3beta1WebDetectionWebImage(
+      o[1] as api.GoogleCloudVisionV1p3beta1WebDetectionWebImage);
+}
+
 core.int buildCounterGoogleCloudVisionV1p3beta1WebDetectionWebPage = 0;
 api.GoogleCloudVisionV1p3beta1WebDetectionWebPage
     buildGoogleCloudVisionV1p3beta1WebDetectionWebPage() {
   var o = api.GoogleCloudVisionV1p3beta1WebDetectionWebPage();
   buildCounterGoogleCloudVisionV1p3beta1WebDetectionWebPage++;
   if (buildCounterGoogleCloudVisionV1p3beta1WebDetectionWebPage < 3) {
-    o.fullMatchingImages = buildUnnamed3515();
+    o.fullMatchingImages = buildUnnamed3516();
     o.pageTitle = 'foo';
-    o.partialMatchingImages = buildUnnamed3516();
+    o.partialMatchingImages = buildUnnamed3517();
     o.score = 42.0;
     o.url = 'foo';
   }
@@ -7515,12 +7515,12 @@ void checkGoogleCloudVisionV1p3beta1WebDetectionWebPage(
     api.GoogleCloudVisionV1p3beta1WebDetectionWebPage o) {
   buildCounterGoogleCloudVisionV1p3beta1WebDetectionWebPage++;
   if (buildCounterGoogleCloudVisionV1p3beta1WebDetectionWebPage < 3) {
-    checkUnnamed3515(o.fullMatchingImages!);
+    checkUnnamed3516(o.fullMatchingImages!);
     unittest.expect(
       o.pageTitle!,
       unittest.equals('foo'),
     );
-    checkUnnamed3516(o.partialMatchingImages!);
+    checkUnnamed3517(o.partialMatchingImages!);
     unittest.expect(
       o.score!,
       unittest.equals(42.0),
@@ -7533,14 +7533,14 @@ void checkGoogleCloudVisionV1p3beta1WebDetectionWebPage(
   buildCounterGoogleCloudVisionV1p3beta1WebDetectionWebPage--;
 }
 
-core.List<api.GoogleCloudVisionV1p3beta1Symbol> buildUnnamed3517() {
+core.List<api.GoogleCloudVisionV1p3beta1Symbol> buildUnnamed3518() {
   var o = <api.GoogleCloudVisionV1p3beta1Symbol>[];
   o.add(buildGoogleCloudVisionV1p3beta1Symbol());
   o.add(buildGoogleCloudVisionV1p3beta1Symbol());
   return o;
 }
 
-void checkUnnamed3517(core.List<api.GoogleCloudVisionV1p3beta1Symbol> o) {
+void checkUnnamed3518(core.List<api.GoogleCloudVisionV1p3beta1Symbol> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p3beta1Symbol(
       o[0] as api.GoogleCloudVisionV1p3beta1Symbol);
@@ -7556,7 +7556,7 @@ api.GoogleCloudVisionV1p3beta1Word buildGoogleCloudVisionV1p3beta1Word() {
     o.boundingBox = buildGoogleCloudVisionV1p3beta1BoundingPoly();
     o.confidence = 42.0;
     o.property = buildGoogleCloudVisionV1p3beta1TextAnnotationTextProperty();
-    o.symbols = buildUnnamed3517();
+    o.symbols = buildUnnamed3518();
   }
   buildCounterGoogleCloudVisionV1p3beta1Word--;
   return o;
@@ -7573,20 +7573,20 @@ void checkGoogleCloudVisionV1p3beta1Word(api.GoogleCloudVisionV1p3beta1Word o) {
     );
     checkGoogleCloudVisionV1p3beta1TextAnnotationTextProperty(o.property!
         as api.GoogleCloudVisionV1p3beta1TextAnnotationTextProperty);
-    checkUnnamed3517(o.symbols!);
+    checkUnnamed3518(o.symbols!);
   }
   buildCounterGoogleCloudVisionV1p3beta1Word--;
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1AnnotateImageResponse>
-    buildUnnamed3518() {
+    buildUnnamed3519() {
   var o = <api.GoogleCloudVisionV1p4beta1AnnotateImageResponse>[];
   o.add(buildGoogleCloudVisionV1p4beta1AnnotateImageResponse());
   o.add(buildGoogleCloudVisionV1p4beta1AnnotateImageResponse());
   return o;
 }
 
-void checkUnnamed3518(
+void checkUnnamed3519(
     core.List<api.GoogleCloudVisionV1p4beta1AnnotateImageResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p4beta1AnnotateImageResponse(
@@ -7603,7 +7603,7 @@ api.GoogleCloudVisionV1p4beta1AnnotateFileResponse
   if (buildCounterGoogleCloudVisionV1p4beta1AnnotateFileResponse < 3) {
     o.error = buildStatus();
     o.inputConfig = buildGoogleCloudVisionV1p4beta1InputConfig();
-    o.responses = buildUnnamed3518();
+    o.responses = buildUnnamed3519();
     o.totalPages = 42;
   }
   buildCounterGoogleCloudVisionV1p4beta1AnnotateFileResponse--;
@@ -7617,7 +7617,7 @@ void checkGoogleCloudVisionV1p4beta1AnnotateFileResponse(
     checkStatus(o.error! as api.Status);
     checkGoogleCloudVisionV1p4beta1InputConfig(
         o.inputConfig! as api.GoogleCloudVisionV1p4beta1InputConfig);
-    checkUnnamed3518(o.responses!);
+    checkUnnamed3519(o.responses!);
     unittest.expect(
       o.totalPages!,
       unittest.equals(42),
@@ -7626,36 +7626,20 @@ void checkGoogleCloudVisionV1p4beta1AnnotateFileResponse(
   buildCounterGoogleCloudVisionV1p4beta1AnnotateFileResponse--;
 }
 
-core.List<api.GoogleCloudVisionV1p4beta1FaceAnnotation> buildUnnamed3519() {
+core.List<api.GoogleCloudVisionV1p4beta1FaceAnnotation> buildUnnamed3520() {
   var o = <api.GoogleCloudVisionV1p4beta1FaceAnnotation>[];
   o.add(buildGoogleCloudVisionV1p4beta1FaceAnnotation());
   o.add(buildGoogleCloudVisionV1p4beta1FaceAnnotation());
   return o;
 }
 
-void checkUnnamed3519(
+void checkUnnamed3520(
     core.List<api.GoogleCloudVisionV1p4beta1FaceAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p4beta1FaceAnnotation(
       o[0] as api.GoogleCloudVisionV1p4beta1FaceAnnotation);
   checkGoogleCloudVisionV1p4beta1FaceAnnotation(
       o[1] as api.GoogleCloudVisionV1p4beta1FaceAnnotation);
-}
-
-core.List<api.GoogleCloudVisionV1p4beta1EntityAnnotation> buildUnnamed3520() {
-  var o = <api.GoogleCloudVisionV1p4beta1EntityAnnotation>[];
-  o.add(buildGoogleCloudVisionV1p4beta1EntityAnnotation());
-  o.add(buildGoogleCloudVisionV1p4beta1EntityAnnotation());
-  return o;
-}
-
-void checkUnnamed3520(
-    core.List<api.GoogleCloudVisionV1p4beta1EntityAnnotation> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1EntityAnnotation(
-      o[0] as api.GoogleCloudVisionV1p4beta1EntityAnnotation);
-  checkGoogleCloudVisionV1p4beta1EntityAnnotation(
-      o[1] as api.GoogleCloudVisionV1p4beta1EntityAnnotation);
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1EntityAnnotation> buildUnnamed3521() {
@@ -7674,37 +7658,37 @@ void checkUnnamed3521(
       o[1] as api.GoogleCloudVisionV1p4beta1EntityAnnotation);
 }
 
-core.List<api.GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation>
-    buildUnnamed3522() {
-  var o = <api.GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation>[];
-  o.add(buildGoogleCloudVisionV1p4beta1LocalizedObjectAnnotation());
-  o.add(buildGoogleCloudVisionV1p4beta1LocalizedObjectAnnotation());
-  return o;
-}
-
-void checkUnnamed3522(
-    core.List<api.GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1LocalizedObjectAnnotation(
-      o[0] as api.GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation);
-  checkGoogleCloudVisionV1p4beta1LocalizedObjectAnnotation(
-      o[1] as api.GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation);
-}
-
-core.List<api.GoogleCloudVisionV1p4beta1EntityAnnotation> buildUnnamed3523() {
+core.List<api.GoogleCloudVisionV1p4beta1EntityAnnotation> buildUnnamed3522() {
   var o = <api.GoogleCloudVisionV1p4beta1EntityAnnotation>[];
   o.add(buildGoogleCloudVisionV1p4beta1EntityAnnotation());
   o.add(buildGoogleCloudVisionV1p4beta1EntityAnnotation());
   return o;
 }
 
-void checkUnnamed3523(
+void checkUnnamed3522(
     core.List<api.GoogleCloudVisionV1p4beta1EntityAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p4beta1EntityAnnotation(
       o[0] as api.GoogleCloudVisionV1p4beta1EntityAnnotation);
   checkGoogleCloudVisionV1p4beta1EntityAnnotation(
       o[1] as api.GoogleCloudVisionV1p4beta1EntityAnnotation);
+}
+
+core.List<api.GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation>
+    buildUnnamed3523() {
+  var o = <api.GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation>[];
+  o.add(buildGoogleCloudVisionV1p4beta1LocalizedObjectAnnotation());
+  o.add(buildGoogleCloudVisionV1p4beta1LocalizedObjectAnnotation());
+  return o;
+}
+
+void checkUnnamed3523(
+    core.List<api.GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudVisionV1p4beta1LocalizedObjectAnnotation(
+      o[0] as api.GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation);
+  checkGoogleCloudVisionV1p4beta1LocalizedObjectAnnotation(
+      o[1] as api.GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation);
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1EntityAnnotation> buildUnnamed3524() {
@@ -7723,6 +7707,22 @@ void checkUnnamed3524(
       o[1] as api.GoogleCloudVisionV1p4beta1EntityAnnotation);
 }
 
+core.List<api.GoogleCloudVisionV1p4beta1EntityAnnotation> buildUnnamed3525() {
+  var o = <api.GoogleCloudVisionV1p4beta1EntityAnnotation>[];
+  o.add(buildGoogleCloudVisionV1p4beta1EntityAnnotation());
+  o.add(buildGoogleCloudVisionV1p4beta1EntityAnnotation());
+  return o;
+}
+
+void checkUnnamed3525(
+    core.List<api.GoogleCloudVisionV1p4beta1EntityAnnotation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudVisionV1p4beta1EntityAnnotation(
+      o[0] as api.GoogleCloudVisionV1p4beta1EntityAnnotation);
+  checkGoogleCloudVisionV1p4beta1EntityAnnotation(
+      o[1] as api.GoogleCloudVisionV1p4beta1EntityAnnotation);
+}
+
 core.int buildCounterGoogleCloudVisionV1p4beta1AnnotateImageResponse = 0;
 api.GoogleCloudVisionV1p4beta1AnnotateImageResponse
     buildGoogleCloudVisionV1p4beta1AnnotateImageResponse() {
@@ -7733,19 +7733,19 @@ api.GoogleCloudVisionV1p4beta1AnnotateImageResponse
     o.cropHintsAnnotation =
         buildGoogleCloudVisionV1p4beta1CropHintsAnnotation();
     o.error = buildStatus();
-    o.faceAnnotations = buildUnnamed3519();
+    o.faceAnnotations = buildUnnamed3520();
     o.fullTextAnnotation = buildGoogleCloudVisionV1p4beta1TextAnnotation();
     o.imagePropertiesAnnotation =
         buildGoogleCloudVisionV1p4beta1ImageProperties();
-    o.labelAnnotations = buildUnnamed3520();
-    o.landmarkAnnotations = buildUnnamed3521();
-    o.localizedObjectAnnotations = buildUnnamed3522();
-    o.logoAnnotations = buildUnnamed3523();
+    o.labelAnnotations = buildUnnamed3521();
+    o.landmarkAnnotations = buildUnnamed3522();
+    o.localizedObjectAnnotations = buildUnnamed3523();
+    o.logoAnnotations = buildUnnamed3524();
     o.productSearchResults =
         buildGoogleCloudVisionV1p4beta1ProductSearchResults();
     o.safeSearchAnnotation =
         buildGoogleCloudVisionV1p4beta1SafeSearchAnnotation();
-    o.textAnnotations = buildUnnamed3524();
+    o.textAnnotations = buildUnnamed3525();
     o.webDetection = buildGoogleCloudVisionV1p4beta1WebDetection();
   }
   buildCounterGoogleCloudVisionV1p4beta1AnnotateImageResponse--;
@@ -7761,20 +7761,20 @@ void checkGoogleCloudVisionV1p4beta1AnnotateImageResponse(
     checkGoogleCloudVisionV1p4beta1CropHintsAnnotation(o.cropHintsAnnotation!
         as api.GoogleCloudVisionV1p4beta1CropHintsAnnotation);
     checkStatus(o.error! as api.Status);
-    checkUnnamed3519(o.faceAnnotations!);
+    checkUnnamed3520(o.faceAnnotations!);
     checkGoogleCloudVisionV1p4beta1TextAnnotation(
         o.fullTextAnnotation! as api.GoogleCloudVisionV1p4beta1TextAnnotation);
     checkGoogleCloudVisionV1p4beta1ImageProperties(o.imagePropertiesAnnotation!
         as api.GoogleCloudVisionV1p4beta1ImageProperties);
-    checkUnnamed3520(o.labelAnnotations!);
-    checkUnnamed3521(o.landmarkAnnotations!);
-    checkUnnamed3522(o.localizedObjectAnnotations!);
-    checkUnnamed3523(o.logoAnnotations!);
+    checkUnnamed3521(o.labelAnnotations!);
+    checkUnnamed3522(o.landmarkAnnotations!);
+    checkUnnamed3523(o.localizedObjectAnnotations!);
+    checkUnnamed3524(o.logoAnnotations!);
     checkGoogleCloudVisionV1p4beta1ProductSearchResults(o.productSearchResults!
         as api.GoogleCloudVisionV1p4beta1ProductSearchResults);
     checkGoogleCloudVisionV1p4beta1SafeSearchAnnotation(o.safeSearchAnnotation!
         as api.GoogleCloudVisionV1p4beta1SafeSearchAnnotation);
-    checkUnnamed3524(o.textAnnotations!);
+    checkUnnamed3525(o.textAnnotations!);
     checkGoogleCloudVisionV1p4beta1WebDetection(
         o.webDetection! as api.GoogleCloudVisionV1p4beta1WebDetection);
   }
@@ -7804,14 +7804,14 @@ void checkGoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse(
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse>
-    buildUnnamed3525() {
+    buildUnnamed3526() {
   var o = <api.GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse>[];
   o.add(buildGoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse());
   o.add(buildGoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse());
   return o;
 }
 
-void checkUnnamed3525(
+void checkUnnamed3526(
     core.List<api.GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse(
@@ -7828,7 +7828,7 @@ api.GoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse
   buildCounterGoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse++;
   if (buildCounterGoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse <
       3) {
-    o.responses = buildUnnamed3525();
+    o.responses = buildUnnamed3526();
   }
   buildCounterGoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse--;
   return o;
@@ -7839,7 +7839,7 @@ void checkGoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse(
   buildCounterGoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse++;
   if (buildCounterGoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse <
       3) {
-    checkUnnamed3525(o.responses!);
+    checkUnnamed3526(o.responses!);
   }
   buildCounterGoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse--;
 }
@@ -7870,14 +7870,14 @@ void checkGoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse(
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1AnnotateFileResponse>
-    buildUnnamed3526() {
+    buildUnnamed3527() {
   var o = <api.GoogleCloudVisionV1p4beta1AnnotateFileResponse>[];
   o.add(buildGoogleCloudVisionV1p4beta1AnnotateFileResponse());
   o.add(buildGoogleCloudVisionV1p4beta1AnnotateFileResponse());
   return o;
 }
 
-void checkUnnamed3526(
+void checkUnnamed3527(
     core.List<api.GoogleCloudVisionV1p4beta1AnnotateFileResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p4beta1AnnotateFileResponse(
@@ -7892,7 +7892,7 @@ api.GoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse
   var o = api.GoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse();
   buildCounterGoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse++;
   if (buildCounterGoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse < 3) {
-    o.responses = buildUnnamed3526();
+    o.responses = buildUnnamed3527();
   }
   buildCounterGoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse--;
   return o;
@@ -7902,7 +7902,7 @@ void checkGoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse(
     api.GoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse o) {
   buildCounterGoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse++;
   if (buildCounterGoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse < 3) {
-    checkUnnamed3526(o.responses!);
+    checkUnnamed3527(o.responses!);
   }
   buildCounterGoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse--;
 }
@@ -7941,14 +7941,14 @@ void checkGoogleCloudVisionV1p4beta1BatchOperationMetadata(
   buildCounterGoogleCloudVisionV1p4beta1BatchOperationMetadata--;
 }
 
-core.List<api.GoogleCloudVisionV1p4beta1Paragraph> buildUnnamed3527() {
+core.List<api.GoogleCloudVisionV1p4beta1Paragraph> buildUnnamed3528() {
   var o = <api.GoogleCloudVisionV1p4beta1Paragraph>[];
   o.add(buildGoogleCloudVisionV1p4beta1Paragraph());
   o.add(buildGoogleCloudVisionV1p4beta1Paragraph());
   return o;
 }
 
-void checkUnnamed3527(core.List<api.GoogleCloudVisionV1p4beta1Paragraph> o) {
+void checkUnnamed3528(core.List<api.GoogleCloudVisionV1p4beta1Paragraph> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p4beta1Paragraph(
       o[0] as api.GoogleCloudVisionV1p4beta1Paragraph);
@@ -7964,7 +7964,7 @@ api.GoogleCloudVisionV1p4beta1Block buildGoogleCloudVisionV1p4beta1Block() {
     o.blockType = 'foo';
     o.boundingBox = buildGoogleCloudVisionV1p4beta1BoundingPoly();
     o.confidence = 42.0;
-    o.paragraphs = buildUnnamed3527();
+    o.paragraphs = buildUnnamed3528();
     o.property = buildGoogleCloudVisionV1p4beta1TextAnnotationTextProperty();
   }
   buildCounterGoogleCloudVisionV1p4beta1Block--;
@@ -7985,21 +7985,21 @@ void checkGoogleCloudVisionV1p4beta1Block(
       o.confidence!,
       unittest.equals(42.0),
     );
-    checkUnnamed3527(o.paragraphs!);
+    checkUnnamed3528(o.paragraphs!);
     checkGoogleCloudVisionV1p4beta1TextAnnotationTextProperty(o.property!
         as api.GoogleCloudVisionV1p4beta1TextAnnotationTextProperty);
   }
   buildCounterGoogleCloudVisionV1p4beta1Block--;
 }
 
-core.List<api.GoogleCloudVisionV1p4beta1NormalizedVertex> buildUnnamed3528() {
+core.List<api.GoogleCloudVisionV1p4beta1NormalizedVertex> buildUnnamed3529() {
   var o = <api.GoogleCloudVisionV1p4beta1NormalizedVertex>[];
   o.add(buildGoogleCloudVisionV1p4beta1NormalizedVertex());
   o.add(buildGoogleCloudVisionV1p4beta1NormalizedVertex());
   return o;
 }
 
-void checkUnnamed3528(
+void checkUnnamed3529(
     core.List<api.GoogleCloudVisionV1p4beta1NormalizedVertex> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p4beta1NormalizedVertex(
@@ -8008,14 +8008,14 @@ void checkUnnamed3528(
       o[1] as api.GoogleCloudVisionV1p4beta1NormalizedVertex);
 }
 
-core.List<api.GoogleCloudVisionV1p4beta1Vertex> buildUnnamed3529() {
+core.List<api.GoogleCloudVisionV1p4beta1Vertex> buildUnnamed3530() {
   var o = <api.GoogleCloudVisionV1p4beta1Vertex>[];
   o.add(buildGoogleCloudVisionV1p4beta1Vertex());
   o.add(buildGoogleCloudVisionV1p4beta1Vertex());
   return o;
 }
 
-void checkUnnamed3529(core.List<api.GoogleCloudVisionV1p4beta1Vertex> o) {
+void checkUnnamed3530(core.List<api.GoogleCloudVisionV1p4beta1Vertex> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p4beta1Vertex(
       o[0] as api.GoogleCloudVisionV1p4beta1Vertex);
@@ -8029,8 +8029,8 @@ api.GoogleCloudVisionV1p4beta1BoundingPoly
   var o = api.GoogleCloudVisionV1p4beta1BoundingPoly();
   buildCounterGoogleCloudVisionV1p4beta1BoundingPoly++;
   if (buildCounterGoogleCloudVisionV1p4beta1BoundingPoly < 3) {
-    o.normalizedVertices = buildUnnamed3528();
-    o.vertices = buildUnnamed3529();
+    o.normalizedVertices = buildUnnamed3529();
+    o.vertices = buildUnnamed3530();
   }
   buildCounterGoogleCloudVisionV1p4beta1BoundingPoly--;
   return o;
@@ -8040,8 +8040,8 @@ void checkGoogleCloudVisionV1p4beta1BoundingPoly(
     api.GoogleCloudVisionV1p4beta1BoundingPoly o) {
   buildCounterGoogleCloudVisionV1p4beta1BoundingPoly++;
   if (buildCounterGoogleCloudVisionV1p4beta1BoundingPoly < 3) {
-    checkUnnamed3528(o.normalizedVertices!);
-    checkUnnamed3529(o.vertices!);
+    checkUnnamed3529(o.normalizedVertices!);
+    checkUnnamed3530(o.vertices!);
   }
   buildCounterGoogleCloudVisionV1p4beta1BoundingPoly--;
 }
@@ -8143,14 +8143,14 @@ void checkGoogleCloudVisionV1p4beta1CropHint(
   buildCounterGoogleCloudVisionV1p4beta1CropHint--;
 }
 
-core.List<api.GoogleCloudVisionV1p4beta1CropHint> buildUnnamed3530() {
+core.List<api.GoogleCloudVisionV1p4beta1CropHint> buildUnnamed3531() {
   var o = <api.GoogleCloudVisionV1p4beta1CropHint>[];
   o.add(buildGoogleCloudVisionV1p4beta1CropHint());
   o.add(buildGoogleCloudVisionV1p4beta1CropHint());
   return o;
 }
 
-void checkUnnamed3530(core.List<api.GoogleCloudVisionV1p4beta1CropHint> o) {
+void checkUnnamed3531(core.List<api.GoogleCloudVisionV1p4beta1CropHint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p4beta1CropHint(
       o[0] as api.GoogleCloudVisionV1p4beta1CropHint);
@@ -8164,7 +8164,7 @@ api.GoogleCloudVisionV1p4beta1CropHintsAnnotation
   var o = api.GoogleCloudVisionV1p4beta1CropHintsAnnotation();
   buildCounterGoogleCloudVisionV1p4beta1CropHintsAnnotation++;
   if (buildCounterGoogleCloudVisionV1p4beta1CropHintsAnnotation < 3) {
-    o.cropHints = buildUnnamed3530();
+    o.cropHints = buildUnnamed3531();
   }
   buildCounterGoogleCloudVisionV1p4beta1CropHintsAnnotation--;
   return o;
@@ -8174,19 +8174,19 @@ void checkGoogleCloudVisionV1p4beta1CropHintsAnnotation(
     api.GoogleCloudVisionV1p4beta1CropHintsAnnotation o) {
   buildCounterGoogleCloudVisionV1p4beta1CropHintsAnnotation++;
   if (buildCounterGoogleCloudVisionV1p4beta1CropHintsAnnotation < 3) {
-    checkUnnamed3530(o.cropHints!);
+    checkUnnamed3531(o.cropHints!);
   }
   buildCounterGoogleCloudVisionV1p4beta1CropHintsAnnotation--;
 }
 
-core.List<api.GoogleCloudVisionV1p4beta1ColorInfo> buildUnnamed3531() {
+core.List<api.GoogleCloudVisionV1p4beta1ColorInfo> buildUnnamed3532() {
   var o = <api.GoogleCloudVisionV1p4beta1ColorInfo>[];
   o.add(buildGoogleCloudVisionV1p4beta1ColorInfo());
   o.add(buildGoogleCloudVisionV1p4beta1ColorInfo());
   return o;
 }
 
-void checkUnnamed3531(core.List<api.GoogleCloudVisionV1p4beta1ColorInfo> o) {
+void checkUnnamed3532(core.List<api.GoogleCloudVisionV1p4beta1ColorInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p4beta1ColorInfo(
       o[0] as api.GoogleCloudVisionV1p4beta1ColorInfo);
@@ -8200,7 +8200,7 @@ api.GoogleCloudVisionV1p4beta1DominantColorsAnnotation
   var o = api.GoogleCloudVisionV1p4beta1DominantColorsAnnotation();
   buildCounterGoogleCloudVisionV1p4beta1DominantColorsAnnotation++;
   if (buildCounterGoogleCloudVisionV1p4beta1DominantColorsAnnotation < 3) {
-    o.colors = buildUnnamed3531();
+    o.colors = buildUnnamed3532();
   }
   buildCounterGoogleCloudVisionV1p4beta1DominantColorsAnnotation--;
   return o;
@@ -8210,19 +8210,19 @@ void checkGoogleCloudVisionV1p4beta1DominantColorsAnnotation(
     api.GoogleCloudVisionV1p4beta1DominantColorsAnnotation o) {
   buildCounterGoogleCloudVisionV1p4beta1DominantColorsAnnotation++;
   if (buildCounterGoogleCloudVisionV1p4beta1DominantColorsAnnotation < 3) {
-    checkUnnamed3531(o.colors!);
+    checkUnnamed3532(o.colors!);
   }
   buildCounterGoogleCloudVisionV1p4beta1DominantColorsAnnotation--;
 }
 
-core.List<api.GoogleCloudVisionV1p4beta1LocationInfo> buildUnnamed3532() {
+core.List<api.GoogleCloudVisionV1p4beta1LocationInfo> buildUnnamed3533() {
   var o = <api.GoogleCloudVisionV1p4beta1LocationInfo>[];
   o.add(buildGoogleCloudVisionV1p4beta1LocationInfo());
   o.add(buildGoogleCloudVisionV1p4beta1LocationInfo());
   return o;
 }
 
-void checkUnnamed3532(core.List<api.GoogleCloudVisionV1p4beta1LocationInfo> o) {
+void checkUnnamed3533(core.List<api.GoogleCloudVisionV1p4beta1LocationInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p4beta1LocationInfo(
       o[0] as api.GoogleCloudVisionV1p4beta1LocationInfo);
@@ -8230,14 +8230,14 @@ void checkUnnamed3532(core.List<api.GoogleCloudVisionV1p4beta1LocationInfo> o) {
       o[1] as api.GoogleCloudVisionV1p4beta1LocationInfo);
 }
 
-core.List<api.GoogleCloudVisionV1p4beta1Property> buildUnnamed3533() {
+core.List<api.GoogleCloudVisionV1p4beta1Property> buildUnnamed3534() {
   var o = <api.GoogleCloudVisionV1p4beta1Property>[];
   o.add(buildGoogleCloudVisionV1p4beta1Property());
   o.add(buildGoogleCloudVisionV1p4beta1Property());
   return o;
 }
 
-void checkUnnamed3533(core.List<api.GoogleCloudVisionV1p4beta1Property> o) {
+void checkUnnamed3534(core.List<api.GoogleCloudVisionV1p4beta1Property> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p4beta1Property(
       o[0] as api.GoogleCloudVisionV1p4beta1Property);
@@ -8255,9 +8255,9 @@ api.GoogleCloudVisionV1p4beta1EntityAnnotation
     o.confidence = 42.0;
     o.description = 'foo';
     o.locale = 'foo';
-    o.locations = buildUnnamed3532();
+    o.locations = buildUnnamed3533();
     o.mid = 'foo';
-    o.properties = buildUnnamed3533();
+    o.properties = buildUnnamed3534();
     o.score = 42.0;
     o.topicality = 42.0;
   }
@@ -8283,12 +8283,12 @@ void checkGoogleCloudVisionV1p4beta1EntityAnnotation(
       o.locale!,
       unittest.equals('foo'),
     );
-    checkUnnamed3532(o.locations!);
+    checkUnnamed3533(o.locations!);
     unittest.expect(
       o.mid!,
       unittest.equals('foo'),
     );
-    checkUnnamed3533(o.properties!);
+    checkUnnamed3534(o.properties!);
     unittest.expect(
       o.score!,
       unittest.equals(42.0),
@@ -8302,14 +8302,14 @@ void checkGoogleCloudVisionV1p4beta1EntityAnnotation(
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1FaceAnnotationLandmark>
-    buildUnnamed3534() {
+    buildUnnamed3535() {
   var o = <api.GoogleCloudVisionV1p4beta1FaceAnnotationLandmark>[];
   o.add(buildGoogleCloudVisionV1p4beta1FaceAnnotationLandmark());
   o.add(buildGoogleCloudVisionV1p4beta1FaceAnnotationLandmark());
   return o;
 }
 
-void checkUnnamed3534(
+void checkUnnamed3535(
     core.List<api.GoogleCloudVisionV1p4beta1FaceAnnotationLandmark> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p4beta1FaceAnnotationLandmark(
@@ -8319,14 +8319,14 @@ void checkUnnamed3534(
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1FaceRecognitionResult>
-    buildUnnamed3535() {
+    buildUnnamed3536() {
   var o = <api.GoogleCloudVisionV1p4beta1FaceRecognitionResult>[];
   o.add(buildGoogleCloudVisionV1p4beta1FaceRecognitionResult());
   o.add(buildGoogleCloudVisionV1p4beta1FaceRecognitionResult());
   return o;
 }
 
-void checkUnnamed3535(
+void checkUnnamed3536(
     core.List<api.GoogleCloudVisionV1p4beta1FaceRecognitionResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p4beta1FaceRecognitionResult(
@@ -8349,9 +8349,9 @@ api.GoogleCloudVisionV1p4beta1FaceAnnotation
     o.headwearLikelihood = 'foo';
     o.joyLikelihood = 'foo';
     o.landmarkingConfidence = 42.0;
-    o.landmarks = buildUnnamed3534();
+    o.landmarks = buildUnnamed3535();
     o.panAngle = 42.0;
-    o.recognitionResult = buildUnnamed3535();
+    o.recognitionResult = buildUnnamed3536();
     o.rollAngle = 42.0;
     o.sorrowLikelihood = 'foo';
     o.surpriseLikelihood = 'foo';
@@ -8394,12 +8394,12 @@ void checkGoogleCloudVisionV1p4beta1FaceAnnotation(
       o.landmarkingConfidence!,
       unittest.equals(42.0),
     );
-    checkUnnamed3534(o.landmarks!);
+    checkUnnamed3535(o.landmarks!);
     unittest.expect(
       o.panAngle!,
       unittest.equals(42.0),
     );
-    checkUnnamed3535(o.recognitionResult!);
+    checkUnnamed3536(o.recognitionResult!);
     unittest.expect(
       o.rollAngle!,
       unittest.equals(42.0),
@@ -8578,14 +8578,14 @@ void checkGoogleCloudVisionV1p4beta1ImageProperties(
   buildCounterGoogleCloudVisionV1p4beta1ImageProperties--;
 }
 
-core.List<api.GoogleCloudVisionV1p4beta1ReferenceImage> buildUnnamed3536() {
+core.List<api.GoogleCloudVisionV1p4beta1ReferenceImage> buildUnnamed3537() {
   var o = <api.GoogleCloudVisionV1p4beta1ReferenceImage>[];
   o.add(buildGoogleCloudVisionV1p4beta1ReferenceImage());
   o.add(buildGoogleCloudVisionV1p4beta1ReferenceImage());
   return o;
 }
 
-void checkUnnamed3536(
+void checkUnnamed3537(
     core.List<api.GoogleCloudVisionV1p4beta1ReferenceImage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p4beta1ReferenceImage(
@@ -8594,14 +8594,14 @@ void checkUnnamed3536(
       o[1] as api.GoogleCloudVisionV1p4beta1ReferenceImage);
 }
 
-core.List<api.Status> buildUnnamed3537() {
+core.List<api.Status> buildUnnamed3538() {
   var o = <api.Status>[];
   o.add(buildStatus());
   o.add(buildStatus());
   return o;
 }
 
-void checkUnnamed3537(core.List<api.Status> o) {
+void checkUnnamed3538(core.List<api.Status> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStatus(o[0] as api.Status);
   checkStatus(o[1] as api.Status);
@@ -8613,8 +8613,8 @@ api.GoogleCloudVisionV1p4beta1ImportProductSetsResponse
   var o = api.GoogleCloudVisionV1p4beta1ImportProductSetsResponse();
   buildCounterGoogleCloudVisionV1p4beta1ImportProductSetsResponse++;
   if (buildCounterGoogleCloudVisionV1p4beta1ImportProductSetsResponse < 3) {
-    o.referenceImages = buildUnnamed3536();
-    o.statuses = buildUnnamed3537();
+    o.referenceImages = buildUnnamed3537();
+    o.statuses = buildUnnamed3538();
   }
   buildCounterGoogleCloudVisionV1p4beta1ImportProductSetsResponse--;
   return o;
@@ -8624,8 +8624,8 @@ void checkGoogleCloudVisionV1p4beta1ImportProductSetsResponse(
     api.GoogleCloudVisionV1p4beta1ImportProductSetsResponse o) {
   buildCounterGoogleCloudVisionV1p4beta1ImportProductSetsResponse++;
   if (buildCounterGoogleCloudVisionV1p4beta1ImportProductSetsResponse < 3) {
-    checkUnnamed3536(o.referenceImages!);
-    checkUnnamed3537(o.statuses!);
+    checkUnnamed3537(o.referenceImages!);
+    checkUnnamed3538(o.statuses!);
   }
   buildCounterGoogleCloudVisionV1p4beta1ImportProductSetsResponse--;
 }
@@ -8815,14 +8815,14 @@ void checkGoogleCloudVisionV1p4beta1OutputConfig(
   buildCounterGoogleCloudVisionV1p4beta1OutputConfig--;
 }
 
-core.List<api.GoogleCloudVisionV1p4beta1Block> buildUnnamed3538() {
+core.List<api.GoogleCloudVisionV1p4beta1Block> buildUnnamed3539() {
   var o = <api.GoogleCloudVisionV1p4beta1Block>[];
   o.add(buildGoogleCloudVisionV1p4beta1Block());
   o.add(buildGoogleCloudVisionV1p4beta1Block());
   return o;
 }
 
-void checkUnnamed3538(core.List<api.GoogleCloudVisionV1p4beta1Block> o) {
+void checkUnnamed3539(core.List<api.GoogleCloudVisionV1p4beta1Block> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p4beta1Block(
       o[0] as api.GoogleCloudVisionV1p4beta1Block);
@@ -8835,7 +8835,7 @@ api.GoogleCloudVisionV1p4beta1Page buildGoogleCloudVisionV1p4beta1Page() {
   var o = api.GoogleCloudVisionV1p4beta1Page();
   buildCounterGoogleCloudVisionV1p4beta1Page++;
   if (buildCounterGoogleCloudVisionV1p4beta1Page < 3) {
-    o.blocks = buildUnnamed3538();
+    o.blocks = buildUnnamed3539();
     o.confidence = 42.0;
     o.height = 42;
     o.property = buildGoogleCloudVisionV1p4beta1TextAnnotationTextProperty();
@@ -8848,7 +8848,7 @@ api.GoogleCloudVisionV1p4beta1Page buildGoogleCloudVisionV1p4beta1Page() {
 void checkGoogleCloudVisionV1p4beta1Page(api.GoogleCloudVisionV1p4beta1Page o) {
   buildCounterGoogleCloudVisionV1p4beta1Page++;
   if (buildCounterGoogleCloudVisionV1p4beta1Page < 3) {
-    checkUnnamed3538(o.blocks!);
+    checkUnnamed3539(o.blocks!);
     unittest.expect(
       o.confidence!,
       unittest.equals(42.0),
@@ -8867,14 +8867,14 @@ void checkGoogleCloudVisionV1p4beta1Page(api.GoogleCloudVisionV1p4beta1Page o) {
   buildCounterGoogleCloudVisionV1p4beta1Page--;
 }
 
-core.List<api.GoogleCloudVisionV1p4beta1Word> buildUnnamed3539() {
+core.List<api.GoogleCloudVisionV1p4beta1Word> buildUnnamed3540() {
   var o = <api.GoogleCloudVisionV1p4beta1Word>[];
   o.add(buildGoogleCloudVisionV1p4beta1Word());
   o.add(buildGoogleCloudVisionV1p4beta1Word());
   return o;
 }
 
-void checkUnnamed3539(core.List<api.GoogleCloudVisionV1p4beta1Word> o) {
+void checkUnnamed3540(core.List<api.GoogleCloudVisionV1p4beta1Word> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p4beta1Word(
       o[0] as api.GoogleCloudVisionV1p4beta1Word);
@@ -8891,7 +8891,7 @@ api.GoogleCloudVisionV1p4beta1Paragraph
     o.boundingBox = buildGoogleCloudVisionV1p4beta1BoundingPoly();
     o.confidence = 42.0;
     o.property = buildGoogleCloudVisionV1p4beta1TextAnnotationTextProperty();
-    o.words = buildUnnamed3539();
+    o.words = buildUnnamed3540();
   }
   buildCounterGoogleCloudVisionV1p4beta1Paragraph--;
   return o;
@@ -8909,7 +8909,7 @@ void checkGoogleCloudVisionV1p4beta1Paragraph(
     );
     checkGoogleCloudVisionV1p4beta1TextAnnotationTextProperty(o.property!
         as api.GoogleCloudVisionV1p4beta1TextAnnotationTextProperty);
-    checkUnnamed3539(o.words!);
+    checkUnnamed3540(o.words!);
   }
   buildCounterGoogleCloudVisionV1p4beta1Paragraph--;
 }
@@ -8948,14 +8948,14 @@ void checkGoogleCloudVisionV1p4beta1Position(
   buildCounterGoogleCloudVisionV1p4beta1Position--;
 }
 
-core.List<api.GoogleCloudVisionV1p4beta1ProductKeyValue> buildUnnamed3540() {
+core.List<api.GoogleCloudVisionV1p4beta1ProductKeyValue> buildUnnamed3541() {
   var o = <api.GoogleCloudVisionV1p4beta1ProductKeyValue>[];
   o.add(buildGoogleCloudVisionV1p4beta1ProductKeyValue());
   o.add(buildGoogleCloudVisionV1p4beta1ProductKeyValue());
   return o;
 }
 
-void checkUnnamed3540(
+void checkUnnamed3541(
     core.List<api.GoogleCloudVisionV1p4beta1ProductKeyValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p4beta1ProductKeyValue(
@@ -8973,7 +8973,7 @@ api.GoogleCloudVisionV1p4beta1Product buildGoogleCloudVisionV1p4beta1Product() {
     o.displayName = 'foo';
     o.name = 'foo';
     o.productCategory = 'foo';
-    o.productLabels = buildUnnamed3540();
+    o.productLabels = buildUnnamed3541();
   }
   buildCounterGoogleCloudVisionV1p4beta1Product--;
   return o;
@@ -8999,7 +8999,7 @@ void checkGoogleCloudVisionV1p4beta1Product(
       o.productCategory!,
       unittest.equals('foo'),
     );
-    checkUnnamed3540(o.productLabels!);
+    checkUnnamed3541(o.productLabels!);
   }
   buildCounterGoogleCloudVisionV1p4beta1Product--;
 }
@@ -9034,14 +9034,14 @@ void checkGoogleCloudVisionV1p4beta1ProductKeyValue(
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult>
-    buildUnnamed3541() {
+    buildUnnamed3542() {
   var o = <api.GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult>[];
   o.add(buildGoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult());
   o.add(buildGoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult());
   return o;
 }
 
-void checkUnnamed3541(
+void checkUnnamed3542(
     core.List<api.GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -9052,14 +9052,14 @@ void checkUnnamed3541(
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1ProductSearchResultsResult>
-    buildUnnamed3542() {
+    buildUnnamed3543() {
   var o = <api.GoogleCloudVisionV1p4beta1ProductSearchResultsResult>[];
   o.add(buildGoogleCloudVisionV1p4beta1ProductSearchResultsResult());
   o.add(buildGoogleCloudVisionV1p4beta1ProductSearchResultsResult());
   return o;
 }
 
-void checkUnnamed3542(
+void checkUnnamed3543(
     core.List<api.GoogleCloudVisionV1p4beta1ProductSearchResultsResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p4beta1ProductSearchResultsResult(
@@ -9075,8 +9075,8 @@ api.GoogleCloudVisionV1p4beta1ProductSearchResults
   buildCounterGoogleCloudVisionV1p4beta1ProductSearchResults++;
   if (buildCounterGoogleCloudVisionV1p4beta1ProductSearchResults < 3) {
     o.indexTime = 'foo';
-    o.productGroupedResults = buildUnnamed3541();
-    o.results = buildUnnamed3542();
+    o.productGroupedResults = buildUnnamed3542();
+    o.results = buildUnnamed3543();
   }
   buildCounterGoogleCloudVisionV1p4beta1ProductSearchResults--;
   return o;
@@ -9090,14 +9090,14 @@ void checkGoogleCloudVisionV1p4beta1ProductSearchResults(
       o.indexTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed3541(o.productGroupedResults!);
-    checkUnnamed3542(o.results!);
+    checkUnnamed3542(o.productGroupedResults!);
+    checkUnnamed3543(o.results!);
   }
   buildCounterGoogleCloudVisionV1p4beta1ProductSearchResults--;
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation>
-    buildUnnamed3543() {
+    buildUnnamed3544() {
   var o =
       <api.GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation>[];
   o.add(buildGoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation());
@@ -9105,7 +9105,7 @@ core.List<api.GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation>
   return o;
 }
 
-void checkUnnamed3543(
+void checkUnnamed3544(
     core.List<
             api.GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation>
         o) {
@@ -9117,14 +9117,14 @@ void checkUnnamed3543(
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1ProductSearchResultsResult>
-    buildUnnamed3544() {
+    buildUnnamed3545() {
   var o = <api.GoogleCloudVisionV1p4beta1ProductSearchResultsResult>[];
   o.add(buildGoogleCloudVisionV1p4beta1ProductSearchResultsResult());
   o.add(buildGoogleCloudVisionV1p4beta1ProductSearchResultsResult());
   return o;
 }
 
-void checkUnnamed3544(
+void checkUnnamed3545(
     core.List<api.GoogleCloudVisionV1p4beta1ProductSearchResultsResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p4beta1ProductSearchResultsResult(
@@ -9142,8 +9142,8 @@ api.GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult
   if (buildCounterGoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult <
       3) {
     o.boundingPoly = buildGoogleCloudVisionV1p4beta1BoundingPoly();
-    o.objectAnnotations = buildUnnamed3543();
-    o.results = buildUnnamed3544();
+    o.objectAnnotations = buildUnnamed3544();
+    o.results = buildUnnamed3545();
   }
   buildCounterGoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult--;
   return o;
@@ -9156,8 +9156,8 @@ void checkGoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult(
       3) {
     checkGoogleCloudVisionV1p4beta1BoundingPoly(
         o.boundingPoly! as api.GoogleCloudVisionV1p4beta1BoundingPoly);
-    checkUnnamed3543(o.objectAnnotations!);
-    checkUnnamed3544(o.results!);
+    checkUnnamed3544(o.objectAnnotations!);
+    checkUnnamed3545(o.results!);
   }
   buildCounterGoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult--;
 }
@@ -9271,14 +9271,14 @@ void checkGoogleCloudVisionV1p4beta1Property(
   buildCounterGoogleCloudVisionV1p4beta1Property--;
 }
 
-core.List<api.GoogleCloudVisionV1p4beta1BoundingPoly> buildUnnamed3545() {
+core.List<api.GoogleCloudVisionV1p4beta1BoundingPoly> buildUnnamed3546() {
   var o = <api.GoogleCloudVisionV1p4beta1BoundingPoly>[];
   o.add(buildGoogleCloudVisionV1p4beta1BoundingPoly());
   o.add(buildGoogleCloudVisionV1p4beta1BoundingPoly());
   return o;
 }
 
-void checkUnnamed3545(core.List<api.GoogleCloudVisionV1p4beta1BoundingPoly> o) {
+void checkUnnamed3546(core.List<api.GoogleCloudVisionV1p4beta1BoundingPoly> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p4beta1BoundingPoly(
       o[0] as api.GoogleCloudVisionV1p4beta1BoundingPoly);
@@ -9292,7 +9292,7 @@ api.GoogleCloudVisionV1p4beta1ReferenceImage
   var o = api.GoogleCloudVisionV1p4beta1ReferenceImage();
   buildCounterGoogleCloudVisionV1p4beta1ReferenceImage++;
   if (buildCounterGoogleCloudVisionV1p4beta1ReferenceImage < 3) {
-    o.boundingPolys = buildUnnamed3545();
+    o.boundingPolys = buildUnnamed3546();
     o.name = 'foo';
     o.uri = 'foo';
   }
@@ -9304,7 +9304,7 @@ void checkGoogleCloudVisionV1p4beta1ReferenceImage(
     api.GoogleCloudVisionV1p4beta1ReferenceImage o) {
   buildCounterGoogleCloudVisionV1p4beta1ReferenceImage++;
   if (buildCounterGoogleCloudVisionV1p4beta1ReferenceImage < 3) {
-    checkUnnamed3545(o.boundingPolys!);
+    checkUnnamed3546(o.boundingPolys!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -9395,14 +9395,14 @@ void checkGoogleCloudVisionV1p4beta1Symbol(
   buildCounterGoogleCloudVisionV1p4beta1Symbol--;
 }
 
-core.List<api.GoogleCloudVisionV1p4beta1Page> buildUnnamed3546() {
+core.List<api.GoogleCloudVisionV1p4beta1Page> buildUnnamed3547() {
   var o = <api.GoogleCloudVisionV1p4beta1Page>[];
   o.add(buildGoogleCloudVisionV1p4beta1Page());
   o.add(buildGoogleCloudVisionV1p4beta1Page());
   return o;
 }
 
-void checkUnnamed3546(core.List<api.GoogleCloudVisionV1p4beta1Page> o) {
+void checkUnnamed3547(core.List<api.GoogleCloudVisionV1p4beta1Page> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p4beta1Page(
       o[0] as api.GoogleCloudVisionV1p4beta1Page);
@@ -9416,7 +9416,7 @@ api.GoogleCloudVisionV1p4beta1TextAnnotation
   var o = api.GoogleCloudVisionV1p4beta1TextAnnotation();
   buildCounterGoogleCloudVisionV1p4beta1TextAnnotation++;
   if (buildCounterGoogleCloudVisionV1p4beta1TextAnnotation < 3) {
-    o.pages = buildUnnamed3546();
+    o.pages = buildUnnamed3547();
     o.text = 'foo';
   }
   buildCounterGoogleCloudVisionV1p4beta1TextAnnotation--;
@@ -9427,7 +9427,7 @@ void checkGoogleCloudVisionV1p4beta1TextAnnotation(
     api.GoogleCloudVisionV1p4beta1TextAnnotation o) {
   buildCounterGoogleCloudVisionV1p4beta1TextAnnotation++;
   if (buildCounterGoogleCloudVisionV1p4beta1TextAnnotation < 3) {
-    checkUnnamed3546(o.pages!);
+    checkUnnamed3547(o.pages!);
     unittest.expect(
       o.text!,
       unittest.equals('foo'),
@@ -9495,14 +9495,14 @@ void checkGoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage(
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage>
-    buildUnnamed3547() {
+    buildUnnamed3548() {
   var o = <api.GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage>[];
   o.add(buildGoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage());
   o.add(buildGoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage());
   return o;
 }
 
-void checkUnnamed3547(
+void checkUnnamed3548(
     core.List<api.GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage(
@@ -9519,7 +9519,7 @@ api.GoogleCloudVisionV1p4beta1TextAnnotationTextProperty
   if (buildCounterGoogleCloudVisionV1p4beta1TextAnnotationTextProperty < 3) {
     o.detectedBreak =
         buildGoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak();
-    o.detectedLanguages = buildUnnamed3547();
+    o.detectedLanguages = buildUnnamed3548();
   }
   buildCounterGoogleCloudVisionV1p4beta1TextAnnotationTextProperty--;
   return o;
@@ -9531,7 +9531,7 @@ void checkGoogleCloudVisionV1p4beta1TextAnnotationTextProperty(
   if (buildCounterGoogleCloudVisionV1p4beta1TextAnnotationTextProperty < 3) {
     checkGoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak(o.detectedBreak!
         as api.GoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak);
-    checkUnnamed3547(o.detectedLanguages!);
+    checkUnnamed3548(o.detectedLanguages!);
   }
   buildCounterGoogleCloudVisionV1p4beta1TextAnnotationTextProperty--;
 }
@@ -9565,14 +9565,14 @@ void checkGoogleCloudVisionV1p4beta1Vertex(
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebLabel>
-    buildUnnamed3548() {
+    buildUnnamed3549() {
   var o = <api.GoogleCloudVisionV1p4beta1WebDetectionWebLabel>[];
   o.add(buildGoogleCloudVisionV1p4beta1WebDetectionWebLabel());
   o.add(buildGoogleCloudVisionV1p4beta1WebDetectionWebLabel());
   return o;
 }
 
-void checkUnnamed3548(
+void checkUnnamed3549(
     core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebLabel> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p4beta1WebDetectionWebLabel(
@@ -9582,14 +9582,14 @@ void checkUnnamed3548(
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebImage>
-    buildUnnamed3549() {
+    buildUnnamed3550() {
   var o = <api.GoogleCloudVisionV1p4beta1WebDetectionWebImage>[];
   o.add(buildGoogleCloudVisionV1p4beta1WebDetectionWebImage());
   o.add(buildGoogleCloudVisionV1p4beta1WebDetectionWebImage());
   return o;
 }
 
-void checkUnnamed3549(
+void checkUnnamed3550(
     core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebImage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p4beta1WebDetectionWebImage(
@@ -9599,37 +9599,20 @@ void checkUnnamed3549(
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebPage>
-    buildUnnamed3550() {
+    buildUnnamed3551() {
   var o = <api.GoogleCloudVisionV1p4beta1WebDetectionWebPage>[];
   o.add(buildGoogleCloudVisionV1p4beta1WebDetectionWebPage());
   o.add(buildGoogleCloudVisionV1p4beta1WebDetectionWebPage());
   return o;
 }
 
-void checkUnnamed3550(
+void checkUnnamed3551(
     core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebPage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p4beta1WebDetectionWebPage(
       o[0] as api.GoogleCloudVisionV1p4beta1WebDetectionWebPage);
   checkGoogleCloudVisionV1p4beta1WebDetectionWebPage(
       o[1] as api.GoogleCloudVisionV1p4beta1WebDetectionWebPage);
-}
-
-core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebImage>
-    buildUnnamed3551() {
-  var o = <api.GoogleCloudVisionV1p4beta1WebDetectionWebImage>[];
-  o.add(buildGoogleCloudVisionV1p4beta1WebDetectionWebImage());
-  o.add(buildGoogleCloudVisionV1p4beta1WebDetectionWebImage());
-  return o;
-}
-
-void checkUnnamed3551(
-    core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebImage> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1WebDetectionWebImage(
-      o[0] as api.GoogleCloudVisionV1p4beta1WebDetectionWebImage);
-  checkGoogleCloudVisionV1p4beta1WebDetectionWebImage(
-      o[1] as api.GoogleCloudVisionV1p4beta1WebDetectionWebImage);
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebImage>
@@ -9649,15 +9632,32 @@ void checkUnnamed3552(
       o[1] as api.GoogleCloudVisionV1p4beta1WebDetectionWebImage);
 }
 
-core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebEntity>
+core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebImage>
     buildUnnamed3553() {
+  var o = <api.GoogleCloudVisionV1p4beta1WebDetectionWebImage>[];
+  o.add(buildGoogleCloudVisionV1p4beta1WebDetectionWebImage());
+  o.add(buildGoogleCloudVisionV1p4beta1WebDetectionWebImage());
+  return o;
+}
+
+void checkUnnamed3553(
+    core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebImage> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudVisionV1p4beta1WebDetectionWebImage(
+      o[0] as api.GoogleCloudVisionV1p4beta1WebDetectionWebImage);
+  checkGoogleCloudVisionV1p4beta1WebDetectionWebImage(
+      o[1] as api.GoogleCloudVisionV1p4beta1WebDetectionWebImage);
+}
+
+core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebEntity>
+    buildUnnamed3554() {
   var o = <api.GoogleCloudVisionV1p4beta1WebDetectionWebEntity>[];
   o.add(buildGoogleCloudVisionV1p4beta1WebDetectionWebEntity());
   o.add(buildGoogleCloudVisionV1p4beta1WebDetectionWebEntity());
   return o;
 }
 
-void checkUnnamed3553(
+void checkUnnamed3554(
     core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebEntity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p4beta1WebDetectionWebEntity(
@@ -9672,12 +9672,12 @@ api.GoogleCloudVisionV1p4beta1WebDetection
   var o = api.GoogleCloudVisionV1p4beta1WebDetection();
   buildCounterGoogleCloudVisionV1p4beta1WebDetection++;
   if (buildCounterGoogleCloudVisionV1p4beta1WebDetection < 3) {
-    o.bestGuessLabels = buildUnnamed3548();
-    o.fullMatchingImages = buildUnnamed3549();
-    o.pagesWithMatchingImages = buildUnnamed3550();
-    o.partialMatchingImages = buildUnnamed3551();
-    o.visuallySimilarImages = buildUnnamed3552();
-    o.webEntities = buildUnnamed3553();
+    o.bestGuessLabels = buildUnnamed3549();
+    o.fullMatchingImages = buildUnnamed3550();
+    o.pagesWithMatchingImages = buildUnnamed3551();
+    o.partialMatchingImages = buildUnnamed3552();
+    o.visuallySimilarImages = buildUnnamed3553();
+    o.webEntities = buildUnnamed3554();
   }
   buildCounterGoogleCloudVisionV1p4beta1WebDetection--;
   return o;
@@ -9687,12 +9687,12 @@ void checkGoogleCloudVisionV1p4beta1WebDetection(
     api.GoogleCloudVisionV1p4beta1WebDetection o) {
   buildCounterGoogleCloudVisionV1p4beta1WebDetection++;
   if (buildCounterGoogleCloudVisionV1p4beta1WebDetection < 3) {
-    checkUnnamed3548(o.bestGuessLabels!);
-    checkUnnamed3549(o.fullMatchingImages!);
-    checkUnnamed3550(o.pagesWithMatchingImages!);
-    checkUnnamed3551(o.partialMatchingImages!);
-    checkUnnamed3552(o.visuallySimilarImages!);
-    checkUnnamed3553(o.webEntities!);
+    checkUnnamed3549(o.bestGuessLabels!);
+    checkUnnamed3550(o.fullMatchingImages!);
+    checkUnnamed3551(o.pagesWithMatchingImages!);
+    checkUnnamed3552(o.partialMatchingImages!);
+    checkUnnamed3553(o.visuallySimilarImages!);
+    checkUnnamed3554(o.webEntities!);
   }
   buildCounterGoogleCloudVisionV1p4beta1WebDetection--;
 }
@@ -9790,23 +9790,6 @@ void checkGoogleCloudVisionV1p4beta1WebDetectionWebLabel(
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebImage>
-    buildUnnamed3554() {
-  var o = <api.GoogleCloudVisionV1p4beta1WebDetectionWebImage>[];
-  o.add(buildGoogleCloudVisionV1p4beta1WebDetectionWebImage());
-  o.add(buildGoogleCloudVisionV1p4beta1WebDetectionWebImage());
-  return o;
-}
-
-void checkUnnamed3554(
-    core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebImage> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1WebDetectionWebImage(
-      o[0] as api.GoogleCloudVisionV1p4beta1WebDetectionWebImage);
-  checkGoogleCloudVisionV1p4beta1WebDetectionWebImage(
-      o[1] as api.GoogleCloudVisionV1p4beta1WebDetectionWebImage);
-}
-
-core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebImage>
     buildUnnamed3555() {
   var o = <api.GoogleCloudVisionV1p4beta1WebDetectionWebImage>[];
   o.add(buildGoogleCloudVisionV1p4beta1WebDetectionWebImage());
@@ -9823,15 +9806,32 @@ void checkUnnamed3555(
       o[1] as api.GoogleCloudVisionV1p4beta1WebDetectionWebImage);
 }
 
+core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebImage>
+    buildUnnamed3556() {
+  var o = <api.GoogleCloudVisionV1p4beta1WebDetectionWebImage>[];
+  o.add(buildGoogleCloudVisionV1p4beta1WebDetectionWebImage());
+  o.add(buildGoogleCloudVisionV1p4beta1WebDetectionWebImage());
+  return o;
+}
+
+void checkUnnamed3556(
+    core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebImage> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudVisionV1p4beta1WebDetectionWebImage(
+      o[0] as api.GoogleCloudVisionV1p4beta1WebDetectionWebImage);
+  checkGoogleCloudVisionV1p4beta1WebDetectionWebImage(
+      o[1] as api.GoogleCloudVisionV1p4beta1WebDetectionWebImage);
+}
+
 core.int buildCounterGoogleCloudVisionV1p4beta1WebDetectionWebPage = 0;
 api.GoogleCloudVisionV1p4beta1WebDetectionWebPage
     buildGoogleCloudVisionV1p4beta1WebDetectionWebPage() {
   var o = api.GoogleCloudVisionV1p4beta1WebDetectionWebPage();
   buildCounterGoogleCloudVisionV1p4beta1WebDetectionWebPage++;
   if (buildCounterGoogleCloudVisionV1p4beta1WebDetectionWebPage < 3) {
-    o.fullMatchingImages = buildUnnamed3554();
+    o.fullMatchingImages = buildUnnamed3555();
     o.pageTitle = 'foo';
-    o.partialMatchingImages = buildUnnamed3555();
+    o.partialMatchingImages = buildUnnamed3556();
     o.score = 42.0;
     o.url = 'foo';
   }
@@ -9843,12 +9843,12 @@ void checkGoogleCloudVisionV1p4beta1WebDetectionWebPage(
     api.GoogleCloudVisionV1p4beta1WebDetectionWebPage o) {
   buildCounterGoogleCloudVisionV1p4beta1WebDetectionWebPage++;
   if (buildCounterGoogleCloudVisionV1p4beta1WebDetectionWebPage < 3) {
-    checkUnnamed3554(o.fullMatchingImages!);
+    checkUnnamed3555(o.fullMatchingImages!);
     unittest.expect(
       o.pageTitle!,
       unittest.equals('foo'),
     );
-    checkUnnamed3555(o.partialMatchingImages!);
+    checkUnnamed3556(o.partialMatchingImages!);
     unittest.expect(
       o.score!,
       unittest.equals(42.0),
@@ -9861,14 +9861,14 @@ void checkGoogleCloudVisionV1p4beta1WebDetectionWebPage(
   buildCounterGoogleCloudVisionV1p4beta1WebDetectionWebPage--;
 }
 
-core.List<api.GoogleCloudVisionV1p4beta1Symbol> buildUnnamed3556() {
+core.List<api.GoogleCloudVisionV1p4beta1Symbol> buildUnnamed3557() {
   var o = <api.GoogleCloudVisionV1p4beta1Symbol>[];
   o.add(buildGoogleCloudVisionV1p4beta1Symbol());
   o.add(buildGoogleCloudVisionV1p4beta1Symbol());
   return o;
 }
 
-void checkUnnamed3556(core.List<api.GoogleCloudVisionV1p4beta1Symbol> o) {
+void checkUnnamed3557(core.List<api.GoogleCloudVisionV1p4beta1Symbol> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVisionV1p4beta1Symbol(
       o[0] as api.GoogleCloudVisionV1p4beta1Symbol);
@@ -9884,7 +9884,7 @@ api.GoogleCloudVisionV1p4beta1Word buildGoogleCloudVisionV1p4beta1Word() {
     o.boundingBox = buildGoogleCloudVisionV1p4beta1BoundingPoly();
     o.confidence = 42.0;
     o.property = buildGoogleCloudVisionV1p4beta1TextAnnotationTextProperty();
-    o.symbols = buildUnnamed3556();
+    o.symbols = buildUnnamed3557();
   }
   buildCounterGoogleCloudVisionV1p4beta1Word--;
   return o;
@@ -9901,32 +9901,32 @@ void checkGoogleCloudVisionV1p4beta1Word(api.GoogleCloudVisionV1p4beta1Word o) {
     );
     checkGoogleCloudVisionV1p4beta1TextAnnotationTextProperty(o.property!
         as api.GoogleCloudVisionV1p4beta1TextAnnotationTextProperty);
-    checkUnnamed3556(o.symbols!);
+    checkUnnamed3557(o.symbols!);
   }
   buildCounterGoogleCloudVisionV1p4beta1Word--;
 }
 
-core.List<api.ObjectAnnotation> buildUnnamed3557() {
+core.List<api.ObjectAnnotation> buildUnnamed3558() {
   var o = <api.ObjectAnnotation>[];
   o.add(buildObjectAnnotation());
   o.add(buildObjectAnnotation());
   return o;
 }
 
-void checkUnnamed3557(core.List<api.ObjectAnnotation> o) {
+void checkUnnamed3558(core.List<api.ObjectAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkObjectAnnotation(o[0] as api.ObjectAnnotation);
   checkObjectAnnotation(o[1] as api.ObjectAnnotation);
 }
 
-core.List<api.Result> buildUnnamed3558() {
+core.List<api.Result> buildUnnamed3559() {
   var o = <api.Result>[];
   o.add(buildResult());
   o.add(buildResult());
   return o;
 }
 
-void checkUnnamed3558(core.List<api.Result> o) {
+void checkUnnamed3559(core.List<api.Result> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResult(o[0] as api.Result);
   checkResult(o[1] as api.Result);
@@ -9938,8 +9938,8 @@ api.GroupedResult buildGroupedResult() {
   buildCounterGroupedResult++;
   if (buildCounterGroupedResult < 3) {
     o.boundingPoly = buildBoundingPoly();
-    o.objectAnnotations = buildUnnamed3557();
-    o.results = buildUnnamed3558();
+    o.objectAnnotations = buildUnnamed3558();
+    o.results = buildUnnamed3559();
   }
   buildCounterGroupedResult--;
   return o;
@@ -9949,8 +9949,8 @@ void checkGroupedResult(api.GroupedResult o) {
   buildCounterGroupedResult++;
   if (buildCounterGroupedResult < 3) {
     checkBoundingPoly(o.boundingPoly! as api.BoundingPoly);
-    checkUnnamed3557(o.objectAnnotations!);
-    checkUnnamed3558(o.results!);
+    checkUnnamed3558(o.objectAnnotations!);
+    checkUnnamed3559(o.results!);
   }
   buildCounterGroupedResult--;
 }
@@ -10006,14 +10006,14 @@ void checkImageAnnotationContext(api.ImageAnnotationContext o) {
   buildCounterImageAnnotationContext--;
 }
 
-core.List<core.String> buildUnnamed3559() {
+core.List<core.String> buildUnnamed3560() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed3559(core.List<core.String> o) {
+void checkUnnamed3560(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -10031,7 +10031,7 @@ api.ImageContext buildImageContext() {
   buildCounterImageContext++;
   if (buildCounterImageContext < 3) {
     o.cropHintsParams = buildCropHintsParams();
-    o.languageHints = buildUnnamed3559();
+    o.languageHints = buildUnnamed3560();
     o.latLongRect = buildLatLongRect();
     o.productSearchParams = buildProductSearchParams();
     o.textDetectionParams = buildTextDetectionParams();
@@ -10045,7 +10045,7 @@ void checkImageContext(api.ImageContext o) {
   buildCounterImageContext++;
   if (buildCounterImageContext < 3) {
     checkCropHintsParams(o.cropHintsParams! as api.CropHintsParams);
-    checkUnnamed3559(o.languageHints!);
+    checkUnnamed3560(o.languageHints!);
     checkLatLongRect(o.latLongRect! as api.LatLongRect);
     checkProductSearchParams(o.productSearchParams! as api.ProductSearchParams);
     checkTextDetectionParams(o.textDetectionParams! as api.TextDetectionParams);
@@ -10163,27 +10163,27 @@ void checkImportProductSetsRequest(api.ImportProductSetsRequest o) {
   buildCounterImportProductSetsRequest--;
 }
 
-core.List<api.ReferenceImage> buildUnnamed3560() {
+core.List<api.ReferenceImage> buildUnnamed3561() {
   var o = <api.ReferenceImage>[];
   o.add(buildReferenceImage());
   o.add(buildReferenceImage());
   return o;
 }
 
-void checkUnnamed3560(core.List<api.ReferenceImage> o) {
+void checkUnnamed3561(core.List<api.ReferenceImage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReferenceImage(o[0] as api.ReferenceImage);
   checkReferenceImage(o[1] as api.ReferenceImage);
 }
 
-core.List<api.Status> buildUnnamed3561() {
+core.List<api.Status> buildUnnamed3562() {
   var o = <api.Status>[];
   o.add(buildStatus());
   o.add(buildStatus());
   return o;
 }
 
-void checkUnnamed3561(core.List<api.Status> o) {
+void checkUnnamed3562(core.List<api.Status> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStatus(o[0] as api.Status);
   checkStatus(o[1] as api.Status);
@@ -10194,8 +10194,8 @@ api.ImportProductSetsResponse buildImportProductSetsResponse() {
   var o = api.ImportProductSetsResponse();
   buildCounterImportProductSetsResponse++;
   if (buildCounterImportProductSetsResponse < 3) {
-    o.referenceImages = buildUnnamed3560();
-    o.statuses = buildUnnamed3561();
+    o.referenceImages = buildUnnamed3561();
+    o.statuses = buildUnnamed3562();
   }
   buildCounterImportProductSetsResponse--;
   return o;
@@ -10204,8 +10204,8 @@ api.ImportProductSetsResponse buildImportProductSetsResponse() {
 void checkImportProductSetsResponse(api.ImportProductSetsResponse o) {
   buildCounterImportProductSetsResponse++;
   if (buildCounterImportProductSetsResponse < 3) {
-    checkUnnamed3560(o.referenceImages!);
-    checkUnnamed3561(o.statuses!);
+    checkUnnamed3561(o.referenceImages!);
+    checkUnnamed3562(o.statuses!);
   }
   buildCounterImportProductSetsResponse--;
 }
@@ -10338,14 +10338,14 @@ void checkLatLongRect(api.LatLongRect o) {
   buildCounterLatLongRect--;
 }
 
-core.List<api.Operation> buildUnnamed3562() {
+core.List<api.Operation> buildUnnamed3563() {
   var o = <api.Operation>[];
   o.add(buildOperation());
   o.add(buildOperation());
   return o;
 }
 
-void checkUnnamed3562(core.List<api.Operation> o) {
+void checkUnnamed3563(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0] as api.Operation);
   checkOperation(o[1] as api.Operation);
@@ -10357,7 +10357,7 @@ api.ListOperationsResponse buildListOperationsResponse() {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed3562();
+    o.operations = buildUnnamed3563();
   }
   buildCounterListOperationsResponse--;
   return o;
@@ -10370,19 +10370,19 @@ void checkListOperationsResponse(api.ListOperationsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed3562(o.operations!);
+    checkUnnamed3563(o.operations!);
   }
   buildCounterListOperationsResponse--;
 }
 
-core.List<api.ProductSet> buildUnnamed3563() {
+core.List<api.ProductSet> buildUnnamed3564() {
   var o = <api.ProductSet>[];
   o.add(buildProductSet());
   o.add(buildProductSet());
   return o;
 }
 
-void checkUnnamed3563(core.List<api.ProductSet> o) {
+void checkUnnamed3564(core.List<api.ProductSet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProductSet(o[0] as api.ProductSet);
   checkProductSet(o[1] as api.ProductSet);
@@ -10394,7 +10394,7 @@ api.ListProductSetsResponse buildListProductSetsResponse() {
   buildCounterListProductSetsResponse++;
   if (buildCounterListProductSetsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.productSets = buildUnnamed3563();
+    o.productSets = buildUnnamed3564();
   }
   buildCounterListProductSetsResponse--;
   return o;
@@ -10407,47 +10407,9 @@ void checkListProductSetsResponse(api.ListProductSetsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed3563(o.productSets!);
+    checkUnnamed3564(o.productSets!);
   }
   buildCounterListProductSetsResponse--;
-}
-
-core.List<api.Product> buildUnnamed3564() {
-  var o = <api.Product>[];
-  o.add(buildProduct());
-  o.add(buildProduct());
-  return o;
-}
-
-void checkUnnamed3564(core.List<api.Product> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkProduct(o[0] as api.Product);
-  checkProduct(o[1] as api.Product);
-}
-
-core.int buildCounterListProductsInProductSetResponse = 0;
-api.ListProductsInProductSetResponse buildListProductsInProductSetResponse() {
-  var o = api.ListProductsInProductSetResponse();
-  buildCounterListProductsInProductSetResponse++;
-  if (buildCounterListProductsInProductSetResponse < 3) {
-    o.nextPageToken = 'foo';
-    o.products = buildUnnamed3564();
-  }
-  buildCounterListProductsInProductSetResponse--;
-  return o;
-}
-
-void checkListProductsInProductSetResponse(
-    api.ListProductsInProductSetResponse o) {
-  buildCounterListProductsInProductSetResponse++;
-  if (buildCounterListProductsInProductSetResponse < 3) {
-    unittest.expect(
-      o.nextPageToken!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed3564(o.products!);
-  }
-  buildCounterListProductsInProductSetResponse--;
 }
 
 core.List<api.Product> buildUnnamed3565() {
@@ -10463,13 +10425,51 @@ void checkUnnamed3565(core.List<api.Product> o) {
   checkProduct(o[1] as api.Product);
 }
 
+core.int buildCounterListProductsInProductSetResponse = 0;
+api.ListProductsInProductSetResponse buildListProductsInProductSetResponse() {
+  var o = api.ListProductsInProductSetResponse();
+  buildCounterListProductsInProductSetResponse++;
+  if (buildCounterListProductsInProductSetResponse < 3) {
+    o.nextPageToken = 'foo';
+    o.products = buildUnnamed3565();
+  }
+  buildCounterListProductsInProductSetResponse--;
+  return o;
+}
+
+void checkListProductsInProductSetResponse(
+    api.ListProductsInProductSetResponse o) {
+  buildCounterListProductsInProductSetResponse++;
+  if (buildCounterListProductsInProductSetResponse < 3) {
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed3565(o.products!);
+  }
+  buildCounterListProductsInProductSetResponse--;
+}
+
+core.List<api.Product> buildUnnamed3566() {
+  var o = <api.Product>[];
+  o.add(buildProduct());
+  o.add(buildProduct());
+  return o;
+}
+
+void checkUnnamed3566(core.List<api.Product> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkProduct(o[0] as api.Product);
+  checkProduct(o[1] as api.Product);
+}
+
 core.int buildCounterListProductsResponse = 0;
 api.ListProductsResponse buildListProductsResponse() {
   var o = api.ListProductsResponse();
   buildCounterListProductsResponse++;
   if (buildCounterListProductsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.products = buildUnnamed3565();
+    o.products = buildUnnamed3566();
   }
   buildCounterListProductsResponse--;
   return o;
@@ -10482,19 +10482,19 @@ void checkListProductsResponse(api.ListProductsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed3565(o.products!);
+    checkUnnamed3566(o.products!);
   }
   buildCounterListProductsResponse--;
 }
 
-core.List<api.ReferenceImage> buildUnnamed3566() {
+core.List<api.ReferenceImage> buildUnnamed3567() {
   var o = <api.ReferenceImage>[];
   o.add(buildReferenceImage());
   o.add(buildReferenceImage());
   return o;
 }
 
-void checkUnnamed3566(core.List<api.ReferenceImage> o) {
+void checkUnnamed3567(core.List<api.ReferenceImage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReferenceImage(o[0] as api.ReferenceImage);
   checkReferenceImage(o[1] as api.ReferenceImage);
@@ -10507,7 +10507,7 @@ api.ListReferenceImagesResponse buildListReferenceImagesResponse() {
   if (buildCounterListReferenceImagesResponse < 3) {
     o.nextPageToken = 'foo';
     o.pageSize = 42;
-    o.referenceImages = buildUnnamed3566();
+    o.referenceImages = buildUnnamed3567();
   }
   buildCounterListReferenceImagesResponse--;
   return o;
@@ -10524,7 +10524,7 @@ void checkListReferenceImagesResponse(api.ListReferenceImagesResponse o) {
       o.pageSize!,
       unittest.equals(42),
     );
-    checkUnnamed3566(o.referenceImages!);
+    checkUnnamed3567(o.referenceImages!);
   }
   buildCounterListReferenceImagesResponse--;
 }
@@ -10651,7 +10651,7 @@ void checkObjectAnnotation(api.ObjectAnnotation o) {
   buildCounterObjectAnnotation--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed3567() {
+core.Map<core.String, core.Object> buildUnnamed3568() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -10666,7 +10666,7 @@ core.Map<core.String, core.Object> buildUnnamed3567() {
   return o;
 }
 
-void checkUnnamed3567(core.Map<core.String, core.Object> o) {
+void checkUnnamed3568(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -10698,7 +10698,7 @@ void checkUnnamed3567(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed3568() {
+core.Map<core.String, core.Object> buildUnnamed3569() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -10713,7 +10713,7 @@ core.Map<core.String, core.Object> buildUnnamed3568() {
   return o;
 }
 
-void checkUnnamed3568(core.Map<core.String, core.Object> o) {
+void checkUnnamed3569(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -10752,9 +10752,9 @@ api.Operation buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed3567();
+    o.metadata = buildUnnamed3568();
     o.name = 'foo';
-    o.response = buildUnnamed3568();
+    o.response = buildUnnamed3569();
   }
   buildCounterOperation--;
   return o;
@@ -10765,12 +10765,12 @@ void checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkStatus(o.error! as api.Status);
-    checkUnnamed3567(o.metadata!);
+    checkUnnamed3568(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed3568(o.response!);
+    checkUnnamed3569(o.response!);
   }
   buildCounterOperation--;
 }
@@ -10831,14 +10831,14 @@ void checkOutputConfig(api.OutputConfig o) {
   buildCounterOutputConfig--;
 }
 
-core.List<api.Block> buildUnnamed3569() {
+core.List<api.Block> buildUnnamed3570() {
   var o = <api.Block>[];
   o.add(buildBlock());
   o.add(buildBlock());
   return o;
 }
 
-void checkUnnamed3569(core.List<api.Block> o) {
+void checkUnnamed3570(core.List<api.Block> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBlock(o[0] as api.Block);
   checkBlock(o[1] as api.Block);
@@ -10849,7 +10849,7 @@ api.Page buildPage() {
   var o = api.Page();
   buildCounterPage++;
   if (buildCounterPage < 3) {
-    o.blocks = buildUnnamed3569();
+    o.blocks = buildUnnamed3570();
     o.confidence = 42.0;
     o.height = 42;
     o.property = buildTextProperty();
@@ -10862,7 +10862,7 @@ api.Page buildPage() {
 void checkPage(api.Page o) {
   buildCounterPage++;
   if (buildCounterPage < 3) {
-    checkUnnamed3569(o.blocks!);
+    checkUnnamed3570(o.blocks!);
     unittest.expect(
       o.confidence!,
       unittest.equals(42.0),
@@ -10880,14 +10880,14 @@ void checkPage(api.Page o) {
   buildCounterPage--;
 }
 
-core.List<api.Word> buildUnnamed3570() {
+core.List<api.Word> buildUnnamed3571() {
   var o = <api.Word>[];
   o.add(buildWord());
   o.add(buildWord());
   return o;
 }
 
-void checkUnnamed3570(core.List<api.Word> o) {
+void checkUnnamed3571(core.List<api.Word> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWord(o[0] as api.Word);
   checkWord(o[1] as api.Word);
@@ -10901,7 +10901,7 @@ api.Paragraph buildParagraph() {
     o.boundingBox = buildBoundingPoly();
     o.confidence = 42.0;
     o.property = buildTextProperty();
-    o.words = buildUnnamed3570();
+    o.words = buildUnnamed3571();
   }
   buildCounterParagraph--;
   return o;
@@ -10916,7 +10916,7 @@ void checkParagraph(api.Paragraph o) {
       unittest.equals(42.0),
     );
     checkTextProperty(o.property! as api.TextProperty);
-    checkUnnamed3570(o.words!);
+    checkUnnamed3571(o.words!);
   }
   buildCounterParagraph--;
 }
@@ -10953,14 +10953,14 @@ void checkPosition(api.Position o) {
   buildCounterPosition--;
 }
 
-core.List<api.KeyValue> buildUnnamed3571() {
+core.List<api.KeyValue> buildUnnamed3572() {
   var o = <api.KeyValue>[];
   o.add(buildKeyValue());
   o.add(buildKeyValue());
   return o;
 }
 
-void checkUnnamed3571(core.List<api.KeyValue> o) {
+void checkUnnamed3572(core.List<api.KeyValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkKeyValue(o[0] as api.KeyValue);
   checkKeyValue(o[1] as api.KeyValue);
@@ -10975,7 +10975,7 @@ api.Product buildProduct() {
     o.displayName = 'foo';
     o.name = 'foo';
     o.productCategory = 'foo';
-    o.productLabels = buildUnnamed3571();
+    o.productLabels = buildUnnamed3572();
   }
   buildCounterProduct--;
   return o;
@@ -11000,19 +11000,19 @@ void checkProduct(api.Product o) {
       o.productCategory!,
       unittest.equals('foo'),
     );
-    checkUnnamed3571(o.productLabels!);
+    checkUnnamed3572(o.productLabels!);
   }
   buildCounterProduct--;
 }
 
-core.List<core.String> buildUnnamed3572() {
+core.List<core.String> buildUnnamed3573() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed3572(core.List<core.String> o) {
+void checkUnnamed3573(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -11031,7 +11031,7 @@ api.ProductSearchParams buildProductSearchParams() {
   if (buildCounterProductSearchParams < 3) {
     o.boundingPoly = buildBoundingPoly();
     o.filter = 'foo';
-    o.productCategories = buildUnnamed3572();
+    o.productCategories = buildUnnamed3573();
     o.productSet = 'foo';
   }
   buildCounterProductSearchParams--;
@@ -11046,7 +11046,7 @@ void checkProductSearchParams(api.ProductSearchParams o) {
       o.filter!,
       unittest.equals('foo'),
     );
-    checkUnnamed3572(o.productCategories!);
+    checkUnnamed3573(o.productCategories!);
     unittest.expect(
       o.productSet!,
       unittest.equals('foo'),
@@ -11055,27 +11055,27 @@ void checkProductSearchParams(api.ProductSearchParams o) {
   buildCounterProductSearchParams--;
 }
 
-core.List<api.GroupedResult> buildUnnamed3573() {
+core.List<api.GroupedResult> buildUnnamed3574() {
   var o = <api.GroupedResult>[];
   o.add(buildGroupedResult());
   o.add(buildGroupedResult());
   return o;
 }
 
-void checkUnnamed3573(core.List<api.GroupedResult> o) {
+void checkUnnamed3574(core.List<api.GroupedResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGroupedResult(o[0] as api.GroupedResult);
   checkGroupedResult(o[1] as api.GroupedResult);
 }
 
-core.List<api.Result> buildUnnamed3574() {
+core.List<api.Result> buildUnnamed3575() {
   var o = <api.Result>[];
   o.add(buildResult());
   o.add(buildResult());
   return o;
 }
 
-void checkUnnamed3574(core.List<api.Result> o) {
+void checkUnnamed3575(core.List<api.Result> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResult(o[0] as api.Result);
   checkResult(o[1] as api.Result);
@@ -11087,8 +11087,8 @@ api.ProductSearchResults buildProductSearchResults() {
   buildCounterProductSearchResults++;
   if (buildCounterProductSearchResults < 3) {
     o.indexTime = 'foo';
-    o.productGroupedResults = buildUnnamed3573();
-    o.results = buildUnnamed3574();
+    o.productGroupedResults = buildUnnamed3574();
+    o.results = buildUnnamed3575();
   }
   buildCounterProductSearchResults--;
   return o;
@@ -11101,8 +11101,8 @@ void checkProductSearchResults(api.ProductSearchResults o) {
       o.indexTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed3573(o.productGroupedResults!);
-    checkUnnamed3574(o.results!);
+    checkUnnamed3574(o.productGroupedResults!);
+    checkUnnamed3575(o.results!);
   }
   buildCounterProductSearchResults--;
 }
@@ -11219,14 +11219,14 @@ void checkPurgeProductsRequest(api.PurgeProductsRequest o) {
   buildCounterPurgeProductsRequest--;
 }
 
-core.List<api.BoundingPoly> buildUnnamed3575() {
+core.List<api.BoundingPoly> buildUnnamed3576() {
   var o = <api.BoundingPoly>[];
   o.add(buildBoundingPoly());
   o.add(buildBoundingPoly());
   return o;
 }
 
-void checkUnnamed3575(core.List<api.BoundingPoly> o) {
+void checkUnnamed3576(core.List<api.BoundingPoly> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBoundingPoly(o[0] as api.BoundingPoly);
   checkBoundingPoly(o[1] as api.BoundingPoly);
@@ -11237,7 +11237,7 @@ api.ReferenceImage buildReferenceImage() {
   var o = api.ReferenceImage();
   buildCounterReferenceImage++;
   if (buildCounterReferenceImage < 3) {
-    o.boundingPolys = buildUnnamed3575();
+    o.boundingPolys = buildUnnamed3576();
     o.name = 'foo';
     o.uri = 'foo';
   }
@@ -11248,7 +11248,7 @@ api.ReferenceImage buildReferenceImage() {
 void checkReferenceImage(api.ReferenceImage o) {
   buildCounterReferenceImage++;
   if (buildCounterReferenceImage < 3) {
-    checkUnnamed3575(o.boundingPolys!);
+    checkUnnamed3576(o.boundingPolys!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -11356,7 +11356,7 @@ void checkSafeSearchAnnotation(api.SafeSearchAnnotation o) {
   buildCounterSafeSearchAnnotation--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed3576() {
+core.Map<core.String, core.Object> buildUnnamed3577() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -11371,7 +11371,7 @@ core.Map<core.String, core.Object> buildUnnamed3576() {
   return o;
 }
 
-void checkUnnamed3576(core.Map<core.String, core.Object> o) {
+void checkUnnamed3577(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -11403,17 +11403,17 @@ void checkUnnamed3576(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed3577() {
+core.List<core.Map<core.String, core.Object>> buildUnnamed3578() {
   var o = <core.Map<core.String, core.Object>>[];
-  o.add(buildUnnamed3576());
-  o.add(buildUnnamed3576());
+  o.add(buildUnnamed3577());
+  o.add(buildUnnamed3577());
   return o;
 }
 
-void checkUnnamed3577(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed3578(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed3576(o[0]);
-  checkUnnamed3576(o[1]);
+  checkUnnamed3577(o[0]);
+  checkUnnamed3577(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -11422,7 +11422,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed3577();
+    o.details = buildUnnamed3578();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -11436,7 +11436,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed3577(o.details!);
+    checkUnnamed3578(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -11476,14 +11476,14 @@ void checkSymbol(api.Symbol o) {
   buildCounterSymbol--;
 }
 
-core.List<api.Page> buildUnnamed3578() {
+core.List<api.Page> buildUnnamed3579() {
   var o = <api.Page>[];
   o.add(buildPage());
   o.add(buildPage());
   return o;
 }
 
-void checkUnnamed3578(core.List<api.Page> o) {
+void checkUnnamed3579(core.List<api.Page> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPage(o[0] as api.Page);
   checkPage(o[1] as api.Page);
@@ -11494,7 +11494,7 @@ api.TextAnnotation buildTextAnnotation() {
   var o = api.TextAnnotation();
   buildCounterTextAnnotation++;
   if (buildCounterTextAnnotation < 3) {
-    o.pages = buildUnnamed3578();
+    o.pages = buildUnnamed3579();
     o.text = 'foo';
   }
   buildCounterTextAnnotation--;
@@ -11504,7 +11504,7 @@ api.TextAnnotation buildTextAnnotation() {
 void checkTextAnnotation(api.TextAnnotation o) {
   buildCounterTextAnnotation++;
   if (buildCounterTextAnnotation < 3) {
-    checkUnnamed3578(o.pages!);
+    checkUnnamed3579(o.pages!);
     unittest.expect(
       o.text!,
       unittest.equals('foo'),
@@ -11532,14 +11532,14 @@ void checkTextDetectionParams(api.TextDetectionParams o) {
   buildCounterTextDetectionParams--;
 }
 
-core.List<api.DetectedLanguage> buildUnnamed3579() {
+core.List<api.DetectedLanguage> buildUnnamed3580() {
   var o = <api.DetectedLanguage>[];
   o.add(buildDetectedLanguage());
   o.add(buildDetectedLanguage());
   return o;
 }
 
-void checkUnnamed3579(core.List<api.DetectedLanguage> o) {
+void checkUnnamed3580(core.List<api.DetectedLanguage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDetectedLanguage(o[0] as api.DetectedLanguage);
   checkDetectedLanguage(o[1] as api.DetectedLanguage);
@@ -11551,7 +11551,7 @@ api.TextProperty buildTextProperty() {
   buildCounterTextProperty++;
   if (buildCounterTextProperty < 3) {
     o.detectedBreak = buildDetectedBreak();
-    o.detectedLanguages = buildUnnamed3579();
+    o.detectedLanguages = buildUnnamed3580();
   }
   buildCounterTextProperty--;
   return o;
@@ -11561,7 +11561,7 @@ void checkTextProperty(api.TextProperty o) {
   buildCounterTextProperty++;
   if (buildCounterTextProperty < 3) {
     checkDetectedBreak(o.detectedBreak! as api.DetectedBreak);
-    checkUnnamed3579(o.detectedLanguages!);
+    checkUnnamed3580(o.detectedLanguages!);
   }
   buildCounterTextProperty--;
 }
@@ -11593,56 +11593,43 @@ void checkVertex(api.Vertex o) {
   buildCounterVertex--;
 }
 
-core.List<api.WebLabel> buildUnnamed3580() {
+core.List<api.WebLabel> buildUnnamed3581() {
   var o = <api.WebLabel>[];
   o.add(buildWebLabel());
   o.add(buildWebLabel());
   return o;
 }
 
-void checkUnnamed3580(core.List<api.WebLabel> o) {
+void checkUnnamed3581(core.List<api.WebLabel> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWebLabel(o[0] as api.WebLabel);
   checkWebLabel(o[1] as api.WebLabel);
 }
 
-core.List<api.WebImage> buildUnnamed3581() {
+core.List<api.WebImage> buildUnnamed3582() {
   var o = <api.WebImage>[];
   o.add(buildWebImage());
   o.add(buildWebImage());
   return o;
 }
 
-void checkUnnamed3581(core.List<api.WebImage> o) {
+void checkUnnamed3582(core.List<api.WebImage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWebImage(o[0] as api.WebImage);
   checkWebImage(o[1] as api.WebImage);
 }
 
-core.List<api.WebPage> buildUnnamed3582() {
+core.List<api.WebPage> buildUnnamed3583() {
   var o = <api.WebPage>[];
   o.add(buildWebPage());
   o.add(buildWebPage());
   return o;
 }
 
-void checkUnnamed3582(core.List<api.WebPage> o) {
+void checkUnnamed3583(core.List<api.WebPage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWebPage(o[0] as api.WebPage);
   checkWebPage(o[1] as api.WebPage);
-}
-
-core.List<api.WebImage> buildUnnamed3583() {
-  var o = <api.WebImage>[];
-  o.add(buildWebImage());
-  o.add(buildWebImage());
-  return o;
-}
-
-void checkUnnamed3583(core.List<api.WebImage> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkWebImage(o[0] as api.WebImage);
-  checkWebImage(o[1] as api.WebImage);
 }
 
 core.List<api.WebImage> buildUnnamed3584() {
@@ -11658,14 +11645,27 @@ void checkUnnamed3584(core.List<api.WebImage> o) {
   checkWebImage(o[1] as api.WebImage);
 }
 
-core.List<api.WebEntity> buildUnnamed3585() {
+core.List<api.WebImage> buildUnnamed3585() {
+  var o = <api.WebImage>[];
+  o.add(buildWebImage());
+  o.add(buildWebImage());
+  return o;
+}
+
+void checkUnnamed3585(core.List<api.WebImage> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkWebImage(o[0] as api.WebImage);
+  checkWebImage(o[1] as api.WebImage);
+}
+
+core.List<api.WebEntity> buildUnnamed3586() {
   var o = <api.WebEntity>[];
   o.add(buildWebEntity());
   o.add(buildWebEntity());
   return o;
 }
 
-void checkUnnamed3585(core.List<api.WebEntity> o) {
+void checkUnnamed3586(core.List<api.WebEntity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWebEntity(o[0] as api.WebEntity);
   checkWebEntity(o[1] as api.WebEntity);
@@ -11676,12 +11676,12 @@ api.WebDetection buildWebDetection() {
   var o = api.WebDetection();
   buildCounterWebDetection++;
   if (buildCounterWebDetection < 3) {
-    o.bestGuessLabels = buildUnnamed3580();
-    o.fullMatchingImages = buildUnnamed3581();
-    o.pagesWithMatchingImages = buildUnnamed3582();
-    o.partialMatchingImages = buildUnnamed3583();
-    o.visuallySimilarImages = buildUnnamed3584();
-    o.webEntities = buildUnnamed3585();
+    o.bestGuessLabels = buildUnnamed3581();
+    o.fullMatchingImages = buildUnnamed3582();
+    o.pagesWithMatchingImages = buildUnnamed3583();
+    o.partialMatchingImages = buildUnnamed3584();
+    o.visuallySimilarImages = buildUnnamed3585();
+    o.webEntities = buildUnnamed3586();
   }
   buildCounterWebDetection--;
   return o;
@@ -11690,12 +11690,12 @@ api.WebDetection buildWebDetection() {
 void checkWebDetection(api.WebDetection o) {
   buildCounterWebDetection++;
   if (buildCounterWebDetection < 3) {
-    checkUnnamed3580(o.bestGuessLabels!);
-    checkUnnamed3581(o.fullMatchingImages!);
-    checkUnnamed3582(o.pagesWithMatchingImages!);
-    checkUnnamed3583(o.partialMatchingImages!);
-    checkUnnamed3584(o.visuallySimilarImages!);
-    checkUnnamed3585(o.webEntities!);
+    checkUnnamed3581(o.bestGuessLabels!);
+    checkUnnamed3582(o.fullMatchingImages!);
+    checkUnnamed3583(o.pagesWithMatchingImages!);
+    checkUnnamed3584(o.partialMatchingImages!);
+    checkUnnamed3585(o.visuallySimilarImages!);
+    checkUnnamed3586(o.webEntities!);
   }
   buildCounterWebDetection--;
 }
@@ -11805,19 +11805,6 @@ void checkWebLabel(api.WebLabel o) {
   buildCounterWebLabel--;
 }
 
-core.List<api.WebImage> buildUnnamed3586() {
-  var o = <api.WebImage>[];
-  o.add(buildWebImage());
-  o.add(buildWebImage());
-  return o;
-}
-
-void checkUnnamed3586(core.List<api.WebImage> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkWebImage(o[0] as api.WebImage);
-  checkWebImage(o[1] as api.WebImage);
-}
-
 core.List<api.WebImage> buildUnnamed3587() {
   var o = <api.WebImage>[];
   o.add(buildWebImage());
@@ -11831,14 +11818,27 @@ void checkUnnamed3587(core.List<api.WebImage> o) {
   checkWebImage(o[1] as api.WebImage);
 }
 
+core.List<api.WebImage> buildUnnamed3588() {
+  var o = <api.WebImage>[];
+  o.add(buildWebImage());
+  o.add(buildWebImage());
+  return o;
+}
+
+void checkUnnamed3588(core.List<api.WebImage> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkWebImage(o[0] as api.WebImage);
+  checkWebImage(o[1] as api.WebImage);
+}
+
 core.int buildCounterWebPage = 0;
 api.WebPage buildWebPage() {
   var o = api.WebPage();
   buildCounterWebPage++;
   if (buildCounterWebPage < 3) {
-    o.fullMatchingImages = buildUnnamed3586();
+    o.fullMatchingImages = buildUnnamed3587();
     o.pageTitle = 'foo';
-    o.partialMatchingImages = buildUnnamed3587();
+    o.partialMatchingImages = buildUnnamed3588();
     o.score = 42.0;
     o.url = 'foo';
   }
@@ -11849,12 +11849,12 @@ api.WebPage buildWebPage() {
 void checkWebPage(api.WebPage o) {
   buildCounterWebPage++;
   if (buildCounterWebPage < 3) {
-    checkUnnamed3586(o.fullMatchingImages!);
+    checkUnnamed3587(o.fullMatchingImages!);
     unittest.expect(
       o.pageTitle!,
       unittest.equals('foo'),
     );
-    checkUnnamed3587(o.partialMatchingImages!);
+    checkUnnamed3588(o.partialMatchingImages!);
     unittest.expect(
       o.score!,
       unittest.equals(42.0),
@@ -11867,14 +11867,14 @@ void checkWebPage(api.WebPage o) {
   buildCounterWebPage--;
 }
 
-core.List<api.Symbol> buildUnnamed3588() {
+core.List<api.Symbol> buildUnnamed3589() {
   var o = <api.Symbol>[];
   o.add(buildSymbol());
   o.add(buildSymbol());
   return o;
 }
 
-void checkUnnamed3588(core.List<api.Symbol> o) {
+void checkUnnamed3589(core.List<api.Symbol> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSymbol(o[0] as api.Symbol);
   checkSymbol(o[1] as api.Symbol);
@@ -11888,7 +11888,7 @@ api.Word buildWord() {
     o.boundingBox = buildBoundingPoly();
     o.confidence = 42.0;
     o.property = buildTextProperty();
-    o.symbols = buildUnnamed3588();
+    o.symbols = buildUnnamed3589();
   }
   buildCounterWord--;
   return o;
@@ -11903,7 +11903,7 @@ void checkWord(api.Word o) {
       unittest.equals(42.0),
     );
     checkTextProperty(o.property! as api.TextProperty);
-    checkUnnamed3588(o.symbols!);
+    checkUnnamed3589(o.symbols!);
   }
   buildCounterWord--;
 }
