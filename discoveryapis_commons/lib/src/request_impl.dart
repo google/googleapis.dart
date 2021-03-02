@@ -6,16 +6,12 @@ import 'dart:async';
 
 import 'package:http/http.dart' as http;
 
-import 'request_headers.dart';
-
 class RequestImpl extends http.BaseRequest {
   final Stream<List<int>> _stream;
 
   RequestImpl(String method, Uri url, [Stream<List<int>>? stream])
       : _stream = stream ?? Stream.fromIterable([]),
-        super(method, url) {
-    headers.addAll(requestHeaders);
-  }
+        super(method, url);
 
   @override
   http.ByteStream finalize() {

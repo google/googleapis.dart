@@ -267,7 +267,7 @@ class ComputeApi {
       {core.String rootUrl = 'https://compute.googleapis.com/',
       core.String servicePath = 'compute/v1/'})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class AcceleratorTypesResource {

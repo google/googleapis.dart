@@ -65,7 +65,7 @@ class AdSenseHostApi {
       {core.String rootUrl = 'https://www.googleapis.com/',
       core.String servicePath = 'adsensehost/v4.1/'})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class AccountsResource {

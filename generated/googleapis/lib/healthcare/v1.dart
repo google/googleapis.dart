@@ -62,7 +62,7 @@ class CloudHealthcareApi {
       {core.String rootUrl = 'https://healthcare.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ProjectsResource {

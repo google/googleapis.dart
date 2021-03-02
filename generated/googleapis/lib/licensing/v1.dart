@@ -53,7 +53,7 @@ class LicensingApi {
       {core.String rootUrl = 'https://licensing.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class LicenseAssignmentsResource {

@@ -67,7 +67,7 @@ class SheetsApi {
       {core.String rootUrl = 'https://sheets.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class SpreadsheetsResource {

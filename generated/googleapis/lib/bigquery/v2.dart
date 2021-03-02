@@ -100,7 +100,7 @@ class BigqueryApi {
       {core.String rootUrl = 'https://bigquery.googleapis.com/',
       core.String servicePath = 'bigquery/v2/'})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class DatasetsResource {

@@ -48,7 +48,7 @@ class CloudSecurityTokenApi {
       {core.String rootUrl = 'https://sts.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class V1Resource {

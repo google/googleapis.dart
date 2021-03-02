@@ -68,7 +68,7 @@ class Area120TablesApi {
       {core.String rootUrl = 'https://area120tables.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class TablesResource {

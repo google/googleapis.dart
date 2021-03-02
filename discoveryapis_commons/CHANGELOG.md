@@ -6,6 +6,8 @@
 - Removed `mapMap` helper. No longer used.
 - Removed `Escaper` class. Now expose a single `escapeVariable` top-level
   function.
+- Added top-level `dartVersion` getter. Used to generate request headers in
+  client libraries.
 
 ## 0.2.0
 

@@ -11,6 +11,7 @@ import 'dart_resources.dart';
 import 'dart_schemas.dart';
 import 'generated_googleapis/discovery/v1.dart';
 import 'namer.dart';
+import 'request_headers.dart';
 import 'utils.dart';
 
 const ignoreForFileSet = {
@@ -139,8 +140,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as ${imports
       "import 'package:http/http.dart' as ${imports.http};",
       if (isPackage) "\nimport '../$userAgentDartFilePath';",
       "\nexport 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show ApiRequestError, DetailedApiRequestError$exportedMediaClasses;",
-      if (!isPackage)
-        "const userAgent = 'dart-api-client ${description.name}/${description.version}';",
+      if (!isPackage) requestHeadersField(description.version),
     ];
 
     return result.join('\n');

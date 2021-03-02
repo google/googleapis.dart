@@ -153,7 +153,7 @@ class FitnessApi {
       {core.String rootUrl = 'https://fitness.googleapis.com/',
       core.String servicePath = 'fitness/v1/users/'})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class UsersResource {

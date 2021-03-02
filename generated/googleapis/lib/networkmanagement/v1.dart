@@ -55,7 +55,7 @@ class NetworkManagementApi {
       {core.String rootUrl = 'https://networkmanagement.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ProjectsResource {

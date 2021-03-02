@@ -50,7 +50,7 @@ class GroupssettingsApi {
       {core.String rootUrl = 'https://www.googleapis.com/',
       core.String servicePath = 'groups/v1/groups/'})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class GroupsResource {

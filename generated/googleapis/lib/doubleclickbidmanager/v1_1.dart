@@ -57,7 +57,7 @@ class DoubleClickBidManagerApi {
       {core.String rootUrl = 'https://doubleclickbidmanager.googleapis.com/',
       core.String servicePath = 'doubleclickbidmanager/v1.1/'})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class LineitemsResource {

@@ -10,6 +10,7 @@ import 'dart_api_library.dart';
 import 'dart_api_test_library.dart';
 import 'generated_googleapis/discovery/v1.dart';
 import 'pubspec.dart';
+import 'request_headers.dart';
 import 'utils.dart';
 
 /// Generates a dart package with all APIs given in the constructor.
@@ -76,8 +77,9 @@ class ApisPackageGenerator {
     writeDartSource(
       '$libFolderPath/$userAgentDartFilePath',
       """
-/// User-Agent request header used by all libraries in this package
-const userAgent = 'Dart package:${pubspec.name} / ${pubspec.version}';
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+
+${requestHeadersField(pubspec.version)}
 """,
     );
 

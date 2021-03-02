@@ -122,7 +122,7 @@ class GmailApi {
       {core.String rootUrl = 'https://gmail.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class UsersResource {

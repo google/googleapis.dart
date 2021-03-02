@@ -73,7 +73,7 @@ class RecommenderApi {
       {core.String rootUrl = 'https://recommender.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class BillingAccountsResource {

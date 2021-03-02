@@ -80,7 +80,7 @@ class CalendarApi {
       {core.String rootUrl = 'https://www.googleapis.com/',
       core.String servicePath = 'calendar/v3/'})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class AclResource {

@@ -49,7 +49,7 @@ class AssuredworkloadsApi {
       {core.String rootUrl = 'https://assuredworkloads.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class OrganizationsResource {

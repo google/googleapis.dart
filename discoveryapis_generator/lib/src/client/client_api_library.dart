@@ -11,6 +11,7 @@ import '../dart_resources.dart';
 import '../dart_schemas.dart';
 import '../generated_googleapis/discovery/v1.dart';
 import '../namer.dart';
+import '../request_headers.dart';
 import '../utils.dart';
 import 'client_schemas.dart' as client;
 
@@ -135,8 +136,7 @@ $schemaImports
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
     ApiRequestError, DetailedApiRequestError$exportedMediaClasses;
 
-const userAgent = 'dart-api-client ${description.name}/${description.version}';
-
+${requestHeadersField(description.version)}
 """}""";
   }
 }

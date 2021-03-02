@@ -59,7 +59,7 @@ class GroupsMigrationApi {
       {core.String rootUrl = 'https://groupsmigration.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ArchiveResource {

@@ -56,7 +56,7 @@ class AccessApprovalApi {
       {core.String rootUrl = 'https://accessapproval.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class FoldersResource {

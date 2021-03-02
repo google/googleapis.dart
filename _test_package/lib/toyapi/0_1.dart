@@ -68,7 +68,7 @@ class ToyApi {
       {core.String rootUrl = 'http://localhost:9090/',
       core.String servicePath = 'api/toyApi/0.1/'})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 
   /// Request parameters:
   ///

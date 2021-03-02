@@ -54,7 +54,7 @@ class CloudOSLoginApi {
       {core.String rootUrl = 'https://oslogin.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class UsersResource {

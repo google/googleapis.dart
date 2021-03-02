@@ -32,7 +32,11 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
         PartialDownloadOptions,
         ByteRange;
 
-const userAgent = 'dart-api-client toyApi/0.1';
+/// Request headers used by all libraries in this package
+final requestHeaders = {
+  'user-agent': 'google-api-dart-client/0.1',
+  'x-goog-api-client': 'gl-dart/${commons.dartVersion} gdcl/0.1',
+};
 
 /// Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
 /// tempor incididunt ut labore et dolore magna aliqua.
@@ -52,7 +56,7 @@ class ToyApi {
       {core.String rootUrl = 'http://localhost:9090/',
       core.String servicePath = 'api/toyApi/0.1/'})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 
   /// Request parameters:
   ///

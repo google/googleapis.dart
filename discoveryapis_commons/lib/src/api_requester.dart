@@ -20,13 +20,13 @@ class ApiRequester {
   final http.Client _httpClient;
   final String _rootUrl;
   final String _basePath;
-  final String _userAgent;
+  final Map<String, String> _requestHeaders;
 
   ApiRequester(
     this._httpClient,
     this._rootUrl,
     this._basePath,
-    this._userAgent,
+    this._requestHeaders,
   ) : assert(_rootUrl.endsWith('/'));
 
   /// Sends a HTTPRequest using [method] (usually GET or POST) to [requestUrl]
@@ -186,7 +186,7 @@ class ApiRequester {
       final bodyStream = uploadMedia!.stream;
       final request = RequestImpl(method, uri, bodyStream);
       request.headers.addAll({
-        'user-agent': _userAgent,
+        ..._requestHeaders,
         'content-type': uploadMedia.contentType,
         'content-length': '${uploadMedia.length}'
       });
@@ -204,7 +204,7 @@ class ApiRequester {
       bodyController.close();
 
       final headers = {
-        'user-agent': _userAgent,
+        ..._requestHeaders,
         'content-type': contentTypeJsonUtf8,
         'content-length': '$length',
         if (downloadRange != null)
@@ -235,7 +235,7 @@ class ApiRequester {
           uri,
           method,
           uploadOptions,
-          _userAgent,
+          _requestHeaders,
         );
         return helper.upload();
       }
@@ -256,7 +256,7 @@ class ApiRequester {
           body,
           uri,
           method,
-          _userAgent,
+          _requestHeaders,
         );
         return uploader.upload();
       }

@@ -70,7 +70,7 @@ class IamApi {
       {core.String rootUrl = 'https://iam.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class IamPoliciesResource {

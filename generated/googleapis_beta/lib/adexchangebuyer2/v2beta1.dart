@@ -88,7 +88,7 @@ class AdExchangeBuyerIIApi {
       {core.String rootUrl = 'https://adexchangebuyer.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class AccountsResource {

@@ -57,7 +57,7 @@ class WebmastersApi {
       {core.String rootUrl = 'https://www.googleapis.com/',
       core.String servicePath = 'webmasters/v3/'})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class SearchanalyticsResource {

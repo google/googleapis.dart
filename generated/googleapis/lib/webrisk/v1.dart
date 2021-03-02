@@ -56,7 +56,7 @@ class WebRiskApi {
       {core.String rootUrl = 'https://webrisk.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class HashesResource {

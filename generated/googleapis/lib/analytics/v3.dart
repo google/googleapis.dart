@@ -114,7 +114,7 @@ class AnalyticsApi {
       {core.String rootUrl = 'https://analytics.googleapis.com/',
       core.String servicePath = 'analytics/v3/'})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class DataResource {

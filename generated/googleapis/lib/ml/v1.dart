@@ -62,7 +62,7 @@ class CloudMachineLearningEngineApi {
       {core.String rootUrl = 'https://ml.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class ProjectsResource {

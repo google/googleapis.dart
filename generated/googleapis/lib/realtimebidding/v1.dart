@@ -64,7 +64,7 @@ class RealTimeBiddingApi {
       {core.String rootUrl = 'https://realtimebidding.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
 class BiddersResource {
