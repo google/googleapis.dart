@@ -2,7 +2,7 @@
 # should be ignored.
 packages:
 - googleapis:
-    version: 2.0.0-dev
+    version: 2.0.0
     repository: https://github.com/dart-lang/googleapis/tree/master/generated/googleapis
     readme: resources/README.md
     license: resources/LICENSE
@@ -199,7 +199,7 @@ packages:
     - webrisk:v1
 
 - googleapis_beta:
-    version: 2.0.0-dev
+    version: 2.0.0
     repository: https://github.com/dart-lang/googleapis/tree/master/generated/googleapis_beta
     readme: resources/README.md
     license: resources/LICENSE
