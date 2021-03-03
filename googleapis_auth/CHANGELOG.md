@@ -1,6 +1,8 @@
-## 1.0.1-dev
+## 1.1.0-dev
 
 - Remove dynamic function invocations.
+- Added `fromJson` factory and `toJson` method to `AccessToken`, 
+  `AccessCredentials`, and `ClientId`.
 
 ## 1.0.0
 

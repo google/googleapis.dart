@@ -2,8 +2,6 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-library googleapis_auth.auth;
-
 import 'dart:async';
 import 'dart:convert';
 
@@ -29,14 +27,30 @@ class AccessToken {
   /// [expiry] must be a UTC `DateTime`.
   AccessToken(this.type, this.data, this.expiry) {
     if (!expiry.isUtc) {
-      throw ArgumentError('The expiry date must be a Utc DateTime.');
+      throw ArgumentError.value(
+        expiry,
+        'expiry',
+        'The expiry date must be a Utc DateTime.',
+      );
     }
   }
+
+  factory AccessToken.fromJson(Map<String, dynamic> json) => AccessToken(
+        json['type'] as String,
+        json['data'] as String,
+        DateTime.parse(json['expiry'] as String),
+      );
 
   bool get hasExpired => DateTime.now().toUtc().isAfter(expiry);
 
   @override
   String toString() => 'AccessToken(type=$type, data=$data, expiry=$expiry)';
+
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'type': type,
+        'data': data,
+        'expiry': expiry.toIso8601String(),
+      };
 }
 
 /// OAuth2 Credentials.
@@ -59,6 +73,21 @@ class AccessCredentials {
     this.scopes, {
     this.idToken,
   });
+
+  factory AccessCredentials.fromJson(Map<String, dynamic> json) =>
+      AccessCredentials(
+        AccessToken.fromJson(json['accessToken'] as Map<String, dynamic>),
+        json['refreshToken'] as String?,
+        (json['scopes'] as List<dynamic>).map((e) => e as String).toList(),
+        idToken: json['idToken'] as String?,
+      );
+
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'accessToken': accessToken,
+        'refreshToken': refreshToken,
+        'idToken': idToken,
+        'scopes': scopes,
+      };
 }
 
 /// Represents the client application's credentials.
@@ -72,6 +101,16 @@ class ClientId {
   ClientId(this.identifier, this.secret);
 
   ClientId.serviceAccount(this.identifier) : secret = null;
+
+  factory ClientId.fromJson(Map<String, dynamic> json) => ClientId(
+        json['identifier'] as String,
+        json['secret'] as String?,
+      );
+
+  Map<String, dynamic> toJson() => {
+        'identifier': identifier,
+        if (secret != null) 'secret': secret,
+      };
 }
 
 /// Represents credentials for a service account.
@@ -158,7 +197,7 @@ abstract class AuthClient implements Client {
   AccessCredentials get credentials;
 }
 
-/// A autorefreshing, authenticated HTTP client.
+/// A auto-refreshing, authenticated HTTP client.
 abstract class AutoRefreshingAuthClient implements AuthClient {
   /// A broadcast stream of [AccessCredentials].
   ///
@@ -232,11 +271,24 @@ AutoRefreshingAuthClient autoRefreshingClient(
 /// Tries to obtain refreshed [AccessCredentials] based on [credentials] using
 /// [client].
 Future<AccessCredentials> refreshCredentials(
-    ClientId clientId, AccessCredentials credentials, Client client) async {
+  ClientId clientId,
+  AccessCredentials credentials,
+  Client client,
+) async {
+  final secret = clientId.secret;
+  if (secret == null) {
+    throw ArgumentError('clientId.secret cannot be null.');
+  }
+
+  final refreshToken = credentials.refreshToken;
+  if (refreshToken == null) {
+    throw ArgumentError('clientId.refreshToken cannot be null.');
+  }
+
   final formValues = [
     'client_id=${Uri.encodeComponent(clientId.identifier)}',
-    'client_secret=${Uri.encodeComponent(clientId.secret!)}',
-    'refresh_token=${Uri.encodeComponent(credentials.refreshToken!)}',
+    'client_secret=${Uri.encodeComponent(secret)}',
+    'refresh_token=${Uri.encodeComponent(refreshToken)}',
     'grant_type=refresh_token',
   ];
 
@@ -252,8 +304,10 @@ Future<AccessCredentials> refreshCredentials(
   if (contentType == null ||
       (!contentType.contains('json') && !contentType.contains('javascript'))) {
     await response.stream.drain().catchError((_) {});
-    throw Exception('Server responded with invalid content type: $contentType. '
-        'Expected json response.');
+    throw Exception(
+      'Server responded with invalid content type: $contentType. '
+      'Expected json response.',
+    );
   }
 
   final jsonMap = await response.stream
@@ -268,16 +322,19 @@ Future<AccessCredentials> refreshCredentials(
   final error = jsonMap['error'];
 
   if (response.statusCode != 200 && error != null) {
-    throw RefreshFailedException('Refreshing attempt failed. '
-        'Response was ${response.statusCode}. Error message was $error.');
+    throw RefreshFailedException(
+      'Refreshing attempt failed. '
+      'Response was ${response.statusCode}. Error message was $error.',
+    );
   }
 
   if (token == null ||
       seconds is! int ||
       tokenType == null ||
       tokenType != 'Bearer') {
-    throw Exception('Refresing attempt failed. '
-        'Invalid server response.');
+    throw Exception(
+      'Refreshing attempt failed. Invalid server response.',
+    );
   }
 
   return AccessCredentials(
