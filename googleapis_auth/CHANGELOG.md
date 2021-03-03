@@ -1,8 +1,11 @@
-## 1.1.0-dev
+## 1.1.0
 
-- Remove dynamic function invocations.
+- Added the `googleapis_auth.dart` library. It is convention to have the default
+  library within a package align with the package name. `auth.dart` is now
+  deprecated and will be removed in v2. 
 - Added `fromJson` factory and `toJson` method to `AccessToken`, 
   `AccessCredentials`, and `ClientId`.
+- Remove dynamic function invocations.
 
 ## 1.0.0
 

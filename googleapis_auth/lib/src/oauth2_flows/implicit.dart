@@ -2,13 +2,14 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-library googleapis_auth.implicit_gapi_flow;
-
 import 'dart:async';
 import 'dart:html' as html;
 import 'dart:js' as js;
 
-import '../../auth.dart';
+import '../access_credentials.dart';
+import '../access_token.dart';
+import '../exceptions.dart';
+import '../response_type.dart';
 import '../utils.dart';
 
 // This will be overridden by tests.

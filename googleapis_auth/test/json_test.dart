@@ -4,7 +4,7 @@
 
 import 'dart:convert';
 
-import 'package:googleapis_auth/auth.dart';
+import 'package:googleapis_auth/googleapis_auth.dart';
 import 'package:test/test.dart';
 
 void main() {

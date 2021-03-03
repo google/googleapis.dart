@@ -4,7 +4,7 @@
 
 import 'dart:async';
 
-import 'package:googleapis_auth/auth.dart';
+import 'package:googleapis_auth/googleapis_auth.dart';
 import 'package:googleapis_auth/src/crypto/pem.dart';
 import 'package:googleapis_auth/src/utils.dart';
 import 'package:http/http.dart';
