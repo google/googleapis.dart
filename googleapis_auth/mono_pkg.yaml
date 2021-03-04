@@ -1,6 +1,6 @@
 # See https://pub.dev/packages/mono_repo
 dart:
-- beta
+- 2.12.0
 - dev
 
 stages:
