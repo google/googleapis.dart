@@ -1,3 +1,6 @@
 .dart_tool/
 .packages
 pubspec.lock
+
+# User files
+test_integration/*.json
