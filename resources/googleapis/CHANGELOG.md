@@ -1,4 +1,4 @@
-## 2.0.0-dev
+## 2.0.0
 
 - APIs are now null-safe and require Dart 2.12.
 - Now requires `package:_discoveryapis_commons` v1.
