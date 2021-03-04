@@ -7,7 +7,7 @@ environment:
   sdk: '>=2.11.99 <3.0.0'
 
 dependencies:
-  _discoveryapis_commons: ^0.2.0
+  _discoveryapis_commons: ^1.0.0
   args: '>=1.0.0 <3.0.0'
   dart_style: ^1.0.7
   http: '>=0.11.1 <0.14.0'
@@ -21,7 +21,3 @@ dev_dependencies:
 
 executables:
   discoveryapis_generator: generate
-
-dependency_overrides:
-  _discoveryapis_commons:
-    path: ../discoveryapis_commons
