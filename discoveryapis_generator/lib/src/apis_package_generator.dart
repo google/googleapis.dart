@@ -184,13 +184,13 @@ ${requestHeadersField(pubspec.version)}
     // Uncomment when aligning development with changes to commons
     // sink.writeln('dependency_overrides:');
     // writeDependencies({
-    //   '_discoveryapis_commons': {'path': _commonsDirRelativePath},
+    //   '_discoveryapis_commons': {'path': commonsDirRelativePath},
     // });
   }
 
   /// Returns the relative path from [packageFolderPath] to the commons package
   /// directory.
-  String get _commonsDirRelativePath {
+  String get commonsDirRelativePath {
     const commonsDir = 'discoveryapis_commons';
 
     final outputPackageDir =
