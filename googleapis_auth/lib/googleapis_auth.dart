@@ -6,6 +6,19 @@
 ///
 /// In most cases, you'll want to import any use either
 /// `auth_io.dart` or `auth_browser.dart` depending on your platform.
+/// {@canonicalFor access_credentials.AccessCredentials}
+/// {@canonicalFor access_token.AccessToken}
+/// {@canonicalFor auth_client.AuthClient}
+/// {@canonicalFor auth_client.AutoRefreshingAuthClient}
+/// {@canonicalFor auth_functions.authenticatedClient}
+/// {@canonicalFor auth_functions.autoRefreshingClient}
+/// {@canonicalFor auth_functions.refreshCredentials}
+/// {@canonicalFor client_id.ClientId}
+/// {@canonicalFor exceptions.AccessDeniedException}
+/// {@canonicalFor exceptions.RefreshFailedException}
+/// {@canonicalFor exceptions.UserConsentException}
+/// {@canonicalFor response_type.ResponseType}
+/// {@canonicalFor service_account_credentials.ServiceAccountCredentials}
 library googleapis_auth;
 
 export 'src/access_credentials.dart';
