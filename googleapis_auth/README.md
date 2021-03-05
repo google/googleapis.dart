@@ -222,12 +222,10 @@ For some APIs the use of a service account also requires to impersonate a
 user. To support that the `ServiceAccountCredentials` constructors have an
 optional argument `impersonatedUser` to specify the user to impersonate.
 
-One example of this are the Google Apps APIs. See [Perform Google Apps
-Domain-Wide Delegation of Authority]
-(https://developers.google.com/admin-sdk/directory/v1/guides/delegation)
-for information on the additional security configuration required to
-enable this for a service account.
-
+One example of this are the Google Apps APIs. See
+[Perform Google Apps Domain-Wide Delegation of Authority](https://developers.google.com/admin-sdk/directory/v1/guides/delegation)
+for information on the additional security configuration required to enable this
+for a service account.
 
 #### Autonomous Application / Compute Engine using metadata service
 
@@ -235,7 +233,7 @@ If an application wants to act autonomously and access e.g. data from a Google
 Cloud Project, then a Service Account can be used. In case the application is
 running on a ComputeEngine VM it is possible to start a VM with a set of scopes
 the VM is allowed to use. See the
-[documentation](https://developers.google.com/compute/docs/authentication#using)
+[documentation](https://cloud.google.com/compute/docs/access/create-enable-service-accounts-for-instances#using)
 for further information.
 
 Here is an example of using the metadata service for obtaining access
