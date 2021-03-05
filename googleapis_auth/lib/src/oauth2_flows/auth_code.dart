@@ -2,15 +2,16 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-library googleapis_auth.auth_code_flow;
-
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
 
-import '../../auth.dart';
+import '../access_credentials.dart';
+import '../access_token.dart';
+import '../client_id.dart';
+import '../exceptions.dart';
 import '../http_client_base.dart';
 import '../typedefs.dart';
 import '../utils.dart';

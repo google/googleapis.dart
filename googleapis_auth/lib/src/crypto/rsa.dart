@@ -5,8 +5,6 @@
 // A small part is based on a JavaScript implementation of RSA by Tom Wu
 // but re-written in dart.
 
-library googleapis_auth.rsa;
-
 import 'dart:typed_data';
 
 /// Represents integers obtained while creating a Public/Private key pair.

@@ -2,11 +2,9 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-library googleapis_auth.test_utils;
-
 import 'dart:async';
 
-import 'package:googleapis_auth/auth.dart';
+import 'package:googleapis_auth/googleapis_auth.dart';
 import 'package:googleapis_auth/src/crypto/pem.dart';
 import 'package:googleapis_auth/src/utils.dart';
 import 'package:http/http.dart';
@@ -24,7 +22,8 @@ const Matcher isTransportException = TypeMatcher<TransportException>();
 class TransportException implements Exception {}
 
 Client get transportFailure => MockClient(
-    expectAsync1((Request _) => Future<Response>.error(TransportException())));
+      expectAsync1((Request _) => Future<Response>.error(TransportException())),
+    );
 
 const testPrivateKeyString = '''-----BEGIN RSA PRIVATE KEY-----
 MIIEowIBAAKCAQEAuDOwXO14ltE1j2O0iDSuqtbw/1kMKjeiki3oehk2zNoUte42
@@ -63,8 +62,10 @@ void expectExpiryOneHourFromNow(AccessToken accessToken) {
   expect(-2 <= diff && diff <= 2, isTrue);
 }
 
-Client mockClient(Future<Response> Function(Request _) requestHandler,
-        {bool expectClose = true}) =>
+Client mockClient(
+  Future<Response> Function(Request _) requestHandler, {
+  bool expectClose = true,
+}) =>
     ExpectCloseMockClient(requestHandler, expectClose ? 1 : 0);
 
 /// A client which will keep the VM alive until `close()` was called.
@@ -72,8 +73,9 @@ class ExpectCloseMockClient extends MockClient {
   late void Function() _expectedToBeCalled;
 
   ExpectCloseMockClient(
-      Future<Response> Function(Request _) requestHandler, int c)
-      : super(requestHandler) {
+    Future<Response> Function(Request _) requestHandler,
+    int c,
+  ) : super(requestHandler) {
     _expectedToBeCalled = expectAsync0(() {}, count: c);
   }
 

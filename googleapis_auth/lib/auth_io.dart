@@ -2,22 +2,24 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-library googleapis_auth.auth_io;
-
 import 'dart:io';
 
 import 'package:http/http.dart';
 
-import 'auth.dart';
+import 'src/access_credentials.dart';
 import 'src/adc_utils.dart';
+import 'src/auth_client.dart';
+import 'src/auth_functions.dart';
 import 'src/auth_http_utils.dart';
+import 'src/client_id.dart';
 import 'src/http_client_base.dart';
 import 'src/oauth2_flows/auth_code.dart';
 import 'src/oauth2_flows/jwt.dart';
 import 'src/oauth2_flows/metadata_server.dart';
+import 'src/service_account_credentials.dart';
 import 'src/typedefs.dart';
 
-export 'auth.dart';
+export 'googleapis_auth.dart';
 export 'src/typedefs.dart';
 
 /// Create a client using
