@@ -1,6 +1,8 @@
-## 0.9.16-dev
+## 1.0.0
 
-- Require Dart `2.10` or greater.
+- Generates null-safe code.
+  *Note: the code in this package is not null-safe (yet) due to dependencies.*
+- Require Dart `2.12` or greater.
 - Optional, named parameters are now sorted by name.
 - `generate` command: added `[--no]--delete-existing` flag. 
 
