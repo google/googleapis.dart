@@ -1,7 +1,3 @@
-[![Build Status](https://travis-ci.org/dart-lang/discoveryapis_generator.svg?branch=master)](https://travis-ci.org/dart-lang/discoveryapis_generator)
-
-### Description
-
 Dart application to generate Dart API Client Libraries based on discovery 
 documents.
 
