@@ -4,3 +4,4 @@ pubspec.lock
 
 # User files
 test_integration/*.json
+test_integration/config.yaml

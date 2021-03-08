@@ -6,11 +6,10 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:googleapis/storage/v1.dart';
-import 'package:googleapis_auth/auth_io.dart';
-import 'package:http/http.dart';
 import 'package:test/test.dart';
+import 'package:test_integration/test_integration.dart';
 
-const _bucketName = 'dart_googapis_test';
+final _bucketName = readConfig('storage_bucket') as String;
 const _fileName = 'upload1.txt';
 
 void main() {
@@ -22,16 +21,21 @@ void main() {
     sampleContent = List.generate(1024 * 1024, (i) => random.nextInt(256));
   });
 
-  test('upload, download', () async {
-    await _withClient((client) async {
-      final storageApi = StorageApi(client);
-      await _upload(storageApi, sampleContent);
-      await _verify(storageApi, sampleContent);
-    });
-  });
+  test(
+    'upload, download',
+    () async {
+      await withClientFromDefaultCredentials(
+          [StorageApi.devstorageReadOnlyScope], (client) async {
+        final storageApi = StorageApi(client);
+        await _upload(storageApi, sampleContent);
+        await _verify(storageApi, sampleContent);
+      });
+    },
+  );
 
   test('upload chunked, download', () async {
-    await _withClient((client) async {
+    await withClientFromDefaultCredentials([StorageApi.devstorageReadOnlyScope],
+        (client) async {
       final storageApi = StorageApi(client);
       await _uploadChunked(storageApi, sampleContent);
       await _verify(storageApi, sampleContent);
@@ -104,17 +108,4 @@ Future<void> _verify(StorageApi storageApi, List<int> sampleContent) async {
   );
 
   expect(text, sampleContent);
-}
-
-Future<void> _withClient(
-  Future<void> Function(Client) action,
-) async {
-  final client = await clientViaApplicationDefaultCredentials(
-    scopes: [StorageApi.devstorageReadOnlyScope],
-  );
-  try {
-    await action(client);
-  } finally {
-    client.close();
-  }
 }
