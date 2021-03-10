@@ -14,6 +14,7 @@ import 'package:http/http.dart' as http;
 import '../access_credentials.dart';
 import '../access_token.dart';
 import '../utils.dart';
+import 'base_flow.dart';
 
 /// Obtains access credentials form the metadata server.
 ///
@@ -21,7 +22,7 @@ import '../utils.dart';
 /// ComputeEngine VM. It will retrieve the current access token from the
 /// metadata server, looking first for one set in the environment under
 /// `$GCE_METADATA_HOST`.
-class MetadataServerAuthorizationFlow {
+class MetadataServerAuthorizationFlow extends BaseFlow {
   static const _headers = {'Metadata-Flavor': 'Google'};
   static const _serviceAccountUrlInfix =
       'computeMetadata/v1/instance/service-accounts';
@@ -51,6 +52,7 @@ class MetadataServerAuthorizationFlow {
   MetadataServerAuthorizationFlow._(
       this._client, this.email, this._scopesUrl, this._tokenUrl);
 
+  @override
   Future<AccessCredentials> run() async {
     final results = await Future.wait([_getToken(), _getScopes()]);
     final token = results.first as Map<dynamic, dynamic>;

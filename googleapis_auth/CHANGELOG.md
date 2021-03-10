@@ -1,3 +1,5 @@
+## 1.2.0-dev
+
 ## 1.1.0
 
 - Added the `googleapis_auth.dart` library. It is convention to have the default
