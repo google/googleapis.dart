@@ -1,5 +1,7 @@
 ## 1.2.0-dev
 
+- Fix an error when doing OAUTH code exchanged with an undefined secret.
+
 ## 1.1.0
 
 - Added the `googleapis_auth.dart` library. It is convention to have the default

@@ -59,7 +59,7 @@ Future<AccessCredentials> obtainAccessCredentialsUsingCode(
     'code=${Uri.encodeQueryComponent(code)}',
     'redirect_uri=${Uri.encodeQueryComponent(redirectUrl)}',
     'client_id=${Uri.encodeQueryComponent(clientId.identifier)}',
-    'client_secret=${Uri.encodeQueryComponent(clientId.secret!)}',
+    'client_secret=${Uri.encodeQueryComponent(clientId.secret ?? '')}',
   ];
 
   final body = Stream<List<int>>.fromIterable(
