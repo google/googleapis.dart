@@ -13,13 +13,14 @@ import 'src/auth_functions.dart';
 import 'src/auth_http_utils.dart';
 import 'src/client_id.dart';
 import 'src/http_client_base.dart';
+import 'src/metadata_server_client.dart' show clientViaMetadataServer;
 import 'src/oauth2_flows/auth_code.dart';
-import 'src/oauth2_flows/jwt.dart';
-import 'src/oauth2_flows/metadata_server.dart';
 import 'src/service_account_credentials.dart';
 import 'src/typedefs.dart';
 
 export 'googleapis_auth.dart';
+export 'src/metadata_server_client.dart';
+export 'src/service_account_client.dart';
 export 'src/typedefs.dart';
 
 /// Create a client using
@@ -166,80 +167,6 @@ Future<AutoRefreshingAuthClient> clientViaUserConsentManual(ClientId clientId,
       closeUnderlyingClient: closeUnderlyingClient);
 }
 
-/// Obtains oauth2 credentials and returns an authenticated HTTP client.
-///
-/// See [obtainAccessCredentialsViaServiceAccount] for specifics about the
-/// arguments used for obtaining access credentials.
-///
-/// Once access credentials have been obtained, this function will complete
-/// with an auto-refreshing HTTP client. Once the `AccessCredentials` expire
-/// it will obtain new access credentials.
-///
-/// If [baseClient] is not given, one will be automatically created. It will be
-/// used for making authenticated HTTP requests and for obtaining access
-/// credentials.
-///
-/// The user is responsible for closing the returned HTTP [Client].
-/// Closing the returned [Client] will not close [baseClient].
-Future<AutoRefreshingAuthClient> clientViaServiceAccount(
-    ServiceAccountCredentials clientCredentials, List<String> scopes,
-    {Client? baseClient}) async {
-  if (baseClient == null) {
-    baseClient = Client();
-  } else {
-    baseClient = nonClosingClient(baseClient);
-  }
-
-  final flow = JwtFlow(clientCredentials.email, clientCredentials.privateRSAKey,
-      clientCredentials.impersonatedUser, scopes, baseClient);
-
-  AccessCredentials credentials;
-  try {
-    credentials = await flow.run();
-  } catch (e) {
-    baseClient.close();
-    rethrow;
-  }
-
-  return _ServiceAccountClient(baseClient, credentials, flow);
-}
-
-/// Obtains oauth2 credentials and returns an authenticated HTTP client.
-///
-/// See [obtainAccessCredentialsViaMetadataServer] for specifics about the
-/// arguments used for obtaining access credentials.
-///
-/// Once access credentials have been obtained, this function will complete
-/// with an auto-refreshing HTTP client. Once the `AccessCredentials` expire
-/// it will obtain new access credentials.
-///
-/// If [baseClient] is not given, one will be automatically created. It will be
-/// used for making authenticated HTTP requests and for obtaining access
-/// credentials.
-///
-/// The user is responsible for closing the returned HTTP [Client].
-/// Closing the returned [Client] will not close [baseClient].
-Future<AutoRefreshingAuthClient> clientViaMetadataServer(
-    {Client? baseClient}) async {
-  if (baseClient == null) {
-    baseClient = Client();
-  } else {
-    baseClient = nonClosingClient(baseClient);
-  }
-
-  final flow = MetadataServerAuthorizationFlow(baseClient);
-
-  AccessCredentials credentials;
-
-  try {
-    credentials = await flow.run();
-  } catch (e) {
-    baseClient.close();
-    rethrow;
-  }
-  return _MetadataServerClient(baseClient, credentials, flow);
-}
-
 /// Obtains a HTTP client which uses the given [apiKey] for making HTTP
 /// requests.
 ///
@@ -305,35 +232,6 @@ Future<AccessCredentials> obtainAccessCredentialsViaUserConsentManual(
     AuthorizationCodeGrantManualFlow(clientId, scopes, client, userPrompt)
         .run();
 
-/// Obtain oauth2 [AccessCredentials] using service account credentials.
-///
-/// In case the service account has no access to the requested scopes or another
-/// error occurs the returned future will complete with an `Exception`.
-///
-/// [baseClient] will be used for obtaining `AccessCredentials`.
-///
-/// The [ServiceAccountCredentials] can be obtained in the Google Cloud Console.
-Future<AccessCredentials> obtainAccessCredentialsViaServiceAccount(
-        ServiceAccountCredentials clientCredentials,
-        List<String> scopes,
-        Client baseClient) =>
-    JwtFlow(clientCredentials.email, clientCredentials.privateRSAKey,
-            clientCredentials.impersonatedUser, scopes, baseClient)
-        .run();
-
-/// Obtain oauth2 [AccessCredentials] using the metadata API on ComputeEngine.
-///
-/// In case the VM was not configured with access to the requested scopes or an
-/// error occurs the returned future will complete with an `Exception`.
-///
-/// [baseClient] will be used for obtaining `AccessCredentials`.
-///
-/// No credentials are needed. But this function is only intended to work on a
-/// Google Compute Engine VM with configured access to Google APIs.
-Future<AccessCredentials> obtainAccessCredentialsViaMetadataServer(
-        Client baseClient) =>
-    MetadataServerAuthorizationFlow(baseClient).run();
-
 /// Obtain oauth2 [AccessCredentials] by exchanging an authorization code.
 ///
 /// Running a hybrid oauth2 flow as described in the
@@ -360,54 +258,3 @@ Future<AccessCredentials> obtainAccessCredentialsViaCodeExchange(
         Client baseClient, ClientId clientId, String code,
         {String redirectUrl = 'postmessage'}) =>
     obtainAccessCredentialsUsingCode(clientId, code, redirectUrl, baseClient);
-
-/// Will close the underlying `http.Client`.
-class _ServiceAccountClient extends AutoRefreshDelegatingClient {
-  final JwtFlow flow;
-  @override
-  AccessCredentials credentials;
-  late Client authClient;
-
-  _ServiceAccountClient(Client client, this.credentials, this.flow)
-      : super(client) {
-    authClient = authenticatedClient(baseClient, credentials);
-  }
-
-  @override
-  Future<StreamedResponse> send(BaseRequest request) async {
-    if (!credentials.accessToken.hasExpired) {
-      return authClient.send(request);
-    } else {
-      final newCredentials = await flow.run();
-      notifyAboutNewCredentials(newCredentials);
-      credentials = newCredentials;
-      authClient = authenticatedClient(baseClient, credentials);
-      return authClient.send(request);
-    }
-  }
-}
-
-/// Will close the underlying `http.Client`.
-class _MetadataServerClient extends AutoRefreshDelegatingClient {
-  final MetadataServerAuthorizationFlow flow;
-  @override
-  AccessCredentials credentials;
-  Client authClient;
-
-  _MetadataServerClient(Client client, this.credentials, this.flow)
-      : authClient = authenticatedClient(client, credentials),
-        super(client);
-
-  @override
-  Future<StreamedResponse> send(BaseRequest request) async {
-    if (!credentials.accessToken.hasExpired) {
-      return authClient.send(request);
-    }
-
-    final newCredentials = await flow.run();
-    notifyAboutNewCredentials(newCredentials);
-    credentials = newCredentials;
-    authClient = authenticatedClient(baseClient, credentials);
-    return authClient.send(request);
-  }
-}
