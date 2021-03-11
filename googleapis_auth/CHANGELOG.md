@@ -1,6 +1,7 @@
 ## 1.2.0-dev
 
 - Fix an error when doing OAUTH code exchanged with an undefined secret.
+- `clientViaApiKey` is now exported from `googleapis_auth.dart`.
 
 ## 1.1.0
 
