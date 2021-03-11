@@ -167,23 +167,6 @@ Future<AutoRefreshingAuthClient> clientViaUserConsentManual(ClientId clientId,
       closeUnderlyingClient: closeUnderlyingClient);
 }
 
-/// Obtains a HTTP client which uses the given [apiKey] for making HTTP
-/// requests.
-///
-/// Note that the returned client should *only* be used for making HTTP requests
-/// to Google Services. The [apiKey] should not be disclosed to third parties.
-///
-/// The user is responsible for closing the returned HTTP [Client].
-/// Closing the returned [Client] will not close [baseClient].
-Client clientViaApiKey(String apiKey, {Client? baseClient}) {
-  if (baseClient == null) {
-    baseClient = Client();
-  } else {
-    baseClient = nonClosingClient(baseClient);
-  }
-  return ApiKeyClient(baseClient, apiKey);
-}
-
 /// Obtain oauth2 [AccessCredentials] using the oauth2 authentication code flow.
 ///
 /// The returned future will complete with `AccessCredentials` if the user

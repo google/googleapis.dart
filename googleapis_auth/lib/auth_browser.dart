@@ -19,23 +19,6 @@ import 'src/service_account_credentials.dart';
 
 export 'googleapis_auth.dart';
 
-/// Obtains a HTTP client which uses the given [apiKey] for making HTTP
-/// requests.
-///
-/// Note that the returned client should *only* be used for making HTTP requests
-/// to Google Services. The [apiKey] should not be disclosed to third parties.
-///
-/// The user is responsible for closing the returned HTTP [Client].
-/// Closing the returned [Client] will not close [baseClient].
-Client clientViaApiKey(String apiKey, {Client? baseClient}) {
-  if (baseClient == null) {
-    baseClient = BrowserClient();
-  } else {
-    baseClient = nonClosingClient(baseClient);
-  }
-  return ApiKeyClient(baseClient, apiKey);
-}
-
 /// Will create and complete with a [BrowserOAuth2Flow] object.
 ///
 /// This function will perform an implicit browser based oauth2 flow.
