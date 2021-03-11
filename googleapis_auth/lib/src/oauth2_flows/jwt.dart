@@ -13,8 +13,9 @@ import '../crypto/rsa.dart';
 import '../crypto/rsa_sign.dart';
 import '../http_client_base.dart';
 import '../utils.dart';
+import 'base_flow.dart';
 
-class JwtFlow {
+class JwtFlow extends BaseFlow {
   // All details are described at:
   // https://developers.google.com/accounts/docs/OAuth2ServiceAccount
   // JSON Web Signature (JWS) requires signing a string with a private key.
@@ -28,45 +29,45 @@ class JwtFlow {
   final String? _user;
   final http.Client _client;
 
-  JwtFlow(this._clientEmail, RSAPrivateKey key, this._user, this._scopes,
-      this._client)
-      : _signer = RS256Signer(key);
+  JwtFlow(
+    this._clientEmail,
+    RSAPrivateKey key,
+    this._user,
+    this._scopes,
+    this._client,
+  ) : _signer = RS256Signer(key);
 
+  @override
   Future<AccessCredentials> run() async {
     final timestamp = DateTime.now().toUtc().millisecondsSinceEpoch ~/ 1000 -
         maxExpectedTimeDiffInSeconds;
 
-    Map<String, Object> jwtHeader() => {'alg': 'RS256', 'typ': 'JWT'};
+    final jwtHeader = {'alg': 'RS256', 'typ': 'JWT'};
+    final jwtHeaderBase64 = _base64url(ascii.encode(jsonEncode(jwtHeader)));
 
-    Map<String, Object> jwtClaimSet() {
-      final claimSet = {
-        'iss': _clientEmail,
-        'scope': _scopes.join(' '),
-        'aud': _googleOauth2TokenUrl,
-        'exp': timestamp + 3600,
-        'iat': timestamp,
-        if (_user != null) 'sub': _user!,
-      };
-      return claimSet;
-    }
+    final jwtClaimSet = {
+      'iss': _clientEmail,
+      'scope': _scopes.join(' '),
+      'aud': _googleOauth2TokenUrl,
+      'exp': timestamp + 3600,
+      'iat': timestamp,
+      if (_user != null) 'sub': _user!,
+    };
+    final jwtClaimSetBase64 = _base64url(utf8.encode(jsonEncode(jwtClaimSet)));
 
-    final jwtHeaderBase64 = _base64url(ascii.encode(jsonEncode(jwtHeader())));
-    final jwtClaimSetBase64 =
-        _base64url(utf8.encode(jsonEncode(jwtClaimSet())));
     final jwtSignatureInput = '$jwtHeaderBase64.$jwtClaimSetBase64';
     final jwtSignatureInputInBytes = ascii.encode(jwtSignatureInput);
 
     final signature = _signer.sign(jwtSignatureInputInBytes);
     final jwt = '$jwtSignatureInput.${_base64url(signature)}';
 
-    const uri = 'urn:ietf:params:oauth:grant-type:jwt-bearer';
-    final requestParameters = 'grant_type=${Uri.encodeComponent(uri)}&'
+    final requestParameters = 'grant_type=${Uri.encodeComponent(_uri)}&'
         'assertion=${Uri.encodeComponent(jwt)}';
 
     final body = Stream<List<int>>.fromIterable(
         <List<int>>[utf8.encode(requestParameters)]);
-    final request = RequestImpl('POST', Uri.parse(_googleOauth2TokenUrl), body);
-    request.headers['content-type'] = contentTypeUrlEncoded;
+    final request = RequestImpl('POST', Uri.parse(_googleOauth2TokenUrl), body)
+      ..headers['content-type'] = contentTypeUrlEncoded;
 
     final httpResponse = await _client.send(request);
     final response = await httpResponse.stream
@@ -84,12 +85,15 @@ class JwtFlow {
 
     if (tokenType != 'Bearer' || token == null || expiresIn is! int) {
       throw Exception(
-          'Unable to obtain credentials. Invalid response from server.');
+        'Unable to obtain credentials. Invalid response from server.',
+      );
     }
     final accessToken = AccessToken(tokenType, token, expiryDate(expiresIn));
     return AccessCredentials(accessToken, null, _scopes);
   }
-
-  String _base64url(List<int> bytes) =>
-      base64Url.encode(bytes).replaceAll('=', '');
 }
+
+const _uri = 'urn:ietf:params:oauth:grant-type:jwt-bearer';
+
+String _base64url(List<int> bytes) =>
+    base64Url.encode(bytes).replaceAll('=', '');
