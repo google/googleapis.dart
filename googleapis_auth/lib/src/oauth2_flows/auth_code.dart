@@ -19,7 +19,7 @@ import '../utils.dart';
 // The OAuth2 Token endpoint can be used to make requests as
 //    https://www.googleapis.com/oauth2/v2/tokeninfo?access_token=<token>
 //
-// A successfull response from the server will give an HTTP response status
+// A successful response from the server will give an HTTP response status
 // 200 and a body of the following type:
 // {
 //   "issued_to": "XYZ.apps.googleusercontent.com",
