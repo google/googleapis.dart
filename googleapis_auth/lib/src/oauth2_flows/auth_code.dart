@@ -68,10 +68,7 @@ Future<AccessCredentials> obtainAccessCredentialsUsingCode(
   request.headers['content-type'] = contentTypeUrlEncoded;
 
   final response = await client.send(request);
-  final jsonMap = await utf8.decoder
-      .bind(response.stream)
-      .transform(json.decoder)
-      .first as Map<String, dynamic>;
+  final jsonMap = await readJsonMap(response);
 
   final idToken = jsonMap['id_token'] as String?;
   final tokenType = jsonMap['token_type'];
