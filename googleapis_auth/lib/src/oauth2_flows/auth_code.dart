@@ -71,18 +71,20 @@ Future<AccessCredentials> obtainAccessCredentialsUsingCode(
   final jsonMap = await utf8.decoder
       .bind(response.stream)
       .transform(json.decoder)
-      .first as Map;
+      .first as Map<String, dynamic>;
 
   final idToken = jsonMap['id_token'] as String?;
   final tokenType = jsonMap['token_type'];
   final accessToken = jsonMap['access_token'] as String?;
   final seconds = jsonMap['expires_in'];
   final refreshToken = jsonMap['refresh_token'] as String?;
-  final error = jsonMap['error'];
+  final error = errorString(jsonMap);
 
   if (response.statusCode != 200 && error != null) {
-    throw Exception('Failed to exchange authorization code. '
-        'Response was ${response.statusCode}. Error message was $error.');
+    throw Exception(
+      'Failed to exchange authorization code. '
+      'Response was ${response.statusCode}. $error',
+    );
   }
 
   if (response.statusCode != 200 ||
@@ -199,7 +201,7 @@ class AuthorizationCodeGrantServerFlow
 
         if (error != null) {
           throw UserConsentException(
-              'Error occured while obtaining access credentials: $error');
+              'Error occurred while obtaining access credentials: $error');
         }
 
         if (code == null || code == '') {
