@@ -27,6 +27,7 @@ export 'src/access_token.dart';
 export 'src/auth_client.dart';
 export 'src/auth_functions.dart';
 export 'src/client_id.dart';
+export 'src/client_with_headers.dart';
 export 'src/exceptions.dart';
 export 'src/response_type.dart';
 export 'src/service_account_credentials.dart';

@@ -2,6 +2,11 @@
 
 - Fix an error when doing OAUTH code exchanged with an undefined secret.
 - `clientViaApiKey` is now exported from `googleapis_auth.dart`.
+- Added `clientUsingHeaders` function to allow created a client with
+  authentication headers. Useful when using
+  [package:google_sign_in](https://pub.dev/packages/google_sign_in) and
+  the [authHeaders](https://pub.dev/documentation/google_sign_in/latest/google_sign_in/GoogleSignInAccount/authHeaders.html)
+  property.
 
 ## 1.1.0
 
