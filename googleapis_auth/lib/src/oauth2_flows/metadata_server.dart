@@ -55,10 +55,9 @@ class MetadataServerAuthorizationFlow extends BaseFlow {
   @override
   Future<AccessCredentials> run() async {
     final results = await Future.wait([_getToken(), _getScopes()]);
-    final token = results.first as Map<String, dynamic>;
+    final json = results.first as Map<String, dynamic>;
     final scopesString = results.last as String;
 
-    final json = token;
     final scopes = scopesString
         .replaceAll('\n', ' ')
         .split(' ')

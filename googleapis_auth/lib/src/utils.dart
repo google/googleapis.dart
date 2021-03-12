@@ -2,6 +2,10 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'dart:convert';
+
+import 'package:http/http.dart' show StreamedResponse;
+
 /// Due to differences of clock speed, network latency, etc. we
 /// will shorten expiry dates by 20 seconds.
 const maxExpectedTimeDiffInSeconds = 20;
@@ -33,3 +37,7 @@ String? errorString(Map<String, dynamic> json) {
     if (description != null) '$description',
   ].join(' ');
 }
+
+Future<Map<String, dynamic>> readJsonMap(StreamedResponse response) async =>
+    await response.stream.transform(utf8.decoder).transform(json.decoder).single
+        as Map<String, dynamic>;

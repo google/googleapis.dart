@@ -70,10 +70,7 @@ class JwtFlow extends BaseFlow {
       ..headers['content-type'] = contentTypeUrlEncoded;
 
     final httpResponse = await _client.send(request);
-    final response = await httpResponse.stream
-        .transform(utf8.decoder)
-        .transform(json.decoder)
-        .first as Map<String, dynamic>;
+    final response = await readJsonMap(httpResponse);
     final tokenType = response['token_type'] as String;
     final token = response['access_token'] as String?;
     final expiresIn = response['expires_in'];

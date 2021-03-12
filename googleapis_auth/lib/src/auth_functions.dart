@@ -113,10 +113,7 @@ Future<AccessCredentials> refreshCredentials(
     );
   }
 
-  final jsonMap = await response.stream
-      .transform(ascii.decoder)
-      .transform(json.decoder)
-      .first as Map<String, dynamic>;
+  final jsonMap = await readJsonMap(response);
 
   final idToken = jsonMap['id_token'] as String?;
   final token = jsonMap['access_token'] as String?;
