@@ -55,7 +55,7 @@ class MetadataServerAuthorizationFlow extends BaseFlow {
   @override
   Future<AccessCredentials> run() async {
     final results = await Future.wait([_getToken(), _getScopes()]);
-    final token = results.first as Map<dynamic, dynamic>;
+    final token = results.first as Map<String, dynamic>;
     final scopesString = results.last as String;
 
     final json = token;
@@ -68,11 +68,12 @@ class MetadataServerAuthorizationFlow extends BaseFlow {
     final type = json['token_type'] as String;
     final accessToken = json['access_token'] as String?;
     final expiresIn = json['expires_in'];
-    final error = json['error'];
+    final error = errorString(json);
 
     if (error != null) {
-      throw Exception('Error while obtaining credentials from metadata '
-          'server. Error message: $error.');
+      throw Exception(
+        'Error while obtaining credentials from metadata server. $error',
+      );
     }
 
     if (type != 'Bearer' || accessToken == null || expiresIn is! int) {
@@ -86,9 +87,9 @@ class MetadataServerAuthorizationFlow extends BaseFlow {
     );
   }
 
-  Future<Map> _getToken() async {
+  Future<Map<String, dynamic>> _getToken() async {
     final response = await _client.get(_tokenUrl, headers: _headers);
-    return jsonDecode(response.body) as Map;
+    return jsonDecode(response.body) as Map<String, dynamic>;
   }
 
   Future<String> _getScopes() async {

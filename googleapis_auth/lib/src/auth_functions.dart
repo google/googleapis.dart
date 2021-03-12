@@ -116,18 +116,17 @@ Future<AccessCredentials> refreshCredentials(
   final jsonMap = await response.stream
       .transform(ascii.decoder)
       .transform(json.decoder)
-      .first as Map;
+      .first as Map<String, dynamic>;
 
   final idToken = jsonMap['id_token'] as String?;
   final token = jsonMap['access_token'] as String?;
   final seconds = jsonMap['expires_in'];
   final tokenType = jsonMap['token_type'] as String?;
-  final error = jsonMap['error'];
+  final error = errorString(jsonMap);
 
   if (response.statusCode != 200 && error != null) {
     throw RefreshFailedException(
-      'Refreshing attempt failed. '
-      'Response was ${response.statusCode}. Error message was $error.',
+      'Refreshing attempt failed. Status code ${response.statusCode}. $error',
     );
   }
 
