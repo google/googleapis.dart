@@ -155,6 +155,7 @@ class ImplicitFlow {
         final expiresInRaw = jsTokenObject['expires_in'];
         final code = jsTokenObject['code'] as String?;
         final error = jsTokenObject['error'];
+        final details = jsTokenObject['details'] as String?;
         final idToken = jsTokenObject['id_token'] as String?;
 
         int? expiresIn;
@@ -162,8 +163,12 @@ class ImplicitFlow {
           expiresIn = int.parse(expiresInRaw);
         }
         if (error != null) {
+          html.window.console.debug(jsTokenObject);
           completer.completeError(
-            UserConsentException('Failed to get user consent: $error.'),
+            UserConsentException(
+              'Failed to get user consent: $error.',
+              details: details,
+            ),
           );
         } else if (token == null ||
             expiresIn == null ||
