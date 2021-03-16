@@ -2,6 +2,7 @@
 
 - Fix an error when doing OAUTH code exchanged with an undefined secret.
 - `clientViaApiKey` is now exported from `googleapis_auth.dart`.
+- Added `String? details` to `UserConsentException`.
 
 ## 1.1.0
 

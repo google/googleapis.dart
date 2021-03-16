@@ -26,8 +26,10 @@ class AccessDeniedException implements Exception {
 class UserConsentException implements Exception {
   final String message;
 
-  UserConsentException(this.message);
+  final String? details;
+
+  UserConsentException(this.message, {this.details});
 
   @override
-  String toString() => message;
+  String toString() => [message, if (details != null) details].join(' ');
 }
