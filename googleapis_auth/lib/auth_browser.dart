@@ -110,17 +110,19 @@ class BrowserOAuth2Flow {
   ///
   /// In case another error occurs the returned future will complete with an
   /// `Exception`.
-  Future<AccessCredentials> obtainAccessCredentialsViaUserConsent(
-      {bool immediate = false,
-      bool force = false,
-      String? loginHint,
-      List<ResponseType>? responseTypes}) {
+  Future<AccessCredentials> obtainAccessCredentialsViaUserConsent({
+    bool immediate = false,
+    bool force = false,
+    String? loginHint,
+    List<ResponseType>? responseTypes,
+  }) {
     _ensureOpen();
     return _flow.login(
-        force: force,
-        immediate: immediate,
-        loginHint: loginHint,
-        responseTypes: responseTypes);
+      force: force,
+      immediate: immediate,
+      loginHint: loginHint,
+      responseTypes: responseTypes,
+    );
   }
 
   /// Obtains [AccessCredentials] and returns an authenticated HTTP client.
@@ -141,11 +143,14 @@ class BrowserOAuth2Flow {
   /// `Future<Response>` or it's `Response.read()` stream.
   ///
   /// The user is responsible for closing the returned HTTP client.
-  Future<AutoRefreshingAuthClient> clientViaUserConsent(
-          {bool immediate = false, String? loginHint}) =>
+  Future<AutoRefreshingAuthClient> clientViaUserConsent({
+    bool immediate = false,
+    String? loginHint,
+  }) =>
       obtainAccessCredentialsViaUserConsent(
-              immediate: immediate, loginHint: loginHint)
-          .then(_clientFromCredentials);
+        immediate: immediate,
+        loginHint: loginHint,
+      ).then(_clientFromCredentials);
 
   /// Obtains [AccessCredentials] and an authorization code which can be
   /// exchanged for permanent access credentials.
@@ -174,11 +179,17 @@ class BrowserOAuth2Flow {
   /// If [immediate] is `true` there will be no user involvement. If the user
   /// is either not logged in or has not already granted the application access,
   /// a `UserConsentException` will be thrown.
-  Future<HybridFlowResult> runHybridFlow(
-      {bool force = true, bool immediate = false, String? loginHint}) async {
+  Future<HybridFlowResult> runHybridFlow({
+    bool force = true,
+    bool immediate = false,
+    String? loginHint,
+  }) async {
     _ensureOpen();
     final result = await _flow.loginHybrid(
-        force: force, immediate: immediate, loginHint: loginHint);
+      force: force,
+      immediate: immediate,
+      loginHint: loginHint,
+    );
     return HybridFlowResult(this, result.credential, result.code);
   }
 
@@ -257,16 +268,13 @@ class _AutoRefreshingBrowserClient extends AutoRefreshDelegatingClient {
         super(client);
 
   @override
-  Future<StreamedResponse> send(BaseRequest request) {
+  Future<StreamedResponse> send(BaseRequest request) async {
     if (!credentials.accessToken.hasExpired) {
       return _authClient.send(request);
-    } else {
-      return _flow.login(immediate: true).then((newCredentials) {
-        credentials = newCredentials;
-        notifyAboutNewCredentials(credentials);
-        _authClient = authenticatedClient(baseClient, credentials);
-        return _authClient.send(request);
-      });
     }
+    credentials = await _flow.login(immediate: true);
+    notifyAboutNewCredentials(credentials);
+    _authClient = authenticatedClient(baseClient, credentials);
+    return _authClient.send(request);
   }
 }
