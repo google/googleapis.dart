@@ -65,11 +65,15 @@ Future<AutoRefreshingAuthClient> clientViaApplicationDefaultCredentials({
   // Attempt to use file created by `gcloud auth application-default login`
   File credFile;
   if (Platform.isWindows) {
-    credFile = File.fromUri(Uri.directory(Platform.environment['APPDATA']!)
-        .resolve('gcloud/application_default_credentials.json'));
+    credFile = File.fromUri(
+      Uri.directory(Platform.environment['APPDATA']!)
+          .resolve('gcloud/application_default_credentials.json'),
+    );
   } else {
-    credFile = File.fromUri(Uri.directory(Platform.environment['HOME']!)
-        .resolve('.config/gcloud/application_default_credentials.json'));
+    credFile = File.fromUri(
+      Uri.directory(Platform.environment['HOME']!)
+          .resolve('.config/gcloud/application_default_credentials.json'),
+    );
   }
   // Only try to load from credFile if it exists.
   if (await credFile.exists()) {
@@ -100,8 +104,11 @@ Future<AutoRefreshingAuthClient> clientViaApplicationDefaultCredentials({
 /// The user is responsible for closing the returned HTTP [Client].
 /// Closing the returned [Client] will not close [baseClient].
 Future<AutoRefreshingAuthClient> clientViaUserConsent(
-    ClientId clientId, List<String> scopes, PromptUserForConsent userPrompt,
-    {Client? baseClient}) async {
+  ClientId clientId,
+  List<String> scopes,
+  PromptUserForConsent userPrompt, {
+  Client? baseClient,
+}) async {
   var closeUnderlyingClient = false;
   if (baseClient == null) {
     baseClient = Client();
@@ -121,8 +128,12 @@ Future<AutoRefreshingAuthClient> clientViaUserConsent(
     }
     rethrow;
   }
-  return AutoRefreshingClient(baseClient, clientId, credentials,
-      closeUnderlyingClient: closeUnderlyingClient);
+  return AutoRefreshingClient(
+    baseClient,
+    clientId,
+    credentials,
+    closeUnderlyingClient: closeUnderlyingClient,
+  );
 }
 
 /// Obtains oauth2 credentials and returns an authenticated HTTP client.
@@ -140,9 +151,12 @@ Future<AutoRefreshingAuthClient> clientViaUserConsent(
 ///
 /// The user is responsible for closing the returned HTTP [Client].
 /// Closing the returned [Client] will not close [baseClient].
-Future<AutoRefreshingAuthClient> clientViaUserConsentManual(ClientId clientId,
-    List<String> scopes, PromptUserForConsentManual userPrompt,
-    {Client? baseClient}) async {
+Future<AutoRefreshingAuthClient> clientViaUserConsentManual(
+  ClientId clientId,
+  List<String> scopes,
+  PromptUserForConsentManual userPrompt, {
+  Client? baseClient,
+}) async {
   var closeUnderlyingClient = false;
   if (baseClient == null) {
     baseClient = Client();
@@ -150,7 +164,11 @@ Future<AutoRefreshingAuthClient> clientViaUserConsentManual(ClientId clientId,
   }
 
   final flow = AuthorizationCodeGrantManualFlow(
-      clientId, scopes, baseClient, userPrompt);
+    clientId,
+    scopes,
+    baseClient,
+    userPrompt,
+  );
 
   AccessCredentials credentials;
 
@@ -163,8 +181,12 @@ Future<AutoRefreshingAuthClient> clientViaUserConsentManual(ClientId clientId,
     rethrow;
   }
 
-  return AutoRefreshingClient(baseClient, clientId, credentials,
-      closeUnderlyingClient: closeUnderlyingClient);
+  return AutoRefreshingClient(
+    baseClient,
+    clientId,
+    credentials,
+    closeUnderlyingClient: closeUnderlyingClient,
+  );
 }
 
 /// Obtain oauth2 [AccessCredentials] using the oauth2 authentication code flow.
@@ -184,10 +206,11 @@ Future<AutoRefreshingAuthClient> clientViaUserConsentManual(ClientId clientId,
 ///
 /// The [ClientId] can be obtained in the Google Cloud Console.
 Future<AccessCredentials> obtainAccessCredentialsViaUserConsent(
-        ClientId clientId,
-        List<String> scopes,
-        Client client,
-        PromptUserForConsent userPrompt) =>
+  ClientId clientId,
+  List<String> scopes,
+  Client client,
+  PromptUserForConsent userPrompt,
+) =>
     AuthorizationCodeGrantServerFlow(clientId, scopes, client, userPrompt)
         .run();
 
@@ -208,10 +231,11 @@ Future<AccessCredentials> obtainAccessCredentialsViaUserConsent(
 ///
 /// The [ClientId] can be obtained in the Google Cloud Console.
 Future<AccessCredentials> obtainAccessCredentialsViaUserConsentManual(
-        ClientId clientId,
-        List<String> scopes,
-        Client client,
-        PromptUserForConsentManual userPrompt) =>
+  ClientId clientId,
+  List<String> scopes,
+  Client client,
+  PromptUserForConsentManual userPrompt,
+) =>
     AuthorizationCodeGrantManualFlow(clientId, scopes, client, userPrompt)
         .run();
 
@@ -238,6 +262,9 @@ Future<AccessCredentials> obtainAccessCredentialsViaUserConsentManual(
 /// An example on how to do this can be found here:
 ///   https://developers.google.com/+/web/signin/server-side-flow
 Future<AccessCredentials> obtainAccessCredentialsViaCodeExchange(
-        Client baseClient, ClientId clientId, String code,
-        {String redirectUrl = 'postmessage'}) =>
+  Client baseClient,
+  ClientId clientId,
+  String code, {
+  String redirectUrl = 'postmessage',
+}) =>
     obtainAccessCredentialsUsingCode(clientId, code, redirectUrl, baseClient);
