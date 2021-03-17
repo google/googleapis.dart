@@ -104,15 +104,19 @@ class ImplicitFlow {
     return completer.future;
   }
 
-  Future<LoginResult> loginHybrid(
-          {bool force = false, bool immediate = false, String? loginHint}) =>
+  Future<LoginResult> loginHybrid({
+    bool force = false,
+    bool immediate = false,
+    String? loginHint,
+  }) =>
       _login(force, immediate, true, loginHint, null);
 
-  Future<AccessCredentials> login(
-          {bool force = false,
-          bool immediate = false,
-          String? loginHint,
-          List<ResponseType>? responseTypes}) async =>
+  Future<AccessCredentials> login({
+    bool force = false,
+    bool immediate = false,
+    String? loginHint,
+    List<ResponseType>? responseTypes,
+  }) async =>
       (await _login(force, immediate, false, loginHint, responseTypes))
           .credential;
 
@@ -122,88 +126,96 @@ class ImplicitFlow {
   //
   // Alternatively, the response types can be set directly if `hybrid` is not
   // set to `true`.
-  Future<LoginResult> _login(bool force, bool immediate, bool hybrid,
-      String? loginHint, List<ResponseType>? responseTypes) {
-    assert(hybrid != true || responseTypes?.isNotEmpty != true);
+  Future<LoginResult> _login(
+    bool force,
+    bool immediate,
+    bool hybrid,
+    String? loginHint,
+    List<ResponseType>? responseTypes,
+  ) {
+    assert(hybrid == false || responseTypes?.isNotEmpty != true);
 
     final completer = Completer<LoginResult>();
-
-    final gapi = _gapiAuth;
 
     final json = {
       'client_id': _clientId,
       'immediate': immediate,
       'approval_prompt': force ? 'force' : 'auto',
-      'response_type': responseTypes?.isNotEmpty == true
-          ? responseTypes!.map(_responseTypeToString).join(' ')
-          : hybrid
+      'response_type': responseTypes == null || responseTypes.isEmpty
+          ? hybrid
               ? 'code token'
-              : 'token',
+              : 'token'
+          : responseTypes.map(_responseTypeToString).join(' '),
       'scope': _scopes.join(' '),
       'access_type': hybrid ? 'offline' : 'online',
+      if (loginHint != null) 'login_hint': loginHint,
     };
 
-    if (loginHint != null) {
-      json['login_hint'] = loginHint;
-    }
-
-    gapi.callMethod('authorize', [
+    _gapiAuth.callMethod('authorize', [
       js.JsObject.jsify(json),
       (js.JsObject jsTokenObject) {
-        final tokenType = jsTokenObject['token_type'];
-        final token = jsTokenObject['access_token'] as String?;
-        final expiresInRaw = jsTokenObject['expires_in'];
-        final code = jsTokenObject['code'] as String?;
-        final error = jsTokenObject['error'];
-        final details = jsTokenObject['details'] as String?;
-        final idToken = jsTokenObject['id_token'] as String?;
-
-        int? expiresIn;
-        if (expiresInRaw is String) {
-          expiresIn = int.parse(expiresInRaw);
-        }
-        if (error != null) {
+        try {
+          final result = _processToken(jsTokenObject, hybrid, responseTypes);
+          completer.complete(result);
+        } catch (e, stack) {
           html.window.console.debug(jsTokenObject);
-          completer.completeError(
-            UserConsentException(
-              'Failed to get user consent: $error.',
-              details: details,
-            ),
-          );
-        } else if (token == null ||
-            expiresIn == null ||
-            tokenType != 'Bearer') {
-          completer.completeError(
-            Exception(
-                'Failed to obtain user consent. Invalid server response.'),
-          );
-        } else if (responseTypes?.contains(ResponseType.idToken) == true &&
-            idToken?.isNotEmpty != true) {
-          completer.completeError(
-              Exception('Expected to get id_token, but did not.'));
-        } else {
-          final accessToken =
-              AccessToken('Bearer', token, expiryDate(expiresIn));
-          final credentials =
-              AccessCredentials(accessToken, null, _scopes, idToken: idToken);
-
-          if (hybrid) {
-            if (code == null) {
-              completer.completeError(
-                Exception('Expected to get auth code '
-                    'from server in hybrid flow, but did not.'),
-              );
-              return;
-            }
-            completer.complete(LoginResult(credentials, code: code));
-          } else {
-            completer.complete(LoginResult(credentials));
-          }
+          completer.completeError(e, stack);
         }
       }
     ]);
 
     return completer.future;
+  }
+
+  LoginResult _processToken(
+    js.JsObject jsTokenObject,
+    bool hybrid,
+    List<ResponseType>? responseTypes,
+  ) {
+    final error = jsTokenObject['error'];
+
+    if (error != null) {
+      final details = jsTokenObject['details'] as String?;
+      throw UserConsentException(
+        'Failed to get user consent: $error.',
+        details: details,
+      );
+    }
+
+    final tokenType = jsTokenObject['token_type'];
+    final token = jsTokenObject['access_token'] as String?;
+
+    final expiresInRaw = jsTokenObject['expires_in'];
+    final expiresIn = expiresInRaw is String ? int.parse(expiresInRaw) : null;
+
+    if (token == null || expiresIn == null || tokenType != 'Bearer') {
+      throw Exception(
+        'Failed to obtain user consent. Invalid server response.',
+      );
+    }
+
+    final idToken = jsTokenObject['id_token'] as String?;
+
+    if (responseTypes?.contains(ResponseType.idToken) == true &&
+        idToken?.isNotEmpty != true) {
+      throw Exception('Expected to get id_token, but did not.');
+    }
+
+    final accessToken = AccessToken('Bearer', token, expiryDate(expiresIn));
+    final credentials =
+        AccessCredentials(accessToken, null, _scopes, idToken: idToken);
+
+    String? code;
+    if (hybrid) {
+      code = jsTokenObject['code'] as String?;
+
+      if (code == null) {
+        throw Exception(
+          'Expected to get auth code from server in hybrid flow, but did not.',
+        );
+      }
+    }
+    return LoginResult(credentials, code: code);
   }
 }
 
