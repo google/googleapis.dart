@@ -4459,7 +4459,7 @@ class AlertPolicy {
   /// Each key and value is limited to 63 Unicode characters or 128 bytes,
   /// whichever is smaller. Labels and values can contain only lowercase
   /// letters, numerals, underscores, and dashes. Keys must begin with a letter.
-  core.Map<core.String, core.String>? userLabels;
+  core.Map<core.String, core.String?>? userLabels;
 
   /// Read-only description of how the alert policy is invalid.
   ///
@@ -4812,7 +4812,7 @@ class CollectdPayload {
   /// The measurement metadata.
   ///
   /// Example: "process_id" -> 12345
-  core.Map<core.String, TypedValue>? metadata;
+  core.Map<core.String, TypedValue?>? metadata;
 
   /// The name of the plugin.
   ///
@@ -5493,7 +5493,7 @@ class Documentation {
 /// ambiguities.
 class DroppedLabels {
   /// Map from label to its value, for all labels dropped in any aggregation.
-  core.Map<core.String, core.String>? label;
+  core.Map<core.String, core.String?>? label;
 
   DroppedLabels();
 
@@ -5575,7 +5575,7 @@ class Exemplar {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? attachments;
+  core.List<core.Map<core.String, core.Object?>>? attachments;
 
   /// The observation (sampling) time of the above value.
   core.String? timestamp;
@@ -5590,7 +5590,7 @@ class Exemplar {
   Exemplar.fromJson(core.Map _json) {
     if (_json.containsKey('attachments')) {
       attachments = (_json['attachments'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
@@ -6010,7 +6010,7 @@ class HttpCheck {
   /// separate headers with the same key in a Create call will cause the first
   /// to be overwritten by the second. The maximum number of headers allowed is
   /// 100.
-  core.Map<core.String, core.String>? headers;
+  core.Map<core.String, core.String?>? headers;
 
   /// Boolean specifying whether to encrypt the header information.
   ///
@@ -6893,7 +6893,7 @@ class Metric {
   /// The set of label values that uniquely identify this metric.
   ///
   /// All labels listed in the MetricDescriptor must be assigned values.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// An existing metric type, see google.api.MetricDescriptor.
   ///
@@ -7500,7 +7500,7 @@ class MonitoredResource {
   /// "instance_id", and "zone".
   ///
   /// Required.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The monitored resource type.
   ///
@@ -7680,12 +7680,12 @@ class MonitoredResourceMetadata {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? systemLabels;
+  core.Map<core.String, core.Object?>? systemLabels;
 
   /// A map of user-defined metadata labels.
   ///
   /// Output only.
-  core.Map<core.String, core.String>? userLabels;
+  core.Map<core.String, core.String?>? userLabels;
 
   MonitoredResourceMetadata();
 
@@ -7829,7 +7829,7 @@ class NotificationChannel {
   /// The permissible and required labels are specified in the
   /// NotificationChannelDescriptor.labels of the NotificationChannelDescriptor
   /// corresponding to the type field.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// Records of the modification of this channel.
   core.List<MutationRecord>? mutationRecords;
@@ -7856,7 +7856,7 @@ class NotificationChannel {
   /// key and value is limited to 63 Unicode characters or 128 bytes, whichever
   /// is smaller. Labels and values can contain only lowercase letters,
   /// numerals, underscores, and dashes. Keys must begin with a letter.
-  core.Map<core.String, core.String>? userLabels;
+  core.Map<core.String, core.String?>? userLabels;
 
   /// Indicates whether this channel has been verified or not.
   ///
@@ -8080,7 +8080,7 @@ class Option {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? value;
+  core.Map<core.String, core.Object?>? value;
 
   Option();
 
@@ -8711,7 +8711,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -8727,7 +8727,7 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,

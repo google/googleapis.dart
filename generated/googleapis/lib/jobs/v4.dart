@@ -2380,7 +2380,7 @@ class HistogramQueryResult {
   /// like for `bucket(0, MAX, "non-negative")`, the key will be `non-negative`.
   /// * (for anonymous numeric bucket) range formatted as `-`, for example,
   /// `0-1000`, `MIN-0`, and `0-MAX`.
-  core.Map<core.String, core.String>? histogram;
+  core.Map<core.String, core.String?>? histogram;
 
   /// Requested histogram expression.
   core.String? histogramQuery;
@@ -2459,7 +2459,7 @@ class Job {
   /// `string_values`, across all keys at most 200 values are allowed, with each
   /// string no more than 255 characters. For unfilterable `string_values`, the
   /// maximum total size of `string_values` across all keys is 50KB.
-  core.Map<core.String, CustomAttribute>? customAttributes;
+  core.Map<core.String, CustomAttribute?>? customAttributes;
 
   /// The desired education degrees for the job, such as Bachelors, Masters.
   core.List<core.String>? degreeTypes;
@@ -3584,7 +3584,7 @@ class MendelDebugInput {
   /// NamespacedMendelDebugInput with the server's namespace. When both
   /// NamespacedMendelDebugInput protos are present, they are merged. See
   /// go/mendel-debug-forcing for more details.
-  core.Map<core.String, NamespacedDebugInput>? namespacedDebugInput;
+  core.Map<core.String, NamespacedDebugInput?>? namespacedDebugInput;
 
   MendelDebugInput();
 
@@ -3739,12 +3739,12 @@ class NamespacedDebugInput {
   /// Flags to force in a particular experiment state.
   ///
   /// Map from flag name to flag value.
-  core.Map<core.String, core.String>? forcedFlags;
+  core.Map<core.String, core.String?>? forcedFlags;
 
   /// Rollouts to force in a particular experiment state.
   ///
   /// Map from rollout name to rollout value.
-  core.Map<core.String, core.bool>? forcedRollouts;
+  core.Map<core.String, core.bool?>? forcedRollouts;
 
   NamespacedDebugInput();
 
@@ -3877,7 +3877,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -3897,7 +3897,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   Operation();
 
@@ -4705,7 +4705,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -4721,7 +4721,7 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,

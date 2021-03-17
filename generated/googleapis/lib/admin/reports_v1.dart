@@ -1330,7 +1330,7 @@ class Channel {
   /// Additional parameters controlling delivery channel behavior.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? params;
+  core.Map<core.String, core.String?>? params;
 
   /// A Boolean value to indicate whether payload is wanted.
   ///
@@ -1562,7 +1562,7 @@ class UsageReportParameters {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? msgValue;
+  core.List<core.Map<core.String, core.Object?>>? msgValue;
 
   /// The name of the parameter.
   ///
@@ -1590,7 +1590,7 @@ class UsageReportParameters {
     }
     if (_json.containsKey('msgValue')) {
       msgValue = (_json['msgValue'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,

@@ -576,7 +576,7 @@ class AppEngineHttpTarget {
   /// `X-Google-*`: For Google internal use only. * `X-AppEngine-*`: For Google
   /// internal use only. In addition, some App Engine headers, which contain
   /// job-specific information, are also be sent to the job handler.
-  core.Map<core.String, core.String>? headers;
+  core.Map<core.String, core.String?>? headers;
 
   /// The HTTP method to use for the request.
   ///
@@ -772,7 +772,7 @@ class HttpTarget {
   /// `User-Agent`: This will be set to `"Google-Cloud-Scheduler"`. *
   /// `X-Google-*`: Google internal use only. * `X-AppEngine-*`: Google internal
   /// use only. The total size of headers must be less than 80KB.
-  core.Map<core.String, core.String>? headers;
+  core.Map<core.String, core.String?>? headers;
 
   /// Which HTTP method to use for the request.
   /// Possible string values are:
@@ -1111,7 +1111,7 @@ class Location {
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The canonical id for this location.
   ///
@@ -1124,7 +1124,7 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
@@ -1268,7 +1268,7 @@ class PubsubMessage {
   ///
   /// If this field is empty, the message must contain non-empty data. This can
   /// be used to filter messages on the subscription.
-  core.Map<core.String, core.String>? attributes;
+  core.Map<core.String, core.String?>? attributes;
 
   /// The message data field.
   ///
@@ -1348,7 +1348,7 @@ class PubsubTarget {
   ///
   /// Pubsub message must contain either non-empty data, or at least one
   /// attribute.
-  core.Map<core.String, core.String>? attributes;
+  core.Map<core.String, core.String?>? attributes;
 
   /// The message payload for PubsubMessage.
   ///
@@ -1520,7 +1520,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -1536,7 +1536,7 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,

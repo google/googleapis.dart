@@ -815,7 +815,7 @@ class Inventory {
   ///
   /// The identifier is unique to each distinct and addressable inventory item
   /// and will change, when there is a new package version.
-  core.Map<core.String, InventoryItem>? items;
+  core.Map<core.String, InventoryItem?>? items;
 
   /// Base level operating system information for the VM.
   InventoryOsInfo? osInfo;
@@ -1796,7 +1796,7 @@ class PatchInstanceFilter {
 class PatchInstanceFilterGroupLabel {
   /// Compute Engine instance labels that must be present for a VM instance to
   /// be targeted by this filter.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   PatchInstanceFilterGroupLabel();
 

@@ -389,7 +389,7 @@ class Attributes {
   /// `true` and `false`. For example: "/instance_id": "my-instance"
   /// "/http/user_agent": "" "/http/request_bytes": 300 "abc.com/myattribute":
   /// true
-  core.Map<core.String, AttributeValue>? attributeMap;
+  core.Map<core.String, AttributeValue?>? attributeMap;
 
   /// The number of attributes that were discarded.
   ///
@@ -440,7 +440,7 @@ class AuditLog {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The name of the service method or operation.
   ///
@@ -463,7 +463,7 @@ class AuditLog {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? request;
+  core.Map<core.String, core.Object?>? request;
 
   /// Metadata about the operation.
   RequestMetadata? requestMetadata;
@@ -489,7 +489,7 @@ class AuditLog {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? resourceOriginalState;
+  core.Map<core.String, core.Object?>? resourceOriginalState;
 
   /// The operation response.
   ///
@@ -501,7 +501,7 @@ class AuditLog {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   /// Use the `metadata` field instead.
   ///
@@ -512,7 +512,7 @@ class AuditLog {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? serviceData;
+  core.Map<core.String, core.Object?>? serviceData;
 
   /// The name of the API service performing the operation.
   ///
@@ -669,7 +669,7 @@ class Auth {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? claims;
+  core.Map<core.String, core.Object?>? claims;
 
   /// The authorized presenter of the credential.
   ///
@@ -769,7 +769,7 @@ class AuthenticationInfo {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? thirdPartyPrincipal;
+  core.Map<core.String, core.Object?>? thirdPartyPrincipal;
 
   AuthenticationInfo();
 
@@ -1321,7 +1321,7 @@ class Exemplar {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? attachments;
+  core.List<core.Map<core.String, core.Object?>>? attachments;
 
   /// The observation (sampling) time of the above value.
   core.String? timestamp;
@@ -1336,7 +1336,7 @@ class Exemplar {
   Exemplar.fromJson(core.Map _json) {
     if (_json.containsKey('attachments')) {
       attachments = (_json['attachments'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
@@ -1446,7 +1446,7 @@ class FirstPartyPrincipal {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? serviceMetadata;
+  core.Map<core.String, core.Object?>? serviceMetadata;
 
   FirstPartyPrincipal();
 
@@ -1673,7 +1673,7 @@ class LogEntry {
 
   /// A set of user-defined (key, value) data that provides additional
   /// information about the log entry.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The log to which this log entry belongs.
   ///
@@ -1695,7 +1695,7 @@ class LogEntry {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? protoPayload;
+  core.Map<core.String, core.Object?>? protoPayload;
 
   /// The severity of the log entry.
   ///
@@ -1725,7 +1725,7 @@ class LogEntry {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? structPayload;
+  core.Map<core.String, core.Object?>? structPayload;
 
   /// The log entry payload, represented as a Unicode string (UTF-8).
   core.String? textPayload;
@@ -1952,7 +1952,7 @@ class MetricValue {
   /// See comments on google.api.servicecontrol.v1.Operation.labels for the
   /// overriding relationship. Note that this map must not contain monitored
   /// resource labels.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// A money value.
   Money? moneyValue;
@@ -2116,7 +2116,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? extensions;
+  core.List<core.Map<core.String, core.Object?>>? extensions;
 
   /// DO NOT USE.
   ///
@@ -2146,7 +2146,7 @@ class Operation {
   /// to handle the API request (e.g. ESP), -
   /// `servicecontrol.googleapis.com/platform` describing the platform where the
   /// API is served, such as App Engine, Compute Engine, or Kubernetes Engine.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// Represents information to be logged.
   core.List<LogEntry>? logEntries;
@@ -2206,7 +2206,7 @@ class Operation {
   ///
   /// This feature is only available for approved services. User defined labels
   /// for the resource that this operation is associated with.
-  core.Map<core.String, core.String>? userLabels;
+  core.Map<core.String, core.String?>? userLabels;
 
   Operation();
 
@@ -2219,7 +2219,7 @@ class Operation {
     }
     if (_json.containsKey('extensions')) {
       extensions = (_json['extensions'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
@@ -2321,7 +2321,7 @@ class Peer {
   core.String? ip;
 
   /// The labels associated with the peer.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The network port of the peer.
   core.String? port;
@@ -2463,7 +2463,7 @@ class QuotaInfo {
   /// client code base. For simplicity, we will keep this field for Castor (that
   /// scales quota usage) and 'quota_metrics' for SuperQuota (that doesn't scale
   /// quota usage).
-  core.Map<core.String, core.int>? quotaConsumed;
+  core.Map<core.String, core.int?>? quotaConsumed;
 
   /// Quota metrics to indicate the usage.
   ///
@@ -2521,7 +2521,7 @@ class QuotaOperation {
   core.String? consumerId;
 
   /// Labels describing the operation.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// Fully qualified name of the API method for which this quota operation is
   /// requested.
@@ -2789,7 +2789,7 @@ class Request {
   /// If multiple headers share the same key, they must be merged according to
   /// the HTTP spec. All header keys must be lowercased, because HTTP header
   /// keys are case-insensitive.
-  core.Map<core.String, core.String>? headers;
+  core.Map<core.String, core.String?>? headers;
 
   /// The HTTP request `Host` header value.
   core.String? host;
@@ -2995,7 +2995,7 @@ class Resource {
   ///
   /// They are not queryable and should be preserved when modifying objects.
   /// More info: https://kubernetes.io/docs/user-guide/annotations
-  core.Map<core.String, core.String>? annotations;
+  core.Map<core.String, core.String?>? annotations;
 
   /// The timestamp when the resource was created.
   ///
@@ -3028,7 +3028,7 @@ class Resource {
 
   /// The labels or tags on the resource, such as AWS resource tags and
   /// Kubernetes resource labels.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The location of the resource.
   ///
@@ -3315,7 +3315,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -3331,7 +3331,7 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
@@ -3358,7 +3358,7 @@ class ThirdPartyPrincipal {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? thirdPartyClaims;
+  core.Map<core.String, core.Object?>? thirdPartyClaims;
 
   ThirdPartyPrincipal();
 

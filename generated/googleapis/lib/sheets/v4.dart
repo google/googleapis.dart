@@ -2438,7 +2438,7 @@ class BasicFilter {
   ///
   /// The map's key is the column index, and the value is the criteria for that
   /// column. This field is deprecated in favor of filter_specs.
-  core.Map<core.String, FilterCriteria>? criteria;
+  core.Map<core.String, FilterCriteria?>? criteria;
 
   /// The filter criteria per column.
   ///
@@ -7394,7 +7394,7 @@ class FilterView {
   ///
   /// The map's key is the column index, and the value is the criteria for that
   /// column. This field is deprecated in favor of filter_specs.
-  core.Map<core.String, FilterCriteria>? criteria;
+  core.Map<core.String, FilterCriteria?>? criteria;
 
   /// The filter criteria for showing/hiding values per column.
   ///
@@ -9303,7 +9303,7 @@ class PivotTable {
   /// source was `C10:E15`, a key of `0` will have the filter for column `C`,
   /// whereas the key `1` is for column `D`. This field is deprecated in favor
   /// of filter_specs.
-  core.Map<core.String, PivotFilterCriteria>? criteria;
+  core.Map<core.String, PivotFilterCriteria?>? criteria;
 
   /// The data execution status for data source pivot tables.
   ///

@@ -4455,7 +4455,7 @@ class Bucket {
   core.String? kind;
 
   /// User-provided labels, in key/value pairs.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The bucket's lifecycle configuration.
   ///
@@ -4918,7 +4918,7 @@ class Channel {
   /// Additional parameters controlling delivery channel behavior.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? params;
+  core.Map<core.String, core.String?>? params;
 
   /// A Boolean value to indicate whether payload is wanted.
   ///
@@ -5314,7 +5314,7 @@ class HmacKeysMetadata {
 class Notification {
   /// An optional list of additional attributes to attach to each Cloud PubSub
   /// message published for this notification subscription.
-  core.Map<core.String, core.String>? customAttributes;
+  core.Map<core.String, core.String?>? customAttributes;
 
   /// HTTP 1.1 Entity tag for this subscription notification.
   core.String? etag;
@@ -5583,7 +5583,7 @@ class Object {
   core.String? mediaLink;
 
   /// User-provided metadata, in key/value pairs.
-  core.Map<core.String, core.String>? metadata;
+  core.Map<core.String, core.String?>? metadata;
 
   /// The version of the metadata for this object at this generation.
   ///

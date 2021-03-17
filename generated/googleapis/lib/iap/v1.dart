@@ -1481,7 +1481,7 @@ class Resource {
   /// go/iam-conditions-labels-comm and ensure your service can meet the data
   /// availability and management requirements. * Talk to iam-conditions-eng@
   /// about your use case.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// Name of the resource on which conditions will be evaluated.
   ///

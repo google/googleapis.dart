@@ -110,7 +110,7 @@ class Webfont {
 
   /// The font files (with all supported scripts) for each one of the available
   /// variants, as a key : value map.
-  core.Map<core.String, core.String>? files;
+  core.Map<core.String, core.String?>? files;
 
   /// This kind represents a webfont object in the webfonts service.
   core.String? kind;

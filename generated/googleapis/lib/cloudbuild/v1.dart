@@ -1403,7 +1403,7 @@ class Build {
   core.List<BuildStep>? steps;
 
   /// Substitutions data for `Build` resource.
-  core.Map<core.String, core.String>? substitutions;
+  core.Map<core.String, core.String?>? substitutions;
 
   /// Tags for annotation of a `Build`.
   ///
@@ -1425,7 +1425,7 @@ class Build {
   /// build does not specify source or images, these keys will not be included.
   ///
   /// Output only.
-  core.Map<core.String, TimeSpan>? timing;
+  core.Map<core.String, TimeSpan?>? timing;
 
   Build();
 
@@ -2017,7 +2017,7 @@ class BuildTrigger {
   /// Substitutions for Build resource.
   ///
   /// The keys must match the following regular expression: `^_[A-Z0-9_]+$`.
-  core.Map<core.String, core.String>? substitutions;
+  core.Map<core.String, core.String?>? substitutions;
 
   /// Tags for annotation of a `BuildTrigger`
   core.List<core.String>? tags;
@@ -2380,7 +2380,7 @@ class HttpBody {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? extensions;
+  core.List<core.Map<core.String, core.Object?>>? extensions;
 
   HttpBody();
 
@@ -2393,7 +2393,7 @@ class HttpBody {
     }
     if (_json.containsKey('extensions')) {
       extensions = (_json['extensions'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
@@ -2420,7 +2420,7 @@ class InlineSecret {
   /// secrets, and must be used by at least one build step. Values can be at
   /// most 64 KB in size. There can be at most 100 secret values across all of a
   /// build's secrets.
-  core.Map<core.String, core.String>? envMap;
+  core.Map<core.String, core.String?>? envMap;
 
   /// Resource name of Cloud KMS crypto key to decrypt the encrypted value.
   ///
@@ -2531,7 +2531,7 @@ class Notification {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? structDelivery;
+  core.Map<core.String, core.Object?>? structDelivery;
 
   Notification();
 
@@ -2746,7 +2746,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -2766,7 +2766,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   Operation();
 
@@ -2936,7 +2936,7 @@ class RepoSource {
   /// Substitutions to use in a triggered build.
   ///
   /// Should only be used with RunBuildTrigger
-  core.Map<core.String, core.String>? substitutions;
+  core.Map<core.String, core.String?>? substitutions;
 
   /// Regex matching tags to build.
   ///
@@ -3177,7 +3177,7 @@ class Secret {
   /// secrets, and must be used by at least one build step. Values can be at
   /// most 64 KB in size. There can be at most 100 secret values across all of a
   /// build's secrets.
-  core.Map<core.String, core.String>? secretEnv;
+  core.Map<core.String, core.String?>? secretEnv;
 
   Secret();
 
@@ -3335,7 +3335,7 @@ class SourceProvenance {
   /// file.
   ///
   /// Output only.
-  core.Map<core.String, FileHashes>? fileHashes;
+  core.Map<core.String, FileHashes?>? fileHashes;
 
   /// A copy of the build's `source.repo_source`, if exists, with any revisions
   /// resolved.
@@ -3396,7 +3396,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -3412,7 +3412,7 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,

@@ -1197,13 +1197,13 @@ class ReportHeader {
 class ReportRow {
   /// Map of dimension values in a row, with keys as enum name of the
   /// dimensions.
-  core.Map<core.String, ReportRowDimensionValue>? dimensionValues;
+  core.Map<core.String, ReportRowDimensionValue?>? dimensionValues;
 
   /// Map of metric values in a row, with keys as enum name of the metrics.
   ///
   /// If a metric being requested has no value returned, the map will not
   /// include it.
-  core.Map<core.String, ReportRowMetricValue>? metricValues;
+  core.Map<core.String, ReportRowMetricValue?>? metricValues;
 
   ReportRow();
 

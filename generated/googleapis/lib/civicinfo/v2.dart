@@ -1434,7 +1434,7 @@ class PollingLocation {
 class RepresentativeInfoData {
   /// A map of political geographic divisions that contain the requested
   /// address, keyed by the unique Open Civic Data identifier for this division.
-  core.Map<core.String, GeographicDivision>? divisions;
+  core.Map<core.String, GeographicDivision?>? divisions;
 
   /// Elected offices referenced by the divisions listed above.
   ///
@@ -1488,7 +1488,7 @@ class RepresentativeInfoData {
 class RepresentativeInfoResponse {
   /// A map of political geographic divisions that contain the requested
   /// address, keyed by the unique Open Civic Data identifier for this division.
-  core.Map<core.String, GeographicDivision>? divisions;
+  core.Map<core.String, GeographicDivision?>? divisions;
 
   /// Identifies what kind of resource this is.
   ///

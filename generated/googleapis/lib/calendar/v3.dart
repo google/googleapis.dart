@@ -2977,7 +2977,7 @@ class Channel {
   /// Additional parameters controlling delivery channel behavior.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? params;
+  core.Map<core.String, core.String?>? params;
 
   /// A Boolean value to indicate whether payload is wanted.
   ///
@@ -3089,14 +3089,14 @@ class Colors {
   ///
   /// A calendarListEntry resource refers to one of these color IDs in its color
   /// field. Read-only.
-  core.Map<core.String, ColorDefinition>? calendar;
+  core.Map<core.String, ColorDefinition?>? calendar;
 
   /// A global palette of event colors, mapping from the color ID to its
   /// definition.
   ///
   /// An event resource may refer to one of these color IDs in its color field.
   /// Read-only.
-  core.Map<core.String, ColorDefinition>? event;
+  core.Map<core.String, ColorDefinition?>? event;
 
   /// Type of the resource ("calendar#colors").
   core.String? kind;
@@ -3264,7 +3264,7 @@ class ConferenceParameters {
 }
 
 class ConferenceParametersAddOnParameters {
-  core.Map<core.String, core.String>? parameters;
+  core.Map<core.String, core.String?>? parameters;
 
   ConferenceParametersAddOnParameters();
 
@@ -3671,11 +3671,11 @@ class EventCreator {
 class EventExtendedProperties {
   /// Properties that are private to the copy of the event that appears on this
   /// calendar.
-  core.Map<core.String, core.String>? private;
+  core.Map<core.String, core.String?>? private;
 
   /// Properties that are shared between copies of the event on other attendees'
   /// calendars.
-  core.Map<core.String, core.String>? shared;
+  core.Map<core.String, core.String?>? shared;
 
   EventExtendedProperties();
 
@@ -3733,7 +3733,7 @@ class EventGadget {
   core.String? link;
 
   /// Preferences.
-  core.Map<core.String, core.String>? preferences;
+  core.Map<core.String, core.String?>? preferences;
 
   /// The gadget's title.
   ///
@@ -4886,10 +4886,10 @@ class FreeBusyRequestItem {
 
 class FreeBusyResponse {
   /// List of free/busy information for calendars.
-  core.Map<core.String, FreeBusyCalendar>? calendars;
+  core.Map<core.String, FreeBusyCalendar?>? calendars;
 
   /// Expansion of groups.
-  core.Map<core.String, FreeBusyGroup>? groups;
+  core.Map<core.String, FreeBusyGroup?>? groups;
 
   /// Type of the resource ("calendar#freeBusy").
   core.String? kind;

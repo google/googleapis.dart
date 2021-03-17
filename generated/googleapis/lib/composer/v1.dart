@@ -728,7 +728,7 @@ class Environment {
   /// additionally constrained to be <= 128 bytes in size.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The resource name of the environment, in the form:
   /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
@@ -1350,7 +1350,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -1370,7 +1370,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   Operation();
 
@@ -1634,7 +1634,7 @@ class SoftwareConfig {
   /// overridden.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? airflowConfigOverrides;
+  core.Map<core.String, core.String?>? airflowConfigOverrides;
 
   /// Additional environment variables to provide to the Apache Airflow
   /// scheduler, worker, and webserver processes.
@@ -1649,7 +1649,7 @@ class SoftwareConfig {
   /// `SQL_USER`
   ///
   /// Optional.
-  core.Map<core.String, core.String>? envVariables;
+  core.Map<core.String, core.String?>? envVariables;
 
   /// The version of the software running in the environment.
   ///
@@ -1680,7 +1680,7 @@ class SoftwareConfig {
   /// value.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? pypiPackages;
+  core.Map<core.String, core.String?>? pypiPackages;
 
   /// The major version of Python used to run the Apache Airflow scheduler,
   /// worker, and webserver processes.
@@ -1757,7 +1757,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -1773,7 +1773,7 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,

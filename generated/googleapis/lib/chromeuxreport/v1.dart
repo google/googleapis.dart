@@ -402,7 +402,7 @@ class Record {
   /// Metrics are keyed on the metric name. Allowed key values:
   /// \["first_contentful_paint", "first_input_delay",
   /// "largest_contentful_paint", "cumulative_layout_shift"\]
-  core.Map<core.String, Metric>? metrics;
+  core.Map<core.String, Metric?>? metrics;
 
   Record();
 

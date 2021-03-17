@@ -192,7 +192,7 @@ class GoogleCloudPolicytroubleshooterV1BindingExplanation {
   /// the binding, the key is `group:product-eng@example.com`, and the
   /// `membership` field in the value is set to `MEMBERSHIP_INCLUDED`.
   core.Map<core.String,
-          GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership>?
+          GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership?>?
       memberships;
 
   /// The relevance of this binding to the overall determination for the entire

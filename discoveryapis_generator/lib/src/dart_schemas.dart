@@ -629,7 +629,7 @@ class UnnamedMapType extends ComplexDartSchemaType {
   String get declaration {
     final from = fromType.declaration;
     final to = toType.declaration;
-    return '${imports.core.ref()}Map<$from, $to>';
+    return '${imports.core.ref()}Map<$from, $to?>';
   }
 
   @override
@@ -659,7 +659,7 @@ ${toType.jsonDecode('item')},
       // NOTE: The Map returned from JSON.decode() transfers ownership to the
       // user (i.e. we don't need to make a copy of it).
       return '($json as $coreMapJsonType)'
-          '.cast<${fromType.declaration}, ${toType.declaration}>()';
+          '.cast<${fromType.declaration}, ${toType.declaration}?>()';
     }
   }
 }

@@ -985,7 +985,7 @@ class CloudFunction {
   core.int? availableMemoryMb;
 
   /// Build environment variables that shall be available during build time.
-  core.Map<core.String, core.String>? buildEnvironmentVariables;
+  core.Map<core.String, core.String?>? buildEnvironmentVariables;
 
   /// The Cloud Build ID of the latest successful deployment of the function.
   ///
@@ -1019,7 +1019,7 @@ class CloudFunction {
   core.String? entryPoint;
 
   /// Environment variables that shall be available during function execution.
-  core.Map<core.String, core.String>? environmentVariables;
+  core.Map<core.String, core.String?>? environmentVariables;
 
   /// A source that fires events in response to a condition in another service.
   EventTrigger? eventTrigger;
@@ -1039,7 +1039,7 @@ class CloudFunction {
   core.String? ingressSettings;
 
   /// Labels associated with this Cloud Function.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The limit on the maximum number of function instances that may coexist at
   /// a given time.
@@ -1671,7 +1671,7 @@ class Location {
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The canonical id for this location.
   ///
@@ -1684,7 +1684,7 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
@@ -1751,7 +1751,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -1771,7 +1771,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   Operation();
 
@@ -1824,7 +1824,7 @@ class OperationMetadataV1 {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? request;
+  core.Map<core.String, core.Object?>? request;
 
   /// An identifier for Firebase function sources.
   ///
@@ -2115,7 +2115,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -2131,7 +2131,7 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,

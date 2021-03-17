@@ -540,7 +540,7 @@ class GoogleCloudBillingBudgetsV1Filter {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.List<core.Object>>? labels;
+  core.Map<core.String, core.List<core.Object>?>? labels;
 
   /// A set of projects of the form `projects/{project}`, specifying that usage
   /// from only this set of projects should be included in the budget.

@@ -2902,13 +2902,13 @@ class About {
   core.List<AboutDriveThemes>? driveThemes;
 
   /// A map of source MIME type to possible targets for all supported exports.
-  core.Map<core.String, core.List<core.String>>? exportFormats;
+  core.Map<core.String, core.List<core.String>?>? exportFormats;
 
   /// The currently supported folder colors as RGB hex strings.
   core.List<core.String>? folderColorPalette;
 
   /// A map of source MIME type to possible targets for all supported imports.
-  core.Map<core.String, core.List<core.String>>? importFormats;
+  core.Map<core.String, core.List<core.String>?>? importFormats;
 
   /// Identifies what kind of resource this is.
   ///
@@ -2916,7 +2916,7 @@ class About {
   core.String? kind;
 
   /// A map of maximum import sizes by MIME type, in bytes.
-  core.Map<core.String, core.String>? maxImportSizes;
+  core.Map<core.String, core.String?>? maxImportSizes;
 
   /// The maximum upload size in bytes.
   core.String? maxUploadSize;
@@ -3208,7 +3208,7 @@ class Channel {
   /// Additional parameters controlling delivery channel behavior.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? params;
+  core.Map<core.String, core.String?>? params;
 
   /// A Boolean value to indicate whether payload is wanted.
   ///
@@ -4637,7 +4637,7 @@ class File {
   /// These properties can only be retrieved using an authenticated request. An
   /// authenticated request uses an access token obtained with a OAuth 2 client
   /// ID. You cannot use an API key to retrieve private properties.
-  core.Map<core.String, core.String>? appProperties;
+  core.Map<core.String, core.String?>? appProperties;
 
   /// Capabilities the current user has on this file.
   ///
@@ -4674,7 +4674,7 @@ class File {
   core.bool? explicitlyTrashed;
 
   /// Links for exporting Docs Editors files to specific formats.
-  core.Map<core.String, core.String>? exportLinks;
+  core.Map<core.String, core.String?>? exportLinks;
 
   /// The final component of fullFileExtension.
   ///
@@ -4805,7 +4805,7 @@ class File {
 
   /// A collection of arbitrary key-value pairs which are visible to all apps.
   /// Entries with null values are cleared in update and copy requests.
-  core.Map<core.String, core.String>? properties;
+  core.Map<core.String, core.String?>? properties;
 
   /// The number of storage quota bytes used by the file.
   ///
@@ -5754,7 +5754,7 @@ class ReplyList {
 /// The metadata for a revision to a file.
 class Revision {
   /// Links for exporting Docs Editors files to specific formats.
-  core.Map<core.String, core.String>? exportLinks;
+  core.Map<core.String, core.String?>? exportLinks;
 
   /// The ID of the revision.
   core.String? id;

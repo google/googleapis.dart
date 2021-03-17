@@ -4231,7 +4231,7 @@ class Cluster {
 
   /// The resource labels for the cluster to use to annotate any related Google
   /// Compute Engine resources.
-  core.Map<core.String, core.String>? resourceLabels;
+  core.Map<core.String, core.String?>? resourceLabels;
 
   /// Configuration for exporting resource usages.
   ///
@@ -5806,7 +5806,7 @@ class LinuxNodeConfig {
   /// net.core.rmem_max net.core.wmem_default net.core.wmem_max
   /// net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem
   /// net.ipv4.tcp_tw_reuse
-  core.Map<core.String, core.String>? sysctls;
+  core.Map<core.String, core.String?>? sysctls;
 
   LinuxNodeConfig();
 
@@ -5987,7 +5987,7 @@ class MaintenanceWindow {
   /// Exceptions to maintenance window.
   ///
   /// Non-emergency maintenance should not occur in these windows.
-  core.Map<core.String, TimeWindow>? maintenanceExclusions;
+  core.Map<core.String, TimeWindow?>? maintenanceExclusions;
 
   /// RecurringWindow specifies some number of recurring time periods for
   /// maintenance to occur.
@@ -6386,7 +6386,7 @@ class NodeConfig {
   /// behavior is undefined and conflicts should be avoided. For more
   /// information, including usage and the valid values, see:
   /// https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// Parameters that can be configured on Linux nodes.
   LinuxNodeConfig? linuxNodeConfig;
@@ -6421,7 +6421,7 @@ class NodeConfig {
   /// instance. The only restriction placed on them is that each value's size
   /// must be less than or equal to 32 KB. The total size of all keys and values
   /// must be less than 512 KB.
-  core.Map<core.String, core.String>? metadata;
+  core.Map<core.String, core.String?>? metadata;
 
   /// Minimum CPU platform to be used by this instance.
   ///
@@ -7867,7 +7867,7 @@ class SetLabelsRequest {
   /// The labels to set for that cluster.
   ///
   /// Required.
-  core.Map<core.String, core.String>? resourceLabels;
+  core.Map<core.String, core.String?>? resourceLabels;
 
   /// The name of the Google Compute Engine
   /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the

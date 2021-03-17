@@ -939,7 +939,7 @@ class Result {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? pagemap;
+  core.Map<core.String, core.Object?>? pagemap;
 
   /// The snippet of the search result, in plain text.
   core.String? snippet;
@@ -2294,7 +2294,7 @@ class Search {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? context;
+  core.Map<core.String, core.Object?>? context;
 
   /// The current set of custom search results.
   core.List<Result>? items;

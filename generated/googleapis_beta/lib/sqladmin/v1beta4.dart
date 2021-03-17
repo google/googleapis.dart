@@ -5419,7 +5419,7 @@ class Settings {
 
   /// User-provided labels, represented as a dictionary where each label is a
   /// single key value pair.
-  core.Map<core.String, core.String>? userLabels;
+  core.Map<core.String, core.String?>? userLabels;
 
   Settings();
 

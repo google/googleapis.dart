@@ -2018,7 +2018,7 @@ class GoogleCloudRecommenderV1Insight {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? content;
+  core.Map<core.String, core.Object?>? content;
 
   /// Free-form human readable summary in English.
   ///
@@ -2159,7 +2159,7 @@ class GoogleCloudRecommenderV1InsightStateInfo {
   core.String? state;
 
   /// A map of metadata for the state, provided by user or automations systems.
-  core.Map<core.String, core.String>? stateMetadata;
+  core.Map<core.String, core.String?>? stateMetadata;
 
   GoogleCloudRecommenderV1InsightStateInfo();
 
@@ -2263,7 +2263,7 @@ class GoogleCloudRecommenderV1MarkInsightAcceptedRequest {
   /// Full replace of the current state_metadata.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? stateMetadata;
+  core.Map<core.String, core.String?>? stateMetadata;
 
   GoogleCloudRecommenderV1MarkInsightAcceptedRequest();
 
@@ -2302,7 +2302,7 @@ class GoogleCloudRecommenderV1MarkRecommendationClaimedRequest {
   /// Overwrites any existing `state_metadata`. Keys must match the regex
   /// /^a-z0-9{0,62}$/. Values must match the regex
   /// /^\[a-zA-Z0-9_./-\]{0,255}$/.
-  core.Map<core.String, core.String>? stateMetadata;
+  core.Map<core.String, core.String?>? stateMetadata;
 
   GoogleCloudRecommenderV1MarkRecommendationClaimedRequest();
 
@@ -2342,7 +2342,7 @@ class GoogleCloudRecommenderV1MarkRecommendationFailedRequest {
   /// Overwrites any existing `state_metadata`. Keys must match the regex
   /// /^a-z0-9{0,62}$/. Values must match the regex
   /// /^\[a-zA-Z0-9_./-\]{0,255}$/.
-  core.Map<core.String, core.String>? stateMetadata;
+  core.Map<core.String, core.String?>? stateMetadata;
 
   GoogleCloudRecommenderV1MarkRecommendationFailedRequest();
 
@@ -2382,7 +2382,7 @@ class GoogleCloudRecommenderV1MarkRecommendationSucceededRequest {
   /// Overwrites any existing `state_metadata`. Keys must match the regex
   /// /^a-z0-9{0,62}$/. Values must match the regex
   /// /^\[a-zA-Z0-9_./-\]{0,255}$/.
-  core.Map<core.String, core.String>? stateMetadata;
+  core.Map<core.String, core.String?>? stateMetadata;
 
   GoogleCloudRecommenderV1MarkRecommendationSucceededRequest();
 
@@ -2442,7 +2442,7 @@ class GoogleCloudRecommenderV1Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? pathFilters;
+  core.Map<core.String, core.Object?>? pathFilters;
 
   /// Similar to path_filters, this contains set of filters to apply if `path`
   /// field referes to array elements.
@@ -2450,7 +2450,7 @@ class GoogleCloudRecommenderV1Operation {
   /// This is meant to support value matching beyond exact match. To perform
   /// exact match, use path_filters. When both path_filters and
   /// path_value_matchers are set, an implicit AND must be performed.
-  core.Map<core.String, GoogleCloudRecommenderV1ValueMatcher>?
+  core.Map<core.String, GoogleCloudRecommenderV1ValueMatcher?>?
       pathValueMatchers;
 
   /// Contains the fully qualified resource name.
@@ -2777,7 +2777,7 @@ class GoogleCloudRecommenderV1RecommendationStateInfo {
   core.String? state;
 
   /// A map of metadata for the state, provided by user or automations systems.
-  core.Map<core.String, core.String>? stateMetadata;
+  core.Map<core.String, core.String?>? stateMetadata;
 
   GoogleCloudRecommenderV1RecommendationStateInfo();
 

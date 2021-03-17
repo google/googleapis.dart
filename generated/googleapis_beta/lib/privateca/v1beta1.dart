@@ -2334,7 +2334,7 @@ class Certificate {
   /// Labels with user-defined metadata.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The desired lifetime of a certificate.
   ///
@@ -2517,7 +2517,7 @@ class CertificateAuthority {
   /// Labels with user-defined metadata.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The desired lifetime of the CA certificate.
   ///
@@ -2981,7 +2981,7 @@ class CertificateRevocationList {
   /// Labels with user-defined metadata.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The resource path for this CertificateRevocationList in the format
   /// `projects / * /locations / * /certificateAuthorities / * /
@@ -3172,7 +3172,7 @@ class Exemplar {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? attachments;
+  core.List<core.Map<core.String, core.Object?>>? attachments;
 
   /// The observation (sampling) time of the above value.
   core.String? timestamp;
@@ -3187,7 +3187,7 @@ class Exemplar {
   Exemplar.fromJson(core.Map _json) {
     if (_json.containsKey('attachments')) {
       attachments = (_json['attachments'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
@@ -3412,7 +3412,7 @@ class GoogleApiServicecontrolV1Attributes {
   /// `true` and `false`. For example: "/instance_id": "my-instance"
   /// "/http/user_agent": "" "/http/request_bytes": 300 "abc.com/myattribute":
   /// true
-  core.Map<core.String, GoogleApiServicecontrolV1AttributeValue>? attributeMap;
+  core.Map<core.String, GoogleApiServicecontrolV1AttributeValue?>? attributeMap;
 
   /// The number of attributes that were discarded.
   ///
@@ -3846,7 +3846,7 @@ class GoogleApiServicecontrolV1LogEntry {
 
   /// A set of user-defined (key, value) data that provides additional
   /// information about the log entry.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The log to which this log entry belongs.
   ///
@@ -3868,7 +3868,7 @@ class GoogleApiServicecontrolV1LogEntry {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? protoPayload;
+  core.Map<core.String, core.Object?>? protoPayload;
 
   /// The severity of the log entry.
   ///
@@ -3898,7 +3898,7 @@ class GoogleApiServicecontrolV1LogEntry {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? structPayload;
+  core.Map<core.String, core.Object?>? structPayload;
 
   /// The log entry payload, represented as a Unicode string (UTF-8).
   core.String? textPayload;
@@ -4125,7 +4125,7 @@ class GoogleApiServicecontrolV1MetricValue {
   /// See comments on google.api.servicecontrol.v1.Operation.labels for the
   /// overriding relationship. Note that this map must not contain monitored
   /// resource labels.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// A money value.
   Money? moneyValue;
@@ -4250,7 +4250,7 @@ class GoogleApiServicecontrolV1Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? extensions;
+  core.List<core.Map<core.String, core.Object?>>? extensions;
 
   /// DO NOT USE.
   ///
@@ -4280,7 +4280,7 @@ class GoogleApiServicecontrolV1Operation {
   /// to handle the API request (e.g. ESP), -
   /// `servicecontrol.googleapis.com/platform` describing the platform where the
   /// API is served, such as App Engine, Compute Engine, or Kubernetes Engine.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// Represents information to be logged.
   core.List<GoogleApiServicecontrolV1LogEntry>? logEntries;
@@ -4340,7 +4340,7 @@ class GoogleApiServicecontrolV1Operation {
   ///
   /// This feature is only available for approved services. User defined labels
   /// for the resource that this operation is associated with.
-  core.Map<core.String, core.String>? userLabels;
+  core.Map<core.String, core.String?>? userLabels;
 
   GoogleApiServicecontrolV1Operation();
 
@@ -4353,7 +4353,7 @@ class GoogleApiServicecontrolV1Operation {
     }
     if (_json.containsKey('extensions')) {
       extensions = (_json['extensions'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
@@ -5256,7 +5256,7 @@ class Location {
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The canonical id for this location.
   ///
@@ -5269,7 +5269,7 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
@@ -5402,7 +5402,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -5422,7 +5422,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   Operation();
 
@@ -5761,7 +5761,7 @@ class ReusableConfig {
   /// Labels with user-defined metadata.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The resource path for this ReusableConfig in the format `projects / *
   /// /locations / * /reusableConfigs / * `.
@@ -6173,7 +6173,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -6189,7 +6189,7 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,

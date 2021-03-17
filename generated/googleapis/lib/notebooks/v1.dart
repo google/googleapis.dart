@@ -2279,7 +2279,7 @@ class ExecutionTemplate {
   /// Otherwise, it is an immediate execution, and an included field will be
   /// 'nbs-immediate'. Use fields to efficiently index between various types of
   /// executions.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// Specifies the type of virtual machine to use for your training job's
   /// master worker.
@@ -2478,7 +2478,7 @@ class GetInstanceHealthResponse {
   /// "2020-10-18 09:40:03.573409" }
   ///
   /// Output only.
-  core.Map<core.String, core.String>? healthInfo;
+  core.Map<core.String, core.String?>? healthInfo;
 
   /// Runtime health_state.
   ///
@@ -2637,7 +2637,7 @@ class Instance {
   /// Labels to apply to this instance.
   ///
   /// These can be later modified by the setLabels method.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The \[Compute Engine machine type\](/compute/docs/machine-types) of this
   /// instance.
@@ -2646,7 +2646,7 @@ class Instance {
   core.String? machineType;
 
   /// Custom metadata to apply to this instance.
-  core.Map<core.String, core.String>? metadata;
+  core.Map<core.String, core.String?>? metadata;
 
   /// The name of this notebook instance.
   ///
@@ -3195,7 +3195,7 @@ class Location {
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The canonical id for this location.
   ///
@@ -3208,7 +3208,7 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
@@ -3275,7 +3275,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -3295,7 +3295,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   Operation();
 
@@ -3541,7 +3541,7 @@ class ReportInstanceInfoRequest {
   /// The metadata reported to Notebooks API.
   ///
   /// This will be merged to the instance metadata store
-  core.Map<core.String, core.String>? metadata;
+  core.Map<core.String, core.String?>? metadata;
 
   /// The VM hardware token for authenticating the VM.
   ///
@@ -3822,7 +3822,7 @@ class SetInstanceLabelsRequest {
   /// Labels to apply to this instance.
   ///
   /// These can be later modified by the setLabels method
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   SetInstanceLabelsRequest();
 
@@ -3939,7 +3939,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -3955,7 +3955,7 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,

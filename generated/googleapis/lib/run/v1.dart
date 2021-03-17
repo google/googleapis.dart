@@ -3961,7 +3961,7 @@ class Location {
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The canonical id for this location.
   ///
@@ -3974,7 +3974,7 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
@@ -4029,7 +4029,7 @@ class ObjectMeta {
   ///
   /// They are not queryable and should be preserved when modifying objects.
   /// More info: http://kubernetes.io/docs/user-guide/annotations
-  core.Map<core.String, core.String>? annotations;
+  core.Map<core.String, core.String?>? annotations;
 
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
   /// supported The name of the cluster which the object belongs to.
@@ -4118,7 +4118,7 @@ class ObjectMeta {
   ///
   /// May match selectors of replication controllers and routes. More info:
   /// http://kubernetes.io/docs/user-guide/labels
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// Name must be unique within a namespace, within a Cloud Run region.
   ///
@@ -4599,7 +4599,7 @@ class ResourceRequirements {
   /// Limits describes the maximum amount of compute resources allowed. The
   /// values of the map is string form of the 'quantity' k8s type:
   /// https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
-  core.Map<core.String, core.String>? limits;
+  core.Map<core.String, core.String?>? limits;
 
   /// (Optional) Cloud Run fully managed: Only memory and CPU are supported.
   ///
@@ -4610,7 +4610,7 @@ class ResourceRequirements {
   /// implementation-defined value. The values of the map is string form of the
   /// 'quantity' k8s type:
   /// https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
-  core.Map<core.String, core.String>? requests;
+  core.Map<core.String, core.String?>? requests;
 
   ResourceRequirements();
 

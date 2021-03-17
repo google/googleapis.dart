@@ -5315,7 +5315,7 @@ class Channel {
   /// Additional parameters controlling delivery channel behavior.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? params;
+  core.Map<core.String, core.String?>? params;
 
   /// A Boolean value to indicate whether payload is wanted.
   ///
@@ -7128,7 +7128,7 @@ class File {
   core.bool? explicitlyTrashed;
 
   /// Links for exporting Docs Editors files to specific formats.
-  core.Map<core.String, core.String>? exportLinks;
+  core.Map<core.String, core.String?>? exportLinks;
 
   /// The final component of fullFileExtension with trailing text that does not
   /// appear to be part of the extension removed.
@@ -7245,7 +7245,7 @@ class File {
   /// with that app.
   ///
   /// Only populated when the drive.apps.readonly scope is used.
-  core.Map<core.String, core.String>? openWithLinks;
+  core.Map<core.String, core.String?>? openWithLinks;
 
   /// The original filename of the uploaded content if available, or else the
   /// original value of the title field.
@@ -8464,7 +8464,7 @@ class Revision {
   core.String? etag;
 
   /// Links for exporting Docs Editors files to specific formats.
-  core.Map<core.String, core.String>? exportLinks;
+  core.Map<core.String, core.String?>? exportLinks;
 
   /// The size of the revision in bytes.
   ///

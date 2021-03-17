@@ -252,7 +252,7 @@ class Attributes {
   /// `true` and `false`. For example: "/instance_id": { "string_value": {
   /// "value": "my-instance" } } "/http/request_bytes": { "int_value": 300 }
   /// "abc.com/myattribute": { "bool_value": false }
-  core.Map<core.String, AttributeValue>? attributeMap;
+  core.Map<core.String, AttributeValue?>? attributeMap;
 
   /// The number of attributes that were discarded.
   ///
@@ -845,7 +845,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -861,7 +861,7 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,

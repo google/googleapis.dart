@@ -648,7 +648,7 @@ class Breakpoint {
 
   /// A set of custom breakpoint properties, populated by the agent, to be
   /// displayed to the user.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// Breakpoint source location.
   SourceLocation? location;
@@ -975,7 +975,7 @@ class Debuggee {
 
   /// A set of custom debuggee properties, populated by the agent, to be
   /// displayed to the user.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// Project the debuggee is associated with.
   ///
@@ -1098,7 +1098,7 @@ class ExtendedSourceContext {
   SourceContext? context;
 
   /// Labels with user defined metadata.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   ExtendedSourceContext();
 

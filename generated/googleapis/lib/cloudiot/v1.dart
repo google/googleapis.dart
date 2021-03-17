@@ -1541,7 +1541,7 @@ class Device {
   /// Values are free-form strings. Each value must be less than or equal to 32
   /// KB in size. The total size of all keys and values must be less than 256
   /// KB, and the maximum number of key-value pairs is 500.
-  core.Map<core.String, core.String>? metadata;
+  core.Map<core.String, core.String?>? metadata;
 
   /// The resource path name.
   ///
@@ -2684,7 +2684,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -2700,7 +2700,7 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,

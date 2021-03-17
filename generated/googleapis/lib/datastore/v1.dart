@@ -1129,7 +1129,7 @@ class Entity {
   /// is reserved. A reserved property name is forbidden in certain documented
   /// contexts. The name must not contain more than 500 characters. The name
   /// cannot be `""`.
-  core.Map<core.String, Value>? properties;
+  core.Map<core.String, Value?>? properties;
 
   Entity();
 
@@ -1240,7 +1240,7 @@ class GoogleDatastoreAdminV1CommonMetadata {
   /// created.
   ///
   /// May also include additional labels.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The type of the operation.
   ///
@@ -1411,7 +1411,7 @@ class GoogleDatastoreAdminV1ExportEntitiesRequest {
   GoogleDatastoreAdminV1EntityFilter? entityFilter;
 
   /// Client-assigned labels.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// Location for the export metadata and data files.
   ///
@@ -1564,7 +1564,7 @@ class GoogleDatastoreAdminV1ImportEntitiesRequest {
   core.String? inputUrl;
 
   /// Client-assigned labels.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   GoogleDatastoreAdminV1ImportEntitiesRequest();
 
@@ -1825,7 +1825,7 @@ class GoogleDatastoreAdminV1beta1CommonMetadata {
   /// created.
   ///
   /// May also include additional labels.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The type of the operation.
   ///
@@ -2146,7 +2146,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -2166,7 +2166,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   GoogleLongrunningOperation();
 
@@ -2223,7 +2223,7 @@ class GqlQuery {
   ///
   /// Key must match regex `A-Za-z_$*`, must not match regex `__.*__`, and must
   /// not be `""`.
-  core.Map<core.String, GqlQueryParameter>? namedBindings;
+  core.Map<core.String, GqlQueryParameter?>? namedBindings;
 
   /// Numbered binding site @1 references the first numbered parameter,
   /// effectively using 1-based indexing, rather than the usual 0.
@@ -3270,7 +3270,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -3286,7 +3286,7 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,

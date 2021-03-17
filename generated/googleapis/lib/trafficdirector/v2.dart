@@ -126,7 +126,7 @@ class BuildVersion {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// SemVer version of extension.
   SemanticVersion? version;
@@ -357,7 +357,7 @@ class DynamicCluster {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? cluster;
+  core.Map<core.String, core.Object?>? cluster;
 
   /// The timestamp when the Cluster was last updated.
   core.String? lastUpdated;
@@ -468,7 +468,7 @@ class DynamicListenerState {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? listener;
+  core.Map<core.String, core.Object?>? listener;
 
   /// This is the per-resource version information.
   ///
@@ -511,7 +511,7 @@ class DynamicRouteConfig {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? routeConfig;
+  core.Map<core.String, core.Object?>? routeConfig;
 
   /// This is the per-resource version information.
   ///
@@ -557,7 +557,7 @@ class DynamicScopedRouteConfigs {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? scopedRouteConfigs;
+  core.List<core.Map<core.String, core.Object?>>? scopedRouteConfigs;
 
   /// This is the per-resource version information.
   ///
@@ -576,7 +576,7 @@ class DynamicScopedRouteConfigs {
     }
     if (_json.containsKey('scopedRouteConfigs')) {
       scopedRouteConfigs = (_json['scopedRouteConfigs'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
@@ -710,7 +710,7 @@ class InlineScopedRouteConfigs {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? scopedRouteConfigs;
+  core.List<core.Map<core.String, core.Object?>>? scopedRouteConfigs;
 
   InlineScopedRouteConfigs();
 
@@ -723,7 +723,7 @@ class InlineScopedRouteConfigs {
     }
     if (_json.containsKey('scopedRouteConfigs')) {
       scopedRouteConfigs = (_json['scopedRouteConfigs'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
@@ -909,7 +909,7 @@ class Node {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// Structured version of the entity requesting config.
   BuildVersion? userAgentBuildVersion;
@@ -1373,7 +1373,7 @@ class StaticCluster {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? cluster;
+  core.Map<core.String, core.Object?>? cluster;
 
   /// The timestamp when the Cluster was last updated.
   core.String? lastUpdated;
@@ -1409,7 +1409,7 @@ class StaticListener {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? listener;
+  core.Map<core.String, core.Object?>? listener;
 
   StaticListener();
 
@@ -1441,7 +1441,7 @@ class StaticRouteConfig {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? routeConfig;
+  core.Map<core.String, core.Object?>? routeConfig;
 
   StaticRouteConfig();
 
@@ -1593,7 +1593,7 @@ class UpdateFailureState {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? failedConfiguration;
+  core.Map<core.String, core.Object?>? failedConfiguration;
 
   /// Time of the latest failed update attempt.
   core.String? lastUpdateAttempt;

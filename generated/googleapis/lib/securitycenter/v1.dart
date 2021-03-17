@@ -2938,7 +2938,7 @@ class Asset {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? resourceProperties;
+  core.Map<core.String, core.Object?>? resourceProperties;
 
   /// Security Command Center managed properties.
   ///
@@ -3416,7 +3416,7 @@ class Finding {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? sourceProperties;
+  core.Map<core.String, core.Object?>? sourceProperties;
 
   /// The state of the finding.
   /// Possible string values are:
@@ -3820,7 +3820,7 @@ class GoogleCloudSecuritycenterV1p1beta1Finding {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? sourceProperties;
+  core.Map<core.String, core.Object?>? sourceProperties;
 
   /// The state of the finding.
   /// Possible string values are:
@@ -4073,7 +4073,7 @@ class GoogleCloudSecuritycenterV1p1beta1SecurityMarks {
   /// must be letters, numbers, underscores, or dashes * Values have leading and
   /// trailing whitespace trimmed, remaining characters must be between 1 - 4096
   /// characters (inclusive)
-  core.Map<core.String, core.String>? marks;
+  core.Map<core.String, core.String?>? marks;
 
   /// The relative resource name of the SecurityMarks.
   ///
@@ -4454,7 +4454,7 @@ class GroupResult {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? properties;
+  core.Map<core.String, core.Object?>? properties;
 
   GroupResult();
 
@@ -4845,7 +4845,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -4865,7 +4865,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   Operation();
 
@@ -5261,7 +5261,7 @@ class SecurityMarks {
   /// must be letters, numbers, underscores, or dashes * Values have leading and
   /// trailing whitespace trimmed, remaining characters must be between 1 - 4096
   /// characters (inclusive)
-  core.Map<core.String, core.String>? marks;
+  core.Map<core.String, core.String?>? marks;
 
   /// The relative resource name of the SecurityMarks.
   ///
@@ -5429,7 +5429,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -5445,7 +5445,7 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,

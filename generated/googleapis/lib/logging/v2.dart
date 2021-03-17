@@ -8439,7 +8439,7 @@ class Location {
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The canonical id for this location.
   ///
@@ -8452,7 +8452,7 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
@@ -8614,7 +8614,7 @@ class LogEntry {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? jsonPayload;
+  core.Map<core.String, core.Object?>? jsonPayload;
 
   /// A set of user-defined (key, value) data that provides additional
   /// information about the log entry.Cloud Logging truncates label keys that
@@ -8625,7 +8625,7 @@ class LogEntry {
   /// string.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The resource name of the log to which this log entry belongs:
   /// "projects/\[PROJECT_ID\]/logs/\[LOG_ID\]"
@@ -8677,7 +8677,7 @@ class LogEntry {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? protoPayload;
+  core.Map<core.String, core.Object?>? protoPayload;
 
   /// The time the log entry was received by Logging.
   ///
@@ -9160,7 +9160,7 @@ class LogMetric {
   /// series that are allowed in a project.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? labelExtractors;
+  core.Map<core.String, core.String?>? labelExtractors;
 
   /// The metric descriptor associated with the logs-based metric.
   ///
@@ -9850,7 +9850,7 @@ class MonitoredResource {
   /// "instance_id", and "zone".
   ///
   /// Required.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The monitored resource type.
   ///
@@ -10029,12 +10029,12 @@ class MonitoredResourceMetadata {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? systemLabels;
+  core.Map<core.String, core.Object?>? systemLabels;
 
   /// A map of user-defined metadata labels.
   ///
   /// Output only.
-  core.Map<core.String, core.String>? userLabels;
+  core.Map<core.String, core.String?>? userLabels;
 
   MonitoredResourceMetadata();
 
@@ -10606,7 +10606,7 @@ class WriteLogEntriesRequest {
   /// parameter, then the log entry's label is not changed. See LogEntry.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// A default log resource name that is assigned to all log entries in entries
   /// that do not specify a value for log_name:

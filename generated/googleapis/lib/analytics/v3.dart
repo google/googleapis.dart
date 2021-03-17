@@ -5494,7 +5494,7 @@ class AnalyticsDataimportDeleteUploadDataRequest {
 /// JSON template for a metadata column.
 class Column {
   /// Map of attribute name and value for this column.
-  core.Map<core.String, core.String>? attributes;
+  core.Map<core.String, core.String?>? attributes;
 
   /// Column id.
   core.String? id;
@@ -8118,7 +8118,7 @@ class GaData {
   ///
   /// The order of the metric totals is same as the metric order specified in
   /// the request.
-  core.Map<core.String, core.String>? totalsForAllResults;
+  core.Map<core.String, core.String?>? totalsForAllResults;
 
   GaData();
 
@@ -9213,7 +9213,7 @@ class McfData {
   ///
   /// The order of the metric totals is same as the metric order specified in
   /// the request.
-  core.Map<core.String, core.String>? totalsForAllResults;
+  core.Map<core.String, core.String?>? totalsForAllResults;
 
   McfData();
 
@@ -10142,7 +10142,7 @@ class RealtimeData {
   ///
   /// The order of the metric totals is same as the metric order specified in
   /// the request.
-  core.Map<core.String, core.String>? totalsForAllResults;
+  core.Map<core.String, core.String?>? totalsForAllResults;
 
   RealtimeData();
 

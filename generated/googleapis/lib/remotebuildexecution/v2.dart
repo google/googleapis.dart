@@ -1815,7 +1815,7 @@ class BuildBazelRemoteExecutionV2ExecuteResponse {
   /// the worker executing the action or by providing logs from the worker's
   /// setup phase. The keys SHOULD be human readable so that a client can
   /// display them to a user.
-  core.Map<core.String, BuildBazelRemoteExecutionV2LogFile>? serverLogs;
+  core.Map<core.String, BuildBazelRemoteExecutionV2LogFile?>? serverLogs;
 
   /// If the status has a code other than `OK`, it indicates that the action did
   /// not finish execution.
@@ -1878,7 +1878,7 @@ class BuildBazelRemoteExecutionV2ExecutedActionMetadata {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? auxiliaryMetadata;
+  core.List<core.Map<core.String, core.Object?>>? auxiliaryMetadata;
 
   /// When the worker completed executing the action command.
   core.String? executionCompletedTimestamp;
@@ -1915,7 +1915,7 @@ class BuildBazelRemoteExecutionV2ExecutedActionMetadata {
   BuildBazelRemoteExecutionV2ExecutedActionMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('auxiliaryMetadata')) {
       auxiliaryMetadata = (_json['auxiliaryMetadata'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
@@ -3884,7 +3884,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig {
   /// International letters are permitted. Label keys must start with a letter.
   /// Label values are optional. There can not be more than 64 labels per
   /// resource.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// Machine type of the worker, such as `e2-standard-2`.
   ///
@@ -4242,7 +4242,7 @@ class GoogleDevtoolsRemoteworkersV1test2CommandResult {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? metadata;
+  core.List<core.Map<core.String, core.Object?>>? metadata;
 
   /// The output files.
   ///
@@ -4273,7 +4273,7 @@ class GoogleDevtoolsRemoteworkersV1test2CommandResult {
     }
     if (_json.containsKey('metadata')) {
       metadata = (_json['metadata'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
@@ -4749,7 +4749,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -4769,7 +4769,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   GoogleLongrunningOperation();
 
@@ -4828,7 +4828,7 @@ class GoogleRpcStatus {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -4844,7 +4844,7 @@ class GoogleRpcStatus {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,

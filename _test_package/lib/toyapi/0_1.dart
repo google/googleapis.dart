@@ -987,9 +987,9 @@ class ListOfListOfint extends collection.ListBase<core.List<core.int>> {
   }
 }
 
-class ListOfMapOfListOfString
-    extends collection.ListBase<core.Map<core.String, core.List<core.String>>> {
-  final core.List<core.Map<core.String, core.List<core.String>>> _inner;
+class ListOfMapOfListOfString extends collection
+    .ListBase<core.Map<core.String, core.List<core.String>?>> {
+  final core.List<core.Map<core.String, core.List<core.String>?>> _inner;
 
   ListOfMapOfListOfString() : _inner = [];
 
@@ -1010,12 +1010,12 @@ class ListOfMapOfListOfString
   }
 
   @core.override
-  core.Map<core.String, core.List<core.String>> operator [](core.int key) =>
+  core.Map<core.String, core.List<core.String>?> operator [](core.int key) =>
       _inner[key];
 
   @core.override
   void operator []=(
-      core.int key, core.Map<core.String, core.List<core.String>> value) {
+      core.int key, core.Map<core.String, core.List<core.String>?> value) {
     _inner[key] = value;
   }
 
@@ -1028,14 +1028,14 @@ class ListOfMapOfListOfString
   }
 
   @core.override
-  void add(core.Map<core.String, core.List<core.String>> element) {
+  void add(core.Map<core.String, core.List<core.String>?> element) {
     _inner.add(element);
   }
 }
 
 class ListOfMapOfListOfint
-    extends collection.ListBase<core.Map<core.String, core.List<core.int>>> {
-  final core.List<core.Map<core.String, core.List<core.int>>> _inner;
+    extends collection.ListBase<core.Map<core.String, core.List<core.int>?>> {
+  final core.List<core.Map<core.String, core.List<core.int>?>> _inner;
 
   ListOfMapOfListOfint() : _inner = [];
 
@@ -1056,12 +1056,12 @@ class ListOfMapOfListOfint
   }
 
   @core.override
-  core.Map<core.String, core.List<core.int>> operator [](core.int key) =>
+  core.Map<core.String, core.List<core.int>?> operator [](core.int key) =>
       _inner[key];
 
   @core.override
   void operator []=(
-      core.int key, core.Map<core.String, core.List<core.int>> value) {
+      core.int key, core.Map<core.String, core.List<core.int>?> value) {
     _inner[key] = value;
   }
 
@@ -1074,7 +1074,7 @@ class ListOfMapOfListOfint
   }
 
   @core.override
-  void add(core.Map<core.String, core.List<core.int>> element) {
+  void add(core.Map<core.String, core.List<core.int>?> element) {
     _inner.add(element);
   }
 }
@@ -1151,16 +1151,16 @@ class ListOfToyRequest extends collection.ListBase<ToyRequest> {
 }
 
 class MapOfListOfMapOfbool extends collection
-    .MapBase<core.String, core.List<core.Map<core.String, core.bool>>> {
+    .MapBase<core.String, core.List<core.Map<core.String, core.bool?>>> {
   final _innerMap =
-      <core.String, core.List<core.Map<core.String, core.bool>>>{};
+      <core.String, core.List<core.Map<core.String, core.bool?>>>{};
 
   MapOfListOfMapOfbool();
 
   MapOfListOfMapOfbool.fromJson(core.Map<core.String, core.dynamic> _json) {
     _json.forEach((core.String key, value) {
       this[key] = (value as core.List)
-          .map<core.Map<core.String, core.bool>>(
+          .map<core.Map<core.String, core.bool?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
@@ -1175,12 +1175,12 @@ class MapOfListOfMapOfbool extends collection
       core.Map<core.String, core.dynamic>.of(this);
 
   @core.override
-  core.List<core.Map<core.String, core.bool>>? operator [](core.Object? key) =>
+  core.List<core.Map<core.String, core.bool?>>? operator [](core.Object? key) =>
       _innerMap[key];
 
   @core.override
   void operator []=(
-      core.String key, core.List<core.Map<core.String, core.bool>> value) {
+      core.String key, core.List<core.Map<core.String, core.bool?>> value) {
     _innerMap[key] = value;
   }
 
@@ -1193,20 +1193,21 @@ class MapOfListOfMapOfbool extends collection
   core.Iterable<core.String> get keys => _innerMap.keys;
 
   @core.override
-  core.List<core.Map<core.String, core.bool>>? remove(core.Object? key) =>
+  core.List<core.Map<core.String, core.bool?>>? remove(core.Object? key) =>
       _innerMap.remove(key);
 }
 
 class MapOfListOfMapOfint extends collection
-    .MapBase<core.String, core.List<core.Map<core.String, core.int>>> {
-  final _innerMap = <core.String, core.List<core.Map<core.String, core.int>>>{};
+    .MapBase<core.String, core.List<core.Map<core.String, core.int?>>> {
+  final _innerMap =
+      <core.String, core.List<core.Map<core.String, core.int?>>>{};
 
   MapOfListOfMapOfint();
 
   MapOfListOfMapOfint.fromJson(core.Map<core.String, core.dynamic> _json) {
     _json.forEach((core.String key, value) {
       this[key] = (value as core.List)
-          .map<core.Map<core.String, core.int>>(
+          .map<core.Map<core.String, core.int?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
@@ -1221,12 +1222,12 @@ class MapOfListOfMapOfint extends collection
       core.Map<core.String, core.dynamic>.of(this);
 
   @core.override
-  core.List<core.Map<core.String, core.int>>? operator [](core.Object? key) =>
+  core.List<core.Map<core.String, core.int?>>? operator [](core.Object? key) =>
       _innerMap[key];
 
   @core.override
   void operator []=(
-      core.String key, core.List<core.Map<core.String, core.int>> value) {
+      core.String key, core.List<core.Map<core.String, core.int?>> value) {
     _innerMap[key] = value;
   }
 
@@ -1239,13 +1240,13 @@ class MapOfListOfMapOfint extends collection
   core.Iterable<core.String> get keys => _innerMap.keys;
 
   @core.override
-  core.List<core.Map<core.String, core.int>>? remove(core.Object? key) =>
+  core.List<core.Map<core.String, core.int?>>? remove(core.Object? key) =>
       _innerMap.remove(key);
 }
 
 class MapOfMapOfbool
-    extends collection.MapBase<core.String, core.Map<core.String, core.bool>> {
-  final _innerMap = <core.String, core.Map<core.String, core.bool>>{};
+    extends collection.MapBase<core.String, core.Map<core.String, core.bool?>> {
+  final _innerMap = <core.String, core.Map<core.String, core.bool?>>{};
 
   MapOfMapOfbool();
 
@@ -1264,11 +1265,11 @@ class MapOfMapOfbool
       core.Map<core.String, core.dynamic>.of(this);
 
   @core.override
-  core.Map<core.String, core.bool>? operator [](core.Object? key) =>
+  core.Map<core.String, core.bool?>? operator [](core.Object? key) =>
       _innerMap[key];
 
   @core.override
-  void operator []=(core.String key, core.Map<core.String, core.bool> value) {
+  void operator []=(core.String key, core.Map<core.String, core.bool?> value) {
     _innerMap[key] = value;
   }
 
@@ -1281,13 +1282,13 @@ class MapOfMapOfbool
   core.Iterable<core.String> get keys => _innerMap.keys;
 
   @core.override
-  core.Map<core.String, core.bool>? remove(core.Object? key) =>
+  core.Map<core.String, core.bool?>? remove(core.Object? key) =>
       _innerMap.remove(key);
 }
 
 class MapOfMapOfint
-    extends collection.MapBase<core.String, core.Map<core.String, core.int>> {
-  final _innerMap = <core.String, core.Map<core.String, core.int>>{};
+    extends collection.MapBase<core.String, core.Map<core.String, core.int?>> {
+  final _innerMap = <core.String, core.Map<core.String, core.int?>>{};
 
   MapOfMapOfint();
 
@@ -1306,11 +1307,11 @@ class MapOfMapOfint
       core.Map<core.String, core.dynamic>.of(this);
 
   @core.override
-  core.Map<core.String, core.int>? operator [](core.Object? key) =>
+  core.Map<core.String, core.int?>? operator [](core.Object? key) =>
       _innerMap[key];
 
   @core.override
-  void operator []=(core.String key, core.Map<core.String, core.int> value) {
+  void operator []=(core.String key, core.Map<core.String, core.int?> value) {
     _innerMap[key] = value;
   }
 
@@ -1323,7 +1324,7 @@ class MapOfMapOfint
   core.Iterable<core.String> get keys => _innerMap.keys;
 
   @core.override
-  core.Map<core.String, core.int>? remove(core.Object? key) =>
+  core.Map<core.String, core.int?>? remove(core.Object? key) =>
       _innerMap.remove(key);
 }
 
@@ -1429,7 +1430,7 @@ class ToyAgeRequest {
 }
 
 class ToyMapResponse {
-  core.Map<core.String, NestedResponse>? mapResult;
+  core.Map<core.String, NestedResponse?>? mapResult;
   core.String? result;
 
   ToyMapResponse();

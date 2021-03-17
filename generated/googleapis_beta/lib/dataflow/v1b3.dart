@@ -4065,7 +4065,7 @@ class CreateJobFromTemplateRequest {
   core.String? location;
 
   /// The runtime parameters to pass to the job.
-  core.Map<core.String, core.String>? parameters;
+  core.Map<core.String, core.String?>? parameters;
 
   CreateJobFromTemplateRequest();
 
@@ -4550,7 +4550,7 @@ class Environment {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? internalExperiments;
+  core.Map<core.String, core.Object?>? internalExperiments;
 
   /// The Cloud Dataflow SDK pipeline options specified by the user.
   ///
@@ -4560,7 +4560,7 @@ class Environment {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? sdkPipelineOptions;
+  core.Map<core.String, core.Object?>? sdkPipelineOptions;
 
   /// Identity to run virtual machines as.
   ///
@@ -4606,14 +4606,14 @@ class Environment {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? userAgent;
+  core.Map<core.String, core.Object?>? userAgent;
 
   /// A structure describing which components and their versions of the service
   /// are required in order to run the job.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? version;
+  core.Map<core.String, core.Object?>? version;
 
   /// The worker pools.
   ///
@@ -5009,7 +5009,7 @@ class FlexTemplateRuntimeEnvironment {
   /// [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
   /// page. An object containing a list of "key": value pairs. Example: {
   /// "name": "wrench", "mass": "1kg", "count": "3" }.
-  core.Map<core.String, core.String>? additionalUserLabels;
+  core.Map<core.String, core.String?>? additionalUserLabels;
 
   /// Whether to enable Streaming Engine for the job.
   core.bool? enableStreamingEngine;
@@ -5439,7 +5439,7 @@ class InstructionOutput {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? codec;
+  core.Map<core.String, core.Object?>? codec;
 
   /// The user-provided name of this output.
   core.String? name;
@@ -5687,7 +5687,7 @@ class Job {
   /// must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to
   /// regexp: \[\p{Ll}\p{Lo}\p{N}_-\]{0,63} * Both keys and values are
   /// additionally constrained to be <= 128 bytes in size.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
@@ -5821,7 +5821,7 @@ class Job {
 
   /// The map of transform name prefixes of the job to be replaced to the
   /// corresponding name prefixes of the new job.
-  core.Map<core.String, core.String>? transformNameMapping;
+  core.Map<core.String, core.String?>? transformNameMapping;
 
   /// The type of Cloud Dataflow job.
   /// Possible string values are:
@@ -6006,7 +6006,7 @@ class JobExecutionDetails {
 /// isn't contained in the submitted job.
 class JobExecutionInfo {
   /// A mapping from each stage to the information about that stage.
-  core.Map<core.String, JobExecutionStageInfo>? stages;
+  core.Map<core.String, JobExecutionStageInfo?>? stages;
 
   JobExecutionInfo();
 
@@ -6365,17 +6365,17 @@ class LaunchFlexTemplateParameter {
   ///
   /// This is a common set of options across languages and templates. This
   /// should not be used to pass job parameters.
-  core.Map<core.String, core.String>? launchOptions;
+  core.Map<core.String, core.String?>? launchOptions;
 
   /// The parameters for FlexTemplate.
   ///
   /// Ex. {"num_workers":"5"}
-  core.Map<core.String, core.String>? parameters;
+  core.Map<core.String, core.String?>? parameters;
 
   /// Use this to pass transform_name_mappings for streaming update jobs.
   ///
   /// Ex:{"oldTransformName":"newTransformName",...}'
-  core.Map<core.String, core.String>? transformNameMappings;
+  core.Map<core.String, core.String?>? transformNameMappings;
 
   /// Set this to true if you are sending a request to update a running
   /// streaming job.
@@ -6508,13 +6508,13 @@ class LaunchTemplateParameters {
   core.String? jobName;
 
   /// The runtime parameters to pass to the job.
-  core.Map<core.String, core.String>? parameters;
+  core.Map<core.String, core.String?>? parameters;
 
   /// Only applicable when updating a pipeline.
   ///
   /// Map of transform name prefixes of the job to be replaced to the
   /// corresponding name prefixes of the new job.
-  core.Map<core.String, core.String>? transformNameMapping;
+  core.Map<core.String, core.String?>? transformNameMapping;
 
   /// If set, replace the existing pipeline with the name specified by jobName
   /// with this pipeline, preserving state.
@@ -6600,7 +6600,7 @@ class LeaseWorkItemRequest {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? unifiedWorkerRequest;
+  core.Map<core.String, core.Object?>? unifiedWorkerRequest;
 
   /// Filter for WorkItem type.
   core.List<core.String>? workItemTypes;
@@ -6671,7 +6671,7 @@ class LeaseWorkItemResponse {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? unifiedWorkerResponse;
+  core.Map<core.String, core.Object?>? unifiedWorkerResponse;
 
   /// A list of the leased WorkItems.
   core.List<WorkItem>? workItems;
@@ -6977,7 +6977,7 @@ class MetricStructuredName {
   /// For example, built-in counters associated with steps will have
   /// context\['step'\] = . Counters associated with PCollections in the SDK
   /// will have context\['pcollection'\] = .
-  core.Map<core.String, core.String>? context;
+  core.Map<core.String, core.String?>? context;
 
   /// Worker-defined metric name.
   core.String? name;
@@ -7195,7 +7195,7 @@ class ModifyTemplateVersionLabelRequest {
 /// Respond the labels in the TemplateVersion.
 class ModifyTemplateVersionLabelResponse {
   /// All the label in the TemplateVersion.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   ModifyTemplateVersionLabelResponse();
 
@@ -7401,7 +7401,7 @@ class ParDoInstruction {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? userFn;
+  core.Map<core.String, core.Object?>? userFn;
 
   ParDoInstruction();
 
@@ -7655,7 +7655,7 @@ class PartialGroupByKeyInstruction {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? inputElementCodec;
+  core.Map<core.String, core.Object?>? inputElementCodec;
 
   /// If this instruction includes a combining function this is the name of the
   /// intermediate store between the GBK and the CombineValues.
@@ -7672,7 +7672,7 @@ class PartialGroupByKeyInstruction {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? valueCombiningFn;
+  core.Map<core.String, core.Object?>? valueCombiningFn;
 
   PartialGroupByKeyInstruction();
 
@@ -8080,7 +8080,7 @@ class ReportWorkItemStatusRequest {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? unifiedWorkerRequest;
+  core.Map<core.String, core.Object?>? unifiedWorkerRequest;
 
   /// The order is unimportant, except that the order of the
   /// WorkItemServiceState messages in the ReportWorkItemStatusResponse
@@ -8142,7 +8142,7 @@ class ReportWorkItemStatusResponse {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? unifiedWorkerResponse;
+  core.Map<core.String, core.Object?>? unifiedWorkerResponse;
 
   /// A set of messages indicating the service-side state for each WorkItem
   /// whose status was reported, in the same order as the WorkItemStatus
@@ -8219,7 +8219,7 @@ class ResourceUtilizationReport {
   /// Per container information.
   ///
   /// Key: container name.
-  core.Map<core.String, ResourceUtilizationReport>? containers;
+  core.Map<core.String, ResourceUtilizationReport?>? containers;
 
   /// CPU utilization samples.
   core.List<CPUTime>? cpuTime;
@@ -8287,7 +8287,7 @@ class RuntimeEnvironment {
   /// [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
   /// page. An object containing a list of "key": value pairs. Example: {
   /// "name": "wrench", "mass": "1kg", "count": "3" }.
-  core.Map<core.String, core.String>? additionalUserLabels;
+  core.Map<core.String, core.String?>? additionalUserLabels;
 
   /// Whether to bypass the safety checks for the job's temporary directory.
   ///
@@ -8734,7 +8734,7 @@ class SeqMapTask {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? userFn;
+  core.Map<core.String, core.Object?>? userFn;
 
   SeqMapTask();
 
@@ -8839,7 +8839,7 @@ class SideInputInfo {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? kind;
+  core.Map<core.String, core.Object?>? kind;
 
   /// The source(s) to read element(s) from to get the value of this side input.
   ///
@@ -8887,13 +8887,13 @@ class Sink {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? codec;
+  core.Map<core.String, core.Object?>? codec;
 
   /// The sink to write to, plus its parameters.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? spec;
+  core.Map<core.String, core.Object?>? spec;
 
   Sink();
 
@@ -9068,13 +9068,13 @@ class Source {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? baseSpecs;
+  core.List<core.Map<core.String, core.Object?>>? baseSpecs;
 
   /// The codec to use to decode data read from the source.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? codec;
+  core.Map<core.String, core.Object?>? codec;
 
   /// Setting this value to true hints to the framework that the source doesn't
   /// need splitting, and using SourceSplitRequest on it would yield
@@ -9103,14 +9103,14 @@ class Source {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? spec;
+  core.Map<core.String, core.Object?>? spec;
 
   Source();
 
   Source.fromJson(core.Map _json) {
     if (_json.containsKey('baseSpecs')) {
       baseSpecs = (_json['baseSpecs'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
@@ -9769,7 +9769,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -9785,7 +9785,7 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
@@ -9836,7 +9836,7 @@ class Step {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? properties;
+  core.Map<core.String, core.Object?>? properties;
 
   Step();
 
@@ -9956,7 +9956,7 @@ class StreamingComputationConfig {
 
   /// Map from user name of stateful transforms in this stage to their state
   /// family.
-  core.Map<core.String, core.String>? transformUserNameToStateFamily;
+  core.Map<core.String, core.String?>? transformUserNameToStateFamily;
 
   StreamingComputationConfig();
 
@@ -10096,7 +10096,7 @@ class StreamingConfigTask {
   core.List<StreamingComputationConfig>? streamingComputationConfigs;
 
   /// Map from user step names to state families.
-  core.Map<core.String, core.String>? userStepToStateFamilyNameMap;
+  core.Map<core.String, core.String?>? userStepToStateFamilyNameMap;
 
   /// If present, the worker must use this endpoint to communicate with Windmill
   /// Service dispatchers, otherwise the worker must continue to use whatever
@@ -10571,7 +10571,7 @@ class TemplateVersion {
   /// Labels for the Template Version.
   ///
   /// Labels can be duplicate within Template.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// A unique project_id.
   ///
@@ -10662,7 +10662,7 @@ class TopologyConfig {
   core.int? persistentStateVersion;
 
   /// Maps user stage names to stable computation names.
-  core.Map<core.String, core.String>? userStageToComputationNameMap;
+  core.Map<core.String, core.String?>? userStageToComputationNameMap;
 
   TopologyConfig();
 
@@ -11041,7 +11041,7 @@ class WorkItemServiceState {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? harnessData;
+  core.Map<core.String, core.Object?>? harnessData;
 
   /// A hot key is a symptom of poor data distribution in which there are enough
   /// elements mapped to a single key to impact pipeline performance.
@@ -11369,7 +11369,7 @@ class WorkerHealthReport {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? pods;
+  core.List<core.Map<core.String, core.Object?>>? pods;
 
   /// The interval at which the worker is sending health reports.
   ///
@@ -11397,7 +11397,7 @@ class WorkerHealthReport {
     }
     if (_json.containsKey('pods')) {
       pods = (_json['pods'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
@@ -11485,7 +11485,7 @@ class WorkerLifecycleEvent {
   /// Other stats that can accompany an event.
   ///
   /// E.g. { "downloaded_bytes" : "123456" }
-  core.Map<core.String, core.String>? metadata;
+  core.Map<core.String, core.String?>? metadata;
 
   WorkerLifecycleEvent();
 
@@ -11524,7 +11524,7 @@ class WorkerMessage {
   /// typically correspond to Label enum values. However, for ease of
   /// development other strings can be used as tags. LABEL_UNSPECIFIED should
   /// not be used here.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The timestamp of the worker_message.
   core.String? time;
@@ -11628,7 +11628,7 @@ class WorkerMessageCode {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? parameters;
+  core.Map<core.String, core.Object?>? parameters;
 
   WorkerMessageCode();
 
@@ -11757,7 +11757,7 @@ class WorkerPool {
   core.String? machineType;
 
   /// Metadata to set on the Google Compute Engine VMs.
-  core.Map<core.String, core.String>? metadata;
+  core.Map<core.String, core.String?>? metadata;
 
   /// Network to which VMs will be assigned.
   ///
@@ -11789,7 +11789,7 @@ class WorkerPool {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? poolArgs;
+  core.Map<core.String, core.Object?>? poolArgs;
 
   /// Set of SDK harness containers needed to execute this pipeline.
   ///

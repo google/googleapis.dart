@@ -126,7 +126,7 @@ class AndroidConfig {
   /// Arbitrary key/value payload.
   ///
   /// If present, it will override google.firebase.fcm.v1.Message.data.
-  core.Map<core.String, core.String>? data;
+  core.Map<core.String, core.String?>? data;
 
   /// If set to true, messages will be allowed to be delivered to the app while
   /// the device is in direct boot mode.
@@ -589,7 +589,7 @@ class ApnsConfig {
   /// Refer to
   /// [APNs request headers](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns)
   /// for supported headers, e.g. "apns-priority": "10".
-  core.Map<core.String, core.String>? headers;
+  core.Map<core.String, core.String?>? headers;
 
   /// APNs payload as a JSON object, including both `aps` dictionary and custom
   /// payload.
@@ -601,7 +601,7 @@ class ApnsConfig {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? payload;
+  core.Map<core.String, core.Object?>? payload;
 
   ApnsConfig();
 
@@ -843,7 +843,7 @@ class Message {
   ///
   /// Arbitrary key/value payload. The key should not be a reserved word
   /// ("from", "message_type", or any word starting with "google" or "gcm").
-  core.Map<core.String, core.String>? data;
+  core.Map<core.String, core.String?>? data;
 
   /// Input only.
   ///
@@ -1005,7 +1005,7 @@ class WebpushConfig {
   /// Arbitrary key/value payload.
   ///
   /// If present, it will override google.firebase.fcm.v1.Message.data.
-  core.Map<core.String, core.String>? data;
+  core.Map<core.String, core.String?>? data;
 
   /// Options for features provided by the FCM SDK for Web.
   WebpushFcmOptions? fcmOptions;
@@ -1014,7 +1014,7 @@ class WebpushConfig {
   ///
   /// Refer to [Webpush protocol](https://tools.ietf.org/html/rfc8030#section-5)
   /// for supported headers, e.g. "TTL": "15".
-  core.Map<core.String, core.String>? headers;
+  core.Map<core.String, core.String?>? headers;
 
   /// Web Notification options as a JSON object.
   ///
@@ -1026,7 +1026,7 @@ class WebpushConfig {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? notification;
+  core.Map<core.String, core.Object?>? notification;
 
   WebpushConfig();
 

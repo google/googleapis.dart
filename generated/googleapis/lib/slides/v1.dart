@@ -1873,7 +1873,7 @@ class DuplicateObjectRequest {
   /// less than 5 or greater than 50. If any IDs of source objects are omitted
   /// from the map, a new random ID will be assigned. If the map is empty or
   /// unset, all duplicate objects will receive a new random ID.
-  core.Map<core.String, core.String>? objectIds;
+  core.Map<core.String, core.String?>? objectIds;
 
   DuplicateObjectRequest();
 
@@ -2733,7 +2733,7 @@ class List {
   ///
   /// A list has at most nine levels of nesting, so the possible values for the
   /// keys of this map are 0 through 8, inclusive.
-  core.Map<core.String, NestingLevel>? nestingLevel;
+  core.Map<core.String, NestingLevel?>? nestingLevel;
 
   List();
 
@@ -6099,7 +6099,7 @@ class TableRowProperties {
 /// table cell in a page.
 class TextContent {
   /// The bulleted lists contained in this text, keyed by list ID.
-  core.Map<core.String, List>? lists;
+  core.Map<core.String, List?>? lists;
 
   /// The text contents broken down into its component parts, including styling
   /// information.

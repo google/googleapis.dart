@@ -3166,7 +3166,7 @@ class GoogleCloudDatalabelingV1alpha1LabelStats {
   /// that annotation spec. If the annotated dataset does not have annotation
   /// spec, the map will return a pair where the key is empty string and value
   /// is the total number of annotations.
-  core.Map<core.String, core.String>? exampleCount;
+  core.Map<core.String, core.String?>? exampleCount;
 
   GoogleCloudDatalabelingV1alpha1LabelStats();
 
@@ -5038,7 +5038,7 @@ class GoogleCloudDatalabelingV1beta1EvaluationJobConfig {
   /// keys\](/ml-engine/docs/continuous-evaluation/create-job#prediction-keys).
   ///
   /// Required.
-  core.Map<core.String, core.String>? bigqueryImportKeys;
+  core.Map<core.String, core.String?>? bigqueryImportKeys;
 
   /// Specify this field if your model version performs image object detection
   /// (bounding box detection).
@@ -6109,7 +6109,7 @@ class GoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation {
   ///
   /// The key is the rgb color represented in format of rgb(0, 0, 0). The value
   /// is the AnnotationSpec.
-  core.Map<core.String, GoogleCloudDatalabelingV1beta1AnnotationSpec>?
+  core.Map<core.String, GoogleCloudDatalabelingV1beta1AnnotationSpec?>?
       annotationColors;
 
   /// A byte string of a full image's color map.
@@ -6942,7 +6942,7 @@ class GoogleCloudDatalabelingV1beta1LabelStats {
   /// that annotation spec. If the annotated dataset does not have annotation
   /// spec, the map will return a pair where the key is empty string and value
   /// is the total number of annotations.
-  core.Map<core.String, core.String>? exampleCount;
+  core.Map<core.String, core.String?>? exampleCount;
 
   GoogleCloudDatalabelingV1beta1LabelStats();
 
@@ -9455,7 +9455,7 @@ class GoogleCloudDatalabelingV1p1alpha1LabelStats {
   /// that annotation spec. If the annotated dataset does not have annotation
   /// spec, the map will return a pair where the key is empty string and value
   /// is the total number of annotations.
-  core.Map<core.String, core.String>? exampleCount;
+  core.Map<core.String, core.String?>? exampleCount;
 
   GoogleCloudDatalabelingV1p1alpha1LabelStats();
 
@@ -10420,7 +10420,7 @@ class GoogleCloudDatalabelingV1p2alpha1LabelStats {
   /// that annotation spec. If the annotated dataset does not have annotation
   /// spec, the map will return a pair where the key is empty string and value
   /// is the total number of annotations.
-  core.Map<core.String, core.String>? exampleCount;
+  core.Map<core.String, core.String?>? exampleCount;
 
   GoogleCloudDatalabelingV1p2alpha1LabelStats();
 
@@ -10653,7 +10653,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -10673,7 +10673,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   GoogleLongrunningOperation();
 
@@ -10749,7 +10749,7 @@ class GoogleRpcStatus {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -10765,7 +10765,7 @@ class GoogleRpcStatus {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,

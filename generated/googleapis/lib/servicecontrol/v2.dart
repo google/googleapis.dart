@@ -260,7 +260,7 @@ class AttributeContext {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? extensions;
+  core.List<core.Map<core.String, core.Object?>>? extensions;
 
   /// The origin of a network activity.
   ///
@@ -299,7 +299,7 @@ class AttributeContext {
     }
     if (_json.containsKey('extensions')) {
       extensions = (_json['extensions'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
@@ -358,7 +358,7 @@ class AuditLog {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The name of the service method or operation.
   ///
@@ -381,7 +381,7 @@ class AuditLog {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? request;
+  core.Map<core.String, core.Object?>? request;
 
   /// Metadata about the operation.
   RequestMetadata? requestMetadata;
@@ -407,7 +407,7 @@ class AuditLog {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? resourceOriginalState;
+  core.Map<core.String, core.Object?>? resourceOriginalState;
 
   /// The operation response.
   ///
@@ -419,7 +419,7 @@ class AuditLog {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   /// Use the `metadata` field instead.
   ///
@@ -430,7 +430,7 @@ class AuditLog {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? serviceData;
+  core.Map<core.String, core.Object?>? serviceData;
 
   /// The name of the API service performing the operation.
   ///
@@ -587,7 +587,7 @@ class Auth {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? claims;
+  core.Map<core.String, core.Object?>? claims;
 
   /// The authorized presenter of the credential.
   ///
@@ -687,7 +687,7 @@ class AuthenticationInfo {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? thirdPartyPrincipal;
+  core.Map<core.String, core.Object?>? thirdPartyPrincipal;
 
   AuthenticationInfo();
 
@@ -841,7 +841,7 @@ class CheckRequest {
 /// Response message for the Check method.
 class CheckResponse {
   /// Returns a set of request contexts generated from the `CheckRequest`.
-  core.Map<core.String, core.String>? headers;
+  core.Map<core.String, core.String?>? headers;
 
   /// An 'OK' status allows the operation.
   ///
@@ -885,7 +885,7 @@ class FirstPartyPrincipal {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? serviceMetadata;
+  core.Map<core.String, core.Object?>? serviceMetadata;
 
   FirstPartyPrincipal();
 
@@ -920,7 +920,7 @@ class Peer {
   core.String? ip;
 
   /// The labels associated with the peer.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The network port of the peer.
   core.String? port;
@@ -1037,7 +1037,7 @@ class Request {
   /// If multiple headers share the same key, they must be merged according to
   /// the HTTP spec. All header keys must be lowercased, because HTTP header
   /// keys are case-insensitive.
-  core.Map<core.String, core.String>? headers;
+  core.Map<core.String, core.String?>? headers;
 
   /// The HTTP request `Host` header value.
   core.String? host;
@@ -1243,7 +1243,7 @@ class Resource {
   ///
   /// They are not queryable and should be preserved when modifying objects.
   /// More info: https://kubernetes.io/docs/user-guide/annotations
-  core.Map<core.String, core.String>? annotations;
+  core.Map<core.String, core.String?>? annotations;
 
   /// The timestamp when the resource was created.
   ///
@@ -1276,7 +1276,7 @@ class Resource {
 
   /// The labels or tags on the resource, such as AWS resource tags and
   /// Kubernetes resource labels.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The location of the resource.
   ///
@@ -1492,7 +1492,7 @@ class Response {
   /// If multiple headers share the same key, they must be merged according to
   /// HTTP spec. All header keys must be lowercased, because HTTP header keys
   /// are case-insensitive.
-  core.Map<core.String, core.String>? headers;
+  core.Map<core.String, core.String?>? headers;
 
   /// The HTTP response size in bytes.
   ///
@@ -1621,7 +1621,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -1637,7 +1637,7 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
@@ -1664,7 +1664,7 @@ class ThirdPartyPrincipal {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? thirdPartyClaims;
+  core.Map<core.String, core.Object?>? thirdPartyClaims;
 
   ThirdPartyPrincipal();
 

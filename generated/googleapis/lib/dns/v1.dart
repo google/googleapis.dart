@@ -1640,7 +1640,7 @@ class ManagedZone {
   core.String? kind;
 
   /// User labels.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// User assigned name for this resource.
   ///

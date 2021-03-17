@@ -1206,7 +1206,7 @@ class Instance {
   /// resources such as GCE VMs.
   ///
   /// The character '=' is not allowed to be used within the labels.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The name of this instance is in the form of
   /// projects/{project}/locations/{location}/instances/{instance}.
@@ -1221,7 +1221,7 @@ class Instance {
 
   /// Map of additional options used to configure the behavior of Data Fusion
   /// instance.
-  core.Map<core.String, core.String>? options;
+  core.Map<core.String, core.String?>? options;
 
   /// P4 service account for the customer project.
   ///
@@ -1576,7 +1576,7 @@ class Location {
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The canonical id for this location.
   ///
@@ -1589,7 +1589,7 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
@@ -1697,7 +1697,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -1717,7 +1717,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   Operation();
 
@@ -1764,7 +1764,7 @@ class OperationMetadata {
   /// Map to hold any additonal status info for the operation If there is an
   /// accelerator being enabled/disabled/deleted, this will be populated with
   /// accelerator name as key and status as ENABLING, DISABLING or DELETING
-  core.Map<core.String, core.String>? additionalStatus;
+  core.Map<core.String, core.String?>? additionalStatus;
 
   /// API version used to start the operation.
   core.String? apiVersion;
@@ -2015,7 +2015,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -2031,7 +2031,7 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,

@@ -1087,7 +1087,7 @@ class Row {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? values;
+  core.Map<core.String, core.Object?>? values;
 
   Row();
 

@@ -1322,7 +1322,7 @@ class GoogleApiHttpBody {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? extensions;
+  core.List<core.Map<core.String, core.Object?>>? extensions;
 
   GoogleApiHttpBody();
 
@@ -1335,7 +1335,7 @@ class GoogleApiHttpBody {
     }
     if (_json.containsKey('extensions')) {
       extensions = (_json['extensions'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
@@ -1929,7 +1929,7 @@ class GoogleCloudRecommendationengineV1beta1FeatureMap {
   /// example: `{ "colors": {"value": ["yellow", "green"]}, "sizes":
   /// {"value":["S", "M"]}`
   core.Map<core.String,
-          GoogleCloudRecommendationengineV1beta1FeatureMapStringList>?
+          GoogleCloudRecommendationengineV1beta1FeatureMapStringList?>?
       categoricalFeatures;
 
   /// Numerical features.
@@ -1938,7 +1938,7 @@ class GoogleCloudRecommendationengineV1beta1FeatureMap {
   /// customer. Feature names must be UTF-8 encoded strings. For example: `{
   /// "lengths_cm": {"value":[2.3, 15.4]}, "heights_cm": {"value":[8.1, 6.4]} }`
   core.Map<core.String,
-          GoogleCloudRecommendationengineV1beta1FeatureMapFloatList>?
+          GoogleCloudRecommendationengineV1beta1FeatureMapFloatList?>?
       numericalFeatures;
 
   GoogleCloudRecommendationengineV1beta1FeatureMap();
@@ -2610,7 +2610,7 @@ class GoogleCloudRecommendationengineV1beta1PredictRequest {
   /// information on and examples of labels.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// Maximum number of results to return per page.
   ///
@@ -2642,7 +2642,7 @@ class GoogleCloudRecommendationengineV1beta1PredictRequest {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? params;
+  core.Map<core.String, core.Object?>? params;
 
   /// Context about the user, what they are looking at and what action they took
   /// to trigger the predict request.
@@ -2714,7 +2714,7 @@ class GoogleCloudRecommendationengineV1beta1PredictResponse {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// If empty, the list is complete.
   ///
@@ -2800,7 +2800,7 @@ class GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? itemMetadata;
+  core.Map<core.String, core.Object?>? itemMetadata;
 
   GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult();
 
@@ -2865,7 +2865,7 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItem {
   /// sum(costs) * If 'priceRange' is provided, profit = minPrice - sum(costs)
   ///
   /// Optional.
-  core.Map<core.String, core.double>? costs;
+  core.Map<core.String, core.double?>? costs;
 
   /// Only required if the price is set.
   ///
@@ -3270,7 +3270,7 @@ class GoogleCloudRecommendationengineV1beta1PurchaseTransaction {
   /// be calculated for this Transaction.
   ///
   /// Optional.
-  core.Map<core.String, core.double>? costs;
+  core.Map<core.String, core.double?>? costs;
 
   /// Currency code.
   ///
@@ -3297,7 +3297,7 @@ class GoogleCloudRecommendationengineV1beta1PurchaseTransaction {
   /// All the taxes associated with the transaction.
   ///
   /// Optional.
-  core.Map<core.String, core.double>? taxes;
+  core.Map<core.String, core.double?>? taxes;
 
   GoogleCloudRecommendationengineV1beta1PurchaseTransaction();
 
@@ -3804,7 +3804,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -3824,7 +3824,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   GoogleLongrunningOperation();
 
@@ -3900,7 +3900,7 @@ class GoogleRpcStatus {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -3916,7 +3916,7 @@ class GoogleRpcStatus {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,

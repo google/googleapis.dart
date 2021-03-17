@@ -5395,7 +5395,7 @@ class GoogleCloudDialogflowCxV3ConversationTurnUserInput {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? injectedParameters;
+  core.Map<core.String, core.Object?>? injectedParameters;
 
   /// Supports text input, event input, dtmf input in the test case.
   GoogleCloudDialogflowCxV3QueryInput? input;
@@ -5451,7 +5451,7 @@ class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? diagnosticInfo;
+  core.Map<core.String, core.Object?>? diagnosticInfo;
 
   /// If this is part of a result conversation turn, the list of differences
   /// between the original run and the replay for this output, if any.
@@ -5463,7 +5463,7 @@ class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? sessionParameters;
+  core.Map<core.String, core.Object?>? sessionParameters;
 
   /// Response error from the agent in the test result.
   ///
@@ -7564,7 +7564,7 @@ class GoogleCloudDialogflowCxV3Intent {
   /// means the intent is a contextual intent.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The unique identifier of the intent.
   ///
@@ -8451,7 +8451,7 @@ class GoogleCloudDialogflowCxV3Match {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? parameters;
+  core.Map<core.String, core.Object?>? parameters;
 
   /// Final text input which was matched during MatchIntent.
   ///
@@ -9057,7 +9057,7 @@ class GoogleCloudDialogflowCxV3QueryParameters {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? parameters;
+  core.Map<core.String, core.Object?>? parameters;
 
   /// This field can be used to pass custom data into the webhook associated
   /// with the agent.
@@ -9066,7 +9066,7 @@ class GoogleCloudDialogflowCxV3QueryParameters {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? payload;
+  core.Map<core.String, core.Object?>? payload;
 
   /// Additional session entity types to replace or extend developer entity
   /// types with.
@@ -9091,7 +9091,7 @@ class GoogleCloudDialogflowCxV3QueryParameters {
   /// Google's specified headers are not allowed. Including: "Host",
   /// "Content-Length", "Connection", "From", "User-Agent", "Accept-Encoding",
   /// "If-Modified-Since", "If-None-Match", "X-Forwarded-For", etc.
-  core.Map<core.String, core.String>? webhookHeaders;
+  core.Map<core.String, core.String?>? webhookHeaders;
 
   GoogleCloudDialogflowCxV3QueryParameters();
 
@@ -9175,7 +9175,7 @@ class GoogleCloudDialogflowCxV3QueryResult {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? diagnosticInfo;
+  core.Map<core.String, core.Object?>? diagnosticInfo;
 
   /// The Intent that matched the conversational query.
   ///
@@ -9217,7 +9217,7 @@ class GoogleCloudDialogflowCxV3QueryResult {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? parameters;
+  core.Map<core.String, core.Object?>? parameters;
 
   /// The list of rich messages returned to the client.
   ///
@@ -9253,7 +9253,7 @@ class GoogleCloudDialogflowCxV3QueryResult {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? webhookPayloads;
+  core.List<core.Map<core.String, core.Object?>>? webhookPayloads;
 
   /// The list of webhook call status in the order of call sequence.
   core.List<GoogleRpcStatus>? webhookStatuses;
@@ -9325,7 +9325,7 @@ class GoogleCloudDialogflowCxV3QueryResult {
     }
     if (_json.containsKey('webhookPayloads')) {
       webhookPayloads = (_json['webhookPayloads'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
@@ -9463,7 +9463,7 @@ class GoogleCloudDialogflowCxV3ResponseMessage {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? payload;
+  core.Map<core.String, core.Object?>? payload;
 
   /// Signal that the client should play an audio clip hosted at a
   /// client-specific URI.
@@ -9554,7 +9554,7 @@ class GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess();
 
@@ -9604,7 +9604,7 @@ class GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff();
 
@@ -10111,7 +10111,7 @@ class GoogleCloudDialogflowCxV3SessionInfo {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? parameters;
+  core.Map<core.String, core.Object?>? parameters;
 
   /// Always present for WebhookRequest.
   ///
@@ -11359,7 +11359,7 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebService {
   core.String? password;
 
   /// The HTTP request headers to send together with webhook requests.
-  core.Map<core.String, core.String>? requestHeaders;
+  core.Map<core.String, core.String?>? requestHeaders;
 
   /// The webhook URI for receiving POST requests.
   ///
@@ -11431,7 +11431,7 @@ class GoogleCloudDialogflowCxV3WebhookRequest {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? payload;
+  core.Map<core.String, core.Object?>? payload;
 
   /// The sentiment analysis result of the current user request.
   ///
@@ -11550,7 +11550,7 @@ class GoogleCloudDialogflowCxV3WebhookRequestIntentInfo {
   /// parameter identified from the user's utterance. All parameters defined in
   /// the matched intent that are identified will be surfaced here.
   core.Map<core.String,
-          GoogleCloudDialogflowCxV3WebhookRequestIntentInfoIntentParameterValue>?
+          GoogleCloudDialogflowCxV3WebhookRequestIntentInfoIntentParameterValue?>?
       parameters;
 
   GoogleCloudDialogflowCxV3WebhookRequestIntentInfo();
@@ -11668,7 +11668,7 @@ class GoogleCloudDialogflowCxV3WebhookResponse {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? payload;
+  core.Map<core.String, core.Object?>? payload;
 
   /// Information about session status.
   ///
@@ -11899,7 +11899,7 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? injectedParameters;
+  core.Map<core.String, core.Object?>? injectedParameters;
 
   /// Supports text input, event input, dtmf input in the test case.
   GoogleCloudDialogflowCxV3beta1QueryInput? input;
@@ -11956,7 +11956,7 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? diagnosticInfo;
+  core.Map<core.String, core.Object?>? diagnosticInfo;
 
   /// If this is part of a result conversation turn, the list of differences
   /// between the original run and the replay for this output, if any.
@@ -11968,7 +11968,7 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? sessionParameters;
+  core.Map<core.String, core.Object?>? sessionParameters;
 
   /// Response error from the agent in the test result.
   ///
@@ -13011,7 +13011,7 @@ class GoogleCloudDialogflowCxV3beta1Intent {
   /// means the intent is a contextual intent.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The unique identifier of the intent.
   ///
@@ -13649,7 +13649,7 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessage {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? payload;
+  core.Map<core.String, core.Object?>? payload;
 
   /// Signal that the client should play an audio clip hosted at a
   /// client-specific URI.
@@ -13743,7 +13743,7 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess();
 
@@ -13793,7 +13793,7 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff();
 
@@ -14045,7 +14045,7 @@ class GoogleCloudDialogflowCxV3beta1SessionInfo {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? parameters;
+  core.Map<core.String, core.Object?>? parameters;
 
   /// Always present for WebhookRequest.
   ///
@@ -14519,7 +14519,7 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequest {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? payload;
+  core.Map<core.String, core.Object?>? payload;
 
   /// The sentiment analysis result of the current user request.
   ///
@@ -14639,7 +14639,7 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo {
   /// parameter identified from the user's utterance. All parameters defined in
   /// the matched intent that are identified will be surfaced here.
   core.Map<core.String,
-          GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue>?
+          GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue?>?
       parameters;
 
   GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo();
@@ -14758,7 +14758,7 @@ class GoogleCloudDialogflowCxV3beta1WebhookResponse {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? payload;
+  core.Map<core.String, core.Object?>? payload;
 
   /// Information about session status.
   ///
@@ -15006,7 +15006,7 @@ class GoogleCloudDialogflowV2Context {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? parameters;
+  core.Map<core.String, core.Object?>? parameters;
 
   GoogleCloudDialogflowV2Context();
 
@@ -15273,7 +15273,7 @@ class GoogleCloudDialogflowV2EventInput {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? parameters;
+  core.Map<core.String, core.Object?>? parameters;
 
   GoogleCloudDialogflowV2EventInput();
 
@@ -15667,7 +15667,7 @@ class GoogleCloudDialogflowV2IntentMessage {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? payload;
+  core.Map<core.String, core.Object?>? payload;
 
   /// The platform that this message is intended for.
   ///
@@ -17231,7 +17231,7 @@ class GoogleCloudDialogflowV2OriginalDetectIntentRequest {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? payload;
+  core.Map<core.String, core.Object?>? payload;
 
   /// The source of this request, e.g., `google`, `facebook`, `slack`.
   ///
@@ -17292,7 +17292,7 @@ class GoogleCloudDialogflowV2QueryResult {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? diagnosticInfo;
+  core.Map<core.String, core.Object?>? diagnosticInfo;
 
   /// The collection of rich messages to present to the user.
   core.List<GoogleCloudDialogflowV2IntentMessage>? fulfillmentMessages;
@@ -17345,7 +17345,7 @@ class GoogleCloudDialogflowV2QueryResult {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? parameters;
+  core.Map<core.String, core.Object?>? parameters;
 
   /// The original conversational query text: - If natural language text was
   /// provided as input, `query_text` contains a copy of the input.
@@ -17375,7 +17375,7 @@ class GoogleCloudDialogflowV2QueryResult {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? webhookPayload;
+  core.Map<core.String, core.Object?>? webhookPayload;
 
   /// If the query was fulfilled by a webhook call, this field is set to the
   /// value of the `source` field returned in the webhook response.
@@ -17735,7 +17735,7 @@ class GoogleCloudDialogflowV2WebhookResponse {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? payload;
+  core.Map<core.String, core.Object?>? payload;
 
   /// Additional session entity types to replace or extend developer entity
   /// types with.
@@ -17923,7 +17923,7 @@ class GoogleCloudDialogflowV2beta1Context {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? parameters;
+  core.Map<core.String, core.Object?>? parameters;
 
   GoogleCloudDialogflowV2beta1Context();
 
@@ -18124,7 +18124,7 @@ class GoogleCloudDialogflowV2beta1EventInput {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? parameters;
+  core.Map<core.String, core.Object?>? parameters;
 
   GoogleCloudDialogflowV2beta1EventInput();
 
@@ -18553,7 +18553,7 @@ class GoogleCloudDialogflowV2beta1IntentMessage {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? payload;
+  core.Map<core.String, core.Object?>? payload;
 
   /// The platform that this message is intended for.
   ///
@@ -20742,7 +20742,7 @@ class GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? payload;
+  core.Map<core.String, core.Object?>? payload;
 
   /// The source of this request, e.g., `google`, `facebook`, `slack`.
   ///
@@ -20804,7 +20804,7 @@ class GoogleCloudDialogflowV2beta1QueryResult {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? diagnosticInfo;
+  core.Map<core.String, core.Object?>? diagnosticInfo;
 
   /// The collection of rich messages to present to the user.
   core.List<GoogleCloudDialogflowV2beta1IntentMessage>? fulfillmentMessages;
@@ -20861,7 +20861,7 @@ class GoogleCloudDialogflowV2beta1QueryResult {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? parameters;
+  core.Map<core.String, core.Object?>? parameters;
 
   /// The original conversational query text: - If natural language text was
   /// provided as input, `query_text` contains a copy of the input.
@@ -20891,7 +20891,7 @@ class GoogleCloudDialogflowV2beta1QueryResult {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? webhookPayload;
+  core.Map<core.String, core.Object?>? webhookPayload;
 
   /// If the query was fulfilled by a webhook call, this field is set to the
   /// value of the `source` field returned in the webhook response.
@@ -21284,7 +21284,7 @@ class GoogleCloudDialogflowV2beta1WebhookResponse {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? payload;
+  core.Map<core.String, core.Object?>? payload;
 
   /// Additional session entity types to replace or extend developer entity
   /// types with.
@@ -21592,7 +21592,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -21612,7 +21612,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   GoogleLongrunningOperation();
 
@@ -21688,7 +21688,7 @@ class GoogleRpcStatus {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -21704,7 +21704,7 @@ class GoogleRpcStatus {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,

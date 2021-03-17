@@ -266,7 +266,7 @@ class Deployment {
   /// Platform, "zone" or "region" label should be present describing the
   /// deployment location. An example of a zone is "us-central1-a", an example
   /// of a region is "us-central1" or "us-central".
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// Project ID is the ID of a cloud project.
   ///
@@ -326,7 +326,7 @@ class Profile {
   /// Labels associated to this specific profile. These labels will get merged
   /// with the deployment labels for the final data set. See documentation on
   /// deployment labels for validation rules and limits.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// Opaque, server-assigned, unique ID for this profile.
   ///

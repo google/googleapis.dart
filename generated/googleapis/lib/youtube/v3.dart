@@ -6525,7 +6525,7 @@ class Channel {
   core.String? kind;
 
   /// Localizations for different languages
-  core.Map<core.String, ChannelLocalization>? localizations;
+  core.Map<core.String, ChannelLocalization?>? localizations;
 
   /// The snippet object contains basic details about the channel, such as its
   /// title, description, and thumbnail images.
@@ -7072,7 +7072,7 @@ class ChannelSection {
   core.String? kind;
 
   /// Localizations for different languages
-  core.Map<core.String, ChannelSectionLocalization>? localizations;
+  core.Map<core.String, ChannelSectionLocalization?>? localizations;
 
   /// The snippet object contains basic details about the channel section, such
   /// as its type, style and title.
@@ -12553,7 +12553,7 @@ class Playlist {
   core.String? kind;
 
   /// Localizations for different languages
-  core.Map<core.String, PlaylistLocalization>? localizations;
+  core.Map<core.String, PlaylistLocalization?>? localizations;
 
   /// The player object contains information that you would use to play the
   /// playlist in an embedded player.
@@ -14406,7 +14406,7 @@ class Video {
 
   /// The localizations object contains localized versions of the basic details
   /// about the video, such as its title and description.
-  core.Map<core.String, VideoLocalization>? localizations;
+  core.Map<core.String, VideoLocalization?>? localizations;
 
   /// The monetizationDetails object encapsulates information about the
   /// monetization status of the video.

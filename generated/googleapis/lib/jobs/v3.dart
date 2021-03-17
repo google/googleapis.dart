@@ -1006,7 +1006,7 @@ class ClientEvent {
   /// supported. The maximum total size of all keys and values is 2 KB.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? extraInfo;
+  core.Map<core.String, core.String?>? extraInfo;
 
   /// A event issued when a job seeker interacts with the application that
   /// implements Cloud Talent Solution.
@@ -2021,7 +2021,7 @@ class CustomAttributeHistogramResult {
 
   /// Stores a map from the values of string custom field associated with `key`
   /// to the number of jobs with that value in this histogram result.
-  core.Map<core.String, core.int>? stringValueHistogramResult;
+  core.Map<core.String, core.int?>? stringValueHistogramResult;
 
   CustomAttributeHistogramResult();
 
@@ -2236,7 +2236,7 @@ class HistogramResult {
   ///
   /// Key: search type (filter names, such as the companyName). Values: the
   /// count of jobs that match the filter for this search.
-  core.Map<core.String, core.int>? values;
+  core.Map<core.String, core.int?>? values;
 
   HistogramResult();
 
@@ -2373,7 +2373,7 @@ class Job {
   /// maximum total size of `string_values` across all keys is 50KB.
   ///
   /// Optional.
-  core.Map<core.String, CustomAttribute>? customAttributes;
+  core.Map<core.String, CustomAttribute?>? customAttributes;
 
   /// The desired education degrees for the job, such as Bachelors, Masters.
   ///
@@ -3488,7 +3488,7 @@ class MendelDebugInput {
   /// NamespacedMendelDebugInput with the server's namespace. When both
   /// NamespacedMendelDebugInput protos are present, they are merged. See
   /// go/mendel-debug-forcing for more details.
-  core.Map<core.String, NamespacedDebugInput>? namespacedDebugInput;
+  core.Map<core.String, NamespacedDebugInput?>? namespacedDebugInput;
 
   MendelDebugInput();
 
@@ -3643,12 +3643,12 @@ class NamespacedDebugInput {
   /// Flags to force in a particular experiment state.
   ///
   /// Map from flag name to flag value.
-  core.Map<core.String, core.String>? forcedFlags;
+  core.Map<core.String, core.String?>? forcedFlags;
 
   /// Rollouts to force in a particular experiment state.
   ///
   /// Map from rollout name to rollout value.
-  core.Map<core.String, core.bool>? forcedRollouts;
+  core.Map<core.String, core.bool?>? forcedRollouts;
 
   NamespacedDebugInput();
 

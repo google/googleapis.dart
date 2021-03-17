@@ -3926,7 +3926,7 @@ class Dataset {
   /// You can use these to organize and group your datasets. You can set this
   /// property when inserting or updating a dataset. See Creating and Updating
   /// Dataset Labels for more information.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// \[Output-only\] The date when this dataset or any of its tables was last
   /// modified, in milliseconds since the epoch.
@@ -4112,7 +4112,7 @@ class DatasetListDatasets {
   /// The labels associated with this dataset.
   ///
   /// You can use these to organize and group your datasets.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The geographic location where the data resides.
   core.String? location;
@@ -4268,7 +4268,7 @@ class DestinationTableProperties {
   /// job will fail.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   DestinationTableProperties();
 
@@ -5617,7 +5617,7 @@ class JobConfiguration {
   /// numeric characters, underscores and dashes. International characters are
   /// allowed. Label values are optional. Label keys must start with a letter
   /// and each label in the list must have a different key.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// \[Pick one\] Configures a load job.
   JobConfigurationLoad? load;
@@ -6351,7 +6351,7 @@ class JobConfigurationQuery {
   /// were a standard BigQuery table.
   ///
   /// Optional.
-  core.Map<core.String, ExternalDataConfiguration>? tableDefinitions;
+  core.Map<core.String, ExternalDataConfiguration?>? tableDefinitions;
 
   /// Time-based partitioning specification for the destination table.
   ///
@@ -7723,7 +7723,7 @@ class Model {
   /// numeric characters, underscores and dashes. International characters are
   /// allowed. Label values are optional. Label keys must start with a letter
   /// and each label in the list must have a different key.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The time when this model was last modified, in millisecs since the epoch.
   ///
@@ -8436,7 +8436,7 @@ class QueryParameterValue {
   /// The struct field values, in order of the struct type's declaration.
   ///
   /// Optional.
-  core.Map<core.String, QueryParameterValue>? structValues;
+  core.Map<core.String, QueryParameterValue?>? structValues;
 
   /// The value of this value, if a simple scalar type.
   ///
@@ -8509,7 +8509,7 @@ class QueryRequest {
   /// numeric characters, underscores and dashes. International characters are
   /// allowed. Label values are optional. Label keys must start with a letter
   /// and each label in the list must have a different key.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The geographic location where the job should run.
   ///
@@ -9775,7 +9775,7 @@ class Table {
   /// numeric characters, underscores and dashes. International characters are
   /// allowed. Label values are optional. Label keys must start with a letter
   /// and each label in the list must have a different key.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// \[Output-only\] The time when this table was last modified, in
   /// milliseconds since the epoch.
@@ -10433,7 +10433,7 @@ class TableListTables {
   /// The labels associated with this table.
   ///
   /// You can use these to organize and group your tables.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The range partitioning specification for this table, if configured.
   RangePartitioning? rangePartitioning;
@@ -10948,7 +10948,7 @@ class TrainingOptions {
   /// data.
   ///
   /// Only applicable for classification models.
-  core.Map<core.String, core.double>? labelClassWeights;
+  core.Map<core.String, core.double?>? labelClassWeights;
 
   /// Learning rate in training.
   ///

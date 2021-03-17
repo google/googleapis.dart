@@ -3892,7 +3892,7 @@ class Cluster {
   /// associated with a cluster.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// Contains cluster daemon metrics such as HDFS and YARN stats.Beta Feature:
   /// This report is available for testing purposes only.
@@ -4168,10 +4168,10 @@ class ClusterConfig {
 /// It may be changed before final release.
 class ClusterMetrics {
   /// The HDFS metrics.
-  core.Map<core.String, core.String>? hdfsMetrics;
+  core.Map<core.String, core.String?>? hdfsMetrics;
 
   /// The YARN metrics.
-  core.Map<core.String, core.String>? yarnMetrics;
+  core.Map<core.String, core.String?>? yarnMetrics;
 
   ClusterMetrics();
 
@@ -4260,7 +4260,7 @@ class ClusterOperationMetadata {
   /// Labels associated with the operation
   ///
   /// Output only.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The operation type.
   ///
@@ -4396,7 +4396,7 @@ class ClusterSelector {
   /// Cluster must have all labels to match.
   ///
   /// Required.
-  core.Map<core.String, core.String>? clusterLabels;
+  core.Map<core.String, core.String?>? clusterLabels;
 
   /// The zone where workflow process executes.
   ///
@@ -4629,7 +4629,7 @@ class EndpointConfig {
   /// Will only be populated if enable_http_port_access is true.
   ///
   /// Output only.
-  core.Map<core.String, core.String>? httpPorts;
+  core.Map<core.String, core.String?>? httpPorts;
 
   EndpointConfig();
 
@@ -4742,7 +4742,7 @@ class GceClusterConfig {
   /// The Compute Engine metadata entries to add to all instances (see Project
   /// and instance metadata
   /// (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
-  core.Map<core.String, core.String>? metadata;
+  core.Map<core.String, core.String?>? metadata;
 
   /// The Compute Engine network to be used for machine communications.
   ///
@@ -5027,7 +5027,7 @@ class HadoopJob {
   /// classes in user code.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? properties;
+  core.Map<core.String, core.String?>? properties;
 
   HadoopJob();
 
@@ -5111,7 +5111,7 @@ class HiveJob {
   /// /etc/hive/conf/hive-site.xml, and classes in user code.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? properties;
+  core.Map<core.String, core.String?>? properties;
 
   /// The HCFS URI of the script that contains Hive queries.
   core.String? queryFileUri;
@@ -5123,7 +5123,7 @@ class HiveJob {
   /// SET name="value";).
   ///
   /// Optional.
-  core.Map<core.String, core.String>? scriptVariables;
+  core.Map<core.String, core.String?>? scriptVariables;
 
   HiveJob();
 
@@ -5476,7 +5476,7 @@ class InstantiateWorkflowTemplateRequest {
   /// Values may not exceed 1000 characters.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? parameters;
+  core.Map<core.String, core.String?>? parameters;
 
   /// A tag that prevents multiple concurrent workflow instances with the same
   /// tag from running.
@@ -5578,7 +5578,7 @@ class Job {
   /// associated with a job.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// Job is a Pig job.
   ///
@@ -5817,7 +5817,7 @@ class JobPlacement {
   /// Cluster labels to identify a cluster where the job will be submitted.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? clusterLabels;
+  core.Map<core.String, core.String?>? clusterLabels;
 
   /// The name of the cluster where the job will be submitted.
   ///
@@ -6422,7 +6422,7 @@ class LoggingConfig {
   ///
   /// This may include "root" package name to configure rootLogger. Examples:
   /// 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-  core.Map<core.String, core.String>? driverLogLevels;
+  core.Map<core.String, core.String?>? driverLogLevels;
 
   LoggingConfig();
 
@@ -6468,7 +6468,7 @@ class ManagedCluster {
   /// associated with a given cluster.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   ManagedCluster();
 
@@ -6637,7 +6637,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -6657,7 +6657,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   Operation();
 
@@ -6719,7 +6719,7 @@ class OrderedJob {
   /// given job.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// Job is a Pig job.
   ///
@@ -6907,7 +6907,7 @@ class PigJob {
   /// /etc/pig/conf/pig.properties, and classes in user code.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? properties;
+  core.Map<core.String, core.String?>? properties;
 
   /// The HCFS URI of the script that contains the Pig queries.
   core.String? queryFileUri;
@@ -6919,7 +6919,7 @@ class PigJob {
   /// name=\[value\]).
   ///
   /// Optional.
-  core.Map<core.String, core.String>? scriptVariables;
+  core.Map<core.String, core.String?>? scriptVariables;
 
   PigJob();
 
@@ -7113,7 +7113,7 @@ class PrestoJob {
   /// using the --session flag in the Presto CLI
   ///
   /// Optional.
-  core.Map<core.String, core.String>? properties;
+  core.Map<core.String, core.String?>? properties;
 
   /// The HCFS URI of the script that contains SQL queries.
   core.String? queryFileUri;
@@ -7221,7 +7221,7 @@ class PySparkJob {
   /// /etc/spark/conf/spark-defaults.conf and classes in user code.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? properties;
+  core.Map<core.String, core.String?>? properties;
 
   /// HCFS file URIs of Python files to pass to the PySpark framework.
   ///
@@ -7503,7 +7503,7 @@ class SoftwareConfig {
   /// (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
   ///
   /// Optional.
-  core.Map<core.String, core.String>? properties;
+  core.Map<core.String, core.String?>? properties;
 
   SoftwareConfig();
 
@@ -7589,7 +7589,7 @@ class SparkJob {
   /// /etc/spark/conf/spark-defaults.conf and classes in user code.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? properties;
+  core.Map<core.String, core.String?>? properties;
 
   SparkJob();
 
@@ -7693,7 +7693,7 @@ class SparkRJob {
   /// /etc/spark/conf/spark-defaults.conf and classes in user code.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? properties;
+  core.Map<core.String, core.String?>? properties;
 
   SparkRJob();
 
@@ -7761,7 +7761,7 @@ class SparkSqlJob {
   /// overwritten.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? properties;
+  core.Map<core.String, core.String?>? properties;
 
   /// The HCFS URI of the script that contains SQL queries.
   core.String? queryFileUri;
@@ -7773,7 +7773,7 @@ class SparkSqlJob {
   /// command: SET name="value";).
   ///
   /// Optional.
-  core.Map<core.String, core.String>? scriptVariables;
+  core.Map<core.String, core.String?>? scriptVariables;
 
   SparkSqlJob();
 
@@ -7880,7 +7880,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -7896,7 +7896,7 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
@@ -8221,7 +8221,7 @@ class WorkflowMetadata {
   WorkflowGraph? graph;
 
   /// Map from parameter names to values that were used for those parameters.
-  core.Map<core.String, core.String>? parameters;
+  core.Map<core.String, core.String?>? parameters;
 
   /// Workflow start time.
   ///
@@ -8433,7 +8433,7 @@ class WorkflowTemplate {
   /// labels can be associated with a template.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The resource name of the workflow template, as described in
   /// https://cloud.google.com/apis/design/resource_names.

@@ -2047,7 +2047,7 @@ class Binding {
 /// Request for the `CreateSnapshot` method.
 class CreateSnapshotRequest {
   /// See Creating and managing labels.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The subscription whose backlog the snapshot retains.
   ///
@@ -2731,7 +2731,7 @@ class PubsubMessage {
   ///
   /// If this field is empty, the message must contain non-empty data. This can
   /// be used to filter messages on the subscription.
-  core.Map<core.String, core.String>? attributes;
+  core.Map<core.String, core.String?>? attributes;
 
   /// The message data field.
   ///
@@ -2887,7 +2887,7 @@ class PushConfig {
   /// in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`: uses the push format
   /// defined in the v1 Pub/Sub API. For example: attributes { "x-goog-version":
   /// "v1" }
-  core.Map<core.String, core.String>? attributes;
+  core.Map<core.String, core.String?>? attributes;
 
   /// If specified, Pub/Sub will generate and attach an OIDC JWT token as an
   /// `Authorization` header in the HTTP request for every pushed message.
@@ -3181,7 +3181,7 @@ class Snapshot {
 
   /// See
   /// [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The name of the snapshot.
   core.String? name;
@@ -3282,7 +3282,7 @@ class Subscription {
   core.String? filter;
 
   /// See Creating and managing labels.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// How long to retain unacknowledged messages in the subscription's backlog,
   /// from the moment a message is published.
@@ -3471,7 +3471,7 @@ class Topic {
 
   /// See
   /// [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// Policy constraining the set of Google Cloud Platform regions where
   /// messages published to the topic may be stored.

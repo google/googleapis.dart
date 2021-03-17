@@ -4531,7 +4531,7 @@ class GoogleCloudDatacatalogV1beta1Tag {
   /// least 1 field and at most 500 fields.
   ///
   /// Required.
-  core.Map<core.String, GoogleCloudDatacatalogV1beta1TagField>? fields;
+  core.Map<core.String, GoogleCloudDatacatalogV1beta1TagField?>? fields;
 
   /// The resource name of the tag in URL format.
   ///
@@ -4707,7 +4707,7 @@ class GoogleCloudDatacatalogV1beta1TagTemplate {
   /// start with a letter or underscore.
   ///
   /// Required.
-  core.Map<core.String, GoogleCloudDatacatalogV1beta1TagTemplateField>? fields;
+  core.Map<core.String, GoogleCloudDatacatalogV1beta1TagTemplateField?>? fields;
 
   /// The resource name of the tag template in URL format.
   ///

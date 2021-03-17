@@ -6160,7 +6160,7 @@ class Channel {
   /// Additional parameters controlling delivery channel behavior.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? params;
+  core.Map<core.String, core.String?>? params;
 
   /// A Boolean value to indicate whether payload is wanted.
   ///
@@ -9386,7 +9386,7 @@ class User {
   core.DateTime? creationTime;
 
   /// Custom fields of the user.
-  core.Map<core.String, UserCustomProperties>? customSchemas;
+  core.Map<core.String, UserCustomProperties?>? customSchemas;
 
   /// The customer ID to \[retrieve all account
   /// users\](/admin-sdk/directory/v1/guides/manage-users.html#get_all_users).

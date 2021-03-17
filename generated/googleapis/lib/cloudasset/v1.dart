@@ -1514,7 +1514,7 @@ class Explanation {
   /// `{"roles/owner": ["compute.disk.get"]}`. The roles can also be found in
   /// the returned `policy` bindings. Note that the map is populated only for
   /// requests with permission queries.
-  core.Map<core.String, Permissions>? matchedPermissions;
+  core.Map<core.String, Permissions?>? matchedPermissions;
 
   Explanation();
 
@@ -3961,7 +3961,7 @@ class Inventory {
   ///
   /// The identifier is unique to each distinct and addressable inventory item
   /// and will change, when there is a new package version.
-  core.Map<core.String, Item>? items;
+  core.Map<core.String, Item?>? items;
 
   /// Base level operating system information for the VM.
   OsInfo? osInfo;
@@ -4106,7 +4106,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -4126,7 +4126,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   Operation();
 
@@ -4583,7 +4583,7 @@ class Resource {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? data;
+  core.Map<core.String, core.Object?>? data;
 
   /// The URL of the discovery document containing the resource's JSON schema.
   ///
@@ -4689,7 +4689,7 @@ class ResourceSearchResult {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? additionalAttributes;
+  core.Map<core.String, core.Object?>? additionalAttributes;
 
   /// The type of this resource.
   ///
@@ -4751,7 +4751,7 @@ class ResourceSearchResult {
   /// given label. Example: `labels.env:prod` - query by a given label's
   /// existence. Example: `labels.env:*` * use a free text query. Example:
   /// `prod`
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// Location can be `global`, regional like `us-east1`, or zonal like
   /// `us-west1-b`.
@@ -5139,7 +5139,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -5155,7 +5155,7 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,

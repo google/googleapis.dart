@@ -122,14 +122,14 @@ class ToyApi {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [core.Map<core.String, ToyResponse>].
+  /// Completes with a [core.Map<core.String, ToyResponse?>].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<core.Map<core.String, ToyResponse>> helloListOfClass(
+  async.Future<core.Map<core.String, ToyResponse?>> helloListOfClass(
     core.List<ToyRequest> request, {
     core.String? $fields,
   }) async {
@@ -163,14 +163,14 @@ class ToyApi {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [core.Map<core.String, ToyResponse>].
+  /// Completes with a [core.Map<core.String, ToyResponse?>].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<core.Map<core.String, ToyResponse>> helloListOfListOfClass(
+  async.Future<core.Map<core.String, ToyResponse?>> helloListOfListOfClass(
     core.List<core.List<ToyRequest>> request, {
     core.String? $fields,
   }) async {
@@ -206,15 +206,15 @@ class ToyApi {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [core.Map<core.String, core.int>].
+  /// Completes with a [core.Map<core.String, core.int?>].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<core.Map<core.String, core.int>> helloMap(
-    core.Map<core.String, core.int> request, {
+  async.Future<core.Map<core.String, core.int?>> helloMap(
+    core.Map<core.String, core.int?> request, {
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request);
@@ -402,16 +402,16 @@ class ToyApi {
   /// response.
   ///
   /// Completes with a [core.List<core.Map<core.String,
-  /// core.List<core.String>>>].
+  /// core.List<core.String>?>>].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<core.List<core.Map<core.String, core.List<core.String>>>>
+  async.Future<core.List<core.Map<core.String, core.List<core.String>?>>>
       helloNestedListMapList(
-    core.List<core.Map<core.String, core.List<core.int>>> request, {
+    core.List<core.Map<core.String, core.List<core.int>?>> request, {
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request);
@@ -428,7 +428,7 @@ class ToyApi {
       queryParams: _queryParams,
     );
     return (_response as core.List)
-        .map<core.Map<core.String, core.List<core.String>>>(
+        .map<core.Map<core.String, core.List<core.String>?>>(
             (value) => (value as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
@@ -478,7 +478,7 @@ class ToyApi {
   /// response.
   ///
   /// Completes with a [core.Map<core.String, core.List<core.Map<core.String,
-  /// core.bool>>>].
+  /// core.bool?>>?>].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
@@ -486,9 +486,10 @@ class ToyApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<
-          core.Map<core.String, core.List<core.Map<core.String, core.bool>>>>
+          core.Map<core.String, core.List<core.Map<core.String, core.bool?>>?>>
       helloNestedMapListMap(
-    core.Map<core.String, core.List<core.Map<core.String, core.int>>> request, {
+    core.Map<core.String, core.List<core.Map<core.String, core.int?>>?>
+        request, {
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request);
@@ -508,7 +509,7 @@ class ToyApi {
       (key, item) => core.MapEntry(
         key,
         (item as core.List)
-            .map<core.Map<core.String, core.bool>>(
+            .map<core.Map<core.String, core.bool?>>(
                 (value) => (value as core.Map<core.String, core.dynamic>).map(
                       (key, item) => core.MapEntry(
                         key,
@@ -528,16 +529,16 @@ class ToyApi {
   /// response.
   ///
   /// Completes with a [core.Map<core.String, core.Map<core.String,
-  /// core.bool>>].
+  /// core.bool?>?>].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<core.Map<core.String, core.Map<core.String, core.bool>>>
+  async.Future<core.Map<core.String, core.Map<core.String, core.bool?>?>>
       helloNestedMapMap(
-    core.Map<core.String, core.Map<core.String, core.int>> request, {
+    core.Map<core.String, core.Map<core.String, core.int?>?> request, {
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request);

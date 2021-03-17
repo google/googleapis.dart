@@ -2231,7 +2231,7 @@ class CryptoKey {
   ///
   /// For more information, see
   /// [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The resource name for this CryptoKey in the format `projects / *
   /// /locations / * /keyRings / * /cryptoKeys / * `.
@@ -3667,7 +3667,7 @@ class Location {
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The canonical id for this location.
   ///
@@ -3680,7 +3680,7 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///

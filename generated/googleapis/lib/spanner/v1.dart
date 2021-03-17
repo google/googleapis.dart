@@ -4093,7 +4093,7 @@ class ExecuteSqlRequest {
   /// used to specify the exact SQL type for some or all of the SQL statement
   /// parameters. See the definition of Type for more information about SQL
   /// types.
-  core.Map<core.String, Type>? paramTypes;
+  core.Map<core.String, Type?>? paramTypes;
 
   /// Parameter names and values that bind to placeholders in the SQL string.
   ///
@@ -4108,7 +4108,7 @@ class ExecuteSqlRequest {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? params;
+  core.Map<core.String, core.Object?>? params;
 
   /// If present, results will be restricted to the specified partition
   /// previously created using PartitionQuery().
@@ -4454,7 +4454,7 @@ class Instance {
   /// such as JSON, which doesn't rely upon specific characters being
   /// disallowed. For example, representing labels as the string: name + "_" +
   /// value would prove problematic if we were to allow "_" in a future release.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// A unique identifier for the instance, which cannot be changed after the
   /// instance is created.
@@ -5090,7 +5090,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -5110,7 +5110,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   Operation();
 
@@ -5405,7 +5405,7 @@ class PartitionQueryRequest {
   /// used to specify the exact SQL type for some or all of the SQL query
   /// parameters. See the definition of Type for more information about SQL
   /// types.
-  core.Map<core.String, Type>? paramTypes;
+  core.Map<core.String, Type?>? paramTypes;
 
   /// Parameter names and values that bind to placeholders in the SQL string.
   ///
@@ -5418,7 +5418,7 @@ class PartitionQueryRequest {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? params;
+  core.Map<core.String, core.Object?>? params;
 
   /// Additional options that affect how many partitions are created.
   PartitionOptions? partitionOptions;
@@ -5615,7 +5615,7 @@ class PlanNode {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? executionStats;
+  core.Map<core.String, core.Object?>? executionStats;
 
   /// The `PlanNode`'s index in node list.
   core.int? index;
@@ -5646,7 +5646,7 @@ class PlanNode {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// Condensed representation for SCALAR nodes.
   ShortRepresentation? shortRepresentation;
@@ -6433,7 +6433,7 @@ class ResultSetStats {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? queryStats;
+  core.Map<core.String, core.Object?>? queryStats;
 
   /// Standard DML returns an exact count of rows that were modified.
   core.String? rowCountExact;
@@ -6524,7 +6524,7 @@ class Session {
   /// regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64
   /// labels can be associated with a given session. See https://goo.gl/xmQnxf
   /// for more information on and examples of labels.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The name of the session.
   ///
@@ -6600,7 +6600,7 @@ class ShortRepresentation {
   ///
   /// The referenced `SCALAR` subquery may not necessarily be a direct child of
   /// this node.
-  core.Map<core.String, core.int>? subqueries;
+  core.Map<core.String, core.int?>? subqueries;
 
   ShortRepresentation();
 
@@ -6635,7 +6635,7 @@ class Statement {
   /// used to specify the exact SQL type for some or all of the SQL statement
   /// parameters. See the definition of Type for more information about SQL
   /// types.
-  core.Map<core.String, Type>? paramTypes;
+  core.Map<core.String, Type?>? paramTypes;
 
   /// Parameter names and values that bind to placeholders in the DML string.
   ///
@@ -6648,7 +6648,7 @@ class Statement {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? params;
+  core.Map<core.String, core.Object?>? params;
 
   /// The DML string.
   ///
@@ -6706,7 +6706,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -6722,7 +6722,7 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,

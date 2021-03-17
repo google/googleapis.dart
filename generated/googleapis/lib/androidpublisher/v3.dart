@@ -4235,7 +4235,7 @@ class InAppProduct {
   ///
   /// Map key is the language of the localized data, as defined by BCP-47, e.g.
   /// "en-US".
-  core.Map<core.String, InAppProductListing>? listings;
+  core.Map<core.String, InAppProductListing?>? listings;
 
   /// Package name of the parent app.
   core.String? packageName;
@@ -4244,7 +4244,7 @@ class InAppProduct {
   ///
   /// None of these can be zero, as in-app products are never free. Map key is
   /// region code, as defined by ISO 3166-2.
-  core.Map<core.String, Price>? prices;
+  core.Map<core.String, Price?>? prices;
 
   /// The type of the product, e.g. a recurring subscription.
   /// Possible string values are:

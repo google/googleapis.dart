@@ -240,7 +240,7 @@ class AutoText {
   core.List<core.String>? suggestedInsertionIds;
 
   /// The suggested text style changes to this AutoText, keyed by suggestion ID.
-  core.Map<core.String, SuggestedTextStyle>? suggestedTextStyleChanges;
+  core.Map<core.String, SuggestedTextStyle?>? suggestedTextStyleChanges;
 
   /// The text style of this AutoText.
   TextStyle? textStyle;
@@ -549,7 +549,7 @@ class ColumnBreak {
 
   /// The suggested text style changes to this ColumnBreak, keyed by suggestion
   /// ID.
-  core.Map<core.String, SuggestedTextStyle>? suggestedTextStyleChanges;
+  core.Map<core.String, SuggestedTextStyle?>? suggestedTextStyleChanges;
 
   /// The text style of this ColumnBreak.
   ///
@@ -1262,32 +1262,32 @@ class Document {
   /// The footers in the document, keyed by footer ID.
   ///
   /// Output only.
-  core.Map<core.String, Footer>? footers;
+  core.Map<core.String, Footer?>? footers;
 
   /// The footnotes in the document, keyed by footnote ID.
   ///
   /// Output only.
-  core.Map<core.String, Footnote>? footnotes;
+  core.Map<core.String, Footnote?>? footnotes;
 
   /// The headers in the document, keyed by header ID.
   ///
   /// Output only.
-  core.Map<core.String, Header>? headers;
+  core.Map<core.String, Header?>? headers;
 
   /// The inline objects in the document, keyed by object ID.
   ///
   /// Output only.
-  core.Map<core.String, InlineObject>? inlineObjects;
+  core.Map<core.String, InlineObject?>? inlineObjects;
 
   /// The lists in the document, keyed by list ID.
   ///
   /// Output only.
-  core.Map<core.String, List>? lists;
+  core.Map<core.String, List?>? lists;
 
   /// The named ranges in the document, keyed by name.
   ///
   /// Output only.
-  core.Map<core.String, NamedRanges>? namedRanges;
+  core.Map<core.String, NamedRanges?>? namedRanges;
 
   /// The named styles of the document.
   ///
@@ -1297,7 +1297,7 @@ class Document {
   /// The positioned objects in the document, keyed by object ID.
   ///
   /// Output only.
-  core.Map<core.String, PositionedObject>? positionedObjects;
+  core.Map<core.String, PositionedObject?>? positionedObjects;
 
   /// The revision ID of the document.
   ///
@@ -1319,13 +1319,13 @@ class Document {
   /// ID.
   ///
   /// Output only.
-  core.Map<core.String, SuggestedDocumentStyle>? suggestedDocumentStyleChanges;
+  core.Map<core.String, SuggestedDocumentStyle?>? suggestedDocumentStyleChanges;
 
   /// The suggested changes to the named styles of the document, keyed by
   /// suggestion ID.
   ///
   /// Output only.
-  core.Map<core.String, SuggestedNamedStyles>? suggestedNamedStylesChanges;
+  core.Map<core.String, SuggestedNamedStyles?>? suggestedNamedStylesChanges;
 
   /// The suggestions view mode applied to the document.
   ///
@@ -2377,7 +2377,7 @@ class FootnoteReference {
 
   /// The suggested text style changes to this FootnoteReference, keyed by
   /// suggestion ID.
-  core.Map<core.String, SuggestedTextStyle>? suggestedTextStyleChanges;
+  core.Map<core.String, SuggestedTextStyle?>? suggestedTextStyleChanges;
 
   /// The text style of this FootnoteReference.
   TextStyle? textStyle;
@@ -2478,7 +2478,7 @@ class HorizontalRule {
 
   /// The suggested text style changes to this HorizontalRule, keyed by
   /// suggestion ID.
-  core.Map<core.String, SuggestedTextStyle>? suggestedTextStyleChanges;
+  core.Map<core.String, SuggestedTextStyle?>? suggestedTextStyleChanges;
 
   /// The text style of this HorizontalRule.
   ///
@@ -2694,7 +2694,7 @@ class InlineObject {
 
   /// The suggested changes to the inline object properties, keyed by suggestion
   /// ID.
-  core.Map<core.String, SuggestedInlineObjectProperties>?
+  core.Map<core.String, SuggestedInlineObjectProperties?>?
       suggestedInlineObjectPropertiesChanges;
 
   /// The suggested insertion ID.
@@ -2768,7 +2768,7 @@ class InlineObjectElement {
 
   /// The suggested text style changes to this InlineObject, keyed by suggestion
   /// ID.
-  core.Map<core.String, SuggestedTextStyle>? suggestedTextStyleChanges;
+  core.Map<core.String, SuggestedTextStyle?>? suggestedTextStyleChanges;
 
   /// The text style of this InlineObjectElement.
   ///
@@ -3330,7 +3330,7 @@ class List {
   core.String? suggestedInsertionId;
 
   /// The suggested changes to the list properties, keyed by suggestion ID.
-  core.Map<core.String, SuggestedListProperties>?
+  core.Map<core.String, SuggestedListProperties?>?
       suggestedListPropertiesChanges;
 
   List();
@@ -3997,7 +3997,7 @@ class PageBreak {
 
   /// The suggested text style changes to this PageBreak, keyed by suggestion
   /// ID.
-  core.Map<core.String, SuggestedTextStyle>? suggestedTextStyleChanges;
+  core.Map<core.String, SuggestedTextStyle?>? suggestedTextStyleChanges;
 
   /// The text style of this PageBreak.
   ///
@@ -4068,16 +4068,16 @@ class Paragraph {
   core.List<core.String>? positionedObjectIds;
 
   /// The suggested changes to this paragraph's bullet.
-  core.Map<core.String, SuggestedBullet>? suggestedBulletChanges;
+  core.Map<core.String, SuggestedBullet?>? suggestedBulletChanges;
 
   /// The suggested paragraph style changes to this paragraph, keyed by
   /// suggestion ID.
-  core.Map<core.String, SuggestedParagraphStyle>?
+  core.Map<core.String, SuggestedParagraphStyle?>?
       suggestedParagraphStyleChanges;
 
   /// The IDs of the positioned objects that are suggested to be attached to
   /// this paragraph, keyed by suggestion ID.
-  core.Map<core.String, ObjectReferences>? suggestedPositionedObjectIds;
+  core.Map<core.String, ObjectReferences?>? suggestedPositionedObjectIds;
 
   Paragraph();
 
@@ -4777,7 +4777,7 @@ class PositionedObject {
 
   /// The suggested changes to the positioned object properties, keyed by
   /// suggestion ID.
-  core.Map<core.String, SuggestedPositionedObjectProperties>?
+  core.Map<core.String, SuggestedPositionedObjectProperties?>?
       suggestedPositionedObjectPropertiesChanges;
 
   PositionedObject();
@@ -6624,7 +6624,7 @@ class TableCell {
   core.List<core.String>? suggestedInsertionIds;
 
   /// The suggested changes to the table cell style, keyed by suggestion ID.
-  core.Map<core.String, SuggestedTableCellStyle>?
+  core.Map<core.String, SuggestedTableCellStyle?>?
       suggestedTableCellStyleChanges;
 
   /// The style of the cell.
@@ -7152,7 +7152,7 @@ class TableRow {
   core.List<core.String>? suggestedInsertionIds;
 
   /// The suggested style changes to this row, keyed by suggestion ID.
-  core.Map<core.String, SuggestedTableRowStyle>? suggestedTableRowStyleChanges;
+  core.Map<core.String, SuggestedTableRowStyle?>? suggestedTableRowStyleChanges;
 
   /// The contents and style of each cell in this row.
   ///
@@ -7314,7 +7314,7 @@ class TextRun {
   core.List<core.String>? suggestedInsertionIds;
 
   /// The suggested text style changes to this run, keyed by suggestion ID.
-  core.Map<core.String, SuggestedTextStyle>? suggestedTextStyleChanges;
+  core.Map<core.String, SuggestedTextStyle?>? suggestedTextStyleChanges;
 
   /// The text style of this run.
   TextStyle? textStyle;

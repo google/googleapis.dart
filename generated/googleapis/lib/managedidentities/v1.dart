@@ -1267,7 +1267,7 @@ class Domain {
   /// Resource labels that can contain user-provided metadata.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// Locations where domain needs to be provisioned.
   ///
@@ -1710,7 +1710,7 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
   /// arbitrary strings provided by the user.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The MaintenancePolicies that have been attached to the instance.
   ///
@@ -1720,12 +1720,12 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
   /// go/cloud-saas-mw-ug.
   ///
   /// Deprecated.
-  core.Map<core.String, core.String>? maintenancePolicyNames;
+  core.Map<core.String, core.String?>? maintenancePolicyNames;
 
   /// The MaintenanceSchedule contains the scheduling information of published
   /// maintenance schedule with same key as software_versions.
   core.Map<core.String,
-          GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule>?
+          GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule?>?
       maintenanceSchedules;
 
   /// The MaintenanceSettings associated with instance.
@@ -1746,7 +1746,7 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
   /// See go/get-instance-metadata.
   ///
   /// Output only.
-  core.Map<core.String, core.String>? producerMetadata;
+  core.Map<core.String, core.String?>? producerMetadata;
 
   /// The list of data plane resources provisioned for this instance, e.g.
   /// compute VMs.
@@ -1776,7 +1776,7 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
   /// Software versions that are used to deploy this instance.
   ///
   /// This can be mutated by rollout services.
-  core.Map<core.String, core.String>? softwareVersions;
+  core.Map<core.String, core.String?>? softwareVersions;
 
   /// Current lifecycle state of the resource (e.g. if it's being created or
   /// ready to use).
@@ -2016,7 +2016,7 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings {
   /// MaintenancePolicy.name.
   ///
   /// Optional.
-  core.Map<core.String, MaintenancePolicy>? maintenancePolicies;
+  core.Map<core.String, MaintenancePolicy?>? maintenancePolicies;
 
   GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings();
 
@@ -2118,7 +2118,7 @@ class GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility {
   /// Eligibility Exporter log and the metric for the SLI in question will not
   /// be emitted.
   core.Map<core.String,
-          GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility>?
+          GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility?>?
       eligibilities;
 
   GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility();
@@ -2474,7 +2474,7 @@ class Location {
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The canonical id for this location.
   ///
@@ -2487,7 +2487,7 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
@@ -2554,7 +2554,7 @@ class MaintenancePolicy {
   /// arbitrary strings provided by the user.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// MaintenancePolicy name using the form:
   /// `projects/{project_id}/locations/{location_id}/maintenancePolicies/{maintenance_policy_id}`
@@ -2675,7 +2675,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -2695,7 +2695,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   Operation();
 
@@ -3067,7 +3067,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -3083,7 +3083,7 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,

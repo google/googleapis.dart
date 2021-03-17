@@ -1091,7 +1091,7 @@ class GoogleApiHttpBody {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? extensions;
+  core.List<core.Map<core.String, core.Object?>>? extensions;
 
   GoogleApiHttpBody();
 
@@ -1104,7 +1104,7 @@ class GoogleApiHttpBody {
     }
     if (_json.containsKey('extensions')) {
       extensions = (_json['extensions'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
@@ -1172,7 +1172,7 @@ class GoogleCloudRetailLoggingErrorLog {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? requestPayload;
+  core.Map<core.String, core.Object?>? requestPayload;
 
   /// The API response payload, represented as a protocol buffer.
   ///
@@ -1185,7 +1185,7 @@ class GoogleCloudRetailLoggingErrorLog {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? responsePayload;
+  core.Map<core.String, core.Object?>? responsePayload;
 
   /// The service context in which this error has occurred.
   GoogleCloudRetailLoggingServiceContext? serviceContext;
@@ -1881,7 +1881,7 @@ class GoogleCloudRetailV2PredictRequest {
   /// a letter, and must end with a letter or digit. * No more than 64 labels
   /// can be associated with a given request. See https://goo.gl/xmQnxf for more
   /// information on and examples of labels.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// Maximum number of results to return per page.
   ///
@@ -1907,7 +1907,7 @@ class GoogleCloudRetailV2PredictRequest {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? params;
+  core.Map<core.String, core.Object?>? params;
 
   /// Context about the user, what they are looking at and what action they took
   /// to trigger the predict request.
@@ -2040,7 +2040,7 @@ class GoogleCloudRetailV2PredictResponsePredictionResult {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   GoogleCloudRetailV2PredictResponsePredictionResult();
 
@@ -2138,7 +2138,7 @@ class GoogleCloudRetailV2Product {
   /// Type.VARIANT. * Max indexable entries count: 150 by default; 40 for
   /// Type.VARIANT. * Max searchable entries count: 30. * The key must be a
   /// UTF-8 encoded string with a length limit of 128 characters.
-  core.Map<core.String, GoogleCloudRetailV2CustomAttribute>? attributes;
+  core.Map<core.String, GoogleCloudRetailV2CustomAttribute?>? attributes;
 
   /// The online availability of the Product.
   ///
@@ -2734,7 +2734,7 @@ class GoogleCloudRetailV2UserEvent {
   /// recommendation, an example of extra user information is traffic_channel,
   /// i.e. how user arrives at the site. Users can arrive at the site by coming
   /// to the site directly, or coming through Google search, and etc.
-  core.Map<core.String, GoogleCloudRetailV2CustomAttribute>? attributes;
+  core.Map<core.String, GoogleCloudRetailV2CustomAttribute?>? attributes;
 
   /// Highly recommended for user events that are the result of
   /// PredictionService.Predict.
@@ -4226,7 +4226,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -4246,7 +4246,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   GoogleLongrunningOperation();
 
@@ -4322,7 +4322,7 @@ class GoogleRpcStatus {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -4338,7 +4338,7 @@ class GoogleRpcStatus {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,

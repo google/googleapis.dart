@@ -390,7 +390,7 @@ class LoginProfile {
   core.List<PosixAccount>? posixAccounts;
 
   /// A map from SSH public key fingerprint to the associated key object.
-  core.Map<core.String, SshPublicKey>? sshPublicKeys;
+  core.Map<core.String, SshPublicKey?>? sshPublicKeys;
 
   LoginProfile();
 

@@ -2670,7 +2670,7 @@ class GameServerCluster {
   /// The labels associated with this game server cluster.
   ///
   /// Each label is a key-value pair.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The resource name of the game server cluster, in the following form:
   /// `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`.
@@ -2777,7 +2777,7 @@ class GameServerConfig {
   /// The labels associated with this game server config.
   ///
   /// Each label is a key-value pair.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The resource name of the game server config, in the following form:
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`.
@@ -2887,7 +2887,7 @@ class GameServerDeployment {
   /// The labels associated with this game server deployment.
   ///
   /// Each label is a key-value pair.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The resource name of the game server deployment, in the following form:
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`.
@@ -3044,7 +3044,7 @@ class GkeClusterReference {
 /// The label selector, used to group labels on the resources.
 class LabelSelector {
   /// Resource labels for this selector.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   LabelSelector();
 
@@ -3291,7 +3291,7 @@ class Location {
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The canonical id for this location.
   ///
@@ -3304,7 +3304,7 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
@@ -3406,7 +3406,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -3426,7 +3426,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   Operation();
 
@@ -3492,7 +3492,7 @@ class OperationMetadata {
   /// the value includes an error code and error message.
   ///
   /// Output only.
-  core.Map<core.String, OperationStatus>? operationStatus;
+  core.Map<core.String, OperationStatus?>? operationStatus;
 
   /// Identifies whether the user has requested cancellation of the operation.
   ///
@@ -3915,7 +3915,7 @@ class Realm {
   /// The labels associated with this realm.
   ///
   /// Each label is a key-value pair.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The resource name of the realm, in the following form:
   /// `projects/{project}/locations/{location}/realms/{realm}`.
@@ -4282,7 +4282,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -4298,7 +4298,7 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,

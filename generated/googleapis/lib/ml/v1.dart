@@ -2265,7 +2265,7 @@ class GoogleApiHttpBody {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? extensions;
+  core.List<core.Map<core.String, core.Object?>>? extensions;
 
   GoogleApiHttpBody();
 
@@ -2278,7 +2278,7 @@ class GoogleApiHttpBody {
     }
     if (_json.containsKey('extensions')) {
       extensions = (_json['extensions'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
@@ -3614,7 +3614,7 @@ class GoogleCloudMlV1HyperparameterOutput {
   GoogleCloudMlV1HyperparameterOutputHyperparameterMetric? finalMetric;
 
   /// The hyperparameters given to this trial.
-  core.Map<core.String, core.String>? hyperparameters;
+  core.Map<core.String, core.String?>? hyperparameters;
 
   /// True if the trial is stopped early.
   core.bool? isTrialStoppedEarly;
@@ -3916,7 +3916,7 @@ class GoogleCloudMlV1Job {
   /// documentation on using labels.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// Input parameters to create a prediction job.
   GoogleCloudMlV1PredictionInput? predictionInput;
@@ -4395,7 +4395,7 @@ class GoogleCloudMlV1Model {
   /// documentation on using labels.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The name specified for the model when it was created.
   ///
@@ -4505,7 +4505,7 @@ class GoogleCloudMlV1OperationMetadata {
 
   /// The user labels, inherited from the model or the model version being
   /// operated on.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// Contains the name of the model associated with the operation.
   core.String? modelName;
@@ -6255,7 +6255,7 @@ class GoogleCloudMlV1Version {
   /// documentation on using labels.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The \[AI Platform (Unified)
   /// `Model`\](https://cloud.google.com/ai-platform-unified/docs/reference/rest/v1beta1/projects.locations.models)
@@ -6986,7 +6986,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -7006,7 +7006,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   GoogleLongrunningOperation();
 
@@ -7082,7 +7082,7 @@ class GoogleRpcStatus {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -7098,7 +7098,7 @@ class GoogleRpcStatus {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,

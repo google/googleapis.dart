@@ -684,7 +684,7 @@ class GoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse {
   /// Each PlayableLocation object corresponds to a game_object_type specified
   /// in the request.
   core.Map<core.String,
-          GoogleMapsPlayablelocationsV3SamplePlayableLocationList>?
+          GoogleMapsPlayablelocationsV3SamplePlayableLocationList?>?
       locationsPerGameObjectType;
 
   /// Specifies the "time-to-live" for the set of playable locations.

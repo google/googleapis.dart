@@ -1388,7 +1388,7 @@ class BatchCreateNotesRequest {
   /// Max allowed length is 1000.
   ///
   /// Required.
-  core.Map<core.String, Note>? notes;
+  core.Map<core.String, Note?>? notes;
 
   BatchCreateNotesRequest();
 
@@ -1591,7 +1591,7 @@ class BuildProvenance {
   ///
   /// This is a catch-all field where build providers can enter any desired
   /// additional details.
-  core.Map<core.String, core.String>? buildOptions;
+  core.Map<core.String, core.String?>? buildOptions;
 
   /// Version string of the builder at the time this build was executed.
   core.String? builderVersion;
@@ -1786,7 +1786,7 @@ class BuildSignature {
 ///
 /// The suggested fields are "stderr", "stdout", and "return-value".
 class ByProducts {
-  core.Map<core.String, core.String>? customValues;
+  core.Map<core.String, core.String?>? customValues;
 
   ByProducts();
 
@@ -2496,7 +2496,7 @@ class Empty {
 ///
 /// The suggested fields are "variables", "filesystem", and "workdir".
 class Environment {
-  core.Map<core.String, core.String>? customValues;
+  core.Map<core.String, core.String?>? customValues;
 
   Environment();
 
@@ -4632,7 +4632,7 @@ class Source {
   /// contain the hash values for those files. If the build source came in a
   /// single package such as a gzipped tarfile (.tar.gz), the FileHash will be
   /// for the single path to that file.
-  core.Map<core.String, FileHashes>? fileHashes;
+  core.Map<core.String, FileHashes?>? fileHashes;
 
   Source();
 
@@ -4690,7 +4690,7 @@ class SourceContext {
   GitSourceContext? git;
 
   /// Labels with user defined metadata.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   SourceContext();
 
@@ -4742,7 +4742,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -4758,7 +4758,7 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,

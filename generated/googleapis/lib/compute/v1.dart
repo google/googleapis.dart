@@ -41468,7 +41468,7 @@ class AcceleratorTypeAggregatedList {
   core.String? id;
 
   /// A list of AcceleratorTypesScopedList resources.
-  core.Map<core.String, AcceleratorTypesScopedList>? items;
+  core.Map<core.String, AcceleratorTypesScopedList?>? items;
 
   /// Type of resource.
   ///
@@ -42342,7 +42342,7 @@ class AddressAggregatedList {
   core.String? id;
 
   /// A list of AddressesScopedList resources.
-  core.Map<core.String, AddressesScopedList>? items;
+  core.Map<core.String, AddressesScopedList?>? items;
 
   /// Type of resource.
   ///
@@ -43220,7 +43220,7 @@ class AttachedDiskInitializeParams {
   ///
   /// These can be later modified by the disks.setLabels method. This field is
   /// only applicable for persistent disks.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// Specifies which action to take on instance update with this disk.
   ///
@@ -43809,7 +43809,7 @@ class AutoscalerAggregatedList {
   core.String? id;
 
   /// A list of AutoscalersScopedList resources.
-  core.Map<core.String, AutoscalersScopedList>? items;
+  core.Map<core.String, AutoscalersScopedList?>? items;
 
   /// Type of resource.
   ///
@@ -45838,7 +45838,7 @@ class BackendServiceAggregatedList {
   core.String? id;
 
   /// A list of BackendServicesScopedList resources.
-  core.Map<core.String, BackendServicesScopedList>? items;
+  core.Map<core.String, BackendServicesScopedList?>? items;
 
   /// Type of resource.
   core.String? kind;
@@ -46099,7 +46099,7 @@ class BackendServiceFailoverPolicy {
 
 class BackendServiceGroupHealth {
   /// Metadata defined as annotations on the network endpoint group.
-  core.Map<core.String, core.String>? annotations;
+  core.Map<core.String, core.String?>? annotations;
 
   /// Health state of the backend instances or endpoints in requested instance
   /// or network endpoint group, determined based on configured health checks.
@@ -46705,7 +46705,7 @@ class BulkInsertInstanceResource {
   ///
   /// Keys of this map specify requested instance names. Can be empty if
   /// name_pattern is used.
-  core.Map<core.String, BulkInsertInstanceResourcePerInstanceProperties>?
+  core.Map<core.String, BulkInsertInstanceResourcePerInstanceProperties?>?
       perInstanceProperties;
 
   /// Specifies the instance template from which to create instances.
@@ -47262,7 +47262,7 @@ class CommitmentAggregatedList {
   core.String? id;
 
   /// A list of CommitmentsScopedList resources.
-  core.Map<core.String, CommitmentsScopedList>? items;
+  core.Map<core.String, CommitmentsScopedList?>? items;
 
   /// Type of resource.
   ///
@@ -48199,7 +48199,7 @@ class Disk {
   /// Labels to apply to this disk.
   ///
   /// These can be later modified by the setLabels method.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// Last attach timestamp in RFC3339 text format.
   ///
@@ -48729,7 +48729,7 @@ class DiskAggregatedList {
   core.String? id;
 
   /// A list of DisksScopedList resources.
-  core.Map<core.String, DisksScopedList>? items;
+  core.Map<core.String, DisksScopedList?>? items;
 
   /// Type of resource.
   ///
@@ -49355,7 +49355,7 @@ class DiskTypeAggregatedList {
   core.String? id;
 
   /// A list of DiskTypesScopedList resources.
-  core.Map<core.String, DiskTypesScopedList>? items;
+  core.Map<core.String, DiskTypesScopedList?>? items;
 
   /// Type of resource.
   ///
@@ -50453,7 +50453,7 @@ class ExternalVpnGateway {
   ///
   /// These can only be added or modified by the setLabels method. Each label
   /// key/value pair must comply with RFC1035. Label values may be empty.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// Name of the resource.
   ///
@@ -52252,7 +52252,7 @@ class ForwardingRule {
   ///
   /// These can only be added or modified by the setLabels method. Each label
   /// key/value pair must comply with RFC1035. Label values may be empty.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// Specifies the forwarding rule type.
   ///
@@ -52708,7 +52708,7 @@ class ForwardingRuleAggregatedList {
   core.String? id;
 
   /// A list of ForwardingRulesScopedList resources.
-  core.Map<core.String, ForwardingRulesScopedList>? items;
+  core.Map<core.String, ForwardingRulesScopedList?>? items;
 
   /// Type of resource.
   ///
@@ -53359,7 +53359,7 @@ class GlobalSetLabelsRequest {
   /// letter, or digit, except the last character, which cannot be a dash. For
   /// example, "webserver-frontend": "images". A label value can also be empty
   /// (e.g. "my-label": "").
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   GlobalSetLabelsRequest();
 
@@ -54806,7 +54806,7 @@ class HealthChecksAggregatedList {
   core.String? id;
 
   /// A list of HealthChecksScopedList resources.
-  core.Map<core.String, HealthChecksScopedList>? items;
+  core.Map<core.String, HealthChecksScopedList?>? items;
 
   /// Type of resource.
   core.String? kind;
@@ -55025,7 +55025,7 @@ class HealthChecksScopedList {
 
 class HealthStatus {
   /// Metadata defined as annotations for network endpoint.
-  core.Map<core.String, core.String>? annotations;
+  core.Map<core.String, core.String?>? annotations;
 
   /// Health state of the instance.
   /// Possible string values are:
@@ -56871,7 +56871,7 @@ class Image {
   /// Labels to apply to this image.
   ///
   /// These can be later modified by the setLabels method.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// Integer license codes indicating which licenses are attached to this
   /// image.
@@ -57509,7 +57509,7 @@ class Instance {
   /// Labels to apply to this instance.
   ///
   /// These can be later modified by the setLabels method.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// Last start timestamp in RFC3339 text format.
   ///
@@ -57993,7 +57993,7 @@ class InstanceAggregatedList {
   core.String? id;
 
   /// An object that contains a list of instances scoped by zone.
-  core.Map<core.String, InstancesScopedList>? items;
+  core.Map<core.String, InstancesScopedList?>? items;
 
   /// Type of resource.
   ///
@@ -58374,7 +58374,7 @@ class InstanceGroupAggregatedList {
   core.String? id;
 
   /// A list of InstanceGroupsScopedList resources.
-  core.Map<core.String, InstanceGroupsScopedList>? items;
+  core.Map<core.String, InstanceGroupsScopedList?>? items;
 
   /// The resource type, which is always compute#instanceGroupAggregatedList for
   /// aggregated lists of instance groups.
@@ -59157,7 +59157,7 @@ class InstanceGroupManagerAggregatedList {
   core.String? id;
 
   /// A list of InstanceGroupManagersScopedList resources.
-  core.Map<core.String, InstanceGroupManagersScopedList>? items;
+  core.Map<core.String, InstanceGroupManagersScopedList?>? items;
 
   /// The resource type, which is always
   /// compute#instanceGroupManagerAggregatedList for an aggregated list of
@@ -61460,7 +61460,7 @@ class InstanceProperties {
   core.List<AcceleratorConfig>? guestAccelerators;
 
   /// Labels to apply to instances that are created from these properties.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The machine type to use for instances that are created from these
   /// properties.
@@ -62294,7 +62294,7 @@ class InstancesSetLabelsRequest {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   InstancesSetLabelsRequest();
 
@@ -63245,7 +63245,7 @@ class InterconnectAttachmentAggregatedList {
   core.String? id;
 
   /// A list of InterconnectAttachmentsScopedList resources.
-  core.Map<core.String, InterconnectAttachmentsScopedList>? items;
+  core.Map<core.String, InterconnectAttachmentsScopedList?>? items;
 
   /// Type of resource.
   ///
@@ -65254,7 +65254,7 @@ class LocationPolicy {
   ///
   /// Currently only zone names are supported and must be represented as valid
   /// internal URLs, like: zones/us-central1-a.
-  core.Map<core.String, LocationPolicyLocation>? locations;
+  core.Map<core.String, LocationPolicyLocation?>? locations;
 
   LocationPolicy();
 
@@ -65822,7 +65822,7 @@ class MachineTypeAggregatedList {
   core.String? id;
 
   /// A list of MachineTypesScopedList resources.
-  core.Map<core.String, MachineTypesScopedList>? items;
+  core.Map<core.String, MachineTypesScopedList?>? items;
 
   /// Type of resource.
   ///
@@ -66925,7 +66925,7 @@ class Network {
 /// The network endpoint.
 class NetworkEndpoint {
   /// Metadata defined as annotations on the network endpoint.
-  core.Map<core.String, core.String>? annotations;
+  core.Map<core.String, core.String?>? annotations;
 
   /// Optional fully qualified domain name of network endpoint.
   ///
@@ -67003,7 +67003,7 @@ class NetworkEndpoint {
 /// {$api_version}.regionNetworkEndpointGroups ==)
 class NetworkEndpointGroup {
   /// Metadata defined as annotations on the network endpoint group.
-  core.Map<core.String, core.String>? annotations;
+  core.Map<core.String, core.String?>? annotations;
 
   /// Only valid when networkEndpointType is "SERVERLESS".
   ///
@@ -67305,7 +67305,7 @@ class NetworkEndpointGroupAggregatedList {
   core.String? id;
 
   /// A list of NetworkEndpointGroupsScopedList resources.
-  core.Map<core.String, NetworkEndpointGroupsScopedList>? items;
+  core.Map<core.String, NetworkEndpointGroupsScopedList?>? items;
 
   /// The resource type, which is always
   /// compute#networkEndpointGroupAggregatedList for aggregated lists of network
@@ -69129,7 +69129,7 @@ class NodeGroupAggregatedList {
   core.String? id;
 
   /// A list of NodeGroupsScopedList resources.
-  core.Map<core.String, NodeGroupsScopedList>? items;
+  core.Map<core.String, NodeGroupsScopedList?>? items;
 
   /// Type of resource.Always compute#nodeGroupAggregatedList for aggregated
   /// lists of node groups.
@@ -70009,7 +70009,7 @@ class NodeTemplate {
 
   /// Labels to use for node affinity, which will be used in instance
   /// scheduling.
-  core.Map<core.String, core.String>? nodeAffinityLabels;
+  core.Map<core.String, core.String?>? nodeAffinityLabels;
 
   /// The node type to use for nodes group that are created from this template.
   core.String? nodeType;
@@ -70272,7 +70272,7 @@ class NodeTemplateAggregatedList {
   core.String? id;
 
   /// A list of NodeTemplatesScopedList resources.
-  core.Map<core.String, NodeTemplatesScopedList>? items;
+  core.Map<core.String, NodeTemplatesScopedList?>? items;
 
   /// Type of resource.Always compute#nodeTemplateAggregatedList for aggregated
   /// lists of node templates.
@@ -70958,7 +70958,7 @@ class NodeTypeAggregatedList {
   core.String? id;
 
   /// A list of NodeTypesScopedList resources.
-  core.Map<core.String, NodeTypesScopedList>? items;
+  core.Map<core.String, NodeTypesScopedList?>? items;
 
   /// Type of resource.Always compute#nodeTypeAggregatedList for aggregated
   /// lists of node types.
@@ -72309,7 +72309,7 @@ class OperationAggregatedList {
   /// A map of scoped operation lists.
   ///
   /// Output only.
-  core.Map<core.String, OperationsScopedList>? items;
+  core.Map<core.String, OperationsScopedList?>? items;
 
   /// Type of resource.
   ///
@@ -73159,7 +73159,7 @@ class PacketMirroringAggregatedList {
   core.String? id;
 
   /// A list of PacketMirroring resources.
-  core.Map<core.String, PacketMirroringsScopedList>? items;
+  core.Map<core.String, PacketMirroringsScopedList?>? items;
 
   /// Type of resource.
   core.String? kind;
@@ -74242,10 +74242,10 @@ class PreservedState {
   /// Preserved disks defined for this instance.
   ///
   /// This map is keyed with the device names of the disks.
-  core.Map<core.String, PreservedStatePreservedDisk>? disks;
+  core.Map<core.String, PreservedStatePreservedDisk?>? disks;
 
   /// Preserved metadata defined for this instance.
-  core.Map<core.String, core.String>? metadata;
+  core.Map<core.String, core.String?>? metadata;
 
   PreservedState();
 
@@ -76721,7 +76721,7 @@ class RegionSetLabelsRequest {
   }
 
   /// The labels to set for this resource.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   RegionSetLabelsRequest();
 
@@ -77170,7 +77170,7 @@ class ReservationAggregatedList {
   core.String? id;
 
   /// A list of Allocation resources.
-  core.Map<core.String, ReservationsScopedList>? items;
+  core.Map<core.String, ReservationsScopedList?>? items;
 
   /// Type of resource.
   core.String? kind;
@@ -78056,7 +78056,7 @@ class ResourcePolicyAggregatedList {
   core.String? id;
 
   /// A list of ResourcePolicy resources.
-  core.Map<core.String, ResourcePoliciesScopedList>? items;
+  core.Map<core.String, ResourcePoliciesScopedList?>? items;
 
   /// Type of resource.
   core.String? kind;
@@ -78714,7 +78714,7 @@ class ResourcePolicySnapshotSchedulePolicySnapshotProperties {
   ///
   /// These can be later modified by the setLabels method. Label values may be
   /// empty.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// Cloud Storage bucket storage location of the auto snapshot (regional or
   /// multi-regional).
@@ -79602,7 +79602,7 @@ class RouterAggregatedList {
   core.String? id;
 
   /// A list of Router resources.
-  core.Map<core.String, RoutersScopedList>? items;
+  core.Map<core.String, RoutersScopedList?>? items;
 
   /// Type of resource.
   core.String? kind;
@@ -82067,7 +82067,7 @@ class Snapshot {
   ///
   /// These can be later modified by the setLabels method. Label values may be
   /// empty.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// Integer license codes indicating which licenses are attached to this
   /// snapshot.
@@ -82815,7 +82815,7 @@ class SslCertificateAggregatedList {
   core.String? id;
 
   /// A list of SslCertificatesScopedList resources.
-  core.Map<core.String, SslCertificatesScopedList>? items;
+  core.Map<core.String, SslCertificatesScopedList?>? items;
 
   /// Type of resource.
   ///
@@ -83084,7 +83084,7 @@ class SslCertificateManagedSslCertificate {
   /// resource.
   ///
   /// Output only.
-  core.Map<core.String, core.String>? domainStatus;
+  core.Map<core.String, core.String?>? domainStatus;
 
   /// The domains for which a managed SSL certificate will be generated.
   ///
@@ -83830,7 +83830,7 @@ class StatefulPolicyPreservedState {
   /// update, etc.
   ///
   /// This map is keyed with the device names of the disks.
-  core.Map<core.String, StatefulPolicyPreservedStateDiskDevice>? disks;
+  core.Map<core.String, StatefulPolicyPreservedStateDiskDevice?>? disks;
 
   StatefulPolicyPreservedState();
 
@@ -84278,7 +84278,7 @@ class SubnetworkAggregatedList {
   core.String? id;
 
   /// A list of SubnetworksScopedList resources.
-  core.Map<core.String, SubnetworksScopedList>? items;
+  core.Map<core.String, SubnetworksScopedList?>? items;
 
   /// Type of resource.
   ///
@@ -85593,7 +85593,7 @@ class TargetHttpProxyAggregatedList {
   core.String? id;
 
   /// A list of TargetHttpProxiesScopedList resources.
-  core.Map<core.String, TargetHttpProxiesScopedList>? items;
+  core.Map<core.String, TargetHttpProxiesScopedList?>? items;
 
   /// Type of resource.
   ///
@@ -86362,7 +86362,7 @@ class TargetHttpsProxyAggregatedList {
   core.String? id;
 
   /// A list of TargetHttpsProxiesScopedList resources.
-  core.Map<core.String, TargetHttpsProxiesScopedList>? items;
+  core.Map<core.String, TargetHttpsProxiesScopedList?>? items;
 
   /// Type of resource.
   ///
@@ -86866,7 +86866,7 @@ class TargetInstanceAggregatedList {
   core.String? id;
 
   /// A list of TargetInstance resources.
-  core.Map<core.String, TargetInstancesScopedList>? items;
+  core.Map<core.String, TargetInstancesScopedList?>? items;
 
   /// Type of resource.
   core.String? kind;
@@ -87564,7 +87564,7 @@ class TargetPoolAggregatedList {
   core.String? id;
 
   /// A list of TargetPool resources.
-  core.Map<core.String, TargetPoolsScopedList>? items;
+  core.Map<core.String, TargetPoolsScopedList?>? items;
 
   /// Type of resource.
   ///
@@ -89087,7 +89087,7 @@ class TargetVpnGatewayAggregatedList {
   core.String? id;
 
   /// A list of TargetVpnGateway resources.
-  core.Map<core.String, TargetVpnGatewaysScopedList>? items;
+  core.Map<core.String, TargetVpnGatewaysScopedList?>? items;
 
   /// Type of resource.
   ///
@@ -90345,7 +90345,7 @@ class UrlMapsAggregatedList {
   core.String? id;
 
   /// A list of UrlMapsScopedList resources.
-  core.Map<core.String, UrlMapsScopedList>? items;
+  core.Map<core.String, UrlMapsScopedList?>? items;
 
   /// Type of resource.
   core.String? kind;
@@ -91279,7 +91279,7 @@ class VpnGateway {
   ///
   /// These can only be added or modified by the setLabels method. Each label
   /// key/value pair must comply with RFC1035. Label values may be empty.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// Name of the resource.
   ///
@@ -91491,7 +91491,7 @@ class VpnGatewayAggregatedList {
   core.String? id;
 
   /// A list of VpnGateway resources.
-  core.Map<core.String, VpnGatewaysScopedList>? items;
+  core.Map<core.String, VpnGatewaysScopedList?>? items;
 
   /// Type of resource.
   ///
@@ -92499,7 +92499,7 @@ class VpnTunnelAggregatedList {
   core.String? id;
 
   /// A list of VpnTunnelsScopedList resources.
-  core.Map<core.String, VpnTunnelsScopedList>? items;
+  core.Map<core.String, VpnTunnelsScopedList?>? items;
 
   /// Type of resource.
   ///
@@ -93572,7 +93572,7 @@ class ZoneSetLabelsRequest {
   }
 
   /// The labels to set for this resource.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   ZoneSetLabelsRequest();
 

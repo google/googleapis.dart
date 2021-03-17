@@ -397,7 +397,7 @@ class LighthouseAuditResultV5 {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? details;
+  core.Map<core.String, core.Object?>? details;
 
   /// The value that should be displayed on the UI for this audit.
   core.String? displayValue;
@@ -558,13 +558,13 @@ class LighthouseCategoryV5 {
 /// The Lighthouse result object.
 class LighthouseResultV5 {
   /// Map of audits in the LHR.
-  core.Map<core.String, LighthouseAuditResultV5>? audits;
+  core.Map<core.String, LighthouseAuditResultV5?>? audits;
 
   /// Map of categories in the LHR.
   Categories? categories;
 
   /// Map of category groups in the LHR.
-  core.Map<core.String, CategoryGroupV5>? categoryGroups;
+  core.Map<core.String, CategoryGroupV5?>? categoryGroups;
 
   /// The configuration settings for this LHR.
   ConfigSettings? configSettings;
@@ -714,7 +714,7 @@ class PagespeedApiLoadingExperienceV5 {
   core.String? initialUrl;
 
   /// The map of .
-  core.Map<core.String, UserPageLoadMetricV5>? metrics;
+  core.Map<core.String, UserPageLoadMetricV5?>? metrics;
 
   /// True if the result is an origin fallback from a page, false otherwise.
   core.bool? originFallback;
@@ -1031,7 +1031,7 @@ class RuntimeError {
 /// Message containing Stack Pack information.
 class StackPack {
   /// The stack pack advice strings.
-  core.Map<core.String, core.String>? descriptions;
+  core.Map<core.String, core.String?>? descriptions;
 
   /// The stack pack icon data uri.
   core.String? iconDataURL;

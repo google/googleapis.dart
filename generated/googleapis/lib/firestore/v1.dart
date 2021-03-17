@@ -1760,7 +1760,7 @@ class BatchGetDocumentsResponse {
 /// The request for Firestore.BatchWrite.
 class BatchWriteRequest {
   /// Labels associated with this batch write.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The writes to apply.
   ///
@@ -2078,7 +2078,7 @@ class Document {
   /// character. Some characters, including `` ` ``, must be escaped using a
   /// `\`. For example, `` `x&y` `` represents `x&y` and `` `bak\`tik` ``
   /// represents `` bak`tik ``.
-  core.Map<core.String, Value>? fields;
+  core.Map<core.String, Value?>? fields;
 
   /// The resource name of the document, for example
   /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`.
@@ -3475,7 +3475,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -3495,7 +3495,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   GoogleLongrunningOperation();
 
@@ -3688,7 +3688,7 @@ class ListenRequest {
   Target? addTarget;
 
   /// Labels associated with this target change.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The ID of a target to remove from this stream.
   core.int? removeTarget;
@@ -3786,7 +3786,7 @@ class Location {
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The canonical id for this location.
   ///
@@ -3799,7 +3799,7 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
@@ -3853,7 +3853,7 @@ class MapValue {
   /// expression `__.*__` are reserved. Reserved field names are forbidden
   /// except in certain documented contexts. The map keys, represented as UTF-8,
   /// must not exceed 1,500 bytes and cannot be empty.
-  core.Map<core.String, Value>? fields;
+  core.Map<core.String, Value?>? fields;
 
   MapValue();
 
@@ -4305,7 +4305,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -4321,7 +4321,7 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
@@ -4855,7 +4855,7 @@ class Write {
 /// response containing only an up-to-date token, to use in the next request.
 class WriteRequest {
   /// Labels associated with this write request.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The ID of the write stream to resume.
   ///

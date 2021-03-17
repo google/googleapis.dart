@@ -335,7 +335,7 @@ class Device {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? attributes;
+  core.Map<core.String, core.Object?>? attributes;
 
   /// Custom device attributes stored in Home Graph and provided to your smart
   /// home Action in each
@@ -349,7 +349,7 @@ class Device {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? customData;
+  core.Map<core.String, core.Object?>? customData;
 
   /// Device manufacturer, model, hardware version, and software version.
   DeviceInfo? deviceInfo;
@@ -741,7 +741,7 @@ class QueryResponsePayload {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Map<core.String, core.Object>>? devices;
+  core.Map<core.String, core.Map<core.String, core.Object?>?>? devices;
 
   QueryResponsePayload();
 
@@ -775,7 +775,7 @@ class ReportStateAndNotificationDevice {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? notifications;
+  core.Map<core.String, core.Object?>? notifications;
 
   /// States of devices to update.
   ///
@@ -784,7 +784,7 @@ class ReportStateAndNotificationDevice {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? states;
+  core.Map<core.String, core.Object?>? states;
 
   ReportStateAndNotificationDevice();
 

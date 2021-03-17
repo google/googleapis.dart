@@ -10154,7 +10154,7 @@ class GoogleApiHttpBody {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? extensions;
+  core.List<core.Map<core.String, core.Object?>>? extensions;
 
   GoogleApiHttpBody();
 
@@ -10167,7 +10167,7 @@ class GoogleApiHttpBody {
     }
     if (_json.containsKey('extensions')) {
       extensions = (_json['extensions'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
@@ -10767,7 +10767,7 @@ class GoogleCloudApigeeV1ApiProxyRevision {
   core.String? displayName;
 
   /// Metadata describing the API proxy revision as a key-value map.
-  core.Map<core.String, core.String>? entityMetaDataAsProperties;
+  core.Map<core.String, core.String?>? entityMetaDataAsProperties;
 
   /// Time that the API proxy revision was last modified in milliseconds since
   /// epoch.
@@ -12274,7 +12274,7 @@ class GoogleCloudApigeeV1DebugMask {
   core.String? name;
 
   /// Map of namespaces to URIs.
-  core.Map<core.String, core.String>? namespaces;
+  core.Map<core.String, core.String?>? namespaces;
 
   /// List of JSON paths that specify the JSON elements to be filtered from JSON
   /// request message payloads.
@@ -12806,7 +12806,7 @@ class GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment {
 
 class GoogleCloudApigeeV1DeploymentConfig {
   /// Additional key-value metadata for the deployment.
-  core.Map<core.String, core.String>? attributes;
+  core.Map<core.String, core.String?>? attributes;
 
   /// Base path where the application will be hosted.
   ///
@@ -13405,7 +13405,7 @@ class GoogleCloudApigeeV1EnvironmentConfig {
   core.List<GoogleCloudApigeeV1DeploymentConfig>? deployments;
 
   /// Feature flags inherited from the organization and environment.
-  core.Map<core.String, core.String>? featureFlags;
+  core.Map<core.String, core.String?>? featureFlags;
 
   /// List of flow hooks in the environment.
   core.List<GoogleCloudApigeeV1FlowHookConfig>? flowhooks;
@@ -17171,7 +17171,7 @@ class GoogleCloudApigeeV1SharedFlowRevision {
   core.String? displayName;
 
   /// A Key-Value map of metadata about this shared flow revision.
-  core.Map<core.String, core.String>? entityMetaDataAsProperties;
+  core.Map<core.String, core.String?>? entityMetaDataAsProperties;
 
   /// Time at which this shared flow revision was most recently modified, in
   /// milliseconds since epoch.
@@ -18408,7 +18408,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -18428,7 +18428,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   GoogleLongrunningOperation();
 
@@ -18573,7 +18573,7 @@ class GoogleRpcStatus {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -18589,7 +18589,7 @@ class GoogleRpcStatus {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,

@@ -2874,7 +2874,7 @@ class CreateClusterMetadata {
   /// new cluster by that API call, not this one. Values: information on how
   /// much of a table's data has been copied to the newly-created cluster so
   /// far.
-  core.Map<core.String, TableProgress>? tables;
+  core.Map<core.String, TableProgress?>? tables;
 
   CreateClusterMetadata();
 
@@ -2999,7 +2999,7 @@ class CreateInstanceRequest {
   /// clusters can be specified.
   ///
   /// Required.
-  core.Map<core.String, Cluster>? clusters;
+  core.Map<core.String, Cluster?>? clusters;
 
   /// The instance to create.
   ///
@@ -3427,7 +3427,7 @@ class Instance {
   /// with a given resource. * Keys and values must both be under 128 bytes.
   ///
   /// Required.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The unique name of the instance.
   ///
@@ -3778,7 +3778,7 @@ class Location {
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The canonical id for this location.
   ///
@@ -3791,7 +3791,7 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
@@ -3948,7 +3948,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -3968,7 +3968,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   Operation();
 
@@ -4453,7 +4453,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -4469,7 +4469,7 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
@@ -4502,12 +4502,12 @@ class Table {
   /// `REPLICATION_VIEW`, `FULL`
   ///
   /// Output only.
-  core.Map<core.String, ClusterState>? clusterStates;
+  core.Map<core.String, ClusterState?>? clusterStates;
 
   /// The column families configured for this table, mapped by column family ID.
   ///
   /// Views: `SCHEMA_VIEW`, `FULL`
-  core.Map<core.String, ColumnFamily>? columnFamilies;
+  core.Map<core.String, ColumnFamily?>? columnFamilies;
 
   /// The granularity (i.e. `MILLIS`) at which timestamps are stored in this
   /// table.

@@ -8782,7 +8782,7 @@ class GooglePrivacyDlpV2Finding {
   /// regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. No more than 10 labels
   /// can be associated with a given finding. Examples: * `"environment" :
   /// "production"` * `"pipeline" : "etl"`
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// Confidence of how likely it is that the `info_type` is correct.
   /// Possible string values are:
@@ -9112,7 +9112,7 @@ class GooglePrivacyDlpV2HybridFindingDetails {
   /// expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. No more than 10 labels can be
   /// associated with a given finding. Examples: * `"environment" :
   /// "production"` * `"pipeline" : "etl"`
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// Offset of the row for tables.
   ///
@@ -9268,7 +9268,7 @@ class GooglePrivacyDlpV2HybridOptions {
   /// regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. No more than 10 labels
   /// can be associated with a given finding. Examples: * `"environment" :
   /// "production"` * `"pipeline" : "etl"`
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// These are labels that each inspection request must include within their
   /// 'finding_labels' map.
@@ -13661,7 +13661,7 @@ class GoogleRpcStatus {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -13677,7 +13677,7 @@ class GoogleRpcStatus {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,

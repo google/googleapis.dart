@@ -882,7 +882,7 @@ class GoogleCloudPolicysimulatorV1beta1BindingExplanation {
   /// the binding, the key is `group:product-eng@example.com`, and the
   /// `membership` field in the value is set to `MEMBERSHIP_INCLUDED`.
   core.Map<core.String,
-          GoogleCloudPolicysimulatorV1beta1BindingExplanationAnnotatedMembership>?
+          GoogleCloudPolicysimulatorV1beta1BindingExplanationAnnotatedMembership?>?
       memberships;
 
   /// The relevance of this binding to the overall determination for the entire
@@ -1285,7 +1285,7 @@ class GoogleCloudPolicysimulatorV1beta1ReplayConfig {
   /// inherited through the resource hierarchy, and any policies set on
   /// descendant resources. You do not need to include these policies in the
   /// policy overlay.
-  core.Map<core.String, GoogleIamV1Policy>? policyOverlay;
+  core.Map<core.String, GoogleIamV1Policy?>? policyOverlay;
 
   GoogleCloudPolicysimulatorV1beta1ReplayConfig();
 
@@ -1821,7 +1821,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -1841,7 +1841,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   GoogleLongrunningOperation();
 
@@ -1900,7 +1900,7 @@ class GoogleRpcStatus {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -1916,7 +1916,7 @@ class GoogleRpcStatus {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,

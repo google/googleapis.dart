@@ -959,7 +959,7 @@ class GoogleCloudRedisV1LocationMetadata {
   /// fields when creating a Redis instance.
   ///
   /// Output only.
-  core.Map<core.String, GoogleCloudRedisV1ZoneMetadata>? availableZones;
+  core.Map<core.String, GoogleCloudRedisV1ZoneMetadata?>? availableZones;
 
   GoogleCloudRedisV1LocationMetadata();
 
@@ -1163,7 +1163,7 @@ class Instance {
   core.String? host;
 
   /// Resource labels to represent user provided metadata
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The zone where the instance will be provisioned.
   ///
@@ -1216,7 +1216,7 @@ class Instance {
   /// version 5.0 and newer: * stream-node-max-bytes * stream-node-max-entries
   ///
   /// Optional.
-  core.Map<core.String, core.String>? redisConfigs;
+  core.Map<core.String, core.String?>? redisConfigs;
 
   /// The version of Redis software.
   ///
@@ -1540,7 +1540,7 @@ class Location {
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// Resource ID for the region.
   ///
@@ -1557,7 +1557,7 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// Full resource name for the region.
   ///
@@ -1628,7 +1628,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -1648,7 +1648,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   Operation();
 
@@ -1726,7 +1726,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -1742,7 +1742,7 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,

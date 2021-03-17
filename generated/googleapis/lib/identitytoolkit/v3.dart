@@ -1175,7 +1175,7 @@ class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
   /// The following parameters are reserved for server so that they cannot be
   /// customized by clients: client_id, response_type, scope, redirect_uri,
   /// state, oauth_token.
-  core.Map<core.String, core.String>? customParameter;
+  core.Map<core.String, core.String?>? customParameter;
 
   /// The hosted domain to restrict sign-in to accounts at that domain for
   /// Google Apps hosted accounts.

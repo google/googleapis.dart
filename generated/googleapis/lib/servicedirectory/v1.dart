@@ -1355,7 +1355,7 @@ class Endpoint {
   /// Directory.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? annotations;
+  core.Map<core.String, core.String?>? annotations;
 
   /// The resource name for the endpoint in the format `projects / * /locations
   /// / * /namespaces / * /services / * /endpoints / * `.
@@ -1645,7 +1645,7 @@ class Location {
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The canonical id for this location.
   ///
@@ -1658,7 +1658,7 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
@@ -1715,7 +1715,7 @@ class Namespace {
   /// keys and values can be no longer than 63 characters.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The resource name for the namespace in the format `projects / * /locations
   /// / * /namespaces / * `.
@@ -1946,7 +1946,7 @@ class Service {
   /// the same syntax and read/write to the same location in Service Directory.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? annotations;
+  core.Map<core.String, core.String?>? annotations;
 
   /// Endpoints associated with this service.
   ///

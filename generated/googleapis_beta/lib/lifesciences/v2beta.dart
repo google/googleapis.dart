@@ -486,7 +486,7 @@ class Action {
   /// `GOOGLE_LAST_EXIT_STATUS` will be set to the exit status of the last
   /// non-background action that executed. This can be used by workflow engine
   /// authors to determine whether an individual action has succeeded or failed.
-  core.Map<core.String, core.String>? environment;
+  core.Map<core.String, core.String?>? environment;
 
   /// Normally, a non-zero exit status causes the pipeline to fail.
   ///
@@ -516,7 +516,7 @@ class Action {
   /// actions (for example, to indicate what sort of action they perform, such
   /// as localization or debugging). They are returned in the operation
   /// metadata, but are otherwise ignored.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// A list of mounts to make available to the action.
   ///
@@ -543,7 +543,7 @@ class Action {
   /// than 65536. If it is zero, an unused random port is assigned. To determine
   /// the resulting port number, consult the `ContainerStartedEvent` in the
   /// operation metadata.
-  core.Map<core.String, core.int>? portMappings;
+  core.Map<core.String, core.int?>? portMappings;
 
   /// Exposes all ports specified by `EXPOSE` statements in the container.
   ///
@@ -728,7 +728,7 @@ class ContainerStartedEvent {
   ///
   /// This set will contain any ports exposed using the `PUBLISH_EXPOSED_PORTS`
   /// flag as well as any specified in the `Action` definition.
-  core.Map<core.String, core.int>? portMappings;
+  core.Map<core.String, core.int?>? portMappings;
 
   ContainerStartedEvent();
 
@@ -1218,7 +1218,7 @@ class Location {
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The canonical id for this location.
   ///
@@ -1231,7 +1231,7 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
@@ -1291,7 +1291,7 @@ class Metadata {
   core.List<Event>? events;
 
   /// The user-defined labels associated with this operation.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The pipeline this operation represents.
   Pipeline? pipeline;
@@ -1467,7 +1467,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name for the operation.
   ///
@@ -1479,7 +1479,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   Operation();
 
@@ -1574,7 +1574,7 @@ class Pipeline {
   /// Each action can also specify additional environment variables but cannot
   /// delete an entry from this map (though they can overwrite it with a
   /// different value).
-  core.Map<core.String, core.String>? environment;
+  core.Map<core.String, core.String?>? environment;
 
   /// The resources required for execution.
   Resources? resources;
@@ -1713,7 +1713,7 @@ class RunPipelineRequest {
   /// used by the operation, and can be modified at any time. To associate
   /// labels with resources created while executing the operation, see the
   /// appropriate resource message (for example, `VirtualMachine`).
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The description of the pipeline to run.
   ///
@@ -1847,7 +1847,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -1863,7 +1863,7 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
@@ -1976,7 +1976,7 @@ class VirtualMachine {
   /// 'google-' are reserved for use by Google. Labels applied at creation time
   /// to the VM. Applied on a best-effort basis to attached disk resources
   /// shortly after VM creation.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The machine type of the virtual machine to create.
   ///

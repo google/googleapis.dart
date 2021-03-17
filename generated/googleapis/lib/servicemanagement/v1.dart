@@ -3019,7 +3019,7 @@ class GenerateConfigReportRequest {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? newConfig;
+  core.Map<core.String, core.Object?>? newConfig;
 
   /// Service configuration against which the comparison will be done.
   ///
@@ -3031,7 +3031,7 @@ class GenerateConfigReportRequest {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? oldConfig;
+  core.Map<core.String, core.Object?>? oldConfig;
 
   GenerateConfigReportRequest();
 
@@ -4209,7 +4209,7 @@ class MetricRule {
   /// The key of the map is the metric name, and the values are the amount
   /// increased for the metric against which the quota limits are defined. The
   /// value must not be negative.
-  core.Map<core.String, core.String>? metricCosts;
+  core.Map<core.String, core.String?>? metricCosts;
 
   /// Selects the methods to which this rule applies.
   ///
@@ -4582,7 +4582,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -4602,7 +4602,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   Operation();
 
@@ -4712,7 +4712,7 @@ class Option {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? value;
+  core.Map<core.String, core.Object?>? value;
 
   Option();
 
@@ -5042,7 +5042,7 @@ class QuotaLimit {
   /// You must specify this as a key:value pair, with an integer value that is
   /// the maximum number of requests allowed for the specified unit. Currently
   /// only STANDARD is supported.
-  core.Map<core.String, core.String>? values;
+  core.Map<core.String, core.String?>? values;
 
   QuotaLimit();
 
@@ -5595,14 +5595,14 @@ class SourceInfo {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? sourceFiles;
+  core.List<core.Map<core.String, core.Object?>>? sourceFiles;
 
   SourceInfo();
 
   SourceInfo.fromJson(core.Map _json) {
     if (_json.containsKey('sourceFiles')) {
       sourceFiles = (_json['sourceFiles'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
@@ -5635,7 +5635,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -5651,7 +5651,7 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
@@ -5934,7 +5934,7 @@ class TrafficPercentStrategy {
   ///
   /// Key is the service configuration ID, Value is the traffic percentage which
   /// must be greater than 0.0 and the sum must equal to 100.0.
-  core.Map<core.String, core.double>? percentages;
+  core.Map<core.String, core.double?>? percentages;
 
   TrafficPercentStrategy();
 

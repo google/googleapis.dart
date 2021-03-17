@@ -2909,7 +2909,7 @@ class Deployment {
   /// part of this version.
   ///
   /// All files must be readable using the credentials supplied with this call.
-  core.Map<core.String, FileInfo>? files;
+  core.Map<core.String, FileInfo?>? files;
 
   /// The zip file for this deployment, if this is a zip deployment.
   ZipInfo? zip;
@@ -4014,7 +4014,7 @@ class Location {
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The canonical id for this location.
   ///
@@ -4027,7 +4027,7 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
@@ -4362,7 +4362,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -4382,7 +4382,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   Operation();
 
@@ -5065,7 +5065,7 @@ class StaticFilesHandler {
   core.String? expiration;
 
   /// HTTP headers to use for all responses from these URLs.
-  core.Map<core.String, core.String>? httpHeaders;
+  core.Map<core.String, core.String?>? httpHeaders;
 
   /// MIME type used to serve all files served by this handler.Defaults to
   /// file-specific MIME types, which are derived from each file's filename
@@ -5148,7 +5148,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -5164,7 +5164,7 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
@@ -5199,7 +5199,7 @@ class TrafficSplit {
   /// allocation is removed. Allocations must sum to 1. Up to two decimal place
   /// precision is supported for IP-based splits and up to three decimal places
   /// is supported for cookie-based splits.
-  core.Map<core.String, core.double>? allocations;
+  core.Map<core.String, core.double?>? allocations;
 
   /// Mechanism used to determine which version a request is sent to.
   ///
@@ -5432,11 +5432,11 @@ class Version {
 
   /// Metadata settings that are supplied to this version to enable beta runtime
   /// features.
-  core.Map<core.String, core.String>? betaSettings;
+  core.Map<core.String, core.String?>? betaSettings;
 
   /// Environment variables available to the build environment.Only returned in
   /// GET requests if view=FULL is set.
-  core.Map<core.String, core.String>? buildEnvVariables;
+  core.Map<core.String, core.String?>? buildEnvVariables;
 
   /// Time that this version was created.@OutputOnly
   core.String? createTime;
@@ -5473,7 +5473,7 @@ class Version {
 
   /// Environment variables available to the application.Only returned in GET
   /// requests if view=FULL is set.
-  core.Map<core.String, core.String>? envVariables;
+  core.Map<core.String, core.String?>? envVariables;
 
   /// Custom static error pages.
   ///

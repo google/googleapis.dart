@@ -1437,7 +1437,7 @@ class Policy {
   /// https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters.
   ///
   /// Optional.
-  core.Map<core.String, AdmissionRule>? clusterAdmissionRules;
+  core.Map<core.String, AdmissionRule?>? clusterAdmissionRules;
 
   /// Default admission rule for a cluster without a per-cluster, per-
   /// kubernetes-service-account, or per-istio-service-identity admission rule.
@@ -1471,14 +1471,14 @@ class Policy {
   /// spiffe://example.com/ns/test-ns/sa/default
   ///
   /// Optional.
-  core.Map<core.String, AdmissionRule>? istioServiceIdentityAdmissionRules;
+  core.Map<core.String, AdmissionRule?>? istioServiceIdentityAdmissionRules;
 
   /// Per-kubernetes-namespace admission rules.
   ///
   /// K8s namespace spec format: \[a-z.-\]+, e.g. 'some-namespace'
   ///
   /// Optional.
-  core.Map<core.String, AdmissionRule>? kubernetesNamespaceAdmissionRules;
+  core.Map<core.String, AdmissionRule?>? kubernetesNamespaceAdmissionRules;
 
   /// Per-kubernetes-service-account admission rules.
   ///
@@ -1486,7 +1486,7 @@ class Policy {
   /// 'test-ns:default'
   ///
   /// Optional.
-  core.Map<core.String, AdmissionRule>? kubernetesServiceAccountAdmissionRules;
+  core.Map<core.String, AdmissionRule?>? kubernetesServiceAccountAdmissionRules;
 
   /// The resource name, in the format `projects / * /policy`.
   ///

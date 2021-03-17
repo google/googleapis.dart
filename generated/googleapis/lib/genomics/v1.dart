@@ -309,7 +309,7 @@ class ContainerStartedEvent {
   ///
   /// This set will contain any ports exposed using the `PUBLISH_EXPOSED_PORTS`
   /// flag as well as any specified in the `Action` definition.
-  core.Map<core.String, core.int>? portMappings;
+  core.Map<core.String, core.int?>? portMappings;
 
   ContainerStartedEvent();
 
@@ -442,7 +442,7 @@ class Event {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? details;
+  core.Map<core.String, core.Object?>? details;
 
   /// The time at which the event occurred.
   core.String? timestamp;
@@ -627,7 +627,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -639,7 +639,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   Operation();
 
@@ -738,7 +738,7 @@ class OperationMetadata {
 
   /// Optionally provided by the caller when submitting the request that creates
   /// the operation.
-  core.Map<core.String, core.String>? labels;
+  core.Map<core.String, core.String?>? labels;
 
   /// The Google Cloud Project in which the job is scoped.
   core.String? projectId;
@@ -751,13 +751,13 @@ class OperationMetadata {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? request;
+  core.Map<core.String, core.Object?>? request;
 
   /// Runtime metadata on this Operation.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? runtimeMetadata;
+  core.Map<core.String, core.Object?>? runtimeMetadata;
 
   /// The time at which the job began to run.
   core.String? startTime;
@@ -912,7 +912,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -928,7 +928,7 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
+          .map<core.Map<core.String, core.Object?>>(
               (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,

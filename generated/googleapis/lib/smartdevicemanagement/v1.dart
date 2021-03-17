@@ -411,7 +411,7 @@ class GoogleHomeEnterpriseSdmV1Device {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? traits;
+  core.Map<core.String, core.Object?>? traits;
 
   /// Type of the device for general display purposes.
   ///
@@ -468,7 +468,7 @@ class GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? params;
+  core.Map<core.String, core.Object?>? params;
 
   GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest();
 
@@ -499,7 +499,7 @@ class GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? results;
+  core.Map<core.String, core.Object?>? results;
 
   GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse();
 
@@ -663,7 +663,7 @@ class GoogleHomeEnterpriseSdmV1Room {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? traits;
+  core.Map<core.String, core.Object?>? traits;
 
   GoogleHomeEnterpriseSdmV1Room();
 
@@ -701,7 +701,7 @@ class GoogleHomeEnterpriseSdmV1Structure {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? traits;
+  core.Map<core.String, core.Object?>? traits;
 
   GoogleHomeEnterpriseSdmV1Structure();
 
