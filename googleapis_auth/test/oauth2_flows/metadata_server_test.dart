@@ -15,7 +15,7 @@ import 'package:test/test.dart';
 import '../test_utils.dart';
 
 void main() {
-  const apiUrl = 'http://metadata/computeMetadata/v1';
+  const apiUrl = 'http://metadata.google.internal/computeMetadata/v1';
   const apiHeaderKey = 'Metadata-Flavor';
   const apiHeaderValue = 'Google';
   const tokenUrl = '$apiUrl/instance/service-accounts/default/token';

@@ -3,6 +3,8 @@
 - Fix an error when doing OAUTH code exchanged with an undefined secret.
 - `clientViaApiKey` is now exported from `googleapis_auth.dart`.
 - Added `String? details` to `UserConsentException`.
+- Update the host used to access metadata on Google Cloud.
+  From `http://metadata/` to `http://metadata.google.internal`.
 
 ## 1.1.0
 
