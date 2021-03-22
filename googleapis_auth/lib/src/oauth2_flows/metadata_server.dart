@@ -26,7 +26,8 @@ class MetadataServerAuthorizationFlow extends BaseFlow {
   static const _headers = {'Metadata-Flavor': 'Google'};
   static const _serviceAccountUrlInfix =
       'computeMetadata/v1/instance/service-accounts';
-  static const _defaultMetadataHost = 'metadata';
+  // https://cloud.google.com/compute/docs/storing-retrieving-metadata#querying
+  static const _defaultMetadataHost = 'metadata.google.internal';
   static const _gceMetadataHostEnvVar = 'GCE_METADATA_HOST';
 
   final String email;
