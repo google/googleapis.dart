@@ -83,7 +83,7 @@ void main() {
       'APPLICATION/JSON': true,
       // charset is fine
       'application/json; charset=utf-8': true,
-      // Regression test for https://github.com/dart-lang/googleapis/issues/99
+      // Regression test for https://github.com/google/googleapis.dart/issues/99
       'application/fhir+json; charset=utf-8': true,
       // false cases
       'application/ecmascript': false,
