@@ -21,9 +21,9 @@ import 'dart:async' as async;
 import 'dart:convert' as convert;
 import 'dart:core' as core;
 
+import 'package:googleapis/dfareporting/v3_4.dart' as api;
 import 'package:http/http.dart' as http;
 import 'package:test/test.dart' as unittest;
-import 'package:googleapis/dfareporting/v3_4.dart' as api;
 
 import '../test_shared.dart';
 
