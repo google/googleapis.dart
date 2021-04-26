@@ -69,7 +69,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// privacy-sensitive fragments in text, images, and Google Cloud Platform
 /// storage repositories.
 class DLPApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -7336,6 +7336,9 @@ class GooglePrivacyDlpV2CryptoDeterministicConfig {
   GooglePrivacyDlpV2FieldId? context;
 
   /// The key used by the encryption function.
+  ///
+  /// For deterministic encryption using AES-SIV, the provided key is internally
+  /// expanded to 64 bytes prior to use.
   GooglePrivacyDlpV2CryptoKey? cryptoKey;
 
   /// The custom info type to annotate the surrogate with.
@@ -8670,6 +8673,10 @@ class GooglePrivacyDlpV2FieldTransformation {
   GooglePrivacyDlpV2RecordCondition? condition;
 
   /// Input field(s) to apply the transformation to.
+  ///
+  /// When you have columns that reference their position within a list, omit
+  /// the index from the FieldId. FieldId name matching ignores the index. For
+  /// example, instead of "contact.nums\[0\].type", use "contact.nums.type".
   ///
   /// Required.
   core.List<GooglePrivacyDlpV2FieldId>? fields;
@@ -12888,8 +12895,8 @@ class GooglePrivacyDlpV2SurrogateType {
 /// Structured content to inspect.
 ///
 /// Up to 50,000 `Value`s per request allowed. See
-/// https://cloud.google.com/dlp/docs/inspecting-text#inspecting_a_table to
-/// learn more.
+/// https://cloud.google.com/dlp/docs/inspecting-structured-text#inspecting_a_table
+/// to learn more.
 class GooglePrivacyDlpV2Table {
   /// Headers of the table.
   core.List<GooglePrivacyDlpV2FieldId>? headers;

@@ -40,7 +40,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Controls access to cloud applications running on Google Cloud Platform.
 class CloudIAPApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -1420,7 +1420,16 @@ class PolicyDelegationSettings {
       };
 }
 
+/// An internal name for an IAM policy, based on the resource to which the
+/// policy applies.
+///
+/// Not to be confused with a resource's external full resource name. For more
+/// information on this distinction, see go/iam-full-resource-names.
 class PolicyName {
+  /// Identifies an instance of the type.
+  ///
+  /// ID format varies by type. The ID format is defined in the IAM .service
+  /// file that defines the type, either in path_mapping or in a comment.
   core.String? id;
 
   /// For Cloud IAM: The location of the Policy.
@@ -1431,7 +1440,10 @@ class PolicyName {
   /// should be set to "local".
   core.String? region;
 
-  /// Valid values for type might be 'gce', 'gcs', 'project', 'account' etc.
+  /// Resource type.
+  ///
+  /// Types are defined in IAM's .service files. Valid values for type might be
+  /// 'gce', 'gcs', 'project', 'account' etc.
   core.String? type;
 
   PolicyName();

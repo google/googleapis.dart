@@ -50,7 +50,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// It also specifies the region for annotation and transcribes speech to text.
 /// Supports both asynchronous API and streaming API.
 class CloudVideoIntelligenceApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 

@@ -3718,6 +3718,9 @@ class AdministratorWebTokenSpec {
   /// Options for displaying the Web Apps page.
   AdministratorWebTokenSpecWebApps? webApps;
 
+  /// Options for displaying the Zero Touch page.
+  AdministratorWebTokenSpecZeroTouch? zeroTouch;
+
   AdministratorWebTokenSpec();
 
   AdministratorWebTokenSpec.fromJson(core.Map _json) {
@@ -3751,6 +3754,10 @@ class AdministratorWebTokenSpec {
       webApps = AdministratorWebTokenSpecWebApps.fromJson(
           _json['webApps'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('zeroTouch')) {
+      zeroTouch = AdministratorWebTokenSpecZeroTouch.fromJson(
+          _json['zeroTouch'] as core.Map<core.String, core.dynamic>);
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3762,6 +3769,7 @@ class AdministratorWebTokenSpec {
         if (privateApps != null) 'privateApps': privateApps!.toJson(),
         if (storeBuilder != null) 'storeBuilder': storeBuilder!.toJson(),
         if (webApps != null) 'webApps': webApps!.toJson(),
+        if (zeroTouch != null) 'zeroTouch': zeroTouch!.toJson(),
       };
 }
 
@@ -3859,6 +3867,25 @@ class AdministratorWebTokenSpecWebApps {
   AdministratorWebTokenSpecWebApps();
 
   AdministratorWebTokenSpecWebApps.fromJson(core.Map _json) {
+    if (_json.containsKey('enabled')) {
+      enabled = _json['enabled'] as core.bool;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+      };
+}
+
+class AdministratorWebTokenSpecZeroTouch {
+  /// Whether zero-touch embedded UI is usable with this token.
+  ///
+  /// If enabled, the admin can link zero-touch customers to this enterprise.
+  core.bool? enabled;
+
+  AdministratorWebTokenSpecZeroTouch();
+
+  AdministratorWebTokenSpecZeroTouch.fromJson(core.Map _json) {
     if (_json.containsKey('enabled')) {
       enabled = _json['enabled'] as core.bool;
     }

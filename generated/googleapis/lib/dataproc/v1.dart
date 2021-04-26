@@ -46,7 +46,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Manages Hadoop-based clusters and jobs on Google Cloud Platform.
 class DataprocApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -3772,6 +3772,83 @@ class BasicYarnAutoscalingConfig {
       };
 }
 
+/// Metadata describing the Batch operation.
+class BatchOperationMetadata {
+  /// Name of the batch for the operation.
+  core.String? batch;
+
+  /// Batch UUID for the operation.
+  core.String? batchUuid;
+
+  /// The time when the operation was created.
+  core.String? createTime;
+
+  /// Short description of the operation.
+  core.String? description;
+
+  /// The time when the operation finished.
+  core.String? doneTime;
+
+  /// Labels associated with the operation.
+  core.Map<core.String, core.String>? labels;
+
+  /// The operation type.
+  /// Possible string values are:
+  /// - "BATCH_OPERATION_TYPE_UNSPECIFIED" : Batch operation type is unknown.
+  /// - "BATCH" : Batch operation type.
+  core.String? operationType;
+
+  /// Warnings encountered during operation execution.
+  core.List<core.String>? warnings;
+
+  BatchOperationMetadata();
+
+  BatchOperationMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey('batch')) {
+      batch = _json['batch'] as core.String;
+    }
+    if (_json.containsKey('batchUuid')) {
+      batchUuid = _json['batchUuid'] as core.String;
+    }
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'] as core.String;
+    }
+    if (_json.containsKey('description')) {
+      description = _json['description'] as core.String;
+    }
+    if (_json.containsKey('doneTime')) {
+      doneTime = _json['doneTime'] as core.String;
+    }
+    if (_json.containsKey('labels')) {
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
+    }
+    if (_json.containsKey('operationType')) {
+      operationType = _json['operationType'] as core.String;
+    }
+    if (_json.containsKey('warnings')) {
+      warnings = (_json['warnings'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (batch != null) 'batch': batch!,
+        if (batchUuid != null) 'batchUuid': batchUuid!,
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (doneTime != null) 'doneTime': doneTime!,
+        if (labels != null) 'labels': labels!,
+        if (operationType != null) 'operationType': operationType!,
+        if (warnings != null) 'warnings': warnings!,
+      };
+}
+
 /// Associates members with a role.
 class Binding {
   /// The condition that is associated with this binding.If the condition
@@ -4010,6 +4087,16 @@ class ClusterConfig {
   /// Optional.
   GceClusterConfig? gceClusterConfig;
 
+  /// BETA.
+  ///
+  /// The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes.
+  /// Setting this is considered mutually exclusive with Compute Engine-based
+  /// options such as gce_cluster_config, master_config, worker_config,
+  /// secondary_worker_config, and autoscaling_config.
+  ///
+  /// Optional.
+  GkeClusterConfig? gkeClusterConfig;
+
   /// Commands to execute on each node after config is completed.
   ///
   /// By default, executables are run on master and all worker nodes. You can
@@ -4095,6 +4182,10 @@ class ClusterConfig {
       gceClusterConfig = GceClusterConfig.fromJson(
           _json['gceClusterConfig'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('gkeClusterConfig')) {
+      gkeClusterConfig = GkeClusterConfig.fromJson(
+          _json['gkeClusterConfig'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('initializationActions')) {
       initializationActions = (_json['initializationActions'] as core.List)
           .map<NodeInitializationAction>((value) =>
@@ -4145,6 +4236,8 @@ class ClusterConfig {
         if (endpointConfig != null) 'endpointConfig': endpointConfig!.toJson(),
         if (gceClusterConfig != null)
           'gceClusterConfig': gceClusterConfig!.toJson(),
+        if (gkeClusterConfig != null)
+          'gkeClusterConfig': gkeClusterConfig!.toJson(),
         if (initializationActions != null)
           'initializationActions':
               initializationActions!.map((value) => value.toJson()).toList(),
@@ -4449,6 +4542,9 @@ class ClusterStatus {
   /// - "DELETING" : The cluster is being deleted. It cannot be used.
   /// - "UPDATING" : The cluster is being updated. It continues to accept and
   /// process jobs.
+  /// - "STOPPING" : The cluster is being stopped. It cannot be used.
+  /// - "STOPPED" : The cluster is currently stopped. It is not ready for use.
+  /// - "STARTING" : The cluster is being started. It is not ready for use.
   core.String? state;
 
   /// Time when this state was entered (see JSON representation of Timestamp
@@ -4491,6 +4587,29 @@ class ClusterStatus {
         if (state != null) 'state': state!,
         if (stateStartTime != null) 'stateStartTime': stateStartTime!,
         if (substate != null) 'substate': substate!,
+      };
+}
+
+/// Confidential Instance Config for clusters using Confidential VMs
+/// (https://cloud.google.com/compute/confidential-vm/docs)
+class ConfidentialInstanceConfig {
+  /// Defines whether the instance should have confidential compute enabled.
+  ///
+  /// Optional.
+  core.bool? enableConfidentialCompute;
+
+  ConfidentialInstanceConfig();
+
+  ConfidentialInstanceConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('enableConfidentialCompute')) {
+      enableConfidentialCompute =
+          _json['enableConfidentialCompute'] as core.bool;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableConfidentialCompute != null)
+          'enableConfidentialCompute': enableConfidentialCompute!,
       };
 }
 
@@ -4727,6 +4846,12 @@ class Expr {
 /// Common config settings for resources of Compute Engine cluster instances,
 /// applicable to all instances in the cluster.
 class GceClusterConfig {
+  /// Confidential Instance Config for clusters using Confidential VMs
+  /// (https://cloud.google.com/compute/confidential-vm/docs).
+  ///
+  /// Optional.
+  ConfidentialInstanceConfig? confidentialInstanceConfig;
+
   /// If true, all instances in the cluster will only have internal IP
   /// addresses.
   ///
@@ -4846,6 +4971,11 @@ class GceClusterConfig {
   GceClusterConfig();
 
   GceClusterConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('confidentialInstanceConfig')) {
+      confidentialInstanceConfig = ConfidentialInstanceConfig.fromJson(
+          _json['confidentialInstanceConfig']
+              as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('internalIpOnly')) {
       internalIpOnly = _json['internalIpOnly'] as core.bool;
     }
@@ -4898,6 +5028,8 @@ class GceClusterConfig {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (confidentialInstanceConfig != null)
+          'confidentialInstanceConfig': confidentialInstanceConfig!.toJson(),
         if (internalIpOnly != null) 'internalIpOnly': internalIpOnly!,
         if (metadata != null) 'metadata': metadata!,
         if (networkUri != null) 'networkUri': networkUri!,
@@ -4963,6 +5095,30 @@ class GetPolicyOptions {
   core.Map<core.String, core.dynamic> toJson() => {
         if (requestedPolicyVersion != null)
           'requestedPolicyVersion': requestedPolicyVersion!,
+      };
+}
+
+/// The GKE config for this cluster.
+class GkeClusterConfig {
+  /// A target for the deployment.
+  ///
+  /// Optional.
+  NamespacedGkeDeploymentTarget? namespacedGkeDeploymentTarget;
+
+  GkeClusterConfig();
+
+  GkeClusterConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('namespacedGkeDeploymentTarget')) {
+      namespacedGkeDeploymentTarget = NamespacedGkeDeploymentTarget.fromJson(
+          _json['namespacedGkeDeploymentTarget']
+              as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (namespacedGkeDeploymentTarget != null)
+          'namespacedGkeDeploymentTarget':
+              namespacedGkeDeploymentTarget!.toJson(),
       };
 }
 
@@ -5173,6 +5329,35 @@ class HiveJob {
       };
 }
 
+/// Identity related configuration, including service account based secure
+/// multi-tenancy user mappings.
+class IdentityConfig {
+  /// Map of user to service account.
+  ///
+  /// Required.
+  core.Map<core.String, core.String>? userServiceAccountMapping;
+
+  IdentityConfig();
+
+  IdentityConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('userServiceAccountMapping')) {
+      userServiceAccountMapping = (_json['userServiceAccountMapping']
+              as core.Map<core.String, core.dynamic>)
+          .map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (userServiceAccountMapping != null)
+          'userServiceAccountMapping': userServiceAccountMapping!,
+      };
+}
+
 /// A request to inject credentials into a cluster.
 class InjectCredentialsRequest {
   /// The cluster UUID.
@@ -5347,7 +5532,8 @@ class InstanceGroupConfig {
 
   /// The number of VM instances in the instance group.
   ///
-  /// For master instance groups, must be set to 1.
+  /// For HA cluster master_config groups, must be set to 3. For standard
+  /// cluster master_config groups, must be set to 1.
   ///
   /// Optional.
   core.int? numInstances;
@@ -6552,6 +6738,37 @@ class MetastoreConfig {
       };
 }
 
+/// A full, namespace-isolated deployment target for an existing GKE cluster.
+class NamespacedGkeDeploymentTarget {
+  /// A namespace within the GKE cluster to deploy into.
+  ///
+  /// Optional.
+  core.String? clusterNamespace;
+
+  /// The target GKE cluster to deploy to.
+  ///
+  /// Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
+  ///
+  /// Optional.
+  core.String? targetGkeCluster;
+
+  NamespacedGkeDeploymentTarget();
+
+  NamespacedGkeDeploymentTarget.fromJson(core.Map _json) {
+    if (_json.containsKey('clusterNamespace')) {
+      clusterNamespace = _json['clusterNamespace'] as core.String;
+    }
+    if (_json.containsKey('targetGkeCluster')) {
+      targetGkeCluster = _json['targetGkeCluster'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clusterNamespace != null) 'clusterNamespace': clusterNamespace!,
+        if (targetGkeCluster != null) 'targetGkeCluster': targetGkeCluster!,
+      };
+}
+
 /// Node Group Affinity for clusters using sole-tenant node groups.
 class NodeGroupAffinity {
   /// The URI of a sole-tenant node group resource
@@ -7390,6 +7607,12 @@ class ReservationAffinity {
 
 /// Security related configuration, including encryption, Kerberos, etc.
 class SecurityConfig {
+  /// Identity related configuration, including service account based secure
+  /// multi-tenancy user mappings.
+  ///
+  /// Optional.
+  IdentityConfig? identityConfig;
+
   /// Kerberos related configuration.
   ///
   /// Optional.
@@ -7398,6 +7621,10 @@ class SecurityConfig {
   SecurityConfig();
 
   SecurityConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('identityConfig')) {
+      identityConfig = IdentityConfig.fromJson(
+          _json['identityConfig'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('kerberosConfig')) {
       kerberosConfig = KerberosConfig.fromJson(
           _json['kerberosConfig'] as core.Map<core.String, core.dynamic>);
@@ -7405,6 +7632,7 @@ class SecurityConfig {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (identityConfig != null) 'identityConfig': identityConfig!.toJson(),
         if (kerberosConfig != null) 'kerberosConfig': kerberosConfig!.toJson(),
       };
 }

@@ -573,6 +573,52 @@ class LocationsResource {
   LocationsAdminsResource get admins => LocationsAdminsResource(_requester);
 
   LocationsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Moves a location from an account that the user owns to another account
+  /// that the same user administers.
+  ///
+  /// The user must be an owner of the account the location is currently
+  /// associated with and must also be at least a manager of the destination
+  /// account.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the location to transfer.
+  /// `locations/{location_id}`.
+  /// Value must have pattern `^locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> transfer(
+    TransferLocationRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':transfer';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class LocationsAdminsResource {
@@ -1432,5 +1478,27 @@ class TargetLocation {
   core.Map<core.String, core.dynamic> toJson() => {
         if (address != null) 'address': address!,
         if (locationName != null) 'locationName': locationName!,
+      };
+}
+
+/// Request message for AccessControl.TransferLocation.
+class TransferLocationRequest {
+  /// Name of the account resource to transfer the location to (for example,
+  /// "accounts/{account}").
+  ///
+  /// Required.
+  core.String? destinationAccount;
+
+  TransferLocationRequest();
+
+  TransferLocationRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('destinationAccount')) {
+      destinationAccount = _json['destinationAccount'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (destinationAccount != null)
+          'destinationAccount': destinationAccount!,
       };
 }

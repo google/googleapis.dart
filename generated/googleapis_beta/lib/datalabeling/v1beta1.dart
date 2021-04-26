@@ -54,7 +54,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Public API for Google Cloud AI Data Labeling Service.
 class DataLabelingApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 

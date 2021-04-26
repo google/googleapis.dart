@@ -27,14 +27,14 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.Map<core.String, core.String> buildUnnamed1570() {
+core.Map<core.String, core.String> buildUnnamed1691() {
   var o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
 }
 
-void checkUnnamed1570(core.Map<core.String, core.String> o) {
+void checkUnnamed1691(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -46,14 +46,14 @@ void checkUnnamed1570(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed1571() {
+core.List<core.String> buildUnnamed1692() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed1571(core.List<core.String> o) {
+void checkUnnamed1692(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -65,14 +65,14 @@ void checkUnnamed1571(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed1572() {
+core.List<core.String> buildUnnamed1693() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed1572(core.List<core.String> o) {
+void checkUnnamed1693(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -91,11 +91,11 @@ api.Webfont buildWebfont() {
   if (buildCounterWebfont < 3) {
     o.category = 'foo';
     o.family = 'foo';
-    o.files = buildUnnamed1570();
+    o.files = buildUnnamed1691();
     o.kind = 'foo';
     o.lastModified = 'foo';
-    o.subsets = buildUnnamed1571();
-    o.variants = buildUnnamed1572();
+    o.subsets = buildUnnamed1692();
+    o.variants = buildUnnamed1693();
     o.version = 'foo';
   }
   buildCounterWebfont--;
@@ -113,7 +113,7 @@ void checkWebfont(api.Webfont o) {
       o.family!,
       unittest.equals('foo'),
     );
-    checkUnnamed1570(o.files!);
+    checkUnnamed1691(o.files!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -122,8 +122,8 @@ void checkWebfont(api.Webfont o) {
       o.lastModified!,
       unittest.equals('foo'),
     );
-    checkUnnamed1571(o.subsets!);
-    checkUnnamed1572(o.variants!);
+    checkUnnamed1692(o.subsets!);
+    checkUnnamed1693(o.variants!);
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -132,14 +132,14 @@ void checkWebfont(api.Webfont o) {
   buildCounterWebfont--;
 }
 
-core.List<api.Webfont> buildUnnamed1573() {
+core.List<api.Webfont> buildUnnamed1694() {
   var o = <api.Webfont>[];
   o.add(buildWebfont());
   o.add(buildWebfont());
   return o;
 }
 
-void checkUnnamed1573(core.List<api.Webfont> o) {
+void checkUnnamed1694(core.List<api.Webfont> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWebfont(o[0] as api.Webfont);
   checkWebfont(o[1] as api.Webfont);
@@ -150,7 +150,7 @@ api.WebfontList buildWebfontList() {
   var o = api.WebfontList();
   buildCounterWebfontList++;
   if (buildCounterWebfontList < 3) {
-    o.items = buildUnnamed1573();
+    o.items = buildUnnamed1694();
     o.kind = 'foo';
   }
   buildCounterWebfontList--;
@@ -160,7 +160,7 @@ api.WebfontList buildWebfontList() {
 void checkWebfontList(api.WebfontList o) {
   buildCounterWebfontList++;
   if (buildCounterWebfontList < 3) {
-    checkUnnamed1573(o.items!);
+    checkUnnamed1694(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),

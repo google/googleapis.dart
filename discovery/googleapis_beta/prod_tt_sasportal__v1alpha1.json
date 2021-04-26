@@ -3,7 +3,7 @@
         "oauth2": {
             "scopes": {
                 "https://www.googleapis.com/auth/userinfo.email": {
-                    "description": "View your email address"
+                    "description": "See your primary Google Account email address"
                 }
             }
         }
@@ -2405,7 +2405,7 @@
             }
         }
     },
-    "revision": "20210227",
+    "revision": "20210519",
     "rootUrl": "https://prod-tt-sasportal.googleapis.com/",
     "schemas": {
         "SasPortalAssignment": {
@@ -2422,6 +2422,22 @@
                 "role": {
                     "description": "Required. Role that is assigned to `members`.",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SasPortalChannelWithScore": {
+            "description": "The channel with score.",
+            "id": "SasPortalChannelWithScore",
+            "properties": {
+                "frequencyRange": {
+                    "$ref": "SasPortalFrequencyRange",
+                    "description": "The frequency range of the channel."
+                },
+                "score": {
+                    "description": "The channel score, normalized to be in [0,100].",
+                    "format": "double",
+                    "type": "number"
                 }
             },
             "type": "object"
@@ -2503,6 +2519,14 @@
                     "description": "The deployment's display name.",
                     "type": "string"
                 },
+                "frns": {
+                    "description": "Output only. The FRNs copied from its direct parent.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                },
                 "name": {
                     "description": "Output only. Resource name.",
                     "readOnly": true,
@@ -2524,6 +2548,14 @@
                 "activeConfig": {
                     "$ref": "SasPortalDeviceConfig",
                     "description": "Output only. Current configuration of the device as registered to the SAS."
+                },
+                "currentChannels": {
+                    "description": "Output only. Current channels with scores.",
+                    "items": {
+                        "$ref": "SasPortalChannelWithScore"
+                    },
+                    "readOnly": true,
+                    "type": "array"
                 },
                 "deviceMetadata": {
                     "$ref": "SasPortalDeviceMetadata",

@@ -46,7 +46,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// a highly available, hardened service running Microsoft Active Directory
 /// (AD).
 class ManagedServiceForMicrosoftActiveDirectoryConsumerApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -120,11 +120,15 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [filter] - The standard list filter.
+  /// [filter] - A filter to narrow down results to a preferred subset. The
+  /// filtering language accepts strings like "displayName=tokyo", and is
+  /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
   ///
-  /// [pageSize] - The standard list page size.
+  /// [pageSize] - The maximum number of results to return. If not set, the
+  /// service will select a default.
   ///
-  /// [pageToken] - The standard list page token.
+  /// [pageToken] - A page token received from the `next_page_token` field in
+  /// the response. Send that page token to receive the subsequent page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1929,9 +1933,11 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
 /// Maintenance schedule which is exposed to customer and potentially end user,
 /// indicating published upcoming future maintenance schedule
 class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule {
-  /// Can this scheduled update be rescheduled? By default, it's true and API
-  /// needs to do explicitly check whether it's set, if it's set as false
-  /// explicitly, it's false
+  /// This field is deprecated, and will be always set to true since reschedule
+  /// can happen multiple times now.
+  ///
+  /// This field should not be removed until all service producers remove this
+  /// for their customers.
   core.bool? canReschedule;
 
   /// The scheduled end time for the maintenance.

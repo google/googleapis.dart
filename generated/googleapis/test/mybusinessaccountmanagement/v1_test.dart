@@ -206,14 +206,14 @@ void checkInvitation(api.Invitation o) {
   buildCounterInvitation--;
 }
 
-core.List<api.Admin> buildUnnamed5061() {
+core.List<api.Admin> buildUnnamed5428() {
   var o = <api.Admin>[];
   o.add(buildAdmin());
   o.add(buildAdmin());
   return o;
 }
 
-void checkUnnamed5061(core.List<api.Admin> o) {
+void checkUnnamed5428(core.List<api.Admin> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAdmin(o[0] as api.Admin);
   checkAdmin(o[1] as api.Admin);
@@ -224,7 +224,7 @@ api.ListAccountAdminsResponse buildListAccountAdminsResponse() {
   var o = api.ListAccountAdminsResponse();
   buildCounterListAccountAdminsResponse++;
   if (buildCounterListAccountAdminsResponse < 3) {
-    o.accountAdmins = buildUnnamed5061();
+    o.accountAdmins = buildUnnamed5428();
   }
   buildCounterListAccountAdminsResponse--;
   return o;
@@ -233,19 +233,19 @@ api.ListAccountAdminsResponse buildListAccountAdminsResponse() {
 void checkListAccountAdminsResponse(api.ListAccountAdminsResponse o) {
   buildCounterListAccountAdminsResponse++;
   if (buildCounterListAccountAdminsResponse < 3) {
-    checkUnnamed5061(o.accountAdmins!);
+    checkUnnamed5428(o.accountAdmins!);
   }
   buildCounterListAccountAdminsResponse--;
 }
 
-core.List<api.Account> buildUnnamed5062() {
+core.List<api.Account> buildUnnamed5429() {
   var o = <api.Account>[];
   o.add(buildAccount());
   o.add(buildAccount());
   return o;
 }
 
-void checkUnnamed5062(core.List<api.Account> o) {
+void checkUnnamed5429(core.List<api.Account> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAccount(o[0] as api.Account);
   checkAccount(o[1] as api.Account);
@@ -256,7 +256,7 @@ api.ListAccountsResponse buildListAccountsResponse() {
   var o = api.ListAccountsResponse();
   buildCounterListAccountsResponse++;
   if (buildCounterListAccountsResponse < 3) {
-    o.accounts = buildUnnamed5062();
+    o.accounts = buildUnnamed5429();
     o.nextPageToken = 'foo';
   }
   buildCounterListAccountsResponse--;
@@ -266,7 +266,7 @@ api.ListAccountsResponse buildListAccountsResponse() {
 void checkListAccountsResponse(api.ListAccountsResponse o) {
   buildCounterListAccountsResponse++;
   if (buildCounterListAccountsResponse < 3) {
-    checkUnnamed5062(o.accounts!);
+    checkUnnamed5429(o.accounts!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -275,14 +275,14 @@ void checkListAccountsResponse(api.ListAccountsResponse o) {
   buildCounterListAccountsResponse--;
 }
 
-core.List<api.Invitation> buildUnnamed5063() {
+core.List<api.Invitation> buildUnnamed5430() {
   var o = <api.Invitation>[];
   o.add(buildInvitation());
   o.add(buildInvitation());
   return o;
 }
 
-void checkUnnamed5063(core.List<api.Invitation> o) {
+void checkUnnamed5430(core.List<api.Invitation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInvitation(o[0] as api.Invitation);
   checkInvitation(o[1] as api.Invitation);
@@ -293,7 +293,7 @@ api.ListInvitationsResponse buildListInvitationsResponse() {
   var o = api.ListInvitationsResponse();
   buildCounterListInvitationsResponse++;
   if (buildCounterListInvitationsResponse < 3) {
-    o.invitations = buildUnnamed5063();
+    o.invitations = buildUnnamed5430();
   }
   buildCounterListInvitationsResponse--;
   return o;
@@ -302,19 +302,19 @@ api.ListInvitationsResponse buildListInvitationsResponse() {
 void checkListInvitationsResponse(api.ListInvitationsResponse o) {
   buildCounterListInvitationsResponse++;
   if (buildCounterListInvitationsResponse < 3) {
-    checkUnnamed5063(o.invitations!);
+    checkUnnamed5430(o.invitations!);
   }
   buildCounterListInvitationsResponse--;
 }
 
-core.List<api.Admin> buildUnnamed5064() {
+core.List<api.Admin> buildUnnamed5431() {
   var o = <api.Admin>[];
   o.add(buildAdmin());
   o.add(buildAdmin());
   return o;
 }
 
-void checkUnnamed5064(core.List<api.Admin> o) {
+void checkUnnamed5431(core.List<api.Admin> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAdmin(o[0] as api.Admin);
   checkAdmin(o[1] as api.Admin);
@@ -325,7 +325,7 @@ api.ListLocationAdminsResponse buildListLocationAdminsResponse() {
   var o = api.ListLocationAdminsResponse();
   buildCounterListLocationAdminsResponse++;
   if (buildCounterListLocationAdminsResponse < 3) {
-    o.admins = buildUnnamed5064();
+    o.admins = buildUnnamed5431();
   }
   buildCounterListLocationAdminsResponse--;
   return o;
@@ -334,7 +334,7 @@ api.ListLocationAdminsResponse buildListLocationAdminsResponse() {
 void checkListLocationAdminsResponse(api.ListLocationAdminsResponse o) {
   buildCounterListLocationAdminsResponse++;
   if (buildCounterListLocationAdminsResponse < 3) {
-    checkUnnamed5064(o.admins!);
+    checkUnnamed5431(o.admins!);
   }
   buildCounterListLocationAdminsResponse--;
 }
@@ -368,14 +368,14 @@ void checkOrganizationInfo(api.OrganizationInfo o) {
   buildCounterOrganizationInfo--;
 }
 
-core.List<core.String> buildUnnamed5065() {
+core.List<core.String> buildUnnamed5432() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed5065(core.List<core.String> o) {
+void checkUnnamed5432(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -387,14 +387,14 @@ void checkUnnamed5065(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed5066() {
+core.List<core.String> buildUnnamed5433() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed5066(core.List<core.String> o) {
+void checkUnnamed5433(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -411,13 +411,13 @@ api.PostalAddress buildPostalAddress() {
   var o = api.PostalAddress();
   buildCounterPostalAddress++;
   if (buildCounterPostalAddress < 3) {
-    o.addressLines = buildUnnamed5065();
+    o.addressLines = buildUnnamed5432();
     o.administrativeArea = 'foo';
     o.languageCode = 'foo';
     o.locality = 'foo';
     o.organization = 'foo';
     o.postalCode = 'foo';
-    o.recipients = buildUnnamed5066();
+    o.recipients = buildUnnamed5433();
     o.regionCode = 'foo';
     o.revision = 42;
     o.sortingCode = 'foo';
@@ -430,7 +430,7 @@ api.PostalAddress buildPostalAddress() {
 void checkPostalAddress(api.PostalAddress o) {
   buildCounterPostalAddress++;
   if (buildCounterPostalAddress < 3) {
-    checkUnnamed5065(o.addressLines!);
+    checkUnnamed5432(o.addressLines!);
     unittest.expect(
       o.administrativeArea!,
       unittest.equals('foo'),
@@ -451,7 +451,7 @@ void checkPostalAddress(api.PostalAddress o) {
       o.postalCode!,
       unittest.equals('foo'),
     );
-    checkUnnamed5066(o.recipients!);
+    checkUnnamed5433(o.recipients!);
     unittest.expect(
       o.regionCode!,
       unittest.equals('foo'),
@@ -497,6 +497,28 @@ void checkTargetLocation(api.TargetLocation o) {
     );
   }
   buildCounterTargetLocation--;
+}
+
+core.int buildCounterTransferLocationRequest = 0;
+api.TransferLocationRequest buildTransferLocationRequest() {
+  var o = api.TransferLocationRequest();
+  buildCounterTransferLocationRequest++;
+  if (buildCounterTransferLocationRequest < 3) {
+    o.destinationAccount = 'foo';
+  }
+  buildCounterTransferLocationRequest--;
+  return o;
+}
+
+void checkTransferLocationRequest(api.TransferLocationRequest o) {
+  buildCounterTransferLocationRequest++;
+  if (buildCounterTransferLocationRequest < 3) {
+    unittest.expect(
+      o.destinationAccount!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterTransferLocationRequest--;
 }
 
 void main() {
@@ -625,6 +647,16 @@ void main() {
       var od = api.TargetLocation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkTargetLocation(od as api.TargetLocation);
+    });
+  });
+
+  unittest.group('obj-schema-TransferLocationRequest', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildTransferLocationRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.TransferLocationRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkTransferLocationRequest(od as api.TransferLocationRequest);
     });
   });
 
@@ -1282,6 +1314,66 @@ void main() {
       final response =
           await res.list(arg_parent, filter: arg_filter, $fields: arg_$fields);
       checkListInvitationsResponse(response as api.ListInvitationsResponse);
+    });
+  });
+
+  unittest.group('resource-LocationsResource', () {
+    unittest.test('method--transfer', () async {
+      var mock = HttpServerMock();
+      var res = api.MyBusinessAccountManagementApi(mock).locations;
+      var arg_request = buildTransferLocationRequest();
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = api.TransferLocationRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTransferLocationRequest(obj as api.TransferLocationRequest);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        var h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        var resp = convert.json.encode(buildEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.transfer(arg_request, arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
   });
 

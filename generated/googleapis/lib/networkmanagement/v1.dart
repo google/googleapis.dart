@@ -43,7 +43,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// The Network Management API provides a collection of network performance
 /// monitoring and diagnostic capabilities.
 class NetworkManagementApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -117,11 +117,15 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [filter] - The standard list filter.
+  /// [filter] - A filter to narrow down results to a preferred subset. The
+  /// filtering language accepts strings like "displayName=tokyo", and is
+  /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
   ///
-  /// [pageSize] - The standard list page size.
+  /// [pageSize] - The maximum number of results to return. If not set, the
+  /// service selects a default.
   ///
-  /// [pageToken] - The standard list page token.
+  /// [pageToken] - A page token received from the `next_page_token` field in
+  /// the response. Send that page token to receive the subsequent page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -854,6 +858,14 @@ class AbortInfo {
   /// - "TRACE_TOO_LONG" : Aborted because the number of steps in the trace
   /// exceeding a certain limit which may be caused by routing loop.
   /// - "INTERNAL_ERROR" : Aborted due to internal server error.
+  /// - "SOURCE_ENDPOINT_NOT_FOUND" : Aborted because the source endpoint could
+  /// not be found.
+  /// - "MISMATCHED_SOURCE_NETWORK" : Aborted because the source network does
+  /// not match the source endpoint.
+  /// - "DESTINATION_ENDPOINT_NOT_FOUND" : Aborted because the destination
+  /// endpoint could not be found.
+  /// - "MISMATCHED_DESTINATION_NETWORK" : Aborted because the destination
+  /// network does not match the destination endpoint.
   core.String? cause;
 
   /// URI of the resource that caused the abort.
@@ -967,8 +979,6 @@ class AuditLogConfig {
 
 /// Associates `members` with a `role`.
 class Binding {
-  core.String? bindingId;
-
   /// The condition that is associated with this binding.
   ///
   /// If the condition evaluates to `true`, then this binding applies to the
@@ -1019,9 +1029,6 @@ class Binding {
   Binding();
 
   Binding.fromJson(core.Map _json) {
-    if (_json.containsKey('bindingId')) {
-      bindingId = _json['bindingId'] as core.String;
-    }
     if (_json.containsKey('condition')) {
       condition = Expr.fromJson(
           _json['condition'] as core.Map<core.String, core.dynamic>);
@@ -1037,7 +1044,6 @@ class Binding {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bindingId != null) 'bindingId': bindingId!,
         if (condition != null) 'condition': condition!.toJson(),
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
@@ -1053,6 +1059,62 @@ class CancelOperationRequest {
       core.Map _json);
 
   core.Map<core.String, core.dynamic> toJson() => {};
+}
+
+/// For display only.
+///
+/// Metadata associated with a Cloud SQL instance.
+class CloudSQLInstanceInfo {
+  /// Name of a Cloud SQL instance.
+  core.String? displayName;
+
+  /// External IP address of a Cloud SQL instance.
+  core.String? externalIp;
+
+  /// Internal IP address of a Cloud SQL instance.
+  core.String? internalIp;
+
+  /// URI of a Cloud SQL instance network or empty string if the instance does
+  /// not have one.
+  core.String? networkUri;
+
+  /// Region in which the Cloud SQL instance is running.
+  core.String? region;
+
+  /// URI of a Cloud SQL instance.
+  core.String? uri;
+
+  CloudSQLInstanceInfo();
+
+  CloudSQLInstanceInfo.fromJson(core.Map _json) {
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'] as core.String;
+    }
+    if (_json.containsKey('externalIp')) {
+      externalIp = _json['externalIp'] as core.String;
+    }
+    if (_json.containsKey('internalIp')) {
+      internalIp = _json['internalIp'] as core.String;
+    }
+    if (_json.containsKey('networkUri')) {
+      networkUri = _json['networkUri'] as core.String;
+    }
+    if (_json.containsKey('region')) {
+      region = _json['region'] as core.String;
+    }
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (externalIp != null) 'externalIp': externalIp!,
+        if (internalIp != null) 'internalIp': internalIp!,
+        if (networkUri != null) 'networkUri': networkUri!,
+        if (region != null) 'region': region!,
+        if (uri != null) 'uri': uri!,
+      };
 }
 
 /// A Connectivity Test for a network reachability analysis.
@@ -1212,8 +1274,10 @@ class DeliverInfo {
   /// Possible string values are:
   /// - "TARGET_UNSPECIFIED" : Target not specified.
   /// - "INSTANCE" : Target is a Compute Engine instance.
-  /// - "INTERNET" : Target is the Internet.
+  /// - "INTERNET" : Target is the internet.
   /// - "GOOGLE_API" : Target is a Google API.
+  /// - "GKE_MASTER" : Target is a Google Kubernetes Engine cluster master.
+  /// - "CLOUD_SQL_INSTANCE" : Target is a Cloud SQL instance.
   core.String? target;
 
   DeliverInfo();
@@ -1239,48 +1303,64 @@ class DropInfo {
   /// Possible string values are:
   /// - "CAUSE_UNSPECIFIED" : Cause is unspecified.
   /// - "UNKNOWN_EXTERNAL_ADDRESS" : Destination external address cannot be
-  /// resolved to a known target.
-  /// - "FOREIGN_IP_DISALLOWED" : a Compute Engine instance can only send or
-  /// receive a packet with a foreign IP if ip_forward is enabled.
-  /// - "FIREWALL_RULE" : Dropped due to a firewall rule unless allowed due to
+  /// resolved to a known target. If the address is used in a Google Cloud
+  /// project, provide the project ID as test input.
+  /// - "FOREIGN_IP_DISALLOWED" : A Compute Engine instance can only send or
+  /// receive a packet with a foreign IP address if ip_forward is enabled.
+  /// - "FIREWALL_RULE" : Dropped due to a firewall rule, unless allowed due to
   /// connection tracking.
   /// - "NO_ROUTE" : Dropped due to no routes.
   /// - "ROUTE_BLACKHOLE" : Dropped due to invalid route. Route's next hop is a
   /// blackhole.
   /// - "ROUTE_WRONG_NETWORK" : Packet is sent to a wrong (unintended) network.
-  /// Example: user traces a packet from VM1:Network1 to VM2:Network2, however,
+  /// Example: you trace a packet from VM1:Network1 to VM2:Network2, however,
   /// the route configured in Network1 sends the packet destined for VM2's IP
   /// addresss to Network3.
   /// - "PRIVATE_TRAFFIC_TO_INTERNET" : Packet with internal destination address
-  /// sent to Internet gateway.
+  /// sent to the internet gateway.
   /// - "PRIVATE_GOOGLE_ACCESS_DISALLOWED" : Instance with only an internal IP
-  /// tries to access Google API and Services, and private Google access is not
-  /// enabled.
-  /// - "NO_EXTERNAL_ADDRESS" : Instance with only internal IP tries to access
-  /// external hosts, but Cloud NAT is not enabled in the subnet, unless special
-  /// configurations on a VM allows this connection. See \[Special
-  /// Configurations for VM instances\](/vpc/docs/special-configurations) for
-  /// details.
+  /// address tries to access Google API and services, but private Google access
+  /// is not enabled.
+  /// - "NO_EXTERNAL_ADDRESS" : Instance with only an internal IP address tries
+  /// to access external hosts, but Cloud NAT is not enabled in the subnet,
+  /// unless special configurations on a VM allow this connection. For more
+  /// details, see
+  /// [Special configurations for VM instances](https://cloud.google.com/vpc/docs/special-configurations).
   /// - "UNKNOWN_INTERNAL_ADDRESS" : Destination internal address cannot be
-  /// resolved to a known target.
+  /// resolved to a known target. If this is a shared VPC scenario, verify if
+  /// the service project ID is provided as test input. Otherwise, verify if the
+  /// IP address is being used in the project.
   /// - "FORWARDING_RULE_MISMATCH" : Forwarding rule's protocol and ports do not
   /// match the packet header.
   /// - "FORWARDING_RULE_NO_INSTANCES" : Forwarding rule does not have backends
   /// configured.
   /// - "FIREWALL_BLOCKING_LOAD_BALANCER_BACKEND_HEALTH_CHECK" : Firewalls block
   /// the health check probes to the backends and cause the backends to be
-  /// unavailable for traffic from the load balancer. See \[Health check
-  /// firewall rules\](/load-balancing/docs/ health-checks#firewall_rules) for
-  /// more details.
+  /// unavailable for traffic from the load balancer. For more details, see
+  /// [Health check firewall rules](https://cloud.google.com/load-balancing/docs/health-checks#firewall_rules).
   /// - "INSTANCE_NOT_RUNNING" : Packet is sent from or to a Compute Engine
   /// instance that is not in a running state.
   /// - "TRAFFIC_TYPE_BLOCKED" : The type of traffic is blocked and the user
-  /// cannot configure a firewall rule to enable it. See \[Always blocked
-  /// traffic\](/vpc/docs/firewalls# blockedtraffic) for more details.
-  /// - "GKE_MASTER_UNAUTHORIZED_ACCESS" : Access to GKE master's endpoint is
-  /// not authorized. See \[Access to the cluster
-  /// endpoints\](/kubernetes-engine/docs/how-to/
-  /// private-clusters#access_to_the_cluster_endpoints) for more details.
+  /// cannot configure a firewall rule to enable it. See
+  /// [Always blocked traffic](https://cloud.google.com/vpc/docs/firewalls#blockedtraffic)
+  /// for more details.
+  /// - "GKE_MASTER_UNAUTHORIZED_ACCESS" : Access to Google Kubernetes Engine
+  /// cluster master's endpoint is not authorized. See
+  /// [Access to the cluster endpoints](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#access_to_the_cluster_endpoints)
+  /// for more details.
+  /// - "CLOUD_SQL_INSTANCE_UNAUTHORIZED_ACCESS" : Access to the Cloud SQL
+  /// instance endpoint is not authorized. See
+  /// [Authorizing with authorized networks](https://cloud.google.com/sql/docs/mysql/authorize-networks)
+  /// for more details.
+  /// - "DROPPED_INSIDE_GKE_SERVICE" : Packet was dropped inside Google
+  /// Kubernetes Engine Service.
+  /// - "DROPPED_INSIDE_CLOUD_SQL_SERVICE" : Packet was dropped inside Cloud SQL
+  /// Service.
+  /// - "GOOGLE_MANAGED_SERVICE_NO_PEERING" : Packet was dropped because there
+  /// is no peering between the originating network and the Google Managed
+  /// Services Network.
+  /// - "CLOUD_SQL_INSTANCE_NO_IP_ADDRESS" : Packet was dropped because the
+  /// Cloud SQL instance has neither a private nor a public IP address.
   core.String? cause;
 
   /// URI of the resource that caused the drop.
@@ -1322,6 +1402,13 @@ class Empty {
 
 /// Source or destination of the Connectivity Test.
 class Endpoint {
+  /// A [Cloud SQL](https://cloud.google.com/sql) instance URI.
+  core.String? cloudSqlInstance;
+
+  /// A cluster URI for
+  /// [Google Kubernetes Engine master](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture).
+  core.String? gkeMasterCluster;
+
   /// A Compute Engine instance URI.
   core.String? instance;
 
@@ -1366,6 +1453,12 @@ class Endpoint {
   Endpoint();
 
   Endpoint.fromJson(core.Map _json) {
+    if (_json.containsKey('cloudSqlInstance')) {
+      cloudSqlInstance = _json['cloudSqlInstance'] as core.String;
+    }
+    if (_json.containsKey('gkeMasterCluster')) {
+      gkeMasterCluster = _json['gkeMasterCluster'] as core.String;
+    }
     if (_json.containsKey('instance')) {
       instance = _json['instance'] as core.String;
     }
@@ -1387,6 +1480,8 @@ class Endpoint {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudSqlInstance != null) 'cloudSqlInstance': cloudSqlInstance!,
+        if (gkeMasterCluster != null) 'gkeMasterCluster': gkeMasterCluster!,
         if (instance != null) 'instance': instance!,
         if (ipAddress != null) 'ipAddress': ipAddress!,
         if (network != null) 'network': network!,
@@ -1536,7 +1631,8 @@ class Expr {
 
 /// For display only.
 ///
-/// Metadata associated with a Compute Engine firewall rule.
+/// Metadata associated with a VPC firewall rule, an implied VPC firewall rule,
+/// or a hierarchical firewall policy rule.
 class FirewallInfo {
   /// Possible values: ALLOW, DENY
   core.String? action;
@@ -1544,24 +1640,49 @@ class FirewallInfo {
   /// Possible values: INGRESS, EGRESS
   core.String? direction;
 
-  /// Name of a Compute Engine firewall rule.
+  /// The display name of the VPC firewall rule.
+  ///
+  /// This field is not applicable to hierarchical firewall policy rules.
   core.String? displayName;
 
-  /// URI of a Compute Engine network.
+  /// The firewall rule's type.
+  /// Possible string values are:
+  /// - "FIREWALL_RULE_TYPE_UNSPECIFIED" : Unspecified type.
+  /// - "HIERARCHICAL_FIREWALL_POLICY_RULE" : Hierarchical firewall policy rule.
+  /// For details, see
+  /// [Hierarchical firewall policies overview](https://cloud.google.com/vpc/docs/firewall-policies).
+  /// - "VPC_FIREWALL_RULE" : VPC firewall rule. For details, see
+  /// [VPC firewall rules overview](https://cloud.google.com/vpc/docs/firewalls).
+  /// - "IMPLIED_VPC_FIREWALL_RULE" : Implied VPC firewall rule. For details,
+  /// see
+  /// [Implied rules](https://cloud.google.com/vpc/docs/firewalls#default_firewall_rules).
+  core.String? firewallRuleType;
+
+  /// The URI of the VPC network that the firewall rule is associated with.
+  ///
+  /// This field is not applicable to hierarchical firewall policy rules.
   core.String? networkUri;
 
-  /// Priority of the firewall rule.
+  /// The hierarchical firewall policy that this rule is associated with.
+  ///
+  /// This field is not applicable to VPC firewall rules.
+  core.String? policy;
+
+  /// The priority of the firewall rule.
   core.int? priority;
 
-  /// Target service accounts of the firewall rule.
+  /// The target service accounts specified by the firewall rule.
   core.List<core.String>? targetServiceAccounts;
 
-  /// Target tags of the firewall rule.
+  /// The target tags defined by the VPC firewall rule.
+  ///
+  /// This field is not applicable to hierarchical firewall policy rules.
   core.List<core.String>? targetTags;
 
-  /// URI of a Compute Engine firewall rule.
+  /// The URI of the VPC firewall rule.
   ///
-  /// Implied default rule does not have URI.
+  /// This field is not applicable to implied firewall rules or hierarchical
+  /// firewall policy rules.
   core.String? uri;
 
   FirewallInfo();
@@ -1576,8 +1697,14 @@ class FirewallInfo {
     if (_json.containsKey('displayName')) {
       displayName = _json['displayName'] as core.String;
     }
+    if (_json.containsKey('firewallRuleType')) {
+      firewallRuleType = _json['firewallRuleType'] as core.String;
+    }
     if (_json.containsKey('networkUri')) {
       networkUri = _json['networkUri'] as core.String;
+    }
+    if (_json.containsKey('policy')) {
+      policy = _json['policy'] as core.String;
     }
     if (_json.containsKey('priority')) {
       priority = _json['priority'] as core.int;
@@ -1601,7 +1728,9 @@ class FirewallInfo {
         if (action != null) 'action': action!,
         if (direction != null) 'direction': direction!,
         if (displayName != null) 'displayName': displayName!,
+        if (firewallRuleType != null) 'firewallRuleType': firewallRuleType!,
         if (networkUri != null) 'networkUri': networkUri!,
+        if (policy != null) 'policy': policy!,
         if (priority != null) 'priority': priority!,
         if (targetServiceAccounts != null)
           'targetServiceAccounts': targetServiceAccounts!,
@@ -1620,11 +1749,12 @@ class ForwardInfo {
   /// - "TARGET_UNSPECIFIED" : Target not specified.
   /// - "PEERING_VPC" : Forwarded to a VPC peering network.
   /// - "VPN_GATEWAY" : Forwarded to a Cloud VPN gateway.
-  /// - "INTERCONNECT" : Forwarded to an Cloud Interconnect connection.
+  /// - "INTERCONNECT" : Forwarded to a Cloud Interconnect connection.
   /// - "GKE_MASTER" : Forwarded to a Google Kubernetes Engine Container cluster
   /// master.
   /// - "IMPORTED_CUSTOM_ROUTE_NEXT_HOP" : Forwarded to the next hop of a custom
   /// route imported from a peering VPC.
+  /// - "CLOUD_SQL_INSTANCE" : Forwarded to a Cloud SQL instance.
   core.String? target;
 
   ForwardInfo();
@@ -1705,6 +1835,47 @@ class ForwardingRuleInfo {
         if (target != null) 'target': target!,
         if (uri != null) 'uri': uri!,
         if (vip != null) 'vip': vip!,
+      };
+}
+
+/// For display only.
+///
+/// Metadata associated with a Google Kubernetes Engine (GKE) cluster master.
+class GKEMasterInfo {
+  /// URI of a GKE cluster network.
+  core.String? clusterNetworkUri;
+
+  /// URI of a GKE cluster.
+  core.String? clusterUri;
+
+  /// External IP address of a GKE cluster master.
+  core.String? externalIp;
+
+  /// Internal IP address of a GKE cluster master.
+  core.String? internalIp;
+
+  GKEMasterInfo();
+
+  GKEMasterInfo.fromJson(core.Map _json) {
+    if (_json.containsKey('clusterNetworkUri')) {
+      clusterNetworkUri = _json['clusterNetworkUri'] as core.String;
+    }
+    if (_json.containsKey('clusterUri')) {
+      clusterUri = _json['clusterUri'] as core.String;
+    }
+    if (_json.containsKey('externalIp')) {
+      externalIp = _json['externalIp'] as core.String;
+    }
+    if (_json.containsKey('internalIp')) {
+      internalIp = _json['internalIp'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clusterNetworkUri != null) 'clusterNetworkUri': clusterNetworkUri!,
+        if (clusterUri != null) 'clusterUri': clusterUri!,
+        if (externalIp != null) 'externalIp': externalIp!,
+        if (internalIp != null) 'internalIp': internalIp!,
       };
 }
 
@@ -2368,29 +2539,31 @@ class Policy {
       };
 }
 
-/// The details of reachability state from the latest run.
+/// Results of the configuration analysis from the last run of the test.
 class ReachabilityDetails {
   /// The details of a failure or a cancellation of reachability analysis.
   Status? error;
 
-  /// The overall reachability result of the test.
+  /// The overall result of the test's configuration analysis.
   /// Possible string values are:
-  /// - "RESULT_UNSPECIFIED" : Result is not specified.
-  /// - "REACHABLE" : Packet originating from source is expected to reach
-  /// destination.
-  /// - "UNREACHABLE" : Packet originating from source is expected to be dropped
-  /// before reaching destination.
-  /// - "AMBIGUOUS" : If the source and destination endpoint does not uniquely
+  /// - "RESULT_UNSPECIFIED" : No result was specified.
+  /// - "REACHABLE" : Possible scenarios are: * The configuration analysis
+  /// determined that a packet originating from the source is expected to reach
+  /// the destination. * The analysis didn't complete because the user lacks
+  /// permission for some of the resources in the trace. However, at the time
+  /// the user's permission became insufficient, the trace had been successful
+  /// so far.
+  /// - "UNREACHABLE" : A packet originating from the source is expected to be
+  /// dropped before reaching the destination.
+  /// - "AMBIGUOUS" : The source and destination endpoints do not uniquely
   /// identify the test location in the network, and the reachability result
-  /// contains multiple traces with mixed reachable and unreachable states, then
-  /// this result is returned.
-  /// - "UNDETERMINED" : The reachability could not be determined. Possible
-  /// reasons are: * Analysis is aborted due to permission error. User does not
-  /// have read permission to the projects listed in the test. * Analysis is
-  /// aborted due to internal errors. * Analysis is partially complete based on
-  /// configurations where the user has permission. The Final state indicates
-  /// that the packet is forwarded to another network where the user has no
-  /// permission to access the configurations.
+  /// contains multiple traces. For some traces, a packet could be delivered,
+  /// and for others, it would not be.
+  /// - "UNDETERMINED" : The configuration analysis did not complete. Possible
+  /// reasons are: * A permissions error occurred--for example, the user might
+  /// not have read permission for all of the resources named in the test. * An
+  /// internal error occurred. * The analyzer received an invalid or unsupported
+  /// argument or was unable to identify a known endpoint.
   core.String? result;
 
   /// Result may contain a list of traces if a test has multiple possible paths
@@ -2398,7 +2571,7 @@ class ReachabilityDetails {
   /// multiple backends.
   core.List<Trace>? traces;
 
-  /// The time the reachability state was verified.
+  /// The time of the configuration analysis.
   core.String? verifyTime;
 
   ReachabilityDetails();
@@ -2470,10 +2643,10 @@ class RouteInfo {
   /// - "NEXT_HOP_PEERING" : Next hop is a peering VPC.
   /// - "NEXT_HOP_INTERCONNECT" : Next hop is an interconnect.
   /// - "NEXT_HOP_VPN_TUNNEL" : Next hop is a VPN tunnel.
-  /// - "NEXT_HOP_VPN_GATEWAY" : Next hop is a VPN Gateway. This scenario only
-  /// happens when tracing connectivity from an on-premises network to GCP
-  /// through a VPN. The analysis simulates a packet departing from the
-  /// on-premises network through a VPN tunnel and arrives at a Cloud VPN
+  /// - "NEXT_HOP_VPN_GATEWAY" : Next hop is a VPN gateway. This scenario only
+  /// happens when tracing connectivity from an on-premises network to Google
+  /// Cloud through a VPN. The analysis simulates a packet departing from the
+  /// on-premises network through a VPN tunnel and arriving at a Cloud VPN
   /// gateway.
   /// - "NEXT_HOP_INTERNET_GATEWAY" : Next hop is an internet gateway.
   /// - "NEXT_HOP_BLACKHOLE" : Next hop is blackhole; that is, the next hop
@@ -2489,8 +2662,8 @@ class RouteInfo {
   /// Possible string values are:
   /// - "ROUTE_TYPE_UNSPECIFIED" : Unspecified type. Default value.
   /// - "SUBNET" : Route is a subnet route automatically created by the system.
-  /// - "STATIC" : Static route created by the user including the default route
-  /// to the Internet.
+  /// - "STATIC" : Static route created by the user, including the default route
+  /// to the internet.
   /// - "DYNAMIC" : Dynamic route exchanged between BGP peers.
   /// - "PEERING_SUBNET" : A subnet route received from peering network.
   /// - "PEERING_STATIC" : A static route received from peering network.
@@ -2641,13 +2814,16 @@ class Status {
 ///
 /// Each step has a well-defined state and an associated configuration.
 class Step {
-  /// Display info of the final state "abort" and reason.
+  /// Display information of the final state "abort" and reason.
   AbortInfo? abort;
 
   /// This is a step that leads to the final state Drop.
   core.bool? causesDrop;
 
-  /// Display info of the final state "deliver" and reason.
+  /// Display information of a Cloud SQL instance.
+  CloudSQLInstanceInfo? cloudSqlInstance;
+
+  /// Display information of the final state "deliver" and reason.
   DeliverInfo? deliver;
 
   /// A description of the step.
@@ -2655,51 +2831,61 @@ class Step {
   /// Usually this is a summary of the state.
   core.String? description;
 
-  /// Display info of the final state "drop" and reason.
+  /// Display information of the final state "drop" and reason.
   DropInfo? drop;
 
-  /// Display info of the source and destination under analysis.
+  /// Display information of the source and destination under analysis.
   ///
-  /// The endpiont info in an intermediate state may differ with the initial
-  /// input, as it might be modified by state like NAT, or Connection Proxy.
+  /// The endpoint information in an intermediate state may differ with the
+  /// initial input, as it might be modified by state like NAT, or Connection
+  /// Proxy.
   EndpointInfo? endpoint;
 
-  /// Display info of a Compute Engine firewall rule.
+  /// Display information of a Compute Engine firewall rule.
   FirewallInfo? firewall;
 
-  /// Display info of the final state "forward" and reason.
+  /// Display information of the final state "forward" and reason.
   ForwardInfo? forward;
 
-  /// Display info of a Compute Engine forwarding rule.
+  /// Display information of a Compute Engine forwarding rule.
   ForwardingRuleInfo? forwardingRule;
 
-  /// Display info of a Compute Engine instance.
+  /// Display information of a Google Kubernetes Engine cluster master.
+  GKEMasterInfo? gkeMaster;
+
+  /// Display information of a Compute Engine instance.
   InstanceInfo? instance;
 
-  /// Display info of the load balancers.
+  /// Display information of the load balancers.
   LoadBalancerInfo? loadBalancer;
 
-  /// Display info of a GCP network.
+  /// Display information of a Google Cloud network.
   NetworkInfo? network;
 
   /// Project ID that contains the configuration this step is validating.
   core.String? projectId;
 
-  /// Display info of a Compute Engine route.
+  /// Display information of a Compute Engine route.
   RouteInfo? route;
 
   /// Each step is in one of the pre-defined states.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Unspecified state.
   /// - "START_FROM_INSTANCE" : Initial state: packet originating from a Compute
-  /// Engine instance. An InstanceInfo will be populated with starting instance
-  /// info.
-  /// - "START_FROM_INTERNET" : Initial state: packet originating from Internet.
-  /// The endpoint info will be populated.
+  /// Engine instance. An InstanceInfo is populated with starting instance
+  /// information.
+  /// - "START_FROM_INTERNET" : Initial state: packet originating from the
+  /// internet. The endpoint information is populated.
   /// - "START_FROM_PRIVATE_NETWORK" : Initial state: packet originating from a
   /// VPC or on-premises network with internal source IP. If the source is a VPC
-  /// network visible to the user, a NetworkInfo will be populated with details
-  /// of the network.
+  /// network visible to the user, a NetworkInfo is populated with details of
+  /// the network.
+  /// - "START_FROM_GKE_MASTER" : Initial state: packet originating from a
+  /// Google Kubernetes Engine cluster master. A GKEMasterInfo is populated with
+  /// starting instance information.
+  /// - "START_FROM_CLOUD_SQL_INSTANCE" : Initial state: packet originating from
+  /// a Cloud SQL instance. A CloudSQLInstanceInfo is populated with starting
+  /// instance information.
   /// - "APPLY_INGRESS_FIREWALL_RULE" : Config checking state: verify ingress
   /// firewall rule.
   /// - "APPLY_EGRESS_FIREWALL_RULE" : Config checking state: verify egress
@@ -2721,19 +2907,19 @@ class Step {
   /// - "NAT" : Transition state: packet header translated.
   /// - "PROXY_CONNECTION" : Transition state: original connection is terminated
   /// and a new proxied connection is initiated.
-  /// - "DELIVER" : Final state: packet delivered.
-  /// - "DROP" : Final state: packet dropped.
-  /// - "FORWARD" : Final state: packet forwarded to a network with an unknown
-  /// configuration.
+  /// - "DELIVER" : Final state: packet could be delivered.
+  /// - "DROP" : Final state: packet could be dropped.
+  /// - "FORWARD" : Final state: packet could be forwarded to a network with an
+  /// unknown configuration.
   /// - "ABORT" : Final state: analysis is aborted.
   /// - "VIEWER_PERMISSION_MISSING" : Special state: viewer of the test result
   /// does not have permission to see the configuration in this step.
   core.String? state;
 
-  /// Display info of a Compute Engine VPN gateway.
+  /// Display information of a Compute Engine VPN gateway.
   VpnGatewayInfo? vpnGateway;
 
-  /// Display info of a Compute Engine VPN tunnel.
+  /// Display information of a Compute Engine VPN tunnel.
   VpnTunnelInfo? vpnTunnel;
 
   Step();
@@ -2745,6 +2931,10 @@ class Step {
     }
     if (_json.containsKey('causesDrop')) {
       causesDrop = _json['causesDrop'] as core.bool;
+    }
+    if (_json.containsKey('cloudSqlInstance')) {
+      cloudSqlInstance = CloudSQLInstanceInfo.fromJson(
+          _json['cloudSqlInstance'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deliver')) {
       deliver = DeliverInfo.fromJson(
@@ -2772,6 +2962,10 @@ class Step {
     if (_json.containsKey('forwardingRule')) {
       forwardingRule = ForwardingRuleInfo.fromJson(
           _json['forwardingRule'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('gkeMaster')) {
+      gkeMaster = GKEMasterInfo.fromJson(
+          _json['gkeMaster'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('instance')) {
       instance = InstanceInfo.fromJson(
@@ -2808,6 +3002,8 @@ class Step {
   core.Map<core.String, core.dynamic> toJson() => {
         if (abort != null) 'abort': abort!.toJson(),
         if (causesDrop != null) 'causesDrop': causesDrop!,
+        if (cloudSqlInstance != null)
+          'cloudSqlInstance': cloudSqlInstance!.toJson(),
         if (deliver != null) 'deliver': deliver!.toJson(),
         if (description != null) 'description': description!,
         if (drop != null) 'drop': drop!.toJson(),
@@ -2815,6 +3011,7 @@ class Step {
         if (firewall != null) 'firewall': firewall!.toJson(),
         if (forward != null) 'forward': forward!.toJson(),
         if (forwardingRule != null) 'forwardingRule': forwardingRule!.toJson(),
+        if (gkeMaster != null) 'gkeMaster': gkeMaster!.toJson(),
         if (instance != null) 'instance': instance!.toJson(),
         if (loadBalancer != null) 'loadBalancer': loadBalancer!.toJson(),
         if (network != null) 'network': network!.toJson(),
@@ -2873,12 +3070,12 @@ class TestIamPermissionsResponse {
 
 /// Trace represents one simulated packet forwarding path.
 ///
-/// - Each trace contains multiple ordered steps. - Each step is in a particular
-/// state and has an associated configuration. - State is categorized as a final
-/// or non-final state. - Each final state has a reason associated with it. -
-/// Each trace must end with a final state (the last step).
+/// * Each trace contains multiple ordered steps. * Each step is in a particular
+/// state with associated configuration. * State is categorized as final or
+/// non-final states. * Each final state has a reason associated. * Each trace
+/// must end with a final state (the last step). ```
 /// |---------------------Trace----------------------| Step1(State) Step2(State)
-/// --- StepN(State(final))
+/// --- StepN(State(final)) ```
 class Trace {
   /// Derived from the source and destination endpoints definition, and
   /// validated by the data plane model.
@@ -2930,7 +3127,7 @@ class VpnGatewayInfo {
   /// URI of a Compute Engine network where the VPN gateway is configured.
   core.String? networkUri;
 
-  /// Name of a GCP region where this VPN gateway is configured.
+  /// Name of a Google Cloud region where this VPN gateway is configured.
   core.String? region;
 
   /// URI of a VPN gateway.
@@ -2985,7 +3182,7 @@ class VpnTunnelInfo {
   /// URI of a Compute Engine network where the VPN tunnel is configured.
   core.String? networkUri;
 
-  /// Name of a GCP region where this VPN tunnel is configured.
+  /// Name of a Google Cloud region where this VPN tunnel is configured.
   core.String? region;
 
   /// URI of a VPN gateway at remote end of the tunnel.

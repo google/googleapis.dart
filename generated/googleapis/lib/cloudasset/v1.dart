@@ -21,6 +21,7 @@
 ///
 /// Create an instance of [CloudAssetApi] to access these resources:
 ///
+/// - [AssetsResource]
 /// - [FeedsResource]
 /// - [OperationsResource]
 /// - [V1Resource]
@@ -40,12 +41,13 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// The cloud asset API manages the history and inventory of cloud resources.
 class CloudAssetApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
   final commons.ApiRequester _requester;
 
+  AssetsResource get assets => AssetsResource(_requester);
   FeedsResource get feeds => FeedsResource(_requester);
   OperationsResource get operations => OperationsResource(_requester);
   V1Resource get v1 => V1Resource(_requester);
@@ -55,6 +57,102 @@ class CloudAssetApi {
       core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+}
+
+class AssetsResource {
+  final commons.ApiRequester _requester;
+
+  AssetsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Lists assets with time and resource types and returns paged results in
+  /// response.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the organization or project the assets belong
+  /// to. Format: "organizations/\[organization-number\]" (such as
+  /// "organizations/123"), "projects/\[project-number\]" (such as
+  /// "projects/my-project-id"), or "projects/\[project-id\]" (such as
+  /// "projects/12345").
+  /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
+  ///
+  /// [assetTypes] - A list of asset types to take a snapshot for. For example:
+  /// "compute.googleapis.com/Disk". Regular expression is also supported. For
+  /// example: * "compute.googleapis.com.*" snapshots resources whose asset type
+  /// starts with "compute.googleapis.com". * ".*Instance" snapshots resources
+  /// whose asset type ends with "Instance". * ".*Instance.*" snapshots
+  /// resources whose asset type contains "Instance". See
+  /// [RE2](https://github.com/google/re2/wiki/Syntax) for all supported regular
+  /// expression syntax. If the regular expression does not match any supported
+  /// asset type, an INVALID_ARGUMENT error will be returned. If specified, only
+  /// matching assets will be returned, otherwise, it will snapshot all asset
+  /// types. See
+  /// [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview)
+  /// for all supported asset types.
+  ///
+  /// [contentType] - Asset content type. If not specified, no content but the
+  /// asset name will be returned.
+  /// Possible string values are:
+  /// - "CONTENT_TYPE_UNSPECIFIED" : Unspecified content type.
+  /// - "RESOURCE" : Resource metadata.
+  /// - "IAM_POLICY" : The actual IAM policy set on a resource.
+  /// - "ORG_POLICY" : The Cloud Organization Policy set on an asset.
+  /// - "ACCESS_POLICY" : The Cloud Access context manager Policy set on an
+  /// asset.
+  /// - "OS_INVENTORY" : The runtime OS Inventory information.
+  ///
+  /// [pageSize] - The maximum number of assets to be returned in a single
+  /// response. Default is 100, minimum is 1, and maximum is 1000.
+  ///
+  /// [pageToken] - The `next_page_token` returned from the previous
+  /// `ListAssetsResponse`, or unspecified for the first `ListAssetsRequest`. It
+  /// is a continuation of a prior `ListAssets` call, and the API should return
+  /// the next page of assets.
+  ///
+  /// [readTime] - Timestamp to take an asset snapshot. This can only be set to
+  /// a timestamp between the current time and the current time minus 35 days
+  /// (inclusive). If not specified, the current time will be used. Due to
+  /// delays in resource data collection and indexing, there is a volatile
+  /// window during which running the same query may get different results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAssetsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAssetsResponse> list(
+    core.String parent, {
+    core.List<core.String>? assetTypes,
+    core.String? contentType,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? readTime,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (assetTypes != null) 'assetTypes': assetTypes,
+      if (contentType != null) 'contentType': [contentType],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (readTime != null) 'readTime': [readTime],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/assets';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListAssetsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class FeedsResource {
@@ -337,6 +435,11 @@ class V1Resource {
   /// [analysisQuery_accessSelector_roles] - Optional. The roles to appear in
   /// result.
   ///
+  /// [analysisQuery_conditionContext_accessTime] - The hypothetical access
+  /// timestamp to evaluate IAM conditions. Note that this value must not be
+  /// earlier than the current time; otherwise, an INVALID_ARGUMENT error will
+  /// be returned.
+  ///
   /// [analysisQuery_identitySelector_identity] - Required. The identity appear
   /// in the form of members in
   /// [IAM policy binding](https://cloud.google.com/iam/reference/rest/v1/Binding).
@@ -432,6 +535,7 @@ class V1Resource {
     core.String scope, {
     core.List<core.String>? analysisQuery_accessSelector_permissions,
     core.List<core.String>? analysisQuery_accessSelector_roles,
+    core.String? analysisQuery_conditionContext_accessTime,
     core.String? analysisQuery_identitySelector_identity,
     core.bool? analysisQuery_options_analyzeServiceAccountImpersonation,
     core.bool? analysisQuery_options_expandGroups,
@@ -450,6 +554,10 @@ class V1Resource {
       if (analysisQuery_accessSelector_roles != null)
         'analysisQuery.accessSelector.roles':
             analysisQuery_accessSelector_roles,
+      if (analysisQuery_conditionContext_accessTime != null)
+        'analysisQuery.conditionContext.accessTime': [
+          analysisQuery_conditionContext_accessTime
+        ],
       if (analysisQuery_identitySelector_identity != null)
         'analysisQuery.identitySelector.identity': [
           analysisQuery_identitySelector_identity
@@ -850,18 +958,20 @@ class V1Resource {
   /// `labels.env:*` to find Cloud resources that have a label "env". *
   /// `kmsKey:key` to find Cloud resources encrypted with a customer-managed
   /// encryption key whose name contains the word "key". * `state:ACTIVE` to
-  /// find Cloud resources whose state contains "ACTIVE" as a word. *
-  /// `createTime<1609459200` to find Cloud resources that were created before
+  /// find Cloud resources whose state contains "ACTIVE" as a word. * `NOT
+  /// state:ACTIVE` to find {{gcp_name}} resources whose state doesn't contain
+  /// "ACTIVE" as a word. * `createTime<1609459200` to find Cloud resources that
+  /// were created before "2021-01-01 00:00:00 UTC". 1609459200 is the epoch
+  /// timestamp of "2021-01-01 00:00:00 UTC" in seconds. *
+  /// `updateTime>1609459200` to find Cloud resources that were updated after
   /// "2021-01-01 00:00:00 UTC". 1609459200 is the epoch timestamp of
-  /// "2021-01-01 00:00:00 UTC" in seconds. * `updateTime>1609459200` to find
-  /// Cloud resources that were updated after "2021-01-01 00:00:00 UTC".
-  /// 1609459200 is the epoch timestamp of "2021-01-01 00:00:00 UTC" in seconds.
-  /// * `Important` to find Cloud resources that contain "Important" as a word
-  /// in any of the searchable fields. * `Impor*` to find Cloud resources that
-  /// contain "Impor" as a prefix of any word in any of the searchable fields. *
-  /// `Important location:(us-west1 OR global)` to find Cloud resources that
-  /// contain "Important" as a word in any of the searchable fields and are also
-  /// located in the "us-west1" region or the "global" location.
+  /// "2021-01-01 00:00:00 UTC" in seconds. * `Important` to find Cloud
+  /// resources that contain "Important" as a word in any of the searchable
+  /// fields. * `Impor*` to find Cloud resources that contain "Impor" as a
+  /// prefix of any word in any of the searchable fields. * `Important
+  /// location:(us-west1 OR global)` to find Cloud resources that contain
+  /// "Important" as a word in any of the searchable fields and are also located
+  /// in the "us-west1" region or the "global" location.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -972,6 +1082,17 @@ class AnalyzeIamPolicyLongrunningRequest {
       };
 }
 
+/// A response message for AssetService.AnalyzeIamPolicyLongrunning.
+class AnalyzeIamPolicyLongrunningResponse {
+  AnalyzeIamPolicyLongrunningResponse();
+
+  AnalyzeIamPolicyLongrunningResponse.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
 /// A response message for AssetService.AnalyzeIamPolicy.
 class AnalyzeIamPolicyResponse {
   /// Represents whether all entries in the main_analysis and
@@ -1022,7 +1143,8 @@ class AnalyzeIamPolicyResponse {
 /// [resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy),
 /// a resource outside the Google Cloud resource hierarchy (such as Google
 /// Kubernetes Engine clusters and objects), or a policy (e.g. Cloud IAM
-/// policy). See
+/// policy), or a relationship (e.g. an INSTANCE_TO_INSTANCEGROUP relationship).
+/// See
 /// [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
 /// for more information.
 class Asset {
@@ -1452,6 +1574,52 @@ class Binding {
       };
 }
 
+/// The IAM conditions context.
+class ConditionContext {
+  /// The hypothetical access timestamp to evaluate IAM conditions.
+  ///
+  /// Note that this value must not be earlier than the current time; otherwise,
+  /// an INVALID_ARGUMENT error will be returned.
+  core.String? accessTime;
+
+  ConditionContext();
+
+  ConditionContext.fromJson(core.Map _json) {
+    if (_json.containsKey('accessTime')) {
+      accessTime = _json['accessTime'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accessTime != null) 'accessTime': accessTime!,
+      };
+}
+
+/// The Condition evaluation.
+class ConditionEvaluation {
+  /// The evaluation result.
+  /// Possible string values are:
+  /// - "EVALUATION_VALUE_UNSPECIFIED" : Reserved for future use.
+  /// - "TRUE" : The evaluation result is `true`.
+  /// - "FALSE" : The evaluation result is `false`.
+  /// - "CONDITIONAL" : The evaluation result is `conditional` when the
+  /// condition expression contains variables that are either missing input
+  /// values or have not been supported by Analyzer yet.
+  core.String? evaluationValue;
+
+  ConditionEvaluation();
+
+  ConditionEvaluation.fromJson(core.Map _json) {
+    if (_json.containsKey('evaluationValue')) {
+      evaluationValue = _json['evaluationValue'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (evaluationValue != null) 'evaluationValue': evaluationValue!,
+      };
+}
+
 /// Create asset feed request.
 class CreateFeedRequest {
   /// The feed details.
@@ -1814,7 +1982,10 @@ class GcsDestination {
   /// It's the same uri that is used by gsutil. Example:
   /// "gs://bucket_name/object_name". See
   /// [Viewing and Editing Object Metadata](https://cloud.google.com/storage/docs/viewing-editing-metadata)
-  /// for more information.
+  /// for more information. If the specified Cloud Storage object already exists
+  /// and there is no
+  /// [hold](https://cloud.google.com/storage/docs/object-holds), it will be
+  /// overwritten with the exported result.
   core.String? uri;
 
   /// The uri prefix of all generated Cloud Storage objects.
@@ -1895,6 +2066,10 @@ class GoogleCloudAssetV1AccessControlList {
   /// specifiers reachable from the policy binding's role.
   core.List<GoogleCloudAssetV1Access>? accesses;
 
+  /// Condition evaluation for this AccessControlList, if there is a condition
+  /// defined in the above IAM policy binding.
+  ConditionEvaluation? conditionEvaluation;
+
   /// Resource edges of the graph starting from the policy attached resource to
   /// any descendant resources.
   ///
@@ -1919,6 +2094,10 @@ class GoogleCloudAssetV1AccessControlList {
                   value as core.Map<core.String, core.dynamic>))
           .toList();
     }
+    if (_json.containsKey('conditionEvaluation')) {
+      conditionEvaluation = ConditionEvaluation.fromJson(
+          _json['conditionEvaluation'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('resourceEdges')) {
       resourceEdges = (_json['resourceEdges'] as core.List)
           .map<GoogleCloudAssetV1Edge>((value) =>
@@ -1938,6 +2117,8 @@ class GoogleCloudAssetV1AccessControlList {
   core.Map<core.String, core.dynamic> toJson() => {
         if (accesses != null)
           'accesses': accesses!.map((value) => value.toJson()).toList(),
+        if (conditionEvaluation != null)
+          'conditionEvaluation': conditionEvaluation!.toJson(),
         if (resourceEdges != null)
           'resourceEdges':
               resourceEdges!.map((value) => value.toJson()).toList(),
@@ -2055,10 +2236,13 @@ class GoogleCloudAssetV1Edge {
 class GoogleCloudAssetV1GcsDestination {
   /// The uri of the Cloud Storage object.
   ///
-  /// It's the same uri that is used by gsutil. For example:
-  /// "gs://bucket_name/object_name". See \[Quickstart: Using the gsutil
-  /// tool\](https://cloud.google.com/storage/docs/quickstart-gsutil) for
-  /// examples.
+  /// It's the same uri that is used by gsutil. Example:
+  /// "gs://bucket_name/object_name". See
+  /// [Viewing and Editing Object Metadata](https://cloud.google.com/storage/docs/viewing-editing-metadata)
+  /// for more information. If the specified Cloud Storage object already exists
+  /// and there is no
+  /// [hold](https://cloud.google.com/storage/docs/object-holds), it will be
+  /// overwritten with the analysis result.
   ///
   /// Required.
   core.String? uri;
@@ -2173,6 +2357,388 @@ class GoogleCloudAssetV1Resource {
   core.Map<core.String, core.dynamic> toJson() => {
         if (analysisState != null) 'analysisState': analysisState!.toJson(),
         if (fullResourceName != null) 'fullResourceName': fullResourceName!,
+      };
+}
+
+/// An asset in Google Cloud.
+///
+/// An asset can be any resource in the Google Cloud
+/// [resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy),
+/// a resource outside the Google Cloud resource hierarchy (such as Google
+/// Kubernetes Engine clusters and objects), or a policy (e.g. Cloud IAM
+/// policy). See
+/// [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
+/// for more information.
+class GoogleCloudAssetV1p7beta1Asset {
+  /// Please also refer to the
+  /// [access level user guide](https://cloud.google.com/access-context-manager/docs/overview#access-levels).
+  GoogleIdentityAccesscontextmanagerV1AccessLevel? accessLevel;
+
+  /// Please also refer to the
+  /// [access policy user guide](https://cloud.google.com/access-context-manager/docs/overview#access-policies).
+  GoogleIdentityAccesscontextmanagerV1AccessPolicy? accessPolicy;
+
+  /// The ancestry path of an asset in Google Cloud
+  /// [resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy),
+  /// represented as a list of relative resource names.
+  ///
+  /// An ancestry path starts with the closest ancestor in the hierarchy and
+  /// ends at root. If the asset is a project, folder, or organization, the
+  /// ancestry path starts from the asset itself. Example:
+  /// `["projects/123456789", "folders/5432", "organizations/1234"]`
+  core.List<core.String>? ancestors;
+
+  /// The type of the asset.
+  ///
+  /// Example: `compute.googleapis.com/Disk` See
+  /// [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
+  /// for more information.
+  core.String? assetType;
+
+  /// A representation of the Cloud IAM policy set on a Google Cloud resource.
+  ///
+  /// There can be a maximum of one Cloud IAM policy set on any given resource.
+  /// In addition, Cloud IAM policies inherit their granted access scope from
+  /// any policies set on parent resources in the resource hierarchy. Therefore,
+  /// the effectively policy is the union of both the policy set on this
+  /// resource and each policy set on all of the resource's ancestry resource
+  /// levels in the hierarchy. See
+  /// [this topic](https://cloud.google.com/iam/docs/policies#inheritance) for
+  /// more information.
+  Policy? iamPolicy;
+
+  /// The full name of the asset.
+  ///
+  /// Example:
+  /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`
+  /// See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names#full_resource_name)
+  /// for more information.
+  core.String? name;
+
+  /// A representation of an
+  /// [organization policy](https://cloud.google.com/resource-manager/docs/organization-policy/overview#organization_policy).
+  ///
+  /// There can be more than one organization policy with different constraints
+  /// set on a given resource.
+  core.List<GoogleCloudOrgpolicyV1Policy>? orgPolicy;
+
+  /// The related assets of the asset of one relationship type.
+  ///
+  /// One asset only represents one type of relationship.
+  GoogleCloudAssetV1p7beta1RelatedAssets? relatedAssets;
+
+  /// A representation of the resource.
+  GoogleCloudAssetV1p7beta1Resource? resource;
+
+  /// Please also refer to the
+  /// [service perimeter user guide](https://cloud.google.com/vpc-service-controls/docs/overview).
+  GoogleIdentityAccesscontextmanagerV1ServicePerimeter? servicePerimeter;
+
+  /// The last update timestamp of an asset.
+  ///
+  /// update_time is updated when create/update/delete operation is performed.
+  core.String? updateTime;
+
+  GoogleCloudAssetV1p7beta1Asset();
+
+  GoogleCloudAssetV1p7beta1Asset.fromJson(core.Map _json) {
+    if (_json.containsKey('accessLevel')) {
+      accessLevel = GoogleIdentityAccesscontextmanagerV1AccessLevel.fromJson(
+          _json['accessLevel'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('accessPolicy')) {
+      accessPolicy = GoogleIdentityAccesscontextmanagerV1AccessPolicy.fromJson(
+          _json['accessPolicy'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('ancestors')) {
+      ancestors = (_json['ancestors'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('assetType')) {
+      assetType = _json['assetType'] as core.String;
+    }
+    if (_json.containsKey('iamPolicy')) {
+      iamPolicy = Policy.fromJson(
+          _json['iamPolicy'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('orgPolicy')) {
+      orgPolicy = (_json['orgPolicy'] as core.List)
+          .map<GoogleCloudOrgpolicyV1Policy>((value) =>
+              GoogleCloudOrgpolicyV1Policy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('relatedAssets')) {
+      relatedAssets = GoogleCloudAssetV1p7beta1RelatedAssets.fromJson(
+          _json['relatedAssets'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('resource')) {
+      resource = GoogleCloudAssetV1p7beta1Resource.fromJson(
+          _json['resource'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('servicePerimeter')) {
+      servicePerimeter =
+          GoogleIdentityAccesscontextmanagerV1ServicePerimeter.fromJson(
+              _json['servicePerimeter'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accessLevel != null) 'accessLevel': accessLevel!.toJson(),
+        if (accessPolicy != null) 'accessPolicy': accessPolicy!.toJson(),
+        if (ancestors != null) 'ancestors': ancestors!,
+        if (assetType != null) 'assetType': assetType!,
+        if (iamPolicy != null) 'iamPolicy': iamPolicy!.toJson(),
+        if (name != null) 'name': name!,
+        if (orgPolicy != null)
+          'orgPolicy': orgPolicy!.map((value) => value.toJson()).toList(),
+        if (relatedAssets != null) 'relatedAssets': relatedAssets!.toJson(),
+        if (resource != null) 'resource': resource!.toJson(),
+        if (servicePerimeter != null)
+          'servicePerimeter': servicePerimeter!.toJson(),
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// An asset identify in Google Cloud which contains its name, type and
+/// ancestors.
+///
+/// An asset can be any resource in the Google Cloud
+/// [resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy),
+/// a resource outside the Google Cloud resource hierarchy (such as Google
+/// Kubernetes Engine clusters and objects), or a policy (e.g. Cloud IAM
+/// policy). See
+/// [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
+/// for more information.
+class GoogleCloudAssetV1p7beta1RelatedAsset {
+  /// The ancestors of an asset in Google Cloud
+  /// [resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy),
+  /// represented as a list of relative resource names.
+  ///
+  /// An ancestry path starts with the closest ancestor in the hierarchy and
+  /// ends at root. Example: `["projects/123456789", "folders/5432",
+  /// "organizations/1234"]`
+  core.List<core.String>? ancestors;
+
+  /// The full name of the asset.
+  ///
+  /// Example:
+  /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`
+  /// See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names#full_resource_name)
+  /// for more information.
+  core.String? asset;
+
+  /// The type of the asset.
+  ///
+  /// Example: `compute.googleapis.com/Disk` See
+  /// [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
+  /// for more information.
+  core.String? assetType;
+
+  GoogleCloudAssetV1p7beta1RelatedAsset();
+
+  GoogleCloudAssetV1p7beta1RelatedAsset.fromJson(core.Map _json) {
+    if (_json.containsKey('ancestors')) {
+      ancestors = (_json['ancestors'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('asset')) {
+      asset = _json['asset'] as core.String;
+    }
+    if (_json.containsKey('assetType')) {
+      assetType = _json['assetType'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ancestors != null) 'ancestors': ancestors!,
+        if (asset != null) 'asset': asset!,
+        if (assetType != null) 'assetType': assetType!,
+      };
+}
+
+/// The detailed related assets with the `relationship_type`.
+class GoogleCloudAssetV1p7beta1RelatedAssets {
+  /// The peer resources of the relationship.
+  core.List<GoogleCloudAssetV1p7beta1RelatedAsset>? assets;
+
+  /// The detailed relation attributes.
+  GoogleCloudAssetV1p7beta1RelationshipAttributes? relationshipAttributes;
+
+  GoogleCloudAssetV1p7beta1RelatedAssets();
+
+  GoogleCloudAssetV1p7beta1RelatedAssets.fromJson(core.Map _json) {
+    if (_json.containsKey('assets')) {
+      assets = (_json['assets'] as core.List)
+          .map<GoogleCloudAssetV1p7beta1RelatedAsset>((value) =>
+              GoogleCloudAssetV1p7beta1RelatedAsset.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('relationshipAttributes')) {
+      relationshipAttributes =
+          GoogleCloudAssetV1p7beta1RelationshipAttributes.fromJson(
+              _json['relationshipAttributes']
+                  as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (assets != null)
+          'assets': assets!.map((value) => value.toJson()).toList(),
+        if (relationshipAttributes != null)
+          'relationshipAttributes': relationshipAttributes!.toJson(),
+      };
+}
+
+/// The relationship attributes which include `type`, `source_resource_type`,
+/// `target_resource_type` and `action`.
+class GoogleCloudAssetV1p7beta1RelationshipAttributes {
+  /// The detail of the relationship, e.g. `contains`, `attaches`
+  core.String? action;
+
+  /// The source asset type.
+  ///
+  /// Example: `compute.googleapis.com/Instance`
+  core.String? sourceResourceType;
+
+  /// The target asset type.
+  ///
+  /// Example: `compute.googleapis.com/Disk`
+  core.String? targetResourceType;
+
+  /// The unique identifier of the relationship type.
+  ///
+  /// Example: `INSTANCE_TO_INSTANCEGROUP`
+  core.String? type;
+
+  GoogleCloudAssetV1p7beta1RelationshipAttributes();
+
+  GoogleCloudAssetV1p7beta1RelationshipAttributes.fromJson(core.Map _json) {
+    if (_json.containsKey('action')) {
+      action = _json['action'] as core.String;
+    }
+    if (_json.containsKey('sourceResourceType')) {
+      sourceResourceType = _json['sourceResourceType'] as core.String;
+    }
+    if (_json.containsKey('targetResourceType')) {
+      targetResourceType = _json['targetResourceType'] as core.String;
+    }
+    if (_json.containsKey('type')) {
+      type = _json['type'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (action != null) 'action': action!,
+        if (sourceResourceType != null)
+          'sourceResourceType': sourceResourceType!,
+        if (targetResourceType != null)
+          'targetResourceType': targetResourceType!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// A representation of a Google Cloud resource.
+class GoogleCloudAssetV1p7beta1Resource {
+  /// The content of the resource, in which some sensitive fields are removed
+  /// and may not be present.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object>? data;
+
+  /// The URL of the discovery document containing the resource's JSON schema.
+  ///
+  /// Example: `https://www.googleapis.com/discovery/v1/apis/compute/v1/rest`
+  /// This value is unspecified for resources that do not have an API based on a
+  /// discovery document, such as Cloud Bigtable.
+  core.String? discoveryDocumentUri;
+
+  /// The JSON schema name listed in the discovery document.
+  ///
+  /// Example: `Project` This value is unspecified for resources that do not
+  /// have an API based on a discovery document, such as Cloud Bigtable.
+  core.String? discoveryName;
+
+  /// The location of the resource in Google Cloud, such as its zone and region.
+  ///
+  /// For more information, see https://cloud.google.com/about/locations/.
+  core.String? location;
+
+  /// The full name of the immediate parent of this resource.
+  ///
+  /// See
+  /// [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name)
+  /// for more information. For Google Cloud assets, this value is the parent
+  /// resource defined in the
+  /// [Cloud IAM policy hierarchy](https://cloud.google.com/iam/docs/overview#policy_hierarchy).
+  /// Example: `//cloudresourcemanager.googleapis.com/projects/my_project_123`
+  /// For third-party assets, this field may be set differently.
+  core.String? parent;
+
+  /// The REST URL for accessing the resource.
+  ///
+  /// An HTTP `GET` request using this URL returns the resource itself. Example:
+  /// `https://cloudresourcemanager.googleapis.com/v1/projects/my-project-123`
+  /// This value is unspecified for resources without a REST API.
+  core.String? resourceUrl;
+
+  /// The API version.
+  ///
+  /// Example: `v1`
+  core.String? version;
+
+  GoogleCloudAssetV1p7beta1Resource();
+
+  GoogleCloudAssetV1p7beta1Resource.fromJson(core.Map _json) {
+    if (_json.containsKey('data')) {
+      data = (_json['data'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
+    }
+    if (_json.containsKey('discoveryDocumentUri')) {
+      discoveryDocumentUri = _json['discoveryDocumentUri'] as core.String;
+    }
+    if (_json.containsKey('discoveryName')) {
+      discoveryName = _json['discoveryName'] as core.String;
+    }
+    if (_json.containsKey('location')) {
+      location = _json['location'] as core.String;
+    }
+    if (_json.containsKey('parent')) {
+      parent = _json['parent'] as core.String;
+    }
+    if (_json.containsKey('resourceUrl')) {
+      resourceUrl = _json['resourceUrl'] as core.String;
+    }
+    if (_json.containsKey('version')) {
+      version = _json['version'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (data != null) 'data': data!,
+        if (discoveryDocumentUri != null)
+          'discoveryDocumentUri': discoveryDocumentUri!,
+        if (discoveryName != null) 'discoveryName': discoveryName!,
+        if (location != null) 'location': location!,
+        if (parent != null) 'parent': parent!,
+        if (resourceUrl != null) 'resourceUrl': resourceUrl!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -2887,8 +3453,8 @@ class GoogleIdentityAccesscontextmanagerV1DevicePolicy {
 /// Defines the conditions under which an EgressPolicy matches a request.
 ///
 /// Conditions based on information about the source of the request. Note that
-/// if the destination of the request is protected by a ServicePerimeter, then
-/// that ServicePerimeter must have an IngressPolicy which allows access in
+/// if the destination of the request is also protected by a ServicePerimeter,
+/// then that ServicePerimeter must have an IngressPolicy which allows access in
 /// order for this request to succeed.
 class GoogleIdentityAccesscontextmanagerV1EgressFrom {
   /// A list of identities that are allowed access through this
@@ -2978,21 +3544,24 @@ class GoogleIdentityAccesscontextmanagerV1EgressPolicy {
 ///
 /// Conditions are based on information about the ApiOperation intended to be
 /// performed on the `resources` specified. Note that if the destination of the
-/// request is protected by a ServicePerimeter, then that ServicePerimeter must
-/// have an IngressPolicy which allows access in order for this request to
-/// succeed.
+/// request is also protected by a ServicePerimeter, then that ServicePerimeter
+/// must have an IngressPolicy which allows access in order for this request to
+/// succeed. The request must match `operations` AND `resources` fields in order
+/// to be allowed egress out of the perimeter.
 class GoogleIdentityAccesscontextmanagerV1EgressTo {
-  /// A list of ApiOperations that this egress rule applies to.
+  /// A list of ApiOperations allowed to be performed by the sources specified
+  /// in the corresponding EgressFrom.
   ///
-  /// A request matches if it contains an operation/service in this list.
+  /// A request matches if it uses an operation/service in this list.
   core.List<GoogleIdentityAccesscontextmanagerV1ApiOperation>? operations;
 
   /// A list of resources, currently only projects in the form `projects/`, that
-  /// match this to stanza.
+  /// are allowed to be accessed by sources defined in the corresponding
+  /// EgressFrom.
   ///
   /// A request matches if it contains a resource in this list. If `*` is
-  /// specified for resources, then this EgressTo rule will authorize access to
-  /// all resources outside the perimeter.
+  /// specified for `resources`, then this EgressTo rule will authorize access
+  /// to all resources outside the perimeter.
   core.List<core.String>? resources;
 
   GoogleIdentityAccesscontextmanagerV1EgressTo();
@@ -3021,7 +3590,9 @@ class GoogleIdentityAccesscontextmanagerV1EgressTo {
 
 /// Defines the conditions under which an IngressPolicy matches a request.
 ///
-/// Conditions are based on information about the source of the request.
+/// Conditions are based on information about the source of the request. The
+/// request must satisfy what is defined in `sources` AND identity related
+/// fields in order to match.
 class GoogleIdentityAccesscontextmanagerV1IngressFrom {
   /// A list of identities that are allowed access through this ingress policy.
   ///
@@ -3124,8 +3695,8 @@ class GoogleIdentityAccesscontextmanagerV1IngressSource {
   /// Referencing a nonexistent AccessLevel will cause an error. If no
   /// AccessLevel names are listed, resources within the perimeter can only be
   /// accessed via Google Cloud calls with request origins within the perimeter.
-  /// Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If `*` is
-  /// specified, then all IngressSources will be allowed.
+  /// Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a single `*`
+  /// is specified for `access_level`, then all IngressSources will be allowed.
   core.String? accessLevel;
 
   /// A Google Cloud resource that is allowed to ingress the perimeter.
@@ -3157,20 +3728,19 @@ class GoogleIdentityAccesscontextmanagerV1IngressSource {
 /// Defines the conditions under which an IngressPolicy matches a request.
 ///
 /// Conditions are based on information about the ApiOperation intended to be
-/// performed on the destination of the request.
+/// performed on the target resource of the request. The request must satisfy
+/// what is defined in `operations` AND `resources` in order to match.
 class GoogleIdentityAccesscontextmanagerV1IngressTo {
-  /// A list of ApiOperations the sources specified in corresponding IngressFrom
-  /// are allowed to perform in this ServicePerimeter.
+  /// A list of ApiOperations allowed to be performed by the sources specified
+  /// in corresponding IngressFrom in this ServicePerimeter.
   core.List<GoogleIdentityAccesscontextmanagerV1ApiOperation>? operations;
 
   /// A list of resources, currently only projects in the form `projects/`,
   /// protected by this ServicePerimeter that are allowed to be accessed by
   /// sources defined in the corresponding IngressFrom.
   ///
-  /// A request matches if it contains a resource in this list. If `*` is
-  /// specified for resources, then this IngressTo rule will authorize access to
-  /// all resources inside the perimeter, provided that the request also matches
-  /// the `operations` field.
+  /// If a single `*` is specified, then access to all resources inside the
+  /// perimeter are allowed.
   core.List<core.String>? resources;
 
   GoogleIdentityAccesscontextmanagerV1IngressTo();
@@ -3620,6 +4190,11 @@ class IamPolicyAnalysisQuery {
   /// Optional.
   AccessSelector? accessSelector;
 
+  /// The hypothetical context for IAM conditions evaluation.
+  ///
+  /// Optional.
+  ConditionContext? conditionContext;
+
   /// Specifies an identity for analysis.
   ///
   /// Optional.
@@ -3656,6 +4231,10 @@ class IamPolicyAnalysisQuery {
       accessSelector = AccessSelector.fromJson(
           _json['accessSelector'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('conditionContext')) {
+      conditionContext = ConditionContext.fromJson(
+          _json['conditionContext'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('identitySelector')) {
       identitySelector = IdentitySelector.fromJson(
           _json['identitySelector'] as core.Map<core.String, core.dynamic>);
@@ -3675,6 +4254,8 @@ class IamPolicyAnalysisQuery {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessSelector != null) 'accessSelector': accessSelector!.toJson(),
+        if (conditionContext != null)
+          'conditionContext': conditionContext!.toJson(),
         if (identitySelector != null)
           'identitySelector': identitySelector!.toJson(),
         if (options != null) 'options': options!.toJson(),
@@ -3802,11 +4383,11 @@ class IamPolicyAnalysisState {
   /// non-directory, etc. Service implementors can use the following guidelines
   /// to decide between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`: (a)
   /// Use `UNAVAILABLE` if the client can retry just the failing call. (b) Use
-  /// `ABORTED` if the client should retry at a higher level (e.g., when a
-  /// client-specified test-and-set fails, indicating the client should restart
-  /// a read-modify-write sequence). (c) Use `FAILED_PRECONDITION` if the client
-  /// should not retry until the system state has been explicitly fixed. E.g.,
-  /// if an "rmdir" fails because the directory is non-empty,
+  /// `ABORTED` if the client should retry at a higher level. For example, when
+  /// a client-specified test-and-set fails, indicating the client should
+  /// restart a read-modify-write sequence. (c) Use `FAILED_PRECONDITION` if the
+  /// client should not retry until the system state has been explicitly fixed.
+  /// For example, if an "rmdir" fails because the directory is non-empty,
   /// `FAILED_PRECONDITION` should be returned since the client should not retry
   /// unless the files are deleted from the directory. HTTP Mapping: 400 Bad
   /// Request
@@ -4061,6 +4642,45 @@ class Item {
         if (originType != null) 'originType': originType!,
         if (type != null) 'type': type!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// ListAssets response.
+class ListAssetsResponse {
+  /// Assets.
+  core.List<Asset>? assets;
+
+  /// Token to retrieve the next page of results.
+  ///
+  /// It expires 72 hours after the page token for the first page is generated.
+  /// Set to empty if there are no remaining results.
+  core.String? nextPageToken;
+
+  /// Time the snapshot was taken.
+  core.String? readTime;
+
+  ListAssetsResponse();
+
+  ListAssetsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('assets')) {
+      assets = (_json['assets'] as core.List)
+          .map<Asset>((value) =>
+              Asset.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+    if (_json.containsKey('readTime')) {
+      readTime = _json['readTime'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (assets != null)
+          'assets': assets!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (readTime != null) 'readTime': readTime!,
       };
 }
 
@@ -4701,8 +5321,10 @@ class ResourceSearchResult {
   ///
   /// The granularity is in seconds. Timestamp.nanos will always be 0. This
   /// field is available only when the resource's proto contains it. To search
-  /// against `create_time`: * use a field query (value in seconds). Example:
-  /// `createTime >= 1594294238`
+  /// against `create_time`: * use a field query. - value in seconds since unix
+  /// epoch. Example: `createTime > 1609459200` - value in date string. Example:
+  /// `createTime > 2021-01-01` - value in date-time string (must be quoted).
+  /// Example: `createTime > "2021-01-01T00:00:00"`
   core.String? createTime;
 
   /// One or more paragraphs of text description of this resource.
@@ -4799,6 +5421,10 @@ class ResourceSearchResult {
   core.String? parentAssetType;
 
   /// The full resource name of this resource's parent, if it has one.
+  ///
+  /// To search against the `parent_full_resource_name`: * use a field query.
+  /// Example: `parentFullResourceName:"project-name"` * use a free text query.
+  /// Example: `project-name`
   core.String? parentFullResourceName;
 
   /// The project that this resource belongs to, in the form of
@@ -4832,8 +5458,10 @@ class ResourceSearchResult {
   ///
   /// The granularity is in seconds. Timestamp.nanos will always be 0. This
   /// field is available only when the resource's proto contains it. To search
-  /// against `update_time`: * use a field query (value in seconds). Example:
-  /// `updateTime < 1594294238`
+  /// against `update_time`: * use a field query. - value in seconds since unix
+  /// epoch. Example: `updateTime < 1609459200` - value in date string. Example:
+  /// `updateTime < 2021-01-01` - value in date-time string (must be quoted).
+  /// Example: `updateTime < "2021-01-01T00:00:00"`
   core.String? updateTime;
 
   ResourceSearchResult();

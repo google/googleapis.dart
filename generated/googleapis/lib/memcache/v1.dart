@@ -43,7 +43,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Google Cloud Memorystore for Memcached API is used for creating and managing
 /// Memcached instances in GCP.
 class CloudMemorystoreForMemcachedApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -119,11 +119,15 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [filter] - The standard list filter.
+  /// [filter] - A filter to narrow down results to a preferred subset. The
+  /// filtering language accepts strings like "displayName=tokyo", and is
+  /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
   ///
-  /// [pageSize] - The standard list page size.
+  /// [pageSize] - The maximum number of results to return. If not set, the
+  /// service selects a default.
   ///
-  /// [pageToken] - The standard list page token.
+  /// [pageToken] - A page token received from the `next_page_token` field in
+  /// the response. Send that page token to receive the subsequent page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -167,7 +171,7 @@ class ProjectsLocationsInstancesResource {
   ProjectsLocationsInstancesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// ApplyParameters will restart the set of specified nodes in order to update
+  /// `ApplyParameters` restarts the set of specified nodes in order to update
   /// them to the current set of parameters for the Memcached Instance.
   ///
   /// [request] - The metadata request object.
@@ -225,8 +229,8 @@ class ProjectsLocationsInstancesResource {
   /// user project with the following restrictions: * Must contain only
   /// lowercase letters, numbers, and hyphens. * Must start with a letter. *
   /// Must be between 1-40 characters. * Must end with a number or a letter. *
-  /// Must be unique within the user project / location If any of the above are
-  /// not met, will raise an invalid argument error.
+  /// Must be unique within the user project / location. If any of the above are
+  /// not met, the API raises an invalid argument error.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -347,18 +351,18 @@ class ProjectsLocationsInstancesResource {
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - List filter. For example, exclude all Memcached instances with
-  /// name as my-instance by specifying "name != my-instance".
+  /// name as my-instance by specifying `"name != my-instance"`.
   ///
   /// [orderBy] - Sort results. Supported values are "name", "name desc" or ""
   /// (unsorted).
   ///
   /// [pageSize] - The maximum number of items to return. If not specified, a
   /// default value of 1000 will be used by the service. Regardless of the
-  /// page_size value, the response may include a partial list and a caller
-  /// should only rely on response's next_page_token to determine if there are
+  /// `page_size` value, the response may include a partial list and a caller
+  /// should only rely on response's `next_page_token` to determine if there are
   /// more instances left to be queried.
   ///
-  /// [pageToken] - The next_page_token value returned from a previous List
+  /// [pageToken] - The `next_page_token` value returned from a previous List
   /// request, if any.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -407,10 +411,10 @@ class ProjectsLocationsInstancesResource {
   /// [name] - Required. Unique name of the resource in this scope including
   /// project and location using the form:
   /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
-  /// Note: Memcached instances are managed and addressed at regional level so
-  /// location_id here refers to a GCP region; however, users may choose which
-  /// zones Memcached nodes within an instances should be provisioned in. Refer
-  /// to \[zones\] field for more details.
+  /// Note: Memcached instances are managed and addressed at the regional level
+  /// so `location_id` here refers to a Google Cloud region; however, users may
+  /// choose which zones Memcached nodes should be provisioned in within an
+  /// instance. Refer to zones field for more details.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
@@ -449,11 +453,11 @@ class ProjectsLocationsInstancesResource {
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates the defined Memcached Parameters for an existing Instance.
+  /// Updates the defined Memcached parameters for an existing instance.
   ///
   /// This method only stages the parameters, it must be followed by
-  /// ApplyParameters to apply the parameters to nodes of the Memcached
-  /// Instance.
+  /// `ApplyParameters` to apply the parameters to nodes of the Memcached
+  /// instance.
   ///
   /// [request] - The metadata request object.
   ///
@@ -693,11 +697,11 @@ class ProjectsLocationsOperationsResource {
 class ApplyParametersRequest {
   /// Whether to apply instance-level parameter group to all nodes.
   ///
-  /// If set to true, will explicitly restrict users from specifying any nodes,
-  /// and apply parameter group updates to all nodes within the instance.
+  /// If set to true, users are restricted from specifying individual nodes, and
+  /// `ApplyParameters` updates all nodes within the instance.
   core.bool? applyAll;
 
-  /// Nodes to which we should apply the instance-level parameter group.
+  /// Nodes to which the instance-level parameter group is applied.
   core.List<core.String>? nodeIds;
 
   ApplyParametersRequest();
@@ -872,6 +876,39 @@ class Empty {
   core.Map<core.String, core.dynamic> toJson() => {};
 }
 
+/// Metadata for the given google.cloud.location.Location.
+class GoogleCloudMemcacheV1LocationMetadata {
+  /// The set of available zones in the location.
+  ///
+  /// The map is keyed by the lowercase ID of each zone, as defined by GCE.
+  /// These keys can be specified in the `zones` field when creating a Memcached
+  /// instance.
+  ///
+  /// Output only.
+  core.Map<core.String, GoogleCloudMemcacheV1ZoneMetadata>? availableZones;
+
+  GoogleCloudMemcacheV1LocationMetadata();
+
+  GoogleCloudMemcacheV1LocationMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey('availableZones')) {
+      availableZones =
+          (_json['availableZones'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          GoogleCloudMemcacheV1ZoneMetadata.fromJson(
+              item as core.Map<core.String, core.dynamic>),
+        ),
+      );
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (availableZones != null)
+          'availableZones': availableZones!
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+      };
+}
+
 /// Represents the metadata of a long-running operation.
 class GoogleCloudMemcacheV1OperationMetadata {
   /// API version used to start the operation.
@@ -950,6 +987,16 @@ class GoogleCloudMemcacheV1OperationMetadata {
       };
 }
 
+class GoogleCloudMemcacheV1ZoneMetadata {
+  GoogleCloudMemcacheV1ZoneMetadata();
+
+  GoogleCloudMemcacheV1ZoneMetadata.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
 class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
   /// consumer_defined_name is the name that is set by the consumer.
   ///
@@ -997,7 +1044,9 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
   /// Unique name of the resource.
   ///
   /// It uses the form:
-  /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
+  /// `projects/{project_id|project_number}/locations/{location_id}/instances/{instance_id}`
+  /// Note: Either project_id or project_number can be used, but keep it
+  /// consistent with other APIs (e.g. RescheduleUpdate)
   core.String? name;
 
   /// Custom string attributes used primarily to expose producer-specific
@@ -1189,9 +1238,11 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
 /// Maintenance schedule which is exposed to customer and potentially end user,
 /// indicating published upcoming future maintenance schedule
 class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule {
-  /// Can this scheduled update be rescheduled? By default, it's true and API
-  /// needs to do explicitly check whether it's set, if it's set as false
-  /// explicitly, it's false
+  /// This field is deprecated, and will be always set to true since reschedule
+  /// can happen multiple times now.
+  ///
+  /// This field should not be removed until all service producers remove this
+  /// for their customers.
   core.bool? canReschedule;
 
   /// The scheduled end time for the maintenance.
@@ -1207,10 +1258,9 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule {
   /// schedule_deadline_time is the time deadline any schedule start time cannot
   /// go beyond, including reschedule.
   ///
-  /// It's normally the initial schedule start time plus a week. If the
-  /// reschedule type is next window, simply take this value as start time. If
-  /// reschedule type is IMMEDIATELY or BY_TIME, current or selected time cannot
-  /// go beyond this deadline.
+  /// It's normally the initial schedule start time plus maintenance window
+  /// length (1 day or 1 week). Maintenance cannot be scheduled to start beyond
+  /// this deadline.
   core.String? scheduleDeadlineTime;
 
   /// The scheduled start time for the maintenance.
@@ -1362,6 +1412,49 @@ class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata {
       };
 }
 
+/// PerSliSloEligibility is a mapping from an SLI name to eligibility.
+class GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility {
+  /// An entry in the eligibilities map specifies an eligibility for a
+  /// particular SLI for the given instance.
+  ///
+  /// The SLI key in the name must be a valid SLI name specified in the
+  /// Eligibility Exporter binary flags otherwise an error will be emitted by
+  /// Eligibility Exporter and the oncaller will be alerted. If an SLI has been
+  /// defined in the binary flags but the eligibilities map does not contain it,
+  /// the corresponding SLI time series will not be emitted by the Eligibility
+  /// Exporter. This ensures a smooth rollout and compatibility between the data
+  /// produced by different versions of the Eligibility Exporters. If
+  /// eligibilities map contains a key for an SLI which has not been declared in
+  /// the binary flags, there will be an error message emitted in the
+  /// Eligibility Exporter log and the metric for the SLI in question will not
+  /// be emitted.
+  core.Map<core.String,
+          GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility>?
+      eligibilities;
+
+  GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility();
+
+  GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('eligibilities')) {
+      eligibilities =
+          (_json['eligibilities'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility
+              .fromJson(item as core.Map<core.String, core.dynamic>),
+        ),
+      );
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (eligibilities != null)
+          'eligibilities': eligibilities!
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+      };
+}
+
 /// Describes provisioned dataplane resources.
 class GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource {
   /// Type of the resource.
@@ -1450,7 +1543,7 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion {
   /// Name of an SLI that this exclusion applies to.
   ///
   /// Can be left empty, signaling that the instance should be excluded from all
-  /// SLIs defined in the service SLO configuration.
+  /// SLIs.
   core.String? sliName;
 
   /// Start time of the exclusion.
@@ -1487,7 +1580,10 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion {
 /// SloMetadata contains resources required for proper SLO classification of the
 /// instance.
 class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
-  /// User-defined instance eligibility.
+  /// Global per-instance SLI eligibility which applies to all defined SLIs.
+  ///
+  /// Exactly one of 'eligibility' and 'per_sli_eligibility' fields must be
+  /// used.
   ///
   /// Optional.
   GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility? eligibility;
@@ -1517,6 +1613,15 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
   /// Optional.
   core.List<GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata>?
       nodes;
+
+  /// Multiple per-instance SLI eligibilities which apply for individual SLIs.
+  ///
+  /// Exactly one of 'eligibility' and 'per_sli_eligibility' fields must be
+  /// used.
+  ///
+  /// Optional.
+  GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility?
+      perSliEligibility;
 
   /// Name of the SLO tier the Instance belongs to.
   ///
@@ -1550,6 +1655,12 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
                       .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
+    if (_json.containsKey('perSliEligibility')) {
+      perSliEligibility =
+          GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility
+              .fromJson(_json['perSliEligibility']
+                  as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('tier')) {
       tier = _json['tier'] as core.String;
     }
@@ -1561,10 +1672,13 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
           'exclusions': exclusions!.map((value) => value.toJson()).toList(),
         if (nodes != null)
           'nodes': nodes!.map((value) => value.toJson()).toList(),
+        if (perSliEligibility != null)
+          'perSliEligibility': perSliEligibility!.toJson(),
         if (tier != null) 'tier': tier!,
       };
 }
 
+/// A Memorystore for Memcached instance
 class Instance {
   /// The full name of the Google Compute Engine
   /// \[network\](/compute/docs/networks-and-firewalls#networks) to which the
@@ -1578,17 +1692,19 @@ class Instance {
   /// Output only.
   core.String? createTime;
 
-  /// Endpoint for Discovery API
+  /// Endpoint for the Discovery API.
   ///
   /// Output only.
   core.String? discoveryEndpoint;
 
-  /// User provided name for the instance only used for display purposes.
+  /// User provided name for the instance, which is only used for display
+  /// purposes.
   ///
   /// Cannot be more than 80 characters.
   core.String? displayName;
 
-  /// List of messages that describe current statuses of memcached instance.
+  /// List of messages that describe the current state of the Memcached
+  /// instance.
   core.List<InstanceMessage>? instanceMessages;
 
   /// Resource labels to represent user-provided metadata.
@@ -1608,7 +1724,7 @@ class Instance {
 
   /// List of Memcached nodes.
   ///
-  /// Refer to \[Node\] message for more details.
+  /// Refer to Node message for more details.
   ///
   /// Output only.
   core.List<Node>? memcacheNodes;
@@ -1616,9 +1732,9 @@ class Instance {
   /// The major version of Memcached software.
   ///
   /// If not provided, latest supported version will be used. Currently the
-  /// latest supported major version is MEMCACHE_1_5. The minor version will be
-  /// automatically determined by our system based on the latest supported minor
-  /// version.
+  /// latest supported major version is `MEMCACHE_1_5`. The minor version will
+  /// be automatically determined by our system based on the latest supported
+  /// minor version.
   /// Possible string values are:
   /// - "MEMCACHE_VERSION_UNSPECIFIED"
   /// - "MEMCACHE_1_5" : Memcached 1.5 version.
@@ -1627,11 +1743,12 @@ class Instance {
   /// Unique name of the resource in this scope including project and location
   /// using the form:
   /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
-  /// Note: Memcached instances are managed and addressed at regional level so
-  /// location_id here refers to a GCP region; however, users may choose which
-  /// zones Memcached nodes within an instances should be provisioned in.
+  /// Note: Memcached instances are managed and addressed at the regional level
+  /// so `location_id` here refers to a Google Cloud region; however, users may
+  /// choose which zones Memcached nodes should be provisioned in within an
+  /// instance.
   ///
-  /// Refer to \[zones\] field for more details.
+  /// Refer to zones field for more details.
   ///
   /// Required.
   core.String? name;
@@ -1657,6 +1774,8 @@ class Instance {
   /// - "STATE_UNSPECIFIED" : State not set.
   /// - "CREATING" : Memcached instance is being created.
   /// - "READY" : Memcached instance has been created and ready to be used.
+  /// - "UPDATING" : Memcached instance is updating configuration such as
+  /// maintenance policy and schedule.
   /// - "DELETING" : Memcached instance is being deleted.
   /// - "PERFORMING_MAINTENANCE" : Memcached instance is going through
   /// maintenance, e.g. data plane rollout.
@@ -1667,7 +1786,7 @@ class Instance {
   /// Output only.
   core.String? updateTime;
 
-  /// Zones where Memcached nodes should be provisioned in.
+  /// Zones in which Memcached nodes should be provisioned.
   ///
   /// Memcached nodes will be equally distributed across these zones. If not
   /// provided, the service will by default create nodes in all zones in the
@@ -2118,13 +2237,13 @@ class MaintenanceWindow {
       };
 }
 
+/// The unique ID associated with this set of parameters.
+///
+/// Users can use this id to determine if the parameters associated with the
+/// instance differ from the parameters associated with the nodes. A discrepancy
+/// between parameter ids can inform users that they may need to take action to
+/// apply parameters on nodes.
 class MemcacheParameters {
-  /// The unique ID associated with this set of parameters.
-  ///
-  /// Users can use this id to determine if the parameters associated with the
-  /// instance differ from the parameters associated with the nodes and any
-  /// action needs to be taken to apply parameters on nodes.
-  ///
   /// Output only.
   core.String? id;
 

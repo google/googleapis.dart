@@ -43,8 +43,8 @@ class SheetsApi {
   /// See, edit, create, and delete all of your Google Drive files
   static const driveScope = 'https://www.googleapis.com/auth/drive';
 
-  /// View and manage Google Drive files and folders that you have opened or
-  /// created with this app
+  /// See, edit, create, and delete only the specific Google Drive files you use
+  /// with this app
   static const driveFileScope = 'https://www.googleapis.com/auth/drive.file';
 
   /// See and download all your Google Drive files
@@ -479,7 +479,7 @@ class SpreadsheetsValuesResource {
   /// [responseDateTimeRenderOption] - Determines how dates, times, and
   /// durations in the response should be rendered. This is ignored if
   /// response_value_render_option is FORMATTED_VALUE. The default dateTime
-  /// render option is \[DateTimeRenderOption.SERIAL_NUMBER\].
+  /// render option is SERIAL_NUMBER.
   /// Possible string values are:
   /// - "SERIAL_NUMBER" : Instructs date, time, datetime, and duration fields to
   /// be output as doubles in "serial number" format, as popularized by Lotus
@@ -494,8 +494,7 @@ class SpreadsheetsValuesResource {
   /// on the spreadsheet locale).
   ///
   /// [responseValueRenderOption] - Determines how values in the response should
-  /// be rendered. The default render option is
-  /// ValueRenderOption.FORMATTED_VALUE.
+  /// be rendered. The default render option is FORMATTED_VALUE.
   /// Possible string values are:
   /// - "FORMATTED_VALUE" : Values will be calculated & formatted in the reply
   /// according to the cell's formatting. Formatting is based on the
@@ -673,8 +672,7 @@ class SpreadsheetsValuesResource {
   ///
   /// [dateTimeRenderOption] - How dates, times, and durations should be
   /// represented in the output. This is ignored if value_render_option is
-  /// FORMATTED_VALUE. The default dateTime render option is
-  /// \[DateTimeRenderOption.SERIAL_NUMBER\].
+  /// FORMATTED_VALUE. The default dateTime render option is SERIAL_NUMBER.
   /// Possible string values are:
   /// - "SERIAL_NUMBER" : Instructs date, time, datetime, and duration fields to
   /// be output as doubles in "serial number" format, as popularized by Lotus
@@ -698,7 +696,8 @@ class SpreadsheetsValuesResource {
   /// - "ROWS" : Operates on the rows of a sheet.
   /// - "COLUMNS" : Operates on the columns of a sheet.
   ///
-  /// [ranges] - The A1 notation of the values to retrieve.
+  /// [ranges] - The A1 notation or R1C1 notation of the range to retrieve
+  /// values from.
   ///
   /// [valueRenderOption] - How values should be represented in the output. The
   /// default render option is ValueRenderOption.FORMATTED_VALUE.
@@ -903,7 +902,7 @@ class SpreadsheetsValuesResource {
   ///
   /// [spreadsheetId] - The ID of the spreadsheet to update.
   ///
-  /// [range] - The A1 notation of the values to clear.
+  /// [range] - The A1 notation or R1C1 notation of the values to clear.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -950,12 +949,12 @@ class SpreadsheetsValuesResource {
   ///
   /// [spreadsheetId] - The ID of the spreadsheet to retrieve data from.
   ///
-  /// [range] - The A1 notation of the values to retrieve.
+  /// [range] - The A1 notation or R1C1 notation of the range to retrieve values
+  /// from.
   ///
   /// [dateTimeRenderOption] - How dates, times, and durations should be
   /// represented in the output. This is ignored if value_render_option is
-  /// FORMATTED_VALUE. The default dateTime render option is
-  /// \[DateTimeRenderOption.SERIAL_NUMBER\].
+  /// FORMATTED_VALUE. The default dateTime render option is SERIAL_NUMBER.
   /// Possible string values are:
   /// - "SERIAL_NUMBER" : Instructs date, time, datetime, and duration fields to
   /// be output as doubles in "serial number" format, as popularized by Lotus
@@ -980,7 +979,7 @@ class SpreadsheetsValuesResource {
   /// - "COLUMNS" : Operates on the columns of a sheet.
   ///
   /// [valueRenderOption] - How values should be represented in the output. The
-  /// default render option is ValueRenderOption.FORMATTED_VALUE.
+  /// default render option is FORMATTED_VALUE.
   /// Possible string values are:
   /// - "FORMATTED_VALUE" : Values will be calculated & formatted in the reply
   /// according to the cell's formatting. Formatting is based on the
@@ -1055,7 +1054,7 @@ class SpreadsheetsValuesResource {
   /// [responseDateTimeRenderOption] - Determines how dates, times, and
   /// durations in the response should be rendered. This is ignored if
   /// response_value_render_option is FORMATTED_VALUE. The default dateTime
-  /// render option is DateTimeRenderOption.SERIAL_NUMBER.
+  /// render option is SERIAL_NUMBER.
   /// Possible string values are:
   /// - "SERIAL_NUMBER" : Instructs date, time, datetime, and duration fields to
   /// be output as doubles in "serial number" format, as popularized by Lotus
@@ -1070,8 +1069,7 @@ class SpreadsheetsValuesResource {
   /// on the spreadsheet locale).
   ///
   /// [responseValueRenderOption] - Determines how values in the response should
-  /// be rendered. The default render option is
-  /// ValueRenderOption.FORMATTED_VALUE.
+  /// be rendered. The default render option is FORMATTED_VALUE.
   /// Possible string values are:
   /// - "FORMATTED_VALUE" : Values will be calculated & formatted in the reply
   /// according to the cell's formatting. Formatting is based on the
@@ -1985,6 +1983,8 @@ class BaselineValueFormat {
   ColorStyle? positiveColorStyle;
 
   /// Text formatting options for baseline value.
+  ///
+  /// The link field is not supported.
   TextFormat? textFormat;
 
   BaselineValueFormat();
@@ -2042,7 +2042,8 @@ class BaselineValueFormat {
 class BasicChartAxis {
   /// The format of the title.
   ///
-  /// Only valid if the axis is not associated with the domain.
+  /// Only valid if the axis is not associated with the domain. The link field
+  /// is not supported.
   TextFormat? format;
 
   /// The position of this axis.
@@ -2604,7 +2605,7 @@ class BatchClearValuesByDataFilterResponse {
 
 /// The request for clearing more than one range of values in a spreadsheet.
 class BatchClearValuesRequest {
-  /// The ranges to clear, in A1 notation.
+  /// The ranges to clear, in A1 or R1C1 notation.
   core.List<core.String>? ranges;
 
   BatchClearValuesRequest();
@@ -2665,7 +2666,7 @@ class BatchGetValuesByDataFilterRequest {
   /// How dates, times, and durations should be represented in the output.
   ///
   /// This is ignored if value_render_option is FORMATTED_VALUE. The default
-  /// dateTime render option is \[DateTimeRenderOption.SERIAL_NUMBER\].
+  /// dateTime render option is SERIAL_NUMBER.
   /// Possible string values are:
   /// - "SERIAL_NUMBER" : Instructs date, time, datetime, and duration fields to
   /// be output as doubles in "serial number" format, as popularized by Lotus
@@ -2694,7 +2695,7 @@ class BatchGetValuesByDataFilterRequest {
 
   /// How values should be represented in the output.
   ///
-  /// The default render option is ValueRenderOption.FORMATTED_VALUE.
+  /// The default render option is FORMATTED_VALUE.
   /// Possible string values are:
   /// - "FORMATTED_VALUE" : Values will be calculated & formatted in the reply
   /// according to the cell's formatting. Formatting is based on the
@@ -2871,8 +2872,7 @@ class BatchUpdateSpreadsheetResponse {
   /// The spreadsheet after updates were applied.
   ///
   /// This is only set if
-  /// \[BatchUpdateSpreadsheetRequest.include_spreadsheet_in_response\] is
-  /// `true`.
+  /// BatchUpdateSpreadsheetRequest.include_spreadsheet_in_response is `true`.
   Spreadsheet? updatedSpreadsheet;
 
   BatchUpdateSpreadsheetResponse();
@@ -2924,7 +2924,7 @@ class BatchUpdateValuesByDataFilterRequest {
   /// rendered.
   ///
   /// This is ignored if response_value_render_option is FORMATTED_VALUE. The
-  /// default dateTime render option is DateTimeRenderOption.SERIAL_NUMBER.
+  /// default dateTime render option is SERIAL_NUMBER.
   /// Possible string values are:
   /// - "SERIAL_NUMBER" : Instructs date, time, datetime, and duration fields to
   /// be output as doubles in "serial number" format, as popularized by Lotus
@@ -2941,7 +2941,7 @@ class BatchUpdateValuesByDataFilterRequest {
 
   /// Determines how values in the response should be rendered.
   ///
-  /// The default render option is ValueRenderOption.FORMATTED_VALUE.
+  /// The default render option is FORMATTED_VALUE.
   /// Possible string values are:
   /// - "FORMATTED_VALUE" : Values will be calculated & formatted in the reply
   /// according to the cell's formatting. Formatting is based on the
@@ -3086,7 +3086,7 @@ class BatchUpdateValuesRequest {
   /// rendered.
   ///
   /// This is ignored if response_value_render_option is FORMATTED_VALUE. The
-  /// default dateTime render option is DateTimeRenderOption.SERIAL_NUMBER.
+  /// default dateTime render option is SERIAL_NUMBER.
   /// Possible string values are:
   /// - "SERIAL_NUMBER" : Instructs date, time, datetime, and duration fields to
   /// be output as doubles in "serial number" format, as popularized by Lotus
@@ -3103,7 +3103,7 @@ class BatchUpdateValuesRequest {
 
   /// Determines how values in the response should be rendered.
   ///
-  /// The default render option is ValueRenderOption.FORMATTED_VALUE.
+  /// The default render option is FORMATTED_VALUE.
   /// Possible string values are:
   /// - "FORMATTED_VALUE" : Values will be calculated & formatted in the reply
   /// according to the cell's formatting. Formatting is based on the
@@ -3622,7 +3622,7 @@ class BubbleChartSpec {
   /// 0 is fully transparent and 1 is fully opaque.
   core.double? bubbleOpacity;
 
-  /// The data contianing the bubble sizes.
+  /// The data containing the bubble sizes.
   ///
   /// Bubble sizes are used to draw the bubbles at different sizes relative to
   /// each other. If specified, group_ids must also be specified. This field is
@@ -3631,7 +3631,7 @@ class BubbleChartSpec {
 
   /// The format of the text inside the bubbles.
   ///
-  /// Strikethrough and underline are not supported.
+  /// Strikethrough, underline, and link are not supported.
   TextFormat? bubbleTextStyle;
 
   /// The data containing the bubble x-values.
@@ -3657,7 +3657,7 @@ class BubbleChartSpec {
   /// - "INSIDE_LEGEND" : The legend is rendered inside the chart area.
   core.String? legendPosition;
 
-  /// The data contianing the bubble y-values.
+  /// The data containing the bubble y-values.
   ///
   /// These values locate the bubbles in the chart vertically.
   ChartData? series;
@@ -3871,7 +3871,7 @@ class CellData {
   /// Information about a data source formula on the cell.
   ///
   /// The field is set if user_entered_value is a formula referencing some
-  /// DATA_SOURCE sheet, e.g `=SUM(DataSheet!Column)`.
+  /// DATA_SOURCE sheet, e.g. `=SUM(DataSheet!Column)`.
   ///
   /// Output only.
   DataSourceFormula? dataSourceFormula;
@@ -3913,7 +3913,10 @@ class CellData {
   ///
   /// If the cell contains multiple hyperlinks, this field will be empty. This
   /// field is read-only. To set it, use a `=HYPERLINK` formula in the
-  /// userEnteredValue.formulaValue field.
+  /// userEnteredValue.formulaValue field. A cell-level link can also be set
+  /// from the userEnteredFormat.textFormat field. Alternatively, set a
+  /// hyperlink in the textFormatRun.format.link field that spans the entire
+  /// cell.
   core.String? hyperlink;
 
   /// Any note on the cell.
@@ -4071,6 +4074,9 @@ class CellFormat {
   core.String? textDirection;
 
   /// The format of the text in the cell (unless overridden by a format run).
+  ///
+  /// Setting a cell-level link will clear the cell's existing links. Setting a
+  /// link in a format run will clear the cell-level link.
   TextFormat? textFormat;
 
   /// The rotation applied to text in a cell
@@ -4090,8 +4096,8 @@ class CellFormat {
   /// - "WRAP_STRATEGY_UNSPECIFIED" : The default value, do not use.
   /// - "OVERFLOW_CELL" : Lines that are longer than the cell width will be
   /// written in the next cell over, so long as that cell is empty. If the next
-  /// cell over is non-empty, this behaves the same as CLIP. The text will never
-  /// wrap to the next line unless the user manually inserts a new line.
+  /// cell over is non-empty, this behaves the same as `CLIP`. The text will
+  /// never wrap to the next line unless the user manually inserts a new line.
   /// Example: | First sentence. | | Manual newline that is very long. <- Text
   /// continues into next cell | Next newline. |
   /// - "LEGACY_WRAP" : This wrap strategy represents the old Google Sheets wrap
@@ -4258,7 +4264,7 @@ class ChartCustomNumberFormatOptions {
 class ChartData {
   /// The aggregation type for the series of a data source chart.
   ///
-  /// Not supported for regular charts.
+  /// Only supported for data source charts.
   /// Possible string values are:
   /// - "CHART_AGGREGATE_TYPE_UNSPECIFIED" : Default value, do not use.
   /// - "AVERAGE" : Average aggregate function.
@@ -4275,7 +4281,7 @@ class ChartData {
   /// The rule to group the data by if the ChartData backs the domain of a data
   /// source chart.
   ///
-  /// Not supported for regular charts.
+  /// Only supported for data source charts.
   ChartGroupRule? groupRule;
 
   /// The source ranges of the data.
@@ -4547,7 +4553,7 @@ class ChartSpec {
 
   /// The subtitle text format.
   ///
-  /// Strikethrough and underline are not supported.
+  /// Strikethrough, underline, and link are not supported.
   TextFormat? subtitleTextFormat;
 
   /// The subtitle text position.
@@ -4560,7 +4566,7 @@ class ChartSpec {
 
   /// The title text format.
   ///
-  /// Strikethrough and underline are not supported.
+  /// Strikethrough, underline, and link are not supported.
   TextFormat? titleTextFormat;
 
   /// The title text position.
@@ -4774,18 +4780,18 @@ class ClearValuesResponse {
 /// Represents a color in the RGBA color space.
 ///
 /// This representation is designed for simplicity of conversion to/from color
-/// representations in various languages over compactness; for example, the
+/// representations in various languages over compactness. For example, the
 /// fields of this representation can be trivially provided to the constructor
-/// of "java.awt.Color" in Java; it can also be trivially provided to UIColor's
-/// "+colorWithRed:green:blue:alpha" method in iOS; and, with just a little
-/// work, it can be easily formatted into a CSS "rgba()" string in JavaScript,
-/// as well. Note: this proto does not carry information about the absolute
-/// color space that should be used to interpret the RGB value (e.g. sRGB, Adobe
-/// RGB, DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB
-/// color space. Note: when color equality needs to be decided, implementations,
-/// unless documented otherwise, will treat two colors to be equal if all their
-/// red, green, blue and alpha values each differ by at most 1e-5. Example
-/// (Java): import com.google.type.Color; // ... public static java.awt.Color
+/// of `java.awt.Color` in Java; it can also be trivially provided to UIColor's
+/// `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little
+/// work, it can be easily formatted into a CSS `rgba()` string in JavaScript.
+/// This reference page doesn't carry information about the absolute color space
+/// that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
+/// DCI-P3, BT.2020, etc.). By default, applications should assume the sRGB
+/// color space. When color equality needs to be decided, implementations,
+/// unless documented otherwise, treat two colors as equal if all their red,
+/// green, blue, and alpha values each differ by at most 1e-5. Example (Java):
+/// import com.google.type.Color; // ... public static java.awt.Color
 /// fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ?
 /// protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color(
 /// protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); }
@@ -4812,9 +4818,9 @@ class ClearValuesResponse {
 /// rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0; var red =
 /// Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255); var blue
 /// = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) { return
-/// rgbToCssColor_(red, green, blue); } var alphaFrac = rgb_color.alpha.value ||
+/// rgbToCssColor(red, green, blue); } var alphaFrac = rgb_color.alpha.value ||
 /// 0.0; var rgbParams = \[red, green, blue\].join(','); return \['rgba(',
-/// rgbParams, ',', alphaFrac, ')'\].join(''); }; var rgbToCssColor_ =
+/// rgbParams, ',', alphaFrac, ')'\].join(''); }; var rgbToCssColor =
 /// function(red, green, blue) { var rgbNumber = new Number((red << 16) | (green
 /// << 8) | blue); var hexString = rgbNumber.toString(16); var missingZeros = 6
 /// - hexString.length; var resultBuilder = \['#'\]; for (var i = 0; i <
@@ -4823,14 +4829,14 @@ class ClearValuesResponse {
 class Color {
   /// The fraction of this color that should be applied to the pixel.
   ///
-  /// That is, the final pixel color is defined by the equation: pixel color =
-  /// alpha * (this color) + (1.0 - alpha) * (background color) This means that
+  /// That is, the final pixel color is defined by the equation: `pixel color =
+  /// alpha * (this color) + (1.0 - alpha) * (background color)` This means that
   /// a value of 1.0 corresponds to a solid color, whereas a value of 0.0
   /// corresponds to a completely transparent color. This uses a wrapper message
   /// rather than a simple float scalar so that it is possible to distinguish
   /// between a default value and the value being unset. If omitted, this color
-  /// object is to be rendered as a solid color (as if the alpha value had been
-  /// explicitly given with a value of 1.0).
+  /// object is rendered as a solid color (as if the alpha value had been
+  /// explicitly given a value of 1.0).
   core.double? alpha;
 
   /// The amount of blue in the color as a value in the interval \[0, 1\].
@@ -5007,7 +5013,7 @@ class CopyPasteRequest {
   /// - "PASTE_VALUES" : Paste the values ONLY without formats, formulas, or
   /// merges.
   /// - "PASTE_FORMAT" : Paste the format and data validation only.
-  /// - "PASTE_NO_BORDERS" : Like PASTE_NORMAL but without borders.
+  /// - "PASTE_NO_BORDERS" : Like `PASTE_NORMAL` but without borders.
   /// - "PASTE_FORMULA" : Paste the formulas only.
   /// - "PASTE_DATA_VALIDATION" : Paste the data validation only.
   /// - "PASTE_CONDITIONAL_FORMATTING" : Paste the conditional formatting rules
@@ -5117,7 +5123,7 @@ class CutPasteRequest {
   /// - "PASTE_VALUES" : Paste the values ONLY without formats, formulas, or
   /// merges.
   /// - "PASTE_FORMAT" : Paste the format and data validation only.
-  /// - "PASTE_NO_BORDERS" : Like PASTE_NORMAL but without borders.
+  /// - "PASTE_NO_BORDERS" : Like `PASTE_NORMAL` but without borders.
   /// - "PASTE_FORMULA" : Paste the formulas only.
   /// - "PASTE_DATA_VALIDATION" : Paste the data validation only.
   /// - "PASTE_CONDITIONAL_FORMATTING" : Paste the conditional formatting rules
@@ -5354,6 +5360,8 @@ class DataLabel {
   core.String? placement;
 
   /// The text format used for the data label.
+  ///
+  /// The link field is not supported.
   TextFormat? textFormat;
 
   /// The type of the data label.
@@ -6504,8 +6512,8 @@ class DeleteRangeRequest {
 class DeleteSheetRequest {
   /// The ID of the sheet to delete.
   ///
-  /// If the sheet is of SheetType.DATA_SOURCE type, the associated DataSource
-  /// is also deleted.
+  /// If the sheet is of DATA_SOURCE type, the associated DataSource is also
+  /// deleted.
   core.int? sheetId;
 
   DeleteSheetRequest();
@@ -7226,8 +7234,8 @@ class ExtendedValue {
 
   /// Represents a double value.
   ///
-  /// Note: Dates, Times and DateTimes are represented as doubles in "serial
-  /// number" format.
+  /// Note: Dates, Times and DateTimes are represented as doubles in
+  /// SERIAL_NUMBER format.
   core.double? numberValue;
 
   /// Represents a string value.
@@ -8173,14 +8181,14 @@ class InterpolationPoint {
   /// - "NUMBER" : The interpolation point uses exactly the value in
   /// InterpolationPoint.value.
   /// - "PERCENT" : The interpolation point is the given percentage over all the
-  /// cells in the range of the conditional format. This is equivalent to NUMBER
-  /// if the value was: `=(MAX(FLATTEN(range)) * (value / 100)) +
+  /// cells in the range of the conditional format. This is equivalent to
+  /// `NUMBER` if the value was: `=(MAX(FLATTEN(range)) * (value / 100)) +
   /// (MIN(FLATTEN(range)) * (1 - (value / 100)))` (where errors in the range
   /// are ignored when flattening).
   /// - "PERCENTILE" : The interpolation point is the given percentile over all
   /// the cells in the range of the conditional format. This is equivalent to
-  /// NUMBER if the value was: `=PERCENTILE(FLATTEN(range), value / 100)` (where
-  /// errors in the range are ignored when flattening).
+  /// `NUMBER` if the value was: `=PERCENTILE(FLATTEN(range), value / 100)`
+  /// (where errors in the range are ignored when flattening).
   core.String? type;
 
   /// The value this interpolation point uses.
@@ -8293,6 +8301,8 @@ class KeyValueFormat {
   TextPosition? position;
 
   /// Text formatting options for key value.
+  ///
+  /// The link field is not supported.
   TextFormat? textFormat;
 
   KeyValueFormat();
@@ -8349,6 +8359,24 @@ class LineStyle {
   core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
         if (width != null) 'width': width!,
+      };
+}
+
+/// An external or local reference.
+class Link {
+  /// The link identifier.
+  core.String? uri;
+
+  Link();
+
+  Link.fromJson(core.Map _json) {
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -8845,7 +8873,7 @@ class PasteDataRequest {
   /// - "PASTE_VALUES" : Paste the values ONLY without formats, formulas, or
   /// merges.
   /// - "PASTE_FORMAT" : Paste the format and data validation only.
-  /// - "PASTE_NO_BORDERS" : Like PASTE_NORMAL but without borders.
+  /// - "PASTE_NO_BORDERS" : Like `PASTE_NORMAL` but without borders.
   /// - "PASTE_FORMULA" : Paste the formulas only.
   /// - "PASTE_DATA_VALIDATION" : Paste the data validation only.
   /// - "PASTE_CONDITIONAL_FORMATTING" : Paste the conditional formatting rules
@@ -9056,7 +9084,7 @@ class PivotGroup {
   /// True if the headings in this pivot group should be repeated.
   ///
   /// This is only valid for row groupings and is ignored by columns. By
-  /// default, we minimize repitition of headings by not showing higher level
+  /// default, we minimize repetition of headings by not showing higher level
   /// headings where they are the same. For example, even though the third row
   /// below corresponds to "Q1 Mar", "Q1" is not shown because it is redundant
   /// with previous rows. Setting repeat_headings to true would cause "Q1" to be
@@ -11202,6 +11230,8 @@ class SlicerSpec {
   core.String? horizontalAlignment;
 
   /// The text format of title in the slicer.
+  ///
+  /// The link field is not supported.
   TextFormat? textFormat;
 
   /// The title of the slicer.
@@ -11665,6 +11695,15 @@ class TextFormat {
   /// True if the text is italicized.
   core.bool? italic;
 
+  /// The link destination of the text, if any.
+  ///
+  /// Setting a link in a format run will clear an existing cell-level link.
+  /// When a link is set, the text foreground color will be set to the default
+  /// link color and the text will be underlined. If these fields are modified
+  /// in the same request, those values will be used instead of the link
+  /// defaults.
+  Link? link;
+
   /// True if the text has a strikethrough.
   core.bool? strikethrough;
 
@@ -11694,6 +11733,10 @@ class TextFormat {
     if (_json.containsKey('italic')) {
       italic = _json['italic'] as core.bool;
     }
+    if (_json.containsKey('link')) {
+      link =
+          Link.fromJson(_json['link'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('strikethrough')) {
       strikethrough = _json['strikethrough'] as core.bool;
     }
@@ -11711,6 +11754,7 @@ class TextFormat {
         if (foregroundColorStyle != null)
           'foregroundColorStyle': foregroundColorStyle!.toJson(),
         if (italic != null) 'italic': italic!,
+        if (link != null) 'link': link!.toJson(),
         if (strikethrough != null) 'strikethrough': strikethrough!,
         if (underline != null) 'underline': underline!,
       };
@@ -12129,6 +12173,8 @@ class TreemapChartSpec {
   ChartData? sizeData;
 
   /// The text format for all labels on the chart.
+  ///
+  /// The link field is not supported.
   TextFormat? textFormat;
 
   TreemapChartSpec();

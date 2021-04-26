@@ -48,7 +48,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 class PubsubLiteApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -111,6 +111,11 @@ class AdminProjectsLocationsSubscriptionsResource {
   /// `projects/{project_number}/locations/{location}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
+  /// [skipBacklog] - If true, the newly created subscription will only receive
+  /// messages published after the subscription was created. Otherwise, the
+  /// entire message backlog will be received on the subscription. Defaults to
+  /// false.
+  ///
   /// [subscriptionId] - Required. The ID to use for the subscription, which
   /// will become the final component of the subscription's name. This value is
   /// structured like: `my-sub-name`.
@@ -128,11 +133,13 @@ class AdminProjectsLocationsSubscriptionsResource {
   async.Future<Subscription> create(
     Subscription request,
     core.String parent, {
+    core.bool? skipBacklog,
     core.String? subscriptionId,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
+      if (skipBacklog != null) 'skipBacklog': ['${skipBacklog}'],
       if (subscriptionId != null) 'subscriptionId': [subscriptionId],
       if ($fields != null) 'fields': [$fields],
     };
@@ -678,6 +685,49 @@ class CursorProjectsLocationsSubscriptionsResource {
 
   CursorProjectsLocationsSubscriptionsResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Updates the committed cursor.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [subscription] - The subscription for which to update the cursor.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/subscriptions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CommitCursorResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CommitCursorResponse> commitCursor(
+    CommitCursorRequest request,
+    core.String subscription, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/cursor/' + core.Uri.encodeFull('$subscription') + ':commitCursor';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return CommitCursorResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class CursorProjectsLocationsSubscriptionsCursorsResource {
@@ -776,10 +826,11 @@ class TopicStatsProjectsLocationsTopicsResource {
 
   /// Compute the head cursor for the partition.
   ///
-  /// The head cursor’s offset is guaranteed to be before or equal to all
-  /// messages which have not yet been acknowledged to be published, and greater
+  /// The head cursor's offset is guaranteed to be less than or equal to all
+  /// messages which have not yet been acknowledged as published, and greater
   /// than the offset of any message whose publish has already been
-  /// acknowledged. It is 0 if there have never been messages on the partition.
+  /// acknowledged. It is zero if there have never been messages in the
+  /// partition.
   ///
   /// [request] - The metadata request object.
   ///
@@ -866,6 +917,50 @@ class TopicStatsProjectsLocationsTopicsResource {
     return ComputeMessageStatsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
+
+  /// Compute the corresponding cursor for a publish or event time in a topic
+  /// partition.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [topic] - Required. The topic for which we should compute the cursor.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/topics/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ComputeTimeCursorResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ComputeTimeCursorResponse> computeTimeCursor(
+    ComputeTimeCursorRequest request,
+    core.String topic, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/topicStats/' + core.Uri.encodeFull('$topic') + ':computeTimeCursor';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return ComputeTimeCursorResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 /// The throughput capacity configuration for each partition.
@@ -896,6 +991,46 @@ class Capacity {
         if (subscribeMibPerSec != null)
           'subscribeMibPerSec': subscribeMibPerSec!,
       };
+}
+
+/// Request for CommitCursor.
+class CommitCursorRequest {
+  /// The new value for the committed cursor.
+  Cursor? cursor;
+
+  /// The partition for which to update the cursor.
+  ///
+  /// Partitions are zero indexed, so `partition` must be in the range \[0,
+  /// topic.num_partitions).
+  core.String? partition;
+
+  CommitCursorRequest();
+
+  CommitCursorRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('cursor')) {
+      cursor = Cursor.fromJson(
+          _json['cursor'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('partition')) {
+      partition = _json['partition'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cursor != null) 'cursor': cursor!.toJson(),
+        if (partition != null) 'partition': partition!,
+      };
+}
+
+/// Response for CommitCursor.
+class CommitCursorResponse {
+  CommitCursorResponse();
+
+  CommitCursorResponse.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Compute the current head cursor for a partition.
@@ -1021,6 +1156,63 @@ class ComputeMessageStatsResponse {
         if (minimumEventTime != null) 'minimumEventTime': minimumEventTime!,
         if (minimumPublishTime != null)
           'minimumPublishTime': minimumPublishTime!,
+      };
+}
+
+/// Compute the corresponding cursor for a publish or event time in a topic
+/// partition.
+class ComputeTimeCursorRequest {
+  /// The partition for which we should compute the cursor.
+  ///
+  /// Required.
+  core.String? partition;
+
+  /// The target publish or event time.
+  ///
+  /// Specifying a future time will return an unset cursor.
+  ///
+  /// Required.
+  TimeTarget? target;
+
+  ComputeTimeCursorRequest();
+
+  ComputeTimeCursorRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('partition')) {
+      partition = _json['partition'] as core.String;
+    }
+    if (_json.containsKey('target')) {
+      target = TimeTarget.fromJson(
+          _json['target'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (partition != null) 'partition': partition!,
+        if (target != null) 'target': target!.toJson(),
+      };
+}
+
+/// Response containing the cursor corresponding to a publish or event time in a
+/// topic partition.
+class ComputeTimeCursorResponse {
+  /// If present, the cursor references the first message with time greater than
+  /// or equal to the specified target time.
+  ///
+  /// If such a message cannot be found, the cursor will be unset (i.e. `cursor`
+  /// is not present).
+  Cursor? cursor;
+
+  ComputeTimeCursorResponse();
+
+  ComputeTimeCursorResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('cursor')) {
+      cursor = Cursor.fromJson(
+          _json['cursor'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cursor != null) 'cursor': cursor!.toJson(),
       };
 }
 
@@ -1359,6 +1551,43 @@ class Subscription {
         if (deliveryConfig != null) 'deliveryConfig': deliveryConfig!.toJson(),
         if (name != null) 'name': name!,
         if (topic != null) 'topic': topic!,
+      };
+}
+
+/// A target publish or event time.
+///
+/// Can be used for seeking to or retrieving the corresponding cursor.
+class TimeTarget {
+  /// Request the cursor of the first message with event time greater than or
+  /// equal to `event_time`.
+  ///
+  /// If messages are missing an event time, the publish time is used as a
+  /// fallback. As event times are user supplied, subsequent messages may have
+  /// event times less than `event_time` and should be filtered by the client,
+  /// if necessary.
+  core.String? eventTime;
+
+  /// Request the cursor of the first message with publish time greater than or
+  /// equal to `publish_time`.
+  ///
+  /// All messages thereafter are guaranteed to have publish times >=
+  /// `publish_time`.
+  core.String? publishTime;
+
+  TimeTarget();
+
+  TimeTarget.fromJson(core.Map _json) {
+    if (_json.containsKey('eventTime')) {
+      eventTime = _json['eventTime'] as core.String;
+    }
+    if (_json.containsKey('publishTime')) {
+      publishTime = _json['publishTime'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (eventTime != null) 'eventTime': eventTime!,
+        if (publishTime != null) 'publishTime': publishTime!,
       };
 }
 

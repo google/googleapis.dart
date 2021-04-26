@@ -45,7 +45,7 @@ class CloudBillingBudgetApi {
   static const cloudBillingScope =
       'https://www.googleapis.com/auth/cloud-billing';
 
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -326,7 +326,8 @@ class GoogleCloudBillingBudgetsV1Budget {
   GoogleCloudBillingBudgetsV1BudgetAmount? amount;
 
   /// Filters that define which resources are used to compute the actual spend
-  /// against the budget.
+  /// against the budget amount, such as projects, services, and the budget's
+  /// time period, as well as other filters.
   ///
   /// Optional.
   GoogleCloudBillingBudgetsV1Filter? budgetFilter;
@@ -414,7 +415,9 @@ class GoogleCloudBillingBudgetsV1Budget {
 class GoogleCloudBillingBudgetsV1BudgetAmount {
   /// Use the last period's actual spend as the budget for the present period.
   ///
-  /// Cannot be set in combination with Filter.custom_period.
+  /// LastPeriodAmount can only be set when the budget's time period is a
+  /// Filter.calendar_period. It cannot be set in combination with
+  /// Filter.custom_period.
   GoogleCloudBillingBudgetsV1LastPeriodAmount? lastPeriodAmount;
 
   /// A specified amount to use as the budget.
@@ -484,10 +487,10 @@ class GoogleCloudBillingBudgetsV1CustomPeriod {
 class GoogleCloudBillingBudgetsV1Filter {
   /// Specifies to track usage for recurring calendar period.
   ///
-  /// E.g. Assume that CalendarPeriod.QUARTER is set. The budget will track
-  /// usage from April 1 to June 30, when current calendar month is April, May,
-  /// June. After that, it will track usage from July 1 to September 30 when
-  /// current calendar month is July, August, September, and so on.
+  /// For example, assume that CalendarPeriod.QUARTER is set. The budget will
+  /// track usage from April 1 to June 30, when the current calendar month is
+  /// April, May, June. After that, it will track usage from July 1 to September
+  /// 30 when the current calendar month is July, August, September, so on.
   ///
   /// Optional.
   /// Possible string values are:
@@ -503,9 +506,10 @@ class GoogleCloudBillingBudgetsV1Filter {
   /// list of credit types to be subtracted from gross cost to determine the
   /// spend for threshold calculations.
   ///
-  /// If Filter.credit_types_treatment is **not** INCLUDE_SPECIFIED_CREDITS,
-  /// this field must be empty. See
+  /// See
   /// [a list of acceptable credit type values](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-tables#credits-type).
+  /// If Filter.credit_types_treatment is **not** INCLUDE_SPECIFIED_CREDITS,
+  /// this field must be empty.
   ///
   /// Optional.
   core.List<core.String>? creditTypes;
@@ -519,13 +523,16 @@ class GoogleCloudBillingBudgetsV1Filter {
   /// gross cost to determine the spend for threshold calculations.
   /// - "EXCLUDE_ALL_CREDITS" : All types of credit are added to the net cost to
   /// determine the spend for threshold calculations.
-  /// - "INCLUDE_SPECIFIED_CREDITS" : Credit types specified in the credit_types
-  /// field are subtracted from the gross cost to determine the spend for
-  /// threshold calculations.
+  /// - "INCLUDE_SPECIFIED_CREDITS" :
+  /// [Credit types](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-tables#credits-type)
+  /// specified in the credit_types field are subtracted from the gross cost to
+  /// determine the spend for threshold calculations.
   core.String? creditTypesTreatment;
 
   /// Specifies to track usage from any start date (required) to any end date
   /// (optional).
+  ///
+  /// This time period is static, it does not recur.
   ///
   /// Optional.
   GoogleCloudBillingBudgetsV1CustomPeriod? customPeriod;
@@ -631,11 +638,13 @@ class GoogleCloudBillingBudgetsV1Filter {
       };
 }
 
-/// Describes a budget amount targeted to last period's spend.
+/// Describes a budget amount targeted to the last Filter.calendar_period spend.
 ///
-/// At this time, the amount is automatically 100% of last period's spend; that
-/// is, there are no other options yet. Future configuration will be described
-/// here (for example, configuring a percentage of last period's spend).
+/// At this time, the amount is automatically 100% of the last calendar period's
+/// spend; that is, there are no other options yet. Future configuration options
+/// will be described here (for example, configuring a percentage of last
+/// period's spend). LastPeriodAmount cannot be set for a budget configured with
+/// a Filter.custom_period.
 class GoogleCloudBillingBudgetsV1LastPeriodAmount {
   GoogleCloudBillingBudgetsV1LastPeriodAmount();
 
@@ -777,8 +786,9 @@ class GoogleCloudBillingBudgetsV1ThresholdRule {
   /// - "CURRENT_SPEND" : Use current spend as the basis for comparison against
   /// the threshold.
   /// - "FORECASTED_SPEND" : Use forecasted spend for the period as the basis
-  /// for comparison against the threshold. Cannot be set in combination with
-  /// Filter.custom_period.
+  /// for comparison against the threshold. FORECASTED_SPEND can only be set
+  /// when the budget's time period is a Filter.calendar_period. It cannot be
+  /// set in combination with Filter.custom_period.
   core.String? spendBasis;
 
   /// Send an alert when this threshold is exceeded.

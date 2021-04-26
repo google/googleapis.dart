@@ -513,11 +513,6 @@ class UsersDataSourcesDatasetsResource {
   /// nanoseconds from the epoch. The ID is formatted like: "startTime-endTime"
   /// where startTime and endTime are 64 bit integers.
   ///
-  /// [currentTimeMillis] - The client's current time in milliseconds since
-  /// epoch.
-  ///
-  /// [modifiedTimeMillis] - When the operation was performed on the client.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -530,14 +525,9 @@ class UsersDataSourcesDatasetsResource {
     core.String userId,
     core.String dataSourceId,
     core.String datasetId, {
-    core.String? currentTimeMillis,
-    core.String? modifiedTimeMillis,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
-      if (currentTimeMillis != null) 'currentTimeMillis': [currentTimeMillis],
-      if (modifiedTimeMillis != null)
-        'modifiedTimeMillis': [modifiedTimeMillis],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -646,10 +636,6 @@ class UsersDataSourcesDatasetsResource {
   ///
   /// [datasetId] - This field is not used, and can be safely omitted.
   ///
-  /// [currentTimeMillis] - The client's current time in milliseconds since
-  /// epoch. Note that the minStartTimeNs and maxEndTimeNs properties in the
-  /// request body are in nanoseconds instead of milliseconds.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -665,12 +651,10 @@ class UsersDataSourcesDatasetsResource {
     core.String userId,
     core.String dataSourceId,
     core.String datasetId, {
-    core.String? currentTimeMillis,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
-      if (currentTimeMillis != null) 'currentTimeMillis': [currentTimeMillis],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -755,9 +739,6 @@ class UsersSessionsResource {
   ///
   /// [sessionId] - The ID of the session to be deleted.
   ///
-  /// [currentTimeMillis] - The client's current time in milliseconds since
-  /// epoch.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -769,11 +750,9 @@ class UsersSessionsResource {
   async.Future<void> delete(
     core.String userId,
     core.String sessionId, {
-    core.String? currentTimeMillis,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
-      if (currentTimeMillis != null) 'currentTimeMillis': [currentTimeMillis],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -870,9 +849,6 @@ class UsersSessionsResource {
   ///
   /// [sessionId] - The ID of the session to be created.
   ///
-  /// [currentTimeMillis] - The client's current time in milliseconds since
-  /// epoch.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -887,12 +863,10 @@ class UsersSessionsResource {
     Session request,
     core.String userId,
     core.String sessionId, {
-    core.String? currentTimeMillis,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
-      if (currentTimeMillis != null) 'currentTimeMillis': [currentTimeMillis],
       if ($fields != null) 'fields': [$fields],
     };
 

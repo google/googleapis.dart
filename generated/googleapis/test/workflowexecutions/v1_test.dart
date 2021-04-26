@@ -49,6 +49,7 @@ api.Error buildError() {
   if (buildCounterError < 3) {
     o.context = 'foo';
     o.payload = 'foo';
+    o.stackTrace = buildStackTrace();
   }
   buildCounterError--;
   return o;
@@ -65,6 +66,7 @@ void checkError(api.Error o) {
       o.payload!,
       unittest.equals('foo'),
     );
+    checkStackTrace(o.stackTrace! as api.StackTrace);
   }
   buildCounterError--;
 }
@@ -123,14 +125,14 @@ void checkExecution(api.Execution o) {
   buildCounterExecution--;
 }
 
-core.List<api.Execution> buildUnnamed5272() {
+core.List<api.Execution> buildUnnamed5660() {
   var o = <api.Execution>[];
   o.add(buildExecution());
   o.add(buildExecution());
   return o;
 }
 
-void checkUnnamed5272(core.List<api.Execution> o) {
+void checkUnnamed5660(core.List<api.Execution> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkExecution(o[0] as api.Execution);
   checkExecution(o[1] as api.Execution);
@@ -141,7 +143,7 @@ api.ListExecutionsResponse buildListExecutionsResponse() {
   var o = api.ListExecutionsResponse();
   buildCounterListExecutionsResponse++;
   if (buildCounterListExecutionsResponse < 3) {
-    o.executions = buildUnnamed5272();
+    o.executions = buildUnnamed5660();
     o.nextPageToken = 'foo';
   }
   buildCounterListExecutionsResponse--;
@@ -151,13 +153,106 @@ api.ListExecutionsResponse buildListExecutionsResponse() {
 void checkListExecutionsResponse(api.ListExecutionsResponse o) {
   buildCounterListExecutionsResponse++;
   if (buildCounterListExecutionsResponse < 3) {
-    checkUnnamed5272(o.executions!);
+    checkUnnamed5660(o.executions!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
   }
   buildCounterListExecutionsResponse--;
+}
+
+core.int buildCounterPosition = 0;
+api.Position buildPosition() {
+  var o = api.Position();
+  buildCounterPosition++;
+  if (buildCounterPosition < 3) {
+    o.column = 'foo';
+    o.length = 'foo';
+    o.line = 'foo';
+  }
+  buildCounterPosition--;
+  return o;
+}
+
+void checkPosition(api.Position o) {
+  buildCounterPosition++;
+  if (buildCounterPosition < 3) {
+    unittest.expect(
+      o.column!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.length!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.line!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterPosition--;
+}
+
+core.List<api.StackTraceElement> buildUnnamed5661() {
+  var o = <api.StackTraceElement>[];
+  o.add(buildStackTraceElement());
+  o.add(buildStackTraceElement());
+  return o;
+}
+
+void checkUnnamed5661(core.List<api.StackTraceElement> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkStackTraceElement(o[0] as api.StackTraceElement);
+  checkStackTraceElement(o[1] as api.StackTraceElement);
+}
+
+core.int buildCounterStackTrace = 0;
+api.StackTrace buildStackTrace() {
+  var o = api.StackTrace();
+  buildCounterStackTrace++;
+  if (buildCounterStackTrace < 3) {
+    o.elements = buildUnnamed5661();
+  }
+  buildCounterStackTrace--;
+  return o;
+}
+
+void checkStackTrace(api.StackTrace o) {
+  buildCounterStackTrace++;
+  if (buildCounterStackTrace < 3) {
+    checkUnnamed5661(o.elements!);
+  }
+  buildCounterStackTrace--;
+}
+
+core.int buildCounterStackTraceElement = 0;
+api.StackTraceElement buildStackTraceElement() {
+  var o = api.StackTraceElement();
+  buildCounterStackTraceElement++;
+  if (buildCounterStackTraceElement < 3) {
+    o.position = buildPosition();
+    o.routine = 'foo';
+    o.step = 'foo';
+  }
+  buildCounterStackTraceElement--;
+  return o;
+}
+
+void checkStackTraceElement(api.StackTraceElement o) {
+  buildCounterStackTraceElement++;
+  if (buildCounterStackTraceElement < 3) {
+    checkPosition(o.position! as api.Position);
+    unittest.expect(
+      o.routine!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.step!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterStackTraceElement--;
 }
 
 void main() {
@@ -197,6 +292,36 @@ void main() {
       var od = api.ListExecutionsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkListExecutionsResponse(od as api.ListExecutionsResponse);
+    });
+  });
+
+  unittest.group('obj-schema-Position', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildPosition();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Position.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkPosition(od as api.Position);
+    });
+  });
+
+  unittest.group('obj-schema-StackTrace', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildStackTrace();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.StackTrace.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkStackTrace(od as api.StackTrace);
+    });
+  });
+
+  unittest.group('obj-schema-StackTraceElement', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildStackTraceElement();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.StackTraceElement.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkStackTraceElement(od as api.StackTraceElement);
     });
   });
 

@@ -174,7 +174,7 @@ class PhotoResource {
   /// [view] - Required. Specifies if a download URL for the photo bytes should
   /// be returned in the Photo response.
   /// Possible string values are:
-  /// - "BASIC" : Server reponses do not include the download URL for the photo
+  /// - "BASIC" : Server responses do not include the download URL for the photo
   /// bytes. The default value.
   /// - "INCLUDE_DOWNLOAD_URL" : Server responses include the download URL for
   /// the photo bytes.
@@ -394,7 +394,7 @@ class PhotosResource {
   /// [view] - Required. Specifies if a download URL for the photo bytes should
   /// be returned in the Photo response.
   /// Possible string values are:
-  /// - "BASIC" : Server reponses do not include the download URL for the photo
+  /// - "BASIC" : Server responses do not include the download URL for the photo
   /// bytes. The default value.
   /// - "INCLUDE_DOWNLOAD_URL" : Server responses include the download URL for
   /// the photo bytes.
@@ -512,7 +512,7 @@ class PhotosResource {
   /// [view] - Required. Specifies if a download URL for the photos bytes should
   /// be returned in the Photos response.
   /// Possible string values are:
-  /// - "BASIC" : Server reponses do not include the download URL for the photo
+  /// - "BASIC" : Server responses do not include the download URL for the photo
   /// bytes. The default value.
   /// - "INCLUDE_DOWNLOAD_URL" : Server responses include the download URL for
   /// the photo bytes.
@@ -719,8 +719,8 @@ class Empty {
 /// An object that represents a latitude/longitude pair.
 ///
 /// This is expressed as a pair of doubles to represent degrees latitude and
-/// degrees longitude. Unless specified otherwise, this must conform to the
-/// WGS84 standard. Values must be within normalized ranges.
+/// degrees longitude. Unless specified otherwise, this object must conform to
+/// the WGS84 standard. Values must be within normalized ranges.
 class LatLng {
   /// The latitude in degrees.
   ///

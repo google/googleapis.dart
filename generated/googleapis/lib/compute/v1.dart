@@ -37,6 +37,7 @@
 /// - [GlobalNetworkEndpointGroupsResource]
 /// - [GlobalOperationsResource]
 /// - [GlobalOrganizationOperationsResource]
+/// - [GlobalPublicDelegatedPrefixesResource]
 /// - [HealthChecksResource]
 /// - [HttpHealthChecksResource]
 /// - [HttpsHealthChecksResource]
@@ -58,6 +59,8 @@
 /// - [NodeTypesResource]
 /// - [PacketMirroringsResource]
 /// - [ProjectsResource]
+/// - [PublicAdvertisedPrefixesResource]
+/// - [PublicDelegatedPrefixesResource]
 /// - [RegionAutoscalersResource]
 /// - [RegionBackendServicesResource]
 /// - [RegionCommitmentsResource]
@@ -114,7 +117,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Creates and runs virtual machines on Google Cloud Platform.
 class ComputeApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -166,6 +169,8 @@ class ComputeApi {
       GlobalOperationsResource(_requester);
   GlobalOrganizationOperationsResource get globalOrganizationOperations =>
       GlobalOrganizationOperationsResource(_requester);
+  GlobalPublicDelegatedPrefixesResource get globalPublicDelegatedPrefixes =>
+      GlobalPublicDelegatedPrefixesResource(_requester);
   HealthChecksResource get healthChecks => HealthChecksResource(_requester);
   HttpHealthChecksResource get httpHealthChecks =>
       HttpHealthChecksResource(_requester);
@@ -196,6 +201,10 @@ class ComputeApi {
   PacketMirroringsResource get packetMirrorings =>
       PacketMirroringsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
+  PublicAdvertisedPrefixesResource get publicAdvertisedPrefixes =>
+      PublicAdvertisedPrefixesResource(_requester);
+  PublicDelegatedPrefixesResource get publicDelegatedPrefixes =>
+      PublicDelegatedPrefixesResource(_requester);
   RegionAutoscalersResource get regionAutoscalers =>
       RegionAutoscalersResource(_requester);
   RegionBackendServicesResource get regionBackendServices =>
@@ -2649,7 +2658,10 @@ class BackendServicesResource {
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Sets the security policy for the specified backend service.
+  /// Sets the Google Cloud Armor security policy for the specified backend
+  /// service.
+  ///
+  /// For more information, see Google Cloud Armor Overview
   ///
   /// [request] - The metadata request object.
   ///
@@ -8134,6 +8146,345 @@ class GlobalOrganizationOperationsResource {
   }
 }
 
+class GlobalPublicDelegatedPrefixesResource {
+  final commons.ApiRequester _requester;
+
+  GlobalPublicDelegatedPrefixesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Deletes the specified global PublicDelegatedPrefix.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [publicDelegatedPrefix] - Name of the PublicDelegatedPrefix resource to
+  /// delete.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String project,
+    core.String publicDelegatedPrefix, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/publicDelegatedPrefixes/' +
+        commons.escapeVariable('$publicDelegatedPrefix');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the specified global PublicDelegatedPrefix resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [publicDelegatedPrefix] - Name of the PublicDelegatedPrefix resource to
+  /// return.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PublicDelegatedPrefix].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PublicDelegatedPrefix> get(
+    core.String project,
+    core.String publicDelegatedPrefix, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/publicDelegatedPrefixes/' +
+        commons.escapeVariable('$publicDelegatedPrefix');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return PublicDelegatedPrefix.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a global PublicDelegatedPrefix in the specified project using the
+  /// parameters that are included in the request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> insert(
+    PublicDelegatedPrefix request,
+    core.String project, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/publicDelegatedPrefixes';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists the global PublicDelegatedPrefixes for a project.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either `=`, `!=`, `>`, or `<`.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named `example-instance` by specifying `name !=
+  /// example-instance`.
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// `scheduling.automaticRestart = false` to include instances only if they
+  /// are not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example: ``` (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
+  /// `AND` expression. However, you can include `AND` and `OR` expressions
+  /// explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are `0` to
+  /// `500`, inclusive. (Default: `500`)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts results
+  /// based on the `creationTimestamp` field in reverse chronological order
+  /// (newest result first). Use this to sort resources like operations so that
+  /// the newest operation is returned first.
+  ///
+  /// Currently, only sorting by `name` or `creationTimestamp desc` is
+  /// supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get the next page
+  /// of results.
+  ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PublicDelegatedPrefixList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PublicDelegatedPrefixList> list(
+    core.String project, {
+    core.String? filter,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.bool? returnPartialSuccess,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/publicDelegatedPrefixes';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return PublicDelegatedPrefixList.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Patches the specified global PublicDelegatedPrefix resource with the data
+  /// included in the request.
+  ///
+  /// This method supports PATCH semantics and uses JSON merge patch format and
+  /// processing rules.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [publicDelegatedPrefix] - Name of the PublicDelegatedPrefix resource to
+  /// patch.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    PublicDelegatedPrefix request,
+    core.String project,
+    core.String publicDelegatedPrefix, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/publicDelegatedPrefixes/' +
+        commons.escapeVariable('$publicDelegatedPrefix');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class HealthChecksResource {
   final commons.ApiRequester _requester;
 
@@ -11367,14 +11718,14 @@ class InstanceGroupManagersResource {
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Flags the specified instances in the managed instance group to be
+  /// Flags the specified VM instances in the managed instance group to be
   /// immediately recreated.
   ///
-  /// The instances are deleted and recreated using the current instance
-  /// template for the managed instance group. This operation is marked as DONE
-  /// when the flag is set even if the instances have not yet been recreated.
-  /// You must separately verify the status of the recreating action with the
-  /// listmanagedinstances method.
+  /// Each instance is recreated using the group's current configuration. This
+  /// operation is marked as DONE when the flag is set even if the instances
+  /// have not yet been recreated. You must separately verify the status of each
+  /// instance by checking its currentAction field; for more information, see
+  /// Checking the status of managed instances.
   ///
   /// If the group is part of a backend service that has enabled connection
   /// draining, it can take up to 60 seconds after the connection draining
@@ -13341,7 +13692,7 @@ class InstancesResource {
 
   /// Deletes the specified Instance resource.
   ///
-  /// For more information, see Stopping or Deleting an Instance.
+  /// For more information, see Deleting an instance.
   ///
   /// Request parameters:
   ///
@@ -22453,6 +22804,823 @@ class ProjectsResource {
   }
 }
 
+class PublicAdvertisedPrefixesResource {
+  final commons.ApiRequester _requester;
+
+  PublicAdvertisedPrefixesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Deletes the specified PublicAdvertisedPrefix
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [publicAdvertisedPrefix] - Name of the PublicAdvertisedPrefix resource to
+  /// delete.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String project,
+    core.String publicAdvertisedPrefix, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/publicAdvertisedPrefixes/' +
+        commons.escapeVariable('$publicAdvertisedPrefix');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the specified PublicAdvertisedPrefix resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [publicAdvertisedPrefix] - Name of the PublicAdvertisedPrefix resource to
+  /// return.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PublicAdvertisedPrefix].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PublicAdvertisedPrefix> get(
+    core.String project,
+    core.String publicAdvertisedPrefix, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/publicAdvertisedPrefixes/' +
+        commons.escapeVariable('$publicAdvertisedPrefix');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return PublicAdvertisedPrefix.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a PublicAdvertisedPrefix in the specified project using the
+  /// parameters that are included in the request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> insert(
+    PublicAdvertisedPrefix request,
+    core.String project, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/publicAdvertisedPrefixes';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists the PublicAdvertisedPrefixes for a project.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either `=`, `!=`, `>`, or `<`.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named `example-instance` by specifying `name !=
+  /// example-instance`.
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// `scheduling.automaticRestart = false` to include instances only if they
+  /// are not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example: ``` (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
+  /// `AND` expression. However, you can include `AND` and `OR` expressions
+  /// explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are `0` to
+  /// `500`, inclusive. (Default: `500`)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts results
+  /// based on the `creationTimestamp` field in reverse chronological order
+  /// (newest result first). Use this to sort resources like operations so that
+  /// the newest operation is returned first.
+  ///
+  /// Currently, only sorting by `name` or `creationTimestamp desc` is
+  /// supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get the next page
+  /// of results.
+  ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PublicAdvertisedPrefixList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PublicAdvertisedPrefixList> list(
+    core.String project, {
+    core.String? filter,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.bool? returnPartialSuccess,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/publicAdvertisedPrefixes';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return PublicAdvertisedPrefixList.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Patches the specified Router resource with the data included in the
+  /// request.
+  ///
+  /// This method supports PATCH semantics and uses JSON merge patch format and
+  /// processing rules.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [publicAdvertisedPrefix] - Name of the PublicAdvertisedPrefix resource to
+  /// patch.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    PublicAdvertisedPrefix request,
+    core.String project,
+    core.String publicAdvertisedPrefix, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/publicAdvertisedPrefixes/' +
+        commons.escapeVariable('$publicAdvertisedPrefix');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class PublicDelegatedPrefixesResource {
+  final commons.ApiRequester _requester;
+
+  PublicDelegatedPrefixesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists all PublicDelegatedPrefix resources owned by the specific project
+  /// across all scopes.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Name of the project scoping this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either `=`, `!=`, `>`, or `<`.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named `example-instance` by specifying `name !=
+  /// example-instance`.
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// `scheduling.automaticRestart = false` to include instances only if they
+  /// are not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example: ``` (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
+  /// `AND` expression. However, you can include `AND` and `OR` expressions
+  /// explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// [includeAllScopes] - Indicates whether every visible scope for each scope
+  /// type (zone, region, global) should be included in the response. For new
+  /// resource types added after this field, the flag has no effect as new
+  /// resource types will always include every visible scope for each scope type
+  /// in response. For resource types which predate this field, if this flag is
+  /// omitted or false, only scopes of the scope types where the resource type
+  /// is expected to be found will be included.
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are `0` to
+  /// `500`, inclusive. (Default: `500`)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts results
+  /// based on the `creationTimestamp` field in reverse chronological order
+  /// (newest result first). Use this to sort resources like operations so that
+  /// the newest operation is returned first.
+  ///
+  /// Currently, only sorting by `name` or `creationTimestamp desc` is
+  /// supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get the next page
+  /// of results.
+  ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PublicDelegatedPrefixAggregatedList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PublicDelegatedPrefixAggregatedList> aggregatedList(
+    core.String project, {
+    core.String? filter,
+    core.bool? includeAllScopes,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.bool? returnPartialSuccess,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (includeAllScopes != null) 'includeAllScopes': ['${includeAllScopes}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'projects/' +
+        commons.escapeVariable('$project') +
+        '/aggregated/publicDelegatedPrefixes';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return PublicDelegatedPrefixAggregatedList.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the specified PublicDelegatedPrefix in the given region.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region of this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [publicDelegatedPrefix] - Name of the PublicDelegatedPrefix resource to
+  /// delete.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String project,
+    core.String region,
+    core.String publicDelegatedPrefix, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/publicDelegatedPrefixes/' +
+        commons.escapeVariable('$publicDelegatedPrefix');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the specified PublicDelegatedPrefix resource in the given region.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region of this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [publicDelegatedPrefix] - Name of the PublicDelegatedPrefix resource to
+  /// return.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PublicDelegatedPrefix].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PublicDelegatedPrefix> get(
+    core.String project,
+    core.String region,
+    core.String publicDelegatedPrefix, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/publicDelegatedPrefixes/' +
+        commons.escapeVariable('$publicDelegatedPrefix');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return PublicDelegatedPrefix.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a PublicDelegatedPrefix in the specified project in the given
+  /// region using the parameters that are included in the request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region of this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> insert(
+    PublicDelegatedPrefix request,
+    core.String project,
+    core.String region, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/publicDelegatedPrefixes';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists the PublicDelegatedPrefixes for a project in the given region.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region of this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either `=`, `!=`, `>`, or `<`.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named `example-instance` by specifying `name !=
+  /// example-instance`.
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// `scheduling.automaticRestart = false` to include instances only if they
+  /// are not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example: ``` (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
+  /// `AND` expression. However, you can include `AND` and `OR` expressions
+  /// explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are `0` to
+  /// `500`, inclusive. (Default: `500`)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts results
+  /// based on the `creationTimestamp` field in reverse chronological order
+  /// (newest result first). Use this to sort resources like operations so that
+  /// the newest operation is returned first.
+  ///
+  /// Currently, only sorting by `name` or `creationTimestamp desc` is
+  /// supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get the next page
+  /// of results.
+  ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PublicDelegatedPrefixList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PublicDelegatedPrefixList> list(
+    core.String project,
+    core.String region, {
+    core.String? filter,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.bool? returnPartialSuccess,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/publicDelegatedPrefixes';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return PublicDelegatedPrefixList.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Patches the specified PublicDelegatedPrefix resource with the data
+  /// included in the request.
+  ///
+  /// This method supports PATCH semantics and uses JSON merge patch format and
+  /// processing rules.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [publicDelegatedPrefix] - Name of the PublicDelegatedPrefix resource to
+  /// patch.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    PublicDelegatedPrefix request,
+    core.String project,
+    core.String region,
+    core.String publicDelegatedPrefix, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/publicDelegatedPrefixes/' +
+        commons.escapeVariable('$publicDelegatedPrefix');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class RegionAutoscalersResource {
   final commons.ApiRequester _requester;
 
@@ -26655,14 +27823,14 @@ class RegionInstanceGroupManagersResource {
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Flags the specified instances in the managed instance group to be
+  /// Flags the specified VM instances in the managed instance group to be
   /// immediately recreated.
   ///
-  /// The instances are deleted and recreated using the current instance
-  /// template for the managed instance group. This operation is marked as DONE
-  /// when the flag is set even if the instances have not yet been recreated.
-  /// You must separately verify the status of the recreating action with the
-  /// listmanagedinstances method.
+  /// Each instance is recreated using the group's current configuration. This
+  /// operation is marked as DONE when the flag is set even if the instances
+  /// have not yet been recreated. You must separately verify the status of each
+  /// instance by checking its currentAction field; for more information, see
+  /// Checking the status of managed instances.
   ///
   /// If the group is part of a backend service that has enabled connection
   /// draining, it can take up to 60 seconds after the connection draining
@@ -41887,6 +43055,21 @@ class AcceleratorTypesScopedList {
 ///
 /// Only one access config per instance is supported.
 class AccessConfig {
+  /// The first IPv6 address of the external IPv6 range associated with this
+  /// instance, prefix length is stored in externalIpv6PrefixLength in
+  /// ipv6AccessConfig.
+  ///
+  /// The field is output only, an IPv6 address from a subnetwork associated
+  /// with the instance will be allocated dynamically.
+  ///
+  /// Output only.
+  core.String? externalIpv6;
+
+  /// The prefix length of the external IPv6 range.
+  ///
+  /// Output only.
+  core.int? externalIpv6PrefixLength;
+
   /// Type of the resource.
   ///
   /// Always compute#accessConfig for access configs.
@@ -41935,12 +43118,19 @@ class AccessConfig {
   ///
   /// The default and only option is ONE_TO_ONE_NAT.
   /// Possible string values are:
+  /// - "DIRECT_IPV6"
   /// - "ONE_TO_ONE_NAT"
   core.String? type;
 
   AccessConfig();
 
   AccessConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('externalIpv6')) {
+      externalIpv6 = _json['externalIpv6'] as core.String;
+    }
+    if (_json.containsKey('externalIpv6PrefixLength')) {
+      externalIpv6PrefixLength = _json['externalIpv6PrefixLength'] as core.int;
+    }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
     }
@@ -41965,6 +43155,9 @@ class AccessConfig {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (externalIpv6 != null) 'externalIpv6': externalIpv6!,
+        if (externalIpv6PrefixLength != null)
+          'externalIpv6PrefixLength': externalIpv6PrefixLength!,
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
         if (natIP != null) 'natIP': natIP!,
@@ -42081,7 +43274,7 @@ class Address {
   /// - "STANDARD"
   core.String? networkTier;
 
-  /// The prefix length if the resource reprensents an IP range.
+  /// The prefix length if the resource represents an IP range.
   core.int? prefixLength;
 
   /// The purpose of this resource, which can be one of the following values:
@@ -42094,11 +43287,12 @@ class Address {
   /// - `NAT_AUTO` for addresses that are external IP addresses automatically
   /// reserved for Cloud NAT.
   /// - `IPSEC_INTERCONNECT` for addresses created from a private IP range that
-  /// are reserved for a VLAN attachment in an IPsec encrypted Interconnect
-  /// configuration. These addresses are regional resources.
+  /// are reserved for a VLAN attachment in an IPsec-encrypted Cloud
+  /// Interconnect configuration. These addresses are regional resources.
   /// Possible string values are:
   /// - "DNS_RESOLVER"
   /// - "GCE_ENDPOINT"
+  /// - "IPSEC_INTERCONNECT"
   /// - "NAT_AUTO"
   /// - "PRIVATE_SERVICE_CONNECT"
   /// - "SHARED_LOADBALANCER_VIP"
@@ -42765,6 +43959,13 @@ class AdvancedMachineFeatures {
   /// Whether to enable nested virtualization or not (default is false).
   core.bool? enableNestedVirtualization;
 
+  /// The number of threads per physical core.
+  ///
+  /// To disable simultaneous multithreading (SMT) set this to 1. If unset, the
+  /// maximum number of threads supported per core by the underlying processor
+  /// is assumed.
+  core.int? threadsPerCore;
+
   AdvancedMachineFeatures();
 
   AdvancedMachineFeatures.fromJson(core.Map _json) {
@@ -42772,11 +43973,15 @@ class AdvancedMachineFeatures {
       enableNestedVirtualization =
           _json['enableNestedVirtualization'] as core.bool;
     }
+    if (_json.containsKey('threadsPerCore')) {
+      threadsPerCore = _json['threadsPerCore'] as core.int;
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enableNestedVirtualization != null)
           'enableNestedVirtualization': enableNestedVirtualization!,
+        if (threadsPerCore != null) 'threadsPerCore': threadsPerCore!,
       };
 }
 
@@ -43522,8 +44727,8 @@ class AuthorizationLoggingOptions {
 class Autoscaler {
   /// The configuration parameters for the autoscaling algorithm.
   ///
-  /// You can define one or more of the policies for an autoscaler:
-  /// cpuUtilization, customMetricUtilizations, and loadBalancingUtilization.
+  /// You can define one or more signals for an autoscaler: cpuUtilization,
+  /// customMetricUtilizations, and loadBalancingUtilization.
   ///
   /// If none of these are specified, the default will be to autoscale based on
   /// cpuUtilization to 0.6 or 60%.
@@ -43578,6 +44783,11 @@ class Autoscaler {
   ///
   /// Output only.
   core.String? region;
+
+  /// Status information of existing scaling schedules.
+  ///
+  /// Output only.
+  core.Map<core.String, ScalingScheduleStatus>? scalingScheduleStatus;
 
   /// Server-defined URL for the resource.
   ///
@@ -43650,6 +44860,17 @@ class Autoscaler {
     if (_json.containsKey('region')) {
       region = _json['region'] as core.String;
     }
+    if (_json.containsKey('scalingScheduleStatus')) {
+      scalingScheduleStatus = (_json['scalingScheduleStatus']
+              as core.Map<core.String, core.dynamic>)
+          .map(
+        (key, item) => core.MapEntry(
+          key,
+          ScalingScheduleStatus.fromJson(
+              item as core.Map<core.String, core.dynamic>),
+        ),
+      );
+    }
     if (_json.containsKey('selfLink')) {
       selfLink = _json['selfLink'] as core.String;
     }
@@ -43681,6 +44902,9 @@ class Autoscaler {
         if (name != null) 'name': name!,
         if (recommendedSize != null) 'recommendedSize': recommendedSize!,
         if (region != null) 'region': region!,
+        if (scalingScheduleStatus != null)
+          'scalingScheduleStatus': scalingScheduleStatus!
+              .map((key, item) => core.MapEntry(key, item.toJson())),
         if (selfLink != null) 'selfLink': selfLink!,
         if (status != null) 'status': status!,
         if (statusDetails != null)
@@ -44140,6 +45364,8 @@ class AutoscalerStatusDetails {
   /// - "NOT_ENOUGH_QUOTA_AVAILABLE"
   /// - "REGION_RESOURCE_STOCKOUT"
   /// - "SCALING_TARGET_DOES_NOT_EXIST"
+  /// - "SCHEDULED_INSTANCES_GREATER_THAN_AUTOSCALER_MAX"
+  /// - "SCHEDULED_INSTANCES_LESS_THAN_AUTOSCALER_MIN"
   /// - "UNKNOWN"
   /// - "UNSUPPORTED_MAX_RATE_LOAD_BALANCING_CONFIGURATION"
   /// - "ZONE_RESOURCE_STOCKOUT"
@@ -44353,6 +45579,13 @@ class AutoscalingPolicy {
   core.String? mode;
   AutoscalingPolicyScaleInControl? scaleInControl;
 
+  /// Scaling schedules defined for an autoscaler.
+  ///
+  /// Multiple schedules can be set on an autoscaler, and they can overlap.
+  /// During overlapping periods the greatest min_required_replicas of all
+  /// scaling schedules is applied. Up to 128 scaling schedules are allowed.
+  core.Map<core.String, AutoscalingPolicyScalingSchedule>? scalingSchedules;
+
   AutoscalingPolicy();
 
   AutoscalingPolicy.fromJson(core.Map _json) {
@@ -44390,6 +45623,17 @@ class AutoscalingPolicy {
       scaleInControl = AutoscalingPolicyScaleInControl.fromJson(
           _json['scaleInControl'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('scalingSchedules')) {
+      scalingSchedules =
+          (_json['scalingSchedules'] as core.Map<core.String, core.dynamic>)
+              .map(
+        (key, item) => core.MapEntry(
+          key,
+          AutoscalingPolicyScalingSchedule.fromJson(
+              item as core.Map<core.String, core.dynamic>),
+        ),
+      );
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -44404,11 +45648,28 @@ class AutoscalingPolicy {
         if (minNumReplicas != null) 'minNumReplicas': minNumReplicas!,
         if (mode != null) 'mode': mode!,
         if (scaleInControl != null) 'scaleInControl': scaleInControl!.toJson(),
+        if (scalingSchedules != null)
+          'scalingSchedules': scalingSchedules!
+              .map((key, item) => core.MapEntry(key, item.toJson())),
       };
 }
 
 /// CPU utilization policy.
 class AutoscalingPolicyCpuUtilization {
+  /// Indicates whether predictive autoscaling based on CPU metric is enabled.
+  ///
+  /// Valid values are:
+  ///
+  /// * NONE (default). No predictive method is used. The autoscaler scales the
+  /// group to meet current demand based on real-time metrics. *
+  /// OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by
+  /// monitoring daily and weekly load patterns and scaling out ahead of
+  /// anticipated demand.
+  /// Possible string values are:
+  /// - "NONE"
+  /// - "OPTIMIZE_AVAILABILITY"
+  core.String? predictiveMethod;
+
   /// The target CPU utilization that the autoscaler maintains.
   ///
   /// Must be a float value in the range (0, 1\]. If not specified, the default
@@ -44427,12 +45688,16 @@ class AutoscalingPolicyCpuUtilization {
   AutoscalingPolicyCpuUtilization();
 
   AutoscalingPolicyCpuUtilization.fromJson(core.Map _json) {
+    if (_json.containsKey('predictiveMethod')) {
+      predictiveMethod = _json['predictiveMethod'] as core.String;
+    }
     if (_json.containsKey('utilizationTarget')) {
       utilizationTarget = (_json['utilizationTarget'] as core.num).toDouble();
     }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (predictiveMethod != null) 'predictiveMethod': predictiveMethod!,
         if (utilizationTarget != null) 'utilizationTarget': utilizationTarget!,
       };
 }
@@ -44602,6 +45867,86 @@ class AutoscalingPolicyScaleInControl {
         if (maxScaledInReplicas != null)
           'maxScaledInReplicas': maxScaledInReplicas!.toJson(),
         if (timeWindowSec != null) 'timeWindowSec': timeWindowSec!,
+      };
+}
+
+/// Scaling based on user-defined schedule.
+///
+/// The message describes a single scaling schedule. A scaling schedule changes
+/// the minimum number of VM instances an autoscaler can recommend, which can
+/// trigger scaling out.
+class AutoscalingPolicyScalingSchedule {
+  /// A description of a scaling schedule.
+  core.String? description;
+
+  /// A boolean value that specifies whether a scaling schedule can influence
+  /// autoscaler recommendations.
+  ///
+  /// If set to true, then a scaling schedule has no effect. This field is
+  /// optional, and its value is false by default.
+  core.bool? disabled;
+
+  /// The duration of time intervals, in seconds, for which this scaling
+  /// schedule is to run.
+  ///
+  /// The minimum allowed value is 300. This field is required.
+  core.int? durationSec;
+
+  /// The minimum number of VM instances that the autoscaler will recommend in
+  /// time intervals starting according to schedule.
+  ///
+  /// This field is required.
+  core.int? minRequiredReplicas;
+
+  /// The start timestamps of time intervals when this scaling schedule is to
+  /// provide a scaling signal.
+  ///
+  /// This field uses the extended cron format (with an optional year field).
+  /// The expression can describe a single timestamp if the optional year is
+  /// set, in which case the scaling schedule runs once. The schedule is
+  /// interpreted with respect to time_zone. This field is required. Note: These
+  /// timestamps only describe when autoscaler starts providing the scaling
+  /// signal. The VMs need additional time to become serving.
+  core.String? schedule;
+
+  /// The time zone to use when interpreting the schedule.
+  ///
+  /// The value of this field must be a time zone name from the tz database:
+  /// http://en.wikipedia.org/wiki/Tz_database. This field is assigned a default
+  /// value of ?UTC? if left empty.
+  core.String? timeZone;
+
+  AutoscalingPolicyScalingSchedule();
+
+  AutoscalingPolicyScalingSchedule.fromJson(core.Map _json) {
+    if (_json.containsKey('description')) {
+      description = _json['description'] as core.String;
+    }
+    if (_json.containsKey('disabled')) {
+      disabled = _json['disabled'] as core.bool;
+    }
+    if (_json.containsKey('durationSec')) {
+      durationSec = _json['durationSec'] as core.int;
+    }
+    if (_json.containsKey('minRequiredReplicas')) {
+      minRequiredReplicas = _json['minRequiredReplicas'] as core.int;
+    }
+    if (_json.containsKey('schedule')) {
+      schedule = _json['schedule'] as core.String;
+    }
+    if (_json.containsKey('timeZone')) {
+      timeZone = _json['timeZone'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (disabled != null) 'disabled': disabled!,
+        if (durationSec != null) 'durationSec': durationSec!,
+        if (minRequiredReplicas != null)
+          'minRequiredReplicas': minRequiredReplicas!,
+        if (schedule != null) 'schedule': schedule!,
+        if (timeZone != null) 'timeZone': timeZone!,
       };
 }
 
@@ -44892,6 +46237,14 @@ class BackendBucket {
 
 /// Message containing Cloud CDN configuration for a backend bucket.
 class BackendBucketCdnPolicy {
+  /// Bypass the cache when the specified request headers are matched - e.g.
+  /// Pragma or Authorization headers.
+  ///
+  /// Up to 5 headers can be specified. The cache is bypassed for all
+  /// cdnPolicy.cacheMode settings.
+  core.List<BackendBucketCdnPolicyBypassCacheOnRequestHeader>?
+      bypassCacheOnRequestHeaders;
+
   /// Specifies the cache setting for all responses from this backend.
   ///
   /// The possible values are:
@@ -44953,6 +46306,50 @@ class BackendBucketCdnPolicy {
   /// evicted from the cache before the defined TTL.
   core.int? maxTtl;
 
+  /// Negative caching allows per-status code TTLs to be set, in order to apply
+  /// fine-grained caching for common errors or redirects.
+  ///
+  /// This can reduce the load on your origin and improve end-user experience by
+  /// reducing response latency. When the cache mode is set to CACHE_ALL_STATIC
+  /// or USE_ORIGIN_HEADERS, negative caching applies to responses with the
+  /// specified response code that lack any Cache-Control, Expires, or Pragma:
+  /// no-cache directives. When the cache mode is set to FORCE_CACHE_ALL,
+  /// negative caching applies to all responses with the specified response
+  /// code, and override any caching headers. By default, Cloud CDN will apply
+  /// the following default TTLs to these status codes: HTTP 300 (Multiple
+  /// Choice), 301, 308 (Permanent Redirects): 10m HTTP 404 (Not Found), 410
+  /// (Gone), 451 (Unavailable For Legal Reasons): 120s HTTP 405 (Method Not
+  /// Found), 421 (Misdirected Request), 501 (Not Implemented): 60s. These
+  /// defaults can be overridden in negative_caching_policy.
+  core.bool? negativeCaching;
+
+  /// Sets a cache TTL for the specified HTTP status code.
+  ///
+  /// negative_caching must be enabled to configure negative_caching_policy.
+  /// Omitting the policy and leaving negative_caching enabled will use Cloud
+  /// CDN's default cache TTLs. Note that when specifying an explicit
+  /// negative_caching_policy, you should take care to specify a cache TTL for
+  /// all response codes that you wish to cache. Cloud CDN will not apply any
+  /// default negative caching when a policy exists.
+  core.List<BackendBucketCdnPolicyNegativeCachingPolicy>? negativeCachingPolicy;
+
+  /// If true then Cloud CDN will combine multiple concurrent cache fill
+  /// requests into a small number of requests to the origin.
+  core.bool? requestCoalescing;
+
+  /// Serve existing content from the cache (if available) when revalidating
+  /// content with the origin, or when an error is encountered when refreshing
+  /// the cache.
+  ///
+  /// This setting defines the default "max-stale" duration for any cached
+  /// responses that do not specify a max-stale directive. Stale responses that
+  /// exceed the TTL configured here will not be served. The default limit
+  /// (max-stale) is 86400s (1 day), which will allow stale content to be served
+  /// up to this limit beyond the max-age (or s-max-age) of a cached response.
+  /// The maximum allowed value is 604800 (1 week). Set this to zero (0) to
+  /// disable serve-while-stale.
+  core.int? serveWhileStale;
+
   /// Maximum number of seconds the response to a signed URL request will be
   /// considered fresh.
   ///
@@ -44972,6 +46369,14 @@ class BackendBucketCdnPolicy {
   BackendBucketCdnPolicy();
 
   BackendBucketCdnPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey('bypassCacheOnRequestHeaders')) {
+      bypassCacheOnRequestHeaders =
+          (_json['bypassCacheOnRequestHeaders'] as core.List)
+              .map<BackendBucketCdnPolicyBypassCacheOnRequestHeader>((value) =>
+                  BackendBucketCdnPolicyBypassCacheOnRequestHeader.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList();
+    }
     if (_json.containsKey('cacheMode')) {
       cacheMode = _json['cacheMode'] as core.String;
     }
@@ -44984,6 +46389,22 @@ class BackendBucketCdnPolicy {
     if (_json.containsKey('maxTtl')) {
       maxTtl = _json['maxTtl'] as core.int;
     }
+    if (_json.containsKey('negativeCaching')) {
+      negativeCaching = _json['negativeCaching'] as core.bool;
+    }
+    if (_json.containsKey('negativeCachingPolicy')) {
+      negativeCachingPolicy = (_json['negativeCachingPolicy'] as core.List)
+          .map<BackendBucketCdnPolicyNegativeCachingPolicy>((value) =>
+              BackendBucketCdnPolicyNegativeCachingPolicy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('requestCoalescing')) {
+      requestCoalescing = _json['requestCoalescing'] as core.bool;
+    }
+    if (_json.containsKey('serveWhileStale')) {
+      serveWhileStale = _json['serveWhileStale'] as core.int;
+    }
     if (_json.containsKey('signedUrlCacheMaxAgeSec')) {
       signedUrlCacheMaxAgeSec = _json['signedUrlCacheMaxAgeSec'] as core.String;
     }
@@ -44995,13 +46416,80 @@ class BackendBucketCdnPolicy {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (bypassCacheOnRequestHeaders != null)
+          'bypassCacheOnRequestHeaders': bypassCacheOnRequestHeaders!
+              .map((value) => value.toJson())
+              .toList(),
         if (cacheMode != null) 'cacheMode': cacheMode!,
         if (clientTtl != null) 'clientTtl': clientTtl!,
         if (defaultTtl != null) 'defaultTtl': defaultTtl!,
         if (maxTtl != null) 'maxTtl': maxTtl!,
+        if (negativeCaching != null) 'negativeCaching': negativeCaching!,
+        if (negativeCachingPolicy != null)
+          'negativeCachingPolicy':
+              negativeCachingPolicy!.map((value) => value.toJson()).toList(),
+        if (requestCoalescing != null) 'requestCoalescing': requestCoalescing!,
+        if (serveWhileStale != null) 'serveWhileStale': serveWhileStale!,
         if (signedUrlCacheMaxAgeSec != null)
           'signedUrlCacheMaxAgeSec': signedUrlCacheMaxAgeSec!,
         if (signedUrlKeyNames != null) 'signedUrlKeyNames': signedUrlKeyNames!,
+      };
+}
+
+/// Bypass the cache when the specified request headers are present, e.g. Pragma
+/// or Authorization headers.
+///
+/// Values are case insensitive. The presence of such a header overrides the
+/// cache_mode setting.
+class BackendBucketCdnPolicyBypassCacheOnRequestHeader {
+  /// The header field name to match on when bypassing cache.
+  ///
+  /// Values are case-insensitive.
+  core.String? headerName;
+
+  BackendBucketCdnPolicyBypassCacheOnRequestHeader();
+
+  BackendBucketCdnPolicyBypassCacheOnRequestHeader.fromJson(core.Map _json) {
+    if (_json.containsKey('headerName')) {
+      headerName = _json['headerName'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (headerName != null) 'headerName': headerName!,
+      };
+}
+
+/// Specify CDN TTLs for response error codes.
+class BackendBucketCdnPolicyNegativeCachingPolicy {
+  /// The HTTP status code to define a TTL against.
+  ///
+  /// Only HTTP status codes 300, 301, 302, 307, 308, 404, 405, 410, 421, 451
+  /// and 501 are can be specified as values, and you cannot specify a status
+  /// code more than once.
+  core.int? code;
+
+  /// The TTL (in seconds) for which to cache responses with the corresponding
+  /// status code.
+  ///
+  /// The maximum allowed value is 1800s (30 minutes), noting that infrequently
+  /// accessed objects may be evicted from the cache before the defined TTL.
+  core.int? ttl;
+
+  BackendBucketCdnPolicyNegativeCachingPolicy();
+
+  BackendBucketCdnPolicyNegativeCachingPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey('code')) {
+      code = _json['code'] as core.int;
+    }
+    if (_json.containsKey('ttl')) {
+      ttl = _json['ttl'] as core.int;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+        if (ttl != null) 'ttl': ttl!,
       };
 }
 
@@ -45231,20 +46719,6 @@ class BackendService {
   ///
   /// Only available for  external HTTP(S) Load Balancing.
   BackendServiceCdnPolicy? cdnPolicy;
-
-  /// Settings controlling the volume of connections to a backend service.
-  ///
-  /// If not set, this feature is considered disabled.
-  ///
-  /// This field is applicable to either:
-  /// - A regional backend service with the service_protocol set to HTTP, HTTPS,
-  /// or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED.
-  /// - A global backend service with the load_balancing_scheme set to
-  /// INTERNAL_SELF_MANAGED.
-  ///
-  /// Not supported when the backend service is referenced by a URL map that is
-  /// bound to target gRPC proxy that has validateForProxyless field set to
-  /// true.
   CircuitBreakers? circuitBreakers;
   ConnectionDraining? connectionDraining;
 
@@ -45412,6 +46886,20 @@ class BackendService {
   /// If logging is enabled, logs will be exported to Stackdriver.
   BackendServiceLogConfig? logConfig;
 
+  /// Specifies the default maximum duration (timeout) for streams to this
+  /// service.
+  ///
+  /// Duration is computed from the beginning of the stream until the response
+  /// has been completely processed, including all retries. A stream that does
+  /// not complete in this duration is closed.
+  /// If not specified, there will be no timeout limit, i.e. the maximum
+  /// duration is infinite.
+  /// This value can be overridden in the PathMatcher configuration of the
+  /// UrlMap that references this backend service.
+  /// This field is only allowed when the loadBalancingScheme of the backend
+  /// service is INTERNAL_SELF_MANAGED.
+  Duration? maxStreamDuration;
+
   /// Name of the resource.
   ///
   /// Provided by the client when the resource is created. The name must be 1-63
@@ -45539,6 +47027,7 @@ class BackendService {
   /// true.
   /// Possible string values are:
   /// - "CLIENT_IP"
+  /// - "CLIENT_IP_NO_DESTINATION"
   /// - "CLIENT_IP_PORT_PROTO"
   /// - "CLIENT_IP_PROTO"
   /// - "GENERATED_COOKIE"
@@ -45547,12 +47036,11 @@ class BackendService {
   /// - "NONE"
   core.String? sessionAffinity;
 
-  /// The backend service timeout has a different meaning depending on the type
-  /// of load balancer.
+  /// Not supported when the backend service is referenced by a URL map that is
+  /// bound to target gRPC proxy that has validateForProxyless field set to
+  /// true.
   ///
-  /// For more information see, Backend service settings The default is 30
-  /// seconds. The full range of timeout values allowed is 1 - 2,147,483,647
-  /// seconds.
+  /// Instead, use maxStreamDuration.
   core.int? timeoutSec;
 
   BackendService();
@@ -45634,6 +47122,10 @@ class BackendService {
       logConfig = BackendServiceLogConfig.fromJson(
           _json['logConfig'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('maxStreamDuration')) {
+      maxStreamDuration = Duration.fromJson(
+          _json['maxStreamDuration'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
@@ -45702,6 +47194,8 @@ class BackendService {
           'loadBalancingScheme': loadBalancingScheme!,
         if (localityLbPolicy != null) 'localityLbPolicy': localityLbPolicy!,
         if (logConfig != null) 'logConfig': logConfig!.toJson(),
+        if (maxStreamDuration != null)
+          'maxStreamDuration': maxStreamDuration!.toJson(),
         if (name != null) 'name': name!,
         if (network != null) 'network': network!,
         if (outlierDetection != null)
@@ -45917,6 +47411,14 @@ class BackendServiceAggregatedList {
 
 /// Message containing Cloud CDN configuration for a backend service.
 class BackendServiceCdnPolicy {
+  /// Bypass the cache when the specified request headers are matched - e.g.
+  /// Pragma or Authorization headers.
+  ///
+  /// Up to 5 headers can be specified. The cache is bypassed for all
+  /// cdnPolicy.cacheMode settings.
+  core.List<BackendServiceCdnPolicyBypassCacheOnRequestHeader>?
+      bypassCacheOnRequestHeaders;
+
   /// The CacheKeyPolicy for this CdnPolicy.
   CacheKeyPolicy? cacheKeyPolicy;
 
@@ -45981,6 +47483,51 @@ class BackendServiceCdnPolicy {
   /// evicted from the cache before the defined TTL.
   core.int? maxTtl;
 
+  /// Negative caching allows per-status code TTLs to be set, in order to apply
+  /// fine-grained caching for common errors or redirects.
+  ///
+  /// This can reduce the load on your origin and improve end-user experience by
+  /// reducing response latency. When the cache mode is set to CACHE_ALL_STATIC
+  /// or USE_ORIGIN_HEADERS, negative caching applies to responses with the
+  /// specified response code that lack any Cache-Control, Expires, or Pragma:
+  /// no-cache directives. When the cache mode is set to FORCE_CACHE_ALL,
+  /// negative caching applies to all responses with the specified response
+  /// code, and override any caching headers. By default, Cloud CDN will apply
+  /// the following default TTLs to these status codes: HTTP 300 (Multiple
+  /// Choice), 301, 308 (Permanent Redirects): 10m HTTP 404 (Not Found), 410
+  /// (Gone), 451 (Unavailable For Legal Reasons): 120s HTTP 405 (Method Not
+  /// Found), 421 (Misdirected Request), 501 (Not Implemented): 60s. These
+  /// defaults can be overridden in negative_caching_policy.
+  core.bool? negativeCaching;
+
+  /// Sets a cache TTL for the specified HTTP status code.
+  ///
+  /// negative_caching must be enabled to configure negative_caching_policy.
+  /// Omitting the policy and leaving negative_caching enabled will use Cloud
+  /// CDN's default cache TTLs. Note that when specifying an explicit
+  /// negative_caching_policy, you should take care to specify a cache TTL for
+  /// all response codes that you wish to cache. Cloud CDN will not apply any
+  /// default negative caching when a policy exists.
+  core.List<BackendServiceCdnPolicyNegativeCachingPolicy>?
+      negativeCachingPolicy;
+
+  /// If true then Cloud CDN will combine multiple concurrent cache fill
+  /// requests into a small number of requests to the origin.
+  core.bool? requestCoalescing;
+
+  /// Serve existing content from the cache (if available) when revalidating
+  /// content with the origin, or when an error is encountered when refreshing
+  /// the cache.
+  ///
+  /// This setting defines the default "max-stale" duration for any cached
+  /// responses that do not specify a max-stale directive. Stale responses that
+  /// exceed the TTL configured here will not be served. The default limit
+  /// (max-stale) is 86400s (1 day), which will allow stale content to be served
+  /// up to this limit beyond the max-age (or s-max-age) of a cached response.
+  /// The maximum allowed value is 604800 (1 week). Set this to zero (0) to
+  /// disable serve-while-stale.
+  core.int? serveWhileStale;
+
   /// Maximum number of seconds the response to a signed URL request will be
   /// considered fresh.
   ///
@@ -46000,6 +47547,14 @@ class BackendServiceCdnPolicy {
   BackendServiceCdnPolicy();
 
   BackendServiceCdnPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey('bypassCacheOnRequestHeaders')) {
+      bypassCacheOnRequestHeaders =
+          (_json['bypassCacheOnRequestHeaders'] as core.List)
+              .map<BackendServiceCdnPolicyBypassCacheOnRequestHeader>((value) =>
+                  BackendServiceCdnPolicyBypassCacheOnRequestHeader.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList();
+    }
     if (_json.containsKey('cacheKeyPolicy')) {
       cacheKeyPolicy = CacheKeyPolicy.fromJson(
           _json['cacheKeyPolicy'] as core.Map<core.String, core.dynamic>);
@@ -46016,6 +47571,22 @@ class BackendServiceCdnPolicy {
     if (_json.containsKey('maxTtl')) {
       maxTtl = _json['maxTtl'] as core.int;
     }
+    if (_json.containsKey('negativeCaching')) {
+      negativeCaching = _json['negativeCaching'] as core.bool;
+    }
+    if (_json.containsKey('negativeCachingPolicy')) {
+      negativeCachingPolicy = (_json['negativeCachingPolicy'] as core.List)
+          .map<BackendServiceCdnPolicyNegativeCachingPolicy>((value) =>
+              BackendServiceCdnPolicyNegativeCachingPolicy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('requestCoalescing')) {
+      requestCoalescing = _json['requestCoalescing'] as core.bool;
+    }
+    if (_json.containsKey('serveWhileStale')) {
+      serveWhileStale = _json['serveWhileStale'] as core.int;
+    }
     if (_json.containsKey('signedUrlCacheMaxAgeSec')) {
       signedUrlCacheMaxAgeSec = _json['signedUrlCacheMaxAgeSec'] as core.String;
     }
@@ -46027,14 +47598,81 @@ class BackendServiceCdnPolicy {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (bypassCacheOnRequestHeaders != null)
+          'bypassCacheOnRequestHeaders': bypassCacheOnRequestHeaders!
+              .map((value) => value.toJson())
+              .toList(),
         if (cacheKeyPolicy != null) 'cacheKeyPolicy': cacheKeyPolicy!.toJson(),
         if (cacheMode != null) 'cacheMode': cacheMode!,
         if (clientTtl != null) 'clientTtl': clientTtl!,
         if (defaultTtl != null) 'defaultTtl': defaultTtl!,
         if (maxTtl != null) 'maxTtl': maxTtl!,
+        if (negativeCaching != null) 'negativeCaching': negativeCaching!,
+        if (negativeCachingPolicy != null)
+          'negativeCachingPolicy':
+              negativeCachingPolicy!.map((value) => value.toJson()).toList(),
+        if (requestCoalescing != null) 'requestCoalescing': requestCoalescing!,
+        if (serveWhileStale != null) 'serveWhileStale': serveWhileStale!,
         if (signedUrlCacheMaxAgeSec != null)
           'signedUrlCacheMaxAgeSec': signedUrlCacheMaxAgeSec!,
         if (signedUrlKeyNames != null) 'signedUrlKeyNames': signedUrlKeyNames!,
+      };
+}
+
+/// Bypass the cache when the specified request headers are present, e.g. Pragma
+/// or Authorization headers.
+///
+/// Values are case insensitive. The presence of such a header overrides the
+/// cache_mode setting.
+class BackendServiceCdnPolicyBypassCacheOnRequestHeader {
+  /// The header field name to match on when bypassing cache.
+  ///
+  /// Values are case-insensitive.
+  core.String? headerName;
+
+  BackendServiceCdnPolicyBypassCacheOnRequestHeader();
+
+  BackendServiceCdnPolicyBypassCacheOnRequestHeader.fromJson(core.Map _json) {
+    if (_json.containsKey('headerName')) {
+      headerName = _json['headerName'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (headerName != null) 'headerName': headerName!,
+      };
+}
+
+/// Specify CDN TTLs for response error codes.
+class BackendServiceCdnPolicyNegativeCachingPolicy {
+  /// The HTTP status code to define a TTL against.
+  ///
+  /// Only HTTP status codes 300, 301, 302, 307, 308, 404, 405, 410, 421, 451
+  /// and 501 are can be specified as values, and you cannot specify a status
+  /// code more than once.
+  core.int? code;
+
+  /// The TTL (in seconds) for which to cache responses with the corresponding
+  /// status code.
+  ///
+  /// The maximum allowed value is 1800s (30 minutes), noting that infrequently
+  /// accessed objects may be evicted from the cache before the defined TTL.
+  core.int? ttl;
+
+  BackendServiceCdnPolicyNegativeCachingPolicy();
+
+  BackendServiceCdnPolicyNegativeCachingPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey('code')) {
+      code = _json['code'] as core.int;
+    }
+    if (_json.containsKey('ttl')) {
+      ttl = _json['ttl'] as core.int;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+        if (ttl != null) 'ttl': ttl!,
       };
 }
 
@@ -46671,6 +48309,12 @@ class Binding {
       };
 }
 
+/// A transient resource used in compute.instances.bulkInsert and
+/// compute.regionInstances.bulkInsert and
+/// compute.regionInstances.recommendLocations.
+///
+/// This resource is not persisted anywhere, it is used only for processing the
+/// requests.
 class BulkInsertInstanceResource {
   /// The maximum number of instances to create.
   core.String? count;
@@ -46679,26 +48323,30 @@ class BulkInsertInstanceResource {
   ///
   /// Required if sourceInstanceTemplate is not provided.
   InstanceProperties? instanceProperties;
+
+  /// Policy for chosing target zone.
   LocationPolicy? locationPolicy;
 
   /// The minimum number of instances to create.
   ///
   /// If no min_count is specified then count is used as the default value. If
-  /// min_count instances cannot be created, then no instances will be created.
+  /// min_count instances cannot be created, then no instances will be created
+  /// and instances already created will be deleted.
   core.String? minCount;
 
   /// The string pattern used for the names of the VMs.
   ///
-  /// Either name_pattern or predefined_names must be set. The pattern should
-  /// contain one consecutive sequence of placeholder hash characters (#) with
-  /// each character corresponding to one digit of the generated instance name.
-  /// Example: name_pattern of inst-#### will generate instance names like
-  /// inst-0001, inst-0002, ... . If there already exist instance(s) whose names
-  /// match the name pattern in the same project and zone, then the generated
-  /// instance numbers will start after the biggest existing number. For
-  /// example, if there exists an instance with name inst-0050, then instance
-  /// names generated using the pattern inst-#### will be inst-0051, inst-0052,
-  /// etc. The name pattern placeholder #...# can contain up to 18 characters.
+  /// Either name_pattern or per_instance_properties must be set. The pattern
+  /// should contain one continuous sequence of placeholder hash characters (#)
+  /// with each character corresponding to one digit of the generated instance
+  /// name. Example: name_pattern of inst-#### will generate instance names such
+  /// as inst-0001, inst-0002, ... . If there already exist instance(s) whose
+  /// names match the name pattern in the same project and zone, then the
+  /// generated instance numbers will start after the biggest existing number.
+  /// For example, if there exists an instance with name inst-0050, then
+  /// instance names generated using the pattern inst-#### will be inst-0051,
+  /// inst-0052, etc. The name pattern placeholder #...# can contain up to 18
+  /// characters.
   core.String? namePattern;
 
   /// Per-instance properties to be set on individual instances.
@@ -46888,14 +48536,14 @@ class CacheKeyPolicy {
 
 /// Settings controlling the volume of connections to a backend service.
 class CircuitBreakers {
-  /// The maximum number of connections to the backend service.
-  ///
-  /// If not specified, there is no limit.
+  /// Not supported when the backend service is referenced by a URL map that is
+  /// bound to target gRPC proxy that has validateForProxyless field set to
+  /// true.
   core.int? maxConnections;
 
-  /// The maximum number of pending requests allowed to the backend service.
-  ///
-  /// If not specified, there is no limit.
+  /// Not supported when the backend service is referenced by a URL map that is
+  /// bound to target gRPC proxy that has validateForProxyless field set to
+  /// true.
   core.int? maxPendingRequests;
 
   /// The maximum number of parallel requests that allowed to the backend
@@ -46904,16 +48552,14 @@ class CircuitBreakers {
   /// If not specified, there is no limit.
   core.int? maxRequests;
 
-  /// Maximum requests for a single connection to the backend service.
-  ///
-  /// This parameter is respected by both the HTTP/1.1 and HTTP/2
-  /// implementations. If not specified, there is no limit. Setting this
-  /// parameter to 1 will effectively disable keep alive.
+  /// Not supported when the backend service is referenced by a URL map that is
+  /// bound to target gRPC proxy that has validateForProxyless field set to
+  /// true.
   core.int? maxRequestsPerConnection;
 
-  /// The maximum number of parallel retries allowed to the backend cluster.
-  ///
-  /// If not specified, the default is 1.
+  /// Not supported when the backend service is referenced by a URL map that is
+  /// bound to target gRPC proxy that has validateForProxyless field set to
+  /// true.
   core.int? maxRetries;
 
   CircuitBreakers();
@@ -49990,6 +51636,15 @@ class DisplayDevice {
 }
 
 class DistributionPolicy {
+  /// The distribution shape to which the group converges either proactively or
+  /// on resize events (depending on the value set in
+  /// updatePolicy.instanceRedistributionType).
+  /// Possible string values are:
+  /// - "ANY"
+  /// - "BALANCED"
+  /// - "EVEN"
+  core.String? targetShape;
+
   /// Zones where the regional managed instance group will create and manage its
   /// instances.
   core.List<DistributionPolicyZoneConfiguration>? zones;
@@ -49997,6 +51652,9 @@ class DistributionPolicy {
   DistributionPolicy();
 
   DistributionPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey('targetShape')) {
+      targetShape = _json['targetShape'] as core.String;
+    }
     if (_json.containsKey('zones')) {
       zones = (_json['zones'] as core.List)
           .map<DistributionPolicyZoneConfiguration>((value) =>
@@ -50007,6 +51665,7 @@ class DistributionPolicy {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (targetShape != null) 'targetShape': targetShape!,
         if (zones != null)
           'zones': zones!.map((value) => value.toJson()).toList(),
       };
@@ -51412,15 +53071,15 @@ class FirewallPolicy {
   /// Provide this property when you create the resource.
   core.String? description;
 
-  /// User-provided name of the Organization firewall plicy.
+  /// Depreacted, please use short name instead.
   ///
-  /// The name should be unique in the organization in which the firewall policy
-  /// is created. The name must be 1-63 characters long, and comply with
-  /// RFC1035. Specifically, the name must be 1-63 characters long and match the
-  /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first
-  /// character must be a lowercase letter, and all following characters must be
-  /// a dash, lowercase letter, or digit, except the last character, which
-  /// cannot be a dash.
+  /// User-provided name of the Organization firewall plicy. The name should be
+  /// unique in the organization in which the firewall policy is created. The
+  /// name must be 1-63 characters long, and comply with RFC1035. Specifically,
+  /// the name must be 1-63 characters long and match the regular expression
+  /// `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a
+  /// lowercase letter, and all following characters must be a dash, lowercase
+  /// letter, or digit, except the last character, which cannot be a dash.
   core.String? displayName;
 
   /// Specifies a fingerprint for this resource, which is essentially a hash of
@@ -51492,6 +53151,17 @@ class FirewallPolicy {
   /// Output only.
   core.String? selfLinkWithId;
 
+  /// User-provided name of the Organization firewall plicy.
+  ///
+  /// The name should be unique in the organization in which the firewall policy
+  /// is created. The name must be 1-63 characters long, and comply with
+  /// RFC1035. Specifically, the name must be 1-63 characters long and match the
+  /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first
+  /// character must be a lowercase letter, and all following characters must be
+  /// a dash, lowercase letter, or digit, except the last character, which
+  /// cannot be a dash.
+  core.String? shortName;
+
   FirewallPolicy();
 
   FirewallPolicy.fromJson(core.Map _json) {
@@ -51541,6 +53211,9 @@ class FirewallPolicy {
     if (_json.containsKey('selfLinkWithId')) {
       selfLinkWithId = _json['selfLinkWithId'] as core.String;
     }
+    if (_json.containsKey('shortName')) {
+      shortName = _json['shortName'] as core.String;
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -51559,6 +53232,7 @@ class FirewallPolicy {
           'rules': rules!.map((value) => value.toJson()).toList(),
         if (selfLink != null) 'selfLink': selfLink!,
         if (selfLinkWithId != null) 'selfLinkWithId': selfLinkWithId!,
+        if (shortName != null) 'shortName': shortName!,
       };
 }
 
@@ -51566,6 +53240,8 @@ class FirewallPolicyAssociation {
   /// The target that the firewall policy is attached to.
   core.String? attachmentTarget;
 
+  /// Deprecated, please use short name instead.
+  ///
   /// The display name of the firewall policy of the association.
   ///
   /// Output only.
@@ -51578,6 +53254,11 @@ class FirewallPolicyAssociation {
 
   /// The name for an association.
   core.String? name;
+
+  /// The short name of the firewall policy of the association.
+  ///
+  /// Output only.
+  core.String? shortName;
 
   FirewallPolicyAssociation();
 
@@ -51594,6 +53275,9 @@ class FirewallPolicyAssociation {
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
+    if (_json.containsKey('shortName')) {
+      shortName = _json['shortName'] as core.String;
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -51601,6 +53285,7 @@ class FirewallPolicyAssociation {
         if (displayName != null) 'displayName': displayName!,
         if (firewallPolicyId != null) 'firewallPolicyId': firewallPolicyId!,
         if (name != null) 'name': name!,
+        if (shortName != null) 'shortName': shortName!,
       };
 }
 
@@ -51843,18 +53528,6 @@ class FirewallPolicyRule {
   /// rule.
   core.List<core.String>? targetResources;
 
-  /// A list of secure labels that controls which instances the firewall rule
-  /// applies to.
-  ///
-  /// If targetSecureLabel are specified, then the firewall rule applies only to
-  /// instances in the VPC network that have one of those secure labels.
-  /// targetSecureLabel may not be set at the same time as
-  /// targetServiceAccounts. If neither targetServiceAccounts nor
-  /// targetSecureLabel are specified, the firewall rule applies to all
-  /// instances on the specified network. Maximum number of target label values
-  /// allowed is 256.
-  core.List<core.String>? targetSecureLabels;
-
   /// A list of service accounts indicating the sets of instances that are
   /// applied with this rule.
   core.List<core.String>? targetServiceAccounts;
@@ -51895,11 +53568,6 @@ class FirewallPolicyRule {
           .map<core.String>((value) => value as core.String)
           .toList();
     }
-    if (_json.containsKey('targetSecureLabels')) {
-      targetSecureLabels = (_json['targetSecureLabels'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
     if (_json.containsKey('targetServiceAccounts')) {
       targetServiceAccounts = (_json['targetServiceAccounts'] as core.List)
           .map<core.String>((value) => value as core.String)
@@ -51918,8 +53586,6 @@ class FirewallPolicyRule {
         if (priority != null) 'priority': priority!,
         if (ruleTupleCount != null) 'ruleTupleCount': ruleTupleCount!,
         if (targetResources != null) 'targetResources': targetResources!,
-        if (targetSecureLabels != null)
-          'targetSecureLabels': targetSecureLabels!,
         if (targetServiceAccounts != null)
           'targetServiceAccounts': targetServiceAccounts!,
       };
@@ -51942,12 +53608,6 @@ class FirewallPolicyRuleMatcher {
   /// Maximum number of source CIDR IP ranges allowed is 256.
   core.List<core.String>? srcIpRanges;
 
-  /// List of firewall label values, which should be matched at the source of
-  /// the traffic.
-  ///
-  /// Maximum number of source label values allowed is 256.
-  core.List<core.String>? srcSecureLabels;
-
   FirewallPolicyRuleMatcher();
 
   FirewallPolicyRuleMatcher.fromJson(core.Map _json) {
@@ -51968,11 +53628,6 @@ class FirewallPolicyRuleMatcher {
           .map<core.String>((value) => value as core.String)
           .toList();
     }
-    if (_json.containsKey('srcSecureLabels')) {
-      srcSecureLabels = (_json['srcSecureLabels'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -51981,7 +53636,6 @@ class FirewallPolicyRuleMatcher {
           'layer4Configs':
               layer4Configs!.map((value) => value.toJson()).toList(),
         if (srcIpRanges != null) 'srcIpRanges': srcIpRanges!,
-        if (srcSecureLabels != null) 'srcSecureLabels': srcSecureLabels!,
       };
 }
 
@@ -52113,17 +53767,20 @@ class ForwardingRule {
   ///
   /// Must be set to `0.0.0.0` when the target is targetGrpcProxy that has
   /// validateForProxyless field set to true.
+  ///
+  /// For Private Service Connect forwarding rules that forward traffic to
+  /// Google APIs, IP address must be provided.
   core.String? IPAddress;
 
   /// The IP protocol to which this rule applies.
   ///
-  /// For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP and
-  /// ICMP.
+  /// For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP, ICMP
+  /// and L3_DEFAULT.
   ///
   /// The valid IP protocols are different for different load balancing
   /// products:
   /// - Internal TCP/UDP Load Balancing: The load balancing scheme is INTERNAL,
-  /// and one of TCP, UDP or ALL is valid.
+  /// and one of TCP, UDP or L3_DEFAULT is valid.
   ///
   ///
   /// - Traffic Director: The load balancing scheme is INTERNAL_SELF_MANAGED,
@@ -52133,7 +53790,7 @@ class ForwardingRule {
   /// - HTTP(S), SSL Proxy, and TCP Proxy Load Balancing: The load balancing
   /// scheme is EXTERNAL and only TCP is valid.
   /// - Network Load Balancing: The load balancing scheme is EXTERNAL, and one
-  /// of TCP or UDP is valid.
+  /// of TCP, UDP or L3_DEFAULT is valid.
   /// Possible string values are:
   /// - "AH"
   /// - "ESP"
@@ -52143,14 +53800,16 @@ class ForwardingRule {
   /// - "UDP"
   core.String? IPProtocol;
 
-  /// This field is used along with the backend_service field for internal load
-  /// balancing or with the target field for internal TargetInstance.
+  /// This field is used along with the backend_service field for Internal
+  /// TCP/UDP Load Balancing or Network Load Balancing, or with the target field
+  /// for internal and external TargetInstance.
   ///
-  /// This field cannot be used with port or portRange fields.
+  /// You can only use one of ports and port_range, or allPorts.
   ///
-  /// When the load balancing scheme is INTERNAL and protocol is TCP/UDP,
-  /// specify this field to allow packets addressed to any ports will be
-  /// forwarded to the backends configured with this forwarding rule.
+  /// The three are mutually exclusive.
+  ///
+  /// For TCP, UDP and SCTP traffic, packets addressed to any ports will be
+  /// forwarded to the target or backendService.
   core.bool? allPorts;
 
   /// This field is used along with the backend_service field for internal load
@@ -52315,6 +53974,9 @@ class ForwardingRule {
   /// that the load balanced IP should belong to for this Forwarding Rule.
   ///
   /// If this field is not specified, the default network will be used.
+  ///
+  /// For Private Service Connect forwarding rules that forward traffic to
+  /// Google APIs, a network must be provided.
   core.String? network;
 
   /// This signifies the networking tier used for configuring this load balancer
@@ -52331,16 +53993,21 @@ class ForwardingRule {
   /// - "STANDARD"
   core.String? networkTier;
 
-  /// This field can be used only if: * Load balancing scheme is one of
-  /// EXTERNAL, INTERNAL_SELF_MANAGED or INTERNAL_MANAGED, and * IPProtocol is
-  /// one of TCP, UDP, or SCTP.
+  /// This field can be used only if:
+  /// - Load balancing scheme is one of EXTERNAL, INTERNAL_SELF_MANAGED or
+  /// INTERNAL_MANAGED
+  /// - IPProtocol is one of TCP, UDP, or SCTP.
+  ///
+  ///
   ///
   /// Packets addressed to ports in the specified range will be forwarded to
   /// target or backend_service.
   ///
   /// You can only use one of ports, port_range, or allPorts. The three are
-  /// mutually exclusive. Forwarding rules with the same \[IPAddress,
-  /// IPProtocol\] pair must have disjoint port ranges.
+  /// mutually exclusive.
+  ///
+  /// Forwarding rules with the same \[IPAddress, IPProtocol\] pair must have
+  /// disjoint ports.
   ///
   /// Some types of forwarding target have constraints on the acceptable ports:
   /// - TargetHttpProxy: 80, 8080
@@ -52365,8 +54032,8 @@ class ForwardingRule {
   ///
   /// You can specify a list of up to five ports, which can be non-contiguous.
   ///
-  /// For Internal TCP/UDP Load Balancing, if you specify allPorts, you should
-  /// not specify ports.
+  /// Forwarding rules with the same \[IPAddress, IPProtocol\] pair must have
+  /// disjoint ports.
   ///
   /// For more information, see \[Port
   /// specifications\](/load-balancing/docs/forwarding-rule-concepts#port_specifications).
@@ -52432,15 +54099,6 @@ class ForwardingRule {
   /// However, if the network is in custom subnet mode, a subnetwork must be
   /// specified.
   core.String? subnetwork;
-
-  /// The URL of the target resource to receive the matched traffic.
-  ///
-  /// For regional forwarding rules, this target must be in the same region as
-  /// the forwarding rule. For global forwarding rules, this target must be a
-  /// global load balancing resource. The forwarded traffic must be of a type
-  /// appropriate to the target object. For more information, see the "Target"
-  /// column in \[Port
-  /// specifications\](/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
   core.String? target;
 
   ForwardingRule();
@@ -54335,12 +55993,13 @@ class HealthCheckService {
   /// List of URLs to the HealthCheck resources.
   ///
   /// Must have at least one HealthCheck, and not more than 10. HealthCheck
-  /// resources must have portSpecification=USE_SERVING_PORT. For regional
-  /// HealthCheckService, the HealthCheck must be regional and in the same
-  /// region. For global HealthCheckService, HealthCheck must be global. Mix of
-  /// regional and global HealthChecks is not supported. Multiple regional
-  /// HealthChecks must belong to the same region. Regional HealthChecks</code?
-  /// must belong to the same region as zones of NEGs.
+  /// resources must have portSpecification=USE_SERVING_PORT or
+  /// portSpecification=USE_FIXED_PORT. For regional HealthCheckService, the
+  /// HealthCheck must be regional and in the same region. For global
+  /// HealthCheckService, HealthCheck must be global. Mix of regional and global
+  /// HealthChecks is not supported. Multiple regional HealthChecks must belong
+  /// to the same region. Regional HealthChecks must belong to the same region
+  /// as zones of NEGs.
   core.List<core.String>? healthChecks;
 
   /// Policy for how the results from multiple health checks for the same
@@ -55027,6 +56686,13 @@ class HealthStatus {
   /// Metadata defined as annotations for network endpoint.
   core.Map<core.String, core.String>? annotations;
 
+  /// URL of the forwarding rule associated with the health status of the
+  /// instance.
+  core.String? forwardingRule;
+
+  /// A forwarding rule IP address assigned to this instance.
+  core.String? forwardingRuleIp;
+
   /// Health state of the instance.
   /// Possible string values are:
   /// - "HEALTHY"
@@ -55067,6 +56733,12 @@ class HealthStatus {
         ),
       );
     }
+    if (_json.containsKey('forwardingRule')) {
+      forwardingRule = _json['forwardingRule'] as core.String;
+    }
+    if (_json.containsKey('forwardingRuleIp')) {
+      forwardingRuleIp = _json['forwardingRuleIp'] as core.String;
+    }
     if (_json.containsKey('healthState')) {
       healthState = _json['healthState'] as core.String;
     }
@@ -55089,6 +56761,8 @@ class HealthStatus {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (annotations != null) 'annotations': annotations!,
+        if (forwardingRule != null) 'forwardingRule': forwardingRule!,
+        if (forwardingRuleIp != null) 'forwardingRuleIp': forwardingRuleIp!,
         if (healthState != null) 'healthState': healthState!,
         if (instance != null) 'instance': instance!,
         if (ipAddress != null) 'ipAddress': ipAddress!,
@@ -55208,6 +56882,11 @@ class HostRule {
 class HttpFaultAbort {
   /// The HTTP status code used to abort the request.
   /// The value must be between 200 and 599 inclusive.
+  /// For gRPC protocol, the gRPC status code is mapped to HTTP status code
+  /// according to this mapping table.
+  ///
+  /// HTTP status 200 is mapped to gRPC status UNKNOWN. Injecting an OK status
+  /// is currently not supported by Traffic Director.
   core.int? httpStatus;
 
   /// The percentage of traffic (connections/operations/requests) which will be
@@ -56004,7 +57683,7 @@ class HttpRetryPolicy {
   /// among all backend services associated with the route.
   Duration? perTryTimeout;
 
-  /// Specfies one or more conditions when this retry rule applies.
+  /// Specifies one or more conditions when this retry rule applies.
   ///
   /// Valid values are:
   /// - 5xx: Loadbalancer will attempt a retry if the backend service responds
@@ -56072,9 +57751,21 @@ class HttpRouteAction {
   /// of requests.
   /// timeout and retry_policy will be ignored by clients that are configured
   /// with a fault_injection_policy.
-  /// Not supported when the URL map is bound to target gRPC proxy that has
-  /// validateForProxyless field set to true.
   HttpFaultInjection? faultInjectionPolicy;
+
+  /// Specifies the maximum duration (timeout) for streams on the selected
+  /// route.
+  ///
+  /// Unlike the timeout field where the timeout duration starts from the time
+  /// the request has been fully processed (i.e. end-of-stream), the duration in
+  /// this field is computed from the beginning of the stream until the response
+  /// has been completely processed, including all retries. A stream that does
+  /// not complete in this duration is closed.
+  /// If not specified, will use the largest maxStreamDuration among all backend
+  /// services associated with the route.
+  /// This field is only allowed if the Url map is used with backend services
+  /// with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+  Duration? maxStreamDuration;
 
   /// Specifies the policy on how requests intended for the route's backends are
   /// shadowed to a separate mirrored backend service.
@@ -56134,6 +57825,10 @@ class HttpRouteAction {
       faultInjectionPolicy = HttpFaultInjection.fromJson(
           _json['faultInjectionPolicy'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('maxStreamDuration')) {
+      maxStreamDuration = Duration.fromJson(
+          _json['maxStreamDuration'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('requestMirrorPolicy')) {
       requestMirrorPolicy = RequestMirrorPolicy.fromJson(
           _json['requestMirrorPolicy'] as core.Map<core.String, core.dynamic>);
@@ -56163,6 +57858,8 @@ class HttpRouteAction {
         if (corsPolicy != null) 'corsPolicy': corsPolicy!.toJson(),
         if (faultInjectionPolicy != null)
           'faultInjectionPolicy': faultInjectionPolicy!.toJson(),
+        if (maxStreamDuration != null)
+          'maxStreamDuration': maxStreamDuration!.toJson(),
         if (requestMirrorPolicy != null)
           'requestMirrorPolicy': requestMirrorPolicy!.toJson(),
         if (retryPolicy != null) 'retryPolicy': retryPolicy!.toJson(),
@@ -56757,8 +58454,12 @@ class ImageRawDisk {
 
   /// The full Google Cloud Storage URL where the disk image is stored.
   ///
-  /// You must provide either this property or the sourceDisk property but not
-  /// both.
+  /// In order to create an image, you must provide the full or partial URL of
+  /// one of the following:
+  /// - The rawDisk.source URL
+  /// - The sourceDisk URL
+  /// - The sourceImage URL
+  /// - The sourceSnapshot URL
   core.String? source;
 
   ImageRawDisk();
@@ -56908,13 +58609,18 @@ class Image {
 
   /// URL of the source disk used to create this image.
   ///
-  /// This can be a full or valid partial URL. You must provide either this
-  /// property or the rawDisk.source property but not both to create an image.
   /// For example, the following are valid values:
   /// -
   /// https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk
   /// - projects/project/zones/zone/disks/disk
   /// - zones/zone/disks/disk
+  ///
+  /// In order to create an image, you must provide the full or partial URL of
+  /// one of the following:
+  /// - The rawDisk.source URL
+  /// - The sourceDisk URL
+  /// - The sourceImage URL
+  /// - The sourceSnapshot URL
   core.String? sourceDisk;
 
   /// The customer-supplied encryption key of the source disk.
@@ -56935,10 +58641,10 @@ class Image {
   ///
   /// In order to create an image, you must provide the full or partial URL of
   /// one of the following:
-  /// - The selfLink URL
-  /// - This property
   /// - The rawDisk.source URL
   /// - The sourceDisk URL
+  /// - The sourceImage URL
+  /// - The sourceSnapshot URL
   core.String? sourceImage;
 
   /// The customer-supplied encryption key of the source image.
@@ -56959,11 +58665,10 @@ class Image {
   ///
   /// In order to create an image, you must provide the full or partial URL of
   /// one of the following:
-  /// - The selfLink URL
-  /// - This property
-  /// - The sourceImage URL
   /// - The rawDisk.source URL
   /// - The sourceDisk URL
+  /// - The sourceImage URL
+  /// - The sourceSnapshot URL
   core.String? sourceSnapshot;
 
   /// The customer-supplied encryption key of the source snapshot.
@@ -58639,12 +60344,21 @@ class InstanceGroupList {
       };
 }
 
+/// Whether the instance is a standby.
+///
+/// Properties of a standby instance comparing to the regular instance:
+/// ========================================================================= |
+/// regular | standby
+/// =========================================================================
+/// managed by IGM? | yes | yes added to the IG? | yes | yes counts towards
+/// IGM's target size? | yes | no taken into account by Autoscaler? | yes | no
+/// receives traffic from LB? | yes | no
+/// =========================================================================
+///
 /// Represents a Managed Instance Group resource.
 ///
 /// An instance group is a collection of VM instances that you can manage as a
-/// single entity.
-///
-/// For more information, read Instance groups.
+/// single entity. For more information, read Instance groups.
 ///
 /// For zonal Managed Instance Group, use the instanceGroupManagers resource.
 ///
@@ -62063,6 +63777,8 @@ class InstancesGetEffectiveFirewallsResponse {
 }
 
 class InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy {
+  /// Deprecated, please use short name instead.
+  ///
   /// The display name of the firewall policy.
   ///
   /// Output only.
@@ -62075,6 +63791,11 @@ class InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy {
 
   /// The rules that apply to the network.
   core.List<FirewallPolicyRule>? rules;
+
+  /// The short name of the firewall policy.
+  ///
+  /// Output only.
+  core.String? shortName;
 
   /// The type of the firewall policy.
   ///
@@ -62100,6 +63821,9 @@ class InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy {
               value as core.Map<core.String, core.dynamic>))
           .toList();
     }
+    if (_json.containsKey('shortName')) {
+      shortName = _json['shortName'] as core.String;
+    }
     if (_json.containsKey('type')) {
       type = _json['type'] as core.String;
     }
@@ -62110,6 +63834,7 @@ class InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy {
         if (name != null) 'name': name!,
         if (rules != null)
           'rules': rules!.map((value) => value.toJson()).toList(),
+        if (shortName != null) 'shortName': shortName!,
         if (type != null) 'type': type!,
       };
 }
@@ -62846,6 +64571,22 @@ class InterconnectAttachment {
   /// - "AVAILABILITY_DOMAIN_ANY"
   core.String? edgeAvailabilityDomain;
 
+  /// Indicates the user-supplied encryption option of this interconnect
+  /// attachment:
+  /// - NONE is the default value, which means that the attachment carries
+  /// unencrypted traffic.
+  ///
+  /// VMs can send traffic to, or receive traffic from, this type of attachment.
+  /// - IPSEC indicates that the attachment carries only traffic encrypted by an
+  /// IPsec device such as an HA VPN gateway. VMs cannot directly send traffic
+  /// to, or receive traffic from, such an attachment. To use IPsec-encrypted
+  /// Cloud Interconnect, create the attachment using this option.
+  /// Not currently available in all Interconnect locations.
+  /// Possible string values are:
+  /// - "IPSEC"
+  /// - "NONE"
+  core.String? encryption;
+
   /// Google reference ID, to be used when raising support tickets with Google
   /// or otherwise to debug backend connectivity issues.
   ///
@@ -62864,6 +64605,24 @@ class InterconnectAttachment {
   /// URL of the underlying Interconnect object that this attachment's traffic
   /// will traverse through.
   core.String? interconnect;
+
+  /// URL of addresses that have been reserved for the interconnect attachment,
+  /// Used only for interconnect attachment that has the encryption option as
+  /// IPSEC.
+  ///
+  /// The addresses must be RFC 1918 IP address ranges. When creating HA VPN
+  /// gateway over the interconnect attachment, if the attachment is configured
+  /// to use an RFC 1918 IP address, then the VPN gateway's IP address will be
+  /// allocated from the IP address range specified here. For example, if the HA
+  /// VPN gateway's interface 0 is paired to this interconnect attachment, then
+  /// an RFC 1918 IP address for the VPN gateway interface 0 will be allocated
+  /// from the IP address specified for this interconnect attachment. If this
+  /// field is not specified for interconnect attachment that has encryption
+  /// option as IPSEC, later on when creating HA VPN gateway on this
+  /// interconnect attachment, the HA VPN gateway's IP address will be allocated
+  /// from regional external IP address pool.
+  /// Not currently available in all Interconnect locations.
+  core.List<core.String>? ipsecInternalAddresses;
 
   /// Type of the resource.
   ///
@@ -63036,6 +64795,9 @@ class InterconnectAttachment {
     if (_json.containsKey('edgeAvailabilityDomain')) {
       edgeAvailabilityDomain = _json['edgeAvailabilityDomain'] as core.String;
     }
+    if (_json.containsKey('encryption')) {
+      encryption = _json['encryption'] as core.String;
+    }
     if (_json.containsKey('googleReferenceId')) {
       googleReferenceId = _json['googleReferenceId'] as core.String;
     }
@@ -63044,6 +64806,11 @@ class InterconnectAttachment {
     }
     if (_json.containsKey('interconnect')) {
       interconnect = _json['interconnect'] as core.String;
+    }
+    if (_json.containsKey('ipsecInternalAddresses')) {
+      ipsecInternalAddresses = (_json['ipsecInternalAddresses'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -63105,9 +64872,12 @@ class InterconnectAttachment {
         if (description != null) 'description': description!,
         if (edgeAvailabilityDomain != null)
           'edgeAvailabilityDomain': edgeAvailabilityDomain!,
+        if (encryption != null) 'encryption': encryption!,
         if (googleReferenceId != null) 'googleReferenceId': googleReferenceId!,
         if (id != null) 'id': id!,
         if (interconnect != null) 'interconnect': interconnect!,
+        if (ipsecInternalAddresses != null)
+          'ipsecInternalAddresses': ipsecInternalAddresses!,
         if (kind != null) 'kind': kind!,
         if (mtu != null) 'mtu': mtu!,
         if (name != null) 'name': name!,
@@ -65253,7 +67023,7 @@ class LocationPolicy {
   /// Location configurations mapped by location name.
   ///
   /// Currently only zone names are supported and must be represented as valid
-  /// internal URLs, like: zones/us-central1-a.
+  /// internal URLs, such as zones/us-central1-a.
   core.Map<core.String, LocationPolicyLocation>? locations;
 
   LocationPolicy();
@@ -65279,7 +67049,7 @@ class LocationPolicy {
 }
 
 class LocationPolicyLocation {
-  ///
+  /// Preference for a given location: ALLOW or DENY.
   /// Possible string values are:
   /// - "ALLOW"
   /// - "DENY"
@@ -68170,8 +69940,9 @@ class NetworkInterface {
   ///
   /// This field will be ignored when inserting an Instance or adding a
   /// NetworkInterface. An up-to-date fingerprint must be provided in order to
-  /// update the NetworkInterface, otherwise the request will fail with error
-  /// 412 conditionNotMet.
+  /// update the NetworkInterface. The request will fail with error 400 Bad
+  /// Request if the fingerprint is not provided, or 412 Precondition Failed if
+  /// the fingerprint is out of date.
   core.String? fingerprint;
   core.List<core.int> get fingerprintAsBytes =>
       convert.base64.decode(fingerprint!);
@@ -68180,6 +69951,26 @@ class NetworkInterface {
     fingerprint =
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
+
+  /// An array of IPv6 access configurations for this interface.
+  ///
+  /// Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If
+  /// there is no ipv6AccessConfig specified, then this instance will have no
+  /// external IPv6 Internet access.
+  core.List<AccessConfig>? ipv6AccessConfigs;
+
+  /// One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from
+  /// the Internet.
+  ///
+  /// This field is always inherited from its subnetwork.
+  ///
+  /// Valid only if stackType is IPV4_IPV6.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "EXTERNAL"
+  /// - "UNSPECIFIED_IPV6_ACCESS_TYPE"
+  core.String? ipv6AccessType;
 
   /// An IPv6 internal network address for this network interface.
   ///
@@ -68231,6 +70022,19 @@ class NetworkInterface {
   /// - "VIRTIO_NET"
   core.String? nicType;
 
+  /// The stack type for this network interface to identify whether the IPv6
+  /// feature is enabled or not.
+  ///
+  /// If not specified, IPV4_ONLY will be used.
+  ///
+  /// This field can be both set at instance creation and update network
+  /// interface operations.
+  /// Possible string values are:
+  /// - "IPV4_IPV6"
+  /// - "IPV4_ONLY"
+  /// - "UNSPECIFIED_STACK_TYPE"
+  core.String? stackType;
+
   /// The URL of the Subnetwork resource for this instance.
   ///
   /// If the network resource is in legacy mode, do not specify this field. If
@@ -68261,6 +70065,15 @@ class NetworkInterface {
     if (_json.containsKey('fingerprint')) {
       fingerprint = _json['fingerprint'] as core.String;
     }
+    if (_json.containsKey('ipv6AccessConfigs')) {
+      ipv6AccessConfigs = (_json['ipv6AccessConfigs'] as core.List)
+          .map<AccessConfig>((value) => AccessConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('ipv6AccessType')) {
+      ipv6AccessType = _json['ipv6AccessType'] as core.String;
+    }
     if (_json.containsKey('ipv6Address')) {
       ipv6Address = _json['ipv6Address'] as core.String;
     }
@@ -68279,6 +70092,9 @@ class NetworkInterface {
     if (_json.containsKey('nicType')) {
       nicType = _json['nicType'] as core.String;
     }
+    if (_json.containsKey('stackType')) {
+      stackType = _json['stackType'] as core.String;
+    }
     if (_json.containsKey('subnetwork')) {
       subnetwork = _json['subnetwork'] as core.String;
     }
@@ -68292,12 +70108,17 @@ class NetworkInterface {
           'aliasIpRanges':
               aliasIpRanges!.map((value) => value.toJson()).toList(),
         if (fingerprint != null) 'fingerprint': fingerprint!,
+        if (ipv6AccessConfigs != null)
+          'ipv6AccessConfigs':
+              ipv6AccessConfigs!.map((value) => value.toJson()).toList(),
+        if (ipv6AccessType != null) 'ipv6AccessType': ipv6AccessType!,
         if (ipv6Address != null) 'ipv6Address': ipv6Address!,
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
         if (network != null) 'network': network!,
         if (networkIP != null) 'networkIP': networkIP!,
         if (nicType != null) 'nicType': nicType!,
+        if (stackType != null) 'stackType': stackType!,
         if (subnetwork != null) 'subnetwork': subnetwork!,
       };
 }
@@ -68749,6 +70570,8 @@ class NetworksGetEffectiveFirewallsResponse {
 }
 
 class NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy {
+  /// Deprecated, please use short name instead.
+  ///
   /// The display name of the firewall policy.
   ///
   /// Output only.
@@ -68761,6 +70584,11 @@ class NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy {
 
   /// The rules that apply to the network.
   core.List<FirewallPolicyRule>? rules;
+
+  /// The short name of the firewall policy.
+  ///
+  /// Output only.
+  core.String? shortName;
 
   /// The type of the firewall policy.
   ///
@@ -68787,6 +70615,9 @@ class NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy {
               value as core.Map<core.String, core.dynamic>))
           .toList();
     }
+    if (_json.containsKey('shortName')) {
+      shortName = _json['shortName'] as core.String;
+    }
     if (_json.containsKey('type')) {
       type = _json['type'] as core.String;
     }
@@ -68797,6 +70628,7 @@ class NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy {
         if (name != null) 'name': name!,
         if (rules != null)
           'rules': rules!.map((value) => value.toJson()).toList(),
+        if (shortName != null) 'shortName': shortName!,
         if (type != null) 'type': type!,
       };
 }
@@ -74603,6 +76435,1176 @@ class ProjectsSetDefaultNetworkTierRequest {
       };
 }
 
+/// A public advertised prefix represents an aggregated IP prefix or netblock
+/// which customers bring to cloud.
+///
+/// The IP prefix is a single unit of route advertisement and is announced
+/// globally to the internet.
+class PublicAdvertisedPrefix {
+  /// Creation timestamp in RFC3339 text format.
+  ///
+  /// Output only.
+  core.String? creationTimestamp;
+
+  /// An optional description of this resource.
+  ///
+  /// Provide this property when you create the resource.
+  core.String? description;
+
+  /// The IPv4 address to be used for reverse DNS verification.
+  core.String? dnsVerificationIp;
+
+  /// Fingerprint of this resource.
+  ///
+  /// A hash of the contents stored in this object. This field is used in
+  /// optimistic locking. This field will be ignored when inserting a new
+  /// PublicAdvertisedPrefix. An up-to-date fingerprint must be provided in
+  /// order to update the PublicAdvertisedPrefix, otherwise the request will
+  /// fail with error 412 conditionNotMet.
+  ///
+  /// To see the latest fingerprint, make a get() request to retrieve a
+  /// PublicAdvertisedPrefix.
+  core.String? fingerprint;
+  core.List<core.int> get fingerprintAsBytes =>
+      convert.base64.decode(fingerprint!);
+
+  set fingerprintAsBytes(core.List<core.int> _bytes) {
+    fingerprint =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// The unique identifier for the resource type.
+  ///
+  /// The server generates this identifier.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// The IPv4 address range, in CIDR format, represented by this public
+  /// advertised prefix.
+  core.String? ipCidrRange;
+
+  /// Type of the resource.
+  ///
+  /// Always compute#publicAdvertisedPrefix for public advertised prefixes.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// Name of the resource.
+  ///
+  /// Provided by the client when the resource is created. The name must be 1-63
+  /// characters long, and comply with RFC1035. Specifically, the name must be
+  /// 1-63 characters long and match the regular expression
+  /// `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a
+  /// lowercase letter, and all following characters must be a dash, lowercase
+  /// letter, or digit, except the last character, which cannot be a dash.
+  core.String? name;
+
+  /// The list of public delegated prefixes that exist for this public
+  /// advertised prefix.
+  ///
+  /// Output only.
+  core.List<PublicAdvertisedPrefixPublicDelegatedPrefix>?
+      publicDelegatedPrefixs;
+
+  /// Server-defined URL for the resource.
+  ///
+  /// Output only.
+  core.String? selfLink;
+
+  /// The shared secret to be used for reverse DNS verification.
+  ///
+  /// Output only.
+  core.String? sharedSecret;
+
+  /// The status of the public advertised prefix.
+  /// Possible string values are:
+  /// - "INITIAL"
+  /// - "PREFIX_CONFIGURATION_COMPLETE"
+  /// - "PREFIX_CONFIGURATION_IN_PROGRESS"
+  /// - "PREFIX_REMOVAL_IN_PROGRESS"
+  /// - "PTR_CONFIGURED"
+  /// - "REVERSE_DNS_LOOKUP_FAILED"
+  /// - "VALIDATED"
+  core.String? status;
+
+  PublicAdvertisedPrefix();
+
+  PublicAdvertisedPrefix.fromJson(core.Map _json) {
+    if (_json.containsKey('creationTimestamp')) {
+      creationTimestamp = _json['creationTimestamp'] as core.String;
+    }
+    if (_json.containsKey('description')) {
+      description = _json['description'] as core.String;
+    }
+    if (_json.containsKey('dnsVerificationIp')) {
+      dnsVerificationIp = _json['dnsVerificationIp'] as core.String;
+    }
+    if (_json.containsKey('fingerprint')) {
+      fingerprint = _json['fingerprint'] as core.String;
+    }
+    if (_json.containsKey('id')) {
+      id = _json['id'] as core.String;
+    }
+    if (_json.containsKey('ipCidrRange')) {
+      ipCidrRange = _json['ipCidrRange'] as core.String;
+    }
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('publicDelegatedPrefixs')) {
+      publicDelegatedPrefixs = (_json['publicDelegatedPrefixs'] as core.List)
+          .map<PublicAdvertisedPrefixPublicDelegatedPrefix>((value) =>
+              PublicAdvertisedPrefixPublicDelegatedPrefix.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('selfLink')) {
+      selfLink = _json['selfLink'] as core.String;
+    }
+    if (_json.containsKey('sharedSecret')) {
+      sharedSecret = _json['sharedSecret'] as core.String;
+    }
+    if (_json.containsKey('status')) {
+      status = _json['status'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (creationTimestamp != null) 'creationTimestamp': creationTimestamp!,
+        if (description != null) 'description': description!,
+        if (dnsVerificationIp != null) 'dnsVerificationIp': dnsVerificationIp!,
+        if (fingerprint != null) 'fingerprint': fingerprint!,
+        if (id != null) 'id': id!,
+        if (ipCidrRange != null) 'ipCidrRange': ipCidrRange!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (publicDelegatedPrefixs != null)
+          'publicDelegatedPrefixs':
+              publicDelegatedPrefixs!.map((value) => value.toJson()).toList(),
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (sharedSecret != null) 'sharedSecret': sharedSecret!,
+        if (status != null) 'status': status!,
+      };
+}
+
+class PublicAdvertisedPrefixListWarningData {
+  /// A key that provides more detail on the warning being returned.
+  ///
+  /// For example, for warnings where there are no results in a list request for
+  /// a particular zone, this key might be scope and the key value might be the
+  /// zone name. Other examples might be a key indicating a deprecated resource
+  /// and a suggested replacement, or a warning about invalid network settings
+  /// (for example, if an instance attempts to perform IP forwarding but is not
+  /// enabled for IP forwarding).
+  ///
+  /// Output only.
+  core.String? key;
+
+  /// A warning data value corresponding to the key.
+  ///
+  /// Output only.
+  core.String? value;
+
+  PublicAdvertisedPrefixListWarningData();
+
+  PublicAdvertisedPrefixListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey('key')) {
+      key = _json['key'] as core.String;
+    }
+    if (_json.containsKey('value')) {
+      value = _json['value'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (key != null) 'key': key!,
+        if (value != null) 'value': value!,
+      };
+}
+
+/// Informational warning message.
+///
+/// Output only.
+class PublicAdvertisedPrefixListWarning {
+  /// A warning code, if applicable.
+  ///
+  /// For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no
+  /// results in the response.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String? code;
+
+  /// Metadata about this warning in key: value format.
+  ///
+  /// For example:
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
+  ///
+  /// Output only.
+  core.List<PublicAdvertisedPrefixListWarningData>? data;
+
+  /// A human-readable description of the warning code.
+  ///
+  /// Output only.
+  core.String? message;
+
+  PublicAdvertisedPrefixListWarning();
+
+  PublicAdvertisedPrefixListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey('code')) {
+      code = _json['code'] as core.String;
+    }
+    if (_json.containsKey('data')) {
+      data = (_json['data'] as core.List)
+          .map<PublicAdvertisedPrefixListWarningData>((value) =>
+              PublicAdvertisedPrefixListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('message')) {
+      message = _json['message'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+        if (data != null) 'data': data!.map((value) => value.toJson()).toList(),
+        if (message != null) 'message': message!,
+      };
+}
+
+class PublicAdvertisedPrefixList {
+  /// Unique identifier for the resource; defined by the server.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// A list of PublicAdvertisedPrefix resources.
+  core.List<PublicAdvertisedPrefix>? items;
+
+  /// Type of the resource.
+  ///
+  /// Always compute#publicAdvertisedPrefix for public advertised prefixes.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// This token allows you to get the next page of results for list requests.
+  ///
+  /// If the number of results is larger than maxResults, use the nextPageToken
+  /// as a value for the query parameter pageToken in the next list request.
+  /// Subsequent list requests will have their own nextPageToken to continue
+  /// paging through the results.
+  ///
+  /// Output only.
+  core.String? nextPageToken;
+
+  /// Server-defined URL for this resource.
+  ///
+  /// Output only.
+  core.String? selfLink;
+
+  /// Informational warning message.
+  ///
+  /// Output only.
+  PublicAdvertisedPrefixListWarning? warning;
+
+  PublicAdvertisedPrefixList();
+
+  PublicAdvertisedPrefixList.fromJson(core.Map _json) {
+    if (_json.containsKey('id')) {
+      id = _json['id'] as core.String;
+    }
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
+          .map<PublicAdvertisedPrefix>((value) =>
+              PublicAdvertisedPrefix.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'] as core.String;
+    }
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+    if (_json.containsKey('selfLink')) {
+      selfLink = _json['selfLink'] as core.String;
+    }
+    if (_json.containsKey('warning')) {
+      warning = PublicAdvertisedPrefixListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (items != null)
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (warning != null) 'warning': warning!.toJson(),
+      };
+}
+
+/// Represents a CIDR range which can be used to assign addresses.
+class PublicAdvertisedPrefixPublicDelegatedPrefix {
+  /// The IP address range of the public delegated prefix
+  core.String? ipRange;
+
+  /// The name of the public delegated prefix
+  core.String? name;
+
+  /// The project number of the public delegated prefix
+  core.String? project;
+
+  /// The region of the public delegated prefix if it is regional.
+  ///
+  /// If absent, the prefix is global.
+  core.String? region;
+
+  /// The status of the public delegated prefix.
+  ///
+  /// Possible values are: INITIALIZING: The public delegated prefix is being
+  /// initialized and addresses cannot be created yet. ANNOUNCED: The public
+  /// delegated prefix is active.
+  core.String? status;
+
+  PublicAdvertisedPrefixPublicDelegatedPrefix();
+
+  PublicAdvertisedPrefixPublicDelegatedPrefix.fromJson(core.Map _json) {
+    if (_json.containsKey('ipRange')) {
+      ipRange = _json['ipRange'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('project')) {
+      project = _json['project'] as core.String;
+    }
+    if (_json.containsKey('region')) {
+      region = _json['region'] as core.String;
+    }
+    if (_json.containsKey('status')) {
+      status = _json['status'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ipRange != null) 'ipRange': ipRange!,
+        if (name != null) 'name': name!,
+        if (project != null) 'project': project!,
+        if (region != null) 'region': region!,
+        if (status != null) 'status': status!,
+      };
+}
+
+/// A PublicDelegatedPrefix resource represents an IP block within a
+/// PublicAdvertisedPrefix that is configured within a single cloud scope
+/// (global or region).
+///
+/// IPs in the block can be allocated to resources within that scope. Public
+/// delegated prefixes may be further broken up into smaller IP blocks in the
+/// same scope as the parent block.
+class PublicDelegatedPrefix {
+  /// Creation timestamp in RFC3339 text format.
+  ///
+  /// Output only.
+  core.String? creationTimestamp;
+
+  /// An optional description of this resource.
+  ///
+  /// Provide this property when you create the resource.
+  core.String? description;
+
+  /// Fingerprint of this resource.
+  ///
+  /// A hash of the contents stored in this object. This field is used in
+  /// optimistic locking. This field will be ignored when inserting a new
+  /// PublicDelegatedPrefix. An up-to-date fingerprint must be provided in order
+  /// to update the PublicDelegatedPrefix, otherwise the request will fail with
+  /// error 412 conditionNotMet.
+  ///
+  /// To see the latest fingerprint, make a get() request to retrieve a
+  /// PublicDelegatedPrefix.
+  core.String? fingerprint;
+  core.List<core.int> get fingerprintAsBytes =>
+      convert.base64.decode(fingerprint!);
+
+  set fingerprintAsBytes(core.List<core.int> _bytes) {
+    fingerprint =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// The unique identifier for the resource type.
+  ///
+  /// The server generates this identifier.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// The IPv4 address range, in CIDR format, represented by this public
+  /// delegated prefix.
+  core.String? ipCidrRange;
+
+  /// If true, the prefix will be live migrated.
+  core.bool? isLiveMigration;
+
+  /// Type of the resource.
+  ///
+  /// Always compute#publicDelegatedPrefix for public delegated prefixes.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// Name of the resource.
+  ///
+  /// Provided by the client when the resource is created. The name must be 1-63
+  /// characters long, and comply with RFC1035. Specifically, the name must be
+  /// 1-63 characters long and match the regular expression
+  /// `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a
+  /// lowercase letter, and all following characters must be a dash, lowercase
+  /// letter, or digit, except the last character, which cannot be a dash.
+  core.String? name;
+
+  /// The URL of parent prefix.
+  ///
+  /// Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
+  core.String? parentPrefix;
+
+  /// The list of sub public delegated prefixes that exist for this public
+  /// delegated prefix.
+  core.List<PublicDelegatedPrefixPublicDelegatedSubPrefix>?
+      publicDelegatedSubPrefixs;
+
+  /// URL of the region where the public delegated prefix resides.
+  ///
+  /// This field applies only to the region resource. You must specify this
+  /// field as part of the HTTP request URL. It is not settable as a field in
+  /// the request body.
+  ///
+  /// Output only.
+  core.String? region;
+
+  /// Server-defined URL for the resource.
+  ///
+  /// Output only.
+  core.String? selfLink;
+
+  /// The status of the public delegated prefix.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ANNOUNCED"
+  /// - "DELETING"
+  /// - "INITIALIZING"
+  core.String? status;
+
+  PublicDelegatedPrefix();
+
+  PublicDelegatedPrefix.fromJson(core.Map _json) {
+    if (_json.containsKey('creationTimestamp')) {
+      creationTimestamp = _json['creationTimestamp'] as core.String;
+    }
+    if (_json.containsKey('description')) {
+      description = _json['description'] as core.String;
+    }
+    if (_json.containsKey('fingerprint')) {
+      fingerprint = _json['fingerprint'] as core.String;
+    }
+    if (_json.containsKey('id')) {
+      id = _json['id'] as core.String;
+    }
+    if (_json.containsKey('ipCidrRange')) {
+      ipCidrRange = _json['ipCidrRange'] as core.String;
+    }
+    if (_json.containsKey('isLiveMigration')) {
+      isLiveMigration = _json['isLiveMigration'] as core.bool;
+    }
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('parentPrefix')) {
+      parentPrefix = _json['parentPrefix'] as core.String;
+    }
+    if (_json.containsKey('publicDelegatedSubPrefixs')) {
+      publicDelegatedSubPrefixs =
+          (_json['publicDelegatedSubPrefixs'] as core.List)
+              .map<PublicDelegatedPrefixPublicDelegatedSubPrefix>((value) =>
+                  PublicDelegatedPrefixPublicDelegatedSubPrefix.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList();
+    }
+    if (_json.containsKey('region')) {
+      region = _json['region'] as core.String;
+    }
+    if (_json.containsKey('selfLink')) {
+      selfLink = _json['selfLink'] as core.String;
+    }
+    if (_json.containsKey('status')) {
+      status = _json['status'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (creationTimestamp != null) 'creationTimestamp': creationTimestamp!,
+        if (description != null) 'description': description!,
+        if (fingerprint != null) 'fingerprint': fingerprint!,
+        if (id != null) 'id': id!,
+        if (ipCidrRange != null) 'ipCidrRange': ipCidrRange!,
+        if (isLiveMigration != null) 'isLiveMigration': isLiveMigration!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (parentPrefix != null) 'parentPrefix': parentPrefix!,
+        if (publicDelegatedSubPrefixs != null)
+          'publicDelegatedSubPrefixs': publicDelegatedSubPrefixs!
+              .map((value) => value.toJson())
+              .toList(),
+        if (region != null) 'region': region!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (status != null) 'status': status!,
+      };
+}
+
+class PublicDelegatedPrefixAggregatedListWarningData {
+  /// A key that provides more detail on the warning being returned.
+  ///
+  /// For example, for warnings where there are no results in a list request for
+  /// a particular zone, this key might be scope and the key value might be the
+  /// zone name. Other examples might be a key indicating a deprecated resource
+  /// and a suggested replacement, or a warning about invalid network settings
+  /// (for example, if an instance attempts to perform IP forwarding but is not
+  /// enabled for IP forwarding).
+  ///
+  /// Output only.
+  core.String? key;
+
+  /// A warning data value corresponding to the key.
+  ///
+  /// Output only.
+  core.String? value;
+
+  PublicDelegatedPrefixAggregatedListWarningData();
+
+  PublicDelegatedPrefixAggregatedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey('key')) {
+      key = _json['key'] as core.String;
+    }
+    if (_json.containsKey('value')) {
+      value = _json['value'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (key != null) 'key': key!,
+        if (value != null) 'value': value!,
+      };
+}
+
+/// Informational warning message.
+///
+/// Output only.
+class PublicDelegatedPrefixAggregatedListWarning {
+  /// A warning code, if applicable.
+  ///
+  /// For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no
+  /// results in the response.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String? code;
+
+  /// Metadata about this warning in key: value format.
+  ///
+  /// For example:
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
+  ///
+  /// Output only.
+  core.List<PublicDelegatedPrefixAggregatedListWarningData>? data;
+
+  /// A human-readable description of the warning code.
+  ///
+  /// Output only.
+  core.String? message;
+
+  PublicDelegatedPrefixAggregatedListWarning();
+
+  PublicDelegatedPrefixAggregatedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey('code')) {
+      code = _json['code'] as core.String;
+    }
+    if (_json.containsKey('data')) {
+      data = (_json['data'] as core.List)
+          .map<PublicDelegatedPrefixAggregatedListWarningData>((value) =>
+              PublicDelegatedPrefixAggregatedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('message')) {
+      message = _json['message'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+        if (data != null) 'data': data!.map((value) => value.toJson()).toList(),
+        if (message != null) 'message': message!,
+      };
+}
+
+class PublicDelegatedPrefixAggregatedList {
+  /// Unique identifier for the resource; defined by the server.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// A list of PublicDelegatedPrefixesScopedList resources.
+  core.Map<core.String, PublicDelegatedPrefixesScopedList>? items;
+
+  /// Type of the resource.
+  ///
+  /// Always compute#publicDelegatedPrefixAggregatedList for aggregated lists of
+  /// public delegated prefixes.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// This token allows you to get the next page of results for list requests.
+  ///
+  /// If the number of results is larger than maxResults, use the nextPageToken
+  /// as a value for the query parameter pageToken in the next list request.
+  /// Subsequent list requests will have their own nextPageToken to continue
+  /// paging through the results.
+  ///
+  /// Output only.
+  core.String? nextPageToken;
+
+  /// Server-defined URL for this resource.
+  ///
+  /// Output only.
+  core.String? selfLink;
+
+  /// Unreachable resources.
+  ///
+  /// Output only.
+  core.List<core.String>? unreachables;
+
+  /// Informational warning message.
+  ///
+  /// Output only.
+  PublicDelegatedPrefixAggregatedListWarning? warning;
+
+  PublicDelegatedPrefixAggregatedList();
+
+  PublicDelegatedPrefixAggregatedList.fromJson(core.Map _json) {
+    if (_json.containsKey('id')) {
+      id = _json['id'] as core.String;
+    }
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          PublicDelegatedPrefixesScopedList.fromJson(
+              item as core.Map<core.String, core.dynamic>),
+        ),
+      );
+    }
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'] as core.String;
+    }
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+    if (_json.containsKey('selfLink')) {
+      selfLink = _json['selfLink'] as core.String;
+    }
+    if (_json.containsKey('unreachables')) {
+      unreachables = (_json['unreachables'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('warning')) {
+      warning = PublicDelegatedPrefixAggregatedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (items != null)
+          'items': items!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (unreachables != null) 'unreachables': unreachables!,
+        if (warning != null) 'warning': warning!.toJson(),
+      };
+}
+
+class PublicDelegatedPrefixListWarningData {
+  /// A key that provides more detail on the warning being returned.
+  ///
+  /// For example, for warnings where there are no results in a list request for
+  /// a particular zone, this key might be scope and the key value might be the
+  /// zone name. Other examples might be a key indicating a deprecated resource
+  /// and a suggested replacement, or a warning about invalid network settings
+  /// (for example, if an instance attempts to perform IP forwarding but is not
+  /// enabled for IP forwarding).
+  ///
+  /// Output only.
+  core.String? key;
+
+  /// A warning data value corresponding to the key.
+  ///
+  /// Output only.
+  core.String? value;
+
+  PublicDelegatedPrefixListWarningData();
+
+  PublicDelegatedPrefixListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey('key')) {
+      key = _json['key'] as core.String;
+    }
+    if (_json.containsKey('value')) {
+      value = _json['value'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (key != null) 'key': key!,
+        if (value != null) 'value': value!,
+      };
+}
+
+/// Informational warning message.
+///
+/// Output only.
+class PublicDelegatedPrefixListWarning {
+  /// A warning code, if applicable.
+  ///
+  /// For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no
+  /// results in the response.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String? code;
+
+  /// Metadata about this warning in key: value format.
+  ///
+  /// For example:
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
+  ///
+  /// Output only.
+  core.List<PublicDelegatedPrefixListWarningData>? data;
+
+  /// A human-readable description of the warning code.
+  ///
+  /// Output only.
+  core.String? message;
+
+  PublicDelegatedPrefixListWarning();
+
+  PublicDelegatedPrefixListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey('code')) {
+      code = _json['code'] as core.String;
+    }
+    if (_json.containsKey('data')) {
+      data = (_json['data'] as core.List)
+          .map<PublicDelegatedPrefixListWarningData>((value) =>
+              PublicDelegatedPrefixListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('message')) {
+      message = _json['message'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+        if (data != null) 'data': data!.map((value) => value.toJson()).toList(),
+        if (message != null) 'message': message!,
+      };
+}
+
+class PublicDelegatedPrefixList {
+  /// Unique identifier for the resource; defined by the server.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// A list of PublicDelegatedPrefix resources.
+  core.List<PublicDelegatedPrefix>? items;
+
+  /// Type of the resource.
+  ///
+  /// Always compute#publicDelegatedPrefixList for public delegated prefixes.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// This token allows you to get the next page of results for list requests.
+  ///
+  /// If the number of results is larger than maxResults, use the nextPageToken
+  /// as a value for the query parameter pageToken in the next list request.
+  /// Subsequent list requests will have their own nextPageToken to continue
+  /// paging through the results.
+  ///
+  /// Output only.
+  core.String? nextPageToken;
+
+  /// Server-defined URL for this resource.
+  ///
+  /// Output only.
+  core.String? selfLink;
+
+  /// Informational warning message.
+  ///
+  /// Output only.
+  PublicDelegatedPrefixListWarning? warning;
+
+  PublicDelegatedPrefixList();
+
+  PublicDelegatedPrefixList.fromJson(core.Map _json) {
+    if (_json.containsKey('id')) {
+      id = _json['id'] as core.String;
+    }
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
+          .map<PublicDelegatedPrefix>((value) => PublicDelegatedPrefix.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'] as core.String;
+    }
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+    if (_json.containsKey('selfLink')) {
+      selfLink = _json['selfLink'] as core.String;
+    }
+    if (_json.containsKey('warning')) {
+      warning = PublicDelegatedPrefixListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (items != null)
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (warning != null) 'warning': warning!.toJson(),
+      };
+}
+
+/// Represents a sub PublicDelegatedPrefix.
+class PublicDelegatedPrefixPublicDelegatedSubPrefix {
+  /// Name of the project scoping this PublicDelegatedSubPrefix.
+  core.String? delegateeProject;
+
+  /// An optional description of this resource.
+  ///
+  /// Provide this property when you create the resource.
+  core.String? description;
+
+  /// The IPv4 address range, in CIDR format, represented by this sub public
+  /// delegated prefix.
+  core.String? ipCidrRange;
+
+  /// Whether the sub prefix is delegated to create Address resources in the
+  /// delegatee project.
+  core.bool? isAddress;
+
+  /// The name of the sub public delegated prefix.
+  core.String? name;
+
+  /// The region of the sub public delegated prefix if it is regional.
+  ///
+  /// If absent, the sub prefix is global.
+  ///
+  /// Output only.
+  core.String? region;
+
+  /// The status of the sub public delegated prefix.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ACTIVE"
+  /// - "INACTIVE"
+  core.String? status;
+
+  PublicDelegatedPrefixPublicDelegatedSubPrefix();
+
+  PublicDelegatedPrefixPublicDelegatedSubPrefix.fromJson(core.Map _json) {
+    if (_json.containsKey('delegateeProject')) {
+      delegateeProject = _json['delegateeProject'] as core.String;
+    }
+    if (_json.containsKey('description')) {
+      description = _json['description'] as core.String;
+    }
+    if (_json.containsKey('ipCidrRange')) {
+      ipCidrRange = _json['ipCidrRange'] as core.String;
+    }
+    if (_json.containsKey('isAddress')) {
+      isAddress = _json['isAddress'] as core.bool;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('region')) {
+      region = _json['region'] as core.String;
+    }
+    if (_json.containsKey('status')) {
+      status = _json['status'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (delegateeProject != null) 'delegateeProject': delegateeProject!,
+        if (description != null) 'description': description!,
+        if (ipCidrRange != null) 'ipCidrRange': ipCidrRange!,
+        if (isAddress != null) 'isAddress': isAddress!,
+        if (name != null) 'name': name!,
+        if (region != null) 'region': region!,
+        if (status != null) 'status': status!,
+      };
+}
+
+class PublicDelegatedPrefixesScopedListWarningData {
+  /// A key that provides more detail on the warning being returned.
+  ///
+  /// For example, for warnings where there are no results in a list request for
+  /// a particular zone, this key might be scope and the key value might be the
+  /// zone name. Other examples might be a key indicating a deprecated resource
+  /// and a suggested replacement, or a warning about invalid network settings
+  /// (for example, if an instance attempts to perform IP forwarding but is not
+  /// enabled for IP forwarding).
+  ///
+  /// Output only.
+  core.String? key;
+
+  /// A warning data value corresponding to the key.
+  ///
+  /// Output only.
+  core.String? value;
+
+  PublicDelegatedPrefixesScopedListWarningData();
+
+  PublicDelegatedPrefixesScopedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey('key')) {
+      key = _json['key'] as core.String;
+    }
+    if (_json.containsKey('value')) {
+      value = _json['value'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (key != null) 'key': key!,
+        if (value != null) 'value': value!,
+      };
+}
+
+/// Informational warning which replaces the list of public delegated prefixes
+/// when the list is empty.
+///
+/// Output only.
+class PublicDelegatedPrefixesScopedListWarning {
+  /// A warning code, if applicable.
+  ///
+  /// For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no
+  /// results in the response.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String? code;
+
+  /// Metadata about this warning in key: value format.
+  ///
+  /// For example:
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
+  ///
+  /// Output only.
+  core.List<PublicDelegatedPrefixesScopedListWarningData>? data;
+
+  /// A human-readable description of the warning code.
+  ///
+  /// Output only.
+  core.String? message;
+
+  PublicDelegatedPrefixesScopedListWarning();
+
+  PublicDelegatedPrefixesScopedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey('code')) {
+      code = _json['code'] as core.String;
+    }
+    if (_json.containsKey('data')) {
+      data = (_json['data'] as core.List)
+          .map<PublicDelegatedPrefixesScopedListWarningData>((value) =>
+              PublicDelegatedPrefixesScopedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('message')) {
+      message = _json['message'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+        if (data != null) 'data': data!.map((value) => value.toJson()).toList(),
+        if (message != null) 'message': message!,
+      };
+}
+
+class PublicDelegatedPrefixesScopedList {
+  /// A list of PublicDelegatedPrefixes contained in this scope.
+  ///
+  /// Output only.
+  core.List<PublicDelegatedPrefix>? publicDelegatedPrefixes;
+
+  /// Informational warning which replaces the list of public delegated prefixes
+  /// when the list is empty.
+  ///
+  /// Output only.
+  PublicDelegatedPrefixesScopedListWarning? warning;
+
+  PublicDelegatedPrefixesScopedList();
+
+  PublicDelegatedPrefixesScopedList.fromJson(core.Map _json) {
+    if (_json.containsKey('publicDelegatedPrefixes')) {
+      publicDelegatedPrefixes = (_json['publicDelegatedPrefixes'] as core.List)
+          .map<PublicDelegatedPrefix>((value) => PublicDelegatedPrefix.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('warning')) {
+      warning = PublicDelegatedPrefixesScopedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (publicDelegatedPrefixes != null)
+          'publicDelegatedPrefixes':
+              publicDelegatedPrefixes!.map((value) => value.toJson()).toList(),
+        if (warning != null) 'warning': warning!.toJson(),
+      };
+}
+
 /// A quotas entry.
 class Quota {
   /// Quota limit for this metric.
@@ -74619,15 +77621,18 @@ class Quota {
   /// - "AUTOSCALERS"
   /// - "BACKEND_BUCKETS"
   /// - "BACKEND_SERVICES"
+  /// - "C2D_CPUS"
   /// - "C2_CPUS"
   /// - "COMMITMENTS"
   /// - "COMMITTED_A2_CPUS"
+  /// - "COMMITTED_C2D_CPUS"
   /// - "COMMITTED_C2_CPUS"
   /// - "COMMITTED_CPUS"
   /// - "COMMITTED_E2_CPUS"
   /// - "COMMITTED_LICENSES"
   /// - "COMMITTED_LOCAL_SSD_TOTAL_GB"
   /// - "COMMITTED_MEMORY_OPTIMIZED_CPUS"
+  /// - "COMMITTED_N2A_CPUS"
   /// - "COMMITTED_N2D_CPUS"
   /// - "COMMITTED_N2_CPUS"
   /// - "COMMITTED_NVIDIA_A100_GPUS"
@@ -74667,6 +77672,7 @@ class Quota {
   /// - "M1_CPUS"
   /// - "M2_CPUS"
   /// - "MACHINE_IMAGES"
+  /// - "N2A_CPUS"
   /// - "N2D_CPUS"
   /// - "N2_CPUS"
   /// - "NETWORKS"
@@ -74706,8 +77712,10 @@ class Quota {
   /// - "ROUTERS"
   /// - "ROUTES"
   /// - "SECURITY_POLICIES"
+  /// - "SECURITY_POLICIES_PER_REGION"
   /// - "SECURITY_POLICY_CEVAL_RULES"
   /// - "SECURITY_POLICY_RULES"
+  /// - "SECURITY_POLICY_RULES_PER_REGION"
   /// - "SNAPSHOTS"
   /// - "SSD_TOTAL_GB"
   /// - "SSL_CERTIFICATES"
@@ -79337,6 +82345,11 @@ class Router {
   /// Provide this property when you create the resource.
   core.String? description;
 
+  /// Field to indicate if a router is dedicated to use with encrypted
+  /// Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
+  /// Not currently available in all Interconnect locations.
+  core.bool? encryptedInterconnectRouter;
+
   /// The unique identifier for the resource.
   ///
   /// This identifier is defined by the server.
@@ -79406,6 +82419,10 @@ class Router {
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
     }
+    if (_json.containsKey('encryptedInterconnectRouter')) {
+      encryptedInterconnectRouter =
+          _json['encryptedInterconnectRouter'] as core.bool;
+    }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
     }
@@ -79444,6 +82461,8 @@ class Router {
           'bgpPeers': bgpPeers!.map((value) => value.toJson()).toList(),
         if (creationTimestamp != null) 'creationTimestamp': creationTimestamp!,
         if (description != null) 'description': description!,
+        if (encryptedInterconnectRouter != null)
+          'encryptedInterconnectRouter': encryptedInterconnectRouter!,
         if (id != null) 'id': id!,
         if (interfaces != null)
           'interfaces': interfaces!.map((value) => value.toJson()).toList(),
@@ -79757,12 +82776,11 @@ class RouterBgpPeer {
   /// subnets.
   ///
   ///
-  /// - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets.
-  /// - ALL_PEER_VPC_SUBNETS: Advertises peer subnets of the router's VPC
-  /// network. Note that this field can only be populated if advertise_mode is
-  /// CUSTOM and overrides the list defined for the router (in the "bgp"
-  /// message). These groups are advertised in addition to any specified
-  /// prefixes. Leave this field blank to advertise no custom groups.
+  /// - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets. Note that this
+  /// field can only be populated if advertise_mode is CUSTOM and overrides the
+  /// list defined for the router (in the "bgp" message). These groups are
+  /// advertised in addition to any specified prefixes. Leave this field blank
+  /// to advertise no custom groups.
   core.List<core.String>? advertisedGroups;
 
   /// User-specified list of individual IP ranges to advertise in custom mode.
@@ -81018,9 +84036,58 @@ class SSLHealthCheck {
       };
 }
 
+class ScalingScheduleStatus {
+  /// The last time the scaling schedule became active.
+  ///
+  /// Note: this is a timestamp when a schedule actually became active, not when
+  /// it was planned to do so. The timestamp is in RFC3339 text format.
+  ///
+  /// Output only.
+  core.String? lastStartTime;
+
+  /// The next time the scaling schedule is to become active.
+  ///
+  /// Note: this is a timestamp when a schedule is planned to run, but the
+  /// actual time might be slightly different. The timestamp is in RFC3339 text
+  /// format.
+  ///
+  /// Output only.
+  core.String? nextStartTime;
+
+  /// The current state of a scaling schedule.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ACTIVE"
+  /// - "DISABLED"
+  /// - "OBSOLETE"
+  /// - "READY"
+  core.String? state;
+
+  ScalingScheduleStatus();
+
+  ScalingScheduleStatus.fromJson(core.Map _json) {
+    if (_json.containsKey('lastStartTime')) {
+      lastStartTime = _json['lastStartTime'] as core.String;
+    }
+    if (_json.containsKey('nextStartTime')) {
+      nextStartTime = _json['nextStartTime'] as core.String;
+    }
+    if (_json.containsKey('state')) {
+      state = _json['state'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (lastStartTime != null) 'lastStartTime': lastStartTime!,
+        if (nextStartTime != null) 'nextStartTime': nextStartTime!,
+        if (state != null) 'state': state!,
+      };
+}
+
 /// Sets the scheduling options for an Instance.
 ///
-/// NextID: 17
+/// NextID: 21
 class Scheduling {
   /// Specifies whether the instance should be automatically restarted if it is
   /// terminated by Compute Engine (not terminated by a user).
@@ -81525,7 +84592,7 @@ class SecurityPolicyReference {
 /// Represents a rule that describes one or more match conditions along with the
 /// action to be taken when traffic matches this condition (allow or deny).
 class SecurityPolicyRule {
-  /// The Action to preform when the client connection triggers the rule.
+  /// The Action to perform when the client connection triggers the rule.
   ///
   /// Can currently be either "allow" or "deny()" where valid values for status
   /// are 403, 404, and 502.
@@ -83906,6 +86973,11 @@ class Subnetwork {
   /// INTERNAL_HTTPS_LOAD_BALANCER.
   core.bool? enableFlowLogs;
 
+  /// The range of external IPv6 addresses that are owned by this subnetwork.
+  ///
+  /// Output only.
+  core.String? externalIpv6Prefix;
+
   /// Fingerprint of this resource.
   ///
   /// A hash of the contents stored in this object. This field is used in
@@ -83946,6 +87018,16 @@ class Subnetwork {
   /// creation time. The range can be any range listed in the Valid ranges list.
   /// The range can be expanded after creation using expandIpCidrRange.
   core.String? ipCidrRange;
+
+  /// The access type of IPv6 address this subnet holds.
+  ///
+  /// It's immutable and can only be specified during creation or the first time
+  /// the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is
+  /// EXTERNAL then this subnet cannot enable direct path.
+  /// Possible string values are:
+  /// - "EXTERNAL"
+  /// - "UNSPECIFIED_IPV6_ACCESS_TYPE"
+  core.String? ipv6AccessType;
 
   /// The range of internal IPv6 addresses that are owned by this subnetwork.
   ///
@@ -84047,14 +87129,26 @@ class Subnetwork {
   /// Output only.
   core.String? selfLink;
 
+  /// The stack type for this subnet to identify whether the IPv6 feature is
+  /// enabled or not.
+  ///
+  /// If not specified IPV4_ONLY will be used.
+  ///
+  /// This field can be both set at resource creation time and updated using
+  /// patch.
+  /// Possible string values are:
+  /// - "IPV4_IPV6"
+  /// - "IPV4_ONLY"
+  /// - "UNSPECIFIED_STACK_TYPE"
+  core.String? stackType;
+
   /// The state of the subnetwork, which can be one of the following values:
   /// READY: Subnetwork is created and ready to use DRAINING: only applicable to
   /// subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and
   /// indicates that connections to the load balancer are being drained.
   ///
   /// A subnetwork that is draining cannot be used or modified until it reaches
-  /// a status of READY CREATING: Subnetwork is provisioning DELETING:
-  /// Subnetwork is being deleted UPDATING: Subnetwork is being updated
+  /// a status of READY
   ///
   /// Output only.
   /// Possible string values are:
@@ -84074,6 +87168,9 @@ class Subnetwork {
     if (_json.containsKey('enableFlowLogs')) {
       enableFlowLogs = _json['enableFlowLogs'] as core.bool;
     }
+    if (_json.containsKey('externalIpv6Prefix')) {
+      externalIpv6Prefix = _json['externalIpv6Prefix'] as core.String;
+    }
     if (_json.containsKey('fingerprint')) {
       fingerprint = _json['fingerprint'] as core.String;
     }
@@ -84085,6 +87182,9 @@ class Subnetwork {
     }
     if (_json.containsKey('ipCidrRange')) {
       ipCidrRange = _json['ipCidrRange'] as core.String;
+    }
+    if (_json.containsKey('ipv6AccessType')) {
+      ipv6AccessType = _json['ipv6AccessType'] as core.String;
     }
     if (_json.containsKey('ipv6CidrRange')) {
       ipv6CidrRange = _json['ipv6CidrRange'] as core.String;
@@ -84127,6 +87227,9 @@ class Subnetwork {
     if (_json.containsKey('selfLink')) {
       selfLink = _json['selfLink'] as core.String;
     }
+    if (_json.containsKey('stackType')) {
+      stackType = _json['stackType'] as core.String;
+    }
     if (_json.containsKey('state')) {
       state = _json['state'] as core.String;
     }
@@ -84136,10 +87239,13 @@ class Subnetwork {
         if (creationTimestamp != null) 'creationTimestamp': creationTimestamp!,
         if (description != null) 'description': description!,
         if (enableFlowLogs != null) 'enableFlowLogs': enableFlowLogs!,
+        if (externalIpv6Prefix != null)
+          'externalIpv6Prefix': externalIpv6Prefix!,
         if (fingerprint != null) 'fingerprint': fingerprint!,
         if (gatewayAddress != null) 'gatewayAddress': gatewayAddress!,
         if (id != null) 'id': id!,
         if (ipCidrRange != null) 'ipCidrRange': ipCidrRange!,
+        if (ipv6AccessType != null) 'ipv6AccessType': ipv6AccessType!,
         if (ipv6CidrRange != null) 'ipv6CidrRange': ipv6CidrRange!,
         if (kind != null) 'kind': kind!,
         if (logConfig != null) 'logConfig': logConfig!.toJson(),
@@ -84156,6 +87262,7 @@ class Subnetwork {
           'secondaryIpRanges':
               secondaryIpRanges!.map((value) => value.toJson()).toList(),
         if (selfLink != null) 'selfLink': selfLink!,
+        if (stackType != null) 'stackType': stackType!,
         if (state != null) 'state': state!,
       };
 }
@@ -84584,7 +87691,7 @@ class SubnetworkLogConfig {
   /// Can only be specified if VPC flow logs for this subnetwork is enabled.
   ///
   /// Configures whether all, none or a subset of metadata fields should be
-  /// added to the reported VPC flow logs. Default is INCLUDE_ALL_METADATA.
+  /// added to the reported VPC flow logs. Default is EXCLUDE_ALL_METADATA.
   /// Possible string values are:
   /// - "CUSTOM_METADATA"
   /// - "EXCLUDE_ALL_METADATA"
@@ -86015,7 +89122,8 @@ class TargetHttpsProxiesSetSslCertificatesRequest {
   /// New set of SslCertificate resources to associate with this
   /// TargetHttpsProxy resource.
   ///
-  /// Currently exactly one SslCertificate resource must be specified.
+  /// At least one SSL certificate must be specified. Currently, you may specify
+  /// up to 15 SSL certificates.
   core.List<core.String>? sslCertificates;
 
   TargetHttpsProxiesSetSslCertificatesRequest();
@@ -86074,6 +89182,23 @@ class TargetHttpsProxy {
   ///
   /// Provide this property when you create the resource.
   core.String? description;
+
+  /// Fingerprint of this resource.
+  ///
+  /// A hash of the contents stored in this object. This field is used in
+  /// optimistic locking. This field will be ignored when inserting a
+  /// TargetHttpsProxy. An up-to-date fingerprint must be provided in order to
+  /// patch the TargetHttpsProxy; otherwise, the request will fail with error
+  /// 412 conditionNotMet. To see the latest fingerprint, make a get() request
+  /// to retrieve the TargetHttpsProxy.
+  core.String? fingerprint;
+  core.List<core.int> get fingerprintAsBytes =>
+      convert.base64.decode(fingerprint!);
+
+  set fingerprintAsBytes(core.List<core.int> _bytes) {
+    fingerprint =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
 
   /// The unique identifier for the resource.
   ///
@@ -86157,7 +89282,8 @@ class TargetHttpsProxy {
   /// between users and the load balancer.
   ///
   /// At least one SSL certificate must be specified. Currently, you may specify
-  /// up to 15 SSL certificates.
+  /// up to 15 SSL certificates. sslCertificates do not apply when the load
+  /// balancing scheme is set to INTERNAL_SELF_MANAGED.
   core.List<core.String>? sslCertificates;
 
   /// URL of SslPolicy resource that will be associated with the
@@ -86187,6 +89313,9 @@ class TargetHttpsProxy {
     }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
+    }
+    if (_json.containsKey('fingerprint')) {
+      fingerprint = _json['fingerprint'] as core.String;
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -86230,6 +89359,7 @@ class TargetHttpsProxy {
           'authorizationPolicy': authorizationPolicy!,
         if (creationTimestamp != null) 'creationTimestamp': creationTimestamp!,
         if (description != null) 'description': description!,
+        if (fingerprint != null) 'fingerprint': fingerprint!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
@@ -87377,6 +90507,7 @@ class TargetPool {
   /// remains healthy.
   /// Possible string values are:
   /// - "CLIENT_IP"
+  /// - "CLIENT_IP_NO_DESTINATION"
   /// - "CLIENT_IP_PORT_PROTO"
   /// - "CLIENT_IP_PROTO"
   /// - "GENERATED_COOKIE"
@@ -88161,7 +91292,8 @@ class TargetSslProxiesSetSslCertificatesRequest {
   /// New set of URLs to SslCertificate resources to associate with this
   /// TargetSslProxy.
   ///
-  /// Currently exactly one ssl certificate must be specified.
+  /// At least one SSL certificate must be specified. Currently, you may specify
+  /// up to 15 SSL certificates.
   core.List<core.String>? sslCertificates;
 
   TargetSslProxiesSetSslCertificatesRequest();
@@ -88242,7 +91374,8 @@ class TargetSslProxy {
   /// to Backends.
   ///
   /// At least one SSL certificate must be specified. Currently, you may specify
-  /// up to 15 SSL certificates.
+  /// up to 15 SSL certificates. sslCertificates do not apply when the load
+  /// balancing scheme is set to INTERNAL_SELF_MANAGED.
   core.List<core.String>? sslCertificates;
 
   /// URL of SslPolicy resource that will be associated with the TargetSslProxy
@@ -91912,6 +95045,15 @@ class VpnGatewayVpnGatewayInterface {
   /// The numeric ID of this VPN gateway interface.
   core.int? id;
 
+  /// URL of the interconnect attachment resource.
+  ///
+  /// When the value of this field is present, the VPN Gateway will be used for
+  /// IPsec-encrypted Cloud Interconnect; all Egress or Ingress traffic for this
+  /// VPN Gateway interface will go through the specified interconnect
+  /// attachment resource.
+  /// Not currently available in all Interconnect locations.
+  core.String? interconnectAttachment;
+
   /// The external IP address for this VPN gateway interface.
   ///
   /// Output only.
@@ -91923,6 +95065,9 @@ class VpnGatewayVpnGatewayInterface {
     if (_json.containsKey('id')) {
       id = _json['id'] as core.int;
     }
+    if (_json.containsKey('interconnectAttachment')) {
+      interconnectAttachment = _json['interconnectAttachment'] as core.String;
+    }
     if (_json.containsKey('ipAddress')) {
       ipAddress = _json['ipAddress'] as core.String;
     }
@@ -91930,6 +95075,8 @@ class VpnGatewayVpnGatewayInterface {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
+        if (interconnectAttachment != null)
+          'interconnectAttachment': interconnectAttachment!,
         if (ipAddress != null) 'ipAddress': ipAddress!,
       };
 }
@@ -92231,7 +95378,7 @@ class VpnTunnel {
   /// used.
   /// - NO_INCOMING_PACKETS: No incoming packets from peer.
   /// - REJECTED: Tunnel configuration was rejected, can be result of being
-  /// blacklisted.
+  /// denied access.
   /// - ALLOCATING_RESOURCES: Cloud VPN is in the process of allocating all
   /// required resources.
   /// - STOPPED: Tunnel is stopped due to its Forwarding Rules being deleted for

@@ -63,8 +63,8 @@ class DriveApi {
   static const driveAppdataScope =
       'https://www.googleapis.com/auth/drive.appdata';
 
-  /// View and manage Google Drive files and folders that you have opened or
-  /// created with this app
+  /// See, edit, create, and delete only the specific Google Drive files you use
+  /// with this app
   static const driveFileScope = 'https://www.googleapis.com/auth/drive.file';
 
   /// View and manage metadata of files in your Google Drive
@@ -1329,7 +1329,11 @@ class FilesResource {
   /// Value must be between "1" and "1000".
   ///
   /// [space] - The space in which the IDs can be used to create new files.
-  /// Supported values are 'drive' and 'appDataFolder'.
+  /// Supported values are 'drive' and 'appDataFolder'. (Default: 'drive')
+  ///
+  /// [type] - The type of items which the IDs can be used for. Supported values
+  /// are 'files' and 'shortcuts'. Note that 'shortcuts' are only supported in
+  /// the drive 'space'. (Default: 'files')
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1344,11 +1348,13 @@ class FilesResource {
   async.Future<GeneratedIds> generateIds({
     core.int? count,
     core.String? space,
+    core.String? type,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (count != null) 'count': ['${count}'],
       if (space != null) 'space': [space],
+      if (type != null) 'type': [type],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -3230,6 +3236,9 @@ class Channel {
   core.String? token;
 
   /// The type of delivery mechanism used for this channel.
+  ///
+  /// Valid values are "web_hook" (or "webhook"). Both values refer to a channel
+  /// where Http requests are used to deliver messages.
   core.String? type;
 
   Channel();
@@ -3321,8 +3330,8 @@ class CommentQuotedFileContent {
 class Comment {
   /// A region of the document represented as a JSON string.
   ///
-  /// See anchor documentation for details on how to define and interpret anchor
-  /// properties.
+  /// For details on defining anchor properties, refer to Add comments and
+  /// replies.
   core.String? anchor;
 
   /// The author of the comment.

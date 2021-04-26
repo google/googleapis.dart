@@ -59,7 +59,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Builds conversational interfaces (for example, chatbots, and voice-powered
 /// apps and devices).
 class DialogflowApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -1562,9 +1562,6 @@ class ProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResource {
 
   /// Creates a session entity type.
   ///
-  /// If the specified session entity type already exists, overrides the session
-  /// entity type.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -1816,8 +1813,10 @@ class ProjectsLocationsAgentsFlowsResource {
   ///
   /// [languageCode] - The language of the following fields in `flow`: *
   /// `Flow.event_handlers.trigger_fulfillment.messages` *
-  /// `Flow.transition_routes.trigger_fulfillment.messages` If not specified,
-  /// the agent's default language is used.
+  /// `Flow.event_handlers.trigger_fulfillment.conditional_cases` *
+  /// `Flow.transition_routes.trigger_fulfillment.messages` *
+  /// `Flow.transition_routes.trigger_fulfillment.conditional_cases` If not
+  /// specified, the agent's default language is used.
   /// [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
   /// are supported. Note: languages must be enabled in the agent before they
   /// can be used.
@@ -1903,6 +1902,52 @@ class ProjectsLocationsAgentsFlowsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Exports the specified flow to a binary file.
+  ///
+  /// Note that resources (e.g. intents, entities, webhooks) that the flow
+  /// references will also be exported.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the flow to export. Format:
+  /// `projects//locations//agents//flows/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/flows/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> export(
+    GoogleCloudDialogflowCxV3ExportFlowRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v3/' + core.Uri.encodeFull('$name') + ':export';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Retrieves the specified flow.
   ///
   /// Request parameters:
@@ -1915,8 +1960,10 @@ class ProjectsLocationsAgentsFlowsResource {
   /// [languageCode] - The language to retrieve the flow for. The following
   /// fields are language dependent: *
   /// `Flow.event_handlers.trigger_fulfillment.messages` *
-  /// `Flow.transition_routes.trigger_fulfillment.messages` If not specified,
-  /// the agent's default language is used.
+  /// `Flow.event_handlers.trigger_fulfillment.conditional_cases` *
+  /// `Flow.transition_routes.trigger_fulfillment.messages` *
+  /// `Flow.transition_routes.trigger_fulfillment.conditional_cases` If not
+  /// specified, the agent's default language is used.
   /// [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
   /// are supported. Note: languages must be enabled in the agent before they
   /// can be used.
@@ -1997,6 +2044,49 @@ class ProjectsLocationsAgentsFlowsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Imports the specified flow to the specified agent from a binary file.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The agent to import the flow into. Format:
+  /// `projects//locations//agents/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> import(
+    GoogleCloudDialogflowCxV3ImportFlowRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v3/' + core.Uri.encodeFull('$parent') + '/flows:import';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Returns the list of all flows in the specified agent.
   ///
   /// Request parameters:
@@ -2008,8 +2098,10 @@ class ProjectsLocationsAgentsFlowsResource {
   ///
   /// [languageCode] - The language to list flows for. The following fields are
   /// language dependent: * `Flow.event_handlers.trigger_fulfillment.messages` *
-  /// `Flow.transition_routes.trigger_fulfillment.messages` If not specified,
-  /// the agent's default language is used.
+  /// `Flow.event_handlers.trigger_fulfillment.conditional_cases` *
+  /// `Flow.transition_routes.trigger_fulfillment.messages` *
+  /// `Flow.transition_routes.trigger_fulfillment.conditional_cases` If not
+  /// specified, the agent's default language is used.
   /// [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
   /// are supported. Note: languages must be enabled in the agent before they
   /// can be used.
@@ -2068,8 +2160,10 @@ class ProjectsLocationsAgentsFlowsResource {
   ///
   /// [languageCode] - The language of the following fields in `flow`: *
   /// `Flow.event_handlers.trigger_fulfillment.messages` *
-  /// `Flow.transition_routes.trigger_fulfillment.messages` If not specified,
-  /// the agent's default language is used.
+  /// `Flow.event_handlers.trigger_fulfillment.conditional_cases` *
+  /// `Flow.transition_routes.trigger_fulfillment.messages` *
+  /// `Flow.transition_routes.trigger_fulfillment.conditional_cases` If not
+  /// specified, the agent's default language is used.
   /// [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
   /// are supported. Note: languages must be enabled in the agent before they
   /// can be used.
@@ -2224,11 +2318,16 @@ class ProjectsLocationsAgentsFlowsPagesResource {
   ///
   /// [languageCode] - The language of the following fields in `page`: *
   /// `Page.entry_fulfillment.messages` *
+  /// `Page.entry_fulfillment.conditional_cases` *
+  /// `Page.event_handlers.trigger_fulfillment.messages` *
+  /// `Page.event_handlers.trigger_fulfillment.conditional_cases` *
   /// `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.messages` *
-  /// `Page.form.parameters.fill_behavior.reprompt_event_handlers.messages` *
-  /// `Page.transition_routes.trigger_fulfillment.messages` *
-  /// `Page.transition_route_groups.transition_routes.trigger_fulfillment.messages`
-  /// If not specified, the agent's default language is used.
+  /// `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.conditional_cases`
+  /// * `Page.form.parameters.fill_behavior.reprompt_event_handlers.messages` *
+  /// `Page.form.parameters.fill_behavior.reprompt_event_handlers.conditional_cases`
+  /// * `Page.transition_routes.trigger_fulfillment.messages` *
+  /// `Page.transition_routes.trigger_fulfillment.conditional_cases` If not
+  /// specified, the agent's default language is used.
   /// [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
   /// are supported. Note: languages must be enabled in the agent before they
   /// can be used.
@@ -2325,11 +2424,16 @@ class ProjectsLocationsAgentsFlowsPagesResource {
   ///
   /// [languageCode] - The language to retrieve the page for. The following
   /// fields are language dependent: * `Page.entry_fulfillment.messages` *
+  /// `Page.entry_fulfillment.conditional_cases` *
+  /// `Page.event_handlers.trigger_fulfillment.messages` *
+  /// `Page.event_handlers.trigger_fulfillment.conditional_cases` *
   /// `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.messages` *
-  /// `Page.form.parameters.fill_behavior.reprompt_event_handlers.messages` *
-  /// `Page.transition_routes.trigger_fulfillment.messages` *
-  /// `Page.transition_route_groups.transition_routes.trigger_fulfillment.messages`
-  /// If not specified, the agent's default language is used.
+  /// `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.conditional_cases`
+  /// * `Page.form.parameters.fill_behavior.reprompt_event_handlers.messages` *
+  /// `Page.form.parameters.fill_behavior.reprompt_event_handlers.conditional_cases`
+  /// * `Page.transition_routes.trigger_fulfillment.messages` *
+  /// `Page.transition_routes.trigger_fulfillment.conditional_cases` If not
+  /// specified, the agent's default language is used.
   /// [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
   /// are supported. Note: languages must be enabled in the agent before they
   /// can be used.
@@ -2376,11 +2480,16 @@ class ProjectsLocationsAgentsFlowsPagesResource {
   ///
   /// [languageCode] - The language to list pages for. The following fields are
   /// language dependent: * `Page.entry_fulfillment.messages` *
+  /// `Page.entry_fulfillment.conditional_cases` *
+  /// `Page.event_handlers.trigger_fulfillment.messages` *
+  /// `Page.event_handlers.trigger_fulfillment.conditional_cases` *
   /// `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.messages` *
-  /// `Page.form.parameters.fill_behavior.reprompt_event_handlers.messages` *
-  /// `Page.transition_routes.trigger_fulfillment.messages` *
-  /// `Page.transition_route_groups.transition_routes.trigger_fulfillment.messages`
-  /// If not specified, the agent's default language is used.
+  /// `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.conditional_cases`
+  /// * `Page.form.parameters.fill_behavior.reprompt_event_handlers.messages` *
+  /// `Page.form.parameters.fill_behavior.reprompt_event_handlers.conditional_cases`
+  /// * `Page.transition_routes.trigger_fulfillment.messages` *
+  /// `Page.transition_routes.trigger_fulfillment.conditional_cases` If not
+  /// specified, the agent's default language is used.
   /// [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
   /// are supported. Note: languages must be enabled in the agent before they
   /// can be used.
@@ -2440,11 +2549,16 @@ class ProjectsLocationsAgentsFlowsPagesResource {
   ///
   /// [languageCode] - The language of the following fields in `page`: *
   /// `Page.entry_fulfillment.messages` *
+  /// `Page.entry_fulfillment.conditional_cases` *
+  /// `Page.event_handlers.trigger_fulfillment.messages` *
+  /// `Page.event_handlers.trigger_fulfillment.conditional_cases` *
   /// `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.messages` *
-  /// `Page.form.parameters.fill_behavior.reprompt_event_handlers.messages` *
-  /// `Page.transition_routes.trigger_fulfillment.messages` *
-  /// `Page.transition_route_groups.transition_routes.trigger_fulfillment.messages`
-  /// If not specified, the agent's default language is used.
+  /// `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.conditional_cases`
+  /// * `Page.form.parameters.fill_behavior.reprompt_event_handlers.messages` *
+  /// `Page.form.parameters.fill_behavior.reprompt_event_handlers.conditional_cases`
+  /// * `Page.transition_routes.trigger_fulfillment.messages` *
+  /// `Page.transition_routes.trigger_fulfillment.conditional_cases` If not
+  /// specified, the agent's default language is used.
   /// [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
   /// are supported. Note: languages must be enabled in the agent before they
   /// can be used.
@@ -2507,9 +2621,11 @@ class ProjectsLocationsAgentsFlowsTransitionRouteGroupsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/flows/\[^/\]+$`.
   ///
-  /// [languageCode] - The language to list transition route groups for. The
-  /// field `messages` in TransitionRoute is language dependent. If not
-  /// specified, the agent's default language is used.
+  /// [languageCode] - The language of the following fields in
+  /// `TransitionRouteGroup`: *
+  /// `TransitionRouteGroup.transition_routes.trigger_fulfillment.messages` *
+  /// `TransitionRouteGroup.transition_routes.trigger_fulfillment.conditional_cases`
+  /// If not specified, the agent's default language is used.
   /// [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
   /// are supported. Note: languages must be enabled in the agent before they
   /// can be used.
@@ -2605,9 +2721,11 @@ class ProjectsLocationsAgentsFlowsTransitionRouteGroupsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/flows/\[^/\]+/transitionRouteGroups/\[^/\]+$`.
   ///
-  /// [languageCode] - The language to list transition route groups for. The
-  /// field `messages` in TransitionRoute is language dependent. If not
-  /// specified, the agent's default language is used.
+  /// [languageCode] - The language to retrieve the transition route group for.
+  /// The following fields are language dependent: *
+  /// `TransitionRouteGroup.transition_routes.trigger_fulfillment.messages` *
+  /// `TransitionRouteGroup.transition_routes.trigger_fulfillment.conditional_cases`
+  /// If not specified, the agent's default language is used.
   /// [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
   /// are supported. Note: languages must be enabled in the agent before they
   /// can be used.
@@ -2653,8 +2771,10 @@ class ProjectsLocationsAgentsFlowsTransitionRouteGroupsResource {
   /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/flows/\[^/\]+$`.
   ///
   /// [languageCode] - The language to list transition route groups for. The
-  /// field `messages` in TransitionRoute is language dependent. If not
-  /// specified, the agent's default language is used.
+  /// following fields are language dependent: *
+  /// `TransitionRouteGroup.transition_routes.trigger_fulfillment.messages` *
+  /// `TransitionRouteGroup.transition_routes.trigger_fulfillment.conditional_cases`
+  /// If not specified, the agent's default language is used.
   /// [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
   /// are supported. Note: languages must be enabled in the agent before they
   /// can be used.
@@ -2715,9 +2835,11 @@ class ProjectsLocationsAgentsFlowsTransitionRouteGroupsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/flows/\[^/\]+/transitionRouteGroups/\[^/\]+$`.
   ///
-  /// [languageCode] - The language to list transition route groups for. The
-  /// field `messages` in TransitionRoute is language dependent. If not
-  /// specified, the agent's default language is used.
+  /// [languageCode] - The language of the following fields in
+  /// `TransitionRouteGroup`: *
+  /// `TransitionRouteGroup.transition_routes.trigger_fulfillment.messages` *
+  /// `TransitionRouteGroup.transition_routes.trigger_fulfillment.conditional_cases`
+  /// If not specified, the agent's default language is used.
   /// [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
   /// are supported. Note: languages must be enabled in the agent before they
   /// can be used.
@@ -2934,13 +3056,13 @@ class ProjectsLocationsAgentsFlowsVersionsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Loads a specified version to draft version.
+  /// Loads resources in the specified version to the draft flow.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The Version to be loaded to draft version. Format:
+  /// [name] - Required. The Version to be loaded to draft flow. Format:
   /// `projects//locations//agents//flows//versions/`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/flows/\[^/\]+/versions/\[^/\]+$`.
@@ -3474,9 +3596,6 @@ class ProjectsLocationsAgentsSessionsEntityTypesResource {
       : _requester = client;
 
   /// Creates a session entity type.
-  ///
-  /// If the specified session entity type already exists, overrides the session
-  /// entity type.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4178,6 +4297,44 @@ class ProjectsLocationsAgentsTestCasesResultsResource {
 
   ProjectsLocationsAgentsTestCasesResultsResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Gets a test case result.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the testcase. Format:
+  /// `projects//locations//agents//testCases//results/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/testCases/\[^/\]+/results/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowCxV3TestCaseResult].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowCxV3TestCaseResult> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v3/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowCxV3TestCaseResult.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 
   /// Fetches a list of results for a given test case.
   ///
@@ -5061,6 +5218,10 @@ class GoogleCloudDialogflowCxV3Agent {
   /// Immutable.
   core.String? startFlow;
 
+  /// The list of all languages supported by the agent (except for the
+  /// `default_language_code`).
+  core.List<core.String>? supportedLanguageCodes;
+
   /// The time zone of the agent from the
   /// [time zone database](https://www.iana.org/time-zones), e.g.,
   /// America/New_York, Europe/Paris.
@@ -5104,6 +5265,11 @@ class GoogleCloudDialogflowCxV3Agent {
     if (_json.containsKey('startFlow')) {
       startFlow = _json['startFlow'] as core.String;
     }
+    if (_json.containsKey('supportedLanguageCodes')) {
+      supportedLanguageCodes = (_json['supportedLanguageCodes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
     if (_json.containsKey('timeZone')) {
       timeZone = _json['timeZone'] as core.String;
     }
@@ -5124,6 +5290,8 @@ class GoogleCloudDialogflowCxV3Agent {
         if (speechToTextSettings != null)
           'speechToTextSettings': speechToTextSettings!.toJson(),
         if (startFlow != null) 'startFlow': startFlow!,
+        if (supportedLanguageCodes != null)
+          'supportedLanguageCodes': supportedLanguageCodes!,
         if (timeZone != null) 'timeZone': timeZone!,
       };
 }
@@ -6125,7 +6293,10 @@ class GoogleCloudDialogflowCxV3Experiment {
   /// End time of this experiment.
   core.String? endTime;
 
-  /// Maximum number of days to run the experiment.
+  /// Maximum number of days to run the experiment/rollout.
+  ///
+  /// If auto-rollout is not enabled, default value and maximum will be 30 days.
+  /// If auto-rollout is enabled, default value and maximum will be 6 days.
   core.String? experimentLength;
 
   /// Last update time of this experiment.
@@ -6457,16 +6628,28 @@ class GoogleCloudDialogflowCxV3ExportAgentRequest {
   /// Optional.
   core.String? agentUri;
 
+  /// Environment name.
+  ///
+  /// If not set, draft environment is assumed. Format:
+  /// `projects//locations//agents//environments/`.
+  ///
+  /// Optional.
+  core.String? environment;
+
   GoogleCloudDialogflowCxV3ExportAgentRequest();
 
   GoogleCloudDialogflowCxV3ExportAgentRequest.fromJson(core.Map _json) {
     if (_json.containsKey('agentUri')) {
       agentUri = _json['agentUri'] as core.String;
     }
+    if (_json.containsKey('environment')) {
+      environment = _json['environment'] as core.String;
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (agentUri != null) 'agentUri': agentUri!,
+        if (environment != null) 'environment': environment!,
       };
 }
 
@@ -6502,6 +6685,75 @@ class GoogleCloudDialogflowCxV3ExportAgentResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (agentContent != null) 'agentContent': agentContent!,
         if (agentUri != null) 'agentUri': agentUri!,
+      };
+}
+
+/// The request message for Flows.ExportFlow.
+class GoogleCloudDialogflowCxV3ExportFlowRequest {
+  /// The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to
+  /// export the flow to.
+  ///
+  /// The format of this URI must be `gs:///`. If left unspecified, the
+  /// serialized flow is returned inline.
+  ///
+  /// Optional.
+  core.String? flowUri;
+
+  /// Whether to export flows referenced by the specified flow.
+  ///
+  /// Optional.
+  core.bool? includeReferencedFlows;
+
+  GoogleCloudDialogflowCxV3ExportFlowRequest();
+
+  GoogleCloudDialogflowCxV3ExportFlowRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('flowUri')) {
+      flowUri = _json['flowUri'] as core.String;
+    }
+    if (_json.containsKey('includeReferencedFlows')) {
+      includeReferencedFlows = _json['includeReferencedFlows'] as core.bool;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (flowUri != null) 'flowUri': flowUri!,
+        if (includeReferencedFlows != null)
+          'includeReferencedFlows': includeReferencedFlows!,
+      };
+}
+
+/// The response message for Flows.ExportFlow.
+class GoogleCloudDialogflowCxV3ExportFlowResponse {
+  /// Uncompressed raw byte content for flow.
+  core.String? flowContent;
+  core.List<core.int> get flowContentAsBytes =>
+      convert.base64.decode(flowContent!);
+
+  set flowContentAsBytes(core.List<core.int> _bytes) {
+    flowContent =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// The URI to a file containing the exported flow.
+  ///
+  /// This field is populated only if `flow_uri` is specified in
+  /// ExportFlowRequest.
+  core.String? flowUri;
+
+  GoogleCloudDialogflowCxV3ExportFlowResponse();
+
+  GoogleCloudDialogflowCxV3ExportFlowResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('flowContent')) {
+      flowContent = _json['flowContent'] as core.String;
+    }
+    if (_json.containsKey('flowUri')) {
+      flowUri = _json['flowUri'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (flowContent != null) 'flowContent': flowContent!,
+        if (flowUri != null) 'flowUri': flowUri!,
       };
 }
 
@@ -6640,6 +6892,15 @@ class GoogleCloudDialogflowCxV3Flow {
   /// NLU related settings of the flow.
   GoogleCloudDialogflowCxV3NluSettings? nluSettings;
 
+  /// A flow's transition route group serve two purposes: * They are responsible
+  /// for matching the user's first utterances in the flow.
+  ///
+  /// * They are inherited by every page's transition route groups. Transition
+  /// route groups defined in the page have higher priority than those defined
+  /// in the flow.
+  /// Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+  core.List<core.String>? transitionRouteGroups;
+
   /// A flow's transition routes serve two purposes: * They are responsible for
   /// matching the user's first utterances in the flow.
   ///
@@ -6676,6 +6937,11 @@ class GoogleCloudDialogflowCxV3Flow {
       nluSettings = GoogleCloudDialogflowCxV3NluSettings.fromJson(
           _json['nluSettings'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('transitionRouteGroups')) {
+      transitionRouteGroups = (_json['transitionRouteGroups'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
     if (_json.containsKey('transitionRoutes')) {
       transitionRoutes = (_json['transitionRoutes'] as core.List)
           .map<GoogleCloudDialogflowCxV3TransitionRoute>((value) =>
@@ -6693,6 +6959,8 @@ class GoogleCloudDialogflowCxV3Flow {
               eventHandlers!.map((value) => value.toJson()).toList(),
         if (name != null) 'name': name!,
         if (nluSettings != null) 'nluSettings': nluSettings!.toJson(),
+        if (transitionRouteGroups != null)
+          'transitionRouteGroups': transitionRouteGroups!,
         if (transitionRoutes != null)
           'transitionRoutes':
               transitionRoutes!.map((value) => value.toJson()).toList(),
@@ -7290,6 +7558,78 @@ class GoogleCloudDialogflowCxV3ImportDocumentsResponse {
       };
 }
 
+/// The request message for Flows.ImportFlow.
+class GoogleCloudDialogflowCxV3ImportFlowRequest {
+  /// Uncompressed raw byte content for flow.
+  core.String? flowContent;
+  core.List<core.int> get flowContentAsBytes =>
+      convert.base64.decode(flowContent!);
+
+  set flowContentAsBytes(core.List<core.int> _bytes) {
+    flowContent =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to
+  /// import flow from.
+  ///
+  /// The format of this URI must be `gs:///`.
+  core.String? flowUri;
+
+  /// Flow import mode.
+  ///
+  /// If not specified, `KEEP` is assumed.
+  /// Possible string values are:
+  /// - "IMPORT_OPTION_UNSPECIFIED" : Unspecified. Treated as `KEEP`.
+  /// - "KEEP" : Always respect settings in exported flow content. It may cause
+  /// a import failure if some settings (e.g. custom NLU) are not supported in
+  /// the agent to import into.
+  /// - "FALLBACK" : Fallback to default settings if some settings are not
+  /// supported in the agent to import into. E.g. Standard NLU will be used if
+  /// custom NLU is not available.
+  core.String? importOption;
+
+  GoogleCloudDialogflowCxV3ImportFlowRequest();
+
+  GoogleCloudDialogflowCxV3ImportFlowRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('flowContent')) {
+      flowContent = _json['flowContent'] as core.String;
+    }
+    if (_json.containsKey('flowUri')) {
+      flowUri = _json['flowUri'] as core.String;
+    }
+    if (_json.containsKey('importOption')) {
+      importOption = _json['importOption'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (flowContent != null) 'flowContent': flowContent!,
+        if (flowUri != null) 'flowUri': flowUri!,
+        if (importOption != null) 'importOption': importOption!,
+      };
+}
+
+/// The response message for Flows.ImportFlow.
+class GoogleCloudDialogflowCxV3ImportFlowResponse {
+  /// The unique identifier of the new flow.
+  ///
+  /// Format: `projects//locations//agents//flows/`.
+  core.String? flow;
+
+  GoogleCloudDialogflowCxV3ImportFlowResponse();
+
+  GoogleCloudDialogflowCxV3ImportFlowResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('flow')) {
+      flow = _json['flow'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (flow != null) 'flow': flow!,
+      };
+}
+
 /// Metadata returned for the TestCases.ImportTestCases long running operation.
 class GoogleCloudDialogflowCxV3ImportTestCasesMetadata {
   /// Errors for failed test cases.
@@ -7534,8 +7874,6 @@ class GoogleCloudDialogflowCxV3Intent {
   /// scope, content, result etc.
   ///
   /// Maximum character limit: 140 characters.
-  ///
-  /// Optional.
   core.String? description;
 
   /// The human-readable name of the intent, unique within the agent.
@@ -7562,8 +7900,6 @@ class GoogleCloudDialogflowCxV3Intent {
   /// include: * sys.head * sys.contextual The above labels do not require
   /// value. "sys.head" means the intent is a head intent. "sys.contextual"
   /// means the intent is a contextual intent.
-  ///
-  /// Optional.
   core.Map<core.String, core.String>? labels;
 
   /// The unique identifier of the intent.
@@ -8349,8 +8685,7 @@ class GoogleCloudDialogflowCxV3ListWebhooksResponse {
 /// The request message for Versions.LoadVersion.
 class GoogleCloudDialogflowCxV3LoadVersionRequest {
   /// This field is used to prevent accidental overwrite of other agent
-  /// resources in the draft version, which can potentially impact other flow's
-  /// behavior.
+  /// resources, which can potentially impact other flow's behavior.
   ///
   /// If `allow_override_agent_resources` is false, conflicted agent-level
   /// resources will not be overridden (i.e. intents, entities, webhooks).
@@ -8545,7 +8880,7 @@ class GoogleCloudDialogflowCxV3MatchIntentResponse {
   core.String? text;
 
   /// If natural language speech audio was provided as input, this field will
-  /// contain the trascript for the audio.
+  /// contain the transcript for the audio.
   core.String? transcript;
 
   /// If an event was provided as input, this field will contain a copy of the
@@ -8554,6 +8889,8 @@ class GoogleCloudDialogflowCxV3MatchIntentResponse {
 
   /// If an intent was provided as input, this field will contain a copy of the
   /// intent identifier.
+  ///
+  /// Format: `projects//locations//agents//intents/`.
   core.String? triggerIntent;
 
   GoogleCloudDialogflowCxV3MatchIntentResponse();
@@ -9036,6 +9373,16 @@ class GoogleCloudDialogflowCxV3QueryParameters {
   /// If not provided, sentiment analysis is not performed.
   core.bool? analyzeQueryTextSentiment;
 
+  /// The unique identifier of the page to override the current page in the
+  /// session.
+  ///
+  /// Format: `projects//locations//agents//pages/`. If `current_page` is
+  /// specified, the previous state of the session will be ignored by
+  /// Dialogflow, including the previous page and the previous session
+  /// parameters. In most cases, current_page and parameters should be
+  /// configured together to direct a session to a specific state.
+  core.String? currentPage;
+
   /// Whether to disable webhook calls for this request.
   core.bool? disableWebhook;
 
@@ -9045,15 +9392,16 @@ class GoogleCloudDialogflowCxV3QueryParameters {
   /// Additional parameters to be put into session parameters.
   ///
   /// To remove a parameter from the session, clients should explicitly set the
-  /// parameter value to null. Depending on your protocol or client library
-  /// language, this is a map, associative array, symbol table, dictionary, or
-  /// JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey
-  /// type: string - MapKey value: parameter name - MapValue type: - If
-  /// parameter's entity type is a composite entity: map - Else: depending on
-  /// parameter value type, could be one of string, number, boolean, null, list
-  /// or map - MapValue value: - If parameter's entity type is a composite
-  /// entity: map from composite entity property names to property values -
-  /// Else: parameter value
+  /// parameter value to null. You can reference the session parameters in the
+  /// agent with the following format: $session.params.parameter-id. Depending
+  /// on your protocol or client library language, this is a map, associative
+  /// array, symbol table, dictionary, or JSON object composed of a collection
+  /// of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value:
+  /// parameter name - MapValue type: - If parameter's entity type is a
+  /// composite entity: map - Else: depending on parameter value type, could be
+  /// one of string, number, boolean, null, list or map - MapValue value: - If
+  /// parameter's entity type is a composite entity: map from composite entity
+  /// property names to property values - Else: parameter value
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -9062,7 +9410,10 @@ class GoogleCloudDialogflowCxV3QueryParameters {
   /// This field can be used to pass custom data into the webhook associated
   /// with the agent.
   ///
-  /// Arbitrary JSON objects are supported.
+  /// Arbitrary JSON objects are supported. Some integrations that query a
+  /// Dialogflow agent may provide additional information in the payload. In
+  /// particular, for the Dialogflow Phone Gateway integration, this field has
+  /// the form: ``` { "telephony": { "caller_id": "+18558363987" } } ```
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -9099,6 +9450,9 @@ class GoogleCloudDialogflowCxV3QueryParameters {
     if (_json.containsKey('analyzeQueryTextSentiment')) {
       analyzeQueryTextSentiment =
           _json['analyzeQueryTextSentiment'] as core.bool;
+    }
+    if (_json.containsKey('currentPage')) {
+      currentPage = _json['currentPage'] as core.String;
     }
     if (_json.containsKey('disableWebhook')) {
       disableWebhook = _json['disableWebhook'] as core.bool;
@@ -9148,6 +9502,7 @@ class GoogleCloudDialogflowCxV3QueryParameters {
   core.Map<core.String, core.dynamic> toJson() => {
         if (analyzeQueryTextSentiment != null)
           'analyzeQueryTextSentiment': analyzeQueryTextSentiment!,
+        if (currentPage != null) 'currentPage': currentPage!,
         if (disableWebhook != null) 'disableWebhook': disableWebhook!,
         if (geoLocation != null) 'geoLocation': geoLocation!.toJson(),
         if (parameters != null) 'parameters': parameters!,
@@ -9234,7 +9589,7 @@ class GoogleCloudDialogflowCxV3QueryResult {
   core.String? text;
 
   /// If natural language speech audio was provided as input, this field will
-  /// contain the trascript for the audio.
+  /// contain the transcript for the audio.
   core.String? transcript;
 
   /// If an event was provided as input, this field will contain the name of the
@@ -9243,6 +9598,8 @@ class GoogleCloudDialogflowCxV3QueryResult {
 
   /// If an intent was provided as input, this field will contain a copy of the
   /// intent identifier.
+  ///
+  /// Format: `projects//locations//agents//intents/`.
   core.String? triggerIntent;
 
   /// The list of webhook payload in WebhookResponse.payload, in the order of
@@ -9830,6 +10187,18 @@ class GoogleCloudDialogflowCxV3RestoreAgentRequest {
   /// The format of this URI must be `gs:///`.
   core.String? agentUri;
 
+  /// Agent restore mode.
+  ///
+  /// If not specified, `KEEP` is assumed.
+  /// Possible string values are:
+  /// - "RESTORE_OPTION_UNSPECIFIED" : Unspecified. Treated as KEEP.
+  /// - "KEEP" : Always respect the settings from the exported agent file. It
+  /// may cause a restoration failure if some settings (e.g. model type) are not
+  /// supported in the target agent.
+  /// - "FALLBACK" : Fallback to default settings if some settings are not
+  /// supported in the target agent.
+  core.String? restoreOption;
+
   GoogleCloudDialogflowCxV3RestoreAgentRequest();
 
   GoogleCloudDialogflowCxV3RestoreAgentRequest.fromJson(core.Map _json) {
@@ -9839,11 +10208,15 @@ class GoogleCloudDialogflowCxV3RestoreAgentRequest {
     if (_json.containsKey('agentUri')) {
       agentUri = _json['agentUri'] as core.String;
     }
+    if (_json.containsKey('restoreOption')) {
+      restoreOption = _json['restoreOption'] as core.String;
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (agentContent != null) 'agentContent': agentContent!,
         if (agentUri != null) 'agentUri': agentUri!,
+        if (restoreOption != null) 'restoreOption': restoreOption!,
       };
 }
 
@@ -9930,10 +10303,10 @@ class GoogleCloudDialogflowCxV3SecuritySettings {
   /// List of types of data to remove when retention settings triggers purge.
   core.List<core.String>? purgeDataTypes;
 
-  /// Defines on what data we apply redaction.
+  /// Defines the data for which Dialogflow applies redaction.
   ///
-  /// Note that we don't redact data to which we don't have access, e.g.,
-  /// Stackdriver logs.
+  /// Dialogflow does not redact data that it does not have access to – for
+  /// example, Cloud logging.
   /// Possible string values are:
   /// - "REDACTION_SCOPE_UNSPECIFIED" : Don't redact any kind of data.
   /// - "REDACT_DISK_STORAGE" : On data to be written to disk or similar devices
@@ -9948,11 +10321,14 @@ class GoogleCloudDialogflowCxV3SecuritySettings {
   /// be persisted.
   core.String? redactionStrategy;
 
-  /// Retains the data for the specified number of days.
+  /// Retains data in interaction logging for the specified number of days.
   ///
-  /// User must Set a value lower than Dialogflow's default 30d TTL. Setting a
-  /// value higher than that has no effect. A missing value or setting to 0 also
-  /// means we use Dialogflow's default TTL.
+  /// This does not apply to Cloud logging, which is owned by the user - not
+  /// Dialogflow. User must Set a value lower than Dialogflow's default 30d TTL.
+  /// Setting a value higher than that has no effect. A missing value or setting
+  /// to 0 also means we use Dialogflow's default TTL. Note: Interaction logging
+  /// is a limited access feature. Talk to your Google representative to check
+  /// availability for you.
   core.int? retentionWindowDays;
 
   GoogleCloudDialogflowCxV3SecuritySettings();
@@ -11313,6 +11689,10 @@ class GoogleCloudDialogflowCxV3Webhook {
   /// `projects//locations//agents//webhooks/`.
   core.String? name;
 
+  /// Configuration for a
+  /// [Service Directory](https://cloud.google.com/service-directory) service.
+  GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig? serviceDirectory;
+
   /// Webhook execution timeout.
   ///
   /// Execution is considered failed if Dialogflow doesn't receive a response
@@ -11338,6 +11718,11 @@ class GoogleCloudDialogflowCxV3Webhook {
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
+    if (_json.containsKey('serviceDirectory')) {
+      serviceDirectory =
+          GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig.fromJson(
+              _json['serviceDirectory'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('timeout')) {
       timeout = _json['timeout'] as core.String;
     }
@@ -11349,6 +11734,8 @@ class GoogleCloudDialogflowCxV3Webhook {
         if (genericWebService != null)
           'genericWebService': genericWebService!.toJson(),
         if (name != null) 'name': name!,
+        if (serviceDirectory != null)
+          'serviceDirectory': serviceDirectory!.toJson(),
         if (timeout != null) 'timeout': timeout!,
       };
 }
@@ -11403,6 +11790,9 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebService {
 }
 
 /// The request message for a webhook call.
+///
+/// The request is sent as a JSON object and the field names will be presented
+/// in camel cases.
 class GoogleCloudDialogflowCxV3WebhookRequest {
   /// Always present.
   ///
@@ -11417,6 +11807,9 @@ class GoogleCloudDialogflowCxV3WebhookRequest {
 
   /// Information about the last matched intent.
   GoogleCloudDialogflowCxV3WebhookRequestIntentInfo? intentInfo;
+
+  /// The language code specified in the original request.
+  core.String? languageCode;
 
   /// The list of rich message responses to present to the user.
   ///
@@ -11443,6 +11836,24 @@ class GoogleCloudDialogflowCxV3WebhookRequest {
   /// Information about session status.
   GoogleCloudDialogflowCxV3SessionInfo? sessionInfo;
 
+  /// If natural language text was provided as input, this field will contain a
+  /// copy of the text.
+  core.String? text;
+
+  /// If natural language speech audio was provided as input, this field will
+  /// contain the transcript for the audio.
+  core.String? transcript;
+
+  /// If an event was provided as input, this field will contain the name of the
+  /// event.
+  core.String? triggerEvent;
+
+  /// If an intent was provided as input, this field will contain a copy of the
+  /// intent identifier.
+  ///
+  /// Format: `projects//locations//agents//intents/`.
+  core.String? triggerIntent;
+
   GoogleCloudDialogflowCxV3WebhookRequest();
 
   GoogleCloudDialogflowCxV3WebhookRequest.fromJson(core.Map _json) {
@@ -11457,6 +11868,9 @@ class GoogleCloudDialogflowCxV3WebhookRequest {
     if (_json.containsKey('intentInfo')) {
       intentInfo = GoogleCloudDialogflowCxV3WebhookRequestIntentInfo.fromJson(
           _json['intentInfo'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'] as core.String;
     }
     if (_json.containsKey('messages')) {
       messages = (_json['messages'] as core.List)
@@ -11487,6 +11901,18 @@ class GoogleCloudDialogflowCxV3WebhookRequest {
       sessionInfo = GoogleCloudDialogflowCxV3SessionInfo.fromJson(
           _json['sessionInfo'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('text')) {
+      text = _json['text'] as core.String;
+    }
+    if (_json.containsKey('transcript')) {
+      transcript = _json['transcript'] as core.String;
+    }
+    if (_json.containsKey('triggerEvent')) {
+      triggerEvent = _json['triggerEvent'] as core.String;
+    }
+    if (_json.containsKey('triggerIntent')) {
+      triggerIntent = _json['triggerIntent'] as core.String;
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11495,6 +11921,7 @@ class GoogleCloudDialogflowCxV3WebhookRequest {
         if (fulfillmentInfo != null)
           'fulfillmentInfo': fulfillmentInfo!.toJson(),
         if (intentInfo != null) 'intentInfo': intentInfo!.toJson(),
+        if (languageCode != null) 'languageCode': languageCode!,
         if (messages != null)
           'messages': messages!.map((value) => value.toJson()).toList(),
         if (pageInfo != null) 'pageInfo': pageInfo!.toJson(),
@@ -11502,6 +11929,10 @@ class GoogleCloudDialogflowCxV3WebhookRequest {
         if (sentimentAnalysisResult != null)
           'sentimentAnalysisResult': sentimentAnalysisResult!.toJson(),
         if (sessionInfo != null) 'sessionInfo': sessionInfo!.toJson(),
+        if (text != null) 'text': text!,
+        if (transcript != null) 'transcript': transcript!,
+        if (triggerEvent != null) 'triggerEvent': triggerEvent!,
+        if (triggerIntent != null) 'triggerIntent': triggerIntent!,
       };
 }
 
@@ -11764,6 +12195,43 @@ class GoogleCloudDialogflowCxV3WebhookResponseFulfillmentResponse {
         if (mergeBehavior != null) 'mergeBehavior': mergeBehavior!,
         if (messages != null)
           'messages': messages!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// Represents configuration for a
+/// [Service Directory](https://cloud.google.com/service-directory) service.
+class GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig {
+  /// Generic Service configuration of this webhook.
+  GoogleCloudDialogflowCxV3WebhookGenericWebService? genericWebService;
+
+  /// The name of
+  /// [Service Directory](https://cloud.google.com/service-directory) service.
+  ///
+  /// Format: `projects//locations//namespaces//services/`. `Location ID` of the
+  /// service directory must be the same as the location of the agent.
+  ///
+  /// Required.
+  core.String? service;
+
+  GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig();
+
+  GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('genericWebService')) {
+      genericWebService =
+          GoogleCloudDialogflowCxV3WebhookGenericWebService.fromJson(
+              _json['genericWebService']
+                  as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('service')) {
+      service = _json['service'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (genericWebService != null)
+          'genericWebService': genericWebService!.toJson(),
+        if (service != null) 'service': service!,
       };
 }
 
@@ -12261,6 +12729,41 @@ class GoogleCloudDialogflowCxV3beta1ExportAgentResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (agentContent != null) 'agentContent': agentContent!,
         if (agentUri != null) 'agentUri': agentUri!,
+      };
+}
+
+/// The response message for Flows.ExportFlow.
+class GoogleCloudDialogflowCxV3beta1ExportFlowResponse {
+  /// Uncompressed raw byte content for flow.
+  core.String? flowContent;
+  core.List<core.int> get flowContentAsBytes =>
+      convert.base64.decode(flowContent!);
+
+  set flowContentAsBytes(core.List<core.int> _bytes) {
+    flowContent =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// The URI to a file containing the exported flow.
+  ///
+  /// This field is populated only if `flow_uri` is specified in
+  /// ExportFlowRequest.
+  core.String? flowUri;
+
+  GoogleCloudDialogflowCxV3beta1ExportFlowResponse();
+
+  GoogleCloudDialogflowCxV3beta1ExportFlowResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('flowContent')) {
+      flowContent = _json['flowContent'] as core.String;
+    }
+    if (_json.containsKey('flowUri')) {
+      flowUri = _json['flowUri'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (flowContent != null) 'flowContent': flowContent!,
+        if (flowUri != null) 'flowUri': flowUri!,
       };
 }
 
@@ -12769,6 +13272,26 @@ class GoogleCloudDialogflowCxV3beta1ImportDocumentsResponse {
       };
 }
 
+/// The response message for Flows.ImportFlow.
+class GoogleCloudDialogflowCxV3beta1ImportFlowResponse {
+  /// The unique identifier of the new flow.
+  ///
+  /// Format: `projects//locations//agents//flows/`.
+  core.String? flow;
+
+  GoogleCloudDialogflowCxV3beta1ImportFlowResponse();
+
+  GoogleCloudDialogflowCxV3beta1ImportFlowResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('flow')) {
+      flow = _json['flow'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (flow != null) 'flow': flow!,
+      };
+}
+
 /// Metadata returned for the TestCases.ImportTestCases long running operation.
 class GoogleCloudDialogflowCxV3beta1ImportTestCasesMetadata {
   /// Errors for failed test cases.
@@ -12981,8 +13504,6 @@ class GoogleCloudDialogflowCxV3beta1Intent {
   /// scope, content, result etc.
   ///
   /// Maximum character limit: 140 characters.
-  ///
-  /// Optional.
   core.String? description;
 
   /// The human-readable name of the intent, unique within the agent.
@@ -13009,8 +13530,6 @@ class GoogleCloudDialogflowCxV3beta1Intent {
   /// include: * sys-head * sys-contextual The above labels do not require
   /// value. "sys-head" means the intent is a head intent. "sys-contextual"
   /// means the intent is a contextual intent.
-  ///
-  /// Optional.
   core.Map<core.String, core.String>? labels;
 
   /// The unique identifier of the intent.
@@ -14491,6 +15010,9 @@ class GoogleCloudDialogflowCxV3beta1UpdateDocumentOperationMetadata {
 }
 
 /// The request message for a webhook call.
+///
+/// The request is sent as a JSON object and the field names will be presented
+/// in camel cases.
 class GoogleCloudDialogflowCxV3beta1WebhookRequest {
   /// Always present.
   ///
@@ -14505,6 +15027,9 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequest {
 
   /// Information about the last matched intent.
   GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo? intentInfo;
+
+  /// The language code specified in the original request.
+  core.String? languageCode;
 
   /// The list of rich message responses to present to the user.
   ///
@@ -14531,6 +15056,24 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequest {
   /// Information about session status.
   GoogleCloudDialogflowCxV3beta1SessionInfo? sessionInfo;
 
+  /// If natural language text was provided as input, this field will contain a
+  /// copy of the text.
+  core.String? text;
+
+  /// If natural language speech audio was provided as input, this field will
+  /// contain the transcript for the audio.
+  core.String? transcript;
+
+  /// If an event was provided as input, this field will contain the name of the
+  /// event.
+  core.String? triggerEvent;
+
+  /// If an intent was provided as input, this field will contain a copy of the
+  /// intent identifier.
+  ///
+  /// Format: `projects//locations//agents//intents/`.
+  core.String? triggerIntent;
+
   GoogleCloudDialogflowCxV3beta1WebhookRequest();
 
   GoogleCloudDialogflowCxV3beta1WebhookRequest.fromJson(core.Map _json) {
@@ -14546,6 +15089,9 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequest {
       intentInfo =
           GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo.fromJson(
               _json['intentInfo'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'] as core.String;
     }
     if (_json.containsKey('messages')) {
       messages = (_json['messages'] as core.List)
@@ -14576,6 +15122,18 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequest {
       sessionInfo = GoogleCloudDialogflowCxV3beta1SessionInfo.fromJson(
           _json['sessionInfo'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('text')) {
+      text = _json['text'] as core.String;
+    }
+    if (_json.containsKey('transcript')) {
+      transcript = _json['transcript'] as core.String;
+    }
+    if (_json.containsKey('triggerEvent')) {
+      triggerEvent = _json['triggerEvent'] as core.String;
+    }
+    if (_json.containsKey('triggerIntent')) {
+      triggerIntent = _json['triggerIntent'] as core.String;
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -14584,6 +15142,7 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequest {
         if (fulfillmentInfo != null)
           'fulfillmentInfo': fulfillmentInfo!.toJson(),
         if (intentInfo != null) 'intentInfo': intentInfo!.toJson(),
+        if (languageCode != null) 'languageCode': languageCode!,
         if (messages != null)
           'messages': messages!.map((value) => value.toJson()).toList(),
         if (pageInfo != null) 'pageInfo': pageInfo!.toJson(),
@@ -14591,6 +15150,10 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequest {
         if (sentimentAnalysisResult != null)
           'sentimentAnalysisResult': sentimentAnalysisResult!.toJson(),
         if (sessionInfo != null) 'sessionInfo': sessionInfo!.toJson(),
+        if (text != null) 'text': text!,
+        if (transcript != null) 'transcript': transcript!,
+        if (triggerEvent != null) 'triggerEvent': triggerEvent!,
+        if (triggerIntent != null) 'triggerIntent': triggerIntent!,
       };
 }
 
@@ -14902,6 +15465,72 @@ class GoogleCloudDialogflowV2AnnotatedMessagePart {
         if (entityType != null) 'entityType': entityType!,
         if (formattedValue != null) 'formattedValue': formattedValue!,
         if (text != null) 'text': text!,
+      };
+}
+
+/// Represents article answer.
+class GoogleCloudDialogflowV2ArticleAnswer {
+  /// The name of answer record, in the format of
+  /// "projects//locations//answerRecords/"
+  core.String? answerRecord;
+
+  /// Article match confidence.
+  ///
+  /// The system's confidence score that this article is a good match for this
+  /// conversation, as a value from 0.0 (completely uncertain) to 1.0
+  /// (completely certain).
+  core.double? confidence;
+
+  /// A map that contains metadata about the answer and the document from which
+  /// it originates.
+  core.Map<core.String, core.String>? metadata;
+
+  /// Article snippets.
+  core.List<core.String>? snippets;
+
+  /// The article title.
+  core.String? title;
+
+  /// The article URI.
+  core.String? uri;
+
+  GoogleCloudDialogflowV2ArticleAnswer();
+
+  GoogleCloudDialogflowV2ArticleAnswer.fromJson(core.Map _json) {
+    if (_json.containsKey('answerRecord')) {
+      answerRecord = _json['answerRecord'] as core.String;
+    }
+    if (_json.containsKey('confidence')) {
+      confidence = (_json['confidence'] as core.num).toDouble();
+    }
+    if (_json.containsKey('metadata')) {
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
+    }
+    if (_json.containsKey('snippets')) {
+      snippets = (_json['snippets'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('title')) {
+      title = _json['title'] as core.String;
+    }
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (answerRecord != null) 'answerRecord': answerRecord!,
+        if (confidence != null) 'confidence': confidence!,
+        if (metadata != null) 'metadata': metadata!,
+        if (snippets != null) 'snippets': snippets!,
+        if (title != null) 'title': title!,
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -15337,6 +15966,114 @@ class GoogleCloudDialogflowV2ExportAgentResponse {
       };
 }
 
+/// Represents answer from "frequently asked questions".
+class GoogleCloudDialogflowV2FaqAnswer {
+  /// The piece of text from the `source` knowledge base document.
+  core.String? answer;
+
+  /// The name of answer record, in the format of
+  /// "projects//locations//answerRecords/"
+  core.String? answerRecord;
+
+  /// The system's confidence score that this Knowledge answer is a good match
+  /// for this conversational query, range from 0.0 (completely uncertain) to
+  /// 1.0 (completely certain).
+  core.double? confidence;
+
+  /// A map that contains metadata about the answer and the document from which
+  /// it originates.
+  core.Map<core.String, core.String>? metadata;
+
+  /// The corresponding FAQ question.
+  core.String? question;
+
+  /// Indicates which Knowledge Document this answer was extracted from.
+  ///
+  /// Format: `projects//locations//agent/knowledgeBases//documents/`.
+  core.String? source;
+
+  GoogleCloudDialogflowV2FaqAnswer();
+
+  GoogleCloudDialogflowV2FaqAnswer.fromJson(core.Map _json) {
+    if (_json.containsKey('answer')) {
+      answer = _json['answer'] as core.String;
+    }
+    if (_json.containsKey('answerRecord')) {
+      answerRecord = _json['answerRecord'] as core.String;
+    }
+    if (_json.containsKey('confidence')) {
+      confidence = (_json['confidence'] as core.num).toDouble();
+    }
+    if (_json.containsKey('metadata')) {
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
+    }
+    if (_json.containsKey('question')) {
+      question = _json['question'] as core.String;
+    }
+    if (_json.containsKey('source')) {
+      source = _json['source'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (answer != null) 'answer': answer!,
+        if (answerRecord != null) 'answerRecord': answerRecord!,
+        if (confidence != null) 'confidence': confidence!,
+        if (metadata != null) 'metadata': metadata!,
+        if (question != null) 'question': question!,
+        if (source != null) 'source': source!,
+      };
+}
+
+/// Represents a notification sent to Cloud Pub/Sub subscribers for human agent
+/// assistant events in a specific conversation.
+class GoogleCloudDialogflowV2HumanAgentAssistantEvent {
+  /// The conversation this notification refers to.
+  ///
+  /// Format: `projects//conversations/`.
+  core.String? conversation;
+
+  /// The participant that the suggestion is compiled for.
+  ///
+  /// Format: `projects//conversations//participants/`. It will not be set in
+  /// legacy workflow.
+  core.String? participant;
+
+  /// The suggestion results payload that this notification refers to.
+  core.List<GoogleCloudDialogflowV2SuggestionResult>? suggestionResults;
+
+  GoogleCloudDialogflowV2HumanAgentAssistantEvent();
+
+  GoogleCloudDialogflowV2HumanAgentAssistantEvent.fromJson(core.Map _json) {
+    if (_json.containsKey('conversation')) {
+      conversation = _json['conversation'] as core.String;
+    }
+    if (_json.containsKey('participant')) {
+      participant = _json['participant'] as core.String;
+    }
+    if (_json.containsKey('suggestionResults')) {
+      suggestionResults = (_json['suggestionResults'] as core.List)
+          .map<GoogleCloudDialogflowV2SuggestionResult>((value) =>
+              GoogleCloudDialogflowV2SuggestionResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conversation != null) 'conversation': conversation!,
+        if (participant != null) 'participant': participant!,
+        if (suggestionResults != null)
+          'suggestionResults':
+              suggestionResults!.map((value) => value.toJson()).toList(),
+      };
+}
+
 /// An intent categorizes an end-user's intention for one conversation turn.
 ///
 /// For each agent, you define many intents, where your combined intents can
@@ -15363,6 +16100,15 @@ class GoogleCloudDialogflowV2Intent {
   ///
   /// Required.
   core.String? displayName;
+
+  /// Indicates that this intent ends an interaction.
+  ///
+  /// Some integrations (e.g., Actions on Google or Dialogflow phone gateway)
+  /// use this information to close interaction with an end user. Default is
+  /// false.
+  ///
+  /// Optional.
+  core.bool? endInteraction;
 
   /// The collection of event names that trigger the intent.
   ///
@@ -15391,6 +16137,15 @@ class GoogleCloudDialogflowV2Intent {
   ///
   /// Optional.
   core.bool? isFallback;
+
+  /// Indicates that a live agent should be brought in to handle the interaction
+  /// with the user.
+  ///
+  /// In most cases, when you set this flag to true, you would also want to set
+  /// end_interaction to true as well. Default is false.
+  ///
+  /// Optional.
+  core.bool? liveAgentHandoff;
 
   /// The collection of rich messages corresponding to the `Response` field in
   /// the Dialogflow console.
@@ -15496,6 +16251,9 @@ class GoogleCloudDialogflowV2Intent {
     if (_json.containsKey('displayName')) {
       displayName = _json['displayName'] as core.String;
     }
+    if (_json.containsKey('endInteraction')) {
+      endInteraction = _json['endInteraction'] as core.bool;
+    }
     if (_json.containsKey('events')) {
       events = (_json['events'] as core.List)
           .map<core.String>((value) => value as core.String)
@@ -15515,6 +16273,9 @@ class GoogleCloudDialogflowV2Intent {
     }
     if (_json.containsKey('isFallback')) {
       isFallback = _json['isFallback'] as core.bool;
+    }
+    if (_json.containsKey('liveAgentHandoff')) {
+      liveAgentHandoff = _json['liveAgentHandoff'] as core.bool;
     }
     if (_json.containsKey('messages')) {
       messages = (_json['messages'] as core.List)
@@ -15573,12 +16334,14 @@ class GoogleCloudDialogflowV2Intent {
         if (defaultResponsePlatforms != null)
           'defaultResponsePlatforms': defaultResponsePlatforms!,
         if (displayName != null) 'displayName': displayName!,
+        if (endInteraction != null) 'endInteraction': endInteraction!,
         if (events != null) 'events': events!,
         if (followupIntentInfo != null)
           'followupIntentInfo':
               followupIntentInfo!.map((value) => value.toJson()).toList(),
         if (inputContextNames != null) 'inputContextNames': inputContextNames!,
         if (isFallback != null) 'isFallback': isFallback!,
+        if (liveAgentHandoff != null) 'liveAgentHandoff': liveAgentHandoff!,
         if (messages != null)
           'messages': messages!.map((value) => value.toJson()).toList(),
         if (mlDisabled != null) 'mlDisabled': mlDisabled!,
@@ -17093,6 +17856,31 @@ class GoogleCloudDialogflowV2IntentTrainingPhrasePart {
       };
 }
 
+/// Metadata in google::longrunning::Operation for Knowledge operations.
+class GoogleCloudDialogflowV2KnowledgeOperationMetadata {
+  /// The current state of this operation.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State unspecified.
+  /// - "PENDING" : The operation has been created.
+  /// - "RUNNING" : The operation is currently running.
+  /// - "DONE" : The operation is done, either cancelled or completed.
+  core.String? state;
+
+  GoogleCloudDialogflowV2KnowledgeOperationMetadata();
+
+  GoogleCloudDialogflowV2KnowledgeOperationMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey('state')) {
+      state = _json['state'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (state != null) 'state': state!,
+      };
+}
+
 /// Represents a message posted into a conversation.
 class GoogleCloudDialogflowV2Message {
   /// The message content.
@@ -17621,6 +18409,138 @@ class GoogleCloudDialogflowV2SessionEntityType {
       };
 }
 
+/// The response message for Participants.SuggestArticles.
+class GoogleCloudDialogflowV2SuggestArticlesResponse {
+  /// Articles ordered by score in descending order.
+  core.List<GoogleCloudDialogflowV2ArticleAnswer>? articleAnswers;
+
+  /// Number of messages prior to and including latest_message to compile the
+  /// suggestion.
+  ///
+  /// It may be smaller than the SuggestArticlesRequest.context_size field in
+  /// the request if there aren't that many messages in the conversation.
+  core.int? contextSize;
+
+  /// The name of the latest conversation message used to compile suggestion
+  /// for.
+  ///
+  /// Format: `projects//locations//conversations//messages/`.
+  core.String? latestMessage;
+
+  GoogleCloudDialogflowV2SuggestArticlesResponse();
+
+  GoogleCloudDialogflowV2SuggestArticlesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('articleAnswers')) {
+      articleAnswers = (_json['articleAnswers'] as core.List)
+          .map<GoogleCloudDialogflowV2ArticleAnswer>((value) =>
+              GoogleCloudDialogflowV2ArticleAnswer.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('contextSize')) {
+      contextSize = _json['contextSize'] as core.int;
+    }
+    if (_json.containsKey('latestMessage')) {
+      latestMessage = _json['latestMessage'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (articleAnswers != null)
+          'articleAnswers':
+              articleAnswers!.map((value) => value.toJson()).toList(),
+        if (contextSize != null) 'contextSize': contextSize!,
+        if (latestMessage != null) 'latestMessage': latestMessage!,
+      };
+}
+
+/// The request message for Participants.SuggestFaqAnswers.
+class GoogleCloudDialogflowV2SuggestFaqAnswersResponse {
+  /// Number of messages prior to and including latest_message to compile the
+  /// suggestion.
+  ///
+  /// It may be smaller than the SuggestFaqAnswersRequest.context_size field in
+  /// the request if there aren't that many messages in the conversation.
+  core.int? contextSize;
+
+  /// Answers extracted from FAQ documents.
+  core.List<GoogleCloudDialogflowV2FaqAnswer>? faqAnswers;
+
+  /// The name of the latest conversation message used to compile suggestion
+  /// for.
+  ///
+  /// Format: `projects//locations//conversations//messages/`.
+  core.String? latestMessage;
+
+  GoogleCloudDialogflowV2SuggestFaqAnswersResponse();
+
+  GoogleCloudDialogflowV2SuggestFaqAnswersResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('contextSize')) {
+      contextSize = _json['contextSize'] as core.int;
+    }
+    if (_json.containsKey('faqAnswers')) {
+      faqAnswers = (_json['faqAnswers'] as core.List)
+          .map<GoogleCloudDialogflowV2FaqAnswer>((value) =>
+              GoogleCloudDialogflowV2FaqAnswer.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('latestMessage')) {
+      latestMessage = _json['latestMessage'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contextSize != null) 'contextSize': contextSize!,
+        if (faqAnswers != null)
+          'faqAnswers': faqAnswers!.map((value) => value.toJson()).toList(),
+        if (latestMessage != null) 'latestMessage': latestMessage!,
+      };
+}
+
+/// One response of different type of suggestion response which is used in the
+/// response of Participants.AnalyzeContent and Participants.AnalyzeContent, as
+/// well as HumanAgentAssistantEvent.
+class GoogleCloudDialogflowV2SuggestionResult {
+  /// Error status if the request failed.
+  GoogleRpcStatus? error;
+
+  /// SuggestArticlesResponse if request is for ARTICLE_SUGGESTION.
+  GoogleCloudDialogflowV2SuggestArticlesResponse? suggestArticlesResponse;
+
+  /// SuggestFaqAnswersResponse if request is for FAQ_ANSWER.
+  GoogleCloudDialogflowV2SuggestFaqAnswersResponse? suggestFaqAnswersResponse;
+
+  GoogleCloudDialogflowV2SuggestionResult();
+
+  GoogleCloudDialogflowV2SuggestionResult.fromJson(core.Map _json) {
+    if (_json.containsKey('error')) {
+      error = GoogleRpcStatus.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('suggestArticlesResponse')) {
+      suggestArticlesResponse =
+          GoogleCloudDialogflowV2SuggestArticlesResponse.fromJson(
+              _json['suggestArticlesResponse']
+                  as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('suggestFaqAnswersResponse')) {
+      suggestFaqAnswersResponse =
+          GoogleCloudDialogflowV2SuggestFaqAnswersResponse.fromJson(
+              _json['suggestFaqAnswersResponse']
+                  as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (error != null) 'error': error!.toJson(),
+        if (suggestArticlesResponse != null)
+          'suggestArticlesResponse': suggestArticlesResponse!.toJson(),
+        if (suggestFaqAnswersResponse != null)
+          'suggestFaqAnswersResponse': suggestFaqAnswersResponse!.toJson(),
+      };
+}
+
 /// The request message for a webhook call.
 class GoogleCloudDialogflowV2WebhookRequest {
   /// The contents of the original request that was passed to
@@ -17819,6 +18739,117 @@ class GoogleCloudDialogflowV2WebhookResponse {
       };
 }
 
+/// Represents a part of a message possibly annotated with an entity.
+///
+/// The part can be an entity or purely a part of the message between two
+/// entities or message start/end.
+class GoogleCloudDialogflowV2beta1AnnotatedMessagePart {
+  /// The
+  /// [Dialogflow system entity type](https://cloud.google.com/dialogflow/docs/reference/system-entities)
+  /// of this message part.
+  ///
+  /// If this is empty, Dialogflow could not annotate the phrase part with a
+  /// system entity.
+  ///
+  /// Optional.
+  core.String? entityType;
+
+  /// The
+  /// [Dialogflow system entity formatted value ](https://cloud.google.com/dialogflow/docs/reference/system-entities)
+  /// of this message part.
+  ///
+  /// For example for a system entity of type `@sys.unit-currency`, this may
+  /// contain: { "amount": 5, "currency": "USD" }
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object? formattedValue;
+
+  /// A part of a message possibly annotated with an entity.
+  ///
+  /// Required.
+  core.String? text;
+
+  GoogleCloudDialogflowV2beta1AnnotatedMessagePart();
+
+  GoogleCloudDialogflowV2beta1AnnotatedMessagePart.fromJson(core.Map _json) {
+    if (_json.containsKey('entityType')) {
+      entityType = _json['entityType'] as core.String;
+    }
+    if (_json.containsKey('formattedValue')) {
+      formattedValue = _json['formattedValue'] as core.Object;
+    }
+    if (_json.containsKey('text')) {
+      text = _json['text'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (entityType != null) 'entityType': entityType!,
+        if (formattedValue != null) 'formattedValue': formattedValue!,
+        if (text != null) 'text': text!,
+      };
+}
+
+/// Represents article answer.
+class GoogleCloudDialogflowV2beta1ArticleAnswer {
+  /// The name of answer record, in the format of
+  /// "projects//locations//answerRecords/"
+  core.String? answerRecord;
+
+  /// A map that contains metadata about the answer and the document from which
+  /// it originates.
+  core.Map<core.String, core.String>? metadata;
+
+  /// Article snippets.
+  ///
+  /// Output only.
+  core.List<core.String>? snippets;
+
+  /// The article title.
+  core.String? title;
+
+  /// The article URI.
+  core.String? uri;
+
+  GoogleCloudDialogflowV2beta1ArticleAnswer();
+
+  GoogleCloudDialogflowV2beta1ArticleAnswer.fromJson(core.Map _json) {
+    if (_json.containsKey('answerRecord')) {
+      answerRecord = _json['answerRecord'] as core.String;
+    }
+    if (_json.containsKey('metadata')) {
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
+    }
+    if (_json.containsKey('snippets')) {
+      snippets = (_json['snippets'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('title')) {
+      title = _json['title'] as core.String;
+    }
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (answerRecord != null) 'answerRecord': answerRecord!,
+        if (metadata != null) 'metadata': metadata!,
+        if (snippets != null) 'snippets': snippets!,
+        if (title != null) 'title': title!,
+        if (uri != null) 'uri': uri!,
+      };
+}
+
 /// The response message for EntityTypes.BatchUpdateEntityTypes.
 class GoogleCloudDialogflowV2beta1BatchUpdateEntityTypesResponse {
   /// The collection of updated or created entity types.
@@ -17949,6 +18980,76 @@ class GoogleCloudDialogflowV2beta1Context {
         if (lifespanCount != null) 'lifespanCount': lifespanCount!,
         if (name != null) 'name': name!,
         if (parameters != null) 'parameters': parameters!,
+      };
+}
+
+/// Represents a notification sent to Pub/Sub subscribers for conversation
+/// lifecycle events.
+class GoogleCloudDialogflowV2beta1ConversationEvent {
+  /// The unique identifier of the conversation this notification refers to.
+  ///
+  /// Format: `projects//conversations/`.
+  ///
+  /// Required.
+  core.String? conversation;
+
+  /// More detailed information about an error.
+  ///
+  /// Only set for type UNRECOVERABLE_ERROR_IN_PHONE_CALL.
+  ///
+  /// Optional.
+  GoogleRpcStatus? errorStatus;
+
+  /// Payload of NEW_MESSAGE event.
+  GoogleCloudDialogflowV2beta1Message? newMessagePayload;
+
+  /// The type of the event that this notification refers to.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Type not set.
+  /// - "CONVERSATION_STARTED" : A new conversation has been opened. This is
+  /// fired when a telephone call is answered, or a conversation is created via
+  /// the API.
+  /// - "CONVERSATION_FINISHED" : An existing conversation has closed. This is
+  /// fired when a telephone call is terminated, or a conversation is closed via
+  /// the API.
+  /// - "NEW_MESSAGE" : An existing conversation has received a new message,
+  /// either from API or telephony. It is configured in
+  /// ConversationProfile.new_message_event_notification_config
+  /// - "UNRECOVERABLE_ERROR" : Unrecoverable error during a telephone call. In
+  /// general non-recoverable errors only occur if something was misconfigured
+  /// in the ConversationProfile corresponding to the call. After a
+  /// non-recoverable error, Dialogflow may stop responding. We don't fire this
+  /// event: * in an API call because we can directly return the error, or, *
+  /// when we can recover from an error.
+  core.String? type;
+
+  GoogleCloudDialogflowV2beta1ConversationEvent();
+
+  GoogleCloudDialogflowV2beta1ConversationEvent.fromJson(core.Map _json) {
+    if (_json.containsKey('conversation')) {
+      conversation = _json['conversation'] as core.String;
+    }
+    if (_json.containsKey('errorStatus')) {
+      errorStatus = GoogleRpcStatus.fromJson(
+          _json['errorStatus'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('newMessagePayload')) {
+      newMessagePayload = GoogleCloudDialogflowV2beta1Message.fromJson(
+          _json['newMessagePayload'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('type')) {
+      type = _json['type'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conversation != null) 'conversation': conversation!,
+        if (errorStatus != null) 'errorStatus': errorStatus!.toJson(),
+        if (newMessagePayload != null)
+          'newMessagePayload': newMessagePayload!.toJson(),
+        if (type != null) 'type': type!,
       };
 }
 
@@ -18188,6 +19289,144 @@ class GoogleCloudDialogflowV2beta1ExportAgentResponse {
       };
 }
 
+/// Represents answer from "frequently asked questions".
+class GoogleCloudDialogflowV2beta1FaqAnswer {
+  /// The piece of text from the `source` knowledge base document.
+  core.String? answer;
+
+  /// The name of answer record, in the format of
+  /// "projects//locations//answerRecords/"
+  core.String? answerRecord;
+
+  /// The system's confidence score that this Knowledge answer is a good match
+  /// for this conversational query, range from 0.0 (completely uncertain) to
+  /// 1.0 (completely certain).
+  core.double? confidence;
+
+  /// A map that contains metadata about the answer and the document from which
+  /// it originates.
+  core.Map<core.String, core.String>? metadata;
+
+  /// The corresponding FAQ question.
+  core.String? question;
+
+  /// Indicates which Knowledge Document this answer was extracted from.
+  ///
+  /// Format: `projects//locations//agent/knowledgeBases//documents/`.
+  core.String? source;
+
+  GoogleCloudDialogflowV2beta1FaqAnswer();
+
+  GoogleCloudDialogflowV2beta1FaqAnswer.fromJson(core.Map _json) {
+    if (_json.containsKey('answer')) {
+      answer = _json['answer'] as core.String;
+    }
+    if (_json.containsKey('answerRecord')) {
+      answerRecord = _json['answerRecord'] as core.String;
+    }
+    if (_json.containsKey('confidence')) {
+      confidence = (_json['confidence'] as core.num).toDouble();
+    }
+    if (_json.containsKey('metadata')) {
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
+    }
+    if (_json.containsKey('question')) {
+      question = _json['question'] as core.String;
+    }
+    if (_json.containsKey('source')) {
+      source = _json['source'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (answer != null) 'answer': answer!,
+        if (answerRecord != null) 'answerRecord': answerRecord!,
+        if (confidence != null) 'confidence': confidence!,
+        if (metadata != null) 'metadata': metadata!,
+        if (question != null) 'question': question!,
+        if (source != null) 'source': source!,
+      };
+}
+
+/// Represents a notification sent to Pub/Sub subscribers for agent assistant
+/// events in a specific conversation.
+///
+/// Output only.
+class GoogleCloudDialogflowV2beta1HumanAgentAssistantEvent {
+  /// The conversation this notification refers to.
+  ///
+  /// Format: `projects//conversations/`.
+  core.String? conversation;
+
+  /// The participant that the suggestion is compiled for.
+  ///
+  /// And This field is used to call Participants.ListSuggestions API. Format:
+  /// `projects//conversations//participants/`. It will not be set in legacy
+  /// workflow. HumanAgentAssistantConfig.name for more information.
+  core.String? participant;
+
+  /// The suggestion results payload that this notification refers to.
+  ///
+  /// It will only be set when
+  /// HumanAgentAssistantConfig.SuggestionConfig.group_suggestion_responses sets
+  /// to true.
+  core.List<GoogleCloudDialogflowV2beta1SuggestionResult>? suggestionResults;
+
+  GoogleCloudDialogflowV2beta1HumanAgentAssistantEvent();
+
+  GoogleCloudDialogflowV2beta1HumanAgentAssistantEvent.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('conversation')) {
+      conversation = _json['conversation'] as core.String;
+    }
+    if (_json.containsKey('participant')) {
+      participant = _json['participant'] as core.String;
+    }
+    if (_json.containsKey('suggestionResults')) {
+      suggestionResults = (_json['suggestionResults'] as core.List)
+          .map<GoogleCloudDialogflowV2beta1SuggestionResult>((value) =>
+              GoogleCloudDialogflowV2beta1SuggestionResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conversation != null) 'conversation': conversation!,
+        if (participant != null) 'participant': participant!,
+        if (suggestionResults != null)
+          'suggestionResults':
+              suggestionResults!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// Response message for Documents.ImportDocuments.
+class GoogleCloudDialogflowV2beta1ImportDocumentsResponse {
+  /// Includes details about skipped documents or any other warnings.
+  core.List<GoogleRpcStatus>? warnings;
+
+  GoogleCloudDialogflowV2beta1ImportDocumentsResponse();
+
+  GoogleCloudDialogflowV2beta1ImportDocumentsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('warnings')) {
+      warnings = (_json['warnings'] as core.List)
+          .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (warnings != null)
+          'warnings': warnings!.map((value) => value.toJson()).toList(),
+      };
+}
+
 /// An intent categorizes an end-user's intention for one conversation turn.
 ///
 /// For each agent, you define many intents, where your combined intents can
@@ -18254,6 +19493,15 @@ class GoogleCloudDialogflowV2beta1Intent {
   ///
   /// Optional.
   core.bool? isFallback;
+
+  /// Indicates that a live agent should be brought in to handle the interaction
+  /// with the user.
+  ///
+  /// In most cases, when you set this flag to true, you would also want to set
+  /// end_interaction to true as well. Default is false.
+  ///
+  /// Optional.
+  core.bool? liveAgentHandoff;
 
   /// The collection of rich messages corresponding to the `Response` field in
   /// the Dialogflow console.
@@ -18399,6 +19647,9 @@ class GoogleCloudDialogflowV2beta1Intent {
     if (_json.containsKey('isFallback')) {
       isFallback = _json['isFallback'] as core.bool;
     }
+    if (_json.containsKey('liveAgentHandoff')) {
+      liveAgentHandoff = _json['liveAgentHandoff'] as core.bool;
+    }
     if (_json.containsKey('messages')) {
       messages = (_json['messages'] as core.List)
           .map<GoogleCloudDialogflowV2beta1IntentMessage>((value) =>
@@ -18466,6 +19717,7 @@ class GoogleCloudDialogflowV2beta1Intent {
               followupIntentInfo!.map((value) => value.toJson()).toList(),
         if (inputContextNames != null) 'inputContextNames': inputContextNames!,
         if (isFallback != null) 'isFallback': isFallback!,
+        if (liveAgentHandoff != null) 'liveAgentHandoff': liveAgentHandoff!,
         if (messages != null)
           'messages': messages!.map((value) => value.toJson()).toList(),
         if (mlDisabled != null) 'mlDisabled': mlDisabled!,
@@ -20724,6 +21976,156 @@ class GoogleCloudDialogflowV2beta1KnowledgeOperationMetadata {
       };
 }
 
+/// Represents a message posted into a conversation.
+class GoogleCloudDialogflowV2beta1Message {
+  /// The message content.
+  ///
+  /// Required.
+  core.String? content;
+
+  /// The time when the message was created in Contact Center AI.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The message language.
+  ///
+  /// This should be a \[BCP-47\](https://www.rfc-editor.org/rfc/bcp/bcp47.txt)
+  /// language tag. Example: "en-US".
+  ///
+  /// Optional.
+  core.String? languageCode;
+
+  /// The annotation for the message.
+  ///
+  /// Output only.
+  GoogleCloudDialogflowV2beta1MessageAnnotation? messageAnnotation;
+
+  /// The unique identifier of the message.
+  ///
+  /// Format: `projects//locations//conversations//messages/`.
+  ///
+  /// Optional.
+  core.String? name;
+
+  /// The participant that sends this message.
+  ///
+  /// Output only.
+  core.String? participant;
+
+  /// The role of the participant.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ROLE_UNSPECIFIED" : Participant role not set.
+  /// - "HUMAN_AGENT" : Participant is a human agent.
+  /// - "AUTOMATED_AGENT" : Participant is an automated agent, such as a
+  /// Dialogflow agent.
+  /// - "END_USER" : Participant is an end user that has called or chatted with
+  /// Dialogflow services.
+  core.String? participantRole;
+
+  /// The time when the message was sent.
+  ///
+  /// Optional.
+  core.String? sendTime;
+
+  /// The sentiment analysis result for the message.
+  ///
+  /// Output only.
+  GoogleCloudDialogflowV2beta1SentimentAnalysisResult? sentimentAnalysis;
+
+  GoogleCloudDialogflowV2beta1Message();
+
+  GoogleCloudDialogflowV2beta1Message.fromJson(core.Map _json) {
+    if (_json.containsKey('content')) {
+      content = _json['content'] as core.String;
+    }
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'] as core.String;
+    }
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'] as core.String;
+    }
+    if (_json.containsKey('messageAnnotation')) {
+      messageAnnotation =
+          GoogleCloudDialogflowV2beta1MessageAnnotation.fromJson(
+              _json['messageAnnotation']
+                  as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('participant')) {
+      participant = _json['participant'] as core.String;
+    }
+    if (_json.containsKey('participantRole')) {
+      participantRole = _json['participantRole'] as core.String;
+    }
+    if (_json.containsKey('sendTime')) {
+      sendTime = _json['sendTime'] as core.String;
+    }
+    if (_json.containsKey('sentimentAnalysis')) {
+      sentimentAnalysis =
+          GoogleCloudDialogflowV2beta1SentimentAnalysisResult.fromJson(
+              _json['sentimentAnalysis']
+                  as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (content != null) 'content': content!,
+        if (createTime != null) 'createTime': createTime!,
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (messageAnnotation != null)
+          'messageAnnotation': messageAnnotation!.toJson(),
+        if (name != null) 'name': name!,
+        if (participant != null) 'participant': participant!,
+        if (participantRole != null) 'participantRole': participantRole!,
+        if (sendTime != null) 'sendTime': sendTime!,
+        if (sentimentAnalysis != null)
+          'sentimentAnalysis': sentimentAnalysis!.toJson(),
+      };
+}
+
+/// Represents the result of annotation for the message.
+class GoogleCloudDialogflowV2beta1MessageAnnotation {
+  /// Indicates whether the text message contains entities.
+  ///
+  /// Required.
+  core.bool? containEntities;
+
+  /// The collection of annotated message parts ordered by their position in the
+  /// message.
+  ///
+  /// You can recover the annotated message by concatenating
+  /// \[AnnotatedMessagePart.text\].
+  ///
+  /// Optional.
+  core.List<GoogleCloudDialogflowV2beta1AnnotatedMessagePart>? parts;
+
+  GoogleCloudDialogflowV2beta1MessageAnnotation();
+
+  GoogleCloudDialogflowV2beta1MessageAnnotation.fromJson(core.Map _json) {
+    if (_json.containsKey('containEntities')) {
+      containEntities = _json['containEntities'] as core.bool;
+    }
+    if (_json.containsKey('parts')) {
+      parts = (_json['parts'] as core.List)
+          .map<GoogleCloudDialogflowV2beta1AnnotatedMessagePart>((value) =>
+              GoogleCloudDialogflowV2beta1AnnotatedMessagePart.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (containEntities != null) 'containEntities': containEntities!,
+        if (parts != null)
+          'parts': parts!.map((value) => value.toJson()).toList(),
+      };
+}
+
 /// Represents the contents of the original request that was passed to the
 /// `[Streaming]DetectIntent` call.
 class GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest {
@@ -21146,6 +22548,244 @@ class GoogleCloudDialogflowV2beta1SessionEntityType {
       };
 }
 
+/// Represents a smart reply answer.
+class GoogleCloudDialogflowV2beta1SmartReplyAnswer {
+  /// The name of answer record, in the format of
+  /// "projects//locations//answerRecords/"
+  core.String? answerRecord;
+
+  /// Smart reply confidence.
+  ///
+  /// The system's confidence score that this reply is a good match for this
+  /// conversation, as a value from 0.0 (completely uncertain) to 1.0
+  /// (completely certain).
+  core.double? confidence;
+
+  /// The content of the reply.
+  core.String? reply;
+
+  GoogleCloudDialogflowV2beta1SmartReplyAnswer();
+
+  GoogleCloudDialogflowV2beta1SmartReplyAnswer.fromJson(core.Map _json) {
+    if (_json.containsKey('answerRecord')) {
+      answerRecord = _json['answerRecord'] as core.String;
+    }
+    if (_json.containsKey('confidence')) {
+      confidence = (_json['confidence'] as core.num).toDouble();
+    }
+    if (_json.containsKey('reply')) {
+      reply = _json['reply'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (answerRecord != null) 'answerRecord': answerRecord!,
+        if (confidence != null) 'confidence': confidence!,
+        if (reply != null) 'reply': reply!,
+      };
+}
+
+/// The response message for Participants.SuggestArticles.
+class GoogleCloudDialogflowV2beta1SuggestArticlesResponse {
+  /// Articles ordered by score in descending order.
+  ///
+  /// Output only.
+  core.List<GoogleCloudDialogflowV2beta1ArticleAnswer>? articleAnswers;
+
+  /// Number of messages prior to and including latest_message to compile the
+  /// suggestion.
+  ///
+  /// It may be smaller than the SuggestArticlesResponse.context_size field in
+  /// the request if there aren't that many messages in the conversation.
+  core.int? contextSize;
+
+  /// The name of the latest conversation message used to compile suggestion
+  /// for.
+  ///
+  /// Format: `projects//locations//conversations//messages/`.
+  core.String? latestMessage;
+
+  GoogleCloudDialogflowV2beta1SuggestArticlesResponse();
+
+  GoogleCloudDialogflowV2beta1SuggestArticlesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('articleAnswers')) {
+      articleAnswers = (_json['articleAnswers'] as core.List)
+          .map<GoogleCloudDialogflowV2beta1ArticleAnswer>((value) =>
+              GoogleCloudDialogflowV2beta1ArticleAnswer.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('contextSize')) {
+      contextSize = _json['contextSize'] as core.int;
+    }
+    if (_json.containsKey('latestMessage')) {
+      latestMessage = _json['latestMessage'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (articleAnswers != null)
+          'articleAnswers':
+              articleAnswers!.map((value) => value.toJson()).toList(),
+        if (contextSize != null) 'contextSize': contextSize!,
+        if (latestMessage != null) 'latestMessage': latestMessage!,
+      };
+}
+
+/// The request message for Participants.SuggestFaqAnswers.
+class GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse {
+  /// Number of messages prior to and including latest_message to compile the
+  /// suggestion.
+  ///
+  /// It may be smaller than the SuggestFaqAnswersRequest.context_size field in
+  /// the request if there aren't that many messages in the conversation.
+  core.int? contextSize;
+
+  /// Answers extracted from FAQ documents.
+  ///
+  /// Output only.
+  core.List<GoogleCloudDialogflowV2beta1FaqAnswer>? faqAnswers;
+
+  /// The name of the latest conversation message used to compile suggestion
+  /// for.
+  ///
+  /// Format: `projects//locations//conversations//messages/`.
+  core.String? latestMessage;
+
+  GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse();
+
+  GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('contextSize')) {
+      contextSize = _json['contextSize'] as core.int;
+    }
+    if (_json.containsKey('faqAnswers')) {
+      faqAnswers = (_json['faqAnswers'] as core.List)
+          .map<GoogleCloudDialogflowV2beta1FaqAnswer>((value) =>
+              GoogleCloudDialogflowV2beta1FaqAnswer.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('latestMessage')) {
+      latestMessage = _json['latestMessage'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contextSize != null) 'contextSize': contextSize!,
+        if (faqAnswers != null)
+          'faqAnswers': faqAnswers!.map((value) => value.toJson()).toList(),
+        if (latestMessage != null) 'latestMessage': latestMessage!,
+      };
+}
+
+/// The response message for Participants.SuggestSmartReplies.
+class GoogleCloudDialogflowV2beta1SuggestSmartRepliesResponse {
+  /// Number of messages prior to and including latest_message to compile the
+  /// suggestion.
+  ///
+  /// It may be smaller than the SuggestSmartRepliesRequest.context_size field
+  /// in the request if there aren't that many messages in the conversation.
+  core.int? contextSize;
+
+  /// The name of the latest conversation message used to compile suggestion
+  /// for.
+  ///
+  /// Format: `projects//locations//conversations//messages/`.
+  core.String? latestMessage;
+
+  /// Multiple reply options provided by smart reply service.
+  ///
+  /// The order is based on the rank of the model prediction. The maximum number
+  /// of the returned replies is set in SmartReplyConfig.
+  ///
+  /// Output only.
+  core.List<GoogleCloudDialogflowV2beta1SmartReplyAnswer>? smartReplyAnswers;
+
+  GoogleCloudDialogflowV2beta1SuggestSmartRepliesResponse();
+
+  GoogleCloudDialogflowV2beta1SuggestSmartRepliesResponse.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('contextSize')) {
+      contextSize = _json['contextSize'] as core.int;
+    }
+    if (_json.containsKey('latestMessage')) {
+      latestMessage = _json['latestMessage'] as core.String;
+    }
+    if (_json.containsKey('smartReplyAnswers')) {
+      smartReplyAnswers = (_json['smartReplyAnswers'] as core.List)
+          .map<GoogleCloudDialogflowV2beta1SmartReplyAnswer>((value) =>
+              GoogleCloudDialogflowV2beta1SmartReplyAnswer.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contextSize != null) 'contextSize': contextSize!,
+        if (latestMessage != null) 'latestMessage': latestMessage!,
+        if (smartReplyAnswers != null)
+          'smartReplyAnswers':
+              smartReplyAnswers!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// One response of different type of suggestion response which is used in the
+/// response of Participants.AnalyzeContent and Participants.AnalyzeContent, as
+/// well as HumanAgentAssistantEvent.
+class GoogleCloudDialogflowV2beta1SuggestionResult {
+  /// Error status if the request failed.
+  GoogleRpcStatus? error;
+
+  /// SuggestArticlesResponse if request is for ARTICLE_SUGGESTION.
+  GoogleCloudDialogflowV2beta1SuggestArticlesResponse? suggestArticlesResponse;
+
+  /// SuggestFaqAnswersResponse if request is for FAQ_ANSWER.
+  GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse?
+      suggestFaqAnswersResponse;
+
+  /// SuggestSmartRepliesResponse if request is for SMART_REPLY.
+  GoogleCloudDialogflowV2beta1SuggestSmartRepliesResponse?
+      suggestSmartRepliesResponse;
+
+  GoogleCloudDialogflowV2beta1SuggestionResult();
+
+  GoogleCloudDialogflowV2beta1SuggestionResult.fromJson(core.Map _json) {
+    if (_json.containsKey('error')) {
+      error = GoogleRpcStatus.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('suggestArticlesResponse')) {
+      suggestArticlesResponse =
+          GoogleCloudDialogflowV2beta1SuggestArticlesResponse.fromJson(
+              _json['suggestArticlesResponse']
+                  as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('suggestFaqAnswersResponse')) {
+      suggestFaqAnswersResponse =
+          GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse.fromJson(
+              _json['suggestFaqAnswersResponse']
+                  as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('suggestSmartRepliesResponse')) {
+      suggestSmartRepliesResponse =
+          GoogleCloudDialogflowV2beta1SuggestSmartRepliesResponse.fromJson(
+              _json['suggestSmartRepliesResponse']
+                  as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (error != null) 'error': error!.toJson(),
+        if (suggestArticlesResponse != null)
+          'suggestArticlesResponse': suggestArticlesResponse!.toJson(),
+        if (suggestFaqAnswersResponse != null)
+          'suggestFaqAnswersResponse': suggestFaqAnswersResponse!.toJson(),
+        if (suggestSmartRepliesResponse != null)
+          'suggestSmartRepliesResponse': suggestSmartRepliesResponse!.toJson(),
+      };
+}
+
 /// The request message for a webhook call.
 class GoogleCloudDialogflowV2beta1WebhookRequest {
   /// Alternative query results from KnowledgeService.
@@ -21261,6 +22901,13 @@ class GoogleCloudDialogflowV2beta1WebhookResponse {
   /// Optional.
   core.String? fulfillmentText;
 
+  /// Indicates that a live agent should be brought in to handle the interaction
+  /// with the user.
+  ///
+  /// In most cases, when you set this flag to true, you would also want to set
+  /// end_interaction to true as well. Default is false.
+  core.bool? liveAgentHandoff;
+
   /// The collection of output contexts that will overwrite currently active
   /// contexts for the session and reset their lifespans.
   ///
@@ -21326,6 +22973,9 @@ class GoogleCloudDialogflowV2beta1WebhookResponse {
     if (_json.containsKey('fulfillmentText')) {
       fulfillmentText = _json['fulfillmentText'] as core.String;
     }
+    if (_json.containsKey('liveAgentHandoff')) {
+      liveAgentHandoff = _json['liveAgentHandoff'] as core.bool;
+    }
     if (_json.containsKey('outputContexts')) {
       outputContexts = (_json['outputContexts'] as core.List)
           .map<GoogleCloudDialogflowV2beta1Context>((value) =>
@@ -21361,6 +23011,7 @@ class GoogleCloudDialogflowV2beta1WebhookResponse {
           'fulfillmentMessages':
               fulfillmentMessages!.map((value) => value.toJson()).toList(),
         if (fulfillmentText != null) 'fulfillmentText': fulfillmentText!,
+        if (liveAgentHandoff != null) 'liveAgentHandoff': liveAgentHandoff!,
         if (outputContexts != null)
           'outputContexts':
               outputContexts!.map((value) => value.toJson()).toList(),
@@ -21728,8 +23379,8 @@ class GoogleRpcStatus {
 /// An object that represents a latitude/longitude pair.
 ///
 /// This is expressed as a pair of doubles to represent degrees latitude and
-/// degrees longitude. Unless specified otherwise, this must conform to the
-/// WGS84 standard. Values must be within normalized ranges.
+/// degrees longitude. Unless specified otherwise, this object must conform to
+/// the WGS84 standard. Values must be within normalized ranges.
 class GoogleTypeLatLng {
   /// The latitude in degrees.
   ///

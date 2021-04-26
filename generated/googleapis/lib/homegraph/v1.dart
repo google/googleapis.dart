@@ -36,7 +36,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 class HomeGraphServiceApi {
-  /// New Service: https://www.googleapis.com/auth/homegraph
+  /// Private Service: https://www.googleapis.com/auth/homegraph
   static const homegraphScope = 'https://www.googleapis.com/auth/homegraph';
 
   final commons.ApiRequester _requester;
@@ -360,14 +360,6 @@ class Device {
   /// Names given to this device by your smart home Action.
   DeviceNames? name;
 
-  /// See description for "traits".
-  ///
-  /// For Smart Home Entertainment Devices (SHED) devices, some traits can only
-  /// be executed on 3P cloud, e.g. "non_local_traits": \[ { "trait":
-  /// "action.devices.traits.MediaInitiation" }, { "trait":
-  /// "action.devices.traits.Channel" } \] go/shed-per-trait-routing.
-  core.List<NonLocalTrait>? nonLocalTraits;
-
   /// Indicates whether your smart home Action will report notifications to
   /// Google for this device via ReportStateAndNotification.
   ///
@@ -439,12 +431,6 @@ class Device {
       name = DeviceNames.fromJson(
           _json['name'] as core.Map<core.String, core.dynamic>);
     }
-    if (_json.containsKey('nonLocalTraits')) {
-      nonLocalTraits = (_json['nonLocalTraits'] as core.List)
-          .map<NonLocalTrait>((value) => NonLocalTrait.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
     if (_json.containsKey('notificationSupportedByAgent')) {
       notificationSupportedByAgent =
           _json['notificationSupportedByAgent'] as core.bool;
@@ -480,9 +466,6 @@ class Device {
         if (deviceInfo != null) 'deviceInfo': deviceInfo!.toJson(),
         if (id != null) 'id': id!,
         if (name != null) 'name': name!.toJson(),
-        if (nonLocalTraits != null)
-          'nonLocalTraits':
-              nonLocalTraits!.map((value) => value.toJson()).toList(),
         if (notificationSupportedByAgent != null)
           'notificationSupportedByAgent': notificationSupportedByAgent!,
         if (otherDeviceIds != null)
@@ -587,30 +570,6 @@ class Empty {
       core.Map _json);
 
   core.Map<core.String, core.dynamic> toJson() => {};
-}
-
-/// LINT.IfChange go/shed-per-trait-routing.
-///
-/// Making it object to allow for extendible design, where we can add attributes
-/// in future.
-class NonLocalTrait {
-  /// Trait name, e.g., "action.devices.traits.MediaInitiation".
-  ///
-  /// See
-  /// [device traits](https://developers.google.com/assistant/smarthome/traits).
-  core.String? trait;
-
-  NonLocalTrait();
-
-  NonLocalTrait.fromJson(core.Map _json) {
-    if (_json.containsKey('trait')) {
-      trait = _json['trait'] as core.String;
-    }
-  }
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (trait != null) 'trait': trait!,
-      };
 }
 
 /// Request type for the
@@ -833,11 +792,7 @@ class ReportStateAndNotificationRequest {
   /// Unique identifier per event (for example, a doorbell press).
   core.String? eventId;
 
-  /// Token to maintain state in the follow up notification response.
-  ///
-  /// Deprecated. See the
-  /// [notifications guide](https://developers.google.com/assistant/smarthome/develop/notifications)
-  /// for details on implementing follow up notifications.
+  /// Deprecated.
   core.String? followUpToken;
 
   /// State of devices to update and notification metadata for devices.

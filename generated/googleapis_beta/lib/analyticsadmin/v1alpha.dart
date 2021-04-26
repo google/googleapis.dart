@@ -24,11 +24,17 @@
 ///   - [AccountsUserLinksResource]
 /// - [PropertiesResource]
 ///   - [PropertiesAndroidAppDataStreamsResource]
+///     - [PropertiesAndroidAppDataStreamsMeasurementProtocolSecretsResource]
+///   - [PropertiesConversionEventsResource]
+///   - [PropertiesCustomDimensionsResource]
+///   - [PropertiesCustomMetricsResource]
 ///   - [PropertiesFirebaseLinksResource]
 ///   - [PropertiesGoogleAdsLinksResource]
 ///   - [PropertiesIosAppDataStreamsResource]
+///     - [PropertiesIosAppDataStreamsMeasurementProtocolSecretsResource]
 ///   - [PropertiesUserLinksResource]
 ///   - [PropertiesWebDataStreamsResource]
+///     - [PropertiesWebDataStreamsMeasurementProtocolSecretsResource]
 library analyticsadmin.v1alpha;
 
 import 'dart:async' as async;
@@ -399,6 +405,53 @@ class AccountsResource {
     );
     return GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Searches through all changes to an account or its children given the
+  /// specified set of filters.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [account] - Required. The account resource for which to return change
+  /// history resources.
+  /// Value must have pattern `^accounts/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse>
+      searchChangeHistoryEvents(
+    GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest request,
+    core.String account, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' +
+        core.Uri.encodeFull('$account') +
+        ':searchChangeHistoryEvents';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -820,7 +873,7 @@ class AccountsUserLinksResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Example format: properties/1234/userLinks/5678
+  /// [name] - Output only. Example format: properties/1234/userLinks/5678
   /// Value must have pattern `^accounts/\[^/\]+/userLinks/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -861,6 +914,12 @@ class PropertiesResource {
 
   PropertiesAndroidAppDataStreamsResource get androidAppDataStreams =>
       PropertiesAndroidAppDataStreamsResource(_requester);
+  PropertiesConversionEventsResource get conversionEvents =>
+      PropertiesConversionEventsResource(_requester);
+  PropertiesCustomDimensionsResource get customDimensions =>
+      PropertiesCustomDimensionsResource(_requester);
+  PropertiesCustomMetricsResource get customMetrics =>
+      PropertiesCustomMetricsResource(_requester);
   PropertiesFirebaseLinksResource get firebaseLinks =>
       PropertiesFirebaseLinksResource(_requester);
   PropertiesGoogleAdsLinksResource get googleAdsLinks =>
@@ -929,14 +988,14 @@ class PropertiesResource {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [GoogleProtobufEmpty].
+  /// Completes with a [GoogleAnalyticsAdminV1alphaProperty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> delete(
+  async.Future<GoogleAnalyticsAdminV1alphaProperty> delete(
     core.String name, {
     core.String? $fields,
   }) async {
@@ -951,7 +1010,7 @@ class PropertiesResource {
       'DELETE',
       queryParams: _queryParams,
     );
-    return GoogleProtobufEmpty.fromJson(
+    return GoogleAnalyticsAdminV1alphaProperty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 
@@ -989,6 +1048,44 @@ class PropertiesResource {
       queryParams: _queryParams,
     );
     return GoogleAnalyticsAdminV1alphaProperty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lookup for Google Signals settings for a property.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the google signals settings to retrieve.
+  /// Format: properties/{property}/googleSignalsSettings
+  /// Value must have pattern `^properties/\[^/\]+/googleSignalsSettings$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaGoogleSignalsSettings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaGoogleSignalsSettings>
+      getGoogleSignalsSettings(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaGoogleSignalsSettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 
@@ -1108,62 +1205,69 @@ class PropertiesResource {
     return GoogleAnalyticsAdminV1alphaProperty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
-}
 
-class PropertiesAndroidAppDataStreamsResource {
-  final commons.ApiRequester _requester;
-
-  PropertiesAndroidAppDataStreamsResource(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Creates an Android app stream with the specified location and attributes.
-  ///
-  /// Note that an Android app stream must be linked to a Firebase app to
-  /// receive traffic. To create a working app stream, make sure your property
-  /// is linked to a Firebase project. Then, use the Firebase API to create a
-  /// Firebase app, which will also create an appropriate data stream in
-  /// Analytics (may take up to 24 hours).
+  /// Updates Google Signals settings for a property.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent resource where this android app data
-  /// stream will be created. Format: properties/123
-  /// Value must have pattern `^properties/\[^/\]+$`.
+  /// [name] - Output only. Resource name of this setting. Format:
+  /// properties/{property_id}/googleSignalsSettings Example:
+  /// "properties/1000/googleSignalsSettings"
+  /// Value must have pattern `^properties/\[^/\]+/googleSignalsSettings$`.
+  ///
+  /// [updateMask] - Required. The list of fields to be updated. Field names
+  /// must be in snake case (e.g., "field_to_update"). Omitted fields will not
+  /// be updated. To replace the entire entity, use one path with the string "*"
+  /// to match all fields.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [GoogleAnalyticsAdminV1alphaAndroidAppDataStream].
+  /// Completes with a [GoogleAnalyticsAdminV1alphaGoogleSignalsSettings].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleAnalyticsAdminV1alphaAndroidAppDataStream> create(
-    GoogleAnalyticsAdminV1alphaAndroidAppDataStream request,
-    core.String parent, {
+  async.Future<GoogleAnalyticsAdminV1alphaGoogleSignalsSettings>
+      updateGoogleSignalsSettings(
+    GoogleAnalyticsAdminV1alphaGoogleSignalsSettings request,
+    core.String name, {
+    core.String? updateMask,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'v1alpha/' + core.Uri.encodeFull('$parent') + '/androidAppDataStreams';
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
-      'POST',
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
     );
-    return GoogleAnalyticsAdminV1alphaAndroidAppDataStream.fromJson(
+    return GoogleAnalyticsAdminV1alphaGoogleSignalsSettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
+}
+
+class PropertiesAndroidAppDataStreamsResource {
+  final commons.ApiRequester _requester;
+
+  PropertiesAndroidAppDataStreamsMeasurementProtocolSecretsResource
+      get measurementProtocolSecrets =>
+          PropertiesAndroidAppDataStreamsMeasurementProtocolSecretsResource(
+              _requester);
+
+  PropertiesAndroidAppDataStreamsResource(commons.ApiRequester client)
+      : _requester = client;
 
   /// Deletes an android app stream on a property.
   ///
@@ -1348,6 +1452,882 @@ class PropertiesAndroidAppDataStreamsResource {
       queryParams: _queryParams,
     );
     return GoogleAnalyticsAdminV1alphaAndroidAppDataStream.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class PropertiesAndroidAppDataStreamsMeasurementProtocolSecretsResource {
+  final commons.ApiRequester _requester;
+
+  PropertiesAndroidAppDataStreamsMeasurementProtocolSecretsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a measurement protocol secret.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this secret will be
+  /// created. Any type of stream (WebDataStream, IosAppDataStream,
+  /// AndroidAppDataStream) may be a parent. Format:
+  /// properties/{property}/webDataStreams/{webDataStream}
+  /// Value must have pattern
+  /// `^properties/\[^/\]+/androidAppDataStreams/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret> create(
+    GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' +
+        core.Uri.encodeFull('$parent') +
+        '/measurementProtocolSecrets';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes target MeasurementProtocolSecret.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the MeasurementProtocolSecret to delete.
+  /// Format:
+  /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
+  /// Note: Any type of stream (WebDataStream, IosAppDataStream,
+  /// AndroidAppDataStream) may be a parent.
+  /// Value must have pattern
+  /// `^properties/\[^/\]+/androidAppDataStreams/\[^/\]+/measurementProtocolSecrets/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lookup for a single "GA4" MeasurementProtocolSecret.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the measurement protocol secret to lookup.
+  /// Format:
+  /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
+  /// Note: Any type of stream (WebDataStream, IosAppDataStream,
+  /// AndroidAppDataStream) may be a parent.
+  /// Value must have pattern
+  /// `^properties/\[^/\]+/androidAppDataStreams/\[^/\]+/measurementProtocolSecrets/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns child MeasurementProtocolSecrets under the specified parent
+  /// Property.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the parent stream. Any type of
+  /// stream (WebDataStream, IosAppDataStream, AndroidAppDataStream) may be a
+  /// parent. Format:
+  /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets
+  /// Value must have pattern
+  /// `^properties/\[^/\]+/androidAppDataStreams/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of resources to return. If unspecified, at
+  /// most 10 resources will be returned. The maximum value is 10. Higher values
+  /// will be coerced to the maximum.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListMeasurementProtocolSecrets` call. Provide this to retrieve the
+  /// subsequent page. When paginating, all other parameters provided to
+  /// `ListMeasurementProtocolSecrets` must match the call that provided the
+  /// page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+      GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' +
+        core.Uri.encodeFull('$parent') +
+        '/measurementProtocolSecrets';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a measurement protocol secret.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Resource name of this secret. This secret may be a
+  /// child of any type of stream. Format:
+  /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
+  /// Value must have pattern
+  /// `^properties/\[^/\]+/androidAppDataStreams/\[^/\]+/measurementProtocolSecrets/\[^/\]+$`.
+  ///
+  /// [updateMask] - The list of fields to be updated. Omitted fields will not
+  /// be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret> patch(
+    GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class PropertiesConversionEventsResource {
+  final commons.ApiRequester _requester;
+
+  PropertiesConversionEventsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a conversion event with the specified attributes.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the parent property where this
+  /// conversion event will be created. Format: properties/123
+  /// Value must have pattern `^properties/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaConversionEvent].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaConversionEvent> create(
+    GoogleAnalyticsAdminV1alphaConversionEvent request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1alpha/' + core.Uri.encodeFull('$parent') + '/conversionEvents';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaConversionEvent.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a conversion event in a property.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the conversion event to delete.
+  /// Format: properties/{property}/conversionEvents/{conversion_event} Example:
+  /// "properties/123/conversionEvents/456"
+  /// Value must have pattern `^properties/\[^/\]+/conversionEvents/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieve a single conversion event.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the conversion event to retrieve.
+  /// Format: properties/{property}/conversionEvents/{conversion_event} Example:
+  /// "properties/123/conversionEvents/456"
+  /// Value must have pattern `^properties/\[^/\]+/conversionEvents/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaConversionEvent].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaConversionEvent> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaConversionEvent.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns a list of conversion events in the specified parent property.
+  ///
+  /// Returns an empty list if no conversion events are found.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the parent property. Example:
+  /// 'properties/123'
+  /// Value must have pattern `^properties/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of resources to return. If unspecified, at
+  /// most 50 resources will be returned. The maximum value is 200; (higher
+  /// values will be coerced to the maximum)
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListConversionEvents` call. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to `ListConversionEvents`
+  /// must match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleAnalyticsAdminV1alphaListConversionEventsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaListConversionEventsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1alpha/' + core.Uri.encodeFull('$parent') + '/conversionEvents';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaListConversionEventsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class PropertiesCustomDimensionsResource {
+  final commons.ApiRequester _requester;
+
+  PropertiesCustomDimensionsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Archives a CustomDimension on a property.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the CustomDimension to archive. Example
+  /// format: properties/1234/customDimensions/5678
+  /// Value must have pattern `^properties/\[^/\]+/customDimensions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> archive(
+    GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name') + ':archive';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a CustomDimension.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Example format: properties/1234
+  /// Value must have pattern `^properties/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaCustomDimension].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaCustomDimension> create(
+    GoogleAnalyticsAdminV1alphaCustomDimension request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1alpha/' + core.Uri.encodeFull('$parent') + '/customDimensions';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaCustomDimension.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lookup for a single CustomDimension.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the CustomDimension to get. Example format:
+  /// properties/1234/customDimensions/5678
+  /// Value must have pattern `^properties/\[^/\]+/customDimensions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaCustomDimension].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaCustomDimension> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaCustomDimension.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists CustomDimensions on a property.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Example format: properties/1234
+  /// Value must have pattern `^properties/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of resources to return. If unspecified, at
+  /// most 50 resources will be returned. The maximum value is 200 (higher
+  /// values will be coerced to the maximum).
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListCustomDimensions` call. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to `ListCustomDimensions`
+  /// must match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleAnalyticsAdminV1alphaListCustomDimensionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaListCustomDimensionsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1alpha/' + core.Uri.encodeFull('$parent') + '/customDimensions';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaListCustomDimensionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a CustomDimension on a property.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Resource name for this CustomDimension resource.
+  /// Format: properties/{property}/customDimensions/{customDimension}
+  /// Value must have pattern `^properties/\[^/\]+/customDimensions/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The list of fields to be updated. Omitted fields
+  /// will not be updated. To replace the entire entity, use one path with the
+  /// string "*" to match all fields.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaCustomDimension].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaCustomDimension> patch(
+    GoogleAnalyticsAdminV1alphaCustomDimension request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaCustomDimension.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class PropertiesCustomMetricsResource {
+  final commons.ApiRequester _requester;
+
+  PropertiesCustomMetricsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Archives a CustomMetric on a property.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the CustomMetric to archive. Example
+  /// format: properties/1234/customMetrics/5678
+  /// Value must have pattern `^properties/\[^/\]+/customMetrics/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> archive(
+    GoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name') + ':archive';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a CustomMetric.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Example format: properties/1234
+  /// Value must have pattern `^properties/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaCustomMetric].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaCustomMetric> create(
+    GoogleAnalyticsAdminV1alphaCustomMetric request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$parent') + '/customMetrics';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaCustomMetric.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lookup for a single CustomMetric.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the CustomMetric to get. Example format:
+  /// properties/1234/customMetrics/5678
+  /// Value must have pattern `^properties/\[^/\]+/customMetrics/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaCustomMetric].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaCustomMetric> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaCustomMetric.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists CustomMetrics on a property.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Example format: properties/1234
+  /// Value must have pattern `^properties/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of resources to return. If unspecified, at
+  /// most 50 resources will be returned. The maximum value is 200 (higher
+  /// values will be coerced to the maximum).
+  ///
+  /// [pageToken] - A page token, received from a previous `ListCustomMetrics`
+  /// call. Provide this to retrieve the subsequent page. When paginating, all
+  /// other parameters provided to `ListCustomMetrics` must match the call that
+  /// provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaListCustomMetricsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaListCustomMetricsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$parent') + '/customMetrics';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaListCustomMetricsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a CustomMetric on a property.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Resource name for this CustomMetric resource.
+  /// Format: properties/{property}/customMetrics/{customMetric}
+  /// Value must have pattern `^properties/\[^/\]+/customMetrics/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The list of fields to be updated. Omitted fields
+  /// will not be updated. To replace the entire entity, use one path with the
+  /// string "*" to match all fields.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaCustomMetric].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaCustomMetric> patch(
+    GoogleAnalyticsAdminV1alphaCustomMetric request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaCustomMetric.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1730,57 +2710,13 @@ class PropertiesGoogleAdsLinksResource {
 class PropertiesIosAppDataStreamsResource {
   final commons.ApiRequester _requester;
 
+  PropertiesIosAppDataStreamsMeasurementProtocolSecretsResource
+      get measurementProtocolSecrets =>
+          PropertiesIosAppDataStreamsMeasurementProtocolSecretsResource(
+              _requester);
+
   PropertiesIosAppDataStreamsResource(commons.ApiRequester client)
       : _requester = client;
-
-  /// Creates an iOS app stream with the specified location and attributes.
-  ///
-  /// Note that an iOS app stream must be linked to a Firebase app to receive
-  /// traffic. To create a working app stream, make sure your property is linked
-  /// to a Firebase project. Then, use the Firebase API to create a Firebase
-  /// app, which will also create an appropriate data stream in Analytics (may
-  /// take up to 24 hours).
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The parent resource where this ios app data stream
-  /// will be created. Format: properties/123
-  /// Value must have pattern `^properties/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleAnalyticsAdminV1alphaIosAppDataStream].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleAnalyticsAdminV1alphaIosAppDataStream> create(
-    GoogleAnalyticsAdminV1alphaIosAppDataStream request,
-    core.String parent, {
-    core.String? $fields,
-  }) async {
-    final _body = convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url =
-        'v1alpha/' + core.Uri.encodeFull('$parent') + '/iosAppDataStreams';
-
-    final _response = await _requester.request(
-      _url,
-      'POST',
-      body: _body,
-      queryParams: _queryParams,
-    );
-    return GoogleAnalyticsAdminV1alphaIosAppDataStream.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
 
   /// Deletes an iOS app stream on a property.
   ///
@@ -1960,6 +2896,249 @@ class PropertiesIosAppDataStreamsResource {
       queryParams: _queryParams,
     );
     return GoogleAnalyticsAdminV1alphaIosAppDataStream.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class PropertiesIosAppDataStreamsMeasurementProtocolSecretsResource {
+  final commons.ApiRequester _requester;
+
+  PropertiesIosAppDataStreamsMeasurementProtocolSecretsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a measurement protocol secret.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this secret will be
+  /// created. Any type of stream (WebDataStream, IosAppDataStream,
+  /// AndroidAppDataStream) may be a parent. Format:
+  /// properties/{property}/webDataStreams/{webDataStream}
+  /// Value must have pattern `^properties/\[^/\]+/iosAppDataStreams/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret> create(
+    GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' +
+        core.Uri.encodeFull('$parent') +
+        '/measurementProtocolSecrets';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes target MeasurementProtocolSecret.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the MeasurementProtocolSecret to delete.
+  /// Format:
+  /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
+  /// Note: Any type of stream (WebDataStream, IosAppDataStream,
+  /// AndroidAppDataStream) may be a parent.
+  /// Value must have pattern
+  /// `^properties/\[^/\]+/iosAppDataStreams/\[^/\]+/measurementProtocolSecrets/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lookup for a single "GA4" MeasurementProtocolSecret.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the measurement protocol secret to lookup.
+  /// Format:
+  /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
+  /// Note: Any type of stream (WebDataStream, IosAppDataStream,
+  /// AndroidAppDataStream) may be a parent.
+  /// Value must have pattern
+  /// `^properties/\[^/\]+/iosAppDataStreams/\[^/\]+/measurementProtocolSecrets/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns child MeasurementProtocolSecrets under the specified parent
+  /// Property.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the parent stream. Any type of
+  /// stream (WebDataStream, IosAppDataStream, AndroidAppDataStream) may be a
+  /// parent. Format:
+  /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets
+  /// Value must have pattern `^properties/\[^/\]+/iosAppDataStreams/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of resources to return. If unspecified, at
+  /// most 10 resources will be returned. The maximum value is 10. Higher values
+  /// will be coerced to the maximum.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListMeasurementProtocolSecrets` call. Provide this to retrieve the
+  /// subsequent page. When paginating, all other parameters provided to
+  /// `ListMeasurementProtocolSecrets` must match the call that provided the
+  /// page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+      GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' +
+        core.Uri.encodeFull('$parent') +
+        '/measurementProtocolSecrets';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a measurement protocol secret.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Resource name of this secret. This secret may be a
+  /// child of any type of stream. Format:
+  /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
+  /// Value must have pattern
+  /// `^properties/\[^/\]+/iosAppDataStreams/\[^/\]+/measurementProtocolSecrets/\[^/\]+$`.
+  ///
+  /// [updateMask] - The list of fields to be updated. Omitted fields will not
+  /// be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret> patch(
+    GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -2383,7 +3562,7 @@ class PropertiesUserLinksResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Example format: properties/1234/userLinks/5678
+  /// [name] - Output only. Example format: properties/1234/userLinks/5678
   /// Value must have pattern `^properties/\[^/\]+/userLinks/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2421,6 +3600,11 @@ class PropertiesUserLinksResource {
 
 class PropertiesWebDataStreamsResource {
   final commons.ApiRequester _requester;
+
+  PropertiesWebDataStreamsMeasurementProtocolSecretsResource
+      get measurementProtocolSecrets =>
+          PropertiesWebDataStreamsMeasurementProtocolSecretsResource(
+              _requester);
 
   PropertiesWebDataStreamsResource(commons.ApiRequester client)
       : _requester = client;
@@ -2789,6 +3973,249 @@ class PropertiesWebDataStreamsResource {
   }
 }
 
+class PropertiesWebDataStreamsMeasurementProtocolSecretsResource {
+  final commons.ApiRequester _requester;
+
+  PropertiesWebDataStreamsMeasurementProtocolSecretsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a measurement protocol secret.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this secret will be
+  /// created. Any type of stream (WebDataStream, IosAppDataStream,
+  /// AndroidAppDataStream) may be a parent. Format:
+  /// properties/{property}/webDataStreams/{webDataStream}
+  /// Value must have pattern `^properties/\[^/\]+/webDataStreams/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret> create(
+    GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' +
+        core.Uri.encodeFull('$parent') +
+        '/measurementProtocolSecrets';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes target MeasurementProtocolSecret.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the MeasurementProtocolSecret to delete.
+  /// Format:
+  /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
+  /// Note: Any type of stream (WebDataStream, IosAppDataStream,
+  /// AndroidAppDataStream) may be a parent.
+  /// Value must have pattern
+  /// `^properties/\[^/\]+/webDataStreams/\[^/\]+/measurementProtocolSecrets/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lookup for a single "GA4" MeasurementProtocolSecret.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the measurement protocol secret to lookup.
+  /// Format:
+  /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
+  /// Note: Any type of stream (WebDataStream, IosAppDataStream,
+  /// AndroidAppDataStream) may be a parent.
+  /// Value must have pattern
+  /// `^properties/\[^/\]+/webDataStreams/\[^/\]+/measurementProtocolSecrets/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns child MeasurementProtocolSecrets under the specified parent
+  /// Property.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the parent stream. Any type of
+  /// stream (WebDataStream, IosAppDataStream, AndroidAppDataStream) may be a
+  /// parent. Format:
+  /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets
+  /// Value must have pattern `^properties/\[^/\]+/webDataStreams/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of resources to return. If unspecified, at
+  /// most 10 resources will be returned. The maximum value is 10. Higher values
+  /// will be coerced to the maximum.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListMeasurementProtocolSecrets` call. Provide this to retrieve the
+  /// subsequent page. When paginating, all other parameters provided to
+  /// `ListMeasurementProtocolSecrets` must match the call that provided the
+  /// page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+      GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' +
+        core.Uri.encodeFull('$parent') +
+        '/measurementProtocolSecrets';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a measurement protocol secret.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Resource name of this secret. This secret may be a
+  /// child of any type of stream. Format:
+  /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
+  /// Value must have pattern
+  /// `^properties/\[^/\]+/webDataStreams/\[^/\]+/measurementProtocolSecrets/\[^/\]+$`.
+  ///
+  /// [updateMask] - The list of fields to be updated. Omitted fields will not
+  /// be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret> patch(
+    GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
 /// A resource message representing a Google Analytics account.
 class GoogleAnalyticsAdminV1alphaAccount {
   /// Time when this account was originally created.
@@ -2978,6 +4405,28 @@ class GoogleAnalyticsAdminV1alphaAndroidAppDataStream {
         if (packageName != null) 'packageName': packageName!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
+}
+
+/// Request message for ArchiveCustomDimension RPC.
+class GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest {
+  GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest();
+
+  GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
+/// Request message for ArchiveCustomMetric RPC.
+class GoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest {
+  GoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest();
+
+  GoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Read-only resource used to summarize a principal's effective roles.
@@ -3265,6 +4714,312 @@ class GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse {
       };
 }
 
+/// A description of a change to a single Google Analytics resource.
+class GoogleAnalyticsAdminV1alphaChangeHistoryChange {
+  /// The type of action that changed this resource.
+  /// Possible string values are:
+  /// - "ACTION_TYPE_UNSPECIFIED" : Action type unknown or not specified.
+  /// - "CREATED" : Resource was created in this change.
+  /// - "UPDATED" : Resource was updated in this change.
+  /// - "DELETED" : Resource was deleted in this change.
+  core.String? action;
+
+  /// Resource name of the resource whose changes are described by this entry.
+  core.String? resource;
+
+  /// Resource contents from after the change was made.
+  ///
+  /// If this resource was deleted in this change, this field will be missing.
+  GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource?
+      resourceAfterChange;
+
+  /// Resource contents from before the change was made.
+  ///
+  /// If this resource was created in this change, this field will be missing.
+  GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource?
+      resourceBeforeChange;
+
+  GoogleAnalyticsAdminV1alphaChangeHistoryChange();
+
+  GoogleAnalyticsAdminV1alphaChangeHistoryChange.fromJson(core.Map _json) {
+    if (_json.containsKey('action')) {
+      action = _json['action'] as core.String;
+    }
+    if (_json.containsKey('resource')) {
+      resource = _json['resource'] as core.String;
+    }
+    if (_json.containsKey('resourceAfterChange')) {
+      resourceAfterChange =
+          GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource
+              .fromJson(_json['resourceAfterChange']
+                  as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('resourceBeforeChange')) {
+      resourceBeforeChange =
+          GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource
+              .fromJson(_json['resourceBeforeChange']
+                  as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (action != null) 'action': action!,
+        if (resource != null) 'resource': resource!,
+        if (resourceAfterChange != null)
+          'resourceAfterChange': resourceAfterChange!.toJson(),
+        if (resourceBeforeChange != null)
+          'resourceBeforeChange': resourceBeforeChange!.toJson(),
+      };
+}
+
+/// A snapshot of a resource as before or after the result of a change in change
+/// history.
+class GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource {
+  /// A snapshot of an Account resource in change history.
+  GoogleAnalyticsAdminV1alphaAccount? account;
+
+  /// A snapshot of an AndroidAppDataStream resource in change history.
+  GoogleAnalyticsAdminV1alphaAndroidAppDataStream? androidAppDataStream;
+
+  /// A snapshot of a ConversionEvent resource in change history.
+  GoogleAnalyticsAdminV1alphaConversionEvent? conversionEvent;
+
+  /// A snapshot of a CustomDimension resource in change history.
+  GoogleAnalyticsAdminV1alphaCustomDimension? customDimension;
+
+  /// A snapshot of a CustomMetric resource in change history.
+  GoogleAnalyticsAdminV1alphaCustomMetric? customMetric;
+
+  /// A snapshot of a FirebaseLink resource in change history.
+  GoogleAnalyticsAdminV1alphaFirebaseLink? firebaseLink;
+
+  /// A snapshot of a GoogleAdsLink resource in change history.
+  GoogleAnalyticsAdminV1alphaGoogleAdsLink? googleAdsLink;
+
+  /// A snapshot of a GoogleSignalsSettings resource in change history.
+  GoogleAnalyticsAdminV1alphaGoogleSignalsSettings? googleSignalsSettings;
+
+  /// A snapshot of an IosAppDataStream resource in change history.
+  GoogleAnalyticsAdminV1alphaIosAppDataStream? iosAppDataStream;
+
+  /// A snapshot of a MeasurementProtocolSecret resource in change history.
+  GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret?
+      measurementProtocolSecret;
+
+  /// A snapshot of a Property resource in change history.
+  GoogleAnalyticsAdminV1alphaProperty? property;
+
+  /// A snapshot of a WebDataStream resource in change history.
+  GoogleAnalyticsAdminV1alphaWebDataStream? webDataStream;
+
+  GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource();
+
+  GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('account')) {
+      account = GoogleAnalyticsAdminV1alphaAccount.fromJson(
+          _json['account'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('androidAppDataStream')) {
+      androidAppDataStream =
+          GoogleAnalyticsAdminV1alphaAndroidAppDataStream.fromJson(
+              _json['androidAppDataStream']
+                  as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('conversionEvent')) {
+      conversionEvent = GoogleAnalyticsAdminV1alphaConversionEvent.fromJson(
+          _json['conversionEvent'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('customDimension')) {
+      customDimension = GoogleAnalyticsAdminV1alphaCustomDimension.fromJson(
+          _json['customDimension'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('customMetric')) {
+      customMetric = GoogleAnalyticsAdminV1alphaCustomMetric.fromJson(
+          _json['customMetric'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('firebaseLink')) {
+      firebaseLink = GoogleAnalyticsAdminV1alphaFirebaseLink.fromJson(
+          _json['firebaseLink'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('googleAdsLink')) {
+      googleAdsLink = GoogleAnalyticsAdminV1alphaGoogleAdsLink.fromJson(
+          _json['googleAdsLink'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('googleSignalsSettings')) {
+      googleSignalsSettings =
+          GoogleAnalyticsAdminV1alphaGoogleSignalsSettings.fromJson(
+              _json['googleSignalsSettings']
+                  as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('iosAppDataStream')) {
+      iosAppDataStream = GoogleAnalyticsAdminV1alphaIosAppDataStream.fromJson(
+          _json['iosAppDataStream'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('measurementProtocolSecret')) {
+      measurementProtocolSecret =
+          GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret.fromJson(
+              _json['measurementProtocolSecret']
+                  as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('property')) {
+      property = GoogleAnalyticsAdminV1alphaProperty.fromJson(
+          _json['property'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('webDataStream')) {
+      webDataStream = GoogleAnalyticsAdminV1alphaWebDataStream.fromJson(
+          _json['webDataStream'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (account != null) 'account': account!.toJson(),
+        if (androidAppDataStream != null)
+          'androidAppDataStream': androidAppDataStream!.toJson(),
+        if (conversionEvent != null)
+          'conversionEvent': conversionEvent!.toJson(),
+        if (customDimension != null)
+          'customDimension': customDimension!.toJson(),
+        if (customMetric != null) 'customMetric': customMetric!.toJson(),
+        if (firebaseLink != null) 'firebaseLink': firebaseLink!.toJson(),
+        if (googleAdsLink != null) 'googleAdsLink': googleAdsLink!.toJson(),
+        if (googleSignalsSettings != null)
+          'googleSignalsSettings': googleSignalsSettings!.toJson(),
+        if (iosAppDataStream != null)
+          'iosAppDataStream': iosAppDataStream!.toJson(),
+        if (measurementProtocolSecret != null)
+          'measurementProtocolSecret': measurementProtocolSecret!.toJson(),
+        if (property != null) 'property': property!.toJson(),
+        if (webDataStream != null) 'webDataStream': webDataStream!.toJson(),
+      };
+}
+
+/// A set of changes within a Google Analytics account or its child properties
+/// that resulted from the same cause.
+///
+/// Common causes would be updates made in the Google Analytics UI, changes from
+/// customer support, or automatic Google Analytics system changes.
+class GoogleAnalyticsAdminV1alphaChangeHistoryEvent {
+  /// The type of actor that made this change.
+  /// Possible string values are:
+  /// - "ACTOR_TYPE_UNSPECIFIED" : Unknown or unspecified actor type.
+  /// - "USER" : Changes made by the user specified in actor_email.
+  /// - "SYSTEM" : Changes made by the Google Analytics system.
+  /// - "SUPPORT" : Changes made by Google Analytics support team staff.
+  core.String? actorType;
+
+  /// Time when change was made.
+  core.String? changeTime;
+
+  /// A list of changes made in this change history event that fit the filters
+  /// specified in SearchChangeHistoryEventsRequest.
+  core.List<GoogleAnalyticsAdminV1alphaChangeHistoryChange>? changes;
+
+  /// If true, then the list of changes returned was filtered, and does not
+  /// represent all changes that occurred in this event.
+  core.bool? changesFiltered;
+
+  /// ID of this change history event.
+  ///
+  /// This ID is unique across Google Analytics.
+  core.String? id;
+
+  /// Email address of the Google account that made the change.
+  ///
+  /// This will be a valid email address if the actor field is set to USER, and
+  /// empty otherwise. Google accounts that have been deleted will cause an
+  /// error.
+  core.String? userActorEmail;
+
+  GoogleAnalyticsAdminV1alphaChangeHistoryEvent();
+
+  GoogleAnalyticsAdminV1alphaChangeHistoryEvent.fromJson(core.Map _json) {
+    if (_json.containsKey('actorType')) {
+      actorType = _json['actorType'] as core.String;
+    }
+    if (_json.containsKey('changeTime')) {
+      changeTime = _json['changeTime'] as core.String;
+    }
+    if (_json.containsKey('changes')) {
+      changes = (_json['changes'] as core.List)
+          .map<GoogleAnalyticsAdminV1alphaChangeHistoryChange>((value) =>
+              GoogleAnalyticsAdminV1alphaChangeHistoryChange.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('changesFiltered')) {
+      changesFiltered = _json['changesFiltered'] as core.bool;
+    }
+    if (_json.containsKey('id')) {
+      id = _json['id'] as core.String;
+    }
+    if (_json.containsKey('userActorEmail')) {
+      userActorEmail = _json['userActorEmail'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (actorType != null) 'actorType': actorType!,
+        if (changeTime != null) 'changeTime': changeTime!,
+        if (changes != null)
+          'changes': changes!.map((value) => value.toJson()).toList(),
+        if (changesFiltered != null) 'changesFiltered': changesFiltered!,
+        if (id != null) 'id': id!,
+        if (userActorEmail != null) 'userActorEmail': userActorEmail!,
+      };
+}
+
+/// A conversion event in a Google Analytics property.
+class GoogleAnalyticsAdminV1alphaConversionEvent {
+  /// Time when this conversion event was created in the property.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The event name for this conversion event.
+  ///
+  /// Examples: 'click', 'purchase'
+  ///
+  /// Immutable.
+  core.String? eventName;
+
+  /// If set, this event can currently be deleted via DeleteConversionEvent.
+  ///
+  /// Output only.
+  core.bool? isDeletable;
+
+  /// Resource name of this conversion event.
+  ///
+  /// Format: properties/{property}/conversionEvents/{conversion_event}
+  ///
+  /// Output only.
+  core.String? name;
+
+  GoogleAnalyticsAdminV1alphaConversionEvent();
+
+  GoogleAnalyticsAdminV1alphaConversionEvent.fromJson(core.Map _json) {
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'] as core.String;
+    }
+    if (_json.containsKey('eventName')) {
+      eventName = _json['eventName'] as core.String;
+    }
+    if (_json.containsKey('isDeletable')) {
+      isDeletable = _json['isDeletable'] as core.bool;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (eventName != null) 'eventName': eventName!,
+        if (isDeletable != null) 'isDeletable': isDeletable!,
+        if (name != null) 'name': name!,
+      };
+}
+
 /// Request message for CreateUserLink RPC.
 ///
 /// Users can have multiple email addresses associated with their Google
@@ -3309,6 +5064,188 @@ class GoogleAnalyticsAdminV1alphaCreateUserLinkRequest {
         if (notifyNewUser != null) 'notifyNewUser': notifyNewUser!,
         if (parent != null) 'parent': parent!,
         if (userLink != null) 'userLink': userLink!.toJson(),
+      };
+}
+
+/// A definition for a CustomDimension.
+class GoogleAnalyticsAdminV1alphaCustomDimension {
+  /// Description for this custom dimension.
+  ///
+  /// Max length of 150 characters.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// If set to true, sets this dimension as NPA and excludes it from ads
+  /// personalization.
+  ///
+  /// This is currently only supported by user-scoped custom dimensions.
+  ///
+  /// Optional.
+  core.bool? disallowAdsPersonalization;
+
+  /// Display name for this custom dimension as shown in the Analytics UI.
+  ///
+  /// Max length of 82 characters, alphanumeric plus space and underscore
+  /// starting with a letter. Legacy system-generated display names may contain
+  /// square brackets, but updates to this field will never permit square
+  /// brackets.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// Resource name for this CustomDimension resource.
+  ///
+  /// Format: properties/{property}/customDimensions/{customDimension}
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Tagging parameter name for this custom dimension.
+  ///
+  /// If this is a user-scoped dimension, then this is the user property name.
+  /// If this is an event-scoped dimension, then this is the event parameter
+  /// name. May only contain alphanumeric and underscore characters, starting
+  /// with a letter. Max length of 24 characters for user-scoped dimensions, 40
+  /// characters for event-scoped dimensions.
+  ///
+  /// Required. Immutable.
+  core.String? parameterName;
+
+  /// The scope of this dimension.
+  ///
+  /// Required. Immutable.
+  /// Possible string values are:
+  /// - "DIMENSION_SCOPE_UNSPECIFIED" : Scope unknown or not specified.
+  /// - "EVENT" : Dimension scoped to an event.
+  /// - "USER" : Dimension scoped to a user.
+  core.String? scope;
+
+  GoogleAnalyticsAdminV1alphaCustomDimension();
+
+  GoogleAnalyticsAdminV1alphaCustomDimension.fromJson(core.Map _json) {
+    if (_json.containsKey('description')) {
+      description = _json['description'] as core.String;
+    }
+    if (_json.containsKey('disallowAdsPersonalization')) {
+      disallowAdsPersonalization =
+          _json['disallowAdsPersonalization'] as core.bool;
+    }
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('parameterName')) {
+      parameterName = _json['parameterName'] as core.String;
+    }
+    if (_json.containsKey('scope')) {
+      scope = _json['scope'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (disallowAdsPersonalization != null)
+          'disallowAdsPersonalization': disallowAdsPersonalization!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (parameterName != null) 'parameterName': parameterName!,
+        if (scope != null) 'scope': scope!,
+      };
+}
+
+/// A definition for a custom metric.
+class GoogleAnalyticsAdminV1alphaCustomMetric {
+  /// Description for this custom dimension.
+  ///
+  /// Max length of 150 characters.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Display name for this custom metric as shown in the Analytics UI.
+  ///
+  /// Max length of 82 characters, alphanumeric plus space and underscore
+  /// starting with a letter. Legacy system-generated display names may contain
+  /// square brackets, but updates to this field will never permit square
+  /// brackets.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// The type for the custom metric's value.
+  ///
+  /// Required. Immutable.
+  /// Possible string values are:
+  /// - "MEASUREMENT_UNIT_UNSPECIFIED" : MeasurementUnit unspecified or missing.
+  /// - "STANDARD" : This metric uses default units.
+  /// - "CURRENCY" : This metric measures a currency.
+  /// - "FEET" : This metric measures feet.
+  /// - "METERS" : This metric measures meters.
+  /// - "KILOMETERS" : This metric measures kilometers.
+  /// - "MILES" : This metric measures miles.
+  /// - "MILLISECONDS" : This metric measures milliseconds.
+  /// - "SECONDS" : This metric measures seconds.
+  /// - "MINUTES" : This metric measures minutes.
+  /// - "HOURS" : This metric measures hours.
+  core.String? measurementUnit;
+
+  /// Resource name for this CustomMetric resource.
+  ///
+  /// Format: properties/{property}/customMetrics/{customMetric}
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Tagging name for this custom metric.
+  ///
+  /// If this is an event-scoped metric, then this is the event parameter name.
+  /// May only contain alphanumeric and underscore charactes, starting with a
+  /// letter. Max length of 40 characters for event-scoped metrics.
+  ///
+  /// Required. Immutable.
+  core.String? parameterName;
+
+  /// The scope of this custom metric.
+  ///
+  /// Required. Immutable.
+  /// Possible string values are:
+  /// - "METRIC_SCOPE_UNSPECIFIED" : Scope unknown or not specified.
+  /// - "EVENT" : Metric scoped to an event.
+  core.String? scope;
+
+  GoogleAnalyticsAdminV1alphaCustomMetric();
+
+  GoogleAnalyticsAdminV1alphaCustomMetric.fromJson(core.Map _json) {
+    if (_json.containsKey('description')) {
+      description = _json['description'] as core.String;
+    }
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'] as core.String;
+    }
+    if (_json.containsKey('measurementUnit')) {
+      measurementUnit = _json['measurementUnit'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('parameterName')) {
+      parameterName = _json['parameterName'] as core.String;
+    }
+    if (_json.containsKey('scope')) {
+      scope = _json['scope'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (measurementUnit != null) 'measurementUnit': measurementUnit!,
+        if (name != null) 'name': name!,
+        if (parameterName != null) 'parameterName': parameterName!,
+        if (scope != null) 'scope': scope!,
       };
 }
 
@@ -3637,7 +5574,7 @@ class GoogleAnalyticsAdminV1alphaGoogleAdsLink {
   ///
   /// Automatically publish my Google Analytics audience lists and Google
   /// Analytics remarketing events/parameters to the linked Google Ads account.
-  /// If this field is not set on create/update it will be defaulted to true.
+  /// If this field is not set on create/update, it will be defaulted to true.
   core.bool? adsPersonalizationEnabled;
 
   /// If true, this link is for a Google Ads manager account.
@@ -3709,6 +5646,60 @@ class GoogleAnalyticsAdminV1alphaGoogleAdsLink {
         if (emailAddress != null) 'emailAddress': emailAddress!,
         if (name != null) 'name': name!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Settings values for Google Signals.
+///
+/// This is a singleton resource.
+class GoogleAnalyticsAdminV1alphaGoogleSignalsSettings {
+  /// Terms of Service acceptance.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "GOOGLE_SIGNALS_CONSENT_UNSPECIFIED" : Google Signals consent value
+  /// defaults to GOOGLE_SIGNALS_CONSENT_UNSPECIFIED. This will be treated as
+  /// GOOGLE_SIGNALS_CONSENT_NOT_CONSENTED.
+  /// - "GOOGLE_SIGNALS_CONSENT_CONSENTED" : Terms of service have been accepted
+  /// - "GOOGLE_SIGNALS_CONSENT_NOT_CONSENTED" : Terms of service have not been
+  /// accepted
+  core.String? consent;
+
+  /// Resource name of this setting.
+  ///
+  /// Format: properties/{property_id}/googleSignalsSettings Example:
+  /// "properties/1000/googleSignalsSettings"
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Status of this setting.
+  /// Possible string values are:
+  /// - "GOOGLE_SIGNALS_STATE_UNSPECIFIED" : Google Signals status defaults to
+  /// GOOGLE_SIGNALS_STATE_UNSPECIFIED to represent that the user has not made
+  /// an explicit choice.
+  /// - "GOOGLE_SIGNALS_ENABLED" : Google Signals is enabled.
+  /// - "GOOGLE_SIGNALS_DISABLED" : Google Signals is disabled.
+  core.String? state;
+
+  GoogleAnalyticsAdminV1alphaGoogleSignalsSettings();
+
+  GoogleAnalyticsAdminV1alphaGoogleSignalsSettings.fromJson(core.Map _json) {
+    if (_json.containsKey('consent')) {
+      consent = _json['consent'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('state')) {
+      state = _json['state'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (consent != null) 'consent': consent!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -3884,6 +5875,108 @@ class GoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse {
       };
 }
 
+/// Response message for ListConversionEvents RPC.
+class GoogleAnalyticsAdminV1alphaListConversionEventsResponse {
+  /// The requested conversion events
+  core.List<GoogleAnalyticsAdminV1alphaConversionEvent>? conversionEvents;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  GoogleAnalyticsAdminV1alphaListConversionEventsResponse();
+
+  GoogleAnalyticsAdminV1alphaListConversionEventsResponse.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('conversionEvents')) {
+      conversionEvents = (_json['conversionEvents'] as core.List)
+          .map<GoogleAnalyticsAdminV1alphaConversionEvent>((value) =>
+              GoogleAnalyticsAdminV1alphaConversionEvent.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conversionEvents != null)
+          'conversionEvents':
+              conversionEvents!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response message for ListCustomDimensions RPC.
+class GoogleAnalyticsAdminV1alphaListCustomDimensionsResponse {
+  /// List of CustomDimensions.
+  core.List<GoogleAnalyticsAdminV1alphaCustomDimension>? customDimensions;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  GoogleAnalyticsAdminV1alphaListCustomDimensionsResponse();
+
+  GoogleAnalyticsAdminV1alphaListCustomDimensionsResponse.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('customDimensions')) {
+      customDimensions = (_json['customDimensions'] as core.List)
+          .map<GoogleAnalyticsAdminV1alphaCustomDimension>((value) =>
+              GoogleAnalyticsAdminV1alphaCustomDimension.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customDimensions != null)
+          'customDimensions':
+              customDimensions!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response message for ListCustomMetrics RPC.
+class GoogleAnalyticsAdminV1alphaListCustomMetricsResponse {
+  /// List of CustomMetrics.
+  core.List<GoogleAnalyticsAdminV1alphaCustomMetric>? customMetrics;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  GoogleAnalyticsAdminV1alphaListCustomMetricsResponse();
+
+  GoogleAnalyticsAdminV1alphaListCustomMetricsResponse.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('customMetrics')) {
+      customMetrics = (_json['customMetrics'] as core.List)
+          .map<GoogleAnalyticsAdminV1alphaCustomMetric>((value) =>
+              GoogleAnalyticsAdminV1alphaCustomMetric.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customMetrics != null)
+          'customMetrics':
+              customMetrics!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// Response message for ListFirebaseLinks RPC
 class GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse {
   /// List of FirebaseLinks.
@@ -3991,6 +6084,43 @@ class GoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse {
       };
 }
 
+/// Response message for ListMeasurementProtocolSecret RPC
+class GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse {
+  /// A list of secrets for the parent stream specified in the request.
+  core.List<GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret>?
+      measurementProtocolSecrets;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse();
+
+  GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('measurementProtocolSecrets')) {
+      measurementProtocolSecrets = (_json['measurementProtocolSecrets']
+              as core.List)
+          .map<GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret>((value) =>
+              GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (measurementProtocolSecrets != null)
+          'measurementProtocolSecrets': measurementProtocolSecrets!
+              .map((value) => value.toJson())
+              .toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// Response message for ListProperties RPC.
 class GoogleAnalyticsAdminV1alphaListPropertiesResponse {
   /// A token, which can be sent as `page_token` to retrieve the next page.
@@ -4093,6 +6223,51 @@ class GoogleAnalyticsAdminV1alphaListWebDataStreamsResponse {
       };
 }
 
+/// A secret value used for sending hits to Measurement Protocol.
+class GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret {
+  /// Human-readable display name for this secret.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// Resource name of this secret.
+  ///
+  /// This secret may be a child of any type of stream. Format:
+  /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The measurement protocol secret value.
+  ///
+  /// Pass this value to the api_secret field of the Measurement Protocol API
+  /// when sending hits to this secret's parent property.
+  ///
+  /// Output only.
+  core.String? secretValue;
+
+  GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret();
+
+  GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('secretValue')) {
+      secretValue = _json['secretValue'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (secretValue != null) 'secretValue': secretValue!,
+      };
+}
+
 /// A resource message representing a Google Analytics GA4 property.
 class GoogleAnalyticsAdminV1alphaProperty {
   /// Time when the entity was originally created.
@@ -4106,13 +6281,12 @@ class GoogleAnalyticsAdminV1alphaProperty {
   /// "JPY"
   core.String? currencyCode;
 
-  /// Indicates whether this Property is soft-deleted or not.
+  /// If set, the time at which this property was trashed.
   ///
-  /// Deleted properties are excluded from List results unless specifically
-  /// requested.
+  /// If not set, then this property is not currently in the trash can.
   ///
   /// Output only.
-  core.bool? deleted;
+  core.String? deleteTime;
 
   /// Human-readable display name for this property.
   ///
@@ -4120,6 +6294,15 @@ class GoogleAnalyticsAdminV1alphaProperty {
   ///
   /// Required.
   core.String? displayName;
+
+  /// If set, the time at which this trashed property will be permanently
+  /// deleted.
+  ///
+  /// If not set, then this property is not currently in the trash can and is
+  /// not slated to be deleted.
+  ///
+  /// Output only.
+  core.String? expireTime;
 
   /// Industry associated with this property Example: AUTOMOTIVE, FOOD_AND_DRINK
   /// Possible string values are:
@@ -4174,6 +6357,8 @@ class GoogleAnalyticsAdminV1alphaProperty {
   /// changes. NOTE: Changing the time zone only affects data going forward, and
   /// is not applied retroactively. Format: https://www.iana.org/time-zones
   /// Example: "America/Los_Angeles"
+  ///
+  /// Required.
   core.String? timeZone;
 
   /// Time when entity payload fields were last updated.
@@ -4190,11 +6375,14 @@ class GoogleAnalyticsAdminV1alphaProperty {
     if (_json.containsKey('currencyCode')) {
       currencyCode = _json['currencyCode'] as core.String;
     }
-    if (_json.containsKey('deleted')) {
-      deleted = _json['deleted'] as core.bool;
+    if (_json.containsKey('deleteTime')) {
+      deleteTime = _json['deleteTime'] as core.String;
     }
     if (_json.containsKey('displayName')) {
       displayName = _json['displayName'] as core.String;
+    }
+    if (_json.containsKey('expireTime')) {
+      expireTime = _json['expireTime'] as core.String;
     }
     if (_json.containsKey('industryCategory')) {
       industryCategory = _json['industryCategory'] as core.String;
@@ -4216,8 +6404,9 @@ class GoogleAnalyticsAdminV1alphaProperty {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (currencyCode != null) 'currencyCode': currencyCode!,
-        if (deleted != null) 'deleted': deleted!,
+        if (deleteTime != null) 'deleteTime': deleteTime!,
         if (displayName != null) 'displayName': displayName!,
+        if (expireTime != null) 'expireTime': expireTime!,
         if (industryCategory != null) 'industryCategory': industryCategory!,
         if (name != null) 'name': name!,
         if (parent != null) 'parent': parent!,
@@ -4300,6 +6489,143 @@ class GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse {
       };
 }
 
+/// Request message for SearchChangeHistoryEvents RPC.
+class GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest {
+  /// If set, only return changes that match one or more of these types of
+  /// actions.
+  ///
+  /// Optional.
+  core.List<core.String>? action;
+
+  /// If set, only return changes if they are made by a user in this list.
+  ///
+  /// Optional.
+  core.List<core.String>? actorEmail;
+
+  /// If set, only return changes made after this time (inclusive).
+  ///
+  /// Optional.
+  core.String? earliestChangeTime;
+
+  /// If set, only return changes made before this time (inclusive).
+  ///
+  /// Optional.
+  core.String? latestChangeTime;
+
+  /// The maximum number of ChangeHistoryEvent items to return.
+  ///
+  /// The service may return fewer than this value, even if there are additional
+  /// pages. If unspecified, at most 50 items will be returned. The maximum
+  /// value is 200 (higher values will be coerced to the maximum).
+  ///
+  /// Optional.
+  core.int? pageSize;
+
+  /// A page token, received from a previous `SearchChangeHistoryEvents` call.
+  ///
+  /// Provide this to retrieve the subsequent page. When paginating, all other
+  /// parameters provided to `SearchChangeHistoryEvents` must match the call
+  /// that provided the page token.
+  ///
+  /// Optional.
+  core.String? pageToken;
+
+  /// Resource name for a child property.
+  ///
+  /// If set, only return changes made to this property or its child resources.
+  ///
+  /// Optional.
+  core.String? property;
+
+  /// If set, only return changes if they are for a resource that matches at
+  /// least one of these types.
+  ///
+  /// Optional.
+  core.List<core.String>? resourceType;
+
+  GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest();
+
+  GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('action')) {
+      action = (_json['action'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('actorEmail')) {
+      actorEmail = (_json['actorEmail'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('earliestChangeTime')) {
+      earliestChangeTime = _json['earliestChangeTime'] as core.String;
+    }
+    if (_json.containsKey('latestChangeTime')) {
+      latestChangeTime = _json['latestChangeTime'] as core.String;
+    }
+    if (_json.containsKey('pageSize')) {
+      pageSize = _json['pageSize'] as core.int;
+    }
+    if (_json.containsKey('pageToken')) {
+      pageToken = _json['pageToken'] as core.String;
+    }
+    if (_json.containsKey('property')) {
+      property = _json['property'] as core.String;
+    }
+    if (_json.containsKey('resourceType')) {
+      resourceType = (_json['resourceType'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (action != null) 'action': action!,
+        if (actorEmail != null) 'actorEmail': actorEmail!,
+        if (earliestChangeTime != null)
+          'earliestChangeTime': earliestChangeTime!,
+        if (latestChangeTime != null) 'latestChangeTime': latestChangeTime!,
+        if (pageSize != null) 'pageSize': pageSize!,
+        if (pageToken != null) 'pageToken': pageToken!,
+        if (property != null) 'property': property!,
+        if (resourceType != null) 'resourceType': resourceType!,
+      };
+}
+
+/// Response message for SearchAccounts RPC.
+class GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse {
+  /// Results that were accessible to the caller.
+  core.List<GoogleAnalyticsAdminV1alphaChangeHistoryEvent>? changeHistoryEvents;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse();
+
+  GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('changeHistoryEvents')) {
+      changeHistoryEvents = (_json['changeHistoryEvents'] as core.List)
+          .map<GoogleAnalyticsAdminV1alphaChangeHistoryEvent>((value) =>
+              GoogleAnalyticsAdminV1alphaChangeHistoryEvent.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (changeHistoryEvents != null)
+          'changeHistoryEvents':
+              changeHistoryEvents!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// Request message for UpdateUserLink RPC.
 class GoogleAnalyticsAdminV1alphaUpdateUserLinkRequest {
   /// The user link to update.
@@ -4334,9 +6660,13 @@ class GoogleAnalyticsAdminV1alphaUserLink {
   core.List<core.String>? directRoles;
 
   /// Email address of the user to link
+  ///
+  /// Immutable.
   core.String? emailAddress;
 
   /// Example format: properties/1234/userLinks/5678
+  ///
+  /// Output only.
   core.String? name;
 
   GoogleAnalyticsAdminV1alphaUserLink();

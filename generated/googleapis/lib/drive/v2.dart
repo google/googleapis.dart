@@ -71,8 +71,8 @@ class DriveApi {
   static const driveAppsReadonlyScope =
       'https://www.googleapis.com/auth/drive.apps.readonly';
 
-  /// View and manage Google Drive files and folders that you have opened or
-  /// created with this app
+  /// See, edit, create, and delete only the specific Google Drive files you use
+  /// with this app
   static const driveFileScope = 'https://www.googleapis.com/auth/drive.file';
 
   /// View and manage metadata of files in your Google Drive
@@ -1672,7 +1672,11 @@ class FilesResource {
   /// Value must be between "1" and "1000".
   ///
   /// [space] - The space in which the IDs can be used to create new files.
-  /// Supported values are 'drive' and 'appDataFolder'.
+  /// Supported values are 'drive' and 'appDataFolder'. (Default: 'drive')
+  ///
+  /// [type] - The type of items which the IDs can be used for. Supported values
+  /// are 'files' and 'shortcuts'. Note that 'shortcuts' are only supported in
+  /// the drive 'space'. (Default: 'files')
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1687,11 +1691,13 @@ class FilesResource {
   async.Future<GeneratedIds> generateIds({
     core.int? maxResults,
     core.String? space,
+    core.String? type,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (space != null) 'space': [space],
+      if (type != null) 'type': [type],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1706,7 +1712,7 @@ class FilesResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a file's metadata by ID.
+  /// Gets a file's metadata or content by ID.
   ///
   /// Request parameters:
   ///
@@ -5337,6 +5343,9 @@ class Channel {
   core.String? token;
 
   /// The type of delivery mechanism used for this channel.
+  ///
+  /// Valid values are "web_hook" (or "webhook"). Both values refer to a channel
+  /// where Http requests are used to deliver messages.
   core.String? type;
 
   Channel();
@@ -5528,8 +5537,8 @@ class CommentContext {
 class Comment {
   /// A region of the document represented as a JSON string.
   ///
-  /// See anchor documentation for details on how to define and interpret anchor
-  /// properties.
+  /// For details on defining anchor properties, refer to Add comments and
+  /// replies.
   core.String? anchor;
 
   /// The author of the comment.
@@ -8501,7 +8510,8 @@ class Revision {
 
   /// Whether this revision is pinned to prevent automatic purging.
   ///
-  /// This will only be populated and can only be modified on files with content
+  /// If not set, the revision is automatically purged 30 days after newer
+  /// content is uploaded. This field can only be modified on files with content
   /// stored in Drive, excluding Docs Editors files. Revisions can also be
   /// pinned when they are created through the drive.files.insert/update/copy by
   /// using the pinned query parameter. Pinned revisions are stored indefinitely

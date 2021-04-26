@@ -15,8 +15,9 @@
 /// Firebase Hosting API - v1
 ///
 /// The Firebase Hosting REST API enables programmatic and customizable
-/// deployments to your Firebase-hosted sites. Use this REST API to deploy new
-/// or updated hosting configurations and content files.
+/// management and deployments to your Firebase-hosted sites. Use this REST API
+/// to create and manage channels and sites as well as to deploy new or updated
+/// hosting configurations and content files.
 ///
 /// For more information, see <https://firebase.google.com/docs/hosting/>
 ///
@@ -38,10 +39,10 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// The Firebase Hosting REST API enables programmatic and customizable
-/// deployments to your Firebase-hosted sites.
+/// management and deployments to your Firebase-hosted sites.
 ///
-/// Use this REST API to deploy new or updated hosting configurations and
-/// content files.
+/// Use this REST API to create and manage channels and sites as well as to
+/// deploy new or updated hosting configurations and content files.
 class FirebaseHostingApi {
   final commons.ApiRequester _requester;
 

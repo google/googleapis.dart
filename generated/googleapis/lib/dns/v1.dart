@@ -24,6 +24,8 @@
 /// - [ManagedZonesResource]
 /// - [PoliciesResource]
 /// - [ProjectsResource]
+///   - [ProjectsManagedZonesResource]
+///     - [ProjectsManagedZonesRrsetsResource]
 /// - [ResourceRecordSetsResource]
 library dns.v1;
 
@@ -40,7 +42,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 class DnsApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -255,7 +257,7 @@ class DnsKeysResource {
 
   DnsKeysResource(commons.ApiRequester client) : _requester = client;
 
-  /// Fetch the representation of an existing DnsKey.
+  /// Fetches the representation of an existing DnsKey.
   ///
   /// Request parameters:
   ///
@@ -313,7 +315,7 @@ class DnsKeysResource {
     return DnsKey.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Enumerate DnsKeys to a ResourceRecordSet collection.
+  /// Enumerates DnsKeys to a ResourceRecordSet collection.
   ///
   /// Request parameters:
   ///
@@ -497,7 +499,7 @@ class ManagedZonesResource {
 
   ManagedZonesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Create a new ManagedZone.
+  /// Creates a new ManagedZone.
   ///
   /// [request] - The metadata request object.
   ///
@@ -545,7 +547,7 @@ class ManagedZonesResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Delete a previously created ManagedZone.
+  /// Deletes a previously created ManagedZone.
   ///
   /// Request parameters:
   ///
@@ -590,7 +592,7 @@ class ManagedZonesResource {
     );
   }
 
-  /// Fetch the representation of an existing ManagedZone.
+  /// Fetches the representation of an existing ManagedZone.
   ///
   /// Request parameters:
   ///
@@ -638,7 +640,7 @@ class ManagedZonesResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Enumerate ManagedZones that have been created but not yet deleted.
+  /// Enumerates ManagedZones that have been created but not yet deleted.
   ///
   /// Request parameters:
   ///
@@ -689,7 +691,7 @@ class ManagedZonesResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Apply a partial update to an existing ManagedZone.
+  /// Applies a partial update to an existing ManagedZone.
   ///
   /// [request] - The metadata request object.
   ///
@@ -741,7 +743,7 @@ class ManagedZonesResource {
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Update an existing ManagedZone.
+  /// Updates an existing ManagedZone.
   ///
   /// [request] - The metadata request object.
   ///
@@ -799,7 +801,7 @@ class PoliciesResource {
 
   PoliciesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a new Policy
+  /// Creates a new Policy.
   ///
   /// [request] - The metadata request object.
   ///
@@ -845,7 +847,7 @@ class PoliciesResource {
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Delete a previously created Policy.
+  /// Deletes a previously created Policy.
   ///
   /// Fails if the policy is still being referenced by a network.
   ///
@@ -985,7 +987,7 @@ class PoliciesResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Apply a partial update to an existing Policy.
+  /// Applies a partial update to an existing Policy.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1038,7 +1040,7 @@ class PoliciesResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Update an existing Policy.
+  /// Updates an existing Policy.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1095,9 +1097,12 @@ class PoliciesResource {
 class ProjectsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsManagedZonesResource get managedZones =>
+      ProjectsManagedZonesResource(_requester);
+
   ProjectsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Fetch the representation of an existing Project.
+  /// Fetches the representation of an existing Project.
   ///
   /// Request parameters:
   ///
@@ -1138,12 +1143,262 @@ class ProjectsResource {
   }
 }
 
+class ProjectsManagedZonesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsManagedZonesRrsetsResource get rrsets =>
+      ProjectsManagedZonesRrsetsResource(_requester);
+
+  ProjectsManagedZonesResource(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsManagedZonesRrsetsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsManagedZonesRrsetsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new ResourceRecordSet.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Identifies the project addressed by this request.
+  ///
+  /// [managedZone] - Identifies the managed zone addressed by this request. Can
+  /// be the managed zone name or ID.
+  ///
+  /// [clientOperationId] - For mutating operation requests only. An optional
+  /// identifier specified by the client. Must be unique for operation resources
+  /// in the Operations collection.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ResourceRecordSet].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ResourceRecordSet> create(
+    ResourceRecordSet request,
+    core.String project,
+    core.String managedZone, {
+    core.String? clientOperationId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (clientOperationId != null) 'clientOperationId': [clientOperationId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'dns/v1/projects/' +
+        commons.escapeVariable('$project') +
+        '/managedZones/' +
+        commons.escapeVariable('$managedZone') +
+        '/rrsets';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return ResourceRecordSet.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a previously created ResourceRecordSet.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Identifies the project addressed by this request.
+  ///
+  /// [managedZone] - Identifies the managed zone addressed by this request. Can
+  /// be the managed zone name or ID.
+  ///
+  /// [name] - Fully qualified domain name.
+  ///
+  /// [type] - RRSet type.
+  ///
+  /// [clientOperationId] - For mutating operation requests only. An optional
+  /// identifier specified by the client. Must be unique for operation resources
+  /// in the Operations collection.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ResourceRecordSetsDeleteResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ResourceRecordSetsDeleteResponse> delete(
+    core.String project,
+    core.String managedZone,
+    core.String name,
+    core.String type, {
+    core.String? clientOperationId,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (clientOperationId != null) 'clientOperationId': [clientOperationId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'dns/v1/projects/' +
+        commons.escapeVariable('$project') +
+        '/managedZones/' +
+        commons.escapeVariable('$managedZone') +
+        '/rrsets/' +
+        commons.escapeVariable('$name') +
+        '/' +
+        commons.escapeVariable('$type');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return ResourceRecordSetsDeleteResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Fetches the representation of an existing ResourceRecordSet.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Identifies the project addressed by this request.
+  ///
+  /// [managedZone] - Identifies the managed zone addressed by this request. Can
+  /// be the managed zone name or ID.
+  ///
+  /// [name] - Fully qualified domain name.
+  ///
+  /// [type] - RRSet type.
+  ///
+  /// [clientOperationId] - For mutating operation requests only. An optional
+  /// identifier specified by the client. Must be unique for operation resources
+  /// in the Operations collection.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ResourceRecordSet].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ResourceRecordSet> get(
+    core.String project,
+    core.String managedZone,
+    core.String name,
+    core.String type, {
+    core.String? clientOperationId,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (clientOperationId != null) 'clientOperationId': [clientOperationId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'dns/v1/projects/' +
+        commons.escapeVariable('$project') +
+        '/managedZones/' +
+        commons.escapeVariable('$managedZone') +
+        '/rrsets/' +
+        commons.escapeVariable('$name') +
+        '/' +
+        commons.escapeVariable('$type');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ResourceRecordSet.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Applies a partial update to an existing ResourceRecordSet.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Identifies the project addressed by this request.
+  ///
+  /// [managedZone] - Identifies the managed zone addressed by this request. Can
+  /// be the managed zone name or ID.
+  ///
+  /// [name] - Fully qualified domain name.
+  ///
+  /// [type] - RRSet type.
+  ///
+  /// [clientOperationId] - For mutating operation requests only. An optional
+  /// identifier specified by the client. Must be unique for operation resources
+  /// in the Operations collection.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ResourceRecordSet].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ResourceRecordSet> patch(
+    ResourceRecordSet request,
+    core.String project,
+    core.String managedZone,
+    core.String name,
+    core.String type, {
+    core.String? clientOperationId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (clientOperationId != null) 'clientOperationId': [clientOperationId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'dns/v1/projects/' +
+        commons.escapeVariable('$project') +
+        '/managedZones/' +
+        commons.escapeVariable('$managedZone') +
+        '/rrsets/' +
+        commons.escapeVariable('$name') +
+        '/' +
+        commons.escapeVariable('$type');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return ResourceRecordSet.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ResourceRecordSetsResource {
   final commons.ApiRequester _requester;
 
   ResourceRecordSetsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Enumerate ResourceRecordSets that you have created but not yet deleted.
+  /// Enumerates ResourceRecordSets that you have created but not yet deleted.
   ///
   /// Request parameters:
   ///
@@ -1237,7 +1492,7 @@ class Change {
   /// Status of the operation (output only).
   ///
   /// A status of "done" means that the request to update the authoritative
-  /// servers has been sent but the servers might not be updated yet.
+  /// servers has been sent, but the servers might not be updated yet.
   /// Possible string values are:
   /// - "pending"
   /// - "done"
@@ -1302,12 +1557,12 @@ class ChangesListResponse {
   /// following your last page of results in pagination order.
   ///
   /// To fetch them, make another list request using this value as your
-  /// pagination token. In this way you can retrieve the complete contents of
-  /// even very large collections one page at a time. However, if the contents
-  /// of the collection change between the first and last paginated list
-  /// request, the set of all elements returned are an inconsistent view of the
-  /// collection. There is no way to retrieve a "snapshot" of collections larger
-  /// than the maximum page size.
+  /// pagination token. This lets you retrieve the complete contents of even
+  /// very large collections one page at a time. However, if the contents of the
+  /// collection change between the first and last paginated list request, the
+  /// set of all elements returned are an inconsistent view of the collection.
+  /// You cannot retrieve a "snapshot" of collections larger than the maximum
+  /// page size.
   core.String? nextPageToken;
 
   ChangesListResponse();
@@ -1376,13 +1631,13 @@ class DnsKey {
 
   /// Active keys are used to sign subsequent changes to the ManagedZone.
   ///
-  /// Inactive keys will still be present as DNSKEY Resource Records for the use
-  /// of resolvers validating existing signatures.
+  /// Inactive keys are still present as DNSKEY Resource Records for the use of
+  /// resolvers validating existing signatures.
   core.bool? isActive;
 
   /// Length of the key in bits.
   ///
-  /// Specified at creation time, then immutable.
+  /// Specified at creation time, and then immutable.
   core.int? keyLength;
 
   /// The key tag is a non-cryptographic hash of the a DNSKEY resource record
@@ -1405,7 +1660,7 @@ class DnsKey {
   ///
   /// Keys of type KEY_SIGNING have the Secure Entry Point flag set and, when
   /// active, are used to sign only resource record sets of type DNSKEY.
-  /// Otherwise, the Secure Entry Point flag is cleared and this key is used to
+  /// Otherwise, the Secure Entry Point flag is cleared, and this key is used to
   /// sign only resource record sets of other types. Immutable after creation
   /// time.
   /// Possible string values are:
@@ -1652,8 +1907,8 @@ class ManagedZone {
   /// Optionally specifies the NameServerSet for this ManagedZone.
   ///
   /// A NameServerSet is a set of DNS name servers that all host the same
-  /// ManagedZones. Most users will leave this field unset. If you need to use
-  /// this field, please reach out to your account team.
+  /// ManagedZones. Most users leave this field unset. If you need to use this
+  /// field, contact your account team.
   core.String? nameServerSet;
 
   /// Delegate your managed_zone to these virtual name servers; defined by the
@@ -1679,7 +1934,7 @@ class ManagedZone {
 
   /// This field links to the associated service directory namespace.
   ///
-  /// This field should not be set for public zones or forwarding zones.
+  /// Do not set this field for public zones or forwarding zones.
   ManagedZoneServiceDirectoryConfig? serviceDirectoryConfig;
 
   /// The zone's visibility: public zones are exposed to the Internet, while
@@ -1869,9 +2124,9 @@ class ManagedZoneForwardingConfigNameServerTarget {
   /// Forwarding path for this NameServerTarget.
   ///
   /// If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on
-  /// address ranges; that is, RFC1918 addresses go to the VPC, non-RFC1918
-  /// addresses go to the internet. When set to PRIVATE, Cloud DNS always sends
-  /// queries through VPC for this target.
+  /// IP address ranges; that is, RFC1918 addresses go to the VPC network,
+  /// non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS
+  /// always sends queries through the VPC network for this target.
   /// Possible string values are:
   /// - "default" : Cloud DNS makes forwarding decisions based on address
   /// ranges; that is, RFC1918 addresses forward to the target through the VPC
@@ -1906,18 +2161,20 @@ class ManagedZoneForwardingConfigNameServerTarget {
 
 class ManagedZoneOperationsListResponse {
   ResponseHeader? header;
+
+  /// Type of resource.
   core.String? kind;
 
   /// The presence of this field indicates that there exist more results
   /// following your last page of results in pagination order.
   ///
   /// To fetch them, make another list request using this value as your page
-  /// token. In this way you can retrieve the complete contents of even very
-  /// large collections one page at a time. However, if the contents of the
-  /// collection change between the first and last paginated list request, the
-  /// set of all elements returned are an inconsistent view of the collection.
-  /// There is no way to retrieve a consistent snapshot of a collection larger
-  /// than the maximum page size.
+  /// token. This lets you retrieve the complete contents of even very large
+  /// collections one page at a time. However, if the contents of the collection
+  /// change between the first and last paginated list request, the set of all
+  /// elements returned are an inconsistent view of the collection. You cannot
+  /// retrieve a consistent snapshot of a collection larger than the maximum
+  /// page size.
   core.String? nextPageToken;
 
   /// The operation resources.
@@ -2047,7 +2304,7 @@ class ManagedZonePrivateVisibilityConfigNetwork {
 
   /// The fully qualified URL of the VPC network to bind to.
   ///
-  /// This should be formatted like
+  /// Format this URL like
   /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
   core.String? networkUrl;
 
@@ -2110,8 +2367,8 @@ class ManagedZoneServiceDirectoryConfig {
 }
 
 class ManagedZoneServiceDirectoryConfigNamespace {
-  /// The time that the namespace backing this zone was deleted, empty string if
-  /// it still exists.
+  /// The time that the namespace backing this zone was deleted; an empty string
+  /// if it still exists.
   ///
   /// This is in RFC3339 text format. Output only.
   core.String? deletionTime;
@@ -2119,7 +2376,7 @@ class ManagedZoneServiceDirectoryConfigNamespace {
 
   /// The fully qualified URL of the namespace associated with the zone.
   ///
-  /// This should be formatted like
+  /// Format must be
   /// https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}
   core.String? namespaceUrl;
 
@@ -2157,12 +2414,11 @@ class ManagedZonesListResponse {
   /// following your last page of results in pagination order.
   ///
   /// To fetch them, make another list request using this value as your page
-  /// token. In this way you can retrieve the complete contents of even very
-  /// large collections one page at a time. However, if the contents of the
-  /// collection change between the first and last paginated list request, the
-  /// set of all elements returned are an inconsistent view of the collection.
-  /// There is no way to retrieve a consistent snapshot of a collection larger
-  /// than the maximum page size.
+  /// token. This lets you the complete contents of even very large collections
+  /// one page at a time. However, if the contents of the collection change
+  /// between the first and last paginated list request, the set of all elements
+  /// returned are an inconsistent view of the collection. You cannot retrieve a
+  /// consistent snapshot of a collection larger than the maximum page size.
   core.String? nextPageToken;
 
   ManagedZonesListResponse();
@@ -2348,12 +2604,11 @@ class PoliciesListResponse {
   /// following your last page of results in pagination order.
   ///
   /// To fetch them, make another list request using this value as your page
-  /// token. In this way you can retrieve the complete contents of even very
-  /// large collections one page at a time. However, if the contents of the
-  /// collection change between the first and last paginated list request, the
-  /// set of all elements returned are an inconsistent view of the collection.
-  /// There is no way to retrieve a consistent snapshot of a collection larger
-  /// than the maximum page size.
+  /// token. This lets you the complete contents of even very large collections
+  /// one page at a time. However, if the contents of the collection change
+  /// between the first and last paginated list request, the set of all elements
+  /// returned are an inconsistent view of the collection. You cannot retrieve a
+  /// consistent snapshot of a collection larger than the maximum page size.
   core.String? nextPageToken;
 
   /// The policy resources.
@@ -2455,7 +2710,7 @@ class Policy {
   /// applications over VPN connections.
   ///
   /// When enabled, a virtual IP address is allocated from each of the
-  /// sub-networks that are bound to this policy.
+  /// subnetworks that are bound to this policy.
   core.bool? enableInboundForwarding;
 
   /// Controls whether logging is enabled for the networks bound to this policy.
@@ -2559,16 +2814,15 @@ class PolicyAlternativeNameServerConfig {
 class PolicyAlternativeNameServerConfigTargetNameServer {
   /// Forwarding path for this TargetNameServer.
   ///
-  /// If unset or set to DEFAULT, Cloud DNS makes forwarding decision based on
-  /// address ranges; that is, RFC1918 addresses go to the VPC, non-RFC1918
-  /// addresses go to the internet. When set to PRIVATE, Cloud DNS always sends
-  /// queries through VPC for this target.
+  /// If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on
+  /// address ranges; that is, RFC1918 addresses go to the VPC network,
+  /// non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS
+  /// always sends queries through the VPC network for this target.
   /// Possible string values are:
-  /// - "default" : Cloud DNS will make forwarding decision based on address
+  /// - "default" : Cloud DNS makes forwarding decision based on IP address
   /// ranges; that is, RFC1918 addresses forward to the target through the VPC
   /// and non-RFC1918 addresses forward to the target through the internet
-  /// - "private" : Cloud DNS will always forward to this target through the
-  /// VPC.
+  /// - "private" : Cloud DNS always forwards to this target through the VPC.
   core.String? forwardingPath;
 
   /// IPv4 address to forward to.
@@ -2625,7 +2879,7 @@ class PolicyNetwork {
 /// A project resource.
 ///
 /// The project is a top level container for resources including Cloud DNS
-/// ManagedZones. Projects can be created only in the APIs console.
+/// ManagedZones. Projects can be created only in the APIs console. Next tag: 7.
 class Project {
   /// User assigned unique identifier for the resource (output only).
   core.String? id;
@@ -2800,7 +3054,7 @@ class Quota {
       };
 }
 
-/// A unit of data that will be returned by the DNS servers.
+/// A unit of data that is returned by the DNS servers.
 class ResourceRecordSet {
   core.String? kind;
 
@@ -2857,6 +3111,16 @@ class ResourceRecordSet {
         if (ttl != null) 'ttl': ttl!,
         if (type != null) 'type': type!,
       };
+}
+
+class ResourceRecordSetsDeleteResponse {
+  ResourceRecordSetsDeleteResponse();
+
+  ResourceRecordSetsDeleteResponse.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 class ResourceRecordSetsListResponse {

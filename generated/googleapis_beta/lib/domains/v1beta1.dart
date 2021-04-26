@@ -40,7 +40,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Enables management and configuration of domain names.
 class CloudDomainsApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -116,11 +116,15 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [filter] - The standard list filter.
+  /// [filter] - A filter to narrow down results to a preferred subset. The
+  /// filtering language accepts strings like "displayName=tokyo", and is
+  /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
   ///
-  /// [pageSize] - The standard list page size.
+  /// [pageSize] - The maximum number of results to return. If not set, the
+  /// service selects a default.
   ///
-  /// [pageToken] - The standard list page token.
+  /// [pageToken] - A page token received from the `next_page_token` field in
+  /// the response. Send that page token to receive the subsequent page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

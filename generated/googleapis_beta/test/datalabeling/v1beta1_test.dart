@@ -27,14 +27,14 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<api.GoogleRpcStatus> buildUnnamed7341() {
+core.List<api.GoogleRpcStatus> buildUnnamed7757() {
   var o = <api.GoogleRpcStatus>[];
   o.add(buildGoogleRpcStatus());
   o.add(buildGoogleRpcStatus());
   return o;
 }
 
-void checkUnnamed7341(core.List<api.GoogleRpcStatus> o) {
+void checkUnnamed7757(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleRpcStatus(o[0] as api.GoogleRpcStatus);
   checkGoogleRpcStatus(o[1] as api.GoogleRpcStatus);
@@ -50,7 +50,7 @@ api.GoogleCloudDatalabelingV1alpha1CreateInstructionMetadata
       3) {
     o.createTime = 'foo';
     o.instruction = 'foo';
-    o.partialFailures = buildUnnamed7341();
+    o.partialFailures = buildUnnamed7757();
   }
   buildCounterGoogleCloudDatalabelingV1alpha1CreateInstructionMetadata--;
   return o;
@@ -69,19 +69,19 @@ void checkGoogleCloudDatalabelingV1alpha1CreateInstructionMetadata(
       o.instruction!,
       unittest.equals('foo'),
     );
-    checkUnnamed7341(o.partialFailures!);
+    checkUnnamed7757(o.partialFailures!);
   }
   buildCounterGoogleCloudDatalabelingV1alpha1CreateInstructionMetadata--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed7342() {
+core.List<api.GoogleRpcStatus> buildUnnamed7758() {
   var o = <api.GoogleRpcStatus>[];
   o.add(buildGoogleRpcStatus());
   o.add(buildGoogleRpcStatus());
   return o;
 }
 
-void checkUnnamed7342(core.List<api.GoogleRpcStatus> o) {
+void checkUnnamed7758(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleRpcStatus(o[0] as api.GoogleRpcStatus);
   checkGoogleRpcStatus(o[1] as api.GoogleRpcStatus);
@@ -98,7 +98,7 @@ api.GoogleCloudDatalabelingV1alpha1ExportDataOperationMetadata
     o.annotatedDataset = 'foo';
     o.createTime = 'foo';
     o.dataset = 'foo';
-    o.partialFailures = buildUnnamed7342();
+    o.partialFailures = buildUnnamed7758();
   }
   buildCounterGoogleCloudDatalabelingV1alpha1ExportDataOperationMetadata--;
   return o;
@@ -121,7 +121,7 @@ void checkGoogleCloudDatalabelingV1alpha1ExportDataOperationMetadata(
       o.dataset!,
       unittest.equals('foo'),
     );
-    checkUnnamed7342(o.partialFailures!);
+    checkUnnamed7758(o.partialFailures!);
   }
   buildCounterGoogleCloudDatalabelingV1alpha1ExportDataOperationMetadata--;
 }
@@ -227,14 +227,14 @@ void checkGoogleCloudDatalabelingV1alpha1GcsFolderDestination(
   buildCounterGoogleCloudDatalabelingV1alpha1GcsFolderDestination--;
 }
 
-core.List<core.String> buildUnnamed7343() {
+core.List<core.String> buildUnnamed7759() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed7343(core.List<core.String> o) {
+void checkUnnamed7759(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -254,7 +254,7 @@ api.GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig
   if (buildCounterGoogleCloudDatalabelingV1alpha1HumanAnnotationConfig < 3) {
     o.annotatedDatasetDescription = 'foo';
     o.annotatedDatasetDisplayName = 'foo';
-    o.contributorEmails = buildUnnamed7343();
+    o.contributorEmails = buildUnnamed7759();
     o.instruction = 'foo';
     o.labelGroup = 'foo';
     o.languageCode = 'foo';
@@ -278,7 +278,7 @@ void checkGoogleCloudDatalabelingV1alpha1HumanAnnotationConfig(
       o.annotatedDatasetDisplayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed7343(o.contributorEmails!);
+    checkUnnamed7759(o.contributorEmails!);
     unittest.expect(
       o.instruction!,
       unittest.equals('foo'),
@@ -307,14 +307,14 @@ void checkGoogleCloudDatalabelingV1alpha1HumanAnnotationConfig(
   buildCounterGoogleCloudDatalabelingV1alpha1HumanAnnotationConfig--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed7344() {
+core.List<api.GoogleRpcStatus> buildUnnamed7760() {
   var o = <api.GoogleRpcStatus>[];
   o.add(buildGoogleRpcStatus());
   o.add(buildGoogleRpcStatus());
   return o;
 }
 
-void checkUnnamed7344(core.List<api.GoogleRpcStatus> o) {
+void checkUnnamed7760(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleRpcStatus(o[0] as api.GoogleRpcStatus);
   checkGoogleRpcStatus(o[1] as api.GoogleRpcStatus);
@@ -330,7 +330,7 @@ api.GoogleCloudDatalabelingV1alpha1ImportDataOperationMetadata
       3) {
     o.createTime = 'foo';
     o.dataset = 'foo';
-    o.partialFailures = buildUnnamed7344();
+    o.partialFailures = buildUnnamed7760();
   }
   buildCounterGoogleCloudDatalabelingV1alpha1ImportDataOperationMetadata--;
   return o;
@@ -349,7 +349,7 @@ void checkGoogleCloudDatalabelingV1alpha1ImportDataOperationMetadata(
       o.dataset!,
       unittest.equals('foo'),
     );
-    checkUnnamed7344(o.partialFailures!);
+    checkUnnamed7760(o.partialFailures!);
   }
   buildCounterGoogleCloudDatalabelingV1alpha1ImportDataOperationMetadata--;
 }
@@ -558,14 +558,14 @@ void checkGoogleCloudDatalabelingV1alpha1LabelImageSegmentationOperationMetadata
   buildCounterGoogleCloudDatalabelingV1alpha1LabelImageSegmentationOperationMetadata--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed7345() {
+core.List<api.GoogleRpcStatus> buildUnnamed7761() {
   var o = <api.GoogleRpcStatus>[];
   o.add(buildGoogleRpcStatus());
   o.add(buildGoogleRpcStatus());
   return o;
 }
 
-void checkUnnamed7345(core.List<api.GoogleRpcStatus> o) {
+void checkUnnamed7761(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleRpcStatus(o[0] as api.GoogleRpcStatus);
   checkGoogleRpcStatus(o[1] as api.GoogleRpcStatus);
@@ -592,7 +592,7 @@ api.GoogleCloudDatalabelingV1alpha1LabelOperationMetadata
         buildGoogleCloudDatalabelingV1alpha1LabelImagePolylineOperationMetadata();
     o.imageSegmentationDetails =
         buildGoogleCloudDatalabelingV1alpha1LabelImageSegmentationOperationMetadata();
-    o.partialFailures = buildUnnamed7345();
+    o.partialFailures = buildUnnamed7761();
     o.progressPercent = 42;
     o.textClassificationDetails =
         buildGoogleCloudDatalabelingV1alpha1LabelTextClassificationOperationMetadata();
@@ -645,7 +645,7 @@ void checkGoogleCloudDatalabelingV1alpha1LabelOperationMetadata(
     checkGoogleCloudDatalabelingV1alpha1LabelImageSegmentationOperationMetadata(
         o.imageSegmentationDetails! as api
             .GoogleCloudDatalabelingV1alpha1LabelImageSegmentationOperationMetadata);
-    checkUnnamed7345(o.partialFailures!);
+    checkUnnamed7761(o.partialFailures!);
     unittest.expect(
       o.progressPercent!,
       unittest.equals(42),
@@ -672,14 +672,14 @@ void checkGoogleCloudDatalabelingV1alpha1LabelOperationMetadata(
   buildCounterGoogleCloudDatalabelingV1alpha1LabelOperationMetadata--;
 }
 
-core.Map<core.String, core.String> buildUnnamed7346() {
+core.Map<core.String, core.String> buildUnnamed7762() {
   var o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
 }
 
-void checkUnnamed7346(core.Map<core.String, core.String> o) {
+void checkUnnamed7762(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -697,7 +697,7 @@ api.GoogleCloudDatalabelingV1alpha1LabelStats
   var o = api.GoogleCloudDatalabelingV1alpha1LabelStats();
   buildCounterGoogleCloudDatalabelingV1alpha1LabelStats++;
   if (buildCounterGoogleCloudDatalabelingV1alpha1LabelStats < 3) {
-    o.exampleCount = buildUnnamed7346();
+    o.exampleCount = buildUnnamed7762();
   }
   buildCounterGoogleCloudDatalabelingV1alpha1LabelStats--;
   return o;
@@ -707,7 +707,7 @@ void checkGoogleCloudDatalabelingV1alpha1LabelStats(
     api.GoogleCloudDatalabelingV1alpha1LabelStats o) {
   buildCounterGoogleCloudDatalabelingV1alpha1LabelStats++;
   if (buildCounterGoogleCloudDatalabelingV1alpha1LabelStats < 3) {
-    checkUnnamed7346(o.exampleCount!);
+    checkUnnamed7762(o.exampleCount!);
   }
   buildCounterGoogleCloudDatalabelingV1alpha1LabelStats--;
 }
@@ -905,14 +905,14 @@ void checkGoogleCloudDatalabelingV1alpha1OutputConfig(
   buildCounterGoogleCloudDatalabelingV1alpha1OutputConfig--;
 }
 
-core.List<core.String> buildUnnamed7347() {
+core.List<core.String> buildUnnamed7763() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed7347(core.List<core.String> o) {
+void checkUnnamed7763(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -932,7 +932,7 @@ api.GoogleCloudDatalabelingV1beta1AnnotatedDataset
   if (buildCounterGoogleCloudDatalabelingV1beta1AnnotatedDataset < 3) {
     o.annotationSource = 'foo';
     o.annotationType = 'foo';
-    o.blockingResources = buildUnnamed7347();
+    o.blockingResources = buildUnnamed7763();
     o.completedExampleCount = 'foo';
     o.createTime = 'foo';
     o.description = 'foo';
@@ -958,7 +958,7 @@ void checkGoogleCloudDatalabelingV1beta1AnnotatedDataset(
       o.annotationType!,
       unittest.equals('foo'),
     );
-    checkUnnamed7347(o.blockingResources!);
+    checkUnnamed7763(o.blockingResources!);
     unittest.expect(
       o.completedExampleCount!,
       unittest.equals('foo'),
@@ -1156,14 +1156,14 @@ void checkGoogleCloudDatalabelingV1beta1AnnotationSpec(
   buildCounterGoogleCloudDatalabelingV1beta1AnnotationSpec--;
 }
 
-core.List<api.GoogleCloudDatalabelingV1beta1AnnotationSpec> buildUnnamed7348() {
+core.List<api.GoogleCloudDatalabelingV1beta1AnnotationSpec> buildUnnamed7764() {
   var o = <api.GoogleCloudDatalabelingV1beta1AnnotationSpec>[];
   o.add(buildGoogleCloudDatalabelingV1beta1AnnotationSpec());
   o.add(buildGoogleCloudDatalabelingV1beta1AnnotationSpec());
   return o;
 }
 
-void checkUnnamed7348(
+void checkUnnamed7764(
     core.List<api.GoogleCloudDatalabelingV1beta1AnnotationSpec> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatalabelingV1beta1AnnotationSpec(
@@ -1172,14 +1172,14 @@ void checkUnnamed7348(
       o[1] as api.GoogleCloudDatalabelingV1beta1AnnotationSpec);
 }
 
-core.List<core.String> buildUnnamed7349() {
+core.List<core.String> buildUnnamed7765() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed7349(core.List<core.String> o) {
+void checkUnnamed7765(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1197,8 +1197,8 @@ api.GoogleCloudDatalabelingV1beta1AnnotationSpecSet
   var o = api.GoogleCloudDatalabelingV1beta1AnnotationSpecSet();
   buildCounterGoogleCloudDatalabelingV1beta1AnnotationSpecSet++;
   if (buildCounterGoogleCloudDatalabelingV1beta1AnnotationSpecSet < 3) {
-    o.annotationSpecs = buildUnnamed7348();
-    o.blockingResources = buildUnnamed7349();
+    o.annotationSpecs = buildUnnamed7764();
+    o.blockingResources = buildUnnamed7765();
     o.description = 'foo';
     o.displayName = 'foo';
     o.name = 'foo';
@@ -1211,8 +1211,8 @@ void checkGoogleCloudDatalabelingV1beta1AnnotationSpecSet(
     api.GoogleCloudDatalabelingV1beta1AnnotationSpecSet o) {
   buildCounterGoogleCloudDatalabelingV1beta1AnnotationSpecSet++;
   if (buildCounterGoogleCloudDatalabelingV1beta1AnnotationSpecSet < 3) {
-    checkUnnamed7348(o.annotationSpecs!);
-    checkUnnamed7349(o.blockingResources!);
+    checkUnnamed7764(o.annotationSpecs!);
+    checkUnnamed7765(o.blockingResources!);
     unittest.expect(
       o.description!,
       unittest.equals('foo'),
@@ -1319,14 +1319,14 @@ void checkGoogleCloudDatalabelingV1beta1AnnotationValue(
   buildCounterGoogleCloudDatalabelingV1beta1AnnotationValue--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed7350() {
+core.List<api.GoogleRpcStatus> buildUnnamed7766() {
   var o = <api.GoogleRpcStatus>[];
   o.add(buildGoogleRpcStatus());
   o.add(buildGoogleRpcStatus());
   return o;
 }
 
-void checkUnnamed7350(core.List<api.GoogleRpcStatus> o) {
+void checkUnnamed7766(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleRpcStatus(o[0] as api.GoogleRpcStatus);
   checkGoogleRpcStatus(o[1] as api.GoogleRpcStatus);
@@ -1339,7 +1339,7 @@ api.GoogleCloudDatalabelingV1beta1Attempt
   buildCounterGoogleCloudDatalabelingV1beta1Attempt++;
   if (buildCounterGoogleCloudDatalabelingV1beta1Attempt < 3) {
     o.attemptTime = 'foo';
-    o.partialFailures = buildUnnamed7350();
+    o.partialFailures = buildUnnamed7766();
   }
   buildCounterGoogleCloudDatalabelingV1beta1Attempt--;
   return o;
@@ -1353,7 +1353,7 @@ void checkGoogleCloudDatalabelingV1beta1Attempt(
       o.attemptTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed7350(o.partialFailures!);
+    checkUnnamed7766(o.partialFailures!);
   }
   buildCounterGoogleCloudDatalabelingV1beta1Attempt--;
 }
@@ -1409,14 +1409,14 @@ void checkGoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions(
   buildCounterGoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions--;
 }
 
-core.List<api.GoogleCloudDatalabelingV1beta1Vertex> buildUnnamed7351() {
+core.List<api.GoogleCloudDatalabelingV1beta1Vertex> buildUnnamed7767() {
   var o = <api.GoogleCloudDatalabelingV1beta1Vertex>[];
   o.add(buildGoogleCloudDatalabelingV1beta1Vertex());
   o.add(buildGoogleCloudDatalabelingV1beta1Vertex());
   return o;
 }
 
-void checkUnnamed7351(core.List<api.GoogleCloudDatalabelingV1beta1Vertex> o) {
+void checkUnnamed7767(core.List<api.GoogleCloudDatalabelingV1beta1Vertex> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatalabelingV1beta1Vertex(
       o[0] as api.GoogleCloudDatalabelingV1beta1Vertex);
@@ -1430,7 +1430,7 @@ api.GoogleCloudDatalabelingV1beta1BoundingPoly
   var o = api.GoogleCloudDatalabelingV1beta1BoundingPoly();
   buildCounterGoogleCloudDatalabelingV1beta1BoundingPoly++;
   if (buildCounterGoogleCloudDatalabelingV1beta1BoundingPoly < 3) {
-    o.vertices = buildUnnamed7351();
+    o.vertices = buildUnnamed7767();
   }
   buildCounterGoogleCloudDatalabelingV1beta1BoundingPoly--;
   return o;
@@ -1440,7 +1440,7 @@ void checkGoogleCloudDatalabelingV1beta1BoundingPoly(
     api.GoogleCloudDatalabelingV1beta1BoundingPoly o) {
   buildCounterGoogleCloudDatalabelingV1beta1BoundingPoly++;
   if (buildCounterGoogleCloudDatalabelingV1beta1BoundingPoly < 3) {
-    checkUnnamed7351(o.vertices!);
+    checkUnnamed7767(o.vertices!);
   }
   buildCounterGoogleCloudDatalabelingV1beta1BoundingPoly--;
 }
@@ -1589,14 +1589,14 @@ void checkGoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry(
   buildCounterGoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry--;
 }
 
-core.List<api.GoogleCloudDatalabelingV1beta1Row> buildUnnamed7352() {
+core.List<api.GoogleCloudDatalabelingV1beta1Row> buildUnnamed7768() {
   var o = <api.GoogleCloudDatalabelingV1beta1Row>[];
   o.add(buildGoogleCloudDatalabelingV1beta1Row());
   o.add(buildGoogleCloudDatalabelingV1beta1Row());
   return o;
 }
 
-void checkUnnamed7352(core.List<api.GoogleCloudDatalabelingV1beta1Row> o) {
+void checkUnnamed7768(core.List<api.GoogleCloudDatalabelingV1beta1Row> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatalabelingV1beta1Row(
       o[0] as api.GoogleCloudDatalabelingV1beta1Row);
@@ -1610,7 +1610,7 @@ api.GoogleCloudDatalabelingV1beta1ConfusionMatrix
   var o = api.GoogleCloudDatalabelingV1beta1ConfusionMatrix();
   buildCounterGoogleCloudDatalabelingV1beta1ConfusionMatrix++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ConfusionMatrix < 3) {
-    o.row = buildUnnamed7352();
+    o.row = buildUnnamed7768();
   }
   buildCounterGoogleCloudDatalabelingV1beta1ConfusionMatrix--;
   return o;
@@ -1620,7 +1620,7 @@ void checkGoogleCloudDatalabelingV1beta1ConfusionMatrix(
     api.GoogleCloudDatalabelingV1beta1ConfusionMatrix o) {
   buildCounterGoogleCloudDatalabelingV1beta1ConfusionMatrix++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ConfusionMatrix < 3) {
-    checkUnnamed7352(o.row!);
+    checkUnnamed7768(o.row!);
   }
   buildCounterGoogleCloudDatalabelingV1beta1ConfusionMatrix--;
 }
@@ -1726,14 +1726,14 @@ void checkGoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest(
   buildCounterGoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed7353() {
+core.List<api.GoogleRpcStatus> buildUnnamed7769() {
   var o = <api.GoogleRpcStatus>[];
   o.add(buildGoogleRpcStatus());
   o.add(buildGoogleRpcStatus());
   return o;
 }
 
-void checkUnnamed7353(core.List<api.GoogleRpcStatus> o) {
+void checkUnnamed7769(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleRpcStatus(o[0] as api.GoogleRpcStatus);
   checkGoogleRpcStatus(o[1] as api.GoogleRpcStatus);
@@ -1748,7 +1748,7 @@ api.GoogleCloudDatalabelingV1beta1CreateInstructionMetadata
   if (buildCounterGoogleCloudDatalabelingV1beta1CreateInstructionMetadata < 3) {
     o.createTime = 'foo';
     o.instruction = 'foo';
-    o.partialFailures = buildUnnamed7353();
+    o.partialFailures = buildUnnamed7769();
   }
   buildCounterGoogleCloudDatalabelingV1beta1CreateInstructionMetadata--;
   return o;
@@ -1766,7 +1766,7 @@ void checkGoogleCloudDatalabelingV1beta1CreateInstructionMetadata(
       o.instruction!,
       unittest.equals('foo'),
     );
-    checkUnnamed7353(o.partialFailures!);
+    checkUnnamed7769(o.partialFailures!);
   }
   buildCounterGoogleCloudDatalabelingV1beta1CreateInstructionMetadata--;
 }
@@ -1850,14 +1850,14 @@ void checkGoogleCloudDatalabelingV1beta1DataItem(
   buildCounterGoogleCloudDatalabelingV1beta1DataItem--;
 }
 
-core.List<core.String> buildUnnamed7354() {
+core.List<core.String> buildUnnamed7770() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed7354(core.List<core.String> o) {
+void checkUnnamed7770(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1869,14 +1869,14 @@ void checkUnnamed7354(core.List<core.String> o) {
   );
 }
 
-core.List<api.GoogleCloudDatalabelingV1beta1InputConfig> buildUnnamed7355() {
+core.List<api.GoogleCloudDatalabelingV1beta1InputConfig> buildUnnamed7771() {
   var o = <api.GoogleCloudDatalabelingV1beta1InputConfig>[];
   o.add(buildGoogleCloudDatalabelingV1beta1InputConfig());
   o.add(buildGoogleCloudDatalabelingV1beta1InputConfig());
   return o;
 }
 
-void checkUnnamed7355(
+void checkUnnamed7771(
     core.List<api.GoogleCloudDatalabelingV1beta1InputConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatalabelingV1beta1InputConfig(
@@ -1891,12 +1891,12 @@ api.GoogleCloudDatalabelingV1beta1Dataset
   var o = api.GoogleCloudDatalabelingV1beta1Dataset();
   buildCounterGoogleCloudDatalabelingV1beta1Dataset++;
   if (buildCounterGoogleCloudDatalabelingV1beta1Dataset < 3) {
-    o.blockingResources = buildUnnamed7354();
+    o.blockingResources = buildUnnamed7770();
     o.createTime = 'foo';
     o.dataItemCount = 'foo';
     o.description = 'foo';
     o.displayName = 'foo';
-    o.inputConfigs = buildUnnamed7355();
+    o.inputConfigs = buildUnnamed7771();
     o.lastMigrateTime = 'foo';
     o.name = 'foo';
   }
@@ -1908,7 +1908,7 @@ void checkGoogleCloudDatalabelingV1beta1Dataset(
     api.GoogleCloudDatalabelingV1beta1Dataset o) {
   buildCounterGoogleCloudDatalabelingV1beta1Dataset++;
   if (buildCounterGoogleCloudDatalabelingV1beta1Dataset < 3) {
-    checkUnnamed7354(o.blockingResources!);
+    checkUnnamed7770(o.blockingResources!);
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),
@@ -1925,7 +1925,7 @@ void checkGoogleCloudDatalabelingV1beta1Dataset(
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed7355(o.inputConfigs!);
+    checkUnnamed7771(o.inputConfigs!);
     unittest.expect(
       o.lastMigrateTime!,
       unittest.equals('foo'),
@@ -2013,14 +2013,14 @@ void checkGoogleCloudDatalabelingV1beta1EvaluationConfig(
   buildCounterGoogleCloudDatalabelingV1beta1EvaluationConfig--;
 }
 
-core.List<api.GoogleCloudDatalabelingV1beta1Attempt> buildUnnamed7356() {
+core.List<api.GoogleCloudDatalabelingV1beta1Attempt> buildUnnamed7772() {
   var o = <api.GoogleCloudDatalabelingV1beta1Attempt>[];
   o.add(buildGoogleCloudDatalabelingV1beta1Attempt());
   o.add(buildGoogleCloudDatalabelingV1beta1Attempt());
   return o;
 }
 
-void checkUnnamed7356(core.List<api.GoogleCloudDatalabelingV1beta1Attempt> o) {
+void checkUnnamed7772(core.List<api.GoogleCloudDatalabelingV1beta1Attempt> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatalabelingV1beta1Attempt(
       o[0] as api.GoogleCloudDatalabelingV1beta1Attempt);
@@ -2035,7 +2035,7 @@ api.GoogleCloudDatalabelingV1beta1EvaluationJob
   buildCounterGoogleCloudDatalabelingV1beta1EvaluationJob++;
   if (buildCounterGoogleCloudDatalabelingV1beta1EvaluationJob < 3) {
     o.annotationSpecSet = 'foo';
-    o.attempts = buildUnnamed7356();
+    o.attempts = buildUnnamed7772();
     o.createTime = 'foo';
     o.description = 'foo';
     o.evaluationJobConfig =
@@ -2058,7 +2058,7 @@ void checkGoogleCloudDatalabelingV1beta1EvaluationJob(
       o.annotationSpecSet!,
       unittest.equals('foo'),
     );
-    checkUnnamed7356(o.attempts!);
+    checkUnnamed7772(o.attempts!);
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),
@@ -2120,14 +2120,14 @@ void checkGoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig(
   buildCounterGoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig--;
 }
 
-core.Map<core.String, core.String> buildUnnamed7357() {
+core.Map<core.String, core.String> buildUnnamed7773() {
   var o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
 }
 
-void checkUnnamed7357(core.Map<core.String, core.String> o) {
+void checkUnnamed7773(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -2145,7 +2145,7 @@ api.GoogleCloudDatalabelingV1beta1EvaluationJobConfig
   var o = api.GoogleCloudDatalabelingV1beta1EvaluationJobConfig();
   buildCounterGoogleCloudDatalabelingV1beta1EvaluationJobConfig++;
   if (buildCounterGoogleCloudDatalabelingV1beta1EvaluationJobConfig < 3) {
-    o.bigqueryImportKeys = buildUnnamed7357();
+    o.bigqueryImportKeys = buildUnnamed7773();
     o.boundingPolyConfig =
         buildGoogleCloudDatalabelingV1beta1BoundingPolyConfig();
     o.evaluationConfig = buildGoogleCloudDatalabelingV1beta1EvaluationConfig();
@@ -2169,7 +2169,7 @@ void checkGoogleCloudDatalabelingV1beta1EvaluationJobConfig(
     api.GoogleCloudDatalabelingV1beta1EvaluationJobConfig o) {
   buildCounterGoogleCloudDatalabelingV1beta1EvaluationJobConfig++;
   if (buildCounterGoogleCloudDatalabelingV1beta1EvaluationJobConfig < 3) {
-    checkUnnamed7357(o.bigqueryImportKeys!);
+    checkUnnamed7773(o.bigqueryImportKeys!);
     checkGoogleCloudDatalabelingV1beta1BoundingPolyConfig(o.boundingPolyConfig!
         as api.GoogleCloudDatalabelingV1beta1BoundingPolyConfig);
     checkGoogleCloudDatalabelingV1beta1EvaluationConfig(o.evaluationConfig!
@@ -2229,14 +2229,14 @@ void checkGoogleCloudDatalabelingV1beta1EvaluationMetrics(
   buildCounterGoogleCloudDatalabelingV1beta1EvaluationMetrics--;
 }
 
-core.List<core.String> buildUnnamed7358() {
+core.List<core.String> buildUnnamed7774() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed7358(core.List<core.String> o) {
+void checkUnnamed7774(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2254,7 +2254,7 @@ api.GoogleCloudDatalabelingV1beta1EventConfig
   var o = api.GoogleCloudDatalabelingV1beta1EventConfig();
   buildCounterGoogleCloudDatalabelingV1beta1EventConfig++;
   if (buildCounterGoogleCloudDatalabelingV1beta1EventConfig < 3) {
-    o.annotationSpecSets = buildUnnamed7358();
+    o.annotationSpecSets = buildUnnamed7774();
     o.clipLength = 42;
     o.overlapLength = 42;
   }
@@ -2266,7 +2266,7 @@ void checkGoogleCloudDatalabelingV1beta1EventConfig(
     api.GoogleCloudDatalabelingV1beta1EventConfig o) {
   buildCounterGoogleCloudDatalabelingV1beta1EventConfig++;
   if (buildCounterGoogleCloudDatalabelingV1beta1EventConfig < 3) {
-    checkUnnamed7358(o.annotationSpecSets!);
+    checkUnnamed7774(o.annotationSpecSets!);
     unittest.expect(
       o.clipLength!,
       unittest.equals(42),
@@ -2279,14 +2279,14 @@ void checkGoogleCloudDatalabelingV1beta1EventConfig(
   buildCounterGoogleCloudDatalabelingV1beta1EventConfig--;
 }
 
-core.List<api.GoogleCloudDatalabelingV1beta1Annotation> buildUnnamed7359() {
+core.List<api.GoogleCloudDatalabelingV1beta1Annotation> buildUnnamed7775() {
   var o = <api.GoogleCloudDatalabelingV1beta1Annotation>[];
   o.add(buildGoogleCloudDatalabelingV1beta1Annotation());
   o.add(buildGoogleCloudDatalabelingV1beta1Annotation());
   return o;
 }
 
-void checkUnnamed7359(
+void checkUnnamed7775(
     core.List<api.GoogleCloudDatalabelingV1beta1Annotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatalabelingV1beta1Annotation(
@@ -2301,7 +2301,7 @@ api.GoogleCloudDatalabelingV1beta1Example
   var o = api.GoogleCloudDatalabelingV1beta1Example();
   buildCounterGoogleCloudDatalabelingV1beta1Example++;
   if (buildCounterGoogleCloudDatalabelingV1beta1Example < 3) {
-    o.annotations = buildUnnamed7359();
+    o.annotations = buildUnnamed7775();
     o.imagePayload = buildGoogleCloudDatalabelingV1beta1ImagePayload();
     o.name = 'foo';
     o.textPayload = buildGoogleCloudDatalabelingV1beta1TextPayload();
@@ -2315,7 +2315,7 @@ void checkGoogleCloudDatalabelingV1beta1Example(
     api.GoogleCloudDatalabelingV1beta1Example o) {
   buildCounterGoogleCloudDatalabelingV1beta1Example++;
   if (buildCounterGoogleCloudDatalabelingV1beta1Example < 3) {
-    checkUnnamed7359(o.annotations!);
+    checkUnnamed7775(o.annotations!);
     checkGoogleCloudDatalabelingV1beta1ImagePayload(
         o.imagePayload! as api.GoogleCloudDatalabelingV1beta1ImagePayload);
     unittest.expect(
@@ -2330,14 +2330,14 @@ void checkGoogleCloudDatalabelingV1beta1Example(
   buildCounterGoogleCloudDatalabelingV1beta1Example--;
 }
 
-core.List<api.GoogleCloudDatalabelingV1beta1Example> buildUnnamed7360() {
+core.List<api.GoogleCloudDatalabelingV1beta1Example> buildUnnamed7776() {
   var o = <api.GoogleCloudDatalabelingV1beta1Example>[];
   o.add(buildGoogleCloudDatalabelingV1beta1Example());
   o.add(buildGoogleCloudDatalabelingV1beta1Example());
   return o;
 }
 
-void checkUnnamed7360(core.List<api.GoogleCloudDatalabelingV1beta1Example> o) {
+void checkUnnamed7776(core.List<api.GoogleCloudDatalabelingV1beta1Example> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatalabelingV1beta1Example(
       o[0] as api.GoogleCloudDatalabelingV1beta1Example);
@@ -2352,7 +2352,7 @@ api.GoogleCloudDatalabelingV1beta1ExampleComparison
   buildCounterGoogleCloudDatalabelingV1beta1ExampleComparison++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ExampleComparison < 3) {
     o.groundTruthExample = buildGoogleCloudDatalabelingV1beta1Example();
-    o.modelCreatedExamples = buildUnnamed7360();
+    o.modelCreatedExamples = buildUnnamed7776();
   }
   buildCounterGoogleCloudDatalabelingV1beta1ExampleComparison--;
   return o;
@@ -2364,19 +2364,19 @@ void checkGoogleCloudDatalabelingV1beta1ExampleComparison(
   if (buildCounterGoogleCloudDatalabelingV1beta1ExampleComparison < 3) {
     checkGoogleCloudDatalabelingV1beta1Example(
         o.groundTruthExample! as api.GoogleCloudDatalabelingV1beta1Example);
-    checkUnnamed7360(o.modelCreatedExamples!);
+    checkUnnamed7776(o.modelCreatedExamples!);
   }
   buildCounterGoogleCloudDatalabelingV1beta1ExampleComparison--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed7361() {
+core.List<api.GoogleRpcStatus> buildUnnamed7777() {
   var o = <api.GoogleRpcStatus>[];
   o.add(buildGoogleRpcStatus());
   o.add(buildGoogleRpcStatus());
   return o;
 }
 
-void checkUnnamed7361(core.List<api.GoogleRpcStatus> o) {
+void checkUnnamed7777(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleRpcStatus(o[0] as api.GoogleRpcStatus);
   checkGoogleRpcStatus(o[1] as api.GoogleRpcStatus);
@@ -2393,7 +2393,7 @@ api.GoogleCloudDatalabelingV1beta1ExportDataOperationMetadata
     o.annotatedDataset = 'foo';
     o.createTime = 'foo';
     o.dataset = 'foo';
-    o.partialFailures = buildUnnamed7361();
+    o.partialFailures = buildUnnamed7777();
   }
   buildCounterGoogleCloudDatalabelingV1beta1ExportDataOperationMetadata--;
   return o;
@@ -2416,7 +2416,7 @@ void checkGoogleCloudDatalabelingV1beta1ExportDataOperationMetadata(
       o.dataset!,
       unittest.equals('foo'),
     );
-    checkUnnamed7361(o.partialFailures!);
+    checkUnnamed7777(o.partialFailures!);
   }
   buildCounterGoogleCloudDatalabelingV1beta1ExportDataOperationMetadata--;
 }
@@ -2705,14 +2705,14 @@ void checkGoogleCloudDatalabelingV1beta1GcsSource(
   buildCounterGoogleCloudDatalabelingV1beta1GcsSource--;
 }
 
-core.List<core.String> buildUnnamed7362() {
+core.List<core.String> buildUnnamed7778() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed7362(core.List<core.String> o) {
+void checkUnnamed7778(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2732,7 +2732,7 @@ api.GoogleCloudDatalabelingV1beta1HumanAnnotationConfig
   if (buildCounterGoogleCloudDatalabelingV1beta1HumanAnnotationConfig < 3) {
     o.annotatedDatasetDescription = 'foo';
     o.annotatedDatasetDisplayName = 'foo';
-    o.contributorEmails = buildUnnamed7362();
+    o.contributorEmails = buildUnnamed7778();
     o.instruction = 'foo';
     o.labelGroup = 'foo';
     o.languageCode = 'foo';
@@ -2756,7 +2756,7 @@ void checkGoogleCloudDatalabelingV1beta1HumanAnnotationConfig(
       o.annotatedDatasetDisplayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed7362(o.contributorEmails!);
+    checkUnnamed7778(o.contributorEmails!);
     unittest.expect(
       o.instruction!,
       unittest.equals('foo'),
@@ -2944,14 +2944,14 @@ void checkGoogleCloudDatalabelingV1beta1ImagePolylineAnnotation(
 }
 
 core.Map<core.String, api.GoogleCloudDatalabelingV1beta1AnnotationSpec>
-    buildUnnamed7363() {
+    buildUnnamed7779() {
   var o = <core.String, api.GoogleCloudDatalabelingV1beta1AnnotationSpec>{};
   o['x'] = buildGoogleCloudDatalabelingV1beta1AnnotationSpec();
   o['y'] = buildGoogleCloudDatalabelingV1beta1AnnotationSpec();
   return o;
 }
 
-void checkUnnamed7363(
+void checkUnnamed7779(
     core.Map<core.String, api.GoogleCloudDatalabelingV1beta1AnnotationSpec> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatalabelingV1beta1AnnotationSpec(
@@ -2968,7 +2968,7 @@ api.GoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation
   buildCounterGoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation <
       3) {
-    o.annotationColors = buildUnnamed7363();
+    o.annotationColors = buildUnnamed7779();
     o.imageBytes = 'foo';
     o.mimeType = 'foo';
   }
@@ -2981,7 +2981,7 @@ void checkGoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation(
   buildCounterGoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation <
       3) {
-    checkUnnamed7363(o.annotationColors!);
+    checkUnnamed7779(o.annotationColors!);
     unittest.expect(
       o.imageBytes!,
       unittest.equals('foo'),
@@ -2994,14 +2994,14 @@ void checkGoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation(
   buildCounterGoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed7364() {
+core.List<api.GoogleRpcStatus> buildUnnamed7780() {
   var o = <api.GoogleRpcStatus>[];
   o.add(buildGoogleRpcStatus());
   o.add(buildGoogleRpcStatus());
   return o;
 }
 
-void checkUnnamed7364(core.List<api.GoogleRpcStatus> o) {
+void checkUnnamed7780(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleRpcStatus(o[0] as api.GoogleRpcStatus);
   checkGoogleRpcStatus(o[1] as api.GoogleRpcStatus);
@@ -3017,7 +3017,7 @@ api.GoogleCloudDatalabelingV1beta1ImportDataOperationMetadata
       3) {
     o.createTime = 'foo';
     o.dataset = 'foo';
-    o.partialFailures = buildUnnamed7364();
+    o.partialFailures = buildUnnamed7780();
   }
   buildCounterGoogleCloudDatalabelingV1beta1ImportDataOperationMetadata--;
   return o;
@@ -3036,7 +3036,7 @@ void checkGoogleCloudDatalabelingV1beta1ImportDataOperationMetadata(
       o.dataset!,
       unittest.equals('foo'),
     );
-    checkUnnamed7364(o.partialFailures!);
+    checkUnnamed7780(o.partialFailures!);
   }
   buildCounterGoogleCloudDatalabelingV1beta1ImportDataOperationMetadata--;
 }
@@ -3148,14 +3148,14 @@ void checkGoogleCloudDatalabelingV1beta1InputConfig(
   buildCounterGoogleCloudDatalabelingV1beta1InputConfig--;
 }
 
-core.List<core.String> buildUnnamed7365() {
+core.List<core.String> buildUnnamed7781() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed7365(core.List<core.String> o) {
+void checkUnnamed7781(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3173,7 +3173,7 @@ api.GoogleCloudDatalabelingV1beta1Instruction
   var o = api.GoogleCloudDatalabelingV1beta1Instruction();
   buildCounterGoogleCloudDatalabelingV1beta1Instruction++;
   if (buildCounterGoogleCloudDatalabelingV1beta1Instruction < 3) {
-    o.blockingResources = buildUnnamed7365();
+    o.blockingResources = buildUnnamed7781();
     o.createTime = 'foo';
     o.csvInstruction = buildGoogleCloudDatalabelingV1beta1CsvInstruction();
     o.dataType = 'foo';
@@ -3191,7 +3191,7 @@ void checkGoogleCloudDatalabelingV1beta1Instruction(
     api.GoogleCloudDatalabelingV1beta1Instruction o) {
   buildCounterGoogleCloudDatalabelingV1beta1Instruction++;
   if (buildCounterGoogleCloudDatalabelingV1beta1Instruction < 3) {
-    checkUnnamed7365(o.blockingResources!);
+    checkUnnamed7781(o.blockingResources!);
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),
@@ -3434,14 +3434,14 @@ void checkGoogleCloudDatalabelingV1beta1LabelImageSegmentationOperationMetadata(
   buildCounterGoogleCloudDatalabelingV1beta1LabelImageSegmentationOperationMetadata--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed7366() {
+core.List<api.GoogleRpcStatus> buildUnnamed7782() {
   var o = <api.GoogleRpcStatus>[];
   o.add(buildGoogleRpcStatus());
   o.add(buildGoogleRpcStatus());
   return o;
 }
 
-void checkUnnamed7366(core.List<api.GoogleRpcStatus> o) {
+void checkUnnamed7782(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleRpcStatus(o[0] as api.GoogleRpcStatus);
   checkGoogleRpcStatus(o[1] as api.GoogleRpcStatus);
@@ -3468,7 +3468,7 @@ api.GoogleCloudDatalabelingV1beta1LabelOperationMetadata
         buildGoogleCloudDatalabelingV1beta1LabelImagePolylineOperationMetadata();
     o.imageSegmentationDetails =
         buildGoogleCloudDatalabelingV1beta1LabelImageSegmentationOperationMetadata();
-    o.partialFailures = buildUnnamed7366();
+    o.partialFailures = buildUnnamed7782();
     o.progressPercent = 42;
     o.textClassificationDetails =
         buildGoogleCloudDatalabelingV1beta1LabelTextClassificationOperationMetadata();
@@ -3521,7 +3521,7 @@ void checkGoogleCloudDatalabelingV1beta1LabelOperationMetadata(
     checkGoogleCloudDatalabelingV1beta1LabelImageSegmentationOperationMetadata(
         o.imageSegmentationDetails! as api
             .GoogleCloudDatalabelingV1beta1LabelImageSegmentationOperationMetadata);
-    checkUnnamed7366(o.partialFailures!);
+    checkUnnamed7782(o.partialFailures!);
     unittest.expect(
       o.progressPercent!,
       unittest.equals(42),
@@ -3548,14 +3548,14 @@ void checkGoogleCloudDatalabelingV1beta1LabelOperationMetadata(
   buildCounterGoogleCloudDatalabelingV1beta1LabelOperationMetadata--;
 }
 
-core.Map<core.String, core.String> buildUnnamed7367() {
+core.Map<core.String, core.String> buildUnnamed7783() {
   var o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
 }
 
-void checkUnnamed7367(core.Map<core.String, core.String> o) {
+void checkUnnamed7783(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -3573,7 +3573,7 @@ api.GoogleCloudDatalabelingV1beta1LabelStats
   var o = api.GoogleCloudDatalabelingV1beta1LabelStats();
   buildCounterGoogleCloudDatalabelingV1beta1LabelStats++;
   if (buildCounterGoogleCloudDatalabelingV1beta1LabelStats < 3) {
-    o.exampleCount = buildUnnamed7367();
+    o.exampleCount = buildUnnamed7783();
   }
   buildCounterGoogleCloudDatalabelingV1beta1LabelStats--;
   return o;
@@ -3583,7 +3583,7 @@ void checkGoogleCloudDatalabelingV1beta1LabelStats(
     api.GoogleCloudDatalabelingV1beta1LabelStats o) {
   buildCounterGoogleCloudDatalabelingV1beta1LabelStats++;
   if (buildCounterGoogleCloudDatalabelingV1beta1LabelStats < 3) {
-    checkUnnamed7367(o.exampleCount!);
+    checkUnnamed7783(o.exampleCount!);
   }
   buildCounterGoogleCloudDatalabelingV1beta1LabelStats--;
 }
@@ -3837,14 +3837,14 @@ void checkGoogleCloudDatalabelingV1beta1LabelVideoRequest(
 }
 
 core.List<api.GoogleCloudDatalabelingV1beta1AnnotatedDataset>
-    buildUnnamed7368() {
+    buildUnnamed7784() {
   var o = <api.GoogleCloudDatalabelingV1beta1AnnotatedDataset>[];
   o.add(buildGoogleCloudDatalabelingV1beta1AnnotatedDataset());
   o.add(buildGoogleCloudDatalabelingV1beta1AnnotatedDataset());
   return o;
 }
 
-void checkUnnamed7368(
+void checkUnnamed7784(
     core.List<api.GoogleCloudDatalabelingV1beta1AnnotatedDataset> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatalabelingV1beta1AnnotatedDataset(
@@ -3861,7 +3861,7 @@ api.GoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse
   buildCounterGoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse <
       3) {
-    o.annotatedDatasets = buildUnnamed7368();
+    o.annotatedDatasets = buildUnnamed7784();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse--;
@@ -3873,7 +3873,7 @@ void checkGoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse(
   buildCounterGoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse <
       3) {
-    checkUnnamed7368(o.annotatedDatasets!);
+    checkUnnamed7784(o.annotatedDatasets!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -3883,14 +3883,14 @@ void checkGoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse(
 }
 
 core.List<api.GoogleCloudDatalabelingV1beta1AnnotationSpecSet>
-    buildUnnamed7369() {
+    buildUnnamed7785() {
   var o = <api.GoogleCloudDatalabelingV1beta1AnnotationSpecSet>[];
   o.add(buildGoogleCloudDatalabelingV1beta1AnnotationSpecSet());
   o.add(buildGoogleCloudDatalabelingV1beta1AnnotationSpecSet());
   return o;
 }
 
-void checkUnnamed7369(
+void checkUnnamed7785(
     core.List<api.GoogleCloudDatalabelingV1beta1AnnotationSpecSet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatalabelingV1beta1AnnotationSpecSet(
@@ -3908,7 +3908,7 @@ api.GoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse
   buildCounterGoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse <
       3) {
-    o.annotationSpecSets = buildUnnamed7369();
+    o.annotationSpecSets = buildUnnamed7785();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse--;
@@ -3920,7 +3920,7 @@ void checkGoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse(
   buildCounterGoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse <
       3) {
-    checkUnnamed7369(o.annotationSpecSets!);
+    checkUnnamed7785(o.annotationSpecSets!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -3929,14 +3929,14 @@ void checkGoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse(
   buildCounterGoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse--;
 }
 
-core.List<api.GoogleCloudDatalabelingV1beta1DataItem> buildUnnamed7370() {
+core.List<api.GoogleCloudDatalabelingV1beta1DataItem> buildUnnamed7786() {
   var o = <api.GoogleCloudDatalabelingV1beta1DataItem>[];
   o.add(buildGoogleCloudDatalabelingV1beta1DataItem());
   o.add(buildGoogleCloudDatalabelingV1beta1DataItem());
   return o;
 }
 
-void checkUnnamed7370(core.List<api.GoogleCloudDatalabelingV1beta1DataItem> o) {
+void checkUnnamed7786(core.List<api.GoogleCloudDatalabelingV1beta1DataItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatalabelingV1beta1DataItem(
       o[0] as api.GoogleCloudDatalabelingV1beta1DataItem);
@@ -3950,7 +3950,7 @@ api.GoogleCloudDatalabelingV1beta1ListDataItemsResponse
   var o = api.GoogleCloudDatalabelingV1beta1ListDataItemsResponse();
   buildCounterGoogleCloudDatalabelingV1beta1ListDataItemsResponse++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ListDataItemsResponse < 3) {
-    o.dataItems = buildUnnamed7370();
+    o.dataItems = buildUnnamed7786();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudDatalabelingV1beta1ListDataItemsResponse--;
@@ -3961,7 +3961,7 @@ void checkGoogleCloudDatalabelingV1beta1ListDataItemsResponse(
     api.GoogleCloudDatalabelingV1beta1ListDataItemsResponse o) {
   buildCounterGoogleCloudDatalabelingV1beta1ListDataItemsResponse++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ListDataItemsResponse < 3) {
-    checkUnnamed7370(o.dataItems!);
+    checkUnnamed7786(o.dataItems!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -3970,14 +3970,14 @@ void checkGoogleCloudDatalabelingV1beta1ListDataItemsResponse(
   buildCounterGoogleCloudDatalabelingV1beta1ListDataItemsResponse--;
 }
 
-core.List<api.GoogleCloudDatalabelingV1beta1Dataset> buildUnnamed7371() {
+core.List<api.GoogleCloudDatalabelingV1beta1Dataset> buildUnnamed7787() {
   var o = <api.GoogleCloudDatalabelingV1beta1Dataset>[];
   o.add(buildGoogleCloudDatalabelingV1beta1Dataset());
   o.add(buildGoogleCloudDatalabelingV1beta1Dataset());
   return o;
 }
 
-void checkUnnamed7371(core.List<api.GoogleCloudDatalabelingV1beta1Dataset> o) {
+void checkUnnamed7787(core.List<api.GoogleCloudDatalabelingV1beta1Dataset> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatalabelingV1beta1Dataset(
       o[0] as api.GoogleCloudDatalabelingV1beta1Dataset);
@@ -3991,7 +3991,7 @@ api.GoogleCloudDatalabelingV1beta1ListDatasetsResponse
   var o = api.GoogleCloudDatalabelingV1beta1ListDatasetsResponse();
   buildCounterGoogleCloudDatalabelingV1beta1ListDatasetsResponse++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ListDatasetsResponse < 3) {
-    o.datasets = buildUnnamed7371();
+    o.datasets = buildUnnamed7787();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudDatalabelingV1beta1ListDatasetsResponse--;
@@ -4002,7 +4002,7 @@ void checkGoogleCloudDatalabelingV1beta1ListDatasetsResponse(
     api.GoogleCloudDatalabelingV1beta1ListDatasetsResponse o) {
   buildCounterGoogleCloudDatalabelingV1beta1ListDatasetsResponse++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ListDatasetsResponse < 3) {
-    checkUnnamed7371(o.datasets!);
+    checkUnnamed7787(o.datasets!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -4011,14 +4011,14 @@ void checkGoogleCloudDatalabelingV1beta1ListDatasetsResponse(
   buildCounterGoogleCloudDatalabelingV1beta1ListDatasetsResponse--;
 }
 
-core.List<api.GoogleCloudDatalabelingV1beta1EvaluationJob> buildUnnamed7372() {
+core.List<api.GoogleCloudDatalabelingV1beta1EvaluationJob> buildUnnamed7788() {
   var o = <api.GoogleCloudDatalabelingV1beta1EvaluationJob>[];
   o.add(buildGoogleCloudDatalabelingV1beta1EvaluationJob());
   o.add(buildGoogleCloudDatalabelingV1beta1EvaluationJob());
   return o;
 }
 
-void checkUnnamed7372(
+void checkUnnamed7788(
     core.List<api.GoogleCloudDatalabelingV1beta1EvaluationJob> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatalabelingV1beta1EvaluationJob(
@@ -4035,7 +4035,7 @@ api.GoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse
   buildCounterGoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse <
       3) {
-    o.evaluationJobs = buildUnnamed7372();
+    o.evaluationJobs = buildUnnamed7788();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse--;
@@ -4047,7 +4047,7 @@ void checkGoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse(
   buildCounterGoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse <
       3) {
-    checkUnnamed7372(o.evaluationJobs!);
+    checkUnnamed7788(o.evaluationJobs!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -4056,14 +4056,14 @@ void checkGoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse(
   buildCounterGoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse--;
 }
 
-core.List<api.GoogleCloudDatalabelingV1beta1Example> buildUnnamed7373() {
+core.List<api.GoogleCloudDatalabelingV1beta1Example> buildUnnamed7789() {
   var o = <api.GoogleCloudDatalabelingV1beta1Example>[];
   o.add(buildGoogleCloudDatalabelingV1beta1Example());
   o.add(buildGoogleCloudDatalabelingV1beta1Example());
   return o;
 }
 
-void checkUnnamed7373(core.List<api.GoogleCloudDatalabelingV1beta1Example> o) {
+void checkUnnamed7789(core.List<api.GoogleCloudDatalabelingV1beta1Example> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatalabelingV1beta1Example(
       o[0] as api.GoogleCloudDatalabelingV1beta1Example);
@@ -4077,7 +4077,7 @@ api.GoogleCloudDatalabelingV1beta1ListExamplesResponse
   var o = api.GoogleCloudDatalabelingV1beta1ListExamplesResponse();
   buildCounterGoogleCloudDatalabelingV1beta1ListExamplesResponse++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ListExamplesResponse < 3) {
-    o.examples = buildUnnamed7373();
+    o.examples = buildUnnamed7789();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudDatalabelingV1beta1ListExamplesResponse--;
@@ -4088,7 +4088,7 @@ void checkGoogleCloudDatalabelingV1beta1ListExamplesResponse(
     api.GoogleCloudDatalabelingV1beta1ListExamplesResponse o) {
   buildCounterGoogleCloudDatalabelingV1beta1ListExamplesResponse++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ListExamplesResponse < 3) {
-    checkUnnamed7373(o.examples!);
+    checkUnnamed7789(o.examples!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -4098,14 +4098,14 @@ void checkGoogleCloudDatalabelingV1beta1ListExamplesResponse(
 }
 
 core.List<api.GoogleCloudDatalabelingV1beta1FeedbackMessage>
-    buildUnnamed7374() {
+    buildUnnamed7790() {
   var o = <api.GoogleCloudDatalabelingV1beta1FeedbackMessage>[];
   o.add(buildGoogleCloudDatalabelingV1beta1FeedbackMessage());
   o.add(buildGoogleCloudDatalabelingV1beta1FeedbackMessage());
   return o;
 }
 
-void checkUnnamed7374(
+void checkUnnamed7790(
     core.List<api.GoogleCloudDatalabelingV1beta1FeedbackMessage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatalabelingV1beta1FeedbackMessage(
@@ -4122,7 +4122,7 @@ api.GoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse
   buildCounterGoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse <
       3) {
-    o.feedbackMessages = buildUnnamed7374();
+    o.feedbackMessages = buildUnnamed7790();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse--;
@@ -4134,7 +4134,7 @@ void checkGoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse(
   buildCounterGoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse <
       3) {
-    checkUnnamed7374(o.feedbackMessages!);
+    checkUnnamed7790(o.feedbackMessages!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -4143,14 +4143,14 @@ void checkGoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse(
   buildCounterGoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse--;
 }
 
-core.List<api.GoogleCloudDatalabelingV1beta1FeedbackThread> buildUnnamed7375() {
+core.List<api.GoogleCloudDatalabelingV1beta1FeedbackThread> buildUnnamed7791() {
   var o = <api.GoogleCloudDatalabelingV1beta1FeedbackThread>[];
   o.add(buildGoogleCloudDatalabelingV1beta1FeedbackThread());
   o.add(buildGoogleCloudDatalabelingV1beta1FeedbackThread());
   return o;
 }
 
-void checkUnnamed7375(
+void checkUnnamed7791(
     core.List<api.GoogleCloudDatalabelingV1beta1FeedbackThread> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatalabelingV1beta1FeedbackThread(
@@ -4167,7 +4167,7 @@ api.GoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse
   buildCounterGoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse <
       3) {
-    o.feedbackThreads = buildUnnamed7375();
+    o.feedbackThreads = buildUnnamed7791();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse--;
@@ -4179,7 +4179,7 @@ void checkGoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse(
   buildCounterGoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse <
       3) {
-    checkUnnamed7375(o.feedbackThreads!);
+    checkUnnamed7791(o.feedbackThreads!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -4188,14 +4188,14 @@ void checkGoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse(
   buildCounterGoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse--;
 }
 
-core.List<api.GoogleCloudDatalabelingV1beta1Instruction> buildUnnamed7376() {
+core.List<api.GoogleCloudDatalabelingV1beta1Instruction> buildUnnamed7792() {
   var o = <api.GoogleCloudDatalabelingV1beta1Instruction>[];
   o.add(buildGoogleCloudDatalabelingV1beta1Instruction());
   o.add(buildGoogleCloudDatalabelingV1beta1Instruction());
   return o;
 }
 
-void checkUnnamed7376(
+void checkUnnamed7792(
     core.List<api.GoogleCloudDatalabelingV1beta1Instruction> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatalabelingV1beta1Instruction(
@@ -4210,7 +4210,7 @@ api.GoogleCloudDatalabelingV1beta1ListInstructionsResponse
   var o = api.GoogleCloudDatalabelingV1beta1ListInstructionsResponse();
   buildCounterGoogleCloudDatalabelingV1beta1ListInstructionsResponse++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ListInstructionsResponse < 3) {
-    o.instructions = buildUnnamed7376();
+    o.instructions = buildUnnamed7792();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudDatalabelingV1beta1ListInstructionsResponse--;
@@ -4221,7 +4221,7 @@ void checkGoogleCloudDatalabelingV1beta1ListInstructionsResponse(
     api.GoogleCloudDatalabelingV1beta1ListInstructionsResponse o) {
   buildCounterGoogleCloudDatalabelingV1beta1ListInstructionsResponse++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ListInstructionsResponse < 3) {
-    checkUnnamed7376(o.instructions!);
+    checkUnnamed7792(o.instructions!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -4231,14 +4231,14 @@ void checkGoogleCloudDatalabelingV1beta1ListInstructionsResponse(
 }
 
 core.List<api.GoogleCloudDatalabelingV1beta1NormalizedVertex>
-    buildUnnamed7377() {
+    buildUnnamed7793() {
   var o = <api.GoogleCloudDatalabelingV1beta1NormalizedVertex>[];
   o.add(buildGoogleCloudDatalabelingV1beta1NormalizedVertex());
   o.add(buildGoogleCloudDatalabelingV1beta1NormalizedVertex());
   return o;
 }
 
-void checkUnnamed7377(
+void checkUnnamed7793(
     core.List<api.GoogleCloudDatalabelingV1beta1NormalizedVertex> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatalabelingV1beta1NormalizedVertex(
@@ -4253,7 +4253,7 @@ api.GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly
   var o = api.GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly();
   buildCounterGoogleCloudDatalabelingV1beta1NormalizedBoundingPoly++;
   if (buildCounterGoogleCloudDatalabelingV1beta1NormalizedBoundingPoly < 3) {
-    o.normalizedVertices = buildUnnamed7377();
+    o.normalizedVertices = buildUnnamed7793();
   }
   buildCounterGoogleCloudDatalabelingV1beta1NormalizedBoundingPoly--;
   return o;
@@ -4263,20 +4263,20 @@ void checkGoogleCloudDatalabelingV1beta1NormalizedBoundingPoly(
     api.GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly o) {
   buildCounterGoogleCloudDatalabelingV1beta1NormalizedBoundingPoly++;
   if (buildCounterGoogleCloudDatalabelingV1beta1NormalizedBoundingPoly < 3) {
-    checkUnnamed7377(o.normalizedVertices!);
+    checkUnnamed7793(o.normalizedVertices!);
   }
   buildCounterGoogleCloudDatalabelingV1beta1NormalizedBoundingPoly--;
 }
 
 core.List<api.GoogleCloudDatalabelingV1beta1NormalizedVertex>
-    buildUnnamed7378() {
+    buildUnnamed7794() {
   var o = <api.GoogleCloudDatalabelingV1beta1NormalizedVertex>[];
   o.add(buildGoogleCloudDatalabelingV1beta1NormalizedVertex());
   o.add(buildGoogleCloudDatalabelingV1beta1NormalizedVertex());
   return o;
 }
 
-void checkUnnamed7378(
+void checkUnnamed7794(
     core.List<api.GoogleCloudDatalabelingV1beta1NormalizedVertex> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatalabelingV1beta1NormalizedVertex(
@@ -4291,7 +4291,7 @@ api.GoogleCloudDatalabelingV1beta1NormalizedPolyline
   var o = api.GoogleCloudDatalabelingV1beta1NormalizedPolyline();
   buildCounterGoogleCloudDatalabelingV1beta1NormalizedPolyline++;
   if (buildCounterGoogleCloudDatalabelingV1beta1NormalizedPolyline < 3) {
-    o.normalizedVertices = buildUnnamed7378();
+    o.normalizedVertices = buildUnnamed7794();
   }
   buildCounterGoogleCloudDatalabelingV1beta1NormalizedPolyline--;
   return o;
@@ -4301,7 +4301,7 @@ void checkGoogleCloudDatalabelingV1beta1NormalizedPolyline(
     api.GoogleCloudDatalabelingV1beta1NormalizedPolyline o) {
   buildCounterGoogleCloudDatalabelingV1beta1NormalizedPolyline++;
   if (buildCounterGoogleCloudDatalabelingV1beta1NormalizedPolyline < 3) {
-    checkUnnamed7378(o.normalizedVertices!);
+    checkUnnamed7794(o.normalizedVertices!);
   }
   buildCounterGoogleCloudDatalabelingV1beta1NormalizedPolyline--;
 }
@@ -4469,14 +4469,14 @@ void checkGoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata(
   buildCounterGoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata--;
 }
 
-core.List<core.String> buildUnnamed7379() {
+core.List<core.String> buildUnnamed7795() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed7379(core.List<core.String> o) {
+void checkUnnamed7795(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -4494,7 +4494,7 @@ api.GoogleCloudDatalabelingV1beta1OperatorMetadata
   var o = api.GoogleCloudDatalabelingV1beta1OperatorMetadata();
   buildCounterGoogleCloudDatalabelingV1beta1OperatorMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1beta1OperatorMetadata < 3) {
-    o.comments = buildUnnamed7379();
+    o.comments = buildUnnamed7795();
     o.labelVotes = 42;
     o.score = 42.0;
     o.totalVotes = 42;
@@ -4507,7 +4507,7 @@ void checkGoogleCloudDatalabelingV1beta1OperatorMetadata(
     api.GoogleCloudDatalabelingV1beta1OperatorMetadata o) {
   buildCounterGoogleCloudDatalabelingV1beta1OperatorMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1beta1OperatorMetadata < 3) {
-    checkUnnamed7379(o.comments!);
+    checkUnnamed7795(o.comments!);
     unittest.expect(
       o.labelVotes!,
       unittest.equals(42),
@@ -4595,14 +4595,14 @@ void checkGoogleCloudDatalabelingV1beta1PdfInstruction(
   buildCounterGoogleCloudDatalabelingV1beta1PdfInstruction--;
 }
 
-core.List<api.GoogleCloudDatalabelingV1beta1Vertex> buildUnnamed7380() {
+core.List<api.GoogleCloudDatalabelingV1beta1Vertex> buildUnnamed7796() {
   var o = <api.GoogleCloudDatalabelingV1beta1Vertex>[];
   o.add(buildGoogleCloudDatalabelingV1beta1Vertex());
   o.add(buildGoogleCloudDatalabelingV1beta1Vertex());
   return o;
 }
 
-void checkUnnamed7380(core.List<api.GoogleCloudDatalabelingV1beta1Vertex> o) {
+void checkUnnamed7796(core.List<api.GoogleCloudDatalabelingV1beta1Vertex> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatalabelingV1beta1Vertex(
       o[0] as api.GoogleCloudDatalabelingV1beta1Vertex);
@@ -4616,7 +4616,7 @@ api.GoogleCloudDatalabelingV1beta1Polyline
   var o = api.GoogleCloudDatalabelingV1beta1Polyline();
   buildCounterGoogleCloudDatalabelingV1beta1Polyline++;
   if (buildCounterGoogleCloudDatalabelingV1beta1Polyline < 3) {
-    o.vertices = buildUnnamed7380();
+    o.vertices = buildUnnamed7796();
   }
   buildCounterGoogleCloudDatalabelingV1beta1Polyline--;
   return o;
@@ -4626,7 +4626,7 @@ void checkGoogleCloudDatalabelingV1beta1Polyline(
     api.GoogleCloudDatalabelingV1beta1Polyline o) {
   buildCounterGoogleCloudDatalabelingV1beta1Polyline++;
   if (buildCounterGoogleCloudDatalabelingV1beta1Polyline < 3) {
-    checkUnnamed7380(o.vertices!);
+    checkUnnamed7796(o.vertices!);
   }
   buildCounterGoogleCloudDatalabelingV1beta1Polyline--;
 }
@@ -4661,14 +4661,14 @@ void checkGoogleCloudDatalabelingV1beta1PolylineConfig(
 }
 
 core.List<api.GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry>
-    buildUnnamed7381() {
+    buildUnnamed7797() {
   var o = <api.GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry>[];
   o.add(buildGoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry());
   o.add(buildGoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry());
   return o;
 }
 
-void checkUnnamed7381(
+void checkUnnamed7797(
     core.List<api.GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry(
@@ -4685,7 +4685,7 @@ api.GoogleCloudDatalabelingV1beta1PrCurve
   if (buildCounterGoogleCloudDatalabelingV1beta1PrCurve < 3) {
     o.annotationSpec = buildGoogleCloudDatalabelingV1beta1AnnotationSpec();
     o.areaUnderCurve = 42.0;
-    o.confidenceMetricsEntries = buildUnnamed7381();
+    o.confidenceMetricsEntries = buildUnnamed7797();
     o.meanAveragePrecision = 42.0;
   }
   buildCounterGoogleCloudDatalabelingV1beta1PrCurve--;
@@ -4702,7 +4702,7 @@ void checkGoogleCloudDatalabelingV1beta1PrCurve(
       o.areaUnderCurve!,
       unittest.equals(42.0),
     );
-    checkUnnamed7381(o.confidenceMetricsEntries!);
+    checkUnnamed7797(o.confidenceMetricsEntries!);
     unittest.expect(
       o.meanAveragePrecision!,
       unittest.equals(42.0),
@@ -4752,14 +4752,14 @@ void checkGoogleCloudDatalabelingV1beta1ResumeEvaluationJobRequest(
 }
 
 core.List<api.GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry>
-    buildUnnamed7382() {
+    buildUnnamed7798() {
   var o = <api.GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry>[];
   o.add(buildGoogleCloudDatalabelingV1beta1ConfusionMatrixEntry());
   o.add(buildGoogleCloudDatalabelingV1beta1ConfusionMatrixEntry());
   return o;
 }
 
-void checkUnnamed7382(
+void checkUnnamed7798(
     core.List<api.GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatalabelingV1beta1ConfusionMatrixEntry(
@@ -4774,7 +4774,7 @@ api.GoogleCloudDatalabelingV1beta1Row buildGoogleCloudDatalabelingV1beta1Row() {
   buildCounterGoogleCloudDatalabelingV1beta1Row++;
   if (buildCounterGoogleCloudDatalabelingV1beta1Row < 3) {
     o.annotationSpec = buildGoogleCloudDatalabelingV1beta1AnnotationSpec();
-    o.entries = buildUnnamed7382();
+    o.entries = buildUnnamed7798();
   }
   buildCounterGoogleCloudDatalabelingV1beta1Row--;
   return o;
@@ -4786,19 +4786,19 @@ void checkGoogleCloudDatalabelingV1beta1Row(
   if (buildCounterGoogleCloudDatalabelingV1beta1Row < 3) {
     checkGoogleCloudDatalabelingV1beta1AnnotationSpec(
         o.annotationSpec! as api.GoogleCloudDatalabelingV1beta1AnnotationSpec);
-    checkUnnamed7382(o.entries!);
+    checkUnnamed7798(o.entries!);
   }
   buildCounterGoogleCloudDatalabelingV1beta1Row--;
 }
 
-core.List<api.GoogleCloudDatalabelingV1beta1Evaluation> buildUnnamed7383() {
+core.List<api.GoogleCloudDatalabelingV1beta1Evaluation> buildUnnamed7799() {
   var o = <api.GoogleCloudDatalabelingV1beta1Evaluation>[];
   o.add(buildGoogleCloudDatalabelingV1beta1Evaluation());
   o.add(buildGoogleCloudDatalabelingV1beta1Evaluation());
   return o;
 }
 
-void checkUnnamed7383(
+void checkUnnamed7799(
     core.List<api.GoogleCloudDatalabelingV1beta1Evaluation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatalabelingV1beta1Evaluation(
@@ -4814,7 +4814,7 @@ api.GoogleCloudDatalabelingV1beta1SearchEvaluationsResponse
   var o = api.GoogleCloudDatalabelingV1beta1SearchEvaluationsResponse();
   buildCounterGoogleCloudDatalabelingV1beta1SearchEvaluationsResponse++;
   if (buildCounterGoogleCloudDatalabelingV1beta1SearchEvaluationsResponse < 3) {
-    o.evaluations = buildUnnamed7383();
+    o.evaluations = buildUnnamed7799();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudDatalabelingV1beta1SearchEvaluationsResponse--;
@@ -4825,7 +4825,7 @@ void checkGoogleCloudDatalabelingV1beta1SearchEvaluationsResponse(
     api.GoogleCloudDatalabelingV1beta1SearchEvaluationsResponse o) {
   buildCounterGoogleCloudDatalabelingV1beta1SearchEvaluationsResponse++;
   if (buildCounterGoogleCloudDatalabelingV1beta1SearchEvaluationsResponse < 3) {
-    checkUnnamed7383(o.evaluations!);
+    checkUnnamed7799(o.evaluations!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -4868,14 +4868,14 @@ void checkGoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest(
 }
 
 core.List<api.GoogleCloudDatalabelingV1beta1ExampleComparison>
-    buildUnnamed7384() {
+    buildUnnamed7800() {
   var o = <api.GoogleCloudDatalabelingV1beta1ExampleComparison>[];
   o.add(buildGoogleCloudDatalabelingV1beta1ExampleComparison());
   o.add(buildGoogleCloudDatalabelingV1beta1ExampleComparison());
   return o;
 }
 
-void checkUnnamed7384(
+void checkUnnamed7800(
     core.List<api.GoogleCloudDatalabelingV1beta1ExampleComparison> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatalabelingV1beta1ExampleComparison(
@@ -4893,7 +4893,7 @@ api.GoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse
   buildCounterGoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse++;
   if (buildCounterGoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse <
       3) {
-    o.exampleComparisons = buildUnnamed7384();
+    o.exampleComparisons = buildUnnamed7800();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse--;
@@ -4905,7 +4905,7 @@ void checkGoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse(
   buildCounterGoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse++;
   if (buildCounterGoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse <
       3) {
-    checkUnnamed7384(o.exampleComparisons!);
+    checkUnnamed7800(o.exampleComparisons!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -5239,14 +5239,14 @@ void checkGoogleCloudDatalabelingV1beta1VideoClassificationAnnotation(
 }
 
 core.List<api.GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig>
-    buildUnnamed7385() {
+    buildUnnamed7801() {
   var o = <api.GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig>[];
   o.add(buildGoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig());
   o.add(buildGoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig());
   return o;
 }
 
-void checkUnnamed7385(
+void checkUnnamed7801(
     core.List<api.GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig(
@@ -5262,7 +5262,7 @@ api.GoogleCloudDatalabelingV1beta1VideoClassificationConfig
   var o = api.GoogleCloudDatalabelingV1beta1VideoClassificationConfig();
   buildCounterGoogleCloudDatalabelingV1beta1VideoClassificationConfig++;
   if (buildCounterGoogleCloudDatalabelingV1beta1VideoClassificationConfig < 3) {
-    o.annotationSpecSetConfigs = buildUnnamed7385();
+    o.annotationSpecSetConfigs = buildUnnamed7801();
     o.applyShotDetection = true;
   }
   buildCounterGoogleCloudDatalabelingV1beta1VideoClassificationConfig--;
@@ -5273,7 +5273,7 @@ void checkGoogleCloudDatalabelingV1beta1VideoClassificationConfig(
     api.GoogleCloudDatalabelingV1beta1VideoClassificationConfig o) {
   buildCounterGoogleCloudDatalabelingV1beta1VideoClassificationConfig++;
   if (buildCounterGoogleCloudDatalabelingV1beta1VideoClassificationConfig < 3) {
-    checkUnnamed7385(o.annotationSpecSetConfigs!);
+    checkUnnamed7801(o.annotationSpecSetConfigs!);
     unittest.expect(o.applyShotDetection!, unittest.isTrue);
   }
   buildCounterGoogleCloudDatalabelingV1beta1VideoClassificationConfig--;
@@ -5305,14 +5305,14 @@ void checkGoogleCloudDatalabelingV1beta1VideoEventAnnotation(
 }
 
 core.List<api.GoogleCloudDatalabelingV1beta1ObjectTrackingFrame>
-    buildUnnamed7386() {
+    buildUnnamed7802() {
   var o = <api.GoogleCloudDatalabelingV1beta1ObjectTrackingFrame>[];
   o.add(buildGoogleCloudDatalabelingV1beta1ObjectTrackingFrame());
   o.add(buildGoogleCloudDatalabelingV1beta1ObjectTrackingFrame());
   return o;
 }
 
-void checkUnnamed7386(
+void checkUnnamed7802(
     core.List<api.GoogleCloudDatalabelingV1beta1ObjectTrackingFrame> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatalabelingV1beta1ObjectTrackingFrame(
@@ -5330,7 +5330,7 @@ api.GoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation
   if (buildCounterGoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation <
       3) {
     o.annotationSpec = buildGoogleCloudDatalabelingV1beta1AnnotationSpec();
-    o.objectTrackingFrames = buildUnnamed7386();
+    o.objectTrackingFrames = buildUnnamed7802();
     o.timeSegment = buildGoogleCloudDatalabelingV1beta1TimeSegment();
   }
   buildCounterGoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation--;
@@ -5344,21 +5344,21 @@ void checkGoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation(
       3) {
     checkGoogleCloudDatalabelingV1beta1AnnotationSpec(
         o.annotationSpec! as api.GoogleCloudDatalabelingV1beta1AnnotationSpec);
-    checkUnnamed7386(o.objectTrackingFrames!);
+    checkUnnamed7802(o.objectTrackingFrames!);
     checkGoogleCloudDatalabelingV1beta1TimeSegment(
         o.timeSegment! as api.GoogleCloudDatalabelingV1beta1TimeSegment);
   }
   buildCounterGoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation--;
 }
 
-core.List<api.GoogleCloudDatalabelingV1beta1VideoThumbnail> buildUnnamed7387() {
+core.List<api.GoogleCloudDatalabelingV1beta1VideoThumbnail> buildUnnamed7803() {
   var o = <api.GoogleCloudDatalabelingV1beta1VideoThumbnail>[];
   o.add(buildGoogleCloudDatalabelingV1beta1VideoThumbnail());
   o.add(buildGoogleCloudDatalabelingV1beta1VideoThumbnail());
   return o;
 }
 
-void checkUnnamed7387(
+void checkUnnamed7803(
     core.List<api.GoogleCloudDatalabelingV1beta1VideoThumbnail> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatalabelingV1beta1VideoThumbnail(
@@ -5376,7 +5376,7 @@ api.GoogleCloudDatalabelingV1beta1VideoPayload
     o.frameRate = 42.0;
     o.mimeType = 'foo';
     o.signedUri = 'foo';
-    o.videoThumbnails = buildUnnamed7387();
+    o.videoThumbnails = buildUnnamed7803();
     o.videoUri = 'foo';
   }
   buildCounterGoogleCloudDatalabelingV1beta1VideoPayload--;
@@ -5399,7 +5399,7 @@ void checkGoogleCloudDatalabelingV1beta1VideoPayload(
       o.signedUri!,
       unittest.equals('foo'),
     );
-    checkUnnamed7387(o.videoThumbnails!);
+    checkUnnamed7803(o.videoThumbnails!);
     unittest.expect(
       o.videoUri!,
       unittest.equals('foo'),
@@ -5437,14 +5437,14 @@ void checkGoogleCloudDatalabelingV1beta1VideoThumbnail(
   buildCounterGoogleCloudDatalabelingV1beta1VideoThumbnail--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed7388() {
+core.List<api.GoogleRpcStatus> buildUnnamed7804() {
   var o = <api.GoogleRpcStatus>[];
   o.add(buildGoogleRpcStatus());
   o.add(buildGoogleRpcStatus());
   return o;
 }
 
-void checkUnnamed7388(core.List<api.GoogleRpcStatus> o) {
+void checkUnnamed7804(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleRpcStatus(o[0] as api.GoogleRpcStatus);
   checkGoogleRpcStatus(o[1] as api.GoogleRpcStatus);
@@ -5460,7 +5460,7 @@ api.GoogleCloudDatalabelingV1p1alpha1CreateInstructionMetadata
       3) {
     o.createTime = 'foo';
     o.instruction = 'foo';
-    o.partialFailures = buildUnnamed7388();
+    o.partialFailures = buildUnnamed7804();
   }
   buildCounterGoogleCloudDatalabelingV1p1alpha1CreateInstructionMetadata--;
   return o;
@@ -5479,19 +5479,19 @@ void checkGoogleCloudDatalabelingV1p1alpha1CreateInstructionMetadata(
       o.instruction!,
       unittest.equals('foo'),
     );
-    checkUnnamed7388(o.partialFailures!);
+    checkUnnamed7804(o.partialFailures!);
   }
   buildCounterGoogleCloudDatalabelingV1p1alpha1CreateInstructionMetadata--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed7389() {
+core.List<api.GoogleRpcStatus> buildUnnamed7805() {
   var o = <api.GoogleRpcStatus>[];
   o.add(buildGoogleRpcStatus());
   o.add(buildGoogleRpcStatus());
   return o;
 }
 
-void checkUnnamed7389(core.List<api.GoogleRpcStatus> o) {
+void checkUnnamed7805(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleRpcStatus(o[0] as api.GoogleRpcStatus);
   checkGoogleRpcStatus(o[1] as api.GoogleRpcStatus);
@@ -5509,7 +5509,7 @@ api.GoogleCloudDatalabelingV1p1alpha1ExportDataOperationMetadata
     o.annotatedDataset = 'foo';
     o.createTime = 'foo';
     o.dataset = 'foo';
-    o.partialFailures = buildUnnamed7389();
+    o.partialFailures = buildUnnamed7805();
   }
   buildCounterGoogleCloudDatalabelingV1p1alpha1ExportDataOperationMetadata--;
   return o;
@@ -5532,7 +5532,7 @@ void checkGoogleCloudDatalabelingV1p1alpha1ExportDataOperationMetadata(
       o.dataset!,
       unittest.equals('foo'),
     );
-    checkUnnamed7389(o.partialFailures!);
+    checkUnnamed7805(o.partialFailures!);
   }
   buildCounterGoogleCloudDatalabelingV1p1alpha1ExportDataOperationMetadata--;
 }
@@ -5674,14 +5674,14 @@ void checkGoogleCloudDatalabelingV1p1alpha1GenerateAnalysisReportOperationMetada
   buildCounterGoogleCloudDatalabelingV1p1alpha1GenerateAnalysisReportOperationMetadata--;
 }
 
-core.List<core.String> buildUnnamed7390() {
+core.List<core.String> buildUnnamed7806() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed7390(core.List<core.String> o) {
+void checkUnnamed7806(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -5701,7 +5701,7 @@ api.GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig
   if (buildCounterGoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig < 3) {
     o.annotatedDatasetDescription = 'foo';
     o.annotatedDatasetDisplayName = 'foo';
-    o.contributorEmails = buildUnnamed7390();
+    o.contributorEmails = buildUnnamed7806();
     o.instruction = 'foo';
     o.labelGroup = 'foo';
     o.languageCode = 'foo';
@@ -5725,7 +5725,7 @@ void checkGoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig(
       o.annotatedDatasetDisplayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed7390(o.contributorEmails!);
+    checkUnnamed7806(o.contributorEmails!);
     unittest.expect(
       o.instruction!,
       unittest.equals('foo'),
@@ -5754,14 +5754,14 @@ void checkGoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig(
   buildCounterGoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed7391() {
+core.List<api.GoogleRpcStatus> buildUnnamed7807() {
   var o = <api.GoogleRpcStatus>[];
   o.add(buildGoogleRpcStatus());
   o.add(buildGoogleRpcStatus());
   return o;
 }
 
-void checkUnnamed7391(core.List<api.GoogleRpcStatus> o) {
+void checkUnnamed7807(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleRpcStatus(o[0] as api.GoogleRpcStatus);
   checkGoogleRpcStatus(o[1] as api.GoogleRpcStatus);
@@ -5778,7 +5778,7 @@ api.GoogleCloudDatalabelingV1p1alpha1ImportDataOperationMetadata
       3) {
     o.createTime = 'foo';
     o.dataset = 'foo';
-    o.partialFailures = buildUnnamed7391();
+    o.partialFailures = buildUnnamed7807();
   }
   buildCounterGoogleCloudDatalabelingV1p1alpha1ImportDataOperationMetadata--;
   return o;
@@ -5797,7 +5797,7 @@ void checkGoogleCloudDatalabelingV1p1alpha1ImportDataOperationMetadata(
       o.dataset!,
       unittest.equals('foo'),
     );
-    checkUnnamed7391(o.partialFailures!);
+    checkUnnamed7807(o.partialFailures!);
   }
   buildCounterGoogleCloudDatalabelingV1p1alpha1ImportDataOperationMetadata--;
 }
@@ -6014,14 +6014,14 @@ void checkGoogleCloudDatalabelingV1p1alpha1LabelImageSegmentationOperationMetada
   buildCounterGoogleCloudDatalabelingV1p1alpha1LabelImageSegmentationOperationMetadata--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed7392() {
+core.List<api.GoogleRpcStatus> buildUnnamed7808() {
   var o = <api.GoogleRpcStatus>[];
   o.add(buildGoogleRpcStatus());
   o.add(buildGoogleRpcStatus());
   return o;
 }
 
-void checkUnnamed7392(core.List<api.GoogleRpcStatus> o) {
+void checkUnnamed7808(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleRpcStatus(o[0] as api.GoogleRpcStatus);
   checkGoogleRpcStatus(o[1] as api.GoogleRpcStatus);
@@ -6049,7 +6049,7 @@ api.GoogleCloudDatalabelingV1p1alpha1LabelOperationMetadata
         buildGoogleCloudDatalabelingV1p1alpha1LabelImagePolylineOperationMetadata();
     o.imageSegmentationDetails =
         buildGoogleCloudDatalabelingV1p1alpha1LabelImageSegmentationOperationMetadata();
-    o.partialFailures = buildUnnamed7392();
+    o.partialFailures = buildUnnamed7808();
     o.progressPercent = 42;
     o.textClassificationDetails =
         buildGoogleCloudDatalabelingV1p1alpha1LabelTextClassificationOperationMetadata();
@@ -6102,7 +6102,7 @@ void checkGoogleCloudDatalabelingV1p1alpha1LabelOperationMetadata(
     checkGoogleCloudDatalabelingV1p1alpha1LabelImageSegmentationOperationMetadata(
         o.imageSegmentationDetails! as api
             .GoogleCloudDatalabelingV1p1alpha1LabelImageSegmentationOperationMetadata);
-    checkUnnamed7392(o.partialFailures!);
+    checkUnnamed7808(o.partialFailures!);
     unittest.expect(
       o.progressPercent!,
       unittest.equals(42),
@@ -6129,14 +6129,14 @@ void checkGoogleCloudDatalabelingV1p1alpha1LabelOperationMetadata(
   buildCounterGoogleCloudDatalabelingV1p1alpha1LabelOperationMetadata--;
 }
 
-core.Map<core.String, core.String> buildUnnamed7393() {
+core.Map<core.String, core.String> buildUnnamed7809() {
   var o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
 }
 
-void checkUnnamed7393(core.Map<core.String, core.String> o) {
+void checkUnnamed7809(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -6154,7 +6154,7 @@ api.GoogleCloudDatalabelingV1p1alpha1LabelStats
   var o = api.GoogleCloudDatalabelingV1p1alpha1LabelStats();
   buildCounterGoogleCloudDatalabelingV1p1alpha1LabelStats++;
   if (buildCounterGoogleCloudDatalabelingV1p1alpha1LabelStats < 3) {
-    o.exampleCount = buildUnnamed7393();
+    o.exampleCount = buildUnnamed7809();
   }
   buildCounterGoogleCloudDatalabelingV1p1alpha1LabelStats--;
   return o;
@@ -6164,7 +6164,7 @@ void checkGoogleCloudDatalabelingV1p1alpha1LabelStats(
     api.GoogleCloudDatalabelingV1p1alpha1LabelStats o) {
   buildCounterGoogleCloudDatalabelingV1p1alpha1LabelStats++;
   if (buildCounterGoogleCloudDatalabelingV1p1alpha1LabelStats < 3) {
-    checkUnnamed7393(o.exampleCount!);
+    checkUnnamed7809(o.exampleCount!);
   }
   buildCounterGoogleCloudDatalabelingV1p1alpha1LabelStats--;
 }
@@ -6369,14 +6369,14 @@ void checkGoogleCloudDatalabelingV1p1alpha1OutputConfig(
   buildCounterGoogleCloudDatalabelingV1p1alpha1OutputConfig--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed7394() {
+core.List<api.GoogleRpcStatus> buildUnnamed7810() {
   var o = <api.GoogleRpcStatus>[];
   o.add(buildGoogleRpcStatus());
   o.add(buildGoogleRpcStatus());
   return o;
 }
 
-void checkUnnamed7394(core.List<api.GoogleRpcStatus> o) {
+void checkUnnamed7810(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleRpcStatus(o[0] as api.GoogleRpcStatus);
   checkGoogleRpcStatus(o[1] as api.GoogleRpcStatus);
@@ -6392,7 +6392,7 @@ api.GoogleCloudDatalabelingV1p2alpha1CreateInstructionMetadata
       3) {
     o.createTime = 'foo';
     o.instruction = 'foo';
-    o.partialFailures = buildUnnamed7394();
+    o.partialFailures = buildUnnamed7810();
   }
   buildCounterGoogleCloudDatalabelingV1p2alpha1CreateInstructionMetadata--;
   return o;
@@ -6411,19 +6411,19 @@ void checkGoogleCloudDatalabelingV1p2alpha1CreateInstructionMetadata(
       o.instruction!,
       unittest.equals('foo'),
     );
-    checkUnnamed7394(o.partialFailures!);
+    checkUnnamed7810(o.partialFailures!);
   }
   buildCounterGoogleCloudDatalabelingV1p2alpha1CreateInstructionMetadata--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed7395() {
+core.List<api.GoogleRpcStatus> buildUnnamed7811() {
   var o = <api.GoogleRpcStatus>[];
   o.add(buildGoogleRpcStatus());
   o.add(buildGoogleRpcStatus());
   return o;
 }
 
-void checkUnnamed7395(core.List<api.GoogleRpcStatus> o) {
+void checkUnnamed7811(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleRpcStatus(o[0] as api.GoogleRpcStatus);
   checkGoogleRpcStatus(o[1] as api.GoogleRpcStatus);
@@ -6441,7 +6441,7 @@ api.GoogleCloudDatalabelingV1p2alpha1ExportDataOperationMetadata
     o.annotatedDataset = 'foo';
     o.createTime = 'foo';
     o.dataset = 'foo';
-    o.partialFailures = buildUnnamed7395();
+    o.partialFailures = buildUnnamed7811();
   }
   buildCounterGoogleCloudDatalabelingV1p2alpha1ExportDataOperationMetadata--;
   return o;
@@ -6464,7 +6464,7 @@ void checkGoogleCloudDatalabelingV1p2alpha1ExportDataOperationMetadata(
       o.dataset!,
       unittest.equals('foo'),
     );
-    checkUnnamed7395(o.partialFailures!);
+    checkUnnamed7811(o.partialFailures!);
   }
   buildCounterGoogleCloudDatalabelingV1p2alpha1ExportDataOperationMetadata--;
 }
@@ -6571,14 +6571,14 @@ void checkGoogleCloudDatalabelingV1p2alpha1GcsFolderDestination(
   buildCounterGoogleCloudDatalabelingV1p2alpha1GcsFolderDestination--;
 }
 
-core.List<core.String> buildUnnamed7396() {
+core.List<core.String> buildUnnamed7812() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed7396(core.List<core.String> o) {
+void checkUnnamed7812(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -6598,7 +6598,7 @@ api.GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig
   if (buildCounterGoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig < 3) {
     o.annotatedDatasetDescription = 'foo';
     o.annotatedDatasetDisplayName = 'foo';
-    o.contributorEmails = buildUnnamed7396();
+    o.contributorEmails = buildUnnamed7812();
     o.instruction = 'foo';
     o.labelGroup = 'foo';
     o.languageCode = 'foo';
@@ -6622,7 +6622,7 @@ void checkGoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig(
       o.annotatedDatasetDisplayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed7396(o.contributorEmails!);
+    checkUnnamed7812(o.contributorEmails!);
     unittest.expect(
       o.instruction!,
       unittest.equals('foo'),
@@ -6651,14 +6651,14 @@ void checkGoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig(
   buildCounterGoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed7397() {
+core.List<api.GoogleRpcStatus> buildUnnamed7813() {
   var o = <api.GoogleRpcStatus>[];
   o.add(buildGoogleRpcStatus());
   o.add(buildGoogleRpcStatus());
   return o;
 }
 
-void checkUnnamed7397(core.List<api.GoogleRpcStatus> o) {
+void checkUnnamed7813(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleRpcStatus(o[0] as api.GoogleRpcStatus);
   checkGoogleRpcStatus(o[1] as api.GoogleRpcStatus);
@@ -6675,7 +6675,7 @@ api.GoogleCloudDatalabelingV1p2alpha1ImportDataOperationMetadata
       3) {
     o.createTime = 'foo';
     o.dataset = 'foo';
-    o.partialFailures = buildUnnamed7397();
+    o.partialFailures = buildUnnamed7813();
   }
   buildCounterGoogleCloudDatalabelingV1p2alpha1ImportDataOperationMetadata--;
   return o;
@@ -6694,7 +6694,7 @@ void checkGoogleCloudDatalabelingV1p2alpha1ImportDataOperationMetadata(
       o.dataset!,
       unittest.equals('foo'),
     );
-    checkUnnamed7397(o.partialFailures!);
+    checkUnnamed7813(o.partialFailures!);
   }
   buildCounterGoogleCloudDatalabelingV1p2alpha1ImportDataOperationMetadata--;
 }
@@ -6911,14 +6911,14 @@ void checkGoogleCloudDatalabelingV1p2alpha1LabelImageSegmentationOperationMetada
   buildCounterGoogleCloudDatalabelingV1p2alpha1LabelImageSegmentationOperationMetadata--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed7398() {
+core.List<api.GoogleRpcStatus> buildUnnamed7814() {
   var o = <api.GoogleRpcStatus>[];
   o.add(buildGoogleRpcStatus());
   o.add(buildGoogleRpcStatus());
   return o;
 }
 
-void checkUnnamed7398(core.List<api.GoogleRpcStatus> o) {
+void checkUnnamed7814(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleRpcStatus(o[0] as api.GoogleRpcStatus);
   checkGoogleRpcStatus(o[1] as api.GoogleRpcStatus);
@@ -6946,7 +6946,7 @@ api.GoogleCloudDatalabelingV1p2alpha1LabelOperationMetadata
         buildGoogleCloudDatalabelingV1p2alpha1LabelImagePolylineOperationMetadata();
     o.imageSegmentationDetails =
         buildGoogleCloudDatalabelingV1p2alpha1LabelImageSegmentationOperationMetadata();
-    o.partialFailures = buildUnnamed7398();
+    o.partialFailures = buildUnnamed7814();
     o.progressPercent = 42;
     o.textClassificationDetails =
         buildGoogleCloudDatalabelingV1p2alpha1LabelTextClassificationOperationMetadata();
@@ -6999,7 +6999,7 @@ void checkGoogleCloudDatalabelingV1p2alpha1LabelOperationMetadata(
     checkGoogleCloudDatalabelingV1p2alpha1LabelImageSegmentationOperationMetadata(
         o.imageSegmentationDetails! as api
             .GoogleCloudDatalabelingV1p2alpha1LabelImageSegmentationOperationMetadata);
-    checkUnnamed7398(o.partialFailures!);
+    checkUnnamed7814(o.partialFailures!);
     unittest.expect(
       o.progressPercent!,
       unittest.equals(42),
@@ -7026,14 +7026,14 @@ void checkGoogleCloudDatalabelingV1p2alpha1LabelOperationMetadata(
   buildCounterGoogleCloudDatalabelingV1p2alpha1LabelOperationMetadata--;
 }
 
-core.Map<core.String, core.String> buildUnnamed7399() {
+core.Map<core.String, core.String> buildUnnamed7815() {
   var o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
 }
 
-void checkUnnamed7399(core.Map<core.String, core.String> o) {
+void checkUnnamed7815(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -7051,7 +7051,7 @@ api.GoogleCloudDatalabelingV1p2alpha1LabelStats
   var o = api.GoogleCloudDatalabelingV1p2alpha1LabelStats();
   buildCounterGoogleCloudDatalabelingV1p2alpha1LabelStats++;
   if (buildCounterGoogleCloudDatalabelingV1p2alpha1LabelStats < 3) {
-    o.exampleCount = buildUnnamed7399();
+    o.exampleCount = buildUnnamed7815();
   }
   buildCounterGoogleCloudDatalabelingV1p2alpha1LabelStats--;
   return o;
@@ -7061,7 +7061,7 @@ void checkGoogleCloudDatalabelingV1p2alpha1LabelStats(
     api.GoogleCloudDatalabelingV1p2alpha1LabelStats o) {
   buildCounterGoogleCloudDatalabelingV1p2alpha1LabelStats++;
   if (buildCounterGoogleCloudDatalabelingV1p2alpha1LabelStats < 3) {
-    checkUnnamed7399(o.exampleCount!);
+    checkUnnamed7815(o.exampleCount!);
   }
   buildCounterGoogleCloudDatalabelingV1p2alpha1LabelStats--;
 }
@@ -7266,14 +7266,14 @@ void checkGoogleCloudDatalabelingV1p2alpha1OutputConfig(
   buildCounterGoogleCloudDatalabelingV1p2alpha1OutputConfig--;
 }
 
-core.List<api.GoogleLongrunningOperation> buildUnnamed7400() {
+core.List<api.GoogleLongrunningOperation> buildUnnamed7816() {
   var o = <api.GoogleLongrunningOperation>[];
   o.add(buildGoogleLongrunningOperation());
   o.add(buildGoogleLongrunningOperation());
   return o;
 }
 
-void checkUnnamed7400(core.List<api.GoogleLongrunningOperation> o) {
+void checkUnnamed7816(core.List<api.GoogleLongrunningOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleLongrunningOperation(o[0] as api.GoogleLongrunningOperation);
   checkGoogleLongrunningOperation(o[1] as api.GoogleLongrunningOperation);
@@ -7286,7 +7286,7 @@ api.GoogleLongrunningListOperationsResponse
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed7400();
+    o.operations = buildUnnamed7816();
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
   return o;
@@ -7300,12 +7300,12 @@ void checkGoogleLongrunningListOperationsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed7400(o.operations!);
+    checkUnnamed7816(o.operations!);
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed7401() {
+core.Map<core.String, core.Object> buildUnnamed7817() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -7320,7 +7320,7 @@ core.Map<core.String, core.Object> buildUnnamed7401() {
   return o;
 }
 
-void checkUnnamed7401(core.Map<core.String, core.Object> o) {
+void checkUnnamed7817(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -7352,7 +7352,7 @@ void checkUnnamed7401(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed7402() {
+core.Map<core.String, core.Object> buildUnnamed7818() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -7367,7 +7367,7 @@ core.Map<core.String, core.Object> buildUnnamed7402() {
   return o;
 }
 
-void checkUnnamed7402(core.Map<core.String, core.Object> o) {
+void checkUnnamed7818(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -7406,9 +7406,9 @@ api.GoogleLongrunningOperation buildGoogleLongrunningOperation() {
   if (buildCounterGoogleLongrunningOperation < 3) {
     o.done = true;
     o.error = buildGoogleRpcStatus();
-    o.metadata = buildUnnamed7401();
+    o.metadata = buildUnnamed7817();
     o.name = 'foo';
-    o.response = buildUnnamed7402();
+    o.response = buildUnnamed7818();
   }
   buildCounterGoogleLongrunningOperation--;
   return o;
@@ -7419,12 +7419,12 @@ void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   if (buildCounterGoogleLongrunningOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkGoogleRpcStatus(o.error! as api.GoogleRpcStatus);
-    checkUnnamed7401(o.metadata!);
+    checkUnnamed7817(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed7402(o.response!);
+    checkUnnamed7818(o.response!);
   }
   buildCounterGoogleLongrunningOperation--;
 }
@@ -7444,7 +7444,7 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed7403() {
+core.Map<core.String, core.Object> buildUnnamed7819() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -7459,7 +7459,7 @@ core.Map<core.String, core.Object> buildUnnamed7403() {
   return o;
 }
 
-void checkUnnamed7403(core.Map<core.String, core.Object> o) {
+void checkUnnamed7819(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -7491,17 +7491,17 @@ void checkUnnamed7403(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed7404() {
+core.List<core.Map<core.String, core.Object>> buildUnnamed7820() {
   var o = <core.Map<core.String, core.Object>>[];
-  o.add(buildUnnamed7403());
-  o.add(buildUnnamed7403());
+  o.add(buildUnnamed7819());
+  o.add(buildUnnamed7819());
   return o;
 }
 
-void checkUnnamed7404(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed7820(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed7403(o[0]);
-  checkUnnamed7403(o[1]);
+  checkUnnamed7819(o[0]);
+  checkUnnamed7819(o[1]);
 }
 
 core.int buildCounterGoogleRpcStatus = 0;
@@ -7510,7 +7510,7 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed7404();
+    o.details = buildUnnamed7820();
     o.message = 'foo';
   }
   buildCounterGoogleRpcStatus--;
@@ -7524,7 +7524,7 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed7404(o.details!);
+    checkUnnamed7820(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),

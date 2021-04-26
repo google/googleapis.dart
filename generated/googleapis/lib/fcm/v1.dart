@@ -40,7 +40,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// FCM send API that provides a cross-platform messaging solution to reliably
 /// deliver messages at no cost.
 class FirebaseCloudMessagingApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -666,18 +666,18 @@ class ApnsFcmOptions {
 /// Represents a color in the RGBA color space.
 ///
 /// This representation is designed for simplicity of conversion to/from color
-/// representations in various languages over compactness; for example, the
+/// representations in various languages over compactness. For example, the
 /// fields of this representation can be trivially provided to the constructor
-/// of "java.awt.Color" in Java; it can also be trivially provided to UIColor's
-/// "+colorWithRed:green:blue:alpha" method in iOS; and, with just a little
-/// work, it can be easily formatted into a CSS "rgba()" string in JavaScript,
-/// as well. Note: this proto does not carry information about the absolute
-/// color space that should be used to interpret the RGB value (e.g. sRGB, Adobe
-/// RGB, DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB
-/// color space. Note: when color equality needs to be decided, implementations,
-/// unless documented otherwise, will treat two colors to be equal if all their
-/// red, green, blue and alpha values each differ by at most 1e-5. Example
-/// (Java): import com.google.type.Color; // ... public static java.awt.Color
+/// of `java.awt.Color` in Java; it can also be trivially provided to UIColor's
+/// `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little
+/// work, it can be easily formatted into a CSS `rgba()` string in JavaScript.
+/// This reference page doesn't carry information about the absolute color space
+/// that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
+/// DCI-P3, BT.2020, etc.). By default, applications should assume the sRGB
+/// color space. When color equality needs to be decided, implementations,
+/// unless documented otherwise, treat two colors as equal if all their red,
+/// green, blue, and alpha values each differ by at most 1e-5. Example (Java):
+/// import com.google.type.Color; // ... public static java.awt.Color
 /// fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ?
 /// protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color(
 /// protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); }
@@ -704,9 +704,9 @@ class ApnsFcmOptions {
 /// rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0; var red =
 /// Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255); var blue
 /// = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) { return
-/// rgbToCssColor_(red, green, blue); } var alphaFrac = rgb_color.alpha.value ||
+/// rgbToCssColor(red, green, blue); } var alphaFrac = rgb_color.alpha.value ||
 /// 0.0; var rgbParams = \[red, green, blue\].join(','); return \['rgba(',
-/// rgbParams, ',', alphaFrac, ')'\].join(''); }; var rgbToCssColor_ =
+/// rgbParams, ',', alphaFrac, ')'\].join(''); }; var rgbToCssColor =
 /// function(red, green, blue) { var rgbNumber = new Number((red << 16) | (green
 /// << 8) | blue); var hexString = rgbNumber.toString(16); var missingZeros = 6
 /// - hexString.length; var resultBuilder = \['#'\]; for (var i = 0; i <
@@ -715,14 +715,14 @@ class ApnsFcmOptions {
 class Color {
   /// The fraction of this color that should be applied to the pixel.
   ///
-  /// That is, the final pixel color is defined by the equation: pixel color =
-  /// alpha * (this color) + (1.0 - alpha) * (background color) This means that
+  /// That is, the final pixel color is defined by the equation: `pixel color =
+  /// alpha * (this color) + (1.0 - alpha) * (background color)` This means that
   /// a value of 1.0 corresponds to a solid color, whereas a value of 0.0
   /// corresponds to a completely transparent color. This uses a wrapper message
   /// rather than a simple float scalar so that it is possible to distinguish
   /// between a default value and the value being unset. If omitted, this color
-  /// object is to be rendered as a solid color (as if the alpha value had been
-  /// explicitly given with a value of 1.0).
+  /// object is rendered as a solid color (as if the alpha value had been
+  /// explicitly given a value of 1.0).
   core.double? alpha;
 
   /// The amount of blue in the color as a value in the interval \[0, 1\].

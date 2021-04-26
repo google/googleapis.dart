@@ -483,7 +483,7 @@ class Attributes {
   ///
   /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#sizetype.
-  core.String? sizeType;
+  core.List<core.String>? sizeType;
 
   /// The suggested retail price (MSRP) of the product.
   ///
@@ -635,7 +635,9 @@ class Attributes {
       sizeSystem = _json['sizeSystem'] as core.String;
     }
     if (_json.containsKey('sizeType')) {
-      sizeType = _json['sizeType'] as core.String;
+      sizeType = (_json['sizeType'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('suggestedRetailPrice')) {
       suggestedRetailPrice = Price.fromJson(

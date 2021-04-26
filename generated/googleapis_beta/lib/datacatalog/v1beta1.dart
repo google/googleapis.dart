@@ -51,7 +51,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// A fully managed and highly scalable data discovery and metadata management
 /// service.
 class DataCatalogApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -3342,6 +3342,11 @@ class GoogleCloudDatacatalogV1beta1Entry {
   /// Cloud Storage fileset.
   core.String? type;
 
+  /// Statistics on the usage level of the resource.
+  ///
+  /// Output only.
+  GoogleCloudDatacatalogV1beta1UsageSignal? usageSignal;
+
   /// This field indicates the entry's source system that Data Catalog does not
   /// integrate with.
   ///
@@ -3410,6 +3415,10 @@ class GoogleCloudDatacatalogV1beta1Entry {
     if (_json.containsKey('type')) {
       type = _json['type'] as core.String;
     }
+    if (_json.containsKey('usageSignal')) {
+      usageSignal = GoogleCloudDatacatalogV1beta1UsageSignal.fromJson(
+          _json['usageSignal'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('userSpecifiedSystem')) {
       userSpecifiedSystem = _json['userSpecifiedSystem'] as core.String;
     }
@@ -3433,6 +3442,7 @@ class GoogleCloudDatacatalogV1beta1Entry {
         if (sourceSystemTimestamps != null)
           'sourceSystemTimestamps': sourceSystemTimestamps!.toJson(),
         if (type != null) 'type': type!,
+        if (usageSignal != null) 'usageSignal': usageSignal!.toJson(),
         if (userSpecifiedSystem != null)
           'userSpecifiedSystem': userSpecifiedSystem!,
         if (userSpecifiedType != null) 'userSpecifiedType': userSpecifiedType!,
@@ -4907,6 +4917,95 @@ class GoogleCloudDatacatalogV1beta1Taxonomy {
         if (policyTagCount != null) 'policyTagCount': policyTagCount!,
         if (taxonomyTimestamps != null)
           'taxonomyTimestamps': taxonomyTimestamps!.toJson(),
+      };
+}
+
+/// The set of all usage signals that we store in Data Catalog.
+class GoogleCloudDatacatalogV1beta1UsageSignal {
+  /// The timestamp of the end of the usage statistics duration.
+  core.String? updateTime;
+
+  /// Usage statistics over each of the pre-defined time ranges, supported
+  /// strings for time ranges are {"24H", "7D", "30D"}.
+  core.Map<core.String, GoogleCloudDatacatalogV1beta1UsageStats>?
+      usageWithinTimeRange;
+
+  GoogleCloudDatacatalogV1beta1UsageSignal();
+
+  GoogleCloudDatacatalogV1beta1UsageSignal.fromJson(core.Map _json) {
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'] as core.String;
+    }
+    if (_json.containsKey('usageWithinTimeRange')) {
+      usageWithinTimeRange =
+          (_json['usageWithinTimeRange'] as core.Map<core.String, core.dynamic>)
+              .map(
+        (key, item) => core.MapEntry(
+          key,
+          GoogleCloudDatacatalogV1beta1UsageStats.fromJson(
+              item as core.Map<core.String, core.dynamic>),
+        ),
+      );
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (usageWithinTimeRange != null)
+          'usageWithinTimeRange': usageWithinTimeRange!
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+      };
+}
+
+/// Detailed counts on the entry's usage.
+///
+/// Caveats: - Only BigQuery tables have usage stats - The usage stats only
+/// inlude BigQuery query jobs - The usage stats might be underestimated, e.g.
+/// wildcard table references are not yet counted in usage computation
+/// https://cloud.google.com/bigquery/docs/querying-wildcard-tables
+class GoogleCloudDatacatalogV1beta1UsageStats {
+  /// The number of times that the underlying entry was attempted to be used but
+  /// was cancelled by the user.
+  core.double? totalCancellations;
+
+  /// The number of times that the underlying entry was successfully used.
+  core.double? totalCompletions;
+
+  /// Total time spent (in milliseconds) during uses the resulted in
+  /// completions.
+  core.double? totalExecutionTimeForCompletionsMillis;
+
+  /// The number of times that the underlying entry was attempted to be used but
+  /// failed.
+  core.double? totalFailures;
+
+  GoogleCloudDatacatalogV1beta1UsageStats();
+
+  GoogleCloudDatacatalogV1beta1UsageStats.fromJson(core.Map _json) {
+    if (_json.containsKey('totalCancellations')) {
+      totalCancellations = (_json['totalCancellations'] as core.num).toDouble();
+    }
+    if (_json.containsKey('totalCompletions')) {
+      totalCompletions = (_json['totalCompletions'] as core.num).toDouble();
+    }
+    if (_json.containsKey('totalExecutionTimeForCompletionsMillis')) {
+      totalExecutionTimeForCompletionsMillis =
+          (_json['totalExecutionTimeForCompletionsMillis'] as core.num)
+              .toDouble();
+    }
+    if (_json.containsKey('totalFailures')) {
+      totalFailures = (_json['totalFailures'] as core.num).toDouble();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (totalCancellations != null)
+          'totalCancellations': totalCancellations!,
+        if (totalCompletions != null) 'totalCompletions': totalCompletions!,
+        if (totalExecutionTimeForCompletionsMillis != null)
+          'totalExecutionTimeForCompletionsMillis':
+              totalExecutionTimeForCompletionsMillis!,
+        if (totalFailures != null) 'totalFailures': totalFailures!,
       };
 }
 

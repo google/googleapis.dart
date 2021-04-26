@@ -43,7 +43,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Creates and manages builds on Google Cloud Platform.
 class CloudBuildApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -1360,8 +1360,7 @@ class Build {
   /// IAM service account whose credentials will be used at build runtime.
   ///
   /// Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.
-  /// ACCOUNT can be email address or uniqueId of the service account. This
-  /// field is in beta.
+  /// ACCOUNT can be email address or uniqueId of the service account.
   core.String? serviceAccount;
 
   /// The location of the source files to build.
@@ -1426,6 +1425,11 @@ class Build {
   ///
   /// Output only.
   core.Map<core.String, TimeSpan>? timing;
+
+  /// Non-fatal problems encountered during the execution of the build.
+  ///
+  /// Output only.
+  core.List<Warning>? warnings;
 
   Build();
 
@@ -1535,6 +1539,12 @@ class Build {
         ),
       );
     }
+    if (_json.containsKey('warnings')) {
+      warnings = (_json['warnings'] as core.List)
+          .map<Warning>((value) =>
+              Warning.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1570,6 +1580,8 @@ class Build {
         if (timing != null)
           'timing':
               timing!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (warnings != null)
+          'warnings': warnings!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1974,6 +1986,11 @@ class BuildTrigger {
   /// cloudbuild.yaml).
   core.String? filename;
 
+  /// A Common Expression Language string.
+  ///
+  /// Optional.
+  core.String? filter;
+
   /// GitHubEventsConfig describes the configuration of a trigger that creates a
   /// build whenever a GitHub event is received.
   ///
@@ -2014,6 +2031,12 @@ class BuildTrigger {
   /// alphanumeric character.
   core.String? name;
 
+  /// PubsubConfig describes the configuration of a trigger that creates a build
+  /// whenever a Pub/Sub message is published.
+  ///
+  /// Optional.
+  PubsubConfig? pubsubConfig;
+
   /// Substitutions for Build resource.
   ///
   /// The keys must match the following regular expression: `^_[A-Z0-9_]+$`.
@@ -2048,6 +2071,9 @@ class BuildTrigger {
     if (_json.containsKey('filename')) {
       filename = _json['filename'] as core.String;
     }
+    if (_json.containsKey('filter')) {
+      filter = _json['filter'] as core.String;
+    }
     if (_json.containsKey('github')) {
       github = GitHubEventsConfig.fromJson(
           _json['github'] as core.Map<core.String, core.dynamic>);
@@ -2067,6 +2093,10 @@ class BuildTrigger {
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('pubsubConfig')) {
+      pubsubConfig = PubsubConfig.fromJson(
+          _json['pubsubConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('substitutions')) {
       substitutions =
@@ -2094,11 +2124,13 @@ class BuildTrigger {
         if (description != null) 'description': description!,
         if (disabled != null) 'disabled': disabled!,
         if (filename != null) 'filename': filename!,
+        if (filter != null) 'filter': filter!,
         if (github != null) 'github': github!.toJson(),
         if (id != null) 'id': id!,
         if (ignoredFiles != null) 'ignoredFiles': ignoredFiles!,
         if (includedFiles != null) 'includedFiles': includedFiles!,
         if (name != null) 'name': name!,
+        if (pubsubConfig != null) 'pubsubConfig': pubsubConfig!.toJson(),
         if (substitutions != null) 'substitutions': substitutions!,
         if (tags != null) 'tags': tags!,
         if (triggerTemplate != null)
@@ -2808,6 +2840,63 @@ class Operation {
       };
 }
 
+/// PubsubConfig describes the configuration of a trigger that creates a build
+/// whenever a Pub/Sub message is published.
+class PubsubConfig {
+  /// Service account that will make the push request.
+  core.String? serviceAccountEmail;
+
+  /// Potential issues with the underlying Pub/Sub subscription configuration.
+  ///
+  /// Only populated on get requests.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The subscription configuration has not been
+  /// checked.
+  /// - "OK" : The Pub/Sub subscription is properly configured.
+  /// - "SUBSCRIPTION_DELETED" : The subscription has been deleted.
+  /// - "TOPIC_DELETED" : The topic has been deleted.
+  /// - "SUBSCRIPTION_MISCONFIGURED" : Some of the subscription's field are
+  /// misconfigured.
+  core.String? state;
+
+  /// Name of the subscription.
+  ///
+  /// Format is `projects/{project}/subscriptions/{subscription}`.
+  ///
+  /// Output only.
+  core.String? subscription;
+
+  /// The name of the topic from which this subscription is receiving messages.
+  ///
+  /// Format is `projects/{project}/topics/{topic}`.
+  core.String? topic;
+
+  PubsubConfig();
+
+  PubsubConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('serviceAccountEmail')) {
+      serviceAccountEmail = _json['serviceAccountEmail'] as core.String;
+    }
+    if (_json.containsKey('state')) {
+      state = _json['state'] as core.String;
+    }
+    if (_json.containsKey('subscription')) {
+      subscription = _json['subscription'] as core.String;
+    }
+    if (_json.containsKey('topic')) {
+      topic = _json['topic'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (serviceAccountEmail != null)
+          'serviceAccountEmail': serviceAccountEmail!,
+        if (state != null) 'state': state!,
+        if (subscription != null) 'subscription': subscription!,
+        if (topic != null) 'topic': topic!,
+      };
+}
+
 /// PullRequestFilter contains filter properties for matching GitHub Pull
 /// Requests.
 class PullRequestFilter {
@@ -3300,6 +3389,11 @@ class Source {
   /// If provided, get the source from this location in Google Cloud Storage.
   StorageSource? storageSource;
 
+  /// If provided, get the source from this manifest in Google Cloud Storage.
+  ///
+  /// This feature is in Preview.
+  StorageSourceManifest? storageSourceManifest;
+
   Source();
 
   Source.fromJson(core.Map _json) {
@@ -3311,11 +3405,18 @@ class Source {
       storageSource = StorageSource.fromJson(
           _json['storageSource'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('storageSourceManifest')) {
+      storageSourceManifest = StorageSourceManifest.fromJson(
+          _json['storageSourceManifest']
+              as core.Map<core.String, core.dynamic>);
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (repoSource != null) 'repoSource': repoSource!.toJson(),
         if (storageSource != null) 'storageSource': storageSource!.toJson(),
+        if (storageSourceManifest != null)
+          'storageSourceManifest': storageSourceManifest!.toJson(),
       };
 }
 
@@ -3345,6 +3446,12 @@ class SourceProvenance {
   /// generations resolved.
   StorageSource? resolvedStorageSource;
 
+  /// A copy of the build's `source.storage_source_manifest`, if exists, with
+  /// any revisions resolved.
+  ///
+  /// This feature is in Preview.
+  StorageSourceManifest? resolvedStorageSourceManifest;
+
   SourceProvenance();
 
   SourceProvenance.fromJson(core.Map _json) {
@@ -3366,6 +3473,11 @@ class SourceProvenance {
           _json['resolvedStorageSource']
               as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('resolvedStorageSourceManifest')) {
+      resolvedStorageSourceManifest = StorageSourceManifest.fromJson(
+          _json['resolvedStorageSourceManifest']
+              as core.Map<core.String, core.dynamic>);
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3376,6 +3488,9 @@ class SourceProvenance {
           'resolvedRepoSource': resolvedRepoSource!.toJson(),
         if (resolvedStorageSource != null)
           'resolvedStorageSource': resolvedStorageSource!.toJson(),
+        if (resolvedStorageSourceManifest != null)
+          'resolvedStorageSourceManifest':
+              resolvedStorageSourceManifest!.toJson(),
       };
 }
 
@@ -3471,6 +3586,45 @@ class StorageSource {
       };
 }
 
+/// Location of the source manifest in Google Cloud Storage.
+///
+/// This feature is in Preview.
+class StorageSourceManifest {
+  /// Google Cloud Storage bucket containing the source manifest (see
+  /// [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+  core.String? bucket;
+
+  /// Google Cloud Storage generation for the object.
+  ///
+  /// If the generation is omitted, the latest generation will be used.
+  core.String? generation;
+
+  /// Google Cloud Storage object containing the source manifest.
+  ///
+  /// This object must be a JSON file.
+  core.String? object;
+
+  StorageSourceManifest();
+
+  StorageSourceManifest.fromJson(core.Map _json) {
+    if (_json.containsKey('bucket')) {
+      bucket = _json['bucket'] as core.String;
+    }
+    if (_json.containsKey('generation')) {
+      generation = _json['generation'] as core.String;
+    }
+    if (_json.containsKey('object')) {
+      object = _json['object'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bucket != null) 'bucket': bucket!,
+        if (generation != null) 'generation': generation!,
+        if (object != null) 'object': object!,
+      };
+}
+
 /// Start and end times for a build execution phase.
 class TimeSpan {
   /// End of time span.
@@ -3526,5 +3680,36 @@ class Volume {
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (path != null) 'path': path!,
+      };
+}
+
+/// A non-fatal problem encountered during the execution of the build.
+class Warning {
+  /// The priority for this warning.
+  /// Possible string values are:
+  /// - "PRIORITY_UNSPECIFIED" : Should not be used.
+  /// - "INFO" : e.g. deprecation warnings and alternative feature highlights.
+  /// - "WARNING" : e.g. automated detection of possible issues with the build.
+  /// - "ALERT" : e.g. alerts that a feature used in the build is pending
+  /// removal
+  core.String? priority;
+
+  /// Explanation of the warning generated.
+  core.String? text;
+
+  Warning();
+
+  Warning.fromJson(core.Map _json) {
+    if (_json.containsKey('priority')) {
+      priority = _json['priority'] as core.String;
+    }
+    if (_json.containsKey('text')) {
+      text = _json['text'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (priority != null) 'priority': priority!,
+        if (text != null) 'text': text!,
       };
 }

@@ -37,7 +37,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 class AssuredworkloadsApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -439,6 +439,8 @@ class GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata {
   /// - "FEDRAMP_MODERATE" : FedRAMP Moderate data protection controls
   /// - "US_REGIONAL_ACCESS" : Assured Workloads For US Regions data protection
   /// controls
+  /// - "HIPAA" : Health Insurance Portability and Accountability Act controls
+  /// - "HITRUST" : Health Information Trust Alliance controls
   core.String? complianceRegime;
 
   /// Time when the operation was created.
@@ -540,6 +542,8 @@ class GoogleCloudAssuredworkloadsV1Workload {
   /// - "FEDRAMP_MODERATE" : FedRAMP Moderate data protection controls
   /// - "US_REGIONAL_ACCESS" : Assured Workloads For US Regions data protection
   /// controls
+  /// - "HIPAA" : Health Insurance Portability and Accountability Act controls
+  /// - "HITRUST" : Health Information Trust Alliance controls
   core.String? complianceRegime;
 
   /// The Workload creation timestamp.
@@ -594,6 +598,14 @@ class GoogleCloudAssuredworkloadsV1Workload {
   /// organizations/{organization_id}
   core.String? provisionedResourcesParent;
 
+  /// Input only.
+  ///
+  /// Resource properties that are used to customize workload resources. These
+  /// properties (such as custom project id) will be used to create workload
+  /// resources if possible. This field is optional.
+  core.List<GoogleCloudAssuredworkloadsV1WorkloadResourceSettings>?
+      resourceSettings;
+
   /// The resources associated with this workload.
   ///
   /// These resources will be created when creating the workload. If any of the
@@ -639,6 +651,13 @@ class GoogleCloudAssuredworkloadsV1Workload {
       provisionedResourcesParent =
           _json['provisionedResourcesParent'] as core.String;
     }
+    if (_json.containsKey('resourceSettings')) {
+      resourceSettings = (_json['resourceSettings'] as core.List)
+          .map<GoogleCloudAssuredworkloadsV1WorkloadResourceSettings>((value) =>
+              GoogleCloudAssuredworkloadsV1WorkloadResourceSettings.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
           .map<GoogleCloudAssuredworkloadsV1WorkloadResourceInfo>((value) =>
@@ -659,6 +678,9 @@ class GoogleCloudAssuredworkloadsV1Workload {
         if (name != null) 'name': name!,
         if (provisionedResourcesParent != null)
           'provisionedResourcesParent': provisionedResourcesParent!,
+        if (resourceSettings != null)
+          'resourceSettings':
+              resourceSettings!.map((value) => value.toJson()).toList(),
         if (resources != null)
           'resources': resources!.map((value) => value.toJson()).toList(),
       };
@@ -712,6 +734,7 @@ class GoogleCloudAssuredworkloadsV1WorkloadResourceInfo {
   /// - "RESOURCE_TYPE_UNSPECIFIED" : Unknown resource type.
   /// - "CONSUMER_PROJECT" : Consumer project.
   /// - "ENCRYPTION_KEYS_PROJECT" : Consumer project containing encryption keys.
+  /// - "KEYRING" : Keyring resource that hosts encryption keys.
   core.String? resourceType;
 
   GoogleCloudAssuredworkloadsV1WorkloadResourceInfo();
@@ -731,6 +754,52 @@ class GoogleCloudAssuredworkloadsV1WorkloadResourceInfo {
       };
 }
 
+/// Represent the custom settings for the resources to be created.
+class GoogleCloudAssuredworkloadsV1WorkloadResourceSettings {
+  /// User-assigned resource display name.
+  ///
+  /// If not empty it will be used to create a resource with the specified name.
+  core.String? displayName;
+
+  /// Resource identifier.
+  ///
+  /// For a project this represents project_id. If the project is already taken,
+  /// the workload creation will fail.
+  core.String? resourceId;
+
+  /// Indicates the type of resource.
+  ///
+  /// This field should be specified to correspond the id to the right project
+  /// type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
+  /// Possible string values are:
+  /// - "RESOURCE_TYPE_UNSPECIFIED" : Unknown resource type.
+  /// - "CONSUMER_PROJECT" : Consumer project.
+  /// - "ENCRYPTION_KEYS_PROJECT" : Consumer project containing encryption keys.
+  /// - "KEYRING" : Keyring resource that hosts encryption keys.
+  core.String? resourceType;
+
+  GoogleCloudAssuredworkloadsV1WorkloadResourceSettings();
+
+  GoogleCloudAssuredworkloadsV1WorkloadResourceSettings.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'] as core.String;
+    }
+    if (_json.containsKey('resourceId')) {
+      resourceId = _json['resourceId'] as core.String;
+    }
+    if (_json.containsKey('resourceType')) {
+      resourceType = _json['resourceType'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (resourceId != null) 'resourceId': resourceId!,
+        if (resourceType != null) 'resourceType': resourceType!,
+      };
+}
+
 /// Operation metadata to give request details of CreateWorkload.
 class GoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata {
   /// Compliance controls that should be applied to the resources managed by the
@@ -745,6 +814,8 @@ class GoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata {
   /// - "FEDRAMP_MODERATE" : FedRAMP Moderate data protection controls
   /// - "US_REGIONAL_ACCESS" : Assured Workloads For US Regions data protection
   /// controls
+  /// - "HIPAA" : Health Insurance Portability and Accountability Act controls
+  /// - "HITRUST" : Health Information Trust Alliance controls
   core.String? complianceRegime;
 
   /// Time when the operation was created.
@@ -762,6 +833,13 @@ class GoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata {
   /// Optional.
   core.String? parent;
 
+  /// Resource properties in the input that are used for creating/customizing
+  /// workload resources.
+  ///
+  /// Optional.
+  core.List<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings>?
+      resourceSettings;
+
   GoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata();
 
   GoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata.fromJson(
@@ -778,6 +856,14 @@ class GoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata {
     if (_json.containsKey('parent')) {
       parent = _json['parent'] as core.String;
     }
+    if (_json.containsKey('resourceSettings')) {
+      resourceSettings = (_json['resourceSettings'] as core.List)
+          .map<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings>(
+              (value) =>
+                  GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -785,6 +871,9 @@ class GoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata {
         if (createTime != null) 'createTime': createTime!,
         if (displayName != null) 'displayName': displayName!,
         if (parent != null) 'parent': parent!,
+        if (resourceSettings != null)
+          'resourceSettings':
+              resourceSettings!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -821,6 +910,8 @@ class GoogleCloudAssuredworkloadsV1beta1Workload {
   /// - "FEDRAMP_MODERATE" : FedRAMP Moderate data protection controls
   /// - "US_REGIONAL_ACCESS" : Assured Workloads For US Regions data protection
   /// controls
+  /// - "HIPAA" : Health Insurance Portability and Accountability Act controls
+  /// - "HITRUST" : Health Information Trust Alliance controls
   core.String? complianceRegime;
 
   /// The Workload creation timestamp.
@@ -898,6 +989,14 @@ class GoogleCloudAssuredworkloadsV1beta1Workload {
   /// organizations/{organization_id}
   core.String? provisionedResourcesParent;
 
+  /// Input only.
+  ///
+  /// Resource properties that are used to customize workload resources. These
+  /// properties (such as custom project id) will be used to create workload
+  /// resources if possible. This field is optional.
+  core.List<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings>?
+      resourceSettings;
+
   /// The resources associated with this workload.
   ///
   /// These resources will be created when creating the workload. If any of the
@@ -966,6 +1065,14 @@ class GoogleCloudAssuredworkloadsV1beta1Workload {
       provisionedResourcesParent =
           _json['provisionedResourcesParent'] as core.String;
     }
+    if (_json.containsKey('resourceSettings')) {
+      resourceSettings = (_json['resourceSettings'] as core.List)
+          .map<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings>(
+              (value) =>
+                  GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
           .map<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo>(
@@ -992,6 +1099,9 @@ class GoogleCloudAssuredworkloadsV1beta1Workload {
         if (name != null) 'name': name!,
         if (provisionedResourcesParent != null)
           'provisionedResourcesParent': provisionedResourcesParent!,
+        if (resourceSettings != null)
+          'resourceSettings':
+              resourceSettings!.map((value) => value.toJson()).toList(),
         if (resources != null)
           'resources': resources!.map((value) => value.toJson()).toList(),
       };
@@ -1146,6 +1256,7 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo {
   /// - "RESOURCE_TYPE_UNSPECIFIED" : Unknown resource type.
   /// - "CONSUMER_PROJECT" : Consumer project.
   /// - "ENCRYPTION_KEYS_PROJECT" : Consumer project containing encryption keys.
+  /// - "KEYRING" : Keyring resource that hosts encryption keys.
   core.String? resourceType;
 
   GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo();
@@ -1161,6 +1272,52 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (resourceId != null) 'resourceId': resourceId!,
+        if (resourceType != null) 'resourceType': resourceType!,
+      };
+}
+
+/// Represent the custom settings for the resources to be created.
+class GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings {
+  /// User-assigned resource display name.
+  ///
+  /// If not empty it will be used to create a resource with the specified name.
+  core.String? displayName;
+
+  /// Resource identifier.
+  ///
+  /// For a project this represents project_id. If the project is already taken,
+  /// the workload creation will fail.
+  core.String? resourceId;
+
+  /// Indicates the type of resource.
+  ///
+  /// This field should be specified to correspond the id to the right project
+  /// type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
+  /// Possible string values are:
+  /// - "RESOURCE_TYPE_UNSPECIFIED" : Unknown resource type.
+  /// - "CONSUMER_PROJECT" : Consumer project.
+  /// - "ENCRYPTION_KEYS_PROJECT" : Consumer project containing encryption keys.
+  /// - "KEYRING" : Keyring resource that hosts encryption keys.
+  core.String? resourceType;
+
+  GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings();
+
+  GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'] as core.String;
+    }
+    if (_json.containsKey('resourceId')) {
+      resourceId = _json['resourceId'] as core.String;
+    }
+    if (_json.containsKey('resourceType')) {
+      resourceType = _json['resourceType'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
         if (resourceId != null) 'resourceId': resourceId!,
         if (resourceType != null) 'resourceType': resourceType!,
       };

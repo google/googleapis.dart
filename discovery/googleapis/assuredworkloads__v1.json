@@ -3,7 +3,7 @@
         "oauth2": {
             "scopes": {
                 "https://www.googleapis.com/auth/cloud-platform": {
-                    "description": "View and manage your data across Google Cloud Platform services"
+                    "description": "See, edit, configure, and delete your Google Cloud Platform data"
                 }
             }
         }
@@ -342,7 +342,7 @@
             }
         }
     },
-    "revision": "20210218",
+    "revision": "20210513",
     "rootUrl": "https://assuredworkloads.googleapis.com/",
     "schemas": {
         "GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata": {
@@ -357,7 +357,9 @@
                         "CJIS",
                         "FEDRAMP_HIGH",
                         "FEDRAMP_MODERATE",
-                        "US_REGIONAL_ACCESS"
+                        "US_REGIONAL_ACCESS",
+                        "HIPAA",
+                        "HITRUST"
                     ],
                     "enumDescriptions": [
                         "Unknown compliance regime.",
@@ -365,7 +367,9 @@
                         "Criminal Justice Information Services (CJIS) Security policies.",
                         "FedRAMP High data protection controls",
                         "FedRAMP Moderate data protection controls",
-                        "Assured Workloads For US Regions data protection controls"
+                        "Assured Workloads For US Regions data protection controls",
+                        "Health Insurance Portability and Accountability Act controls",
+                        "Health Information Trust Alliance controls"
                     ],
                     "type": "string"
                 },
@@ -419,7 +423,9 @@
                         "CJIS",
                         "FEDRAMP_HIGH",
                         "FEDRAMP_MODERATE",
-                        "US_REGIONAL_ACCESS"
+                        "US_REGIONAL_ACCESS",
+                        "HIPAA",
+                        "HITRUST"
                     ],
                     "enumDescriptions": [
                         "Unknown compliance regime.",
@@ -427,7 +433,9 @@
                         "Criminal Justice Information Services (CJIS) Security policies.",
                         "FedRAMP High data protection controls",
                         "FedRAMP Moderate data protection controls",
-                        "Assured Workloads For US Regions data protection controls"
+                        "Assured Workloads For US Regions data protection controls",
+                        "Health Insurance Portability and Accountability Act controls",
+                        "Health Information Trust Alliance controls"
                     ],
                     "type": "string"
                 },
@@ -463,6 +471,13 @@
                 "provisionedResourcesParent": {
                     "description": "Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id} organizations/{organization_id}",
                     "type": "string"
+                },
+                "resourceSettings": {
+                    "description": "Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.",
+                    "items": {
+                        "$ref": "GoogleCloudAssuredworkloadsV1WorkloadResourceSettings"
+                    },
+                    "type": "array"
                 },
                 "resources": {
                     "description": "Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.",
@@ -506,12 +521,45 @@
                     "enum": [
                         "RESOURCE_TYPE_UNSPECIFIED",
                         "CONSUMER_PROJECT",
-                        "ENCRYPTION_KEYS_PROJECT"
+                        "ENCRYPTION_KEYS_PROJECT",
+                        "KEYRING"
                     ],
                     "enumDescriptions": [
                         "Unknown resource type.",
                         "Consumer project.",
-                        "Consumer project containing encryption keys."
+                        "Consumer project containing encryption keys.",
+                        "Keyring resource that hosts encryption keys."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudAssuredworkloadsV1WorkloadResourceSettings": {
+            "description": "Represent the custom settings for the resources to be created.",
+            "id": "GoogleCloudAssuredworkloadsV1WorkloadResourceSettings",
+            "properties": {
+                "displayName": {
+                    "description": "User-assigned resource display name. If not empty it will be used to create a resource with the specified name.",
+                    "type": "string"
+                },
+                "resourceId": {
+                    "description": "Resource identifier. For a project this represents project_id. If the project is already taken, the workload creation will fail.",
+                    "type": "string"
+                },
+                "resourceType": {
+                    "description": "Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)",
+                    "enum": [
+                        "RESOURCE_TYPE_UNSPECIFIED",
+                        "CONSUMER_PROJECT",
+                        "ENCRYPTION_KEYS_PROJECT",
+                        "KEYRING"
+                    ],
+                    "enumDescriptions": [
+                        "Unknown resource type.",
+                        "Consumer project.",
+                        "Consumer project containing encryption keys.",
+                        "Keyring resource that hosts encryption keys."
                     ],
                     "type": "string"
                 }
@@ -530,7 +578,9 @@
                         "CJIS",
                         "FEDRAMP_HIGH",
                         "FEDRAMP_MODERATE",
-                        "US_REGIONAL_ACCESS"
+                        "US_REGIONAL_ACCESS",
+                        "HIPAA",
+                        "HITRUST"
                     ],
                     "enumDescriptions": [
                         "Unknown compliance regime.",
@@ -538,7 +588,9 @@
                         "Criminal Justice Information Services (CJIS) Security policies.",
                         "FedRAMP High data protection controls",
                         "FedRAMP Moderate data protection controls",
-                        "Assured Workloads For US Regions data protection controls"
+                        "Assured Workloads For US Regions data protection controls",
+                        "Health Insurance Portability and Accountability Act controls",
+                        "Health Information Trust Alliance controls"
                     ],
                     "type": "string"
                 },
@@ -554,6 +606,13 @@
                 "parent": {
                     "description": "Optional. The parent of the workload.",
                     "type": "string"
+                },
+                "resourceSettings": {
+                    "description": "Optional. Resource properties in the input that are used for creating/customizing workload resources.",
+                    "items": {
+                        "$ref": "GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -578,7 +637,9 @@
                         "CJIS",
                         "FEDRAMP_HIGH",
                         "FEDRAMP_MODERATE",
-                        "US_REGIONAL_ACCESS"
+                        "US_REGIONAL_ACCESS",
+                        "HIPAA",
+                        "HITRUST"
                     ],
                     "enumDescriptions": [
                         "Unknown compliance regime.",
@@ -586,7 +647,9 @@
                         "Criminal Justice Information Services (CJIS) Security policies.",
                         "FedRAMP High data protection controls",
                         "FedRAMP Moderate data protection controls",
-                        "Assured Workloads For US Regions data protection controls"
+                        "Assured Workloads For US Regions data protection controls",
+                        "Health Insurance Portability and Accountability Act controls",
+                        "Health Information Trust Alliance controls"
                     ],
                     "type": "string"
                 },
@@ -634,6 +697,13 @@
                 "provisionedResourcesParent": {
                     "description": "Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id} organizations/{organization_id}",
                     "type": "string"
+                },
+                "resourceSettings": {
+                    "description": "Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.",
+                    "items": {
+                        "$ref": "GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings"
+                    },
+                    "type": "array"
                 },
                 "resources": {
                     "description": "Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.",
@@ -721,12 +791,45 @@
                     "enum": [
                         "RESOURCE_TYPE_UNSPECIFIED",
                         "CONSUMER_PROJECT",
-                        "ENCRYPTION_KEYS_PROJECT"
+                        "ENCRYPTION_KEYS_PROJECT",
+                        "KEYRING"
                     ],
                     "enumDescriptions": [
                         "Unknown resource type.",
                         "Consumer project.",
-                        "Consumer project containing encryption keys."
+                        "Consumer project containing encryption keys.",
+                        "Keyring resource that hosts encryption keys."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings": {
+            "description": "Represent the custom settings for the resources to be created.",
+            "id": "GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings",
+            "properties": {
+                "displayName": {
+                    "description": "User-assigned resource display name. If not empty it will be used to create a resource with the specified name.",
+                    "type": "string"
+                },
+                "resourceId": {
+                    "description": "Resource identifier. For a project this represents project_id. If the project is already taken, the workload creation will fail.",
+                    "type": "string"
+                },
+                "resourceType": {
+                    "description": "Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)",
+                    "enum": [
+                        "RESOURCE_TYPE_UNSPECIFIED",
+                        "CONSUMER_PROJECT",
+                        "ENCRYPTION_KEYS_PROJECT",
+                        "KEYRING"
+                    ],
+                    "enumDescriptions": [
+                        "Unknown resource type.",
+                        "Consumer project.",
+                        "Consumer project containing encryption keys.",
+                        "Keyring resource that hosts encryption keys."
                     ],
                     "type": "string"
                 }

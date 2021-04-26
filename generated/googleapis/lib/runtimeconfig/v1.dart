@@ -45,7 +45,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// In addition, you can also set Watchers and Waiters that will watch for
 /// changes to your data and return based on certain conditions.
 class CloudRuntimeConfigApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 

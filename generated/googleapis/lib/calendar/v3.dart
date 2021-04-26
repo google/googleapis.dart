@@ -1191,9 +1191,8 @@ class EventsResource {
   /// - "all" : Notifications are sent to all guests.
   /// - "externalOnly" : Notifications are sent to non-Google Calendar guests
   /// only.
-  /// - "none" : No notifications are sent. This value should only be used for
-  /// migration use cases (note that in most migration cases the import method
-  /// should be used).
+  /// - "none" : No notifications are sent. For calendar migration tasks,
+  /// consider using the Events.import method instead.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1386,9 +1385,8 @@ class EventsResource {
   /// - "all" : Notifications are sent to all guests.
   /// - "externalOnly" : Notifications are sent to non-Google Calendar guests
   /// only.
-  /// - "none" : No notifications are sent. This value should only be used for
-  /// migration use cases (note that in most migration cases the import method
-  /// should be used).
+  /// - "none" : No notifications are sent. For calendar migration tasks,
+  /// consider using the Events.import method instead.
   ///
   /// [supportsAttachments] - Whether API client performing operation supports
   /// event attachments. Optional. The default is False.
@@ -1734,9 +1732,8 @@ class EventsResource {
   /// - "all" : Notifications are sent to all guests.
   /// - "externalOnly" : Notifications are sent to non-Google Calendar guests
   /// only.
-  /// - "none" : No notifications are sent. This value should only be used for
-  /// migration use cases (note that in most migration cases the import method
-  /// should be used).
+  /// - "none" : No notifications are sent. For calendar migration tasks,
+  /// consider using the Events.import method instead.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1820,9 +1817,8 @@ class EventsResource {
   /// - "all" : Notifications are sent to all guests.
   /// - "externalOnly" : Notifications are sent to non-Google Calendar guests
   /// only.
-  /// - "none" : No notifications are sent. This value should only be used for
-  /// migration use cases (note that in most migration cases the import method
-  /// should be used).
+  /// - "none" : No notifications are sent. For calendar migration tasks,
+  /// consider using the Events.import method instead.
   ///
   /// [supportsAttachments] - Whether API client performing operation supports
   /// event attachments. Optional. The default is False.
@@ -1900,9 +1896,8 @@ class EventsResource {
   /// - "all" : Notifications are sent to all guests.
   /// - "externalOnly" : Notifications are sent to non-Google Calendar guests
   /// only.
-  /// - "none" : No notifications are sent. This value should only be used for
-  /// migration use cases (note that in most migration cases the import method
-  /// should be used).
+  /// - "none" : No notifications are sent. For calendar migration tasks,
+  /// consider using the Events.import method instead.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1981,9 +1976,8 @@ class EventsResource {
   /// - "all" : Notifications are sent to all guests.
   /// - "externalOnly" : Notifications are sent to non-Google Calendar guests
   /// only.
-  /// - "none" : No notifications are sent. This value should only be used for
-  /// migration use cases (note that in most migration cases the import method
-  /// should be used).
+  /// - "none" : No notifications are sent. For calendar migration tasks,
+  /// consider using the Events.import method instead.
   ///
   /// [supportsAttachments] - Whether API client performing operation supports
   /// event attachments. Optional. The default is False.
@@ -2469,7 +2463,7 @@ class Acl {
       };
 }
 
-/// The scope of the rule.
+/// The extent to which calendar access is granted by this ACL rule.
 class AclRuleScope {
   /// The type of the scope.
   ///
@@ -2509,7 +2503,9 @@ class AclRule {
   /// ETag of the resource.
   core.String? etag;
 
-  /// Identifier of the ACL rule.
+  /// Identifier of the Access Control List (ACL) rule.
+  ///
+  /// See Sharing calendars.
   core.String? id;
 
   /// Type of the resource ("calendar#aclRule").
@@ -2530,7 +2526,7 @@ class AclRule {
   /// manipulate ACLs.
   core.String? role;
 
-  /// The scope of the rule.
+  /// The extent to which calendar access is granted by this ACL rule.
   AclRuleScope? scope;
 
   AclRule();
@@ -3087,15 +3083,15 @@ class Colors {
   /// A global palette of calendar colors, mapping from the color ID to its
   /// definition.
   ///
-  /// A calendarListEntry resource refers to one of these color IDs in its color
-  /// field. Read-only.
+  /// A calendarListEntry resource refers to one of these color IDs in its
+  /// colorId field. Read-only.
   core.Map<core.String, ColorDefinition>? calendar;
 
   /// A global palette of event colors, mapping from the color ID to its
   /// definition.
   ///
-  /// An event resource may refer to one of these color IDs in its color field.
-  /// Read-only.
+  /// An event resource may refer to one of these color IDs in its colorId
+  /// field. Read-only.
   core.Map<core.String, ColorDefinition>? event;
 
   /// Type of the resource ("calendar#colors").
@@ -3148,11 +3144,12 @@ class ConferenceData {
   /// The ID of the conference.
   /// Can be used by developers to keep track of conferences, should not be
   /// displayed to users.
-  /// Values for solution types:
-  /// - "eventHangout": unset.
-  /// - "eventNamedHangout": the name of the Hangout.
-  /// - "hangoutsMeet": the 10-letter meeting code, for example "aaa-bbbb-ccc".
-  /// - "addOn": defined by 3P conference provider.
+  /// The ID value is formed differently for each conference solution type: \`
+  /// - eventHangout: ID is not set.
+  /// - eventNamedHangout: ID is the name of the Hangout.
+  /// - hangoutsMeet: ID is the 10-letter meeting code, for example
+  /// aaa-bbbb-ccc.
+  /// - addOn: ID is defined by the third-party provider.
   ///
   ///  Optional.
   core.String? conferenceId;

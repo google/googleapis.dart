@@ -960,6 +960,31 @@ void checkFirewallRule(api.FirewallRule o) {
   buildCounterFirewallRule--;
 }
 
+core.int buildCounterGoogleAppengineV1betaLocationMetadata = 0;
+api.GoogleAppengineV1betaLocationMetadata
+    buildGoogleAppengineV1betaLocationMetadata() {
+  var o = api.GoogleAppengineV1betaLocationMetadata();
+  buildCounterGoogleAppengineV1betaLocationMetadata++;
+  if (buildCounterGoogleAppengineV1betaLocationMetadata < 3) {
+    o.flexibleEnvironmentAvailable = true;
+    o.searchApiAvailable = true;
+    o.standardEnvironmentAvailable = true;
+  }
+  buildCounterGoogleAppengineV1betaLocationMetadata--;
+  return o;
+}
+
+void checkGoogleAppengineV1betaLocationMetadata(
+    api.GoogleAppengineV1betaLocationMetadata o) {
+  buildCounterGoogleAppengineV1betaLocationMetadata++;
+  if (buildCounterGoogleAppengineV1betaLocationMetadata < 3) {
+    unittest.expect(o.flexibleEnvironmentAvailable!, unittest.isTrue);
+    unittest.expect(o.searchApiAvailable!, unittest.isTrue);
+    unittest.expect(o.standardEnvironmentAvailable!, unittest.isTrue);
+  }
+  buildCounterGoogleAppengineV1betaLocationMetadata--;
+}
+
 core.int buildCounterHealthCheck = 0;
 api.HealthCheck buildHealthCheck() {
   var o = api.HealthCheck();
@@ -2926,6 +2951,7 @@ api.Version buildVersion() {
     o.runtimeApiVersion = 'foo';
     o.runtimeChannel = 'foo';
     o.runtimeMainExecutablePath = 'foo';
+    o.serviceAccount = 'foo';
     o.servingStatus = 'foo';
     o.threadsafe = true;
     o.versionUrl = 'foo';
@@ -3009,6 +3035,10 @@ void checkVersion(api.Version o) {
     );
     unittest.expect(
       o.runtimeMainExecutablePath!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.serviceAccount!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -3377,6 +3407,17 @@ void main() {
       var od = api.FirewallRule.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkFirewallRule(od as api.FirewallRule);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleAppengineV1betaLocationMetadata', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildGoogleAppengineV1betaLocationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAppengineV1betaLocationMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAppengineV1betaLocationMetadata(
+          od as api.GoogleAppengineV1betaLocationMetadata);
     });
   });
 

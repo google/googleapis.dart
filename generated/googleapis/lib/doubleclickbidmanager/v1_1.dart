@@ -21,10 +21,8 @@
 ///
 /// Create an instance of [DoubleClickBidManagerApi] to access these resources:
 ///
-/// - [LineitemsResource]
 /// - [QueriesResource]
 /// - [ReportsResource]
-/// - [SdfResource]
 library doubleclickbidmanager.v1_1;
 
 import 'dart:async' as async;
@@ -48,100 +46,14 @@ class DoubleClickBidManagerApi {
 
   final commons.ApiRequester _requester;
 
-  LineitemsResource get lineitems => LineitemsResource(_requester);
   QueriesResource get queries => QueriesResource(_requester);
   ReportsResource get reports => ReportsResource(_requester);
-  SdfResource get sdf => SdfResource(_requester);
 
   DoubleClickBidManagerApi(http.Client client,
       {core.String rootUrl = 'https://doubleclickbidmanager.googleapis.com/',
       core.String servicePath = 'doubleclickbidmanager/v1.1/'})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
-}
-
-class LineitemsResource {
-  final commons.ApiRequester _requester;
-
-  LineitemsResource(commons.ApiRequester client) : _requester = client;
-
-  /// Retrieves line items in CSV format.
-  ///
-  /// YouTube & partners line items are not supported.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [DownloadLineItemsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<DownloadLineItemsResponse> downloadlineitems(
-    DownloadLineItemsRequest request, {
-    core.String? $fields,
-  }) async {
-    final _body = convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    const _url = 'lineitems/downloadlineitems';
-
-    final _response = await _requester.request(
-      _url,
-      'POST',
-      body: _body,
-      queryParams: _queryParams,
-    );
-    return DownloadLineItemsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Uploads line items in CSV format.
-  ///
-  /// YouTube & partners line items are not supported.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [UploadLineItemsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<UploadLineItemsResponse> uploadlineitems(
-    UploadLineItemsRequest request, {
-    core.String? $fields,
-  }) async {
-    final _body = convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    const _url = 'lineitems/uploadlineitems';
-
-    final _response = await _requester.request(
-      _url,
-      'POST',
-      body: _body,
-      queryParams: _queryParams,
-    );
-    return UploadLineItemsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
 }
 
 class QueriesResource {
@@ -389,49 +301,6 @@ class ReportsResource {
   }
 }
 
-class SdfResource {
-  final commons.ApiRequester _requester;
-
-  SdfResource(commons.ApiRequester client) : _requester = client;
-
-  /// Retrieves entities in SDF format.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [DownloadResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<DownloadResponse> download(
-    DownloadRequest request, {
-    core.String? $fields,
-  }) async {
-    final _body = convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    const _url = 'sdf/download';
-
-    final _response = await _requester.request(
-      _url,
-      'POST',
-      body: _body,
-      queryParams: _queryParams,
-    );
-    return DownloadResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-}
-
 /// A channel grouping defines a set of rules that can be used to categorize
 /// events in a path report.
 class ChannelGrouping {
@@ -494,197 +363,6 @@ class DisjunctiveMatchStatement {
   core.Map<core.String, core.dynamic> toJson() => {
         if (eventFilters != null)
           'eventFilters': eventFilters!.map((value) => value.toJson()).toList(),
-      };
-}
-
-/// Request to fetch stored line items.
-class DownloadLineItemsRequest {
-  /// File specification (column names, types, order) in which the line items
-  /// will be returned.
-  ///
-  /// Default to EWF.
-  /// Possible string values are:
-  /// - "EWF"
-  core.String? fileSpec;
-
-  /// Ids of the specified filter type used to filter line items to fetch.
-  ///
-  /// If omitted, all the line items will be returned.
-  core.List<core.String>? filterIds;
-
-  /// Filter type used to filter line items to fetch.
-  /// Possible string values are:
-  /// - "ADVERTISER_ID"
-  /// - "INSERTION_ORDER_ID"
-  /// - "LINE_ITEM_ID"
-  core.String? filterType;
-
-  /// Format in which the line items will be returned.
-  ///
-  /// Default to CSV.
-  /// Possible string values are:
-  /// - "CSV"
-  core.String? format;
-
-  DownloadLineItemsRequest();
-
-  DownloadLineItemsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('fileSpec')) {
-      fileSpec = _json['fileSpec'] as core.String;
-    }
-    if (_json.containsKey('filterIds')) {
-      filterIds = (_json['filterIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('filterType')) {
-      filterType = _json['filterType'] as core.String;
-    }
-    if (_json.containsKey('format')) {
-      format = _json['format'] as core.String;
-    }
-  }
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (fileSpec != null) 'fileSpec': fileSpec!,
-        if (filterIds != null) 'filterIds': filterIds!,
-        if (filterType != null) 'filterType': filterType!,
-        if (format != null) 'format': format!,
-      };
-}
-
-/// Download line items response.
-class DownloadLineItemsResponse {
-  /// Retrieved line items in CSV format.
-  ///
-  /// For more information about file formats, see Entity Write File Format.
-  core.String? lineItems;
-
-  DownloadLineItemsResponse();
-
-  DownloadLineItemsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('lineItems')) {
-      lineItems = _json['lineItems'] as core.String;
-    }
-  }
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (lineItems != null) 'lineItems': lineItems!,
-      };
-}
-
-/// Request to fetch stored inventory sources, campaigns, insertion orders, line
-/// items, YouTube ad groups and ads.
-class DownloadRequest {
-  /// File types that will be returned.
-  ///
-  /// If INVENTORY_SOURCE is requested, no other file types may be requested.
-  /// Acceptable values are: - "AD" - "AD_GROUP" - "CAMPAIGN" -
-  /// "INSERTION_ORDER" - "INVENTORY_SOURCE" - "LINE_ITEM"
-  core.List<core.String>? fileTypes;
-
-  /// The IDs of the specified filter type.
-  ///
-  /// This is used to filter entities to fetch. At least one ID must be
-  /// specified.
-  core.List<core.String>? filterIds;
-
-  /// Filter type used to filter entities to fetch.
-  ///
-  /// PARTNER_ID and INVENTORY_SOURCE_ID may only be used when downloading
-  /// inventory sources.
-  /// Possible string values are:
-  /// - "ADVERTISER_ID"
-  /// - "INSERTION_ORDER_ID"
-  /// - "LINE_ITEM_ID"
-  /// - "CAMPAIGN_ID"
-  /// - "INVENTORY_SOURCE_ID"
-  /// - "PARTNER_ID"
-  core.String? filterType;
-
-  /// SDF Version (column names, types, order) in which the entities will be
-  /// returned.
-  ///
-  /// Default to 5.
-  core.String? version;
-
-  DownloadRequest();
-
-  DownloadRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('fileTypes')) {
-      fileTypes = (_json['fileTypes'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('filterIds')) {
-      filterIds = (_json['filterIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('filterType')) {
-      filterType = _json['filterType'] as core.String;
-    }
-    if (_json.containsKey('version')) {
-      version = _json['version'] as core.String;
-    }
-  }
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (fileTypes != null) 'fileTypes': fileTypes!,
-        if (filterIds != null) 'filterIds': filterIds!,
-        if (filterType != null) 'filterType': filterType!,
-        if (version != null) 'version': version!,
-      };
-}
-
-/// Download response.
-class DownloadResponse {
-  /// Retrieved ad groups in SDF format.
-  core.String? adGroups;
-
-  /// Retrieved ads in SDF format.
-  core.String? ads;
-
-  /// Retrieved campaigns in SDF format.
-  core.String? campaigns;
-
-  /// Retrieved insertion orders in SDF format.
-  core.String? insertionOrders;
-  core.String? inventorySources;
-
-  /// Retrieved line items in SDF format.
-  core.String? lineItems;
-
-  DownloadResponse();
-
-  DownloadResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('adGroups')) {
-      adGroups = _json['adGroups'] as core.String;
-    }
-    if (_json.containsKey('ads')) {
-      ads = _json['ads'] as core.String;
-    }
-    if (_json.containsKey('campaigns')) {
-      campaigns = _json['campaigns'] as core.String;
-    }
-    if (_json.containsKey('insertionOrders')) {
-      insertionOrders = _json['insertionOrders'] as core.String;
-    }
-    if (_json.containsKey('inventorySources')) {
-      inventorySources = _json['inventorySources'] as core.String;
-    }
-    if (_json.containsKey('lineItems')) {
-      lineItems = _json['lineItems'] as core.String;
-    }
-  }
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (adGroups != null) 'adGroups': adGroups!,
-        if (ads != null) 'ads': ads!,
-        if (campaigns != null) 'campaigns': campaigns!,
-        if (insertionOrders != null) 'insertionOrders': insertionOrders!,
-        if (inventorySources != null) 'inventorySources': inventorySources!,
-        if (lineItems != null) 'lineItems': lineItems!,
       };
 }
 
@@ -975,6 +653,24 @@ class FilterPair {
   /// - "FILTER_CHANNEL_GROUPING"
   /// - "FILTER_OM_SDK_AVAILABLE"
   /// - "FILTER_DATA_SOURCE"
+  /// - "FILTER_CM360_PLACEMENT_ID"
+  /// - "FILTER_TRUEVIEW_CLICK_TYPE_NAME"
+  /// - "FILTER_TRUEVIEW_AD_TYPE_NAME"
+  /// - "FILTER_VIDEO_CONTENT_DURATION"
+  /// - "FILTER_MATCHED_GENRE_TARGET"
+  /// - "FILTER_VIDEO_CONTENT_LIVE_STREAM"
+  /// - "FILTER_BUDGET_SEGMENT_TYPE"
+  /// - "FILTER_BUDGET_SEGMENT_BUDGET"
+  /// - "FILTER_BUDGET_SEGMENT_START_DATE"
+  /// - "FILTER_BUDGET_SEGMENT_END_DATE"
+  /// - "FILTER_BUDGET_SEGMENT_PACING_PERCENTAGE"
+  /// - "FILTER_LINE_ITEM_BUDGET"
+  /// - "FILTER_LINE_ITEM_START_DATE"
+  /// - "FILTER_LINE_ITEM_END_DATE"
+  /// - "FILTER_INSERTION_ORDER_GOAL_TYPE"
+  /// - "FILTER_LINE_ITEM_PACING_PERCENTAGE"
+  /// - "FILTER_INSERTION_ORDER_GOAL_VALUE"
+  /// - "FILTER_OMID_CAPABLE"
   core.String? type;
 
   /// Filter value.
@@ -1541,6 +1237,24 @@ class PathQueryOptionsFilter {
   /// - "FILTER_CHANNEL_GROUPING"
   /// - "FILTER_OM_SDK_AVAILABLE"
   /// - "FILTER_DATA_SOURCE"
+  /// - "FILTER_CM360_PLACEMENT_ID"
+  /// - "FILTER_TRUEVIEW_CLICK_TYPE_NAME"
+  /// - "FILTER_TRUEVIEW_AD_TYPE_NAME"
+  /// - "FILTER_VIDEO_CONTENT_DURATION"
+  /// - "FILTER_MATCHED_GENRE_TARGET"
+  /// - "FILTER_VIDEO_CONTENT_LIVE_STREAM"
+  /// - "FILTER_BUDGET_SEGMENT_TYPE"
+  /// - "FILTER_BUDGET_SEGMENT_BUDGET"
+  /// - "FILTER_BUDGET_SEGMENT_START_DATE"
+  /// - "FILTER_BUDGET_SEGMENT_END_DATE"
+  /// - "FILTER_BUDGET_SEGMENT_PACING_PERCENTAGE"
+  /// - "FILTER_LINE_ITEM_BUDGET"
+  /// - "FILTER_LINE_ITEM_START_DATE"
+  /// - "FILTER_LINE_ITEM_END_DATE"
+  /// - "FILTER_INSERTION_ORDER_GOAL_TYPE"
+  /// - "FILTER_LINE_ITEM_PACING_PERCENTAGE"
+  /// - "FILTER_INSERTION_ORDER_GOAL_VALUE"
+  /// - "FILTER_OMID_CAPABLE"
   core.String? filter;
 
   /// Indicates how the filter should be matched to the value.
@@ -1807,6 +1521,7 @@ class QuerySchedule {
   /// - "SEMI_MONTHLY"
   /// - "MONTHLY"
   /// - "QUARTERLY"
+  /// - "YEARLY"
   core.String? frequency;
 
   /// Time of day at which a new report will be generated, represented as
@@ -2045,61 +1760,6 @@ class ReportStatus {
       };
 }
 
-/// Represents the upload status of a row in the request.
-class RowStatus {
-  /// Whether the stored entity is changed as a result of upload.
-  core.bool? changed;
-
-  /// Entity Id.
-  core.String? entityId;
-
-  /// Entity name.
-  core.String? entityName;
-
-  /// Reasons why the entity can't be uploaded.
-  core.List<core.String>? errors;
-
-  /// Whether the entity is persisted.
-  core.bool? persisted;
-
-  /// Row number.
-  core.int? rowNumber;
-
-  RowStatus();
-
-  RowStatus.fromJson(core.Map _json) {
-    if (_json.containsKey('changed')) {
-      changed = _json['changed'] as core.bool;
-    }
-    if (_json.containsKey('entityId')) {
-      entityId = _json['entityId'] as core.String;
-    }
-    if (_json.containsKey('entityName')) {
-      entityName = _json['entityName'] as core.String;
-    }
-    if (_json.containsKey('errors')) {
-      errors = (_json['errors'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('persisted')) {
-      persisted = _json['persisted'] as core.bool;
-    }
-    if (_json.containsKey('rowNumber')) {
-      rowNumber = _json['rowNumber'] as core.int;
-    }
-  }
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (changed != null) 'changed': changed!,
-        if (entityId != null) 'entityId': entityId!,
-        if (entityName != null) 'entityName': entityName!,
-        if (errors != null) 'errors': errors!,
-        if (persisted != null) 'persisted': persisted!,
-        if (rowNumber != null) 'rowNumber': rowNumber!,
-      };
-}
-
 /// A Rule defines a name, and a boolean expression in \[conjunctive normal
 /// form\](http: //mathworld.wolfram.com/ConjunctiveNormalForm.html){.external}
 /// that can be // applied to a path event to determine if that name should be
@@ -2202,94 +1862,5 @@ class RunQueryRequest {
         if (reportDataStartTimeMs != null)
           'reportDataStartTimeMs': reportDataStartTimeMs!,
         if (timezoneCode != null) 'timezoneCode': timezoneCode!,
-      };
-}
-
-/// Request to upload line items.
-class UploadLineItemsRequest {
-  /// Set to true to get upload status without actually persisting the line
-  /// items.
-  core.bool? dryRun;
-
-  /// Format the line items are in.
-  ///
-  /// Default to CSV.
-  /// Possible string values are:
-  /// - "CSV"
-  core.String? format;
-
-  /// Line items in CSV to upload.
-  ///
-  /// Refer to Entity Write File Format for more information on file format.
-  core.String? lineItems;
-
-  UploadLineItemsRequest();
-
-  UploadLineItemsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('dryRun')) {
-      dryRun = _json['dryRun'] as core.bool;
-    }
-    if (_json.containsKey('format')) {
-      format = _json['format'] as core.String;
-    }
-    if (_json.containsKey('lineItems')) {
-      lineItems = _json['lineItems'] as core.String;
-    }
-  }
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (dryRun != null) 'dryRun': dryRun!,
-        if (format != null) 'format': format!,
-        if (lineItems != null) 'lineItems': lineItems!,
-      };
-}
-
-/// Upload line items response.
-class UploadLineItemsResponse {
-  /// Status of upload.
-  UploadStatus? uploadStatus;
-
-  UploadLineItemsResponse();
-
-  UploadLineItemsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('uploadStatus')) {
-      uploadStatus = UploadStatus.fromJson(
-          _json['uploadStatus'] as core.Map<core.String, core.dynamic>);
-    }
-  }
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (uploadStatus != null) 'uploadStatus': uploadStatus!.toJson(),
-      };
-}
-
-/// Represents the status of upload.
-class UploadStatus {
-  /// Reasons why upload can't be completed.
-  core.List<core.String>? errors;
-
-  /// Per-row upload status.
-  core.List<RowStatus>? rowStatus;
-
-  UploadStatus();
-
-  UploadStatus.fromJson(core.Map _json) {
-    if (_json.containsKey('errors')) {
-      errors = (_json['errors'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('rowStatus')) {
-      rowStatus = (_json['rowStatus'] as core.List)
-          .map<RowStatus>((value) =>
-              RowStatus.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (errors != null) 'errors': errors!,
-        if (rowStatus != null)
-          'rowStatus': rowStatus!.map((value) => value.toJson()).toList(),
       };
 }

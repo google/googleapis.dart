@@ -647,7 +647,7 @@ class ErrorProto {
   /// - "PATH" : location is an xpath-like path pointing to the request field
   /// that caused the error.
   /// - "OTHER" : other location type which can safely be shared externally.
-  /// - "PARAMETER" : Location is request paramater. This maps to the {@link
+  /// - "PARAMETER" : Location is request parameter. This maps to the {@link
   /// PARAMETERS} in {@link MessageLocation}.
   core.String? locationType;
 

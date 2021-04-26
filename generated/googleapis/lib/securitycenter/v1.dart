@@ -52,7 +52,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Security Command Center API provides access to temporal views of assets and
 /// findings within an organization.
 class SecurityCommandCenterApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -2914,6 +2914,14 @@ class ProjectsSourcesFindingsResource {
 /// within the context of Security Command Center and don't affect the
 /// referenced Google Cloud resource.
 class Asset {
+  /// The canonical name of the resource.
+  ///
+  /// It's either "organizations/{organization_id}/assets/{asset_id}",
+  /// "folders/{folder_id}/assets/{asset_id}" or
+  /// "projects/{project_number}/assets/{asset_id}", depending on the closest
+  /// CRM ancestor of the resource.
+  core.String? canonicalName;
+
   /// The time at which the asset was created in Security Command Center.
   core.String? createTime;
 
@@ -2958,6 +2966,9 @@ class Asset {
   Asset();
 
   Asset.fromJson(core.Map _json) {
+    if (_json.containsKey('canonicalName')) {
+      canonicalName = _json['canonicalName'] as core.String;
+    }
     if (_json.containsKey('createTime')) {
       createTime = _json['createTime'] as core.String;
     }
@@ -2993,6 +3004,7 @@ class Asset {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (canonicalName != null) 'canonicalName': canonicalName!,
         if (createTime != null) 'createTime': createTime!,
         if (iamPolicy != null) 'iamPolicy': iamPolicy!.toJson(),
         if (name != null) 'name': name!,
@@ -3306,6 +3318,16 @@ class Expr {
 /// cross-site scripting (XSS) vulnerability in an App Engine application is a
 /// finding.
 class Finding {
+  /// The canonical name of the finding.
+  ///
+  /// It's either
+  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
+  /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}" or
+  /// "projects/{project_number}/sources/{source_id}/findings/{finding_id}",
+  /// depending on the closest CRM ancestor of the resource associated with the
+  /// finding.
+  core.String? canonicalName;
+
   /// The additional taxonomy group within findings from a given source.
   ///
   /// This field is immutable after creation time. Example:
@@ -3321,7 +3343,8 @@ class Finding {
   /// For example, if the finding represents an open firewall it would capture
   /// the time the detector believes the firewall became open. The accuracy is
   /// determined by the detector. If the finding were to be resolved afterward,
-  /// this time would reflect when the finding was resolved.
+  /// this time would reflect when the finding was resolved. Must not be set to
+  /// a value greater than the current timestamp.
   core.String? eventTime;
 
   /// The URI that, if available, points to a web page outside of Security
@@ -3430,6 +3453,9 @@ class Finding {
   Finding();
 
   Finding.fromJson(core.Map _json) {
+    if (_json.containsKey('canonicalName')) {
+      canonicalName = _json['canonicalName'] as core.String;
+    }
     if (_json.containsKey('category')) {
       category = _json['category'] as core.String;
     }
@@ -3474,6 +3500,7 @@ class Finding {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (canonicalName != null) 'canonicalName': canonicalName!,
         if (category != null) 'category': category!,
         if (createTime != null) 'createTime': createTime!,
         if (eventTime != null) 'eventTime': eventTime!,
@@ -3741,6 +3768,16 @@ class GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse {
 /// analysis, policy testing, and enforcement. For example, an XSS vulnerability
 /// in an App Engine application is a finding.
 class GoogleCloudSecuritycenterV1p1beta1Finding {
+  /// The canonical name of the finding.
+  ///
+  /// It's either
+  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
+  /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}" or
+  /// "projects/{project_number}/sources/{source_id}/findings/{finding_id}",
+  /// depending on the closest CRM ancestor of the resource associated with the
+  /// finding.
+  core.String? canonicalName;
+
   /// The additional taxonomy group within findings from a given source.
   ///
   /// This field is immutable after creation time. Example:
@@ -3756,7 +3793,8 @@ class GoogleCloudSecuritycenterV1p1beta1Finding {
   /// For example, if the finding represents an open firewall it would capture
   /// the time the detector believes the firewall became open. The accuracy is
   /// determined by the detector. If the finding were to be resolved afterward,
-  /// this time would reflect when the finding was resolved.
+  /// this time would reflect when the finding was resolved. Must not be set to
+  /// a value greater than the current timestamp.
   core.String? eventTime;
 
   /// The URI that, if available, points to a web page outside of Security
@@ -3834,6 +3872,9 @@ class GoogleCloudSecuritycenterV1p1beta1Finding {
   GoogleCloudSecuritycenterV1p1beta1Finding();
 
   GoogleCloudSecuritycenterV1p1beta1Finding.fromJson(core.Map _json) {
+    if (_json.containsKey('canonicalName')) {
+      canonicalName = _json['canonicalName'] as core.String;
+    }
     if (_json.containsKey('category')) {
       category = _json['category'] as core.String;
     }
@@ -3878,6 +3919,7 @@ class GoogleCloudSecuritycenterV1p1beta1Finding {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (canonicalName != null) 'canonicalName': canonicalName!,
         if (category != null) 'category': category!,
         if (createTime != null) 'createTime': createTime!,
         if (eventTime != null) 'eventTime': eventTime!,
@@ -4066,6 +4108,17 @@ class GoogleCloudSecuritycenterV1p1beta1RunAssetDiscoveryResponse {
 /// they can be modified and viewed by all users who have proper permissions on
 /// the organization.
 class GoogleCloudSecuritycenterV1p1beta1SecurityMarks {
+  /// The canonical name of the marks.
+  ///
+  /// Examples:
+  /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
+  /// "folders/{folder_id}/assets/{asset_id}/securityMarks"
+  /// "projects/{project_number}/assets/{asset_id}/securityMarks"
+  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks"
+  /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}/securityMarks"
+  /// "projects/{project_number}/sources/{source_id}/findings/{finding_id}/securityMarks"
+  core.String? canonicalName;
+
   /// Mutable user specified security marks belonging to the parent resource.
   ///
   /// Constraints are as follows: * Keys and values are treated as case
@@ -4087,6 +4140,9 @@ class GoogleCloudSecuritycenterV1p1beta1SecurityMarks {
   GoogleCloudSecuritycenterV1p1beta1SecurityMarks();
 
   GoogleCloudSecuritycenterV1p1beta1SecurityMarks.fromJson(core.Map _json) {
+    if (_json.containsKey('canonicalName')) {
+      canonicalName = _json['canonicalName'] as core.String;
+    }
     if (_json.containsKey('marks')) {
       marks = (_json['marks'] as core.Map<core.String, core.dynamic>).map(
         (key, item) => core.MapEntry(
@@ -4101,6 +4157,7 @@ class GoogleCloudSecuritycenterV1p1beta1SecurityMarks {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (canonicalName != null) 'canonicalName': canonicalName!,
         if (marks != null) 'marks': marks!,
         if (name != null) 'name': name!,
       };
@@ -5067,8 +5124,6 @@ class Policy {
 
 /// Information related to the Google Cloud resource that is associated with
 /// this finding.
-///
-/// LINT.IfChange
 class Resource {
   /// Contains a Folder message for each folder in the assets ancestry.
   ///
@@ -5254,6 +5309,17 @@ class SecurityCenterProperties {
 /// they can be modified and viewed by all users who have proper permissions on
 /// the organization.
 class SecurityMarks {
+  /// The canonical name of the marks.
+  ///
+  /// Examples:
+  /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
+  /// "folders/{folder_id}/assets/{asset_id}/securityMarks"
+  /// "projects/{project_number}/assets/{asset_id}/securityMarks"
+  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks"
+  /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}/securityMarks"
+  /// "projects/{project_number}/sources/{source_id}/findings/{finding_id}/securityMarks"
+  core.String? canonicalName;
+
   /// Mutable user specified security marks belonging to the parent resource.
   ///
   /// Constraints are as follows: * Keys and values are treated as case
@@ -5275,6 +5341,9 @@ class SecurityMarks {
   SecurityMarks();
 
   SecurityMarks.fromJson(core.Map _json) {
+    if (_json.containsKey('canonicalName')) {
+      canonicalName = _json['canonicalName'] as core.String;
+    }
     if (_json.containsKey('marks')) {
       marks = (_json['marks'] as core.Map<core.String, core.dynamic>).map(
         (key, item) => core.MapEntry(
@@ -5289,6 +5358,7 @@ class SecurityMarks {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (canonicalName != null) 'canonicalName': canonicalName!,
         if (marks != null) 'marks': marks!,
         if (name != null) 'name': name!,
       };
@@ -5368,6 +5438,14 @@ class SetIamPolicyRequest {
 /// source is like a container of findings that come from the same scanner,
 /// logger, monitor, and other tools.
 class Source {
+  /// The canonical name of the finding.
+  ///
+  /// It's either "organizations/{organization_id}/sources/{source_id}",
+  /// "folders/{folder_id}/sources/{source_id}" or
+  /// "projects/{project_number}/sources/{source_id}", depending on the closest
+  /// CRM ancestor of the resource associated with the finding.
+  core.String? canonicalName;
+
   /// The description of the source (max of 1024 characters).
   ///
   /// Example: "Web Security Scanner is a web security scanner for common
@@ -5394,6 +5472,9 @@ class Source {
   Source();
 
   Source.fromJson(core.Map _json) {
+    if (_json.containsKey('canonicalName')) {
+      canonicalName = _json['canonicalName'] as core.String;
+    }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
     }
@@ -5406,6 +5487,7 @@ class Source {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (canonicalName != null) 'canonicalName': canonicalName!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,

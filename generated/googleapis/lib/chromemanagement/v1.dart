@@ -15,10 +15,8 @@
 /// Chrome Management API - v1
 ///
 /// The Chrome Management API is a suite of services that allows Chrome
-/// administrators to view, manage and gain insights on their Chrome OS The
-/// Chrome Management API is a suite of services that allows GSuite domain
 /// administrators to view, manage and gain insights on their Chrome OS and
-/// Chrome Browser devices and users.
+/// Chrome Browser devices.
 ///
 /// For more information, see <http://developers.google.com/chrome/management/>
 ///
@@ -40,10 +38,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// The Chrome Management API is a suite of services that allows Chrome
-/// administrators to view, manage and gain insights on their Chrome OS The
-/// Chrome Management API is a suite of services that allows GSuite domain
 /// administrators to view, manage and gain insights on their Chrome OS and
-/// Chrome Browser devices and users.
+/// Chrome Browser devices.
 class ChromeManagementApi {
   /// See reports about devices and Chrome browsers managed within your
   /// organization
@@ -91,7 +87,7 @@ class CustomersReportsResource {
   /// [pageSize] - Maximum number of results to return. Maximum and default are
   /// 100.
   ///
-  /// [pageToken] - Token to specify the next page in the list.
+  /// [pageToken] - Token to specify the page of the request to be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -156,7 +152,7 @@ class CustomersReportsResource {
   /// [pageSize] - Maximum number of results to return. Maximum and default are
   /// 100.
   ///
-  /// [pageToken] - Token to specify next page in the list.
+  /// [pageToken] - Token to specify the page of the request to be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -226,14 +222,14 @@ class CustomersReportsResource {
   /// filter fields: * last_active_date
   ///
   /// [orderBy] - Field used to order results. Supported order by fields: *
-  /// machine_name * device_id
+  /// machine * device_id
   ///
   /// [orgUnitId] - The ID of the organizational unit.
   ///
   /// [pageSize] - Maximum number of results to return. Maximum and default are
   /// 100.
   ///
-  /// [pageToken] - Token to specify the next page in the list.
+  /// [pageToken] - Token to specify the page of the request to be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -359,7 +355,7 @@ class GoogleChromeManagementV1CountChromeVersionsResponse {
   /// List of all browser versions and their install counts.
   core.List<GoogleChromeManagementV1BrowserVersion>? browserVersions;
 
-  /// Token to specify the next page in the list.
+  /// Token to specify the next page of the request.
   core.String? nextPageToken;
 
   /// Total number browser versions matching request.
@@ -397,7 +393,7 @@ class GoogleChromeManagementV1CountInstalledAppsResponse {
   /// List of installed apps matching request.
   core.List<GoogleChromeManagementV1InstalledApp>? installedApps;
 
-  /// Token to specify next page in the list.
+  /// Token to specify the next page of the request.
   core.String? nextPageToken;
 
   /// Total number of installed apps matching request.
@@ -466,7 +462,7 @@ class GoogleChromeManagementV1FindInstalledAppDevicesResponse {
   /// Sorted in ascending alphabetical order on the Device.machine field.
   core.List<GoogleChromeManagementV1Device>? devices;
 
-  /// Token to specify the next page in the list.
+  /// Token to specify the next page of the request.
   core.String? nextPageToken;
 
   /// Total number of devices matching request.

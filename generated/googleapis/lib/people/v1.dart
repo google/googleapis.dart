@@ -80,7 +80,7 @@ class PeopleServiceApi {
   static const userPhonenumbersReadScope =
       'https://www.googleapis.com/auth/user.phonenumbers.read';
 
-  /// View your email address
+  /// See your primary Google Account email address
   static const userinfoEmailScope =
       'https://www.googleapis.com/auth/userinfo.email';
 
@@ -568,10 +568,14 @@ class OtherContactsResource {
   /// Provides a list of contacts in the authenticated user's other contacts
   /// that matches the search query.
   ///
+  /// The query matches on a contact's `names`, `emailAddresses`, and
+  /// `phoneNumbers` fields that are from the OTHER_CONTACT source.
+  ///
   /// Request parameters:
   ///
   /// [pageSize] - Optional. The number of results to return. Defaults to 10 if
-  /// field is not set, or set to 0.
+  /// field is not set, or set to 0. Values greater than 10 will be capped to
+  /// 10.
   ///
   /// [query] - Required. The plain-text query for the request. The query is
   /// used to match prefix phrases of the fields on a person. For example, a
@@ -624,6 +628,125 @@ class PeopleResource {
       PeopleConnectionsResource(_requester);
 
   PeopleResource(commons.ApiRequester client) : _requester = client;
+
+  /// Create a batch of new contacts and return the PersonResponses for the
+  /// newly created contacts.
+  ///
+  /// Limited to 10 parallel requests per user.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BatchCreateContactsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BatchCreateContactsResponse> batchCreateContacts(
+    BatchCreateContactsRequest request, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const _url = 'v1/people:batchCreateContacts';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return BatchCreateContactsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Delete a batch of contacts.
+  ///
+  /// Any non-contact data will not be deleted. Limited to 10 parallel requests
+  /// per user.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> batchDeleteContacts(
+    BatchDeleteContactsRequest request, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const _url = 'v1/people:batchDeleteContacts';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Update a batch of contacts and return a map of resource names to
+  /// PersonResponses for the updated contacts.
+  ///
+  /// Limited to 10 parallel requests per user.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BatchUpdateContactsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BatchUpdateContactsResponse> batchUpdateContacts(
+    BatchUpdateContactsRequest request, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const _url = 'v1/people:batchUpdateContacts';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return BatchUpdateContactsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 
   /// Create a new contact and return the person resource for that contact.
   ///
@@ -870,7 +993,7 @@ class PeopleResource {
   /// a contact, specify the resource name that identifies the contact as
   /// returned by
   /// \[`people.connections.list`\](/people/api/rest/v1/people.connections/list).
-  /// You can include up to 50 resource names in one request.
+  /// You can include up to 200 resource names in one request.
   ///
   /// [sources] - Optional. A mask of what source types to return. Defaults to
   /// READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set.
@@ -996,9 +1119,15 @@ class PeopleResource {
   /// Provides a list of contacts in the authenticated user's grouped contacts
   /// that matches the search query.
   ///
+  /// The query matches on a contact's `names`, `nickNames`, `emailAddresses`,
+  /// `phoneNumbers`, and `organizations` fields that are from the CONTACT"
+  /// source.
+  ///
   /// Request parameters:
   ///
-  /// [pageSize] - Optional. The number of results to return.
+  /// [pageSize] - Optional. The number of results to return. Defaults to 10 if
+  /// field is not set, or set to 0. Values greater than 10 will be capped to
+  /// 10.
   ///
   /// [query] - Required. The plain-text query for the request. The query is
   /// used to match prefix phrases of the fields on a person. For example, a
@@ -1014,6 +1143,9 @@ class PeopleResource {
   /// occupations * organizations * phoneNumbers * photos * relations *
   /// sipAddresses * skills * urls * userDefined
   ///
+  /// [sources] - Optional. A mask of what source types to return. Defaults to
+  /// READ_SOURCE_TYPE_CONTACT if not set.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1028,12 +1160,14 @@ class PeopleResource {
     core.int? pageSize,
     core.String? query,
     core.String? readMask,
+    core.List<core.String>? sources,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (query != null) 'query': [query],
       if (readMask != null) 'readMask': [readMask],
+      if (sources != null) 'sources': sources,
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1505,6 +1639,112 @@ class AgeRangeType {
       };
 }
 
+/// A request to create a batch of contacts.
+class BatchCreateContactsRequest {
+  /// The contact to create.
+  ///
+  /// Allows up to 200 contacts in a single request.
+  ///
+  /// Required.
+  core.List<ContactToCreate>? contacts;
+
+  /// A field mask to restrict which fields on each person are returned in the
+  /// response.
+  ///
+  /// Multiple fields can be specified by separating them with commas. If read
+  /// mask is left empty, the post-mutate-get is skipped and no data will be
+  /// returned in the response. Valid values are: * addresses * ageRanges *
+  /// biographies * birthdays * calendarUrls * clientData * coverPhotos *
+  /// emailAddresses * events * externalIds * genders * imClients * interests *
+  /// locales * locations * memberships * metadata * miscKeywords * names *
+  /// nicknames * occupations * organizations * phoneNumbers * photos *
+  /// relations * sipAddresses * skills * urls * userDefined
+  ///
+  /// Required.
+  core.String? readMask;
+
+  /// A mask of what source types to return in the post mutate read.
+  ///
+  /// Defaults to READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not
+  /// set.
+  ///
+  /// Optional.
+  core.List<core.String>? sources;
+
+  BatchCreateContactsRequest();
+
+  BatchCreateContactsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('contacts')) {
+      contacts = (_json['contacts'] as core.List)
+          .map<ContactToCreate>((value) => ContactToCreate.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('readMask')) {
+      readMask = _json['readMask'] as core.String;
+    }
+    if (_json.containsKey('sources')) {
+      sources = (_json['sources'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contacts != null)
+          'contacts': contacts!.map((value) => value.toJson()).toList(),
+        if (readMask != null) 'readMask': readMask!,
+        if (sources != null) 'sources': sources!,
+      };
+}
+
+/// The response to a request to create a batch of contacts.
+class BatchCreateContactsResponse {
+  /// The contacts that were created, unless the request `read_mask` is empty.
+  core.List<PersonResponse>? createdPeople;
+
+  BatchCreateContactsResponse();
+
+  BatchCreateContactsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('createdPeople')) {
+      createdPeople = (_json['createdPeople'] as core.List)
+          .map<PersonResponse>((value) => PersonResponse.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createdPeople != null)
+          'createdPeople':
+              createdPeople!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// A request to delete a batch of existing contacts.
+class BatchDeleteContactsRequest {
+  /// The resource names of the contact to delete.
+  ///
+  /// It's repeatable. Allows up to 500 resource names in a single request.
+  ///
+  /// Required.
+  core.List<core.String>? resourceNames;
+
+  BatchDeleteContactsRequest();
+
+  BatchDeleteContactsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('resourceNames')) {
+      resourceNames = (_json['resourceNames'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (resourceNames != null) 'resourceNames': resourceNames!,
+      };
+}
+
 /// The response to a batch get contact groups request.
 class BatchGetContactGroupsResponse {
   /// The list of responses for each requested contact group resource.
@@ -1524,6 +1764,111 @@ class BatchGetContactGroupsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (responses != null)
           'responses': responses!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// A request to update a batch of contacts.
+class BatchUpdateContactsRequest {
+  /// A map of resource names to the person data to be updated.
+  ///
+  /// Allows up to 200 contacts in a single request.
+  ///
+  /// Required.
+  core.Map<core.String, Person>? contacts;
+
+  /// A field mask to restrict which fields on each person are returned.
+  ///
+  /// Multiple fields can be specified by separating them with commas. If read
+  /// mask is left empty, the post-mutate-get is skipped and no data will be
+  /// returned in the response. Valid values are: * addresses * ageRanges *
+  /// biographies * birthdays * calendarUrls * clientData * coverPhotos *
+  /// emailAddresses * events * externalIds * genders * imClients * interests *
+  /// locales * locations * memberships * metadata * miscKeywords * names *
+  /// nicknames * occupations * organizations * phoneNumbers * photos *
+  /// relations * sipAddresses * skills * urls * userDefined
+  ///
+  /// Required.
+  core.String? readMask;
+
+  /// A mask of what source types to return.
+  ///
+  /// Defaults to READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not
+  /// set.
+  ///
+  /// Optional.
+  core.List<core.String>? sources;
+
+  /// A field mask to restrict which fields on the person are updated.
+  ///
+  /// Multiple fields can be specified by separating them with commas. All
+  /// specified fields will be replaced, or cleared if left empty for each
+  /// person. Valid values are: * addresses * biographies * birthdays *
+  /// calendarUrls * clientData * emailAddresses * events * externalIds *
+  /// genders * imClients * interests * locales * locations * memberships *
+  /// miscKeywords * names * nicknames * occupations * organizations *
+  /// phoneNumbers * relations * sipAddresses * urls * userDefined
+  ///
+  /// Required.
+  core.String? updateMask;
+
+  BatchUpdateContactsRequest();
+
+  BatchUpdateContactsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('contacts')) {
+      contacts = (_json['contacts'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          Person.fromJson(item as core.Map<core.String, core.dynamic>),
+        ),
+      );
+    }
+    if (_json.containsKey('readMask')) {
+      readMask = _json['readMask'] as core.String;
+    }
+    if (_json.containsKey('sources')) {
+      sources = (_json['sources'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('updateMask')) {
+      updateMask = _json['updateMask'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contacts != null)
+          'contacts':
+              contacts!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (readMask != null) 'readMask': readMask!,
+        if (sources != null) 'sources': sources!,
+        if (updateMask != null) 'updateMask': updateMask!,
+      };
+}
+
+/// The response to a request to create a batch of contacts.
+class BatchUpdateContactsResponse {
+  /// A map of resource names to the contacts that were updated, unless the
+  /// request `read_mask` is empty.
+  core.Map<core.String, PersonResponse>? updateResult;
+
+  BatchUpdateContactsResponse();
+
+  BatchUpdateContactsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('updateResult')) {
+      updateResult =
+          (_json['updateResult'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          PersonResponse.fromJson(item as core.Map<core.String, core.dynamic>),
+        ),
+      );
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (updateResult != null)
+          'updateResult': updateResult!
+              .map((key, item) => core.MapEntry(key, item.toJson())),
       };
 }
 
@@ -1918,6 +2263,27 @@ class ContactGroupResponse {
         if (requestedResourceName != null)
           'requestedResourceName': requestedResourceName!,
         if (status != null) 'status': status!.toJson(),
+      };
+}
+
+/// A wrapper that contains the person data to populate a newly created source.
+class ContactToCreate {
+  /// The person data to populate a newly created source.
+  ///
+  /// Required.
+  Person? contactPerson;
+
+  ContactToCreate();
+
+  ContactToCreate.fromJson(core.Map _json) {
+    if (_json.containsKey('contactPerson')) {
+      contactPerson = Person.fromJson(
+          _json['contactPerson'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contactPerson != null) 'contactPerson': contactPerson!.toJson(),
       };
 }
 
@@ -2433,7 +2799,7 @@ class GetPeopleResponse {
 
 /// Arbitrary client data that is populated by clients.
 ///
-/// Duplicate keys and values are allowed. LINT.IfChange(GroupClientData)
+/// Duplicate keys and values are allowed.
 class GroupClientData {
   /// The client specified key of the client data.
   core.String? key;
@@ -2714,6 +3080,9 @@ class ListOtherContactsResponse {
   /// ListOtherContactsRequest.request_mask for more detailed information.
   core.List<Person>? otherContacts;
 
+  /// The total number of other contacts in the list without pagination.
+  core.int? totalSize;
+
   ListOtherContactsResponse();
 
   ListOtherContactsResponse.fromJson(core.Map _json) {
@@ -2729,6 +3098,9 @@ class ListOtherContactsResponse {
               Person.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
+    if (_json.containsKey('totalSize')) {
+      totalSize = _json['totalSize'] as core.int;
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2737,6 +3109,7 @@ class ListOtherContactsResponse {
         if (otherContacts != null)
           'otherContacts':
               otherContacts!.map((value) => value.toJson()).toList(),
+        if (totalSize != null) 'totalSize': totalSize!,
       };
 }
 

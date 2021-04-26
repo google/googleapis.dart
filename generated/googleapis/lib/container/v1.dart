@@ -50,7 +50,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Builds and manages container-based applications, powered by the open source
 /// Kubernetes technology.
 class ContainerApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -3690,8 +3690,6 @@ class AutoUpgradeOptions {
 }
 
 /// Autopilot is the configuration for Autopilot settings on the cluster.
-///
-/// It is the official product name of what is previously known as AutoGKE
 class Autopilot {
   /// Enable Autopilot
   core.bool? enabled;
@@ -3990,8 +3988,6 @@ class Cluster {
   AuthenticatorGroupsConfig? authenticatorGroupsConfig;
 
   /// Autopilot configuration for the cluster.
-  ///
-  /// It has the same semantics as AutoGKE and overrides the setting in autogke.
   Autopilot? autopilot;
 
   /// Cluster-level autoscaling configuration.
@@ -4010,6 +4006,9 @@ class Cluster {
 
   /// Which conditions caused the current cluster state.
   core.List<StatusCondition>? conditions;
+
+  /// Configuration of Confidential Nodes
+  ConfidentialNodes? confidentialNodes;
 
   /// The time the cluster was created, in
   /// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
@@ -4077,6 +4076,11 @@ class Cluster {
   ///
   /// Output only.
   core.String? expireTime;
+
+  /// Unique id for the cluster.
+  ///
+  /// Output only.
+  core.String? id;
 
   /// The initial Kubernetes version for this cluster.
   ///
@@ -4345,6 +4349,10 @@ class Cluster {
               value as core.Map<core.String, core.dynamic>))
           .toList();
     }
+    if (_json.containsKey('confidentialNodes')) {
+      confidentialNodes = ConfidentialNodes.fromJson(
+          _json['confidentialNodes'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('createTime')) {
       createTime = _json['createTime'] as core.String;
     }
@@ -4380,6 +4388,9 @@ class Cluster {
     }
     if (_json.containsKey('expireTime')) {
       expireTime = _json['expireTime'] as core.String;
+    }
+    if (_json.containsKey('id')) {
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('initialClusterVersion')) {
       initialClusterVersion = _json['initialClusterVersion'] as core.String;
@@ -4531,6 +4542,8 @@ class Cluster {
         if (clusterIpv4Cidr != null) 'clusterIpv4Cidr': clusterIpv4Cidr!,
         if (conditions != null)
           'conditions': conditions!.map((value) => value.toJson()).toList(),
+        if (confidentialNodes != null)
+          'confidentialNodes': confidentialNodes!.toJson(),
         if (createTime != null) 'createTime': createTime!,
         if (currentMasterVersion != null)
           'currentMasterVersion': currentMasterVersion!,
@@ -4547,6 +4560,7 @@ class Cluster {
         if (enableTpu != null) 'enableTpu': enableTpu!,
         if (endpoint != null) 'endpoint': endpoint!,
         if (expireTime != null) 'expireTime': expireTime!,
+        if (id != null) 'id': id!,
         if (initialClusterVersion != null)
           'initialClusterVersion': initialClusterVersion!,
         if (initialNodeCount != null) 'initialNodeCount': initialNodeCount!,
@@ -4665,6 +4679,9 @@ class ClusterUpdate {
   /// Configurations for the various addons available to run in the cluster.
   AddonsConfig? desiredAddonsConfig;
 
+  /// The desired Autopilot configuration for the cluster.
+  Autopilot? desiredAutopilot;
+
   /// The desired configuration options for the Binary Authorization feature.
   BinaryAuthorization? desiredBinaryAuthorization;
 
@@ -4673,6 +4690,16 @@ class ClusterUpdate {
 
   /// Configuration of etcd encryption.
   DatabaseEncryption? desiredDatabaseEncryption;
+
+  /// The desired datapath provider for the cluster.
+  /// Possible string values are:
+  /// - "DATAPATH_PROVIDER_UNSPECIFIED" : Default value.
+  /// - "LEGACY_DATAPATH" : Use the IPTables implementation based on kube-proxy.
+  /// - "ADVANCED_DATAPATH" : Use the eBPF based GKE Dataplane V2 with
+  /// additional features. See the
+  /// [GKE Dataplane V2 documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/dataplane-v2)
+  /// for more.
+  core.String? desiredDatapathProvider;
 
   /// The desired status of whether to disable default sNAT for this cluster.
   DefaultSnatStatus? desiredDefaultSnatStatus;
@@ -4793,6 +4820,10 @@ class ClusterUpdate {
       desiredAddonsConfig = AddonsConfig.fromJson(
           _json['desiredAddonsConfig'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('desiredAutopilot')) {
+      desiredAutopilot = Autopilot.fromJson(
+          _json['desiredAutopilot'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('desiredBinaryAuthorization')) {
       desiredBinaryAuthorization = BinaryAuthorization.fromJson(
           _json['desiredBinaryAuthorization']
@@ -4807,6 +4838,9 @@ class ClusterUpdate {
       desiredDatabaseEncryption = DatabaseEncryption.fromJson(
           _json['desiredDatabaseEncryption']
               as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('desiredDatapathProvider')) {
+      desiredDatapathProvider = _json['desiredDatapathProvider'] as core.String;
     }
     if (_json.containsKey('desiredDefaultSnatStatus')) {
       desiredDefaultSnatStatus = DefaultSnatStatus.fromJson(
@@ -4896,12 +4930,16 @@ class ClusterUpdate {
   core.Map<core.String, core.dynamic> toJson() => {
         if (desiredAddonsConfig != null)
           'desiredAddonsConfig': desiredAddonsConfig!.toJson(),
+        if (desiredAutopilot != null)
+          'desiredAutopilot': desiredAutopilot!.toJson(),
         if (desiredBinaryAuthorization != null)
           'desiredBinaryAuthorization': desiredBinaryAuthorization!.toJson(),
         if (desiredClusterAutoscaling != null)
           'desiredClusterAutoscaling': desiredClusterAutoscaling!.toJson(),
         if (desiredDatabaseEncryption != null)
           'desiredDatabaseEncryption': desiredDatabaseEncryption!.toJson(),
+        if (desiredDatapathProvider != null)
+          'desiredDatapathProvider': desiredDatapathProvider!,
         if (desiredDefaultSnatStatus != null)
           'desiredDefaultSnatStatus': desiredDefaultSnatStatus!.toJson(),
         if (desiredImageType != null) 'desiredImageType': desiredImageType!,
@@ -4999,6 +5037,26 @@ class CompleteIPRotationRequest {
         if (name != null) 'name': name!,
         if (projectId != null) 'projectId': projectId!,
         if (zone != null) 'zone': zone!,
+      };
+}
+
+/// ConfidentialNodes is configuration for the confidential nodes feature, which
+/// makes nodes run on confidential VMs.
+class ConfidentialNodes {
+  /// Whether Confidential Nodes feature is enabled for all nodes in this
+  /// cluster.
+  core.bool? enabled;
+
+  ConfidentialNodes();
+
+  ConfidentialNodes.fromJson(core.Map _json) {
+    if (_json.containsKey('enabled')) {
+      enabled = _json['enabled'] as core.bool;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
       };
 }
 
@@ -6212,6 +6270,18 @@ class Metric {
 
 /// NetworkConfig reports the relative names of network & subnetwork.
 class NetworkConfig {
+  /// The desired datapath provider for this cluster.
+  ///
+  /// By default, uses the IPTables-based kube-proxy implementation.
+  /// Possible string values are:
+  /// - "DATAPATH_PROVIDER_UNSPECIFIED" : Default value.
+  /// - "LEGACY_DATAPATH" : Use the IPTables implementation based on kube-proxy.
+  /// - "ADVANCED_DATAPATH" : Use the eBPF based GKE Dataplane V2 with
+  /// additional features. See the
+  /// [GKE Dataplane V2 documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/dataplane-v2)
+  /// for more.
+  core.String? datapathProvider;
+
   /// Whether the cluster disables default in-node sNAT rules.
   ///
   /// In-node sNAT rules will be disabled when default_snat_status is disabled.
@@ -6260,6 +6330,9 @@ class NetworkConfig {
   NetworkConfig();
 
   NetworkConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('datapathProvider')) {
+      datapathProvider = _json['datapathProvider'] as core.String;
+    }
     if (_json.containsKey('defaultSnatStatus')) {
       defaultSnatStatus = DefaultSnatStatus.fromJson(
           _json['defaultSnatStatus'] as core.Map<core.String, core.dynamic>);
@@ -6280,6 +6353,7 @@ class NetworkConfig {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (datapathProvider != null) 'datapathProvider': datapathProvider!,
         if (defaultSnatStatus != null)
           'defaultSnatStatus': defaultSnatStatus!.toJson(),
         if (enableIntraNodeVisibility != null)
@@ -7014,6 +7088,8 @@ class NotificationConfig {
 /// All fields are output only.
 class Operation {
   /// Which conditions caused the current cluster state.
+  ///
+  /// Deprecated. Use field error instead.
   core.List<StatusCondition>? clusterConditions;
 
   /// Detailed operation progress, if available.
@@ -7024,6 +7100,9 @@ class Operation {
   ///
   /// Output only.
   core.String? endTime;
+
+  /// The error result of the operation in case of failure.
+  Status? error;
 
   /// The name of the Google Compute Engine
   /// [zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available)
@@ -7038,6 +7117,8 @@ class Operation {
   core.String? name;
 
   /// Which conditions caused the current node pool state.
+  ///
+  /// Deprecated. Use field error instead.
   core.List<StatusCondition>? nodepoolConditions;
 
   /// The operation type.
@@ -7086,6 +7167,8 @@ class Operation {
 
   /// If an error has occurred, a textual description of the error.
   ///
+  /// Deprecated. Use the field error instead.
+  ///
   /// Output only.
   core.String? statusMessage;
 
@@ -7113,6 +7196,10 @@ class Operation {
     }
     if (_json.containsKey('endTime')) {
       endTime = _json['endTime'] as core.String;
+    }
+    if (_json.containsKey('error')) {
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('location')) {
       location = _json['location'] as core.String;
@@ -7159,6 +7246,7 @@ class Operation {
               clusterConditions!.map((value) => value.toJson()).toList(),
         if (detail != null) 'detail': detail!,
         if (endTime != null) 'endTime': endTime!,
+        if (error != null) 'error': error!.toJson(),
         if (location != null) 'location': location!,
         if (name != null) 'name': name!,
         if (nodepoolConditions != null)
@@ -8774,10 +8862,149 @@ class StartIPRotationRequest {
       };
 }
 
+/// The `Status` type defines a logical error model that is suitable for
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+class Status {
+  /// The status code, which should be an enum value of google.rpc.Code.
+  core.int? code;
+
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Map<core.String, core.Object>>? details;
+
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
+  /// google.rpc.Status.details field, or localized by the client.
+  core.String? message;
+
+  Status();
+
+  Status.fromJson(core.Map _json) {
+    if (_json.containsKey('code')) {
+      code = _json['code'] as core.int;
+    }
+    if (_json.containsKey('details')) {
+      details = (_json['details'] as core.List)
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
+                    (key, item) => core.MapEntry(
+                      key,
+                      item as core.Object,
+                    ),
+                  ))
+          .toList();
+    }
+    if (_json.containsKey('message')) {
+      message = _json['message'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
+      };
+}
+
 /// StatusCondition describes why a cluster or a node pool has a certain status
 /// (e.g., ERROR or DEGRADED).
 class StatusCondition {
-  /// Machine-friendly representation of the condition
+  /// Canonical code of the condition.
+  /// Possible string values are:
+  /// - "OK" : Not an error; returned on success HTTP Mapping: 200 OK
+  /// - "CANCELLED" : The operation was cancelled, typically by the caller. HTTP
+  /// Mapping: 499 Client Closed Request
+  /// - "UNKNOWN" : Unknown error. For example, this error may be returned when
+  /// a `Status` value received from another address space belongs to an error
+  /// space that is not known in this address space. Also errors raised by APIs
+  /// that do not return enough error information may be converted to this
+  /// error. HTTP Mapping: 500 Internal Server Error
+  /// - "INVALID_ARGUMENT" : The client specified an invalid argument. Note that
+  /// this differs from `FAILED_PRECONDITION`. `INVALID_ARGUMENT` indicates
+  /// arguments that are problematic regardless of the state of the system
+  /// (e.g., a malformed file name). HTTP Mapping: 400 Bad Request
+  /// - "DEADLINE_EXCEEDED" : The deadline expired before the operation could
+  /// complete. For operations that change the state of the system, this error
+  /// may be returned even if the operation has completed successfully. For
+  /// example, a successful response from a server could have been delayed long
+  /// enough for the deadline to expire. HTTP Mapping: 504 Gateway Timeout
+  /// - "NOT_FOUND" : Some requested entity (e.g., file or directory) was not
+  /// found. Note to server developers: if a request is denied for an entire
+  /// class of users, such as gradual feature rollout or undocumented allowlist,
+  /// `NOT_FOUND` may be used. If a request is denied for some users within a
+  /// class of users, such as user-based access control, `PERMISSION_DENIED`
+  /// must be used. HTTP Mapping: 404 Not Found
+  /// - "ALREADY_EXISTS" : The entity that a client attempted to create (e.g.,
+  /// file or directory) already exists. HTTP Mapping: 409 Conflict
+  /// - "PERMISSION_DENIED" : The caller does not have permission to execute the
+  /// specified operation. `PERMISSION_DENIED` must not be used for rejections
+  /// caused by exhausting some resource (use `RESOURCE_EXHAUSTED` instead for
+  /// those errors). `PERMISSION_DENIED` must not be used if the caller can not
+  /// be identified (use `UNAUTHENTICATED` instead for those errors). This error
+  /// code does not imply the request is valid or the requested entity exists or
+  /// satisfies other pre-conditions. HTTP Mapping: 403 Forbidden
+  /// - "UNAUTHENTICATED" : The request does not have valid authentication
+  /// credentials for the operation. HTTP Mapping: 401 Unauthorized
+  /// - "RESOURCE_EXHAUSTED" : Some resource has been exhausted, perhaps a
+  /// per-user quota, or perhaps the entire file system is out of space. HTTP
+  /// Mapping: 429 Too Many Requests
+  /// - "FAILED_PRECONDITION" : The operation was rejected because the system is
+  /// not in a state required for the operation's execution. For example, the
+  /// directory to be deleted is non-empty, an rmdir operation is applied to a
+  /// non-directory, etc. Service implementors can use the following guidelines
+  /// to decide between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`: (a)
+  /// Use `UNAVAILABLE` if the client can retry just the failing call. (b) Use
+  /// `ABORTED` if the client should retry at a higher level. For example, when
+  /// a client-specified test-and-set fails, indicating the client should
+  /// restart a read-modify-write sequence. (c) Use `FAILED_PRECONDITION` if the
+  /// client should not retry until the system state has been explicitly fixed.
+  /// For example, if an "rmdir" fails because the directory is non-empty,
+  /// `FAILED_PRECONDITION` should be returned since the client should not retry
+  /// unless the files are deleted from the directory. HTTP Mapping: 400 Bad
+  /// Request
+  /// - "ABORTED" : The operation was aborted, typically due to a concurrency
+  /// issue such as a sequencer check failure or transaction abort. See the
+  /// guidelines above for deciding between `FAILED_PRECONDITION`, `ABORTED`,
+  /// and `UNAVAILABLE`. HTTP Mapping: 409 Conflict
+  /// - "OUT_OF_RANGE" : The operation was attempted past the valid range. E.g.,
+  /// seeking or reading past end-of-file. Unlike `INVALID_ARGUMENT`, this error
+  /// indicates a problem that may be fixed if the system state changes. For
+  /// example, a 32-bit file system will generate `INVALID_ARGUMENT` if asked to
+  /// read at an offset that is not in the range \[0,2^32-1\], but it will
+  /// generate `OUT_OF_RANGE` if asked to read from an offset past the current
+  /// file size. There is a fair bit of overlap between `FAILED_PRECONDITION`
+  /// and `OUT_OF_RANGE`. We recommend using `OUT_OF_RANGE` (the more specific
+  /// error) when it applies so that callers who are iterating through a space
+  /// can easily look for an `OUT_OF_RANGE` error to detect when they are done.
+  /// HTTP Mapping: 400 Bad Request
+  /// - "UNIMPLEMENTED" : The operation is not implemented or is not
+  /// supported/enabled in this service. HTTP Mapping: 501 Not Implemented
+  /// - "INTERNAL" : Internal errors. This means that some invariants expected
+  /// by the underlying system have been broken. This error code is reserved for
+  /// serious errors. HTTP Mapping: 500 Internal Server Error
+  /// - "UNAVAILABLE" : The service is currently unavailable. This is most
+  /// likely a transient condition, which can be corrected by retrying with a
+  /// backoff. Note that it is not always safe to retry non-idempotent
+  /// operations. See the guidelines above for deciding between
+  /// `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`. HTTP Mapping: 503
+  /// Service Unavailable
+  /// - "DATA_LOSS" : Unrecoverable data loss or corruption. HTTP Mapping: 500
+  /// Internal Server Error
+  core.String? canonicalCode;
+
+  /// Machine-friendly representation of the condition Deprecated.
+  ///
+  /// Use canonical_code instead.
   /// Possible string values are:
   /// - "UNKNOWN" : UNKNOWN indicates a generic condition.
   /// - "GCE_STOCKOUT" : GCE_STOCKOUT indicates that Google Compute Engine
@@ -8797,6 +9024,9 @@ class StatusCondition {
   StatusCondition();
 
   StatusCondition.fromJson(core.Map _json) {
+    if (_json.containsKey('canonicalCode')) {
+      canonicalCode = _json['canonicalCode'] as core.String;
+    }
     if (_json.containsKey('code')) {
       code = _json['code'] as core.String;
     }
@@ -8806,6 +9036,7 @@ class StatusCondition {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (canonicalCode != null) 'canonicalCode': canonicalCode!,
         if (code != null) 'code': code!,
         if (message != null) 'message': message!,
       };
@@ -9118,6 +9349,56 @@ class UpdateNodePoolRequest {
         if (workloadMetadataConfig != null)
           'workloadMetadataConfig': workloadMetadataConfig!.toJson(),
         if (zone != null) 'zone': zone!,
+      };
+}
+
+/// UpgradeAvailableEvent is a notification sent to customers when a new
+/// available version is released.
+class UpgradeAvailableEvent {
+  /// The release channel of the version.
+  ///
+  /// If empty, it means a non-channel release.
+  ReleaseChannel? releaseChannel;
+
+  /// Optional relative path to the resource.
+  ///
+  /// For example, the relative path of the node pool.
+  core.String? resource;
+
+  /// The resource type of the release version.
+  /// Possible string values are:
+  /// - "UPGRADE_RESOURCE_TYPE_UNSPECIFIED" : Default value. This shouldn't be
+  /// used.
+  /// - "MASTER" : Master / control plane
+  /// - "NODE_POOL" : Node pool
+  core.String? resourceType;
+
+  /// The release version available for upgrade.
+  core.String? version;
+
+  UpgradeAvailableEvent();
+
+  UpgradeAvailableEvent.fromJson(core.Map _json) {
+    if (_json.containsKey('releaseChannel')) {
+      releaseChannel = ReleaseChannel.fromJson(
+          _json['releaseChannel'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('resource')) {
+      resource = _json['resource'] as core.String;
+    }
+    if (_json.containsKey('resourceType')) {
+      resourceType = _json['resourceType'] as core.String;
+    }
+    if (_json.containsKey('version')) {
+      version = _json['version'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (releaseChannel != null) 'releaseChannel': releaseChannel!.toJson(),
+        if (resource != null) 'resource': resource!,
+        if (resourceType != null) 'resourceType': resourceType!,
+        if (version != null) 'version': version!,
       };
 }
 

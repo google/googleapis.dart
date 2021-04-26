@@ -47,8 +47,8 @@ class DocsApi {
   /// See, edit, create, and delete all of your Google Drive files
   static const driveScope = 'https://www.googleapis.com/auth/drive';
 
-  /// View and manage Google Drive files and folders that you have opened or
-  /// created with this app
+  /// See, edit, create, and delete only the specific Google Drive files you use
+  /// with this app
   static const driveFileScope = 'https://www.googleapis.com/auth/drive.file';
 
   /// See and download all your Google Drive files
@@ -4231,6 +4231,9 @@ class ParagraphElement {
   /// A page break paragraph element.
   PageBreak? pageBreak;
 
+  /// A paragraph element that links to a person or email address.
+  Person? person;
+
   /// The zero-based start index of this paragraph element, in UTF-16 code
   /// units.
   core.int? startIndex;
@@ -4272,6 +4275,10 @@ class ParagraphElement {
       pageBreak = PageBreak.fromJson(
           _json['pageBreak'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('person')) {
+      person = Person.fromJson(
+          _json['person'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('startIndex')) {
       startIndex = _json['startIndex'] as core.int;
     }
@@ -4292,6 +4299,7 @@ class ParagraphElement {
         if (inlineObjectElement != null)
           'inlineObjectElement': inlineObjectElement!.toJson(),
         if (pageBreak != null) 'pageBreak': pageBreak!.toJson(),
+        if (person != null) 'person': person!.toJson(),
         if (startIndex != null) 'startIndex': startIndex!,
         if (textRun != null) 'textRun': textRun!.toJson(),
       };
@@ -4751,6 +4759,127 @@ class ParagraphStyleSuggestionState {
           'spaceBelowSuggested': spaceBelowSuggested!,
         if (spacingModeSuggested != null)
           'spacingModeSuggested': spacingModeSuggested!,
+      };
+}
+
+/// A person or email address mentioned in a document.
+///
+/// These mentions behave as a single, immutable element containing the person's
+/// name or email address.
+class Person {
+  /// The unique ID of this link.
+  ///
+  /// Output only.
+  core.String? personId;
+
+  /// The properties of this Person.
+  ///
+  /// This field is always present.
+  ///
+  /// Output only.
+  PersonProperties? personProperties;
+
+  /// IDs for suggestions that remove this person link from the document.
+  ///
+  /// A Person might have multiple deletion IDs if, for example, multiple users
+  /// suggest to delete it. If empty, then this person link isn't suggested for
+  /// deletion.
+  core.List<core.String>? suggestedDeletionIds;
+
+  /// IDs for suggestions that insert this person link into the document.
+  ///
+  /// A Person might have multiple insertion IDs if it is a nested suggested
+  /// change (a suggestion within a suggestion made by a different user, for
+  /// example). If empty, then this person link isn't a suggested insertion.
+  core.List<core.String>? suggestedInsertionIds;
+
+  /// The suggested text style changes to this Person, keyed by suggestion ID.
+  core.Map<core.String, SuggestedTextStyle>? suggestedTextStyleChanges;
+
+  /// The text style of this Person.
+  TextStyle? textStyle;
+
+  Person();
+
+  Person.fromJson(core.Map _json) {
+    if (_json.containsKey('personId')) {
+      personId = _json['personId'] as core.String;
+    }
+    if (_json.containsKey('personProperties')) {
+      personProperties = PersonProperties.fromJson(
+          _json['personProperties'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('suggestedDeletionIds')) {
+      suggestedDeletionIds = (_json['suggestedDeletionIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('suggestedInsertionIds')) {
+      suggestedInsertionIds = (_json['suggestedInsertionIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('suggestedTextStyleChanges')) {
+      suggestedTextStyleChanges = (_json['suggestedTextStyleChanges']
+              as core.Map<core.String, core.dynamic>)
+          .map(
+        (key, item) => core.MapEntry(
+          key,
+          SuggestedTextStyle.fromJson(
+              item as core.Map<core.String, core.dynamic>),
+        ),
+      );
+    }
+    if (_json.containsKey('textStyle')) {
+      textStyle = TextStyle.fromJson(
+          _json['textStyle'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (personId != null) 'personId': personId!,
+        if (personProperties != null)
+          'personProperties': personProperties!.toJson(),
+        if (suggestedDeletionIds != null)
+          'suggestedDeletionIds': suggestedDeletionIds!,
+        if (suggestedInsertionIds != null)
+          'suggestedInsertionIds': suggestedInsertionIds!,
+        if (suggestedTextStyleChanges != null)
+          'suggestedTextStyleChanges': suggestedTextStyleChanges!
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (textStyle != null) 'textStyle': textStyle!.toJson(),
+      };
+}
+
+/// Properties specific to a linked Person.
+class PersonProperties {
+  /// The email address linked to this Person.
+  ///
+  /// This field is always present.
+  ///
+  /// Output only.
+  core.String? email;
+
+  /// The name of the person if it is displayed in the link text instead of the
+  /// person's email address.
+  ///
+  /// Output only.
+  core.String? name;
+
+  PersonProperties();
+
+  PersonProperties.fromJson(core.Map _json) {
+    if (_json.containsKey('email')) {
+      email = _json['email'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (email != null) 'email': email!,
+        if (name != null) 'name': name!,
       };
 }
 

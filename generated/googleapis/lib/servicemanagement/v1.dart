@@ -45,7 +45,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// on Google Cloud Platform so that they can be discovered and used by service
 /// consumers.
 class ServiceManagementApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -271,50 +271,6 @@ class ServicesResource {
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Enables a service for a project, so it can be used for the project.
-  ///
-  /// See [Cloud Auth Guide](https://cloud.google.com/docs/authentication) for
-  /// more information. Operation
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [serviceName] - Required. Name of the service to enable. Specifying an
-  /// unknown service name will cause the request to fail.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Operation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
-  async.Future<Operation> enable(
-    EnableServiceRequest request,
-    core.String serviceName, {
-    core.String? $fields,
-  }) async {
-    final _body = convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url =
-        'v1/services/' + commons.escapeVariable('$serviceName') + ':enable';
-
-    final _response = await _requester.request(
-      _url,
-      'POST',
-      body: _body,
-      queryParams: _queryParams,
-    );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
-  }
-
   /// Generates and returns a report (errors, warnings and changes from existing
   /// configurations) associated with GenerateConfigReportRequest.new_value If
   /// GenerateConfigReportRequest.old_value is specified,
@@ -503,9 +459,7 @@ class ServicesResource {
   ///
   /// Returns all public services. For authenticated users, also returns all
   /// services the calling user has "servicemanagement.services.get" permission
-  /// for. **BETA:** If the caller specifies the `consumer_id`, it returns only
-  /// the services enabled on the consumer. The `consumer_id` must have the
-  /// format of "project:{PROJECT-ID}".
+  /// for.
   ///
   /// Request parameters:
   ///
@@ -1553,13 +1507,14 @@ class AuthRequirement {
       };
 }
 
-/// `Authentication` defines the authentication configuration for an API.
+/// `Authentication` defines the authentication configuration for API methods
+/// provided by an API service.
 ///
-/// Example for an API targeted for external use: name: calendar.googleapis.com
-/// authentication: providers: - id: google_calendar_auth jwks_uri:
-/// https://www.googleapis.com/oauth2/v1/certs issuer:
-/// https://securetoken.google.com rules: - selector: "*" requirements:
-/// provider_id: google_calendar_auth
+/// Example: name: calendar.googleapis.com authentication: providers: - id:
+/// google_calendar_auth jwks_uri: https://www.googleapis.com/oauth2/v1/certs
+/// issuer: https://securetoken.google.com rules: - selector: "*" requirements:
+/// provider_id: google_calendar_auth - selector: google.calendar.Delegate
+/// oauth: canonical_scopes: https://www.googleapis.com/auth/calendar.read
 class Authentication {
   /// Defines a set of authentication providers that a service supports.
   core.List<AuthProvider>? providers;
@@ -2440,17 +2395,6 @@ class Diagnostic {
       };
 }
 
-/// Operation payload for DisableService method.
-class DisableServiceResponse {
-  DisableServiceResponse();
-
-  DisableServiceResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
-
 /// `Documentation` provides the information for describing a service.
 ///
 /// Example: documentation: summary: > The Google Calendar API gives access to
@@ -2597,31 +2541,6 @@ class DocumentationRule {
       };
 }
 
-/// Request message for EnableService method.
-class EnableServiceRequest {
-  /// The identity of consumer resource which service enablement will be applied
-  /// to.
-  ///
-  /// The Google Service Management implementation accepts the following forms:
-  /// - "project:" Note: this is made compatible with
-  /// google.api.servicecontrol.v1.Operation.consumer_id.
-  ///
-  /// Required.
-  core.String? consumerId;
-
-  EnableServiceRequest();
-
-  EnableServiceRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('consumerId')) {
-      consumerId = _json['consumerId'] as core.String;
-    }
-  }
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (consumerId != null) 'consumerId': consumerId!,
-      };
-}
-
 /// Operation payload for EnableService method.
 class EnableServiceResponse {
   EnableServiceResponse();
@@ -2633,26 +2552,21 @@ class EnableServiceResponse {
   core.Map<core.String, core.dynamic> toJson() => {};
 }
 
-/// `Endpoint` describes a network endpoint of a service that serves a set of
+/// `Endpoint` describes a network address of a service that serves a set of
 /// APIs.
 ///
 /// It is commonly known as a service endpoint. A service may expose any number
 /// of service endpoints, and all service endpoints share the same service
-/// definition, such as quota limits and monitoring metrics. Example service
-/// configuration: name: library-example.googleapis.com endpoints: # Below entry
-/// makes 'google.example.library.v1.Library' # API be served from endpoint
-/// address library-example.googleapis.com. # It also allows HTTP OPTIONS calls
-/// to be passed to the backend, for # it to decide whether the subsequent
-/// cross-origin request is # allowed to proceed. - name:
-/// library-example.googleapis.com allow_cors: true
+/// definition, such as quota limits and monitoring metrics. Example: type:
+/// google.api.Service name: library-example.googleapis.com endpoints: #
+/// Declares network address `https://library-example.googleapis.com` # for
+/// service `library-example.googleapis.com`. The `https` scheme # is implicit
+/// for all service endpoints. Other schemes may be # supported in the future. -
+/// name: library-example.googleapis.com allow_cors: false - name:
+/// content-staging-library-example.googleapis.com # Allows HTTP OPTIONS calls
+/// to be passed to the API frontend, for it # to decide whether the subsequent
+/// cross-origin request is allowed # to proceed. allow_cors: true
 class Endpoint {
-  /// DEPRECATED: This field is no longer supported.
-  ///
-  /// Instead of using aliases, please specify multiple google.api.Endpoint for
-  /// each of the intended aliases. Additional names that this endpoint will be
-  /// hosted on.
-  core.List<core.String>? aliases;
-
   /// Allowing
   /// [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka
   /// cross-domain traffic, would allow the backends served from this endpoint
@@ -2676,11 +2590,6 @@ class Endpoint {
   Endpoint();
 
   Endpoint.fromJson(core.Map _json) {
-    if (_json.containsKey('aliases')) {
-      aliases = (_json['aliases'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
     if (_json.containsKey('allowCors')) {
       allowCors = _json['allowCors'] as core.bool;
     }
@@ -2693,7 +2602,6 @@ class Endpoint {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (aliases != null) 'aliases': aliases!,
         if (allowCors != null) 'allowCors': allowCors!,
         if (name != null) 'name': name!,
         if (target != null) 'target': target!,
@@ -5238,15 +5146,19 @@ class Rollout {
       };
 }
 
-/// `Service` is the root object of Google service configuration schema.
+/// `Service` is the root object of Google API service configuration (service
+/// config).
 ///
-/// It describes basic information about a service, such as the name and the
-/// title, and delegates other aspects to sub-sections. Each sub-section is
-/// either a proto message or a repeated proto message that configures a
-/// specific aspect, such as auth. See each proto message definition for
-/// details. Example: type: google.api.Service name: calendar.googleapis.com
-/// title: Google Calendar API apis: - name: google.calendar.v3.Calendar
-/// authentication: providers: - id: google_calendar_auth jwks_uri:
+/// It describes the basic information about a logical service, such as the
+/// service name and the user-facing title, and delegates other aspects to
+/// sub-sections. Each sub-section is either a proto message or a repeated proto
+/// message that configures a specific aspect, such as auth. For more
+/// information, see each proto message definition. Example: type:
+/// google.api.Service name: calendar.googleapis.com title: Google Calendar API
+/// apis: - name: google.calendar.v3.Calendar visibility: rules: - selector:
+/// "google.calendar.v3.*" restriction: PREVIEW backend: rules: - selector:
+/// "google.calendar.v3.*" address: calendar.example.com authentication:
+/// providers: - id: google_calendar_auth jwks_uri:
 /// https://www.googleapis.com/oauth2/v1/certs issuer:
 /// https://securetoken.google.com rules: - selector: "*" requirements:
 /// provider_id: google_calendar_auth
@@ -5268,9 +5180,10 @@ class Service {
   /// Billing configuration.
   Billing? billing;
 
-  /// The service config compiler always sets this field to `3`.
+  /// Obsolete.
   ///
-  /// Deprecated.
+  /// Do not use. This field has no semantic meaning. The service config
+  /// compiler always sets this field to `3`.
   core.int? configVersion;
 
   /// Context configuration.

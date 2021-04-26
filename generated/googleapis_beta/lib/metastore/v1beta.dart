@@ -25,6 +25,7 @@
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsServicesResource]
+///       - [ProjectsLocationsServicesBackupsResource]
 ///       - [ProjectsLocationsServicesMetadataImportsResource]
 library metastore.v1beta;
 
@@ -43,7 +44,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// The Dataproc Metastore API is used to manage the lifecycle and configuration
 /// of metastore services.
 class DataprocMetastoreApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -119,11 +120,15 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [filter] - The standard list filter.
+  /// [filter] - A filter to narrow down results to a preferred subset. The
+  /// filtering language accepts strings like "displayName=tokyo", and is
+  /// documented in more detail in AIP-160 (https://google.aip.dev/160).
   ///
-  /// [pageSize] - The standard list page size.
+  /// [pageSize] - The maximum number of results to return. If not set, the
+  /// service selects a default.
   ///
-  /// [pageToken] - The standard list page token.
+  /// [pageToken] - A page token received from the next_page_token field in the
+  /// response. Send that page token to receive the subsequent page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -307,6 +312,8 @@ class ProjectsLocationsOperationsResource {
 class ProjectsLocationsServicesResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsServicesBackupsResource get backups =>
+      ProjectsLocationsServicesBackupsResource(_requester);
   ProjectsLocationsServicesMetadataImportsResource get metadataImports =>
       ProjectsLocationsServicesMetadataImportsResource(_requester);
 
@@ -321,7 +328,7 @@ class ProjectsLocationsServicesResource {
   ///
   /// [parent] - Required. The relative resource name of the location in which
   /// to create a metastore service, in the following
-  /// form:"projects/{project_number}/locations/{location_id}".
+  /// form:projects/{project_number}/locations/{location_id}.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [requestId] - Optional. A request ID. Specify a unique request ID to allow
@@ -381,7 +388,7 @@ class ProjectsLocationsServicesResource {
   ///
   /// [name] - Required. The relative resource name of the metastore service to
   /// delete, in the following
-  /// form:"projects/{project_number}/locations/{location_id}/services/{service_id}".
+  /// form:projects/{project_number}/locations/{location_id}/services/{service_id}.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
   ///
@@ -433,7 +440,7 @@ class ProjectsLocationsServicesResource {
   ///
   /// [service] - Required. The relative resource name of the metastore service
   /// to run export, in the following
-  /// form:"projects/{project_id}/locations/{location_id}/services/{service_id}
+  /// form:projects/{project_id}/locations/{location_id}/services/{service_id}.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
   ///
@@ -475,7 +482,7 @@ class ProjectsLocationsServicesResource {
   ///
   /// [name] - Required. The relative resource name of the metastore service to
   /// retrieve, in the following
-  /// form:"projects/{project_number}/locations/{location_id}/services/{service_id}".
+  /// form:projects/{project_number}/locations/{location_id}/services/{service_id}.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
   ///
@@ -565,14 +572,15 @@ class ProjectsLocationsServicesResource {
   ///
   /// [parent] - Required. The relative resource name of the location of
   /// metastore services to list, in the following
-  /// form:"projects/{project_number}/locations/{location_id}".
+  /// form:projects/{project_number}/locations/{location_id}.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Optional. The filter to apply to list results.
   ///
   /// [orderBy] - Optional. Specify the ordering of results as described in
-  /// Sorting Order. If not specified, the results will be sorted in the default
-  /// order.
+  /// Sorting Order
+  /// (https://cloud.google.com/apis/design/design_patterns#sorting_order). If
+  /// not specified, the results will be sorted in the default order.
   ///
   /// [pageSize] - Optional. The maximum number of services to return. The
   /// response may contain less than the maximum number. If unspecified, no more
@@ -631,7 +639,7 @@ class ProjectsLocationsServicesResource {
   ///
   /// [name] - Immutable. The relative resource name of the metastore service,
   /// of the
-  /// form:"projects/{project_number}/locations/{location_id}/services/{service_id}".
+  /// form:projects/{project_number}/locations/{location_id}/services/{service_id}.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
   ///
@@ -679,6 +687,49 @@ class ProjectsLocationsServicesResource {
     final _response = await _requester.request(
       _url,
       'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Restores a service from a backup.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [service] - Required. The relative resource name of the metastore service
+  /// to run restore, in the following
+  /// form:projects/{project_id}/locations/{location_id}/services/{service_id}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> restore(
+    RestoreServiceRequest request,
+    core.String service, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1beta/' + core.Uri.encodeFull('$service') + ':restore';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
       body: _body,
       queryParams: _queryParams,
     );
@@ -782,6 +833,229 @@ class ProjectsLocationsServicesResource {
   }
 }
 
+class ProjectsLocationsServicesBackupsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsServicesBackupsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new backup in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The relative resource name of the service in which to
+  /// create a backup of the following
+  /// form:projects/{project_number}/locations/{location_id}/services/{service_id}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
+  ///
+  /// [backupId] - Required. The ID of the backup, which is used as the final
+  /// component of the backup's name.This value must be between 1 and 64
+  /// characters long, begin with a letter, end with a letter or number, and
+  /// consist of alpha-numeric ASCII characters or hyphens.
+  ///
+  /// [requestId] - Optional. A request ID. Specify a unique request ID to allow
+  /// the server to ignore the request if it has completed. The server will
+  /// ignore subsequent requests that provide a duplicate request ID for at
+  /// least 60 minutes after the first request.For example, if an initial
+  /// request times out, followed by another request with the same request ID,
+  /// the server ignores the second request to prevent the creation of duplicate
+  /// commitments.The request ID must be a valid UUID
+  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A
+  /// zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    Backup request,
+    core.String parent, {
+    core.String? backupId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (backupId != null) 'backupId': [backupId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1beta/' + core.Uri.encodeFull('$parent') + '/backups';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single backup.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The relative resource name of the backup to delete, in
+  /// the following
+  /// form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+/backups/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A request ID. Specify a unique request ID to allow
+  /// the server to ignore the request if it has completed. The server will
+  /// ignore subsequent requests that provide a duplicate request ID for at
+  /// least 60 minutes after the first request.For example, if an initial
+  /// request times out, followed by another request with the same request ID,
+  /// the server ignores the second request to prevent the creation of duplicate
+  /// commitments.The request ID must be a valid UUID
+  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A
+  /// zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single backup.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The relative resource name of the backup to retrieve,
+  /// in the following
+  /// form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+/backups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Backup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Backup> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Backup.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists backups in a service.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The relative resource name of the service whose
+  /// backups to list, in the following
+  /// form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. The filter to apply to list results.
+  ///
+  /// [orderBy] - Optional. Specify the ordering of results as described in
+  /// Sorting Order
+  /// (https://cloud.google.com/apis/design/design_patterns#sorting_order). If
+  /// not specified, the results will be sorted in the default order.
+  ///
+  /// [pageSize] - Optional. The maximum number of backups to return. The
+  /// response may contain less than the maximum number. If unspecified, no more
+  /// than 500 backups are returned. The maximum value is 1000; values above
+  /// 1000 are changed to 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// DataprocMetastore.ListBackups call. Provide this token to retrieve the
+  /// subsequent page.To retrieve the first page, supply an empty page
+  /// token.When paginating, other parameters provided to
+  /// DataprocMetastore.ListBackups must match the call that provided the page
+  /// token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBackupsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBackupsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1beta/' + core.Uri.encodeFull('$parent') + '/backups';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListBackupsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsServicesMetadataImportsResource {
   final commons.ApiRequester _requester;
 
@@ -796,7 +1070,7 @@ class ProjectsLocationsServicesMetadataImportsResource {
   ///
   /// [parent] - Required. The relative resource name of the service in which to
   /// create a metastore import, in the following
-  /// form:"projects/{project_number}/locations/{location_id}/services/{service_id}"
+  /// form:projects/{project_number}/locations/{location_id}/services/{service_id}.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
   ///
@@ -858,7 +1132,7 @@ class ProjectsLocationsServicesMetadataImportsResource {
   ///
   /// [name] - Required. The relative resource name of the metadata import to
   /// retrieve, in the following
-  /// form:"projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{import_id}".
+  /// form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{import_id}.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+/metadataImports/\[^/\]+$`.
   ///
@@ -897,15 +1171,16 @@ class ProjectsLocationsServicesMetadataImportsResource {
   ///
   /// [parent] - Required. The relative resource name of the service whose
   /// metadata imports to list, in the following
-  /// form:"projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports".
+  /// form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [filter] - Optional. The filter to apply to list results.
   ///
   /// [orderBy] - Optional. Specify the ordering of results as described in
-  /// Sorting Order. If not specified, the results will be sorted in the default
-  /// order.
+  /// Sorting Order
+  /// (https://cloud.google.com/apis/design/design_patterns#sorting_order). If
+  /// not specified, the results will be sorted in the default order.
   ///
   /// [pageSize] - Optional. The maximum number of imports to return. The
   /// response may contain less than the maximum number. If unspecified, no more
@@ -967,7 +1242,7 @@ class ProjectsLocationsServicesMetadataImportsResource {
   ///
   /// [name] - Immutable. The relative resource name of the metadata import, of
   /// the
-  /// form:"projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}".
+  /// form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+/metadataImports/\[^/\]+$`.
   ///
@@ -1111,6 +1386,78 @@ class AuditLogConfig {
       };
 }
 
+/// The details of a backup resource.
+class Backup {
+  /// The time when the backup was started.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The description of the backup.
+  core.String? description;
+
+  /// The time when the backup finished creating.
+  ///
+  /// Output only.
+  core.String? endTime;
+
+  /// The relative resource name of the backup, in the following
+  /// form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// The revision of the service at the time of backup.
+  ///
+  /// Output only.
+  Service? serviceRevision;
+
+  /// The current state of the backup.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The state of the backup is unknown.
+  /// - "CREATING" : The backup is being created.
+  /// - "DELETING" : The backup is being deleted.
+  /// - "ACTIVE" : The backup is active and ready to use.
+  /// - "FAILED" : The backup failed.
+  core.String? state;
+
+  Backup();
+
+  Backup.fromJson(core.Map _json) {
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'] as core.String;
+    }
+    if (_json.containsKey('description')) {
+      description = _json['description'] as core.String;
+    }
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('serviceRevision')) {
+      serviceRevision = Service.fromJson(
+          _json['serviceRevision'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('state')) {
+      state = _json['state'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (endTime != null) 'endTime': endTime!,
+        if (name != null) 'name': name!,
+        if (serviceRevision != null)
+          'serviceRevision': serviceRevision!.toJson(),
+        if (state != null) 'state': state!,
+      };
+}
+
 /// Associates members with a role.
 class Binding {
   /// The condition that is associated with this binding.If the condition
@@ -1185,6 +1532,28 @@ class Binding {
       };
 }
 
+/// Specifies how metastore metadata should be integrated with the Data Catalog
+/// service.
+class DataCatalogConfig {
+  /// Defines whether the metastore metadata should be synced to Data Catalog.
+  ///
+  /// The default value is to disable syncing metastore metadata to Data
+  /// Catalog.
+  core.bool? enabled;
+
+  DataCatalogConfig();
+
+  DataCatalogConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('enabled')) {
+      enabled = _json['enabled'] as core.bool;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+      };
+}
+
 /// A specification of the location of and metadata about a database dump from a
 /// relational database management system.
 class DatabaseDump {
@@ -1195,14 +1564,25 @@ class DatabaseDump {
   /// - "MYSQL" : The type of the source database is MySQL.
   core.String? databaseType;
 
-  /// A Cloud Storage object URI that specifies the source from which to import
-  /// metadata.
+  /// A Cloud Storage object or folder URI that specifies the source from which
+  /// to import metadata.
   ///
   /// It must begin with gs://.
   core.String? gcsUri;
 
   /// The name of the source database.
   core.String? sourceDatabase;
+
+  /// The type of the database dump.
+  ///
+  /// If unspecified, defaults to MYSQL.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : The type of the database dump is unknown.
+  /// - "MYSQL" : Database dump is a MySQL dump file.
+  /// - "AVRO" : Database dump contains Avro files.
+  core.String? type;
 
   DatabaseDump();
 
@@ -1216,12 +1596,16 @@ class DatabaseDump {
     if (_json.containsKey('sourceDatabase')) {
       sourceDatabase = _json['sourceDatabase'] as core.String;
     }
+    if (_json.containsKey('type')) {
+      type = _json['type'] as core.String;
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (databaseType != null) 'databaseType': databaseType!,
         if (gcsUri != null) 'gcsUri': gcsUri!,
         if (sourceDatabase != null) 'sourceDatabase': sourceDatabase!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -1244,12 +1628,20 @@ class Empty {
 
 /// Request message for DataprocMetastore.ExportMetadata.
 class ExportMetadataRequest {
-  /// A Cloud Storage URI of a folder that metadata are exported to, in the
-  /// format gs:///.
+  /// The type of the database dump.
+  ///
+  /// If unspecified, defaults to MYSQL.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : The type of the database dump is unknown.
+  /// - "MYSQL" : Database dump is a MySQL dump file.
+  /// - "AVRO" : Database dump contains Avro files.
+  core.String? databaseDumpType;
+
+  /// A Cloud Storage URI of a folder, in the format gs:///.
   ///
   /// A sub-folder containing exported files will be created below it.
-  ///
-  /// Required.
   core.String? destinationGcsFolder;
 
   /// A request ID.
@@ -1269,6 +1661,9 @@ class ExportMetadataRequest {
   ExportMetadataRequest();
 
   ExportMetadataRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('databaseDumpType')) {
+      databaseDumpType = _json['databaseDumpType'] as core.String;
+    }
     if (_json.containsKey('destinationGcsFolder')) {
       destinationGcsFolder = _json['destinationGcsFolder'] as core.String;
     }
@@ -1278,6 +1673,7 @@ class ExportMetadataRequest {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (databaseDumpType != null) 'databaseDumpType': databaseDumpType!,
         if (destinationGcsFolder != null)
           'destinationGcsFolder': destinationGcsFolder!,
         if (requestId != null) 'requestId': requestId!,
@@ -1366,8 +1762,8 @@ class HiveMetastoreConfig {
   /// principal in a Kerberos realm.
   ///
   /// To disable Kerberos, use the UpdateService method and specify this field's
-  /// path ("hive_metastore_config.kerberos_config") in the request's
-  /// update_mask while omitting this field from the request's service.
+  /// path (hive_metastore_config.kerberos_config) in the request's update_mask
+  /// while omitting this field from the request's service.
   KerberosConfig? kerberosConfig;
 
   /// The Hive metastore schema version.
@@ -1444,8 +1840,8 @@ class KerberosConfig {
   /// A Kerberos principal that exists in the both the keytab the KDC to
   /// authenticate as.
   ///
-  /// A typical principal is of the form "primary/instance@REALM", but there is
-  /// no exact format.
+  /// A typical principal is of the form primary/instance@REALM, but there is no
+  /// exact format.
   core.String? principal;
 
   KerberosConfig();
@@ -1467,6 +1863,46 @@ class KerberosConfig {
         if (keytab != null) 'keytab': keytab!.toJson(),
         if (krb5ConfigGcsUri != null) 'krb5ConfigGcsUri': krb5ConfigGcsUri!,
         if (principal != null) 'principal': principal!,
+      };
+}
+
+/// Response message for DataprocMetastore.ListBackups.
+class ListBackupsResponse {
+  /// The backups of the specified service.
+  core.List<Backup>? backups;
+
+  /// A token that can be sent as page_token to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListBackupsResponse();
+
+  ListBackupsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('backups')) {
+      backups = (_json['backups'] as core.List)
+          .map<Backup>((value) =>
+              Backup.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+    if (_json.containsKey('unreachable')) {
+      unreachable = (_json['unreachable'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backups != null)
+          'backups': backups!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -1746,8 +2182,17 @@ class MaintenanceWindow {
 
 /// The details of a metadata export operation.
 class MetadataExport {
+  /// The type of the database dump.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : The type of the database dump is unknown.
+  /// - "MYSQL" : Database dump is a MySQL dump file.
+  /// - "AVRO" : Database dump contains Avro files.
+  core.String? databaseDumpType;
+
   /// A Cloud Storage URI of a folder that metadata are exported to, in the form
-  /// of gs:////, where \` is automatically generated.
+  /// of gs:////, where is automatically generated.
   ///
   /// Output only.
   core.String? destinationGcsUri;
@@ -1776,6 +2221,9 @@ class MetadataExport {
   MetadataExport();
 
   MetadataExport.fromJson(core.Map _json) {
+    if (_json.containsKey('databaseDumpType')) {
+      databaseDumpType = _json['databaseDumpType'] as core.String;
+    }
     if (_json.containsKey('destinationGcsUri')) {
       destinationGcsUri = _json['destinationGcsUri'] as core.String;
     }
@@ -1791,6 +2239,7 @@ class MetadataExport {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (databaseDumpType != null) 'databaseDumpType': databaseDumpType!,
         if (destinationGcsUri != null) 'destinationGcsUri': destinationGcsUri!,
         if (endTime != null) 'endTime': endTime!,
         if (startTime != null) 'startTime': startTime!,
@@ -1800,7 +2249,7 @@ class MetadataExport {
 
 /// A metastore resource that imports metadata.
 class MetadataImport {
-  /// The time when the metadata import was created.
+  /// The time when the metadata import was started.
   ///
   /// Output only.
   core.String? createTime;
@@ -1814,7 +2263,7 @@ class MetadataImport {
   core.String? description;
 
   /// The relative resource name of the metadata import, of the
-  /// form:"projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}".
+  /// form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
   ///
   /// Immutable.
   core.String? name;
@@ -1873,13 +2322,22 @@ class MetadataImport {
 /// Specifies how metastore metadata should be integrated with external
 /// services.
 class MetadataIntegration {
+  /// The integration config for the Data Catalog service.
+  DataCatalogConfig? dataCatalogConfig;
+
   MetadataIntegration();
 
-  MetadataIntegration.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
+  MetadataIntegration.fromJson(core.Map _json) {
+    if (_json.containsKey('dataCatalogConfig')) {
+      dataCatalogConfig = DataCatalogConfig.fromJson(
+          _json['dataCatalogConfig'] as core.Map<core.String, core.dynamic>);
+    }
+  }
 
-  core.Map<core.String, core.dynamic> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataCatalogConfig != null)
+          'dataCatalogConfig': dataCatalogConfig!.toJson(),
+      };
 }
 
 /// The metadata management activities of the metastore service.
@@ -2003,6 +2461,84 @@ class Operation {
       };
 }
 
+/// Represents the metadata of a long-running operation.
+class OperationMetadata {
+  /// API version used to start the operation.
+  ///
+  /// Output only.
+  core.String? apiVersion;
+
+  /// The time the operation was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The time the operation finished running.
+  ///
+  /// Output only.
+  core.String? endTime;
+
+  /// Identifies whether the caller has requested cancellation of the operation.
+  ///
+  /// Operations that have successfully been cancelled have Operation.error
+  /// value with a google.rpc.Status.code of 1, corresponding to Code.CANCELLED.
+  ///
+  /// Output only.
+  core.bool? requestedCancellation;
+
+  /// Human-readable status of the operation, if any.
+  ///
+  /// Output only.
+  core.String? statusMessage;
+
+  /// Server-defined resource path for the target of the operation.
+  ///
+  /// Output only.
+  core.String? target;
+
+  /// Name of the verb executed by the operation.
+  ///
+  /// Output only.
+  core.String? verb;
+
+  OperationMetadata();
+
+  OperationMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey('apiVersion')) {
+      apiVersion = _json['apiVersion'] as core.String;
+    }
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'] as core.String;
+    }
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'] as core.String;
+    }
+    if (_json.containsKey('requestedCancellation')) {
+      requestedCancellation = _json['requestedCancellation'] as core.bool;
+    }
+    if (_json.containsKey('statusMessage')) {
+      statusMessage = _json['statusMessage'] as core.String;
+    }
+    if (_json.containsKey('target')) {
+      target = _json['target'] as core.String;
+    }
+    if (_json.containsKey('verb')) {
+      verb = _json['verb'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion!,
+        if (createTime != null) 'createTime': createTime!,
+        if (endTime != null) 'endTime': endTime!,
+        if (requestedCancellation != null)
+          'requestedCancellation': requestedCancellation!,
+        if (statusMessage != null) 'statusMessage': statusMessage!,
+        if (target != null) 'target': target!,
+        if (verb != null) 'verb': verb!,
+      };
+}
+
 /// An Identity and Access Management (IAM) policy, which specifies access
 /// controls for Google Cloud resources.A Policy is a collection of bindings.
 ///
@@ -2119,7 +2655,7 @@ class Policy {
 class Restore {
   /// The relative resource name of the metastore service backup to restore
   /// from, in the following
-  /// form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}
+  /// form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}.
   ///
   /// Output only.
   core.String? backup;
@@ -2193,11 +2729,66 @@ class Restore {
       };
 }
 
+/// Request message for DataprocMetastore.Restore.
+class RestoreServiceRequest {
+  /// The relative resource name of the metastore service backup to restore
+  /// from, in the following
+  /// form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}.
+  ///
+  /// Required.
+  core.String? backup;
+
+  /// A request ID.
+  ///
+  /// Specify a unique request ID to allow the server to ignore the request if
+  /// it has completed. The server will ignore subsequent requests that provide
+  /// a duplicate request ID for at least 60 minutes after the first request.For
+  /// example, if an initial request times out, followed by another request with
+  /// the same request ID, the server ignores the second request to prevent the
+  /// creation of duplicate commitments.The request ID must be a valid UUID
+  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format). A
+  /// zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  /// The type of restore.
+  ///
+  /// If unspecified, defaults to METADATA_ONLY.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "RESTORE_TYPE_UNSPECIFIED" : The restore type is unknown.
+  /// - "FULL" : The service's metadata and configuration are restored.
+  /// - "METADATA_ONLY" : Only the service's metadata is restored.
+  core.String? restoreType;
+
+  RestoreServiceRequest();
+
+  RestoreServiceRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('backup')) {
+      backup = _json['backup'] as core.String;
+    }
+    if (_json.containsKey('requestId')) {
+      requestId = _json['requestId'] as core.String;
+    }
+    if (_json.containsKey('restoreType')) {
+      restoreType = _json['restoreType'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backup != null) 'backup': backup!,
+        if (requestId != null) 'requestId': requestId!,
+        if (restoreType != null) 'restoreType': restoreType!,
+      };
+}
+
 /// A securely stored value.
 class Secret {
   /// The relative resource name of a Secret Manager secret version, in the
   /// following
-  /// form:"projects/{project_number}/secrets/{secret_id}/versions/{version_id}".
+  /// form:projects/{project_number}/secrets/{secret_id}/versions/{version_id}.
   core.String? cloudSecret;
 
   Secret();
@@ -2254,7 +2845,7 @@ class Service {
   MetadataManagementActivity? metadataManagementActivity;
 
   /// The relative resource name of the metastore service, of the
-  /// form:"projects/{project_number}/locations/{location_id}/services/{service_id}".
+  /// form:projects/{project_number}/locations/{location_id}/services/{service_id}.
   ///
   /// Immutable.
   core.String? name;
@@ -2263,7 +2854,7 @@ class Service {
   /// accessed.
   ///
   /// It is specified in the following
-  /// form:"projects/{project_number}/global/networks/{network_id}".
+  /// form:projects/{project_number}/global/networks/{network_id}.
   ///
   /// Immutable.
   core.String? network;
@@ -2272,6 +2863,21 @@ class Service {
   ///
   /// Default: 9083.
   core.int? port;
+
+  /// The release channel of the service.
+  ///
+  /// If unspecified, defaults to STABLE.
+  ///
+  /// Immutable.
+  /// Possible string values are:
+  /// - "RELEASE_CHANNEL_UNSPECIFIED" : Release channel is not specified.
+  /// - "CANARY" : The CANARY release channel contains the newest features,
+  /// which may be unstable and subject to unresolved issues with no known
+  /// workarounds. Services using the CANARY release channel are not subject to
+  /// any SLAs.
+  /// - "STABLE" : The STABLE release channel contains features that are
+  /// considered stable and have been validated for production use.
+  core.String? releaseChannel;
 
   /// The current state of the metastore service.
   ///
@@ -2364,6 +2970,9 @@ class Service {
     if (_json.containsKey('port')) {
       port = _json['port'] as core.int;
     }
+    if (_json.containsKey('releaseChannel')) {
+      releaseChannel = _json['releaseChannel'] as core.String;
+    }
     if (_json.containsKey('state')) {
       state = _json['state'] as core.String;
     }
@@ -2397,6 +3006,7 @@ class Service {
         if (name != null) 'name': name!,
         if (network != null) 'network': network!,
         if (port != null) 'port': port!,
+        if (releaseChannel != null) 'releaseChannel': releaseChannel!,
         if (state != null) 'state': state!,
         if (stateMessage != null) 'stateMessage': stateMessage!,
         if (tier != null) 'tier': tier!,

@@ -41,7 +41,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Manages the service consumers of a Service Infrastructure service.
 class ServiceConsumerManagementApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -1131,13 +1131,14 @@ class AuthRequirement {
       };
 }
 
-/// `Authentication` defines the authentication configuration for an API.
+/// `Authentication` defines the authentication configuration for API methods
+/// provided by an API service.
 ///
-/// Example for an API targeted for external use: name: calendar.googleapis.com
-/// authentication: providers: - id: google_calendar_auth jwks_uri:
-/// https://www.googleapis.com/oauth2/v1/certs issuer:
-/// https://securetoken.google.com rules: - selector: "*" requirements:
-/// provider_id: google_calendar_auth
+/// Example: name: calendar.googleapis.com authentication: providers: - id:
+/// google_calendar_auth jwks_uri: https://www.googleapis.com/oauth2/v1/certs
+/// issuer: https://securetoken.google.com rules: - selector: "*" requirements:
+/// provider_id: google_calendar_auth - selector: google.calendar.Delegate
+/// oauth: canonical_scopes: https://www.googleapis.com/auth/calendar.read
 class Authentication {
   /// Defines a set of authentication providers that a service supports.
   core.List<AuthProvider>? providers;
@@ -1918,26 +1919,21 @@ class Empty {
   core.Map<core.String, core.dynamic> toJson() => {};
 }
 
-/// `Endpoint` describes a network endpoint of a service that serves a set of
+/// `Endpoint` describes a network address of a service that serves a set of
 /// APIs.
 ///
 /// It is commonly known as a service endpoint. A service may expose any number
 /// of service endpoints, and all service endpoints share the same service
-/// definition, such as quota limits and monitoring metrics. Example service
-/// configuration: name: library-example.googleapis.com endpoints: # Below entry
-/// makes 'google.example.library.v1.Library' # API be served from endpoint
-/// address library-example.googleapis.com. # It also allows HTTP OPTIONS calls
-/// to be passed to the backend, for # it to decide whether the subsequent
-/// cross-origin request is # allowed to proceed. - name:
-/// library-example.googleapis.com allow_cors: true
+/// definition, such as quota limits and monitoring metrics. Example: type:
+/// google.api.Service name: library-example.googleapis.com endpoints: #
+/// Declares network address `https://library-example.googleapis.com` # for
+/// service `library-example.googleapis.com`. The `https` scheme # is implicit
+/// for all service endpoints. Other schemes may be # supported in the future. -
+/// name: library-example.googleapis.com allow_cors: false - name:
+/// content-staging-library-example.googleapis.com # Allows HTTP OPTIONS calls
+/// to be passed to the API frontend, for it # to decide whether the subsequent
+/// cross-origin request is allowed # to proceed. allow_cors: true
 class Endpoint {
-  /// DEPRECATED: This field is no longer supported.
-  ///
-  /// Instead of using aliases, please specify multiple google.api.Endpoint for
-  /// each of the intended aliases. Additional names that this endpoint will be
-  /// hosted on.
-  core.List<core.String>? aliases;
-
   /// Allowing
   /// [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka
   /// cross-domain traffic, would allow the backends served from this endpoint
@@ -1961,11 +1957,6 @@ class Endpoint {
   Endpoint();
 
   Endpoint.fromJson(core.Map _json) {
-    if (_json.containsKey('aliases')) {
-      aliases = (_json['aliases'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
     if (_json.containsKey('allowCors')) {
       allowCors = _json['allowCors'] as core.bool;
     }
@@ -1978,7 +1969,6 @@ class Endpoint {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (aliases != null) 'aliases': aliases!,
         if (allowCors != null) 'allowCors': allowCors!,
         if (name != null) 'name': name!,
         if (target != null) 'target': target!,
@@ -3965,15 +3955,19 @@ class SearchTenancyUnitsResponse {
       };
 }
 
-/// `Service` is the root object of Google service configuration schema.
+/// `Service` is the root object of Google API service configuration (service
+/// config).
 ///
-/// It describes basic information about a service, such as the name and the
-/// title, and delegates other aspects to sub-sections. Each sub-section is
-/// either a proto message or a repeated proto message that configures a
-/// specific aspect, such as auth. See each proto message definition for
-/// details. Example: type: google.api.Service name: calendar.googleapis.com
-/// title: Google Calendar API apis: - name: google.calendar.v3.Calendar
-/// authentication: providers: - id: google_calendar_auth jwks_uri:
+/// It describes the basic information about a logical service, such as the
+/// service name and the user-facing title, and delegates other aspects to
+/// sub-sections. Each sub-section is either a proto message or a repeated proto
+/// message that configures a specific aspect, such as auth. For more
+/// information, see each proto message definition. Example: type:
+/// google.api.Service name: calendar.googleapis.com title: Google Calendar API
+/// apis: - name: google.calendar.v3.Calendar visibility: rules: - selector:
+/// "google.calendar.v3.*" restriction: PREVIEW backend: rules: - selector:
+/// "google.calendar.v3.*" address: calendar.example.com authentication:
+/// providers: - id: google_calendar_auth jwks_uri:
 /// https://www.googleapis.com/oauth2/v1/certs issuer:
 /// https://securetoken.google.com rules: - selector: "*" requirements:
 /// provider_id: google_calendar_auth
@@ -3995,9 +3989,10 @@ class Service {
   /// Billing configuration.
   Billing? billing;
 
-  /// The service config compiler always sets this field to `3`.
+  /// Obsolete.
   ///
-  /// Deprecated.
+  /// Do not use. This field has no semantic meaning. The service config
+  /// compiler always sets this field to `3`.
   core.int? configVersion;
 
   /// Context configuration.

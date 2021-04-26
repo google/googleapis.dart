@@ -24,12 +24,15 @@
 /// - [AdvertisersResource]
 ///   - [AdvertisersAssetsResource]
 ///   - [AdvertisersCampaignsResource]
+///     - [AdvertisersCampaignsTargetingTypesResource]
+/// - [AdvertisersCampaignsTargetingTypesAssignedTargetingOptionsResource]
 ///   - [AdvertisersChannelsResource]
 ///     - [AdvertisersChannelsSitesResource]
 ///   - [AdvertisersCreativesResource]
 ///   - [AdvertisersInsertionOrdersResource]
 ///     - [AdvertisersInsertionOrdersTargetingTypesResource]
 /// - [AdvertisersInsertionOrdersTargetingTypesAssignedTargetingOptionsResource]
+///   - [AdvertisersInvoicesResource]
 ///   - [AdvertisersLineItemsResource]
 ///     - [AdvertisersLineItemsTargetingTypesResource]
 /// - [AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource]
@@ -149,6 +152,8 @@ class AdvertisersResource {
       AdvertisersCreativesResource(_requester);
   AdvertisersInsertionOrdersResource get insertionOrders =>
       AdvertisersInsertionOrdersResource(_requester);
+  AdvertisersInvoicesResource get invoices =>
+      AdvertisersInvoicesResource(_requester);
   AdvertisersLineItemsResource get lineItems =>
       AdvertisersLineItemsResource(_requester);
   AdvertisersLocationListsResource get locationLists =>
@@ -641,8 +646,93 @@ class AdvertisersAssetsResource {
 class AdvertisersCampaignsResource {
   final commons.ApiRequester _requester;
 
+  AdvertisersCampaignsTargetingTypesResource get targetingTypes =>
+      AdvertisersCampaignsTargetingTypesResource(_requester);
+
   AdvertisersCampaignsResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Lists assigned targeting options of a campaign across targeting types.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Required. The ID of the advertiser the campaign belongs
+  /// to.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [campaignId] - Required. The ID of the campaign to list assigned targeting
+  /// options for.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [filter] - Allows filtering by assigned targeting option properties.
+  /// Supported syntax: * Filter expressions are made up of one or more
+  /// restrictions. * Restrictions can be combined by the logical operator `OR`
+  /// on the same field. * A restriction has the form of `{field} {operator}
+  /// {value}`. * The operator must be `EQUALS (=)`. * Supported fields: -
+  /// `targetingType` - `inheritance` Examples: * AssignedTargetingOptions of
+  /// targeting type TARGETING_TYPE_LANGUAGE or TARGETING_TYPE_GENDER
+  /// `targetingType="TARGETING_TYPE_LANGUAGE" OR
+  /// targetingType="TARGETING_TYPE_GENDER"` * AssignedTargetingOptions with
+  /// inheritance status of NOT_INHERITED or INHERITED_FROM_PARTNER
+  /// `inheritance="NOT_INHERITED" OR inheritance="INHERITED_FROM_PARTNER"` The
+  /// length of this field should be no more than 500 characters.
+  ///
+  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
+  /// `targetingType` (default) The default sorting order is ascending. To
+  /// specify descending order for a field, a suffix "desc" should be added to
+  /// the field name. Example: `targetingType desc`.
+  ///
+  /// [pageSize] - Requested page size. The size must be an integer between `1`
+  /// and `5000`. If unspecified, the default is `5000`. Returns error code
+  /// `INVALID_ARGUMENT` if an invalid value is specified.
+  ///
+  /// [pageToken] - A token that lets the client fetch the next page of results.
+  /// Typically, this is the value of next_page_token returned from the previous
+  /// call to `BulkListCampaignAssignedTargetingOptions` method. If not
+  /// specified, the first page of results will be returned.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BulkListCampaignAssignedTargetingOptionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BulkListCampaignAssignedTargetingOptionsResponse>
+      bulkListCampaignAssignedTargetingOptions(
+    core.String advertiserId,
+    core.String campaignId, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/advertisers/' +
+        core.Uri.encodeFull('$advertiserId') +
+        '/campaigns/' +
+        core.Uri.encodeFull('$campaignId') +
+        ':bulkListCampaignAssignedTargetingOptions';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return BulkListCampaignAssignedTargetingOptionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 
   /// Creates a new campaign.
   ///
@@ -911,6 +1001,360 @@ class AdvertisersCampaignsResource {
       queryParams: _queryParams,
     );
     return Campaign.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class AdvertisersCampaignsTargetingTypesResource {
+  final commons.ApiRequester _requester;
+
+  AdvertisersCampaignsTargetingTypesAssignedTargetingOptionsResource
+      get assignedTargetingOptions =>
+          AdvertisersCampaignsTargetingTypesAssignedTargetingOptionsResource(
+              _requester);
+
+  AdvertisersCampaignsTargetingTypesResource(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class AdvertisersCampaignsTargetingTypesAssignedTargetingOptionsResource {
+  final commons.ApiRequester _requester;
+
+  AdvertisersCampaignsTargetingTypesAssignedTargetingOptionsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets a single targeting option assigned to a campaign.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Required. The ID of the advertiser the campaign belongs
+  /// to.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [campaignId] - Required. The ID of the campaign the assigned targeting
+  /// option belongs to.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [targetingType] - Required. Identifies the type of this assigned targeting
+  /// option. Supported targeting types: * `TARGETING_TYPE_AGE_RANGE` *
+  /// `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` *
+  /// `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` *
+  /// `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` *
+  /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
+  /// `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` *
+  /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` *
+  /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` *
+  /// `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_LANGUAGE` *
+  /// `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_PARENTAL_STATUS` *
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+  /// `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` *
+  /// `TARGETING_TYPE_VIEWABILITY`
+  /// Value must have pattern `^\[^/\]+$`.
+  /// Possible string values are:
+  /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
+  /// or is unknown in this version.
+  /// - "TARGETING_TYPE_CHANNEL" : Target a channel (a custom group of related
+  /// websites or apps).
+  /// - "TARGETING_TYPE_APP_CATEGORY" : Target an app category (for example,
+  /// education or puzzle games).
+  /// - "TARGETING_TYPE_APP" : Target a specific app (for example, Angry Birds).
+  /// - "TARGETING_TYPE_URL" : Target a specific url (for example, quora.com).
+  /// - "TARGETING_TYPE_DAY_AND_TIME" : Target ads during a chosen time period
+  /// on a specific day.
+  /// - "TARGETING_TYPE_AGE_RANGE" : Target ads to a specific age range (for
+  /// example, 18-24).
+  /// - "TARGETING_TYPE_REGIONAL_LOCATION_LIST" : Target ads to the specified
+  /// regions on a regional location list.
+  /// - "TARGETING_TYPE_PROXIMITY_LOCATION_LIST" : Target ads to the specified
+  /// points of interest on a proximity location list.
+  /// - "TARGETING_TYPE_GENDER" : Target ads to a specific gender (for example,
+  /// female or male).
+  /// - "TARGETING_TYPE_VIDEO_PLAYER_SIZE" : Target a specific video player size
+  /// for video ads.
+  /// - "TARGETING_TYPE_USER_REWARDED_CONTENT" : Target user rewarded content
+  /// for video ads.
+  /// - "TARGETING_TYPE_PARENTAL_STATUS" : Target ads to a specific parental
+  /// status (for example, parent or not a parent).
+  /// - "TARGETING_TYPE_CONTENT_INSTREAM_POSITION" : Target video or audio ads
+  /// in a specific content instream position (for example, pre-roll, mid-roll,
+  /// or post-roll).
+  /// - "TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION" : Target ads in a specific
+  /// content outstream position.
+  /// - "TARGETING_TYPE_DEVICE_TYPE" : Target ads to a specific device type (for
+  /// example, tablet or connected TV).
+  /// - "TARGETING_TYPE_AUDIENCE_GROUP" : Target ads to an audience or groups of
+  /// audiences. Singleton field, at most one can exist on a single Lineitem at
+  /// a time.
+  /// - "TARGETING_TYPE_BROWSER" : Target ads to specific web browsers (for
+  /// example, Chrome).
+  /// - "TARGETING_TYPE_HOUSEHOLD_INCOME" : Target ads to a specific household
+  /// income range (for example, top 10%).
+  /// - "TARGETING_TYPE_ON_SCREEN_POSITION" : Target ads in a specific on screen
+  /// position.
+  /// - "TARGETING_TYPE_THIRD_PARTY_VERIFIER" : Filter web sites through third
+  /// party verification (for example, IAS or DoubleVerify).
+  /// - "TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION" : Filter web sites by
+  /// specific digital content label ratings (for example, DL-MA: suitable only
+  /// for mature audiences).
+  /// - "TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION" : Filter website content
+  /// by sensitive categories (for example, adult).
+  /// - "TARGETING_TYPE_ENVIRONMENT" : Target ads to a specific environment (for
+  /// example, web or app).
+  /// - "TARGETING_TYPE_CARRIER_AND_ISP" : Target ads to a specific network
+  /// carrier or internet service provider (ISP) (for example, Comcast or
+  /// Orange).
+  /// - "TARGETING_TYPE_OPERATING_SYSTEM" : Target ads to a specific operating
+  /// system (for example, macOS).
+  /// - "TARGETING_TYPE_DEVICE_MAKE_MODEL" : Target ads to a specific device
+  /// make or model (for example, Roku or Samsung).
+  /// - "TARGETING_TYPE_KEYWORD" : Target ads to a specific keyword (for
+  /// example, dog or retriever).
+  /// - "TARGETING_TYPE_NEGATIVE_KEYWORD_LIST" : Target ads to a specific
+  /// negative keyword list.
+  /// - "TARGETING_TYPE_VIEWABILITY" : Target ads to a specific viewability (for
+  /// example, 80% viewable).
+  /// - "TARGETING_TYPE_CATEGORY" : Target ads to a specific content category
+  /// (for example, arts & entertainment).
+  /// - "TARGETING_TYPE_INVENTORY_SOURCE" : Purchase impressions from specific
+  /// deals and auction packages.
+  /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
+  /// example, English or Japanese).
+  /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
+  /// authorized sellers.
+  /// - "TARGETING_TYPE_GEO_REGION" : Target ads to a specific regional location
+  /// (for example, a city or state).
+  /// - "TARGETING_TYPE_INVENTORY_SOURCE_GROUP" : Purchase impressions from a
+  /// group of deals and auction packages.
+  /// - "TARGETING_TYPE_EXCHANGE" : Purchase impressions from specific
+  /// exchanges.
+  /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
+  /// sub-exchanges.
+  /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
+  /// native content position.
+  ///
+  /// [assignedTargetingOptionId] - Required. An identifier unique to the
+  /// targeting type in this campaign that identifies the assigned targeting
+  /// option being requested.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AssignedTargetingOption].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AssignedTargetingOption> get(
+    core.String advertiserId,
+    core.String campaignId,
+    core.String targetingType,
+    core.String assignedTargetingOptionId, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/advertisers/' +
+        core.Uri.encodeFull('$advertiserId') +
+        '/campaigns/' +
+        core.Uri.encodeFull('$campaignId') +
+        '/targetingTypes/' +
+        core.Uri.encodeFull('$targetingType') +
+        '/assignedTargetingOptions/' +
+        core.Uri.encodeFull('$assignedTargetingOptionId');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return AssignedTargetingOption.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists the targeting options assigned to a campaign for a specified
+  /// targeting type.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Required. The ID of the advertiser the campaign belongs
+  /// to.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [campaignId] - Required. The ID of the campaign to list assigned targeting
+  /// options for.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [targetingType] - Required. Identifies the type of assigned targeting
+  /// options to list. Supported targeting types: * `TARGETING_TYPE_AGE_RANGE` *
+  /// `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` *
+  /// `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` *
+  /// `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` *
+  /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
+  /// `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` *
+  /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` *
+  /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` *
+  /// `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_LANGUAGE` *
+  /// `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_PARENTAL_STATUS` *
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+  /// `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` *
+  /// `TARGETING_TYPE_VIEWABILITY`
+  /// Value must have pattern `^\[^/\]+$`.
+  /// Possible string values are:
+  /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
+  /// or is unknown in this version.
+  /// - "TARGETING_TYPE_CHANNEL" : Target a channel (a custom group of related
+  /// websites or apps).
+  /// - "TARGETING_TYPE_APP_CATEGORY" : Target an app category (for example,
+  /// education or puzzle games).
+  /// - "TARGETING_TYPE_APP" : Target a specific app (for example, Angry Birds).
+  /// - "TARGETING_TYPE_URL" : Target a specific url (for example, quora.com).
+  /// - "TARGETING_TYPE_DAY_AND_TIME" : Target ads during a chosen time period
+  /// on a specific day.
+  /// - "TARGETING_TYPE_AGE_RANGE" : Target ads to a specific age range (for
+  /// example, 18-24).
+  /// - "TARGETING_TYPE_REGIONAL_LOCATION_LIST" : Target ads to the specified
+  /// regions on a regional location list.
+  /// - "TARGETING_TYPE_PROXIMITY_LOCATION_LIST" : Target ads to the specified
+  /// points of interest on a proximity location list.
+  /// - "TARGETING_TYPE_GENDER" : Target ads to a specific gender (for example,
+  /// female or male).
+  /// - "TARGETING_TYPE_VIDEO_PLAYER_SIZE" : Target a specific video player size
+  /// for video ads.
+  /// - "TARGETING_TYPE_USER_REWARDED_CONTENT" : Target user rewarded content
+  /// for video ads.
+  /// - "TARGETING_TYPE_PARENTAL_STATUS" : Target ads to a specific parental
+  /// status (for example, parent or not a parent).
+  /// - "TARGETING_TYPE_CONTENT_INSTREAM_POSITION" : Target video or audio ads
+  /// in a specific content instream position (for example, pre-roll, mid-roll,
+  /// or post-roll).
+  /// - "TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION" : Target ads in a specific
+  /// content outstream position.
+  /// - "TARGETING_TYPE_DEVICE_TYPE" : Target ads to a specific device type (for
+  /// example, tablet or connected TV).
+  /// - "TARGETING_TYPE_AUDIENCE_GROUP" : Target ads to an audience or groups of
+  /// audiences. Singleton field, at most one can exist on a single Lineitem at
+  /// a time.
+  /// - "TARGETING_TYPE_BROWSER" : Target ads to specific web browsers (for
+  /// example, Chrome).
+  /// - "TARGETING_TYPE_HOUSEHOLD_INCOME" : Target ads to a specific household
+  /// income range (for example, top 10%).
+  /// - "TARGETING_TYPE_ON_SCREEN_POSITION" : Target ads in a specific on screen
+  /// position.
+  /// - "TARGETING_TYPE_THIRD_PARTY_VERIFIER" : Filter web sites through third
+  /// party verification (for example, IAS or DoubleVerify).
+  /// - "TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION" : Filter web sites by
+  /// specific digital content label ratings (for example, DL-MA: suitable only
+  /// for mature audiences).
+  /// - "TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION" : Filter website content
+  /// by sensitive categories (for example, adult).
+  /// - "TARGETING_TYPE_ENVIRONMENT" : Target ads to a specific environment (for
+  /// example, web or app).
+  /// - "TARGETING_TYPE_CARRIER_AND_ISP" : Target ads to a specific network
+  /// carrier or internet service provider (ISP) (for example, Comcast or
+  /// Orange).
+  /// - "TARGETING_TYPE_OPERATING_SYSTEM" : Target ads to a specific operating
+  /// system (for example, macOS).
+  /// - "TARGETING_TYPE_DEVICE_MAKE_MODEL" : Target ads to a specific device
+  /// make or model (for example, Roku or Samsung).
+  /// - "TARGETING_TYPE_KEYWORD" : Target ads to a specific keyword (for
+  /// example, dog or retriever).
+  /// - "TARGETING_TYPE_NEGATIVE_KEYWORD_LIST" : Target ads to a specific
+  /// negative keyword list.
+  /// - "TARGETING_TYPE_VIEWABILITY" : Target ads to a specific viewability (for
+  /// example, 80% viewable).
+  /// - "TARGETING_TYPE_CATEGORY" : Target ads to a specific content category
+  /// (for example, arts & entertainment).
+  /// - "TARGETING_TYPE_INVENTORY_SOURCE" : Purchase impressions from specific
+  /// deals and auction packages.
+  /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
+  /// example, English or Japanese).
+  /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
+  /// authorized sellers.
+  /// - "TARGETING_TYPE_GEO_REGION" : Target ads to a specific regional location
+  /// (for example, a city or state).
+  /// - "TARGETING_TYPE_INVENTORY_SOURCE_GROUP" : Purchase impressions from a
+  /// group of deals and auction packages.
+  /// - "TARGETING_TYPE_EXCHANGE" : Purchase impressions from specific
+  /// exchanges.
+  /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
+  /// sub-exchanges.
+  /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
+  /// native content position.
+  ///
+  /// [filter] - Allows filtering by assigned targeting option properties.
+  /// Supported syntax: * Filter expressions are made up of one or more
+  /// restrictions. * Restrictions can be combined by the logical operator `OR`.
+  /// * A restriction has the form of `{field} {operator} {value}`. * The
+  /// operator must be `EQUALS (=)`. * Supported fields: -
+  /// `assignedTargetingOptionId` - `inheritance` Examples: *
+  /// AssignedTargetingOptions with ID 1 or 2 `assignedTargetingOptionId="1" OR
+  /// assignedTargetingOptionId="2"` * AssignedTargetingOptions with inheritance
+  /// status of NOT_INHERITED or INHERITED_FROM_PARTNER
+  /// `inheritance="NOT_INHERITED" OR inheritance="INHERITED_FROM_PARTNER"` The
+  /// length of this field should be no more than 500 characters.
+  ///
+  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
+  /// `assignedTargetingOptionId` (default) The default sorting order is
+  /// ascending. To specify descending order for a field, a suffix "desc" should
+  /// be added to the field name. Example: `assignedTargetingOptionId desc`.
+  ///
+  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
+  /// if an invalid value is specified.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of next_page_token returned from the
+  /// previous call to `ListCampaignAssignedTargetingOptions` method. If not
+  /// specified, the first page of results will be returned.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListCampaignAssignedTargetingOptionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListCampaignAssignedTargetingOptionsResponse> list(
+    core.String advertiserId,
+    core.String campaignId,
+    core.String targetingType, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/advertisers/' +
+        core.Uri.encodeFull('$advertiserId') +
+        '/campaigns/' +
+        core.Uri.encodeFull('$campaignId') +
+        '/targetingTypes/' +
+        core.Uri.encodeFull('$targetingType') +
+        '/assignedTargetingOptions';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListCampaignAssignedTargetingOptionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1331,7 +1775,7 @@ class AdvertisersChannelsSitesResource {
   /// descending order for a field, a suffix " desc" should be added to the
   /// field name. Example: `urlOrAppId desc`.
   ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// [pageSize] - Requested page size. Must be between `1` and `10000`. If
   /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
   /// if an invalid value is specified.
   ///
@@ -1383,6 +1827,58 @@ class AdvertisersChannelsSitesResource {
       queryParams: _queryParams,
     );
     return ListSitesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Replaces all of the sites under a single channel.
+  ///
+  /// The operation will replace the sites under a channel with the sites
+  /// provided in ReplaceSitesRequest.new_sites.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - The ID of the advertiser that owns the parent channel.
+  ///
+  /// [channelId] - Required. The ID of the parent channel whose sites will be
+  /// replaced.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ReplaceSitesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ReplaceSitesResponse> replace(
+    ReplaceSitesRequest request,
+    core.String advertiserId,
+    core.String channelId, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/advertisers/' +
+        commons.escapeVariable('$advertiserId') +
+        '/channels/' +
+        core.Uri.encodeFull('$channelId') +
+        '/sites:replace';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return ReplaceSitesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -2169,6 +2665,8 @@ class AdvertisersInsertionOrdersTargetingTypesAssignedTargetingOptionsResource {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
+  /// native content position.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this insertion order that identifies the assigned
@@ -2308,6 +2806,8 @@ class AdvertisersInsertionOrdersTargetingTypesAssignedTargetingOptionsResource {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
+  /// native content position.
   ///
   /// [filter] - Allows filtering by assigned targeting option properties.
   /// Supported syntax: * Filter expressions are made up of one or more
@@ -2377,6 +2877,123 @@ class AdvertisersInsertionOrdersTargetingTypesAssignedTargetingOptionsResource {
       queryParams: _queryParams,
     );
     return ListInsertionOrderAssignedTargetingOptionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class AdvertisersInvoicesResource {
+  final commons.ApiRequester _requester;
+
+  AdvertisersInvoicesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// List invoices for an advertiser.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Required. The ID of the advertiser to list invoices for.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [issueMonth] - Required. Month for which invoices are needed in the format
+  /// YYYYMM.
+  ///
+  /// [loiSapinInvoiceType] - Select type of invoice to query for Loi Sapin
+  /// advertisers. Otherwise its ignored.
+  /// Possible string values are:
+  /// - "LOI_SAPIN_INVOICE_TYPE_UNSPECIFIED" : Value is not specified.
+  /// - "LOI_SAPIN_INVOICE_TYPE_MEDIA" : Invoices with Media cost.
+  /// - "LOI_SAPIN_INVOICE_TYPE_PLATFORM" : Invoices with Platform fee.
+  ///
+  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
+  /// if an invalid value is specified.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of
+  /// \[ListInvoicesResponse.next_page_token\] returned from the previous call
+  /// to `ListInvoice` method. If not specified, the first page of results will
+  /// be returned.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListInvoicesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListInvoicesResponse> list(
+    core.String advertiserId, {
+    core.String? issueMonth,
+    core.String? loiSapinInvoiceType,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (issueMonth != null) 'issueMonth': [issueMonth],
+      if (loiSapinInvoiceType != null)
+        'loiSapinInvoiceType': [loiSapinInvoiceType],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/advertisers/' + core.Uri.encodeFull('$advertiserId') + '/invoices';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListInvoicesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lookup invoice currency for an advertiser.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Required. The ID of the advertiser to lookup currency
+  /// for.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [invoiceMonth] - Month for which currency is needed in the format YYYYMM.
+  /// If not set Api would return currency based on current settings.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LookupInvoiceCurrencyResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LookupInvoiceCurrencyResponse> lookupInvoiceCurrency(
+    core.String advertiserId, {
+    core.String? invoiceMonth,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (invoiceMonth != null) 'invoiceMonth': [invoiceMonth],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/advertisers/' +
+        core.Uri.encodeFull('$advertiserId') +
+        '/invoices:lookupInvoiceCurrency';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return LookupInvoiceCurrencyResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -2620,6 +3237,55 @@ class AdvertisersLineItemsResource {
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Creates a new line item with settings (including targeting) inherited from
+  /// the insertion order and an `ENTITY_STATUS_DRAFT` entity_status.
+  ///
+  /// Returns the newly created line item if successful. There are default
+  /// values based on the three fields: * The insertion order's
+  /// insertion_order_type * The insertion order's automation_type * The given
+  /// line_item_type
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Required. The ID of the advertiser this line item belongs
+  /// to.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LineItem].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LineItem> generateDefault(
+    GenerateDefaultLineItemRequest request,
+    core.String advertiserId, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/advertisers/' +
+        core.Uri.encodeFull('$advertiserId') +
+        '/lineItems:generateDefault';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return LineItem.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets a line item.
   ///
   /// Request parameters:
@@ -2684,16 +3350,15 @@ class AdvertisersLineItemsResource {
   /// `updateTime` must be `GREATER THAN OR EQUAL TO (>=)` or `LESS THAN OR
   /// EQUAL TO (<=)`. * The operator used on `warningMessages` must be `HAS
   /// (:)`. * The operators used on all other fields must be `EQUALS (=)`. *
-  /// Supported fields: - `campaignId` - `displayName` - `insertionOrderId` -
-  /// `entityStatus` - `lineItemId` - `lineItemType` -
+  /// Supported properties: - `campaignId` - `displayName` - `insertionOrderId`
+  /// - `entityStatus` - `lineItemId` - `lineItemType` -
   /// `flight.dateRange.endDate` (input formatted as YYYY-MM-DD) -
   /// `warningMessages` - `flight.triggerId` - `updateTime` (input in ISO 8601
-  /// format, or YYYY-MM-DDTHH:MM:SSZ) * The operator can be `NO LESS THAN (>=)`
-  /// or `NO GREATER THAN (<=)`. - `updateTime` (format of ISO 8601) Examples: *
-  /// All line items under an insertion order: `insertionOrderId="1234"` * All
-  /// `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` and
-  /// `LINE_ITEM_TYPE_DISPLAY_DEFAULT` line items under an advertiser:
-  /// `(entityStatus="ENTITY_STATUS_ACTIVE" OR
+  /// format, or YYYY-MM-DDTHH:MM:SSZ) - `targetedChannelId` -
+  /// `targetedNegativeKeywordListId` Examples: * All line items under an
+  /// insertion order: `insertionOrderId="1234"` * All `ENTITY_STATUS_ACTIVE` or
+  /// `ENTITY_STATUS_PAUSED` and `LINE_ITEM_TYPE_DISPLAY_DEFAULT` line items
+  /// under an advertiser: `(entityStatus="ENTITY_STATUS_ACTIVE" OR
   /// entityStatus="ENTITY_STATUS_PAUSED") AND
   /// lineItemType="LINE_ITEM_TYPE_DISPLAY_DEFAULT"` * All line items whose
   /// flight dates end before March 28, 2019:
@@ -2703,8 +3368,10 @@ class AdvertisersLineItemsResource {
   /// less than or equal to `2020-11-04T18:54:47Z (format of ISO 8601)`:
   /// `updateTime<="2020-11-04T18:54:47Z"` * All line items with an update time
   /// greater than or equal to `2020-11-04T18:54:47Z (format of ISO 8601)`:
-  /// `updateTime>="2020-11-04T18:54:47Z"` The length of this field should be no
-  /// more than 500 characters.
+  /// `updateTime>="2020-11-04T18:54:47Z"` * All line items that are using both
+  /// the specified channel and specified negative keyword list in their
+  /// targeting: `targetedNegativeKeywordListId=789 AND targetedChannelId=12345`
+  /// The length of this field should be no more than 500 characters.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// "displayName" (default) * "entityStatus" * “flight.dateRange.endDate” *
@@ -2932,6 +3599,8 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
+  /// native content position.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3067,6 +3736,8 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
+  /// native content position.
   ///
   /// [assignedTargetingOptionId] - Required. The ID of the assigned targeting
   /// option to delete.
@@ -3204,6 +3875,8 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
+  /// native content position.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this line item that identifies the assigned targeting
@@ -3343,6 +4016,8 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
+  /// native content position.
   ///
   /// [filter] - Allows filtering by assigned targeting option properties.
   /// Supported syntax: * Filter expressions are made up of one or more
@@ -4646,7 +5321,7 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResource {
   /// specify descending order for a field, a suffix " desc" should be added to
   /// the field name. Example: `keywordValue desc`.
   ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// [pageSize] - Requested page size. Must be between `1` and `1000`. If
   /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
   /// if an invalid value is specified.
   ///
@@ -4694,6 +5369,59 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResource {
       queryParams: _queryParams,
     );
     return ListNegativeKeywordsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Replaces all negative keywords in a single negative keyword list.
+  ///
+  /// The operation will replace the keywords in a negative keyword list with
+  /// keywords provided in ReplaceNegativeKeywordsRequest.new_negative_keywords.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Required. The ID of the DV360 advertiser to which the
+  /// parent negative keyword list belongs.
+  ///
+  /// [negativeKeywordListId] - Required. The ID of the parent negative keyword
+  /// list to which the negative keywords belong.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ReplaceNegativeKeywordsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ReplaceNegativeKeywordsResponse> replace(
+    ReplaceNegativeKeywordsRequest request,
+    core.String advertiserId,
+    core.String negativeKeywordListId, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/advertisers/' +
+        commons.escapeVariable('$advertiserId') +
+        '/negativeKeywordLists/' +
+        core.Uri.encodeFull('$negativeKeywordListId') +
+        '/negativeKeywords:replace';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return ReplaceNegativeKeywordsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -4811,6 +5539,8 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
+  /// native content position.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4940,6 +5670,8 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
+  /// native content position.
   ///
   /// [assignedTargetingOptionId] - Required. The ID of the assigned targeting
   /// option to delete.
@@ -5071,6 +5803,8 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
+  /// native content position.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this advertiser that identifies the assigned targeting
@@ -5204,6 +5938,8 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
+  /// native content position.
   ///
   /// [filter] - Allows filtering by assigned targeting option properties.
   /// Supported syntax: * Filter expressions are made up of one or more
@@ -7322,7 +8058,7 @@ class PartnersChannelsSitesResource {
   /// descending order for a field, a suffix " desc" should be added to the
   /// field name. Example: `urlOrAppId desc`.
   ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// [pageSize] - Requested page size. Must be between `1` and `10000`. If
   /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
   /// if an invalid value is specified.
   ///
@@ -7372,6 +8108,58 @@ class PartnersChannelsSitesResource {
       queryParams: _queryParams,
     );
     return ListSitesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Replaces all of the sites under a single channel.
+  ///
+  /// The operation will replace the sites under a channel with the sites
+  /// provided in ReplaceSitesRequest.new_sites.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [partnerId] - The ID of the partner that owns the parent channel.
+  ///
+  /// [channelId] - Required. The ID of the parent channel whose sites will be
+  /// replaced.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ReplaceSitesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ReplaceSitesResponse> replace(
+    ReplaceSitesRequest request,
+    core.String partnerId,
+    core.String channelId, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/partners/' +
+        commons.escapeVariable('$partnerId') +
+        '/channels/' +
+        core.Uri.encodeFull('$channelId') +
+        '/sites:replace';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return ReplaceSitesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -7487,6 +8275,8 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
+  /// native content position.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7614,6 +8404,8 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
+  /// native content position.
   ///
   /// [assignedTargetingOptionId] - Required. The ID of the assigned targeting
   /// option to delete.
@@ -7743,6 +8535,8 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
+  /// native content position.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this partner that identifies the assigned targeting
@@ -7874,6 +8668,8 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
+  /// native content position.
   ///
   /// [filter] - Allows filtering by assigned targeting option properties.
   /// Supported syntax: * Filter expressions are made up of one or more
@@ -8138,6 +8934,8 @@ class TargetingTypesTargetingOptionsResource {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
+  /// native content position.
   ///
   /// [targetingOptionId] - Required. The ID of the of targeting option to
   /// retrieve.
@@ -8266,6 +9064,8 @@ class TargetingTypesTargetingOptionsResource {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
+  /// native content position.
   ///
   /// [advertiserId] - Required. The Advertiser this request is being made in
   /// the context of.
@@ -8429,6 +9229,8 @@ class TargetingTypesTargetingOptionsResource {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
+  /// native content position.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8928,7 +9730,7 @@ class Advertiser {
   /// Controls whether or not insertion orders and line items of the advertiser
   /// can spend their budgets and bid on inventory.
   ///
-  /// * Accepted values are `ENTITY_STATUS_ACTIVE` and
+  /// * Accepted values are `ENTITY_STATUS_ACTIVE`, `ENTITY_STATUS_PAUSED` and
   /// `ENTITY_STATUS_SCHEDULED_FOR_DELETION`. * If set to
   /// `ENTITY_STATUS_SCHEDULED_FOR_DELETION`, the advertiser will be deleted 30
   /// days from when it was first scheduled for deletion.
@@ -8969,6 +9771,15 @@ class Advertiser {
   ///
   /// Required. Immutable.
   core.String? partnerId;
+
+  /// Whether integration with Mediaocean (Prisma) is enabled.
+  ///
+  /// By enabling this: On behalf of my company, I authorize Mediaocean (Prisma)
+  /// to send budget segment plans to Google, and I authorize Google to send
+  /// corresponding reporting and invoices from DV360 to Mediaocean for the
+  /// purposes of budget planning, billing, and reconciliation for this
+  /// advertiser.
+  core.bool? prismaEnabled;
 
   /// Targeting settings related to ad serving of the advertiser.
   AdvertiserTargetingConfig? servingConfig;
@@ -9018,6 +9829,9 @@ class Advertiser {
     if (_json.containsKey('partnerId')) {
       partnerId = _json['partnerId'] as core.String;
     }
+    if (_json.containsKey('prismaEnabled')) {
+      prismaEnabled = _json['prismaEnabled'] as core.bool;
+    }
     if (_json.containsKey('servingConfig')) {
       servingConfig = AdvertiserTargetingConfig.fromJson(
           _json['servingConfig'] as core.Map<core.String, core.dynamic>);
@@ -9040,6 +9854,7 @@ class Advertiser {
           'integrationDetails': integrationDetails!.toJson(),
         if (name != null) 'name': name!,
         if (partnerId != null) 'partnerId': partnerId!,
+        if (prismaEnabled != null) 'prismaEnabled': prismaEnabled!,
         if (servingConfig != null) 'servingConfig': servingConfig!.toJson(),
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -9370,6 +10185,28 @@ class AppAssignedTargetingOptionDetails {
   /// Required.
   core.String? appId;
 
+  /// Indicates the platform of the targeted app.
+  ///
+  /// If this field is not specified, the app platform will be assumed to be
+  /// mobile (i.e., Android or iOS), and we will derive the appropriate mobile
+  /// platform from the app ID.
+  /// Possible string values are:
+  /// - "APP_PLATFORM_UNSPECIFIED" : Default value when app platform is not
+  /// specified in this version. This enum is a placeholder for default value
+  /// and does not represent a real platform option.
+  /// - "APP_PLATFORM_IOS" : The app platform is iOS.
+  /// - "APP_PLATFORM_ANDROID" : The app platform is Android.
+  /// - "APP_PLATFORM_ROKU" : The app platform is Roku.
+  /// - "APP_PLATFORM_AMAZON_FIRETV" : The app platform is Amazon FireTV.
+  /// - "APP_PLATFORM_PLAYSTATION" : The app platform is Playstation.
+  /// - "APP_PLATFORM_APPLE_TV" : The app platform is Apple TV.
+  /// - "APP_PLATFORM_XBOX" : The app platform is Xbox.
+  /// - "APP_PLATFORM_SAMSUNG_TV" : The app platform is Samsung TV.
+  /// - "APP_PLATFORM_ANDROID_TV" : The app platform is Android TV.
+  /// - "APP_PLATFORM_GENERIC_CTV" : The app platform is a CTV platform that is
+  /// not explicitly listed elsewhere.
+  core.String? appPlatform;
+
   /// The display name of the app.
   ///
   /// Output only.
@@ -9384,6 +10221,9 @@ class AppAssignedTargetingOptionDetails {
     if (_json.containsKey('appId')) {
       appId = _json['appId'] as core.String;
     }
+    if (_json.containsKey('appPlatform')) {
+      appPlatform = _json['appPlatform'] as core.String;
+    }
     if (_json.containsKey('displayName')) {
       displayName = _json['displayName'] as core.String;
     }
@@ -9394,6 +10234,7 @@ class AppAssignedTargetingOptionDetails {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (appId != null) 'appId': appId!,
+        if (appPlatform != null) 'appPlatform': appPlatform!,
         if (displayName != null) 'displayName': displayName!,
         if (negative != null) 'negative': negative!,
       };
@@ -9703,25 +10544,25 @@ class AssignedLocation {
 class AssignedTargetingOption {
   /// Age range details.
   ///
-  /// This field will be populated when the TargetingType is
+  /// This field will be populated when the targeting_type is
   /// `TARGETING_TYPE_AGE_RANGE`.
   AgeRangeAssignedTargetingOptionDetails? ageRangeDetails;
 
   /// App category details.
   ///
-  /// This field will be populated when the TargetingType is
+  /// This field will be populated when the targeting_type is
   /// `TARGETING_TYPE_APP_CATEGORY`.
   AppCategoryAssignedTargetingOptionDetails? appCategoryDetails;
 
   /// App details.
   ///
-  /// This field will be populated when the TargetingType is
+  /// This field will be populated when the targeting_type is
   /// `TARGETING_TYPE_APP`.
   AppAssignedTargetingOptionDetails? appDetails;
 
   /// The unique ID of the assigned targeting option.
   ///
-  /// The ID is only unique within a given line item and targeting type. It may
+  /// The ID is only unique within a given resource and targeting type. It may
   /// be reused in other contexts.
   ///
   /// Output only.
@@ -9729,16 +10570,16 @@ class AssignedTargetingOption {
 
   /// Audience targeting details.
   ///
-  /// This field will be populated when the TargetingType is
+  /// This field will be populated when the targeting_type is
   /// `TARGETING_TYPE_AUDIENCE_GROUP`. You can only target one audience group
-  /// option per line item.
+  /// option per resource.
   AudienceGroupAssignedTargetingOptionDetails? audienceGroupDetails;
 
   /// Authorized seller status details.
   ///
-  /// This field will be populated when the TargetingType is
+  /// This field will be populated when the targeting_type is
   /// `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`. You can only target one
-  /// authorized seller status option per line item. If a line item doesn't have
+  /// authorized seller status option per resource. If a resource doesn't have
   /// an authorized seller status option, all authorized sellers indicated as
   /// DIRECT or RESELLER in the ads.txt file are targeted by default.
   AuthorizedSellerStatusAssignedTargetingOptionDetails?
@@ -9746,19 +10587,19 @@ class AssignedTargetingOption {
 
   /// Browser details.
   ///
-  /// This field will be populated when the TargetingType is
+  /// This field will be populated when the targeting_type is
   /// `TARGETING_TYPE_BROWSER`.
   BrowserAssignedTargetingOptionDetails? browserDetails;
 
   /// Carrier and ISP details.
   ///
-  /// This field will be populated when the TargetingType is
+  /// This field will be populated when the targeting_type is
   /// `TARGETING_TYPE_CARRIER_AND_ISP`.
   CarrierAndIspAssignedTargetingOptionDetails? carrierAndIspDetails;
 
   /// Category details.
   ///
-  /// This field will be populated when the TargetingType is
+  /// This field will be populated when the targeting_type is
   /// `TARGETING_TYPE_CATEGORY`. Targeting a category will also target its
   /// subcategories. If a category is excluded from targeting and a subcategory
   /// is included, the exclusion will take precedence.
@@ -9766,49 +10607,49 @@ class AssignedTargetingOption {
 
   /// Channel details.
   ///
-  /// This field will be populated when the TargetingType is
+  /// This field will be populated when the targeting_type is
   /// `TARGETING_TYPE_CHANNEL`.
   ChannelAssignedTargetingOptionDetails? channelDetails;
 
   /// Content instream position details.
   ///
-  /// This field will be populated when the TargetingType is
+  /// This field will be populated when the targeting_type is
   /// `TARGETING_TYPE_CONTENT_INSTREAM_POSITION`.
   ContentInstreamPositionAssignedTargetingOptionDetails?
       contentInstreamPositionDetails;
 
   /// Content outstream position details.
   ///
-  /// This field will be populated when the TargetingType is
+  /// This field will be populated when the targeting_type is
   /// `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION`.
   ContentOutstreamPositionAssignedTargetingOptionDetails?
       contentOutstreamPositionDetails;
 
   /// Day and time details.
   ///
-  /// This field will be populated when the TargetingType is
+  /// This field will be populated when the targeting_type is
   /// `TARGETING_TYPE_DAY_AND_TIME`.
   DayAndTimeAssignedTargetingOptionDetails? dayAndTimeDetails;
 
   /// Device make and model details.
   ///
-  /// This field will be populated when the TargetingType is
+  /// This field will be populated when the targeting_type is
   /// `TARGETING_TYPE_DEVICE_MAKE_MODEL`.
   DeviceMakeModelAssignedTargetingOptionDetails? deviceMakeModelDetails;
 
   /// Device Type details.
   ///
-  /// This field will be populated when the TargetingType is
+  /// This field will be populated when the targeting_type is
   /// `TARGETING_TYPE_DEVICE_TYPE`.
   DeviceTypeAssignedTargetingOptionDetails? deviceTypeDetails;
 
   /// Digital content label details.
   ///
-  /// This field will be populated when the TargetingType is
+  /// This field will be populated when the targeting_type is
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION`. Digital content labels
   /// are targeting exclusions. Advertiser level digital content label
   /// exclusions, if set, are always applied in serving (even though they aren't
-  /// visible in line item settings). Line item settings can exclude content
+  /// visible in resource settings). Resource settings can exclude content
   /// labels in addition to advertiser exclusions, but can't override them. A
   /// line item won't serve if all the digital content labels are excluded.
   DigitalContentLabelAssignedTargetingOptionDetails?
@@ -9816,31 +10657,31 @@ class AssignedTargetingOption {
 
   /// Environment details.
   ///
-  /// This field will be populated when the TargetingType is
+  /// This field will be populated when the targeting_type is
   /// `TARGETING_TYPE_ENVIRONMENT`.
   EnvironmentAssignedTargetingOptionDetails? environmentDetails;
 
   /// Exchange details.
   ///
-  /// This field will be populated when the TargetingType is
+  /// This field will be populated when the targeting_type is
   /// `TARGETING_TYPE_EXCHANGE`.
   ExchangeAssignedTargetingOptionDetails? exchangeDetails;
 
   /// Gender details.
   ///
-  /// This field will be populated when the TargetingType is
+  /// This field will be populated when the targeting_type is
   /// `TARGETING_TYPE_GENDER`.
   GenderAssignedTargetingOptionDetails? genderDetails;
 
   /// Geographic region details.
   ///
-  /// This field will be populated when the TargetingType is
+  /// This field will be populated when the targeting_type is
   /// `TARGETING_TYPE_GEO_REGION`.
   GeoRegionAssignedTargetingOptionDetails? geoRegionDetails;
 
   /// Household income details.
   ///
-  /// This field will be populated when the TargetingType is
+  /// This field will be populated when the targeting_type is
   /// `TARGETING_TYPE_HOUSEHOLD_INCOME`.
   HouseholdIncomeAssignedTargetingOptionDetails? householdIncomeDetails;
 
@@ -9859,28 +10700,28 @@ class AssignedTargetingOption {
 
   /// Inventory source details.
   ///
-  /// This field will be populated when the TargetingType is
+  /// This field will be populated when the targeting_type is
   /// `TARGETING_TYPE_INVENTORY_SOURCE`.
   InventorySourceAssignedTargetingOptionDetails? inventorySourceDetails;
 
   /// Inventory source group details.
   ///
-  /// This field will be populated when the TargetingType is
+  /// This field will be populated when the targeting_type is
   /// `TARGETING_TYPE_INVENTORY_SOURCE_GROUP`.
   InventorySourceGroupAssignedTargetingOptionDetails?
       inventorySourceGroupDetails;
 
   /// Keyword details.
   ///
-  /// This field will be populated when the TargetingType is
+  /// This field will be populated when the targeting_type is
   /// `TARGETING_TYPE_KEYWORD`. A maximum of 5000 direct negative keywords can
-  /// be assigned to a line item. No limit on number of positive keywords that
+  /// be assigned to a resource. No limit on number of positive keywords that
   /// can be assigned.
   KeywordAssignedTargetingOptionDetails? keywordDetails;
 
   /// Language details.
   ///
-  /// This field will be populated when the TargetingType is
+  /// This field will be populated when the targeting_type is
   /// `TARGETING_TYPE_LANGUAGE`.
   LanguageAssignedTargetingOptionDetails? languageDetails;
 
@@ -9889,59 +10730,66 @@ class AssignedTargetingOption {
   /// Output only.
   core.String? name;
 
+  /// Native content position details.
+  ///
+  /// This field will be populated when the targeting_type is
+  /// `TARGETING_TYPE_NATIVE_CONTENT_POSITION`.
+  NativeContentPositionAssignedTargetingOptionDetails?
+      nativeContentPositionDetails;
+
   /// Keyword details.
   ///
-  /// This field will be populated when the TargetingType is
+  /// This field will be populated when the targeting_type is
   /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST`. A maximum of 4 negative keyword
-  /// lists can be assigned to a line item.
+  /// lists can be assigned to a resource.
   NegativeKeywordListAssignedTargetingOptionDetails? negativeKeywordListDetails;
 
   /// On screen position details.
   ///
-  /// This field will be populated when the TargetingType is
+  /// This field will be populated when the targeting_type is
   /// `TARGETING_TYPE_ON_SCREEN_POSITION`.
   OnScreenPositionAssignedTargetingOptionDetails? onScreenPositionDetails;
 
   /// Operating system details.
   ///
-  /// This field will be populated when the TargetingType is
+  /// This field will be populated when the targeting_type is
   /// `TARGETING_TYPE_OPERATING_SYSTEM`.
   OperatingSystemAssignedTargetingOptionDetails? operatingSystemDetails;
 
   /// Parental status details.
   ///
-  /// This field will be populated when the TargetingType is
+  /// This field will be populated when the targeting_type is
   /// `TARGETING_TYPE_PARENTAL_STATUS`.
   ParentalStatusAssignedTargetingOptionDetails? parentalStatusDetails;
 
   /// Proximity location list details.
   ///
-  /// This field will be populated when the TargetingType is
+  /// This field will be populated when the targeting_type is
   /// `TARGETING_TYPE_PROXIMITY_LOCATION_LIST`.
   ProximityLocationListAssignedTargetingOptionDetails?
       proximityLocationListDetails;
 
   /// Regional location list details.
   ///
-  /// This field will be populated when the TargetingType is
+  /// This field will be populated when the targeting_type is
   /// `TARGETING_TYPE_REGIONAL_LOCATION_LIST`.
   RegionalLocationListAssignedTargetingOptionDetails?
       regionalLocationListDetails;
 
   /// Sensitive category details.
   ///
-  /// This field will be populated when the TargetingType is
+  /// This field will be populated when the targeting_type is
   /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`. Sensitive categories are
   /// targeting exclusions. Advertiser level sensitive category exclusions, if
   /// set, are always applied in serving (even though they aren't visible in
-  /// line item settings). Line item settings can exclude sensitive categories
-  /// in addition to advertiser exclusions, but can't override them.
+  /// resource settings). Resource settings can exclude sensitive categories in
+  /// addition to advertiser exclusions, but can't override them.
   SensitiveCategoryAssignedTargetingOptionDetails?
       sensitiveCategoryExclusionDetails;
 
   /// Sub-exchange details.
   ///
-  /// This field will be populated when the TargetingType is
+  /// This field will be populated when the targeting_type is
   /// `TARGETING_TYPE_SUB_EXCHANGE`.
   SubExchangeAssignedTargetingOptionDetails? subExchangeDetails;
 
@@ -10027,37 +10875,39 @@ class AssignedTargetingOption {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
+  /// native content position.
   core.String? targetingType;
 
   /// Third party verification details.
   ///
-  /// This field will be populated when the TargetingType is
+  /// This field will be populated when the targeting_type is
   /// `TARGETING_TYPE_THIRD_PARTY_VERIFIER`.
   ThirdPartyVerifierAssignedTargetingOptionDetails? thirdPartyVerifierDetails;
 
   /// URL details.
   ///
-  /// This field will be populated when the TargetingType is
+  /// This field will be populated when the targeting_type is
   /// `TARGETING_TYPE_URL`.
   UrlAssignedTargetingOptionDetails? urlDetails;
 
   /// User rewarded content details.
   ///
-  /// This field will be populated when the TargetingType is
+  /// This field will be populated when the targeting_type is
   /// `TARGETING_TYPE_USER_REWARDED_CONTENT`.
   UserRewardedContentAssignedTargetingOptionDetails? userRewardedContentDetails;
 
   /// Video player size details.
   ///
-  /// This field will be populated when the TargetingType is
+  /// This field will be populated when the targeting_type is
   /// `TARGETING_TYPE_VIDEO_PLAYER_SIZE`.
   VideoPlayerSizeAssignedTargetingOptionDetails? videoPlayerSizeDetails;
 
   /// Viewability details.
   ///
-  /// This field will be populated when the TargetingType is
+  /// This field will be populated when the targeting_type is
   /// `TARGETING_TYPE_VIEWABILITY`. You can only target one viewability option
-  /// per line item.
+  /// per resource.
   ViewabilityAssignedTargetingOptionDetails? viewabilityDetails;
 
   AssignedTargetingOption();
@@ -10189,6 +11039,12 @@ class AssignedTargetingOption {
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
+    if (_json.containsKey('nativeContentPositionDetails')) {
+      nativeContentPositionDetails =
+          NativeContentPositionAssignedTargetingOptionDetails.fromJson(
+              _json['nativeContentPositionDetails']
+                  as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('negativeKeywordListDetails')) {
       negativeKeywordListDetails =
           NegativeKeywordListAssignedTargetingOptionDetails.fromJson(
@@ -10318,6 +11174,9 @@ class AssignedTargetingOption {
         if (languageDetails != null)
           'languageDetails': languageDetails!.toJson(),
         if (name != null) 'name': name!,
+        if (nativeContentPositionDetails != null)
+          'nativeContentPositionDetails':
+              nativeContentPositionDetails!.toJson(),
         if (negativeKeywordListDetails != null)
           'negativeKeywordListDetails': negativeKeywordListDetails!.toJson(),
         if (onScreenPositionDetails != null)
@@ -10829,7 +11688,7 @@ class BrowserAssignedTargetingOptionDetails {
 
   /// Indicates if this option is being negatively targeted.
   ///
-  /// All assigned browser targeting options on the same line item must have the
+  /// All assigned browser targeting options on the same resource must have the
   /// same value for this field.
   core.bool? negative;
 
@@ -10880,6 +11739,74 @@ class BrowserTargetingOptionDetails {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
+      };
+}
+
+/// Represents a summarized budget information associated with this invoice.
+class BudgetSummary {
+  /// External budget id.
+  ///
+  /// Output only.
+  core.String? externalBudgetId;
+
+  /// The pre-tax amount for this budget, in micros of the invoice's currency.
+  ///
+  /// For example if currency_code is `USD`, then 1000000 micros is one US
+  /// dollar.
+  ///
+  /// Output only.
+  core.String? preTaxAmountMicros;
+
+  /// Codes specific to the MediaOcean Prisma tool.
+  ///
+  /// Output only.
+  PrismaCpeCode? prismaCpeCode;
+
+  /// The tax amount for this budget, in micros of the invoice's currency.
+  ///
+  /// For example if currency_code is `USD`, then 1000000 micros is one US
+  /// dollar.
+  ///
+  /// Output only.
+  core.String? taxAmountMicros;
+
+  /// The total amount of charges for this budget, in micros of the invoice's
+  /// currency.
+  ///
+  /// For example if currency_code is `USD`, then 1000000 micros is one US
+  /// dollar.
+  ///
+  /// Output only.
+  core.String? totalAmountMicros;
+
+  BudgetSummary();
+
+  BudgetSummary.fromJson(core.Map _json) {
+    if (_json.containsKey('externalBudgetId')) {
+      externalBudgetId = _json['externalBudgetId'] as core.String;
+    }
+    if (_json.containsKey('preTaxAmountMicros')) {
+      preTaxAmountMicros = _json['preTaxAmountMicros'] as core.String;
+    }
+    if (_json.containsKey('prismaCpeCode')) {
+      prismaCpeCode = PrismaCpeCode.fromJson(
+          _json['prismaCpeCode'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('taxAmountMicros')) {
+      taxAmountMicros = _json['taxAmountMicros'] as core.String;
+    }
+    if (_json.containsKey('totalAmountMicros')) {
+      totalAmountMicros = _json['totalAmountMicros'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (externalBudgetId != null) 'externalBudgetId': externalBudgetId!,
+        if (preTaxAmountMicros != null)
+          'preTaxAmountMicros': preTaxAmountMicros!,
+        if (prismaCpeCode != null) 'prismaCpeCode': prismaCpeCode!.toJson(),
+        if (taxAmountMicros != null) 'taxAmountMicros': taxAmountMicros!,
+        if (totalAmountMicros != null) 'totalAmountMicros': totalAmountMicros!,
       };
 }
 
@@ -11476,6 +12403,45 @@ class BulkListAdvertiserAssignedTargetingOptionsResponse {
       };
 }
 
+/// Response message for BulkListCampaignAssignedTargetingOptions.
+class BulkListCampaignAssignedTargetingOptionsResponse {
+  /// The list of assigned targeting options.
+  ///
+  /// This list will be absent if empty.
+  core.List<AssignedTargetingOption>? assignedTargetingOptions;
+
+  /// A token identifying the next page of results.
+  ///
+  /// This value should be specified as the pageToken in a subsequent
+  /// BulkListCampaignAssignedTargetingOptionsRequest to fetch the next page of
+  /// results. This token will be absent if there are no more
+  /// assigned_targeting_options to return.
+  core.String? nextPageToken;
+
+  BulkListCampaignAssignedTargetingOptionsResponse();
+
+  BulkListCampaignAssignedTargetingOptionsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('assignedTargetingOptions')) {
+      assignedTargetingOptions =
+          (_json['assignedTargetingOptions'] as core.List)
+              .map<AssignedTargetingOption>((value) =>
+                  AssignedTargetingOption.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList();
+    }
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (assignedTargetingOptions != null)
+          'assignedTargetingOptions':
+              assignedTargetingOptions!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// Response message for BulkListInsertionOrderAssignedTargetingOptions.
 class BulkListInsertionOrderAssignedTargetingOptionsResponse {
   /// The list of assigned targeting options.
@@ -11561,6 +12527,11 @@ class Campaign {
   /// Output only.
   core.String? advertiserId;
 
+  /// The list of budgets available to this campaign.
+  ///
+  /// Setting no budget gives an unlimited campaign budget.
+  core.List<CampaignBudget>? campaignBudgets;
+
   /// The planned spend and duration of the campaign.
   ///
   /// Required.
@@ -11631,6 +12602,12 @@ class Campaign {
     if (_json.containsKey('advertiserId')) {
       advertiserId = _json['advertiserId'] as core.String;
     }
+    if (_json.containsKey('campaignBudgets')) {
+      campaignBudgets = (_json['campaignBudgets'] as core.List)
+          .map<CampaignBudget>((value) => CampaignBudget.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
     if (_json.containsKey('campaignFlight')) {
       campaignFlight = CampaignFlight.fromJson(
           _json['campaignFlight'] as core.Map<core.String, core.dynamic>);
@@ -11662,6 +12639,9 @@ class Campaign {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (advertiserId != null) 'advertiserId': advertiserId!,
+        if (campaignBudgets != null)
+          'campaignBudgets':
+              campaignBudgets!.map((value) => value.toJson()).toList(),
         if (campaignFlight != null) 'campaignFlight': campaignFlight!.toJson(),
         if (campaignGoal != null) 'campaignGoal': campaignGoal!.toJson(),
         if (campaignId != null) 'campaignId': campaignId!,
@@ -11670,6 +12650,125 @@ class Campaign {
         if (frequencyCap != null) 'frequencyCap': frequencyCap!.toJson(),
         if (name != null) 'name': name!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Settings that control how the campaign budget is allocated.
+class CampaignBudget {
+  /// The budget amount the insertion order will spend for the given date_range.
+  ///
+  /// The amount is in micros. Must be greater than 0. For example, 500000000
+  /// represents 500 standard units of the currency.
+  ///
+  /// Required.
+  core.String? budgetAmountMicros;
+
+  /// The unique ID of the campaign budget.
+  ///
+  /// If not included, budget is assumed to be new.
+  core.String? budgetId;
+
+  /// The budget unit specifies whether the budget is currency based or
+  /// impression based.
+  ///
+  /// Required. Immutable.
+  /// Possible string values are:
+  /// - "BUDGET_UNIT_UNSPECIFIED" : Type value is not specified or is unknown in
+  /// this version.
+  /// - "BUDGET_UNIT_CURRENCY" : Budgeting in currency amounts.
+  /// - "BUDGET_UNIT_IMPRESSIONS" : Budgeting in impression amounts.
+  core.String? budgetUnit;
+
+  /// The flight start and end time settings of the segment.
+  ///
+  /// Both `start_date` and `end_date` must be before the year 2037.
+  ///
+  /// Required.
+  DateRange? dateRange;
+
+  /// The display name of the budget.
+  ///
+  /// Must be UTF-8 encoded with a maximum size of 240 bytes.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// Must be unique under the campaign.
+  ///
+  /// If set, all impressions served against this budget will include this ID on
+  /// the invoice if the customer has opted into budget-segment-level billing.
+  ///
+  /// Immutable.
+  core.String? externalBudgetId;
+
+  /// The external source of the budget segment.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "EXTERNAL_BUDGET_SOURCE_UNSPECIFIED" : External budget source value is
+  /// not specified or unknown in this version.
+  /// - "EXTERNAL_BUDGET_SOURCE_NONE" : Budget has no external source.
+  /// - "EXTERNAL_BUDGET_SOURCE_MEDIA_OCEAN" : Budget source is MediaOcean.
+  core.String? externalBudgetSource;
+
+  /// If set, all external_budget_id sharing the same invoice_grouping_id will
+  /// include this ID on the invoice if the customer has opted into
+  /// budget-segment-level billing.
+  ///
+  /// Immutable.
+  core.String? invoiceGroupingId;
+
+  /// Required for MediaOcean budgets.
+  ///
+  /// Additional metadata set by the MediaOcean Prisma tool.
+  PrismaConfig? prismaConfig;
+
+  CampaignBudget();
+
+  CampaignBudget.fromJson(core.Map _json) {
+    if (_json.containsKey('budgetAmountMicros')) {
+      budgetAmountMicros = _json['budgetAmountMicros'] as core.String;
+    }
+    if (_json.containsKey('budgetId')) {
+      budgetId = _json['budgetId'] as core.String;
+    }
+    if (_json.containsKey('budgetUnit')) {
+      budgetUnit = _json['budgetUnit'] as core.String;
+    }
+    if (_json.containsKey('dateRange')) {
+      dateRange = DateRange.fromJson(
+          _json['dateRange'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'] as core.String;
+    }
+    if (_json.containsKey('externalBudgetId')) {
+      externalBudgetId = _json['externalBudgetId'] as core.String;
+    }
+    if (_json.containsKey('externalBudgetSource')) {
+      externalBudgetSource = _json['externalBudgetSource'] as core.String;
+    }
+    if (_json.containsKey('invoiceGroupingId')) {
+      invoiceGroupingId = _json['invoiceGroupingId'] as core.String;
+    }
+    if (_json.containsKey('prismaConfig')) {
+      prismaConfig = PrismaConfig.fromJson(
+          _json['prismaConfig'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (budgetAmountMicros != null)
+          'budgetAmountMicros': budgetAmountMicros!,
+        if (budgetId != null) 'budgetId': budgetId!,
+        if (budgetUnit != null) 'budgetUnit': budgetUnit!,
+        if (dateRange != null) 'dateRange': dateRange!.toJson(),
+        if (displayName != null) 'displayName': displayName!,
+        if (externalBudgetId != null) 'externalBudgetId': externalBudgetId!,
+        if (externalBudgetSource != null)
+          'externalBudgetSource': externalBudgetSource!,
+        if (invoiceGroupingId != null) 'invoiceGroupingId': invoiceGroupingId!,
+        if (prismaConfig != null) 'prismaConfig': prismaConfig!.toJson(),
       };
 }
 
@@ -11772,7 +12871,7 @@ class CarrierAndIspAssignedTargetingOptionDetails {
 
   /// Indicates if this option is being negatively targeted.
   ///
-  /// All assigned carrier and ISP targeting options on the same line item must
+  /// All assigned carrier and ISP targeting options on the same resource must
   /// have the same value for this field.
   core.bool? negative;
 
@@ -11931,8 +13030,18 @@ class Channel {
   /// Output only.
   core.String? name;
 
+  /// Number of line items that are directly targeting this channel negatively.
+  ///
+  /// Output only.
+  core.String? negativelyTargetedLineItemCount;
+
   /// The ID of the partner that owns the channel.
   core.String? partnerId;
+
+  /// Number of line items that are directly targeting this channel positively.
+  ///
+  /// Output only.
+  core.String? positivelyTargetedLineItemCount;
 
   Channel();
 
@@ -11949,8 +13058,16 @@ class Channel {
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
+    if (_json.containsKey('negativelyTargetedLineItemCount')) {
+      negativelyTargetedLineItemCount =
+          _json['negativelyTargetedLineItemCount'] as core.String;
+    }
     if (_json.containsKey('partnerId')) {
       partnerId = _json['partnerId'] as core.String;
+    }
+    if (_json.containsKey('positivelyTargetedLineItemCount')) {
+      positivelyTargetedLineItemCount =
+          _json['positivelyTargetedLineItemCount'] as core.String;
     }
   }
 
@@ -11959,7 +13076,11 @@ class Channel {
         if (channelId != null) 'channelId': channelId!,
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
+        if (negativelyTargetedLineItemCount != null)
+          'negativelyTargetedLineItemCount': negativelyTargetedLineItemCount!,
         if (partnerId != null) 'partnerId': partnerId!,
+        if (positivelyTargetedLineItemCount != null)
+          'positivelyTargetedLineItemCount': positivelyTargetedLineItemCount!,
       };
 }
 
@@ -12634,6 +13755,8 @@ class CreateAssignedTargetingOptionsRequest {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
+  /// native content position.
   core.String? targetingType;
 
   CreateAssignedTargetingOptionsRequest();
@@ -14011,6 +15134,8 @@ class DeleteAssignedTargetingOptionsRequest {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
+  /// native content position.
   core.String? targetingType;
 
   DeleteAssignedTargetingOptionsRequest();
@@ -14824,6 +15949,7 @@ class ExchangeConfigEnabledExchange {
   /// - "EXCHANGE_WAZE" : Waze.
   /// - "EXCHANGE_SOUNDCAST" : SoundCast.
   /// - "EXCHANGE_SHARETHROUGH" : Sharethrough.
+  /// - "EXCHANGE_MEDIANET" : Media.net.
   core.String? exchange;
 
   /// Agency ID of Google Ad Manager.
@@ -14942,6 +16068,7 @@ class ExchangeReviewStatus {
   /// - "EXCHANGE_WAZE" : Waze.
   /// - "EXCHANGE_SOUNDCAST" : SoundCast.
   /// - "EXCHANGE_SHARETHROUGH" : Sharethrough.
+  /// - "EXCHANGE_MEDIANET" : Media.net.
   core.String? exchange;
 
   /// Status of the exchange review.
@@ -15044,6 +16171,7 @@ class ExchangeTargetingOptionDetails {
   /// - "EXCHANGE_WAZE" : Waze.
   /// - "EXCHANGE_SOUNDCAST" : SoundCast.
   /// - "EXCHANGE_SHARETHROUGH" : Sharethrough.
+  /// - "EXCHANGE_MEDIANET" : Media.net.
   core.String? exchange;
 
   ExchangeTargetingOptionDetails();
@@ -15418,7 +16546,7 @@ class FirstAndThirdPartyAudienceTargetingSetting {
   /// - "RECENCY_21_DAYS" : Recency is 21 days.
   /// - "RECENCY_28_DAYS" : Recency is 28 days.
   /// - "RECENCY_30_DAYS" : Recency is 30 days.
-  /// - "RECENCY_40_DAYS" : Recency is 40 days.
+  /// - "RECENCY_45_DAYS" : Recency is 45 days.
   /// - "RECENCY_60_DAYS" : Recency is 60 days.
   /// - "RECENCY_90_DAYS" : Recency is 90 days.
   /// - "RECENCY_120_DAYS" : Recency is 120 days.
@@ -15584,12 +16712,12 @@ class FrequencyCap {
   /// The maximum number of times a user may be shown with the same ad during
   /// this period.
   ///
-  /// Must be greater than 0. Applicable when unlimited is `false`.
+  /// Must be greater than 0. Required when unlimited is `false`.
   core.int? maxImpressions;
 
   /// The time unit in which the frequency cap will be applied.
   ///
-  /// Applicable when unlimited is `false`.
+  /// Required when unlimited is `false`.
   /// Possible string values are:
   /// - "TIME_UNIT_UNSPECIFIED" : Time unit value is not specified or is unknown
   /// in this version.
@@ -15609,11 +16737,11 @@ class FrequencyCap {
 
   /// The number of time_unit the frequency cap will last.
   ///
-  /// Applicable when unlimited is `false`. The following restrictions apply
-  /// based on the value of time_unit: * `TIME_UNIT_LIFETIME` - this field is
-  /// output only and will default to 1 * `TIME_UNIT_MONTHS` - must be between 1
-  /// and 2 * `TIME_UNIT_WEEKS` - must be between 1 and 4 * `TIME_UNIT_DAYS` -
-  /// must be between 1 and 6 * `TIME_UNIT_HOURS` - must be between 1 and 23 *
+  /// Required when unlimited is `false`. The following restrictions apply based
+  /// on the value of time_unit: * `TIME_UNIT_LIFETIME` - this field is output
+  /// only and will default to 1 * `TIME_UNIT_MONTHS` - must be between 1 and 2
+  /// * `TIME_UNIT_WEEKS` - must be between 1 and 4 * `TIME_UNIT_DAYS` - must be
+  /// between 1 and 6 * `TIME_UNIT_HOURS` - must be between 1 and 23 *
   /// `TIME_UNIT_MINUTES` - must be between 1 and 59
   core.int? timeUnitCount;
 
@@ -15715,6 +16843,78 @@ class GenderTargetingOptionDetails {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gender != null) 'gender': gender!,
+      };
+}
+
+/// Request message for LineItemService.GenerateDefaultLineItem.
+class GenerateDefaultLineItemRequest {
+  /// The display name of the line item.
+  ///
+  /// Must be UTF-8 encoded with a maximum size of 240 bytes.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// The unique ID of the insertion order that the line item belongs to.
+  ///
+  /// Required.
+  core.String? insertionOrderId;
+
+  /// The type of the line item.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "LINE_ITEM_TYPE_UNSPECIFIED" : Type value is not specified or is unknown
+  /// in this version.
+  /// - "LINE_ITEM_TYPE_DISPLAY_DEFAULT" : Image, HTML5, native, or rich media
+  /// ads.
+  /// - "LINE_ITEM_TYPE_DISPLAY_MOBILE_APP_INSTALL" : Display ads that drive
+  /// installs of an app.
+  /// - "LINE_ITEM_TYPE_VIDEO_DEFAULT" : Video ads sold on a CPM basis for a
+  /// variety of environments.
+  /// - "LINE_ITEM_TYPE_VIDEO_MOBILE_APP_INSTALL" : Video ads that drive
+  /// installs of an app.
+  /// - "LINE_ITEM_TYPE_DISPLAY_MOBILE_APP_INVENTORY" : Display ads served on
+  /// mobile app inventory.
+  /// - "LINE_ITEM_TYPE_VIDEO_MOBILE_APP_INVENTORY" : Video ads served on mobile
+  /// app inventory.
+  /// - "LINE_ITEM_TYPE_AUDIO_DEFAULT" : RTB Audio ads sold for a variety of
+  /// environments.
+  /// - "LINE_ITEM_TYPE_VIDEO_OVER_THE_TOP" : Over-the-top ads present in OTT
+  /// insertion orders. This type is only applicable to line items with an
+  /// insertion order of insertion_order_type `OVER_THE_TOP`.
+  core.String? lineItemType;
+
+  /// The mobile app promoted by the line item.
+  ///
+  /// This is applicable only when line_item_type is either
+  /// `LINE_ITEM_TYPE_DISPLAY_MOBILE_APP_INSTALL` or
+  /// `LINE_ITEM_TYPE_VIDEO_MOBILE_APP_INSTALL`.
+  MobileApp? mobileApp;
+
+  GenerateDefaultLineItemRequest();
+
+  GenerateDefaultLineItemRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'] as core.String;
+    }
+    if (_json.containsKey('insertionOrderId')) {
+      insertionOrderId = _json['insertionOrderId'] as core.String;
+    }
+    if (_json.containsKey('lineItemType')) {
+      lineItemType = _json['lineItemType'] as core.String;
+    }
+    if (_json.containsKey('mobileApp')) {
+      mobileApp = MobileApp.fromJson(
+          _json['mobileApp'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (insertionOrderId != null) 'insertionOrderId': insertionOrderId!,
+        if (lineItemType != null) 'lineItemType': lineItemType!,
+        if (mobileApp != null) 'mobileApp': mobileApp!.toJson(),
       };
 }
 
@@ -16862,6 +18062,7 @@ class InventorySource {
   /// - "EXCHANGE_WAZE" : Waze.
   /// - "EXCHANGE_SOUNDCAST" : SoundCast.
   /// - "EXCHANGE_SHARETHROUGH" : Sharethrough.
+  /// - "EXCHANGE_MEDIANET" : Media.net.
   core.String? exchange;
 
   /// The unique ID of the inventory source.
@@ -17243,6 +18444,254 @@ class InventorySourceVideoCreativeConfig {
       };
 }
 
+/// A single Invoice.
+class Invoice {
+  /// Budget invoice grouping ID associated with the budget segment in the
+  /// insertion order.
+  ///
+  /// Output only.
+  core.String? budgetInvoiceGroupingId;
+
+  /// The list of summarized budget information associated with this invoice.
+  ///
+  /// Output only.
+  core.List<BudgetSummary>? budgetSummaries;
+
+  /// The originally issued invoice that is being adjusted by this invoice, if
+  /// applicable.
+  ///
+  /// If there is a corrected invoice, the replaced_invoice_ids field will be
+  /// empty. May appear on invoice PDF as `Reference invoice number`.
+  ///
+  /// Output only.
+  core.String? correctedInvoiceId;
+
+  /// Invoice currency code in ISO 4217 format.
+  ///
+  /// Output only.
+  core.String? currencyCode;
+
+  /// Display name of the invoice.
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// The invoice due date.
+  ///
+  /// Output only.
+  Date? dueDate;
+
+  /// The unique ID of the invoice.
+  ///
+  /// Output only.
+  core.String? invoiceId;
+
+  /// The type of invoice document.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "INVOICE_TYPE_UNSPECIFIED" : Not specified or is unknown in this
+  /// version.
+  /// - "INVOICE_TYPE_CREDIT" : An Invoice with a negative amount.
+  /// - "INVOICE_TYPE_INVOICE" : An Invoice with a positive amount.
+  core.String? invoiceType;
+
+  /// The date when the invoice was issued.
+  ///
+  /// Output only.
+  Date? issueDate;
+
+  /// The resource name of the invoice.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The total amount of costs or adjustments not tied to a particular budget,
+  /// in micros of the invoice's currency.
+  ///
+  /// For example if currency_code is `USD`, then 1000000 micros is one US
+  /// dollar.
+  ///
+  /// Output only.
+  core.String? nonBudgetMicros;
+
+  /// The ID of the payments account the invoice belongs to.
+  ///
+  /// Appears on the invoice PDF as `Billing Account Number`.
+  ///
+  /// Output only.
+  core.String? paymentsAccountId;
+
+  /// The ID of the payments profile the invoice belongs to.
+  ///
+  /// Appears on the invoice PDF as `Billing ID`.
+  ///
+  /// Output only.
+  core.String? paymentsProfileId;
+
+  /// The URL to download a PDF copy of the invoice.
+  ///
+  /// Note that this URL is user specific and requires a valid OAuth 2.0 access
+  /// token to access. The access token must be provided in an `Authorization:
+  /// Bearer` HTTP header and be authorized for one of the following scopes: *
+  /// `https://www.googleapis.com/auth/display-video-mediaplanning` *
+  /// `https://www.googleapis.com/auth/display-video` The URL will only be
+  /// usable for 7 days from when the api is called.
+  ///
+  /// Output only.
+  core.String? pdfUrl;
+
+  /// Purchase order number associated with the invoice.
+  ///
+  /// Output only.
+  core.String? purchaseOrderNumber;
+
+  /// The originally issued invoice(s) that is being cancelled by this invoice,
+  /// if applicable.
+  ///
+  /// If there are any replaced invoices, the corrected_invoice_id field will be
+  /// empty. May appear on invoice PDF as `Replaced invoice numbers`. Note:
+  /// There may be multiple replaced invoices due to consolidation of multiple
+  /// invoices into a single invoice.
+  ///
+  /// Output only.
+  core.List<core.String>? replacedInvoiceIds;
+
+  /// Service start and end dates which are covered by this invoice.
+  ///
+  /// Output only.
+  DateRange? serviceDateRange;
+
+  /// The pre-tax subtotal amount, in micros of the invoice's currency.
+  ///
+  /// For example if currency_code is `USD`, then 1000000 micros is one US
+  /// dollar.
+  ///
+  /// Output only.
+  core.String? subtotalAmountMicros;
+
+  /// The invoice total amount, in micros of the invoice's currency.
+  ///
+  /// For example if currency_code is `USD`, then 1000000 micros is one US
+  /// dollar.
+  ///
+  /// Output only.
+  core.String? totalAmountMicros;
+
+  /// The sum of all taxes in invoice, in micros of the invoice's currency.
+  ///
+  /// For example if currency_code is `USD`, then 1000000 micros is one US
+  /// dollar.
+  ///
+  /// Output only.
+  core.String? totalTaxAmountMicros;
+
+  Invoice();
+
+  Invoice.fromJson(core.Map _json) {
+    if (_json.containsKey('budgetInvoiceGroupingId')) {
+      budgetInvoiceGroupingId = _json['budgetInvoiceGroupingId'] as core.String;
+    }
+    if (_json.containsKey('budgetSummaries')) {
+      budgetSummaries = (_json['budgetSummaries'] as core.List)
+          .map<BudgetSummary>((value) => BudgetSummary.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('correctedInvoiceId')) {
+      correctedInvoiceId = _json['correctedInvoiceId'] as core.String;
+    }
+    if (_json.containsKey('currencyCode')) {
+      currencyCode = _json['currencyCode'] as core.String;
+    }
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'] as core.String;
+    }
+    if (_json.containsKey('dueDate')) {
+      dueDate = Date.fromJson(
+          _json['dueDate'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('invoiceId')) {
+      invoiceId = _json['invoiceId'] as core.String;
+    }
+    if (_json.containsKey('invoiceType')) {
+      invoiceType = _json['invoiceType'] as core.String;
+    }
+    if (_json.containsKey('issueDate')) {
+      issueDate = Date.fromJson(
+          _json['issueDate'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('nonBudgetMicros')) {
+      nonBudgetMicros = _json['nonBudgetMicros'] as core.String;
+    }
+    if (_json.containsKey('paymentsAccountId')) {
+      paymentsAccountId = _json['paymentsAccountId'] as core.String;
+    }
+    if (_json.containsKey('paymentsProfileId')) {
+      paymentsProfileId = _json['paymentsProfileId'] as core.String;
+    }
+    if (_json.containsKey('pdfUrl')) {
+      pdfUrl = _json['pdfUrl'] as core.String;
+    }
+    if (_json.containsKey('purchaseOrderNumber')) {
+      purchaseOrderNumber = _json['purchaseOrderNumber'] as core.String;
+    }
+    if (_json.containsKey('replacedInvoiceIds')) {
+      replacedInvoiceIds = (_json['replacedInvoiceIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('serviceDateRange')) {
+      serviceDateRange = DateRange.fromJson(
+          _json['serviceDateRange'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('subtotalAmountMicros')) {
+      subtotalAmountMicros = _json['subtotalAmountMicros'] as core.String;
+    }
+    if (_json.containsKey('totalAmountMicros')) {
+      totalAmountMicros = _json['totalAmountMicros'] as core.String;
+    }
+    if (_json.containsKey('totalTaxAmountMicros')) {
+      totalTaxAmountMicros = _json['totalTaxAmountMicros'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (budgetInvoiceGroupingId != null)
+          'budgetInvoiceGroupingId': budgetInvoiceGroupingId!,
+        if (budgetSummaries != null)
+          'budgetSummaries':
+              budgetSummaries!.map((value) => value.toJson()).toList(),
+        if (correctedInvoiceId != null)
+          'correctedInvoiceId': correctedInvoiceId!,
+        if (currencyCode != null) 'currencyCode': currencyCode!,
+        if (displayName != null) 'displayName': displayName!,
+        if (dueDate != null) 'dueDate': dueDate!.toJson(),
+        if (invoiceId != null) 'invoiceId': invoiceId!,
+        if (invoiceType != null) 'invoiceType': invoiceType!,
+        if (issueDate != null) 'issueDate': issueDate!.toJson(),
+        if (name != null) 'name': name!,
+        if (nonBudgetMicros != null) 'nonBudgetMicros': nonBudgetMicros!,
+        if (paymentsAccountId != null) 'paymentsAccountId': paymentsAccountId!,
+        if (paymentsProfileId != null) 'paymentsProfileId': paymentsProfileId!,
+        if (pdfUrl != null) 'pdfUrl': pdfUrl!,
+        if (purchaseOrderNumber != null)
+          'purchaseOrderNumber': purchaseOrderNumber!,
+        if (replacedInvoiceIds != null)
+          'replacedInvoiceIds': replacedInvoiceIds!,
+        if (serviceDateRange != null)
+          'serviceDateRange': serviceDateRange!.toJson(),
+        if (subtotalAmountMicros != null)
+          'subtotalAmountMicros': subtotalAmountMicros!,
+        if (totalAmountMicros != null) 'totalAmountMicros': totalAmountMicros!,
+        if (totalTaxAmountMicros != null)
+          'totalTaxAmountMicros': totalTaxAmountMicros!,
+      };
+}
+
 /// Details for assigned keyword targeting option.
 ///
 /// This will be populated in the details field of an AssignedTargetingOption
@@ -17289,8 +18738,8 @@ class LanguageAssignedTargetingOptionDetails {
 
   /// Indicates if this option is being negatively targeted.
   ///
-  /// All assigned language targeting options on the same line item must have
-  /// the same value for this field.
+  /// All assigned language targeting options on the same resource must have the
+  /// same value for this field.
   core.bool? negative;
 
   /// The targeting_option_id of a TargetingOption of type
@@ -17903,6 +19352,45 @@ class ListAssignedLocationsResponse {
       };
 }
 
+/// Response message for ListCampaignAssignedTargetingOptions.
+class ListCampaignAssignedTargetingOptionsResponse {
+  /// The list of assigned targeting options.
+  ///
+  /// This list will be absent if empty.
+  core.List<AssignedTargetingOption>? assignedTargetingOptions;
+
+  /// A token identifying the next page of results.
+  ///
+  /// This value should be specified as the pageToken in a subsequent
+  /// ListCampaignAssignedTargetingOptionsRequest to fetch the next page of
+  /// results. This token will be absent if there are no more
+  /// assigned_targeting_options to return.
+  core.String? nextPageToken;
+
+  ListCampaignAssignedTargetingOptionsResponse();
+
+  ListCampaignAssignedTargetingOptionsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('assignedTargetingOptions')) {
+      assignedTargetingOptions =
+          (_json['assignedTargetingOptions'] as core.List)
+              .map<AssignedTargetingOption>((value) =>
+                  AssignedTargetingOption.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList();
+    }
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (assignedTargetingOptions != null)
+          'assignedTargetingOptions':
+              assignedTargetingOptions!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 class ListCampaignsResponse {
   /// The list of campaigns.
   ///
@@ -18317,6 +19805,41 @@ class ListInventorySourcesResponse {
         if (inventorySources != null)
           'inventorySources':
               inventorySources!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response message for InvoiceService.ListInvoices.
+class ListInvoicesResponse {
+  /// The list of invoices.
+  ///
+  /// This list will be absent if empty.
+  core.List<Invoice>? invoices;
+
+  /// A token to retrieve the next page of results.
+  ///
+  /// Pass this value in the \[ListInvoicesRequest.page_token\] field in the
+  /// subsequent call to `ListInvoices` method to retrieve the next page of
+  /// results.
+  core.String? nextPageToken;
+
+  ListInvoicesResponse();
+
+  ListInvoicesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('invoices')) {
+      invoices = (_json['invoices'] as core.List)
+          .map<Invoice>((value) =>
+              Invoice.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (invoices != null)
+          'invoices': invoices!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -18801,6 +20324,26 @@ class LookbackWindow {
       };
 }
 
+/// Response message for InvoiceService.LookupInvoiceCurrency.
+class LookupInvoiceCurrencyResponse {
+  /// Invoice currency code in ISO 4217 format.
+  ///
+  /// Output only.
+  core.String? currencyCode;
+
+  LookupInvoiceCurrencyResponse();
+
+  LookupInvoiceCurrencyResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('currencyCode')) {
+      currencyCode = _json['currencyCode'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (currencyCode != null) 'currencyCode': currencyCode!,
+      };
+}
+
 /// A single manual trigger in Display & Video 360.
 class ManualTrigger {
   /// The maximum duration of each activation in minutes.
@@ -19080,6 +20623,98 @@ class Money {
       };
 }
 
+/// Details for native content position assigned targeting option.
+///
+/// This will be populated in the native_content_position_details field when
+/// targeting_type is `TARGETING_TYPE_NATIVE_CONTENT_POSITION`. Explicitly
+/// targeting all options is not supported. Remove all native content position
+/// targeting options to achieve this effect.
+class NativeContentPositionAssignedTargetingOptionDetails {
+  /// The content position.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "NATIVE_CONTENT_POSITION_UNSPECIFIED" : Native content position is not
+  /// specified in this version. This enum is a place holder for a default value
+  /// and does not represent a real native content position.
+  /// - "NATIVE_CONTENT_POSITION_UNKNOWN" : The native content position is
+  /// unknown.
+  /// - "NATIVE_CONTENT_POSITION_IN_ARTICLE" : Native content position is
+  /// in-article, i.e., ads appear between the paragraphs of pages.
+  /// - "NATIVE_CONTENT_POSITION_IN_FEED" : Native content position is in-feed,
+  /// i.e., ads appear in a scrollable stream of content. A feed is typically
+  /// editorial (e.g. a list of articles or news) or listings (e.g. a list of
+  /// products or services).
+  /// - "NATIVE_CONTENT_POSITION_PERIPHERAL" : Native content position is
+  /// peripheral, i.e., ads appear outside of core content on pages, such as the
+  /// right- or left-hand side of the page.
+  /// - "NATIVE_CONTENT_POSITION_RECOMMENDATION" : Native content position is
+  /// recommendation, i.e., ads appear in sections for recommended content.
+  core.String? contentPosition;
+
+  /// The targeting_option_id field when targeting_type is
+  /// `TARGETING_TYPE_NATIVE_CONTENT_POSITION`.
+  ///
+  /// Required.
+  core.String? targetingOptionId;
+
+  NativeContentPositionAssignedTargetingOptionDetails();
+
+  NativeContentPositionAssignedTargetingOptionDetails.fromJson(core.Map _json) {
+    if (_json.containsKey('contentPosition')) {
+      contentPosition = _json['contentPosition'] as core.String;
+    }
+    if (_json.containsKey('targetingOptionId')) {
+      targetingOptionId = _json['targetingOptionId'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contentPosition != null) 'contentPosition': contentPosition!,
+        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
+      };
+}
+
+/// Represents a targetable native content position.
+///
+/// This will be populated in the native_content_position_details field when
+/// targeting_type is `TARGETING_TYPE_NATIVE_CONTENT_POSITION`.
+class NativeContentPositionTargetingOptionDetails {
+  /// The content position.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "NATIVE_CONTENT_POSITION_UNSPECIFIED" : Native content position is not
+  /// specified in this version. This enum is a place holder for a default value
+  /// and does not represent a real native content position.
+  /// - "NATIVE_CONTENT_POSITION_UNKNOWN" : The native content position is
+  /// unknown.
+  /// - "NATIVE_CONTENT_POSITION_IN_ARTICLE" : Native content position is
+  /// in-article, i.e., ads appear between the paragraphs of pages.
+  /// - "NATIVE_CONTENT_POSITION_IN_FEED" : Native content position is in-feed,
+  /// i.e., ads appear in a scrollable stream of content. A feed is typically
+  /// editorial (e.g. a list of articles or news) or listings (e.g. a list of
+  /// products or services).
+  /// - "NATIVE_CONTENT_POSITION_PERIPHERAL" : Native content position is
+  /// peripheral, i.e., ads appear outside of core content on pages, such as the
+  /// right- or left-hand side of the page.
+  /// - "NATIVE_CONTENT_POSITION_RECOMMENDATION" : Native content position is
+  /// recommendation, i.e., ads appear in sections for recommended content.
+  core.String? contentPosition;
+
+  NativeContentPositionTargetingOptionDetails();
+
+  NativeContentPositionTargetingOptionDetails.fromJson(core.Map _json) {
+    if (_json.containsKey('contentPosition')) {
+      contentPosition = _json['contentPosition'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contentPosition != null) 'contentPosition': contentPosition!,
+      };
+}
+
 /// A negatively targeted keyword that belongs to a negative keyword list.
 class NegativeKeyword {
   /// The negatively targeted keyword, for example `car insurance`.
@@ -19141,6 +20776,12 @@ class NegativeKeywordList {
   /// Output only.
   core.String? negativeKeywordListId;
 
+  /// Number of line items that are directly targeting this negative keyword
+  /// list.
+  ///
+  /// Output only.
+  core.String? targetedLineItemCount;
+
   NegativeKeywordList();
 
   NegativeKeywordList.fromJson(core.Map _json) {
@@ -19156,6 +20797,9 @@ class NegativeKeywordList {
     if (_json.containsKey('negativeKeywordListId')) {
       negativeKeywordListId = _json['negativeKeywordListId'] as core.String;
     }
+    if (_json.containsKey('targetedLineItemCount')) {
+      targetedLineItemCount = _json['targetedLineItemCount'] as core.String;
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19164,6 +20808,8 @@ class NegativeKeywordList {
         if (name != null) 'name': name!,
         if (negativeKeywordListId != null)
           'negativeKeywordListId': negativeKeywordListId!,
+        if (targetedLineItemCount != null)
+          'targetedLineItemCount': targetedLineItemCount!,
       };
 }
 
@@ -20310,6 +21956,88 @@ class PerformanceGoalBidStrategy {
       };
 }
 
+/// Settings specific to the MediaOcean Prisma tool.
+class PrismaConfig {
+  /// Google Payments Center supports searching and filtering on this code.
+  ///
+  /// Required.
+  PrismaCpeCode? prismaCpeCode;
+
+  /// The Prisma type.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "PRISMA_TYPE_UNSPECIFIED" : Type is not specified or unknown in this
+  /// version.
+  /// - "PRISMA_TYPE_DISPLAY" : Display type.
+  /// - "PRISMA_TYPE_SEARCH" : Search type.
+  /// - "PRISMA_TYPE_VIDEO" : Video type.
+  /// - "PRISMA_TYPE_AUDIO" : Audio type.
+  /// - "PRISMA_TYPE_SOCIAL" : Social type.
+  /// - "PRISMA_TYPE_FEE" : Fee type.
+  core.String? prismaType;
+
+  /// The entity allocated this budget (DSP, site, etc.).
+  ///
+  /// Required.
+  core.String? supplier;
+
+  PrismaConfig();
+
+  PrismaConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('prismaCpeCode')) {
+      prismaCpeCode = PrismaCpeCode.fromJson(
+          _json['prismaCpeCode'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('prismaType')) {
+      prismaType = _json['prismaType'] as core.String;
+    }
+    if (_json.containsKey('supplier')) {
+      supplier = _json['supplier'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (prismaCpeCode != null) 'prismaCpeCode': prismaCpeCode!.toJson(),
+        if (prismaType != null) 'prismaType': prismaType!,
+        if (supplier != null) 'supplier': supplier!,
+      };
+}
+
+/// Google Payments Center supports searching and filtering on the component
+/// fields of this code.
+class PrismaCpeCode {
+  /// The Prisma client code.
+  core.String? prismaClientCode;
+
+  /// The Prisma estimate code.
+  core.String? prismaEstimateCode;
+
+  /// The Prisma product code.
+  core.String? prismaProductCode;
+
+  PrismaCpeCode();
+
+  PrismaCpeCode.fromJson(core.Map _json) {
+    if (_json.containsKey('prismaClientCode')) {
+      prismaClientCode = _json['prismaClientCode'] as core.String;
+    }
+    if (_json.containsKey('prismaEstimateCode')) {
+      prismaEstimateCode = _json['prismaEstimateCode'] as core.String;
+    }
+    if (_json.containsKey('prismaProductCode')) {
+      prismaProductCode = _json['prismaProductCode'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (prismaClientCode != null) 'prismaClientCode': prismaClientCode!,
+        if (prismaEstimateCode != null)
+          'prismaEstimateCode': prismaEstimateCode!,
+        if (prismaProductCode != null) 'prismaProductCode': prismaProductCode!,
+      };
+}
+
 /// Targeting details for proximity location list.
 ///
 /// This will be populated in the details field of an AssignedTargetingOption
@@ -20326,10 +22054,10 @@ class ProximityLocationListAssignedTargetingOptionDetails {
   /// Radius range for proximity location list.
   ///
   /// This represents the size of the area around a chosen location that will be
-  /// targeted. `All` proximity location targeting under a single line item must
+  /// targeted. `All` proximity location targeting under a single resource must
   /// have the same radius range value. Set this value to match any existing
   /// targeting. If updated, this field will change the radius range for all
-  /// proximity targeting under the line item.
+  /// proximity targeting under the resource.
   ///
   /// Required.
   /// Possible string values are:
@@ -20483,6 +22211,113 @@ class RegionalLocationListAssignedTargetingOptionDetails {
         if (negative != null) 'negative': negative!,
         if (regionalLocationListId != null)
           'regionalLocationListId': regionalLocationListId!,
+      };
+}
+
+/// Request message for NegativeKeywordService.ReplaceNegativeKeywords.
+class ReplaceNegativeKeywordsRequest {
+  /// The negative keywords that will replace the existing keywords in the
+  /// negative keyword list, specified as a list of NegativeKeywords.
+  core.List<NegativeKeyword>? newNegativeKeywords;
+
+  ReplaceNegativeKeywordsRequest();
+
+  ReplaceNegativeKeywordsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('newNegativeKeywords')) {
+      newNegativeKeywords = (_json['newNegativeKeywords'] as core.List)
+          .map<NegativeKeyword>((value) => NegativeKeyword.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (newNegativeKeywords != null)
+          'newNegativeKeywords':
+              newNegativeKeywords!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// Response message for NegativeKeywordService.ReplaceNegativeKeywords.
+class ReplaceNegativeKeywordsResponse {
+  /// The full list of negative keywords now present in the negative keyword
+  /// list.
+  core.List<NegativeKeyword>? negativeKeywords;
+
+  ReplaceNegativeKeywordsResponse();
+
+  ReplaceNegativeKeywordsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('negativeKeywords')) {
+      negativeKeywords = (_json['negativeKeywords'] as core.List)
+          .map<NegativeKeyword>((value) => NegativeKeyword.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (negativeKeywords != null)
+          'negativeKeywords':
+              negativeKeywords!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// Request message for SiteService.ReplaceSites.
+class ReplaceSitesRequest {
+  /// The ID of the advertiser that owns the parent channel.
+  core.String? advertiserId;
+
+  /// The sites that will replace the existing sites assigned to the channel,
+  /// specified as a list of Sites.
+  core.List<Site>? newSites;
+
+  /// The ID of the partner that owns the parent channel.
+  core.String? partnerId;
+
+  ReplaceSitesRequest();
+
+  ReplaceSitesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('advertiserId')) {
+      advertiserId = _json['advertiserId'] as core.String;
+    }
+    if (_json.containsKey('newSites')) {
+      newSites = (_json['newSites'] as core.List)
+          .map<Site>((value) =>
+              Site.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('partnerId')) {
+      partnerId = _json['partnerId'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (advertiserId != null) 'advertiserId': advertiserId!,
+        if (newSites != null)
+          'newSites': newSites!.map((value) => value.toJson()).toList(),
+        if (partnerId != null) 'partnerId': partnerId!,
+      };
+}
+
+/// Response message for SiteService.ReplaceSites.
+class ReplaceSitesResponse {
+  /// The list of sites in the channel after replacing.
+  core.List<Site>? sites;
+
+  ReplaceSitesResponse();
+
+  ReplaceSitesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('sites')) {
+      sites = (_json['sites'] as core.List)
+          .map<Site>((value) =>
+              Site.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (sites != null)
+          'sites': sites!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -20938,7 +22773,7 @@ class Site {
   /// Output only.
   core.String? name;
 
-  /// The URL or app ID of the site.
+  /// The app ID or URL of the site.
   ///
   /// Must be UTF-8 encoded with a maximum length of 240 bytes.
   ///
@@ -21174,6 +23009,9 @@ class TargetingOption {
   /// Output only.
   core.String? name;
 
+  /// Native content position details.
+  NativeContentPositionTargetingOptionDetails? nativeContentPositionDetails;
+
   /// On screen position details.
   OnScreenPositionTargetingOptionDetails? onScreenPositionDetails;
 
@@ -21278,6 +23116,8 @@ class TargetingOption {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
+  /// native content position.
   core.String? targetingType;
 
   /// User rewarded content details.
@@ -21373,6 +23213,12 @@ class TargetingOption {
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
+    if (_json.containsKey('nativeContentPositionDetails')) {
+      nativeContentPositionDetails =
+          NativeContentPositionTargetingOptionDetails.fromJson(
+              _json['nativeContentPositionDetails']
+                  as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('onScreenPositionDetails')) {
       onScreenPositionDetails = OnScreenPositionTargetingOptionDetails.fromJson(
           _json['onScreenPositionDetails']
@@ -21458,6 +23304,9 @@ class TargetingOption {
         if (languageDetails != null)
           'languageDetails': languageDetails!.toJson(),
         if (name != null) 'name': name!,
+        if (nativeContentPositionDetails != null)
+          'nativeContentPositionDetails':
+              nativeContentPositionDetails!.toJson(),
         if (onScreenPositionDetails != null)
           'onScreenPositionDetails': onScreenPositionDetails!.toJson(),
         if (operatingSystemDetails != null)

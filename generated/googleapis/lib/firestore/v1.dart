@@ -46,7 +46,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Accesses the NoSQL document database built for automatic scaling, high
 /// performance, and ease of application development.
 class FirestoreApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -95,7 +95,9 @@ class ProjectsDatabasesResource {
   /// the Operation resource that is created. The output of an export may only
   /// be used once the associated operation is done. If an export operation is
   /// cancelled before completion it may leave partial data behind in Google
-  /// Cloud Storage.
+  /// Cloud Storage. For more details on export behavior and output format,
+  /// refer to:
+  /// https://cloud.google.com/firestore/docs/manage-data/export-import
   ///
   /// [request] - The metadata request object.
   ///
@@ -319,7 +321,7 @@ class ProjectsDatabasesCollectionGroupsFieldsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - A field name of the form
+  /// [name] - Required. A field name of the form
   /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}`
   /// A field path may be a simple field name, e.g. `address` or a path to
   /// fields within map_value , e.g. `address.city`, or a special field path.
@@ -1566,11 +1568,15 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [filter] - The standard list filter.
+  /// [filter] - A filter to narrow down results to a preferred subset. The
+  /// filtering language accepts strings like "displayName=tokyo", and is
+  /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
   ///
-  /// [pageSize] - The standard list page size.
+  /// [pageSize] - The maximum number of results to return. If not set, the
+  /// service selects a default.
   ///
-  /// [pageToken] - The standard list page token.
+  /// [pageToken] - A page token received from the `next_page_token` field in
+  /// the response. Send that page token to receive the subsequent page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2783,6 +2789,8 @@ class GoogleFirestoreAdminV1Field {
   /// `projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields
   /// / * ` Indexes defined on this `Field` will be applied to all fields which
   /// do not have their own `Field` index configuration.
+  ///
+  /// Required.
   core.String? name;
 
   GoogleFirestoreAdminV1Field();
@@ -3207,7 +3215,7 @@ class GoogleFirestoreAdminV1IndexField {
   core.String? fieldPath;
 
   /// Indicates that this field supports ordering by the specified order or
-  /// comparing using =, <, <=, >, >=.
+  /// comparing using =, !=, <, <=, >, >=.
   /// Possible string values are:
   /// - "ORDER_UNSPECIFIED" : The ordering is unspecified. Not a valid option.
   /// - "ASCENDING" : The field is ordered by ascending field value.
@@ -3537,11 +3545,11 @@ class GoogleLongrunningOperation {
       };
 }
 
-/// An object representing a latitude/longitude pair.
+/// An object that represents a latitude/longitude pair.
 ///
-/// This is expressed as a pair of doubles representing degrees latitude and
-/// degrees longitude. Unless specified otherwise, this must conform to the
-/// WGS84 standard. Values must be within normalized ranges.
+/// This is expressed as a pair of doubles to represent degrees latitude and
+/// degrees longitude. Unless specified otherwise, this object must conform to
+/// the WGS84 standard. Values must be within normalized ranges.
 class LatLng {
   /// The latitude in degrees.
   ///

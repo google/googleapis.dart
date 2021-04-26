@@ -27,14 +27,14 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<api.CreateRowRequest> buildUnnamed7647() {
+core.List<api.CreateRowRequest> buildUnnamed8105() {
   var o = <api.CreateRowRequest>[];
   o.add(buildCreateRowRequest());
   o.add(buildCreateRowRequest());
   return o;
 }
 
-void checkUnnamed7647(core.List<api.CreateRowRequest> o) {
+void checkUnnamed8105(core.List<api.CreateRowRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCreateRowRequest(o[0] as api.CreateRowRequest);
   checkCreateRowRequest(o[1] as api.CreateRowRequest);
@@ -45,7 +45,7 @@ api.BatchCreateRowsRequest buildBatchCreateRowsRequest() {
   var o = api.BatchCreateRowsRequest();
   buildCounterBatchCreateRowsRequest++;
   if (buildCounterBatchCreateRowsRequest < 3) {
-    o.requests = buildUnnamed7647();
+    o.requests = buildUnnamed8105();
   }
   buildCounterBatchCreateRowsRequest--;
   return o;
@@ -54,19 +54,19 @@ api.BatchCreateRowsRequest buildBatchCreateRowsRequest() {
 void checkBatchCreateRowsRequest(api.BatchCreateRowsRequest o) {
   buildCounterBatchCreateRowsRequest++;
   if (buildCounterBatchCreateRowsRequest < 3) {
-    checkUnnamed7647(o.requests!);
+    checkUnnamed8105(o.requests!);
   }
   buildCounterBatchCreateRowsRequest--;
 }
 
-core.List<api.Row> buildUnnamed7648() {
+core.List<api.Row> buildUnnamed8106() {
   var o = <api.Row>[];
   o.add(buildRow());
   o.add(buildRow());
   return o;
 }
 
-void checkUnnamed7648(core.List<api.Row> o) {
+void checkUnnamed8106(core.List<api.Row> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRow(o[0] as api.Row);
   checkRow(o[1] as api.Row);
@@ -77,7 +77,7 @@ api.BatchCreateRowsResponse buildBatchCreateRowsResponse() {
   var o = api.BatchCreateRowsResponse();
   buildCounterBatchCreateRowsResponse++;
   if (buildCounterBatchCreateRowsResponse < 3) {
-    o.rows = buildUnnamed7648();
+    o.rows = buildUnnamed8106();
   }
   buildCounterBatchCreateRowsResponse--;
   return o;
@@ -86,19 +86,19 @@ api.BatchCreateRowsResponse buildBatchCreateRowsResponse() {
 void checkBatchCreateRowsResponse(api.BatchCreateRowsResponse o) {
   buildCounterBatchCreateRowsResponse++;
   if (buildCounterBatchCreateRowsResponse < 3) {
-    checkUnnamed7648(o.rows!);
+    checkUnnamed8106(o.rows!);
   }
   buildCounterBatchCreateRowsResponse--;
 }
 
-core.List<core.String> buildUnnamed7649() {
+core.List<core.String> buildUnnamed8107() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed7649(core.List<core.String> o) {
+void checkUnnamed8107(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -115,7 +115,7 @@ api.BatchDeleteRowsRequest buildBatchDeleteRowsRequest() {
   var o = api.BatchDeleteRowsRequest();
   buildCounterBatchDeleteRowsRequest++;
   if (buildCounterBatchDeleteRowsRequest < 3) {
-    o.names = buildUnnamed7649();
+    o.names = buildUnnamed8107();
   }
   buildCounterBatchDeleteRowsRequest--;
   return o;
@@ -124,19 +124,19 @@ api.BatchDeleteRowsRequest buildBatchDeleteRowsRequest() {
 void checkBatchDeleteRowsRequest(api.BatchDeleteRowsRequest o) {
   buildCounterBatchDeleteRowsRequest++;
   if (buildCounterBatchDeleteRowsRequest < 3) {
-    checkUnnamed7649(o.names!);
+    checkUnnamed8107(o.names!);
   }
   buildCounterBatchDeleteRowsRequest--;
 }
 
-core.List<api.UpdateRowRequest> buildUnnamed7650() {
+core.List<api.UpdateRowRequest> buildUnnamed8108() {
   var o = <api.UpdateRowRequest>[];
   o.add(buildUpdateRowRequest());
   o.add(buildUpdateRowRequest());
   return o;
 }
 
-void checkUnnamed7650(core.List<api.UpdateRowRequest> o) {
+void checkUnnamed8108(core.List<api.UpdateRowRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUpdateRowRequest(o[0] as api.UpdateRowRequest);
   checkUpdateRowRequest(o[1] as api.UpdateRowRequest);
@@ -147,7 +147,7 @@ api.BatchUpdateRowsRequest buildBatchUpdateRowsRequest() {
   var o = api.BatchUpdateRowsRequest();
   buildCounterBatchUpdateRowsRequest++;
   if (buildCounterBatchUpdateRowsRequest < 3) {
-    o.requests = buildUnnamed7650();
+    o.requests = buildUnnamed8108();
   }
   buildCounterBatchUpdateRowsRequest--;
   return o;
@@ -156,19 +156,19 @@ api.BatchUpdateRowsRequest buildBatchUpdateRowsRequest() {
 void checkBatchUpdateRowsRequest(api.BatchUpdateRowsRequest o) {
   buildCounterBatchUpdateRowsRequest++;
   if (buildCounterBatchUpdateRowsRequest < 3) {
-    checkUnnamed7650(o.requests!);
+    checkUnnamed8108(o.requests!);
   }
   buildCounterBatchUpdateRowsRequest--;
 }
 
-core.List<api.Row> buildUnnamed7651() {
+core.List<api.Row> buildUnnamed8109() {
   var o = <api.Row>[];
   o.add(buildRow());
   o.add(buildRow());
   return o;
 }
 
-void checkUnnamed7651(core.List<api.Row> o) {
+void checkUnnamed8109(core.List<api.Row> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRow(o[0] as api.Row);
   checkRow(o[1] as api.Row);
@@ -179,7 +179,7 @@ api.BatchUpdateRowsResponse buildBatchUpdateRowsResponse() {
   var o = api.BatchUpdateRowsResponse();
   buildCounterBatchUpdateRowsResponse++;
   if (buildCounterBatchUpdateRowsResponse < 3) {
-    o.rows = buildUnnamed7651();
+    o.rows = buildUnnamed8109();
   }
   buildCounterBatchUpdateRowsResponse--;
   return o;
@@ -188,19 +188,19 @@ api.BatchUpdateRowsResponse buildBatchUpdateRowsResponse() {
 void checkBatchUpdateRowsResponse(api.BatchUpdateRowsResponse o) {
   buildCounterBatchUpdateRowsResponse++;
   if (buildCounterBatchUpdateRowsResponse < 3) {
-    checkUnnamed7651(o.rows!);
+    checkUnnamed8109(o.rows!);
   }
   buildCounterBatchUpdateRowsResponse--;
 }
 
-core.List<api.LabeledItem> buildUnnamed7652() {
+core.List<api.LabeledItem> buildUnnamed8110() {
   var o = <api.LabeledItem>[];
   o.add(buildLabeledItem());
   o.add(buildLabeledItem());
   return o;
 }
 
-void checkUnnamed7652(core.List<api.LabeledItem> o) {
+void checkUnnamed8110(core.List<api.LabeledItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLabeledItem(o[0] as api.LabeledItem);
   checkLabeledItem(o[1] as api.LabeledItem);
@@ -213,8 +213,9 @@ api.ColumnDescription buildColumnDescription() {
   if (buildCounterColumnDescription < 3) {
     o.dataType = 'foo';
     o.id = 'foo';
-    o.labels = buildUnnamed7652();
+    o.labels = buildUnnamed8110();
     o.lookupDetails = buildLookupDetails();
+    o.multipleValuesDisallowed = true;
     o.name = 'foo';
     o.relationshipDetails = buildRelationshipDetails();
   }
@@ -233,8 +234,9 @@ void checkColumnDescription(api.ColumnDescription o) {
       o.id!,
       unittest.equals('foo'),
     );
-    checkUnnamed7652(o.labels!);
+    checkUnnamed8110(o.labels!);
     checkLookupDetails(o.lookupDetails! as api.LookupDetails);
+    unittest.expect(o.multipleValuesDisallowed!, unittest.isTrue);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -315,14 +317,14 @@ void checkLabeledItem(api.LabeledItem o) {
   buildCounterLabeledItem--;
 }
 
-core.List<api.Row> buildUnnamed7653() {
+core.List<api.Row> buildUnnamed8111() {
   var o = <api.Row>[];
   o.add(buildRow());
   o.add(buildRow());
   return o;
 }
 
-void checkUnnamed7653(core.List<api.Row> o) {
+void checkUnnamed8111(core.List<api.Row> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRow(o[0] as api.Row);
   checkRow(o[1] as api.Row);
@@ -334,7 +336,7 @@ api.ListRowsResponse buildListRowsResponse() {
   buildCounterListRowsResponse++;
   if (buildCounterListRowsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.rows = buildUnnamed7653();
+    o.rows = buildUnnamed8111();
   }
   buildCounterListRowsResponse--;
   return o;
@@ -347,19 +349,19 @@ void checkListRowsResponse(api.ListRowsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed7653(o.rows!);
+    checkUnnamed8111(o.rows!);
   }
   buildCounterListRowsResponse--;
 }
 
-core.List<api.Table> buildUnnamed7654() {
+core.List<api.Table> buildUnnamed8112() {
   var o = <api.Table>[];
   o.add(buildTable());
   o.add(buildTable());
   return o;
 }
 
-void checkUnnamed7654(core.List<api.Table> o) {
+void checkUnnamed8112(core.List<api.Table> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTable(o[0] as api.Table);
   checkTable(o[1] as api.Table);
@@ -371,7 +373,7 @@ api.ListTablesResponse buildListTablesResponse() {
   buildCounterListTablesResponse++;
   if (buildCounterListTablesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.tables = buildUnnamed7654();
+    o.tables = buildUnnamed8112();
   }
   buildCounterListTablesResponse--;
   return o;
@@ -384,19 +386,19 @@ void checkListTablesResponse(api.ListTablesResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed7654(o.tables!);
+    checkUnnamed8112(o.tables!);
   }
   buildCounterListTablesResponse--;
 }
 
-core.List<api.Workspace> buildUnnamed7655() {
+core.List<api.Workspace> buildUnnamed8113() {
   var o = <api.Workspace>[];
   o.add(buildWorkspace());
   o.add(buildWorkspace());
   return o;
 }
 
-void checkUnnamed7655(core.List<api.Workspace> o) {
+void checkUnnamed8113(core.List<api.Workspace> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWorkspace(o[0] as api.Workspace);
   checkWorkspace(o[1] as api.Workspace);
@@ -408,7 +410,7 @@ api.ListWorkspacesResponse buildListWorkspacesResponse() {
   buildCounterListWorkspacesResponse++;
   if (buildCounterListWorkspacesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.workspaces = buildUnnamed7655();
+    o.workspaces = buildUnnamed8113();
   }
   buildCounterListWorkspacesResponse--;
   return o;
@@ -421,7 +423,7 @@ void checkListWorkspacesResponse(api.ListWorkspacesResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed7655(o.workspaces!);
+    checkUnnamed8113(o.workspaces!);
   }
   buildCounterListWorkspacesResponse--;
 }
@@ -475,7 +477,7 @@ void checkRelationshipDetails(api.RelationshipDetails o) {
   buildCounterRelationshipDetails--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed7656() {
+core.Map<core.String, core.Object> buildUnnamed8114() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -490,7 +492,7 @@ core.Map<core.String, core.Object> buildUnnamed7656() {
   return o;
 }
 
-void checkUnnamed7656(core.Map<core.String, core.Object> o) {
+void checkUnnamed8114(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -530,7 +532,7 @@ api.Row buildRow() {
     o.createTime = 'foo';
     o.name = 'foo';
     o.updateTime = 'foo';
-    o.values = buildUnnamed7656();
+    o.values = buildUnnamed8114();
   }
   buildCounterRow--;
   return o;
@@ -551,22 +553,62 @@ void checkRow(api.Row o) {
       o.updateTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed7656(o.values!);
+    checkUnnamed8114(o.values!);
   }
   buildCounterRow--;
 }
 
-core.List<api.ColumnDescription> buildUnnamed7657() {
+core.int buildCounterSavedView = 0;
+api.SavedView buildSavedView() {
+  var o = api.SavedView();
+  buildCounterSavedView++;
+  if (buildCounterSavedView < 3) {
+    o.id = 'foo';
+    o.name = 'foo';
+  }
+  buildCounterSavedView--;
+  return o;
+}
+
+void checkSavedView(api.SavedView o) {
+  buildCounterSavedView++;
+  if (buildCounterSavedView < 3) {
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSavedView--;
+}
+
+core.List<api.ColumnDescription> buildUnnamed8115() {
   var o = <api.ColumnDescription>[];
   o.add(buildColumnDescription());
   o.add(buildColumnDescription());
   return o;
 }
 
-void checkUnnamed7657(core.List<api.ColumnDescription> o) {
+void checkUnnamed8115(core.List<api.ColumnDescription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkColumnDescription(o[0] as api.ColumnDescription);
   checkColumnDescription(o[1] as api.ColumnDescription);
+}
+
+core.List<api.SavedView> buildUnnamed8116() {
+  var o = <api.SavedView>[];
+  o.add(buildSavedView());
+  o.add(buildSavedView());
+  return o;
+}
+
+void checkUnnamed8116(core.List<api.SavedView> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkSavedView(o[0] as api.SavedView);
+  checkSavedView(o[1] as api.SavedView);
 }
 
 core.int buildCounterTable = 0;
@@ -574,10 +616,11 @@ api.Table buildTable() {
   var o = api.Table();
   buildCounterTable++;
   if (buildCounterTable < 3) {
-    o.columns = buildUnnamed7657();
+    o.columns = buildUnnamed8115();
     o.createTime = 'foo';
     o.displayName = 'foo';
     o.name = 'foo';
+    o.savedViews = buildUnnamed8116();
     o.updateTime = 'foo';
   }
   buildCounterTable--;
@@ -587,7 +630,7 @@ api.Table buildTable() {
 void checkTable(api.Table o) {
   buildCounterTable++;
   if (buildCounterTable < 3) {
-    checkUnnamed7657(o.columns!);
+    checkUnnamed8115(o.columns!);
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),
@@ -600,6 +643,7 @@ void checkTable(api.Table o) {
       o.name!,
       unittest.equals('foo'),
     );
+    checkUnnamed8116(o.savedViews!);
     unittest.expect(
       o.updateTime!,
       unittest.equals('foo'),
@@ -637,14 +681,14 @@ void checkUpdateRowRequest(api.UpdateRowRequest o) {
   buildCounterUpdateRowRequest--;
 }
 
-core.List<api.Table> buildUnnamed7658() {
+core.List<api.Table> buildUnnamed8117() {
   var o = <api.Table>[];
   o.add(buildTable());
   o.add(buildTable());
   return o;
 }
 
-void checkUnnamed7658(core.List<api.Table> o) {
+void checkUnnamed8117(core.List<api.Table> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTable(o[0] as api.Table);
   checkTable(o[1] as api.Table);
@@ -658,7 +702,7 @@ api.Workspace buildWorkspace() {
     o.createTime = 'foo';
     o.displayName = 'foo';
     o.name = 'foo';
-    o.tables = buildUnnamed7658();
+    o.tables = buildUnnamed8117();
     o.updateTime = 'foo';
   }
   buildCounterWorkspace--;
@@ -680,7 +724,7 @@ void checkWorkspace(api.Workspace o) {
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed7658(o.tables!);
+    checkUnnamed8117(o.tables!);
     unittest.expect(
       o.updateTime!,
       unittest.equals('foo'),
@@ -838,6 +882,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-SavedView', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildSavedView();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.SavedView.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkSavedView(od as api.SavedView);
+    });
+  });
+
   unittest.group('obj-schema-Table', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTable();
@@ -923,6 +977,7 @@ void main() {
     unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.Area120TablesApi(mock).tables;
+      var arg_orderBy = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
@@ -958,6 +1013,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap["orderBy"]!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
           core.int.parse(queryMap["pageSize"]!.first),
           unittest.equals(arg_pageSize),
         );
@@ -977,6 +1036,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(
+          orderBy: arg_orderBy,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
           $fields: arg_$fields);
@@ -1336,6 +1396,7 @@ void main() {
       var res = api.Area120TablesApi(mock).tables.rows;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
+      var arg_orderBy = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_view = 'foo';
@@ -1377,6 +1438,10 @@ void main() {
           unittest.equals(arg_filter),
         );
         unittest.expect(
+          queryMap["orderBy"]!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
           core.int.parse(queryMap["pageSize"]!.first),
           unittest.equals(arg_pageSize),
         );
@@ -1401,6 +1466,7 @@ void main() {
       }), true);
       final response = await res.list(arg_parent,
           filter: arg_filter,
+          orderBy: arg_orderBy,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
           view: arg_view,

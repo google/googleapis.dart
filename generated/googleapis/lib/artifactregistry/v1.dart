@@ -22,6 +22,10 @@
 /// Create an instance of [ArtifactRegistryApi] to access these resources:
 ///
 /// - [OperationsResource]
+/// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsRepositoriesResource]
+///       - [ProjectsLocationsRepositoriesDockerImagesResource]
 library artifactregistry.v1;
 
 import 'dart:async' as async;
@@ -39,7 +43,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Store and manage build artifacts in a scalable and integrated service built
 /// on Google infrastructure.
 class ArtifactRegistryApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -50,6 +54,7 @@ class ArtifactRegistryApi {
   final commons.ApiRequester _requester;
 
   OperationsResource get operations => OperationsResource(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   ArtifactRegistryApi(http.Client client,
       {core.String rootUrl = 'https://artifactregistry.googleapis.com/',
@@ -247,6 +252,171 @@ class OperationsResource {
   }
 }
 
+class ProjectsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
+
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsRepositoriesResource get repositories =>
+      ProjectsLocationsRepositoriesResource(_requester);
+
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsRepositoriesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsRepositoriesDockerImagesResource get dockerImages =>
+      ProjectsLocationsRepositoriesDockerImagesResource(_requester);
+
+  ProjectsLocationsRepositoriesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets a repository.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the repository to retrieve.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Repository].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Repository> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Repository.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists repositories.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the parent resource whose repositories
+  /// will be listed.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of repositories to return.
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous list
+  /// request, if any.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListRepositoriesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListRepositoriesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/repositories';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListRepositoriesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsRepositoriesDockerImagesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsRepositoriesDockerImagesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists docker images.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the parent resource whose docker images
+  /// will be listed.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of artifacts to return.
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous list
+  /// request, if any.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListDockerImagesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDockerImagesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/dockerImages';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListDockerImagesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
 /// The request message for Operations.CancelOperation.
 class CancelOperationRequest {
   CancelOperationRequest();
@@ -259,19 +429,39 @@ class CancelOperationRequest {
 }
 
 /// DockerImage represents a docker artifact.
+///
+/// The following fields are returned as untyped metadata in the Version
+/// resource, using camelcase keys (i.e. metadata.imageSizeBytes): -
+/// imageSizeBytes - mediaType - buildTime
 class DockerImage {
+  /// The time this image was built.
+  ///
+  /// This field is returned as the 'metadata.buildTime' field in the Version
+  /// resource. The build time is returned to the client as an RFC 3339 string,
+  /// which can be easily used with the JavaScript Date constructor and keeps
+  /// the Version timestamps returned via OnePlatform consistent, as JSON
+  /// marshals google.protobuf.Timestamp into an RFC 3339 string.
+  /// (http://google3/cloud/containers/artifacts/metadata/v1beta2/builder/data.go?l=158-159&rcl=364878183).
+  core.String? buildTime;
+
   /// Calculated size of the image.
+  ///
+  /// This field is returned as the 'metadata.imageSizeBytes' field in the
+  /// Version resource.
   core.String? imageSizeBytes;
 
   /// Media type of this image, e.g.
   /// "application/vnd.docker.distribution.manifest.v2+json".
+  ///
+  /// This field is returned as the 'metadata.mediaType' field in the Version
+  /// resource.
   core.String? mediaType;
 
   /// registry_location, project_id, repository_name and image id forms a unique
-  /// image name:`projects//locations//repository//dockerimages/`.
+  /// image name:`projects//locations//repository//dockerImages/`.
   ///
   /// For example,
-  /// "projects/test-project/locations/us-west4/repositories/test-repo/dockerimages/
+  /// "projects/test-project/locations/us-west4/repositories/test-repo/dockerImages/
   /// nginx@sha256:e9954c1fc875017be1c3e36eca16be2d9e9bccc4bf072163515467d6a823c7cf",
   /// where "us-west4" is the registry_location, "test-project" is the
   /// project_id, "test-repo" is the repository_name and
@@ -298,6 +488,9 @@ class DockerImage {
   DockerImage();
 
   DockerImage.fromJson(core.Map _json) {
+    if (_json.containsKey('buildTime')) {
+      buildTime = _json['buildTime'] as core.String;
+    }
     if (_json.containsKey('imageSizeBytes')) {
       imageSizeBytes = _json['imageSizeBytes'] as core.String;
     }
@@ -321,6 +514,7 @@ class DockerImage {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (buildTime != null) 'buildTime': buildTime!,
         if (imageSizeBytes != null) 'imageSizeBytes': imageSizeBytes!,
         if (mediaType != null) 'mediaType': mediaType!,
         if (name != null) 'name': name!,
@@ -345,6 +539,36 @@ class Empty {
       core.Map _json);
 
   core.Map<core.String, core.dynamic> toJson() => {};
+}
+
+/// The response from listing docker images.
+class ListDockerImagesResponse {
+  /// The docker images returned.
+  core.List<DockerImage>? dockerImages;
+
+  /// The token to retrieve the next page of artifacts, or empty if there are no
+  /// more artifacts to return.
+  core.String? nextPageToken;
+
+  ListDockerImagesResponse();
+
+  ListDockerImagesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('dockerImages')) {
+      dockerImages = (_json['dockerImages'] as core.List)
+          .map<DockerImage>((value) => DockerImage.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dockerImages != null)
+          'dockerImages': dockerImages!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
 }
 
 /// The response message for Operations.ListOperations.
@@ -373,6 +597,36 @@ class ListOperationsResponse {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
           'operations': operations!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// The response from listing repositories.
+class ListRepositoriesResponse {
+  /// The token to retrieve the next page of repositories, or empty if there are
+  /// no more repositories to return.
+  core.String? nextPageToken;
+
+  /// The repositories returned.
+  core.List<Repository>? repositories;
+
+  ListRepositoriesResponse();
+
+  ListRepositoriesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+    if (_json.containsKey('repositories')) {
+      repositories = (_json['repositories'] as core.List)
+          .map<Repository>((value) =>
+              Repository.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (repositories != null)
+          'repositories': repositories!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -456,6 +710,85 @@ class Operation {
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
+      };
+}
+
+/// A Repository for storing artifacts with a specific format.
+class Repository {
+  /// The time when the repository was created.
+  core.String? createTime;
+
+  /// The user-provided description of the repository.
+  core.String? description;
+
+  /// The format of packages that are stored in the repository.
+  /// Possible string values are:
+  /// - "FORMAT_UNSPECIFIED" : Unspecified package format.
+  /// - "DOCKER" : Docker package format.
+  core.String? format;
+
+  /// The Cloud KMS resource name of the customer managed encryption key that’s
+  /// used to encrypt the contents of the Repository.
+  ///
+  /// Has the form:
+  /// `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
+  /// This value may not be changed after the Repository has been created.
+  core.String? kmsKeyName;
+
+  /// Labels with user-defined metadata.
+  ///
+  /// This field may contain up to 64 entries. Label keys and values may be no
+  /// longer than 63 characters. Label keys must begin with a lowercase letter
+  /// and may only contain lowercase letters, numeric characters, underscores,
+  /// and dashes.
+  core.Map<core.String, core.String>? labels;
+
+  /// The name of the repository, for example:
+  /// "projects/p1/locations/us-central1/repositories/repo1".
+  core.String? name;
+
+  /// The time when the repository was last updated.
+  core.String? updateTime;
+
+  Repository();
+
+  Repository.fromJson(core.Map _json) {
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'] as core.String;
+    }
+    if (_json.containsKey('description')) {
+      description = _json['description'] as core.String;
+    }
+    if (_json.containsKey('format')) {
+      format = _json['format'] as core.String;
+    }
+    if (_json.containsKey('kmsKeyName')) {
+      kmsKeyName = _json['kmsKeyName'] as core.String;
+    }
+    if (_json.containsKey('labels')) {
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (format != null) 'format': format!,
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 

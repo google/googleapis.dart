@@ -60,7 +60,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// personalized recommendation systems without requiring a high level of
 /// expertise in machine learning, recommendation system, or Google Cloud.
 class RecommendationsAIApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -216,8 +216,8 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent catalog resource name, such as "projects /
-  /// * /locations/global/catalogs/default_catalog".
+  /// [parent] - Required. The parent catalog resource name, such as `projects /
+  /// * /locations/global/catalogs/default_catalog`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+$`.
   ///
@@ -257,9 +257,9 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Full resource name of catalog item, such as "projects /
+  /// [name] - Required. Full resource name of catalog item, such as `projects /
   /// *
-  /// /locations/global/catalogs/default_catalog/catalogItems/some_catalog_item_id".
+  /// /locations/global/catalogs/default_catalog/catalogItems/some_catalog_item_id`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/catalogItems/.*$`.
   ///
@@ -296,9 +296,9 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Full resource name of catalog item, such as "projects /
+  /// [name] - Required. Full resource name of catalog item, such as `projects /
   /// *
-  /// /locations/global/catalogs/default_catalog/catalogitems/some_catalog_item_id".
+  /// /locations/global/catalogs/default_catalog/catalogitems/some_catalog_item_id`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/catalogItems/.*$`.
   ///
@@ -343,7 +343,7 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
   /// Request parameters:
   ///
   /// [parent] - Required.
-  /// "projects/1234/locations/global/catalogs/default_catalog" If no updateMask
+  /// `projects/1234/locations/global/catalogs/default_catalog` If no updateMask
   /// is specified, requires catalogItems.create permission. If updateMask is
   /// specified, requires catalogItems.update permission.
   /// Value must have pattern
@@ -386,8 +386,8 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent catalog resource name, such as "projects /
-  /// * /locations/global/catalogs/default_catalog".
+  /// [parent] - Required. The parent catalog resource name, such as `projects /
+  /// * /locations/global/catalogs/default_catalog`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+$`.
   ///
@@ -444,9 +444,9 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Full resource name of catalog item, such as "projects /
+  /// [name] - Required. Full resource name of catalog item, such as `projects /
   /// *
-  /// /locations/global/catalogs/default_catalog/catalogItems/some_catalog_item_id".
+  /// /locations/global/catalogs/default_catalog/catalogItems/some_catalog_item_id`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/catalogItems/.*$`.
   ///
@@ -629,9 +629,9 @@ class ProjectsLocationsCatalogsEventStoresPlacementsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Full resource name of the format: {name=projects / *
+  /// [name] - Required. Full resource name of the format: `{name=projects / *
   /// /locations/global/catalogs/default_catalog/eventStores/default_event_store/placements
-  /// / * } The id of the recommendation engine placement. This id is used to
+  /// / * }` The id of the recommendation engine placement. This id is used to
   /// identify the set of models that will be used to make the prediction. We
   /// currently support three placements with the following IDs by default: *
   /// `shopping_cart`: Predicts items frequently bought together with one or
@@ -699,8 +699,8 @@ class ProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsResource 
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent resource path. "projects / *
-  /// /locations/global/catalogs/default_catalog/eventStores/default_event_store".
+  /// [parent] - Required. The parent resource path. `projects / *
+  /// /locations/global/catalogs/default_catalog/eventStores/default_event_store`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/eventStores/\[^/\]+$`.
   ///
@@ -747,8 +747,8 @@ class ProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsResource 
   /// Request parameters:
   ///
   /// [name] - Required. The API key to unregister including full resource path.
-  /// "projects / *
-  /// /locations/global/catalogs/default_catalog/eventStores/default_event_store/predictionApiKeyRegistrations/"
+  /// `projects / *
+  /// /locations/global/catalogs/default_catalog/eventStores/default_event_store/predictionApiKeyRegistrations/`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/eventStores/\[^/\]+/predictionApiKeyRegistrations/\[^/\]+$`.
   ///
@@ -786,7 +786,7 @@ class ProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsResource 
   /// Request parameters:
   ///
   /// [parent] - Required. The parent placement resource name such as
-  /// "projects/1234/locations/global/catalogs/default_catalog/eventStores/default_event_store"
+  /// `projects/1234/locations/global/catalogs/default_catalog/eventStores/default_event_store`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/eventStores/\[^/\]+$`.
   ///
@@ -851,7 +851,7 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent eventStore name, such as
-  /// "projects/1234/locations/global/catalogs/default_catalog/eventStores/default_event_store".
+  /// `projects/1234/locations/global/catalogs/default_catalog/eventStores/default_event_store`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/eventStores/\[^/\]+$`.
   ///
@@ -915,7 +915,7 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
   /// Request parameters:
   ///
   /// [parent] - Required.
-  /// "projects/1234/locations/global/catalogs/default_catalog/eventStores/default_event_store"
+  /// `projects/1234/locations/global/catalogs/default_catalog/eventStores/default_event_store`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/eventStores/\[^/\]+$`.
   ///
@@ -964,8 +964,8 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent eventStore resource name, such as
-  /// "projects / * /locations / *
-  /// /catalogs/default_catalog/eventStores/default_event_store".
+  /// `projects / * /locations / *
+  /// /catalogs/default_catalog/eventStores/default_event_store`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/eventStores/\[^/\]+$`.
   ///
@@ -1045,7 +1045,7 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
   ///
   /// [parent] - Required. The resource name of the event_store under which the
   /// events are created. The format is
-  /// "projects/${projectId}/locations/global/catalogs/${catalogId}/eventStores/${eventStoreId}"
+  /// `projects/${projectId}/locations/global/catalogs/${catalogId}/eventStores/${eventStoreId}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/eventStores/\[^/\]+$`.
   ///
@@ -1095,9 +1095,9 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Full resource name of user event, such as "projects /
+  /// [parent] - Required. Full resource name of user event, such as `projects /
   /// * /locations / *
-  /// /catalogs/default_catalog/eventStores/default_event_store".
+  /// /catalogs/default_catalog/eventStores/default_event_store`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/eventStores/\[^/\]+$`.
   ///
@@ -2027,9 +2027,9 @@ class GoogleCloudRecommendationengineV1beta1GcsSource {
   /// Google Cloud Storage URIs to input files.
   ///
   /// URI can be up to 2000 characters long. URIs can match the full object path
-  /// (for example, gs://bucket/directory/object.json) or a pattern matching one
-  /// or more files, such as gs://bucket/directory / * .json. A request can
-  /// contain at most 100 files, and each file can be up to 2 GB. See
+  /// (for example, `gs://bucket/directory/object.json`) or a pattern matching
+  /// one or more files, such as `gs://bucket/directory / * .json`. A request
+  /// can contain at most 100 files, and each file can be up to 2 GB. See
   /// \[Importing catalog information\](/recommendations-ai/docs/upload-catalog)
   /// for the expected file format and setup instructions.
   ///
@@ -2636,7 +2636,15 @@ class GoogleCloudRecommendationengineV1beta1PredictRequest {
   /// probability of an item being clicked/purchased given the user's context
   /// and history. * `strictFiltering`: Boolean. True by default. If set to
   /// false, the service will return generic (unfiltered) popular items instead
-  /// of empty if your filter blocks all prediction results.
+  /// of empty if your filter blocks all prediction results. *
+  /// `priceRerankLevel`: String. Default empty. If set to be non-empty, then it
+  /// needs to be one of {'no-price-reranking', 'low-price-reranking',
+  /// 'medium-price-reranking', 'high-price-reranking'}. This gives request
+  /// level control and adjust prediction results based on product price. *
+  /// `diversityLevel`: String. Default empty. If set to be non-empty, then it
+  /// needs to be one of {'no-diversity', 'low-diversity', 'medium-diversity',
+  /// 'high-diversity', 'auto-diversity'}. This gives request level control and
+  /// adjust prediction results based on product category.
   ///
   /// Optional.
   ///

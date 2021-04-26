@@ -54,6 +54,45 @@ void checkCapacity(api.Capacity o) {
   buildCounterCapacity--;
 }
 
+core.int buildCounterCommitCursorRequest = 0;
+api.CommitCursorRequest buildCommitCursorRequest() {
+  var o = api.CommitCursorRequest();
+  buildCounterCommitCursorRequest++;
+  if (buildCounterCommitCursorRequest < 3) {
+    o.cursor = buildCursor();
+    o.partition = 'foo';
+  }
+  buildCounterCommitCursorRequest--;
+  return o;
+}
+
+void checkCommitCursorRequest(api.CommitCursorRequest o) {
+  buildCounterCommitCursorRequest++;
+  if (buildCounterCommitCursorRequest < 3) {
+    checkCursor(o.cursor! as api.Cursor);
+    unittest.expect(
+      o.partition!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterCommitCursorRequest--;
+}
+
+core.int buildCounterCommitCursorResponse = 0;
+api.CommitCursorResponse buildCommitCursorResponse() {
+  var o = api.CommitCursorResponse();
+  buildCounterCommitCursorResponse++;
+  if (buildCounterCommitCursorResponse < 3) {}
+  buildCounterCommitCursorResponse--;
+  return o;
+}
+
+void checkCommitCursorResponse(api.CommitCursorResponse o) {
+  buildCounterCommitCursorResponse++;
+  if (buildCounterCommitCursorResponse < 3) {}
+  buildCounterCommitCursorResponse--;
+}
+
 core.int buildCounterComputeHeadCursorRequest = 0;
 api.ComputeHeadCursorRequest buildComputeHeadCursorRequest() {
   var o = api.ComputeHeadCursorRequest();
@@ -158,6 +197,49 @@ void checkComputeMessageStatsResponse(api.ComputeMessageStatsResponse o) {
   buildCounterComputeMessageStatsResponse--;
 }
 
+core.int buildCounterComputeTimeCursorRequest = 0;
+api.ComputeTimeCursorRequest buildComputeTimeCursorRequest() {
+  var o = api.ComputeTimeCursorRequest();
+  buildCounterComputeTimeCursorRequest++;
+  if (buildCounterComputeTimeCursorRequest < 3) {
+    o.partition = 'foo';
+    o.target = buildTimeTarget();
+  }
+  buildCounterComputeTimeCursorRequest--;
+  return o;
+}
+
+void checkComputeTimeCursorRequest(api.ComputeTimeCursorRequest o) {
+  buildCounterComputeTimeCursorRequest++;
+  if (buildCounterComputeTimeCursorRequest < 3) {
+    unittest.expect(
+      o.partition!,
+      unittest.equals('foo'),
+    );
+    checkTimeTarget(o.target! as api.TimeTarget);
+  }
+  buildCounterComputeTimeCursorRequest--;
+}
+
+core.int buildCounterComputeTimeCursorResponse = 0;
+api.ComputeTimeCursorResponse buildComputeTimeCursorResponse() {
+  var o = api.ComputeTimeCursorResponse();
+  buildCounterComputeTimeCursorResponse++;
+  if (buildCounterComputeTimeCursorResponse < 3) {
+    o.cursor = buildCursor();
+  }
+  buildCounterComputeTimeCursorResponse--;
+  return o;
+}
+
+void checkComputeTimeCursorResponse(api.ComputeTimeCursorResponse o) {
+  buildCounterComputeTimeCursorResponse++;
+  if (buildCounterComputeTimeCursorResponse < 3) {
+    checkCursor(o.cursor! as api.Cursor);
+  }
+  buildCounterComputeTimeCursorResponse--;
+}
+
 core.int buildCounterCursor = 0;
 api.Cursor buildCursor() {
   var o = api.Cursor();
@@ -217,14 +299,14 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-core.List<api.PartitionCursor> buildUnnamed6648() {
+core.List<api.PartitionCursor> buildUnnamed7143() {
   var o = <api.PartitionCursor>[];
   o.add(buildPartitionCursor());
   o.add(buildPartitionCursor());
   return o;
 }
 
-void checkUnnamed6648(core.List<api.PartitionCursor> o) {
+void checkUnnamed7143(core.List<api.PartitionCursor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPartitionCursor(o[0] as api.PartitionCursor);
   checkPartitionCursor(o[1] as api.PartitionCursor);
@@ -236,7 +318,7 @@ api.ListPartitionCursorsResponse buildListPartitionCursorsResponse() {
   buildCounterListPartitionCursorsResponse++;
   if (buildCounterListPartitionCursorsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.partitionCursors = buildUnnamed6648();
+    o.partitionCursors = buildUnnamed7143();
   }
   buildCounterListPartitionCursorsResponse--;
   return o;
@@ -249,19 +331,19 @@ void checkListPartitionCursorsResponse(api.ListPartitionCursorsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed6648(o.partitionCursors!);
+    checkUnnamed7143(o.partitionCursors!);
   }
   buildCounterListPartitionCursorsResponse--;
 }
 
-core.List<api.Subscription> buildUnnamed6649() {
+core.List<api.Subscription> buildUnnamed7144() {
   var o = <api.Subscription>[];
   o.add(buildSubscription());
   o.add(buildSubscription());
   return o;
 }
 
-void checkUnnamed6649(core.List<api.Subscription> o) {
+void checkUnnamed7144(core.List<api.Subscription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSubscription(o[0] as api.Subscription);
   checkSubscription(o[1] as api.Subscription);
@@ -273,7 +355,7 @@ api.ListSubscriptionsResponse buildListSubscriptionsResponse() {
   buildCounterListSubscriptionsResponse++;
   if (buildCounterListSubscriptionsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.subscriptions = buildUnnamed6649();
+    o.subscriptions = buildUnnamed7144();
   }
   buildCounterListSubscriptionsResponse--;
   return o;
@@ -286,19 +368,19 @@ void checkListSubscriptionsResponse(api.ListSubscriptionsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed6649(o.subscriptions!);
+    checkUnnamed7144(o.subscriptions!);
   }
   buildCounterListSubscriptionsResponse--;
 }
 
-core.List<core.String> buildUnnamed6650() {
+core.List<core.String> buildUnnamed7145() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6650(core.List<core.String> o) {
+void checkUnnamed7145(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -316,7 +398,7 @@ api.ListTopicSubscriptionsResponse buildListTopicSubscriptionsResponse() {
   buildCounterListTopicSubscriptionsResponse++;
   if (buildCounterListTopicSubscriptionsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.subscriptions = buildUnnamed6650();
+    o.subscriptions = buildUnnamed7145();
   }
   buildCounterListTopicSubscriptionsResponse--;
   return o;
@@ -329,19 +411,19 @@ void checkListTopicSubscriptionsResponse(api.ListTopicSubscriptionsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed6650(o.subscriptions!);
+    checkUnnamed7145(o.subscriptions!);
   }
   buildCounterListTopicSubscriptionsResponse--;
 }
 
-core.List<api.Topic> buildUnnamed6651() {
+core.List<api.Topic> buildUnnamed7146() {
   var o = <api.Topic>[];
   o.add(buildTopic());
   o.add(buildTopic());
   return o;
 }
 
-void checkUnnamed6651(core.List<api.Topic> o) {
+void checkUnnamed7146(core.List<api.Topic> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTopic(o[0] as api.Topic);
   checkTopic(o[1] as api.Topic);
@@ -353,7 +435,7 @@ api.ListTopicsResponse buildListTopicsResponse() {
   buildCounterListTopicsResponse++;
   if (buildCounterListTopicsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.topics = buildUnnamed6651();
+    o.topics = buildUnnamed7146();
   }
   buildCounterListTopicsResponse--;
   return o;
@@ -366,7 +448,7 @@ void checkListTopicsResponse(api.ListTopicsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed6651(o.topics!);
+    checkUnnamed7146(o.topics!);
   }
   buildCounterListTopicsResponse--;
 }
@@ -480,6 +562,33 @@ void checkSubscription(api.Subscription o) {
   buildCounterSubscription--;
 }
 
+core.int buildCounterTimeTarget = 0;
+api.TimeTarget buildTimeTarget() {
+  var o = api.TimeTarget();
+  buildCounterTimeTarget++;
+  if (buildCounterTimeTarget < 3) {
+    o.eventTime = 'foo';
+    o.publishTime = 'foo';
+  }
+  buildCounterTimeTarget--;
+  return o;
+}
+
+void checkTimeTarget(api.TimeTarget o) {
+  buildCounterTimeTarget++;
+  if (buildCounterTimeTarget < 3) {
+    unittest.expect(
+      o.eventTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.publishTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterTimeTarget--;
+}
+
 core.int buildCounterTopic = 0;
 api.Topic buildTopic() {
   var o = api.Topic();
@@ -539,6 +648,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-CommitCursorRequest', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildCommitCursorRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CommitCursorRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCommitCursorRequest(od as api.CommitCursorRequest);
+    });
+  });
+
+  unittest.group('obj-schema-CommitCursorResponse', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildCommitCursorResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CommitCursorResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCommitCursorResponse(od as api.CommitCursorResponse);
+    });
+  });
+
   unittest.group('obj-schema-ComputeHeadCursorRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildComputeHeadCursorRequest();
@@ -576,6 +705,26 @@ void main() {
       var od = api.ComputeMessageStatsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkComputeMessageStatsResponse(od as api.ComputeMessageStatsResponse);
+    });
+  });
+
+  unittest.group('obj-schema-ComputeTimeCursorRequest', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildComputeTimeCursorRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ComputeTimeCursorRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkComputeTimeCursorRequest(od as api.ComputeTimeCursorRequest);
+    });
+  });
+
+  unittest.group('obj-schema-ComputeTimeCursorResponse', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildComputeTimeCursorResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ComputeTimeCursorResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkComputeTimeCursorResponse(od as api.ComputeTimeCursorResponse);
     });
   });
 
@@ -689,6 +838,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-TimeTarget', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildTimeTarget();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.TimeTarget.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkTimeTarget(od as api.TimeTarget);
+    });
+  });
+
   unittest.group('obj-schema-Topic', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTopic();
@@ -714,6 +873,7 @@ void main() {
       var res = api.PubsubLiteApi(mock).admin.projects.locations.subscriptions;
       var arg_request = buildSubscription();
       var arg_parent = 'foo';
+      var arg_skipBacklog = true;
       var arg_subscriptionId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -753,6 +913,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap["skipBacklog"]!.first,
+          unittest.equals("$arg_skipBacklog"),
+        );
+        unittest.expect(
           queryMap["subscriptionId"]!.first,
           unittest.equals(arg_subscriptionId),
         );
@@ -768,7 +932,9 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.create(arg_request, arg_parent,
-          subscriptionId: arg_subscriptionId, $fields: arg_$fields);
+          skipBacklog: arg_skipBacklog,
+          subscriptionId: arg_subscriptionId,
+          $fields: arg_$fields);
       checkSubscription(response as api.Subscription);
     });
 
@@ -1424,6 +1590,66 @@ void main() {
     });
   });
 
+  unittest.group('resource-CursorProjectsLocationsSubscriptionsResource', () {
+    unittest.test('method--commitCursor', () async {
+      var mock = HttpServerMock();
+      var res = api.PubsubLiteApi(mock).cursor.projects.locations.subscriptions;
+      var arg_request = buildCommitCursorRequest();
+      var arg_subscription = 'foo';
+      var arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = api.CommitCursorRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCommitCursorRequest(obj as api.CommitCursorRequest);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("v1/cursor/"),
+        );
+        pathOffset += 10;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        var h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        var resp = convert.json.encode(buildCommitCursorResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.commitCursor(arg_request, arg_subscription,
+          $fields: arg_$fields);
+      checkCommitCursorResponse(response as api.CommitCursorResponse);
+    });
+  });
+
   unittest.group('resource-CursorProjectsLocationsSubscriptionsCursorsResource',
       () {
     unittest.test('method--list', () async {
@@ -1614,6 +1840,64 @@ void main() {
           $fields: arg_$fields);
       checkComputeMessageStatsResponse(
           response as api.ComputeMessageStatsResponse);
+    });
+
+    unittest.test('method--computeTimeCursor', () async {
+      var mock = HttpServerMock();
+      var res = api.PubsubLiteApi(mock).topicStats.projects.locations.topics;
+      var arg_request = buildComputeTimeCursorRequest();
+      var arg_topic = 'foo';
+      var arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = api.ComputeTimeCursorRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkComputeTimeCursorRequest(obj as api.ComputeTimeCursorRequest);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 14),
+          unittest.equals("v1/topicStats/"),
+        );
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        var h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        var resp = convert.json.encode(buildComputeTimeCursorResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.computeTimeCursor(arg_request, arg_topic,
+          $fields: arg_$fields);
+      checkComputeTimeCursorResponse(response as api.ComputeTimeCursorResponse);
     });
   });
 }

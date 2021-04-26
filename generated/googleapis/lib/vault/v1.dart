@@ -14,7 +14,13 @@
 
 /// G Suite Vault API - v1
 ///
-/// Archiving and eDiscovery for G Suite.
+/// Retention and eDiscovery for Google Workspace. To work with Vault resources,
+/// the account must have the
+/// [required Vault privileges] (https://support.google.com/vault/answer/2799699)
+/// and access to the matter. To access a matter, the account must have created
+/// the matter, have the matter shared with them, or have the **View All
+/// Matters** privilege. For example, to download an export, an account needs
+/// the **Manage Exports** privilege and the matter shared with them.
 ///
 /// For more information, see <https://developers.google.com/vault>
 ///
@@ -40,7 +46,14 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// Archiving and eDiscovery for G Suite.
+/// Retention and eDiscovery for Google Workspace.
+///
+/// To work with Vault resources, the account must have the
+/// [required Vault privileges] (https://support.google.com/vault/answer/2799699)
+/// and access to the matter. To access a matter, the account must have created
+/// the matter, have the matter shared with them, or have the **View All
+/// Matters** privilege. For example, to download an export, an account needs
+/// the **Manage Exports** privilege and the matter shared with them.
 class VaultApi {
   /// Manage your eDiscovery data
   static const ediscoveryScope = 'https://www.googleapis.com/auth/ediscovery';
@@ -2147,7 +2160,12 @@ class Empty {
   core.Map<core.String, core.dynamic> toJson() => {};
 }
 
-/// An export
+/// An export To work with Vault resources, the account must have the
+/// [required Vault privileges](https://support.google.com/vault/answer/2799699)
+/// and access to the matter.
+///
+/// To access a matter, the account must have created the matter, have the
+/// matter shared with them, or have the **View All Matters** privilege.
 class Export {
   /// Export sink for cloud storage files.
   ///
@@ -2502,7 +2520,12 @@ class HangoutsChatOptions {
 /// An account being held in a particular hold.
 ///
 /// This structure is immutable. This can be either a single user or a google
-/// group, depending on the corpus.
+/// group, depending on the corpus. To work with Vault resources, the account
+/// must have the
+/// [required Vault privileges](https://support.google.com/vault/answer/2799699)
+/// and access to the matter. To access a matter, the account must have created
+/// the matter, have the matter shared with them, or have the **View All
+/// Matters** privilege.
 class HeldAccount {
   /// The account's ID as provided by the Admin SDK.
   core.String? accountId;
@@ -2733,7 +2756,12 @@ class HeldVoiceQuery {
 /// A hold restricts purging of artifacts based on the combination of the query
 /// and accounts restrictions. A hold can be configured to either apply to an
 /// explicitly configured set of accounts, or can be applied to all members of
-/// an organizational unit.
+/// an organizational unit. To work with Vault resources, the account must have
+/// the
+/// [required Vault privileges](https://support.google.com/vault/answer/2799699)
+/// and access to the matter. To access a matter, the account must have created
+/// the matter, have the matter shared with them, or have the **View All
+/// Matters** privilege.
 class Hold {
   /// If set, the hold applies to the enumerated accounts and org_unit must be
   /// empty.
@@ -3100,6 +3128,12 @@ class MailOptions {
 }
 
 /// Represents a matter.
+///
+/// To work with Vault resources, the account must have the
+/// [required Vault privileges](https://support.google.com/vault/answer/2799699)
+/// and access to the matter. To access a matter, the account must have created
+/// the matter, have the matter shared with them, or have the **View All
+/// Matters** privilege.
 class Matter {
   /// The description of the matter.
   core.String? description;
@@ -3593,6 +3627,12 @@ class ReopenMatterResponse {
 }
 
 /// Definition of the saved query.
+///
+/// To work with Vault resources, the account must have the
+/// [required Vault privileges](https://support.google.com/vault/answer/2799699)
+/// and access to the matter. To access a matter, the account must have created
+/// the matter, have the matter shared with them, or have the **View All
+/// Matters** privilege.
 class SavedQuery {
   /// The server generated timestamp at which saved query was created.
   ///

@@ -44,7 +44,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// An implementation of the Grafeas API, which stores, and enables querying and
 /// retrieval of critical metadata about all of your software artifacts.
 class ContainerAnalysisApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -2237,6 +2237,9 @@ class Detail {
   /// e.g. Ubuntu security tracker.
   core.String? sourceUpdateTime;
 
+  /// The name of the vendor of the product.
+  core.String? vendor;
+
   Detail();
 
   Detail.fromJson(core.Map _json) {
@@ -2276,6 +2279,9 @@ class Detail {
     if (_json.containsKey('sourceUpdateTime')) {
       sourceUpdateTime = _json['sourceUpdateTime'] as core.String;
     }
+    if (_json.containsKey('vendor')) {
+      vendor = _json['vendor'] as core.String;
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2292,6 +2298,7 @@ class Detail {
         if (severityName != null) 'severityName': severityName!,
         if (source != null) 'source': source!,
         if (sourceUpdateTime != null) 'sourceUpdateTime': sourceUpdateTime!,
+        if (vendor != null) 'vendor': vendor!,
       };
 }
 

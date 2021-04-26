@@ -211,14 +211,14 @@ void checkRenewalSettings(api.RenewalSettings o) {
   buildCounterRenewalSettings--;
 }
 
-core.List<core.String> buildUnnamed3858() {
+core.List<core.String> buildUnnamed4213() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed3858(core.List<core.String> o) {
+void checkUnnamed4213(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -236,7 +236,7 @@ api.ResellernotifyGetwatchdetailsResponse
   var o = api.ResellernotifyGetwatchdetailsResponse();
   buildCounterResellernotifyGetwatchdetailsResponse++;
   if (buildCounterResellernotifyGetwatchdetailsResponse < 3) {
-    o.serviceAccountEmailAddresses = buildUnnamed3858();
+    o.serviceAccountEmailAddresses = buildUnnamed4213();
     o.topicName = 'foo';
   }
   buildCounterResellernotifyGetwatchdetailsResponse--;
@@ -247,7 +247,7 @@ void checkResellernotifyGetwatchdetailsResponse(
     api.ResellernotifyGetwatchdetailsResponse o) {
   buildCounterResellernotifyGetwatchdetailsResponse++;
   if (buildCounterResellernotifyGetwatchdetailsResponse < 3) {
-    checkUnnamed3858(o.serviceAccountEmailAddresses!);
+    checkUnnamed4213(o.serviceAccountEmailAddresses!);
     unittest.expect(
       o.topicName!,
       unittest.equals('foo'),
@@ -371,14 +371,14 @@ void checkSubscriptionPlan(api.SubscriptionPlan o) {
   buildCounterSubscriptionPlan--;
 }
 
-core.List<core.String> buildUnnamed3859() {
+core.List<core.String> buildUnnamed4214() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed3859(core.List<core.String> o) {
+void checkUnnamed4214(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -395,6 +395,7 @@ api.SubscriptionTransferInfo buildSubscriptionTransferInfo() {
   var o = api.SubscriptionTransferInfo();
   buildCounterSubscriptionTransferInfo++;
   if (buildCounterSubscriptionTransferInfo < 3) {
+    o.currentLegacySkuId = 'foo';
     o.minimumTransferableSeats = 42;
     o.transferabilityExpirationTime = 'foo';
   }
@@ -405,6 +406,10 @@ api.SubscriptionTransferInfo buildSubscriptionTransferInfo() {
 void checkSubscriptionTransferInfo(api.SubscriptionTransferInfo o) {
   buildCounterSubscriptionTransferInfo++;
   if (buildCounterSubscriptionTransferInfo < 3) {
+    unittest.expect(
+      o.currentLegacySkuId!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.minimumTransferableSeats!,
       unittest.equals(42),
@@ -461,7 +466,7 @@ api.Subscription buildSubscription() {
     o.skuName = 'foo';
     o.status = 'foo';
     o.subscriptionId = 'foo';
-    o.suspensionReasons = buildUnnamed3859();
+    o.suspensionReasons = buildUnnamed4214();
     o.transferInfo = buildSubscriptionTransferInfo();
     o.trialSettings = buildSubscriptionTrialSettings();
   }
@@ -523,7 +528,7 @@ void checkSubscription(api.Subscription o) {
       o.subscriptionId!,
       unittest.equals('foo'),
     );
-    checkUnnamed3859(o.suspensionReasons!);
+    checkUnnamed4214(o.suspensionReasons!);
     checkSubscriptionTransferInfo(
         o.transferInfo! as api.SubscriptionTransferInfo);
     checkSubscriptionTrialSettings(
@@ -532,14 +537,14 @@ void checkSubscription(api.Subscription o) {
   buildCounterSubscription--;
 }
 
-core.List<api.Subscription> buildUnnamed3860() {
+core.List<api.Subscription> buildUnnamed4215() {
   var o = <api.Subscription>[];
   o.add(buildSubscription());
   o.add(buildSubscription());
   return o;
 }
 
-void checkUnnamed3860(core.List<api.Subscription> o) {
+void checkUnnamed4215(core.List<api.Subscription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSubscription(o[0] as api.Subscription);
   checkSubscription(o[1] as api.Subscription);
@@ -552,7 +557,7 @@ api.Subscriptions buildSubscriptions() {
   if (buildCounterSubscriptions < 3) {
     o.kind = 'foo';
     o.nextPageToken = 'foo';
-    o.subscriptions = buildUnnamed3860();
+    o.subscriptions = buildUnnamed4215();
   }
   buildCounterSubscriptions--;
   return o;
@@ -569,7 +574,7 @@ void checkSubscriptions(api.Subscriptions o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed3860(o.subscriptions!);
+    checkUnnamed4215(o.subscriptions!);
   }
   buildCounterSubscriptions--;
 }

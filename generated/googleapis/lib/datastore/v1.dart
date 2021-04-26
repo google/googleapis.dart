@@ -41,7 +41,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Accesses the schemaless NoSQL database to provide fully managed, robust,
 /// scalable storage for your application.
 class DatastoreApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -2376,11 +2376,11 @@ class KindExpression {
       };
 }
 
-/// An object representing a latitude/longitude pair.
+/// An object that represents a latitude/longitude pair.
 ///
-/// This is expressed as a pair of doubles representing degrees latitude and
-/// degrees longitude. Unless specified otherwise, this must conform to the
-/// WGS84 standard. Values must be within normalized ranges.
+/// This is expressed as a pair of doubles to represent degrees latitude and
+/// degrees longitude. Unless specified otherwise, this object must conform to
+/// the WGS84 standard. Values must be within normalized ranges.
 class LatLng {
   /// The latitude in degrees.
   ///

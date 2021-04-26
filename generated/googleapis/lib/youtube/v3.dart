@@ -3879,7 +3879,8 @@ class SearchResource {
   ///
   /// [videoDimension] - Filter on 3d videos.
   /// Possible string values are:
-  /// - "any"
+  /// - "any" : Include both 3D and non-3D videos in returned results. This is
+  /// the default value.
   /// - "2d" : Restrict search results to exclude 3D videos.
   /// - "3d" : Restrict search results to only include 3D videos.
   ///
@@ -4796,14 +4797,14 @@ class VideosResource {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [VideoRatingListResponse].
+  /// Completes with a [VideoGetRatingResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<VideoRatingListResponse> getRating(
+  async.Future<VideoGetRatingResponse> getRating(
     core.List<core.String> id, {
     core.String? onBehalfOfContentOwner,
     core.String? $fields,
@@ -4825,7 +4826,7 @@ class VideosResource {
       'GET',
       queryParams: _queryParams,
     );
-    return VideoRatingListResponse.fromJson(
+    return VideoGetRatingResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 
@@ -5929,7 +5930,7 @@ class ActivityContentDetailsSocial {
 
   /// The name of the social network.
   /// Possible string values are:
-  /// - "typeUnspecified"
+  /// - "unspecified"
   /// - "googlePlus"
   /// - "facebook"
   /// - "twitter"
@@ -7258,7 +7259,7 @@ class ChannelSectionSnippet {
 
   /// The type of the channel section.
   /// Possible string values are:
-  /// - "channelsectionTypeUnspecified"
+  /// - "channelsectionTypeUndefined"
   /// - "singlePlaylist"
   /// - "multiplePlaylists"
   /// - "popularUploads"
@@ -10596,10 +10597,10 @@ class LiveBroadcastSnippet {
   /// schedule.
   core.DateTime? publishedAt;
 
-  /// The date and time that the broadcast is scheduled to start.
+  /// The date and time that the broadcast is scheduled to end.
   core.DateTime? scheduledEndTime;
 
-  /// The date and time that the broadcast is scheduled to end.
+  /// The date and time that the broadcast is scheduled to start.
   core.DateTime? scheduledStartTime;
 
   /// A map of thumbnail images associated with the broadcast.
@@ -15372,6 +15373,57 @@ class VideoFileDetailsVideoStream {
       };
 }
 
+class VideoGetRatingResponse {
+  /// Etag of this resource.
+  core.String? etag;
+
+  /// Serialized EventId of the request which produced this response.
+  core.String? eventId;
+
+  /// A list of ratings that match the request criteria.
+  core.List<VideoRating>? items;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#videoGetRatingResponse".
+  core.String? kind;
+
+  /// The visitorId identifies the visitor.
+  core.String? visitorId;
+
+  VideoGetRatingResponse();
+
+  VideoGetRatingResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'] as core.String;
+    }
+    if (_json.containsKey('eventId')) {
+      eventId = _json['eventId'] as core.String;
+    }
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
+          .map<VideoRating>((value) => VideoRating.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'] as core.String;
+    }
+    if (_json.containsKey('visitorId')) {
+      visitorId = _json['visitorId'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (eventId != null) 'eventId': eventId!,
+        if (items != null)
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (visitorId != null) 'visitorId': visitorId!,
+      };
+}
+
 class VideoListResponse {
   /// Etag of this resource.
   core.String? etag;
@@ -15819,57 +15871,6 @@ class VideoRating {
   core.Map<core.String, core.dynamic> toJson() => {
         if (rating != null) 'rating': rating!,
         if (videoId != null) 'videoId': videoId!,
-      };
-}
-
-class VideoRatingListResponse {
-  /// Etag of this resource.
-  core.String? etag;
-
-  /// Serialized EventId of the request which produced this response.
-  core.String? eventId;
-
-  /// A list of ratings that match the request criteria.
-  core.List<VideoRating>? items;
-
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "youtube#videoGetRatingResponse".
-  core.String? kind;
-
-  /// The visitorId identifies the visitor.
-  core.String? visitorId;
-
-  VideoRatingListResponse();
-
-  VideoRatingListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('eventId')) {
-      eventId = _json['eventId'] as core.String;
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<VideoRating>((value) => VideoRating.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('visitorId')) {
-      visitorId = _json['visitorId'] as core.String;
-    }
-  }
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-        if (eventId != null) 'eventId': eventId!,
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind!,
-        if (visitorId != null) 'visitorId': visitorId!,
       };
 }
 

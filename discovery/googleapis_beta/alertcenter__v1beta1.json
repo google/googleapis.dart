@@ -410,7 +410,7 @@
             }
         }
     },
-    "revision": "20210216",
+    "revision": "20210512",
     "rootUrl": "https://alertcenter.googleapis.com/",
     "schemas": {
         "AccountWarning": {
@@ -428,8 +428,14 @@
             },
             "type": "object"
         },
+        "ActionInfo": {
+            "description": "Metadata related to the action.",
+            "id": "ActionInfo",
+            "properties": {},
+            "type": "object"
+        },
         "ActivityRule": {
-            "description": "Alerts from G Suite Security Center rules service configured by admin.",
+            "description": "Alerts from Google Workspace Security Center rules service configured by an admin.",
             "id": "ActivityRule",
             "properties": {
                 "actionNames": {
@@ -649,6 +655,22 @@
                         "$ref": "RequestInfo"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "AppSettingsChanged": {
+            "description": "Alerts from AppSettingsChanged bucket Rules configured by Admin which contain the below rules. Calendar settings changed Drive settings changed Email settings changed Mobile settings changed",
+            "id": "AppSettingsChanged",
+            "properties": {
+                "alertDetails": {
+                    "description": "Any other associated alert details, for example, AlertConfiguration.",
+                    "format": "byte",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Rule name",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -966,7 +988,7 @@
             "type": "object"
         },
         "GoogleOperations": {
-            "description": "An incident reported by Google Operations for a G Suite application.",
+            "description": "An incident reported by Google Operations for a Google Workspace application.",
             "id": "GoogleOperations",
             "properties": {
                 "affectedUserEmails": {
@@ -978,14 +1000,14 @@
                 },
                 "attachmentData": {
                     "$ref": "Attachment",
-                    "description": "Optional. Application-specific data for an incident, provided when the G Suite application which reported the incident cannot be completely restored to a valid state."
+                    "description": "Optional. Application-specific data for an incident, provided when the Google Workspace application which reported the incident cannot be completely restored to a valid state."
                 },
                 "description": {
                     "description": "A detailed, freeform incident description.",
                     "type": "string"
                 },
                 "header": {
-                    "description": "A header to display above the incident message. Typcially used to attach a localized notice on the timeline for followup comms translations.",
+                    "description": "A header to display above the incident message. Typically used to attach a localized notice on the timeline for followup comms translations.",
                     "type": "string"
                 },
                 "title": {
@@ -1165,6 +1187,27 @@
             },
             "type": "object"
         },
+        "ReportingRule": {
+            "description": "Alerts from Reporting Rules configured by Admin.",
+            "id": "ReportingRule",
+            "properties": {
+                "alertDetails": {
+                    "description": "Any other associated alert details, for example, AlertConfiguration.",
+                    "format": "byte",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Rule name",
+                    "type": "string"
+                },
+                "query": {
+                    "description": "Alert Rule query Sample Query query { condition { filter { expected_application_id: 777491262838 expected_event_name: \"indexable_content_change\" filter_op: IN } } conjunction_operator: OR }",
+                    "format": "byte",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "RequestInfo": {
             "description": "Requests for one application that needs default SQL setup.",
             "id": "RequestInfo",
@@ -1219,7 +1262,7 @@
             "type": "object"
         },
         "RuleViolationInfo": {
-            "description": "Common alert information about violated rules that are configured by G Suite administrators.",
+            "description": "Common alert information about violated rules that are configured by Google Workspace administrators.",
             "id": "RuleViolationInfo",
             "properties": {
                 "dataSource": {
@@ -1290,6 +1333,13 @@
                         "A Drive file is shared."
                     ],
                     "type": "string"
+                },
+                "triggeredActionInfo": {
+                    "description": "Metadata related to the triggered actions.",
+                    "items": {
+                        "$ref": "ActionInfo"
+                    },
+                    "type": "array"
                 },
                 "triggeredActionTypes": {
                     "description": "Actions applied as a consequence of the rule being triggered.",
@@ -1455,6 +1505,17 @@
                 },
                 "emailAddress": {
                     "description": "Email address of the user.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "UserChanges": {
+            "description": "Alerts from UserChanges bucket Rules for predefined rules which contain the below rules. Suspended user made active New user Added User suspended (by admin) User granted admin privileges User admin privileges revoked User deleted Users password changed",
+            "id": "UserChanges",
+            "properties": {
+                "name": {
+                    "description": "Rule name",
                     "type": "string"
                 }
             },

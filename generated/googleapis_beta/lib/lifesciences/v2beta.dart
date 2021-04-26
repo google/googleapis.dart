@@ -42,7 +42,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Cloud Life Sciences is a suite of services and tools for managing,
 /// processing, and transforming life sciences data.
 class CloudLifeSciencesApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -118,11 +118,15 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [filter] - The standard list filter.
+  /// [filter] - A filter to narrow down results to a preferred subset. The
+  /// filtering language accepts strings like "displayName=tokyo", and is
+  /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
   ///
-  /// [pageSize] - The standard list page size.
+  /// [pageSize] - The maximum number of results to return. If not set, the
+  /// service selects a default.
   ///
-  /// [pageToken] - The standard list page token.
+  /// [pageToken] - A page token received from the `next_page_token` field in
+  /// the response. Send that page token to receive the subsequent page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -470,6 +474,16 @@ class Action {
   /// only for containers you trust.
   core.bool? enableFuse;
 
+  /// The encrypted environment to pass into the container.
+  ///
+  /// This environment is merged with values specified in the
+  /// google.cloud.lifesciences.v2beta.Pipeline message, overwriting any
+  /// duplicate values. The secret must decrypt to a JSON-encoded dictionary
+  /// where key-value pairs serve as environment variable names and their
+  /// values. The decoded environment variables can overwrite the values
+  /// specified by the `environment` field.
+  Secret? encryptedEnvironment;
+
   /// If specified, overrides the `ENTRYPOINT` specified in the container.
   core.String? entrypoint;
 
@@ -597,6 +611,10 @@ class Action {
     if (_json.containsKey('enableFuse')) {
       enableFuse = _json['enableFuse'] as core.bool;
     }
+    if (_json.containsKey('encryptedEnvironment')) {
+      encryptedEnvironment = Secret.fromJson(
+          _json['encryptedEnvironment'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('entrypoint')) {
       entrypoint = _json['entrypoint'] as core.String;
     }
@@ -664,6 +682,8 @@ class Action {
         if (disableStandardErrorCapture != null)
           'disableStandardErrorCapture': disableStandardErrorCapture!,
         if (enableFuse != null) 'enableFuse': enableFuse!,
+        if (encryptedEnvironment != null)
+          'encryptedEnvironment': encryptedEnvironment!.toJson(),
         if (entrypoint != null) 'entrypoint': entrypoint!,
         if (environment != null) 'environment': environment!,
         if (ignoreExitStatus != null) 'ignoreExitStatus': ignoreExitStatus!,
@@ -1095,11 +1115,11 @@ class FailedEvent {
   /// non-directory, etc. Service implementors can use the following guidelines
   /// to decide between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`: (a)
   /// Use `UNAVAILABLE` if the client can retry just the failing call. (b) Use
-  /// `ABORTED` if the client should retry at a higher level (e.g., when a
-  /// client-specified test-and-set fails, indicating the client should restart
-  /// a read-modify-write sequence). (c) Use `FAILED_PRECONDITION` if the client
-  /// should not retry until the system state has been explicitly fixed. E.g.,
-  /// if an "rmdir" fails because the directory is non-empty,
+  /// `ABORTED` if the client should retry at a higher level. For example, when
+  /// a client-specified test-and-set fails, indicating the client should
+  /// restart a read-modify-write sequence. (c) Use `FAILED_PRECONDITION` if the
+  /// client should not retry until the system state has been explicitly fixed.
+  /// For example, if an "rmdir" fails because the directory is non-empty,
   /// `FAILED_PRECONDITION` should be returned since the client should not retry
   /// unless the files are deleted from the directory. HTTP Mapping: 400 Bad
   /// Request
@@ -1569,6 +1589,14 @@ class Pipeline {
   /// The list of actions to execute, in the order they are specified.
   core.List<Action>? actions;
 
+  /// The encrypted environment to pass into every action.
+  ///
+  /// Each action can also specify its own encrypted environment. The secret
+  /// must decrypt to a JSON-encoded dictionary where key-value pairs serve as
+  /// environment variable names and their values. The decoded environment
+  /// variables can overwrite the values specified by the `environment` field.
+  Secret? encryptedEnvironment;
+
   /// The environment to pass into every action.
   ///
   /// Each action can also specify additional environment variables but cannot
@@ -1596,6 +1624,10 @@ class Pipeline {
               Action.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
+    if (_json.containsKey('encryptedEnvironment')) {
+      encryptedEnvironment = Secret.fromJson(
+          _json['encryptedEnvironment'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('environment')) {
       environment =
           (_json['environment'] as core.Map<core.String, core.dynamic>).map(
@@ -1617,6 +1649,8 @@ class Pipeline {
   core.Map<core.String, core.dynamic> toJson() => {
         if (actions != null)
           'actions': actions!.map((value) => value.toJson()).toList(),
+        if (encryptedEnvironment != null)
+          'encryptedEnvironment': encryptedEnvironment!.toJson(),
         if (environment != null) 'environment': environment!,
         if (resources != null) 'resources': resources!.toJson(),
         if (timeout != null) 'timeout': timeout!,

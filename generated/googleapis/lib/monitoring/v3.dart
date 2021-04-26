@@ -65,7 +65,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// concepts found in the table entries, read the Cloud Monitoring
 /// documentation.
 class MonitoringApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -117,9 +117,11 @@ class FoldersTimeSeriesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The project, organization or folder on which to execute
-  /// the request. The format is: projects/\[PROJECT_ID_OR_NUMBER\]
-  /// organizations/\[ORGANIZATION_ID\] folders/\[FOLDER_ID\]
+  /// [name] - Required. The project
+  /// (https://cloud.google.com/monitoring/api/v3#project_name), organization or
+  /// folder on which to execute the request. The format is:
+  /// projects/\[PROJECT_ID_OR_NUMBER\] organizations/\[ORGANIZATION_ID\]
+  /// folders/\[FOLDER_ID\]
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [aggregation_alignmentPeriod] - The alignment_period specifies a time
@@ -660,9 +662,11 @@ class OrganizationsTimeSeriesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The project, organization or folder on which to execute
-  /// the request. The format is: projects/\[PROJECT_ID_OR_NUMBER\]
-  /// organizations/\[ORGANIZATION_ID\] folders/\[FOLDER_ID\]
+  /// [name] - Required. The project
+  /// (https://cloud.google.com/monitoring/api/v3#project_name), organization or
+  /// folder on which to execute the request. The format is:
+  /// projects/\[PROJECT_ID_OR_NUMBER\] organizations/\[ORGANIZATION_ID\]
+  /// folders/\[FOLDER_ID\]
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [aggregation_alignmentPeriod] - The alignment_period specifies a time
@@ -1220,10 +1224,12 @@ class ProjectsAlertPoliciesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The project in which to create the alerting policy. The
-  /// format is: projects/\[PROJECT_ID_OR_NUMBER\] Note that this field names
-  /// the parent container in which the alerting policy will be written, not the
-  /// name of the created policy. |name| must be a host project of a workspace,
+  /// [name] - Required. The project
+  /// (https://cloud.google.com/monitoring/api/v3#project_name) in which to
+  /// create the alerting policy. The format is:
+  /// projects/\[PROJECT_ID_OR_NUMBER\] Note that this field names the parent
+  /// container in which the alerting policy will be written, not the name of
+  /// the created policy. |name| must be a host project of a workspace,
   /// otherwise INVALID_ARGUMENT error will return. The alerting policy that is
   /// returned will have a name that contains a normalized representation of
   /// this name as a prefix but adds a suffix of the form
@@ -1341,11 +1347,13 @@ class ProjectsAlertPoliciesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The project whose alert policies are to be listed. The
-  /// format is: projects/\[PROJECT_ID_OR_NUMBER\] Note that this field names
-  /// the parent container in which the alerting policies to be listed are
-  /// stored. To retrieve a single alerting policy by name, use the
-  /// GetAlertPolicy operation, instead.
+  /// [name] - Required. The project
+  /// (https://cloud.google.com/monitoring/api/v3#project_name) whose alert
+  /// policies are to be listed. The format is:
+  /// projects/\[PROJECT_ID_OR_NUMBER\] Note that this field names the parent
+  /// container in which the alerting policies to be listed are stored. To
+  /// retrieve a single alerting policy by name, use the GetAlertPolicy
+  /// operation, instead.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - If provided, this field specifies the criteria that must be met
@@ -1489,8 +1497,9 @@ class ProjectsCollectdTimeSeriesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The project in which to create the time series. The format is:
-  /// projects/\[PROJECT_ID_OR_NUMBER\]
+  /// [name] - The project
+  /// (https://cloud.google.com/monitoring/api/v3#project_name) in which to
+  /// create the time series. The format is: projects/\[PROJECT_ID_OR_NUMBER\]
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1540,8 +1549,9 @@ class ProjectsGroupsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The project in which to create the group. The format
-  /// is: projects/\[PROJECT_ID_OR_NUMBER\]
+  /// [name] - Required. The project
+  /// (https://cloud.google.com/monitoring/api/v3#project_name) in which to
+  /// create the group. The format is: projects/\[PROJECT_ID_OR_NUMBER\]
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [validateOnly] - If true, validate this request but do not create the
@@ -1662,8 +1672,9 @@ class ProjectsGroupsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The project whose groups are to be listed. The format
-  /// is: projects/\[PROJECT_ID_OR_NUMBER\]
+  /// [name] - Required. The project
+  /// (https://cloud.google.com/monitoring/api/v3#project_name) whose groups are
+  /// to be listed. The format is: projects/\[PROJECT_ID_OR_NUMBER\]
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [ancestorsOfGroup] - A group name. The format is:
@@ -1875,8 +1886,9 @@ class ProjectsMetricDescriptorsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The project on which to execute the request. The format
-  /// is: projects/\[PROJECT_ID_OR_NUMBER\]
+  /// [name] - Required. The project
+  /// (https://cloud.google.com/monitoring/api/v3#project_name) on which to
+  /// execute the request. The format is: 4 projects/PROJECT_ID_OR_NUMBER
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2000,8 +2012,9 @@ class ProjectsMetricDescriptorsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The project on which to execute the request. The format
-  /// is: projects/\[PROJECT_ID_OR_NUMBER\]
+  /// [name] - Required. The project
+  /// (https://cloud.google.com/monitoring/api/v3#project_name) on which to
+  /// execute the request. The format is: projects/\[PROJECT_ID_OR_NUMBER\]
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - If this field is empty, all custom and system-defined metric
@@ -2110,8 +2123,9 @@ class ProjectsMonitoredResourceDescriptorsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The project on which to execute the request. The format
-  /// is: projects/\[PROJECT_ID_OR_NUMBER\]
+  /// [name] - Required. The project
+  /// (https://cloud.google.com/monitoring/api/v3#project_name) on which to
+  /// execute the request. The format is: projects/\[PROJECT_ID_OR_NUMBER\]
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - An optional filter
@@ -2223,7 +2237,8 @@ class ProjectsNotificationChannelDescriptorsResource {
   ///
   /// [name] - Required. The REST resource name of the parent from which to
   /// retrieve the notification channel descriptors. The expected syntax is:
-  /// projects/\[PROJECT_ID_OR_NUMBER\] Note that this names the parent
+  /// projects/\[PROJECT_ID_OR_NUMBER\] Note that this names
+  /// (https://cloud.google.com/monitoring/api/v3#project_name) the parent
   /// container in which to look for the descriptors; to retrieve a single
   /// descriptor by name, use the GetNotificationChannelDescriptor operation,
   /// instead.
@@ -2286,12 +2301,13 @@ class ProjectsNotificationChannelsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The project on which to execute the request. The format
-  /// is: projects/\[PROJECT_ID_OR_NUMBER\] This names the container into which
-  /// the channel will be written, this does not name the newly created channel.
-  /// The resulting channel's name will have a normalized version of this field
-  /// as a prefix, but will add /notificationChannels/\[CHANNEL_ID\] to identify
-  /// the channel.
+  /// [name] - Required. The project
+  /// (https://cloud.google.com/monitoring/api/v3#project_name) on which to
+  /// execute the request. The format is: projects/\[PROJECT_ID_OR_NUMBER\] This
+  /// names the container into which the channel will be written, this does not
+  /// name the newly created channel. The resulting channel's name will have a
+  /// normalized version of this field as a prefix, but will add
+  /// /notificationChannels/\[CHANNEL_ID\] to identify the channel.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2482,11 +2498,12 @@ class ProjectsNotificationChannelsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The project on which to execute the request. The format
-  /// is: projects/\[PROJECT_ID_OR_NUMBER\] This names the container in which to
-  /// look for the notification channels; it does not name a specific channel.
-  /// To query a specific channel by REST resource name, use the
-  /// GetNotificationChannel operation.
+  /// [name] - Required. The project
+  /// (https://cloud.google.com/monitoring/api/v3#project_name) on which to
+  /// execute the request. The format is: projects/\[PROJECT_ID_OR_NUMBER\] This
+  /// names the container in which to look for the notification channels; it
+  /// does not name a specific channel. To query a specific channel by REST
+  /// resource name, use the GetNotificationChannel operation.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - If provided, this field specifies the criteria that must be met
@@ -2697,8 +2714,9 @@ class ProjectsTimeSeriesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The project on which to execute the request. The format
-  /// is: projects/\[PROJECT_ID_OR_NUMBER\]
+  /// [name] - Required. The project
+  /// (https://cloud.google.com/monitoring/api/v3#project_name) on which to
+  /// execute the request. The format is: projects/\[PROJECT_ID_OR_NUMBER\]
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2738,9 +2756,11 @@ class ProjectsTimeSeriesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The project, organization or folder on which to execute
-  /// the request. The format is: projects/\[PROJECT_ID_OR_NUMBER\]
-  /// organizations/\[ORGANIZATION_ID\] folders/\[FOLDER_ID\]
+  /// [name] - Required. The project
+  /// (https://cloud.google.com/monitoring/api/v3#project_name), organization or
+  /// folder on which to execute the request. The format is:
+  /// projects/\[PROJECT_ID_OR_NUMBER\] organizations/\[ORGANIZATION_ID\]
+  /// folders/\[FOLDER_ID\]
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [aggregation_alignmentPeriod] - The alignment_period specifies a time
@@ -3267,8 +3287,9 @@ class ProjectsTimeSeriesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The project on which to execute the request. The format
-  /// is: projects/\[PROJECT_ID_OR_NUMBER\]
+  /// [name] - Required. The project
+  /// (https://cloud.google.com/monitoring/api/v3#project_name) on which to
+  /// execute the request. The format is: projects/\[PROJECT_ID_OR_NUMBER\]
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3316,8 +3337,9 @@ class ProjectsUptimeCheckConfigsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project in which to create the Uptime check. The
-  /// format is: projects/\[PROJECT_ID_OR_NUMBER\]
+  /// [parent] - Required. The project
+  /// (https://cloud.google.com/monitoring/api/v3#project_name) in which to
+  /// create the Uptime check. The format is: projects/\[PROJECT_ID_OR_NUMBER\]
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3436,8 +3458,10 @@ class ProjectsUptimeCheckConfigsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project whose Uptime check configurations are
-  /// listed. The format is: projects/\[PROJECT_ID_OR_NUMBER\]
+  /// [parent] - Required. The project
+  /// (https://cloud.google.com/monitoring/api/v3#project_name) whose Uptime
+  /// check configurations are listed. The format is:
+  /// projects/\[PROJECT_ID_OR_NUMBER\]
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of results to return in a single response.
@@ -3556,8 +3580,9 @@ class ServicesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Resource name of the parent workspace. The format is:
-  /// projects/\[PROJECT_ID_OR_NUMBER\]
+  /// [parent] - Required. Resource name
+  /// (https://cloud.google.com/monitoring/api/v3#project_name) of the parent
+  /// workspace. The format is: projects/\[PROJECT_ID_OR_NUMBER\]
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [serviceId] - Optional. The Service id to use for this Service. If
@@ -3674,8 +3699,10 @@ class ServicesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Resource name of the parent containing the listed
-  /// services, either a project or a Monitoring Workspace. The formats are:
-  /// projects/\[PROJECT_ID_OR_NUMBER\] workspaces/\[HOST_PROJECT_ID_OR_NUMBER\]
+  /// services, either a project
+  /// (https://cloud.google.com/monitoring/api/v3#project_name) or a Monitoring
+  /// Workspace. The formats are: projects/\[PROJECT_ID_OR_NUMBER\]
+  /// workspaces/\[HOST_PROJECT_ID_OR_NUMBER\]
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [filter] - A filter specifying what Services to return. The filter
@@ -5115,10 +5142,11 @@ class ContentMatcher {
   /// match succeeds if the output does NOT contain the content string.
   /// - "MATCHES_REGEX" : Selects regular-expression matching. The match
   /// succeeds of the output matches the regular expression specified in the
-  /// content string.
+  /// content string. Regex matching is only supported for HTTP/HTTPS checks.
   /// - "NOT_MATCHES_REGEX" : Selects negation of regular-expression matching.
   /// The match succeeds if the output does NOT match the regular expression
-  /// specified in the content string.
+  /// specified in the content string. Regex matching is only supported for
+  /// HTTP/HTTPS checks.
   core.String? matcher;
 
   ContentMatcher();
@@ -6962,6 +6990,8 @@ class MetricAbsence {
   /// The filter must specify the metric type and the resource type. Optionally,
   /// it can specify resource labels and metric labels. This field must not
   /// exceed 2048 Unicode characters in length.
+  ///
+  /// Required.
   core.String? filter;
 
   /// The number/percent of time series for which the comparison must hold in
@@ -7415,6 +7445,8 @@ class MetricThreshold {
   /// The filter must specify the metric type and the resource type. Optionally,
   /// it can specify resource labels and metric labels. This field must not
   /// exceed 2048 Unicode characters in length.
+  ///
+  /// Required.
   core.String? filter;
 
   /// A value against which to compare the time series.
@@ -8667,8 +8699,10 @@ class SourceContext {
       };
 }
 
-/// The context of a span, attached to Exemplars in Distribution values during
-/// aggregation.It contains the name of a span with format:
+/// The context of a span.
+///
+/// This is attached to an Exemplar in Distribution values during aggregation.It
+/// contains the name of a span with format:
 /// projects/\[PROJECT_ID_OR_NUMBER\]/traces/\[TRACE_ID\]/spans/\[SPAN_ID\]
 class SpanContext {
   /// The resource name of the span.
@@ -8901,7 +8935,9 @@ class TimeSeries {
   /// The associated monitored resource.
   ///
   /// Custom metrics can use only certain monitored resource types in their time
-  /// series data.
+  /// series data. For more information, see Monitored resources for custom
+  /// metrics
+  /// (https://cloud.google.com/monitoring/custom-metrics/creating-metrics#custom-metric-resources).
   MonitoredResource? resource;
 
   /// The units in which the metric value is reported.
@@ -9287,7 +9323,7 @@ class UptimeCheckConfig {
   /// The monitored resource (https://cloud.google.com/monitoring/api/resources)
   /// associated with the configuration.
   ///
-  /// The following monitored resource types are supported for Uptime checks:
+  /// The following monitored resource types are valid for this field:
   /// uptime_url, gce_instance, gae_app, aws_ec2_instance, aws_elb_load_balancer
   MonitoredResource? monitoredResource;
 

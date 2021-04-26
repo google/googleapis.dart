@@ -87,7 +87,7 @@ Official API documentation: https://developers.google.com/admin-sdk/alertcenter/
 
 Official API documentation: http://code.google.com/apis/analytics/docs/mgmt/home.html
 
-#### Google Analytics Data API - analyticsdata v1alpha
+#### Google Analytics Data API - analyticsdata v1beta
 
 Accesses report data in Google Analytics.
 
@@ -133,12 +133,6 @@ Public API for Google Cloud AI Data Labeling Service.
 
 Official API documentation: https://cloud.google.com/data-labeling/docs/
 
-#### Database Migration API - datamigration v1beta1
-
-Manage Cloud Database Migration Service resources on Google Cloud Platform.
-
-Official API documentation: https://cloud.google.com/database-migration/
-
 #### Cloud Document AI API - documentai v1beta3
 
 Service to parse structured information from unstructured or semi-structured documents using state-of-the-art Google AI such as natural language, computer vision, translation, and AutoML.
@@ -166,6 +160,12 @@ Official API documentation: https://firebase.google.com
 The Firebase Realtime Database Management API enables programmatic provisioning and management of Realtime Database instances.
 
 Official API documentation: https://firebase.google.com/docs/reference/rest/database/database-management/rest/
+
+#### Cloud Storage for Firebase API - firebasestorage v1beta
+
+The Cloud Storage for Firebase API enables programmatic management of Cloud Storage buckets for use in Firebase projects
+
+Official API documentation: https://firebase.google.com/docs/storage
 
 #### Cloud Life Sciences API - lifesciences v2beta
 

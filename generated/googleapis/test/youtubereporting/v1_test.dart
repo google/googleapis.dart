@@ -345,14 +345,14 @@ void checkGdataDownloadParameters(api.GdataDownloadParameters o) {
   buildCounterGdataDownloadParameters--;
 }
 
-core.List<api.GdataCompositeMedia> buildUnnamed3679() {
+core.List<api.GdataCompositeMedia> buildUnnamed4026() {
   var o = <api.GdataCompositeMedia>[];
   o.add(buildGdataCompositeMedia());
   o.add(buildGdataCompositeMedia());
   return o;
 }
 
-void checkUnnamed3679(core.List<api.GdataCompositeMedia> o) {
+void checkUnnamed4026(core.List<api.GdataCompositeMedia> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGdataCompositeMedia(o[0] as api.GdataCompositeMedia);
   checkGdataCompositeMedia(o[1] as api.GdataCompositeMedia);
@@ -367,7 +367,7 @@ api.GdataMedia buildGdataMedia() {
     o.bigstoreObjectRef = 'foo';
     o.blobRef = 'foo';
     o.blobstore2Info = buildGdataBlobstore2Info();
-    o.compositeMedia = buildUnnamed3679();
+    o.compositeMedia = buildUnnamed4026();
     o.contentType = 'foo';
     o.contentTypeInfo = buildGdataContentTypeInfo();
     o.cosmoBinaryReference = 'foo';
@@ -414,7 +414,7 @@ void checkGdataMedia(api.GdataMedia o) {
       unittest.equals('foo'),
     );
     checkGdataBlobstore2Info(o.blobstore2Info! as api.GdataBlobstore2Info);
-    checkUnnamed3679(o.compositeMedia!);
+    checkUnnamed4026(o.compositeMedia!);
     unittest.expect(
       o.contentType!,
       unittest.equals('foo'),
@@ -571,14 +571,14 @@ void checkJob(api.Job o) {
   buildCounterJob--;
 }
 
-core.List<api.Job> buildUnnamed3680() {
+core.List<api.Job> buildUnnamed4027() {
   var o = <api.Job>[];
   o.add(buildJob());
   o.add(buildJob());
   return o;
 }
 
-void checkUnnamed3680(core.List<api.Job> o) {
+void checkUnnamed4027(core.List<api.Job> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkJob(o[0] as api.Job);
   checkJob(o[1] as api.Job);
@@ -589,7 +589,7 @@ api.ListJobsResponse buildListJobsResponse() {
   var o = api.ListJobsResponse();
   buildCounterListJobsResponse++;
   if (buildCounterListJobsResponse < 3) {
-    o.jobs = buildUnnamed3680();
+    o.jobs = buildUnnamed4027();
     o.nextPageToken = 'foo';
   }
   buildCounterListJobsResponse--;
@@ -599,7 +599,7 @@ api.ListJobsResponse buildListJobsResponse() {
 void checkListJobsResponse(api.ListJobsResponse o) {
   buildCounterListJobsResponse++;
   if (buildCounterListJobsResponse < 3) {
-    checkUnnamed3680(o.jobs!);
+    checkUnnamed4027(o.jobs!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -608,14 +608,14 @@ void checkListJobsResponse(api.ListJobsResponse o) {
   buildCounterListJobsResponse--;
 }
 
-core.List<api.ReportType> buildUnnamed3681() {
+core.List<api.ReportType> buildUnnamed4028() {
   var o = <api.ReportType>[];
   o.add(buildReportType());
   o.add(buildReportType());
   return o;
 }
 
-void checkUnnamed3681(core.List<api.ReportType> o) {
+void checkUnnamed4028(core.List<api.ReportType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReportType(o[0] as api.ReportType);
   checkReportType(o[1] as api.ReportType);
@@ -627,7 +627,7 @@ api.ListReportTypesResponse buildListReportTypesResponse() {
   buildCounterListReportTypesResponse++;
   if (buildCounterListReportTypesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.reportTypes = buildUnnamed3681();
+    o.reportTypes = buildUnnamed4028();
   }
   buildCounterListReportTypesResponse--;
   return o;
@@ -640,19 +640,19 @@ void checkListReportTypesResponse(api.ListReportTypesResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed3681(o.reportTypes!);
+    checkUnnamed4028(o.reportTypes!);
   }
   buildCounterListReportTypesResponse--;
 }
 
-core.List<api.Report> buildUnnamed3682() {
+core.List<api.Report> buildUnnamed4029() {
   var o = <api.Report>[];
   o.add(buildReport());
   o.add(buildReport());
   return o;
 }
 
-void checkUnnamed3682(core.List<api.Report> o) {
+void checkUnnamed4029(core.List<api.Report> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReport(o[0] as api.Report);
   checkReport(o[1] as api.Report);
@@ -664,7 +664,7 @@ api.ListReportsResponse buildListReportsResponse() {
   buildCounterListReportsResponse++;
   if (buildCounterListReportsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.reports = buildUnnamed3682();
+    o.reports = buildUnnamed4029();
   }
   buildCounterListReportsResponse--;
   return o;
@@ -677,7 +677,7 @@ void checkListReportsResponse(api.ListReportsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed3682(o.reports!);
+    checkUnnamed4029(o.reports!);
   }
   buildCounterListReportsResponse--;
 }

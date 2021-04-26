@@ -44,7 +44,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Manages keys and performs cryptographic operations in a central cloud
 /// service, for direct use by other cloud resources and applications.
 class CloudKMSApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -122,11 +122,15 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [filter] - The standard list filter.
+  /// [filter] - A filter to narrow down results to a preferred subset. The
+  /// filtering language accepts strings like "displayName=tokyo", and is
+  /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
   ///
-  /// [pageSize] - The standard list page size.
+  /// [pageSize] - The maximum number of results to return. If not set, the
+  /// service selects a default.
   ///
-  /// [pageToken] - The standard list page token.
+  /// [pageToken] - A page token received from the `next_page_token` field in
+  /// the response. Send that page token to receive the subsequent page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2467,7 +2471,7 @@ class CryptoKeyVersion {
   /// - "DISABLED" : This version may not be used, but the key material is still
   /// available, and the version can be placed back into the ENABLED state.
   /// - "DESTROYED" : This version is destroyed, and the key material is no
-  /// longer stored. A version may not leave this state once entered.
+  /// longer stored.
   /// - "DESTROY_SCHEDULED" : This version is scheduled for destruction, and
   /// will be destroyed soon. Call RestoreCryptoKeyVersion to put it back into
   /// the DISABLED state.

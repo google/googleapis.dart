@@ -84,14 +84,14 @@ void checkDisableDatabaseInstanceRequest(api.DisableDatabaseInstanceRequest o) {
   buildCounterDisableDatabaseInstanceRequest--;
 }
 
-core.List<api.DatabaseInstance> buildUnnamed7834() {
+core.List<api.DatabaseInstance> buildUnnamed8289() {
   var o = <api.DatabaseInstance>[];
   o.add(buildDatabaseInstance());
   o.add(buildDatabaseInstance());
   return o;
 }
 
-void checkUnnamed7834(core.List<api.DatabaseInstance> o) {
+void checkUnnamed8289(core.List<api.DatabaseInstance> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDatabaseInstance(o[0] as api.DatabaseInstance);
   checkDatabaseInstance(o[1] as api.DatabaseInstance);
@@ -102,7 +102,7 @@ api.ListDatabaseInstancesResponse buildListDatabaseInstancesResponse() {
   var o = api.ListDatabaseInstancesResponse();
   buildCounterListDatabaseInstancesResponse++;
   if (buildCounterListDatabaseInstancesResponse < 3) {
-    o.instances = buildUnnamed7834();
+    o.instances = buildUnnamed8289();
     o.nextPageToken = 'foo';
   }
   buildCounterListDatabaseInstancesResponse--;
@@ -112,7 +112,7 @@ api.ListDatabaseInstancesResponse buildListDatabaseInstancesResponse() {
 void checkListDatabaseInstancesResponse(api.ListDatabaseInstancesResponse o) {
   buildCounterListDatabaseInstancesResponse++;
   if (buildCounterListDatabaseInstancesResponse < 3) {
-    checkUnnamed7834(o.instances!);
+    checkUnnamed8289(o.instances!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),

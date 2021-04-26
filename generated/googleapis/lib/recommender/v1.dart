@@ -57,7 +57,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 class RecommenderApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -163,16 +163,27 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
   ///
   /// [parent] - Required. The container resource on which to execute the
   /// request. Acceptable formats: 1.
-  /// "projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/insightTypes/\[INSIGHT_TYPE_ID\]",
+  /// `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
+  /// 2.
+  /// `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
+  /// 3.
+  /// `folders/[FOLDER_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
+  /// 4.
+  /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
   /// LOCATION here refers to GCP Locations:
   /// https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers to
   /// supported insight types:
-  /// https://cloud.google.com/recommender/docs/insights/insight-types.)
+  /// https://cloud.google.com/recommender/docs/insights/insight-types.
   /// Value must have pattern
   /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/insightTypes/\[^/\]+$`.
   ///
   /// [filter] - Optional. Filter expression to restrict the insights returned.
-  /// Supported filter fields: state Eg: \`state:"DISMISSED" or state:"ACTIVE"
+  /// Supported filter fields: * `stateInfo.state` * `insightSubtype` *
+  /// `severity` Examples: * `stateInfo.state = ACTIVE OR stateInfo.state =
+  /// DISMISSED` * `insightSubtype = PERMISSIONS_USAGE` * `severity = CRITICAL
+  /// OR severity = HIGH` * `stateInfo.state = ACTIVE AND (severity = CRITICAL
+  /// OR severity = HIGH)` (These expressions are based on the filter language
+  /// described at https://google.aip.dev/160)
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. If not specified, the server
@@ -335,7 +346,13 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
   ///
   /// [parent] - Required. The container resource on which to execute the
   /// request. Acceptable formats: 1.
-  /// "projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/recommenders/\[RECOMMENDER_ID\]",
+  /// `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
+  /// 2.
+  /// `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
+  /// 3.
+  /// `folders/[FOLDER_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
+  /// 4.
+  /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
   /// LOCATION here refers to GCP Locations:
   /// https://cloud.google.com/about/locations/ RECOMMENDER_ID refers to
   /// supported recommenders:
@@ -344,8 +361,12 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
   /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+$`.
   ///
   /// [filter] - Filter expression to restrict the recommendations returned.
-  /// Supported filter fields: state_info.state Eg:
-  /// \`state_info.state:"DISMISSED" or state_info.state:"FAILED"
+  /// Supported filter fields: * `state_info.state` * `recommenderSubtype` *
+  /// `priority` Examples: * `stateInfo.state = ACTIVE OR stateInfo.state =
+  /// DISMISSED` * `recommenderSubtype = REMOVE_ROLE OR recommenderSubtype =
+  /// REPLACE_ROLE` * `priority = P1 OR priority = P2` * `stateInfo.state =
+  /// ACTIVE AND (priority = P1 OR priority = P2)` (These expressions are based
+  /// on the filter language described at https://google.aip.dev/160)
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. If not specified, the server
@@ -627,16 +648,27 @@ class FoldersLocationsInsightTypesInsightsResource {
   ///
   /// [parent] - Required. The container resource on which to execute the
   /// request. Acceptable formats: 1.
-  /// "projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/insightTypes/\[INSIGHT_TYPE_ID\]",
+  /// `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
+  /// 2.
+  /// `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
+  /// 3.
+  /// `folders/[FOLDER_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
+  /// 4.
+  /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
   /// LOCATION here refers to GCP Locations:
   /// https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers to
   /// supported insight types:
-  /// https://cloud.google.com/recommender/docs/insights/insight-types.)
+  /// https://cloud.google.com/recommender/docs/insights/insight-types.
   /// Value must have pattern
   /// `^folders/\[^/\]+/locations/\[^/\]+/insightTypes/\[^/\]+$`.
   ///
   /// [filter] - Optional. Filter expression to restrict the insights returned.
-  /// Supported filter fields: state Eg: \`state:"DISMISSED" or state:"ACTIVE"
+  /// Supported filter fields: * `stateInfo.state` * `insightSubtype` *
+  /// `severity` Examples: * `stateInfo.state = ACTIVE OR stateInfo.state =
+  /// DISMISSED` * `insightSubtype = PERMISSIONS_USAGE` * `severity = CRITICAL
+  /// OR severity = HIGH` * `stateInfo.state = ACTIVE AND (severity = CRITICAL
+  /// OR severity = HIGH)` (These expressions are based on the filter language
+  /// described at https://google.aip.dev/160)
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. If not specified, the server
@@ -797,7 +829,13 @@ class FoldersLocationsRecommendersRecommendationsResource {
   ///
   /// [parent] - Required. The container resource on which to execute the
   /// request. Acceptable formats: 1.
-  /// "projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/recommenders/\[RECOMMENDER_ID\]",
+  /// `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
+  /// 2.
+  /// `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
+  /// 3.
+  /// `folders/[FOLDER_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
+  /// 4.
+  /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
   /// LOCATION here refers to GCP Locations:
   /// https://cloud.google.com/about/locations/ RECOMMENDER_ID refers to
   /// supported recommenders:
@@ -806,8 +844,12 @@ class FoldersLocationsRecommendersRecommendationsResource {
   /// `^folders/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+$`.
   ///
   /// [filter] - Filter expression to restrict the recommendations returned.
-  /// Supported filter fields: state_info.state Eg:
-  /// \`state_info.state:"DISMISSED" or state_info.state:"FAILED"
+  /// Supported filter fields: * `state_info.state` * `recommenderSubtype` *
+  /// `priority` Examples: * `stateInfo.state = ACTIVE OR stateInfo.state =
+  /// DISMISSED` * `recommenderSubtype = REMOVE_ROLE OR recommenderSubtype =
+  /// REPLACE_ROLE` * `priority = P1 OR priority = P2` * `stateInfo.state =
+  /// ACTIVE AND (priority = P1 OR priority = P2)` (These expressions are based
+  /// on the filter language described at https://google.aip.dev/160)
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. If not specified, the server
@@ -1091,16 +1133,27 @@ class OrganizationsLocationsInsightTypesInsightsResource {
   ///
   /// [parent] - Required. The container resource on which to execute the
   /// request. Acceptable formats: 1.
-  /// "projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/insightTypes/\[INSIGHT_TYPE_ID\]",
+  /// `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
+  /// 2.
+  /// `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
+  /// 3.
+  /// `folders/[FOLDER_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
+  /// 4.
+  /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
   /// LOCATION here refers to GCP Locations:
   /// https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers to
   /// supported insight types:
-  /// https://cloud.google.com/recommender/docs/insights/insight-types.)
+  /// https://cloud.google.com/recommender/docs/insights/insight-types.
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/insightTypes/\[^/\]+$`.
   ///
   /// [filter] - Optional. Filter expression to restrict the insights returned.
-  /// Supported filter fields: state Eg: \`state:"DISMISSED" or state:"ACTIVE"
+  /// Supported filter fields: * `stateInfo.state` * `insightSubtype` *
+  /// `severity` Examples: * `stateInfo.state = ACTIVE OR stateInfo.state =
+  /// DISMISSED` * `insightSubtype = PERMISSIONS_USAGE` * `severity = CRITICAL
+  /// OR severity = HIGH` * `stateInfo.state = ACTIVE AND (severity = CRITICAL
+  /// OR severity = HIGH)` (These expressions are based on the filter language
+  /// described at https://google.aip.dev/160)
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. If not specified, the server
@@ -1262,7 +1315,13 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
   ///
   /// [parent] - Required. The container resource on which to execute the
   /// request. Acceptable formats: 1.
-  /// "projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/recommenders/\[RECOMMENDER_ID\]",
+  /// `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
+  /// 2.
+  /// `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
+  /// 3.
+  /// `folders/[FOLDER_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
+  /// 4.
+  /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
   /// LOCATION here refers to GCP Locations:
   /// https://cloud.google.com/about/locations/ RECOMMENDER_ID refers to
   /// supported recommenders:
@@ -1271,8 +1330,12 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
   /// `^organizations/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+$`.
   ///
   /// [filter] - Filter expression to restrict the recommendations returned.
-  /// Supported filter fields: state_info.state Eg:
-  /// \`state_info.state:"DISMISSED" or state_info.state:"FAILED"
+  /// Supported filter fields: * `state_info.state` * `recommenderSubtype` *
+  /// `priority` Examples: * `stateInfo.state = ACTIVE OR stateInfo.state =
+  /// DISMISSED` * `recommenderSubtype = REMOVE_ROLE OR recommenderSubtype =
+  /// REPLACE_ROLE` * `priority = P1 OR priority = P2` * `stateInfo.state =
+  /// ACTIVE AND (priority = P1 OR priority = P2)` (These expressions are based
+  /// on the filter language described at https://google.aip.dev/160)
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. If not specified, the server
@@ -1554,16 +1617,27 @@ class ProjectsLocationsInsightTypesInsightsResource {
   ///
   /// [parent] - Required. The container resource on which to execute the
   /// request. Acceptable formats: 1.
-  /// "projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/insightTypes/\[INSIGHT_TYPE_ID\]",
+  /// `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
+  /// 2.
+  /// `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
+  /// 3.
+  /// `folders/[FOLDER_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
+  /// 4.
+  /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
   /// LOCATION here refers to GCP Locations:
   /// https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers to
   /// supported insight types:
-  /// https://cloud.google.com/recommender/docs/insights/insight-types.)
+  /// https://cloud.google.com/recommender/docs/insights/insight-types.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/insightTypes/\[^/\]+$`.
   ///
   /// [filter] - Optional. Filter expression to restrict the insights returned.
-  /// Supported filter fields: state Eg: \`state:"DISMISSED" or state:"ACTIVE"
+  /// Supported filter fields: * `stateInfo.state` * `insightSubtype` *
+  /// `severity` Examples: * `stateInfo.state = ACTIVE OR stateInfo.state =
+  /// DISMISSED` * `insightSubtype = PERMISSIONS_USAGE` * `severity = CRITICAL
+  /// OR severity = HIGH` * `stateInfo.state = ACTIVE AND (severity = CRITICAL
+  /// OR severity = HIGH)` (These expressions are based on the filter language
+  /// described at https://google.aip.dev/160)
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. If not specified, the server
@@ -1724,7 +1798,13 @@ class ProjectsLocationsRecommendersRecommendationsResource {
   ///
   /// [parent] - Required. The container resource on which to execute the
   /// request. Acceptable formats: 1.
-  /// "projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/recommenders/\[RECOMMENDER_ID\]",
+  /// `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
+  /// 2.
+  /// `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
+  /// 3.
+  /// `folders/[FOLDER_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
+  /// 4.
+  /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
   /// LOCATION here refers to GCP Locations:
   /// https://cloud.google.com/about/locations/ RECOMMENDER_ID refers to
   /// supported recommenders:
@@ -1733,8 +1813,12 @@ class ProjectsLocationsRecommendersRecommendationsResource {
   /// `^projects/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+$`.
   ///
   /// [filter] - Filter expression to restrict the recommendations returned.
-  /// Supported filter fields: state_info.state Eg:
-  /// \`state_info.state:"DISMISSED" or state_info.state:"FAILED"
+  /// Supported filter fields: * `state_info.state` * `recommenderSubtype` *
+  /// `priority` Examples: * `stateInfo.state = ACTIVE OR stateInfo.state =
+  /// DISMISSED` * `recommenderSubtype = REMOVE_ROLE OR recommenderSubtype =
+  /// REPLACE_ROLE` * `priority = P1 OR priority = P2` * `stateInfo.state =
+  /// ACTIVE AND (priority = P1 OR priority = P2)` (These expressions are based
+  /// on the filter language described at https://google.aip.dev/160)
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. If not specified, the server
@@ -1977,6 +2061,9 @@ class GoogleCloudRecommenderV1Impact {
   /// Use with CategoryType.COST
   GoogleCloudRecommenderV1CostProjection? costProjection;
 
+  /// Use with CategoryType.SECURITY
+  GoogleCloudRecommenderV1SecurityProjection? securityProjection;
+
   GoogleCloudRecommenderV1Impact();
 
   GoogleCloudRecommenderV1Impact.fromJson(core.Map _json) {
@@ -1987,11 +2074,17 @@ class GoogleCloudRecommenderV1Impact {
       costProjection = GoogleCloudRecommenderV1CostProjection.fromJson(
           _json['costProjection'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('securityProjection')) {
+      securityProjection = GoogleCloudRecommenderV1SecurityProjection.fromJson(
+          _json['securityProjection'] as core.Map<core.String, core.dynamic>);
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (category != null) 'category': category!,
         if (costProjection != null) 'costProjection': costProjection!.toJson(),
+        if (securityProjection != null)
+          'securityProjection': securityProjection!.toJson(),
       };
 }
 
@@ -2047,6 +2140,15 @@ class GoogleCloudRecommenderV1Insight {
   /// begins at (last_refresh_time - observation_period).
   core.String? observationPeriod;
 
+  /// Insight's severity.
+  /// Possible string values are:
+  /// - "SEVERITY_UNSPECIFIED" : Insight has unspecified severity.
+  /// - "LOW" : Insight has low severity.
+  /// - "MEDIUM" : Insight has medium severity.
+  /// - "HIGH" : Insight has high severity.
+  /// - "CRITICAL" : Insight has critical severity.
+  core.String? severity;
+
   /// Information state and metadata.
   GoogleCloudRecommenderV1InsightStateInfo? stateInfo;
 
@@ -2093,6 +2195,9 @@ class GoogleCloudRecommenderV1Insight {
     if (_json.containsKey('observationPeriod')) {
       observationPeriod = _json['observationPeriod'] as core.String;
     }
+    if (_json.containsKey('severity')) {
+      severity = _json['severity'] as core.String;
+    }
     if (_json.containsKey('stateInfo')) {
       stateInfo = GoogleCloudRecommenderV1InsightStateInfo.fromJson(
           _json['stateInfo'] as core.Map<core.String, core.dynamic>);
@@ -2117,6 +2222,7 @@ class GoogleCloudRecommenderV1Insight {
         if (lastRefreshTime != null) 'lastRefreshTime': lastRefreshTime!,
         if (name != null) 'name': name!,
         if (observationPeriod != null) 'observationPeriod': observationPeriod!,
+        if (severity != null) 'severity': severity!,
         if (stateInfo != null) 'stateInfo': stateInfo!.toJson(),
         if (targetResources != null) 'targetResources': targetResources!,
       };
@@ -2445,7 +2551,7 @@ class GoogleCloudRecommenderV1Operation {
   core.Map<core.String, core.Object>? pathFilters;
 
   /// Similar to path_filters, this contains set of filters to apply if `path`
-  /// field referes to array elements.
+  /// field refers to array elements.
   ///
   /// This is meant to support value matching beyond exact match. To perform
   /// exact match, use path_filters. When both path_filters and
@@ -2625,6 +2731,15 @@ class GoogleCloudRecommenderV1Recommendation {
   /// optimize for one category.
   GoogleCloudRecommenderV1Impact? primaryImpact;
 
+  /// Recommendation's priority.
+  /// Possible string values are:
+  /// - "PRIORITY_UNSPECIFIED" : Recommendation has unspecified priority.
+  /// - "P4" : Recommendation has P4 priority (lowest priority).
+  /// - "P3" : Recommendation has P3 priority (second lowest priority).
+  /// - "P2" : Recommendation has P2 priority (second highest priority).
+  /// - "P1" : Recommendation has P1 priority (highest priority).
+  core.String? priority;
+
   /// Contains an identifier for a subtype of recommendations produced for the
   /// same recommender.
   ///
@@ -2678,6 +2793,9 @@ class GoogleCloudRecommenderV1Recommendation {
       primaryImpact = GoogleCloudRecommenderV1Impact.fromJson(
           _json['primaryImpact'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('priority')) {
+      priority = _json['priority'] as core.String;
+    }
     if (_json.containsKey('recommenderSubtype')) {
       recommenderSubtype = _json['recommenderSubtype'] as core.String;
     }
@@ -2700,6 +2818,7 @@ class GoogleCloudRecommenderV1Recommendation {
         if (lastRefreshTime != null) 'lastRefreshTime': lastRefreshTime!,
         if (name != null) 'name': name!,
         if (primaryImpact != null) 'primaryImpact': primaryImpact!.toJson(),
+        if (priority != null) 'priority': priority!,
         if (recommenderSubtype != null)
           'recommenderSubtype': recommenderSubtype!,
         if (stateInfo != null) 'stateInfo': stateInfo!.toJson(),
@@ -2799,6 +2918,32 @@ class GoogleCloudRecommenderV1RecommendationStateInfo {
   core.Map<core.String, core.dynamic> toJson() => {
         if (state != null) 'state': state!,
         if (stateMetadata != null) 'stateMetadata': stateMetadata!,
+      };
+}
+
+/// Contains various ways of describing the impact on Security.
+class GoogleCloudRecommenderV1SecurityProjection {
+  /// Additional security impact details that is provided by the recommender.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object>? details;
+
+  GoogleCloudRecommenderV1SecurityProjection();
+
+  GoogleCloudRecommenderV1SecurityProjection.fromJson(core.Map _json) {
+    if (_json.containsKey('details')) {
+      details = (_json['details'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (details != null) 'details': details!,
       };
 }
 

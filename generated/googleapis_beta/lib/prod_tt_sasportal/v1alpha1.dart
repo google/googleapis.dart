@@ -54,7 +54,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 class SASPortalTestingApi {
-  /// View your email address
+  /// See your primary Google Account email address
   static const userinfoEmailScope =
       'https://www.googleapis.com/auth/userinfo.email';
 
@@ -3524,6 +3524,32 @@ class SasPortalAssignment {
       };
 }
 
+/// The channel with score.
+class SasPortalChannelWithScore {
+  /// The frequency range of the channel.
+  SasPortalFrequencyRange? frequencyRange;
+
+  /// The channel score, normalized to be in \[0,100\].
+  core.double? score;
+
+  SasPortalChannelWithScore();
+
+  SasPortalChannelWithScore.fromJson(core.Map _json) {
+    if (_json.containsKey('frequencyRange')) {
+      frequencyRange = SasPortalFrequencyRange.fromJson(
+          _json['frequencyRange'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('score')) {
+      score = (_json['score'] as core.num).toDouble();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (frequencyRange != null) 'frequencyRange': frequencyRange!.toJson(),
+        if (score != null) 'score': score!,
+      };
+}
+
 /// Request for CreateSignedDevice.
 class SasPortalCreateSignedDeviceRequest {
   /// JSON Web Token signed using a CPI private key.
@@ -3618,6 +3644,11 @@ class SasPortalDeployment {
   /// The deployment's display name.
   core.String? displayName;
 
+  /// The FRNs copied from its direct parent.
+  ///
+  /// Output only.
+  core.List<core.String>? frns;
+
   /// Resource name.
   ///
   /// Output only.
@@ -3642,6 +3673,11 @@ class SasPortalDeployment {
     if (_json.containsKey('displayName')) {
       displayName = _json['displayName'] as core.String;
     }
+    if (_json.containsKey('frns')) {
+      frns = (_json['frns'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
@@ -3658,6 +3694,7 @@ class SasPortalDeployment {
         if (defaultBillingMode != null)
           'defaultBillingMode': defaultBillingMode!,
         if (displayName != null) 'displayName': displayName!,
+        if (frns != null) 'frns': frns!,
         if (name != null) 'name': name!,
         if (sasUserIds != null) 'sasUserIds': sasUserIds!,
       };
@@ -3668,6 +3705,11 @@ class SasPortalDevice {
   ///
   /// Output only.
   SasPortalDeviceConfig? activeConfig;
+
+  /// Current channels with scores.
+  ///
+  /// Output only.
+  core.List<SasPortalChannelWithScore>? currentChannels;
 
   /// Device parameters that can be overridden by both SAS Portal and SAS
   /// registration requests.
@@ -3716,6 +3758,13 @@ class SasPortalDevice {
       activeConfig = SasPortalDeviceConfig.fromJson(
           _json['activeConfig'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('currentChannels')) {
+      currentChannels = (_json['currentChannels'] as core.List)
+          .map<SasPortalChannelWithScore>((value) =>
+              SasPortalChannelWithScore.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
     if (_json.containsKey('deviceMetadata')) {
       deviceMetadata = SasPortalDeviceMetadata.fromJson(
           _json['deviceMetadata'] as core.Map<core.String, core.dynamic>);
@@ -3756,6 +3805,9 @@ class SasPortalDevice {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (activeConfig != null) 'activeConfig': activeConfig!.toJson(),
+        if (currentChannels != null)
+          'currentChannels':
+              currentChannels!.map((value) => value.toJson()).toList(),
         if (deviceMetadata != null) 'deviceMetadata': deviceMetadata!.toJson(),
         if (displayName != null) 'displayName': displayName!,
         if (fccId != null) 'fccId': fccId!,

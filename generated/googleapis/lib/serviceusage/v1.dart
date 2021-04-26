@@ -42,7 +42,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Platform, lists the available or enabled services, or disables services that
 /// service consumers no longer use.
 class ServiceUsageApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -554,18 +554,18 @@ class ServicesResource {
 class AdminQuotaPolicy {
   /// The cloud resource container at which the quota policy is created.
   ///
-  /// The format is {container_type}/{container_number}
+  /// The format is `{container_type}/{container_number}`
   core.String? container;
 
   /// If this map is nonempty, then this policy applies only to specific values
   /// for dimensions defined in the limit unit.
   ///
-  /// For example, an policy on a limit with the unit 1/{project}/{region} could
-  /// contain an entry with the key "region" and the value "us-east-1"; the
-  /// policy is only applied to quota consumed in that region. This map has the
-  /// following restrictions: * If "region" appears as a key, its value must be
-  /// a valid Cloud region. * If "zone" appears as a key, its value must be a
-  /// valid Cloud zone. * Keys other than "region" or "zone" are not valid.
+  /// For example, an policy on a limit with the unit `1/{project}/{region}`
+  /// could contain an entry with the key `region` and the value `us-east-1`;
+  /// the policy is only applied to quota consumed in that region. This map has
+  /// the following restrictions: * If `region` appears as a key, its value must
+  /// be a valid Cloud region. * If `zone` appears as a key, its value must be a
+  /// valid Cloud zone. * Keys other than `region` or `zone` are not valid.
   core.Map<core.String, core.String>? dimensions;
 
   /// The name of the metric to which this policy applies.
@@ -873,13 +873,14 @@ class AuthRequirement {
       };
 }
 
-/// `Authentication` defines the authentication configuration for an API.
+/// `Authentication` defines the authentication configuration for API methods
+/// provided by an API service.
 ///
-/// Example for an API targeted for external use: name: calendar.googleapis.com
-/// authentication: providers: - id: google_calendar_auth jwks_uri:
-/// https://www.googleapis.com/oauth2/v1/certs issuer:
-/// https://securetoken.google.com rules: - selector: "*" requirements:
-/// provider_id: google_calendar_auth
+/// Example: name: calendar.googleapis.com authentication: providers: - id:
+/// google_calendar_auth jwks_uri: https://www.googleapis.com/oauth2/v1/certs
+/// issuer: https://securetoken.google.com rules: - selector: "*" requirements:
+/// provider_id: google_calendar_auth - selector: google.calendar.Delegate
+/// oauth: canonical_scopes: https://www.googleapis.com/auth/calendar.read
 class Authentication {
   /// Defines a set of authentication providers that a service supports.
   core.List<AuthProvider>? providers;
@@ -1468,6 +1469,19 @@ class Control {
       };
 }
 
+/// Metadata message that provides information such as progress, partial
+/// failures, and similar information on each GetOperation call of LRO returned
+/// by CreateAdminQuotaPolicy.
+class CreateAdminQuotaPolicyMetadata {
+  CreateAdminQuotaPolicyMetadata();
+
+  CreateAdminQuotaPolicyMetadata.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
 /// Customize service error responses.
 ///
 /// For example, list any service specific protobuf types that can appear in
@@ -1558,6 +1572,19 @@ class CustomHttpPattern {
         if (kind != null) 'kind': kind!,
         if (path != null) 'path': path!,
       };
+}
+
+/// Metadata message that provides information such as progress, partial
+/// failures, and similar information on each GetOperation call of LRO returned
+/// by DeleteAdminQuotaPolicy.
+class DeleteAdminQuotaPolicyMetadata {
+  DeleteAdminQuotaPolicyMetadata();
+
+  DeleteAdminQuotaPolicyMetadata.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Request message for the `DisableService` method.
@@ -1842,26 +1869,21 @@ class EnableServiceResponse {
       };
 }
 
-/// `Endpoint` describes a network endpoint of a service that serves a set of
+/// `Endpoint` describes a network address of a service that serves a set of
 /// APIs.
 ///
 /// It is commonly known as a service endpoint. A service may expose any number
 /// of service endpoints, and all service endpoints share the same service
-/// definition, such as quota limits and monitoring metrics. Example service
-/// configuration: name: library-example.googleapis.com endpoints: # Below entry
-/// makes 'google.example.library.v1.Library' # API be served from endpoint
-/// address library-example.googleapis.com. # It also allows HTTP OPTIONS calls
-/// to be passed to the backend, for # it to decide whether the subsequent
-/// cross-origin request is # allowed to proceed. - name:
-/// library-example.googleapis.com allow_cors: true
+/// definition, such as quota limits and monitoring metrics. Example: type:
+/// google.api.Service name: library-example.googleapis.com endpoints: #
+/// Declares network address `https://library-example.googleapis.com` # for
+/// service `library-example.googleapis.com`. The `https` scheme # is implicit
+/// for all service endpoints. Other schemes may be # supported in the future. -
+/// name: library-example.googleapis.com allow_cors: false - name:
+/// content-staging-library-example.googleapis.com # Allows HTTP OPTIONS calls
+/// to be passed to the API frontend, for it # to decide whether the subsequent
+/// cross-origin request is allowed # to proceed. allow_cors: true
 class Endpoint {
-  /// DEPRECATED: This field is no longer supported.
-  ///
-  /// Instead of using aliases, please specify multiple google.api.Endpoint for
-  /// each of the intended aliases. Additional names that this endpoint will be
-  /// hosted on.
-  core.List<core.String>? aliases;
-
   /// Allowing
   /// [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka
   /// cross-domain traffic, would allow the backends served from this endpoint
@@ -1885,11 +1907,6 @@ class Endpoint {
   Endpoint();
 
   Endpoint.fromJson(core.Map _json) {
-    if (_json.containsKey('aliases')) {
-      aliases = (_json['aliases'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
     if (_json.containsKey('allowCors')) {
       allowCors = _json['allowCors'] as core.bool;
     }
@@ -1902,7 +1919,6 @@ class Endpoint {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (aliases != null) 'aliases': aliases!,
         if (allowCors != null) 'allowCors': allowCors!,
         if (name != null) 'name': name!,
         if (target != null) 'target': target!,
@@ -2120,6 +2136,17 @@ class Field {
       };
 }
 
+/// Metadata for the `GetServiceIdentity` method.
+class GetServiceIdentityMetadata {
+  GetServiceIdentityMetadata();
+
+  GetServiceIdentityMetadata.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
 /// Response message for getting service identity.
 class GetServiceIdentityResponse {
   /// Service identity that service producer can use to access consumer
@@ -2154,15 +2181,19 @@ class GetServiceIdentityResponse {
       };
 }
 
-/// `Service` is the root object of Google service configuration schema.
+/// `Service` is the root object of Google API service configuration (service
+/// config).
 ///
-/// It describes basic information about a service, such as the name and the
-/// title, and delegates other aspects to sub-sections. Each sub-section is
-/// either a proto message or a repeated proto message that configures a
-/// specific aspect, such as auth. See each proto message definition for
-/// details. Example: type: google.api.Service name: calendar.googleapis.com
-/// title: Google Calendar API apis: - name: google.calendar.v3.Calendar
-/// authentication: providers: - id: google_calendar_auth jwks_uri:
+/// It describes the basic information about a logical service, such as the
+/// service name and the user-facing title, and delegates other aspects to
+/// sub-sections. Each sub-section is either a proto message or a repeated proto
+/// message that configures a specific aspect, such as auth. For more
+/// information, see each proto message definition. Example: type:
+/// google.api.Service name: calendar.googleapis.com title: Google Calendar API
+/// apis: - name: google.calendar.v3.Calendar visibility: rules: - selector:
+/// "google.calendar.v3.*" restriction: PREVIEW backend: rules: - selector:
+/// "google.calendar.v3.*" address: calendar.example.com authentication:
+/// providers: - id: google_calendar_auth jwks_uri:
 /// https://www.googleapis.com/oauth2/v1/certs issuer:
 /// https://securetoken.google.com rules: - selector: "*" requirements:
 /// provider_id: google_calendar_auth
@@ -2184,9 +2215,10 @@ class GoogleApiService {
   /// Billing configuration.
   Billing? billing;
 
-  /// The service config compiler always sets this field to `3`.
+  /// Obsolete.
   ///
-  /// Deprecated.
+  /// Do not use. This field has no semantic meaning. The service config
+  /// compiler always sets this field to `3`.
   core.int? configVersion;
 
   /// Context configuration.
@@ -3005,6 +3037,19 @@ class HttpRule {
       };
 }
 
+/// Metadata message that provides information such as progress, partial
+/// failures, and similar information on each GetOperation call of LRO returned
+/// by ImportAdminOverrides.
+class ImportAdminOverridesMetadata {
+  ImportAdminOverridesMetadata();
+
+  ImportAdminOverridesMetadata.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
 /// Response message for ImportAdminOverrides
 class ImportAdminOverridesResponse {
   /// The overrides that were created from the imported data.
@@ -3027,6 +3072,19 @@ class ImportAdminOverridesResponse {
       };
 }
 
+/// Metadata message that provides information such as progress, partial
+/// failures, and similar information on each GetOperation call of LRO returned
+/// by ImportAdminQuotaPolicies.
+class ImportAdminQuotaPoliciesMetadata {
+  ImportAdminQuotaPoliciesMetadata();
+
+  ImportAdminQuotaPoliciesMetadata.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
 /// Response message for ImportAdminQuotaPolicies
 class ImportAdminQuotaPoliciesResponse {
   /// The policies that were created from the imported data.
@@ -3047,6 +3105,19 @@ class ImportAdminQuotaPoliciesResponse {
         if (policies != null)
           'policies': policies!.map((value) => value.toJson()).toList(),
       };
+}
+
+/// Metadata message that provides information such as progress, partial
+/// failures, and similar information on each GetOperation call of LRO returned
+/// by ImportConsumerOverrides.
+class ImportConsumerOverridesMetadata {
+  ImportConsumerOverridesMetadata();
+
+  ImportConsumerOverridesMetadata.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Response message for ImportConsumerOverrides
@@ -4487,25 +4558,25 @@ class QuotaLimit {
 class QuotaOverride {
   /// The resource name of the ancestor that requested the override.
   ///
-  /// For example: "organizations/12345" or "folders/67890". Used by admin
+  /// For example: `organizations/12345` or `folders/67890`. Used by admin
   /// overrides only.
   core.String? adminOverrideAncestor;
 
   /// If this map is nonempty, then this override applies only to specific
   /// values for dimensions defined in the limit unit.
   ///
-  /// For example, an override on a limit with the unit 1/{project}/{region}
-  /// could contain an entry with the key "region" and the value "us-east-1";
+  /// For example, an override on a limit with the unit `1/{project}/{region}`
+  /// could contain an entry with the key `region` and the value `us-east-1`;
   /// the override is only applied to quota consumed in that region. This map
   /// has the following restrictions: * Keys that are not defined in the limit's
-  /// unit are not valid keys. Any string appearing in {brackets} in the unit
-  /// (besides {project} or {user}) is a defined key. * "project" is not a valid
-  /// key; the project is already specified in the parent resource name. *
-  /// "user" is not a valid key; the API does not support quota overrides that
-  /// apply only to a specific user. * If "region" appears as a key, its value
-  /// must be a valid Cloud region. * If "zone" appears as a key, its value must
-  /// be a valid Cloud zone. * If any valid key other than "region" or "zone"
-  /// appears in the map, then all valid keys other than "region" or "zone" must
+  /// unit are not valid keys. Any string appearing in `{brackets}` in the unit
+  /// (besides `{project}` or `{user}`) is a defined key. * `project` is not a
+  /// valid key; the project is already specified in the parent resource name. *
+  /// `user` is not a valid key; the API does not support quota overrides that
+  /// apply only to a specific user. * If `region` appears as a key, its value
+  /// must be a valid Cloud region. * If `zone` appears as a key, its value must
+  /// be a valid Cloud zone. * If any valid key other than `region` or `zone`
+  /// appears in the map, then all valid keys other than `region` or `zone` must
   /// also appear in the map.
   core.Map<core.String, core.String>? dimensions;
 
@@ -4895,6 +4966,19 @@ class Type {
         if (sourceContext != null) 'sourceContext': sourceContext!.toJson(),
         if (syntax != null) 'syntax': syntax!,
       };
+}
+
+/// Metadata message that provides information such as progress, partial
+/// failures, and similar information on each GetOperation call of LRO returned
+/// by UpdateAdminQuotaPolicy.
+class UpdateAdminQuotaPolicyMetadata {
+  UpdateAdminQuotaPolicyMetadata();
+
+  UpdateAdminQuotaPolicyMetadata.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Configuration controlling usage of a service.

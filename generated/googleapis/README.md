@@ -143,6 +143,12 @@ Accesses AdSense publishers' inventory and generates performance reports.
 
 Official API documentation: https://developers.google.com/adsense/management/
 
+#### AdSense Management API - adsense v2
+
+The AdSense Management API allows publishers to access their inventory and run earnings and performance reports.
+
+Official API documentation: http://code.google.com/apis/adsense/management/
+
 #### ![Logo](https://www.google.com/images/icons/product/adsense-16.png) AdSense Host API - adsensehost v4.1
 
 Generates performance reports, generates ad codes, and provides publisher management capabilities for AdSense Hosts.
@@ -195,6 +201,12 @@ Use the Apigee API to programmatically develop and manage APIs with a set of RES
 
 Official API documentation: https://cloud.google.com/apigee-api-management/
 
+#### API Keys API - apikeys v2
+
+Manages the API keys associated with developer projects.
+
+Official API documentation: https://cloud.google.com/api-keys/docs
+
 #### App Engine Admin API - appengine v1
 
 Provisions and manages developers' App Engine applications.
@@ -210,6 +222,12 @@ Official API documentation: https://cloud.google.com/artifacts/docs/
 #### Assured Workloads API - assuredworkloads v1
 
 Official API documentation: https://cloud.google.com
+
+#### Bare Metal Solution API - baremetalsolution v1
+
+Bare Metal Solution provides hardware to run specialized workloads with low latency on Google Cloud.
+
+Official API documentation: https://cloud.google.com/bare-metal
 
 #### ![Logo](https://www.google.com/images/icons/product/search-16.gif) BigQuery API - bigquery v2
 
@@ -267,15 +285,21 @@ Official API documentation: https://developers.google.com/google-apps/calendar/f
 
 #### Google Chat API - chat v1
 
-Enables bots to fetch information and perform actions in Google Chat.
+Enables bots to fetch information and perform actions in Google Chat. Authentication using a service account is a prerequisite for using the Google Chat REST API.
 
 Official API documentation: https://developers.google.com/hangouts/chat
 
 #### Chrome Management API - chromemanagement v1
 
-The Chrome Management API is a suite of services that allows Chrome administrators to view, manage and gain insights on their Chrome OS The Chrome Management API is a suite of services that allows GSuite domain administrators to view, manage and gain insights on their Chrome OS and Chrome Browser devices and users.
+The Chrome Management API is a suite of services that allows Chrome administrators to view, manage and gain insights on their Chrome OS and Chrome Browser devices.
 
 Official API documentation: http://developers.google.com/chrome/management/
+
+#### Chrome Policy API - chromepolicy v1
+
+The Chrome Policy API is a suite of services that allows Chrome administrators to control the policies applied to their managed Chrome OS devices and Chrome browsers.
+
+Official API documentation: http://developers.google.com/chrome/policy
 
 #### Chrome UX Report API - chromeuxreport v1
 
@@ -437,6 +461,12 @@ Cloud Data Fusion is a fully-managed, cloud native, enterprise data integration 
 
 Official API documentation: https://cloud.google.com/data-fusion/docs
 
+#### Database Migration API - datamigration v1
+
+Manage Cloud Database Migration Service resources on Google Cloud Platform.
+
+Official API documentation: https://cloud.google.com/database-migration/
+
 #### Cloud Dataproc API - dataproc v1
 
 Manages Hadoop-based clusters and jobs on Google Cloud Platform.
@@ -507,6 +537,12 @@ Reads and writes Google Docs documents.
 
 Official API documentation: https://developers.google.com/docs/
 
+#### Cloud Document AI API - documentai v1
+
+Service to parse structured information from unstructured or semi-structured documents using state-of-the-art Google AI such as natural language, computer vision, translation, and AutoML.
+
+Official API documentation: https://cloud.google.com/document-ai/docs/
+
 #### Domains RDAP API - domainsrdap v1
 
 Read-only public API that lets users search for information about domain names.
@@ -543,6 +579,10 @@ Provides a historical view of activity in Google Drive.
 
 Official API documentation: https://developers.google.com/drive/activity/
 
+#### Essential Contacts API - essentialcontacts v1
+
+Official API documentation: https://cloud.google.com/essentialcontacts/docs/
+
 #### Eventarc API - eventarc v1
 
 Official API documentation: https://cloud.google.com/eventarc
@@ -567,7 +607,7 @@ Official API documentation: https://firebase.google.com/docs/dynamic-links/
 
 #### Firebase Hosting API - firebasehosting v1
 
-The Firebase Hosting REST API enables programmatic and customizable deployments to your Firebase-hosted sites. Use this REST API to deploy new or updated hosting configurations and content files.
+The Firebase Hosting REST API enables programmatic and customizable management and deployments to your Firebase-hosted sites. Use this REST API to create and manage channels and sites as well as to deploy new or updated hosting configurations and content files.
 
 Official API documentation: https://firebase.google.com/docs/hosting/
 
@@ -619,11 +659,9 @@ Deploy and manage infrastructure for global multiplayer gaming experiences.
 
 Official API documentation: https://cloud.google.com/solutions/gaming/
 
-#### Genomics API - genomics v1
+#### GKE Hub - gkehub v1
 
-Uploads, processes, queries, and searches Genomics data in the cloud.
-
-Official API documentation: https://cloud.google.com/genomics
+Official API documentation: https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster
 
 #### Gmail API - gmail v1
 
@@ -771,6 +809,18 @@ The My Business Account Management API provides an interface for managing access
 
 Official API documentation: https://developers.google.com/my-business/
 
+#### My Business Lodging API - mybusinesslodging v1
+
+The My Business Lodging API enables managing lodging business information on Google.
+
+Official API documentation: https://developers.google.com/my-business/
+
+#### My Business Place Actions API - mybusinessplaceactions v1
+
+The My Business Place Actions API provides an interface for managing place action links of a location on Google.
+
+Official API documentation: https://developers.google.com/my-business/
+
 #### Network Management API - networkmanagement v1
 
 The Network Management API provides a collection of network performance monitoring and diagnostic capabilities.
@@ -789,11 +839,23 @@ Obtains end-user authorization grants for use with other Google APIs.
 
 Official API documentation: https://developers.google.com/identity/protocols/oauth2/
 
+#### On-Demand Scanning API - ondemandscanning v1
+
+A service to scan container images for vulnerabilities.
+
+Official API documentation: https://cloud.google.com/container-analysis/docs/on-demand-scanning/
+
+#### Organization Policy API - orgpolicy v2
+
+The Org Policy API allows users to configure governance ruleson their GCP resources across the Cloud Resource Hierarchy.
+
+Official API documentation: https://cloud.google.com/orgpolicy/docs/reference/rest/index.html
+
 #### OS Config API - osconfig v1
 
 OS management tools that can be used for patch management, patch compliance, and configuration management on VM instances.
 
-Official API documentation: https://cloud.google.com/compute/docs/manage-os
+Official API documentation: https://cloud.google.com/compute/docs/osconfig/rest
 
 #### Cloud OS Login API - oslogin v1
 
@@ -806,6 +868,10 @@ Official API documentation: https://cloud.google.com/compute/docs/oslogin/
 The PageSpeed Insights API lets you analyze the performance of your website with a simple API. It offers tailored suggestions for how you can optimize your site, and lets you easily integrate PageSpeed Insights analysis into your development tools and workflow. 
 
 Official API documentation: https://developers.google.com/speed/docs/insights/v5/about
+
+#### Payments Reseller Subscription API - paymentsresellersubscription v1
+
+Official API documentation: https://developers.google.com/payments/reseller/subscription/
 
 #### People API - people v1
 
@@ -822,6 +888,12 @@ Official API documentation: https://developers.google.com/maps/contact-sales/
 API to create and publish custom Android apps
 
 Official API documentation: https://developers.google.com/android/work/play/custom-app-api/
+
+#### Policy Simulator API - policysimulator v1
+
+ Policy Simulator is a collection of endpoints for creating, running, and viewing a Replay. A `Replay` is a type of simulation that lets you see how your members' access to resources might change if you changed your IAM policy. During a `Replay`, Policy Simulator re-evaluates, or replays, past access attempts under both the current policy and your proposed policy, and compares those results to determine how your members' access might change under the proposed policy.
+
+Official API documentation: https://cloud.google.com/iam/docs/simulating-access
 
 #### Policy Troubleshooter API - policytroubleshooter v1
 
@@ -848,6 +920,10 @@ Official API documentation: https://cloud.google.com/pubsub/lite/docs
 Allows external bidders to manage their RTB integration with Google. This includes managing bidder endpoints, QPS quotas, configuring what ad inventory to receive via pretargeting, submitting creatives for verification, and accessing creative metadata such as approval status.
 
 Official API documentation: https://developers.google.com/authorized-buyers/apis/realtimebidding/reference/rest/
+
+#### reCAPTCHA Enterprise API - recaptchaenterprise v1
+
+Official API documentation: https://cloud.google.com/recaptcha-enterprise/
 
 #### Recommender API - recommender v1
 
@@ -1075,7 +1151,7 @@ Official API documentation: https://cloud.google.com/translate/docs/quickstarts
 
 #### G Suite Vault API - vault v1
 
-Archiving and eDiscovery for G Suite.
+Retention and eDiscovery for Google Workspace. To work with Vault resources, the account must have the [required Vault privileges] (https://support.google.com/vault/answer/2799699) and access to the matter. To access a matter, the account must have created the matter, have the matter shared with them, or have the **View All Matters** privilege. For example, to download an export, an account needs the **Manage Exports** privilege and the matter shared with them. 
 
 Official API documentation: https://developers.google.com/vault
 
@@ -1133,7 +1209,7 @@ Official API documentation: https://cloud.google.com/workflows
 
 #### Workflows API - workflows v1
 
-Orchestrate Workflows consisting of Google Cloud APIs, SaaS APIs or private API endpoints.
+Manage workflow definitions. To execute workflows and manage executions, see the Workflows Executions API.
 
 Official API documentation: https://cloud.google.com/workflows
 

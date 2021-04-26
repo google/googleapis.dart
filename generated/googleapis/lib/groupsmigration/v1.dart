@@ -47,7 +47,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// The Groups Migration API allows domain administrators to archive emails into
 /// Google groups.
 class GroupsMigrationApi {
-  /// Manage messages in groups on your domain
+  /// Upload messages to any Google group in your domain
   static const appsGroupsMigrationScope =
       'https://www.googleapis.com/auth/apps.groups.migration';
 

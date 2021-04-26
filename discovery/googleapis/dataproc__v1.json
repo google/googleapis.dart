@@ -3,7 +3,7 @@
         "oauth2": {
             "scopes": {
                 "https://www.googleapis.com/auth/cloud-platform": {
-                    "description": "View and manage your data across Google Cloud Platform services"
+                    "description": "See, edit, configure, and delete your Google Cloud Platform data"
                 }
             }
         }
@@ -2193,7 +2193,7 @@
             }
         }
     },
-    "revision": "20210218",
+    "revision": "20210507",
     "rootUrl": "https://dataproc.googleapis.com/",
     "schemas": {
         "AcceleratorConfig": {
@@ -2298,6 +2298,61 @@
             },
             "type": "object"
         },
+        "BatchOperationMetadata": {
+            "description": "Metadata describing the Batch operation.",
+            "id": "BatchOperationMetadata",
+            "properties": {
+                "batch": {
+                    "description": "Name of the batch for the operation.",
+                    "type": "string"
+                },
+                "batchUuid": {
+                    "description": "Batch UUID for the operation.",
+                    "type": "string"
+                },
+                "createTime": {
+                    "description": "The time when the operation was created.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "Short description of the operation.",
+                    "type": "string"
+                },
+                "doneTime": {
+                    "description": "The time when the operation finished.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "labels": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Labels associated with the operation.",
+                    "type": "object"
+                },
+                "operationType": {
+                    "description": "The operation type.",
+                    "enum": [
+                        "BATCH_OPERATION_TYPE_UNSPECIFIED",
+                        "BATCH"
+                    ],
+                    "enumDescriptions": [
+                        "Batch operation type is unknown.",
+                        "Batch operation type."
+                    ],
+                    "type": "string"
+                },
+                "warnings": {
+                    "description": "Warnings encountered during operation execution.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "Binding": {
             "description": "Associates members with a role.",
             "id": "Binding",
@@ -2398,6 +2453,10 @@
                 "gceClusterConfig": {
                     "$ref": "GceClusterConfig",
                     "description": "Optional. The shared Compute Engine config settings for all instances in a cluster."
+                },
+                "gkeClusterConfig": {
+                    "$ref": "GkeClusterConfig",
+                    "description": "Optional. BETA. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and autoscaling_config."
                 },
                 "initializationActions": {
                     "description": "Optional. Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's role metadata to run an executable on a master or worker node, as shown below using curl (you can also use wget): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if [[ \"${ROLE}\" == 'Master' ]]; then ... master specific actions ... else ... worker specific actions ... fi ",
@@ -2617,7 +2676,10 @@
                         "RUNNING",
                         "ERROR",
                         "DELETING",
-                        "UPDATING"
+                        "UPDATING",
+                        "STOPPING",
+                        "STOPPED",
+                        "STARTING"
                     ],
                     "enumDescriptions": [
                         "The cluster state is unknown.",
@@ -2625,7 +2687,10 @@
                         "The cluster is currently running and healthy. It is ready for use.",
                         "The cluster encountered an error. It is not ready for use.",
                         "The cluster is being deleted. It cannot be used.",
-                        "The cluster is being updated. It continues to accept and process jobs."
+                        "The cluster is being updated. It continues to accept and process jobs.",
+                        "The cluster is being stopped. It cannot be used.",
+                        "The cluster is currently stopped. It is not ready for use.",
+                        "The cluster is being started. It is not ready for use."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -2650,6 +2715,17 @@
                     ],
                     "readOnly": true,
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ConfidentialInstanceConfig": {
+            "description": "Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs)",
+            "id": "ConfidentialInstanceConfig",
+            "properties": {
+                "enableConfidentialCompute": {
+                    "description": "Optional. Defines whether the instance should have confidential compute enabled.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -2756,6 +2832,10 @@
             "description": "Common config settings for resources of Compute Engine cluster instances, applicable to all instances in the cluster.",
             "id": "GceClusterConfig",
             "properties": {
+                "confidentialInstanceConfig": {
+                    "$ref": "ConfidentialInstanceConfig",
+                    "description": "Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs)."
+                },
                 "internalIpOnly": {
                     "description": "Optional. If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This internal_ip_only restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.",
                     "type": "boolean"
@@ -2847,6 +2927,17 @@
                     "description": "Optional. The policy format version to be returned.Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.Requests for policies with any conditional bindings must specify version 3. Policies without any conditional bindings may specify any valid value or leave the field unset.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).",
                     "format": "int32",
                     "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "GkeClusterConfig": {
+            "description": "The GKE config for this cluster.",
+            "id": "GkeClusterConfig",
+            "properties": {
+                "namespacedGkeDeploymentTarget": {
+                    "$ref": "NamespacedGkeDeploymentTarget",
+                    "description": "Optional. A target for the deployment."
                 }
             },
             "type": "object"
@@ -2945,6 +3036,20 @@
             },
             "type": "object"
         },
+        "IdentityConfig": {
+            "description": "Identity related configuration, including service account based secure multi-tenancy user mappings.",
+            "id": "IdentityConfig",
+            "properties": {
+                "userServiceAccountMapping": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Required. Map of user to service account.",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "InjectCredentialsRequest": {
             "description": "A request to inject credentials into a cluster.",
             "id": "InjectCredentialsRequest",
@@ -3036,7 +3141,7 @@
                     "type": "string"
                 },
                 "numInstances": {
-                    "description": "Optional. The number of VM instances in the instance group. For master instance groups, must be set to 1.",
+                    "description": "Optional. The number of VM instances in the instance group. For HA cluster master_config groups, must be set to 3. For standard cluster master_config groups, must be set to 1.",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -3624,6 +3729,21 @@
             },
             "type": "object"
         },
+        "NamespacedGkeDeploymentTarget": {
+            "description": "A full, namespace-isolated deployment target for an existing GKE cluster.",
+            "id": "NamespacedGkeDeploymentTarget",
+            "properties": {
+                "clusterNamespace": {
+                    "description": "Optional. A namespace within the GKE cluster to deploy into.",
+                    "type": "string"
+                },
+                "targetGkeCluster": {
+                    "description": "Optional. The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "NodeGroupAffinity": {
             "description": "Node Group Affinity for clusters using sole-tenant node groups.",
             "id": "NodeGroupAffinity",
@@ -3994,6 +4114,10 @@
             "description": "Security related configuration, including encryption, Kerberos, etc.",
             "id": "SecurityConfig",
             "properties": {
+                "identityConfig": {
+                    "$ref": "IdentityConfig",
+                    "description": "Optional. Identity related configuration, including service account based secure multi-tenancy user mappings."
+                },
                 "kerberosConfig": {
                     "$ref": "KerberosConfig",
                     "description": "Optional. Kerberos related configuration."
@@ -4046,7 +4170,9 @@
                             "COMPONENT_UNSPECIFIED",
                             "ANACONDA",
                             "DOCKER",
+                            "DRUID",
                             "FLINK",
+                            "HBASE",
                             "HIVE_WEBHCAT",
                             "JUPYTER",
                             "PRESTO",
@@ -4059,7 +4185,9 @@
                             "Unspecified component. Specifying this will cause Cluster creation to fail.",
                             "The Anaconda python distribution. The Anaconda component is not supported in the Dataproc 2.0 image. The 2.0 image is pre-installed with Miniconda.",
                             "Docker",
+                            "The Druid query engine. (alpha)",
                             "Flink",
+                            "HBase. (beta)",
                             "The Hive Web HCatalog (the REST service for accessing HCatalog).",
                             "The Jupyter Notebook.",
                             "The Presto query engine.",

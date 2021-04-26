@@ -42,7 +42,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// This API converts video files into formats suitable for consumer
 /// distribution.
 class TranscoderApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -1187,9 +1187,10 @@ class Image {
   /// `x` and `y` to `0.0`.
   NormalizedCoordinate? resolution;
 
-  /// URI of the image in Cloud Storage.
+  /// URI of the JPEG image in Cloud Storage.
   ///
-  /// For example, `gs://bucket/inputs/image.jpeg`.
+  /// For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported
+  /// image type.
   ///
   /// Required.
   core.String? uri;
@@ -2251,14 +2252,20 @@ class SpriteSheet {
 
   /// The height of sprite in pixels.
   ///
-  /// Must be an even integer.
+  /// Must be an even integer. To preserve the source aspect ratio, set the
+  /// SpriteSheet.sprite_height_pixels field or the
+  /// SpriteSheet.sprite_width_pixels field, but not both (the API will
+  /// automatically calculate the missing field).
   ///
   /// Required.
   core.int? spriteHeightPixels;
 
   /// The width of sprite in pixels.
   ///
-  /// Must be an even integer.
+  /// Must be an even integer. To preserve the source aspect ratio, set the
+  /// SpriteSheet.sprite_width_pixels field or the
+  /// SpriteSheet.sprite_height_pixels field, but not both (the API will
+  /// automatically calculate the missing field).
   ///
   /// Required.
   core.int? spriteWidthPixels;
@@ -2495,16 +2502,9 @@ class VideoStream {
   ///
   /// Must be less than or equal to 120. Will default to the input frame rate if
   /// larger than the input frame rate. The API will generate an output FPS that
-  /// is divisible by the input FPS, and smaller or equal to the target FPS. The
-  /// following table shows the computed video FPS given the target FPS (in
-  /// parenthesis) and input FPS (in the first column): ``` | | (30) | (60) |
-  /// (25) | (50) | |--------|--------|--------|------|------| | 240 | Fail |
-  /// Fail | Fail | Fail | | 120 | 30 | 60 | 20 | 30 | | 100 | 25 | 50 | 20 | 30
-  /// | | 50 | 25 | 50 | 20 | 30 | | 60 | 30 | 60 | 20 | 30 | | 59.94 | 29.97 |
-  /// 59.94 | 20 | 30 | | 48 | 24 | 48 | 20 | 30 | | 30 | 30 | 30 | 20 | 30 | |
-  /// 25 | 25 | 25 | 20 | 30 | | 24 | 24 | 24 | 20 | 30 | | 23.976 | 23.976 |
-  /// 23.976 | 20 | 30 | | 15 | 15 | 15 | 20 | 30 | | 12 | 12 | 12 | 20 | 30 | |
-  /// 10 | 10 | 10 | 20 | 30 | ```
+  /// is divisible by the input FPS, and smaller or equal to the target FPS. See
+  /// [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate)
+  /// for more information.
   ///
   /// Required.
   core.double? frameRate;

@@ -3,7 +3,7 @@
         "oauth2": {
             "scopes": {
                 "https://www.googleapis.com/auth/cloud-platform": {
-                    "description": "View and manage your data across Google Cloud Platform services"
+                    "description": "See, edit, configure, and delete your Google Cloud Platform data"
                 }
             }
         }
@@ -796,7 +796,7 @@
             }
         }
     },
-    "revision": "20210218",
+    "revision": "20210514",
     "rootUrl": "https://cloudbuild.googleapis.com/",
     "schemas": {
         "ArtifactObjects": {
@@ -940,7 +940,7 @@
                     "type": "array"
                 },
                 "serviceAccount": {
-                    "description": "IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account. This field is in beta.",
+                    "description": "IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account. ",
                     "type": "string"
                 },
                 "source": {
@@ -1023,6 +1023,14 @@
                     "description": "Output only. Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If the build does not specify source or images, these keys will not be included.",
                     "readOnly": true,
                     "type": "object"
+                },
+                "warnings": {
+                    "description": "Output only. Non-fatal problems encountered during the execution of the build.",
+                    "items": {
+                        "$ref": "Warning"
+                    },
+                    "readOnly": true,
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -1298,6 +1306,10 @@
                     "description": "Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml).",
                     "type": "string"
                 },
+                "filter": {
+                    "description": "Optional. A Common Expression Language string.",
+                    "type": "string"
+                },
                 "github": {
                     "$ref": "GitHubEventsConfig",
                     "description": "GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. Mutually exclusive with `trigger_template`."
@@ -1324,6 +1336,10 @@
                 "name": {
                     "description": "User-assigned name of the trigger. Must be unique within the project. Trigger names must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.",
                     "type": "string"
+                },
+                "pubsubConfig": {
+                    "$ref": "PubsubConfig",
+                    "description": "Optional. PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published."
                 },
                 "substitutions": {
                     "additionalProperties": {
@@ -1706,6 +1722,44 @@
             },
             "type": "object"
         },
+        "PubsubConfig": {
+            "description": "PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.",
+            "id": "PubsubConfig",
+            "properties": {
+                "serviceAccountEmail": {
+                    "description": "Service account that will make the push request.",
+                    "type": "string"
+                },
+                "state": {
+                    "description": "Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.",
+                    "enum": [
+                        "STATE_UNSPECIFIED",
+                        "OK",
+                        "SUBSCRIPTION_DELETED",
+                        "TOPIC_DELETED",
+                        "SUBSCRIPTION_MISCONFIGURED"
+                    ],
+                    "enumDescriptions": [
+                        "The subscription configuration has not been checked.",
+                        "The Pub/Sub subscription is properly configured.",
+                        "The subscription has been deleted.",
+                        "The topic has been deleted.",
+                        "Some of the subscription's field are misconfigured."
+                    ],
+                    "type": "string"
+                },
+                "subscription": {
+                    "description": "Output only. Name of the subscription. Format is `projects/{project}/subscriptions/{subscription}`.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "topic": {
+                    "description": "The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "PullRequestFilter": {
             "description": "PullRequestFilter contains filter properties for matching GitHub Pull Requests.",
             "id": "PullRequestFilter",
@@ -1974,6 +2028,10 @@
                 "storageSource": {
                     "$ref": "StorageSource",
                     "description": "If provided, get the source from this location in Google Cloud Storage."
+                },
+                "storageSourceManifest": {
+                    "$ref": "StorageSourceManifest",
+                    "description": "If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview."
                 }
             },
             "type": "object"
@@ -1997,6 +2055,10 @@
                 "resolvedStorageSource": {
                     "$ref": "StorageSource",
                     "description": "A copy of the build's `source.storage_source`, if exists, with any generations resolved."
+                },
+                "resolvedStorageSourceManifest": {
+                    "$ref": "StorageSourceManifest",
+                    "description": "A copy of the build's `source.storage_source_manifest`, if exists, with any revisions resolved. This feature is in Preview."
                 }
             },
             "type": "object"
@@ -2048,6 +2110,26 @@
             },
             "type": "object"
         },
+        "StorageSourceManifest": {
+            "description": "Location of the source manifest in Google Cloud Storage. This feature is in Preview.",
+            "id": "StorageSourceManifest",
+            "properties": {
+                "bucket": {
+                    "description": "Google Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).",
+                    "type": "string"
+                },
+                "generation": {
+                    "description": "Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "object": {
+                    "description": "Google Cloud Storage object containing the source manifest. This object must be a JSON file.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "TimeSpan": {
             "description": "Start and end times for a build execution phase.",
             "id": "TimeSpan",
@@ -2075,6 +2157,33 @@
                 },
                 "path": {
                     "description": "Path at which to mount the volume. Paths must be absolute and cannot conflict with other volume paths on the same build step or with certain reserved volume paths.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Warning": {
+            "description": "A non-fatal problem encountered during the execution of the build.",
+            "id": "Warning",
+            "properties": {
+                "priority": {
+                    "description": "The priority for this warning.",
+                    "enum": [
+                        "PRIORITY_UNSPECIFIED",
+                        "INFO",
+                        "WARNING",
+                        "ALERT"
+                    ],
+                    "enumDescriptions": [
+                        "Should not be used.",
+                        "e.g. deprecation warnings and alternative feature highlights.",
+                        "e.g. automated detection of possible issues with the build.",
+                        "e.g. alerts that a feature used in the build is pending removal"
+                    ],
+                    "type": "string"
+                },
+                "text": {
+                    "description": "Explanation of the warning generated.",
                     "type": "string"
                 }
             },

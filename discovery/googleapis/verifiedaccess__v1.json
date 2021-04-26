@@ -142,7 +142,7 @@
             }
         }
     },
-    "revision": "20200828",
+    "revision": "20210302",
     "rootUrl": "https://verifiedaccess.googleapis.com/",
     "schemas": {
         "Challenge": {

@@ -42,7 +42,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 ///
 /// To enable this API, you must enable the IAM API (iam.googleapis.com).
 class IAMCredentialsApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 

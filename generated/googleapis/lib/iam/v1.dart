@@ -54,7 +54,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// including the creation of service accounts, which you can use to
 /// authenticate to Google and make API calls.
 class IamApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -2116,7 +2116,7 @@ class ProjectsServiceAccountsResource {
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// **Note:** This method is deprecated and will stop working on July 1, 2021.
+  /// **Note:** This method is deprecated.
   ///
   /// Use the
   /// \[`signBlob`\](https://cloud.google.com/iam/help/rest-credentials/v1/projects.serviceAccounts/signBlob)
@@ -2171,7 +2171,7 @@ class ProjectsServiceAccountsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// **Note:** This method is deprecated and will stop working on July 1, 2021.
+  /// **Note:** This method is deprecated.
   ///
   /// Use the
   /// \[`signJwt`\](https://cloud.google.com/iam/help/rest-credentials/v1/projects.serviceAccounts/signJwt)
@@ -3624,6 +3624,8 @@ class Oidc {
 
   /// The OIDC issuer URL.
   ///
+  /// Must be an HTTPS endpoint.
+  ///
   /// Required.
   core.String? issuerUri;
 
@@ -3764,7 +3766,8 @@ class Permission {
 
   /// The current custom role support level.
   /// Possible string values are:
-  /// - "SUPPORTED" : Permission is fully supported for custom role use.
+  /// - "SUPPORTED" : Default state. Permission is fully supported for custom
+  /// role use.
   /// - "TESTING" : Permission is being tested to check custom role
   /// compatibility.
   /// - "NOT_SUPPORTED" : Permission is not supported for custom role use.

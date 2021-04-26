@@ -1490,6 +1490,13 @@ class SubscriptionPlan {
 /// For more information, see retrieve transferable subscriptions for a
 /// customer.
 class SubscriptionTransferInfo {
+  /// Sku id of the current resold subscription.
+  ///
+  /// This is populated only when customer has subscription with legacy sku and
+  /// the subscription resource is populated with recommeded sku for transfer
+  /// in.
+  core.String? currentLegacySkuId;
+
   /// When inserting a subscription, this is the minimum number of seats listed
   /// in the transfer order for this product.
   ///
@@ -1505,6 +1512,9 @@ class SubscriptionTransferInfo {
   SubscriptionTransferInfo();
 
   SubscriptionTransferInfo.fromJson(core.Map _json) {
+    if (_json.containsKey('currentLegacySkuId')) {
+      currentLegacySkuId = _json['currentLegacySkuId'] as core.String;
+    }
     if (_json.containsKey('minimumTransferableSeats')) {
       minimumTransferableSeats = _json['minimumTransferableSeats'] as core.int;
     }
@@ -1515,6 +1525,8 @@ class SubscriptionTransferInfo {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (currentLegacySkuId != null)
+          'currentLegacySkuId': currentLegacySkuId!,
         if (minimumTransferableSeats != null)
           'minimumTransferableSeats': minimumTransferableSeats!,
         if (transferabilityExpirationTime != null)

@@ -26,6 +26,7 @@
 ///
 /// - [BiddersResource]
 ///   - [BiddersCreativesResource]
+///   - [BiddersEndpointsResource]
 ///   - [BiddersPretargetingConfigsResource]
 /// - [BuyersResource]
 ///   - [BuyersCreativesResource]
@@ -72,10 +73,92 @@ class BiddersResource {
 
   BiddersCreativesResource get creatives =>
       BiddersCreativesResource(_requester);
+  BiddersEndpointsResource get endpoints =>
+      BiddersEndpointsResource(_requester);
   BiddersPretargetingConfigsResource get pretargetingConfigs =>
       BiddersPretargetingConfigsResource(_requester);
 
   BiddersResource(commons.ApiRequester client) : _requester = client;
+
+  /// Gets a bidder account by its name.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the bidder to get. Format:
+  /// `bidders/{bidderAccountId}`
+  /// Value must have pattern `^bidders/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Bidder].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Bidder> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Bidder.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all the bidder accounts that belong to the caller.
+  ///
+  /// Request parameters:
+  ///
+  /// [pageSize] - The maximum number of bidders to return. If unspecified, at
+  /// most 100 bidders will be returned. The maximum value is 500; values above
+  /// 500 will be coerced to 500.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. This value is received from a previous `ListBidders` call in
+  /// ListBiddersResponse.nextPageToken.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBiddersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBiddersResponse> list({
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const _url = 'v1/bidders';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListBiddersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class BiddersCreativesResource {
@@ -211,6 +294,97 @@ class BiddersCreativesResource {
       queryParams: _queryParams,
     );
     return WatchCreativesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class BiddersEndpointsResource {
+  final commons.ApiRequester _requester;
+
+  BiddersEndpointsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Gets a bidder endpoint by its name.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the bidder endpoint to get. Format:
+  /// `bidders/{bidderAccountId}/endpoints/{endpointId}`
+  /// Value must have pattern `^bidders/\[^/\]+/endpoints/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Endpoint].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Endpoint> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Endpoint.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all the bidder's endpoints.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the bidder whose endpoints will be listed.
+  /// Format: `bidders/{bidderAccountId}`
+  /// Value must have pattern `^bidders/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of endpoints to return. If unspecified, at
+  /// most 100 endpoints will be returned. The maximum value is 500; values
+  /// above 500 will be coerced to 500.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. This value is received from a previous `ListEndpoints` call in
+  /// ListEndpointsResponse.nextPageToken.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListEndpointsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListEndpointsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/endpoints';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListEndpointsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -801,6 +975,41 @@ class BuyersResource {
 
   BuyersResource(commons.ApiRequester client) : _requester = client;
 
+  /// Gets a buyer account by its name.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the buyer to get. Format: `buyers/{buyerId}`
+  /// Value must have pattern `^buyers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Buyer].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Buyer> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Buyer.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets remarketing tag for a buyer.
   ///
   /// A remarketing tag is a piece of JavaScript code that can be placed on a
@@ -844,6 +1053,51 @@ class BuyersResource {
       queryParams: _queryParams,
     );
     return GetRemarketingTagResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all buyer account information the calling buyer user or service
+  /// account is permissioned to manage.
+  ///
+  /// Request parameters:
+  ///
+  /// [pageSize] - The maximum number of buyers to return. If unspecified, at
+  /// most 100 buyers will be returned. The maximum value is 500; values above
+  /// 500 will be coerced to 500.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. This value is received from a previous `ListBuyers` call in
+  /// ListBuyersResponse.nextPageToken.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBuyersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBuyersResponse> list({
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const _url = 'v1/buyers';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListBuyersResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1405,6 +1659,76 @@ class ActivatePretargetingConfigRequest {
   core.Map<core.String, core.dynamic> toJson() => {};
 }
 
+/// The list of detected Ad Technology Providers for this creative.
+///
+/// Bids placed for inventory that will serve to EEA or UK users are expected to
+/// comply with GDPR requirements. You must ensure that the creatives used in
+/// such bids should contain only user consented ad technology providers as
+/// indicated in the bid request. Google reserves the right to filter
+/// non-compliant bids. User consented ad technology providers can be found in
+/// the
+/// [Google Protocol](https://developers.google.com/authorized-buyers/rtb/downloads/realtime-bidding-proto)
+/// with the `BidRequest.adslot.consented_providers_settings` field, and can be
+/// found as an
+/// [OpenRTB extension](https://developers.google.com/authorized-buyers/rtb/downloads/openrtb-adx-proto)
+/// with the `BidRequest.user.ext.consented_providers_settings` and
+/// `BidRequest.user.ext.consent` fields. See
+/// https://support.google.com/authorizedbuyers/answer/9789378 for additional
+/// information about the Google TCF v2 integration.
+class AdTechnologyProviders {
+  /// The detected IAB Global Vendor List (GVL) IDs for this creative.
+  ///
+  /// See the IAB Global Vendor List at
+  /// https://vendorlist.consensu.org/v2/vendor-list.json for details about the
+  /// vendors.
+  core.List<core.String>? detectedGvlIds;
+
+  /// The detected \[Google Ad Tech Providers
+  /// (ATP)\](https://support.google.com/admanager/answer/9012903) for this
+  /// creative.
+  ///
+  /// See https://storage.googleapis.com/adx-rtb-dictionaries/providers.csv for
+  /// mapping of provider ID to provided name, a privacy policy URL, and a list
+  /// of domains which can be attributed to the provider.
+  core.List<core.String>? detectedProviderIds;
+
+  /// Domains of detected unidentified ad technology providers (if any).
+  ///
+  /// You must ensure that the creatives used in bids placed for inventory that
+  /// will serve to EEA or UK users does not contain unidentified ad technology
+  /// providers. Google reserves the right to filter non-compliant bids.
+  core.List<core.String>? unidentifiedProviderDomains;
+
+  AdTechnologyProviders();
+
+  AdTechnologyProviders.fromJson(core.Map _json) {
+    if (_json.containsKey('detectedGvlIds')) {
+      detectedGvlIds = (_json['detectedGvlIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('detectedProviderIds')) {
+      detectedProviderIds = (_json['detectedProviderIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('unidentifiedProviderDomains')) {
+      unidentifiedProviderDomains =
+          (_json['unidentifiedProviderDomains'] as core.List)
+              .map<core.String>((value) => value as core.String)
+              .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (detectedGvlIds != null) 'detectedGvlIds': detectedGvlIds!,
+        if (detectedProviderIds != null)
+          'detectedProviderIds': detectedProviderIds!,
+        if (unidentifiedProviderDomains != null)
+          'unidentifiedProviderDomains': unidentifiedProviderDomains!,
+      };
+}
+
 /// A request to start targeting the provided app IDs in a specific pretargeting
 /// configuration.
 ///
@@ -1630,6 +1954,178 @@ class AppTargeting {
           'mobileAppCategoryTargeting': mobileAppCategoryTargeting!.toJson(),
         if (mobileAppTargeting != null)
           'mobileAppTargeting': mobileAppTargeting!.toJson(),
+      };
+}
+
+/// Bidder settings.
+class Bidder {
+  /// A flag to bypass pretargeting for private auctions and preferred deals.
+  ///
+  /// When true, bid requests from these nonguaranteed deals will always be
+  /// sent. When false, bid requests will be subject to regular pretargeting
+  /// configurations. Programmatic Guaranteed deals will always be sent to the
+  /// bidder, regardless of the value for this flag. Auction packages are not
+  /// impacted by this value and are subject to the regular pretargeting
+  /// configurations.
+  ///
+  /// Output only.
+  core.bool? bypassNonguaranteedDealsPretargeting;
+
+  /// The buyer's network ID used for cookie matching.
+  ///
+  /// This ID corresponds to the `google_nid` parameter in the URL used in
+  /// cookie match requests. Refer to
+  /// https://developers.google.com/authorized-buyers/rtb/cookie-guide for
+  /// further information.
+  ///
+  /// Output only.
+  core.String? cookieMatchingNetworkId;
+
+  /// The base URL used in cookie match requests.
+  ///
+  /// Refer to https://developers.google.com/authorized-buyers/rtb/cookie-guide
+  /// for further information.
+  ///
+  /// Output only.
+  core.String? cookieMatchingUrl;
+
+  /// The billing ID for the deals pretargeting config.
+  ///
+  /// This billing ID is sent on the bid request for guaranteed and
+  /// nonguaranteed deals matched in pretargeting.
+  ///
+  /// Output only.
+  core.String? dealsBillingId;
+
+  /// Name of the bidder resource that must follow the pattern
+  /// `bidders/{bidderAccountId}`, where `{bidderAccountId}` is the account ID
+  /// of the bidder whose information is to be received.
+  ///
+  /// One can get their account ID on the Authorized Buyers or Open Bidding UI,
+  /// or by contacting their Google account manager.
+  ///
+  /// Output only.
+  core.String? name;
+
+  Bidder();
+
+  Bidder.fromJson(core.Map _json) {
+    if (_json.containsKey('bypassNonguaranteedDealsPretargeting')) {
+      bypassNonguaranteedDealsPretargeting =
+          _json['bypassNonguaranteedDealsPretargeting'] as core.bool;
+    }
+    if (_json.containsKey('cookieMatchingNetworkId')) {
+      cookieMatchingNetworkId = _json['cookieMatchingNetworkId'] as core.String;
+    }
+    if (_json.containsKey('cookieMatchingUrl')) {
+      cookieMatchingUrl = _json['cookieMatchingUrl'] as core.String;
+    }
+    if (_json.containsKey('dealsBillingId')) {
+      dealsBillingId = _json['dealsBillingId'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bypassNonguaranteedDealsPretargeting != null)
+          'bypassNonguaranteedDealsPretargeting':
+              bypassNonguaranteedDealsPretargeting!,
+        if (cookieMatchingNetworkId != null)
+          'cookieMatchingNetworkId': cookieMatchingNetworkId!,
+        if (cookieMatchingUrl != null) 'cookieMatchingUrl': cookieMatchingUrl!,
+        if (dealsBillingId != null) 'dealsBillingId': dealsBillingId!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// RTB Buyer account information.
+class Buyer {
+  /// The number of creatives that this buyer submitted via the API or bid with
+  /// in the last 30 days.
+  ///
+  /// This is counted against the maximum number of active creatives.
+  ///
+  /// Output only.
+  core.String? activeCreativeCount;
+
+  /// The name of the bidder resource that is responsible for receiving bidding
+  /// traffic for this account.
+  ///
+  /// The bidder name must follow the pattern `bidders/{bidderAccountId}`, where
+  /// `{bidderAccountId}` is the account ID of the bidder receiving traffic for
+  /// this buyer.
+  ///
+  /// Output only.
+  core.String? bidder;
+
+  /// A list of billing IDs associated with this account.
+  ///
+  /// These IDs appear on: 1. A bid request, to signal which buyers are eligible
+  /// to bid on a given opportunity, and which pretargeting configurations were
+  /// matched for each eligible buyer. 2. The bid response, to attribute a
+  /// winning impression to a specific account for billing, reporting, policy
+  /// and publisher block enforcement.
+  ///
+  /// Output only.
+  core.List<core.String>? billingIds;
+
+  /// The diplay name associated with this buyer account, as visible to sellers.
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// The maximum number of active creatives that this buyer can have.
+  ///
+  /// Output only.
+  core.String? maximumActiveCreativeCount;
+
+  /// Name of the buyer resource that must follow the pattern
+  /// `buyers/{buyerAccountId}`, where `{buyerAccountId}` is the account ID of
+  /// the buyer account whose information is to be received.
+  ///
+  /// One can get their account ID on the Authorized Buyers or Open Bidding UI,
+  /// or by contacting their Google account manager.
+  ///
+  /// Output only.
+  core.String? name;
+
+  Buyer();
+
+  Buyer.fromJson(core.Map _json) {
+    if (_json.containsKey('activeCreativeCount')) {
+      activeCreativeCount = _json['activeCreativeCount'] as core.String;
+    }
+    if (_json.containsKey('bidder')) {
+      bidder = _json['bidder'] as core.String;
+    }
+    if (_json.containsKey('billingIds')) {
+      billingIds = (_json['billingIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'] as core.String;
+    }
+    if (_json.containsKey('maximumActiveCreativeCount')) {
+      maximumActiveCreativeCount =
+          _json['maximumActiveCreativeCount'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (activeCreativeCount != null)
+          'activeCreativeCount': activeCreativeCount!,
+        if (bidder != null) 'bidder': bidder!,
+        if (billingIds != null) 'billingIds': billingIds!,
+        if (displayName != null) 'displayName': displayName!,
+        if (maximumActiveCreativeCount != null)
+          'maximumActiveCreativeCount': maximumActiveCreativeCount!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -1914,6 +2410,9 @@ class CreativeDimensions {
 
 /// Top level status and detected attributes of a creative.
 class CreativeServingDecision {
+  /// The detected ad technology providers.
+  AdTechnologyProviders? adTechnologyProviders;
+
   /// The policy compliance of this creative in China.
   ///
   /// When approved or disapproved, this applies to both deals and open auction
@@ -2006,6 +2505,11 @@ class CreativeServingDecision {
   CreativeServingDecision();
 
   CreativeServingDecision.fromJson(core.Map _json) {
+    if (_json.containsKey('adTechnologyProviders')) {
+      adTechnologyProviders = AdTechnologyProviders.fromJson(
+          _json['adTechnologyProviders']
+              as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('chinaPolicyCompliance')) {
       chinaPolicyCompliance = PolicyCompliance.fromJson(
           _json['chinaPolicyCompliance']
@@ -2081,6 +2585,8 @@ class CreativeServingDecision {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (adTechnologyProviders != null)
+          'adTechnologyProviders': adTechnologyProviders!.toJson(),
         if (chinaPolicyCompliance != null)
           'chinaPolicyCompliance': chinaPolicyCompliance!.toJson(),
         if (dealsPolicyCompliance != null)
@@ -2418,6 +2924,85 @@ class Empty {
   core.Map<core.String, core.dynamic> toJson() => {};
 }
 
+/// Bidder endpoint that receives bid requests.
+class Endpoint {
+  /// The protocol that the bidder endpoint is using.
+  /// Possible string values are:
+  /// - "BID_PROTOCOL_UNSPECIFIED" : Placeholder for undefined bid protocol.
+  /// This value should not be used.
+  /// - "GOOGLE_RTB" : Google RTB protocol / Protobuf encoding.
+  /// - "OPENRTB_2_2" : OpenRTB / JSON encoding, specification version 2.2.
+  /// - "OPENRTB_2_3" : OpenRTB / JSON encoding, specification version 2.3.
+  /// - "OPENRTB_PROTOBUF_2_3" : OpenRTB / Protobuf encoding, specification
+  /// version 2.3.
+  /// - "OPENRTB_2_4" : OpenRTB / JSON encoding, specification version 2.4.
+  /// - "OPENRTB_PROTOBUF_2_4" : OpenRTB / Protobuf encoding, specification
+  /// version 2.4.
+  /// - "OPENRTB_2_5" : OpenRTB / JSON encoding, specification version 2.5.
+  /// - "OPENRTB_PROTOBUF_2_5" : OpenRTB / Protobuf encoding, specification
+  /// version 2.5.
+  core.String? bidProtocol;
+
+  /// The maximum number of queries per second allowed to be sent to this
+  /// server.
+  core.String? maximumQps;
+
+  /// Name of the endpoint resource that must follow the pattern
+  /// `bidders/{bidderAccountId}/endpoints/{endpointId}`, where
+  /// {bidderAccountId} is the account ID of the bidder who operates this
+  /// endpoint, and {endpointId} is a unique ID assigned by the server.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The trading location that bid requests should be sent from.
+  ///
+  /// See
+  /// https://developers.google.com/authorized-buyers/rtb/peer-guide#trading-locations
+  /// for further information.
+  /// Possible string values are:
+  /// - "TRADING_LOCATION_UNSPECIFIED" : A placeholder for an undefined trading
+  /// region. This value should not be used.
+  /// - "US_WEST" : The Western US trading location.
+  /// - "US_EAST" : The Eastern US trading location.
+  /// - "EUROPE" : The European trading location.
+  /// - "ASIA" : The Asia trading location.
+  core.String? tradingLocation;
+
+  /// The URL that bid requests should be sent to.
+  ///
+  /// Output only.
+  core.String? url;
+
+  Endpoint();
+
+  Endpoint.fromJson(core.Map _json) {
+    if (_json.containsKey('bidProtocol')) {
+      bidProtocol = _json['bidProtocol'] as core.String;
+    }
+    if (_json.containsKey('maximumQps')) {
+      maximumQps = _json['maximumQps'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('tradingLocation')) {
+      tradingLocation = _json['tradingLocation'] as core.String;
+    }
+    if (_json.containsKey('url')) {
+      url = _json['url'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bidProtocol != null) 'bidProtocol': bidProtocol!,
+        if (maximumQps != null) 'maximumQps': maximumQps!,
+        if (name != null) 'name': name!,
+        if (tradingLocation != null) 'tradingLocation': tradingLocation!,
+        if (url != null) 'url': url!,
+      };
+}
+
 /// Response for a request to get remarketing tag.
 class GetRemarketingTagResponse {
   /// A HTML tag that can be placed on the advertiser's page to add users to a
@@ -2567,6 +3152,68 @@ class Image {
       };
 }
 
+/// A response containing bidders.
+class ListBiddersResponse {
+  /// List of bidders.
+  core.List<Bidder>? bidders;
+
+  /// A token which can be passed to a subsequent call to the `ListBidders`
+  /// method to retrieve the next page of results in
+  /// ListBiddersRequest.pageToken.
+  core.String? nextPageToken;
+
+  ListBiddersResponse();
+
+  ListBiddersResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('bidders')) {
+      bidders = (_json['bidders'] as core.List)
+          .map<Bidder>((value) =>
+              Bidder.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bidders != null)
+          'bidders': bidders!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// A response containing buyer account information.
+class ListBuyersResponse {
+  /// List of buyers.
+  core.List<Buyer>? buyers;
+
+  /// A token which can be passed to a subsequent call to the `ListBuyers`
+  /// method to retrieve the next page of results in
+  /// ListBuyersRequest.pageToken.
+  core.String? nextPageToken;
+
+  ListBuyersResponse();
+
+  ListBuyersResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('buyers')) {
+      buyers = (_json['buyers'] as core.List)
+          .map<Buyer>((value) =>
+              Buyer.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (buyers != null)
+          'buyers': buyers!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// A response for listing creatives.
 class ListCreativesResponse {
   /// The list of creatives.
@@ -2596,6 +3243,37 @@ class ListCreativesResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (creatives != null)
           'creatives': creatives!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// A response containing bidder endpoints.
+class ListEndpointsResponse {
+  /// List of bidder endpoints.
+  core.List<Endpoint>? endpoints;
+
+  /// A token which can be passed to a subsequent call to the `ListEndpoints`
+  /// method to retrieve the next page of results in
+  /// ListEndpointsRequest.pageToken.
+  core.String? nextPageToken;
+
+  ListEndpointsResponse();
+
+  ListEndpointsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('endpoints')) {
+      endpoints = (_json['endpoints'] as core.List)
+          .map<Endpoint>((value) =>
+              Endpoint.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endpoints != null)
+          'endpoints': endpoints!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
