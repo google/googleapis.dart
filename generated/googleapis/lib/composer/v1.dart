@@ -41,7 +41,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Manages Apache Airflow environments on Google Cloud Platform.
 class CloudComposerApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -1434,6 +1434,7 @@ class OperationMetadata {
   /// - "CREATE" : A resource creation operation.
   /// - "DELETE" : A resource deletion operation.
   /// - "UPDATE" : A resource update operation.
+  /// - "CHECK" : A resource check operation.
   core.String? operationType;
 
   /// The resource being operated on, as a \[relative resource name\](
@@ -1685,7 +1686,7 @@ class SoftwareConfig {
   /// The major version of Python used to run the Apache Airflow scheduler,
   /// worker, and webserver processes.
   ///
-  /// Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be
+  /// Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be
   /// updated.
   ///
   /// Optional.

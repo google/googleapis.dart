@@ -613,7 +613,19 @@ class AccountWarning {
       };
 }
 
-/// Alerts from G Suite Security Center rules service configured by admin.
+/// Metadata related to the action.
+class ActionInfo {
+  ActionInfo();
+
+  ActionInfo.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
+/// Alerts from Google Workspace Security Center rules service configured by an
+/// admin.
 class ActivityRule {
   /// List of action names associated with the rule threshold.
   core.List<core.String>? actionNames;
@@ -1059,6 +1071,42 @@ class AppMakerSqlSetupNotification {
   core.Map<core.String, core.dynamic> toJson() => {
         if (requestInfo != null)
           'requestInfo': requestInfo!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// Alerts from AppSettingsChanged bucket Rules configured by Admin which
+/// contain the below rules.
+///
+/// Calendar settings changed Drive settings changed Email settings changed
+/// Mobile settings changed
+class AppSettingsChanged {
+  /// Any other associated alert details, for example, AlertConfiguration.
+  core.String? alertDetails;
+  core.List<core.int> get alertDetailsAsBytes =>
+      convert.base64.decode(alertDetails!);
+
+  set alertDetailsAsBytes(core.List<core.int> _bytes) {
+    alertDetails =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// Rule name
+  core.String? name;
+
+  AppSettingsChanged();
+
+  AppSettingsChanged.fromJson(core.Map _json) {
+    if (_json.containsKey('alertDetails')) {
+      alertDetails = _json['alertDetails'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (alertDetails != null) 'alertDetails': alertDetails!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -1614,15 +1662,16 @@ class GmailMessageInfo {
       };
 }
 
-/// An incident reported by Google Operations for a G Suite application.
+/// An incident reported by Google Operations for a Google Workspace
+/// application.
 class GoogleOperations {
   /// The list of emails which correspond to the users directly affected by the
   /// incident.
   core.List<core.String>? affectedUserEmails;
 
-  /// Application-specific data for an incident, provided when the G Suite
-  /// application which reported the incident cannot be completely restored to a
-  /// valid state.
+  /// Application-specific data for an incident, provided when the Google
+  /// Workspace application which reported the incident cannot be completely
+  /// restored to a valid state.
   ///
   /// Optional.
   Attachment? attachmentData;
@@ -1632,7 +1681,7 @@ class GoogleOperations {
 
   /// A header to display above the incident message.
   ///
-  /// Typcially used to attach a localized notice on the timeline for followup
+  /// Typically used to attach a localized notice on the timeline for followup
   /// comms translations.
   core.String? header;
 
@@ -1976,6 +2025,53 @@ class PredefinedDetectorInfo {
       };
 }
 
+/// Alerts from Reporting Rules configured by Admin.
+class ReportingRule {
+  /// Any other associated alert details, for example, AlertConfiguration.
+  core.String? alertDetails;
+  core.List<core.int> get alertDetailsAsBytes =>
+      convert.base64.decode(alertDetails!);
+
+  set alertDetailsAsBytes(core.List<core.int> _bytes) {
+    alertDetails =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// Rule name
+  core.String? name;
+
+  /// Alert Rule query Sample Query query { condition { filter {
+  /// expected_application_id: 777491262838 expected_event_name:
+  /// "indexable_content_change" filter_op: IN } } conjunction_operator: OR }
+  core.String? query;
+  core.List<core.int> get queryAsBytes => convert.base64.decode(query!);
+
+  set queryAsBytes(core.List<core.int> _bytes) {
+    query =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  ReportingRule();
+
+  ReportingRule.fromJson(core.Map _json) {
+    if (_json.containsKey('alertDetails')) {
+      alertDetails = _json['alertDetails'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('query')) {
+      query = _json['query'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (alertDetails != null) 'alertDetails': alertDetails!,
+        if (name != null) 'name': name!,
+        if (query != null) 'query': query!,
+      };
+}
+
 /// Requests for one application that needs default SQL setup.
 class RequestInfo {
   /// List of app developers who triggered notifications for above application.
@@ -2065,8 +2161,8 @@ class RuleInfo {
       };
 }
 
-/// Common alert information about violated rules that are configured by G Suite
-/// administrators.
+/// Common alert information about violated rules that are configured by Google
+/// Workspace administrators.
 class RuleViolationInfo {
   /// Source of the data.
   /// Possible string values are:
@@ -2100,6 +2196,9 @@ class RuleViolationInfo {
   /// - "TRIGGER_UNSPECIFIED" : Trigger is unspecified.
   /// - "DRIVE_SHARE" : A Drive file is shared.
   core.String? trigger;
+
+  /// Metadata related to the triggered actions.
+  core.List<ActionInfo>? triggeredActionInfo;
 
   /// Actions applied as a consequence of the rule being triggered.
   core.List<core.String>? triggeredActionTypes;
@@ -2143,6 +2242,12 @@ class RuleViolationInfo {
     if (_json.containsKey('trigger')) {
       trigger = _json['trigger'] as core.String;
     }
+    if (_json.containsKey('triggeredActionInfo')) {
+      triggeredActionInfo = (_json['triggeredActionInfo'] as core.List)
+          .map<ActionInfo>((value) =>
+              ActionInfo.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
     if (_json.containsKey('triggeredActionTypes')) {
       triggeredActionTypes = (_json['triggeredActionTypes'] as core.List)
           .map<core.String>((value) => value as core.String)
@@ -2163,6 +2268,9 @@ class RuleViolationInfo {
         if (suppressedActionTypes != null)
           'suppressedActionTypes': suppressedActionTypes!,
         if (trigger != null) 'trigger': trigger!,
+        if (triggeredActionInfo != null)
+          'triggeredActionInfo':
+              triggeredActionInfo!.map((value) => value.toJson()).toList(),
         if (triggeredActionTypes != null)
           'triggeredActionTypes': triggeredActionTypes!,
         if (triggeringUserEmail != null)
@@ -2422,6 +2530,29 @@ class User {
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (emailAddress != null) 'emailAddress': emailAddress!,
+      };
+}
+
+/// Alerts from UserChanges bucket Rules for predefined rules which contain the
+/// below rules.
+///
+/// Suspended user made active New user Added User suspended (by admin) User
+/// granted admin privileges User admin privileges revoked User deleted Users
+/// password changed
+class UserChanges {
+  /// Rule name
+  core.String? name;
+
+  UserChanges();
+
+  UserChanges.fromJson(core.Map _json) {
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
       };
 }
 

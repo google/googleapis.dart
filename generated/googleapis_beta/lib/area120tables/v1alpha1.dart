@@ -40,8 +40,8 @@ class Area120TablesApi {
   /// See, edit, create, and delete all of your Google Drive files
   static const driveScope = 'https://www.googleapis.com/auth/drive';
 
-  /// View and manage Google Drive files and folders that you have opened or
-  /// created with this app
+  /// See, edit, create, and delete only the specific Google Drive files you use
+  /// with this app
   static const driveFileScope = 'https://www.googleapis.com/auth/drive.file';
 
   /// See and download all your Google Drive files
@@ -120,6 +120,9 @@ class TablesResource {
   ///
   /// Request parameters:
   ///
+  /// [orderBy] - Optional. Sorting order for the list of tables on
+  /// createTime/updateTime.
+  ///
   /// [pageSize] - The maximum number of tables to return. The service may
   /// return fewer than this value. If unspecified, at most 20 tables are
   /// returned. The maximum value is 100; values above 100 are coerced to 100.
@@ -140,11 +143,13 @@ class TablesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTablesResponse> list({
+    core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
+      if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -437,9 +442,12 @@ class TablesRowsResource {
   /// [parent] - Required. The parent table. Format: tables/{table}
   /// Value must have pattern `^tables/\[^/\]+$`.
   ///
-  /// [filter] - Optional. Raw text query to search for in rows of the table.
-  /// Special characters must be escaped. Logical operators and field specific
-  /// filtering not supported.
+  /// [filter] - Optional. Filter to only include resources matching the
+  /// requirements. For more information, see
+  /// [Filtering list results](https://support.google.com/area120-tables/answer/10503371).
+  ///
+  /// [orderBy] - Optional. Sorting order for the list of rows on
+  /// createTime/updateTime.
   ///
   /// [pageSize] - The maximum number of rows to return. The service may return
   /// fewer than this value. If unspecified, at most 50 rows are returned. The
@@ -470,6 +478,7 @@ class TablesRowsResource {
   async.Future<ListRowsResponse> list(
     core.String parent, {
     core.String? filter,
+    core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
     core.String? view,
@@ -477,6 +486,7 @@ class TablesRowsResource {
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (view != null) 'view': [view],
@@ -790,6 +800,12 @@ class ColumnDescription {
   /// Optional.
   LookupDetails? lookupDetails;
 
+  /// Indicates whether or not multiple values are allowed for array types where
+  /// such a restriction is possible.
+  ///
+  /// Optional.
+  core.bool? multipleValuesDisallowed;
+
   /// column name
   core.String? name;
 
@@ -819,6 +835,9 @@ class ColumnDescription {
       lookupDetails = LookupDetails.fromJson(
           _json['lookupDetails'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('multipleValuesDisallowed')) {
+      multipleValuesDisallowed = _json['multipleValuesDisallowed'] as core.bool;
+    }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
@@ -834,6 +853,8 @@ class ColumnDescription {
         if (labels != null)
           'labels': labels!.map((value) => value.toJson()).toList(),
         if (lookupDetails != null) 'lookupDetails': lookupDetails!.toJson(),
+        if (multipleValuesDisallowed != null)
+          'multipleValuesDisallowed': multipleValuesDisallowed!,
         if (name != null) 'name': name!,
         if (relationshipDetails != null)
           'relationshipDetails': relationshipDetails!.toJson(),
@@ -1119,7 +1140,36 @@ class Row {
       };
 }
 
+/// A saved view of a table.
+///
+/// NextId: 3
+class SavedView {
+  /// Internal id associated with the saved view.
+  core.String? id;
+
+  /// Display name of the saved view.
+  core.String? name;
+
+  SavedView();
+
+  SavedView.fromJson(core.Map _json) {
+    if (_json.containsKey('id')) {
+      id = _json['id'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
+      };
+}
+
 /// A single table.
+///
+/// NextId: 7
 class Table {
   /// List of columns in this table.
   ///
@@ -1136,6 +1186,9 @@ class Table {
   ///
   /// Table names have the form `tables/{table}`.
   core.String? name;
+
+  /// Saved views for this table.
+  core.List<SavedView>? savedViews;
 
   /// Time when the table was last updated excluding updates to individual rows
   core.String? updateTime;
@@ -1158,6 +1211,12 @@ class Table {
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
+    if (_json.containsKey('savedViews')) {
+      savedViews = (_json['savedViews'] as core.List)
+          .map<SavedView>((value) =>
+              SavedView.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
     if (_json.containsKey('updateTime')) {
       updateTime = _json['updateTime'] as core.String;
     }
@@ -1169,6 +1228,8 @@ class Table {
         if (createTime != null) 'createTime': createTime!,
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
+        if (savedViews != null)
+          'savedViews': savedViews!.map((value) => value.toJson()).toList(),
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }

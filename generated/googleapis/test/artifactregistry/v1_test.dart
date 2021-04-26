@@ -42,14 +42,14 @@ void checkCancelOperationRequest(api.CancelOperationRequest o) {
   buildCounterCancelOperationRequest--;
 }
 
-core.List<core.String> buildUnnamed4186() {
+core.List<core.String> buildUnnamed4539() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed4186(core.List<core.String> o) {
+void checkUnnamed4539(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -66,10 +66,11 @@ api.DockerImage buildDockerImage() {
   var o = api.DockerImage();
   buildCounterDockerImage++;
   if (buildCounterDockerImage < 3) {
+    o.buildTime = 'foo';
     o.imageSizeBytes = 'foo';
     o.mediaType = 'foo';
     o.name = 'foo';
-    o.tags = buildUnnamed4186();
+    o.tags = buildUnnamed4539();
     o.uploadTime = 'foo';
     o.uri = 'foo';
   }
@@ -80,6 +81,10 @@ api.DockerImage buildDockerImage() {
 void checkDockerImage(api.DockerImage o) {
   buildCounterDockerImage++;
   if (buildCounterDockerImage < 3) {
+    unittest.expect(
+      o.buildTime!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.imageSizeBytes!,
       unittest.equals('foo'),
@@ -92,7 +97,7 @@ void checkDockerImage(api.DockerImage o) {
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed4186(o.tags!);
+    checkUnnamed4539(o.tags!);
     unittest.expect(
       o.uploadTime!,
       unittest.equals('foo'),
@@ -120,14 +125,51 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-core.List<api.Operation> buildUnnamed4187() {
+core.List<api.DockerImage> buildUnnamed4540() {
+  var o = <api.DockerImage>[];
+  o.add(buildDockerImage());
+  o.add(buildDockerImage());
+  return o;
+}
+
+void checkUnnamed4540(core.List<api.DockerImage> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkDockerImage(o[0] as api.DockerImage);
+  checkDockerImage(o[1] as api.DockerImage);
+}
+
+core.int buildCounterListDockerImagesResponse = 0;
+api.ListDockerImagesResponse buildListDockerImagesResponse() {
+  var o = api.ListDockerImagesResponse();
+  buildCounterListDockerImagesResponse++;
+  if (buildCounterListDockerImagesResponse < 3) {
+    o.dockerImages = buildUnnamed4540();
+    o.nextPageToken = 'foo';
+  }
+  buildCounterListDockerImagesResponse--;
+  return o;
+}
+
+void checkListDockerImagesResponse(api.ListDockerImagesResponse o) {
+  buildCounterListDockerImagesResponse++;
+  if (buildCounterListDockerImagesResponse < 3) {
+    checkUnnamed4540(o.dockerImages!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterListDockerImagesResponse--;
+}
+
+core.List<api.Operation> buildUnnamed4541() {
   var o = <api.Operation>[];
   o.add(buildOperation());
   o.add(buildOperation());
   return o;
 }
 
-void checkUnnamed4187(core.List<api.Operation> o) {
+void checkUnnamed4541(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0] as api.Operation);
   checkOperation(o[1] as api.Operation);
@@ -139,7 +181,7 @@ api.ListOperationsResponse buildListOperationsResponse() {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed4187();
+    o.operations = buildUnnamed4541();
   }
   buildCounterListOperationsResponse--;
   return o;
@@ -152,12 +194,49 @@ void checkListOperationsResponse(api.ListOperationsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed4187(o.operations!);
+    checkUnnamed4541(o.operations!);
   }
   buildCounterListOperationsResponse--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed4188() {
+core.List<api.Repository> buildUnnamed4542() {
+  var o = <api.Repository>[];
+  o.add(buildRepository());
+  o.add(buildRepository());
+  return o;
+}
+
+void checkUnnamed4542(core.List<api.Repository> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkRepository(o[0] as api.Repository);
+  checkRepository(o[1] as api.Repository);
+}
+
+core.int buildCounterListRepositoriesResponse = 0;
+api.ListRepositoriesResponse buildListRepositoriesResponse() {
+  var o = api.ListRepositoriesResponse();
+  buildCounterListRepositoriesResponse++;
+  if (buildCounterListRepositoriesResponse < 3) {
+    o.nextPageToken = 'foo';
+    o.repositories = buildUnnamed4542();
+  }
+  buildCounterListRepositoriesResponse--;
+  return o;
+}
+
+void checkListRepositoriesResponse(api.ListRepositoriesResponse o) {
+  buildCounterListRepositoriesResponse++;
+  if (buildCounterListRepositoriesResponse < 3) {
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4542(o.repositories!);
+  }
+  buildCounterListRepositoriesResponse--;
+}
+
+core.Map<core.String, core.Object> buildUnnamed4543() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -172,7 +251,7 @@ core.Map<core.String, core.Object> buildUnnamed4188() {
   return o;
 }
 
-void checkUnnamed4188(core.Map<core.String, core.Object> o) {
+void checkUnnamed4543(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -204,7 +283,7 @@ void checkUnnamed4188(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed4189() {
+core.Map<core.String, core.Object> buildUnnamed4544() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -219,7 +298,7 @@ core.Map<core.String, core.Object> buildUnnamed4189() {
   return o;
 }
 
-void checkUnnamed4189(core.Map<core.String, core.Object> o) {
+void checkUnnamed4544(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -258,9 +337,9 @@ api.Operation buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed4188();
+    o.metadata = buildUnnamed4543();
     o.name = 'foo';
-    o.response = buildUnnamed4189();
+    o.response = buildUnnamed4544();
   }
   buildCounterOperation--;
   return o;
@@ -271,17 +350,85 @@ void checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkStatus(o.error! as api.Status);
-    checkUnnamed4188(o.metadata!);
+    checkUnnamed4543(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed4189(o.response!);
+    checkUnnamed4544(o.response!);
   }
   buildCounterOperation--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed4190() {
+core.Map<core.String, core.String> buildUnnamed4545() {
+  var o = <core.String, core.String>{};
+  o['x'] = 'foo';
+  o['y'] = 'foo';
+  return o;
+}
+
+void checkUnnamed4545(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterRepository = 0;
+api.Repository buildRepository() {
+  var o = api.Repository();
+  buildCounterRepository++;
+  if (buildCounterRepository < 3) {
+    o.createTime = 'foo';
+    o.description = 'foo';
+    o.format = 'foo';
+    o.kmsKeyName = 'foo';
+    o.labels = buildUnnamed4545();
+    o.name = 'foo';
+    o.updateTime = 'foo';
+  }
+  buildCounterRepository--;
+  return o;
+}
+
+void checkRepository(api.Repository o) {
+  buildCounterRepository++;
+  if (buildCounterRepository < 3) {
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.format!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kmsKeyName!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4545(o.labels!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterRepository--;
+}
+
+core.Map<core.String, core.Object> buildUnnamed4546() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -296,7 +443,7 @@ core.Map<core.String, core.Object> buildUnnamed4190() {
   return o;
 }
 
-void checkUnnamed4190(core.Map<core.String, core.Object> o) {
+void checkUnnamed4546(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -328,17 +475,17 @@ void checkUnnamed4190(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed4191() {
+core.List<core.Map<core.String, core.Object>> buildUnnamed4547() {
   var o = <core.Map<core.String, core.Object>>[];
-  o.add(buildUnnamed4190());
-  o.add(buildUnnamed4190());
+  o.add(buildUnnamed4546());
+  o.add(buildUnnamed4546());
   return o;
 }
 
-void checkUnnamed4191(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed4547(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed4190(o[0]);
-  checkUnnamed4190(o[1]);
+  checkUnnamed4546(o[0]);
+  checkUnnamed4546(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -347,7 +494,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed4191();
+    o.details = buildUnnamed4547();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -361,7 +508,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed4191(o.details!);
+    checkUnnamed4547(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -400,6 +547,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ListDockerImagesResponse', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildListDockerImagesResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListDockerImagesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkListDockerImagesResponse(od as api.ListDockerImagesResponse);
+    });
+  });
+
   unittest.group('obj-schema-ListOperationsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListOperationsResponse();
@@ -410,6 +567,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ListRepositoriesResponse', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildListRepositoriesResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListRepositoriesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkListRepositoriesResponse(od as api.ListRepositoriesResponse);
+    });
+  });
+
   unittest.group('obj-schema-Operation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildOperation();
@@ -417,6 +584,16 @@ void main() {
       var od =
           api.Operation.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkOperation(od as api.Operation);
+    });
+  });
+
+  unittest.group('obj-schema-Repository', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildRepository();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Repository.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkRepository(od as api.Repository);
     });
   });
 
@@ -666,6 +843,197 @@ void main() {
           pageToken: arg_pageToken,
           $fields: arg_$fields);
       checkListOperationsResponse(response as api.ListOperationsResponse);
+    });
+  });
+
+  unittest.group('resource-ProjectsLocationsRepositoriesResource', () {
+    unittest.test('method--get', () async {
+      var mock = HttpServerMock();
+      var res = api.ArtifactRegistryApi(mock).projects.locations.repositories;
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        var h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        var resp = convert.json.encode(buildRepository());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkRepository(response as api.Repository);
+    });
+
+    unittest.test('method--list', () async {
+      var mock = HttpServerMock();
+      var res = api.ArtifactRegistryApi(mock).projects.locations.repositories;
+      var arg_parent = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        var h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        var resp = convert.json.encode(buildListRepositoriesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListRepositoriesResponse(response as api.ListRepositoriesResponse);
+    });
+  });
+
+  unittest.group('resource-ProjectsLocationsRepositoriesDockerImagesResource',
+      () {
+    unittest.test('method--list', () async {
+      var mock = HttpServerMock();
+      var res = api.ArtifactRegistryApi(mock)
+          .projects
+          .locations
+          .repositories
+          .dockerImages;
+      var arg_parent = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        var h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        var resp = convert.json.encode(buildListDockerImagesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListDockerImagesResponse(response as api.ListDockerImagesResponse);
     });
   });
 }

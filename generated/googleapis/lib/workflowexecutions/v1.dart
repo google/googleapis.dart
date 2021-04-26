@@ -40,7 +40,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Execute workflows created with Workflows API.
 class WorkflowExecutionsApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -306,11 +306,14 @@ class CancelExecutionRequest {
 
 /// Error describes why the execution was abnormally terminated.
 class Error {
-  /// Human readable error context, helpful for debugging purposes.
+  /// Human readable stack trace string.
   core.String? context;
 
-  /// Error payload returned by the execution, represented as a JSON string.
+  /// Error message and data returned represented as a JSON string.
   core.String? payload;
+
+  /// Stack trace with detailed information of where error was generated.
+  StackTrace? stackTrace;
 
   Error();
 
@@ -321,11 +324,16 @@ class Error {
     if (_json.containsKey('payload')) {
       payload = _json['payload'] as core.String;
     }
+    if (_json.containsKey('stackTrace')) {
+      stackTrace = StackTrace.fromJson(
+          _json['stackTrace'] as core.Map<core.String, core.dynamic>);
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (context != null) 'context': context!,
         if (payload != null) 'payload': payload!,
+        if (stackTrace != null) 'stackTrace': stackTrace!.toJson(),
       };
 }
 
@@ -460,5 +468,95 @@ class ListExecutionsResponse {
         if (executions != null)
           'executions': executions!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Position contains source position information about the stack trace element
+/// such as line number, column number and length of the code block in bytes.
+class Position {
+  /// The source code column position (of the line) the current instruction was
+  /// generated from.
+  core.String? column;
+
+  /// The length in bytes of text in this character group, e.g. digits of a
+  /// number, string length, or AST (abstract syntax tree) node.
+  core.String? length;
+
+  /// The source code line number the current instruction was generated from.
+  core.String? line;
+
+  Position();
+
+  Position.fromJson(core.Map _json) {
+    if (_json.containsKey('column')) {
+      column = _json['column'] as core.String;
+    }
+    if (_json.containsKey('length')) {
+      length = _json['length'] as core.String;
+    }
+    if (_json.containsKey('line')) {
+      line = _json['line'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (column != null) 'column': column!,
+        if (length != null) 'length': length!,
+        if (line != null) 'line': line!,
+      };
+}
+
+/// A collection of stack elements (frames) where an error occurred.
+class StackTrace {
+  /// An array of Stack elements.
+  core.List<StackTraceElement>? elements;
+
+  StackTrace();
+
+  StackTrace.fromJson(core.Map _json) {
+    if (_json.containsKey('elements')) {
+      elements = (_json['elements'] as core.List)
+          .map<StackTraceElement>((value) => StackTraceElement.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (elements != null)
+          'elements': elements!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// A single stack element (frame) where an error occurred.
+class StackTraceElement {
+  /// The source position information of the stacktrace element.
+  Position? position;
+
+  /// The routine where the error occurred.
+  core.String? routine;
+
+  /// The step the error occurred at.
+  core.String? step;
+
+  StackTraceElement();
+
+  StackTraceElement.fromJson(core.Map _json) {
+    if (_json.containsKey('position')) {
+      position = Position.fromJson(
+          _json['position'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('routine')) {
+      routine = _json['routine'] as core.String;
+    }
+    if (_json.containsKey('step')) {
+      step = _json['step'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (position != null) 'position': position!.toJson(),
+        if (routine != null) 'routine': routine!,
+        if (step != null) 'step': step!,
       };
 }

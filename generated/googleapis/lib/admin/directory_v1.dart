@@ -30,6 +30,8 @@
 ///     - [CustomerDevicesChromeosResource]
 ///       - [CustomerDevicesChromeosCommandsResource]
 /// - [CustomersResource]
+///   - [CustomersChromeResource]
+///     - [CustomersChromePrintersResource]
 /// - [DomainAliasesResource]
 /// - [DomainsResource]
 /// - [GroupsResource]
@@ -71,6 +73,15 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 ///
 /// It also provides audit and usage reports of domain.
 class DirectoryApi {
+  /// See, add, edit, and permanently delete the printers that your organization
+  /// can use with Chrome
+  static const adminChromePrintersScope =
+      'https://www.googleapis.com/auth/admin.chrome.printers';
+
+  /// See the printers that your organization can use with Chrome
+  static const adminChromePrintersReadonlyScope =
+      'https://www.googleapis.com/auth/admin.chrome.printers.readonly';
+
   /// View and manage customer related information
   static const adminDirectoryCustomerScope =
       'https://www.googleapis.com/auth/admin.directory.customer';
@@ -175,7 +186,7 @@ class DirectoryApi {
   static const adminDirectoryUserschemaReadonlyScope =
       'https://www.googleapis.com/auth/admin.directory.userschema.readonly';
 
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -460,7 +471,6 @@ class ChromeosdevicesResource {
   /// [projection] - Determines whether the response contains the full list of
   /// properties or only a subset.
   /// Possible string values are:
-  /// - "PROJECTION_UNDEFINED"
   /// - "BASIC" : Includes only the basic metadata fields (e.g., deviceId,
   /// serialNumber, status, and user)
   /// - "FULL" : Includes all metadata fields
@@ -514,7 +524,6 @@ class ChromeosdevicesResource {
   ///
   /// [orderBy] - Device property to use for sorting results.
   /// Possible string values are:
-  /// - "orderByUndefined"
   /// - "annotatedLocation" : Chrome device location as annotated by the
   /// administrator.
   /// - "annotatedUser" : Chromebook user as annotated by administrator.
@@ -536,7 +545,6 @@ class ChromeosdevicesResource {
   ///
   /// [projection] - Restrict information returned to a set of selected fields.
   /// Possible string values are:
-  /// - "PROJECTION_UNDEFINED"
   /// - "BASIC" : Includes only the basic metadata fields (e.g., deviceId,
   /// serialNumber, status, and user)
   /// - "FULL" : Includes all metadata fields
@@ -547,7 +555,6 @@ class ChromeosdevicesResource {
   /// [sortOrder] - Whether to return results in ascending or descending order.
   /// Must be used with the `orderBy` parameter.
   /// Possible string values are:
-  /// - "SORT_ORDER_UNDEFINED"
   /// - "ASCENDING" : Ascending order.
   /// - "DESCENDING" : Descending order.
   ///
@@ -664,7 +671,6 @@ class ChromeosdevicesResource {
   ///
   /// [projection] - Restrict information returned to a set of selected fields.
   /// Possible string values are:
-  /// - "PROJECTION_UNDEFINED"
   /// - "BASIC" : Includes only the basic metadata fields (e.g., deviceId,
   /// serialNumber, status, and user)
   /// - "FULL" : Includes all metadata fields
@@ -727,7 +733,6 @@ class ChromeosdevicesResource {
   ///
   /// [projection] - Restrict information returned to a set of selected fields.
   /// Possible string values are:
-  /// - "PROJECTION_UNDEFINED"
   /// - "BASIC" : Includes only the basic metadata fields (e.g., deviceId,
   /// serialNumber, status, and user)
   /// - "FULL" : Includes all metadata fields
@@ -901,6 +906,8 @@ class CustomerDevicesChromeosCommandsResource {
 class CustomersResource {
   final commons.ApiRequester _requester;
 
+  CustomersChromeResource get chrome => CustomersChromeResource(_requester);
+
   CustomersResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves a customer.
@@ -1016,6 +1023,395 @@ class CustomersResource {
       queryParams: _queryParams,
     );
     return Customer.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class CustomersChromeResource {
+  final commons.ApiRequester _requester;
+
+  CustomersChromePrintersResource get printers =>
+      CustomersChromePrintersResource(_requester);
+
+  CustomersChromeResource(commons.ApiRequester client) : _requester = client;
+}
+
+class CustomersChromePrintersResource {
+  final commons.ApiRequester _requester;
+
+  CustomersChromePrintersResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates printers under given Organization Unit.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the customer. Format:
+  /// customers/{customer_id}
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BatchCreatePrintersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BatchCreatePrintersResponse> batchCreatePrinters(
+    BatchCreatePrintersRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'admin/directory/v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/chrome/printers:batchCreatePrinters';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return BatchCreatePrintersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes printers in batch.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the customer. Format:
+  /// customers/{customer_id}
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BatchDeletePrintersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BatchDeletePrintersResponse> batchDeletePrinters(
+    BatchDeletePrintersRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'admin/directory/v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/chrome/printers:batchDeletePrinters';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return BatchDeletePrintersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a printer under given Organization Unit.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the customer. Format:
+  /// customers/{customer_id}
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Printer].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Printer> create(
+    Printer request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'admin/directory/v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/chrome/printers';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Printer.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a `Printer`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the printer to be updated. Format:
+  /// customers/{customer_id}/chrome/printers/{printer_id}
+  /// Value must have pattern `^customers/\[^/\]+/chrome/printers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'admin/directory/v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns a `Printer` resource (printer's config).
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the printer to retrieve. Format:
+  /// customers/{customer_id}/chrome/printers/{printer_id}
+  /// Value must have pattern `^customers/\[^/\]+/chrome/printers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Printer].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Printer> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'admin/directory/v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Printer.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List printers configs.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the customer who owns this collection of
+  /// printers. Format: customers/{customer_id}
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [filter] - Search query. Search syntax is shared between this api and
+  /// Admin Console printers pages.
+  ///
+  /// [orgUnitId] - Organization Unit that we want to list the printers for.
+  /// When org_unit is not present in the request then all printers of the
+  /// customer are returned (or filtered). When org_unit is present in the
+  /// request then only printers available to this OU will be returned (owned or
+  /// inherited). You may see if printer is owned or inherited for this OU by
+  /// looking at Printer.org_unit_id.
+  ///
+  /// [pageSize] - The maximum number of objects to return. The service may
+  /// return fewer than this value.
+  ///
+  /// [pageToken] - A page token, received from a previous call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListPrintersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListPrintersResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orgUnitId,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orgUnitId != null) 'orgUnitId': [orgUnitId],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'admin/directory/v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/chrome/printers';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListPrintersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists the supported printer models.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the customer who owns this collection of
+  /// printers. Format: customers/{customer_id}
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [filter] - Filer to list only models by a given manufacturer in format:
+  /// "manufacturer:Brother". Search syntax is shared between this api and Admin
+  /// Console printers pages.
+  ///
+  /// [pageSize] - The maximum number of objects to return. The service may
+  /// return fewer than this value.
+  ///
+  /// [pageToken] - A page token, received from a previous call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListPrinterModelsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListPrinterModelsResponse> listPrinterModels(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'admin/directory/v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/chrome/printers:listPrinterModels';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListPrinterModelsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a `Printer` resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the Printer object, in the format
+  /// customers/{customer-id}/printers/{printer-id} (During printer creation
+  /// leave empty)
+  /// Value must have pattern `^customers/\[^/\]+/chrome/printers/\[^/\]+$`.
+  ///
+  /// [clearMask] - The list of fields to be cleared. Note, some of the fields
+  /// are read only and cannot be updated. Values for not specified fields will
+  /// be patched.
+  ///
+  /// [updateMask] - The list of fields to be updated. Note, some of the fields
+  /// are read only and cannot be updated. Values for not specified fields will
+  /// be patched.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Printer].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Printer> patch(
+    Printer request,
+    core.String name, {
+    core.String? clearMask,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (clearMask != null) 'clearMask': [clearMask],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'admin/directory/v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Printer.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1482,7 +1878,6 @@ class GroupsResource {
   ///
   /// [orderBy] - Column to use for sorting results
   /// Possible string values are:
-  /// - "orderByUndefined"
   /// - "email" : Email of the group.
   ///
   /// [pageToken] - Token to specify next page in the list
@@ -1494,7 +1889,6 @@ class GroupsResource {
   /// [sortOrder] - Whether to return results in ascending or descending order.
   /// Only of use when orderBy is also used
   /// Possible string values are:
-  /// - "SORT_ORDER_UNDEFINED"
   /// - "ASCENDING" : Ascending order.
   /// - "DESCENDING" : Descending order.
   ///
@@ -2202,7 +2596,6 @@ class MobiledevicesResource {
   ///
   /// [projection] - Restrict information returned to a set of selected fields.
   /// Possible string values are:
-  /// - "PROJECTION_UNDEFINED"
   /// - "BASIC" : Includes only the basic metadata fields (e.g., deviceId,
   /// model, status, type, and status)
   /// - "FULL" : Includes all metadata fields
@@ -2258,7 +2651,6 @@ class MobiledevicesResource {
   ///
   /// [orderBy] - Device property to use for sorting results.
   /// Possible string values are:
-  /// - "orderByUndefined"
   /// - "deviceId" : The serial number for a Google Sync mobile device. For
   /// Android devices, this is a software generated unique identifier.
   /// - "email" : The device owner's email address.
@@ -2273,7 +2665,6 @@ class MobiledevicesResource {
   ///
   /// [projection] - Restrict information returned to a set of selected fields.
   /// Possible string values are:
-  /// - "PROJECTION_UNDEFINED"
   /// - "BASIC" : Includes only the basic metadata fields (e.g., deviceId,
   /// model, status, type, and status)
   /// - "FULL" : Includes all metadata fields
@@ -2284,7 +2675,6 @@ class MobiledevicesResource {
   /// [sortOrder] - Whether to return results in ascending or descending order.
   /// Must be used with the `orderBy` parameter.
   /// Possible string values are:
-  /// - "SORT_ORDER_UNDEFINED"
   /// - "ASCENDING" : Ascending order.
   /// - "DESCENDING" : Descending order.
   ///
@@ -2496,7 +2886,6 @@ class OrgunitsResource {
   /// [type] - Whether to return all sub-organizations or just immediate
   /// children.
   /// Possible string values are:
-  /// - "typeUndefined"
   /// - "all" : All sub-organizational units.
   /// - "children" : Immediate children only (default).
   ///
@@ -2803,7 +3192,6 @@ class ResourcesBuildingsResource {
   ///
   /// [coordinatesSource] - Source from which Building.coordinates are derived.
   /// Possible string values are:
-  /// - "COORDINATES_SOURCE_UNDEFINED"
   /// - "CLIENT_SPECIFIED" : Building.coordinates are set to the coordinates
   /// included in the request.
   /// - "RESOLVED_FROM_ADDRESS" : Building.coordinates are automatically
@@ -2908,7 +3296,6 @@ class ResourcesBuildingsResource {
   ///
   /// [coordinatesSource] - Source from which Building.coordinates are derived.
   /// Possible string values are:
-  /// - "COORDINATES_SOURCE_UNDEFINED"
   /// - "CLIENT_SPECIFIED" : Building.coordinates are set to the coordinates
   /// included in the request.
   /// - "RESOLVED_FROM_ADDRESS" : Building.coordinates are automatically
@@ -2968,7 +3355,6 @@ class ResourcesBuildingsResource {
   ///
   /// [coordinatesSource] - Source from which Building.coordinates are derived.
   /// Possible string values are:
-  /// - "COORDINATES_SOURCE_UNDEFINED"
   /// - "CLIENT_SPECIFIED" : Building.coordinates are set to the coordinates
   /// included in the request.
   /// - "RESOLVED_FROM_ADDRESS" : Building.coordinates are automatically
@@ -4553,7 +4939,6 @@ class UsersResource {
   ///
   /// [projection] - What subset of fields to fetch for this user.
   /// Possible string values are:
-  /// - "projectionUndefined"
   /// - "basic" : Do not include any custom fields for the user.
   /// - "custom" : Include custom fields from schemas requested in
   /// `customFieldMask`.
@@ -4563,7 +4948,6 @@ class UsersResource {
   /// view of the user. For more information, see \[Retrieve a user as a
   /// non-administrator\](/admin-sdk/directory/v1/guides/manage-users#retrieve_users_non_admin).
   /// Possible string values are:
-  /// - "view_type_undefined"
   /// - "admin_view" : Results include both administrator-only and domain-public
   /// fields for the user.
   /// - "domain_public" : Results only include fields for the user that are
@@ -4662,12 +5046,19 @@ class UsersResource {
   /// query parameter instead. Either the `customer` or the `domain` parameter
   /// must be provided.
   ///
+  /// [event] - Event on which subscription is intended (if subscribing)
+  /// Possible string values are:
+  /// - "add" : User Created Event
+  /// - "delete" : User Deleted Event
+  /// - "makeAdmin" : User Admin Status Change Event
+  /// - "undelete" : User Undeleted Event
+  /// - "update" : User Updated Event
+  ///
   /// [maxResults] - Maximum number of results to return.
   /// Value must be between "1" and "500".
   ///
   /// [orderBy] - Property to use for sorting results.
   /// Possible string values are:
-  /// - "orderByUndefined"
   /// - "email" : Primary email of the user.
   /// - "familyName" : User's family name.
   /// - "givenName" : User's given name.
@@ -4676,7 +5067,6 @@ class UsersResource {
   ///
   /// [projection] - What subset of fields to fetch for this user.
   /// Possible string values are:
-  /// - "projectionUndefined"
   /// - "basic" : Do not include any custom fields for the user.
   /// - "custom" : Include custom fields from schemas requested in
   /// `customFieldMask`.
@@ -4691,7 +5081,6 @@ class UsersResource {
   ///
   /// [sortOrder] - Whether to return results in ascending or descending order.
   /// Possible string values are:
-  /// - "SORT_ORDER_UNDEFINED"
   /// - "ASCENDING" : Ascending order.
   /// - "DESCENDING" : Descending order.
   ///
@@ -4699,7 +5088,6 @@ class UsersResource {
   /// view of the user. For more information, see \[Retrieve a user as a
   /// non-administrator\](/admin-sdk/directory/v1/guides/manage-users#retrieve_users_non_admin).
   /// Possible string values are:
-  /// - "view_type_undefined"
   /// - "admin_view" : Results include both administrator-only and domain-public
   /// fields for the user.
   /// - "domain_public" : Results only include fields for the user that are
@@ -4719,6 +5107,7 @@ class UsersResource {
     core.String? customFieldMask,
     core.String? customer,
     core.String? domain,
+    core.String? event,
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
@@ -4733,6 +5122,7 @@ class UsersResource {
       if (customFieldMask != null) 'customFieldMask': [customFieldMask],
       if (customer != null) 'customer': [customer],
       if (domain != null) 'domain': [domain],
+      if (event != null) 'event': [event],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (orderBy != null) 'orderBy': [orderBy],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -4982,7 +5372,6 @@ class UsersResource {
   ///
   /// [event] - Events to watch for.
   /// Possible string values are:
-  /// - "eventTypeUnspecified"
   /// - "add" : User Created Event
   /// - "delete" : User Deleted Event
   /// - "makeAdmin" : User Admin Status Change Event
@@ -4994,7 +5383,6 @@ class UsersResource {
   ///
   /// [orderBy] - Column to use for sorting results
   /// Possible string values are:
-  /// - "orderByUnspecified"
   /// - "email" : Primary email of the user.
   /// - "familyName" : User's family name.
   /// - "givenName" : User's given name.
@@ -5003,7 +5391,6 @@ class UsersResource {
   ///
   /// [projection] - What subset of fields to fetch for this user.
   /// Possible string values are:
-  /// - "projectionUnspecified"
   /// - "basic" : Do not include any custom fields for the user.
   /// - "custom" : Include custom fields from schemas mentioned in
   /// customFieldMask.
@@ -5018,7 +5405,6 @@ class UsersResource {
   ///
   /// [sortOrder] - Whether to return results in ascending or descending order.
   /// Possible string values are:
-  /// - "sortOrderUnspecified"
   /// - "ASCENDING" : Ascending order.
   /// - "DESCENDING" : Descending order.
   ///
@@ -5179,6 +5565,11 @@ class UsersAliasesResource {
   /// [userKey] - Identifies the user in the API request. The value can be the
   /// user's primary email address, alias email address, or unique user ID.
   ///
+  /// [event] - Events to watch for.
+  /// Possible string values are:
+  /// - "add" : Alias Created Event
+  /// - "delete" : Alias Deleted Event
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -5191,9 +5582,11 @@ class UsersAliasesResource {
   /// this method will complete with the same error.
   async.Future<Aliases> list(
     core.String userKey, {
+    core.String? event,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
+      if (event != null) 'event': [event],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -5219,7 +5612,6 @@ class UsersAliasesResource {
   ///
   /// [event] - Events to watch for.
   /// Possible string values are:
-  /// - "eventUndefined"
   /// - "add" : Alias Created Event
   /// - "delete" : Alias Deleted Event
   ///
@@ -5715,6 +6107,161 @@ class Asps {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
+      };
+}
+
+/// Auxiliary message about issues with printers or settings.
+///
+/// Example: {message_type:AUXILIARY_MESSAGE_WARNING, field_mask:make_and_model,
+/// message:"Given printer is invalid or no longer supported."}
+class AuxiliaryMessage {
+  /// Human readable message in English.
+  ///
+  /// Example: "Given printer is invalid or no longer supported."
+  core.String? auxiliaryMessage;
+
+  /// Field that this message concerns.
+  core.String? fieldMask;
+
+  /// Message severity
+  /// Possible string values are:
+  /// - "SEVERITY_UNSPECIFIED" : Message type unspecified.
+  /// - "SEVERITY_INFO" : Message of severity: info.
+  /// - "SEVERITY_WARNING" : Message of severity: warning.
+  /// - "SEVERITY_ERROR" : Message of severity: error.
+  core.String? severity;
+
+  AuxiliaryMessage();
+
+  AuxiliaryMessage.fromJson(core.Map _json) {
+    if (_json.containsKey('auxiliaryMessage')) {
+      auxiliaryMessage = _json['auxiliaryMessage'] as core.String;
+    }
+    if (_json.containsKey('fieldMask')) {
+      fieldMask = _json['fieldMask'] as core.String;
+    }
+    if (_json.containsKey('severity')) {
+      severity = _json['severity'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (auxiliaryMessage != null) 'auxiliaryMessage': auxiliaryMessage!,
+        if (fieldMask != null) 'fieldMask': fieldMask!,
+        if (severity != null) 'severity': severity!,
+      };
+}
+
+/// Request for adding new printers in batch.
+class BatchCreatePrintersRequest {
+  /// A list of Printers to be created.
+  ///
+  /// Max 50 at a time.
+  core.List<CreatePrinterRequest>? requests;
+
+  BatchCreatePrintersRequest();
+
+  BatchCreatePrintersRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('requests')) {
+      requests = (_json['requests'] as core.List)
+          .map<CreatePrinterRequest>((value) => CreatePrinterRequest.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requests != null)
+          'requests': requests!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// Response for adding new printers in batch.
+class BatchCreatePrintersResponse {
+  /// A list of create failures.
+  ///
+  /// Printer IDs are not populated, as printer were not created.
+  core.List<FailureInfo>? failures;
+
+  /// A list of successfully created printers with their IDs populated.
+  core.List<Printer>? printers;
+
+  BatchCreatePrintersResponse();
+
+  BatchCreatePrintersResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('failures')) {
+      failures = (_json['failures'] as core.List)
+          .map<FailureInfo>((value) => FailureInfo.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('printers')) {
+      printers = (_json['printers'] as core.List)
+          .map<Printer>((value) =>
+              Printer.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (failures != null)
+          'failures': failures!.map((value) => value.toJson()).toList(),
+        if (printers != null)
+          'printers': printers!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// Request for deleting existing printers in batch.
+class BatchDeletePrintersRequest {
+  /// A list of Printer.id that should be deleted.
+  ///
+  /// Max 100 at a time.
+  core.List<core.String>? printerIds;
+
+  BatchDeletePrintersRequest();
+
+  BatchDeletePrintersRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('printerIds')) {
+      printerIds = (_json['printerIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (printerIds != null) 'printerIds': printerIds!,
+      };
+}
+
+/// Response for deleting existing printers in batch.
+class BatchDeletePrintersResponse {
+  /// A list of update failures.
+  core.List<FailureInfo>? failedPrinters;
+
+  /// A list of Printer.id that were successfully deleted.
+  core.List<core.String>? printerIds;
+
+  BatchDeletePrintersResponse();
+
+  BatchDeletePrintersResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('failedPrinters')) {
+      failedPrinters = (_json['failedPrinters'] as core.List)
+          .map<FailureInfo>((value) => FailureInfo.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('printerIds')) {
+      printerIds = (_json['printerIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (failedPrinters != null)
+          'failedPrinters':
+              failedPrinters!.map((value) => value.toJson()).toList(),
+        if (printerIds != null) 'printerIds': printerIds!,
       };
 }
 
@@ -6444,6 +6991,71 @@ class ChromeOsDeviceLastKnownNetwork {
       };
 }
 
+/// List of recent device users, in descending order, by last login time.
+class ChromeOsDeviceRecentUsers {
+  /// The user's email address.
+  ///
+  /// This is only present if the user type is `USER_TYPE_MANAGED`.
+  core.String? email;
+
+  /// The type of the user.
+  core.String? type;
+
+  ChromeOsDeviceRecentUsers();
+
+  ChromeOsDeviceRecentUsers.fromJson(core.Map _json) {
+    if (_json.containsKey('email')) {
+      email = _json['email'] as core.String;
+    }
+    if (_json.containsKey('type')) {
+      type = _json['type'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (email != null) 'email': email!,
+        if (type != null) 'type': type!,
+      };
+}
+
+class ChromeOsDeviceScreenshotFiles {
+  /// Date and time the file was created
+  core.DateTime? createTime;
+
+  /// File download URL
+  core.String? downloadUrl;
+
+  /// File name
+  core.String? name;
+
+  /// File type
+  core.String? type;
+
+  ChromeOsDeviceScreenshotFiles();
+
+  ChromeOsDeviceScreenshotFiles.fromJson(core.Map _json) {
+    if (_json.containsKey('createTime')) {
+      createTime = core.DateTime.parse(_json['createTime'] as core.String);
+    }
+    if (_json.containsKey('downloadUrl')) {
+      downloadUrl = _json['downloadUrl'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('type')) {
+      type = _json['type'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!.toIso8601String(),
+        if (downloadUrl != null) 'downloadUrl': downloadUrl!,
+        if (name != null) 'name': name!,
+        if (type != null) 'type': type!,
+      };
+}
+
 class ChromeOsDeviceSystemRamFreeReports {
   /// Date and time the report was received.
   core.DateTime? reportTime;
@@ -6673,7 +7285,12 @@ class ChromeOsDevice {
   core.String? platformVersion;
 
   /// List of recent device users, in descending order, by last login time.
-  core.List<RecentUsers>? recentUsers;
+  core.List<ChromeOsDeviceRecentUsers>? recentUsers;
+
+  /// List of screenshot files to download.
+  ///
+  /// Type is always "SCREENSHOT_FILE". (Read-only)
+  core.List<ChromeOsDeviceScreenshotFiles>? screenshotFiles;
 
   /// The Chrome device serial number entered when the device was enabled.
   ///
@@ -6812,8 +7429,16 @@ class ChromeOsDevice {
     }
     if (_json.containsKey('recentUsers')) {
       recentUsers = (_json['recentUsers'] as core.List)
-          .map<RecentUsers>((value) => RecentUsers.fromJson(
-              value as core.Map<core.String, core.dynamic>))
+          .map<ChromeOsDeviceRecentUsers>((value) =>
+              ChromeOsDeviceRecentUsers.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('screenshotFiles')) {
+      screenshotFiles = (_json['screenshotFiles'] as core.List)
+          .map<ChromeOsDeviceScreenshotFiles>((value) =>
+              ChromeOsDeviceScreenshotFiles.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('serialNumber')) {
@@ -6889,6 +7514,9 @@ class ChromeOsDevice {
         if (platformVersion != null) 'platformVersion': platformVersion!,
         if (recentUsers != null)
           'recentUsers': recentUsers!.map((value) => value.toJson()).toList(),
+        if (screenshotFiles != null)
+          'screenshotFiles':
+              screenshotFiles!.map((value) => value.toJson()).toList(),
         if (serialNumber != null) 'serialNumber': serialNumber!,
         if (status != null) 'status': status!,
         if (supportEndDate != null)
@@ -6992,6 +7620,42 @@ class ChromeOsMoveDevicesToOu {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deviceIds != null) 'deviceIds': deviceIds!,
+      };
+}
+
+/// Request for adding a new printer.
+class CreatePrinterRequest {
+  /// The name of the customer.
+  ///
+  /// Format: customers/{customer_id}
+  ///
+  /// Required.
+  core.String? parent;
+
+  /// A printer to create.
+  ///
+  /// If you want to place the printer under particular OU then populate
+  /// printer.org_unit_id filed. Otherwise the printer will be placed under root
+  /// OU.
+  ///
+  /// Required.
+  Printer? printer;
+
+  CreatePrinterRequest();
+
+  CreatePrinterRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('parent')) {
+      parent = _json['parent'] as core.String;
+    }
+    if (_json.containsKey('printer')) {
+      printer = Printer.fromJson(
+          _json['printer'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (parent != null) 'parent': parent!,
+        if (printer != null) 'printer': printer!.toJson(),
       };
 }
 
@@ -7566,6 +8230,143 @@ class Domains2 {
       };
 }
 
+/// A generic empty message that you can re-use to avoid defining duplicated
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
+class Empty {
+  Empty();
+
+  Empty.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
+/// Info about failures
+class FailureInfo {
+  /// Canonical code for why the update failed to apply.
+  /// Possible string values are:
+  /// - "OK" : Not an error; returned on success HTTP Mapping: 200 OK
+  /// - "CANCELLED" : The operation was cancelled, typically by the caller. HTTP
+  /// Mapping: 499 Client Closed Request
+  /// - "UNKNOWN" : Unknown error. For example, this error may be returned when
+  /// a `Status` value received from another address space belongs to an error
+  /// space that is not known in this address space. Also errors raised by APIs
+  /// that do not return enough error information may be converted to this
+  /// error. HTTP Mapping: 500 Internal Server Error
+  /// - "INVALID_ARGUMENT" : The client specified an invalid argument. Note that
+  /// this differs from `FAILED_PRECONDITION`. `INVALID_ARGUMENT` indicates
+  /// arguments that are problematic regardless of the state of the system
+  /// (e.g., a malformed file name). HTTP Mapping: 400 Bad Request
+  /// - "DEADLINE_EXCEEDED" : The deadline expired before the operation could
+  /// complete. For operations that change the state of the system, this error
+  /// may be returned even if the operation has completed successfully. For
+  /// example, a successful response from a server could have been delayed long
+  /// enough for the deadline to expire. HTTP Mapping: 504 Gateway Timeout
+  /// - "NOT_FOUND" : Some requested entity (e.g., file or directory) was not
+  /// found. Note to server developers: if a request is denied for an entire
+  /// class of users, such as gradual feature rollout or undocumented allowlist,
+  /// `NOT_FOUND` may be used. If a request is denied for some users within a
+  /// class of users, such as user-based access control, `PERMISSION_DENIED`
+  /// must be used. HTTP Mapping: 404 Not Found
+  /// - "ALREADY_EXISTS" : The entity that a client attempted to create (e.g.,
+  /// file or directory) already exists. HTTP Mapping: 409 Conflict
+  /// - "PERMISSION_DENIED" : The caller does not have permission to execute the
+  /// specified operation. `PERMISSION_DENIED` must not be used for rejections
+  /// caused by exhausting some resource (use `RESOURCE_EXHAUSTED` instead for
+  /// those errors). `PERMISSION_DENIED` must not be used if the caller can not
+  /// be identified (use `UNAUTHENTICATED` instead for those errors). This error
+  /// code does not imply the request is valid or the requested entity exists or
+  /// satisfies other pre-conditions. HTTP Mapping: 403 Forbidden
+  /// - "UNAUTHENTICATED" : The request does not have valid authentication
+  /// credentials for the operation. HTTP Mapping: 401 Unauthorized
+  /// - "RESOURCE_EXHAUSTED" : Some resource has been exhausted, perhaps a
+  /// per-user quota, or perhaps the entire file system is out of space. HTTP
+  /// Mapping: 429 Too Many Requests
+  /// - "FAILED_PRECONDITION" : The operation was rejected because the system is
+  /// not in a state required for the operation's execution. For example, the
+  /// directory to be deleted is non-empty, an rmdir operation is applied to a
+  /// non-directory, etc. Service implementors can use the following guidelines
+  /// to decide between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`: (a)
+  /// Use `UNAVAILABLE` if the client can retry just the failing call. (b) Use
+  /// `ABORTED` if the client should retry at a higher level. For example, when
+  /// a client-specified test-and-set fails, indicating the client should
+  /// restart a read-modify-write sequence. (c) Use `FAILED_PRECONDITION` if the
+  /// client should not retry until the system state has been explicitly fixed.
+  /// For example, if an "rmdir" fails because the directory is non-empty,
+  /// `FAILED_PRECONDITION` should be returned since the client should not retry
+  /// unless the files are deleted from the directory. HTTP Mapping: 400 Bad
+  /// Request
+  /// - "ABORTED" : The operation was aborted, typically due to a concurrency
+  /// issue such as a sequencer check failure or transaction abort. See the
+  /// guidelines above for deciding between `FAILED_PRECONDITION`, `ABORTED`,
+  /// and `UNAVAILABLE`. HTTP Mapping: 409 Conflict
+  /// - "OUT_OF_RANGE" : The operation was attempted past the valid range. E.g.,
+  /// seeking or reading past end-of-file. Unlike `INVALID_ARGUMENT`, this error
+  /// indicates a problem that may be fixed if the system state changes. For
+  /// example, a 32-bit file system will generate `INVALID_ARGUMENT` if asked to
+  /// read at an offset that is not in the range \[0,2^32-1\], but it will
+  /// generate `OUT_OF_RANGE` if asked to read from an offset past the current
+  /// file size. There is a fair bit of overlap between `FAILED_PRECONDITION`
+  /// and `OUT_OF_RANGE`. We recommend using `OUT_OF_RANGE` (the more specific
+  /// error) when it applies so that callers who are iterating through a space
+  /// can easily look for an `OUT_OF_RANGE` error to detect when they are done.
+  /// HTTP Mapping: 400 Bad Request
+  /// - "UNIMPLEMENTED" : The operation is not implemented or is not
+  /// supported/enabled in this service. HTTP Mapping: 501 Not Implemented
+  /// - "INTERNAL" : Internal errors. This means that some invariants expected
+  /// by the underlying system have been broken. This error code is reserved for
+  /// serious errors. HTTP Mapping: 500 Internal Server Error
+  /// - "UNAVAILABLE" : The service is currently unavailable. This is most
+  /// likely a transient condition, which can be corrected by retrying with a
+  /// backoff. Note that it is not always safe to retry non-idempotent
+  /// operations. See the guidelines above for deciding between
+  /// `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`. HTTP Mapping: 503
+  /// Service Unavailable
+  /// - "DATA_LOSS" : Unrecoverable data loss or corruption. HTTP Mapping: 500
+  /// Internal Server Error
+  core.String? errorCode;
+
+  /// Failure reason message.
+  core.String? errorMessage;
+
+  /// Failed printer.
+  Printer? printer;
+
+  /// Id of a failed printer.
+  core.String? printerId;
+
+  FailureInfo();
+
+  FailureInfo.fromJson(core.Map _json) {
+    if (_json.containsKey('errorCode')) {
+      errorCode = _json['errorCode'] as core.String;
+    }
+    if (_json.containsKey('errorMessage')) {
+      errorMessage = _json['errorMessage'] as core.String;
+    }
+    if (_json.containsKey('printer')) {
+      printer = Printer.fromJson(
+          _json['printer'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('printerId')) {
+      printerId = _json['printerId'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (errorCode != null) 'errorCode': errorCode!,
+        if (errorMessage != null) 'errorMessage': errorMessage!,
+        if (printer != null) 'printer': printer!.toJson(),
+        if (printerId != null) 'printerId': printerId!,
+      };
+}
+
 /// JSON template for Feature object in Directory API.
 class Feature {
   /// ETag of the resource.
@@ -7836,6 +8637,75 @@ class Groups {
           'groups': groups!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response for listing allowed printer models.
+class ListPrinterModelsResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// Printer models that are currently allowed to be configured for ChromeOs.
+  ///
+  /// Some printers may be added or removed over time.
+  core.List<PrinterModel>? printerModels;
+
+  ListPrinterModelsResponse();
+
+  ListPrinterModelsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+    if (_json.containsKey('printerModels')) {
+      printerModels = (_json['printerModels'] as core.List)
+          .map<PrinterModel>((value) => PrinterModel.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (printerModels != null)
+          'printerModels':
+              printerModels!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// Response for listing printers.
+class ListPrintersResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// List of printers.
+  ///
+  /// If `org_unit_id` was given in the request, then only printers visible for
+  /// this OU will be returned. If `org_unit_id` was given in the request, then
+  /// all printers will be returned.
+  core.List<Printer>? printers;
+
+  ListPrintersResponse();
+
+  ListPrintersResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+    if (_json.containsKey('printers')) {
+      printers = (_json['printers'] as core.List)
+          .map<Printer>((value) =>
+              Printer.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (printers != null)
+          'printers': printers!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -8617,6 +9487,152 @@ class OrgUnits {
       };
 }
 
+/// Printer configuration.
+class Printer {
+  /// Auxiliary messages about issues with the printer configuration if any.
+  ///
+  /// Output only.
+  core.List<AuxiliaryMessage>? auxiliaryMessages;
+
+  /// Time when printer was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Editable.
+  ///
+  /// Description of printer.
+  core.String? description;
+
+  /// Editable.
+  ///
+  /// Name of printer.
+  core.String? displayName;
+
+  /// Id of the printer.
+  ///
+  /// (During printer creation leave empty)
+  core.String? id;
+
+  /// Editable.
+  ///
+  /// Make and model of printer. e.g. Lexmark MS610de Value must be in format as
+  /// seen in ListPrinterModels response.
+  core.String? makeAndModel;
+
+  /// The resource name of the Printer object, in the format
+  /// customers/{customer-id}/printers/{printer-id} (During printer creation
+  /// leave empty)
+  core.String? name;
+
+  /// Organization Unit that owns this printer (Only can be set during Printer
+  /// creation)
+  core.String? orgUnitId;
+
+  /// Editable.
+  ///
+  /// Printer URI.
+  core.String? uri;
+
+  /// Editable.
+  ///
+  /// flag to use driverless configuration or not. If it's set to be true,
+  /// make_and_model can be ignored
+  core.bool? useDriverlessConfig;
+
+  Printer();
+
+  Printer.fromJson(core.Map _json) {
+    if (_json.containsKey('auxiliaryMessages')) {
+      auxiliaryMessages = (_json['auxiliaryMessages'] as core.List)
+          .map<AuxiliaryMessage>((value) => AuxiliaryMessage.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'] as core.String;
+    }
+    if (_json.containsKey('description')) {
+      description = _json['description'] as core.String;
+    }
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'] as core.String;
+    }
+    if (_json.containsKey('id')) {
+      id = _json['id'] as core.String;
+    }
+    if (_json.containsKey('makeAndModel')) {
+      makeAndModel = _json['makeAndModel'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('orgUnitId')) {
+      orgUnitId = _json['orgUnitId'] as core.String;
+    }
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'] as core.String;
+    }
+    if (_json.containsKey('useDriverlessConfig')) {
+      useDriverlessConfig = _json['useDriverlessConfig'] as core.bool;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (auxiliaryMessages != null)
+          'auxiliaryMessages':
+              auxiliaryMessages!.map((value) => value.toJson()).toList(),
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (id != null) 'id': id!,
+        if (makeAndModel != null) 'makeAndModel': makeAndModel!,
+        if (name != null) 'name': name!,
+        if (orgUnitId != null) 'orgUnitId': orgUnitId!,
+        if (uri != null) 'uri': uri!,
+        if (useDriverlessConfig != null)
+          'useDriverlessConfig': useDriverlessConfig!,
+      };
+}
+
+/// Printer manufacturer and model
+class PrinterModel {
+  /// Display name.
+  ///
+  /// eq. "Brother MFC-8840D"
+  core.String? displayName;
+
+  /// Make and model as represented in "make_and_model" field in Printer object.
+  ///
+  /// eq. "brother mfc-8840d"
+  core.String? makeAndModel;
+
+  /// Manufacturer.
+  ///
+  /// eq. "Brother"
+  core.String? manufacturer;
+
+  PrinterModel();
+
+  PrinterModel.fromJson(core.Map _json) {
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'] as core.String;
+    }
+    if (_json.containsKey('makeAndModel')) {
+      makeAndModel = _json['makeAndModel'] as core.String;
+    }
+    if (_json.containsKey('manufacturer')) {
+      manufacturer = _json['manufacturer'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (makeAndModel != null) 'makeAndModel': makeAndModel!,
+        if (manufacturer != null) 'manufacturer': manufacturer!,
+      };
+}
+
 class Privilege {
   /// A list of child privileges.
   ///
@@ -8726,33 +9742,6 @@ class Privileges {
       };
 }
 
-/// List of recent device users, in descending order, by last login time.
-class RecentUsers {
-  /// The user's email address.
-  ///
-  /// This is only present if the user type is `USER_TYPE_MANAGED`.
-  core.String? email;
-
-  /// The type of the user.
-  core.String? type;
-
-  RecentUsers();
-
-  RecentUsers.fromJson(core.Map _json) {
-    if (_json.containsKey('email')) {
-      email = _json['email'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (email != null) 'email': email!,
-        if (type != null) 'type': type!,
-      };
-}
-
 class RoleRolePrivileges {
   /// The name of the privilege.
   core.String? privilegeName;
@@ -8853,6 +9842,7 @@ class Role {
       };
 }
 
+/// Defines an assignment of a role.
 class RoleAssignment {
   /// The unique ID of the user this role is assigned to.
   core.String? assignedTo;

@@ -22,6 +22,7 @@
 /// Create an instance of [ShoppingContentApi] to access these resources:
 ///
 /// - [AccountsResource]
+///   - [AccountsCredentialsResource]
 ///   - [AccountsLabelsResource]
 ///   - [AccountsReturncarrierResource]
 /// - [AccountstatusesResource]
@@ -37,6 +38,7 @@
 /// - [OrderinvoicesResource]
 /// - [OrderreportsResource]
 /// - [OrderreturnsResource]
+///   - [OrderreturnsLabelsResource]
 /// - [OrdersResource]
 /// - [OrdertrackingsignalsResource]
 /// - [PosResource]
@@ -123,7 +125,7 @@ class ShoppingContentApi {
 
   ShoppingContentApi(http.Client client,
       {core.String rootUrl = 'https://shoppingcontent.googleapis.com/',
-      core.String servicePath = ''})
+      core.String servicePath = 'content/v2.1/'})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
@@ -131,6 +133,8 @@ class ShoppingContentApi {
 class AccountsResource {
   final commons.ApiRequester _requester;
 
+  AccountsCredentialsResource get credentials =>
+      AccountsCredentialsResource(_requester);
   AccountsLabelsResource get labels => AccountsLabelsResource(_requester);
   AccountsReturncarrierResource get returncarrier =>
       AccountsReturncarrierResource(_requester);
@@ -158,7 +162,7 @@ class AccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'content/v2.1/accounts/authinfo';
+    const _url = 'accounts/authinfo';
 
     final _response = await _requester.request(
       _url,
@@ -204,8 +208,7 @@ class AccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/accounts/' +
         commons.escapeVariable('$accountId') +
         '/claimwebsite';
@@ -245,7 +248,7 @@ class AccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'content/v2.1/accounts/batch';
+    const _url = 'accounts/batch';
 
     final _response = await _requester.request(
       _url,
@@ -288,8 +291,7 @@ class AccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/accounts/' +
         commons.escapeVariable('$accountId');
 
@@ -338,8 +340,7 @@ class AccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/accounts/' +
         commons.escapeVariable('$accountId');
 
@@ -380,8 +381,7 @@ class AccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'content/v2.1/' + commons.escapeVariable('$merchantId') + '/accounts';
+    final _url = commons.escapeVariable('$merchantId') + '/accounts';
 
     final _response = await _requester.request(
       _url,
@@ -426,8 +426,7 @@ class AccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/accounts/' +
         commons.escapeVariable('$accountId') +
         '/link';
@@ -489,8 +488,7 @@ class AccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'content/v2.1/' + commons.escapeVariable('$merchantId') + '/accounts';
+    final _url = commons.escapeVariable('$merchantId') + '/accounts';
 
     final _response = await _requester.request(
       _url,
@@ -512,7 +510,8 @@ class AccountsResource {
   /// [accountId] - The ID of the account for which to list links.
   ///
   /// [maxResults] - The maximum number of links to return in the response, used
-  /// for pagination.
+  /// for pagination. The minimum allowed value is 5 results per page. If
+  /// provided value is lower than 5, it will be automatically increased to 5.
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
@@ -539,8 +538,7 @@ class AccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/accounts/' +
         commons.escapeVariable('$accountId') +
         '/listlinks';
@@ -589,8 +587,7 @@ class AccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/accounts/' +
         commons.escapeVariable('$accountId');
 
@@ -635,8 +632,7 @@ class AccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/accounts/' +
         commons.escapeVariable('$accountId') +
         '/updatelabels';
@@ -648,6 +644,58 @@ class AccountsResource {
       queryParams: _queryParams,
     );
     return AccountsUpdateLabelsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class AccountsCredentialsResource {
+  final commons.ApiRequester _requester;
+
+  AccountsCredentialsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Uploads credentials for the Merchant Center account.
+  ///
+  /// If credentials already exist for this Merchant Center account and purpose,
+  /// this method updates them.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [accountId] - Required. The merchant id of the account these credentials
+  /// belong to.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AccountCredentials].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AccountCredentials> create(
+    AccountCredentials request,
+    core.String accountId, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'accounts/' + commons.escapeVariable('$accountId') + '/credentials';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return AccountCredentials.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -685,9 +733,7 @@ class AccountsLabelsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/accounts/' +
-        commons.escapeVariable('$accountId') +
-        '/labels';
+    final _url = 'accounts/' + commons.escapeVariable('$accountId') + '/labels';
 
     final _response = await _requester.request(
       _url,
@@ -724,7 +770,7 @@ class AccountsLabelsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/accounts/' +
+    final _url = 'accounts/' +
         commons.escapeVariable('$accountId') +
         '/labels/' +
         commons.escapeVariable('$labelId');
@@ -775,9 +821,7 @@ class AccountsLabelsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/accounts/' +
-        commons.escapeVariable('$accountId') +
-        '/labels';
+    final _url = 'accounts/' + commons.escapeVariable('$accountId') + '/labels';
 
     final _response = await _requester.request(
       _url,
@@ -819,7 +863,7 @@ class AccountsLabelsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/accounts/' +
+    final _url = 'accounts/' +
         commons.escapeVariable('$accountId') +
         '/labels/' +
         commons.escapeVariable('$labelId');
@@ -870,9 +914,8 @@ class AccountsReturncarrierResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/accounts/' +
-        commons.escapeVariable('$accountId') +
-        '/returncarrier';
+    final _url =
+        'accounts/' + commons.escapeVariable('$accountId') + '/returncarrier';
 
     final _response = await _requester.request(
       _url,
@@ -911,7 +954,7 @@ class AccountsReturncarrierResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/accounts/' +
+    final _url = 'accounts/' +
         commons.escapeVariable('$accountId') +
         '/returncarrier/' +
         commons.escapeVariable('$carrierAccountId');
@@ -949,9 +992,8 @@ class AccountsReturncarrierResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/accounts/' +
-        commons.escapeVariable('$accountId') +
-        '/returncarrier';
+    final _url =
+        'accounts/' + commons.escapeVariable('$accountId') + '/returncarrier';
 
     final _response = await _requester.request(
       _url,
@@ -995,7 +1037,7 @@ class AccountsReturncarrierResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/accounts/' +
+    final _url = 'accounts/' +
         commons.escapeVariable('$accountId') +
         '/returncarrier/' +
         commons.escapeVariable('$carrierAccountId');
@@ -1041,7 +1083,7 @@ class AccountstatusesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'content/v2.1/accountstatuses/batch';
+    const _url = 'accountstatuses/batch';
 
     final _response = await _requester.request(
       _url,
@@ -1089,8 +1131,7 @@ class AccountstatusesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/accountstatuses/' +
         commons.escapeVariable('$accountId');
 
@@ -1142,9 +1183,7 @@ class AccountstatusesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
-        '/accountstatuses';
+    final _url = commons.escapeVariable('$merchantId') + '/accountstatuses';
 
     final _response = await _requester.request(
       _url,
@@ -1187,7 +1226,7 @@ class AccounttaxResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'content/v2.1/accounttax/batch';
+    const _url = 'accounttax/batch';
 
     final _response = await _requester.request(
       _url,
@@ -1229,8 +1268,7 @@ class AccounttaxResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/accounttax/' +
         commons.escapeVariable('$accountId');
 
@@ -1278,8 +1316,7 @@ class AccounttaxResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'content/v2.1/' + commons.escapeVariable('$merchantId') + '/accounttax';
+    final _url = commons.escapeVariable('$merchantId') + '/accounttax';
 
     final _response = await _requester.request(
       _url,
@@ -1326,8 +1363,7 @@ class AccounttaxResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/accounttax/' +
         commons.escapeVariable('$accountId');
 
@@ -1348,7 +1384,55 @@ class BuyongoogleprogramsResource {
   BuyongoogleprogramsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Retrieves a status of BoG program for your Merchant Center account.
+  /// Reactivates the BoG program in your Merchant Center account.
+  ///
+  /// Moves the program to the active state when allowed, e.g. when paused.
+  /// Important: This method is only whitelisted for selected merchants.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The ID of the account.
+  ///
+  /// [regionCode] - The program region code \[ISO 3166-1
+  /// alpha-2\](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Currently
+  /// only US is available.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> activate(
+    ActivateBuyOnGoogleProgramRequest request,
+    core.String merchantId,
+    core.String regionCode, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = commons.escapeVariable('$merchantId') +
+        '/buyongoogleprograms/' +
+        commons.escapeVariable('$regionCode') +
+        '/activate';
+
+    await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      downloadOptions: null,
+    );
+  }
+
+  /// Retrieves a status of the BoG program for your Merchant Center account.
   ///
   /// Request parameters:
   ///
@@ -1377,8 +1461,7 @@ class BuyongoogleprogramsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/buyongoogleprograms/' +
         commons.escapeVariable('$regionCode');
 
@@ -1391,9 +1474,14 @@ class BuyongoogleprogramsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Onboards BoG in your Merchant Center account.
+  /// Onboards the BoG program in your Merchant Center account.
   ///
-  /// By using this method, you agree to the Terms of Service.
+  /// By using this method, you agree to the
+  /// [Terms of Service](https://merchants.google.com/mc/termsofservice/transactions/US/latest).
+  /// Calling this method is only possible if the authenticated account is the
+  /// same as the merchant id in the request. Calling this method multiple times
+  /// will only accept Terms of Service if the latest version is not currently
+  /// signed.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1424,11 +1512,106 @@ class BuyongoogleprogramsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/buyongoogleprograms/' +
         commons.escapeVariable('$regionCode') +
         '/onboard';
+
+    await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      downloadOptions: null,
+    );
+  }
+
+  /// Pauses the BoG program in your Merchant Center account.
+  ///
+  /// Important: This method is only whitelisted for selected merchants.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The ID of the account.
+  ///
+  /// [regionCode] - The program region code \[ISO 3166-1
+  /// alpha-2\](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Currently
+  /// only US is available.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> pause(
+    PauseBuyOnGoogleProgramRequest request,
+    core.String merchantId,
+    core.String regionCode, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = commons.escapeVariable('$merchantId') +
+        '/buyongoogleprograms/' +
+        commons.escapeVariable('$regionCode') +
+        '/pause';
+
+    await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      downloadOptions: null,
+    );
+  }
+
+  /// Requests review and then activates the BoG program in your Merchant Center
+  /// account for the first time.
+  ///
+  /// Moves the program to the REVIEW_PENDING state. Important: This method is
+  /// only whitelisted for selected merchants.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The ID of the account.
+  ///
+  /// [regionCode] - The program region code \[ISO 3166-1
+  /// alpha-2\](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Currently
+  /// only US is available.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> requestreview(
+    RequestReviewBuyOnGoogleProgramRequest request,
+    core.String merchantId,
+    core.String regionCode, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = commons.escapeVariable('$merchantId') +
+        '/buyongoogleprograms/' +
+        commons.escapeVariable('$regionCode') +
+        '/requestreview';
 
     await _requester.request(
       _url,
@@ -1478,9 +1661,7 @@ class CollectionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
-        '/collections';
+    final _url = commons.escapeVariable('$merchantId') + '/collections';
 
     final _response = await _requester.request(
       _url,
@@ -1519,8 +1700,7 @@ class CollectionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/collections/' +
         commons.escapeVariable('$collectionId');
 
@@ -1560,8 +1740,7 @@ class CollectionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/collections/' +
         commons.escapeVariable('$collectionId');
 
@@ -1614,9 +1793,7 @@ class CollectionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
-        '/collections';
+    final _url = commons.escapeVariable('$merchantId') + '/collections';
 
     final _response = await _requester.request(
       _url,
@@ -1662,8 +1839,7 @@ class CollectionstatusesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/collectionstatuses/' +
         commons.escapeVariable('$collectionId');
 
@@ -1713,9 +1889,7 @@ class CollectionstatusesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
-        '/collectionstatuses';
+    final _url = commons.escapeVariable('$merchantId') + '/collectionstatuses';
 
     final _response = await _requester.request(
       _url,
@@ -1762,8 +1936,7 @@ class CssesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$cssGroupId') +
+    final _url = commons.escapeVariable('$cssGroupId') +
         '/csses/' +
         commons.escapeVariable('$cssDomainId');
 
@@ -1813,8 +1986,7 @@ class CssesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'content/v2.1/' + commons.escapeVariable('$cssGroupId') + '/csses';
+    final _url = commons.escapeVariable('$cssGroupId') + '/csses';
 
     final _response = await _requester.request(
       _url,
@@ -1856,8 +2028,7 @@ class CssesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$cssGroupId') +
+    final _url = commons.escapeVariable('$cssGroupId') +
         '/csses/' +
         commons.escapeVariable('$cssDomainId') +
         '/updatelabels';
@@ -1903,7 +2074,7 @@ class DatafeedsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'content/v2.1/datafeeds/batch';
+    const _url = 'datafeeds/batch';
 
     final _response = await _requester.request(
       _url,
@@ -1941,8 +2112,7 @@ class DatafeedsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/datafeeds/' +
         commons.escapeVariable('$datafeedId');
 
@@ -1985,8 +2155,7 @@ class DatafeedsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/datafeeds/' +
         commons.escapeVariable('$datafeedId') +
         '/fetchNow';
@@ -2028,8 +2197,7 @@ class DatafeedsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/datafeeds/' +
         commons.escapeVariable('$datafeedId');
 
@@ -2070,8 +2238,7 @@ class DatafeedsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'content/v2.1/' + commons.escapeVariable('$merchantId') + '/datafeeds';
+    final _url = commons.escapeVariable('$merchantId') + '/datafeeds';
 
     final _response = await _requester.request(
       _url,
@@ -2116,8 +2283,7 @@ class DatafeedsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'content/v2.1/' + commons.escapeVariable('$merchantId') + '/datafeeds';
+    final _url = commons.escapeVariable('$merchantId') + '/datafeeds';
 
     final _response = await _requester.request(
       _url,
@@ -2162,8 +2328,7 @@ class DatafeedsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/datafeeds/' +
         commons.escapeVariable('$datafeedId');
 
@@ -2207,7 +2372,7 @@ class DatafeedstatusesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'content/v2.1/datafeedstatuses/batch';
+    const _url = 'datafeedstatuses/batch';
 
     final _response = await _requester.request(
       _url,
@@ -2261,8 +2426,7 @@ class DatafeedstatusesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/datafeedstatuses/' +
         commons.escapeVariable('$datafeedId');
 
@@ -2309,9 +2473,7 @@ class DatafeedstatusesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
-        '/datafeedstatuses';
+    final _url = commons.escapeVariable('$merchantId') + '/datafeedstatuses';
 
     final _response = await _requester.request(
       _url,
@@ -2354,7 +2516,7 @@ class LiasettingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'content/v2.1/liasettings/batch';
+    const _url = 'liasettings/batch';
 
     final _response = await _requester.request(
       _url,
@@ -2396,8 +2558,7 @@ class LiasettingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/liasettings/' +
         commons.escapeVariable('$accountId');
 
@@ -2441,8 +2602,7 @@ class LiasettingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/liasettings/' +
         commons.escapeVariable('$accountId') +
         '/accessiblegmbaccounts';
@@ -2491,9 +2651,7 @@ class LiasettingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
-        '/liasettings';
+    final _url = commons.escapeVariable('$merchantId') + '/liasettings';
 
     final _response = await _requester.request(
       _url,
@@ -2526,7 +2684,7 @@ class LiasettingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'content/v2.1/liasettings/posdataproviders';
+    const _url = 'liasettings/posdataproviders';
 
     final _response = await _requester.request(
       _url,
@@ -2570,8 +2728,7 @@ class LiasettingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/liasettings/' +
         commons.escapeVariable('$accountId') +
         '/requestgmbaccess';
@@ -2619,8 +2776,7 @@ class LiasettingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/liasettings/' +
         commons.escapeVariable('$accountId') +
         '/requestinventoryverification/' +
@@ -2682,8 +2838,7 @@ class LiasettingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/liasettings/' +
         commons.escapeVariable('$accountId') +
         '/setinventoryverificationcontact';
@@ -2741,8 +2896,7 @@ class LiasettingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/liasettings/' +
         commons.escapeVariable('$accountId') +
         '/setposdataprovider';
@@ -2792,8 +2946,7 @@ class LiasettingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/liasettings/' +
         commons.escapeVariable('$accountId');
 
@@ -2839,7 +2992,7 @@ class LocalinventoryResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'content/v2.1/localinventory/batch';
+    const _url = 'localinventory/batch';
 
     final _response = await _requester.request(
       _url,
@@ -2884,8 +3037,7 @@ class LocalinventoryResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/products/' +
         commons.escapeVariable('$productId') +
         '/localinventory';
@@ -2939,8 +3091,7 @@ class OrderinvoicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/orderinvoices/' +
         commons.escapeVariable('$orderId') +
         '/createChargeInvoice';
@@ -2992,8 +3143,7 @@ class OrderinvoicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/orderinvoices/' +
         commons.escapeVariable('$orderId') +
         '/createRefundInvoice';
@@ -3060,9 +3210,8 @@ class OrderreportsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
-        '/orderreports/disbursements';
+    final _url =
+        commons.escapeVariable('$merchantId') + '/orderreports/disbursements';
 
     final _response = await _requester.request(
       _url,
@@ -3124,8 +3273,7 @@ class OrderreportsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/orderreports/disbursements/' +
         commons.escapeVariable('$disbursementId') +
         '/transactions';
@@ -3142,6 +3290,9 @@ class OrderreportsResource {
 
 class OrderreturnsResource {
   final commons.ApiRequester _requester;
+
+  OrderreturnsLabelsResource get labels =>
+      OrderreturnsLabelsResource(_requester);
 
   OrderreturnsResource(commons.ApiRequester client) : _requester = client;
 
@@ -3177,8 +3328,7 @@ class OrderreturnsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/orderreturns/' +
         commons.escapeVariable('$returnId') +
         '/acknowledge';
@@ -3222,8 +3372,7 @@ class OrderreturnsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/orderreturns/createOrderReturn';
 
     final _response = await _requester.request(
@@ -3264,8 +3413,7 @@ class OrderreturnsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/orderreturns/' +
         commons.escapeVariable('$returnId');
 
@@ -3379,9 +3527,7 @@ class OrderreturnsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
-        '/orderreturns';
+    final _url = commons.escapeVariable('$merchantId') + '/orderreturns';
 
     final _response = await _requester.request(
       _url,
@@ -3424,8 +3570,7 @@ class OrderreturnsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/orderreturns/' +
         commons.escapeVariable('$returnId') +
         '/process';
@@ -3437,6 +3582,65 @@ class OrderreturnsResource {
       queryParams: _queryParams,
     );
     return OrderreturnsProcessResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrderreturnsLabelsResource {
+  final commons.ApiRequester _requester;
+
+  OrderreturnsLabelsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Links a return shipping label to a return id.
+  ///
+  /// You can only create one return label per return id. Since the label is
+  /// sent to the buyer, the linked return label cannot be updated or deleted.
+  /// If you try to create multiple return shipping labels for a single return
+  /// id, every create request except the first will fail.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The merchant the Return Shipping Label belongs
+  /// to.
+  ///
+  /// [returnId] - Required. Provide the Google-generated merchant order return
+  /// ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ReturnShippingLabel].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ReturnShippingLabel> create(
+    ReturnShippingLabel request,
+    core.String merchantId,
+    core.String returnId, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = commons.escapeVariable('$merchantId') +
+        '/orderreturns/' +
+        commons.escapeVariable('$returnId') +
+        '/labels';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return ReturnShippingLabel.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -3478,8 +3682,7 @@ class OrdersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/orders/' +
         commons.escapeVariable('$orderId') +
         '/acknowledge';
@@ -3524,8 +3727,7 @@ class OrdersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/testorders/' +
         commons.escapeVariable('$orderId') +
         '/advance';
@@ -3571,8 +3773,7 @@ class OrdersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/orders/' +
         commons.escapeVariable('$orderId') +
         '/cancel';
@@ -3619,8 +3820,7 @@ class OrdersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/orders/' +
         commons.escapeVariable('$orderId') +
         '/cancelLineItem';
@@ -3670,8 +3870,7 @@ class OrdersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/testorders/' +
         commons.escapeVariable('$orderId') +
         '/cancelByCustomer';
@@ -3717,8 +3916,7 @@ class OrdersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'content/v2.1/' + commons.escapeVariable('$merchantId') + '/testorders';
+    final _url = commons.escapeVariable('$merchantId') + '/testorders';
 
     final _response = await _requester.request(
       _url,
@@ -3764,8 +3962,7 @@ class OrdersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/orders/' +
         commons.escapeVariable('$orderId') +
         '/testreturn';
@@ -3808,8 +4005,7 @@ class OrdersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/orders/' +
         commons.escapeVariable('$orderId');
 
@@ -3849,8 +4045,7 @@ class OrdersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/ordersbymerchantid/' +
         commons.escapeVariable('$merchantOrderId');
 
@@ -3905,8 +4100,7 @@ class OrdersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/testordertemplates/' +
         commons.escapeVariable('$templateName');
 
@@ -3961,8 +4155,7 @@ class OrdersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/orders/' +
         commons.escapeVariable('$orderId') +
         '/inStoreRefundLineItem';
@@ -4043,8 +4236,7 @@ class OrdersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'content/v2.1/' + commons.escapeVariable('$merchantId') + '/orders';
+    final _url = commons.escapeVariable('$merchantId') + '/orders';
 
     final _response = await _requester.request(
       _url,
@@ -4087,8 +4279,7 @@ class OrdersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/orders/' +
         commons.escapeVariable('$orderId') +
         '/refunditem';
@@ -4135,8 +4326,7 @@ class OrdersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/orders/' +
         commons.escapeVariable('$orderId') +
         '/refundorder';
@@ -4183,8 +4373,7 @@ class OrdersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/orders/' +
         commons.escapeVariable('$orderId') +
         '/rejectReturnLineItem';
@@ -4238,8 +4427,7 @@ class OrdersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/orders/' +
         commons.escapeVariable('$orderId') +
         '/returnRefundLineItem';
@@ -4291,8 +4479,7 @@ class OrdersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/orders/' +
         commons.escapeVariable('$orderId') +
         '/setLineItemMetadata';
@@ -4339,8 +4526,7 @@ class OrdersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/orders/' +
         commons.escapeVariable('$orderId') +
         '/shipLineItems';
@@ -4388,8 +4574,7 @@ class OrdersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/orders/' +
         commons.escapeVariable('$orderId') +
         '/updateLineItemShippingDetails';
@@ -4436,8 +4621,7 @@ class OrdersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/orders/' +
         commons.escapeVariable('$orderId') +
         '/updateMerchantOrderId';
@@ -4484,8 +4668,7 @@ class OrdersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/orders/' +
         commons.escapeVariable('$orderId') +
         '/updateShipment';
@@ -4536,9 +4719,8 @@ class OrdertrackingsignalsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
-        '/ordertrackingsignals';
+    final _url =
+        commons.escapeVariable('$merchantId') + '/ordertrackingsignals';
 
     final _response = await _requester.request(
       _url,
@@ -4581,7 +4763,7 @@ class PosResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'content/v2.1/pos/batch';
+    const _url = 'pos/batch';
 
     final _response = await _requester.request(
       _url,
@@ -4621,8 +4803,7 @@ class PosResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/pos/' +
         commons.escapeVariable('$targetMerchantId') +
         '/store/' +
@@ -4666,8 +4847,7 @@ class PosResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/pos/' +
         commons.escapeVariable('$targetMerchantId') +
         '/store/' +
@@ -4712,8 +4892,7 @@ class PosResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/pos/' +
         commons.escapeVariable('$targetMerchantId') +
         '/store';
@@ -4758,8 +4937,7 @@ class PosResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/pos/' +
         commons.escapeVariable('$targetMerchantId') +
         '/inventory';
@@ -4801,8 +4979,7 @@ class PosResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/pos/' +
         commons.escapeVariable('$targetMerchantId') +
         '/store';
@@ -4847,8 +5024,7 @@ class PosResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/pos/' +
         commons.escapeVariable('$targetMerchantId') +
         '/sale';
@@ -4894,7 +5070,7 @@ class ProductsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'content/v2.1/products/batch';
+    const _url = 'products/batch';
 
     final _response = await _requester.request(
       _url,
@@ -4936,8 +5112,7 @@ class ProductsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/products/' +
         commons.escapeVariable('$productId');
 
@@ -4977,8 +5152,7 @@ class ProductsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/products/' +
         commons.escapeVariable('$productId');
 
@@ -5026,8 +5200,7 @@ class ProductsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'content/v2.1/' + commons.escapeVariable('$merchantId') + '/products';
+    final _url = commons.escapeVariable('$merchantId') + '/products';
 
     final _response = await _requester.request(
       _url,
@@ -5075,8 +5248,7 @@ class ProductsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'content/v2.1/' + commons.escapeVariable('$merchantId') + '/products';
+    final _url = commons.escapeVariable('$merchantId') + '/products';
 
     final _response = await _requester.request(
       _url,
@@ -5085,6 +5257,61 @@ class ProductsResource {
     );
     return ProductsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an existing product in your Merchant Center account.
+  ///
+  /// Only updates attributes provided in the request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - The ID of the account that contains the product. This
+  /// account cannot be a multi-client account.
+  ///
+  /// [productId] - The REST ID of the product for which to update.
+  ///
+  /// [updateMask] - The list of product attributes to be updated. Attributes
+  /// specified in the update mask without a value specified in the body will be
+  /// deleted from the product. Only top-level product attributes can be
+  /// updated. If not defined, product attributes with set values will be
+  /// updated and other attributes will stay unchanged.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Product].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Product> update(
+    Product request,
+    core.String merchantId,
+    core.String productId, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = commons.escapeVariable('$merchantId') +
+        '/products/' +
+        commons.escapeVariable('$productId');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Product.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5121,7 +5348,7 @@ class ProductstatusesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'content/v2.1/productstatuses/batch';
+    const _url = 'productstatuses/batch';
 
     final _response = await _requester.request(
       _url,
@@ -5166,8 +5393,7 @@ class ProductstatusesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/productstatuses/' +
         commons.escapeVariable('$productId');
 
@@ -5219,9 +5445,7 @@ class ProductstatusesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
-        '/productstatuses';
+    final _url = commons.escapeVariable('$merchantId') + '/productstatuses';
 
     final _response = await _requester.request(
       _url,
@@ -5300,8 +5524,7 @@ class ProductstatusesRepricingreportsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/productstatuses/' +
         commons.escapeVariable('$productId') +
         '/repricingreports';
@@ -5347,9 +5570,8 @@ class PubsubnotificationsettingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
-        '/pubsubnotificationsettings';
+    final _url =
+        commons.escapeVariable('$merchantId') + '/pubsubnotificationsettings';
 
     final _response = await _requester.request(
       _url,
@@ -5390,9 +5612,8 @@ class PubsubnotificationsettingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
-        '/pubsubnotificationsettings';
+    final _url =
+        commons.escapeVariable('$merchantId') + '/pubsubnotificationsettings';
 
     final _response = await _requester.request(
       _url,
@@ -5436,7 +5657,7 @@ class RegionalinventoryResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'content/v2.1/regionalinventory/batch';
+    const _url = 'regionalinventory/batch';
 
     final _response = await _requester.request(
       _url,
@@ -5485,8 +5706,7 @@ class RegionalinventoryResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/products/' +
         commons.escapeVariable('$productId') +
         '/regionalinventory';
@@ -5540,8 +5760,7 @@ class RegionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'content/v2.1/' + commons.escapeVariable('$merchantId') + '/regions';
+    final _url = commons.escapeVariable('$merchantId') + '/regions';
 
     final _response = await _requester.request(
       _url,
@@ -5578,8 +5797,7 @@ class RegionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/regions/' +
         commons.escapeVariable('$regionId');
 
@@ -5619,8 +5837,7 @@ class RegionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/regions/' +
         commons.escapeVariable('$regionId');
 
@@ -5671,8 +5888,7 @@ class RegionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
-        'content/v2.1/' + commons.escapeVariable('$merchantId') + '/regions';
+    final _url = commons.escapeVariable('$merchantId') + '/regions';
 
     final _response = await _requester.request(
       _url,
@@ -5719,8 +5935,7 @@ class RegionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/regions/' +
         commons.escapeVariable('$regionId');
 
@@ -5769,9 +5984,7 @@ class ReportsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
-        '/reports/search';
+    final _url = commons.escapeVariable('$merchantId') + '/reports/search';
 
     final _response = await _requester.request(
       _url,
@@ -5825,9 +6038,7 @@ class RepricingrulesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
-        '/repricingrules';
+    final _url = commons.escapeVariable('$merchantId') + '/repricingrules';
 
     final _response = await _requester.request(
       _url,
@@ -5865,8 +6076,7 @@ class RepricingrulesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/repricingrules/' +
         commons.escapeVariable('$ruleId');
 
@@ -5906,8 +6116,7 @@ class RepricingrulesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/repricingrules/' +
         commons.escapeVariable('$ruleId');
 
@@ -5970,9 +6179,7 @@ class RepricingrulesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
-        '/repricingrules';
+    final _url = commons.escapeVariable('$merchantId') + '/repricingrules';
 
     final _response = await _requester.request(
       _url,
@@ -6020,8 +6227,7 @@ class RepricingrulesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/repricingrules/' +
         commons.escapeVariable('$ruleId');
 
@@ -6095,8 +6301,7 @@ class RepricingrulesRepricingreportsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/repricingrules/' +
         commons.escapeVariable('$ruleId') +
         '/repricingreports';
@@ -6141,7 +6346,7 @@ class ReturnaddressResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'content/v2.1/returnaddress/batch';
+    const _url = 'returnaddress/batch';
 
     final _response = await _requester.request(
       _url,
@@ -6179,8 +6384,7 @@ class ReturnaddressResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/returnaddress/' +
         commons.escapeVariable('$returnAddressId');
 
@@ -6219,8 +6423,7 @@ class ReturnaddressResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/returnaddress/' +
         commons.escapeVariable('$returnAddressId');
 
@@ -6261,9 +6464,7 @@ class ReturnaddressResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
-        '/returnaddress';
+    final _url = commons.escapeVariable('$merchantId') + '/returnaddress';
 
     final _response = await _requester.request(
       _url,
@@ -6313,9 +6514,7 @@ class ReturnaddressResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
-        '/returnaddress';
+    final _url = commons.escapeVariable('$merchantId') + '/returnaddress';
 
     final _response = await _requester.request(
       _url,
@@ -6357,7 +6556,7 @@ class ReturnpolicyResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'content/v2.1/returnpolicy/batch';
+    const _url = 'returnpolicy/batch';
 
     final _response = await _requester.request(
       _url,
@@ -6395,8 +6594,7 @@ class ReturnpolicyResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/returnpolicy/' +
         commons.escapeVariable('$returnPolicyId');
 
@@ -6435,8 +6633,7 @@ class ReturnpolicyResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/returnpolicy/' +
         commons.escapeVariable('$returnPolicyId');
 
@@ -6477,9 +6674,7 @@ class ReturnpolicyResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
-        '/returnpolicy';
+    final _url = commons.escapeVariable('$merchantId') + '/returnpolicy';
 
     final _response = await _requester.request(
       _url,
@@ -6515,9 +6710,7 @@ class ReturnpolicyResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
-        '/returnpolicy';
+    final _url = commons.escapeVariable('$merchantId') + '/returnpolicy';
 
     final _response = await _requester.request(
       _url,
@@ -6563,9 +6756,7 @@ class ReturnpolicyonlineResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
-        '/returnpolicyonline';
+    final _url = commons.escapeVariable('$merchantId') + '/returnpolicyonline';
 
     final _response = await _requester.request(
       _url,
@@ -6603,8 +6794,7 @@ class ReturnpolicyonlineResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/returnpolicyonline/' +
         commons.escapeVariable('$returnPolicyId');
 
@@ -6644,8 +6834,7 @@ class ReturnpolicyonlineResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/returnpolicyonline/' +
         commons.escapeVariable('$returnPolicyId');
 
@@ -6683,9 +6872,7 @@ class ReturnpolicyonlineResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
-        '/returnpolicyonline';
+    final _url = commons.escapeVariable('$merchantId') + '/returnpolicyonline';
 
     final _response = await _requester.request(
       _url,
@@ -6728,8 +6915,7 @@ class ReturnpolicyonlineResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/returnpolicyonline/' +
         commons.escapeVariable('$returnPolicyId');
 
@@ -6776,8 +6962,7 @@ class SettlementreportsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/settlementreports/' +
         commons.escapeVariable('$settlementId');
 
@@ -6834,9 +7019,7 @@ class SettlementreportsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
-        '/settlementreports';
+    final _url = commons.escapeVariable('$merchantId') + '/settlementreports';
 
     final _response = await _requester.request(
       _url,
@@ -6896,8 +7079,7 @@ class SettlementtransactionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/settlementreports/' +
         commons.escapeVariable('$settlementId') +
         '/transactions';
@@ -6943,7 +7125,7 @@ class ShippingsettingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'content/v2.1/shippingsettings/batch';
+    const _url = 'shippingsettings/batch';
 
     final _response = await _requester.request(
       _url,
@@ -6985,8 +7167,7 @@ class ShippingsettingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/shippingsettings/' +
         commons.escapeVariable('$accountId');
 
@@ -7025,9 +7206,7 @@ class ShippingsettingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
-        '/supportedCarriers';
+    final _url = commons.escapeVariable('$merchantId') + '/supportedCarriers';
 
     final _response = await _requester.request(
       _url,
@@ -7064,9 +7243,7 @@ class ShippingsettingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
-        '/supportedHolidays';
+    final _url = commons.escapeVariable('$merchantId') + '/supportedHolidays';
 
     final _response = await _requester.request(
       _url,
@@ -7103,9 +7280,8 @@ class ShippingsettingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
-        '/supportedPickupServices';
+    final _url =
+        commons.escapeVariable('$merchantId') + '/supportedPickupServices';
 
     final _response = await _requester.request(
       _url,
@@ -7151,9 +7327,7 @@ class ShippingsettingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
-        '/shippingsettings';
+    final _url = commons.escapeVariable('$merchantId') + '/shippingsettings';
 
     final _response = await _requester.request(
       _url,
@@ -7200,8 +7374,7 @@ class ShippingsettingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'content/v2.1/' +
-        commons.escapeVariable('$merchantId') +
+    final _url = commons.escapeVariable('$merchantId') +
         '/shippingsettings/' +
         commons.escapeVariable('$accountId');
 
@@ -7491,6 +7664,43 @@ class AccountBusinessInformation {
         if (customerService != null)
           'customerService': customerService!.toJson(),
         if (phoneNumber != null) 'phoneNumber': phoneNumber!,
+      };
+}
+
+/// Credentials allowing Google to call a partner's API on behalf of a merchant.
+class AccountCredentials {
+  /// An OAuth access token.
+  core.String? accessToken;
+
+  /// The amount of time, in seconds, after which the access token is no longer
+  /// valid.
+  core.String? expiresIn;
+
+  /// Indicates to Google how Google should use these OAuth tokens.
+  /// Possible string values are:
+  /// - "ACCOUNT_CREDENTIALS_PURPOSE_UNSPECIFIED" : Unknown purpose.
+  /// - "SHOPIFY_ORDER_MANAGEMENT" : The credentials allow Google to manage
+  /// Shopify orders on behalf of the merchant.
+  core.String? purpose;
+
+  AccountCredentials();
+
+  AccountCredentials.fromJson(core.Map _json) {
+    if (_json.containsKey('accessToken')) {
+      accessToken = _json['accessToken'] as core.String;
+    }
+    if (_json.containsKey('expiresIn')) {
+      expiresIn = _json['expiresIn'] as core.String;
+    }
+    if (_json.containsKey('purpose')) {
+      purpose = _json['purpose'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accessToken != null) 'accessToken': accessToken!,
+        if (expiresIn != null) 'expiresIn': expiresIn!,
+        if (purpose != null) 'purpose': purpose!,
       };
 }
 
@@ -8468,15 +8678,19 @@ class AccountsLinkRequest {
 
   /// Type of the link between the two accounts.
   ///
-  /// Acceptable values are: - "`channelPartner`" - "`eCommercePlatform`"
+  /// Acceptable values are: - "`channelPartner`" - "`eCommercePlatform`" -
+  /// "`paymentServiceProvider`"
   core.String? linkType;
 
   /// The ID of the linked account.
   core.String? linkedAccountId;
 
+  /// Additional information required for `paymentServiceProvider` link type.
+  PaymentServiceProviderLinkInfo? paymentServiceProviderLinkInfo;
+
   /// Acceptable values are: - "`shoppingAdsProductManagement`" -
-  /// "`shoppingAdsOther`" - "`shoppingActionsProductManagement`" -
-  /// "`shoppingActionsOrderManagement`" - "`shoppingActionsOther`"
+  /// "`shoppingActionsProductManagement`" - "`shoppingActionsOrderManagement`"
+  /// - "`paymentProcessing`"
   core.List<core.String>? services;
 
   AccountsLinkRequest();
@@ -8491,6 +8705,11 @@ class AccountsLinkRequest {
     if (_json.containsKey('linkedAccountId')) {
       linkedAccountId = _json['linkedAccountId'] as core.String;
     }
+    if (_json.containsKey('paymentServiceProviderLinkInfo')) {
+      paymentServiceProviderLinkInfo = PaymentServiceProviderLinkInfo.fromJson(
+          _json['paymentServiceProviderLinkInfo']
+              as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('services')) {
       services = (_json['services'] as core.List)
           .map<core.String>((value) => value as core.String)
@@ -8502,6 +8721,9 @@ class AccountsLinkRequest {
         if (action != null) 'action': action!,
         if (linkType != null) 'linkType': linkType!,
         if (linkedAccountId != null) 'linkedAccountId': linkedAccountId!,
+        if (paymentServiceProviderLinkInfo != null)
+          'paymentServiceProviderLinkInfo':
+              paymentServiceProviderLinkInfo!.toJson(),
         if (services != null) 'services': services!,
       };
 }
@@ -8992,6 +9214,17 @@ class AccounttaxListResponse {
       };
 }
 
+/// Request message for the ActivateProgram method.
+class ActivateBuyOnGoogleProgramRequest {
+  ActivateBuyOnGoogleProgramRequest();
+
+  ActivateBuyOnGoogleProgramRequest.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
 class Amount {
   /// The pre-tax or post-tax price depending on the location of the order.
   ///
@@ -9061,6 +9294,12 @@ class BuyOnGoogleProgramStatus {
   /// specific region code.
   /// - "ONBOARDING" : Merchant is onboarding to a given program in a specific
   /// region code.
+  /// - "ELIGIBLE_FOR_REVIEW" : Merchant fulfilled all the requirements and is
+  /// ready to request review in a specific region code.
+  /// - "PENDING_REVIEW" : Merchant is waiting for the review to be completed in
+  /// a specific region code.
+  /// - "REVIEW_DISAPPROVED" : The review for a merchant has been rejected in a
+  /// specific region code.
   /// - "ACTIVE" : Merchant's program participation is active for a specific
   /// region code.
   /// - "PAUSED" : Participation has been paused.
@@ -9169,6 +9408,13 @@ class CarriersCarrier {
   /// Always present.
   core.String? country;
 
+  /// A list of services supported for EDD (Estimated Delivery Date)
+  /// calculation.
+  ///
+  /// This is the list of valid values for
+  /// WarehouseBasedDeliveryTime.carrierService.
+  core.List<core.String>? eddServices;
+
   /// The name of the carrier (e.g., `"UPS"`).
   ///
   /// Always present.
@@ -9176,7 +9422,8 @@ class CarriersCarrier {
 
   /// A list of supported services (e.g., `"ground"`) for that carrier.
   ///
-  /// Contains at least one service.
+  /// Contains at least one service. This is the list of valid values for
+  /// CarrierRate.carrierService.
   core.List<core.String>? services;
 
   CarriersCarrier();
@@ -9184,6 +9431,11 @@ class CarriersCarrier {
   CarriersCarrier.fromJson(core.Map _json) {
     if (_json.containsKey('country')) {
       country = _json['country'] as core.String;
+    }
+    if (_json.containsKey('eddServices')) {
+      eddServices = (_json['eddServices'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -9197,6 +9449,7 @@ class CarriersCarrier {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (country != null) 'country': country!,
+        if (eddServices != null) 'eddServices': eddServices!,
         if (name != null) 'name': name!,
         if (services != null) 'services': services!,
       };
@@ -10777,6 +11030,13 @@ class DeliveryTime {
   /// not both.
   TransitTable? transitTimeTable;
 
+  /// Indicates that the delivery time should be calculated per warehouse
+  /// (shipping origin location) based on the settings of the selected carrier.
+  ///
+  /// When set, no other transit time related field in DeliveryTime should be
+  /// set.
+  core.List<WarehouseBasedDeliveryTime>? warehouseBasedDeliveryTimes;
+
   DeliveryTime();
 
   DeliveryTime.fromJson(core.Map _json) {
@@ -10816,6 +11076,14 @@ class DeliveryTime {
       transitTimeTable = TransitTable.fromJson(
           _json['transitTimeTable'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('warehouseBasedDeliveryTimes')) {
+      warehouseBasedDeliveryTimes =
+          (_json['warehouseBasedDeliveryTimes'] as core.List)
+              .map<WarehouseBasedDeliveryTime>((value) =>
+                  WarehouseBasedDeliveryTime.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList();
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10837,6 +11105,10 @@ class DeliveryTime {
           'transitBusinessDayConfig': transitBusinessDayConfig!.toJson(),
         if (transitTimeTable != null)
           'transitTimeTable': transitTimeTable!.toJson(),
+        if (warehouseBasedDeliveryTimes != null)
+          'warehouseBasedDeliveryTimes': warehouseBasedDeliveryTimes!
+              .map((value) => value.toJson())
+              .toList(),
       };
 }
 
@@ -11216,6 +11488,10 @@ class InapplicabilityDetails {
   /// this may be the case if the calculated rule price is lower than floor
   /// price in the restriction.
   /// - "UNCATEGORIZED" : The reason is not categorized to any known reason.
+  /// - "INVALID_AUTO_PRICE_MIN" : The auto_pricing_min_price is invalid. For
+  /// example, it is missing or < 0.
+  /// - "INVALID_FLOOR_CONFIG" : The floor defined in the rule is invalid. For
+  /// example, it has the wrong sign which results in a floor < 0.
   core.String? inapplicableReason;
 
   InapplicabilityDetails();
@@ -11993,7 +12269,8 @@ class LinkService {
   /// Service provided to or by the linked account.
   ///
   /// Acceptable values are: - "`shoppingActionsOrderManagement`" -
-  /// "`shoppingActionsProductManagement`" - "`shoppingAdsProductManagement`"
+  /// "`shoppingActionsProductManagement`" - "`shoppingAdsProductManagement`" -
+  /// "`paymentProcessing`"
   core.String? service;
 
   /// Status of the link Acceptable values are: - "`active`" - "`inactive`" -
@@ -12866,8 +13143,9 @@ class Metrics {
   /// Number of clicks.
   core.String? clicks;
 
-  /// Number of clicks merchant's products receive (clicks) divided by the
-  /// number of times the products are shown (impressions).
+  /// Click-through rate - the number of clicks merchant's products receive
+  /// (clicks) divided by the number of times the products are shown
+  /// (impressions).
   core.double? ctr;
 
   /// Number of times merchant's products are shown.
@@ -14820,6 +15098,9 @@ class OrderTrackingSignal {
   /// The delivery postal code, as a continuous string without spaces or dashes,
   /// e.g. "95016".
   ///
+  /// This field will be anonymized in returned OrderTrackingSignal creation
+  /// response.
+  ///
   /// Required.
   core.String? deliveryPostalCode;
 
@@ -14849,6 +15130,9 @@ class OrderTrackingSignal {
   DateTime? orderCreatedTime;
 
   /// The ID of the order on the merchant side.
+  ///
+  /// This field will be hashed in returned OrderTrackingSignal creation
+  /// response.
   ///
   /// Required.
   core.String? orderId;
@@ -15005,6 +15289,9 @@ class OrderTrackingSignalShipmentLineItemMapping {
 
   /// The shipment ID.
   ///
+  /// This field will be hashed in returned OrderTrackingSignal creation
+  /// response.
+  ///
   /// Required.
   core.String? shipmentId;
 
@@ -15064,6 +15351,9 @@ class OrderTrackingSignalShippingInfo {
 
   /// The origin postal code, as a continuous string without spaces or dashes,
   /// e.g. "95016".
+  ///
+  /// This field will be anonymized in returned OrderTrackingSignal creation
+  /// response.
   core.String? originPostalCode;
 
   /// The
@@ -15072,6 +15362,9 @@ class OrderTrackingSignalShippingInfo {
   core.String? originRegionCode;
 
   /// The shipment ID.
+  ///
+  /// This field will be hashed in returned OrderTrackingSignal creation
+  /// response.
   ///
   /// Required.
   core.String? shipmentId;
@@ -15639,8 +15932,15 @@ class OrderreturnsCreateOrderReturnResponse {
 class OrderreturnsLineItem {
   /// The ID of the line item.
   ///
-  /// This value is assigned by Google when an order is created.
+  /// This value is assigned by Google when an order is created. Either
+  /// lineItemId or productId is required.
   core.String? lineItemId;
+
+  /// The ID of the product to cancel.
+  ///
+  /// This is the REST ID used in the products service. Either lineItemId or
+  /// productId is required.
+  core.String? productId;
 
   /// The quantity of this line item.
   core.int? quantity;
@@ -15651,6 +15951,9 @@ class OrderreturnsLineItem {
     if (_json.containsKey('lineItemId')) {
       lineItemId = _json['lineItemId'] as core.String;
     }
+    if (_json.containsKey('productId')) {
+      productId = _json['productId'] as core.String;
+    }
     if (_json.containsKey('quantity')) {
       quantity = _json['quantity'] as core.int;
     }
@@ -15658,6 +15961,7 @@ class OrderreturnsLineItem {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (lineItemId != null) 'lineItemId': lineItemId!,
+        if (productId != null) 'productId': productId!,
         if (quantity != null) 'quantity': quantity!,
       };
 }
@@ -17503,6 +17807,45 @@ class OrdersUpdateShipmentResponse {
       };
 }
 
+/// Request message for the PauseProgram method.
+class PauseBuyOnGoogleProgramRequest {
+  PauseBuyOnGoogleProgramRequest();
+
+  PauseBuyOnGoogleProgramRequest.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
+/// Additional information required for PAYMENT_SERVICE_PROVIDER link type.
+class PaymentServiceProviderLinkInfo {
+  /// The business country of the merchant account as identified by the third
+  /// party service provider.
+  core.String? externalAccountBusinessCountry;
+
+  /// The id used by the third party service provider to identify the merchant.
+  core.String? externalAccountId;
+
+  PaymentServiceProviderLinkInfo();
+
+  PaymentServiceProviderLinkInfo.fromJson(core.Map _json) {
+    if (_json.containsKey('externalAccountBusinessCountry')) {
+      externalAccountBusinessCountry =
+          _json['externalAccountBusinessCountry'] as core.String;
+    }
+    if (_json.containsKey('externalAccountId')) {
+      externalAccountId = _json['externalAccountId'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (externalAccountBusinessCountry != null)
+          'externalAccountBusinessCountry': externalAccountBusinessCountry!,
+        if (externalAccountId != null) 'externalAccountId': externalAccountId!,
+      };
+}
+
 class PickupCarrierService {
   /// The name of the pickup carrier (e.g., `"UPS"`).
   ///
@@ -18587,13 +18930,17 @@ class PriceAmount {
 /// specification.
 ///
 /// See the Products Data Specification Help Center article for information.
-/// Some attributes are country-specific, so make sure you select the
-/// appropriate country in the drop-down selector at the top of the page.
 /// Product data. After inserting, updating, or deleting a product, it may take
 /// several minutes before changes take effect.
 class Product {
   /// Additional URLs of images of the item.
   core.List<core.String>? additionalImageLinks;
+
+  /// Additional cut of the item.
+  ///
+  /// Used together with size_type to represent combined size types for apparel
+  /// items.
+  core.String? additionalSizeType;
 
   /// Used to group items in an arbitrary way.
   ///
@@ -18920,6 +19267,9 @@ class Product {
           .map<core.String>((value) => value as core.String)
           .toList();
     }
+    if (_json.containsKey('additionalSizeType')) {
+      additionalSizeType = _json['additionalSizeType'] as core.String;
+    }
     if (_json.containsKey('adsGrouping')) {
       adsGrouping = _json['adsGrouping'] as core.String;
     }
@@ -19208,6 +19558,8 @@ class Product {
   core.Map<core.String, core.dynamic> toJson() => {
         if (additionalImageLinks != null)
           'additionalImageLinks': additionalImageLinks!,
+        if (additionalSizeType != null)
+          'additionalSizeType': additionalSizeType!,
         if (adsGrouping != null) 'adsGrouping': adsGrouping!,
         if (adsLabels != null) 'adsLabels': adsLabels!,
         if (adsRedirect != null) 'adsRedirect': adsRedirect!,
@@ -19388,6 +19740,39 @@ class ProductShipping {
   /// in the AdWords API.
   core.String? locationId;
 
+  /// Maximum handling time (inclusive) between when the order is received and
+  /// shipped in business days.
+  ///
+  /// 0 means that the order is shipped on the same day as it is received if it
+  /// happens before the cut-off time. Both maxHandlingTime and maxTransitTime
+  /// are required if providing shipping speeds.
+  core.String? maxHandlingTime;
+
+  /// Maximum transit time (inclusive) between when the order has shipped and
+  /// when it is delivered in business days.
+  ///
+  /// 0 means that the order is delivered on the same day as it ships. Both
+  /// maxHandlingTime and maxTransitTime are required if providing shipping
+  /// speeds.
+  core.String? maxTransitTime;
+
+  /// Minimum handling time (inclusive) between when the order is received and
+  /// shipped in business days.
+  ///
+  /// 0 means that the order is shipped on the same day as it is received if it
+  /// happens before the cut-off time. minHandlingTime can only be present
+  /// together with maxHandlingTime; but it is not required if maxHandlingTime
+  /// is present.
+  core.String? minHandlingTime;
+
+  /// Minimum transit time (inclusive) between when the order has shipped and
+  /// when it is delivered in business days.
+  ///
+  /// 0 means that the order is delivered on the same day as it ships.
+  /// minTransitTime can only be present together with maxTransitTime; but it is
+  /// not required if maxTransitTime is present.
+  core.String? minTransitTime;
+
   /// The postal code range that the shipping rate applies to, represented by a
   /// postal code, a postal code prefix followed by a * wildcard, a range
   /// between two postal codes or two postal code prefixes of equal length.
@@ -19414,6 +19799,18 @@ class ProductShipping {
     if (_json.containsKey('locationId')) {
       locationId = _json['locationId'] as core.String;
     }
+    if (_json.containsKey('maxHandlingTime')) {
+      maxHandlingTime = _json['maxHandlingTime'] as core.String;
+    }
+    if (_json.containsKey('maxTransitTime')) {
+      maxTransitTime = _json['maxTransitTime'] as core.String;
+    }
+    if (_json.containsKey('minHandlingTime')) {
+      minHandlingTime = _json['minHandlingTime'] as core.String;
+    }
+    if (_json.containsKey('minTransitTime')) {
+      minTransitTime = _json['minTransitTime'] as core.String;
+    }
     if (_json.containsKey('postalCode')) {
       postalCode = _json['postalCode'] as core.String;
     }
@@ -19433,6 +19830,10 @@ class ProductShipping {
         if (country != null) 'country': country!,
         if (locationGroupName != null) 'locationGroupName': locationGroupName!,
         if (locationId != null) 'locationId': locationId!,
+        if (maxHandlingTime != null) 'maxHandlingTime': maxHandlingTime!,
+        if (maxTransitTime != null) 'maxTransitTime': maxTransitTime!,
+        if (minHandlingTime != null) 'minHandlingTime': minHandlingTime!,
+        if (minTransitTime != null) 'minTransitTime': minTransitTime!,
         if (postalCode != null) 'postalCode': postalCode!,
         if (price != null) 'price': price!.toJson(),
         if (region != null) 'region': region!,
@@ -19882,7 +20283,7 @@ class ProductsCustomBatchRequestEntry {
 
   /// The method of the batch entry.
   ///
-  /// Acceptable values are: - "`delete`" - "`get`" - "`insert`"
+  /// Acceptable values are: - "`delete`" - "`get`" - "`insert`" - "`update`"
   core.String? method;
 
   /// The product to insert.
@@ -19894,6 +20295,15 @@ class ProductsCustomBatchRequestEntry {
   ///
   /// Only defined if the method is `get` or `delete`.
   core.String? productId;
+
+  /// The list of product attributes to be updated.
+  ///
+  /// Attributes specified in the update mask without a value specified in the
+  /// body will be deleted from the product. Only top-level product attributes
+  /// can be updated. If not defined, product attributes with set values will be
+  /// updated and other attributes will stay unchanged. Only defined if the
+  /// method is `update`.
+  core.String? updateMask;
 
   ProductsCustomBatchRequestEntry();
 
@@ -19917,6 +20327,9 @@ class ProductsCustomBatchRequestEntry {
     if (_json.containsKey('productId')) {
       productId = _json['productId'] as core.String;
     }
+    if (_json.containsKey('updateMask')) {
+      updateMask = _json['updateMask'] as core.String;
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19926,6 +20339,7 @@ class ProductsCustomBatchRequestEntry {
         if (method != null) 'method': method!,
         if (product != null) 'product': product!.toJson(),
         if (productId != null) 'productId': productId!,
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -20850,7 +21264,7 @@ class RepricingProductReport {
   /// this product during this reporting period.
   core.String? applicationCount;
 
-  /// Stats specific to buybox winning rules for product report.
+  /// Stats specific to buybox winning rules for product report (deprecated).
   RepricingProductReportBuyboxWinningProductStats? buyboxWinningProductStats;
 
   /// Date of the stats in this report.
@@ -21305,7 +21719,7 @@ class RepricingRuleEligibleOfferMatcherStringMatcher {
 ///
 /// Next ID: 11
 class RepricingRuleReport {
-  /// Stats specific to buybox winning rules for rule report.
+  /// Stats specific to buybox winning rules for rule report (deprecated).
   RepricingRuleReportBuyboxWinningRuleStats? buyboxWinningRuleStats;
 
   /// Date of the stats in this report.
@@ -21552,6 +21966,17 @@ class RepricingRuleStatsBasedRule {
         if (percentageDelta != null) 'percentageDelta': percentageDelta!,
         if (priceDelta != null) 'priceDelta': priceDelta!,
       };
+}
+
+/// Request message for the RequestReviewProgram method.
+class RequestReviewBuyOnGoogleProgramRequest {
+  RequestReviewBuyOnGoogleProgramRequest();
+
+  RequestReviewBuyOnGoogleProgramRequest.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Return address resource.
@@ -22291,6 +22716,38 @@ class ReturnShipment {
       };
 }
 
+/// Return shipping label for a Buy on Google merchant-managed return.
+class ReturnShippingLabel {
+  /// Name of the carrier.
+  core.String? carrier;
+
+  /// The URL for the return shipping label in PDF format
+  core.String? labelUri;
+
+  /// The tracking id of this return label.
+  core.String? trackingId;
+
+  ReturnShippingLabel();
+
+  ReturnShippingLabel.fromJson(core.Map _json) {
+    if (_json.containsKey('carrier')) {
+      carrier = _json['carrier'] as core.String;
+    }
+    if (_json.containsKey('labelUri')) {
+      labelUri = _json['labelUri'] as core.String;
+    }
+    if (_json.containsKey('trackingId')) {
+      trackingId = _json['trackingId'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (carrier != null) 'carrier': carrier!,
+        if (labelUri != null) 'labelUri': labelUri!,
+        if (trackingId != null) 'trackingId': trackingId!,
+      };
+}
+
 class ReturnaddressCustomBatchRequest {
   /// The request entries to be processed in the batch.
   core.List<ReturnaddressCustomBatchRequestEntry>? entries;
@@ -22689,8 +23146,6 @@ class SearchRequest {
   /// Query that defines performance metrics to retrieve and dimensions
   /// according to which the metrics are to be segmented.
   ///
-  ///
-  ///
   /// Required.
   core.String? query;
 
@@ -23065,8 +23520,17 @@ class SettlementTransactionAmount {
   /// "`incorrectItemReceived`" - "`itemMissing`" - "`qualityNotExpected`" -
   /// "`receivedTooLate`" - "`storePackageMissing`" - "`transitPackageMissing`"
   /// - "`unsuccessfulDeliveryUndeliverable`" - "`wrongChargeInStore`" -
-  /// "`wrongItem`" - "`returns`" - "`undeliverable`" - "`refundFromMerchant`" -
-  /// "`returnLabelShippingFee`" - "`pspFee`"
+  /// "`wrongItem`" - "`returns`" - "`undeliverable`" -
+  /// "`issueRelatedRefundAndReplacementAmountDescription`" -
+  /// "`refundFromMerchant`" - "`returnLabelShippingFee`" -
+  /// "`lumpSumCorrection`" - "`pspFee`" - "`principalRefundDoesNotFit`" -
+  /// "`principalRefundOrderedWrongItem`" -
+  /// "`principalRefundQualityNotExpected`" -
+  /// "`principalRefundBetterPriceFound`" - "`principalRefundNoLongerNeeded`" -
+  /// "`principalRefundChangedMind`" - "`principalRefundReceivedTooLate`" -
+  /// "`principalRefundIncorrectItemReceived`" -
+  /// "`principalRefundDamagedOrDefectiveItem`" -
+  /// "`principalRefundDidNotMatchDescription`" - "`principalRefundExpiredItem`"
   core.String? description;
 
   /// The amount that contributes to the line item price.
@@ -23076,7 +23540,7 @@ class SettlementTransactionAmount {
   ///
   /// Acceptable values are: - "`itemPrice`" - "`orderPrice`" - "`refund`" -
   /// "`earlyRefund`" - "`courtesyRefund`" - "`returnRefund`" -
-  /// "`returnLabelShippingFeeAmount`"
+  /// "`returnLabelShippingFeeAmount`" - "`lumpSumCorrectionAmount`"
   core.String? type;
 
   SettlementTransactionAmount();
@@ -24669,6 +25133,88 @@ class Value {
         if (noShipping != null) 'noShipping': noShipping!,
         if (pricePercentage != null) 'pricePercentage': pricePercentage!,
         if (subtableName != null) 'subtableName': subtableName!,
+      };
+}
+
+class WarehouseBasedDeliveryTime {
+  /// Carrier, such as `"UPS"` or `"Fedex"`.
+  ///
+  /// The list of supported carriers can be retrieved via the
+  /// `listSupportedCarriers` method.
+  ///
+  /// Required.
+  core.String? carrier;
+
+  /// Carrier service, such as `"ground"` or `"2 days"`.
+  ///
+  /// The list of supported services for a carrier can be retrieved via the
+  /// `listSupportedCarriers` method. The name of the service must be in the
+  /// eddSupportedServices list.
+  ///
+  /// Required.
+  core.String? carrierService;
+
+  /// Shipping origin's state.
+  ///
+  /// Required.
+  core.String? originAdministrativeArea;
+
+  /// Shipping origin's city.
+  ///
+  /// Required.
+  core.String? originCity;
+
+  /// Shipping origin's country represented as a
+  /// [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml).
+  ///
+  /// Required.
+  core.String? originCountry;
+
+  /// Shipping origin.
+  ///
+  /// Required.
+  core.String? originPostalCode;
+
+  /// Shipping origin's street address.
+  core.String? originStreetAddress;
+
+  WarehouseBasedDeliveryTime();
+
+  WarehouseBasedDeliveryTime.fromJson(core.Map _json) {
+    if (_json.containsKey('carrier')) {
+      carrier = _json['carrier'] as core.String;
+    }
+    if (_json.containsKey('carrierService')) {
+      carrierService = _json['carrierService'] as core.String;
+    }
+    if (_json.containsKey('originAdministrativeArea')) {
+      originAdministrativeArea =
+          _json['originAdministrativeArea'] as core.String;
+    }
+    if (_json.containsKey('originCity')) {
+      originCity = _json['originCity'] as core.String;
+    }
+    if (_json.containsKey('originCountry')) {
+      originCountry = _json['originCountry'] as core.String;
+    }
+    if (_json.containsKey('originPostalCode')) {
+      originPostalCode = _json['originPostalCode'] as core.String;
+    }
+    if (_json.containsKey('originStreetAddress')) {
+      originStreetAddress = _json['originStreetAddress'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (carrier != null) 'carrier': carrier!,
+        if (carrierService != null) 'carrierService': carrierService!,
+        if (originAdministrativeArea != null)
+          'originAdministrativeArea': originAdministrativeArea!,
+        if (originCity != null) 'originCity': originCity!,
+        if (originCountry != null) 'originCountry': originCountry!,
+        if (originPostalCode != null) 'originPostalCode': originPostalCode!,
+        if (originStreetAddress != null)
+          'originStreetAddress': originStreetAddress!,
       };
 }
 

@@ -3,7 +3,7 @@
         "oauth2": {
             "scopes": {
                 "https://www.googleapis.com/auth/apps.groups.migration": {
-                    "description": "Manage messages in groups on your domain"
+                    "description": "Upload messages to any Google group in your domain"
                 }
             }
         }
@@ -144,7 +144,7 @@
             }
         }
     },
-    "revision": "20210223",
+    "revision": "20210513",
     "rootUrl": "https://groupsmigration.googleapis.com/",
     "schemas": {
         "Groups": {

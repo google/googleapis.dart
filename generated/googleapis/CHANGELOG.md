@@ -1,3 +1,24 @@
+## 3.0.0
+
+### API updates
+
+- `adsense` - added v2 API
+- `apikeys` - new!
+- `baremetalsolution` - new!
+- `chromepolicy` - new!
+- `datamigration` - new!
+- `documentai` - new!
+- `essentialcontacts` - new!
+- `genomics` - **REMOVED** - use the `lifesciences` API in `googleapis_beta`.
+- `gkehub` - new!
+- `mybusinesslodging` - new!
+- `mybusinessplaceactions` - new!
+- `ondemandscanning` - new!
+- `orgpolicy` - new!
+- `paymentsresellersubscription` - new!
+- `policysimulator` - new!
+- `recaptchaenterprise` - new!
+
 ## 2.0.0
 
 - APIs are now null-safe and require Dart 2.12.

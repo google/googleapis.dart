@@ -15,6 +15,8 @@
 /// Google Chat API - v1
 ///
 /// Enables bots to fetch information and perform actions in Google Chat.
+/// Authentication using a service account is a prerequisite for using the
+/// Google Chat REST API.
 ///
 /// For more information, see <https://developers.google.com/hangouts/chat>
 ///
@@ -52,6 +54,9 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
         ByteRange;
 
 /// Enables bots to fetch information and perform actions in Google Chat.
+///
+/// Authentication using a service account is a prerequisite for using the
+/// Google Chat REST API.
 class HangoutsChatApi {
   final commons.ApiRequester _requester;
 
@@ -854,8 +859,7 @@ class SpacesMessagesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name, in the form "spaces / * /messages / * ". Example:
-  /// spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
+  /// [name] - null
   /// Value must have pattern `^spaces/\[^/\]+/messages/\[^/\]+$`.
   ///
   /// [updateMask] - Required. The field paths to be updated, comma separated if
@@ -977,9 +981,11 @@ class ActionResponse {
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Default type; will be handled as NEW_MESSAGE.
   /// - "NEW_MESSAGE" : Post as a new message in the topic.
-  /// - "UPDATE_MESSAGE" : Update the bot's own message. (Only after
-  /// CARD_CLICKED events.)
-  /// - "REQUEST_CONFIG" : Privately ask the user for additional auth or config.
+  /// - "UPDATE_MESSAGE" : Update the bot's message. This is only permitted on a
+  /// CARD_CLICKED event where the message sender type is BOT.
+  /// - "REQUEST_CONFIG" : Update a message, with cards only. (Only after a
+  /// MESSAGE event with a matched url, or a CARD_CLICKED event on a human
+  /// created message).
   core.String? type;
 
   /// URL for users to auth or config.
@@ -1880,10 +1886,6 @@ class Message {
   /// A plain-text description of the message's cards, used when the actual
   /// cards cannot be displayed (e.g. mobile notifications).
   core.String? fallbackText;
-
-  /// Resource name, in the form "spaces / * /messages / * ".
-  ///
-  /// Example: spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
   core.String? name;
 
   /// Text for generating preview chips.
@@ -2067,7 +2069,7 @@ class Section {
       };
 }
 
-/// A Slash Command in Hangouts Chat.
+/// A Slash Command in Chat.
 class SlashCommand {
   /// The id of the slash command invoked.
   core.String? commandId;
@@ -2262,7 +2264,7 @@ class Thread {
       };
 }
 
-/// A user in Hangouts Chat.
+/// A user in Google Chat.
 class User {
   /// The user's display name.
   core.String? displayName;
@@ -2270,7 +2272,7 @@ class User {
   /// Obfuscated domain information.
   core.String? domainId;
 
-  /// True when the user is deleted or the user's proifle is not visible.
+  /// True when the user is deleted or the user's profile is not visible.
   core.bool? isAnonymous;
 
   /// Resource name, in the format "users / * ".

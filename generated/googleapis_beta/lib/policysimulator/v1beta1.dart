@@ -64,7 +64,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// results to determine how your members' access might change under the
 /// proposed policy.
 class PolicySimulatorApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -717,6 +717,193 @@ class ProjectsLocationsReplaysResultsResource {
     return GoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
+}
+
+/// A resource describing a `Replay`, or simulation.
+class GoogleCloudPolicysimulatorV1Replay {
+  /// The configuration used for the `Replay`.
+  ///
+  /// Required.
+  GoogleCloudPolicysimulatorV1ReplayConfig? config;
+
+  /// The resource name of the `Replay`, which has the following format:
+  /// `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`,
+  /// where `{resource-id}` is the ID of the project, folder, or organization
+  /// that owns the Replay.
+  ///
+  /// Example:
+  /// `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Summary statistics about the replayed log entries.
+  ///
+  /// Output only.
+  GoogleCloudPolicysimulatorV1ReplayResultsSummary? resultsSummary;
+
+  /// The current state of the `Replay`.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The state is unspecified.
+  /// - "PENDING" : The `Replay` has not started yet.
+  /// - "RUNNING" : The `Replay` is currently running.
+  /// - "SUCCEEDED" : The `Replay` has successfully completed.
+  /// - "FAILED" : The `Replay` has finished with an error.
+  core.String? state;
+
+  GoogleCloudPolicysimulatorV1Replay();
+
+  GoogleCloudPolicysimulatorV1Replay.fromJson(core.Map _json) {
+    if (_json.containsKey('config')) {
+      config = GoogleCloudPolicysimulatorV1ReplayConfig.fromJson(
+          _json['config'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('resultsSummary')) {
+      resultsSummary =
+          GoogleCloudPolicysimulatorV1ReplayResultsSummary.fromJson(
+              _json['resultsSummary'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('state')) {
+      state = _json['state'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (config != null) 'config': config!.toJson(),
+        if (name != null) 'name': name!,
+        if (resultsSummary != null) 'resultsSummary': resultsSummary!.toJson(),
+        if (state != null) 'state': state!,
+      };
+}
+
+/// The configuration used for a Replay.
+class GoogleCloudPolicysimulatorV1ReplayConfig {
+  /// The logs to use as input for the Replay.
+  /// Possible string values are:
+  /// - "LOG_SOURCE_UNSPECIFIED" : An unspecified log source. If the log source
+  /// is unspecified, the Replay defaults to using `RECENT_ACCESSES`.
+  /// - "RECENT_ACCESSES" : All access logs from the last 90 days. These logs
+  /// may not include logs from the most recent 7 days.
+  core.String? logSource;
+
+  /// A mapping of the resources that you want to simulate policies for and the
+  /// policies that you want to simulate.
+  ///
+  /// Keys are the full resource names for the resources. For example,
+  /// `//cloudresourcemanager.googleapis.com/projects/my-project`. For examples
+  /// of full resource names for Google Cloud services, see
+  /// https://cloud.google.com/iam/help/troubleshooter/full-resource-names.
+  /// Values are Policy objects representing the policies that you want to
+  /// simulate. Replays automatically take into account any IAM policies
+  /// inherited through the resource hierarchy, and any policies set on
+  /// descendant resources. You do not need to include these policies in the
+  /// policy overlay.
+  core.Map<core.String, GoogleIamV1Policy>? policyOverlay;
+
+  GoogleCloudPolicysimulatorV1ReplayConfig();
+
+  GoogleCloudPolicysimulatorV1ReplayConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('logSource')) {
+      logSource = _json['logSource'] as core.String;
+    }
+    if (_json.containsKey('policyOverlay')) {
+      policyOverlay =
+          (_json['policyOverlay'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          GoogleIamV1Policy.fromJson(
+              item as core.Map<core.String, core.dynamic>),
+        ),
+      );
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (logSource != null) 'logSource': logSource!,
+        if (policyOverlay != null)
+          'policyOverlay': policyOverlay!
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+      };
+}
+
+/// Metadata about a Replay operation.
+class GoogleCloudPolicysimulatorV1ReplayOperationMetadata {
+  /// Time when the request was received.
+  core.String? startTime;
+
+  GoogleCloudPolicysimulatorV1ReplayOperationMetadata();
+
+  GoogleCloudPolicysimulatorV1ReplayOperationMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (startTime != null) 'startTime': startTime!,
+      };
+}
+
+/// Summary statistics about the replayed log entries.
+class GoogleCloudPolicysimulatorV1ReplayResultsSummary {
+  /// The number of replayed log entries with a difference between baseline and
+  /// simulated policies.
+  core.int? differenceCount;
+
+  /// The number of log entries that could not be replayed.
+  core.int? errorCount;
+
+  /// The total number of log entries replayed.
+  core.int? logCount;
+
+  /// The date of the newest log entry replayed.
+  GoogleTypeDate? newestDate;
+
+  /// The date of the oldest log entry replayed.
+  GoogleTypeDate? oldestDate;
+
+  /// The number of replayed log entries with no difference between baseline and
+  /// simulated policies.
+  core.int? unchangedCount;
+
+  GoogleCloudPolicysimulatorV1ReplayResultsSummary();
+
+  GoogleCloudPolicysimulatorV1ReplayResultsSummary.fromJson(core.Map _json) {
+    if (_json.containsKey('differenceCount')) {
+      differenceCount = _json['differenceCount'] as core.int;
+    }
+    if (_json.containsKey('errorCount')) {
+      errorCount = _json['errorCount'] as core.int;
+    }
+    if (_json.containsKey('logCount')) {
+      logCount = _json['logCount'] as core.int;
+    }
+    if (_json.containsKey('newestDate')) {
+      newestDate = GoogleTypeDate.fromJson(
+          _json['newestDate'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('oldestDate')) {
+      oldestDate = GoogleTypeDate.fromJson(
+          _json['oldestDate'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('unchangedCount')) {
+      unchangedCount = _json['unchangedCount'] as core.int;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (differenceCount != null) 'differenceCount': differenceCount!,
+        if (errorCount != null) 'errorCount': errorCount!,
+        if (logCount != null) 'logCount': logCount!,
+        if (newestDate != null) 'newestDate': newestDate!.toJson(),
+        if (oldestDate != null) 'oldestDate': oldestDate!.toJson(),
+        if (unchangedCount != null) 'unchangedCount': unchangedCount!,
+      };
 }
 
 /// A summary and comparison of the member's access under the current (baseline)

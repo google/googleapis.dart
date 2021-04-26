@@ -469,12 +469,6 @@
                                         "datasetId"
                                     ],
                                     "parameters": {
-                                        "currentTimeMillis": {
-                                            "description": "The client's current time in milliseconds since epoch.",
-                                            "format": "int64",
-                                            "location": "query",
-                                            "type": "string"
-                                        },
                                         "dataSourceId": {
                                             "description": "The data stream ID of the data source that created the dataset.",
                                             "location": "path",
@@ -485,12 +479,6 @@
                                             "description": "Dataset identifier that is a composite of the minimum data point start time and maximum data point end time represented as nanoseconds from the epoch. The ID is formatted like: \"startTime-endTime\" where startTime and endTime are 64 bit integers.",
                                             "location": "path",
                                             "required": true,
-                                            "type": "string"
-                                        },
-                                        "modifiedTimeMillis": {
-                                            "description": "When the operation was performed on the client.",
-                                            "format": "int64",
-                                            "location": "query",
                                             "type": "string"
                                         },
                                         "userId": {
@@ -594,12 +582,6 @@
                                         "datasetId"
                                     ],
                                     "parameters": {
-                                        "currentTimeMillis": {
-                                            "description": "The client's current time in milliseconds since epoch. Note that the minStartTimeNs and maxEndTimeNs properties in the request body are in nanoseconds instead of milliseconds.",
-                                            "format": "int64",
-                                            "location": "query",
-                                            "type": "string"
-                                        },
                                         "dataSourceId": {
                                             "description": "The data stream ID of the data source that created the dataset.",
                                             "location": "path",
@@ -706,12 +688,6 @@
                                 "sessionId"
                             ],
                             "parameters": {
-                                "currentTimeMillis": {
-                                    "description": "The client's current time in milliseconds since epoch.",
-                                    "format": "int64",
-                                    "location": "query",
-                                    "type": "string"
-                                },
                                 "sessionId": {
                                     "description": "The ID of the session to be deleted.",
                                     "location": "path",
@@ -811,12 +787,6 @@
                                 "sessionId"
                             ],
                             "parameters": {
-                                "currentTimeMillis": {
-                                    "description": "The client's current time in milliseconds since epoch.",
-                                    "format": "int64",
-                                    "location": "query",
-                                    "type": "string"
-                                },
                                 "sessionId": {
                                     "description": "The ID of the session to be created.",
                                     "location": "path",
@@ -847,7 +817,7 @@
             }
         }
     },
-    "revision": "20210224",
+    "revision": "20210517",
     "rootUrl": "https://fitness.googleapis.com/",
     "schemas": {
         "AggregateBucket": {

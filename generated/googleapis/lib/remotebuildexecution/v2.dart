@@ -42,7 +42,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Supplies a Remote Execution API service for tools such as bazel.
 class RemoteBuildExecutionApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -1254,6 +1254,13 @@ class BuildBazelRemoteExecutionV2CacheCapabilities {
   /// be a message size limitation of the protocol in use, e.g. GRPC.
   core.String? maxBatchTotalSizeBytes;
 
+  /// Compressors supported by the "compressed-blobs" bytestream resources.
+  ///
+  /// Servers MUST support identity/no-compression, even if it is not listed
+  /// here. Note that this does not imply which if any compressors are supported
+  /// by the server at the gRPC level.
+  core.List<core.String>? supportedCompressor;
+
   /// Whether absolute symlink targets are supported.
   /// Possible string values are:
   /// - "UNKNOWN" : Invalid value.
@@ -1287,6 +1294,11 @@ class BuildBazelRemoteExecutionV2CacheCapabilities {
     if (_json.containsKey('maxBatchTotalSizeBytes')) {
       maxBatchTotalSizeBytes = _json['maxBatchTotalSizeBytes'] as core.String;
     }
+    if (_json.containsKey('supportedCompressor')) {
+      supportedCompressor = (_json['supportedCompressor'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
     if (_json.containsKey('symlinkAbsolutePathStrategy')) {
       symlinkAbsolutePathStrategy =
           _json['symlinkAbsolutePathStrategy'] as core.String;
@@ -1302,6 +1314,8 @@ class BuildBazelRemoteExecutionV2CacheCapabilities {
         if (digestFunction != null) 'digestFunction': digestFunction!,
         if (maxBatchTotalSizeBytes != null)
           'maxBatchTotalSizeBytes': maxBatchTotalSizeBytes!,
+        if (supportedCompressor != null)
+          'supportedCompressor': supportedCompressor!,
         if (symlinkAbsolutePathStrategy != null)
           'symlinkAbsolutePathStrategy': symlinkAbsolutePathStrategy!,
       };
@@ -2576,11 +2590,32 @@ class BuildBazelRemoteExecutionV2RequestMetadata {
   /// are used in order to compile foo.cc.
   core.String? actionId;
 
+  /// A brief description of the kind of action, for example, CppCompile or
+  /// GoLink.
+  ///
+  /// There is no standard agreed set of values for this, and they are expected
+  /// to vary between different client tools.
+  core.String? actionMnemonic;
+
+  /// An identifier for the configuration in which the target was built, e.g.
+  /// for differentiating building host tools or different target platforms.
+  ///
+  /// There is no expectation that this value will have any particular
+  /// structure, or equality across invocations, though some client tools may
+  /// offer these guarantees.
+  core.String? configurationId;
+
   /// An identifier to tie multiple tool invocations together.
   ///
   /// For example, runs of foo_test, bar_test and baz_test on a post-submit of a
   /// given patch.
   core.String? correlatedInvocationsId;
+
+  /// An identifier for the target which produced this action.
+  ///
+  /// No guarantees are made around how many actions may relate to a single
+  /// target.
+  core.String? targetId;
 
   /// The details for the tool invoking the requests.
   BuildBazelRemoteExecutionV2ToolDetails? toolDetails;
@@ -2596,8 +2631,17 @@ class BuildBazelRemoteExecutionV2RequestMetadata {
     if (_json.containsKey('actionId')) {
       actionId = _json['actionId'] as core.String;
     }
+    if (_json.containsKey('actionMnemonic')) {
+      actionMnemonic = _json['actionMnemonic'] as core.String;
+    }
+    if (_json.containsKey('configurationId')) {
+      configurationId = _json['configurationId'] as core.String;
+    }
     if (_json.containsKey('correlatedInvocationsId')) {
       correlatedInvocationsId = _json['correlatedInvocationsId'] as core.String;
+    }
+    if (_json.containsKey('targetId')) {
+      targetId = _json['targetId'] as core.String;
     }
     if (_json.containsKey('toolDetails')) {
       toolDetails = BuildBazelRemoteExecutionV2ToolDetails.fromJson(
@@ -2610,8 +2654,11 @@ class BuildBazelRemoteExecutionV2RequestMetadata {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (actionId != null) 'actionId': actionId!,
+        if (actionMnemonic != null) 'actionMnemonic': actionMnemonic!,
+        if (configurationId != null) 'configurationId': configurationId!,
         if (correlatedInvocationsId != null)
           'correlatedInvocationsId': correlatedInvocationsId!,
+        if (targetId != null) 'targetId': targetId!,
         if (toolDetails != null) 'toolDetails': toolDetails!.toJson(),
         if (toolInvocationId != null) 'toolInvocationId': toolInvocationId!,
       };
@@ -2968,12 +3015,15 @@ class GoogleDevtoolsRemotebuildbotCommandDurations {
 class GoogleDevtoolsRemotebuildbotCommandEvents {
   /// Indicates if and how Container Manager is being used for task execution.
   /// Possible string values are:
-  /// - "NONE" : Container Manager is disabled or not running for this
+  /// - "CONFIG_NONE" : Container Manager is disabled or not running for this
   /// execution.
   /// - "CONFIG_MATCH" : Container Manager is enabled and there was a matching
   /// container available for use during execution.
   /// - "CONFIG_MISMATCH" : Container Manager is enabled, but there was no
   /// matching container available for execution.
+  /// - "CONFIG_MISSING_CONTAINER" : Container Manager is enabled and we
+  /// attempted to execute on a matching container, but the container was no
+  /// longer running. The task was retried without an async container.
   core.String? cmUsage;
 
   /// Indicates whether we are using a cached Docker image (true) or had to pull
@@ -2991,6 +3041,38 @@ class GoogleDevtoolsRemotebuildbotCommandEvents {
 
   /// The number of warnings reported.
   core.String? numWarnings;
+
+  /// Indicates whether output files and/or output directories were found
+  /// relative to the execution root or to the user provided work directory or
+  /// both or none.
+  /// Possible string values are:
+  /// - "LOCATION_UNDEFINED" : Location is set to LOCATION_UNDEFINED for tasks
+  /// where the working directorty is not specified or is identical to the
+  /// execution root directory.
+  /// - "LOCATION_NONE" : No output files or directories were found neither
+  /// relative to the execution root directory nor relative to the working
+  /// directory.
+  /// - "LOCATION_EXEC_ROOT_RELATIVE" : Output files or directories were found
+  /// relative to the execution root directory but not relative to the working
+  /// directory.
+  /// - "LOCATION_WORKING_DIR_RELATIVE" : Output files or directories were found
+  /// relative to the working directory but not relative to the execution root
+  /// directory.
+  /// - "LOCATION_EXEC_ROOT_AND_WORKING_DIR_RELATIVE" : Output files or
+  /// directories were found both relative to the execution root directory and
+  /// relative to the working directory.
+  /// - "LOCATION_EXEC_ROOT_RELATIVE_OUTPUT_OUTSIDE_WORKING_DIR" : Output files
+  /// or directories were found relative to the execution root directory but not
+  /// relative to the working directory. In addition at least one output file or
+  /// directory was found outside of the working directory such that a
+  /// working-directory-relative-path would have needed to start with a `..`.
+  /// - "LOCATION_EXEC_ROOT_AND_WORKING_DIR_RELATIVE_OUTPUT_OUTSIDE_WORKING_DIR"
+  /// : Output files or directories were found both relative to the execution
+  /// root directory and relative to the working directory. In addition at least
+  /// one exec-root-relative output file or directory was found outside of the
+  /// working directory such that a working-directory-relative-path would have
+  /// needed to start with a `..`.
+  core.String? outputLocation;
 
   /// Indicates whether an asynchronous container was used for execution.
   core.bool? usedAsyncContainer;
@@ -3016,6 +3098,9 @@ class GoogleDevtoolsRemotebuildbotCommandEvents {
     if (_json.containsKey('numWarnings')) {
       numWarnings = _json['numWarnings'] as core.String;
     }
+    if (_json.containsKey('outputLocation')) {
+      outputLocation = _json['outputLocation'] as core.String;
+    }
     if (_json.containsKey('usedAsyncContainer')) {
       usedAsyncContainer = _json['usedAsyncContainer'] as core.bool;
     }
@@ -3028,6 +3113,7 @@ class GoogleDevtoolsRemotebuildbotCommandEvents {
         if (inputCacheMiss != null) 'inputCacheMiss': inputCacheMiss!,
         if (numErrors != null) 'numErrors': numErrors!,
         if (numWarnings != null) 'numWarnings': numWarnings!,
+        if (outputLocation != null) 'outputLocation': outputLocation!,
         if (usedAsyncContainer != null)
           'usedAsyncContainer': usedAsyncContainer!,
       };
@@ -3100,6 +3186,12 @@ class GoogleDevtoolsRemotebuildbotCommandStatus {
   /// overlay mount because of too many levels of symbolic links.
   /// - "LOCAL_CONTAINER_MANAGER_NOT_RUNNING" : The local Container Manager is
   /// not running.
+  /// - "DOCKER_IMAGE_VPCSC_PERMISSION_DENIED" : Docker failed because a request
+  /// was denied by the organization's policy.
+  /// - "WORKING_DIR_NOT_RELATIVE" : Working directory is not relative
+  /// - "DOCKER_MISSING_CONTAINER" : Docker cannot find the container specified
+  /// in the command. This error is likely to only occur if an asynchronous
+  /// container is not running when the command is run.
   core.String? code;
 
   /// The error message.
@@ -3127,6 +3219,7 @@ class GoogleDevtoolsRemotebuildbotResourceUsage {
   core.double? cpuUsedPercent;
   GoogleDevtoolsRemotebuildbotResourceUsageStat? diskUsage;
   GoogleDevtoolsRemotebuildbotResourceUsageStat? memoryUsage;
+  GoogleDevtoolsRemotebuildbotResourceUsageIOStats? totalDiskIoStats;
 
   GoogleDevtoolsRemotebuildbotResourceUsage();
 
@@ -3142,12 +3235,60 @@ class GoogleDevtoolsRemotebuildbotResourceUsage {
       memoryUsage = GoogleDevtoolsRemotebuildbotResourceUsageStat.fromJson(
           _json['memoryUsage'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('totalDiskIoStats')) {
+      totalDiskIoStats =
+          GoogleDevtoolsRemotebuildbotResourceUsageIOStats.fromJson(
+              _json['totalDiskIoStats'] as core.Map<core.String, core.dynamic>);
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cpuUsedPercent != null) 'cpuUsedPercent': cpuUsedPercent!,
         if (diskUsage != null) 'diskUsage': diskUsage!.toJson(),
         if (memoryUsage != null) 'memoryUsage': memoryUsage!.toJson(),
+        if (totalDiskIoStats != null)
+          'totalDiskIoStats': totalDiskIoStats!.toJson(),
+      };
+}
+
+class GoogleDevtoolsRemotebuildbotResourceUsageIOStats {
+  core.String? readBytesCount;
+  core.String? readCount;
+  core.String? readTimeMs;
+  core.String? writeBytesCount;
+  core.String? writeCount;
+  core.String? writeTimeMs;
+
+  GoogleDevtoolsRemotebuildbotResourceUsageIOStats();
+
+  GoogleDevtoolsRemotebuildbotResourceUsageIOStats.fromJson(core.Map _json) {
+    if (_json.containsKey('readBytesCount')) {
+      readBytesCount = _json['readBytesCount'] as core.String;
+    }
+    if (_json.containsKey('readCount')) {
+      readCount = _json['readCount'] as core.String;
+    }
+    if (_json.containsKey('readTimeMs')) {
+      readTimeMs = _json['readTimeMs'] as core.String;
+    }
+    if (_json.containsKey('writeBytesCount')) {
+      writeBytesCount = _json['writeBytesCount'] as core.String;
+    }
+    if (_json.containsKey('writeCount')) {
+      writeCount = _json['writeCount'] as core.String;
+    }
+    if (_json.containsKey('writeTimeMs')) {
+      writeTimeMs = _json['writeTimeMs'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (readBytesCount != null) 'readBytesCount': readBytesCount!,
+        if (readCount != null) 'readCount': readCount!,
+        if (readTimeMs != null) 'readTimeMs': readTimeMs!,
+        if (writeBytesCount != null) 'writeBytesCount': writeBytesCount!,
+        if (writeCount != null) 'writeCount': writeCount!,
+        if (writeTimeMs != null) 'writeTimeMs': writeTimeMs!,
       };
 }
 

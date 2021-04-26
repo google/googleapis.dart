@@ -74,7 +74,7 @@ class BigtableAdminApi {
   static const cloudBigtableAdminTableScope =
       'https://www.googleapis.com/auth/cloud-bigtable.admin.table';
 
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -1128,7 +1128,58 @@ class ProjectsInstancesClustersResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Partially updates a cluster within a project.
+  ///
+  /// This method is the preferred way to update a Cluster.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The unique name of the cluster. Values are of the form
+  /// `projects/{project}/instances/{instance}/clusters/a-z*`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/clusters/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The subset of Cluster fields which should be
+  /// replaced. Must be explicitly set.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> partialUpdateCluster(
+    Cluster request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Updates a cluster within an instance.
+  ///
+  /// UpdateCluster is deprecated. Please use PartialUpdateCluster instead.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1840,6 +1891,8 @@ class ProjectsInstancesTablesResource {
   /// schema.
   /// - "REPLICATION_VIEW" : Only populates `name` and fields related to the
   /// table's replication state.
+  /// - "ENCRYPTION_VIEW" : Only populates `name` and fields related to the
+  /// table's encryption state.
   /// - "FULL" : Populates all fields.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1947,6 +2000,8 @@ class ProjectsInstancesTablesResource {
   /// schema.
   /// - "REPLICATION_VIEW" : Only populates `name` and fields related to the
   /// table's replication state.
+  /// - "ENCRYPTION_VIEW" : Only populates `name` and fields related to the
+  /// table's encryption state.
   /// - "FULL" : Populates all fields.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2216,11 +2271,15 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [filter] - The standard list filter.
+  /// [filter] - A filter to narrow down results to a preferred subset. The
+  /// filtering language accepts strings like "displayName=tokyo", and is
+  /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
   ///
-  /// [pageSize] - The standard list page size.
+  /// [pageSize] - The maximum number of results to return. If not set, the
+  /// service selects a default.
   ///
-  /// [pageToken] - The standard list page token.
+  /// [pageToken] - A page token received from the `next_page_token` field in
+  /// the response. Send that page token to receive the subsequent page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2412,6 +2471,11 @@ class AuditLogConfig {
 
 /// A backup of a Cloud Bigtable table.
 class Backup {
+  /// The encryption information for the backup.
+  ///
+  /// Output only.
+  EncryptionInfo? encryptionInfo;
+
   /// `end_time` is the time that the backup was finished.
   ///
   /// The row data in the backup will be no newer than this timestamp.
@@ -2473,6 +2537,10 @@ class Backup {
   Backup();
 
   Backup.fromJson(core.Map _json) {
+    if (_json.containsKey('encryptionInfo')) {
+      encryptionInfo = EncryptionInfo.fromJson(
+          _json['encryptionInfo'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('endTime')) {
       endTime = _json['endTime'] as core.String;
     }
@@ -2497,6 +2565,7 @@ class Backup {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (encryptionInfo != null) 'encryptionInfo': encryptionInfo!.toJson(),
         if (endTime != null) 'endTime': endTime!,
         if (expireTime != null) 'expireTime': expireTime!,
         if (name != null) 'name': name!,
@@ -2687,6 +2756,11 @@ class Cluster {
   /// - "HDD" : Magnetic drive (HDD) storage should be used.
   core.String? defaultStorageType;
 
+  /// The encryption configuration for CMEK-protected clusters.
+  ///
+  /// Immutable.
+  EncryptionConfig? encryptionConfig;
+
   /// The location where this cluster's nodes and storage reside.
   ///
   /// For best performance, clients should be located as close as possible to
@@ -2734,6 +2808,10 @@ class Cluster {
     if (_json.containsKey('defaultStorageType')) {
       defaultStorageType = _json['defaultStorageType'] as core.String;
     }
+    if (_json.containsKey('encryptionConfig')) {
+      encryptionConfig = EncryptionConfig.fromJson(
+          _json['encryptionConfig'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('location')) {
       location = _json['location'] as core.String;
     }
@@ -2751,6 +2829,8 @@ class Cluster {
   core.Map<core.String, core.dynamic> toJson() => {
         if (defaultStorageType != null)
           'defaultStorageType': defaultStorageType!,
+        if (encryptionConfig != null)
+          'encryptionConfig': encryptionConfig!.toJson(),
         if (location != null) 'location': location!,
         if (name != null) 'name': name!,
         if (serveNodes != null) 'serveNodes': serveNodes!,
@@ -2760,6 +2840,16 @@ class Cluster {
 
 /// The state of a table's data in a particular cluster.
 class ClusterState {
+  /// The encryption information for the table in this cluster.
+  ///
+  /// If the encryption key protecting this resource is customer managed, then
+  /// its version can be rotated in Cloud Key Management Service (Cloud KMS).
+  /// The primary version of the key and its status will be reflected here when
+  /// changes propagate from Cloud KMS.
+  ///
+  /// Output only.
+  core.List<EncryptionInfo>? encryptionInfo;
+
   /// The state of replication for the table in this cluster.
   ///
   /// Output only.
@@ -2784,12 +2874,21 @@ class ClusterState {
   ClusterState();
 
   ClusterState.fromJson(core.Map _json) {
+    if (_json.containsKey('encryptionInfo')) {
+      encryptionInfo = (_json['encryptionInfo'] as core.List)
+          .map<EncryptionInfo>((value) => EncryptionInfo.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
     if (_json.containsKey('replicationState')) {
       replicationState = _json['replicationState'] as core.String;
     }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (encryptionInfo != null)
+          'encryptionInfo':
+              encryptionInfo!.map((value) => value.toJson()).toList(),
         if (replicationState != null) 'replicationState': replicationState!,
       };
 }
@@ -3162,6 +3261,93 @@ class Empty {
       core.Map _json);
 
   core.Map<core.String, core.dynamic> toJson() => {};
+}
+
+/// Cloud Key Management Service (Cloud KMS) settings for a CMEK-protected
+/// cluster.
+class EncryptionConfig {
+  /// Describes the Cloud KMS encryption key that will be used to protect the
+  /// destination Bigtable cluster.
+  ///
+  /// The requirements for this key are: 1) The Cloud Bigtable service account
+  /// associated with the project that contains this cluster must be granted the
+  /// `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only
+  /// regional keys can be used and the region of the CMEK key must match the
+  /// region of the cluster. 3) All clusters within an instance must use the
+  /// same CMEK key. Values are of the form
+  /// `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
+  core.String? kmsKeyName;
+
+  EncryptionConfig();
+
+  EncryptionConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('kmsKeyName')) {
+      kmsKeyName = _json['kmsKeyName'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+      };
+}
+
+/// Encryption information for a given resource.
+///
+/// If this resource is protected with customer managed encryption, the in-use
+/// Cloud Key Management Service (Cloud KMS) key version is specified along with
+/// its status.
+class EncryptionInfo {
+  /// The status of encrypt/decrypt calls on underlying data for this resource.
+  ///
+  /// Regardless of status, the existing data is always encrypted at rest.
+  ///
+  /// Output only.
+  Status? encryptionStatus;
+
+  /// The type of encryption used to protect this resource.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ENCRYPTION_TYPE_UNSPECIFIED" : Encryption type was not specified,
+  /// though data at rest remains encrypted.
+  /// - "GOOGLE_DEFAULT_ENCRYPTION" : The data backing this resource is
+  /// encrypted at rest with a key that is fully managed by Google. No key
+  /// version or status will be populated. This is the default state.
+  /// - "CUSTOMER_MANAGED_ENCRYPTION" : The data backing this resource is
+  /// encrypted at rest with a key that is managed by the customer. The in-use
+  /// version of the key and its status are populated for CMEK-protected tables.
+  /// CMEK-protected backups are pinned to the key version that was in use at
+  /// the time the backup was taken. This key version is populated but its
+  /// status is not tracked and is reported as `UNKNOWN`.
+  core.String? encryptionType;
+
+  /// The version of the Cloud KMS key specified in the parent cluster that is
+  /// in use for the data underlying this table.
+  ///
+  /// Output only.
+  core.String? kmsKeyVersion;
+
+  EncryptionInfo();
+
+  EncryptionInfo.fromJson(core.Map _json) {
+    if (_json.containsKey('encryptionStatus')) {
+      encryptionStatus = Status.fromJson(
+          _json['encryptionStatus'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('encryptionType')) {
+      encryptionType = _json['encryptionType'] as core.String;
+    }
+    if (_json.containsKey('kmsKeyVersion')) {
+      kmsKeyVersion = _json['kmsKeyVersion'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (encryptionStatus != null)
+          'encryptionStatus': encryptionStatus!.toJson(),
+        if (encryptionType != null) 'encryptionType': encryptionType!,
+        if (kmsKeyVersion != null) 'kmsKeyVersion': kmsKeyVersion!,
+      };
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -4499,7 +4685,7 @@ class Table {
   /// If it could not be determined whether or not the table has data in a
   /// particular cluster (for example, if its zone is unavailable), then there
   /// will be an entry for the cluster with UNKNOWN `replication_status`. Views:
-  /// `REPLICATION_VIEW`, `FULL`
+  /// `REPLICATION_VIEW`, `ENCRYPTION_VIEW`, `FULL`
   ///
   /// Output only.
   core.Map<core.String, ClusterState>? clusterStates;

@@ -82,11 +82,11 @@ class GmailApi {
   static const gmailComposeScope =
       'https://www.googleapis.com/auth/gmail.compose';
 
-  /// Insert mail into your mailbox
+  /// Add emails into your Gmail mailbox
   static const gmailInsertScope =
       'https://www.googleapis.com/auth/gmail.insert';
 
-  /// Manage mailbox labels
+  /// See and edit your email labels
   static const gmailLabelsScope =
       'https://www.googleapis.com/auth/gmail.labels';
 
@@ -95,7 +95,7 @@ class GmailApi {
   static const gmailMetadataScope =
       'https://www.googleapis.com/auth/gmail.metadata';
 
-  /// View and modify but not delete your email
+  /// Read, compose, and send emails from your Gmail account
   static const gmailModifyScope =
       'https://www.googleapis.com/auth/gmail.modify';
 
@@ -106,7 +106,7 @@ class GmailApi {
   /// Send email on your behalf
   static const gmailSendScope = 'https://www.googleapis.com/auth/gmail.send';
 
-  /// Manage your basic mail settings
+  /// See, edit, create, or change your email settings and filters in Gmail
   static const gmailSettingsBasicScope =
       'https://www.googleapis.com/auth/gmail.settings.basic';
 
@@ -4957,6 +4957,8 @@ class SendAs {
 
   /// An optional HTML signature that is included in messages composed with this
   /// alias in the Gmail web UI.
+  ///
+  /// This signature is added to new emails only.
   core.String? signature;
 
   /// An optional SMTP service that will be used as an outbound relay for mail

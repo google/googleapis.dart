@@ -43,7 +43,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Service Directory is a platform for discovering, publishing, and connecting
 /// services.
 class ServiceDirectoryApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -117,11 +117,15 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [filter] - The standard list filter.
+  /// [filter] - A filter to narrow down results to a preferred subset. The
+  /// filtering language accepts strings like "displayName=tokyo", and is
+  /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
   ///
-  /// [pageSize] - The standard list page size.
+  /// [pageSize] - The maximum number of results to return. If not set, the
+  /// service selects a default.
   ///
-  /// [pageToken] - The standard list page token.
+  /// [pageToken] - A page token received from the `next_page_token` field in
+  /// the response. Send that page token to receive the subsequent page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1929,8 +1933,8 @@ class Service {
   /// Annotations for the service.
   ///
   /// This data can be consumed by service clients. Restrictions: * The entire
-  /// annotations dictionary may contain up to 512 characters, spread accoss all
-  /// key-value pairs. Annotations that go beyond this limit are rejected *
+  /// annotations dictionary may contain up to 2000 characters, spread accoss
+  /// all key-value pairs. Annotations that go beyond this limit are rejected *
   /// Valid annotation keys have two segments: an optional prefix and name,
   /// separated by a slash (/). The name segment is required and must be 63
   /// characters or less, beginning and ending with an alphanumeric character

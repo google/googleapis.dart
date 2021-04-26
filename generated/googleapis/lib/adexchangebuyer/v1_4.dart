@@ -5804,6 +5804,7 @@ class PublisherProfileApiProto {
   ///
   /// E.g. AdX, Rubicon etc...
   core.String? exchange;
+  core.String? forecastInventory;
 
   /// Link to publisher's Google+ page.
   core.String? googlePlusLink;
@@ -5839,12 +5840,12 @@ class PublisherProfileApiProto {
   /// Programmatic contact for the publisher profile.
   core.String? programmaticContact;
 
-  /// The list of app IDs represented in this pubisher profile.
+  /// The list of app IDs represented in this publisher profile.
   ///
   /// Empty if this is a parent profile. Deprecated in favor of publisher_app.
   core.List<core.String>? publisherAppIds;
 
-  /// The list of apps represented in this pubisher profile.
+  /// The list of apps represented in this publisher profile.
   ///
   /// Empty if this is a parent profile.
   core.List<MobileApplication>? publisherApps;
@@ -5889,6 +5890,9 @@ class PublisherProfileApiProto {
     }
     if (_json.containsKey('exchange')) {
       exchange = _json['exchange'] as core.String;
+    }
+    if (_json.containsKey('forecastInventory')) {
+      forecastInventory = _json['forecastInventory'] as core.String;
     }
     if (_json.containsKey('googlePlusLink')) {
       googlePlusLink = _json['googlePlusLink'] as core.String;
@@ -5970,6 +5974,7 @@ class PublisherProfileApiProto {
           'buyerPitchStatement': buyerPitchStatement!,
         if (directContact != null) 'directContact': directContact!,
         if (exchange != null) 'exchange': exchange!,
+        if (forecastInventory != null) 'forecastInventory': forecastInventory!,
         if (googlePlusLink != null) 'googlePlusLink': googlePlusLink!,
         if (isParent != null) 'isParent': isParent!,
         if (isPublished != null) 'isPublished': isPublished!,

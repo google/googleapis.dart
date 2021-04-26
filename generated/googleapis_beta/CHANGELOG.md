@@ -1,3 +1,9 @@
+## 3.0.0
+
+- `analyticsdata` - Replaced `v1alpha` with `v1beta`
+- `datamigration` - **REMOVED** now in `package:googleapis`
+- `firebasestorage` - new!
+
 ## 2.0.0
 
 - APIs are now null-safe and require Dart 2.12.

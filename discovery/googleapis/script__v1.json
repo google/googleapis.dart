@@ -54,7 +54,7 @@
                     "description": "See, edit, create, and delete your spreadsheets in Google Drive"
                 },
                 "https://www.googleapis.com/auth/userinfo.email": {
-                    "description": "View your email address"
+                    "description": "See your primary Google Account email address"
                 }
             }
         }
@@ -869,7 +869,7 @@
             }
         }
     },
-    "revision": "20210213",
+    "revision": "20210508",
     "rootUrl": "https://script.googleapis.com/",
     "schemas": {
         "Content": {
@@ -891,7 +891,7 @@
             "type": "object"
         },
         "CreateProjectRequest": {
-            "description": "Request to create a script project.",
+            "description": "Request to create a script project. Request to create a script project.",
             "id": "CreateProjectRequest",
             "properties": {
                 "parentId": {

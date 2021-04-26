@@ -19,8 +19,8 @@
 /// Create an instance of [WebRiskApi] to access these resources:
 ///
 /// - [HashesResource]
-/// - [OperationsResource]
 /// - [ProjectsResource]
+///   - [ProjectsOperationsResource]
 ///   - [ProjectsSubmissionsResource]
 ///   - [ProjectsUrisResource]
 /// - [ThreatListsResource]
@@ -40,14 +40,13 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 class WebRiskApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
   final commons.ApiRequester _requester;
 
   HashesResource get hashes => HashesResource(_requester);
-  OperationsResource get operations => OperationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
   ThreatListsResource get threatLists => ThreatListsResource(_requester);
   UrisResource get uris => UrisResource(_requester);
@@ -114,10 +113,22 @@ class HashesResource {
   }
 }
 
-class OperationsResource {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  OperationsResource(commons.ApiRequester client) : _requester = client;
+  ProjectsOperationsResource get operations =>
+      ProjectsOperationsResource(_requester);
+  ProjectsSubmissionsResource get submissions =>
+      ProjectsSubmissionsResource(_requester);
+  ProjectsUrisResource get uris => ProjectsUrisResource(_requester);
+
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsOperationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation.
   ///
@@ -135,7 +146,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource to be cancelled.
-  /// Value must have pattern `^operations/.*$`.
+  /// Value must have pattern `^projects/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -178,7 +189,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource to be deleted.
-  /// Value must have pattern `^operations/.*$`.
+  /// Value must have pattern `^projects/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -217,7 +228,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern `^operations/.*$`.
+  /// Value must have pattern `^projects/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -262,7 +273,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern `^operations$`.
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -294,7 +305,7 @@ class OperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
 
     final _response = await _requester.request(
       _url,
@@ -304,16 +315,6 @@ class OperationsResource {
     return GoogleLongrunningListOperationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
-}
-
-class ProjectsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsSubmissionsResource get submissions =>
-      ProjectsSubmissionsResource(_requester);
-  ProjectsUrisResource get uris => ProjectsUrisResource(_requester);
-
-  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
 class ProjectsSubmissionsResource {
@@ -962,6 +963,44 @@ class GoogleCloudWebriskV1Submission {
   core.Map<core.String, core.dynamic> toJson() => {
         if (threatTypes != null) 'threatTypes': threatTypes!,
         if (uri != null) 'uri': uri!,
+      };
+}
+
+/// Metadata for the Submit URI long-running operation.
+class GoogleCloudWebriskV1SubmitUriMetadata {
+  /// Creation time of the operation.
+  core.String? createTime;
+
+  /// The state of the operation.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default unspecified state.
+  /// - "RUNNING" : The operation is currently running.
+  /// - "SUCCEEDED" : The operation finished with a success status.
+  /// - "CANCELLED" : The operation was cancelled.
+  /// - "FAILED" : The operation finished with a failure status.
+  core.String? state;
+
+  /// Latest update time of the operation.
+  core.String? updateTime;
+
+  GoogleCloudWebriskV1SubmitUriMetadata();
+
+  GoogleCloudWebriskV1SubmitUriMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'] as core.String;
+    }
+    if (_json.containsKey('state')) {
+      state = _json['state'] as core.String;
+    }
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 

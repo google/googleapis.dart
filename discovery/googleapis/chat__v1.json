@@ -3,7 +3,7 @@
     "baseUrl": "https://chat.googleapis.com/",
     "batchPath": "batch",
     "canonicalName": "Hangouts Chat",
-    "description": "Enables bots to fetch information and perform actions in Google Chat.",
+    "description": "Enables bots to fetch information and perform actions in Google Chat. Authentication using a service account is a prerequisite for using the Google Chat REST API.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/hangouts/chat",
     "icons": {
@@ -530,7 +530,6 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Resource name, in the form \"spaces/*/messages/*\". Example: spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4",
                                     "location": "path",
                                     "pattern": "^spaces/[^/]+/messages/[^/]+$",
                                     "required": true,
@@ -583,7 +582,7 @@
             }
         }
     },
-    "revision": "20210219",
+    "revision": "20210508",
     "rootUrl": "https://chat.googleapis.com/",
     "schemas": {
         "ActionParameter": {
@@ -616,8 +615,8 @@
                     "enumDescriptions": [
                         "Default type; will be handled as NEW_MESSAGE.",
                         "Post as a new message in the topic.",
-                        "Update the bot's own message. (Only after CARD_CLICKED events.)",
-                        "Privately ask the user for additional auth or config."
+                        "Update the bot's message. This is only permitted on a CARD_CLICKED event where the message sender type is BOT.",
+                        "Update a message, with cards only. (Only after a MESSAGE event with a matched url, or a CARD_CLICKED event on a human created message)."
                     ],
                     "type": "string"
                 },
@@ -1248,7 +1247,6 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "Resource name, in the form \"spaces/*/messages/*\". Example: spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4",
                     "type": "string"
                 },
                 "previewText": {
@@ -1323,7 +1321,7 @@
             "type": "object"
         },
         "SlashCommand": {
-            "description": "A Slash Command in Hangouts Chat.",
+            "description": "A Slash Command in Chat.",
             "id": "SlashCommand",
             "properties": {
                 "commandId": {
@@ -1446,7 +1444,7 @@
             "type": "object"
         },
         "User": {
-            "description": "A user in Hangouts Chat.",
+            "description": "A user in Google Chat.",
             "id": "User",
             "properties": {
                 "displayName": {
@@ -1458,7 +1456,7 @@
                     "type": "string"
                 },
                 "isAnonymous": {
-                    "description": "True when the user is deleted or the user's proifle is not visible.",
+                    "description": "True when the user is deleted or the user's profile is not visible.",
                     "type": "boolean"
                 },
                 "name": {

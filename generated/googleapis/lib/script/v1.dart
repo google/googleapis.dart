@@ -104,7 +104,7 @@ class ScriptApi {
   static const spreadsheetsScope =
       'https://www.googleapis.com/auth/spreadsheets';
 
-  /// View your email address
+  /// See your primary Google Account email address
   static const userinfoEmailScope =
       'https://www.googleapis.com/auth/userinfo.email';
 
@@ -991,6 +991,8 @@ class Content {
       };
 }
 
+/// Request to create a script project.
+///
 /// Request to create a script project.
 class CreateProjectRequest {
   /// The Drive ID of a parent file that the created script project is bound to.

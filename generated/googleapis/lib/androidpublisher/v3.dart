@@ -111,6 +111,11 @@ class EditsResource {
   ///
   /// [editId] - Identifier of the edit.
   ///
+  /// [changesNotSentForReview] - Indicates that the changes in this edit will
+  /// not be reviewed until they are explicitly sent for review from the Google
+  /// Play Console UI. These changes will be added to any other changes that are
+  /// not yet sent for review.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -124,9 +129,12 @@ class EditsResource {
   async.Future<AppEdit> commit(
     core.String packageName,
     core.String editId, {
+    core.bool? changesNotSentForReview,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
+      if (changesNotSentForReview != null)
+        'changesNotSentForReview': ['${changesNotSentForReview}'],
       if ($fields != null) 'fields': [$fields],
     };
 

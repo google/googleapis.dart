@@ -44,7 +44,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// reports new errors, and provides access to error groups and their associated
 /// errors.
 class ClouderrorreportingApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -208,11 +208,11 @@ class ProjectsEventsResource {
   /// authentication. To use an API key, append it to the URL as the value of a
   /// `key` parameter. For example: `POST
   /// https://clouderrorreporting.googleapis.com/v1beta1/{projectName}/events:report?key=123ABC456`
-  /// **Note:** \[Error Reporting\](/error-reporting) is a global service built
-  /// on Cloud Logging and doesn't analyze logs stored in regional log buckets
-  /// or logs routed to other Google Cloud projects. For more information, see
-  /// \[Using Error Reporting with regionalized
-  /// logs\](/error-reporting/docs/regionalization).
+  /// **Note:** [Error Reporting](https://cloud.google.com/error-reporting) is a
+  /// global service built on Cloud Logging and doesn't analyze logs stored in
+  /// regional log buckets or logs routed to other Google Cloud projects. For
+  /// more information, see
+  /// [Using Error Reporting with regionalized logs](https://cloud.google.com/error-reporting/docs/regionalization).
   ///
   /// [request] - The metadata request object.
   ///

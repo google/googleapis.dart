@@ -2437,7 +2437,7 @@
             }
         }
     },
-    "revision": "20210227",
+    "revision": "20210519",
     "rootUrl": "https://adexchangebuyer.googleapis.com/",
     "schemas": {
         "AbsoluteDateRange": {
@@ -4019,7 +4019,7 @@
                         "Financial service ad does not adhere to specifications.",
                         "Flash content was found in an unsupported context.",
                         "Misuse by an Open Measurement SDK script.",
-                        "Use of an Open Measurement SDK vendor not on approved whitelist.",
+                        "Use of an Open Measurement SDK vendor not on approved vendor list.",
                         "Unacceptable landing page.",
                         "Unsupported language.",
                         "Non-SSL compliant.",
@@ -4310,9 +4310,33 @@
                     "format": "int64",
                     "type": "string"
                 },
+                "impressionCap": {
+                    "description": "The lifetime impression cap for CPM sponsorship deals. The deal will stop serving when the cap is reached.",
+                    "format": "int64",
+                    "type": "string"
+                },
                 "minimumDailyLooks": {
                     "description": "Daily minimum looks for CPD deal types.",
                     "format": "int64",
+                    "type": "string"
+                },
+                "percentShareOfVoice": {
+                    "description": "For sponsorship deals, this is the percentage of the seller's eligible impressions that the deal will serve until the cap is reached.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "reservationType": {
+                    "description": "The reservation type for a Programmatic Guaranteed deal. This indicates whether the number of impressions is fixed, or a percent of available impressions. If not specified, the default reservation type is STANDARD.",
+                    "enum": [
+                        "RESERVATION_TYPE_UNSPECIFIED",
+                        "STANDARD",
+                        "SPONSORSHIP"
+                    ],
+                    "enumDescriptions": [
+                        "An unspecified reservation type.",
+                        "Non-sponsorship deal.",
+                        "Sponsorship deals don't have impression goal (guaranteed_looks) and they are served based on the flight dates. For CPM Sponsorship deals, impression_cap is the lifetime impression limit."
+                    ],
                     "type": "string"
                 }
             },
@@ -4982,7 +5006,7 @@
             "type": "object"
         },
         "NonGuaranteedFixedPriceTerms": {
-            "description": "Terms for Preferred Deals. Note that Preferred Deals cannot be created via the API at this time, but can be returned in a get or list request.",
+            "description": "Terms for Preferred Deals.",
             "id": "NonGuaranteedFixedPriceTerms",
             "properties": {
                 "fixedPrices": {
@@ -5162,7 +5186,7 @@
             "type": "object"
         },
         "Product": {
-            "description": "Note: this resource requires whitelisting for access. Please contact your account manager for access to Marketplace resources. A product is a segment of inventory that a seller wishes to sell. It is associated with certain terms and targeting information which helps the buyer know more about the inventory.",
+            "description": "A product is a segment of inventory that a seller wishes to sell. It is associated with certain terms and targeting information which helps the buyer know more about the inventory.",
             "id": "Product",
             "properties": {
                 "availableEndTime": {
@@ -5254,7 +5278,7 @@
             "type": "object"
         },
         "Proposal": {
-            "description": "Note: this resource requires whitelisting for access. Please contact your account manager for access to Marketplace resources. Represents a proposal in the Marketplace. A proposal is the unit of negotiation between a seller and a buyer and contains deals which are served. Note: you can not update, create, or otherwise modify Private Auction or Preferred Deals deals through the API. Fields are updatable unless noted otherwise.",
+            "description": "Represents a proposal in the Marketplace. A proposal is the unit of negotiation between a seller and a buyer and contains deals which are served. Note: You can't update, create, or otherwise modify Private Auction deals through the API. Fields are updatable unless noted otherwise.",
             "id": "Proposal",
             "properties": {
                 "billedBuyer": {
@@ -5400,7 +5424,7 @@
             "type": "object"
         },
         "PublisherProfile": {
-            "description": "Note: this resource requires whitelisting for access. Please contact your account manager for access to Marketplace resources. Represents a publisher profile (https://support.google.com/admanager/answer/6035806) in Marketplace. All fields are read only. All string fields are free-form text entered by the publisher unless noted otherwise.",
+            "description": "Represents a publisher profile (https://support.google.com/admanager/answer/6035806) in Marketplace. All fields are read only. All string fields are free-form text entered by the publisher unless noted otherwise.",
             "id": "PublisherProfile",
             "properties": {
                 "audienceDescription": {

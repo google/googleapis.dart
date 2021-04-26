@@ -83,7 +83,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// common use. For explanations of the concepts found in the table entries,
 /// read the documentation at https://cloud.google.com/logging/docs.
 class LoggingApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -532,11 +532,15 @@ class BillingAccountsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^billingAccounts/\[^/\]+$`.
   ///
-  /// [filter] - The standard list filter.
+  /// [filter] - A filter to narrow down results to a preferred subset. The
+  /// filtering language accepts strings like "displayName=tokyo", and is
+  /// documented in more detail in AIP-160 (https://google.aip.dev/160).
   ///
-  /// [pageSize] - The standard list page size.
+  /// [pageSize] - The maximum number of results to return. If not set, the
+  /// service selects a default.
   ///
-  /// [pageToken] - The standard list page token.
+  /// [pageToken] - A page token received from the next_page_token field in the
+  /// response. Send that page token to receive the subsequent page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1068,13 +1072,13 @@ class BillingAccountsLogsResource {
   /// Request parameters:
   ///
   /// [logName] - Required. The resource name of the log to delete:
-  /// "projects/\[PROJECT_ID\]/logs/\[LOG_ID\]"
-  /// "organizations/\[ORGANIZATION_ID\]/logs/\[LOG_ID\]"
-  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/logs/\[LOG_ID\]"
-  /// "folders/\[FOLDER_ID\]/logs/\[LOG_ID\]" \[LOG_ID\] must be URL-encoded.
-  /// For example, "projects/my-project-id/logs/syslog",
-  /// "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity".
-  /// For more information about log names, see LogEntry.
+  /// projects/\[PROJECT_ID\]/logs/\[LOG_ID\]
+  /// organizations/\[ORGANIZATION_ID\]/logs/\[LOG_ID\]
+  /// billingAccounts/\[BILLING_ACCOUNT_ID\]/logs/\[LOG_ID\]
+  /// folders/\[FOLDER_ID\]/logs/\[LOG_ID\]\[LOG_ID\] must be URL-encoded. For
+  /// example, "projects/my-project-id/logs/syslog",
+  /// "organizations/123/logs/cloudaudit.googleapis.com%2Factivity".For more
+  /// information about log names, see LogEntry.
   /// Value must have pattern `^billingAccounts/\[^/\]+/logs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1112,8 +1116,8 @@ class BillingAccountsLogsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The resource name that owns the logs:
-  /// "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
-  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]"
+  /// projects/\[PROJECT_ID\] organizations/\[ORGANIZATION_ID\]
+  /// billingAccounts/\[BILLING_ACCOUNT_ID\] folders/\[FOLDER_ID\]
   /// Value must have pattern `^billingAccounts/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
@@ -1126,13 +1130,13 @@ class BillingAccountsLogsResource {
   /// method parameters should be identical to those in the previous call.
   ///
   /// [resourceNames] - Optional. The resource name that owns the logs:
-  /// projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID
-  /// organization/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID
-  /// billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID
-  /// folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_IDTo
-  /// support legacy queries, it could also be: "projects/PROJECT_ID"
-  /// "organizations/ORGANIZATION_ID" "billingAccounts/BILLING_ACCOUNT_ID"
-  /// "folders/FOLDER_ID"
+  /// projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
+  /// organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
+  /// billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
+  /// folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]To
+  /// support legacy queries, it could also be: projects/\[PROJECT_ID\]
+  /// organizations/\[ORGANIZATION_ID\] billingAccounts/\[BILLING_ACCOUNT_ID\]
+  /// folders/\[FOLDER_ID\]
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2194,11 +2198,15 @@ class FoldersLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
-  /// [filter] - The standard list filter.
+  /// [filter] - A filter to narrow down results to a preferred subset. The
+  /// filtering language accepts strings like "displayName=tokyo", and is
+  /// documented in more detail in AIP-160 (https://google.aip.dev/160).
   ///
-  /// [pageSize] - The standard list page size.
+  /// [pageSize] - The maximum number of results to return. If not set, the
+  /// service selects a default.
   ///
-  /// [pageToken] - The standard list page token.
+  /// [pageToken] - A page token received from the next_page_token field in the
+  /// response. Send that page token to receive the subsequent page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2810,13 +2818,13 @@ class FoldersLogsResource {
   /// Request parameters:
   ///
   /// [logName] - Required. The resource name of the log to delete:
-  /// "projects/\[PROJECT_ID\]/logs/\[LOG_ID\]"
-  /// "organizations/\[ORGANIZATION_ID\]/logs/\[LOG_ID\]"
-  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/logs/\[LOG_ID\]"
-  /// "folders/\[FOLDER_ID\]/logs/\[LOG_ID\]" \[LOG_ID\] must be URL-encoded.
-  /// For example, "projects/my-project-id/logs/syslog",
-  /// "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity".
-  /// For more information about log names, see LogEntry.
+  /// projects/\[PROJECT_ID\]/logs/\[LOG_ID\]
+  /// organizations/\[ORGANIZATION_ID\]/logs/\[LOG_ID\]
+  /// billingAccounts/\[BILLING_ACCOUNT_ID\]/logs/\[LOG_ID\]
+  /// folders/\[FOLDER_ID\]/logs/\[LOG_ID\]\[LOG_ID\] must be URL-encoded. For
+  /// example, "projects/my-project-id/logs/syslog",
+  /// "organizations/123/logs/cloudaudit.googleapis.com%2Factivity".For more
+  /// information about log names, see LogEntry.
   /// Value must have pattern `^folders/\[^/\]+/logs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2854,8 +2862,8 @@ class FoldersLogsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The resource name that owns the logs:
-  /// "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
-  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]"
+  /// projects/\[PROJECT_ID\] organizations/\[ORGANIZATION_ID\]
+  /// billingAccounts/\[BILLING_ACCOUNT_ID\] folders/\[FOLDER_ID\]
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
@@ -2868,13 +2876,13 @@ class FoldersLogsResource {
   /// method parameters should be identical to those in the previous call.
   ///
   /// [resourceNames] - Optional. The resource name that owns the logs:
-  /// projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID
-  /// organization/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID
-  /// billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID
-  /// folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_IDTo
-  /// support legacy queries, it could also be: "projects/PROJECT_ID"
-  /// "organizations/ORGANIZATION_ID" "billingAccounts/BILLING_ACCOUNT_ID"
-  /// "folders/FOLDER_ID"
+  /// projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
+  /// organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
+  /// billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
+  /// folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]To
+  /// support legacy queries, it could also be: projects/\[PROJECT_ID\]
+  /// organizations/\[ORGANIZATION_ID\] billingAccounts/\[BILLING_ACCOUNT_ID\]
+  /// folders/\[FOLDER_ID\]
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3311,11 +3319,15 @@ class LocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
-  /// [filter] - The standard list filter.
+  /// [filter] - A filter to narrow down results to a preferred subset. The
+  /// filtering language accepts strings like "displayName=tokyo", and is
+  /// documented in more detail in AIP-160 (https://google.aip.dev/160).
   ///
-  /// [pageSize] - The standard list page size.
+  /// [pageSize] - The maximum number of results to return. If not set, the
+  /// service selects a default.
   ///
-  /// [pageToken] - The standard list page token.
+  /// [pageToken] - A page token received from the next_page_token field in the
+  /// response. Send that page token to receive the subsequent page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3926,13 +3938,13 @@ class LogsResource {
   /// Request parameters:
   ///
   /// [logName] - Required. The resource name of the log to delete:
-  /// "projects/\[PROJECT_ID\]/logs/\[LOG_ID\]"
-  /// "organizations/\[ORGANIZATION_ID\]/logs/\[LOG_ID\]"
-  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/logs/\[LOG_ID\]"
-  /// "folders/\[FOLDER_ID\]/logs/\[LOG_ID\]" \[LOG_ID\] must be URL-encoded.
-  /// For example, "projects/my-project-id/logs/syslog",
-  /// "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity".
-  /// For more information about log names, see LogEntry.
+  /// projects/\[PROJECT_ID\]/logs/\[LOG_ID\]
+  /// organizations/\[ORGANIZATION_ID\]/logs/\[LOG_ID\]
+  /// billingAccounts/\[BILLING_ACCOUNT_ID\]/logs/\[LOG_ID\]
+  /// folders/\[FOLDER_ID\]/logs/\[LOG_ID\]\[LOG_ID\] must be URL-encoded. For
+  /// example, "projects/my-project-id/logs/syslog",
+  /// "organizations/123/logs/cloudaudit.googleapis.com%2Factivity".For more
+  /// information about log names, see LogEntry.
   /// Value must have pattern `^\[^/\]+/\[^/\]+/logs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3970,8 +3982,8 @@ class LogsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The resource name that owns the logs:
-  /// "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
-  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]"
+  /// projects/\[PROJECT_ID\] organizations/\[ORGANIZATION_ID\]
+  /// billingAccounts/\[BILLING_ACCOUNT_ID\] folders/\[FOLDER_ID\]
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
@@ -3984,13 +3996,13 @@ class LogsResource {
   /// method parameters should be identical to those in the previous call.
   ///
   /// [resourceNames] - Optional. The resource name that owns the logs:
-  /// projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID
-  /// organization/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID
-  /// billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID
-  /// folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_IDTo
-  /// support legacy queries, it could also be: "projects/PROJECT_ID"
-  /// "organizations/ORGANIZATION_ID" "billingAccounts/BILLING_ACCOUNT_ID"
-  /// "folders/FOLDER_ID"
+  /// projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
+  /// organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
+  /// billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
+  /// folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]To
+  /// support legacy queries, it could also be: projects/\[PROJECT_ID\]
+  /// organizations/\[ORGANIZATION_ID\] billingAccounts/\[BILLING_ACCOUNT_ID\]
+  /// folders/\[FOLDER_ID\]
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4500,11 +4512,15 @@ class OrganizationsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
-  /// [filter] - The standard list filter.
+  /// [filter] - A filter to narrow down results to a preferred subset. The
+  /// filtering language accepts strings like "displayName=tokyo", and is
+  /// documented in more detail in AIP-160 (https://google.aip.dev/160).
   ///
-  /// [pageSize] - The standard list page size.
+  /// [pageSize] - The maximum number of results to return. If not set, the
+  /// service selects a default.
   ///
-  /// [pageToken] - The standard list page token.
+  /// [pageToken] - A page token received from the next_page_token field in the
+  /// response. Send that page token to receive the subsequent page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5116,13 +5132,13 @@ class OrganizationsLogsResource {
   /// Request parameters:
   ///
   /// [logName] - Required. The resource name of the log to delete:
-  /// "projects/\[PROJECT_ID\]/logs/\[LOG_ID\]"
-  /// "organizations/\[ORGANIZATION_ID\]/logs/\[LOG_ID\]"
-  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/logs/\[LOG_ID\]"
-  /// "folders/\[FOLDER_ID\]/logs/\[LOG_ID\]" \[LOG_ID\] must be URL-encoded.
-  /// For example, "projects/my-project-id/logs/syslog",
-  /// "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity".
-  /// For more information about log names, see LogEntry.
+  /// projects/\[PROJECT_ID\]/logs/\[LOG_ID\]
+  /// organizations/\[ORGANIZATION_ID\]/logs/\[LOG_ID\]
+  /// billingAccounts/\[BILLING_ACCOUNT_ID\]/logs/\[LOG_ID\]
+  /// folders/\[FOLDER_ID\]/logs/\[LOG_ID\]\[LOG_ID\] must be URL-encoded. For
+  /// example, "projects/my-project-id/logs/syslog",
+  /// "organizations/123/logs/cloudaudit.googleapis.com%2Factivity".For more
+  /// information about log names, see LogEntry.
   /// Value must have pattern `^organizations/\[^/\]+/logs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -5160,8 +5176,8 @@ class OrganizationsLogsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The resource name that owns the logs:
-  /// "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
-  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]"
+  /// projects/\[PROJECT_ID\] organizations/\[ORGANIZATION_ID\]
+  /// billingAccounts/\[BILLING_ACCOUNT_ID\] folders/\[FOLDER_ID\]
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
@@ -5174,13 +5190,13 @@ class OrganizationsLogsResource {
   /// method parameters should be identical to those in the previous call.
   ///
   /// [resourceNames] - Optional. The resource name that owns the logs:
-  /// projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID
-  /// organization/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID
-  /// billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID
-  /// folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_IDTo
-  /// support legacy queries, it could also be: "projects/PROJECT_ID"
-  /// "organizations/ORGANIZATION_ID" "billingAccounts/BILLING_ACCOUNT_ID"
-  /// "folders/FOLDER_ID"
+  /// projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
+  /// organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
+  /// billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
+  /// folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]To
+  /// support legacy queries, it could also be: projects/\[PROJECT_ID\]
+  /// organizations/\[ORGANIZATION_ID\] billingAccounts/\[BILLING_ACCOUNT_ID\]
+  /// folders/\[FOLDER_ID\]
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5872,11 +5888,15 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [filter] - The standard list filter.
+  /// [filter] - A filter to narrow down results to a preferred subset. The
+  /// filtering language accepts strings like "displayName=tokyo", and is
+  /// documented in more detail in AIP-160 (https://google.aip.dev/160).
   ///
-  /// [pageSize] - The standard list page size.
+  /// [pageSize] - The maximum number of results to return. If not set, the
+  /// service selects a default.
   ///
-  /// [pageToken] - The standard list page token.
+  /// [pageToken] - A page token received from the next_page_token field in the
+  /// response. Send that page token to receive the subsequent page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6488,13 +6508,13 @@ class ProjectsLogsResource {
   /// Request parameters:
   ///
   /// [logName] - Required. The resource name of the log to delete:
-  /// "projects/\[PROJECT_ID\]/logs/\[LOG_ID\]"
-  /// "organizations/\[ORGANIZATION_ID\]/logs/\[LOG_ID\]"
-  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/logs/\[LOG_ID\]"
-  /// "folders/\[FOLDER_ID\]/logs/\[LOG_ID\]" \[LOG_ID\] must be URL-encoded.
-  /// For example, "projects/my-project-id/logs/syslog",
-  /// "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity".
-  /// For more information about log names, see LogEntry.
+  /// projects/\[PROJECT_ID\]/logs/\[LOG_ID\]
+  /// organizations/\[ORGANIZATION_ID\]/logs/\[LOG_ID\]
+  /// billingAccounts/\[BILLING_ACCOUNT_ID\]/logs/\[LOG_ID\]
+  /// folders/\[FOLDER_ID\]/logs/\[LOG_ID\]\[LOG_ID\] must be URL-encoded. For
+  /// example, "projects/my-project-id/logs/syslog",
+  /// "organizations/123/logs/cloudaudit.googleapis.com%2Factivity".For more
+  /// information about log names, see LogEntry.
   /// Value must have pattern `^projects/\[^/\]+/logs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -6532,8 +6552,8 @@ class ProjectsLogsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The resource name that owns the logs:
-  /// "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
-  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]"
+  /// projects/\[PROJECT_ID\] organizations/\[ORGANIZATION_ID\]
+  /// billingAccounts/\[BILLING_ACCOUNT_ID\] folders/\[FOLDER_ID\]
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
@@ -6546,13 +6566,13 @@ class ProjectsLogsResource {
   /// method parameters should be identical to those in the previous call.
   ///
   /// [resourceNames] - Optional. The resource name that owns the logs:
-  /// projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID
-  /// organization/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID
-  /// billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID
-  /// folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_IDTo
-  /// support legacy queries, it could also be: "projects/PROJECT_ID"
-  /// "organizations/ORGANIZATION_ID" "billingAccounts/BILLING_ACCOUNT_ID"
-  /// "folders/FOLDER_ID"
+  /// projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
+  /// organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
+  /// billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
+  /// folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]To
+  /// support legacy queries, it could also be: projects/\[PROJECT_ID\]
+  /// organizations/\[ORGANIZATION_ID\] billingAccounts/\[BILLING_ACCOUNT_ID\]
+  /// folders/\[FOLDER_ID\]
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8170,13 +8190,13 @@ class ListLogEntriesRequest {
   core.List<core.String>? projectIds;
 
   /// Names of one or more parent resources from which to retrieve log entries:
-  /// "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
-  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]" May
-  /// alternatively be one or more views
-  /// projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID
-  /// organization/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID
-  /// billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID
-  /// folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_IDProjects
+  /// projects/\[PROJECT_ID\] organizations/\[ORGANIZATION_ID\]
+  /// billingAccounts/\[BILLING_ACCOUNT_ID\] folders/\[FOLDER_ID\]May
+  /// alternatively be one or more views:
+  /// projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
+  /// organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
+  /// billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
+  /// folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]Projects
   /// listed in the project_ids field are added to this list.
   ///
   /// Required.
@@ -8539,6 +8559,14 @@ class LogBucket {
   /// Output only.
   core.String? name;
 
+  /// Log entry field paths that are denied access in this bucket.
+  ///
+  /// The following fields and their children are eligible: textPayload,
+  /// jsonPayload, protoPayload, httpRequest, labels, sourceLocation.
+  /// Restricting a repeated field will restrict all values. Adding a parent
+  /// will block all child fields e.g. foo.bar will block foo.bar.baz.
+  core.List<core.String>? restrictedFields;
+
   /// Logs will be retained by default for this amount of time, after which they
   /// will automatically be deleted.
   ///
@@ -8569,6 +8597,11 @@ class LogBucket {
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
+    if (_json.containsKey('restrictedFields')) {
+      restrictedFields = (_json['restrictedFields'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
     if (_json.containsKey('retentionDays')) {
       retentionDays = _json['retentionDays'] as core.int;
     }
@@ -8583,6 +8616,7 @@ class LogBucket {
         if (lifecycleState != null) 'lifecycleState': lifecycleState!,
         if (locked != null) 'locked': locked!,
         if (name != null) 'name': name!,
+        if (restrictedFields != null) 'restrictedFields': restrictedFields!,
         if (retentionDays != null) 'retentionDays': retentionDays!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -8616,13 +8650,17 @@ class LogEntry {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object>? jsonPayload;
 
-  /// A set of user-defined (key, value) data that provides additional
-  /// information about the log entry.Cloud Logging truncates label keys that
-  /// exceed 512 B and label values that exceed 64 KB upon their associated log
-  /// entry being written.
+  /// A map of key, value pairs that provides additional information about the
+  /// log entry.
   ///
-  /// The truncation is indicated by an ellipsis at the end of the character
-  /// string.
+  /// The labels can be user-defined or system-defined.User-defined labels are
+  /// arbitrary key, value pairs that you can use to classify
+  /// logs.System-defined labels are defined by GCP services for platform logs.
+  /// They have two components - a service namespace component and the attribute
+  /// name. For example: compute.googleapis.com/resource_name.Cloud Logging
+  /// truncates label keys that exceed 512 B and label values that exceed 64 KB
+  /// upon their associated log entry being written. The truncation is indicated
+  /// by an ellipsis at the end of the character string.
   ///
   /// Optional.
   core.Map<core.String, core.String>? labels;
@@ -8637,27 +8675,21 @@ class LogEntry {
   /// The project number is translated to its corresponding PROJECT_ID
   /// internally and the log_name field will contain PROJECT_ID in queries and
   /// exports.\[LOG_ID\] must be URL-encoded within log_name. Example:
-  /// "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity".
-  /// \[LOG_ID\] must be less than 512 characters long and can only include the
-  /// following characters: upper and lower case alphanumeric characters,
-  /// forward-slash, underscore, hyphen, and period.For backward compatibility,
-  /// if log_name begins with a forward-slash, such as /projects/..., then the
-  /// log entry is ingested as usual but the forward-slash is removed. Listing
-  /// the log entry will not show the leading slash and filtering for a log name
-  /// with a leading slash will never return any results.
+  /// "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity".\[LOG_ID\]
+  /// must be less than 512 characters long and can only include the following
+  /// characters: upper and lower case alphanumeric characters, forward-slash,
+  /// underscore, hyphen, and period.For backward compatibility, if log_name
+  /// begins with a forward-slash, such as /projects/..., then the log entry is
+  /// ingested as usual, but the forward-slash is removed. Listing the log entry
+  /// will not show the leading slash and filtering for a log name with a
+  /// leading slash will never return any results.
   ///
   /// Required.
   core.String? logName;
 
-  /// Additional metadata about the monitored resource.Only k8s_container,
-  /// k8s_pod, and k8s_node MonitoredResources have this field populated for GKE
-  /// versions older than 1.12.6.
+  /// This field is not used by Logging.
   ///
-  /// For GKE versions 1.12.6 and above, the metadata field has been deprecated.
-  /// The Kubernetes pod labels that used to be in metadata.userLabels will now
-  /// be present in the labels field with a key prefix of k8s-pod/. The system
-  /// labels that were present in the metadata.systemLabels field will no longer
-  /// be available in the log entry.
+  /// Any value written to it is cleared.
   ///
   /// Output only. Deprecated.
   MonitoredResourceMetadata? metadata;
@@ -9136,6 +9168,12 @@ class LogMetric {
   /// Optional.
   core.String? description;
 
+  /// If set to True, then this metric is disabled and it does not generate any
+  /// points.
+  ///
+  /// Optional.
+  core.bool? disabled;
+
   /// An advanced logs filter
   /// (https://cloud.google.com/logging/docs/view/advanced_filters) which is
   /// used to match log entries.
@@ -9245,6 +9283,9 @@ class LogMetric {
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
     }
+    if (_json.containsKey('disabled')) {
+      disabled = _json['disabled'] as core.bool;
+    }
     if (_json.containsKey('filter')) {
       filter = _json['filter'] as core.String;
     }
@@ -9279,6 +9320,7 @@ class LogMetric {
         if (bucketOptions != null) 'bucketOptions': bucketOptions!.toJson(),
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
+        if (disabled != null) 'disabled': disabled!,
         if (filter != null) 'filter': filter!,
         if (labelExtractors != null) 'labelExtractors': labelExtractors!,
         if (metricDescriptor != null)
@@ -10476,13 +10518,13 @@ class TailLogEntriesRequest {
   core.String? filter;
 
   /// Name of a parent resource from which to retrieve log entries:
-  /// "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
-  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]" May
+  /// projects/\[PROJECT_ID\] organizations/\[ORGANIZATION_ID\]
+  /// billingAccounts/\[BILLING_ACCOUNT_ID\] folders/\[FOLDER_ID\]May
   /// alternatively be one or more views:
-  /// "projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID"
-  /// "organization/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID"
-  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID"
-  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID"
+  /// projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
+  /// organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
+  /// billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
+  /// folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
   ///
   /// Required.
   core.List<core.String>? resourceNames;
@@ -10610,14 +10652,14 @@ class WriteLogEntriesRequest {
 
   /// A default log resource name that is assigned to all log entries in entries
   /// that do not specify a value for log_name:
-  /// "projects/\[PROJECT_ID\]/logs/\[LOG_ID\]"
-  /// "organizations/\[ORGANIZATION_ID\]/logs/\[LOG_ID\]"
-  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/logs/\[LOG_ID\]"
-  /// "folders/\[FOLDER_ID\]/logs/\[LOG_ID\]" \[LOG_ID\] must be URL-encoded.
+  /// projects/\[PROJECT_ID\]/logs/\[LOG_ID\]
+  /// organizations/\[ORGANIZATION_ID\]/logs/\[LOG_ID\]
+  /// billingAccounts/\[BILLING_ACCOUNT_ID\]/logs/\[LOG_ID\]
+  /// folders/\[FOLDER_ID\]/logs/\[LOG_ID\]\[LOG_ID\] must be URL-encoded.
   ///
   /// For example: "projects/my-project-id/logs/syslog"
-  /// "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity"
-  /// The permission logging.logEntries.create is needed on each project,
+  /// "organizations/123/logs/cloudaudit.googleapis.com%2Factivity" The
+  /// permission logging.logEntries.create is needed on each project,
   /// organization, billing account, or folder that is receiving new log
   /// entries, whether the resource is specified in logName or in an individual
   /// log entry.

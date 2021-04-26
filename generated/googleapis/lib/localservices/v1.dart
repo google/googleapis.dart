@@ -251,6 +251,8 @@ class DetailedLeadReportsResource {
 
 /// An Account Report of a GLS account identified by their account id containing
 /// aggregate data gathered from a particular date range.
+///
+/// Next ID: 18
 class GoogleAdsHomeservicesLocalservicesV1AccountReport {
   /// Unique identifier of the GLS account.
   core.String? accountId;
@@ -284,6 +286,9 @@ class GoogleAdsHomeservicesLocalservicesV1AccountReport {
   /// Total cost of the account in current specified period in the account's
   /// specified currency.
   core.double? currentPeriodTotalCost;
+
+  /// Number of impressions that customers have had in the past 2 days.
+  core.String? impressionsLastTwoDays;
 
   /// Phone lead responsiveness of the account for the past 90 days from current
   /// date.
@@ -350,6 +355,9 @@ class GoogleAdsHomeservicesLocalservicesV1AccountReport {
       currentPeriodTotalCost =
           (_json['currentPeriodTotalCost'] as core.num).toDouble();
     }
+    if (_json.containsKey('impressionsLastTwoDays')) {
+      impressionsLastTwoDays = _json['impressionsLastTwoDays'] as core.String;
+    }
     if (_json.containsKey('phoneLeadResponsiveness')) {
       phoneLeadResponsiveness =
           (_json['phoneLeadResponsiveness'] as core.num).toDouble();
@@ -392,6 +400,8 @@ class GoogleAdsHomeservicesLocalservicesV1AccountReport {
           'currentPeriodPhoneCalls': currentPeriodPhoneCalls!,
         if (currentPeriodTotalCost != null)
           'currentPeriodTotalCost': currentPeriodTotalCost!,
+        if (impressionsLastTwoDays != null)
+          'impressionsLastTwoDays': impressionsLastTwoDays!,
         if (phoneLeadResponsiveness != null)
           'phoneLeadResponsiveness': phoneLeadResponsiveness!,
         if (previousPeriodChargedLeads != null)

@@ -49,7 +49,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Firebase projects, including a project's Firebase resources and Firebase
 /// apps.
 class FirebaseManagementApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 

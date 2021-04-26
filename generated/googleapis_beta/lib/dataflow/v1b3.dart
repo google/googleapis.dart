@@ -21,8 +21,6 @@
 /// Create an instance of [DataflowApi] to access these resources:
 ///
 /// - [ProjectsResource]
-///   - [ProjectsCatalogTemplatesResource]
-///     - [ProjectsCatalogTemplatesTemplateVersionsResource]
 ///   - [ProjectsJobsResource]
 ///     - [ProjectsJobsDebugResource]
 ///     - [ProjectsJobsMessagesResource]
@@ -39,7 +37,6 @@
 ///     - [ProjectsLocationsSqlResource]
 ///     - [ProjectsLocationsTemplatesResource]
 ///   - [ProjectsSnapshotsResource]
-///   - [ProjectsTemplateVersionsResource]
 ///   - [ProjectsTemplatesResource]
 library dataflow.v1b3;
 
@@ -57,7 +54,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Manages Google Cloud Dataflow projects on Google Cloud Platform.
 class DataflowApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -68,7 +65,7 @@ class DataflowApi {
   static const computeReadonlyScope =
       'https://www.googleapis.com/auth/compute.readonly';
 
-  /// View your email address
+  /// See your primary Google Account email address
   static const userinfoEmailScope =
       'https://www.googleapis.com/auth/userinfo.email';
 
@@ -86,15 +83,11 @@ class DataflowApi {
 class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsCatalogTemplatesResource get catalogTemplates =>
-      ProjectsCatalogTemplatesResource(_requester);
   ProjectsJobsResource get jobs => ProjectsJobsResource(_requester);
   ProjectsLocationsResource get locations =>
       ProjectsLocationsResource(_requester);
   ProjectsSnapshotsResource get snapshots =>
       ProjectsSnapshotsResource(_requester);
-  ProjectsTemplateVersionsResource get templateVersions =>
-      ProjectsTemplateVersionsResource(_requester);
   ProjectsTemplatesResource get templates =>
       ProjectsTemplatesResource(_requester);
 
@@ -184,292 +177,6 @@ class ProjectsResource {
       queryParams: _queryParams,
     );
     return SendWorkerMessagesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class ProjectsCatalogTemplatesResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsCatalogTemplatesTemplateVersionsResource get templateVersions =>
-      ProjectsCatalogTemplatesTemplateVersionsResource(_requester);
-
-  ProjectsCatalogTemplatesResource(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Creates a new TemplateVersion (Important: not new Template) entry in the
-  /// spanner table.
-  ///
-  /// Requires project_id and display_name (template).
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The location of the template, name includes project_id and
-  /// display_name. Commit using project_id(pid1) and display_name(tid1).
-  /// Format: projects/{pid1}/catalogTemplates/{tid1}
-  /// Value must have pattern `^projects/\[^/\]+/catalogTemplates/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [TemplateVersion].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<TemplateVersion> commit(
-    CommitTemplateVersionRequest request,
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final _body = convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1b3/' + core.Uri.encodeFull('$name') + ':commit';
-
-    final _response = await _requester.request(
-      _url,
-      'POST',
-      body: _body,
-      queryParams: _queryParams,
-    );
-    return TemplateVersion.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Deletes an existing Template.
-  ///
-  /// Do nothing if Template does not exist.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - name includes project_id and display_name. Delete by
-  /// project_id(pid1) and display_name(tid1). Format:
-  /// projects/{pid1}/catalogTemplates/{tid1}
-  /// Value must have pattern `^projects/\[^/\]+/catalogTemplates/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Empty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1b3/' + core.Uri.encodeFull('$name');
-
-    final _response = await _requester.request(
-      _url,
-      'DELETE',
-      queryParams: _queryParams,
-    );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Get TemplateVersion using project_id and display_name with an optional
-  /// version_id field.
-  ///
-  /// Get latest (has tag "latest") TemplateVersion if version_id not set.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Resource name includes project_id and display_name. version_id is
-  /// optional. Get the latest TemplateVersion if version_id not set. Get by
-  /// project_id(pid1) and display_name(tid1): Format:
-  /// projects/{pid1}/catalogTemplates/{tid1} Get by project_id(pid1),
-  /// display_name(tid1), and version_id(vid1): Format:
-  /// projects/{pid1}/catalogTemplates/{tid1@vid}
-  /// Value must have pattern `^projects/\[^/\]+/catalogTemplates/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [TemplateVersion].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<TemplateVersion> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1b3/' + core.Uri.encodeFull('$name');
-
-    final _response = await _requester.request(
-      _url,
-      'GET',
-      queryParams: _queryParams,
-    );
-    return TemplateVersion.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Updates the label of the TemplateVersion.
-  ///
-  /// Label can be duplicated in Template, so either add or remove the label in
-  /// the TemplateVersion.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Resource name includes project_id, display_name, and version_id.
-  /// Updates by project_id(pid1), display_name(tid1), and version_id(vid1):
-  /// Format: projects/{pid1}/catalogTemplates/{tid1@vid}
-  /// Value must have pattern `^projects/\[^/\]+/catalogTemplates/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ModifyTemplateVersionLabelResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ModifyTemplateVersionLabelResponse> label(
-    ModifyTemplateVersionLabelRequest request,
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final _body = convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1b3/' + core.Uri.encodeFull('$name') + ':label';
-
-    final _response = await _requester.request(
-      _url,
-      'POST',
-      body: _body,
-      queryParams: _queryParams,
-    );
-    return ModifyTemplateVersionLabelResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Updates the tag of the TemplateVersion, and tag is unique in Template.
-  ///
-  /// If tag exists in another TemplateVersion in the Template, updates the tag
-  /// to this TemplateVersion will remove it from the old TemplateVersion and
-  /// add it to this TemplateVersion. If request is remove_only (remove_only =
-  /// true), remove the tag from this TemplateVersion.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Resource name includes project_id, display_name, and version_id.
-  /// Updates by project_id(pid1), display_name(tid1), and version_id(vid1):
-  /// Format: projects/{pid1}/catalogTemplates/{tid1@vid}
-  /// Value must have pattern `^projects/\[^/\]+/catalogTemplates/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ModifyTemplateVersionTagResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ModifyTemplateVersionTagResponse> tag(
-    ModifyTemplateVersionTagRequest request,
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final _body = convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1b3/' + core.Uri.encodeFull('$name') + ':tag';
-
-    final _response = await _requester.request(
-      _url,
-      'POST',
-      body: _body,
-      queryParams: _queryParams,
-    );
-    return ModifyTemplateVersionTagResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class ProjectsCatalogTemplatesTemplateVersionsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsCatalogTemplatesTemplateVersionsResource(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Creates a new Template with TemplateVersion.
-  ///
-  /// Requires project_id(projects) and template display_name(catalogTemplates).
-  /// The template display_name is set by the user.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - The parent project and template that the TemplateVersion will
-  /// be created under. Create using project_id(pid1) and display_name(tid1).
-  /// Format: projects/{pid1}/catalogTemplates/{tid1}
-  /// Value must have pattern `^projects/\[^/\]+/catalogTemplates/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [TemplateVersion].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<TemplateVersion> create(
-    CreateTemplateVersionRequest request,
-    core.String parent, {
-    core.String? $fields,
-  }) async {
-    final _body = convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1b3/' + core.Uri.encodeFull('$parent') + '/templateVersions';
-
-    final _response = await _requester.request(
-      _url,
-      'POST',
-      body: _body,
-      queryParams: _queryParams,
-    );
-    return TemplateVersion.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -2694,8 +2401,8 @@ class ProjectsLocationsTemplatesResource {
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// to which to direct the request.
   ///
-  /// [dynamicTemplate_gcsPath] - Path to dynamic template spec file on GCS. The
-  /// file must be a Json serialized DynamicTemplateFieSpec object.
+  /// [dynamicTemplate_gcsPath] - Path to dynamic template spec file on Cloud
+  /// Storage. The file must be a Json serialized DynamicTemplateFieSpec object.
   ///
   /// [dynamicTemplate_stagingLocation] - Cloud Storage path for staging
   /// dependencies. Must be a valid Cloud Storage URL, beginning with `gs://`.
@@ -2849,64 +2556,6 @@ class ProjectsSnapshotsResource {
   }
 }
 
-class ProjectsTemplateVersionsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsTemplateVersionsResource(commons.ApiRequester client)
-      : _requester = client;
-
-  /// List TemplateVersions using project_id and an optional display_name field.
-  ///
-  /// List all the TemplateVersions in the Template if display set. List all the
-  /// TemplateVersions in the Project if display_name not set.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - parent includes project_id, and display_name is optional. List
-  /// by project_id(pid1) and display_name(tid1). Format:
-  /// projects/{pid1}/catalogTemplates/{tid1} List by project_id(pid1). Format:
-  /// projects/{pid1}
-  /// Value must have pattern `^projects/\[^/\]+$`.
-  ///
-  /// [pageSize] - The maximum number of TemplateVersions to return per page.
-  ///
-  /// [pageToken] - The page token, received from a previous
-  /// ListTemplateVersions call. Provide this to retrieve the subsequent page.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListTemplateVersionsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListTemplateVersionsResponse> list(
-    core.String parent, {
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? $fields,
-  }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1b3/' + core.Uri.encodeFull('$parent') + '/templateVersions';
-
-    final _response = await _requester.request(
-      _url,
-      'GET',
-      queryParams: _queryParams,
-    );
-    return ListTemplateVersionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-}
-
 class ProjectsTemplatesResource {
   final commons.ApiRequester _requester;
 
@@ -3018,8 +2667,8 @@ class ProjectsTemplatesResource {
   /// [projectId] - Required. The ID of the Cloud Platform project that the job
   /// belongs to.
   ///
-  /// [dynamicTemplate_gcsPath] - Path to dynamic template spec file on GCS. The
-  /// file must be a Json serialized DynamicTemplateFieSpec object.
+  /// [dynamicTemplate_gcsPath] - Path to dynamic template spec file on Cloud
+  /// Storage. The file must be a Json serialized DynamicTemplateFieSpec object.
   ///
   /// [dynamicTemplate_stagingLocation] - Cloud Storage path for staging
   /// dependencies. Must be a valid Cloud Storage URL, beginning with `gs://`.
@@ -3221,40 +2870,6 @@ class ApproximateSplitRequest {
       };
 }
 
-/// Job information for templates.
-class Artifact {
-  /// Container image path set for flex Template.
-  ContainerSpec? containerSpec;
-
-  /// job_graph_gcs_path set for legacy Template.
-  core.String? jobGraphGcsPath;
-
-  /// Metadata set for legacy Template.
-  TemplateMetadata? metadata;
-
-  Artifact();
-
-  Artifact.fromJson(core.Map _json) {
-    if (_json.containsKey('containerSpec')) {
-      containerSpec = ContainerSpec.fromJson(
-          _json['containerSpec'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('jobGraphGcsPath')) {
-      jobGraphGcsPath = _json['jobGraphGcsPath'] as core.String;
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = TemplateMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-  }
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (containerSpec != null) 'containerSpec': containerSpec!.toJson(),
-        if (jobGraphGcsPath != null) 'jobGraphGcsPath': jobGraphGcsPath!,
-        if (metadata != null) 'metadata': metadata!.toJson(),
-      };
-}
-
 /// A structured message reporting an autoscaling decision made by the Dataflow
 /// service.
 class AutoscalingEvent {
@@ -3402,7 +3017,7 @@ class BigQueryIODetails {
       };
 }
 
-/// Metadata for a BigTable connector used by the job.
+/// Metadata for a Cloud BigTable connector used by the job.
 class BigTableIODetails {
   /// InstanceId accessed in the connection.
   core.String? instanceId;
@@ -3465,26 +3080,6 @@ class CPUTime {
         if (rate != null) 'rate': rate!,
         if (timestamp != null) 'timestamp': timestamp!,
         if (totalMs != null) 'totalMs': totalMs!,
-      };
-}
-
-/// Commit will add a new TemplateVersion to an existing template.
-class CommitTemplateVersionRequest {
-  /// TemplateVersion obejct to create.
-  TemplateVersion? templateVersion;
-
-  CommitTemplateVersionRequest();
-
-  CommitTemplateVersionRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('templateVersion')) {
-      templateVersion = TemplateVersion.fromJson(
-          _json['templateVersion'] as core.Map<core.String, core.dynamic>);
-    }
-  }
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (templateVersion != null)
-          'templateVersion': templateVersion!.toJson(),
       };
 }
 
@@ -4103,26 +3698,6 @@ class CreateJobFromTemplateRequest {
       };
 }
 
-/// Creates a new Template with TemplateVersions.
-class CreateTemplateVersionRequest {
-  /// The TemplateVersion object to create.
-  TemplateVersion? templateVersion;
-
-  CreateTemplateVersionRequest();
-
-  CreateTemplateVersionRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('templateVersion')) {
-      templateVersion = TemplateVersion.fromJson(
-          _json['templateVersion'] as core.Map<core.String, core.dynamic>);
-    }
-  }
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (templateVersion != null)
-          'templateVersion': templateVersion!.toJson(),
-      };
-}
-
 /// Identifies the location of a custom souce.
 class CustomSourceLocation {
   /// Whether this source is stateful.
@@ -4196,6 +3771,26 @@ class DatastoreIODetails {
   core.Map<core.String, core.dynamic> toJson() => {
         if (namespace != null) 'namespace': namespace!,
         if (projectId != null) 'projectId': projectId!,
+      };
+}
+
+/// Describes any options that have an effect on the debugging of pipelines.
+class DebugOptions {
+  /// When true, enables the logging of the literal hot key to the user's Cloud
+  /// Logging.
+  core.bool? enableHotKeyLogging;
+
+  DebugOptions();
+
+  DebugOptions.fromJson(core.Map _json) {
+    if (_json.containsKey('enableHotKeyLogging')) {
+      enableHotKeyLogging = _json['enableHotKeyLogging'] as core.bool;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableHotKeyLogging != null)
+          'enableHotKeyLogging': enableHotKeyLogging!,
       };
 }
 
@@ -4498,23 +4093,6 @@ class DynamicSourceSplit {
       };
 }
 
-/// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs.
-///
-/// A typical example is to use it as the request or the response type of an API
-/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
-class Empty {
-  Empty();
-
-  Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
-
 /// Describes the environment in which a Dataflow Job runs.
 class Environment {
   /// The type of cluster manager API to use.
@@ -4530,6 +4108,9 @@ class Environment {
   /// The supported resource type is: Google BigQuery:
   /// bigquery.googleapis.com/{dataset}
   core.String? dataset;
+
+  /// Any debugging options to be supplied to the job.
+  DebugOptions? debugOptions;
 
   /// The list of experiments to enable.
   ///
@@ -4648,6 +4229,10 @@ class Environment {
     if (_json.containsKey('dataset')) {
       dataset = _json['dataset'] as core.String;
     }
+    if (_json.containsKey('debugOptions')) {
+      debugOptions = DebugOptions.fromJson(
+          _json['debugOptions'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('experiments')) {
       experiments = (_json['experiments'] as core.List)
           .map<core.String>((value) => value as core.String)
@@ -4729,6 +4314,7 @@ class Environment {
         if (clusterManagerApiService != null)
           'clusterManagerApiService': clusterManagerApiService!,
         if (dataset != null) 'dataset': dataset!,
+        if (debugOptions != null) 'debugOptions': debugOptions!.toJson(),
         if (experiments != null) 'experiments': experiments!,
         if (flexResourceSchedulingGoal != null)
           'flexResourceSchedulingGoal': flexResourceSchedulingGoal!,
@@ -4807,7 +4393,7 @@ class ExecutionStageState {
   /// - "JOB_STATE_RESOURCE_CLEANING_UP" : `JOB_STATE_RESOURCE_CLEANING_UP`
   /// indicates that the batch job's associated resources are currently being
   /// cleaned up after a successful run. Currently, this is an opt-in feature,
-  /// please reach out to Cloud support team if you are intersted.
+  /// please reach out to Cloud support team if you are interested.
   core.String? executionStageState;
 
   ExecutionStageState();
@@ -4851,7 +4437,7 @@ class ExecutionStageSummary {
   /// Input sources for this stage.
   core.List<StageSource>? inputSource;
 
-  /// Type of tranform this stage is executing.
+  /// Type of transform this stage is executing.
   /// Possible string values are:
   /// - "UNKNOWN_KIND" : Unrecognized transform type.
   /// - "PAR_DO_KIND" : ParDo transform.
@@ -5055,6 +4641,11 @@ class FlexTemplateRuntimeEnvironment {
   /// The email address of the service account to run the job as.
   core.String? serviceAccountEmail;
 
+  /// The Cloud Storage path for staging local files.
+  ///
+  /// Must be a valid Cloud Storage URL, beginning with `gs://`.
+  core.String? stagingLocation;
+
   /// Subnetwork to which VMs will be assigned, if desired.
   ///
   /// You can specify a subnetwork using either a complete URL or an abbreviated
@@ -5139,6 +4730,9 @@ class FlexTemplateRuntimeEnvironment {
     if (_json.containsKey('serviceAccountEmail')) {
       serviceAccountEmail = _json['serviceAccountEmail'] as core.String;
     }
+    if (_json.containsKey('stagingLocation')) {
+      stagingLocation = _json['stagingLocation'] as core.String;
+    }
     if (_json.containsKey('subnetwork')) {
       subnetwork = _json['subnetwork'] as core.String;
     }
@@ -5172,6 +4766,7 @@ class FlexTemplateRuntimeEnvironment {
         if (numWorkers != null) 'numWorkers': numWorkers!,
         if (serviceAccountEmail != null)
           'serviceAccountEmail': serviceAccountEmail!,
+        if (stagingLocation != null) 'stagingLocation': stagingLocation!,
         if (subnetwork != null) 'subnetwork': subnetwork!,
         if (tempLocation != null) 'tempLocation': tempLocation!,
         if (workerRegion != null) 'workerRegion': workerRegion!,
@@ -5656,7 +5251,7 @@ class Job {
   /// - "JOB_STATE_RESOURCE_CLEANING_UP" : `JOB_STATE_RESOURCE_CLEANING_UP`
   /// indicates that the batch job's associated resources are currently being
   /// cleaned up after a successful run. Currently, this is an opt-in feature,
-  /// please reach out to Cloud support team if you are intersted.
+  /// please reach out to Cloud support team if you are interested.
   core.String? currentState;
 
   /// The timestamp associated with the current state.
@@ -5778,7 +5373,7 @@ class Job {
   /// - "JOB_STATE_RESOURCE_CLEANING_UP" : `JOB_STATE_RESOURCE_CLEANING_UP`
   /// indicates that the batch job's associated resources are currently being
   /// cleaned up after a successful run. Currently, this is an opt-in feature,
-  /// please reach out to Cloud support team if you are intersted.
+  /// please reach out to Cloud support team if you are interested.
   core.String? requestedState;
 
   /// Reserved for future use.
@@ -5807,7 +5402,7 @@ class Job {
   /// JOB_VIEW_ALL.
   core.List<Step>? steps;
 
-  /// The GCS location where the steps are stored.
+  /// The Cloud Storage location where the steps are stored.
   core.String? stepsLocation;
 
   /// A set of files the system should be aware of that are used for temporary
@@ -6120,7 +5715,7 @@ class JobMessage {
 ///
 /// Will be included in the ListJob response and Job SUMMARY view.
 class JobMetadata {
-  /// Identification of a BigTable source used in the Dataflow job.
+  /// Identification of a Cloud BigTable source used in the Dataflow job.
   core.List<BigTableIODetails>? bigTableDetails;
 
   /// Identification of a BigQuery source used in the Dataflow job.
@@ -6347,7 +5942,8 @@ class LaunchFlexTemplateParameter {
   /// Spec about the container image to launch.
   ContainerSpec? containerSpec;
 
-  /// Gcs path to a file with json serialized ContainerSpec as content.
+  /// Cloud Storage path to a file with json serialized ContainerSpec as
+  /// content.
   core.String? containerSpecGcsPath;
 
   /// The runtime environment for the FlexTemplate job
@@ -6815,38 +6411,6 @@ class ListSnapshotsResponse {
       };
 }
 
-/// Respond a list of TemplateVersions.
-class ListTemplateVersionsResponse {
-  /// A token that can be sent as `page_token` to retrieve the next page.
-  ///
-  /// If this field is omitted, there are no subsequent pages.
-  core.String? nextPageToken;
-
-  /// A list of TemplateVersions.
-  core.List<TemplateVersion>? templateVersions;
-
-  ListTemplateVersionsResponse();
-
-  ListTemplateVersionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('templateVersions')) {
-      templateVersions = (_json['templateVersions'] as core.List)
-          .map<TemplateVersion>((value) => TemplateVersion.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (templateVersions != null)
-          'templateVersions':
-              templateVersions!.map((value) => value.toJson()).toList(),
-      };
-}
-
 /// MapTask consists of an ordered set of instructions, each of which describes
 /// one particular low-level operation for the worker to perform in order to
 /// accomplish the MapTask's WorkItem.
@@ -7154,117 +6718,6 @@ class MetricUpdate {
       };
 }
 
-/// Either add the label to TemplateVersion or remove it from the
-/// TemplateVersion.
-class ModifyTemplateVersionLabelRequest {
-  /// The label key for update.
-  core.String? key;
-
-  /// Requests for add label to TemplateVersion or remove label from
-  /// TemplateVersion.
-  /// Possible string values are:
-  /// - "OPERATION_UNSPECIFIED" : Default value.
-  /// - "ADD" : Add the label to the TemplateVersion object.
-  /// - "REMOVE" : Remove the label from the TemplateVersion object.
-  core.String? op;
-
-  /// The label value for update.
-  core.String? value;
-
-  ModifyTemplateVersionLabelRequest();
-
-  ModifyTemplateVersionLabelRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('key')) {
-      key = _json['key'] as core.String;
-    }
-    if (_json.containsKey('op')) {
-      op = _json['op'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (key != null) 'key': key!,
-        if (op != null) 'op': op!,
-        if (value != null) 'value': value!,
-      };
-}
-
-/// Respond the labels in the TemplateVersion.
-class ModifyTemplateVersionLabelResponse {
-  /// All the label in the TemplateVersion.
-  core.Map<core.String, core.String>? labels;
-
-  ModifyTemplateVersionLabelResponse();
-
-  ModifyTemplateVersionLabelResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-  }
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (labels != null) 'labels': labels!,
-      };
-}
-
-/// Add a tag to the current TemplateVersion.
-///
-/// If tag exist in another TemplateVersion in the Template, remove the tag
-/// before add it to the current TemplateVersion. If remove_only set, remove the
-/// tag from the current TemplateVersion.
-class ModifyTemplateVersionTagRequest {
-  /// The flag that indicates if the request is only for remove tag from
-  /// TemplateVersion.
-  core.bool? removeOnly;
-
-  /// The tag for update.
-  core.String? tag;
-
-  ModifyTemplateVersionTagRequest();
-
-  ModifyTemplateVersionTagRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('removeOnly')) {
-      removeOnly = _json['removeOnly'] as core.bool;
-    }
-    if (_json.containsKey('tag')) {
-      tag = _json['tag'] as core.String;
-    }
-  }
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (removeOnly != null) 'removeOnly': removeOnly!,
-        if (tag != null) 'tag': tag!,
-      };
-}
-
-/// Respond the current tags in the TemplateVersion.
-class ModifyTemplateVersionTagResponse {
-  /// All the tags in the TemplateVersion.
-  core.List<core.String>? tags;
-
-  ModifyTemplateVersionTagResponse();
-
-  ModifyTemplateVersionTagResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('tags')) {
-      tags = (_json['tags'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (tags != null) 'tags': tags!,
-      };
-}
-
 /// Describes mounted data disk.
 class MountedDataDisk {
   /// The name of the data disk.
@@ -7563,6 +7016,11 @@ class Parameter {
 
 /// Metadata for a specific parameter.
 class ParameterMetadata {
+  /// Additional metadata for describing this parameter.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? customMetadata;
+
   /// The help text to display for the parameter.
   ///
   /// Required.
@@ -7593,13 +7051,18 @@ class ParameterMetadata {
   /// Possible string values are:
   /// - "DEFAULT" : Default input type.
   /// - "TEXT" : The parameter specifies generic text input.
-  /// - "GCS_READ_BUCKET" : The parameter specifies a GCS Bucket to read from.
-  /// - "GCS_WRITE_BUCKET" : The parameter specifies a GCS Bucket to write to.
-  /// - "GCS_READ_FILE" : The parameter specifies a GCS file path to read from.
-  /// - "GCS_WRITE_FILE" : The parameter specifies a GCS file path to write to.
-  /// - "GCS_READ_FOLDER" : The parameter specifies a GCS folder path to read
-  /// from.
-  /// - "GCS_WRITE_FOLDER" : The parameter specifies a GCS folder to write to.
+  /// - "GCS_READ_BUCKET" : The parameter specifies a Cloud Storage Bucket to
+  /// read from.
+  /// - "GCS_WRITE_BUCKET" : The parameter specifies a Cloud Storage Bucket to
+  /// write to.
+  /// - "GCS_READ_FILE" : The parameter specifies a Cloud Storage file path to
+  /// read from.
+  /// - "GCS_WRITE_FILE" : The parameter specifies a Cloud Storage file path to
+  /// write to.
+  /// - "GCS_READ_FOLDER" : The parameter specifies a Cloud Storage folder path
+  /// to read from.
+  /// - "GCS_WRITE_FOLDER" : The parameter specifies a Cloud Storage folder to
+  /// write to.
   /// - "PUBSUB_TOPIC" : The parameter specifies a Pub/Sub Topic.
   /// - "PUBSUB_SUBSCRIPTION" : The parameter specifies a Pub/Sub Subscription.
   core.String? paramType;
@@ -7612,6 +7075,15 @@ class ParameterMetadata {
   ParameterMetadata();
 
   ParameterMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey('customMetadata')) {
+      customMetadata =
+          (_json['customMetadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
+    }
     if (_json.containsKey('helpText')) {
       helpText = _json['helpText'] as core.String;
     }
@@ -7635,6 +7107,7 @@ class ParameterMetadata {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (customMetadata != null) 'customMetadata': customMetadata!,
         if (helpText != null) 'helpText': helpText!,
         if (isOptional != null) 'isOptional': isOptional!,
         if (label != null) 'label': label!,
@@ -7900,7 +7373,7 @@ class ProgressTimeseries {
       };
 }
 
-/// Metadata for a PubSub connector used by the job.
+/// Metadata for a Pub/Sub connector used by the job.
 class PubSubIODetails {
   /// Subscription used in the connection.
   core.String? subscription;
@@ -8946,6 +8419,9 @@ class Snapshot {
   /// PubSub snapshot metadata.
   core.List<PubsubSnapshotMetadata>? pubsubMetadata;
 
+  /// Cloud region where this snapshot lives in, e.g., "us-central1".
+  core.String? region;
+
   /// The job this snapshot was created from.
   core.String? sourceJobId;
 
@@ -8988,6 +8464,9 @@ class Snapshot {
                   value as core.Map<core.String, core.dynamic>))
           .toList();
     }
+    if (_json.containsKey('region')) {
+      region = _json['region'] as core.String;
+    }
     if (_json.containsKey('sourceJobId')) {
       sourceJobId = _json['sourceJobId'] as core.String;
     }
@@ -9008,6 +8487,7 @@ class Snapshot {
         if (pubsubMetadata != null)
           'pubsubMetadata':
               pubsubMetadata!.map((value) => value.toJson()).toList(),
+        if (region != null) 'region': region!,
         if (sourceJobId != null) 'sourceJobId': sourceJobId!,
         if (state != null) 'state': state!,
         if (ttl != null) 'ttl': ttl!,
@@ -10541,111 +10021,6 @@ class TemplateMetadata {
       };
 }
 
-/// /////////////////////////////////////////////////////////////////////////////
-/// //// Template Catalog is used to organize user TemplateVersions.
-///
-/// //// TemplateVersions that have the same project_id and display_name are
-/// //// belong to the same Template. //// Templates with the same project_id
-/// belong to the same Project. //// TemplateVersion may have labels and
-/// multiple labels are allowed. //// Duplicated labels in the same
-/// `TemplateVersion` are not allowed. //// TemplateVersion may have tags and
-/// multiple tags are allowed. Duplicated //// tags in the same `Template` are
-/// not allowed!
-class TemplateVersion {
-  /// Job graph and metadata if it is a legacy Template.
-  ///
-  /// Container image path and metadata if it is flex Template.
-  Artifact? artifact;
-
-  /// Creation time of this TemplateVersion.
-  core.String? createTime;
-
-  /// Template description from the user.
-  core.String? description;
-
-  /// A customized name for Template.
-  ///
-  /// Multiple TemplateVersions per Template.
-  core.String? displayName;
-
-  /// Labels for the Template Version.
-  ///
-  /// Labels can be duplicate within Template.
-  core.Map<core.String, core.String>? labels;
-
-  /// A unique project_id.
-  ///
-  /// Multiple Templates per Project.
-  core.String? projectId;
-
-  /// Alias for version_id, helps locate a TemplateVersion.
-  core.List<core.String>? tags;
-
-  /// Either LEGACY or FLEX.
-  ///
-  /// This should match with the type of artifact.
-  /// Possible string values are:
-  /// - "TEMPLATE_TYPE_UNSPECIFIED" : Default value. Not a useful zero case.
-  /// - "LEGACY" : Legacy Template.
-  /// - "FLEX" : Flex Template.
-  core.String? type;
-
-  /// An auto generated version_id for TemplateVersion.
-  core.String? versionId;
-
-  TemplateVersion();
-
-  TemplateVersion.fromJson(core.Map _json) {
-    if (_json.containsKey('artifact')) {
-      artifact = Artifact.fromJson(
-          _json['artifact'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'] as core.String;
-    }
-    if (_json.containsKey('tags')) {
-      tags = (_json['tags'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('versionId')) {
-      versionId = _json['versionId'] as core.String;
-    }
-  }
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (artifact != null) 'artifact': artifact!.toJson(),
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (labels != null) 'labels': labels!,
-        if (projectId != null) 'projectId': projectId!,
-        if (tags != null) 'tags': tags!,
-        if (type != null) 'type': type!,
-        if (versionId != null) 'versionId': versionId!,
-      };
-}
-
 /// Global topology of the streaming Dataflow job, including all computations
 /// and their sharded locations.
 class TopologyConfig {
@@ -11357,7 +10732,7 @@ class WorkerDetails {
 /// The VM should be identified by the labels attached to the WorkerMessage that
 /// this health ping belongs to.
 class WorkerHealthReport {
-  /// A message describing any unusual health reports.
+  /// Message describing any unusual health reports.
   core.String? msg;
 
   /// The pods running on the worker.
@@ -11376,6 +10751,10 @@ class WorkerHealthReport {
   /// The default value of 0 should be interpreted as the field is not being
   /// explicitly set by the worker.
   core.String? reportInterval;
+
+  /// Code to describe a specific reason, if known, that a VM has reported
+  /// broken state.
+  core.String? vmBrokenCode;
 
   /// Whether the VM is in a permanently broken state.
   ///
@@ -11409,6 +10788,9 @@ class WorkerHealthReport {
     if (_json.containsKey('reportInterval')) {
       reportInterval = _json['reportInterval'] as core.String;
     }
+    if (_json.containsKey('vmBrokenCode')) {
+      vmBrokenCode = _json['vmBrokenCode'] as core.String;
+    }
     if (_json.containsKey('vmIsBroken')) {
       vmIsBroken = _json['vmIsBroken'] as core.bool;
     }
@@ -11424,6 +10806,7 @@ class WorkerHealthReport {
         if (msg != null) 'msg': msg!,
         if (pods != null) 'pods': pods!,
         if (reportInterval != null) 'reportInterval': reportInterval!,
+        if (vmBrokenCode != null) 'vmBrokenCode': vmBrokenCode!,
         if (vmIsBroken != null) 'vmIsBroken': vmIsBroken!,
         if (vmIsHealthy != null) 'vmIsHealthy': vmIsHealthy!,
         if (vmStartupTime != null) 'vmStartupTime': vmStartupTime!,
@@ -11607,9 +10990,9 @@ class WorkerMessageCode {
   ///
   /// Examples: 1. "HARNESS_STARTED" might be used to indicate the worker
   /// harness has started. 2. "GCS_DOWNLOAD_ERROR" might be used to indicate an
-  /// error downloading a GCS file as part of the boot process of one of the
-  /// worker containers. This is a string and not an enum to make it easy to add
-  /// new codes without waiting for an API change.
+  /// error downloading a Cloud Storage file as part of the boot process of one
+  /// of the worker containers. This is a string and not an enum to make it easy
+  /// to add new codes without waiting for an API change.
   core.String? code;
 
   /// Parameters contains specific information about the code.
@@ -11617,14 +11000,15 @@ class WorkerMessageCode {
   /// This is a struct to allow parameters of different types. Examples: 1. For
   /// a "HARNESS_STARTED" message parameters might provide the name of the
   /// worker and additional data like timing information. 2. For a
-  /// "GCS_DOWNLOAD_ERROR" parameters might contain fields listing the GCS
-  /// objects being downloaded and fields containing errors. In general complex
-  /// data structures should be avoided. If a worker needs to send a specific
-  /// and complicated data structure then please consider defining a new proto
-  /// and adding it to the data oneof in WorkerMessageResponse. Conventions:
-  /// Parameters should only be used for information that isn't typically passed
-  /// as a label. hostname and other worker identifiers should almost always be
-  /// passed as labels since they will be included on most messages.
+  /// "GCS_DOWNLOAD_ERROR" parameters might contain fields listing the Cloud
+  /// Storage objects being downloaded and fields containing errors. In general
+  /// complex data structures should be avoided. If a worker needs to send a
+  /// specific and complicated data structure then please consider defining a
+  /// new proto and adding it to the data oneof in WorkerMessageResponse.
+  /// Conventions: Parameters should only be used for information that isn't
+  /// typically passed as a label. hostname and other worker identifiers should
+  /// almost always be passed as labels since they will be included on most
+  /// messages.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.

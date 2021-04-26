@@ -50,7 +50,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// recommendation systems without requiring a high level of expertise in
 /// machine learning, recommendation system, or Google Cloud.
 class CloudRetailApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -166,9 +166,8 @@ class ProjectsLocationsCatalogsResource {
   /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+$`.
   ///
   /// [updateMask] - Indicates which fields in the provided Catalog to update.
-  /// If not set, will only update the Catalog.product_level_config field, which
-  /// is also the only currently supported field to update. If an unsupported or
-  /// unknown field is provided, an INVALID_ARGUMENT error is returned.
+  /// If an unsupported or unknown field is provided, an INVALID_ARGUMENT error
+  /// is returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -636,25 +635,12 @@ class ProjectsLocationsCatalogsPlacementsResource {
   /// Request parameters:
   ///
   /// [placement] - Required. Full resource name of the format: {name=projects /
-  /// * /locations/global/catalogs/default_catalog/placements / * } The id of
-  /// the recommendation engine placement. This id is used to identify the set
-  /// of models that will be used to make the prediction. We currently support
-  /// three placements with the following IDs by default: * `shopping_cart`:
-  /// Predicts products frequently bought together with one or more products in
-  /// the same shopping session. Commonly displayed after `add-to-cart` events,
-  /// on product detail pages, or on the shopping cart page. * `home_page`:
-  /// Predicts the next product that a user will most likely engage with or
-  /// purchase based on the shopping or viewing history of the specified
-  /// `userId` or `visitorId`. For example - Recommendations for you. *
-  /// `product_detail`: Predicts the next product that a user will most likely
-  /// engage with or purchase. The prediction is based on the shopping or
-  /// viewing history of the specified `userId` or `visitorId` and its relevance
-  /// to a specified `CatalogItem`. Typically used on product detail pages. For
-  /// example - More products like this. * `recently_viewed_default`: Returns up
-  /// to 75 products recently viewed by the specified `userId` or `visitorId`,
-  /// most recent ones first. Returns nothing if neither of them has viewed any
-  /// products yet. For example - Recently viewed. The full list of available
-  /// placements can be seen at
+  /// * /locations/global/catalogs/default_catalog/placements / * } The ID of
+  /// the Recommendations AI placement. Before you can request predictions from
+  /// your model, you must create at least one placement for it. For more
+  /// information, see
+  /// [Managing placements](https://cloud.google.com/retail/recommendations-ai/docs/manage-placements).
+  /// The full list of available placements can be seen at
   /// https://console.cloud.google.com/recommendation/catalogs/default_catalog/placements
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/placements/\[^/\]+$`.
@@ -1273,7 +1259,7 @@ class GoogleCloudRetailLoggingImportErrorContext {
   /// The detailed content which caused the error on importing a catalog item.
   core.String? catalogItem;
 
-  /// GCS file path of the import source.
+  /// Cloud Storage file path of the import source.
   ///
   /// Can be set for batch operation error.
   core.String? gcsPath;
@@ -1392,10 +1378,10 @@ class GoogleCloudRetailV2BigQuerySource {
   /// Cloud Storage directory.
   core.String? gcsStagingDir;
 
-  /// The project id (can be project # or id) that the BigQuery source is in
+  /// The project ID (can be project # or ID) that the BigQuery source is in
   /// with a length limit of 128 characters.
   ///
-  /// If not specified, inherits the project id from the parent request.
+  /// If not specified, inherits the project ID from the parent request.
   core.String? projectId;
 
   /// The BigQuery table to copy the data from with a length limit of 1,024
@@ -1525,7 +1511,7 @@ class GoogleCloudRetailV2GcsSource {
   /// Supported values for product imports: * `product` (default): One JSON
   /// Product per line. Each product must have a valid Product.id. *
   /// `product_merchant_center`: See
-  /// [Importing catalog data from Merchant Center](https://cloud.google.com/retail/recommendations-ai/docs/upload-catalog#mcc).
+  /// [Importing catalog data from Merchant Center](https://cloud.google.com/retail/recommendations-ai/docs/upload-catalog#mc).
   /// Supported values for user events imports: * `user_event` (default): One
   /// JSON UserEvent per line. * `user_event_ga360`: Using
   /// https://support.google.com/analytics/answer/3437719?hl=en.
@@ -1537,7 +1523,7 @@ class GoogleCloudRetailV2GcsSource {
   /// (for example, `gs://bucket/directory/object.json`) or a pattern matching
   /// one or more files, such as `gs://bucket/directory / * .json`. A request
   /// can contain at most 100 files, and each file can be up to 2 GB. See
-  /// [Importing product information](https://cloud.google.com/recommendations-ai/docs/upload-catalog)
+  /// [Importing product information](https://cloud.google.com/retail/recommendations-ai/docs/upload-catalog)
   /// for the expected file format and setup instructions.
   ///
   /// Required.
@@ -1863,7 +1849,8 @@ class GoogleCloudRetailV2PredictRequest {
   /// expression is enclosed in parentheses, and must be separated from the tag
   /// values by a space. `-"tagA"` is also supported and is equivalent to `NOT
   /// "tagA"`. Tag values must be double quoted UTF-8 encoded strings with a
-  /// size limit of 1,000 characters. * filterOutOfStockItems. Restricts
+  /// size limit of 1,000 characters. Note: "Recently viewed" models don't
+  /// support tag filtering at the moment. * filterOutOfStockItems. Restricts
   /// predictions to products that do not have a stockState value of
   /// OUT_OF_STOCK. Examples: * tag=("Red" OR "Blue") tag="New-Arrival" tag=(NOT
   /// "promotional") * filterOutOfStockItems tag=(-"promotional") *
@@ -1873,14 +1860,19 @@ class GoogleCloudRetailV2PredictRequest {
   /// `PredictRequest.params`.
   core.String? filter;
 
-  /// The labels for the predict request.
+  /// The labels applied to a resource must meet the following requirements: *
+  /// Each resource can have multiple labels, up to a maximum of 64.
   ///
-  /// * Label keys can contain lowercase letters, digits and hyphens, must start
-  /// with a letter, and must end with a letter or digit. * Non-zero label
-  /// values can contain lowercase letters, digits and hyphens, must start with
-  /// a letter, and must end with a letter or digit. * No more than 64 labels
-  /// can be associated with a given request. See https://goo.gl/xmQnxf for more
-  /// information on and examples of labels.
+  /// * Each label must be a key-value pair. * Keys have a minimum length of 1
+  /// character and a maximum length of 63 characters, and cannot be empty.
+  /// Values can be empty, and have a maximum length of 63 characters. * Keys
+  /// and values can contain only lowercase letters, numeric characters,
+  /// underscores, and dashes. All characters must use UTF-8 encoding, and
+  /// international characters are allowed. * The key portion of a label must be
+  /// unique. However, you can use the same key with multiple resources. * Keys
+  /// must start with a lowercase letter or international character. See
+  /// [Google Cloud Document](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements)
+  /// for more details.
   core.Map<core.String, core.String>? labels;
 
   /// Maximum number of results to return per page.
@@ -2134,10 +2126,9 @@ class GoogleCloudRetailV2Product {
   /// "vendor": {"text": ["vendor123", "vendor456"]}, "lengths_cm":
   /// {"numbers":[2.3, 15.4]}, "heights_cm": {"numbers":[8.1, 6.4]} }`. This
   /// field needs to pass all below criteria, otherwise an INVALID_ARGUMENT
-  /// error is returned: * Max entries count: 150 by default; 100 for
-  /// Type.VARIANT. * Max indexable entries count: 150 by default; 40 for
-  /// Type.VARIANT. * Max searchable entries count: 30. * The key must be a
-  /// UTF-8 encoded string with a length limit of 128 characters.
+  /// error is returned: * Max entries count: 200 by default; 100 for
+  /// Type.VARIANT. * The key must be a UTF-8 encoded string with a length limit
+  /// of 128 characters.
   core.Map<core.String, GoogleCloudRetailV2CustomAttribute>? attributes;
 
   /// The online availability of the Product.
@@ -2253,7 +2244,7 @@ class GoogleCloudRetailV2Product {
 
   /// Product title.
   ///
-  /// This field must be a UTF-8 encoded string with a length limit of 128
+  /// This field must be a UTF-8 encoded string with a length limit of 1,000
   /// characters. Otherwise, an INVALID_ARGUMENT error is returned. Google
   /// Merchant Center property
   /// [title](https://support.google.com/merchants/answer/6324415). Schema.org
@@ -2264,11 +2255,12 @@ class GoogleCloudRetailV2Product {
 
   /// The type of the product.
   ///
-  /// This field is output-only.
+  /// Default to Catalog.product_level_config.ingestion_product_type if unset.
   ///
   /// Immutable.
   /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Default value. Default to Type.PRIMARY if unset.
+  /// - "TYPE_UNSPECIFIED" : Default value. Default to
+  /// Catalog.product_level_config.ingestion_product_type if unset.
   /// - "PRIMARY" : The primary type. As the primary unit for predicting,
   /// indexing and search serving, a Type.PRIMARY Product is grouped with
   /// multiple Type.VARIANT Products.
@@ -2489,9 +2481,9 @@ class GoogleCloudRetailV2ProductLevelConfig {
   /// Product.primary_product_id cannot be empty. If this field is set to an
   /// invalid value other than these, an INVALID_ARGUMENT error is returned. If
   /// this field is `variant` and merchant_center_product_id_field is
-  /// `itemGroupId`, an INVALID_ARGUMENT error is returned. See \[Using catalog
-  /// levels\](/retail/recommendations-ai/docs/catalog#catalog-levels) for more
-  /// details.
+  /// `itemGroupId`, an INVALID_ARGUMENT error is returned. See
+  /// [Using product levels](https://cloud.google.com/retail/recommendations-ai/docs/catalog#product-levels)
+  /// for more details.
   core.String? ingestionProductType;
 
   /// Which field of \[Merchant Center
@@ -2504,9 +2496,9 @@ class GoogleCloudRetailV2ProductLevelConfig {
   /// `itemGroupId`, and use it to represent the item group. If this field is
   /// set to an invalid value other than these, an INVALID_ARGUMENT error is
   /// returned. If this field is `itemGroupId` and ingestion_product_type is
-  /// `variant`, an INVALID_ARGUMENT error is returned. See \[Using catalog
-  /// levels\](/retail/recommendations-ai/docs/catalog#catalog-levels) for more
-  /// details.
+  /// `variant`, an INVALID_ARGUMENT error is returned. See
+  /// [Using product levels](https://cloud.google.com/retail/recommendations-ai/docs/catalog#product-levels)
+  /// for more details.
   core.String? merchantCenterProductIdField;
 
   GoogleCloudRetailV2ProductLevelConfig();
@@ -2853,7 +2845,10 @@ class GoogleCloudRetailV2UserEvent {
   /// be able to uniquely identify a visitor on a single device. This unique
   /// identifier should not change if the visitor log in/out of the website. The
   /// field must be a UTF-8 encoded string with a length limit of 128
-  /// characters. Otherwise, an INVALID_ARGUMENT error is returned.
+  /// characters. Otherwise, an INVALID_ARGUMENT error is returned. The field
+  /// should not contain PII or user-data. We recommend to use Google Analystics
+  /// [Client ID](https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference#clientId)
+  /// for this field.
   ///
   /// Required.
   core.String? visitorId;
@@ -3805,361 +3800,6 @@ class GoogleCloudRetailV2betaUserEventImportSummary {
   GoogleCloudRetailV2betaUserEventImportSummary();
 
   GoogleCloudRetailV2betaUserEventImportSummary.fromJson(core.Map _json) {
-    if (_json.containsKey('joinedEventsCount')) {
-      joinedEventsCount = _json['joinedEventsCount'] as core.String;
-    }
-    if (_json.containsKey('unjoinedEventsCount')) {
-      unjoinedEventsCount = _json['unjoinedEventsCount'] as core.String;
-    }
-  }
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (joinedEventsCount != null) 'joinedEventsCount': joinedEventsCount!,
-        if (unjoinedEventsCount != null)
-          'unjoinedEventsCount': unjoinedEventsCount!,
-      };
-}
-
-/// Configuration of destination for Export related errors.
-class GoogleCloudRetailV2mainExportErrorsConfig {
-  /// Google Cloud Storage path for import errors.
-  ///
-  /// This must be an empty, existing Cloud Storage bucket. Export errors will
-  /// be written to a file in this bucket, one per line, as a JSON-encoded
-  /// `google.rpc.Status` message.
-  core.String? gcsPrefix;
-
-  GoogleCloudRetailV2mainExportErrorsConfig();
-
-  GoogleCloudRetailV2mainExportErrorsConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('gcsPrefix')) {
-      gcsPrefix = _json['gcsPrefix'] as core.String;
-    }
-  }
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (gcsPrefix != null) 'gcsPrefix': gcsPrefix!,
-      };
-}
-
-/// Metadata related to the progress of the Export operation.
-///
-/// This will be returned by the google.longrunning.Operation.metadata field.
-class GoogleCloudRetailV2mainExportMetadata {
-  /// Operation create time.
-  core.String? createTime;
-
-  /// Operation last update time.
-  ///
-  /// If the operation is done, this is also the finish time.
-  core.String? updateTime;
-
-  GoogleCloudRetailV2mainExportMetadata();
-
-  GoogleCloudRetailV2mainExportMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
-}
-
-/// Response of the ExportProductsRequest.
-///
-/// If the long running operation is done, then this message is returned by the
-/// google.longrunning.Operations.response field if the operation was
-/// successful.
-class GoogleCloudRetailV2mainExportProductsResponse {
-  /// A sample of errors encountered while processing the request.
-  core.List<GoogleRpcStatus>? errorSamples;
-
-  /// Echoes the destination for the complete errors in the request if set.
-  GoogleCloudRetailV2mainExportErrorsConfig? errorsConfig;
-
-  GoogleCloudRetailV2mainExportProductsResponse();
-
-  GoogleCloudRetailV2mainExportProductsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('errorSamples')) {
-      errorSamples = (_json['errorSamples'] as core.List)
-          .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('errorsConfig')) {
-      errorsConfig = GoogleCloudRetailV2mainExportErrorsConfig.fromJson(
-          _json['errorsConfig'] as core.Map<core.String, core.dynamic>);
-    }
-  }
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (errorSamples != null)
-          'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
-        if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
-      };
-}
-
-/// Response of the ExportUserEventsRequest.
-///
-/// If the long running operation was successful, then this message is returned
-/// by the google.longrunning.Operations.response field if the operation was
-/// successful.
-class GoogleCloudRetailV2mainExportUserEventsResponse {
-  /// A sample of errors encountered while processing the request.
-  core.List<GoogleRpcStatus>? errorSamples;
-
-  /// Echoes the destination for the complete errors if this field was set in
-  /// the request.
-  GoogleCloudRetailV2mainExportErrorsConfig? errorsConfig;
-
-  GoogleCloudRetailV2mainExportUserEventsResponse();
-
-  GoogleCloudRetailV2mainExportUserEventsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('errorSamples')) {
-      errorSamples = (_json['errorSamples'] as core.List)
-          .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('errorsConfig')) {
-      errorsConfig = GoogleCloudRetailV2mainExportErrorsConfig.fromJson(
-          _json['errorsConfig'] as core.Map<core.String, core.dynamic>);
-    }
-  }
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (errorSamples != null)
-          'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
-        if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
-      };
-}
-
-/// Configuration of destination for Import related errors.
-class GoogleCloudRetailV2mainImportErrorsConfig {
-  /// Google Cloud Storage path for import errors.
-  ///
-  /// This must be an empty, existing Cloud Storage bucket. Import errors will
-  /// be written to a file in this bucket, one per line, as a JSON-encoded
-  /// `google.rpc.Status` message.
-  core.String? gcsPrefix;
-
-  GoogleCloudRetailV2mainImportErrorsConfig();
-
-  GoogleCloudRetailV2mainImportErrorsConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('gcsPrefix')) {
-      gcsPrefix = _json['gcsPrefix'] as core.String;
-    }
-  }
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (gcsPrefix != null) 'gcsPrefix': gcsPrefix!,
-      };
-}
-
-/// Metadata related to the progress of the Import operation.
-///
-/// This will be returned by the google.longrunning.Operation.metadata field.
-class GoogleCloudRetailV2mainImportMetadata {
-  /// Operation create time.
-  core.String? createTime;
-
-  /// Count of entries that encountered errors while processing.
-  core.String? failureCount;
-
-  /// Count of entries that were processed successfully.
-  core.String? successCount;
-
-  /// Operation last update time.
-  ///
-  /// If the operation is done, this is also the finish time.
-  core.String? updateTime;
-
-  GoogleCloudRetailV2mainImportMetadata();
-
-  GoogleCloudRetailV2mainImportMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('failureCount')) {
-      failureCount = _json['failureCount'] as core.String;
-    }
-    if (_json.containsKey('successCount')) {
-      successCount = _json['successCount'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (failureCount != null) 'failureCount': failureCount!,
-        if (successCount != null) 'successCount': successCount!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
-}
-
-/// Response of the ImportProductsRequest.
-///
-/// If the long running operation is done, then this message is returned by the
-/// google.longrunning.Operations.response field if the operation was
-/// successful.
-class GoogleCloudRetailV2mainImportProductsResponse {
-  /// A sample of errors encountered while processing the request.
-  core.List<GoogleRpcStatus>? errorSamples;
-
-  /// Echoes the destination for the complete errors in the request if set.
-  GoogleCloudRetailV2mainImportErrorsConfig? errorsConfig;
-
-  GoogleCloudRetailV2mainImportProductsResponse();
-
-  GoogleCloudRetailV2mainImportProductsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('errorSamples')) {
-      errorSamples = (_json['errorSamples'] as core.List)
-          .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('errorsConfig')) {
-      errorsConfig = GoogleCloudRetailV2mainImportErrorsConfig.fromJson(
-          _json['errorsConfig'] as core.Map<core.String, core.dynamic>);
-    }
-  }
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (errorSamples != null)
-          'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
-        if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
-      };
-}
-
-/// Response of the ImportUserEventsRequest.
-///
-/// If the long running operation was successful, then this message is returned
-/// by the google.longrunning.Operations.response field if the operation was
-/// successful.
-class GoogleCloudRetailV2mainImportUserEventsResponse {
-  /// A sample of errors encountered while processing the request.
-  core.List<GoogleRpcStatus>? errorSamples;
-
-  /// Echoes the destination for the complete errors if this field was set in
-  /// the request.
-  GoogleCloudRetailV2mainImportErrorsConfig? errorsConfig;
-
-  /// Aggregated statistics of user event import status.
-  GoogleCloudRetailV2mainUserEventImportSummary? importSummary;
-
-  GoogleCloudRetailV2mainImportUserEventsResponse();
-
-  GoogleCloudRetailV2mainImportUserEventsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('errorSamples')) {
-      errorSamples = (_json['errorSamples'] as core.List)
-          .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('errorsConfig')) {
-      errorsConfig = GoogleCloudRetailV2mainImportErrorsConfig.fromJson(
-          _json['errorsConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('importSummary')) {
-      importSummary = GoogleCloudRetailV2mainUserEventImportSummary.fromJson(
-          _json['importSummary'] as core.Map<core.String, core.dynamic>);
-    }
-  }
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (errorSamples != null)
-          'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
-        if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
-        if (importSummary != null) 'importSummary': importSummary!.toJson(),
-      };
-}
-
-/// Metadata related to the progress of the Purge operation.
-///
-/// This will be returned by the google.longrunning.Operation.metadata field.
-class GoogleCloudRetailV2mainPurgeMetadata {
-  GoogleCloudRetailV2mainPurgeMetadata();
-
-  GoogleCloudRetailV2mainPurgeMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
-
-/// Response of the PurgeUserEventsRequest.
-///
-/// If the long running operation is successfully done, then this message is
-/// returned by the google.longrunning.Operations.response field.
-class GoogleCloudRetailV2mainPurgeUserEventsResponse {
-  /// The total count of events purged as a result of the operation.
-  core.String? purgedEventsCount;
-
-  GoogleCloudRetailV2mainPurgeUserEventsResponse();
-
-  GoogleCloudRetailV2mainPurgeUserEventsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('purgedEventsCount')) {
-      purgedEventsCount = _json['purgedEventsCount'] as core.String;
-    }
-  }
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (purgedEventsCount != null) 'purgedEventsCount': purgedEventsCount!,
-      };
-}
-
-/// Metadata for RejoinUserEvents method.
-class GoogleCloudRetailV2mainRejoinUserEventsMetadata {
-  GoogleCloudRetailV2mainRejoinUserEventsMetadata();
-
-  GoogleCloudRetailV2mainRejoinUserEventsMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
-
-/// Response message for RejoinUserEvents method.
-class GoogleCloudRetailV2mainRejoinUserEventsResponse {
-  /// Number of user events that were joined with latest product catalog.
-  core.String? rejoinedUserEventsCount;
-
-  GoogleCloudRetailV2mainRejoinUserEventsResponse();
-
-  GoogleCloudRetailV2mainRejoinUserEventsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('rejoinedUserEventsCount')) {
-      rejoinedUserEventsCount = _json['rejoinedUserEventsCount'] as core.String;
-    }
-  }
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (rejoinedUserEventsCount != null)
-          'rejoinedUserEventsCount': rejoinedUserEventsCount!,
-      };
-}
-
-/// A summary of import result.
-///
-/// The UserEventImportSummary summarizes the import status for user events.
-class GoogleCloudRetailV2mainUserEventImportSummary {
-  /// Count of user events imported with complete existing catalog information.
-  core.String? joinedEventsCount;
-
-  /// Count of user events imported, but with catalog information not found in
-  /// the imported catalog.
-  core.String? unjoinedEventsCount;
-
-  GoogleCloudRetailV2mainUserEventImportSummary();
-
-  GoogleCloudRetailV2mainUserEventImportSummary.fromJson(core.Map _json) {
     if (_json.containsKey('joinedEventsCount')) {
       joinedEventsCount = _json['joinedEventsCount'] as core.String;
     }

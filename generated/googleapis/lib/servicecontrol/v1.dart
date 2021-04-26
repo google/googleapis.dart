@@ -39,7 +39,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Provides admission control and telemetry reporting for services integrated
 /// with Service Infrastructure.
 class ServiceControlApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -124,9 +124,10 @@ class ServicesResource {
   /// for much longer time to avoid outage. WARNING: There is general 60s delay
   /// for the configuration and policy propagation, therefore callers MUST NOT
   /// depend on the `Check` method having the latest policy information. NOTE:
-  /// the CheckRequest has the size limit of 64KB. This method requires the
-  /// `servicemanagement.services.check` permission on the specified service.
-  /// For more information, see [Cloud IAM](https://cloud.google.com/iam).
+  /// the CheckRequest has the size limit (wire-format byte size) of 1MB. This
+  /// method requires the `servicemanagement.services.check` permission on the
+  /// specified service. For more information, see
+  /// [Cloud IAM](https://cloud.google.com/iam).
   ///
   /// [request] - The metadata request object.
   ///
@@ -2642,8 +2643,8 @@ class QuotaProperties {
   /// not fail and available quota goes down to zero but it returns error.
   /// - "CHECK" : Does not change any available quota. Only checks if there is
   /// enough quota. No lock is placed on the checked tokens neither.
-  /// - "RELEASE" : Increases available quota by the operation cost specified
-  /// for the operation.
+  /// - "RELEASE" : DEPRECATED: Increases available quota by the operation cost
+  /// specified for the operation.
   core.String? quotaMode;
 
   QuotaProperties();
@@ -2804,7 +2805,7 @@ class Request {
   /// The HTTP request method, such as `GET`, `POST`.
   core.String? method;
 
-  /// The HTTP URL path.
+  /// The HTTP URL path, excluding the query parameters.
   core.String? path;
 
   /// The network protocol used with the request, such as "http/1.1", "spdy/3",
@@ -3269,9 +3270,9 @@ class ServiceAccountDelegationInfo {
       };
 }
 
-/// The context of a span, attached to Exemplars in Distribution values during
-/// aggregation.
+/// The context of a span.
 ///
+/// This is attached to an Exemplar in Distribution values during aggregation.
 /// It contains the name of a span with format:
 /// projects/\[PROJECT_ID_OR_NUMBER\]/traces/\[TRACE_ID\]/spans/\[SPAN_ID\]
 class SpanContext {

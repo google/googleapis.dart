@@ -1084,6 +1084,12 @@ class RestMethod {
   /// The ETag is sent as an HTTP If-Match or If-None-Match header.
   core.bool? etagRequired;
 
+  /// The URI path of this REST method in (RFC 6570) format without level 2
+  /// features ({+var}).
+  ///
+  /// Supplementary to the path property.
+  core.String? flatPath;
+
   /// HTTP method used by this method.
   core.String? httpMethod;
 
@@ -1144,6 +1150,9 @@ class RestMethod {
     if (_json.containsKey('etagRequired')) {
       etagRequired = _json['etagRequired'] as core.bool;
     }
+    if (_json.containsKey('flatPath')) {
+      flatPath = _json['flatPath'] as core.String;
+    }
     if (_json.containsKey('httpMethod')) {
       httpMethod = _json['httpMethod'] as core.String;
     }
@@ -1201,6 +1210,7 @@ class RestMethod {
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (etagRequired != null) 'etagRequired': etagRequired!,
+        if (flatPath != null) 'flatPath': flatPath!,
         if (httpMethod != null) 'httpMethod': httpMethod!,
         if (id != null) 'id': id!,
         if (mediaUpload != null) 'mediaUpload': mediaUpload!.toJson(),

@@ -43,7 +43,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 ///
 /// Provides convenience while improving security.
 class SecretManagerApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -115,11 +115,15 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [filter] - The standard list filter.
+  /// [filter] - A filter to narrow down results to a preferred subset. The
+  /// filtering language accepts strings like "displayName=tokyo", and is
+  /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
   ///
-  /// [pageSize] - The standard list page size.
+  /// [pageSize] - The maximum number of results to return. If not set, the
+  /// service selects a default.
   ///
-  /// [pageToken] - The standard list page token.
+  /// [pageToken] - A page token received from the `next_page_token` field in
+  /// the response. Send that page token to receive the subsequent page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -264,6 +268,10 @@ class ProjectsSecretsResource {
   /// `projects / * /secrets / * `.
   /// Value must have pattern `^projects/\[^/\]+/secrets/\[^/\]+$`.
   ///
+  /// [etag] - Optional. Etag of the Secret. The request succeeds if it matches
+  /// the etag of the currently stored secret object. If the etag is omitted,
+  /// the request succeeds.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -276,9 +284,11 @@ class ProjectsSecretsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
+    core.String? etag,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
+      if (etag != null) 'etag': [etag],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -575,12 +585,13 @@ class ProjectsSecretsVersionsResource {
   /// Accesses a SecretVersion.
   ///
   /// This call returns the secret data. `projects / * /secrets / *
-  /// /versions/latest` is an alias to the `latest` SecretVersion.
+  /// /versions/latest` is an alias to the most recently created SecretVersion.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the SecretVersion in the format
-  /// `projects / * /secrets / * /versions / * `.
+  /// `projects / * /secrets / * /versions / * `. `projects / * /secrets / *
+  /// /versions/latest` is an alias to the most recently created SecretVersion.
   /// Value must have pattern
   /// `^projects/\[^/\]+/secrets/\[^/\]+/versions/\[^/\]+$`.
   ///
@@ -751,14 +762,14 @@ class ProjectsSecretsVersionsResource {
 
   /// Gets metadata for a SecretVersion.
   ///
-  /// `projects / * /secrets / * /versions/latest` is an alias to the `latest`
-  /// SecretVersion.
+  /// `projects / * /secrets / * /versions/latest` is an alias to the most
+  /// recently created SecretVersion.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the SecretVersion in the format
   /// `projects / * /secrets / * /versions / * `. `projects / * /secrets / *
-  /// /versions/latest` is an alias to the `latest` SecretVersion.
+  /// /versions/latest` is an alias to the most recently created SecretVersion.
   /// Value must have pattern
   /// `^projects/\[^/\]+/secrets/\[^/\]+/versions/\[^/\]+$`.
   ///
@@ -1160,24 +1171,48 @@ class CustomerManagedEncryptionStatus {
 
 /// Request message for SecretManagerService.DestroySecretVersion.
 class DestroySecretVersionRequest {
+  /// Etag of the SecretVersion.
+  ///
+  /// The request succeeds if it matches the etag of the currently stored secret
+  /// version object. If the etag is omitted, the request succeeds.
+  ///
+  /// Optional.
+  core.String? etag;
+
   DestroySecretVersionRequest();
 
-  DestroySecretVersionRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
+  DestroySecretVersionRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'] as core.String;
+    }
+  }
 
-  core.Map<core.String, core.dynamic> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (etag != null) 'etag': etag!,
+      };
 }
 
 /// Request message for SecretManagerService.DisableSecretVersion.
 class DisableSecretVersionRequest {
+  /// Etag of the SecretVersion.
+  ///
+  /// The request succeeds if it matches the etag of the currently stored secret
+  /// version object. If the etag is omitted, the request succeeds.
+  ///
+  /// Optional.
+  core.String? etag;
+
   DisableSecretVersionRequest();
 
-  DisableSecretVersionRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
+  DisableSecretVersionRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'] as core.String;
+    }
+  }
 
-  core.Map<core.String, core.dynamic> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (etag != null) 'etag': etag!,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1199,13 +1234,25 @@ class Empty {
 
 /// Request message for SecretManagerService.EnableSecretVersion.
 class EnableSecretVersionRequest {
+  /// Etag of the SecretVersion.
+  ///
+  /// The request succeeds if it matches the etag of the currently stored secret
+  /// version object. If the etag is omitted, the request succeeds.
+  ///
+  /// Optional.
+  core.String? etag;
+
   EnableSecretVersionRequest();
 
-  EnableSecretVersionRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
+  EnableSecretVersionRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'] as core.String;
+    }
+  }
 
-  core.Map<core.String, core.dynamic> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (etag != null) 'etag': etag!,
+      };
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -1701,6 +1748,45 @@ class ReplicationStatus {
       };
 }
 
+/// The rotation time and period for a Secret.
+///
+/// At next_rotation_time, Secret Manager will send a Pub/Sub notification to
+/// the topics configured on the Secret. Secret.topics must be set to configure
+/// rotation.
+class Rotation {
+  /// Timestamp in UTC at which the Secret is scheduled to rotate.
+  ///
+  /// next_rotation_time MUST be set if rotation_period is set.
+  ///
+  /// Optional.
+  core.String? nextRotationTime;
+
+  /// Input only.
+  ///
+  /// The Duration between rotation notifications. Must be in seconds and at
+  /// least 3600s (1h) and at most 3153600000s (100 years). If rotation_period
+  /// is set, next_rotation_time must be set. next_rotation_time will be
+  /// advanced by this period when the service automatically sends rotation
+  /// notifications.
+  core.String? rotationPeriod;
+
+  Rotation();
+
+  Rotation.fromJson(core.Map _json) {
+    if (_json.containsKey('nextRotationTime')) {
+      nextRotationTime = _json['nextRotationTime'] as core.String;
+    }
+    if (_json.containsKey('rotationPeriod')) {
+      rotationPeriod = _json['rotationPeriod'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextRotationTime != null) 'nextRotationTime': nextRotationTime!,
+        if (rotationPeriod != null) 'rotationPeriod': rotationPeriod!,
+      };
+}
+
 /// A Secret is a logical secret whose value and versions can be accessed.
 ///
 /// A Secret is made up of zero or more SecretVersions that represent the secret
@@ -1710,6 +1796,11 @@ class Secret {
   ///
   /// Output only.
   core.String? createTime;
+
+  /// Etag of the currently stored Secret.
+  ///
+  /// Optional.
+  core.String? etag;
 
   /// Timestamp in UTC when the Secret is scheduled to expire.
   ///
@@ -1743,6 +1834,13 @@ class Secret {
   /// Required. Immutable.
   Replication? replication;
 
+  /// Rotation policy attached to the Secret.
+  ///
+  /// May be excluded if there is no rotation policy.
+  ///
+  /// Optional.
+  Rotation? rotation;
+
   /// A list of up to 10 Pub/Sub topics to which messages are published when
   /// control plane operations are called on the secret or its versions.
   ///
@@ -1759,6 +1857,9 @@ class Secret {
   Secret.fromJson(core.Map _json) {
     if (_json.containsKey('createTime')) {
       createTime = _json['createTime'] as core.String;
+    }
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('expireTime')) {
       expireTime = _json['expireTime'] as core.String;
@@ -1778,6 +1879,10 @@ class Secret {
       replication = Replication.fromJson(
           _json['replication'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('rotation')) {
+      rotation = Rotation.fromJson(
+          _json['rotation'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('topics')) {
       topics = (_json['topics'] as core.List)
           .map<Topic>((value) =>
@@ -1791,10 +1896,12 @@ class Secret {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
+        if (etag != null) 'etag': etag!,
         if (expireTime != null) 'expireTime': expireTime!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (replication != null) 'replication': replication!.toJson(),
+        if (rotation != null) 'rotation': rotation!.toJson(),
         if (topics != null)
           'topics': topics!.map((value) => value.toJson()).toList(),
         if (ttl != null) 'ttl': ttl!,
@@ -1844,6 +1951,11 @@ class SecretVersion {
   /// Output only.
   core.String? destroyTime;
 
+  /// Etag of the currently stored SecretVersion.
+  ///
+  /// Output only.
+  core.String? etag;
+
   /// The resource name of the SecretVersion in the format `projects / *
   /// /secrets / * /versions / * `.
   ///
@@ -1877,6 +1989,9 @@ class SecretVersion {
     if (_json.containsKey('destroyTime')) {
       destroyTime = _json['destroyTime'] as core.String;
     }
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'] as core.String;
+    }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
@@ -1892,6 +2007,7 @@ class SecretVersion {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (destroyTime != null) 'destroyTime': destroyTime!,
+        if (etag != null) 'etag': etag!,
         if (name != null) 'name': name!,
         if (replicationStatus != null)
           'replicationStatus': replicationStatus!.toJson(),
@@ -1977,8 +2093,8 @@ class TestIamPermissionsResponse {
       };
 }
 
-/// A Pub/Sub topic which SM will publish to when control plane events occur on
-/// this secret.
+/// A Pub/Sub topic which Secret Manager will publish to when control plane
+/// events occur on this secret.
 class Topic {
   /// The resource name of the Pub/Sub topic that will be published to, in the
   /// following format: `projects / * /topics / * `.

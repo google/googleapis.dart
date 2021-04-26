@@ -89,27 +89,27 @@ class ActivitiesResource {
   ///
   /// [userKey] - Represents the profile ID or the user email for which the data
   /// should be filtered. Can be `all` for all information, or `userKey` for a
-  /// user's unique G Suite profile ID or their primary email address.
+  /// user's unique Google Workspace profile ID or their primary email address.
   ///
   /// [applicationName] - Application name for which the events are to be
   /// retrieved.
   /// Value must have pattern
-  /// `(access_transparency)|(admin)|(calendar)|(chat)|(chrome)|(context_aware_access)|(data_studio)|(drive)|(gcp)|(gplus)|(groups)|(groups_enterprise)|(jamboard)|(login)|(meet)|(mobile)|(rules)|(saml)|(token)|(user_accounts)`.
+  /// `(access_transparency)|(admin)|(calendar)|(chat)|(chrome)|(context_aware_access)|(data_studio)|(drive)|(gcp)|(gplus)|(groups)|(groups_enterprise)|(jamboard)|(keep)|(login)|(meet)|(mobile)|(rules)|(saml)|(token)|(user_accounts)`.
   /// Possible string values are:
-  /// - "application_name_undefined"
-  /// - "access_transparency" : The G Suite Access Transparency activity reports
-  /// return information about different types of Access Transparency activity
-  /// events.
+  /// - "access_transparency" : The Google Workspace Access Transparency
+  /// activity reports return information about different types of Access
+  /// Transparency activity events.
   /// - "admin" : The Admin console application's activity reports return
   /// account information about different types of administrator activity
   /// events.
-  /// - "calendar" : The G Suite Calendar application's activity reports return
+  /// - "calendar" : The Google Calendar application's activity reports return
   /// information about various Calendar activity events.
   /// - "chat" : The Chat activity reports return information about various Chat
   /// activity events.
   /// - "drive" : The Google Drive application's activity reports return
   /// information about various Google Drive activity events. The Drive activity
-  /// report is only available for G Suite Business customers.
+  /// report is only available for Google Workspace Business and Enterprise
+  /// customers.
   /// - "gcp" : The Google Cloud Platform application's activity reports return
   /// information about various GCP activity events.
   /// - "gplus" : The Google+ application's activity reports return information
@@ -142,6 +142,9 @@ class ActivitiesResource {
   /// events reported in the context of the WebProtect features of BeyondCorp.
   /// - "data_studio" : The Data Studio activity reports return information
   /// about various types of Data Studio activity events.
+  /// - "keep" : The Keep application's activity reports return information
+  /// about various Google Keep activity events. The Keep activity report is
+  /// only available for Google Workspace Business and Enterprise customers.
   ///
   /// [actorIpAddress] - The Internet Protocol (IP) Address of host where the
   /// event was performed. This is an additional way to filter a report's
@@ -172,12 +175,12 @@ class ActivitiesResource {
   /// `(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|(\[-+\])(\d\d):(\d\d))`.
   ///
   /// [eventName] - The name of the event being queried by the API. Each
-  /// `eventName` is related to a specific G Suite service or feature which the
-  /// API organizes into types of events. An example is the Google Calendar
-  /// events in the Admin console application's reports. The Calendar Settings
-  /// `type` structure has all of the Calendar `eventName` activities reported
-  /// by the API. When an administrator changes a Calendar setting, the API
-  /// reports this activity in the Calendar Settings `type` and `eventName`
+  /// `eventName` is related to a specific Google Workspace service or feature
+  /// which the API organizes into types of events. An example is the Google
+  /// Calendar events in the Admin console application's reports. The Calendar
+  /// Settings `type` structure has all of the Calendar `eventName` activities
+  /// reported by the API. When an administrator changes a Calendar setting, the
+  /// API reports this activity in the Calendar Settings `type` and `eventName`
   /// parameters. For more information about `eventName` query strings and
   /// parameters, see the list of event names for various applications above in
   /// `applicationName`.
@@ -311,27 +314,27 @@ class ActivitiesResource {
   ///
   /// [userKey] - Represents the profile ID or the user email for which the data
   /// should be filtered. Can be `all` for all information, or `userKey` for a
-  /// user's unique G Suite profile ID or their primary email address.
+  /// user's unique Google Workspace profile ID or their primary email address.
   ///
   /// [applicationName] - Application name for which the events are to be
   /// retrieved.
   /// Value must have pattern
-  /// `(access_transparency)|(admin)|(calendar)|(chat)|(chrome)|(context_aware_access)|(data_studio)|(drive)|(gcp)|(gplus)|(groups)|(groups_enterprise)|(jamboard)|(login)|(meet)|(mobile)|(rules)|(saml)|(token)|(user_accounts)`.
+  /// `(access_transparency)|(admin)|(calendar)|(chat)|(chrome)|(context_aware_access)|(data_studio)|(drive)|(gcp)|(gplus)|(groups)|(groups_enterprise)|(jamboard)|(keep)|(login)|(meet)|(mobile)|(rules)|(saml)|(token)|(user_accounts)`.
   /// Possible string values are:
-  /// - "application_name_unspecified"
-  /// - "access_transparency" : The G Suite Access Transparency activity reports
-  /// return information about different types of Access Transparency activity
-  /// events.
+  /// - "access_transparency" : The Google Workspace Access Transparency
+  /// activity reports return information about different types of Access
+  /// Transparency activity events.
   /// - "admin" : The Admin console application's activity reports return
   /// account information about different types of administrator activity
   /// events.
-  /// - "calendar" : The G Suite Calendar application's activity reports return
+  /// - "calendar" : The Google Calendar application's activity reports return
   /// information about various Calendar activity events.
   /// - "chat" : The Chat activity reports return information about various Chat
   /// activity events.
   /// - "drive" : The Google Drive application's activity reports return
   /// information about various Google Drive activity events. The Drive activity
-  /// report is only available for G Suite Business customers.
+  /// report is only available for Google Workspace Business and Google
+  /// Workspace Enterprise customers.
   /// - "gcp" : The Google Cloud Platform application's activity reports return
   /// information about various GCP activity events.
   /// - "gplus" : The Google+ application's activity reports return information
@@ -364,6 +367,9 @@ class ActivitiesResource {
   /// events reported in the context of the WebProtect features of BeyondCorp.
   /// - "data_studio" : The Data Studio activity reports return information
   /// about various types of Data Studio activity events.
+  /// - "keep" : The Keep application's activity reports return information
+  /// about various Google Keep activity events. The Keep activity report is
+  /// only available for Google Workspace Business and Enterprise customers.
   ///
   /// [actorIpAddress] - The Internet Protocol (IP) Address of host where the
   /// event was performed. This is an additional way to filter a report's
@@ -394,12 +400,12 @@ class ActivitiesResource {
   /// `(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|(\[-+\])(\d\d):(\d\d))`.
   ///
   /// [eventName] - The name of the event being queried by the API. Each
-  /// `eventName` is related to a specific G Suite service or feature which the
-  /// API organizes into types of events. An example is the Google Calendar
-  /// events in the Admin console application's reports. The Calendar Settings
-  /// `type` structure has all of the Calendar `eventName` activities reported
-  /// by the API. When an administrator changes a Calendar setting, the API
-  /// reports this activity in the Calendar Settings `type` and `eventName`
+  /// `eventName` is related to a specific Google Workspace service or feature
+  /// which the API organizes into types of events. An example is the Google
+  /// Calendar events in the Admin console application's reports. The Calendar
+  /// Settings `type` structure has all of the Calendar `eventName` activities
+  /// reported by the API. When an administrator changes a Calendar setting, the
+  /// API reports this activity in the Calendar Settings `type` and `eventName`
   /// parameters. For more information about `eventName` query strings and
   /// parameters, see the list of event names for various applications above in
   /// `applicationName`.
@@ -667,12 +673,10 @@ class EntityUsageReportsResource {
   /// [entityType] - Represents the type of entity for the report.
   /// Value must have pattern `(gplus_communities)`.
   /// Possible string values are:
-  /// - "entity_type_undefined"
   /// - "gplus_communities" : Returns a report on Google+ communities.
   ///
   /// [entityKey] - Represents the key of the object to filter the data with.
   /// Possible string values are:
-  /// - "entityKeyUndefined"
   /// - "all" : Returns activity events for all users.
   /// - "entityKey" : Represents an app-specific identifier for the entity. For
   /// details on how to obtain the `entityKey` for a particular `entityType`,
@@ -794,7 +798,7 @@ class UserUsageReportResource {
   ///
   /// [userKey] - Represents the profile ID or the user email for which the data
   /// should be filtered. Can be `all` for all information, or `userKey` for a
-  /// user's unique G Suite profile ID or their primary email address.
+  /// user's unique Google Workspace profile ID or their primary email address.
   ///
   /// [date] - Represents the date the usage occurred. The timestamp is in the
   /// ISO 8601 format, yyyy-mm-dd. We recommend you use your account's time zone
@@ -976,9 +980,9 @@ class ActivityActor {
   /// an identifier for robot accounts.
   core.String? key;
 
-  /// The unique G Suite profile ID of the actor.
+  /// The unique Google Workspace profile ID of the actor.
   ///
-  /// May be absent if the actor is not a G Suite user.
+  /// May be absent if the actor is not a Google Workspace user.
   core.String? profileId;
 
   ActivityActor();
@@ -1138,15 +1142,15 @@ class ActivityEvents {
   /// Name of the event.
   ///
   /// This is the specific name of the activity reported by the API. And each
-  /// `eventName` is related to a specific G Suite service or feature which the
-  /// API organizes into types of events. For `eventName` request parameters in
-  /// general: - If no `eventName` is given, the report returns all possible
-  /// instances of an `eventName`. - When you request an `eventName`, the API's
-  /// response returns all activities which contain that `eventName`. It is
-  /// possible that the returned activities will have other `eventName`
-  /// properties in addition to the one requested. For more information about
-  /// `eventName` properties, see the list of event names for various
-  /// applications above in `applicationName`.
+  /// `eventName` is related to a specific Google Workspace service or feature
+  /// which the API organizes into types of events. For `eventName` request
+  /// parameters in general: - If no `eventName` is given, the report returns
+  /// all possible instances of an `eventName`. - When you request an
+  /// `eventName`, the API's response returns all activities which contain that
+  /// `eventName`. It is possible that the returned activities will have other
+  /// `eventName` properties in addition to the one requested. For more
+  /// information about `eventName` properties, see the list of event names for
+  /// various applications above in `applicationName`.
   core.String? name;
 
   /// Parameter value pairs for various applications.
@@ -1157,10 +1161,11 @@ class ActivityEvents {
 
   /// Type of event.
   ///
-  /// The G Suite service or feature that an administrator changes is identified
-  /// in the `type` property which identifies an event using the `eventName`
-  /// property. For a full list of the API's `type` categories, see the list of
-  /// event names for various applications above in `applicationName`.
+  /// The Google Workspace service or feature that an administrator changes is
+  /// identified in the `type` property which identifies an event using the
+  /// `eventName` property. For a full list of the API's `type` categories, see
+  /// the list of event names for various applications above in
+  /// `applicationName`.
   core.String? type;
 
   ActivityEvents();
@@ -1197,7 +1202,7 @@ class ActivityId {
   /// `applicationName`.
   core.String? applicationName;
 
-  /// The unique identifier for a G suite account.
+  /// The unique identifier for a Google Workspace account.
   core.String? customerId;
 
   /// Time of occurrence of the activity.
@@ -1249,10 +1254,11 @@ class Activity {
 
   /// IP address of the user doing the action.
   ///
-  /// This is the Internet Protocol (IP) address of the user when logging into G
-  /// Suite which may or may not reflect the user's physical location. For
-  /// example, the IP address can be the user's proxy server's address or a
-  /// virtual private network (VPN) address. The API supports IPv4 and IPv6.
+  /// This is the Internet Protocol (IP) address of the user when logging into
+  /// Google Workspace, which may or may not reflect the user's physical
+  /// location. For example, the IP address can be the user's proxy server's
+  /// address or a virtual private network (VPN) address. The API supports IPv4
+  /// and IPv6.
   core.String? ipAddress;
 
   /// The type of API resource.
@@ -1493,7 +1499,7 @@ class UsageReportEntity {
   /// Output only.
   core.String? entityId;
 
-  /// The user's immutable G Suite profile identifier.
+  /// The user's immutable Google Workspace profile identifier.
   ///
   /// Output only.
   core.String? profileId;

@@ -49,7 +49,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Cloud Spanner is a managed, mission-critical, globally consistent and
 /// scalable relational database service.
 class SpannerApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -3243,6 +3243,14 @@ class BeginTransactionRequest {
   /// Required.
   TransactionOptions? options;
 
+  /// Common options for this request.
+  ///
+  /// Priority is ignored for this request. Setting the priority in this
+  /// request_options struct will not do anything. To set the priority for a
+  /// transaction, set it on the reads and writes that are part of this
+  /// transaction instead.
+  RequestOptions? requestOptions;
+
   BeginTransactionRequest();
 
   BeginTransactionRequest.fromJson(core.Map _json) {
@@ -3250,10 +3258,15 @@ class BeginTransactionRequest {
       options = TransactionOptions.fromJson(
           _json['options'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('requestOptions')) {
+      requestOptions = RequestOptions.fromJson(
+          _json['requestOptions'] as core.Map<core.String, core.dynamic>);
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (options != null) 'options': options!.toJson(),
+        if (requestOptions != null) 'requestOptions': requestOptions!.toJson(),
       };
 }
 
@@ -3382,6 +3395,9 @@ class CommitRequest {
   /// list.
   core.List<Mutation>? mutations;
 
+  /// Common options for this request.
+  RequestOptions? requestOptions;
+
   /// If `true`, then statistics related to the transaction will be included in
   /// the CommitResponse.
   ///
@@ -3417,6 +3433,10 @@ class CommitRequest {
               Mutation.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
+    if (_json.containsKey('requestOptions')) {
+      requestOptions = RequestOptions.fromJson(
+          _json['requestOptions'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('returnCommitStats')) {
       returnCommitStats = _json['returnCommitStats'] as core.bool;
     }
@@ -3432,6 +3452,7 @@ class CommitRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (mutations != null)
           'mutations': mutations!.map((value) => value.toJson()).toList(),
+        if (requestOptions != null) 'requestOptions': requestOptions!.toJson(),
         if (returnCommitStats != null) 'returnCommitStats': returnCommitStats!,
         if (singleUseTransaction != null)
           'singleUseTransaction': singleUseTransaction!.toJson(),
@@ -3973,6 +3994,9 @@ class EncryptionInfo {
 
 /// The request for ExecuteBatchDml.
 class ExecuteBatchDmlRequest {
+  /// Common options for this request.
+  RequestOptions? requestOptions;
+
   /// A per-transaction sequence number used to identify this request.
   ///
   /// This field makes each request idempotent such that if the request is
@@ -4007,6 +4031,10 @@ class ExecuteBatchDmlRequest {
   ExecuteBatchDmlRequest();
 
   ExecuteBatchDmlRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('requestOptions')) {
+      requestOptions = RequestOptions.fromJson(
+          _json['requestOptions'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('seqno')) {
       seqno = _json['seqno'] as core.String;
     }
@@ -4023,6 +4051,7 @@ class ExecuteBatchDmlRequest {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (requestOptions != null) 'requestOptions': requestOptions!.toJson(),
         if (seqno != null) 'seqno': seqno!,
         if (statements != null)
           'statements': statements!.map((value) => value.toJson()).toList(),
@@ -4140,6 +4169,9 @@ class ExecuteSqlRequest {
   /// Query optimizer configuration to use for the given query.
   QueryOptions? queryOptions;
 
+  /// Common options for this request.
+  RequestOptions? requestOptions;
+
   /// If this request is resuming a previously interrupted SQL statement
   /// execution, `resume_token` should be copied from the last PartialResultSet
   /// yielded before the interruption.
@@ -4212,6 +4244,10 @@ class ExecuteSqlRequest {
       queryOptions = QueryOptions.fromJson(
           _json['queryOptions'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('requestOptions')) {
+      requestOptions = RequestOptions.fromJson(
+          _json['requestOptions'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('resumeToken')) {
       resumeToken = _json['resumeToken'] as core.String;
     }
@@ -4235,6 +4271,7 @@ class ExecuteSqlRequest {
         if (partitionToken != null) 'partitionToken': partitionToken!,
         if (queryMode != null) 'queryMode': queryMode!,
         if (queryOptions != null) 'queryOptions': queryOptions!.toJson(),
+        if (requestOptions != null) 'requestOptions': requestOptions!.toJson(),
         if (resumeToken != null) 'resumeToken': resumeToken!,
         if (seqno != null) 'seqno': seqno!,
         if (sql != null) 'sql': sql!,
@@ -5810,18 +5847,33 @@ class Policy {
 
 /// Query optimizer configuration.
 class QueryOptions {
+  /// An option to control the selection of optimizer statistics package.
+  ///
+  /// This parameter allows individual queries to use a different query
+  /// optimizer statistics package. Specifying `latest` as a value instructs
+  /// Cloud Spanner to use the latest generated statistics package. If not
+  /// specified, Cloud Spanner uses the statistics package set at the database
+  /// level options, or the latest package if the database option is not set.
+  /// The statistics package requested by the query has to be exempt from
+  /// garbage collection. This can be achieved with the following DDL statement:
+  /// ``` ALTER STATISTICS SET OPTIONS (allow_gc=false) ``` The list of
+  /// available statistics packages can be queried from
+  /// `INFORMATION_SCHEMA.SPANNER_STATISTICS`. Executing a SQL statement with an
+  /// invalid optimizer statistics package or with a statistics package that
+  /// allows garbage collection fails with an `INVALID_ARGUMENT` error.
+  core.String? optimizerStatisticsPackage;
+
   /// An option to control the selection of optimizer version.
   ///
   /// This parameter allows individual queries to pick different query optimizer
-  /// versions. Specifying "latest" as a value instructs Cloud Spanner to use
+  /// versions. Specifying `latest` as a value instructs Cloud Spanner to use
   /// the latest supported query optimizer version. If not specified, Cloud
-  /// Spanner uses optimizer version set at the database level options. Any
+  /// Spanner uses the optimizer version set at the database level options. Any
   /// other positive integer (from the list of supported optimizer versions)
   /// overrides the default optimizer version for query execution. The list of
   /// supported optimizer versions can be queried from
   /// SPANNER_SYS.SUPPORTED_OPTIMIZER_VERSIONS. Executing a SQL statement with
-  /// an invalid optimizer version will fail with a syntax error
-  /// (`INVALID_ARGUMENT`) status. See
+  /// an invalid optimizer version fails with an `INVALID_ARGUMENT` error. See
   /// https://cloud.google.com/spanner/docs/query-optimizer/manage-query-optimizer
   /// for more information on managing the query optimizer. The
   /// `optimizer_version` statement hint has precedence over this setting.
@@ -5830,12 +5882,18 @@ class QueryOptions {
   QueryOptions();
 
   QueryOptions.fromJson(core.Map _json) {
+    if (_json.containsKey('optimizerStatisticsPackage')) {
+      optimizerStatisticsPackage =
+          _json['optimizerStatisticsPackage'] as core.String;
+    }
     if (_json.containsKey('optimizerVersion')) {
       optimizerVersion = _json['optimizerVersion'] as core.String;
     }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (optimizerStatisticsPackage != null)
+          'optimizerStatisticsPackage': optimizerStatisticsPackage!,
         if (optimizerVersion != null) 'optimizerVersion': optimizerVersion!,
       };
 }
@@ -5999,6 +6057,9 @@ class ReadRequest {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
+  /// Common options for this request.
+  RequestOptions? requestOptions;
+
   /// If this request is resuming a previously interrupted read, `resume_token`
   /// should be copied from the last PartialResultSet yielded before the
   /// interruption.
@@ -6047,6 +6108,10 @@ class ReadRequest {
     if (_json.containsKey('partitionToken')) {
       partitionToken = _json['partitionToken'] as core.String;
     }
+    if (_json.containsKey('requestOptions')) {
+      requestOptions = RequestOptions.fromJson(
+          _json['requestOptions'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('resumeToken')) {
       resumeToken = _json['resumeToken'] as core.String;
     }
@@ -6065,6 +6130,7 @@ class ReadRequest {
         if (keySet != null) 'keySet': keySet!.toJson(),
         if (limit != null) 'limit': limit!,
         if (partitionToken != null) 'partitionToken': partitionToken!,
+        if (requestOptions != null) 'requestOptions': requestOptions!.toJson(),
         if (resumeToken != null) 'resumeToken': resumeToken!,
         if (table != null) 'table': table!,
         if (transaction != null) 'transaction': transaction!.toJson(),
@@ -6132,6 +6198,60 @@ class ReplicaInfo {
           'defaultLeaderLocation': defaultLeaderLocation!,
         if (location != null) 'location': location!,
         if (type != null) 'type': type!,
+      };
+}
+
+/// Common request options for various APIs.
+class RequestOptions {
+  /// Priority for the request.
+  /// Possible string values are:
+  /// - "PRIORITY_UNSPECIFIED" : `PRIORITY_UNSPECIFIED` is equivalent to
+  /// `PRIORITY_HIGH`.
+  /// - "PRIORITY_LOW" : This specifies that the request is low priority.
+  /// - "PRIORITY_MEDIUM" : This specifies that the request is medium priority.
+  /// - "PRIORITY_HIGH" : This specifies that the request is high priority.
+  core.String? priority;
+
+  /// A per-request tag which can be applied to queries or reads, used for
+  /// statistics collection.
+  ///
+  /// Both request_tag and transaction_tag can be specified for a read or query
+  /// that belongs to a transaction. This field is ignored for requests where
+  /// it's not applicable (e.g. CommitRequest). Legal characters for
+  /// `request_tag` values are all printable characters (ASCII 32 - 126) and the
+  /// length of a request_tag is limited to 50 characters. Values that exceed
+  /// this limit are truncated.
+  core.String? requestTag;
+
+  /// A tag used for statistics collection about this transaction.
+  ///
+  /// Both request_tag and transaction_tag can be specified for a read or query
+  /// that belongs to a transaction. The value of transaction_tag should be the
+  /// same for all requests belonging to the same transaction. If this request
+  /// doesn’t belong to any transaction, transaction_tag will be ignored. Legal
+  /// characters for `transaction_tag` values are all printable characters
+  /// (ASCII 32 - 126) and the length of a transaction_tag is limited to 50
+  /// characters. Values that exceed this limit are truncated.
+  core.String? transactionTag;
+
+  RequestOptions();
+
+  RequestOptions.fromJson(core.Map _json) {
+    if (_json.containsKey('priority')) {
+      priority = _json['priority'] as core.String;
+    }
+    if (_json.containsKey('requestTag')) {
+      requestTag = _json['requestTag'] as core.String;
+    }
+    if (_json.containsKey('transactionTag')) {
+      transactionTag = _json['transactionTag'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (priority != null) 'priority': priority!,
+        if (requestTag != null) 'requestTag': requestTag!,
+        if (transactionTag != null) 'transactionTag': transactionTag!,
       };
 }
 
@@ -6276,7 +6396,7 @@ class RestoreDatabaseRequest {
   ///
   /// If this field is not specified, the restored database will use the same
   /// encryption configuration as the backup by default, namely encryption_type
-  /// = `USE_CONFIG_DEFAULT_OR_DATABASE_ENCRYPTION`.
+  /// = `USE_CONFIG_DEFAULT_OR_BACKUP_ENCRYPTION`.
   ///
   /// Optional.
   RestoreDatabaseEncryptionConfig? encryptionConfig;
@@ -7193,6 +7313,15 @@ class UpdateDatabaseDdlMetadata {
   /// The database being modified.
   core.String? database;
 
+  /// The progress of the UpdateDatabaseDdl operations.
+  ///
+  /// Currently, only index creation statements will have a continuously
+  /// updating progress. For non-index creation statements, `progress[i]` will
+  /// have start time and end time populated with commit timestamp of operation,
+  /// as well as a progress of 100% once the operation has completed.
+  /// `progress[i]` is the operation progress for `statements[i]`.
+  core.List<OperationProgress>? progress;
+
   /// For an update this list contains all the statements.
   ///
   /// For an individual statement, this list contains only that statement.
@@ -7218,6 +7347,12 @@ class UpdateDatabaseDdlMetadata {
     if (_json.containsKey('database')) {
       database = _json['database'] as core.String;
     }
+    if (_json.containsKey('progress')) {
+      progress = (_json['progress'] as core.List)
+          .map<OperationProgress>((value) => OperationProgress.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
     if (_json.containsKey('statements')) {
       statements = (_json['statements'] as core.List)
           .map<core.String>((value) => value as core.String)
@@ -7231,6 +7366,8 @@ class UpdateDatabaseDdlMetadata {
   core.Map<core.String, core.dynamic> toJson() => {
         if (commitTimestamps != null) 'commitTimestamps': commitTimestamps!,
         if (database != null) 'database': database!,
+        if (progress != null)
+          'progress': progress!.map((value) => value.toJson()).toList(),
         if (statements != null) 'statements': statements!,
         if (throttled != null) 'throttled': throttled!,
       };

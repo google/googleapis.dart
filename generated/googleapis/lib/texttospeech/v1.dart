@@ -40,7 +40,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Synthesizes natural-sounding speech by applying powerful neural network
 /// models.
 class TexttospeechApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -111,12 +111,13 @@ class VoicesResource {
   ///
   /// [languageCode] - Optional. Recommended.
   /// \[BCP-47\](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. If
-  /// specified, the ListVoices call will only return voices that can be used to
-  /// synthesize this language_code. E.g. when specifying "en-NZ", you will get
-  /// supported "en-\*" voices; when specifying "no", you will get supported
-  /// "no-\*" (Norwegian) and "nb-\*" (Norwegian Bokmal) voices; specifying "zh"
-  /// will also get supported "cmn-\*" voices; specifying "zh-hk" will also get
-  /// supported "yue-\*" voices.
+  /// not specified, the API will return all supported voices. If specified, the
+  /// ListVoices call will only return voices that can be used to synthesize
+  /// this language_code. E.g. when specifying "en-NZ", you will get supported
+  /// "en-NZ" voices; when specifying "no", you will get supported "no-\*"
+  /// (Norwegian) and "nb-\*" (Norwegian Bokmal) voices; specifying "zh" will
+  /// also get supported "cmn-\*" voices; specifying "zh-hk" will also get
+  /// supported "yue-hk" voices.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

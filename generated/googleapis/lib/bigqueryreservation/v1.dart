@@ -20,7 +20,6 @@
 ///
 /// Create an instance of [BigQueryReservationApi] to access these resources:
 ///
-/// - [OperationsResource]
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsCapacityCommitmentsResource]
@@ -45,13 +44,12 @@ class BigQueryReservationApi {
   /// View and manage your data in Google BigQuery
   static const bigqueryScope = 'https://www.googleapis.com/auth/bigquery';
 
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
   final commons.ApiRequester _requester;
 
-  OperationsResource get operations => OperationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
   BigQueryReservationApi(http.Client client,
@@ -59,108 +57,6 @@ class BigQueryReservationApi {
       core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
-}
-
-class OperationsResource {
-  final commons.ApiRequester _requester;
-
-  OperationsResource(commons.ApiRequester client) : _requester = client;
-
-  /// Deletes a long-running operation.
-  ///
-  /// This method indicates that the client is no longer interested in the
-  /// operation result. It does not cancel the operation. If the server doesn't
-  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation resource to be deleted.
-  /// Value must have pattern `^operations/.*$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Empty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
-
-    final _response = await _requester.request(
-      _url,
-      'DELETE',
-      queryParams: _queryParams,
-    );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Lists operations that match the specified filter in the request.
-  ///
-  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern `^operations$`.
-  ///
-  /// [filter] - The standard list filter.
-  ///
-  /// [pageSize] - The standard list page size.
-  ///
-  /// [pageToken] - The standard list page token.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListOperationsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListOperationsResponse> list(
-    core.String name, {
-    core.String? filter,
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? $fields,
-  }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
-
-    final _response = await _requester.request(
-      _url,
-      'GET',
-      queryParams: _queryParams,
-    );
-    return ListOperationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
 }
 
 class ProjectsResource {
@@ -420,6 +316,12 @@ class ProjectsLocationsCapacityCommitmentsResource {
   /// `projects/myproject/locations/US`
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
+  /// [capacityCommitmentId] - The optional capacity commitment ID. Capacity
+  /// commitment name will be generated automatically if this field is empty.
+  /// This field must only contain lower case alphanumeric characters or dash.
+  /// Max length is 64 characters. NOTE: this ID won't be kept if the capacity
+  /// commitment is split or merged.
+  ///
   /// [enforceSingleAdminProjectPerOrg] - If true, fail the request if another
   /// project in the organization has a capacity commitment.
   ///
@@ -436,11 +338,14 @@ class ProjectsLocationsCapacityCommitmentsResource {
   async.Future<CapacityCommitment> create(
     CapacityCommitment request,
     core.String parent, {
+    core.String? capacityCommitmentId,
     core.bool? enforceSingleAdminProjectPerOrg,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
+      if (capacityCommitmentId != null)
+        'capacityCommitmentId': [capacityCommitmentId],
       if (enforceSingleAdminProjectPerOrg != null)
         'enforceSingleAdminProjectPerOrg': [
           '${enforceSingleAdminProjectPerOrg}'
@@ -1002,6 +907,11 @@ class ProjectsLocationsReservationsAssignmentsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/reservations/\[^/\]+$`.
   ///
+  /// [assignmentId] - The optional assignment ID. Assignment name will be
+  /// generated automatically if this field is empty. This field must only
+  /// contain lower case alphanumeric characters or dash. Max length is 64
+  /// characters.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1015,10 +925,12 @@ class ProjectsLocationsReservationsAssignmentsResource {
   async.Future<Assignment> create(
     Assignment request,
     core.String parent, {
+    core.String? assignmentId,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
+      if (assignmentId != null) 'assignmentId': [assignmentId],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1419,27 +1331,6 @@ class CapacityCommitment {
       };
 }
 
-/// The metadata for operation returned from ReservationService.CreateSlotPool.
-class CreateSlotPoolMetadata {
-  /// Resource name of the slot pool that is being created.
-  ///
-  /// E.g.,
-  /// projects/myproject/locations/us-central1/reservations/foo/slotPools/123
-  core.String? slotPool;
-
-  CreateSlotPoolMetadata();
-
-  CreateSlotPoolMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('slotPool')) {
-      slotPool = _json['slotPool'] as core.String;
-    }
-  }
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (slotPool != null) 'slotPool': slotPool!,
-      };
-}
-
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -1515,35 +1406,6 @@ class ListCapacityCommitmentsResponse {
           'capacityCommitments':
               capacityCommitments!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
-}
-
-/// The response message for Operations.ListOperations.
-class ListOperationsResponse {
-  /// The standard List next-page token.
-  core.String? nextPageToken;
-
-  /// A list of operations that matches the specified filter in the request.
-  core.List<Operation>? operations;
-
-  ListOperationsResponse();
-
-  ListOperationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('operations')) {
-      operations = (_json['operations'] as core.List)
-          .map<Operation>((value) =>
-              Operation.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1627,89 +1489,6 @@ class MoveAssignmentRequest {
       };
 }
 
-/// This resource represents a long-running operation that is the result of a
-/// network API call.
-class Operation {
-  /// If the value is `false`, it means the operation is still in progress.
-  ///
-  /// If `true`, the operation is completed, and either `error` or `response` is
-  /// available.
-  core.bool? done;
-
-  /// The error result of the operation in case of failure or cancellation.
-  Status? error;
-
-  /// Service-specific metadata associated with the operation.
-  ///
-  /// It typically contains progress information and common metadata such as
-  /// create time. Some services might not provide such metadata. Any method
-  /// that returns a long-running operation should document the metadata type,
-  /// if any.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
-
-  /// The server-assigned name, which is only unique within the same service
-  /// that originally returns it.
-  ///
-  /// If you use the default HTTP mapping, the `name` should be a resource name
-  /// ending with `operations/{unique_id}`.
-  core.String? name;
-
-  /// The normal response of the operation in case of success.
-  ///
-  /// If the original method returns no data on success, such as `Delete`, the
-  /// response is `google.protobuf.Empty`. If the original method is standard
-  /// `Get`/`Create`/`Update`, the response should be the resource. For other
-  /// methods, the response should have the type `XxxResponse`, where `Xxx` is
-  /// the original method name. For example, if the original method name is
-  /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
-
-  Operation();
-
-  Operation.fromJson(core.Map _json) {
-    if (_json.containsKey('done')) {
-      done = _json['done'] as core.bool;
-    }
-    if (_json.containsKey('error')) {
-      error = Status.fromJson(
-          _json['error'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('response')) {
-      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-  }
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
-}
-
 /// A reservation is a mechanism used to guarantee slots to users.
 class Reservation {
   /// Creation time of the reservation.
@@ -1717,11 +1496,11 @@ class Reservation {
   /// Output only.
   core.String? creationTime;
 
-  /// If false, any query using this reservation will use idle slots from other
-  /// reservations within the same admin project.
+  /// If false, any query or pipeline job using this reservation will use idle
+  /// slots from other reservations within the same admin project.
   ///
-  /// If true, a query using this reservation will execute with the slot
-  /// capacity specified above at most.
+  /// If true, a query or pipeline job using this reservation will execute with
+  /// the slot capacity specified above at most.
   core.bool? ignoreIdleSlots;
 
   /// The resource name of the reservation, e.g., `projects / * /locations / *

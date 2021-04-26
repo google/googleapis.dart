@@ -90,14 +90,14 @@ void checkBuildBazelRemoteExecutionV2ActionCacheUpdateCapabilities(
   buildCounterBuildBazelRemoteExecutionV2ActionCacheUpdateCapabilities--;
 }
 
-core.List<api.BuildBazelRemoteExecutionV2OutputDirectory> buildUnnamed5980() {
+core.List<api.BuildBazelRemoteExecutionV2OutputDirectory> buildUnnamed6417() {
   var o = <api.BuildBazelRemoteExecutionV2OutputDirectory>[];
   o.add(buildBuildBazelRemoteExecutionV2OutputDirectory());
   o.add(buildBuildBazelRemoteExecutionV2OutputDirectory());
   return o;
 }
 
-void checkUnnamed5980(
+void checkUnnamed6417(
     core.List<api.BuildBazelRemoteExecutionV2OutputDirectory> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBuildBazelRemoteExecutionV2OutputDirectory(
@@ -106,14 +106,14 @@ void checkUnnamed5980(
       o[1] as api.BuildBazelRemoteExecutionV2OutputDirectory);
 }
 
-core.List<api.BuildBazelRemoteExecutionV2OutputSymlink> buildUnnamed5981() {
+core.List<api.BuildBazelRemoteExecutionV2OutputSymlink> buildUnnamed6418() {
   var o = <api.BuildBazelRemoteExecutionV2OutputSymlink>[];
   o.add(buildBuildBazelRemoteExecutionV2OutputSymlink());
   o.add(buildBuildBazelRemoteExecutionV2OutputSymlink());
   return o;
 }
 
-void checkUnnamed5981(
+void checkUnnamed6418(
     core.List<api.BuildBazelRemoteExecutionV2OutputSymlink> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBuildBazelRemoteExecutionV2OutputSymlink(
@@ -122,14 +122,14 @@ void checkUnnamed5981(
       o[1] as api.BuildBazelRemoteExecutionV2OutputSymlink);
 }
 
-core.List<api.BuildBazelRemoteExecutionV2OutputSymlink> buildUnnamed5982() {
+core.List<api.BuildBazelRemoteExecutionV2OutputSymlink> buildUnnamed6419() {
   var o = <api.BuildBazelRemoteExecutionV2OutputSymlink>[];
   o.add(buildBuildBazelRemoteExecutionV2OutputSymlink());
   o.add(buildBuildBazelRemoteExecutionV2OutputSymlink());
   return o;
 }
 
-void checkUnnamed5982(
+void checkUnnamed6419(
     core.List<api.BuildBazelRemoteExecutionV2OutputSymlink> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBuildBazelRemoteExecutionV2OutputSymlink(
@@ -138,14 +138,14 @@ void checkUnnamed5982(
       o[1] as api.BuildBazelRemoteExecutionV2OutputSymlink);
 }
 
-core.List<api.BuildBazelRemoteExecutionV2OutputFile> buildUnnamed5983() {
+core.List<api.BuildBazelRemoteExecutionV2OutputFile> buildUnnamed6420() {
   var o = <api.BuildBazelRemoteExecutionV2OutputFile>[];
   o.add(buildBuildBazelRemoteExecutionV2OutputFile());
   o.add(buildBuildBazelRemoteExecutionV2OutputFile());
   return o;
 }
 
-void checkUnnamed5983(core.List<api.BuildBazelRemoteExecutionV2OutputFile> o) {
+void checkUnnamed6420(core.List<api.BuildBazelRemoteExecutionV2OutputFile> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBuildBazelRemoteExecutionV2OutputFile(
       o[0] as api.BuildBazelRemoteExecutionV2OutputFile);
@@ -153,14 +153,14 @@ void checkUnnamed5983(core.List<api.BuildBazelRemoteExecutionV2OutputFile> o) {
       o[1] as api.BuildBazelRemoteExecutionV2OutputFile);
 }
 
-core.List<api.BuildBazelRemoteExecutionV2OutputSymlink> buildUnnamed5984() {
+core.List<api.BuildBazelRemoteExecutionV2OutputSymlink> buildUnnamed6421() {
   var o = <api.BuildBazelRemoteExecutionV2OutputSymlink>[];
   o.add(buildBuildBazelRemoteExecutionV2OutputSymlink());
   o.add(buildBuildBazelRemoteExecutionV2OutputSymlink());
   return o;
 }
 
-void checkUnnamed5984(
+void checkUnnamed6421(
     core.List<api.BuildBazelRemoteExecutionV2OutputSymlink> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBuildBazelRemoteExecutionV2OutputSymlink(
@@ -178,11 +178,11 @@ api.BuildBazelRemoteExecutionV2ActionResult
     o.executionMetadata =
         buildBuildBazelRemoteExecutionV2ExecutedActionMetadata();
     o.exitCode = 42;
-    o.outputDirectories = buildUnnamed5980();
-    o.outputDirectorySymlinks = buildUnnamed5981();
-    o.outputFileSymlinks = buildUnnamed5982();
-    o.outputFiles = buildUnnamed5983();
-    o.outputSymlinks = buildUnnamed5984();
+    o.outputDirectories = buildUnnamed6417();
+    o.outputDirectorySymlinks = buildUnnamed6418();
+    o.outputFileSymlinks = buildUnnamed6419();
+    o.outputFiles = buildUnnamed6420();
+    o.outputSymlinks = buildUnnamed6421();
     o.stderrDigest = buildBuildBazelRemoteExecutionV2Digest();
     o.stderrRaw = 'foo';
     o.stdoutDigest = buildBuildBazelRemoteExecutionV2Digest();
@@ -202,11 +202,11 @@ void checkBuildBazelRemoteExecutionV2ActionResult(
       o.exitCode!,
       unittest.equals(42),
     );
-    checkUnnamed5980(o.outputDirectories!);
-    checkUnnamed5981(o.outputDirectorySymlinks!);
-    checkUnnamed5982(o.outputFileSymlinks!);
-    checkUnnamed5983(o.outputFiles!);
-    checkUnnamed5984(o.outputSymlinks!);
+    checkUnnamed6417(o.outputDirectories!);
+    checkUnnamed6418(o.outputDirectorySymlinks!);
+    checkUnnamed6419(o.outputFileSymlinks!);
+    checkUnnamed6420(o.outputFiles!);
+    checkUnnamed6421(o.outputSymlinks!);
     checkBuildBazelRemoteExecutionV2Digest(
         o.stderrDigest! as api.BuildBazelRemoteExecutionV2Digest);
     unittest.expect(
@@ -223,14 +223,14 @@ void checkBuildBazelRemoteExecutionV2ActionResult(
   buildCounterBuildBazelRemoteExecutionV2ActionResult--;
 }
 
-core.List<api.BuildBazelRemoteExecutionV2Digest> buildUnnamed5985() {
+core.List<api.BuildBazelRemoteExecutionV2Digest> buildUnnamed6422() {
   var o = <api.BuildBazelRemoteExecutionV2Digest>[];
   o.add(buildBuildBazelRemoteExecutionV2Digest());
   o.add(buildBuildBazelRemoteExecutionV2Digest());
   return o;
 }
 
-void checkUnnamed5985(core.List<api.BuildBazelRemoteExecutionV2Digest> o) {
+void checkUnnamed6422(core.List<api.BuildBazelRemoteExecutionV2Digest> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBuildBazelRemoteExecutionV2Digest(
       o[0] as api.BuildBazelRemoteExecutionV2Digest);
@@ -244,7 +244,7 @@ api.BuildBazelRemoteExecutionV2BatchReadBlobsRequest
   var o = api.BuildBazelRemoteExecutionV2BatchReadBlobsRequest();
   buildCounterBuildBazelRemoteExecutionV2BatchReadBlobsRequest++;
   if (buildCounterBuildBazelRemoteExecutionV2BatchReadBlobsRequest < 3) {
-    o.digests = buildUnnamed5985();
+    o.digests = buildUnnamed6422();
   }
   buildCounterBuildBazelRemoteExecutionV2BatchReadBlobsRequest--;
   return o;
@@ -254,20 +254,20 @@ void checkBuildBazelRemoteExecutionV2BatchReadBlobsRequest(
     api.BuildBazelRemoteExecutionV2BatchReadBlobsRequest o) {
   buildCounterBuildBazelRemoteExecutionV2BatchReadBlobsRequest++;
   if (buildCounterBuildBazelRemoteExecutionV2BatchReadBlobsRequest < 3) {
-    checkUnnamed5985(o.digests!);
+    checkUnnamed6422(o.digests!);
   }
   buildCounterBuildBazelRemoteExecutionV2BatchReadBlobsRequest--;
 }
 
 core.List<api.BuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse>
-    buildUnnamed5986() {
+    buildUnnamed6423() {
   var o = <api.BuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse>[];
   o.add(buildBuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse());
   o.add(buildBuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse());
   return o;
 }
 
-void checkUnnamed5986(
+void checkUnnamed6423(
     core.List<api.BuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -283,7 +283,7 @@ api.BuildBazelRemoteExecutionV2BatchReadBlobsResponse
   var o = api.BuildBazelRemoteExecutionV2BatchReadBlobsResponse();
   buildCounterBuildBazelRemoteExecutionV2BatchReadBlobsResponse++;
   if (buildCounterBuildBazelRemoteExecutionV2BatchReadBlobsResponse < 3) {
-    o.responses = buildUnnamed5986();
+    o.responses = buildUnnamed6423();
   }
   buildCounterBuildBazelRemoteExecutionV2BatchReadBlobsResponse--;
   return o;
@@ -293,7 +293,7 @@ void checkBuildBazelRemoteExecutionV2BatchReadBlobsResponse(
     api.BuildBazelRemoteExecutionV2BatchReadBlobsResponse o) {
   buildCounterBuildBazelRemoteExecutionV2BatchReadBlobsResponse++;
   if (buildCounterBuildBazelRemoteExecutionV2BatchReadBlobsResponse < 3) {
-    checkUnnamed5986(o.responses!);
+    checkUnnamed6423(o.responses!);
   }
   buildCounterBuildBazelRemoteExecutionV2BatchReadBlobsResponse--;
 }
@@ -331,14 +331,14 @@ void checkBuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse(
 }
 
 core.List<api.BuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest>
-    buildUnnamed5987() {
+    buildUnnamed6424() {
   var o = <api.BuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest>[];
   o.add(buildBuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest());
   o.add(buildBuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest());
   return o;
 }
 
-void checkUnnamed5987(
+void checkUnnamed6424(
     core.List<api.BuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -354,7 +354,7 @@ api.BuildBazelRemoteExecutionV2BatchUpdateBlobsRequest
   var o = api.BuildBazelRemoteExecutionV2BatchUpdateBlobsRequest();
   buildCounterBuildBazelRemoteExecutionV2BatchUpdateBlobsRequest++;
   if (buildCounterBuildBazelRemoteExecutionV2BatchUpdateBlobsRequest < 3) {
-    o.requests = buildUnnamed5987();
+    o.requests = buildUnnamed6424();
   }
   buildCounterBuildBazelRemoteExecutionV2BatchUpdateBlobsRequest--;
   return o;
@@ -364,7 +364,7 @@ void checkBuildBazelRemoteExecutionV2BatchUpdateBlobsRequest(
     api.BuildBazelRemoteExecutionV2BatchUpdateBlobsRequest o) {
   buildCounterBuildBazelRemoteExecutionV2BatchUpdateBlobsRequest++;
   if (buildCounterBuildBazelRemoteExecutionV2BatchUpdateBlobsRequest < 3) {
-    checkUnnamed5987(o.requests!);
+    checkUnnamed6424(o.requests!);
   }
   buildCounterBuildBazelRemoteExecutionV2BatchUpdateBlobsRequest--;
 }
@@ -400,14 +400,14 @@ void checkBuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest(
 }
 
 core.List<api.BuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse>
-    buildUnnamed5988() {
+    buildUnnamed6425() {
   var o = <api.BuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse>[];
   o.add(buildBuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse());
   o.add(buildBuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse());
   return o;
 }
 
-void checkUnnamed5988(
+void checkUnnamed6425(
     core.List<api.BuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -423,7 +423,7 @@ api.BuildBazelRemoteExecutionV2BatchUpdateBlobsResponse
   var o = api.BuildBazelRemoteExecutionV2BatchUpdateBlobsResponse();
   buildCounterBuildBazelRemoteExecutionV2BatchUpdateBlobsResponse++;
   if (buildCounterBuildBazelRemoteExecutionV2BatchUpdateBlobsResponse < 3) {
-    o.responses = buildUnnamed5988();
+    o.responses = buildUnnamed6425();
   }
   buildCounterBuildBazelRemoteExecutionV2BatchUpdateBlobsResponse--;
   return o;
@@ -433,7 +433,7 @@ void checkBuildBazelRemoteExecutionV2BatchUpdateBlobsResponse(
     api.BuildBazelRemoteExecutionV2BatchUpdateBlobsResponse o) {
   buildCounterBuildBazelRemoteExecutionV2BatchUpdateBlobsResponse++;
   if (buildCounterBuildBazelRemoteExecutionV2BatchUpdateBlobsResponse < 3) {
-    checkUnnamed5988(o.responses!);
+    checkUnnamed6425(o.responses!);
   }
   buildCounterBuildBazelRemoteExecutionV2BatchUpdateBlobsResponse--;
 }
@@ -465,14 +465,33 @@ void checkBuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse(
   buildCounterBuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse--;
 }
 
-core.List<core.String> buildUnnamed5989() {
+core.List<core.String> buildUnnamed6426() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed5989(core.List<core.String> o) {
+void checkUnnamed6426(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed6427() {
+  var o = <core.String>[];
+  o.add('foo');
+  o.add('foo');
+  return o;
+}
+
+void checkUnnamed6427(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -494,8 +513,9 @@ api.BuildBazelRemoteExecutionV2CacheCapabilities
         buildBuildBazelRemoteExecutionV2ActionCacheUpdateCapabilities();
     o.cachePriorityCapabilities =
         buildBuildBazelRemoteExecutionV2PriorityCapabilities();
-    o.digestFunction = buildUnnamed5989();
+    o.digestFunction = buildUnnamed6426();
     o.maxBatchTotalSizeBytes = 'foo';
+    o.supportedCompressor = buildUnnamed6427();
     o.symlinkAbsolutePathStrategy = 'foo';
   }
   buildCounterBuildBazelRemoteExecutionV2CacheCapabilities--;
@@ -512,11 +532,12 @@ void checkBuildBazelRemoteExecutionV2CacheCapabilities(
     checkBuildBazelRemoteExecutionV2PriorityCapabilities(
         o.cachePriorityCapabilities!
             as api.BuildBazelRemoteExecutionV2PriorityCapabilities);
-    checkUnnamed5989(o.digestFunction!);
+    checkUnnamed6426(o.digestFunction!);
     unittest.expect(
       o.maxBatchTotalSizeBytes!,
       unittest.equals('foo'),
     );
+    checkUnnamed6427(o.supportedCompressor!);
     unittest.expect(
       o.symlinkAbsolutePathStrategy!,
       unittest.equals('foo'),
@@ -525,14 +546,14 @@ void checkBuildBazelRemoteExecutionV2CacheCapabilities(
   buildCounterBuildBazelRemoteExecutionV2CacheCapabilities--;
 }
 
-core.List<core.String> buildUnnamed5990() {
+core.List<core.String> buildUnnamed6428() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed5990(core.List<core.String> o) {
+void checkUnnamed6428(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -545,14 +566,14 @@ void checkUnnamed5990(core.List<core.String> o) {
 }
 
 core.List<api.BuildBazelRemoteExecutionV2CommandEnvironmentVariable>
-    buildUnnamed5991() {
+    buildUnnamed6429() {
   var o = <api.BuildBazelRemoteExecutionV2CommandEnvironmentVariable>[];
   o.add(buildBuildBazelRemoteExecutionV2CommandEnvironmentVariable());
   o.add(buildBuildBazelRemoteExecutionV2CommandEnvironmentVariable());
   return o;
 }
 
-void checkUnnamed5991(
+void checkUnnamed6429(
     core.List<api.BuildBazelRemoteExecutionV2CommandEnvironmentVariable> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBuildBazelRemoteExecutionV2CommandEnvironmentVariable(
@@ -561,14 +582,14 @@ void checkUnnamed5991(
       o[1] as api.BuildBazelRemoteExecutionV2CommandEnvironmentVariable);
 }
 
-core.List<core.String> buildUnnamed5992() {
+core.List<core.String> buildUnnamed6430() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed5992(core.List<core.String> o) {
+void checkUnnamed6430(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -580,14 +601,14 @@ void checkUnnamed5992(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed5993() {
+core.List<core.String> buildUnnamed6431() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed5993(core.List<core.String> o) {
+void checkUnnamed6431(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -599,14 +620,14 @@ void checkUnnamed5993(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed5994() {
+core.List<core.String> buildUnnamed6432() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed5994(core.List<core.String> o) {
+void checkUnnamed6432(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -618,14 +639,14 @@ void checkUnnamed5994(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed5995() {
+core.List<core.String> buildUnnamed6433() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed5995(core.List<core.String> o) {
+void checkUnnamed6433(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -643,12 +664,12 @@ api.BuildBazelRemoteExecutionV2Command
   var o = api.BuildBazelRemoteExecutionV2Command();
   buildCounterBuildBazelRemoteExecutionV2Command++;
   if (buildCounterBuildBazelRemoteExecutionV2Command < 3) {
-    o.arguments = buildUnnamed5990();
-    o.environmentVariables = buildUnnamed5991();
-    o.outputDirectories = buildUnnamed5992();
-    o.outputFiles = buildUnnamed5993();
-    o.outputNodeProperties = buildUnnamed5994();
-    o.outputPaths = buildUnnamed5995();
+    o.arguments = buildUnnamed6428();
+    o.environmentVariables = buildUnnamed6429();
+    o.outputDirectories = buildUnnamed6430();
+    o.outputFiles = buildUnnamed6431();
+    o.outputNodeProperties = buildUnnamed6432();
+    o.outputPaths = buildUnnamed6433();
     o.platform = buildBuildBazelRemoteExecutionV2Platform();
     o.workingDirectory = 'foo';
   }
@@ -660,12 +681,12 @@ void checkBuildBazelRemoteExecutionV2Command(
     api.BuildBazelRemoteExecutionV2Command o) {
   buildCounterBuildBazelRemoteExecutionV2Command++;
   if (buildCounterBuildBazelRemoteExecutionV2Command < 3) {
-    checkUnnamed5990(o.arguments!);
-    checkUnnamed5991(o.environmentVariables!);
-    checkUnnamed5992(o.outputDirectories!);
-    checkUnnamed5993(o.outputFiles!);
-    checkUnnamed5994(o.outputNodeProperties!);
-    checkUnnamed5995(o.outputPaths!);
+    checkUnnamed6428(o.arguments!);
+    checkUnnamed6429(o.environmentVariables!);
+    checkUnnamed6430(o.outputDirectories!);
+    checkUnnamed6431(o.outputFiles!);
+    checkUnnamed6432(o.outputNodeProperties!);
+    checkUnnamed6433(o.outputPaths!);
     checkBuildBazelRemoteExecutionV2Platform(
         o.platform! as api.BuildBazelRemoteExecutionV2Platform);
     unittest.expect(
@@ -733,14 +754,14 @@ void checkBuildBazelRemoteExecutionV2Digest(
   buildCounterBuildBazelRemoteExecutionV2Digest--;
 }
 
-core.List<api.BuildBazelRemoteExecutionV2DirectoryNode> buildUnnamed5996() {
+core.List<api.BuildBazelRemoteExecutionV2DirectoryNode> buildUnnamed6434() {
   var o = <api.BuildBazelRemoteExecutionV2DirectoryNode>[];
   o.add(buildBuildBazelRemoteExecutionV2DirectoryNode());
   o.add(buildBuildBazelRemoteExecutionV2DirectoryNode());
   return o;
 }
 
-void checkUnnamed5996(
+void checkUnnamed6434(
     core.List<api.BuildBazelRemoteExecutionV2DirectoryNode> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBuildBazelRemoteExecutionV2DirectoryNode(
@@ -749,14 +770,14 @@ void checkUnnamed5996(
       o[1] as api.BuildBazelRemoteExecutionV2DirectoryNode);
 }
 
-core.List<api.BuildBazelRemoteExecutionV2FileNode> buildUnnamed5997() {
+core.List<api.BuildBazelRemoteExecutionV2FileNode> buildUnnamed6435() {
   var o = <api.BuildBazelRemoteExecutionV2FileNode>[];
   o.add(buildBuildBazelRemoteExecutionV2FileNode());
   o.add(buildBuildBazelRemoteExecutionV2FileNode());
   return o;
 }
 
-void checkUnnamed5997(core.List<api.BuildBazelRemoteExecutionV2FileNode> o) {
+void checkUnnamed6435(core.List<api.BuildBazelRemoteExecutionV2FileNode> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBuildBazelRemoteExecutionV2FileNode(
       o[0] as api.BuildBazelRemoteExecutionV2FileNode);
@@ -764,14 +785,14 @@ void checkUnnamed5997(core.List<api.BuildBazelRemoteExecutionV2FileNode> o) {
       o[1] as api.BuildBazelRemoteExecutionV2FileNode);
 }
 
-core.List<api.BuildBazelRemoteExecutionV2SymlinkNode> buildUnnamed5998() {
+core.List<api.BuildBazelRemoteExecutionV2SymlinkNode> buildUnnamed6436() {
   var o = <api.BuildBazelRemoteExecutionV2SymlinkNode>[];
   o.add(buildBuildBazelRemoteExecutionV2SymlinkNode());
   o.add(buildBuildBazelRemoteExecutionV2SymlinkNode());
   return o;
 }
 
-void checkUnnamed5998(core.List<api.BuildBazelRemoteExecutionV2SymlinkNode> o) {
+void checkUnnamed6436(core.List<api.BuildBazelRemoteExecutionV2SymlinkNode> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBuildBazelRemoteExecutionV2SymlinkNode(
       o[0] as api.BuildBazelRemoteExecutionV2SymlinkNode);
@@ -785,10 +806,10 @@ api.BuildBazelRemoteExecutionV2Directory
   var o = api.BuildBazelRemoteExecutionV2Directory();
   buildCounterBuildBazelRemoteExecutionV2Directory++;
   if (buildCounterBuildBazelRemoteExecutionV2Directory < 3) {
-    o.directories = buildUnnamed5996();
-    o.files = buildUnnamed5997();
+    o.directories = buildUnnamed6434();
+    o.files = buildUnnamed6435();
     o.nodeProperties = buildBuildBazelRemoteExecutionV2NodeProperties();
-    o.symlinks = buildUnnamed5998();
+    o.symlinks = buildUnnamed6436();
   }
   buildCounterBuildBazelRemoteExecutionV2Directory--;
   return o;
@@ -798,11 +819,11 @@ void checkBuildBazelRemoteExecutionV2Directory(
     api.BuildBazelRemoteExecutionV2Directory o) {
   buildCounterBuildBazelRemoteExecutionV2Directory++;
   if (buildCounterBuildBazelRemoteExecutionV2Directory < 3) {
-    checkUnnamed5996(o.directories!);
-    checkUnnamed5997(o.files!);
+    checkUnnamed6434(o.directories!);
+    checkUnnamed6435(o.files!);
     checkBuildBazelRemoteExecutionV2NodeProperties(
         o.nodeProperties! as api.BuildBazelRemoteExecutionV2NodeProperties);
-    checkUnnamed5998(o.symlinks!);
+    checkUnnamed6436(o.symlinks!);
   }
   buildCounterBuildBazelRemoteExecutionV2Directory--;
 }
@@ -902,14 +923,14 @@ void checkBuildBazelRemoteExecutionV2ExecuteRequest(
 }
 
 core.Map<core.String, api.BuildBazelRemoteExecutionV2LogFile>
-    buildUnnamed5999() {
+    buildUnnamed6437() {
   var o = <core.String, api.BuildBazelRemoteExecutionV2LogFile>{};
   o['x'] = buildBuildBazelRemoteExecutionV2LogFile();
   o['y'] = buildBuildBazelRemoteExecutionV2LogFile();
   return o;
 }
 
-void checkUnnamed5999(
+void checkUnnamed6437(
     core.Map<core.String, api.BuildBazelRemoteExecutionV2LogFile> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBuildBazelRemoteExecutionV2LogFile(
@@ -927,7 +948,7 @@ api.BuildBazelRemoteExecutionV2ExecuteResponse
     o.cachedResult = true;
     o.message = 'foo';
     o.result = buildBuildBazelRemoteExecutionV2ActionResult();
-    o.serverLogs = buildUnnamed5999();
+    o.serverLogs = buildUnnamed6437();
     o.status = buildGoogleRpcStatus();
   }
   buildCounterBuildBazelRemoteExecutionV2ExecuteResponse--;
@@ -945,13 +966,13 @@ void checkBuildBazelRemoteExecutionV2ExecuteResponse(
     );
     checkBuildBazelRemoteExecutionV2ActionResult(
         o.result! as api.BuildBazelRemoteExecutionV2ActionResult);
-    checkUnnamed5999(o.serverLogs!);
+    checkUnnamed6437(o.serverLogs!);
     checkGoogleRpcStatus(o.status! as api.GoogleRpcStatus);
   }
   buildCounterBuildBazelRemoteExecutionV2ExecuteResponse--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed6000() {
+core.Map<core.String, core.Object> buildUnnamed6438() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -966,7 +987,7 @@ core.Map<core.String, core.Object> buildUnnamed6000() {
   return o;
 }
 
-void checkUnnamed6000(core.Map<core.String, core.Object> o) {
+void checkUnnamed6438(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -998,17 +1019,17 @@ void checkUnnamed6000(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed6001() {
+core.List<core.Map<core.String, core.Object>> buildUnnamed6439() {
   var o = <core.Map<core.String, core.Object>>[];
-  o.add(buildUnnamed6000());
-  o.add(buildUnnamed6000());
+  o.add(buildUnnamed6438());
+  o.add(buildUnnamed6438());
   return o;
 }
 
-void checkUnnamed6001(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed6439(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed6000(o[0]);
-  checkUnnamed6000(o[1]);
+  checkUnnamed6438(o[0]);
+  checkUnnamed6438(o[1]);
 }
 
 core.int buildCounterBuildBazelRemoteExecutionV2ExecutedActionMetadata = 0;
@@ -1017,7 +1038,7 @@ api.BuildBazelRemoteExecutionV2ExecutedActionMetadata
   var o = api.BuildBazelRemoteExecutionV2ExecutedActionMetadata();
   buildCounterBuildBazelRemoteExecutionV2ExecutedActionMetadata++;
   if (buildCounterBuildBazelRemoteExecutionV2ExecutedActionMetadata < 3) {
-    o.auxiliaryMetadata = buildUnnamed6001();
+    o.auxiliaryMetadata = buildUnnamed6439();
     o.executionCompletedTimestamp = 'foo';
     o.executionStartTimestamp = 'foo';
     o.inputFetchCompletedTimestamp = 'foo';
@@ -1037,7 +1058,7 @@ void checkBuildBazelRemoteExecutionV2ExecutedActionMetadata(
     api.BuildBazelRemoteExecutionV2ExecutedActionMetadata o) {
   buildCounterBuildBazelRemoteExecutionV2ExecutedActionMetadata++;
   if (buildCounterBuildBazelRemoteExecutionV2ExecutedActionMetadata < 3) {
-    checkUnnamed6001(o.auxiliaryMetadata!);
+    checkUnnamed6439(o.auxiliaryMetadata!);
     unittest.expect(
       o.executionCompletedTimestamp!,
       unittest.equals('foo'),
@@ -1082,14 +1103,14 @@ void checkBuildBazelRemoteExecutionV2ExecutedActionMetadata(
   buildCounterBuildBazelRemoteExecutionV2ExecutedActionMetadata--;
 }
 
-core.List<core.String> buildUnnamed6002() {
+core.List<core.String> buildUnnamed6440() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6002(core.List<core.String> o) {
+void checkUnnamed6440(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1111,7 +1132,7 @@ api.BuildBazelRemoteExecutionV2ExecutionCapabilities
     o.execEnabled = true;
     o.executionPriorityCapabilities =
         buildBuildBazelRemoteExecutionV2PriorityCapabilities();
-    o.supportedNodeProperties = buildUnnamed6002();
+    o.supportedNodeProperties = buildUnnamed6440();
   }
   buildCounterBuildBazelRemoteExecutionV2ExecutionCapabilities--;
   return o;
@@ -1129,7 +1150,7 @@ void checkBuildBazelRemoteExecutionV2ExecutionCapabilities(
     checkBuildBazelRemoteExecutionV2PriorityCapabilities(
         o.executionPriorityCapabilities!
             as api.BuildBazelRemoteExecutionV2PriorityCapabilities);
-    checkUnnamed6002(o.supportedNodeProperties!);
+    checkUnnamed6440(o.supportedNodeProperties!);
   }
   buildCounterBuildBazelRemoteExecutionV2ExecutionCapabilities--;
 }
@@ -1190,14 +1211,14 @@ void checkBuildBazelRemoteExecutionV2FileNode(
   buildCounterBuildBazelRemoteExecutionV2FileNode--;
 }
 
-core.List<api.BuildBazelRemoteExecutionV2Digest> buildUnnamed6003() {
+core.List<api.BuildBazelRemoteExecutionV2Digest> buildUnnamed6441() {
   var o = <api.BuildBazelRemoteExecutionV2Digest>[];
   o.add(buildBuildBazelRemoteExecutionV2Digest());
   o.add(buildBuildBazelRemoteExecutionV2Digest());
   return o;
 }
 
-void checkUnnamed6003(core.List<api.BuildBazelRemoteExecutionV2Digest> o) {
+void checkUnnamed6441(core.List<api.BuildBazelRemoteExecutionV2Digest> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBuildBazelRemoteExecutionV2Digest(
       o[0] as api.BuildBazelRemoteExecutionV2Digest);
@@ -1211,7 +1232,7 @@ api.BuildBazelRemoteExecutionV2FindMissingBlobsRequest
   var o = api.BuildBazelRemoteExecutionV2FindMissingBlobsRequest();
   buildCounterBuildBazelRemoteExecutionV2FindMissingBlobsRequest++;
   if (buildCounterBuildBazelRemoteExecutionV2FindMissingBlobsRequest < 3) {
-    o.blobDigests = buildUnnamed6003();
+    o.blobDigests = buildUnnamed6441();
   }
   buildCounterBuildBazelRemoteExecutionV2FindMissingBlobsRequest--;
   return o;
@@ -1221,19 +1242,19 @@ void checkBuildBazelRemoteExecutionV2FindMissingBlobsRequest(
     api.BuildBazelRemoteExecutionV2FindMissingBlobsRequest o) {
   buildCounterBuildBazelRemoteExecutionV2FindMissingBlobsRequest++;
   if (buildCounterBuildBazelRemoteExecutionV2FindMissingBlobsRequest < 3) {
-    checkUnnamed6003(o.blobDigests!);
+    checkUnnamed6441(o.blobDigests!);
   }
   buildCounterBuildBazelRemoteExecutionV2FindMissingBlobsRequest--;
 }
 
-core.List<api.BuildBazelRemoteExecutionV2Digest> buildUnnamed6004() {
+core.List<api.BuildBazelRemoteExecutionV2Digest> buildUnnamed6442() {
   var o = <api.BuildBazelRemoteExecutionV2Digest>[];
   o.add(buildBuildBazelRemoteExecutionV2Digest());
   o.add(buildBuildBazelRemoteExecutionV2Digest());
   return o;
 }
 
-void checkUnnamed6004(core.List<api.BuildBazelRemoteExecutionV2Digest> o) {
+void checkUnnamed6442(core.List<api.BuildBazelRemoteExecutionV2Digest> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBuildBazelRemoteExecutionV2Digest(
       o[0] as api.BuildBazelRemoteExecutionV2Digest);
@@ -1247,7 +1268,7 @@ api.BuildBazelRemoteExecutionV2FindMissingBlobsResponse
   var o = api.BuildBazelRemoteExecutionV2FindMissingBlobsResponse();
   buildCounterBuildBazelRemoteExecutionV2FindMissingBlobsResponse++;
   if (buildCounterBuildBazelRemoteExecutionV2FindMissingBlobsResponse < 3) {
-    o.missingBlobDigests = buildUnnamed6004();
+    o.missingBlobDigests = buildUnnamed6442();
   }
   buildCounterBuildBazelRemoteExecutionV2FindMissingBlobsResponse--;
   return o;
@@ -1257,19 +1278,19 @@ void checkBuildBazelRemoteExecutionV2FindMissingBlobsResponse(
     api.BuildBazelRemoteExecutionV2FindMissingBlobsResponse o) {
   buildCounterBuildBazelRemoteExecutionV2FindMissingBlobsResponse++;
   if (buildCounterBuildBazelRemoteExecutionV2FindMissingBlobsResponse < 3) {
-    checkUnnamed6004(o.missingBlobDigests!);
+    checkUnnamed6442(o.missingBlobDigests!);
   }
   buildCounterBuildBazelRemoteExecutionV2FindMissingBlobsResponse--;
 }
 
-core.List<api.BuildBazelRemoteExecutionV2Directory> buildUnnamed6005() {
+core.List<api.BuildBazelRemoteExecutionV2Directory> buildUnnamed6443() {
   var o = <api.BuildBazelRemoteExecutionV2Directory>[];
   o.add(buildBuildBazelRemoteExecutionV2Directory());
   o.add(buildBuildBazelRemoteExecutionV2Directory());
   return o;
 }
 
-void checkUnnamed6005(core.List<api.BuildBazelRemoteExecutionV2Directory> o) {
+void checkUnnamed6443(core.List<api.BuildBazelRemoteExecutionV2Directory> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBuildBazelRemoteExecutionV2Directory(
       o[0] as api.BuildBazelRemoteExecutionV2Directory);
@@ -1283,7 +1304,7 @@ api.BuildBazelRemoteExecutionV2GetTreeResponse
   var o = api.BuildBazelRemoteExecutionV2GetTreeResponse();
   buildCounterBuildBazelRemoteExecutionV2GetTreeResponse++;
   if (buildCounterBuildBazelRemoteExecutionV2GetTreeResponse < 3) {
-    o.directories = buildUnnamed6005();
+    o.directories = buildUnnamed6443();
     o.nextPageToken = 'foo';
   }
   buildCounterBuildBazelRemoteExecutionV2GetTreeResponse--;
@@ -1294,7 +1315,7 @@ void checkBuildBazelRemoteExecutionV2GetTreeResponse(
     api.BuildBazelRemoteExecutionV2GetTreeResponse o) {
   buildCounterBuildBazelRemoteExecutionV2GetTreeResponse++;
   if (buildCounterBuildBazelRemoteExecutionV2GetTreeResponse < 3) {
-    checkUnnamed6005(o.directories!);
+    checkUnnamed6443(o.directories!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1327,14 +1348,14 @@ void checkBuildBazelRemoteExecutionV2LogFile(
   buildCounterBuildBazelRemoteExecutionV2LogFile--;
 }
 
-core.List<api.BuildBazelRemoteExecutionV2NodeProperty> buildUnnamed6006() {
+core.List<api.BuildBazelRemoteExecutionV2NodeProperty> buildUnnamed6444() {
   var o = <api.BuildBazelRemoteExecutionV2NodeProperty>[];
   o.add(buildBuildBazelRemoteExecutionV2NodeProperty());
   o.add(buildBuildBazelRemoteExecutionV2NodeProperty());
   return o;
 }
 
-void checkUnnamed6006(
+void checkUnnamed6444(
     core.List<api.BuildBazelRemoteExecutionV2NodeProperty> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBuildBazelRemoteExecutionV2NodeProperty(
@@ -1350,7 +1371,7 @@ api.BuildBazelRemoteExecutionV2NodeProperties
   buildCounterBuildBazelRemoteExecutionV2NodeProperties++;
   if (buildCounterBuildBazelRemoteExecutionV2NodeProperties < 3) {
     o.mtime = 'foo';
-    o.properties = buildUnnamed6006();
+    o.properties = buildUnnamed6444();
     o.unixMode = 42;
   }
   buildCounterBuildBazelRemoteExecutionV2NodeProperties--;
@@ -1365,7 +1386,7 @@ void checkBuildBazelRemoteExecutionV2NodeProperties(
       o.mtime!,
       unittest.equals('foo'),
     );
-    checkUnnamed6006(o.properties!);
+    checkUnnamed6444(o.properties!);
     unittest.expect(
       o.unixMode!,
       unittest.equals(42),
@@ -1499,14 +1520,14 @@ void checkBuildBazelRemoteExecutionV2OutputSymlink(
   buildCounterBuildBazelRemoteExecutionV2OutputSymlink--;
 }
 
-core.List<api.BuildBazelRemoteExecutionV2PlatformProperty> buildUnnamed6007() {
+core.List<api.BuildBazelRemoteExecutionV2PlatformProperty> buildUnnamed6445() {
   var o = <api.BuildBazelRemoteExecutionV2PlatformProperty>[];
   o.add(buildBuildBazelRemoteExecutionV2PlatformProperty());
   o.add(buildBuildBazelRemoteExecutionV2PlatformProperty());
   return o;
 }
 
-void checkUnnamed6007(
+void checkUnnamed6445(
     core.List<api.BuildBazelRemoteExecutionV2PlatformProperty> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBuildBazelRemoteExecutionV2PlatformProperty(
@@ -1521,7 +1542,7 @@ api.BuildBazelRemoteExecutionV2Platform
   var o = api.BuildBazelRemoteExecutionV2Platform();
   buildCounterBuildBazelRemoteExecutionV2Platform++;
   if (buildCounterBuildBazelRemoteExecutionV2Platform < 3) {
-    o.properties = buildUnnamed6007();
+    o.properties = buildUnnamed6445();
   }
   buildCounterBuildBazelRemoteExecutionV2Platform--;
   return o;
@@ -1531,7 +1552,7 @@ void checkBuildBazelRemoteExecutionV2Platform(
     api.BuildBazelRemoteExecutionV2Platform o) {
   buildCounterBuildBazelRemoteExecutionV2Platform++;
   if (buildCounterBuildBazelRemoteExecutionV2Platform < 3) {
-    checkUnnamed6007(o.properties!);
+    checkUnnamed6445(o.properties!);
   }
   buildCounterBuildBazelRemoteExecutionV2Platform--;
 }
@@ -1566,14 +1587,14 @@ void checkBuildBazelRemoteExecutionV2PlatformProperty(
 }
 
 core.List<api.BuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange>
-    buildUnnamed6008() {
+    buildUnnamed6446() {
   var o = <api.BuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange>[];
   o.add(buildBuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange());
   o.add(buildBuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange());
   return o;
 }
 
-void checkUnnamed6008(
+void checkUnnamed6446(
     core.List<api.BuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1589,7 +1610,7 @@ api.BuildBazelRemoteExecutionV2PriorityCapabilities
   var o = api.BuildBazelRemoteExecutionV2PriorityCapabilities();
   buildCounterBuildBazelRemoteExecutionV2PriorityCapabilities++;
   if (buildCounterBuildBazelRemoteExecutionV2PriorityCapabilities < 3) {
-    o.priorities = buildUnnamed6008();
+    o.priorities = buildUnnamed6446();
   }
   buildCounterBuildBazelRemoteExecutionV2PriorityCapabilities--;
   return o;
@@ -1599,7 +1620,7 @@ void checkBuildBazelRemoteExecutionV2PriorityCapabilities(
     api.BuildBazelRemoteExecutionV2PriorityCapabilities o) {
   buildCounterBuildBazelRemoteExecutionV2PriorityCapabilities++;
   if (buildCounterBuildBazelRemoteExecutionV2PriorityCapabilities < 3) {
-    checkUnnamed6008(o.priorities!);
+    checkUnnamed6446(o.priorities!);
   }
   buildCounterBuildBazelRemoteExecutionV2PriorityCapabilities--;
 }
@@ -1644,7 +1665,10 @@ api.BuildBazelRemoteExecutionV2RequestMetadata
   buildCounterBuildBazelRemoteExecutionV2RequestMetadata++;
   if (buildCounterBuildBazelRemoteExecutionV2RequestMetadata < 3) {
     o.actionId = 'foo';
+    o.actionMnemonic = 'foo';
+    o.configurationId = 'foo';
     o.correlatedInvocationsId = 'foo';
+    o.targetId = 'foo';
     o.toolDetails = buildBuildBazelRemoteExecutionV2ToolDetails();
     o.toolInvocationId = 'foo';
   }
@@ -1661,7 +1685,19 @@ void checkBuildBazelRemoteExecutionV2RequestMetadata(
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.actionMnemonic!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.configurationId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.correlatedInvocationsId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.targetId!,
       unittest.equals('foo'),
     );
     checkBuildBazelRemoteExecutionV2ToolDetails(
@@ -1794,14 +1830,14 @@ void checkBuildBazelRemoteExecutionV2ToolDetails(
   buildCounterBuildBazelRemoteExecutionV2ToolDetails--;
 }
 
-core.List<api.BuildBazelRemoteExecutionV2Directory> buildUnnamed6009() {
+core.List<api.BuildBazelRemoteExecutionV2Directory> buildUnnamed6447() {
   var o = <api.BuildBazelRemoteExecutionV2Directory>[];
   o.add(buildBuildBazelRemoteExecutionV2Directory());
   o.add(buildBuildBazelRemoteExecutionV2Directory());
   return o;
 }
 
-void checkUnnamed6009(core.List<api.BuildBazelRemoteExecutionV2Directory> o) {
+void checkUnnamed6447(core.List<api.BuildBazelRemoteExecutionV2Directory> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBuildBazelRemoteExecutionV2Directory(
       o[0] as api.BuildBazelRemoteExecutionV2Directory);
@@ -1814,7 +1850,7 @@ api.BuildBazelRemoteExecutionV2Tree buildBuildBazelRemoteExecutionV2Tree() {
   var o = api.BuildBazelRemoteExecutionV2Tree();
   buildCounterBuildBazelRemoteExecutionV2Tree++;
   if (buildCounterBuildBazelRemoteExecutionV2Tree < 3) {
-    o.children = buildUnnamed6009();
+    o.children = buildUnnamed6447();
     o.root = buildBuildBazelRemoteExecutionV2Directory();
   }
   buildCounterBuildBazelRemoteExecutionV2Tree--;
@@ -1825,7 +1861,7 @@ void checkBuildBazelRemoteExecutionV2Tree(
     api.BuildBazelRemoteExecutionV2Tree o) {
   buildCounterBuildBazelRemoteExecutionV2Tree++;
   if (buildCounterBuildBazelRemoteExecutionV2Tree < 3) {
-    checkUnnamed6009(o.children!);
+    checkUnnamed6447(o.children!);
     checkBuildBazelRemoteExecutionV2Directory(
         o.root! as api.BuildBazelRemoteExecutionV2Directory);
   }
@@ -1982,6 +2018,7 @@ api.GoogleDevtoolsRemotebuildbotCommandEvents
     o.inputCacheMiss = 42.0;
     o.numErrors = 'foo';
     o.numWarnings = 'foo';
+    o.outputLocation = 'foo';
     o.usedAsyncContainer = true;
   }
   buildCounterGoogleDevtoolsRemotebuildbotCommandEvents--;
@@ -2011,6 +2048,10 @@ void checkGoogleDevtoolsRemotebuildbotCommandEvents(
     );
     unittest.expect(
       o.numWarnings!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.outputLocation!,
       unittest.equals('foo'),
     );
     unittest.expect(o.usedAsyncContainer!, unittest.isTrue);
@@ -2056,6 +2097,8 @@ api.GoogleDevtoolsRemotebuildbotResourceUsage
     o.cpuUsedPercent = 42.0;
     o.diskUsage = buildGoogleDevtoolsRemotebuildbotResourceUsageStat();
     o.memoryUsage = buildGoogleDevtoolsRemotebuildbotResourceUsageStat();
+    o.totalDiskIoStats =
+        buildGoogleDevtoolsRemotebuildbotResourceUsageIOStats();
   }
   buildCounterGoogleDevtoolsRemotebuildbotResourceUsage--;
   return o;
@@ -2073,8 +2116,59 @@ void checkGoogleDevtoolsRemotebuildbotResourceUsage(
         o.diskUsage! as api.GoogleDevtoolsRemotebuildbotResourceUsageStat);
     checkGoogleDevtoolsRemotebuildbotResourceUsageStat(
         o.memoryUsage! as api.GoogleDevtoolsRemotebuildbotResourceUsageStat);
+    checkGoogleDevtoolsRemotebuildbotResourceUsageIOStats(o.totalDiskIoStats!
+        as api.GoogleDevtoolsRemotebuildbotResourceUsageIOStats);
   }
   buildCounterGoogleDevtoolsRemotebuildbotResourceUsage--;
+}
+
+core.int buildCounterGoogleDevtoolsRemotebuildbotResourceUsageIOStats = 0;
+api.GoogleDevtoolsRemotebuildbotResourceUsageIOStats
+    buildGoogleDevtoolsRemotebuildbotResourceUsageIOStats() {
+  var o = api.GoogleDevtoolsRemotebuildbotResourceUsageIOStats();
+  buildCounterGoogleDevtoolsRemotebuildbotResourceUsageIOStats++;
+  if (buildCounterGoogleDevtoolsRemotebuildbotResourceUsageIOStats < 3) {
+    o.readBytesCount = 'foo';
+    o.readCount = 'foo';
+    o.readTimeMs = 'foo';
+    o.writeBytesCount = 'foo';
+    o.writeCount = 'foo';
+    o.writeTimeMs = 'foo';
+  }
+  buildCounterGoogleDevtoolsRemotebuildbotResourceUsageIOStats--;
+  return o;
+}
+
+void checkGoogleDevtoolsRemotebuildbotResourceUsageIOStats(
+    api.GoogleDevtoolsRemotebuildbotResourceUsageIOStats o) {
+  buildCounterGoogleDevtoolsRemotebuildbotResourceUsageIOStats++;
+  if (buildCounterGoogleDevtoolsRemotebuildbotResourceUsageIOStats < 3) {
+    unittest.expect(
+      o.readBytesCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.readCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.readTimeMs!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.writeBytesCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.writeCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.writeTimeMs!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleDevtoolsRemotebuildbotResourceUsageIOStats--;
 }
 
 core.int buildCounterGoogleDevtoolsRemotebuildbotResourceUsageStat = 0;
@@ -2371,14 +2465,14 @@ void checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy(
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy--;
 }
 
-core.List<core.String> buildUnnamed6010() {
+core.List<core.String> buildUnnamed6448() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6010(core.List<core.String> o) {
+void checkUnnamed6448(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2400,7 +2494,7 @@ api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature++;
   if (buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature <
       3) {
-    o.allowedValues = buildUnnamed6010();
+    o.allowedValues = buildUnnamed6448();
     o.policy = 'foo';
   }
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature--;
@@ -2412,7 +2506,7 @@ void checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature(
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature++;
   if (buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature <
       3) {
-    checkUnnamed6010(o.allowedValues!);
+    checkUnnamed6448(o.allowedValues!);
     unittest.expect(
       o.policy!,
       unittest.equals('foo'),
@@ -2550,14 +2644,14 @@ void checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesRequest(
 }
 
 core.List<api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance>
-    buildUnnamed6011() {
+    buildUnnamed6449() {
   var o = <api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance>[];
   o.add(buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance());
   o.add(buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance());
   return o;
 }
 
-void checkUnnamed6011(
+void checkUnnamed6449(
     core.List<api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance(
@@ -2576,7 +2670,7 @@ api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesResponse
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesResponse++;
   if (buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesResponse <
       3) {
-    o.instances = buildUnnamed6011();
+    o.instances = buildUnnamed6449();
   }
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesResponse--;
   return o;
@@ -2587,7 +2681,7 @@ void checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesResponse(
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesResponse++;
   if (buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesResponse <
       3) {
-    checkUnnamed6011(o.instances!);
+    checkUnnamed6449(o.instances!);
   }
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesResponse--;
 }
@@ -2628,14 +2722,14 @@ void checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsRequest(
 }
 
 core.List<api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool>
-    buildUnnamed6012() {
+    buildUnnamed6450() {
   var o = <api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool>[];
   o.add(buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool());
   o.add(buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool());
   return o;
 }
 
-void checkUnnamed6012(
+void checkUnnamed6450(
     core.List<api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool(
@@ -2654,7 +2748,7 @@ api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsResponse
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsResponse++;
   if (buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsResponse <
       3) {
-    o.workerPools = buildUnnamed6012();
+    o.workerPools = buildUnnamed6450();
   }
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsResponse--;
   return o;
@@ -2666,7 +2760,7 @@ void checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsResponse(
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsResponse++;
   if (buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsResponse <
       3) {
-    checkUnnamed6012(o.workerPools!);
+    checkUnnamed6450(o.workerPools!);
   }
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsResponse--;
 }
@@ -2744,14 +2838,14 @@ void checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateWorkerPoolRequest(
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateWorkerPoolRequest--;
 }
 
-core.Map<core.String, core.String> buildUnnamed6013() {
+core.Map<core.String, core.String> buildUnnamed6451() {
   var o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
 }
 
-void checkUnnamed6013(core.Map<core.String, core.String> o) {
+void checkUnnamed6451(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -2775,7 +2869,7 @@ api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig
         buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig();
     o.diskSizeGb = 'foo';
     o.diskType = 'foo';
-    o.labels = buildUnnamed6013();
+    o.labels = buildUnnamed6451();
     o.machineType = 'foo';
     o.maxConcurrentActions = 'foo';
     o.minCpuPlatform = 'foo';
@@ -2804,7 +2898,7 @@ void checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig(
       o.diskType!,
       unittest.equals('foo'),
     );
-    checkUnnamed6013(o.labels!);
+    checkUnnamed6451(o.labels!);
     unittest.expect(
       o.machineType!,
       unittest.equals('foo'),
@@ -2997,7 +3091,7 @@ void checkGoogleDevtoolsRemoteworkersV1test2CommandOverhead(
   buildCounterGoogleDevtoolsRemoteworkersV1test2CommandOverhead--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed6014() {
+core.Map<core.String, core.Object> buildUnnamed6452() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -3012,7 +3106,7 @@ core.Map<core.String, core.Object> buildUnnamed6014() {
   return o;
 }
 
-void checkUnnamed6014(core.Map<core.String, core.Object> o) {
+void checkUnnamed6452(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -3044,17 +3138,17 @@ void checkUnnamed6014(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed6015() {
+core.List<core.Map<core.String, core.Object>> buildUnnamed6453() {
   var o = <core.Map<core.String, core.Object>>[];
-  o.add(buildUnnamed6014());
-  o.add(buildUnnamed6014());
+  o.add(buildUnnamed6452());
+  o.add(buildUnnamed6452());
   return o;
 }
 
-void checkUnnamed6015(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed6453(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed6014(o[0]);
-  checkUnnamed6014(o[1]);
+  checkUnnamed6452(o[0]);
+  checkUnnamed6452(o[1]);
 }
 
 core.int buildCounterGoogleDevtoolsRemoteworkersV1test2CommandResult = 0;
@@ -3065,7 +3159,7 @@ api.GoogleDevtoolsRemoteworkersV1test2CommandResult
   if (buildCounterGoogleDevtoolsRemoteworkersV1test2CommandResult < 3) {
     o.duration = 'foo';
     o.exitCode = 42;
-    o.metadata = buildUnnamed6015();
+    o.metadata = buildUnnamed6453();
     o.outputs = buildGoogleDevtoolsRemoteworkersV1test2Digest();
     o.overhead = 'foo';
     o.status = buildGoogleRpcStatus();
@@ -3086,7 +3180,7 @@ void checkGoogleDevtoolsRemoteworkersV1test2CommandResult(
       o.exitCode!,
       unittest.equals(42),
     );
-    checkUnnamed6015(o.metadata!);
+    checkUnnamed6453(o.metadata!);
     checkGoogleDevtoolsRemoteworkersV1test2Digest(
         o.outputs! as api.GoogleDevtoolsRemoteworkersV1test2Digest);
     unittest.expect(
@@ -3127,14 +3221,14 @@ void checkGoogleDevtoolsRemoteworkersV1test2CommandTask(
   buildCounterGoogleDevtoolsRemoteworkersV1test2CommandTask--;
 }
 
-core.List<core.String> buildUnnamed6016() {
+core.List<core.String> buildUnnamed6454() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6016(core.List<core.String> o) {
+void checkUnnamed6454(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3148,7 +3242,7 @@ void checkUnnamed6016(core.List<core.String> o) {
 
 core.List<
         api.GoogleDevtoolsRemoteworkersV1test2CommandTaskInputsEnvironmentVariable>
-    buildUnnamed6017() {
+    buildUnnamed6455() {
   var o = <
       api.GoogleDevtoolsRemoteworkersV1test2CommandTaskInputsEnvironmentVariable>[];
   o.add(
@@ -3158,7 +3252,7 @@ core.List<
   return o;
 }
 
-void checkUnnamed6017(
+void checkUnnamed6455(
     core.List<
             api.GoogleDevtoolsRemoteworkersV1test2CommandTaskInputsEnvironmentVariable>
         o) {
@@ -3171,14 +3265,14 @@ void checkUnnamed6017(
           .GoogleDevtoolsRemoteworkersV1test2CommandTaskInputsEnvironmentVariable);
 }
 
-core.List<api.GoogleDevtoolsRemoteworkersV1test2Digest> buildUnnamed6018() {
+core.List<api.GoogleDevtoolsRemoteworkersV1test2Digest> buildUnnamed6456() {
   var o = <api.GoogleDevtoolsRemoteworkersV1test2Digest>[];
   o.add(buildGoogleDevtoolsRemoteworkersV1test2Digest());
   o.add(buildGoogleDevtoolsRemoteworkersV1test2Digest());
   return o;
 }
 
-void checkUnnamed6018(
+void checkUnnamed6456(
     core.List<api.GoogleDevtoolsRemoteworkersV1test2Digest> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleDevtoolsRemoteworkersV1test2Digest(
@@ -3187,14 +3281,14 @@ void checkUnnamed6018(
       o[1] as api.GoogleDevtoolsRemoteworkersV1test2Digest);
 }
 
-core.List<api.GoogleDevtoolsRemoteworkersV1test2Blob> buildUnnamed6019() {
+core.List<api.GoogleDevtoolsRemoteworkersV1test2Blob> buildUnnamed6457() {
   var o = <api.GoogleDevtoolsRemoteworkersV1test2Blob>[];
   o.add(buildGoogleDevtoolsRemoteworkersV1test2Blob());
   o.add(buildGoogleDevtoolsRemoteworkersV1test2Blob());
   return o;
 }
 
-void checkUnnamed6019(core.List<api.GoogleDevtoolsRemoteworkersV1test2Blob> o) {
+void checkUnnamed6457(core.List<api.GoogleDevtoolsRemoteworkersV1test2Blob> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleDevtoolsRemoteworkersV1test2Blob(
       o[0] as api.GoogleDevtoolsRemoteworkersV1test2Blob);
@@ -3208,10 +3302,10 @@ api.GoogleDevtoolsRemoteworkersV1test2CommandTaskInputs
   var o = api.GoogleDevtoolsRemoteworkersV1test2CommandTaskInputs();
   buildCounterGoogleDevtoolsRemoteworkersV1test2CommandTaskInputs++;
   if (buildCounterGoogleDevtoolsRemoteworkersV1test2CommandTaskInputs < 3) {
-    o.arguments = buildUnnamed6016();
-    o.environmentVariables = buildUnnamed6017();
-    o.files = buildUnnamed6018();
-    o.inlineBlobs = buildUnnamed6019();
+    o.arguments = buildUnnamed6454();
+    o.environmentVariables = buildUnnamed6455();
+    o.files = buildUnnamed6456();
+    o.inlineBlobs = buildUnnamed6457();
     o.workingDirectory = 'foo';
   }
   buildCounterGoogleDevtoolsRemoteworkersV1test2CommandTaskInputs--;
@@ -3222,10 +3316,10 @@ void checkGoogleDevtoolsRemoteworkersV1test2CommandTaskInputs(
     api.GoogleDevtoolsRemoteworkersV1test2CommandTaskInputs o) {
   buildCounterGoogleDevtoolsRemoteworkersV1test2CommandTaskInputs++;
   if (buildCounterGoogleDevtoolsRemoteworkersV1test2CommandTaskInputs < 3) {
-    checkUnnamed6016(o.arguments!);
-    checkUnnamed6017(o.environmentVariables!);
-    checkUnnamed6018(o.files!);
-    checkUnnamed6019(o.inlineBlobs!);
+    checkUnnamed6454(o.arguments!);
+    checkUnnamed6455(o.environmentVariables!);
+    checkUnnamed6456(o.files!);
+    checkUnnamed6457(o.inlineBlobs!);
     unittest.expect(
       o.workingDirectory!,
       unittest.equals('foo'),
@@ -3269,14 +3363,14 @@ void checkGoogleDevtoolsRemoteworkersV1test2CommandTaskInputsEnvironmentVariable
   buildCounterGoogleDevtoolsRemoteworkersV1test2CommandTaskInputsEnvironmentVariable--;
 }
 
-core.List<core.String> buildUnnamed6020() {
+core.List<core.String> buildUnnamed6458() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6020(core.List<core.String> o) {
+void checkUnnamed6458(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3288,14 +3382,14 @@ void checkUnnamed6020(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed6021() {
+core.List<core.String> buildUnnamed6459() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6021(core.List<core.String> o) {
+void checkUnnamed6459(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3313,8 +3407,8 @@ api.GoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs
   var o = api.GoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs();
   buildCounterGoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs++;
   if (buildCounterGoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs < 3) {
-    o.directories = buildUnnamed6020();
-    o.files = buildUnnamed6021();
+    o.directories = buildUnnamed6458();
+    o.files = buildUnnamed6459();
     o.stderrDestination = 'foo';
     o.stdoutDestination = 'foo';
   }
@@ -3326,8 +3420,8 @@ void checkGoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs(
     api.GoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs o) {
   buildCounterGoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs++;
   if (buildCounterGoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs < 3) {
-    checkUnnamed6020(o.directories!);
-    checkUnnamed6021(o.files!);
+    checkUnnamed6458(o.directories!);
+    checkUnnamed6459(o.files!);
     unittest.expect(
       o.stderrDestination!,
       unittest.equals('foo'),
@@ -3404,14 +3498,14 @@ void checkGoogleDevtoolsRemoteworkersV1test2Digest(
 }
 
 core.List<api.GoogleDevtoolsRemoteworkersV1test2DirectoryMetadata>
-    buildUnnamed6022() {
+    buildUnnamed6460() {
   var o = <api.GoogleDevtoolsRemoteworkersV1test2DirectoryMetadata>[];
   o.add(buildGoogleDevtoolsRemoteworkersV1test2DirectoryMetadata());
   o.add(buildGoogleDevtoolsRemoteworkersV1test2DirectoryMetadata());
   return o;
 }
 
-void checkUnnamed6022(
+void checkUnnamed6460(
     core.List<api.GoogleDevtoolsRemoteworkersV1test2DirectoryMetadata> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleDevtoolsRemoteworkersV1test2DirectoryMetadata(
@@ -3421,14 +3515,14 @@ void checkUnnamed6022(
 }
 
 core.List<api.GoogleDevtoolsRemoteworkersV1test2FileMetadata>
-    buildUnnamed6023() {
+    buildUnnamed6461() {
   var o = <api.GoogleDevtoolsRemoteworkersV1test2FileMetadata>[];
   o.add(buildGoogleDevtoolsRemoteworkersV1test2FileMetadata());
   o.add(buildGoogleDevtoolsRemoteworkersV1test2FileMetadata());
   return o;
 }
 
-void checkUnnamed6023(
+void checkUnnamed6461(
     core.List<api.GoogleDevtoolsRemoteworkersV1test2FileMetadata> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleDevtoolsRemoteworkersV1test2FileMetadata(
@@ -3443,8 +3537,8 @@ api.GoogleDevtoolsRemoteworkersV1test2Directory
   var o = api.GoogleDevtoolsRemoteworkersV1test2Directory();
   buildCounterGoogleDevtoolsRemoteworkersV1test2Directory++;
   if (buildCounterGoogleDevtoolsRemoteworkersV1test2Directory < 3) {
-    o.directories = buildUnnamed6022();
-    o.files = buildUnnamed6023();
+    o.directories = buildUnnamed6460();
+    o.files = buildUnnamed6461();
   }
   buildCounterGoogleDevtoolsRemoteworkersV1test2Directory--;
   return o;
@@ -3454,8 +3548,8 @@ void checkGoogleDevtoolsRemoteworkersV1test2Directory(
     api.GoogleDevtoolsRemoteworkersV1test2Directory o) {
   buildCounterGoogleDevtoolsRemoteworkersV1test2Directory++;
   if (buildCounterGoogleDevtoolsRemoteworkersV1test2Directory < 3) {
-    checkUnnamed6022(o.directories!);
-    checkUnnamed6023(o.files!);
+    checkUnnamed6460(o.directories!);
+    checkUnnamed6461(o.files!);
   }
   buildCounterGoogleDevtoolsRemoteworkersV1test2Directory--;
 }
@@ -3521,7 +3615,7 @@ void checkGoogleDevtoolsRemoteworkersV1test2FileMetadata(
   buildCounterGoogleDevtoolsRemoteworkersV1test2FileMetadata--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed6024() {
+core.Map<core.String, core.Object> buildUnnamed6462() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -3536,7 +3630,7 @@ core.Map<core.String, core.Object> buildUnnamed6024() {
   return o;
 }
 
-void checkUnnamed6024(core.Map<core.String, core.Object> o) {
+void checkUnnamed6462(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -3568,7 +3662,7 @@ void checkUnnamed6024(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed6025() {
+core.Map<core.String, core.Object> buildUnnamed6463() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -3583,7 +3677,7 @@ core.Map<core.String, core.Object> buildUnnamed6025() {
   return o;
 }
 
-void checkUnnamed6025(core.Map<core.String, core.Object> o) {
+void checkUnnamed6463(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -3622,9 +3716,9 @@ api.GoogleLongrunningOperation buildGoogleLongrunningOperation() {
   if (buildCounterGoogleLongrunningOperation < 3) {
     o.done = true;
     o.error = buildGoogleRpcStatus();
-    o.metadata = buildUnnamed6024();
+    o.metadata = buildUnnamed6462();
     o.name = 'foo';
-    o.response = buildUnnamed6025();
+    o.response = buildUnnamed6463();
   }
   buildCounterGoogleLongrunningOperation--;
   return o;
@@ -3635,17 +3729,17 @@ void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   if (buildCounterGoogleLongrunningOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkGoogleRpcStatus(o.error! as api.GoogleRpcStatus);
-    checkUnnamed6024(o.metadata!);
+    checkUnnamed6462(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed6025(o.response!);
+    checkUnnamed6463(o.response!);
   }
   buildCounterGoogleLongrunningOperation--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed6026() {
+core.Map<core.String, core.Object> buildUnnamed6464() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -3660,7 +3754,7 @@ core.Map<core.String, core.Object> buildUnnamed6026() {
   return o;
 }
 
-void checkUnnamed6026(core.Map<core.String, core.Object> o) {
+void checkUnnamed6464(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted9 = (o['x']!) as core.Map;
   unittest.expect(casted9, unittest.hasLength(3));
@@ -3692,17 +3786,17 @@ void checkUnnamed6026(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed6027() {
+core.List<core.Map<core.String, core.Object>> buildUnnamed6465() {
   var o = <core.Map<core.String, core.Object>>[];
-  o.add(buildUnnamed6026());
-  o.add(buildUnnamed6026());
+  o.add(buildUnnamed6464());
+  o.add(buildUnnamed6464());
   return o;
 }
 
-void checkUnnamed6027(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed6465(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed6026(o[0]);
-  checkUnnamed6026(o[1]);
+  checkUnnamed6464(o[0]);
+  checkUnnamed6464(o[1]);
 }
 
 core.int buildCounterGoogleRpcStatus = 0;
@@ -3711,7 +3805,7 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed6027();
+    o.details = buildUnnamed6465();
     o.message = 'foo';
   }
   buildCounterGoogleRpcStatus--;
@@ -3725,7 +3819,7 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed6027(o.details!);
+    checkUnnamed6465(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -3734,14 +3828,14 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
   buildCounterGoogleRpcStatus--;
 }
 
-core.List<core.String> buildUnnamed6028() {
+core.List<core.String> buildUnnamed6466() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6028(core.List<core.String> o) {
+void checkUnnamed6466(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -4309,6 +4403,18 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GoogleDevtoolsRemotebuildbotResourceUsageIOStats',
+      () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildGoogleDevtoolsRemotebuildbotResourceUsageIOStats();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleDevtoolsRemotebuildbotResourceUsageIOStats.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleDevtoolsRemotebuildbotResourceUsageIOStats(
+          od as api.GoogleDevtoolsRemotebuildbotResourceUsageIOStats);
+    });
+  });
+
   unittest.group('obj-schema-GoogleDevtoolsRemotebuildbotResourceUsageStat',
       () {
     unittest.test('to-json--from-json', () async {
@@ -4809,7 +4915,7 @@ void main() {
       var arg_instanceName = 'foo';
       var arg_hash = 'foo';
       var arg_sizeBytes = 'foo';
-      var arg_inlineOutputFiles = buildUnnamed6028();
+      var arg_inlineOutputFiles = buildUnnamed6466();
       var arg_inlineStderr = true;
       var arg_inlineStdout = true;
       var arg_$fields = 'foo';

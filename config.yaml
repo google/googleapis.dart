@@ -2,7 +2,7 @@
 # should be ignored.
 packages:
 - googleapis:
-    version: 2.0.0
+    version: 3.0.0
     repository: https://github.com/google/googleapis.dart/tree/master/generated/googleapis
     readme: resources/README.md
     license: resources/LICENSE
@@ -24,6 +24,7 @@ packages:
     - admin:reports_v1 # https://developers.google.com/admin-sdk/reports/
     - admob:v1
     - adsense:v1.4 # https://developers.google.com/adsense/management/
+    - adsense:v2
     - adsensehost:v4.1 # https://developers.google.com/adsense/host/
     - analytics:v3 # https://developers.google.com/analytics/
     - analyticsreporting:v4 # https://developers.google.com/analytics/devguides/reporting/core/v4/
@@ -33,9 +34,11 @@ packages:
     - androidpublisher:v3 # https://developers.google.com/android-publisher/
     - apigateway:v1
     - apigee:v1
+    - apikeys:v2
     - appengine:v1 # https://cloud.google.com/appengine/docs/admin-api/
     - artifactregistry:v1
     - assuredworkloads:v1
+    - baremetalsolution:v1
     - bigquery:v2 # https://developers.google.com/bigquery/
     - bigquerydatatransfer:v1 # https://cloud.google.com/bigquery/transfer/
     - bigqueryreservation:v1
@@ -47,6 +50,7 @@ packages:
     - calendar:v3 # https://developers.google.com/google-apps/calendar/
     - chat:v1 # https://developers.google.com/hangouts/chat
     - chromemanagement:v1
+    - chromepolicy:v1
     - chromeuxreport:v1
     - civicinfo:v2 # https://developers.google.com/civic-information/
     - classroom:v1 # https://developers.google.com/classroom/
@@ -74,6 +78,7 @@ packages:
     - content:v2.1 # https://developers.google.com/shopping-content/
     - customsearch:v1 # https://developers.google.com/custom-search/
     - datafusion:v1
+    - datamigration:v1
     - dataproc:v1 # https://cloud.google.com/dataproc/
     - datastore:v1 # https://developers.google.com/datastore/
     - deploymentmanager:v2 # https://cloud.google.com/deployment-manager/
@@ -86,12 +91,14 @@ packages:
     - dlp:v2 # https://cloud.google.com/dlp/
     - dns:v1 # https://cloud.google.com/dns/api/v1/
     - docs:v1
+    - documentai:v1
     - domainsrdap:v1
     - doubleclickbidmanager:v1.1
     - doubleclicksearch:v2 # https://developers.google.com/doubleclick-search/
     - drive:v2 # https://developers.google.com/drive/v2/reference/
     - drive:v3 # https://developers.google.com/drive/v3/reference/
     - driveactivity:v2 # https://developers.google.com/drive/activity/
+    - essentialcontacts:v1
     - eventarc:v1
     - fcm:v1
     - file:v1
@@ -105,7 +112,7 @@ packages:
     - gamesConfiguration:v1configuration # https://developers.google.com/games/services/publishing/api/
     - gamesManagement:v1management # https://developers.google.com/games/services/management/api/
     - gameservices:v1
-    - genomics:v1 # https://cloud.google.com/genomics/
+    - gkehub:v1
     - gmail:v1 # https://developers.google.com/gmail/
     - gmailpostmastertools:v1
     - groupsmigration:v1 # https://developers.google.com/admin-sdk/groups-migration/
@@ -131,20 +138,27 @@ packages:
     - ml:v1 # https://cloud.google.com/ml-engine/
     - monitoring:v3 # https://cloud.google.com/monitoring/api/
     - mybusinessaccountmanagement:v1
+    - mybusinesslodging:v1
+    - mybusinessplaceactions:v1
     - networkmanagement:v1
     - notebooks:v1
     - oauth2:v2 # Note: this is used many places and sometimes the document is missing
+    - ondemandscanning:v1
+    - orgpolicy:v2
     - osconfig:v1
     - oslogin:v1 # https://cloud.google.com/compute/docs/oslogin/rest/
     - pagespeedonline:v5 # https://developers.google.com/speed/docs/insights/about
+    - paymentsresellersubscription:v1
     - people:v1 # https://developers.google.com/people/
     - playablelocations:v3
     - playcustomapp:v1 # https://developers.google.com/android/work/play/custom-app-api
+    - policysimulator:v1
     - policytroubleshooter:v1
     - poly:v1 # https://devsite.googleplex.com/poly/
     - pubsub:v1 # https://cloud.google.com/pubsub/
     - pubsublite:v1
     - realtimebidding:v1
+    - recaptchaenterprise:v1
     - recommender:v1
     - redis:v1 # https://cloud.google.com/memorystore/docs/redis/
     - remotebuildexecution:v2
@@ -190,16 +204,16 @@ packages:
     - vision:v1 # https://cloud.google.com/vision/reference/rest/
     - webfonts:v1 # https://developers.google.com/fonts/docs/developer_api
     - webmasters:v3 # https://developers.google.com/webmaster-tools/
+    - webrisk:v1
     - websecurityscanner:v1
     - workflowexecutions:v1
     - workflows:v1
     - youtube:v3 # https://developers.google.com/youtube/
     - youtubeAnalytics:v2 # https://developers.google.com/youtube/analytics/
     - youtubereporting:v1 # https://developers.google.com/youtube/reporting/v1/reports/
-    - webrisk:v1
 
 - googleapis_beta:
-    version: 2.0.0
+    version: 3.0.0
     repository: https://github.com/google/googleapis.dart/tree/master/generated/googleapis_beta
     readme: resources/README.md
     license: resources/LICENSE
@@ -209,7 +223,7 @@ packages:
     - adexchangebuyer2:v2beta1 # https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/
     - alertcenter:v1beta1 # https://developers.google.com/admin-sdk/alertcenter/
     - analyticsadmin:v1alpha
-    - analyticsdata:v1alpha
+    - analyticsdata:v1beta
     - area120tables:v1alpha1
     - bigqueryconnection:v1beta1
     - clouderrorreporting:v1beta1 # https://cloud.google.com/error-reporting/
@@ -217,12 +231,12 @@ packages:
     - datacatalog:v1beta1
     - dataflow:v1b3 # https://cloud.google.com/dataflow/
     - datalabeling:v1beta1
-    - datamigration:v1beta1
     - documentai:v1beta3
     - domains:v1beta1
     - factchecktools:v1alpha1
     - firebase:v1beta1
     - firebasedatabase:v1beta
+    - firebasestorage:v1beta
     - lifesciences:v2beta
     - metastore:v1beta
     - networkconnectivity:v1alpha1
@@ -258,11 +272,11 @@ skipped_apis:
 - cloudasset:v1p7beta1 # v1 included
 - cloudbuild:v1alpha1 # v1 included
 - cloudbuild:v1alpha2 # v1 included
+- cloudbuild:v1beta1
 - cloudidentity:v1beta1 # v1 included
 - cloudresourcemanager:v1beta1 # v1 included
 - cloudresourcemanager:v2beta1 # v2 included
 - cloudscheduler:v1beta1
-- cloudshell:v1alpha1 # v1 included
 - cloudtasks:v2beta2 # v2beta3 included
 - cloudtasks:v2beta3
 - cloudtrace:v1 # v2 included
@@ -274,6 +288,7 @@ skipped_apis:
 - containeranalysis:v1alpha1 # v1beta1 included
 - content:v2 # v2.1 included
 - datafusion:v1beta1 # v1 included
+- datamigration:v1beta1
 - dataproc:v1beta2 # v1 included
 - datastore:v1beta1 # v1 included
 - datastore:v1beta3 # v1 included
@@ -293,8 +308,12 @@ skipped_apis:
 - firestore:v1beta1 # v1 included
 - firestore:v1beta2 # v1 included
 - gameservices:v1beta # v1 included
-- genomics:v1alpha2 # v1 included
+- genomics:v1 # Use lifeSciences v2 beta instead!
 - genomics:v2alpha1 # v1 included
+- gkehub:v1alpha
+- gkehub:v1alpha2
+- gkehub:v1beta
+- gkehub:v1beta1
 - gmailpostmastertools:v1beta1 # v1 included
 - healthcare:v1beta1 # v1 included
 - iap:v1beta1 # v1 included

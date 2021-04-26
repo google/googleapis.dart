@@ -22,6 +22,8 @@
 /// Create an instance of [AdMobApi] to access these resources:
 ///
 /// - [AccountsResource]
+///   - [AccountsAdUnitsResource]
+///   - [AccountsAppsResource]
 ///   - [AccountsMediationReportResource]
 ///   - [AccountsNetworkReportResource]
 library admob.v1;
@@ -63,6 +65,8 @@ class AdMobApi {
 class AccountsResource {
   final commons.ApiRequester _requester;
 
+  AccountsAdUnitsResource get adUnits => AccountsAdUnitsResource(_requester);
+  AccountsAppsResource get apps => AccountsAppsResource(_requester);
   AccountsMediationReportResource get mediationReport =>
       AccountsMediationReportResource(_requester);
   AccountsNetworkReportResource get networkReport =>
@@ -151,6 +155,116 @@ class AccountsResource {
       queryParams: _queryParams,
     );
     return ListPublisherAccountsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class AccountsAdUnitsResource {
+  final commons.ApiRequester _requester;
+
+  AccountsAdUnitsResource(commons.ApiRequester client) : _requester = client;
+
+  /// List the ad units under the specified AdMob account.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource name of the account to list ad units for.
+  /// Example: accounts/pub-9876543210987654
+  /// Value must have pattern `^accounts/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of ad units to return. If unspecified or
+  /// 0, at most 1000 ad units will be returned. The maximum value is 10,000;
+  /// values above 10,000 will be coerced to 10,000.
+  ///
+  /// [pageToken] - The value returned by the last `ListAdUnitsResponse`;
+  /// indicates that this is a continuation of a prior `ListAdUnits` call, and
+  /// that the system should return the next page of data.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAdUnitsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAdUnitsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/adUnits';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListAdUnitsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class AccountsAppsResource {
+  final commons.ApiRequester _requester;
+
+  AccountsAppsResource(commons.ApiRequester client) : _requester = client;
+
+  /// List the apps under the specified AdMob account.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource name of the account to list apps for.
+  /// Example: accounts/pub-9876543210987654
+  /// Value must have pattern `^accounts/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of apps to return. If unspecified or 0, at
+  /// most 1000 apps will be returned. The maximum value is 10,000; values above
+  /// 10,000 will be coerced to 10,000.
+  ///
+  /// [pageToken] - The value returned by the last `ListAppsResponse`; indicates
+  /// that this is a continuation of a prior `ListApps` call, and that the
+  /// system should return the next page of data.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAppsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAppsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/apps';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListAppsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -261,6 +375,210 @@ class AccountsNetworkReportResource {
     return GenerateNetworkReportResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
+}
+
+/// Describes an AdMob ad unit.
+class AdUnit {
+  /// AdFormat of the ad unit.
+  ///
+  /// Possible values are as follows: "BANNER" - Banner ad format.
+  /// "BANNER_INTERSTITIAL" - Legacy format that can be used as either banner or
+  /// interstitial. This format can no longer be created but can be targeted by
+  /// mediation groups. "INTERSTITIAL" - A full screen ad. Supported ad types
+  /// are "RICH_MEDIA" and "VIDEO". "NATIVE" - Native ad format. "REWARDED" - An
+  /// ad that, once viewed, gets a callback verifying the view so that a reward
+  /// can be given to the user. Supported ad types are "RICH_MEDIA"
+  /// (interactive) and video where video can not be excluded.
+  core.String? adFormat;
+
+  /// Ad media type supported by this ad unit.
+  ///
+  /// Possible values as follows: "RICH_MEDIA" - Text, image, and other
+  /// non-video media. "VIDEO" - Video media.
+  core.List<core.String>? adTypes;
+
+  /// The externally visible ID of the ad unit which can be used to integrate
+  /// with the AdMob SDK.
+  ///
+  /// This is a read only property. Example:
+  /// ca-app-pub-9876543210987654/0123456789
+  core.String? adUnitId;
+
+  /// The externally visible ID of the app this ad unit is associated with.
+  ///
+  /// Example: ca-app-pub-9876543210987654~0123456789
+  core.String? appId;
+
+  /// The display name of the ad unit as shown in the AdMob UI, which is
+  /// provided by the user.
+  ///
+  /// The maximum length allowed is 80 characters.
+  core.String? displayName;
+
+  /// Resource name for this ad unit.
+  ///
+  /// Format is accounts/{publisher_id}/adUnits/{ad_unit_id_fragment} Example:
+  /// accounts/pub-9876543210987654/adUnits/0123456789
+  core.String? name;
+
+  AdUnit();
+
+  AdUnit.fromJson(core.Map _json) {
+    if (_json.containsKey('adFormat')) {
+      adFormat = _json['adFormat'] as core.String;
+    }
+    if (_json.containsKey('adTypes')) {
+      adTypes = (_json['adTypes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('adUnitId')) {
+      adUnitId = _json['adUnitId'] as core.String;
+    }
+    if (_json.containsKey('appId')) {
+      appId = _json['appId'] as core.String;
+    }
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (adFormat != null) 'adFormat': adFormat!,
+        if (adTypes != null) 'adTypes': adTypes!,
+        if (adUnitId != null) 'adUnitId': adUnitId!,
+        if (appId != null) 'appId': appId!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// Describes an AdMob app for a specific platform (For example: Android or
+/// iOS).
+class App {
+  /// The externally visible ID of the app which can be used to integrate with
+  /// the AdMob SDK.
+  ///
+  /// This is a read only property. Example:
+  /// ca-app-pub-9876543210987654~0123456789
+  core.String? appId;
+
+  /// The information for an app that is linked to an app store.
+  ///
+  /// This field is present if and only if the app is linked to an app store.
+  ///
+  /// Immutable.
+  AppLinkedAppInfo? linkedAppInfo;
+
+  /// The information for an app that is not linked to any app store.
+  ///
+  /// After an app is linked, this information is still retrivable. If no name
+  /// is provided for the app upon creation, a placeholder name will be used.
+  AppManualAppInfo? manualAppInfo;
+
+  /// Resource name for this app.
+  ///
+  /// Format is accounts/{publisher_id}/apps/{app_id_fragment} Example:
+  /// accounts/pub-9876543210987654/apps/0123456789
+  core.String? name;
+
+  /// Describes the platform of the app.
+  ///
+  /// Limited to "IOS" and "ANDROID".
+  core.String? platform;
+
+  App();
+
+  App.fromJson(core.Map _json) {
+    if (_json.containsKey('appId')) {
+      appId = _json['appId'] as core.String;
+    }
+    if (_json.containsKey('linkedAppInfo')) {
+      linkedAppInfo = AppLinkedAppInfo.fromJson(
+          _json['linkedAppInfo'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('manualAppInfo')) {
+      manualAppInfo = AppManualAppInfo.fromJson(
+          _json['manualAppInfo'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('platform')) {
+      platform = _json['platform'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (appId != null) 'appId': appId!,
+        if (linkedAppInfo != null) 'linkedAppInfo': linkedAppInfo!.toJson(),
+        if (manualAppInfo != null) 'manualAppInfo': manualAppInfo!.toJson(),
+        if (name != null) 'name': name!,
+        if (platform != null) 'platform': platform!,
+      };
+}
+
+/// Information from the app store if the app is linked to an app store.
+class AppLinkedAppInfo {
+  /// The app store ID of the app; present if and only if the app is linked to
+  /// an app store.
+  ///
+  /// If the app is added to the Google Play store, it will be the application
+  /// ID of the app. For example: "com.example.myapp". See
+  /// https://developer.android.com/studio/build/application-id. If the app is
+  /// added to the Apple App Store, it will be app store ID. For example
+  /// "105169111". Note that setting the app store id is considered an
+  /// irreversible action. Once an app is linked, it cannot be unlinked.
+  core.String? appStoreId;
+
+  /// Display name of the app as it appears in the app store.
+  ///
+  /// This is an output-only field, and may be empty if the app cannot be found
+  /// in the store.
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  AppLinkedAppInfo();
+
+  AppLinkedAppInfo.fromJson(core.Map _json) {
+    if (_json.containsKey('appStoreId')) {
+      appStoreId = _json['appStoreId'] as core.String;
+    }
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (appStoreId != null) 'appStoreId': appStoreId!,
+        if (displayName != null) 'displayName': displayName!,
+      };
+}
+
+/// Information provided for manual apps which are not linked to an application
+/// store (Example: Google Play, App Store).
+class AppManualAppInfo {
+  /// The display name of the app as shown in the AdMob UI, which is provided by
+  /// the user.
+  ///
+  /// The maximum length allowed is 80 characters.
+  core.String? displayName;
+
+  AppManualAppInfo();
+
+  AppManualAppInfo.fromJson(core.Map _json) {
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+      };
 }
 
 /// Represents a whole or partial calendar date, such as a birthday.
@@ -476,6 +794,65 @@ class GenerateNetworkReportResponse {
       };
 }
 
+/// Response for the ad units list request.
+class ListAdUnitsResponse {
+  /// The resulting ad units for the requested account.
+  core.List<AdUnit>? adUnits;
+
+  /// If not empty, indicates that there may be more ad units for the request;
+  /// this value should be passed in a new `ListAdUnitsRequest`.
+  core.String? nextPageToken;
+
+  ListAdUnitsResponse();
+
+  ListAdUnitsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('adUnits')) {
+      adUnits = (_json['adUnits'] as core.List)
+          .map<AdUnit>((value) =>
+              AdUnit.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (adUnits != null)
+          'adUnits': adUnits!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response for the apps list request.
+class ListAppsResponse {
+  /// The resulting apps for the requested account.
+  core.List<App>? apps;
+
+  /// If not empty, indicates that there may be more apps for the request; this
+  /// value should be passed in a new `ListAppsRequest`.
+  core.String? nextPageToken;
+
+  ListAppsResponse();
+
+  ListAppsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('apps')) {
+      apps = (_json['apps'] as core.List)
+          .map<App>((value) =>
+              App.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (apps != null) 'apps': apps!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// Response for the publisher account list request.
 class ListPublisherAccountsResponse {
   /// Publisher that the client credentials can access.
@@ -676,7 +1053,7 @@ class MediationReportSpecDimensionFilter {
   /// source\](/admob/api/v1/ad_sources) (for example, "5450213213286189855" and
   /// "AdMob Network" as label value).
   /// - "AD_SOURCE_INSTANCE" : The unique ID of the ad source instance (for
-  /// example, "ca-app-pub-1234#5678" and "AdMob (default)" as label value).
+  /// example, "ca-app-pub-1234:asi:5678" and "AdMob (default)" as label value).
   /// - "AD_UNIT" : The unique ID of the ad unit (for example,
   /// "ca-app-pub-1234/8790"). If AD_UNIT dimension is specified, then APP is
   /// included automatically.
@@ -730,7 +1107,7 @@ class MediationReportSpecSortCondition {
   /// source\](/admob/api/v1/ad_sources) (for example, "5450213213286189855" and
   /// "AdMob Network" as label value).
   /// - "AD_SOURCE_INSTANCE" : The unique ID of the ad source instance (for
-  /// example, "ca-app-pub-1234#5678" and "AdMob (default)" as label value).
+  /// example, "ca-app-pub-1234:asi:5678" and "AdMob (default)" as label value).
   /// - "AD_UNIT" : The unique ID of the ad unit (for example,
   /// "ca-app-pub-1234/8790"). If AD_UNIT dimension is specified, then APP is
   /// included automatically.

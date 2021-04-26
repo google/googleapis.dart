@@ -3,7 +3,7 @@
         "oauth2": {
             "scopes": {
                 "https://www.googleapis.com/auth/cloud-platform": {
-                    "description": "View and manage your data across Google Cloud Platform services"
+                    "description": "See, edit, configure, and delete your Google Cloud Platform data"
                 }
             }
         }
@@ -1247,7 +1247,7 @@
                             ]
                         },
                         "signBlob": {
-                            "description": "**Note:** This method is deprecated and will stop working on July 1, 2021. Use the [`signBlob`](https://cloud.google.com/iam/help/rest-credentials/v1/projects.serviceAccounts/signBlob) method in the IAM Service Account Credentials API instead. If you currently use this method, see the [migration guide](https://cloud.google.com/iam/help/credentials/migrate-api) for instructions. Signs a blob using the system-managed private key for a ServiceAccount.",
+                            "description": "**Note:** This method is deprecated. Use the [`signBlob`](https://cloud.google.com/iam/help/rest-credentials/v1/projects.serviceAccounts/signBlob) method in the IAM Service Account Credentials API instead. If you currently use this method, see the [migration guide](https://cloud.google.com/iam/help/credentials/migrate-api) for instructions. Signs a blob using the system-managed private key for a ServiceAccount.",
                             "httpMethod": "POST",
                             "id": "iam.projects.serviceAccounts.signBlob",
                             "parameterOrder": [
@@ -1274,7 +1274,7 @@
                             ]
                         },
                         "signJwt": {
-                            "description": "**Note:** This method is deprecated and will stop working on July 1, 2021. Use the [`signJwt`](https://cloud.google.com/iam/help/rest-credentials/v1/projects.serviceAccounts/signJwt) method in the IAM Service Account Credentials API instead. If you currently use this method, see the [migration guide](https://cloud.google.com/iam/help/credentials/migrate-api) for instructions. Signs a JSON Web Token (JWT) using the system-managed private key for a ServiceAccount.",
+                            "description": "**Note:** This method is deprecated. Use the [`signJwt`](https://cloud.google.com/iam/help/rest-credentials/v1/projects.serviceAccounts/signJwt) method in the IAM Service Account Credentials API instead. If you currently use this method, see the [migration guide](https://cloud.google.com/iam/help/credentials/migrate-api) for instructions. Signs a JSON Web Token (JWT) using the system-managed private key for a ServiceAccount.",
                             "httpMethod": "POST",
                             "id": "iam.projects.serviceAccounts.signJwt",
                             "parameterOrder": [
@@ -1643,7 +1643,7 @@
             }
         }
     },
-    "revision": "20210218",
+    "revision": "20210519",
     "rootUrl": "https://iam.googleapis.com/",
     "schemas": {
         "AdminAuditData": {
@@ -2082,7 +2082,7 @@
                     "type": "array"
                 },
                 "issuerUri": {
-                    "description": "Required. The OIDC issuer URL.",
+                    "description": "Required. The OIDC issuer URL. Must be an HTTPS endpoint.",
                     "type": "string"
                 }
             },
@@ -2153,7 +2153,7 @@
                         "NOT_SUPPORTED"
                     ],
                     "enumDescriptions": [
-                        "Permission is fully supported for custom role use.",
+                        "Default state. Permission is fully supported for custom role use.",
                         "Permission is being tested to check custom role compatibility.",
                         "Permission is not supported for custom role use."
                     ],

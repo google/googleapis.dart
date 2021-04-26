@@ -45,7 +45,7 @@ class CloudNaturalLanguageApi {
   static const cloudLanguageScope =
       'https://www.googleapis.com/auth/cloud-language';
 
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 

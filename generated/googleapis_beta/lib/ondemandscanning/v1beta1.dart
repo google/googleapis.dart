@@ -42,7 +42,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// A service to scan container images for vulnerabilities.
 class OnDemandScanningApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -482,6 +482,32 @@ class AnalyzePackagesMetadata {
       };
 }
 
+/// AnalyzePackagesMetadata contains metadata for an active scan of a container
+/// image.
+class AnalyzePackagesMetadataV1 {
+  /// When the scan was created.
+  core.String? createTime;
+
+  /// The resource URI of the container image being scanned.
+  core.String? resourceUri;
+
+  AnalyzePackagesMetadataV1();
+
+  AnalyzePackagesMetadataV1.fromJson(core.Map _json) {
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'] as core.String;
+    }
+    if (_json.containsKey('resourceUri')) {
+      resourceUri = _json['resourceUri'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (resourceUri != null) 'resourceUri': resourceUri!,
+      };
+}
+
 /// AnalyzePackagesRequest is the request to analyze a list of packages and
 /// create Vulnerability Occurrences for it.
 class AnalyzePackagesRequest {
@@ -523,6 +549,25 @@ class AnalyzePackagesResponse {
   AnalyzePackagesResponse();
 
   AnalyzePackagesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('scan')) {
+      scan = _json['scan'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (scan != null) 'scan': scan!,
+      };
+}
+
+/// AnalyzePackagesResponse contains the information necessary to find results
+/// for the given scan.
+class AnalyzePackagesResponseV1 {
+  /// The name of the scan resource created by this successful scan.
+  core.String? scan;
+
+  AnalyzePackagesResponseV1();
+
+  AnalyzePackagesResponseV1.fromJson(core.Map _json) {
     if (_json.containsKey('scan')) {
       scan = _json['scan'] as core.String;
     }
@@ -1745,6 +1790,7 @@ class PackageData {
 
   /// The package being analysed for vulnerabilities
   core.String? package;
+  core.String? unused;
 
   /// The version of the package being analysed
   core.String? version;
@@ -1764,6 +1810,9 @@ class PackageData {
     if (_json.containsKey('package')) {
       package = _json['package'] as core.String;
     }
+    if (_json.containsKey('unused')) {
+      unused = _json['unused'] as core.String;
+    }
     if (_json.containsKey('version')) {
       version = _json['version'] as core.String;
     }
@@ -1774,6 +1823,7 @@ class PackageData {
         if (os != null) 'os': os!,
         if (osVersion != null) 'osVersion': osVersion!,
         if (package != null) 'package': package!,
+        if (unused != null) 'unused': unused!,
         if (version != null) 'version': version!,
       };
 }

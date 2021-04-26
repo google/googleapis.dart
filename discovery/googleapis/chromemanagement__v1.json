@@ -12,7 +12,7 @@
     "baseUrl": "https://chromemanagement.googleapis.com/",
     "batchPath": "batch",
     "canonicalName": "Chrome Management",
-    "description": "The Chrome Management API is a suite of services that allows Chrome administrators to view, manage and gain insights on their Chrome OS The Chrome Management API is a suite of services that allows GSuite domain administrators to view, manage and gain insights on their Chrome OS and Chrome Browser devices and users.",
+    "description": "The Chrome Management API is a suite of services that allows Chrome administrators to view, manage and gain insights on their Chrome OS and Chrome Browser devices.",
     "discoveryVersion": "v1",
     "documentationLink": "http://developers.google.com/chrome/management/",
     "icons": {
@@ -139,7 +139,7 @@
                                     "type": "integer"
                                 },
                                 "pageToken": {
-                                    "description": "Token to specify the next page in the list.",
+                                    "description": "Token to specify the page of the request to be returned.",
                                     "location": "query",
                                     "type": "string"
                                 }
@@ -189,7 +189,7 @@
                                     "type": "integer"
                                 },
                                 "pageToken": {
-                                    "description": "Token to specify next page in the list.",
+                                    "description": "Token to specify the page of the request to be returned.",
                                     "location": "query",
                                     "type": "string"
                                 }
@@ -249,7 +249,7 @@
                                     "type": "string"
                                 },
                                 "orderBy": {
-                                    "description": "Field used to order results. Supported order by fields: * machine_name * device_id",
+                                    "description": "Field used to order results. Supported order by fields: * machine * device_id",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -265,7 +265,7 @@
                                     "type": "integer"
                                 },
                                 "pageToken": {
-                                    "description": "Token to specify the next page in the list.",
+                                    "description": "Token to specify the page of the request to be returned.",
                                     "location": "query",
                                     "type": "string"
                                 }
@@ -283,7 +283,7 @@
             }
         }
     },
-    "revision": "20210227",
+    "revision": "20210519",
     "rootUrl": "https://chromemanagement.googleapis.com/",
     "schemas": {
         "GoogleChromeManagementV1BrowserVersion": {
@@ -365,7 +365,7 @@
                     "type": "array"
                 },
                 "nextPageToken": {
-                    "description": "Token to specify the next page in the list.",
+                    "description": "Token to specify the next page of the request.",
                     "type": "string"
                 },
                 "totalSize": {
@@ -388,7 +388,7 @@
                     "type": "array"
                 },
                 "nextPageToken": {
-                    "description": "Token to specify next page in the list.",
+                    "description": "Token to specify the next page of the request.",
                     "type": "string"
                 },
                 "totalSize": {
@@ -428,7 +428,7 @@
                     "type": "array"
                 },
                 "nextPageToken": {
-                    "description": "Token to specify the next page in the list.",
+                    "description": "Token to specify the next page of the request.",
                     "type": "string"
                 },
                 "totalSize": {

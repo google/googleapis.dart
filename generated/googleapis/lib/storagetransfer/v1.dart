@@ -41,7 +41,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Transfers data from external data sources to a Google Cloud Storage bucket
 /// or between Google Cloud Storage buckets.
 class StoragetransferApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -905,11 +905,11 @@ class ErrorSummary {
   /// non-directory, etc. Service implementors can use the following guidelines
   /// to decide between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`: (a)
   /// Use `UNAVAILABLE` if the client can retry just the failing call. (b) Use
-  /// `ABORTED` if the client should retry at a higher level (e.g., when a
-  /// client-specified test-and-set fails, indicating the client should restart
-  /// a read-modify-write sequence). (c) Use `FAILED_PRECONDITION` if the client
-  /// should not retry until the system state has been explicitly fixed. E.g.,
-  /// if an "rmdir" fails because the directory is non-empty,
+  /// `ABORTED` if the client should retry at a higher level. For example, when
+  /// a client-specified test-and-set fails, indicating the client should
+  /// restart a read-modify-write sequence. (c) Use `FAILED_PRECONDITION` if the
+  /// client should not retry until the system state has been explicitly fixed.
+  /// For example, if an "rmdir" fails because the directory is non-empty,
   /// `FAILED_PRECONDITION` should be returned since the client should not retry
   /// unless the files are deleted from the directory. HTTP Mapping: 400 Bad
   /// Request
@@ -1824,8 +1824,7 @@ class TransferJob {
 
   /// The name of the most recently started TransferOperation of this JobConfig.
   ///
-  /// Present if and only if at least one TransferOperation has been created for
-  /// this JobConfig.
+  /// Present if a TransferOperation has been created for this JobConfig.
   core.String? latestOperationName;
 
   /// A unique name (within the transfer project) assigned when the job is
@@ -1836,9 +1835,10 @@ class TransferJob {
   /// as the unique name for this job. If the specified name is in use by a job,
   /// the creation request fails with an ALREADY_EXISTS error. This name must
   /// start with `"transferJobs/"` prefix and end with a letter or a number, and
-  /// should be no more than 128 characters. Example:
-  /// `"transferJobs/[A-Za-z0-9-._~]*[A-Za-z0-9]$"` Invalid job names will fail
-  /// with an INVALID_ARGUMENT error.
+  /// should be no more than 128 characters. This name must not start with
+  /// 'transferJobs/OPI'. 'transferJobs/OPI' is a reserved prefix. Example:
+  /// `"transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$"` Invalid job names
+  /// will fail with an INVALID_ARGUMENT error.
   core.String? name;
 
   /// Notification configuration.

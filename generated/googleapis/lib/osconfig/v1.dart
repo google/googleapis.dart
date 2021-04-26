@@ -17,10 +17,12 @@
 /// OS management tools that can be used for patch management, patch compliance,
 /// and configuration management on VM instances.
 ///
-/// For more information, see <https://cloud.google.com/compute/docs/manage-os>
+/// For more information, see
+/// <https://cloud.google.com/compute/docs/osconfig/rest>
 ///
 /// Create an instance of [OSConfigApi] to access these resources:
 ///
+/// - [OperationsResource]
 /// - [ProjectsResource]
 ///   - [ProjectsPatchDeploymentsResource]
 ///   - [ProjectsPatchJobsResource]
@@ -42,12 +44,13 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// OS management tools that can be used for patch management, patch compliance,
 /// and configuration management on VM instances.
 class OSConfigApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
   final commons.ApiRequester _requester;
 
+  OperationsResource get operations => OperationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
   OSConfigApi(http.Client client,
@@ -55,6 +58,108 @@ class OSConfigApi {
       core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+}
+
+class OperationsResource {
+  final commons.ApiRequester _requester;
+
+  OperationsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be deleted.
+  /// Value must have pattern `^operations/.*$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+  /// NOTE: the `name` binding allows API services to override the binding to
+  /// use different resource name schemes, such as `users / * /operations`. To
+  /// override the binding, API services can add a binding such as
+  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
+  /// backwards compatibility, the default name includes the operations
+  /// collection id, however overriding users must ensure the name binding is
+  /// the parent resource, without the operations collection id.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation's parent resource.
+  /// Value must have pattern `^operations$`.
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListOperationsResponse> list(
+    core.String name, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListOperationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsResource {
@@ -1326,6 +1431,35 @@ class InventoryZypperPatch {
       };
 }
 
+/// The response message for Operations.ListOperations.
+class ListOperationsResponse {
+  /// The standard List next-page token.
+  core.String? nextPageToken;
+
+  /// A list of operations that matches the specified filter in the request.
+  core.List<Operation>? operations;
+
+  ListOperationsResponse();
+
+  ListOperationsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+    if (_json.containsKey('operations')) {
+      operations = (_json['operations'] as core.List)
+          .map<Operation>((value) =>
+              Operation.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (operations != null)
+          'operations': operations!.map((value) => value.toJson()).toList(),
+      };
+}
+
 /// A response message for listing patch deployments.
 class ListPatchDeploymentsResponse {
   /// A pagination token that can be used to get the next page of patch
@@ -1455,6 +1589,68 @@ class MonthlySchedule {
       };
 }
 
+/// OS policy assignment operation metadata provided by OS policy assignment API
+/// methods that return long running operations.
+class OSPolicyAssignmentOperationMetadata {
+  /// The OS policy assignment API method.
+  /// Possible string values are:
+  /// - "API_METHOD_UNSPECIFIED" : Invalid value
+  /// - "CREATE" : Create OS policy assignment API method
+  /// - "UPDATE" : Update OS policy assignment API method
+  /// - "DELETE" : Delete OS policy assignment API method
+  core.String? apiMethod;
+
+  /// Reference to the `OSPolicyAssignment` API resource.
+  ///
+  /// Format:
+  /// `projects/{project_number}/locations/{location}/osPolicyAssignments/{os_policy_assignment_id@revision_id}`
+  core.String? osPolicyAssignment;
+
+  /// Rollout start time
+  core.String? rolloutStartTime;
+
+  /// State of the rollout
+  /// Possible string values are:
+  /// - "ROLLOUT_STATE_UNSPECIFIED" : Invalid value
+  /// - "IN_PROGRESS" : The rollout is in progress.
+  /// - "CANCELLING" : The rollout is being cancelled.
+  /// - "CANCELLED" : The rollout is cancelled.
+  /// - "SUCCEEDED" : The rollout has completed successfully.
+  core.String? rolloutState;
+
+  /// Rollout update time
+  core.String? rolloutUpdateTime;
+
+  OSPolicyAssignmentOperationMetadata();
+
+  OSPolicyAssignmentOperationMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey('apiMethod')) {
+      apiMethod = _json['apiMethod'] as core.String;
+    }
+    if (_json.containsKey('osPolicyAssignment')) {
+      osPolicyAssignment = _json['osPolicyAssignment'] as core.String;
+    }
+    if (_json.containsKey('rolloutStartTime')) {
+      rolloutStartTime = _json['rolloutStartTime'] as core.String;
+    }
+    if (_json.containsKey('rolloutState')) {
+      rolloutState = _json['rolloutState'] as core.String;
+    }
+    if (_json.containsKey('rolloutUpdateTime')) {
+      rolloutUpdateTime = _json['rolloutUpdateTime'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (apiMethod != null) 'apiMethod': apiMethod!,
+        if (osPolicyAssignment != null)
+          'osPolicyAssignment': osPolicyAssignment!,
+        if (rolloutStartTime != null) 'rolloutStartTime': rolloutStartTime!,
+        if (rolloutState != null) 'rolloutState': rolloutState!,
+        if (rolloutUpdateTime != null) 'rolloutUpdateTime': rolloutUpdateTime!,
+      };
+}
+
 /// Sets the time for a one time patch deployment.
 ///
 /// Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
@@ -1474,6 +1670,89 @@ class OneTimeSchedule {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (executeTime != null) 'executeTime': executeTime!,
+      };
+}
+
+/// This resource represents a long-running operation that is the result of a
+/// network API call.
+class Operation {
+  /// If the value is `false`, it means the operation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
+  /// available.
+  core.bool? done;
+
+  /// The error result of the operation in case of failure or cancellation.
+  Status? error;
+
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object>? metadata;
+
+  /// The server-assigned name, which is only unique within the same service
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the `name` should be a resource name
+  /// ending with `operations/{unique_id}`.
+  core.String? name;
+
+  /// The normal response of the operation in case of success.
+  ///
+  /// If the original method returns no data on success, such as `Delete`, the
+  /// response is `google.protobuf.Empty`. If the original method is standard
+  /// `Get`/`Create`/`Update`, the response should be the resource. For other
+  /// methods, the response should have the type `XxxResponse`, where `Xxx` is
+  /// the original method name. For example, if the original method name is
+  /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object>? response;
+
+  Operation();
+
+  Operation.fromJson(core.Map _json) {
+    if (_json.containsKey('done')) {
+      done = _json['done'] as core.bool;
+    }
+    if (_json.containsKey('error')) {
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('metadata')) {
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('response')) {
+      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -2347,6 +2626,60 @@ class RecurringSchedule {
         if (timeOfDay != null) 'timeOfDay': timeOfDay!.toJson(),
         if (timeZone != null) 'timeZone': timeZone!.toJson(),
         if (weekly != null) 'weekly': weekly!.toJson(),
+      };
+}
+
+/// The `Status` type defines a logical error model that is suitable for
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+class Status {
+  /// The status code, which should be an enum value of google.rpc.Code.
+  core.int? code;
+
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Map<core.String, core.Object>>? details;
+
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
+  /// google.rpc.Status.details field, or localized by the client.
+  core.String? message;
+
+  Status();
+
+  Status.fromJson(core.Map _json) {
+    if (_json.containsKey('code')) {
+      code = _json['code'] as core.int;
+    }
+    if (_json.containsKey('details')) {
+      details = (_json['details'] as core.List)
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
+                    (key, item) => core.MapEntry(
+                      key,
+                      item as core.Object,
+                    ),
+                  ))
+          .toList();
+    }
+    if (_json.containsKey('message')) {
+      message = _json['message'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 

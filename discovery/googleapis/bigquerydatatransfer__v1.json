@@ -5,11 +5,8 @@
                 "https://www.googleapis.com/auth/bigquery": {
                     "description": "View and manage your data in Google BigQuery"
                 },
-                "https://www.googleapis.com/auth/bigquery.readonly": {
-                    "description": "View your data in Google BigQuery"
-                },
                 "https://www.googleapis.com/auth/cloud-platform": {
-                    "description": "View and manage your data across Google Cloud Platform services"
+                    "description": "See, edit, configure, and delete your Google Cloud Platform data"
                 },
                 "https://www.googleapis.com/auth/cloud-platform.read-only": {
                     "description": "View your data across Google Cloud Platform services"
@@ -141,7 +138,6 @@
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/bigquery",
-                                "https://www.googleapis.com/auth/bigquery.readonly",
                                 "https://www.googleapis.com/auth/cloud-platform",
                                 "https://www.googleapis.com/auth/cloud-platform.read-only"
                             ]
@@ -168,7 +164,6 @@
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/bigquery",
-                                "https://www.googleapis.com/auth/bigquery.readonly",
                                 "https://www.googleapis.com/auth/cloud-platform",
                                 "https://www.googleapis.com/auth/cloud-platform.read-only"
                             ]
@@ -206,7 +201,6 @@
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/bigquery",
-                                "https://www.googleapis.com/auth/bigquery.readonly",
                                 "https://www.googleapis.com/auth/cloud-platform",
                                 "https://www.googleapis.com/auth/cloud-platform.read-only"
                             ]
@@ -237,7 +231,6 @@
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/bigquery",
-                                "https://www.googleapis.com/auth/bigquery.readonly",
                                 "https://www.googleapis.com/auth/cloud-platform",
                                 "https://www.googleapis.com/auth/cloud-platform.read-only"
                             ]
@@ -251,7 +244,7 @@
                             ],
                             "parameters": {
                                 "filter": {
-                                    "description": "The standard list filter.",
+                                    "description": "A filter to narrow down results to a preferred subset. The filtering language accepts strings like \"displayName=tokyo\", and is documented in more detail in [AIP-160](https://google.aip.dev/160).",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -263,13 +256,13 @@
                                     "type": "string"
                                 },
                                 "pageSize": {
-                                    "description": "The standard list page size.",
+                                    "description": "The maximum number of results to return. If not set, the service selects a default.",
                                     "format": "int32",
                                     "location": "query",
                                     "type": "integer"
                                 },
                                 "pageToken": {
-                                    "description": "The standard list page token.",
+                                    "description": "A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page.",
                                     "location": "query",
                                     "type": "string"
                                 }
@@ -280,7 +273,6 @@
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/bigquery",
-                                "https://www.googleapis.com/auth/bigquery.readonly",
                                 "https://www.googleapis.com/auth/cloud-platform",
                                 "https://www.googleapis.com/auth/cloud-platform.read-only"
                             ]
@@ -314,7 +306,6 @@
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/bigquery",
-                                        "https://www.googleapis.com/auth/bigquery.readonly",
                                         "https://www.googleapis.com/auth/cloud-platform",
                                         "https://www.googleapis.com/auth/cloud-platform.read-only"
                                     ]
@@ -341,7 +332,6 @@
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/bigquery",
-                                        "https://www.googleapis.com/auth/bigquery.readonly",
                                         "https://www.googleapis.com/auth/cloud-platform",
                                         "https://www.googleapis.com/auth/cloud-platform.read-only"
                                     ]
@@ -379,7 +369,6 @@
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/bigquery",
-                                        "https://www.googleapis.com/auth/bigquery.readonly",
                                         "https://www.googleapis.com/auth/cloud-platform",
                                         "https://www.googleapis.com/auth/cloud-platform.read-only"
                                     ]
@@ -477,7 +466,6 @@
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/bigquery",
-                                        "https://www.googleapis.com/auth/bigquery.readonly",
                                         "https://www.googleapis.com/auth/cloud-platform",
                                         "https://www.googleapis.com/auth/cloud-platform.read-only"
                                     ]
@@ -521,7 +509,6 @@
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/bigquery",
-                                        "https://www.googleapis.com/auth/bigquery.readonly",
                                         "https://www.googleapis.com/auth/cloud-platform",
                                         "https://www.googleapis.com/auth/cloud-platform.read-only"
                                     ]
@@ -681,7 +668,6 @@
                                             },
                                             "scopes": [
                                                 "https://www.googleapis.com/auth/bigquery",
-                                                "https://www.googleapis.com/auth/bigquery.readonly",
                                                 "https://www.googleapis.com/auth/cloud-platform",
                                                 "https://www.googleapis.com/auth/cloud-platform.read-only"
                                             ]
@@ -754,7 +740,6 @@
                                             },
                                             "scopes": [
                                                 "https://www.googleapis.com/auth/bigquery",
-                                                "https://www.googleapis.com/auth/bigquery.readonly",
                                                 "https://www.googleapis.com/auth/cloud-platform",
                                                 "https://www.googleapis.com/auth/cloud-platform.read-only"
                                             ]
@@ -814,7 +799,6 @@
                                                     },
                                                     "scopes": [
                                                         "https://www.googleapis.com/auth/bigquery",
-                                                        "https://www.googleapis.com/auth/bigquery.readonly",
                                                         "https://www.googleapis.com/auth/cloud-platform",
                                                         "https://www.googleapis.com/auth/cloud-platform.read-only"
                                                     ]
@@ -918,7 +902,6 @@
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/bigquery",
-                                "https://www.googleapis.com/auth/bigquery.readonly",
                                 "https://www.googleapis.com/auth/cloud-platform",
                                 "https://www.googleapis.com/auth/cloud-platform.read-only"
                             ]
@@ -962,7 +945,6 @@
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/bigquery",
-                                "https://www.googleapis.com/auth/bigquery.readonly",
                                 "https://www.googleapis.com/auth/cloud-platform",
                                 "https://www.googleapis.com/auth/cloud-platform.read-only"
                             ]
@@ -1122,7 +1104,6 @@
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/bigquery",
-                                        "https://www.googleapis.com/auth/bigquery.readonly",
                                         "https://www.googleapis.com/auth/cloud-platform",
                                         "https://www.googleapis.com/auth/cloud-platform.read-only"
                                     ]
@@ -1195,7 +1176,6 @@
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/bigquery",
-                                        "https://www.googleapis.com/auth/bigquery.readonly",
                                         "https://www.googleapis.com/auth/cloud-platform",
                                         "https://www.googleapis.com/auth/cloud-platform.read-only"
                                     ]
@@ -1255,7 +1235,6 @@
                                             },
                                             "scopes": [
                                                 "https://www.googleapis.com/auth/bigquery",
-                                                "https://www.googleapis.com/auth/bigquery.readonly",
                                                 "https://www.googleapis.com/auth/cloud-platform",
                                                 "https://www.googleapis.com/auth/cloud-platform.read-only"
                                             ]
@@ -1269,7 +1248,7 @@
             }
         }
     },
-    "revision": "20210221",
+    "revision": "20210422",
     "rootUrl": "https://bigquerydatatransfer.googleapis.com/",
     "schemas": {
         "CheckValidCredsRequest": {
@@ -1834,7 +1813,7 @@
                         "description": "Properties of the object.",
                         "type": "any"
                     },
-                    "description": "Data transfer specific parameters.",
+                    "description": "Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq",
                     "type": "object"
                 },
                 "schedule": {
@@ -1955,7 +1934,7 @@
                         "description": "Properties of the object.",
                         "type": "any"
                     },
-                    "description": "Output only. Data transfer specific parameters.",
+                    "description": "Output only. Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq",
                     "readOnly": true,
                     "type": "object"
                 },

@@ -32,10 +32,43 @@
 ///           - [ProjectsAgentEnvironmentsUsersSessionsContextsResource]
 ///           - [ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource]
 ///     - [ProjectsAgentIntentsResource]
+///     - [ProjectsAgentKnowledgeBasesResource]
+///       - [ProjectsAgentKnowledgeBasesDocumentsResource]
 ///     - [ProjectsAgentSessionsResource]
 ///       - [ProjectsAgentSessionsContextsResource]
 ///       - [ProjectsAgentSessionsEntityTypesResource]
+///     - [ProjectsAgentVersionsResource]
+///   - [ProjectsAnswerRecordsResource]
+///   - [ProjectsConversationProfilesResource]
+///   - [ProjectsConversationsResource]
+///     - [ProjectsConversationsMessagesResource]
+///     - [ProjectsConversationsParticipantsResource]
+///       - [ProjectsConversationsParticipantsSuggestionsResource]
+///   - [ProjectsKnowledgeBasesResource]
+///     - [ProjectsKnowledgeBasesDocumentsResource]
 ///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsAgentResource]
+///       - [ProjectsLocationsAgentEntityTypesResource]
+///         - [ProjectsLocationsAgentEntityTypesEntitiesResource]
+///       - [ProjectsLocationsAgentEnvironmentsResource]
+///         - [ProjectsLocationsAgentEnvironmentsIntentsResource]
+///         - [ProjectsLocationsAgentEnvironmentsUsersResource]
+///           - [ProjectsLocationsAgentEnvironmentsUsersSessionsResource]
+/// - [ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResource]
+/// - [ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResource]
+///       - [ProjectsLocationsAgentIntentsResource]
+///       - [ProjectsLocationsAgentSessionsResource]
+///         - [ProjectsLocationsAgentSessionsContextsResource]
+///         - [ProjectsLocationsAgentSessionsEntityTypesResource]
+///       - [ProjectsLocationsAgentVersionsResource]
+///     - [ProjectsLocationsAnswerRecordsResource]
+///     - [ProjectsLocationsConversationProfilesResource]
+///     - [ProjectsLocationsConversationsResource]
+///       - [ProjectsLocationsConversationsMessagesResource]
+///       - [ProjectsLocationsConversationsParticipantsResource]
+///         - [ProjectsLocationsConversationsParticipantsSuggestionsResource]
+///     - [ProjectsLocationsKnowledgeBasesResource]
+///       - [ProjectsLocationsKnowledgeBasesDocumentsResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///   - [ProjectsOperationsResource]
 library dialogflow.v2;
@@ -55,7 +88,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Builds conversational interfaces (for example, chatbots, and voice-powered
 /// apps and devices).
 class DialogflowApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -77,6 +110,14 @@ class ProjectsResource {
   final commons.ApiRequester _requester;
 
   ProjectsAgentResource get agent => ProjectsAgentResource(_requester);
+  ProjectsAnswerRecordsResource get answerRecords =>
+      ProjectsAnswerRecordsResource(_requester);
+  ProjectsConversationProfilesResource get conversationProfiles =>
+      ProjectsConversationProfilesResource(_requester);
+  ProjectsConversationsResource get conversations =>
+      ProjectsConversationsResource(_requester);
+  ProjectsKnowledgeBasesResource get knowledgeBases =>
+      ProjectsKnowledgeBasesResource(_requester);
   ProjectsLocationsResource get locations =>
       ProjectsLocationsResource(_requester);
   ProjectsOperationsResource get operations =>
@@ -213,8 +254,12 @@ class ProjectsAgentResource {
       ProjectsAgentEnvironmentsResource(_requester);
   ProjectsAgentIntentsResource get intents =>
       ProjectsAgentIntentsResource(_requester);
+  ProjectsAgentKnowledgeBasesResource get knowledgeBases =>
+      ProjectsAgentKnowledgeBasesResource(_requester);
   ProjectsAgentSessionsResource get sessions =>
       ProjectsAgentSessionsResource(_requester);
+  ProjectsAgentVersionsResource get versions =>
+      ProjectsAgentVersionsResource(_requester);
 
   ProjectsAgentResource(commons.ApiRequester client) : _requester = client;
 
@@ -553,8 +598,10 @@ class ProjectsAgentResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The unique identifier of the fulfillment. Format:
-  /// `projects//agent/fulfillment`.
+  /// [name] - Required. The unique identifier of the fulfillment. Supported
+  /// formats: - `projects//agent/fulfillment` -
+  /// `projects//locations//agent/fulfillment` This field is not used for
+  /// Fulfillment in an Environment.
   /// Value must have pattern `^projects/\[^/\]+/agent/fulfillment$`.
   ///
   /// [updateMask] - Required. The mask to control which fields get updated. If
@@ -1087,12 +1134,182 @@ class ProjectsAgentEnvironmentsResource {
   ProjectsAgentEnvironmentsResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Creates an agent environment.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The agent to create an environment for. Supported
+  /// formats: - `projects//agent` - `projects//locations//agent`
+  /// Value must have pattern `^projects/\[^/\]+/agent$`.
+  ///
+  /// [environmentId] - Required. The unique id of the new environment.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Environment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Environment> create(
+    GoogleCloudDialogflowV2Environment request,
+    core.String parent, {
+    core.String? environmentId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (environmentId != null) 'environmentId': [environmentId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/environments';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2Environment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the specified agent environment.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the environment to delete. / Format: -
+  /// `projects//agent/environments/` -
+  /// `projects//locations//agent/environments/`
+  /// Value must have pattern `^projects/\[^/\]+/agent/environments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the specified agent environment.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the environment. Supported formats: -
+  /// `projects//agent/environments/` -
+  /// `projects//locations//agent/environments/`
+  /// Value must have pattern `^projects/\[^/\]+/agent/environments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Environment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Environment> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2Environment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the history of the specified environment.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the environment to retrieve history for.
+  /// Supported formats: - `projects//agent/environments/` -
+  /// `projects//locations//agent/environments/`
+  /// Value must have pattern `^projects/\[^/\]+/agent/environments/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return in a single
+  /// page. By default 100 and at most 1000.
+  ///
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// list request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2EnvironmentHistory].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2EnvironmentHistory> getHistory(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/history';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2EnvironmentHistory.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Returns the list of all non-draft environments of the specified agent.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The agent to list all environments from. Format:
-  /// `projects//agent`.
+  /// [parent] - Required. The agent to list all environments from. Format: -
+  /// `projects//agent` - `projects//locations//agent`
   /// Value must have pattern `^projects/\[^/\]+/agent$`.
   ///
   /// [pageSize] - Optional. The maximum number of items to return in a single
@@ -1133,6 +1350,75 @@ class ProjectsAgentEnvironmentsResource {
     return GoogleCloudDialogflowV2ListEnvironmentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
+
+  /// Updates the specified agent environment.
+  ///
+  /// This method allows you to deploy new agent versions into the environment.
+  /// When an environment is pointed to a new agent version by setting
+  /// `environment.agent_version`, the environment is temporarily set to the
+  /// `LOADING` state. During that time, the environment keeps on serving the
+  /// previous version of the agent. After the new agent version is done
+  /// loading, the environment is set back to the `RUNNING` state. You can use
+  /// "-" as Environment ID in environment name to update version in "draft"
+  /// environment. WARNING: this will negate all recent changes to draft and
+  /// can't be undone. You may want to save the draft to a version before
+  /// calling this function.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The unique identifier of this agent environment.
+  /// Supported formats: - `projects//agent/environments/` -
+  /// `projects//locations//agent/environments/`
+  /// Value must have pattern `^projects/\[^/\]+/agent/environments/\[^/\]+$`.
+  ///
+  /// [allowLoadToDraftAndDiscardChanges] - Optional. This field is used to
+  /// prevent accidental overwrite of the draft environment, which is an
+  /// operation that cannot be undone. To confirm that the caller desires this
+  /// overwrite, this field must be explicitly set to true when updating the
+  /// draft environment (environment ID = `-`).
+  ///
+  /// [updateMask] - Required. The mask to control which fields get updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Environment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Environment> patch(
+    GoogleCloudDialogflowV2Environment request,
+    core.String name, {
+    core.bool? allowLoadToDraftAndDiscardChanges,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (allowLoadToDraftAndDiscardChanges != null)
+        'allowLoadToDraftAndDiscardChanges': [
+          '${allowLoadToDraftAndDiscardChanges}'
+        ],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2Environment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsAgentEnvironmentsIntentsResource {
@@ -1146,7 +1432,11 @@ class ProjectsAgentEnvironmentsIntentsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The agent to list all intents from. Format:
-  /// `projects//agent`.
+  /// `projects//agent` or `projects//locations//agent`. Alternatively, you can
+  /// specify the environment to list intents for. Format:
+  /// `projects//agent/environments/` or
+  /// `projects//locations//agent/environments/`. Note: training phrases of the
+  /// intents will not be returned for non-draft environment.
   /// Value must have pattern `^projects/\[^/\]+/agent/environments/\[^/\]+$`.
   ///
   /// [intentView] - Optional. The resource view to apply to the returned
@@ -2082,7 +2372,11 @@ class ProjectsAgentIntentsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The agent to list all intents from. Format:
-  /// `projects//agent`.
+  /// `projects//agent` or `projects//locations//agent`. Alternatively, you can
+  /// specify the environment to list intents for. Format:
+  /// `projects//agent/environments/` or
+  /// `projects//locations//agent/environments/`. Note: training phrases of the
+  /// intents will not be returned for non-draft environment.
   /// Value must have pattern `^projects/\[^/\]+/agent$`.
   ///
   /// [intentView] - Optional. The resource view to apply to the returned
@@ -2200,6 +2494,510 @@ class ProjectsAgentIntentsResource {
       queryParams: _queryParams,
     );
     return GoogleCloudDialogflowV2Intent.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsAgentKnowledgeBasesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsAgentKnowledgeBasesDocumentsResource get documents =>
+      ProjectsAgentKnowledgeBasesDocumentsResource(_requester);
+
+  ProjectsAgentKnowledgeBasesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a knowledge base.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project to create a knowledge base for. Format:
+  /// `projects//locations/`.
+  /// Value must have pattern `^projects/\[^/\]+/agent$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2KnowledgeBase].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2KnowledgeBase> create(
+    GoogleCloudDialogflowV2KnowledgeBase request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/knowledgeBases';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2KnowledgeBase.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the specified knowledge base.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the knowledge base to delete. Format:
+  /// `projects//locations//knowledgeBases/`.
+  /// Value must have pattern `^projects/\[^/\]+/agent/knowledgeBases/\[^/\]+$`.
+  ///
+  /// [force] - Optional. Force deletes the knowledge base. When set to true,
+  /// any documents in the knowledge base are also deleted.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.bool? force,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (force != null) 'force': ['${force}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the specified knowledge base.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the knowledge base to retrieve. Format
+  /// `projects//locations//knowledgeBases/`.
+  /// Value must have pattern `^projects/\[^/\]+/agent/knowledgeBases/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2KnowledgeBase].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2KnowledgeBase> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2KnowledgeBase.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the list of all knowledge bases of the specified agent.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project to list of knowledge bases for. Format:
+  /// `projects//locations/`.
+  /// Value must have pattern `^projects/\[^/\]+/agent$`.
+  ///
+  /// [pageSize] - The maximum number of items to return in a single page. By
+  /// default 10 and at most 100.
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous list
+  /// request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2ListKnowledgeBasesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2ListKnowledgeBasesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/knowledgeBases';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2ListKnowledgeBasesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the specified knowledge base.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The knowledge base resource name. The name must be empty when
+  /// creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
+  /// Value must have pattern `^projects/\[^/\]+/agent/knowledgeBases/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. Not specified means `update all`. Currently, only
+  /// `display_name` can be updated, an InvalidArgument will be returned for
+  /// attempting to update other fields.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2KnowledgeBase].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2KnowledgeBase> patch(
+    GoogleCloudDialogflowV2KnowledgeBase request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2KnowledgeBase.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsAgentKnowledgeBasesDocumentsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsAgentKnowledgeBasesDocumentsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new document.
+  ///
+  /// Operation
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The knowledge base to create a document for. Format:
+  /// `projects//locations//knowledgeBases/`.
+  /// Value must have pattern `^projects/\[^/\]+/agent/knowledgeBases/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    GoogleCloudDialogflowV2Document request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/documents';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the specified document.
+  ///
+  /// Operation
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the document to delete. Format:
+  /// `projects//locations//knowledgeBases//documents/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/agent/knowledgeBases/\[^/\]+/documents/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the specified document.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the document to retrieve. Format
+  /// `projects//locations//knowledgeBases//documents/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/agent/knowledgeBases/\[^/\]+/documents/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Document].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Document> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2Document.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the list of all documents of the knowledge base.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The knowledge base to list all documents for. Format:
+  /// `projects//locations//knowledgeBases/`.
+  /// Value must have pattern `^projects/\[^/\]+/agent/knowledgeBases/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of items to return in a single page. By
+  /// default 10 and at most 100.
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous list
+  /// request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2ListDocumentsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2ListDocumentsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/documents';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2ListDocumentsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the specified document.
+  ///
+  /// Operation
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Optional. The document resource name. The name must be empty when
+  /// creating a document. Format:
+  /// `projects//locations//knowledgeBases//documents/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/agent/knowledgeBases/\[^/\]+/documents/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. Not specified means `update all`. Currently, only
+  /// `display_name` can be updated, an InvalidArgument will be returned for
+  /// attempting to update other fields.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> patch(
+    GoogleCloudDialogflowV2Document request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Reloads the specified document from its specified source, content_uri or
+  /// content.
+  ///
+  /// The previously loaded content of the document will be deleted. Note: Even
+  /// when the content of the document has not changed, there still may be side
+  /// effects because of internal implementation changes. Note: The
+  /// `projects.agent.knowledgeBases.documents` resource is deprecated; only use
+  /// `projects.knowledgeBases.documents`. Operation
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the document to reload. Format:
+  /// `projects//locations//knowledgeBases//documents/`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/agent/knowledgeBases/\[^/\]+/documents/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> reload(
+    GoogleCloudDialogflowV2ReloadDocumentRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + ':reload';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -2813,13 +3611,6416 @@ class ProjectsAgentSessionsEntityTypesResource {
   }
 }
 
+class ProjectsAgentVersionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsAgentVersionsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates an agent version.
+  ///
+  /// The new version points to the agent instance in the "default" environment.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The agent to create a version for. Supported formats:
+  /// - `projects//agent` - `projects//locations//agent`
+  /// Value must have pattern `^projects/\[^/\]+/agent$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Version].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Version> create(
+    GoogleCloudDialogflowV2Version request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/versions';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2Version.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Delete the specified agent version.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the version to delete. Supported formats: -
+  /// `projects//agent/versions/` - `projects//locations//agent/versions/`
+  /// Value must have pattern `^projects/\[^/\]+/agent/versions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the specified agent version.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the version. Supported formats: -
+  /// `projects//agent/versions/` - `projects//locations//agent/versions/`
+  /// Value must have pattern `^projects/\[^/\]+/agent/versions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Version].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Version> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2Version.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the list of all versions of the specified agent.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The agent to list all versions from. Supported
+  /// formats: - `projects//agent` - `projects//locations//agent`
+  /// Value must have pattern `^projects/\[^/\]+/agent$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return in a single
+  /// page. By default 100 and at most 1000.
+  ///
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// list request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2ListVersionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2ListVersionsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/versions';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2ListVersionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the specified agent version.
+  ///
+  /// Note that this method does not allow you to update the state of the agent
+  /// the given version points to. It allows you to update only mutable
+  /// properties of the version resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The unique identifier of this agent version.
+  /// Supported formats: - `projects//agent/versions/` -
+  /// `projects//locations//agent/versions/`
+  /// Value must have pattern `^projects/\[^/\]+/agent/versions/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The mask to control which fields get updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Version].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Version> patch(
+    GoogleCloudDialogflowV2Version request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2Version.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsAnswerRecordsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsAnswerRecordsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Returns the list of all answer records in the specified project in reverse
+  /// chronological order.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project to list all answer records for in reverse
+  /// chronological order. Format: `projects//locations/`.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [filter] - Required. Filters to restrict results to specific answer
+  /// records. Filter on answer record type. Currently predicates on `type` is
+  /// supported, valid values are `ARTICLE_ANSWER`, `FAQ_ANSWER`. For more
+  /// information about filtering, see [API Filtering](https://aip.dev/160).
+  ///
+  /// [pageSize] - Optional. The maximum number of records to return in a single
+  /// page. The server may return fewer records than this. If unspecified, we
+  /// use 10. The maximum is 100.
+  ///
+  /// [pageToken] - Optional. The ListAnswerRecordsResponse.next_page_token
+  /// value returned from a previous list request used to continue listing on
+  /// the next page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2ListAnswerRecordsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2ListAnswerRecordsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/answerRecords';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2ListAnswerRecordsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the specified answer record.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The unique identifier of this answer record. Format:
+  /// `projects//locations//answerRecords/`.
+  /// Value must have pattern `^projects/\[^/\]+/answerRecords/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The mask to control which fields get updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2AnswerRecord].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2AnswerRecord> patch(
+    GoogleCloudDialogflowV2AnswerRecord request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2AnswerRecord.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsConversationProfilesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsConversationProfilesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a conversation profile in the specified project.
+  ///
+  /// ConversationProfile.CreateTime and ConversationProfile.UpdateTime aren't
+  /// populated in the response. You can retrieve them via
+  /// GetConversationProfile API.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project to create a conversation profile for.
+  /// Format: `projects//locations/`.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2ConversationProfile].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2ConversationProfile> create(
+    GoogleCloudDialogflowV2ConversationProfile request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v2/' + core.Uri.encodeFull('$parent') + '/conversationProfiles';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2ConversationProfile.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the specified conversation profile.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the conversation profile to delete. Format:
+  /// `projects//locations//conversationProfiles/`.
+  /// Value must have pattern `^projects/\[^/\]+/conversationProfiles/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the specified conversation profile.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the conversation profile. Format:
+  /// `projects//locations//conversationProfiles/`.
+  /// Value must have pattern `^projects/\[^/\]+/conversationProfiles/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2ConversationProfile].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2ConversationProfile> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2ConversationProfile.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the list of all conversation profiles in the specified project.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project to list all conversation profiles from.
+  /// Format: `projects//locations/`.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of items to return in a single page. By
+  /// default 100 and at most 1000.
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous list
+  /// request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudDialogflowV2ListConversationProfilesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2ListConversationProfilesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v2/' + core.Uri.encodeFull('$parent') + '/conversationProfiles';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2ListConversationProfilesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the specified conversation profile.
+  ///
+  /// ConversationProfile.CreateTime and ConversationProfile.UpdateTime aren't
+  /// populated in the response. You can retrieve them via
+  /// GetConversationProfile API.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The unique identifier of this conversation profile. Format:
+  /// `projects//locations//conversationProfiles/`.
+  /// Value must have pattern `^projects/\[^/\]+/conversationProfiles/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The mask to control which fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2ConversationProfile].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2ConversationProfile> patch(
+    GoogleCloudDialogflowV2ConversationProfile request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2ConversationProfile.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsConversationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsConversationsMessagesResource get messages =>
+      ProjectsConversationsMessagesResource(_requester);
+  ProjectsConversationsParticipantsResource get participants =>
+      ProjectsConversationsParticipantsResource(_requester);
+
+  ProjectsConversationsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Completes the specified conversation.
+  ///
+  /// Finished conversations are purged from the database after 30 days.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource identifier of the conversation to close.
+  /// Format: `projects//locations//conversations/`.
+  /// Value must have pattern `^projects/\[^/\]+/conversations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Conversation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Conversation> complete(
+    GoogleCloudDialogflowV2CompleteConversationRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + ':complete';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2Conversation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a new conversation.
+  ///
+  /// Conversations are auto-completed after 24 hours. Conversation Lifecycle:
+  /// There are two stages during a conversation: Automated Agent Stage and
+  /// Assist Stage. For Automated Agent Stage, there will be a dialogflow agent
+  /// responding to user queries. For Assist Stage, there's no dialogflow agent
+  /// responding to user queries. But we will provide suggestions which are
+  /// generated from conversation. If Conversation.conversation_profile is
+  /// configured for a dialogflow agent, conversation will start from `Automated
+  /// Agent Stage`, otherwise, it will start from `Assist Stage`. And during
+  /// `Automated Agent Stage`, once an Intent with Intent.live_agent_handoff is
+  /// triggered, conversation will transfer to Assist Stage.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource identifier of the project creating the
+  /// conversation. Format: `projects//locations/`.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [conversationId] - Optional. Identifier of the conversation. Generally
+  /// it's auto generated by Google. Only set it if you cannot wait for the
+  /// response to return a auto-generated one to you. The conversation ID must
+  /// be compliant with the regression fomula "a-zA-Z*" with the characters
+  /// length in range of \[3,64\]. If the field is provided, the caller is
+  /// resposible for 1. the uniqueness of the ID, otherwise the request will be
+  /// rejected. 2. the consistency for whether to use custom ID or not under a
+  /// project to better ensure uniqueness.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Conversation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Conversation> create(
+    GoogleCloudDialogflowV2Conversation request,
+    core.String parent, {
+    core.String? conversationId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (conversationId != null) 'conversationId': [conversationId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/conversations';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2Conversation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the specific conversation.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the conversation. Format:
+  /// `projects//locations//conversations/`.
+  /// Value must have pattern `^projects/\[^/\]+/conversations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Conversation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Conversation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2Conversation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the list of all conversations in the specified project.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project from which to list all conversation.
+  /// Format: `projects//locations/`.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [filter] - A filter expression that filters conversations listed in the
+  /// response. In general, the expression must specify the field name, a
+  /// comparison operator, and the value to use for filtering: - The value must
+  /// be a string, a number, or a boolean. - The comparison operator must be
+  /// either `=`,`!=`, `>`, or `<`. - To filter on multiple expressions,
+  /// separate the expressions with `AND` or `OR` (omitting both implies `AND`).
+  /// - For clarity, expressions can be enclosed in parentheses. Only
+  /// `lifecycle_state` can be filtered on in this way. For example, the
+  /// following expression only returns `COMPLETED` conversations:
+  /// `lifecycle_state = "COMPLETED"` For more information about filtering, see
+  /// [API Filtering](https://aip.dev/160).
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return in a single
+  /// page. By default 100 and at most 1000.
+  ///
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// list request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2ListConversationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2ListConversationsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/conversations';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2ListConversationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsConversationsMessagesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsConversationsMessagesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists messages that belong to a given conversation.
+  ///
+  /// `messages` are ordered by `create_time` in descending order. To fetch
+  /// updates without duplication, send request with filter
+  /// `create_time_epoch_microseconds > [first item's create_time of previous
+  /// request]` and empty page_token.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the conversation to list messages for.
+  /// Format: `projects//locations//conversations/`
+  /// Value must have pattern `^projects/\[^/\]+/conversations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter on message fields. Currently predicates on
+  /// `create_time` and `create_time_epoch_microseconds` are supported.
+  /// `create_time` only support milliseconds accuracy. E.g.,
+  /// `create_time_epoch_microseconds > 1551790877964485` or `create_time >
+  /// 2017-01-15T01:30:15.01Z`. For more information about filtering, see
+  /// [API Filtering](https://aip.dev/160).
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return in a single
+  /// page. By default 100 and at most 1000.
+  ///
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// list request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2ListMessagesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2ListMessagesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/messages';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2ListMessagesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsConversationsParticipantsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsConversationsParticipantsSuggestionsResource get suggestions =>
+      ProjectsConversationsParticipantsSuggestionsResource(_requester);
+
+  ProjectsConversationsParticipantsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Adds a text (chat, for example), or audio (phone recording, for example)
+  /// message from a participant into the conversation.
+  ///
+  /// Note: Always use agent versions for production traffic sent to virtual
+  /// agents. See
+  /// [Versions and environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [participant] - Required. The name of the participant this text comes
+  /// from. Format: `projects//locations//conversations//participants/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/conversations/\[^/\]+/participants/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2AnalyzeContentResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2AnalyzeContentResponse> analyzeContent(
+    GoogleCloudDialogflowV2AnalyzeContentRequest request,
+    core.String participant, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v2/' + core.Uri.encodeFull('$participant') + ':analyzeContent';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2AnalyzeContentResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a new participant in a conversation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource identifier of the conversation adding the
+  /// participant. Format: `projects//locations//conversations/`.
+  /// Value must have pattern `^projects/\[^/\]+/conversations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Participant].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Participant> create(
+    GoogleCloudDialogflowV2Participant request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/participants';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2Participant.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves a conversation participant.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the participant. Format:
+  /// `projects//locations//conversations//participants/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/conversations/\[^/\]+/participants/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Participant].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Participant> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2Participant.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the list of all participants in the specified conversation.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The conversation to list all participants from.
+  /// Format: `projects//locations//conversations/`.
+  /// Value must have pattern `^projects/\[^/\]+/conversations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return in a single
+  /// page. By default 100 and at most 1000.
+  ///
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// list request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2ListParticipantsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2ListParticipantsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/participants';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2ListParticipantsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the specified participant.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Optional. The unique identifier of this participant. Format:
+  /// `projects//locations//conversations//participants/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/conversations/\[^/\]+/participants/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The mask to specify which fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Participant].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Participant> patch(
+    GoogleCloudDialogflowV2Participant request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2Participant.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsConversationsParticipantsSuggestionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsConversationsParticipantsSuggestionsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets suggested articles for a participant based on specific historical
+  /// messages.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the participant to fetch suggestion for.
+  /// Format: `projects//locations//conversations//participants/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/conversations/\[^/\]+/participants/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2SuggestArticlesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2SuggestArticlesResponse> suggestArticles(
+    GoogleCloudDialogflowV2SuggestArticlesRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v2/' + core.Uri.encodeFull('$parent') + '/suggestions:suggestArticles';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2SuggestArticlesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets suggested faq answers for a participant based on specific historical
+  /// messages.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the participant to fetch suggestion for.
+  /// Format: `projects//locations//conversations//participants/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/conversations/\[^/\]+/participants/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2SuggestFaqAnswersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2SuggestFaqAnswersResponse>
+      suggestFaqAnswers(
+    GoogleCloudDialogflowV2SuggestFaqAnswersRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' +
+        core.Uri.encodeFull('$parent') +
+        '/suggestions:suggestFaqAnswers';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2SuggestFaqAnswersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsKnowledgeBasesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsKnowledgeBasesDocumentsResource get documents =>
+      ProjectsKnowledgeBasesDocumentsResource(_requester);
+
+  ProjectsKnowledgeBasesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a knowledge base.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project to create a knowledge base for. Format:
+  /// `projects//locations/`.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2KnowledgeBase].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2KnowledgeBase> create(
+    GoogleCloudDialogflowV2KnowledgeBase request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/knowledgeBases';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2KnowledgeBase.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the specified knowledge base.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the knowledge base to delete. Format:
+  /// `projects//locations//knowledgeBases/`.
+  /// Value must have pattern `^projects/\[^/\]+/knowledgeBases/\[^/\]+$`.
+  ///
+  /// [force] - Optional. Force deletes the knowledge base. When set to true,
+  /// any documents in the knowledge base are also deleted.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.bool? force,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (force != null) 'force': ['${force}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the specified knowledge base.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the knowledge base to retrieve. Format
+  /// `projects//locations//knowledgeBases/`.
+  /// Value must have pattern `^projects/\[^/\]+/knowledgeBases/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2KnowledgeBase].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2KnowledgeBase> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2KnowledgeBase.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the list of all knowledge bases of the specified agent.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project to list of knowledge bases for. Format:
+  /// `projects//locations/`.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of items to return in a single page. By
+  /// default 10 and at most 100.
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous list
+  /// request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2ListKnowledgeBasesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2ListKnowledgeBasesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/knowledgeBases';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2ListKnowledgeBasesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the specified knowledge base.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The knowledge base resource name. The name must be empty when
+  /// creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
+  /// Value must have pattern `^projects/\[^/\]+/knowledgeBases/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. Not specified means `update all`. Currently, only
+  /// `display_name` can be updated, an InvalidArgument will be returned for
+  /// attempting to update other fields.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2KnowledgeBase].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2KnowledgeBase> patch(
+    GoogleCloudDialogflowV2KnowledgeBase request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2KnowledgeBase.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsKnowledgeBasesDocumentsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsKnowledgeBasesDocumentsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new document.
+  ///
+  /// Operation
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The knowledge base to create a document for. Format:
+  /// `projects//locations//knowledgeBases/`.
+  /// Value must have pattern `^projects/\[^/\]+/knowledgeBases/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    GoogleCloudDialogflowV2Document request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/documents';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the specified document.
+  ///
+  /// Operation
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the document to delete. Format:
+  /// `projects//locations//knowledgeBases//documents/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/knowledgeBases/\[^/\]+/documents/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the specified document.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the document to retrieve. Format
+  /// `projects//locations//knowledgeBases//documents/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/knowledgeBases/\[^/\]+/documents/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Document].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Document> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2Document.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the list of all documents of the knowledge base.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The knowledge base to list all documents for. Format:
+  /// `projects//locations//knowledgeBases/`.
+  /// Value must have pattern `^projects/\[^/\]+/knowledgeBases/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of items to return in a single page. By
+  /// default 10 and at most 100.
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous list
+  /// request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2ListDocumentsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2ListDocumentsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/documents';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2ListDocumentsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the specified document.
+  ///
+  /// Operation
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Optional. The document resource name. The name must be empty when
+  /// creating a document. Format:
+  /// `projects//locations//knowledgeBases//documents/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/knowledgeBases/\[^/\]+/documents/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. Not specified means `update all`. Currently, only
+  /// `display_name` can be updated, an InvalidArgument will be returned for
+  /// attempting to update other fields.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> patch(
+    GoogleCloudDialogflowV2Document request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Reloads the specified document from its specified source, content_uri or
+  /// content.
+  ///
+  /// The previously loaded content of the document will be deleted. Note: Even
+  /// when the content of the document has not changed, there still may be side
+  /// effects because of internal implementation changes. Note: The
+  /// `projects.agent.knowledgeBases.documents` resource is deprecated; only use
+  /// `projects.knowledgeBases.documents`. Operation
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the document to reload. Format:
+  /// `projects//locations//knowledgeBases//documents/`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/knowledgeBases/\[^/\]+/documents/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> reload(
+    GoogleCloudDialogflowV2ReloadDocumentRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + ':reload';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsAgentResource get agent =>
+      ProjectsLocationsAgentResource(_requester);
+  ProjectsLocationsAnswerRecordsResource get answerRecords =>
+      ProjectsLocationsAnswerRecordsResource(_requester);
+  ProjectsLocationsConversationProfilesResource get conversationProfiles =>
+      ProjectsLocationsConversationProfilesResource(_requester);
+  ProjectsLocationsConversationsResource get conversations =>
+      ProjectsLocationsConversationsResource(_requester);
+  ProjectsLocationsKnowledgeBasesResource get knowledgeBases =>
+      ProjectsLocationsKnowledgeBasesResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Deletes the specified agent.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project that the agent to delete is associated
+  /// with. Format: `projects/`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> deleteAgent(
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/agent';
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the specified agent.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project that the agent to fetch is associated
+  /// with. Format: `projects/`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Agent].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Agent> getAgent(
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/agent';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2Agent.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates/updates the specified agent.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project of this agent. Format: `projects/`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The mask to control which fields get updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Agent].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Agent> setAgent(
+    GoogleCloudDialogflowV2Agent request,
+    core.String parent, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/agent';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2Agent.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsAgentResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAgentEntityTypesResource get entityTypes =>
+      ProjectsLocationsAgentEntityTypesResource(_requester);
+  ProjectsLocationsAgentEnvironmentsResource get environments =>
+      ProjectsLocationsAgentEnvironmentsResource(_requester);
+  ProjectsLocationsAgentIntentsResource get intents =>
+      ProjectsLocationsAgentIntentsResource(_requester);
+  ProjectsLocationsAgentSessionsResource get sessions =>
+      ProjectsLocationsAgentSessionsResource(_requester);
+  ProjectsLocationsAgentVersionsResource get versions =>
+      ProjectsLocationsAgentVersionsResource(_requester);
+
+  ProjectsLocationsAgentResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Exports the specified agent to a ZIP file.
+  ///
+  /// Operation
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project that the agent to export is associated
+  /// with. Format: `projects/`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> export(
+    GoogleCloudDialogflowV2ExportAgentRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/agent:export';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the fulfillment.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the fulfillment. Format:
+  /// `projects//agent/fulfillment`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/fulfillment$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Fulfillment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Fulfillment> getFulfillment(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2Fulfillment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets agent validation result.
+  ///
+  /// Agent validation is performed during training time and is updated
+  /// automatically when training is completed.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project that the agent is associated with.
+  /// Format: `projects/`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [languageCode] - Optional. The language for which you want a validation
+  /// result. If not specified, the agent's default language is used.
+  /// [Many languages](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// are supported. Note: languages must be enabled in the agent before they
+  /// can be used.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2ValidationResult].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2ValidationResult> getValidationResult(
+    core.String parent, {
+    core.String? languageCode,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (languageCode != null) 'languageCode': [languageCode],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v2/' + core.Uri.encodeFull('$parent') + '/agent/validationResult';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2ValidationResult.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Imports the specified agent from a ZIP file.
+  ///
+  /// Uploads new intents and entity types without deleting the existing ones.
+  /// Intents and entity types with the same name are replaced with the new
+  /// versions from ImportAgentRequest. After the import, the imported draft
+  /// agent will be trained automatically (unless disabled in agent settings).
+  /// However, once the import is done, training may not be completed yet.
+  /// Please call TrainAgent and wait for the operation it returns in order to
+  /// train explicitly. Operation An operation which tracks when importing is
+  /// complete. It only tracks when the draft agent is updated not when it is
+  /// done training.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project that the agent to import is associated
+  /// with. Format: `projects/`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> import(
+    GoogleCloudDialogflowV2ImportAgentRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/agent:import';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Restores the specified agent from a ZIP file.
+  ///
+  /// Replaces the current agent version with a new one. All the intents and
+  /// entity types in the older version are deleted. After the restore, the
+  /// restored draft agent will be trained automatically (unless disabled in
+  /// agent settings). However, once the restore is done, training may not be
+  /// completed yet. Please call TrainAgent and wait for the operation it
+  /// returns in order to train explicitly. Operation An operation which tracks
+  /// when restoring is complete. It only tracks when the draft agent is updated
+  /// not when it is done training.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project that the agent to restore is associated
+  /// with. Format: `projects/`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> restore(
+    GoogleCloudDialogflowV2RestoreAgentRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/agent:restore';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the list of agents.
+  ///
+  /// Since there is at most one conversational agent per project, this method
+  /// is useful primarily for listing all agents across projects the caller has
+  /// access to. One can achieve that with a wildcard project collection id "-".
+  /// Refer to \[List
+  /// Sub-Collections\](https://cloud.google.com/apis/design/design_patterns#list_sub-collections).
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project to list agents from. Format: `projects/`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return in a single
+  /// page. By default 100 and at most 1000.
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous list
+  /// request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2SearchAgentsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2SearchAgentsResponse> search(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/agent:search';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2SearchAgentsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Trains the specified agent.
+  ///
+  /// Operation
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project that the agent to train is associated
+  /// with. Format: `projects/`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> train(
+    GoogleCloudDialogflowV2TrainAgentRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/agent:train';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the fulfillment.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The unique identifier of the fulfillment. Supported
+  /// formats: - `projects//agent/fulfillment` -
+  /// `projects//locations//agent/fulfillment` This field is not used for
+  /// Fulfillment in an Environment.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/fulfillment$`.
+  ///
+  /// [updateMask] - Required. The mask to control which fields get updated. If
+  /// the mask is not present, all fields will be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Fulfillment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Fulfillment> updateFulfillment(
+    GoogleCloudDialogflowV2Fulfillment request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2Fulfillment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsAgentEntityTypesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAgentEntityTypesEntitiesResource get entities =>
+      ProjectsLocationsAgentEntityTypesEntitiesResource(_requester);
+
+  ProjectsLocationsAgentEntityTypesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Deletes entity types in the specified agent.
+  ///
+  /// Operation
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the agent to delete all entities types
+  /// for. Format: `projects//agent`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/agent$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> batchDelete(
+    GoogleCloudDialogflowV2BatchDeleteEntityTypesRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v2/' + core.Uri.encodeFull('$parent') + '/entityTypes:batchDelete';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates/Creates multiple entity types in the specified agent.
+  ///
+  /// Operation
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the agent to update or create entity
+  /// types in. Format: `projects//agent`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/agent$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> batchUpdate(
+    GoogleCloudDialogflowV2BatchUpdateEntityTypesRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v2/' + core.Uri.encodeFull('$parent') + '/entityTypes:batchUpdate';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates an entity type in the specified agent.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The agent to create a entity type for. Format:
+  /// `projects//agent`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/agent$`.
+  ///
+  /// [languageCode] - Optional. The language used to access language-specific
+  /// data. If not specified, the agent's default language is used. For more
+  /// information, see
+  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2EntityType].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2EntityType> create(
+    GoogleCloudDialogflowV2EntityType request,
+    core.String parent, {
+    core.String? languageCode,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (languageCode != null) 'languageCode': [languageCode],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/entityTypes';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2EntityType.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the specified entity type.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the entity type to delete. Format:
+  /// `projects//agent/entityTypes/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/entityTypes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the specified entity type.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the entity type. Format:
+  /// `projects//agent/entityTypes/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/entityTypes/\[^/\]+$`.
+  ///
+  /// [languageCode] - Optional. The language used to access language-specific
+  /// data. If not specified, the agent's default language is used. For more
+  /// information, see
+  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2EntityType].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2EntityType> get(
+    core.String name, {
+    core.String? languageCode,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (languageCode != null) 'languageCode': [languageCode],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2EntityType.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the list of all entity types in the specified agent.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The agent to list all entity types from. Format:
+  /// `projects//agent`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/agent$`.
+  ///
+  /// [languageCode] - Optional. The language used to access language-specific
+  /// data. If not specified, the agent's default language is used. For more
+  /// information, see
+  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return in a single
+  /// page. By default 100 and at most 1000.
+  ///
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// list request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2ListEntityTypesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2ListEntityTypesResponse> list(
+    core.String parent, {
+    core.String? languageCode,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (languageCode != null) 'languageCode': [languageCode],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/entityTypes';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2ListEntityTypesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the specified entity type.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The unique identifier of the entity type. Required for
+  /// EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes
+  /// methods. Format: `projects//agent/entityTypes/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/entityTypes/\[^/\]+$`.
+  ///
+  /// [languageCode] - Optional. The language used to access language-specific
+  /// data. If not specified, the agent's default language is used. For more
+  /// information, see
+  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  ///
+  /// [updateMask] - Optional. The mask to control which fields get updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2EntityType].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2EntityType> patch(
+    GoogleCloudDialogflowV2EntityType request,
+    core.String name, {
+    core.String? languageCode,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (languageCode != null) 'languageCode': [languageCode],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2EntityType.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsAgentEntityTypesEntitiesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAgentEntityTypesEntitiesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates multiple new entities in the specified entity type.
+  ///
+  /// Operation
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the entity type to create entities in.
+  /// Format: `projects//agent/entityTypes/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/entityTypes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> batchCreate(
+    GoogleCloudDialogflowV2BatchCreateEntitiesRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v2/' + core.Uri.encodeFull('$parent') + '/entities:batchCreate';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes entities in the specified entity type.
+  ///
+  /// Operation
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the entity type to delete entries for.
+  /// Format: `projects//agent/entityTypes/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/entityTypes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> batchDelete(
+    GoogleCloudDialogflowV2BatchDeleteEntitiesRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v2/' + core.Uri.encodeFull('$parent') + '/entities:batchDelete';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates or creates multiple entities in the specified entity type.
+  ///
+  /// This method does not affect entities in the entity type that aren't
+  /// explicitly specified in the request. Operation
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the entity type to update or create
+  /// entities in. Format: `projects//agent/entityTypes/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/entityTypes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> batchUpdate(
+    GoogleCloudDialogflowV2BatchUpdateEntitiesRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v2/' + core.Uri.encodeFull('$parent') + '/entities:batchUpdate';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsAgentEnvironmentsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAgentEnvironmentsIntentsResource get intents =>
+      ProjectsLocationsAgentEnvironmentsIntentsResource(_requester);
+  ProjectsLocationsAgentEnvironmentsUsersResource get users =>
+      ProjectsLocationsAgentEnvironmentsUsersResource(_requester);
+
+  ProjectsLocationsAgentEnvironmentsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates an agent environment.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The agent to create an environment for. Supported
+  /// formats: - `projects//agent` - `projects//locations//agent`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/agent$`.
+  ///
+  /// [environmentId] - Required. The unique id of the new environment.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Environment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Environment> create(
+    GoogleCloudDialogflowV2Environment request,
+    core.String parent, {
+    core.String? environmentId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (environmentId != null) 'environmentId': [environmentId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/environments';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2Environment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the specified agent environment.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the environment to delete. / Format: -
+  /// `projects//agent/environments/` -
+  /// `projects//locations//agent/environments/`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the specified agent environment.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the environment. Supported formats: -
+  /// `projects//agent/environments/` -
+  /// `projects//locations//agent/environments/`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Environment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Environment> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2Environment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the history of the specified environment.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the environment to retrieve history for.
+  /// Supported formats: - `projects//agent/environments/` -
+  /// `projects//locations//agent/environments/`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return in a single
+  /// page. By default 100 and at most 1000.
+  ///
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// list request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2EnvironmentHistory].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2EnvironmentHistory> getHistory(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/history';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2EnvironmentHistory.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the list of all non-draft environments of the specified agent.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The agent to list all environments from. Format: -
+  /// `projects//agent` - `projects//locations//agent`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/agent$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return in a single
+  /// page. By default 100 and at most 1000.
+  ///
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// list request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2ListEnvironmentsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2ListEnvironmentsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/environments';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2ListEnvironmentsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the specified agent environment.
+  ///
+  /// This method allows you to deploy new agent versions into the environment.
+  /// When an environment is pointed to a new agent version by setting
+  /// `environment.agent_version`, the environment is temporarily set to the
+  /// `LOADING` state. During that time, the environment keeps on serving the
+  /// previous version of the agent. After the new agent version is done
+  /// loading, the environment is set back to the `RUNNING` state. You can use
+  /// "-" as Environment ID in environment name to update version in "draft"
+  /// environment. WARNING: this will negate all recent changes to draft and
+  /// can't be undone. You may want to save the draft to a version before
+  /// calling this function.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The unique identifier of this agent environment.
+  /// Supported formats: - `projects//agent/environments/` -
+  /// `projects//locations//agent/environments/`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+$`.
+  ///
+  /// [allowLoadToDraftAndDiscardChanges] - Optional. This field is used to
+  /// prevent accidental overwrite of the draft environment, which is an
+  /// operation that cannot be undone. To confirm that the caller desires this
+  /// overwrite, this field must be explicitly set to true when updating the
+  /// draft environment (environment ID = `-`).
+  ///
+  /// [updateMask] - Required. The mask to control which fields get updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Environment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Environment> patch(
+    GoogleCloudDialogflowV2Environment request,
+    core.String name, {
+    core.bool? allowLoadToDraftAndDiscardChanges,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (allowLoadToDraftAndDiscardChanges != null)
+        'allowLoadToDraftAndDiscardChanges': [
+          '${allowLoadToDraftAndDiscardChanges}'
+        ],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2Environment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsAgentEnvironmentsIntentsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAgentEnvironmentsIntentsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Returns the list of all intents in the specified agent.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The agent to list all intents from. Format:
+  /// `projects//agent` or `projects//locations//agent`. Alternatively, you can
+  /// specify the environment to list intents for. Format:
+  /// `projects//agent/environments/` or
+  /// `projects//locations//agent/environments/`. Note: training phrases of the
+  /// intents will not be returned for non-draft environment.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+$`.
+  ///
+  /// [intentView] - Optional. The resource view to apply to the returned
+  /// intent.
+  /// Possible string values are:
+  /// - "INTENT_VIEW_UNSPECIFIED" : Training phrases field is not populated in
+  /// the response.
+  /// - "INTENT_VIEW_FULL" : All fields are populated.
+  ///
+  /// [languageCode] - Optional. The language used to access language-specific
+  /// data. If not specified, the agent's default language is used. For more
+  /// information, see
+  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return in a single
+  /// page. By default 100 and at most 1000.
+  ///
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// list request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2ListIntentsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2ListIntentsResponse> list(
+    core.String parent, {
+    core.String? intentView,
+    core.String? languageCode,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (intentView != null) 'intentView': [intentView],
+      if (languageCode != null) 'languageCode': [languageCode],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/intents';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2ListIntentsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsAgentEnvironmentsUsersResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAgentEnvironmentsUsersSessionsResource get sessions =>
+      ProjectsLocationsAgentEnvironmentsUsersSessionsResource(_requester);
+
+  ProjectsLocationsAgentEnvironmentsUsersResource(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsLocationsAgentEnvironmentsUsersSessionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResource
+      get contexts =>
+          ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResource(
+              _requester);
+  ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResource
+      get entityTypes =>
+          ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResource(
+              _requester);
+
+  ProjectsLocationsAgentEnvironmentsUsersSessionsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Deletes all active contexts in the specified session.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the session to delete all contexts from.
+  /// Format: `projects//agent/sessions/` or
+  /// `projects//agent/environments//users//sessions/`. If `Environment ID` is
+  /// not specified we assume default 'draft' environment. If `User ID` is not
+  /// specified, we assume default '-' user.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> deleteContexts(
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/contexts';
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Processes a natural language query and returns structured, actionable data
+  /// as a result.
+  ///
+  /// This method is not idempotent, because it may cause contexts and session
+  /// entity types to be updated, which in turn might affect results of future
+  /// queries. Note: Always use agent versions for production traffic. See
+  /// [Versions and environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [session] - Required. The name of the session this query is sent to.
+  /// Format: `projects//agent/sessions/`, or
+  /// `projects//agent/environments//users//sessions/`. If `Environment ID` is
+  /// not specified, we assume default 'draft' environment (`Environment ID`
+  /// might be referred to as environment name at some places). If `User ID` is
+  /// not specified, we are using "-". It's up to the API caller to choose an
+  /// appropriate `Session ID` and `User Id`. They can be a random number or
+  /// some type of user and session identifiers (preferably hashed). The length
+  /// of the `Session ID` and `User ID` must not exceed 36 characters. For more
+  /// information, see the
+  /// [API interactions guide](https://cloud.google.com/dialogflow/docs/api-overview).
+  /// Note: Always use agent versions for production traffic. See
+  /// [Versions and environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2DetectIntentResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2DetectIntentResponse> detectIntent(
+    GoogleCloudDialogflowV2DetectIntentRequest request,
+    core.String session, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$session') + ':detectIntent';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2DetectIntentResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a context.
+  ///
+  /// If the specified context already exists, overrides the context.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The session to create a context for. Format:
+  /// `projects//agent/sessions/` or
+  /// `projects//agent/environments//users//sessions/`. If `Environment ID` is
+  /// not specified, we assume default 'draft' environment. If `User ID` is not
+  /// specified, we assume default '-' user.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Context].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Context> create(
+    GoogleCloudDialogflowV2Context request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/contexts';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2Context.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the specified context.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the context to delete. Format:
+  /// `projects//agent/sessions//contexts/` or
+  /// `projects//agent/environments//users//sessions//contexts/`. If
+  /// `Environment ID` is not specified, we assume default 'draft' environment.
+  /// If `User ID` is not specified, we assume default '-' user.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+/contexts/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the specified context.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the context. Format:
+  /// `projects//agent/sessions//contexts/` or
+  /// `projects//agent/environments//users//sessions//contexts/`. If
+  /// `Environment ID` is not specified, we assume default 'draft' environment.
+  /// If `User ID` is not specified, we assume default '-' user.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+/contexts/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Context].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Context> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2Context.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the list of all contexts in the specified session.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The session to list all contexts from. Format:
+  /// `projects//agent/sessions/` or
+  /// `projects//agent/environments//users//sessions/`. If `Environment ID` is
+  /// not specified, we assume default 'draft' environment. If `User ID` is not
+  /// specified, we assume default '-' user.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return in a single
+  /// page. By default 100 and at most 1000.
+  ///
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// list request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2ListContextsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2ListContextsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/contexts';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2ListContextsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the specified context.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The unique identifier of the context. Format:
+  /// `projects//agent/sessions//contexts/`, or
+  /// `projects//agent/environments//users//sessions//contexts/`. The `Context
+  /// ID` is always converted to lowercase, may only contain characters in
+  /// a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not
+  /// specified, we assume default 'draft' environment. If `User ID` is not
+  /// specified, we assume default '-' user. The following context names are
+  /// reserved for internal use by Dialogflow. You should not use these contexts
+  /// or create contexts with these names: * `__system_counters__` *
+  /// `*_id_dialog_context` * `*_dialog_params_size`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+/contexts/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The mask to control which fields get updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Context].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Context> patch(
+    GoogleCloudDialogflowV2Context request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2Context.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a session entity type.
+  ///
+  /// If the specified session entity type already exists, overrides the session
+  /// entity type. This method doesn't work with Google Assistant integration.
+  /// Contact Dialogflow support if you need to use session entities with Google
+  /// Assistant integration.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The session to create a session entity type for.
+  /// Format: `projects//agent/sessions/` or
+  /// `projects//agent/environments//users// sessions/`. If `Environment ID` is
+  /// not specified, we assume default 'draft' environment. If `User ID` is not
+  /// specified, we assume default '-' user.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2SessionEntityType].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2SessionEntityType> create(
+    GoogleCloudDialogflowV2SessionEntityType request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/entityTypes';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2SessionEntityType.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the specified session entity type.
+  ///
+  /// This method doesn't work with Google Assistant integration. Contact
+  /// Dialogflow support if you need to use session entities with Google
+  /// Assistant integration.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the entity type to delete. Format:
+  /// `projects//agent/sessions//entityTypes/` or
+  /// `projects//agent/environments//users//sessions//entityTypes/`. If
+  /// `Environment ID` is not specified, we assume default 'draft' environment.
+  /// If `User ID` is not specified, we assume default '-' user.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+/entityTypes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the specified session entity type.
+  ///
+  /// This method doesn't work with Google Assistant integration. Contact
+  /// Dialogflow support if you need to use session entities with Google
+  /// Assistant integration.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the session entity type. Format:
+  /// `projects//agent/sessions//entityTypes/` or
+  /// `projects//agent/environments//users//sessions//entityTypes/`. If
+  /// `Environment ID` is not specified, we assume default 'draft' environment.
+  /// If `User ID` is not specified, we assume default '-' user.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+/entityTypes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2SessionEntityType].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2SessionEntityType> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2SessionEntityType.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the list of all session entity types in the specified session.
+  ///
+  /// This method doesn't work with Google Assistant integration. Contact
+  /// Dialogflow support if you need to use session entities with Google
+  /// Assistant integration.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The session to list all session entity types from.
+  /// Format: `projects//agent/sessions/` or
+  /// `projects//agent/environments//users// sessions/`. If `Environment ID` is
+  /// not specified, we assume default 'draft' environment. If `User ID` is not
+  /// specified, we assume default '-' user.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return in a single
+  /// page. By default 100 and at most 1000.
+  ///
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// list request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2ListSessionEntityTypesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2ListSessionEntityTypesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/entityTypes';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2ListSessionEntityTypesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the specified session entity type.
+  ///
+  /// This method doesn't work with Google Assistant integration. Contact
+  /// Dialogflow support if you need to use session entities with Google
+  /// Assistant integration.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The unique identifier of this session entity type.
+  /// Format: `projects//agent/sessions//entityTypes/`, or
+  /// `projects//agent/environments//users//sessions//entityTypes/`. If
+  /// `Environment ID` is not specified, we assume default 'draft' environment.
+  /// If `User ID` is not specified, we assume default '-' user. `` must be the
+  /// display name of an existing entity type in the same agent that will be
+  /// overridden or supplemented.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+/entityTypes/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The mask to control which fields get updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2SessionEntityType].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2SessionEntityType> patch(
+    GoogleCloudDialogflowV2SessionEntityType request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2SessionEntityType.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsAgentIntentsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAgentIntentsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Deletes intents in the specified agent.
+  ///
+  /// Operation
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the agent to delete all entities types
+  /// for. Format: `projects//agent`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/agent$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> batchDelete(
+    GoogleCloudDialogflowV2BatchDeleteIntentsRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v2/' + core.Uri.encodeFull('$parent') + '/intents:batchDelete';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates/Creates multiple intents in the specified agent.
+  ///
+  /// Operation
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the agent to update or create intents in.
+  /// Format: `projects//agent`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/agent$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> batchUpdate(
+    GoogleCloudDialogflowV2BatchUpdateIntentsRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v2/' + core.Uri.encodeFull('$parent') + '/intents:batchUpdate';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates an intent in the specified agent.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The agent to create a intent for. Format:
+  /// `projects//agent`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/agent$`.
+  ///
+  /// [intentView] - Optional. The resource view to apply to the returned
+  /// intent.
+  /// Possible string values are:
+  /// - "INTENT_VIEW_UNSPECIFIED" : Training phrases field is not populated in
+  /// the response.
+  /// - "INTENT_VIEW_FULL" : All fields are populated.
+  ///
+  /// [languageCode] - Optional. The language used to access language-specific
+  /// data. If not specified, the agent's default language is used. For more
+  /// information, see
+  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Intent].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Intent> create(
+    GoogleCloudDialogflowV2Intent request,
+    core.String parent, {
+    core.String? intentView,
+    core.String? languageCode,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (intentView != null) 'intentView': [intentView],
+      if (languageCode != null) 'languageCode': [languageCode],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/intents';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2Intent.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the specified intent and its direct or indirect followup intents.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the intent to delete. If this intent has
+  /// direct or indirect followup intents, we also delete them. Format:
+  /// `projects//agent/intents/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/intents/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the specified intent.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the intent. Format:
+  /// `projects//agent/intents/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/intents/\[^/\]+$`.
+  ///
+  /// [intentView] - Optional. The resource view to apply to the returned
+  /// intent.
+  /// Possible string values are:
+  /// - "INTENT_VIEW_UNSPECIFIED" : Training phrases field is not populated in
+  /// the response.
+  /// - "INTENT_VIEW_FULL" : All fields are populated.
+  ///
+  /// [languageCode] - Optional. The language used to access language-specific
+  /// data. If not specified, the agent's default language is used. For more
+  /// information, see
+  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Intent].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Intent> get(
+    core.String name, {
+    core.String? intentView,
+    core.String? languageCode,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (intentView != null) 'intentView': [intentView],
+      if (languageCode != null) 'languageCode': [languageCode],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2Intent.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the list of all intents in the specified agent.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The agent to list all intents from. Format:
+  /// `projects//agent` or `projects//locations//agent`. Alternatively, you can
+  /// specify the environment to list intents for. Format:
+  /// `projects//agent/environments/` or
+  /// `projects//locations//agent/environments/`. Note: training phrases of the
+  /// intents will not be returned for non-draft environment.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/agent$`.
+  ///
+  /// [intentView] - Optional. The resource view to apply to the returned
+  /// intent.
+  /// Possible string values are:
+  /// - "INTENT_VIEW_UNSPECIFIED" : Training phrases field is not populated in
+  /// the response.
+  /// - "INTENT_VIEW_FULL" : All fields are populated.
+  ///
+  /// [languageCode] - Optional. The language used to access language-specific
+  /// data. If not specified, the agent's default language is used. For more
+  /// information, see
+  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return in a single
+  /// page. By default 100 and at most 1000.
+  ///
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// list request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2ListIntentsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2ListIntentsResponse> list(
+    core.String parent, {
+    core.String? intentView,
+    core.String? languageCode,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (intentView != null) 'intentView': [intentView],
+      if (languageCode != null) 'languageCode': [languageCode],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/intents';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2ListIntentsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the specified intent.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Optional. The unique identifier of this intent. Required for
+  /// Intents.UpdateIntent and Intents.BatchUpdateIntents methods. Format:
+  /// `projects//agent/intents/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/intents/\[^/\]+$`.
+  ///
+  /// [intentView] - Optional. The resource view to apply to the returned
+  /// intent.
+  /// Possible string values are:
+  /// - "INTENT_VIEW_UNSPECIFIED" : Training phrases field is not populated in
+  /// the response.
+  /// - "INTENT_VIEW_FULL" : All fields are populated.
+  ///
+  /// [languageCode] - Optional. The language used to access language-specific
+  /// data. If not specified, the agent's default language is used. For more
+  /// information, see
+  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  ///
+  /// [updateMask] - Optional. The mask to control which fields get updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Intent].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Intent> patch(
+    GoogleCloudDialogflowV2Intent request,
+    core.String name, {
+    core.String? intentView,
+    core.String? languageCode,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (intentView != null) 'intentView': [intentView],
+      if (languageCode != null) 'languageCode': [languageCode],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2Intent.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsAgentSessionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAgentSessionsContextsResource get contexts =>
+      ProjectsLocationsAgentSessionsContextsResource(_requester);
+  ProjectsLocationsAgentSessionsEntityTypesResource get entityTypes =>
+      ProjectsLocationsAgentSessionsEntityTypesResource(_requester);
+
+  ProjectsLocationsAgentSessionsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Deletes all active contexts in the specified session.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the session to delete all contexts from.
+  /// Format: `projects//agent/sessions/` or
+  /// `projects//agent/environments//users//sessions/`. If `Environment ID` is
+  /// not specified we assume default 'draft' environment. If `User ID` is not
+  /// specified, we assume default '-' user.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> deleteContexts(
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/contexts';
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Processes a natural language query and returns structured, actionable data
+  /// as a result.
+  ///
+  /// This method is not idempotent, because it may cause contexts and session
+  /// entity types to be updated, which in turn might affect results of future
+  /// queries. Note: Always use agent versions for production traffic. See
+  /// [Versions and environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [session] - Required. The name of the session this query is sent to.
+  /// Format: `projects//agent/sessions/`, or
+  /// `projects//agent/environments//users//sessions/`. If `Environment ID` is
+  /// not specified, we assume default 'draft' environment (`Environment ID`
+  /// might be referred to as environment name at some places). If `User ID` is
+  /// not specified, we are using "-". It's up to the API caller to choose an
+  /// appropriate `Session ID` and `User Id`. They can be a random number or
+  /// some type of user and session identifiers (preferably hashed). The length
+  /// of the `Session ID` and `User ID` must not exceed 36 characters. For more
+  /// information, see the
+  /// [API interactions guide](https://cloud.google.com/dialogflow/docs/api-overview).
+  /// Note: Always use agent versions for production traffic. See
+  /// [Versions and environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2DetectIntentResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2DetectIntentResponse> detectIntent(
+    GoogleCloudDialogflowV2DetectIntentRequest request,
+    core.String session, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$session') + ':detectIntent';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2DetectIntentResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsAgentSessionsContextsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAgentSessionsContextsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a context.
+  ///
+  /// If the specified context already exists, overrides the context.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The session to create a context for. Format:
+  /// `projects//agent/sessions/` or
+  /// `projects//agent/environments//users//sessions/`. If `Environment ID` is
+  /// not specified, we assume default 'draft' environment. If `User ID` is not
+  /// specified, we assume default '-' user.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Context].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Context> create(
+    GoogleCloudDialogflowV2Context request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/contexts';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2Context.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the specified context.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the context to delete. Format:
+  /// `projects//agent/sessions//contexts/` or
+  /// `projects//agent/environments//users//sessions//contexts/`. If
+  /// `Environment ID` is not specified, we assume default 'draft' environment.
+  /// If `User ID` is not specified, we assume default '-' user.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+/contexts/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the specified context.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the context. Format:
+  /// `projects//agent/sessions//contexts/` or
+  /// `projects//agent/environments//users//sessions//contexts/`. If
+  /// `Environment ID` is not specified, we assume default 'draft' environment.
+  /// If `User ID` is not specified, we assume default '-' user.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+/contexts/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Context].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Context> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2Context.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the list of all contexts in the specified session.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The session to list all contexts from. Format:
+  /// `projects//agent/sessions/` or
+  /// `projects//agent/environments//users//sessions/`. If `Environment ID` is
+  /// not specified, we assume default 'draft' environment. If `User ID` is not
+  /// specified, we assume default '-' user.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return in a single
+  /// page. By default 100 and at most 1000.
+  ///
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// list request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2ListContextsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2ListContextsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/contexts';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2ListContextsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the specified context.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The unique identifier of the context. Format:
+  /// `projects//agent/sessions//contexts/`, or
+  /// `projects//agent/environments//users//sessions//contexts/`. The `Context
+  /// ID` is always converted to lowercase, may only contain characters in
+  /// a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not
+  /// specified, we assume default 'draft' environment. If `User ID` is not
+  /// specified, we assume default '-' user. The following context names are
+  /// reserved for internal use by Dialogflow. You should not use these contexts
+  /// or create contexts with these names: * `__system_counters__` *
+  /// `*_id_dialog_context` * `*_dialog_params_size`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+/contexts/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The mask to control which fields get updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Context].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Context> patch(
+    GoogleCloudDialogflowV2Context request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2Context.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsAgentSessionsEntityTypesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAgentSessionsEntityTypesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a session entity type.
+  ///
+  /// If the specified session entity type already exists, overrides the session
+  /// entity type. This method doesn't work with Google Assistant integration.
+  /// Contact Dialogflow support if you need to use session entities with Google
+  /// Assistant integration.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The session to create a session entity type for.
+  /// Format: `projects//agent/sessions/` or
+  /// `projects//agent/environments//users// sessions/`. If `Environment ID` is
+  /// not specified, we assume default 'draft' environment. If `User ID` is not
+  /// specified, we assume default '-' user.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2SessionEntityType].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2SessionEntityType> create(
+    GoogleCloudDialogflowV2SessionEntityType request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/entityTypes';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2SessionEntityType.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the specified session entity type.
+  ///
+  /// This method doesn't work with Google Assistant integration. Contact
+  /// Dialogflow support if you need to use session entities with Google
+  /// Assistant integration.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the entity type to delete. Format:
+  /// `projects//agent/sessions//entityTypes/` or
+  /// `projects//agent/environments//users//sessions//entityTypes/`. If
+  /// `Environment ID` is not specified, we assume default 'draft' environment.
+  /// If `User ID` is not specified, we assume default '-' user.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+/entityTypes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the specified session entity type.
+  ///
+  /// This method doesn't work with Google Assistant integration. Contact
+  /// Dialogflow support if you need to use session entities with Google
+  /// Assistant integration.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the session entity type. Format:
+  /// `projects//agent/sessions//entityTypes/` or
+  /// `projects//agent/environments//users//sessions//entityTypes/`. If
+  /// `Environment ID` is not specified, we assume default 'draft' environment.
+  /// If `User ID` is not specified, we assume default '-' user.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+/entityTypes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2SessionEntityType].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2SessionEntityType> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2SessionEntityType.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the list of all session entity types in the specified session.
+  ///
+  /// This method doesn't work with Google Assistant integration. Contact
+  /// Dialogflow support if you need to use session entities with Google
+  /// Assistant integration.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The session to list all session entity types from.
+  /// Format: `projects//agent/sessions/` or
+  /// `projects//agent/environments//users// sessions/`. If `Environment ID` is
+  /// not specified, we assume default 'draft' environment. If `User ID` is not
+  /// specified, we assume default '-' user.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return in a single
+  /// page. By default 100 and at most 1000.
+  ///
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// list request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2ListSessionEntityTypesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2ListSessionEntityTypesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/entityTypes';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2ListSessionEntityTypesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the specified session entity type.
+  ///
+  /// This method doesn't work with Google Assistant integration. Contact
+  /// Dialogflow support if you need to use session entities with Google
+  /// Assistant integration.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The unique identifier of this session entity type.
+  /// Format: `projects//agent/sessions//entityTypes/`, or
+  /// `projects//agent/environments//users//sessions//entityTypes/`. If
+  /// `Environment ID` is not specified, we assume default 'draft' environment.
+  /// If `User ID` is not specified, we assume default '-' user. `` must be the
+  /// display name of an existing entity type in the same agent that will be
+  /// overridden or supplemented.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+/entityTypes/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The mask to control which fields get updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2SessionEntityType].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2SessionEntityType> patch(
+    GoogleCloudDialogflowV2SessionEntityType request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2SessionEntityType.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsAgentVersionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAgentVersionsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates an agent version.
+  ///
+  /// The new version points to the agent instance in the "default" environment.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The agent to create a version for. Supported formats:
+  /// - `projects//agent` - `projects//locations//agent`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/agent$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Version].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Version> create(
+    GoogleCloudDialogflowV2Version request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/versions';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2Version.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Delete the specified agent version.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the version to delete. Supported formats: -
+  /// `projects//agent/versions/` - `projects//locations//agent/versions/`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/versions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the specified agent version.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the version. Supported formats: -
+  /// `projects//agent/versions/` - `projects//locations//agent/versions/`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/versions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Version].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Version> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2Version.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the list of all versions of the specified agent.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The agent to list all versions from. Supported
+  /// formats: - `projects//agent` - `projects//locations//agent`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/agent$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return in a single
+  /// page. By default 100 and at most 1000.
+  ///
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// list request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2ListVersionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2ListVersionsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/versions';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2ListVersionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the specified agent version.
+  ///
+  /// Note that this method does not allow you to update the state of the agent
+  /// the given version points to. It allows you to update only mutable
+  /// properties of the version resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The unique identifier of this agent version.
+  /// Supported formats: - `projects//agent/versions/` -
+  /// `projects//locations//agent/versions/`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/versions/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The mask to control which fields get updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Version].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Version> patch(
+    GoogleCloudDialogflowV2Version request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2Version.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsAnswerRecordsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAnswerRecordsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Returns the list of all answer records in the specified project in reverse
+  /// chronological order.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project to list all answer records for in reverse
+  /// chronological order. Format: `projects//locations/`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Required. Filters to restrict results to specific answer
+  /// records. Filter on answer record type. Currently predicates on `type` is
+  /// supported, valid values are `ARTICLE_ANSWER`, `FAQ_ANSWER`. For more
+  /// information about filtering, see [API Filtering](https://aip.dev/160).
+  ///
+  /// [pageSize] - Optional. The maximum number of records to return in a single
+  /// page. The server may return fewer records than this. If unspecified, we
+  /// use 10. The maximum is 100.
+  ///
+  /// [pageToken] - Optional. The ListAnswerRecordsResponse.next_page_token
+  /// value returned from a previous list request used to continue listing on
+  /// the next page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2ListAnswerRecordsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2ListAnswerRecordsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/answerRecords';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2ListAnswerRecordsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the specified answer record.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The unique identifier of this answer record. Format:
+  /// `projects//locations//answerRecords/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/answerRecords/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The mask to control which fields get updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2AnswerRecord].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2AnswerRecord> patch(
+    GoogleCloudDialogflowV2AnswerRecord request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2AnswerRecord.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsConversationProfilesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsConversationProfilesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a conversation profile in the specified project.
+  ///
+  /// ConversationProfile.CreateTime and ConversationProfile.UpdateTime aren't
+  /// populated in the response. You can retrieve them via
+  /// GetConversationProfile API.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project to create a conversation profile for.
+  /// Format: `projects//locations/`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2ConversationProfile].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2ConversationProfile> create(
+    GoogleCloudDialogflowV2ConversationProfile request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v2/' + core.Uri.encodeFull('$parent') + '/conversationProfiles';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2ConversationProfile.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the specified conversation profile.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the conversation profile to delete. Format:
+  /// `projects//locations//conversationProfiles/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/conversationProfiles/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the specified conversation profile.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the conversation profile. Format:
+  /// `projects//locations//conversationProfiles/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/conversationProfiles/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2ConversationProfile].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2ConversationProfile> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2ConversationProfile.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the list of all conversation profiles in the specified project.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project to list all conversation profiles from.
+  /// Format: `projects//locations/`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of items to return in a single page. By
+  /// default 100 and at most 1000.
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous list
+  /// request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudDialogflowV2ListConversationProfilesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2ListConversationProfilesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v2/' + core.Uri.encodeFull('$parent') + '/conversationProfiles';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2ListConversationProfilesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the specified conversation profile.
+  ///
+  /// ConversationProfile.CreateTime and ConversationProfile.UpdateTime aren't
+  /// populated in the response. You can retrieve them via
+  /// GetConversationProfile API.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The unique identifier of this conversation profile. Format:
+  /// `projects//locations//conversationProfiles/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/conversationProfiles/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The mask to control which fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2ConversationProfile].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2ConversationProfile> patch(
+    GoogleCloudDialogflowV2ConversationProfile request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2ConversationProfile.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsConversationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsConversationsMessagesResource get messages =>
+      ProjectsLocationsConversationsMessagesResource(_requester);
+  ProjectsLocationsConversationsParticipantsResource get participants =>
+      ProjectsLocationsConversationsParticipantsResource(_requester);
+
+  ProjectsLocationsConversationsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Completes the specified conversation.
+  ///
+  /// Finished conversations are purged from the database after 30 days.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource identifier of the conversation to close.
+  /// Format: `projects//locations//conversations/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/conversations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Conversation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Conversation> complete(
+    GoogleCloudDialogflowV2CompleteConversationRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + ':complete';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2Conversation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a new conversation.
+  ///
+  /// Conversations are auto-completed after 24 hours. Conversation Lifecycle:
+  /// There are two stages during a conversation: Automated Agent Stage and
+  /// Assist Stage. For Automated Agent Stage, there will be a dialogflow agent
+  /// responding to user queries. For Assist Stage, there's no dialogflow agent
+  /// responding to user queries. But we will provide suggestions which are
+  /// generated from conversation. If Conversation.conversation_profile is
+  /// configured for a dialogflow agent, conversation will start from `Automated
+  /// Agent Stage`, otherwise, it will start from `Assist Stage`. And during
+  /// `Automated Agent Stage`, once an Intent with Intent.live_agent_handoff is
+  /// triggered, conversation will transfer to Assist Stage.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource identifier of the project creating the
+  /// conversation. Format: `projects//locations/`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [conversationId] - Optional. Identifier of the conversation. Generally
+  /// it's auto generated by Google. Only set it if you cannot wait for the
+  /// response to return a auto-generated one to you. The conversation ID must
+  /// be compliant with the regression fomula "a-zA-Z*" with the characters
+  /// length in range of \[3,64\]. If the field is provided, the caller is
+  /// resposible for 1. the uniqueness of the ID, otherwise the request will be
+  /// rejected. 2. the consistency for whether to use custom ID or not under a
+  /// project to better ensure uniqueness.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Conversation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Conversation> create(
+    GoogleCloudDialogflowV2Conversation request,
+    core.String parent, {
+    core.String? conversationId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (conversationId != null) 'conversationId': [conversationId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/conversations';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2Conversation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the specific conversation.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the conversation. Format:
+  /// `projects//locations//conversations/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/conversations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Conversation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Conversation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2Conversation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the list of all conversations in the specified project.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project from which to list all conversation.
+  /// Format: `projects//locations/`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - A filter expression that filters conversations listed in the
+  /// response. In general, the expression must specify the field name, a
+  /// comparison operator, and the value to use for filtering: - The value must
+  /// be a string, a number, or a boolean. - The comparison operator must be
+  /// either `=`,`!=`, `>`, or `<`. - To filter on multiple expressions,
+  /// separate the expressions with `AND` or `OR` (omitting both implies `AND`).
+  /// - For clarity, expressions can be enclosed in parentheses. Only
+  /// `lifecycle_state` can be filtered on in this way. For example, the
+  /// following expression only returns `COMPLETED` conversations:
+  /// `lifecycle_state = "COMPLETED"` For more information about filtering, see
+  /// [API Filtering](https://aip.dev/160).
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return in a single
+  /// page. By default 100 and at most 1000.
+  ///
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// list request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2ListConversationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2ListConversationsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/conversations';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2ListConversationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsConversationsMessagesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsConversationsMessagesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists messages that belong to a given conversation.
+  ///
+  /// `messages` are ordered by `create_time` in descending order. To fetch
+  /// updates without duplication, send request with filter
+  /// `create_time_epoch_microseconds > [first item's create_time of previous
+  /// request]` and empty page_token.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the conversation to list messages for.
+  /// Format: `projects//locations//conversations/`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/conversations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter on message fields. Currently predicates on
+  /// `create_time` and `create_time_epoch_microseconds` are supported.
+  /// `create_time` only support milliseconds accuracy. E.g.,
+  /// `create_time_epoch_microseconds > 1551790877964485` or `create_time >
+  /// 2017-01-15T01:30:15.01Z`. For more information about filtering, see
+  /// [API Filtering](https://aip.dev/160).
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return in a single
+  /// page. By default 100 and at most 1000.
+  ///
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// list request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2ListMessagesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2ListMessagesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/messages';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2ListMessagesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsConversationsParticipantsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsConversationsParticipantsSuggestionsResource
+      get suggestions =>
+          ProjectsLocationsConversationsParticipantsSuggestionsResource(
+              _requester);
+
+  ProjectsLocationsConversationsParticipantsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Adds a text (chat, for example), or audio (phone recording, for example)
+  /// message from a participant into the conversation.
+  ///
+  /// Note: Always use agent versions for production traffic sent to virtual
+  /// agents. See
+  /// [Versions and environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [participant] - Required. The name of the participant this text comes
+  /// from. Format: `projects//locations//conversations//participants/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/conversations/\[^/\]+/participants/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2AnalyzeContentResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2AnalyzeContentResponse> analyzeContent(
+    GoogleCloudDialogflowV2AnalyzeContentRequest request,
+    core.String participant, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v2/' + core.Uri.encodeFull('$participant') + ':analyzeContent';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2AnalyzeContentResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a new participant in a conversation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource identifier of the conversation adding the
+  /// participant. Format: `projects//locations//conversations/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/conversations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Participant].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Participant> create(
+    GoogleCloudDialogflowV2Participant request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/participants';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2Participant.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves a conversation participant.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the participant. Format:
+  /// `projects//locations//conversations//participants/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/conversations/\[^/\]+/participants/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Participant].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Participant> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2Participant.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the list of all participants in the specified conversation.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The conversation to list all participants from.
+  /// Format: `projects//locations//conversations/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/conversations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return in a single
+  /// page. By default 100 and at most 1000.
+  ///
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// list request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2ListParticipantsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2ListParticipantsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/participants';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2ListParticipantsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the specified participant.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Optional. The unique identifier of this participant. Format:
+  /// `projects//locations//conversations//participants/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/conversations/\[^/\]+/participants/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The mask to specify which fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Participant].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Participant> patch(
+    GoogleCloudDialogflowV2Participant request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2Participant.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsConversationsParticipantsSuggestionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsConversationsParticipantsSuggestionsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets suggested articles for a participant based on specific historical
+  /// messages.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the participant to fetch suggestion for.
+  /// Format: `projects//locations//conversations//participants/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/conversations/\[^/\]+/participants/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2SuggestArticlesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2SuggestArticlesResponse> suggestArticles(
+    GoogleCloudDialogflowV2SuggestArticlesRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v2/' + core.Uri.encodeFull('$parent') + '/suggestions:suggestArticles';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2SuggestArticlesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets suggested faq answers for a participant based on specific historical
+  /// messages.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the participant to fetch suggestion for.
+  /// Format: `projects//locations//conversations//participants/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/conversations/\[^/\]+/participants/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2SuggestFaqAnswersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2SuggestFaqAnswersResponse>
+      suggestFaqAnswers(
+    GoogleCloudDialogflowV2SuggestFaqAnswersRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' +
+        core.Uri.encodeFull('$parent') +
+        '/suggestions:suggestFaqAnswers';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2SuggestFaqAnswersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsKnowledgeBasesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsKnowledgeBasesDocumentsResource get documents =>
+      ProjectsLocationsKnowledgeBasesDocumentsResource(_requester);
+
+  ProjectsLocationsKnowledgeBasesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a knowledge base.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project to create a knowledge base for. Format:
+  /// `projects//locations/`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2KnowledgeBase].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2KnowledgeBase> create(
+    GoogleCloudDialogflowV2KnowledgeBase request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/knowledgeBases';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2KnowledgeBase.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the specified knowledge base.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the knowledge base to delete. Format:
+  /// `projects//locations//knowledgeBases/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/knowledgeBases/\[^/\]+$`.
+  ///
+  /// [force] - Optional. Force deletes the knowledge base. When set to true,
+  /// any documents in the knowledge base are also deleted.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.bool? force,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (force != null) 'force': ['${force}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the specified knowledge base.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the knowledge base to retrieve. Format
+  /// `projects//locations//knowledgeBases/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/knowledgeBases/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2KnowledgeBase].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2KnowledgeBase> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2KnowledgeBase.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the list of all knowledge bases of the specified agent.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project to list of knowledge bases for. Format:
+  /// `projects//locations/`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of items to return in a single page. By
+  /// default 10 and at most 100.
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous list
+  /// request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2ListKnowledgeBasesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2ListKnowledgeBasesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/knowledgeBases';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2ListKnowledgeBasesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the specified knowledge base.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The knowledge base resource name. The name must be empty when
+  /// creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/knowledgeBases/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. Not specified means `update all`. Currently, only
+  /// `display_name` can be updated, an InvalidArgument will be returned for
+  /// attempting to update other fields.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2KnowledgeBase].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2KnowledgeBase> patch(
+    GoogleCloudDialogflowV2KnowledgeBase request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2KnowledgeBase.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsKnowledgeBasesDocumentsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsKnowledgeBasesDocumentsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new document.
+  ///
+  /// Operation
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The knowledge base to create a document for. Format:
+  /// `projects//locations//knowledgeBases/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/knowledgeBases/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    GoogleCloudDialogflowV2Document request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/documents';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the specified document.
+  ///
+  /// Operation
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the document to delete. Format:
+  /// `projects//locations//knowledgeBases//documents/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/knowledgeBases/\[^/\]+/documents/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the specified document.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the document to retrieve. Format
+  /// `projects//locations//knowledgeBases//documents/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/knowledgeBases/\[^/\]+/documents/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Document].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Document> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2Document.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the list of all documents of the knowledge base.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The knowledge base to list all documents for. Format:
+  /// `projects//locations//knowledgeBases/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/knowledgeBases/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of items to return in a single page. By
+  /// default 10 and at most 100.
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous list
+  /// request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2ListDocumentsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2ListDocumentsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/documents';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2ListDocumentsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the specified document.
+  ///
+  /// Operation
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Optional. The document resource name. The name must be empty when
+  /// creating a document. Format:
+  /// `projects//locations//knowledgeBases//documents/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/knowledgeBases/\[^/\]+/documents/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. Not specified means `update all`. Currently, only
+  /// `display_name` can be updated, an InvalidArgument will be returned for
+  /// attempting to update other fields.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> patch(
+    GoogleCloudDialogflowV2Document request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Reloads the specified document from its specified source, content_uri or
+  /// content.
+  ///
+  /// The previously loaded content of the document will be deleted. Note: Even
+  /// when the content of the document has not changed, there still may be side
+  /// effects because of internal implementation changes. Note: The
+  /// `projects.agent.knowledgeBases.documents` resource is deprecated; only use
+  /// `projects.knowledgeBases.documents`. Operation
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the document to reload. Format:
+  /// `projects//locations//knowledgeBases//documents/`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/knowledgeBases/\[^/\]+/documents/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> reload(
+    GoogleCloudDialogflowV2ReloadDocumentRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + ':reload';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsOperationsResource {
@@ -3608,6 +10809,41 @@ class GoogleCloudDialogflowCxV3ExportAgentResponse {
       };
 }
 
+/// The response message for Flows.ExportFlow.
+class GoogleCloudDialogflowCxV3ExportFlowResponse {
+  /// Uncompressed raw byte content for flow.
+  core.String? flowContent;
+  core.List<core.int> get flowContentAsBytes =>
+      convert.base64.decode(flowContent!);
+
+  set flowContentAsBytes(core.List<core.int> _bytes) {
+    flowContent =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// The URI to a file containing the exported flow.
+  ///
+  /// This field is populated only if `flow_uri` is specified in
+  /// ExportFlowRequest.
+  core.String? flowUri;
+
+  GoogleCloudDialogflowCxV3ExportFlowResponse();
+
+  GoogleCloudDialogflowCxV3ExportFlowResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('flowContent')) {
+      flowContent = _json['flowContent'] as core.String;
+    }
+    if (_json.containsKey('flowUri')) {
+      flowUri = _json['flowUri'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (flowContent != null) 'flowContent': flowContent!,
+        if (flowUri != null) 'flowUri': flowUri!,
+      };
+}
+
 /// Metadata returned for the TestCases.ExportTestCases long running operation.
 class GoogleCloudDialogflowCxV3ExportTestCasesMetadata {
   GoogleCloudDialogflowCxV3ExportTestCasesMetadata();
@@ -4104,6 +11340,26 @@ class GoogleCloudDialogflowCxV3ImportDocumentsResponse {
       };
 }
 
+/// The response message for Flows.ImportFlow.
+class GoogleCloudDialogflowCxV3ImportFlowResponse {
+  /// The unique identifier of the new flow.
+  ///
+  /// Format: `projects//locations//agents//flows/`.
+  core.String? flow;
+
+  GoogleCloudDialogflowCxV3ImportFlowResponse();
+
+  GoogleCloudDialogflowCxV3ImportFlowResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('flow')) {
+      flow = _json['flow'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (flow != null) 'flow': flow!,
+      };
+}
+
 /// Metadata returned for the TestCases.ImportTestCases long running operation.
 class GoogleCloudDialogflowCxV3ImportTestCasesMetadata {
   /// Errors for failed test cases.
@@ -4314,8 +11570,6 @@ class GoogleCloudDialogflowCxV3Intent {
   /// scope, content, result etc.
   ///
   /// Maximum character limit: 140 characters.
-  ///
-  /// Optional.
   core.String? description;
 
   /// The human-readable name of the intent, unique within the agent.
@@ -4342,8 +11596,6 @@ class GoogleCloudDialogflowCxV3Intent {
   /// include: * sys.head * sys.contextual The above labels do not require
   /// value. "sys.head" means the intent is a head intent. "sys.contextual"
   /// means the intent is a contextual intent.
-  ///
-  /// Optional.
   core.Map<core.String, core.String>? labels;
 
   /// The unique identifier of the intent.
@@ -5811,6 +13063,9 @@ class GoogleCloudDialogflowCxV3UpdateDocumentOperationMetadata {
 }
 
 /// The request message for a webhook call.
+///
+/// The request is sent as a JSON object and the field names will be presented
+/// in camel cases.
 class GoogleCloudDialogflowCxV3WebhookRequest {
   /// Always present.
   ///
@@ -5825,6 +13080,9 @@ class GoogleCloudDialogflowCxV3WebhookRequest {
 
   /// Information about the last matched intent.
   GoogleCloudDialogflowCxV3WebhookRequestIntentInfo? intentInfo;
+
+  /// The language code specified in the original request.
+  core.String? languageCode;
 
   /// The list of rich message responses to present to the user.
   ///
@@ -5851,6 +13109,24 @@ class GoogleCloudDialogflowCxV3WebhookRequest {
   /// Information about session status.
   GoogleCloudDialogflowCxV3SessionInfo? sessionInfo;
 
+  /// If natural language text was provided as input, this field will contain a
+  /// copy of the text.
+  core.String? text;
+
+  /// If natural language speech audio was provided as input, this field will
+  /// contain the transcript for the audio.
+  core.String? transcript;
+
+  /// If an event was provided as input, this field will contain the name of the
+  /// event.
+  core.String? triggerEvent;
+
+  /// If an intent was provided as input, this field will contain a copy of the
+  /// intent identifier.
+  ///
+  /// Format: `projects//locations//agents//intents/`.
+  core.String? triggerIntent;
+
   GoogleCloudDialogflowCxV3WebhookRequest();
 
   GoogleCloudDialogflowCxV3WebhookRequest.fromJson(core.Map _json) {
@@ -5865,6 +13141,9 @@ class GoogleCloudDialogflowCxV3WebhookRequest {
     if (_json.containsKey('intentInfo')) {
       intentInfo = GoogleCloudDialogflowCxV3WebhookRequestIntentInfo.fromJson(
           _json['intentInfo'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'] as core.String;
     }
     if (_json.containsKey('messages')) {
       messages = (_json['messages'] as core.List)
@@ -5895,6 +13174,18 @@ class GoogleCloudDialogflowCxV3WebhookRequest {
       sessionInfo = GoogleCloudDialogflowCxV3SessionInfo.fromJson(
           _json['sessionInfo'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('text')) {
+      text = _json['text'] as core.String;
+    }
+    if (_json.containsKey('transcript')) {
+      transcript = _json['transcript'] as core.String;
+    }
+    if (_json.containsKey('triggerEvent')) {
+      triggerEvent = _json['triggerEvent'] as core.String;
+    }
+    if (_json.containsKey('triggerIntent')) {
+      triggerIntent = _json['triggerIntent'] as core.String;
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5903,6 +13194,7 @@ class GoogleCloudDialogflowCxV3WebhookRequest {
         if (fulfillmentInfo != null)
           'fulfillmentInfo': fulfillmentInfo!.toJson(),
         if (intentInfo != null) 'intentInfo': intentInfo!.toJson(),
+        if (languageCode != null) 'languageCode': languageCode!,
         if (messages != null)
           'messages': messages!.map((value) => value.toJson()).toList(),
         if (pageInfo != null) 'pageInfo': pageInfo!.toJson(),
@@ -5910,6 +13202,10 @@ class GoogleCloudDialogflowCxV3WebhookRequest {
         if (sentimentAnalysisResult != null)
           'sentimentAnalysisResult': sentimentAnalysisResult!.toJson(),
         if (sessionInfo != null) 'sessionInfo': sessionInfo!.toJson(),
+        if (text != null) 'text': text!,
+        if (transcript != null) 'transcript': transcript!,
+        if (triggerEvent != null) 'triggerEvent': triggerEvent!,
+        if (triggerIntent != null) 'triggerIntent': triggerIntent!,
       };
 }
 
@@ -6672,6 +13968,41 @@ class GoogleCloudDialogflowCxV3beta1ExportAgentResponse {
       };
 }
 
+/// The response message for Flows.ExportFlow.
+class GoogleCloudDialogflowCxV3beta1ExportFlowResponse {
+  /// Uncompressed raw byte content for flow.
+  core.String? flowContent;
+  core.List<core.int> get flowContentAsBytes =>
+      convert.base64.decode(flowContent!);
+
+  set flowContentAsBytes(core.List<core.int> _bytes) {
+    flowContent =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// The URI to a file containing the exported flow.
+  ///
+  /// This field is populated only if `flow_uri` is specified in
+  /// ExportFlowRequest.
+  core.String? flowUri;
+
+  GoogleCloudDialogflowCxV3beta1ExportFlowResponse();
+
+  GoogleCloudDialogflowCxV3beta1ExportFlowResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('flowContent')) {
+      flowContent = _json['flowContent'] as core.String;
+    }
+    if (_json.containsKey('flowUri')) {
+      flowUri = _json['flowUri'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (flowContent != null) 'flowContent': flowContent!,
+        if (flowUri != null) 'flowUri': flowUri!,
+      };
+}
+
 /// Metadata returned for the TestCases.ExportTestCases long running operation.
 class GoogleCloudDialogflowCxV3beta1ExportTestCasesMetadata {
   GoogleCloudDialogflowCxV3beta1ExportTestCasesMetadata();
@@ -7177,6 +14508,26 @@ class GoogleCloudDialogflowCxV3beta1ImportDocumentsResponse {
       };
 }
 
+/// The response message for Flows.ImportFlow.
+class GoogleCloudDialogflowCxV3beta1ImportFlowResponse {
+  /// The unique identifier of the new flow.
+  ///
+  /// Format: `projects//locations//agents//flows/`.
+  core.String? flow;
+
+  GoogleCloudDialogflowCxV3beta1ImportFlowResponse();
+
+  GoogleCloudDialogflowCxV3beta1ImportFlowResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('flow')) {
+      flow = _json['flow'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (flow != null) 'flow': flow!,
+      };
+}
+
 /// Metadata returned for the TestCases.ImportTestCases long running operation.
 class GoogleCloudDialogflowCxV3beta1ImportTestCasesMetadata {
   /// Errors for failed test cases.
@@ -7389,8 +14740,6 @@ class GoogleCloudDialogflowCxV3beta1Intent {
   /// scope, content, result etc.
   ///
   /// Maximum character limit: 140 characters.
-  ///
-  /// Optional.
   core.String? description;
 
   /// The human-readable name of the intent, unique within the agent.
@@ -7417,8 +14766,6 @@ class GoogleCloudDialogflowCxV3beta1Intent {
   /// include: * sys-head * sys-contextual The above labels do not require
   /// value. "sys-head" means the intent is a head intent. "sys-contextual"
   /// means the intent is a contextual intent.
-  ///
-  /// Optional.
   core.Map<core.String, core.String>? labels;
 
   /// The unique identifier of the intent.
@@ -8899,6 +16246,9 @@ class GoogleCloudDialogflowCxV3beta1UpdateDocumentOperationMetadata {
 }
 
 /// The request message for a webhook call.
+///
+/// The request is sent as a JSON object and the field names will be presented
+/// in camel cases.
 class GoogleCloudDialogflowCxV3beta1WebhookRequest {
   /// Always present.
   ///
@@ -8913,6 +16263,9 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequest {
 
   /// Information about the last matched intent.
   GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo? intentInfo;
+
+  /// The language code specified in the original request.
+  core.String? languageCode;
 
   /// The list of rich message responses to present to the user.
   ///
@@ -8939,6 +16292,24 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequest {
   /// Information about session status.
   GoogleCloudDialogflowCxV3beta1SessionInfo? sessionInfo;
 
+  /// If natural language text was provided as input, this field will contain a
+  /// copy of the text.
+  core.String? text;
+
+  /// If natural language speech audio was provided as input, this field will
+  /// contain the transcript for the audio.
+  core.String? transcript;
+
+  /// If an event was provided as input, this field will contain the name of the
+  /// event.
+  core.String? triggerEvent;
+
+  /// If an intent was provided as input, this field will contain a copy of the
+  /// intent identifier.
+  ///
+  /// Format: `projects//locations//agents//intents/`.
+  core.String? triggerIntent;
+
   GoogleCloudDialogflowCxV3beta1WebhookRequest();
 
   GoogleCloudDialogflowCxV3beta1WebhookRequest.fromJson(core.Map _json) {
@@ -8954,6 +16325,9 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequest {
       intentInfo =
           GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo.fromJson(
               _json['intentInfo'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'] as core.String;
     }
     if (_json.containsKey('messages')) {
       messages = (_json['messages'] as core.List)
@@ -8984,6 +16358,18 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequest {
       sessionInfo = GoogleCloudDialogflowCxV3beta1SessionInfo.fromJson(
           _json['sessionInfo'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('text')) {
+      text = _json['text'] as core.String;
+    }
+    if (_json.containsKey('transcript')) {
+      transcript = _json['transcript'] as core.String;
+    }
+    if (_json.containsKey('triggerEvent')) {
+      triggerEvent = _json['triggerEvent'] as core.String;
+    }
+    if (_json.containsKey('triggerIntent')) {
+      triggerIntent = _json['triggerIntent'] as core.String;
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8992,6 +16378,7 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequest {
         if (fulfillmentInfo != null)
           'fulfillmentInfo': fulfillmentInfo!.toJson(),
         if (intentInfo != null) 'intentInfo': intentInfo!.toJson(),
+        if (languageCode != null) 'languageCode': languageCode!,
         if (messages != null)
           'messages': messages!.map((value) => value.toJson()).toList(),
         if (pageInfo != null) 'pageInfo': pageInfo!.toJson(),
@@ -8999,6 +16386,10 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequest {
         if (sentimentAnalysisResult != null)
           'sentimentAnalysisResult': sentimentAnalysisResult!.toJson(),
         if (sessionInfo != null) 'sessionInfo': sessionInfo!.toJson(),
+        if (text != null) 'text': text!,
+        if (transcript != null) 'transcript': transcript!,
+        if (triggerEvent != null) 'triggerEvent': triggerEvent!,
+        if (triggerIntent != null) 'triggerIntent': triggerIntent!,
       };
 }
 
@@ -9446,6 +16837,266 @@ class GoogleCloudDialogflowV2Agent {
       };
 }
 
+/// Detail feedback of Agent Assist result.
+class GoogleCloudDialogflowV2AgentAssistantFeedback {
+  /// Whether or not the suggested answer is relevant.
+  ///
+  /// For example: * Query: "Can I change my mailing address?" * Suggested
+  /// document says: "Items must be returned/exchanged within 60 days of the
+  /// purchase date." * answer_relevance: AnswerRelevance.IRRELEVANT
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ANSWER_RELEVANCE_UNSPECIFIED" : Answer relevance unspecified.
+  /// - "IRRELEVANT" : Answer is irrelevant to query.
+  /// - "RELEVANT" : Answer is relevant to query.
+  core.String? answerRelevance;
+
+  /// Whether or not the information in the document is correct.
+  ///
+  /// For example: * Query: "Can I return the package in 2 days once received?"
+  /// * Suggested document says: "Items must be returned/exchanged within 60
+  /// days of the purchase date." * Ground truth: "No return or exchange is
+  /// allowed." * \[document_correctness\]: INCORRECT
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DOCUMENT_CORRECTNESS_UNSPECIFIED" : Document correctness unspecified.
+  /// - "INCORRECT" : Information in document is incorrect.
+  /// - "CORRECT" : Information in document is correct.
+  core.String? documentCorrectness;
+
+  /// Whether or not the suggested document is efficient.
+  ///
+  /// For example, if the document is poorly written, hard to understand, hard
+  /// to use or too long to find useful information, document_efficiency is
+  /// DocumentEfficiency.INEFFICIENT.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DOCUMENT_EFFICIENCY_UNSPECIFIED" : Document efficiency unspecified.
+  /// - "INEFFICIENT" : Document is inefficient.
+  /// - "EFFICIENT" : Document is efficient.
+  core.String? documentEfficiency;
+
+  GoogleCloudDialogflowV2AgentAssistantFeedback();
+
+  GoogleCloudDialogflowV2AgentAssistantFeedback.fromJson(core.Map _json) {
+    if (_json.containsKey('answerRelevance')) {
+      answerRelevance = _json['answerRelevance'] as core.String;
+    }
+    if (_json.containsKey('documentCorrectness')) {
+      documentCorrectness = _json['documentCorrectness'] as core.String;
+    }
+    if (_json.containsKey('documentEfficiency')) {
+      documentEfficiency = _json['documentEfficiency'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (answerRelevance != null) 'answerRelevance': answerRelevance!,
+        if (documentCorrectness != null)
+          'documentCorrectness': documentCorrectness!,
+        if (documentEfficiency != null)
+          'documentEfficiency': documentEfficiency!,
+      };
+}
+
+/// Represents a record of a human agent assist answer.
+class GoogleCloudDialogflowV2AgentAssistantRecord {
+  /// The article suggestion answer.
+  ///
+  /// Output only.
+  GoogleCloudDialogflowV2ArticleAnswer? articleSuggestionAnswer;
+
+  /// The FAQ answer.
+  ///
+  /// Output only.
+  GoogleCloudDialogflowV2FaqAnswer? faqAnswer;
+
+  GoogleCloudDialogflowV2AgentAssistantRecord();
+
+  GoogleCloudDialogflowV2AgentAssistantRecord.fromJson(core.Map _json) {
+    if (_json.containsKey('articleSuggestionAnswer')) {
+      articleSuggestionAnswer = GoogleCloudDialogflowV2ArticleAnswer.fromJson(
+          _json['articleSuggestionAnswer']
+              as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('faqAnswer')) {
+      faqAnswer = GoogleCloudDialogflowV2FaqAnswer.fromJson(
+          _json['faqAnswer'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (articleSuggestionAnswer != null)
+          'articleSuggestionAnswer': articleSuggestionAnswer!.toJson(),
+        if (faqAnswer != null) 'faqAnswer': faqAnswer!.toJson(),
+      };
+}
+
+/// The request message for Participants.AnalyzeContent.
+class GoogleCloudDialogflowV2AnalyzeContentRequest {
+  /// An input event to send to Dialogflow.
+  GoogleCloudDialogflowV2EventInput? eventInput;
+
+  /// Parameters for a Dialogflow virtual-agent query.
+  GoogleCloudDialogflowV2QueryParameters? queryParams;
+
+  /// Speech synthesis configuration.
+  ///
+  /// The speech synthesis settings for a virtual agent that may be configured
+  /// for the associated conversation profile are not used when calling
+  /// AnalyzeContent. If this configuration is not supplied, speech synthesis is
+  /// disabled.
+  GoogleCloudDialogflowV2OutputAudioConfig? replyAudioConfig;
+
+  /// A unique identifier for this request.
+  ///
+  /// Restricted to 36 ASCII characters. A random UUID is recommended. This
+  /// request is only idempotent if a `request_id` is provided.
+  core.String? requestId;
+
+  /// The natural language text to be processed.
+  GoogleCloudDialogflowV2TextInput? textInput;
+
+  GoogleCloudDialogflowV2AnalyzeContentRequest();
+
+  GoogleCloudDialogflowV2AnalyzeContentRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('eventInput')) {
+      eventInput = GoogleCloudDialogflowV2EventInput.fromJson(
+          _json['eventInput'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('queryParams')) {
+      queryParams = GoogleCloudDialogflowV2QueryParameters.fromJson(
+          _json['queryParams'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('replyAudioConfig')) {
+      replyAudioConfig = GoogleCloudDialogflowV2OutputAudioConfig.fromJson(
+          _json['replyAudioConfig'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('requestId')) {
+      requestId = _json['requestId'] as core.String;
+    }
+    if (_json.containsKey('textInput')) {
+      textInput = GoogleCloudDialogflowV2TextInput.fromJson(
+          _json['textInput'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (eventInput != null) 'eventInput': eventInput!.toJson(),
+        if (queryParams != null) 'queryParams': queryParams!.toJson(),
+        if (replyAudioConfig != null)
+          'replyAudioConfig': replyAudioConfig!.toJson(),
+        if (requestId != null) 'requestId': requestId!,
+        if (textInput != null) 'textInput': textInput!.toJson(),
+      };
+}
+
+/// The response message for Participants.AnalyzeContent.
+class GoogleCloudDialogflowV2AnalyzeContentResponse {
+  /// Only set if a Dialogflow automated agent has responded.
+  ///
+  /// Note that: AutomatedAgentReply.detect_intent_response.output_audio and
+  /// AutomatedAgentReply.detect_intent_response.output_audio_config are always
+  /// empty, use reply_audio instead.
+  GoogleCloudDialogflowV2AutomatedAgentReply? automatedAgentReply;
+
+  /// Indicates the parameters of DTMF.
+  GoogleCloudDialogflowV2DtmfParameters? dtmfParameters;
+
+  /// The suggestions for end user.
+  ///
+  /// The order is the same as
+  /// HumanAgentAssistantConfig.SuggestionConfig.feature_configs of
+  /// HumanAgentAssistantConfig.end_user_suggestion_config.
+  core.List<GoogleCloudDialogflowV2SuggestionResult>? endUserSuggestionResults;
+
+  /// The suggestions for most recent human agent.
+  ///
+  /// The order is the same as
+  /// HumanAgentAssistantConfig.SuggestionConfig.feature_configs of
+  /// HumanAgentAssistantConfig.human_agent_suggestion_config.
+  core.List<GoogleCloudDialogflowV2SuggestionResult>?
+      humanAgentSuggestionResults;
+
+  /// Message analyzed by CCAI.
+  GoogleCloudDialogflowV2Message? message;
+
+  /// The audio data bytes encoded as specified in the request.
+  ///
+  /// This field is set if: - `reply_audio_config` was specified in the request,
+  /// or - The automated agent responded with audio to play to the user. In such
+  /// case, `reply_audio.config` contains settings used to synthesize the
+  /// speech. In some scenarios, multiple output audio fields may be present in
+  /// the response structure. In these cases, only the top-most-level audio
+  /// output has content.
+  GoogleCloudDialogflowV2OutputAudio? replyAudio;
+
+  /// The output text content.
+  ///
+  /// This field is set if the automated agent responded with text to show to
+  /// the user.
+  core.String? replyText;
+
+  GoogleCloudDialogflowV2AnalyzeContentResponse();
+
+  GoogleCloudDialogflowV2AnalyzeContentResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('automatedAgentReply')) {
+      automatedAgentReply = GoogleCloudDialogflowV2AutomatedAgentReply.fromJson(
+          _json['automatedAgentReply'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('dtmfParameters')) {
+      dtmfParameters = GoogleCloudDialogflowV2DtmfParameters.fromJson(
+          _json['dtmfParameters'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('endUserSuggestionResults')) {
+      endUserSuggestionResults =
+          (_json['endUserSuggestionResults'] as core.List)
+              .map<GoogleCloudDialogflowV2SuggestionResult>((value) =>
+                  GoogleCloudDialogflowV2SuggestionResult.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList();
+    }
+    if (_json.containsKey('humanAgentSuggestionResults')) {
+      humanAgentSuggestionResults =
+          (_json['humanAgentSuggestionResults'] as core.List)
+              .map<GoogleCloudDialogflowV2SuggestionResult>((value) =>
+                  GoogleCloudDialogflowV2SuggestionResult.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList();
+    }
+    if (_json.containsKey('message')) {
+      message = GoogleCloudDialogflowV2Message.fromJson(
+          _json['message'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('replyAudio')) {
+      replyAudio = GoogleCloudDialogflowV2OutputAudio.fromJson(
+          _json['replyAudio'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('replyText')) {
+      replyText = _json['replyText'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (automatedAgentReply != null)
+          'automatedAgentReply': automatedAgentReply!.toJson(),
+        if (dtmfParameters != null) 'dtmfParameters': dtmfParameters!.toJson(),
+        if (endUserSuggestionResults != null)
+          'endUserSuggestionResults':
+              endUserSuggestionResults!.map((value) => value.toJson()).toList(),
+        if (humanAgentSuggestionResults != null)
+          'humanAgentSuggestionResults': humanAgentSuggestionResults!
+              .map((value) => value.toJson())
+              .toList(),
+        if (message != null) 'message': message!.toJson(),
+        if (replyAudio != null) 'replyAudio': replyAudio!.toJson(),
+        if (replyText != null) 'replyText': replyText!,
+      };
+}
+
 /// Represents a part of a message possibly annotated with an entity.
 ///
 /// The part can be an entity or purely a part of the message between two
@@ -9491,6 +17142,253 @@ class GoogleCloudDialogflowV2AnnotatedMessagePart {
         if (entityType != null) 'entityType': entityType!,
         if (formattedValue != null) 'formattedValue': formattedValue!,
         if (text != null) 'text': text!,
+      };
+}
+
+/// Represents feedback the customer has about the quality & correctness of a
+/// certain answer in a conversation.
+class GoogleCloudDialogflowV2AnswerFeedback {
+  /// Detail feedback of agent assist suggestions.
+  GoogleCloudDialogflowV2AgentAssistantFeedback? agentAssistantDetailFeedback;
+
+  /// Time when the answer/item was clicked.
+  core.String? clickTime;
+
+  /// Indicates whether the answer/item was clicked by the human agent or not.
+  ///
+  /// Default to false.
+  core.bool? clicked;
+
+  /// The correctness level of the specific answer.
+  /// Possible string values are:
+  /// - "CORRECTNESS_LEVEL_UNSPECIFIED" : Correctness level unspecified.
+  /// - "NOT_CORRECT" : Answer is totally wrong.
+  /// - "PARTIALLY_CORRECT" : Answer is partially correct.
+  /// - "FULLY_CORRECT" : Answer is fully correct.
+  core.String? correctnessLevel;
+
+  /// Time when the answer/item was displayed.
+  core.String? displayTime;
+
+  /// Indicates whether the answer/item was displayed to the human agent in the
+  /// agent desktop UI.
+  ///
+  /// Default to false.
+  core.bool? displayed;
+
+  GoogleCloudDialogflowV2AnswerFeedback();
+
+  GoogleCloudDialogflowV2AnswerFeedback.fromJson(core.Map _json) {
+    if (_json.containsKey('agentAssistantDetailFeedback')) {
+      agentAssistantDetailFeedback =
+          GoogleCloudDialogflowV2AgentAssistantFeedback.fromJson(
+              _json['agentAssistantDetailFeedback']
+                  as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('clickTime')) {
+      clickTime = _json['clickTime'] as core.String;
+    }
+    if (_json.containsKey('clicked')) {
+      clicked = _json['clicked'] as core.bool;
+    }
+    if (_json.containsKey('correctnessLevel')) {
+      correctnessLevel = _json['correctnessLevel'] as core.String;
+    }
+    if (_json.containsKey('displayTime')) {
+      displayTime = _json['displayTime'] as core.String;
+    }
+    if (_json.containsKey('displayed')) {
+      displayed = _json['displayed'] as core.bool;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (agentAssistantDetailFeedback != null)
+          'agentAssistantDetailFeedback':
+              agentAssistantDetailFeedback!.toJson(),
+        if (clickTime != null) 'clickTime': clickTime!,
+        if (clicked != null) 'clicked': clicked!,
+        if (correctnessLevel != null) 'correctnessLevel': correctnessLevel!,
+        if (displayTime != null) 'displayTime': displayTime!,
+        if (displayed != null) 'displayed': displayed!,
+      };
+}
+
+/// Answer records are records to manage answer history and feedbacks for
+/// Dialogflow.
+///
+/// Currently, answer record includes: - human agent assistant article
+/// suggestion - human agent assistant faq article It doesn't include: -
+/// `DetectIntent` intent matching - `DetectIntent` knowledge Answer records are
+/// not related to the conversation history in the Dialogflow Console. A Record
+/// is generated even when the end-user disables conversation history in the
+/// console. Records are created when there's a human agent assistant suggestion
+/// generated. A typical workflow for customers provide feedback to an answer
+/// is: 1. For human agent assistant, customers get suggestion via
+/// ListSuggestions API. Together with the answers, AnswerRecord.name are
+/// returned to the customers. 2. The customer uses the AnswerRecord.name to
+/// call the UpdateAnswerRecord method to send feedback about a specific answer
+/// that they believe is wrong.
+class GoogleCloudDialogflowV2AnswerRecord {
+  /// The record for human agent assistant.
+  ///
+  /// Output only.
+  GoogleCloudDialogflowV2AgentAssistantRecord? agentAssistantRecord;
+
+  /// The AnswerFeedback for this record.
+  ///
+  /// You can set this with AnswerRecords.UpdateAnswerRecord in order to give us
+  /// feedback about this answer.
+  ///
+  /// Required.
+  GoogleCloudDialogflowV2AnswerFeedback? answerFeedback;
+
+  /// The unique identifier of this answer record.
+  ///
+  /// Format: `projects//locations//answerRecords/`.
+  core.String? name;
+
+  GoogleCloudDialogflowV2AnswerRecord();
+
+  GoogleCloudDialogflowV2AnswerRecord.fromJson(core.Map _json) {
+    if (_json.containsKey('agentAssistantRecord')) {
+      agentAssistantRecord =
+          GoogleCloudDialogflowV2AgentAssistantRecord.fromJson(
+              _json['agentAssistantRecord']
+                  as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('answerFeedback')) {
+      answerFeedback = GoogleCloudDialogflowV2AnswerFeedback.fromJson(
+          _json['answerFeedback'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (agentAssistantRecord != null)
+          'agentAssistantRecord': agentAssistantRecord!.toJson(),
+        if (answerFeedback != null) 'answerFeedback': answerFeedback!.toJson(),
+        if (name != null) 'name': name!,
+      };
+}
+
+/// Represents article answer.
+class GoogleCloudDialogflowV2ArticleAnswer {
+  /// The name of answer record, in the format of
+  /// "projects//locations//answerRecords/"
+  core.String? answerRecord;
+
+  /// Article match confidence.
+  ///
+  /// The system's confidence score that this article is a good match for this
+  /// conversation, as a value from 0.0 (completely uncertain) to 1.0
+  /// (completely certain).
+  core.double? confidence;
+
+  /// A map that contains metadata about the answer and the document from which
+  /// it originates.
+  core.Map<core.String, core.String>? metadata;
+
+  /// Article snippets.
+  core.List<core.String>? snippets;
+
+  /// The article title.
+  core.String? title;
+
+  /// The article URI.
+  core.String? uri;
+
+  GoogleCloudDialogflowV2ArticleAnswer();
+
+  GoogleCloudDialogflowV2ArticleAnswer.fromJson(core.Map _json) {
+    if (_json.containsKey('answerRecord')) {
+      answerRecord = _json['answerRecord'] as core.String;
+    }
+    if (_json.containsKey('confidence')) {
+      confidence = (_json['confidence'] as core.num).toDouble();
+    }
+    if (_json.containsKey('metadata')) {
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
+    }
+    if (_json.containsKey('snippets')) {
+      snippets = (_json['snippets'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('title')) {
+      title = _json['title'] as core.String;
+    }
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (answerRecord != null) 'answerRecord': answerRecord!,
+        if (confidence != null) 'confidence': confidence!,
+        if (metadata != null) 'metadata': metadata!,
+        if (snippets != null) 'snippets': snippets!,
+        if (title != null) 'title': title!,
+        if (uri != null) 'uri': uri!,
+      };
+}
+
+/// Defines the Automated Agent to connect to a conversation.
+class GoogleCloudDialogflowV2AutomatedAgentConfig {
+  /// ID of the Dialogflow agent environment to use.
+  ///
+  /// This project needs to either be the same project as the conversation or
+  /// you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the
+  /// `Dialogflow API Service Agent` role in this project. Format:
+  /// `projects//locations//agent/environments/`. If environment is not
+  /// specified, the default `draft` environment is used. Refer to
+  /// \[DetectIntentRequest\](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#google.cloud.dialogflow.v2.DetectIntentRequest)
+  /// for more details.
+  ///
+  /// Required.
+  core.String? agent;
+
+  GoogleCloudDialogflowV2AutomatedAgentConfig();
+
+  GoogleCloudDialogflowV2AutomatedAgentConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('agent')) {
+      agent = _json['agent'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (agent != null) 'agent': agent!,
+      };
+}
+
+/// Represents a response from an automated agent.
+class GoogleCloudDialogflowV2AutomatedAgentReply {
+  /// Response of the Dialogflow Sessions.DetectIntent call.
+  ///
+  /// Required.
+  GoogleCloudDialogflowV2DetectIntentResponse? detectIntentResponse;
+
+  GoogleCloudDialogflowV2AutomatedAgentReply();
+
+  GoogleCloudDialogflowV2AutomatedAgentReply.fromJson(core.Map _json) {
+    if (_json.containsKey('detectIntentResponse')) {
+      detectIntentResponse =
+          GoogleCloudDialogflowV2DetectIntentResponse.fromJson(
+              _json['detectIntentResponse']
+                  as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (detectIntentResponse != null)
+          'detectIntentResponse': detectIntentResponse!.toJson(),
       };
 }
 
@@ -9837,6 +17735,17 @@ class GoogleCloudDialogflowV2BatchUpdateIntentsResponse {
       };
 }
 
+/// The request message for Conversations.CompleteConversation.
+class GoogleCloudDialogflowV2CompleteConversationRequest {
+  GoogleCloudDialogflowV2CompleteConversationRequest();
+
+  GoogleCloudDialogflowV2CompleteConversationRequest.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
 /// Dialogflow contexts are similar to natural language context.
 ///
 /// If a person says to you "they are orange", you need context in order to
@@ -9920,6 +17829,111 @@ class GoogleCloudDialogflowV2Context {
       };
 }
 
+/// Represents a conversation.
+///
+/// A conversation is an interaction between an agent, including live agents and
+/// Dialogflow agents, and a support customer. Conversations can include phone
+/// calls and text-based chat sessions.
+class GoogleCloudDialogflowV2Conversation {
+  /// The Conversation Profile to be used to configure this Conversation.
+  ///
+  /// This field cannot be updated. Format:
+  /// `projects//locations//conversationProfiles/`.
+  ///
+  /// Required.
+  core.String? conversationProfile;
+
+  /// The stage of a conversation.
+  ///
+  /// It indicates whether the virtual agent or a human agent is handling the
+  /// conversation. If the conversation is created with the conversation profile
+  /// that has Dialogflow config set, defaults to
+  /// ConversationStage.VIRTUAL_AGENT_STAGE; Otherwise, defaults to
+  /// ConversationStage.HUMAN_ASSIST_STAGE. If the conversation is created with
+  /// the conversation profile that has Dialogflow config set but explicitly
+  /// sets conversation_stage to ConversationStage.HUMAN_ASSIST_STAGE, it skips
+  /// ConversationStage.VIRTUAL_AGENT_STAGE stage and directly goes to
+  /// ConversationStage.HUMAN_ASSIST_STAGE.
+  /// Possible string values are:
+  /// - "CONVERSATION_STAGE_UNSPECIFIED" : Unknown. Should never be used after a
+  /// conversation is successfully created.
+  /// - "VIRTUAL_AGENT_STAGE" : The conversation should return virtual agent
+  /// responses into the conversation.
+  /// - "HUMAN_ASSIST_STAGE" : The conversation should not provide responses,
+  /// just listen and provide suggestions.
+  core.String? conversationStage;
+
+  /// The time the conversation was finished.
+  ///
+  /// Output only.
+  core.String? endTime;
+
+  /// The current state of the Conversation.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "LIFECYCLE_STATE_UNSPECIFIED" : Unknown.
+  /// - "IN_PROGRESS" : Conversation is currently open for media analysis.
+  /// - "COMPLETED" : Conversation has been completed.
+  core.String? lifecycleState;
+
+  /// The unique identifier of this conversation.
+  ///
+  /// Format: `projects//locations//conversations/`.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// It will not be empty if the conversation is to be connected over
+  /// telephony.
+  ///
+  /// Output only.
+  GoogleCloudDialogflowV2ConversationPhoneNumber? phoneNumber;
+
+  /// The time the conversation was started.
+  ///
+  /// Output only.
+  core.String? startTime;
+
+  GoogleCloudDialogflowV2Conversation();
+
+  GoogleCloudDialogflowV2Conversation.fromJson(core.Map _json) {
+    if (_json.containsKey('conversationProfile')) {
+      conversationProfile = _json['conversationProfile'] as core.String;
+    }
+    if (_json.containsKey('conversationStage')) {
+      conversationStage = _json['conversationStage'] as core.String;
+    }
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'] as core.String;
+    }
+    if (_json.containsKey('lifecycleState')) {
+      lifecycleState = _json['lifecycleState'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('phoneNumber')) {
+      phoneNumber = GoogleCloudDialogflowV2ConversationPhoneNumber.fromJson(
+          _json['phoneNumber'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conversationProfile != null)
+          'conversationProfile': conversationProfile!,
+        if (conversationStage != null) 'conversationStage': conversationStage!,
+        if (endTime != null) 'endTime': endTime!,
+        if (lifecycleState != null) 'lifecycleState': lifecycleState!,
+        if (name != null) 'name': name!,
+        if (phoneNumber != null) 'phoneNumber': phoneNumber!.toJson(),
+        if (startTime != null) 'startTime': startTime!,
+      };
+}
+
 /// Represents a notification sent to Pub/Sub subscribers for conversation
 /// lifecycle events.
 class GoogleCloudDialogflowV2ConversationEvent {
@@ -9983,6 +17997,162 @@ class GoogleCloudDialogflowV2ConversationEvent {
         if (newMessagePayload != null)
           'newMessagePayload': newMessagePayload!.toJson(),
         if (type != null) 'type': type!,
+      };
+}
+
+/// Represents a phone number for telephony integration.
+///
+/// It allows for connecting a particular conversation over telephony.
+class GoogleCloudDialogflowV2ConversationPhoneNumber {
+  /// The phone number to connect to this conversation.
+  ///
+  /// Output only.
+  core.String? phoneNumber;
+
+  GoogleCloudDialogflowV2ConversationPhoneNumber();
+
+  GoogleCloudDialogflowV2ConversationPhoneNumber.fromJson(core.Map _json) {
+    if (_json.containsKey('phoneNumber')) {
+      phoneNumber = _json['phoneNumber'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (phoneNumber != null) 'phoneNumber': phoneNumber!,
+      };
+}
+
+/// Defines the services to connect to incoming Dialogflow conversations.
+class GoogleCloudDialogflowV2ConversationProfile {
+  /// Configuration for an automated agent to use with this profile.
+  GoogleCloudDialogflowV2AutomatedAgentConfig? automatedAgentConfig;
+
+  /// Create time of the conversation profile.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Human readable name for this profile.
+  ///
+  /// Max length 1024 bytes.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// Configuration for agent assistance to use with this profile.
+  GoogleCloudDialogflowV2HumanAgentAssistantConfig? humanAgentAssistantConfig;
+
+  /// Configuration for connecting to a live agent.
+  ///
+  /// Currently, this feature is not general available, please contact Google to
+  /// get access.
+  GoogleCloudDialogflowV2HumanAgentHandoffConfig? humanAgentHandoffConfig;
+
+  /// Language which represents the conversationProfile.
+  ///
+  /// If unspecified, the default language code en-us applies. Users need to
+  /// create a ConversationProfile for each language they want to support.
+  core.String? languageCode;
+
+  /// Configuration for logging conversation lifecycle events.
+  GoogleCloudDialogflowV2LoggingConfig? loggingConfig;
+
+  /// The unique identifier of this conversation profile.
+  ///
+  /// Format: `projects//locations//conversationProfiles/`.
+  core.String? name;
+
+  /// Configuration for publishing new message events.
+  ///
+  /// Event will be sent in format of ConversationEvent
+  GoogleCloudDialogflowV2NotificationConfig? newMessageEventNotificationConfig;
+
+  /// Configuration for publishing conversation lifecycle events.
+  GoogleCloudDialogflowV2NotificationConfig? notificationConfig;
+
+  /// Settings for speech transcription.
+  GoogleCloudDialogflowV2SpeechToTextConfig? sttConfig;
+
+  /// Update time of the conversation profile.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudDialogflowV2ConversationProfile();
+
+  GoogleCloudDialogflowV2ConversationProfile.fromJson(core.Map _json) {
+    if (_json.containsKey('automatedAgentConfig')) {
+      automatedAgentConfig =
+          GoogleCloudDialogflowV2AutomatedAgentConfig.fromJson(
+              _json['automatedAgentConfig']
+                  as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'] as core.String;
+    }
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'] as core.String;
+    }
+    if (_json.containsKey('humanAgentAssistantConfig')) {
+      humanAgentAssistantConfig =
+          GoogleCloudDialogflowV2HumanAgentAssistantConfig.fromJson(
+              _json['humanAgentAssistantConfig']
+                  as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('humanAgentHandoffConfig')) {
+      humanAgentHandoffConfig =
+          GoogleCloudDialogflowV2HumanAgentHandoffConfig.fromJson(
+              _json['humanAgentHandoffConfig']
+                  as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'] as core.String;
+    }
+    if (_json.containsKey('loggingConfig')) {
+      loggingConfig = GoogleCloudDialogflowV2LoggingConfig.fromJson(
+          _json['loggingConfig'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('newMessageEventNotificationConfig')) {
+      newMessageEventNotificationConfig =
+          GoogleCloudDialogflowV2NotificationConfig.fromJson(
+              _json['newMessageEventNotificationConfig']
+                  as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('notificationConfig')) {
+      notificationConfig = GoogleCloudDialogflowV2NotificationConfig.fromJson(
+          _json['notificationConfig'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('sttConfig')) {
+      sttConfig = GoogleCloudDialogflowV2SpeechToTextConfig.fromJson(
+          _json['sttConfig'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (automatedAgentConfig != null)
+          'automatedAgentConfig': automatedAgentConfig!.toJson(),
+        if (createTime != null) 'createTime': createTime!,
+        if (displayName != null) 'displayName': displayName!,
+        if (humanAgentAssistantConfig != null)
+          'humanAgentAssistantConfig': humanAgentAssistantConfig!.toJson(),
+        if (humanAgentHandoffConfig != null)
+          'humanAgentHandoffConfig': humanAgentHandoffConfig!.toJson(),
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (loggingConfig != null) 'loggingConfig': loggingConfig!.toJson(),
+        if (name != null) 'name': name!,
+        if (newMessageEventNotificationConfig != null)
+          'newMessageEventNotificationConfig':
+              newMessageEventNotificationConfig!.toJson(),
+        if (notificationConfig != null)
+          'notificationConfig': notificationConfig!.toJson(),
+        if (sttConfig != null) 'sttConfig': sttConfig!.toJson(),
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -10128,6 +18298,195 @@ class GoogleCloudDialogflowV2DetectIntentResponse {
         if (queryResult != null) 'queryResult': queryResult!.toJson(),
         if (responseId != null) 'responseId': responseId!,
         if (webhookStatus != null) 'webhookStatus': webhookStatus!.toJson(),
+      };
+}
+
+/// A knowledge document to be used by a KnowledgeBase.
+///
+/// For more information, see the
+/// [knowledge base guide](https://cloud.google.com/dialogflow/docs/how/knowledge-bases).
+/// Note: The `projects.agent.knowledgeBases.documents` resource is deprecated;
+/// only use `projects.knowledgeBases.documents`.
+class GoogleCloudDialogflowV2Document {
+  /// The URI where the file content is located.
+  ///
+  /// For documents stored in Google Cloud Storage, these URIs must have the
+  /// form `gs:///`. NOTE: External URLs must correspond to public webpages,
+  /// i.e., they must be indexed by Google Search. In particular, URLs for
+  /// showing documents in Google Cloud Storage (i.e. the URL in your browser)
+  /// are not supported. Instead use the `gs://` format URI described above.
+  core.String? contentUri;
+
+  /// The display name of the document.
+  ///
+  /// The name must be 1024 bytes or less; otherwise, the creation request
+  /// fails.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// If true, we try to automatically reload the document every day (at a time
+  /// picked by the system).
+  ///
+  /// If false or unspecified, we don't try to automatically reload the
+  /// document. Currently you can only enable automatic reload for documents
+  /// sourced from a public url, see `source` field for the source types. Reload
+  /// status can be tracked in `latest_reload_status`. If a reload fails, we
+  /// will keep the document unchanged. If a reload fails with internal errors,
+  /// the system will try to reload the document on the next day. If a reload
+  /// fails with non-retriable errors (e.g. PERMISION_DENIED), the system will
+  /// not try to reload the document anymore. You need to manually reload the
+  /// document successfully by calling `ReloadDocument` and clear the errors.
+  ///
+  /// Optional.
+  core.bool? enableAutoReload;
+
+  /// The knowledge type of document content.
+  ///
+  /// Required.
+  core.List<core.String>? knowledgeTypes;
+
+  /// The time and status of the latest reload.
+  ///
+  /// This reload may have been triggered automatically or manually and may not
+  /// have succeeded.
+  ///
+  /// Output only.
+  GoogleCloudDialogflowV2DocumentReloadStatus? latestReloadStatus;
+
+  /// Metadata for the document.
+  ///
+  /// The metadata supports arbitrary key-value pairs. Suggested use cases
+  /// include storing a document's title, an external URL distinct from the
+  /// document's content_uri, etc. The max size of a `key` or a `value` of the
+  /// metadata is 1024 bytes.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? metadata;
+
+  /// The MIME type of this document.
+  ///
+  /// Required.
+  core.String? mimeType;
+
+  /// The document resource name.
+  ///
+  /// The name must be empty when creating a document. Format:
+  /// `projects//locations//knowledgeBases//documents/`.
+  ///
+  /// Optional.
+  core.String? name;
+
+  /// The raw content of the document.
+  ///
+  /// This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types.
+  core.String? rawContent;
+  core.List<core.int> get rawContentAsBytes =>
+      convert.base64.decode(rawContent!);
+
+  set rawContentAsBytes(core.List<core.int> _bytes) {
+    rawContent =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  GoogleCloudDialogflowV2Document();
+
+  GoogleCloudDialogflowV2Document.fromJson(core.Map _json) {
+    if (_json.containsKey('contentUri')) {
+      contentUri = _json['contentUri'] as core.String;
+    }
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'] as core.String;
+    }
+    if (_json.containsKey('enableAutoReload')) {
+      enableAutoReload = _json['enableAutoReload'] as core.bool;
+    }
+    if (_json.containsKey('knowledgeTypes')) {
+      knowledgeTypes = (_json['knowledgeTypes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('latestReloadStatus')) {
+      latestReloadStatus = GoogleCloudDialogflowV2DocumentReloadStatus.fromJson(
+          _json['latestReloadStatus'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('metadata')) {
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
+    }
+    if (_json.containsKey('mimeType')) {
+      mimeType = _json['mimeType'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('rawContent')) {
+      rawContent = _json['rawContent'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contentUri != null) 'contentUri': contentUri!,
+        if (displayName != null) 'displayName': displayName!,
+        if (enableAutoReload != null) 'enableAutoReload': enableAutoReload!,
+        if (knowledgeTypes != null) 'knowledgeTypes': knowledgeTypes!,
+        if (latestReloadStatus != null)
+          'latestReloadStatus': latestReloadStatus!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (mimeType != null) 'mimeType': mimeType!,
+        if (name != null) 'name': name!,
+        if (rawContent != null) 'rawContent': rawContent!,
+      };
+}
+
+/// The status of a reload attempt.
+class GoogleCloudDialogflowV2DocumentReloadStatus {
+  /// The status of a reload attempt or the initial load.
+  GoogleRpcStatus? status;
+
+  /// The time of a reload attempt.
+  ///
+  /// This reload may have been triggered automatically or manually and may not
+  /// have succeeded.
+  core.String? time;
+
+  GoogleCloudDialogflowV2DocumentReloadStatus();
+
+  GoogleCloudDialogflowV2DocumentReloadStatus.fromJson(core.Map _json) {
+    if (_json.containsKey('status')) {
+      status = GoogleRpcStatus.fromJson(
+          _json['status'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('time')) {
+      time = _json['time'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (status != null) 'status': status!.toJson(),
+        if (time != null) 'time': time!,
+      };
+}
+
+/// The message in the response that indicates the parameters of DTMF.
+class GoogleCloudDialogflowV2DtmfParameters {
+  /// Indicates whether DTMF input can be handled in the next request.
+  core.bool? acceptsDtmfInput;
+
+  GoogleCloudDialogflowV2DtmfParameters();
+
+  GoogleCloudDialogflowV2DtmfParameters.fromJson(core.Map _json) {
+    if (_json.containsKey('acceptsDtmfInput')) {
+      acceptsDtmfInput = _json['acceptsDtmfInput'] as core.bool;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (acceptsDtmfInput != null) 'acceptsDtmfInput': acceptsDtmfInput!,
       };
 }
 
@@ -10304,7 +18663,8 @@ class GoogleCloudDialogflowV2EntityTypeEntity {
 class GoogleCloudDialogflowV2Environment {
   /// The agent version loaded into this environment.
   ///
-  /// Format: `projects//agent/versions/`.
+  /// Supported formats: - `projects//agent/versions/` -
+  /// `projects//locations//agent/versions/`
   ///
   /// Optional.
   core.String? agentVersion;
@@ -10317,10 +18677,15 @@ class GoogleCloudDialogflowV2Environment {
   /// Optional.
   core.String? description;
 
+  /// The fulfillment settings to use for this environment.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowV2Fulfillment? fulfillment;
+
   /// The unique identifier of this agent environment.
   ///
-  /// Format: `projects//agent/environments/`. For Environment ID, "-" is
-  /// reserved for 'draft' environment.
+  /// Supported formats: - `projects//agent/environments/` -
+  /// `projects//locations//agent/environments/`
   ///
   /// Output only.
   core.String? name;
@@ -10337,6 +18702,11 @@ class GoogleCloudDialogflowV2Environment {
   /// - "LOADING" : Loading.
   /// - "RUNNING" : Running.
   core.String? state;
+
+  /// Text to speech settings for this environment.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowV2TextToSpeechSettings? textToSpeechSettings;
 
   /// The last update time of this environment.
   ///
@@ -10355,11 +18725,21 @@ class GoogleCloudDialogflowV2Environment {
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
     }
+    if (_json.containsKey('fulfillment')) {
+      fulfillment = GoogleCloudDialogflowV2Fulfillment.fromJson(
+          _json['fulfillment'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('state')) {
       state = _json['state'] as core.String;
+    }
+    if (_json.containsKey('textToSpeechSettings')) {
+      textToSpeechSettings =
+          GoogleCloudDialogflowV2TextToSpeechSettings.fromJson(
+              _json['textToSpeechSettings']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateTime')) {
       updateTime = _json['updateTime'] as core.String;
@@ -10369,9 +18749,94 @@ class GoogleCloudDialogflowV2Environment {
   core.Map<core.String, core.dynamic> toJson() => {
         if (agentVersion != null) 'agentVersion': agentVersion!,
         if (description != null) 'description': description!,
+        if (fulfillment != null) 'fulfillment': fulfillment!.toJson(),
         if (name != null) 'name': name!,
         if (state != null) 'state': state!,
+        if (textToSpeechSettings != null)
+          'textToSpeechSettings': textToSpeechSettings!.toJson(),
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// The response message for Environments.GetEnvironmentHistory.
+class GoogleCloudDialogflowV2EnvironmentHistory {
+  /// The list of agent environments.
+  ///
+  /// There will be a maximum number of items returned based on the page_size
+  /// field in the request.
+  ///
+  /// Output only.
+  core.List<GoogleCloudDialogflowV2EnvironmentHistoryEntry>? entries;
+
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
+  ///
+  /// Output only.
+  core.String? nextPageToken;
+
+  /// The name of the environment this history is for.
+  ///
+  /// Supported formats: - `projects//agent/environments/` -
+  /// `projects//locations//agent/environments/`
+  ///
+  /// Output only.
+  core.String? parent;
+
+  GoogleCloudDialogflowV2EnvironmentHistory();
+
+  GoogleCloudDialogflowV2EnvironmentHistory.fromJson(core.Map _json) {
+    if (_json.containsKey('entries')) {
+      entries = (_json['entries'] as core.List)
+          .map<GoogleCloudDialogflowV2EnvironmentHistoryEntry>((value) =>
+              GoogleCloudDialogflowV2EnvironmentHistoryEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+    if (_json.containsKey('parent')) {
+      parent = _json['parent'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (entries != null)
+          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (parent != null) 'parent': parent!,
+      };
+}
+
+/// Represents an environment history entry.
+class GoogleCloudDialogflowV2EnvironmentHistoryEntry {
+  /// The agent version loaded into this environment history entry.
+  core.String? agentVersion;
+
+  /// The creation time of this environment history entry.
+  core.String? createTime;
+
+  /// The developer-provided description for this environment history entry.
+  core.String? description;
+
+  GoogleCloudDialogflowV2EnvironmentHistoryEntry();
+
+  GoogleCloudDialogflowV2EnvironmentHistoryEntry.fromJson(core.Map _json) {
+    if (_json.containsKey('agentVersion')) {
+      agentVersion = _json['agentVersion'] as core.String;
+    }
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'] as core.String;
+    }
+    if (_json.containsKey('description')) {
+      description = _json['description'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (agentVersion != null) 'agentVersion': agentVersion!,
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
       };
 }
 
@@ -10498,6 +18963,70 @@ class GoogleCloudDialogflowV2ExportAgentResponse {
       };
 }
 
+/// Represents answer from "frequently asked questions".
+class GoogleCloudDialogflowV2FaqAnswer {
+  /// The piece of text from the `source` knowledge base document.
+  core.String? answer;
+
+  /// The name of answer record, in the format of
+  /// "projects//locations//answerRecords/"
+  core.String? answerRecord;
+
+  /// The system's confidence score that this Knowledge answer is a good match
+  /// for this conversational query, range from 0.0 (completely uncertain) to
+  /// 1.0 (completely certain).
+  core.double? confidence;
+
+  /// A map that contains metadata about the answer and the document from which
+  /// it originates.
+  core.Map<core.String, core.String>? metadata;
+
+  /// The corresponding FAQ question.
+  core.String? question;
+
+  /// Indicates which Knowledge Document this answer was extracted from.
+  ///
+  /// Format: `projects//locations//agent/knowledgeBases//documents/`.
+  core.String? source;
+
+  GoogleCloudDialogflowV2FaqAnswer();
+
+  GoogleCloudDialogflowV2FaqAnswer.fromJson(core.Map _json) {
+    if (_json.containsKey('answer')) {
+      answer = _json['answer'] as core.String;
+    }
+    if (_json.containsKey('answerRecord')) {
+      answerRecord = _json['answerRecord'] as core.String;
+    }
+    if (_json.containsKey('confidence')) {
+      confidence = (_json['confidence'] as core.num).toDouble();
+    }
+    if (_json.containsKey('metadata')) {
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
+    }
+    if (_json.containsKey('question')) {
+      question = _json['question'] as core.String;
+    }
+    if (_json.containsKey('source')) {
+      source = _json['source'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (answer != null) 'answer': answer!,
+        if (answerRecord != null) 'answerRecord': answerRecord!,
+        if (confidence != null) 'confidence': confidence!,
+        if (metadata != null) 'metadata': metadata!,
+        if (question != null) 'question': question!,
+        if (source != null) 'source': source!,
+      };
+}
+
 /// By default, your agent responds to a matched intent with a static response.
 ///
 /// As an alternative, you can provide a more dynamic response by using
@@ -10509,6 +19038,8 @@ class GoogleCloudDialogflowV2ExportAgentResponse {
 /// [fulfillment guide](https://cloud.google.com/dialogflow/docs/fulfillment-overview).
 class GoogleCloudDialogflowV2Fulfillment {
   /// The human-readable name of the fulfillment, unique within the agent.
+  ///
+  /// This field is not used for Fulfillment in an Environment.
   ///
   /// Optional.
   core.String? displayName;
@@ -10528,7 +19059,9 @@ class GoogleCloudDialogflowV2Fulfillment {
 
   /// The unique identifier of the fulfillment.
   ///
-  /// Format: `projects//agent/fulfillment`.
+  /// Supported formats: - `projects//agent/fulfillment` -
+  /// `projects//locations//agent/fulfillment` This field is not used for
+  /// Fulfillment in an Environment.
   ///
   /// Required.
   core.String? name;
@@ -10602,7 +19135,8 @@ class GoogleCloudDialogflowV2FulfillmentGenericWebService {
   /// Indicates if generic web service is created through Cloud Functions
   /// integration.
   ///
-  /// Defaults to false.
+  /// Defaults to false. is_cloud_function is deprecated. Cloud functions can be
+  /// configured by its uri as a regular web service now.
   ///
   /// Optional.
   core.bool? isCloudFunction;
@@ -10661,6 +19195,653 @@ class GoogleCloudDialogflowV2FulfillmentGenericWebService {
         if (requestHeaders != null) 'requestHeaders': requestHeaders!,
         if (uri != null) 'uri': uri!,
         if (username != null) 'username': username!,
+      };
+}
+
+/// Defines the Human Agent Assist to connect to a conversation.
+class GoogleCloudDialogflowV2HumanAgentAssistantConfig {
+  /// Configuration for agent assistance of end user participant.
+  ///
+  /// Currently, this feature is not general available, please contact Google to
+  /// get access.
+  GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig?
+      endUserSuggestionConfig;
+
+  /// Configuration for agent assistance of human agent participant.
+  GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig?
+      humanAgentSuggestionConfig;
+
+  /// Configuration for message analysis.
+  GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig?
+      messageAnalysisConfig;
+
+  /// Pub/Sub topic on which to publish new agent assistant events.
+  GoogleCloudDialogflowV2NotificationConfig? notificationConfig;
+
+  GoogleCloudDialogflowV2HumanAgentAssistantConfig();
+
+  GoogleCloudDialogflowV2HumanAgentAssistantConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('endUserSuggestionConfig')) {
+      endUserSuggestionConfig =
+          GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig
+              .fromJson(_json['endUserSuggestionConfig']
+                  as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('humanAgentSuggestionConfig')) {
+      humanAgentSuggestionConfig =
+          GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig
+              .fromJson(_json['humanAgentSuggestionConfig']
+                  as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('messageAnalysisConfig')) {
+      messageAnalysisConfig =
+          GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig
+              .fromJson(_json['messageAnalysisConfig']
+                  as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('notificationConfig')) {
+      notificationConfig = GoogleCloudDialogflowV2NotificationConfig.fromJson(
+          _json['notificationConfig'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endUserSuggestionConfig != null)
+          'endUserSuggestionConfig': endUserSuggestionConfig!.toJson(),
+        if (humanAgentSuggestionConfig != null)
+          'humanAgentSuggestionConfig': humanAgentSuggestionConfig!.toJson(),
+        if (messageAnalysisConfig != null)
+          'messageAnalysisConfig': messageAnalysisConfig!.toJson(),
+        if (notificationConfig != null)
+          'notificationConfig': notificationConfig!.toJson(),
+      };
+}
+
+/// Custom conversation models used in agent assist feature.
+///
+/// Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY.
+class GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig {
+  /// Conversation model resource name.
+  ///
+  /// Format: `projects//conversationModels/`.
+  core.String? model;
+
+  GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig();
+
+  GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('model')) {
+      model = _json['model'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (model != null) 'model': model!,
+      };
+}
+
+/// Configuration for analyses to run on each conversation message.
+class GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig {
+  /// Enable entity extraction in conversation messages on
+  /// [agent assist stage](https://cloud.google.com/dialogflow/priv/docs/contact-center/basics#stages).
+  ///
+  /// If unspecified, defaults to false. Currently, this feature is not general
+  /// available, please contact Google to get access.
+  core.bool? enableEntityExtraction;
+
+  /// Enable sentiment analysis in conversation messages on
+  /// [agent assist stage](https://cloud.google.com/dialogflow/priv/docs/contact-center/basics#stages).
+  ///
+  /// If unspecified, defaults to false. Sentiment analysis inspects user input
+  /// and identifies the prevailing subjective opinion, especially to determine
+  /// a user's attitude as positive, negative, or neutral:
+  /// https://cloud.google.com/natural-language/docs/basics#sentiment_analysis
+  /// For Participants.StreamingAnalyzeContent method, result will be in
+  /// StreamingAnalyzeContentResponse.message.SentimentAnalysisResult. For
+  /// Participants.AnalyzeContent method, result will be in
+  /// AnalyzeContentResponse.message.SentimentAnalysisResult For
+  /// Conversations.ListMessages method, result will be in
+  /// ListMessagesResponse.messages.SentimentAnalysisResult If Pub/Sub
+  /// notification is configured, result will be in
+  /// ConversationEvent.new_message_payload.SentimentAnalysisResult.
+  core.bool? enableSentimentAnalysis;
+
+  GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig();
+
+  GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('enableEntityExtraction')) {
+      enableEntityExtraction = _json['enableEntityExtraction'] as core.bool;
+    }
+    if (_json.containsKey('enableSentimentAnalysis')) {
+      enableSentimentAnalysis = _json['enableSentimentAnalysis'] as core.bool;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableEntityExtraction != null)
+          'enableEntityExtraction': enableEntityExtraction!,
+        if (enableSentimentAnalysis != null)
+          'enableSentimentAnalysis': enableSentimentAnalysis!,
+      };
+}
+
+/// Detail human agent assistant config.
+class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig {
+  /// Configuration of different suggestion features.
+  ///
+  /// One feature can have only one config.
+  core.List<
+          GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig>?
+      featureConfigs;
+
+  /// If `group_suggestion_responses` is false, and there are multiple
+  /// `feature_configs` in `event based suggestion` or StreamingAnalyzeContent,
+  /// we will try to deliver suggestions to customers as soon as we get new
+  /// suggestion.
+  ///
+  /// Different type of suggestions based on the same context will be in
+  /// separate Pub/Sub event or `StreamingAnalyzeContentResponse`. If
+  /// `group_suggestion_responses` set to true. All the suggestions to the same
+  /// participant based on the same context will be grouped into a single
+  /// Pub/Sub event or StreamingAnalyzeContentResponse.
+  core.bool? groupSuggestionResponses;
+
+  GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig();
+
+  GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('featureConfigs')) {
+      featureConfigs = (_json['featureConfigs'] as core.List)
+          .map<GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig>(
+              (value) =>
+                  GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('groupSuggestionResponses')) {
+      groupSuggestionResponses = _json['groupSuggestionResponses'] as core.bool;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (featureConfigs != null)
+          'featureConfigs':
+              featureConfigs!.map((value) => value.toJson()).toList(),
+        if (groupSuggestionResponses != null)
+          'groupSuggestionResponses': groupSuggestionResponses!,
+      };
+}
+
+/// Config for suggestion features.
+class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig {
+  /// Configs of custom conversation model.
+  GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig?
+      conversationModelConfig;
+
+  /// Automatically iterates all participants and tries to compile suggestions.
+  ///
+  /// Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST.
+  core.bool? enableEventBasedSuggestion;
+
+  /// Configs of query.
+  GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig?
+      queryConfig;
+
+  /// The suggestion feature.
+  GoogleCloudDialogflowV2SuggestionFeature? suggestionFeature;
+
+  /// Settings of suggestion trigger.
+  ///
+  /// Currently, only ARTICLE_SUGGESTION and FAQ will use this field.
+  GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettings?
+      suggestionTriggerSettings;
+
+  GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig();
+
+  GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('conversationModelConfig')) {
+      conversationModelConfig =
+          GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig
+              .fromJson(_json['conversationModelConfig']
+                  as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('enableEventBasedSuggestion')) {
+      enableEventBasedSuggestion =
+          _json['enableEventBasedSuggestion'] as core.bool;
+    }
+    if (_json.containsKey('queryConfig')) {
+      queryConfig =
+          GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig
+              .fromJson(
+                  _json['queryConfig'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('suggestionFeature')) {
+      suggestionFeature = GoogleCloudDialogflowV2SuggestionFeature.fromJson(
+          _json['suggestionFeature'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('suggestionTriggerSettings')) {
+      suggestionTriggerSettings =
+          GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettings
+              .fromJson(_json['suggestionTriggerSettings']
+                  as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conversationModelConfig != null)
+          'conversationModelConfig': conversationModelConfig!.toJson(),
+        if (enableEventBasedSuggestion != null)
+          'enableEventBasedSuggestion': enableEventBasedSuggestion!,
+        if (queryConfig != null) 'queryConfig': queryConfig!.toJson(),
+        if (suggestionFeature != null)
+          'suggestionFeature': suggestionFeature!.toJson(),
+        if (suggestionTriggerSettings != null)
+          'suggestionTriggerSettings': suggestionTriggerSettings!.toJson(),
+      };
+}
+
+/// Config for suggestion query.
+class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig {
+  /// Confidence threshold of query result.
+  ///
+  /// Agent Assist gives each suggestion a score in the range \[0.0, 1.0\],
+  /// based on the relevance between the suggestion and the current conversation
+  /// context. A score of 0.0 has no relevance, while a score of 1.0 has high
+  /// relevance. Only suggestions with a score greater than or equal to the
+  /// value of this field are included in the results. For a baseline model (the
+  /// default), the recommended value is in the range \[0.05, 0.1\]. For a
+  /// custom model, there is no recommended value. Tune this value by starting
+  /// from a very low value and slowly increasing until you have desired
+  /// results. If this field is not set, it defaults to 0.0, which means that
+  /// all suggestions are returned. Supported features: ARTICLE_SUGGESTION.
+  core.double? confidenceThreshold;
+
+  /// Determines how recent conversation context is filtered when generating
+  /// suggestions.
+  ///
+  /// If unspecified, no messages will be dropped.
+  GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings?
+      contextFilterSettings;
+
+  /// Query from Dialogflow agent.
+  ///
+  /// It is used by DIALOGFLOW_ASSIST.
+  GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource?
+      dialogflowQuerySource;
+
+  /// Query from knowledge base document.
+  ///
+  /// It is used by: SMART_REPLY, SMART_COMPOSE.
+  GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource?
+      documentQuerySource;
+
+  /// Query from knowledgebase.
+  ///
+  /// It is used by: ARTICLE_SUGGESTION, FAQ.
+  GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource?
+      knowledgeBaseQuerySource;
+
+  /// Maximum number of results to return.
+  ///
+  /// Currently, if unset, defaults to 10. And the max number is 20.
+  core.int? maxResults;
+
+  GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig();
+
+  GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('confidenceThreshold')) {
+      confidenceThreshold =
+          (_json['confidenceThreshold'] as core.num).toDouble();
+    }
+    if (_json.containsKey('contextFilterSettings')) {
+      contextFilterSettings =
+          GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings
+              .fromJson(_json['contextFilterSettings']
+                  as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('dialogflowQuerySource')) {
+      dialogflowQuerySource =
+          GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource
+              .fromJson(_json['dialogflowQuerySource']
+                  as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('documentQuerySource')) {
+      documentQuerySource =
+          GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource
+              .fromJson(_json['documentQuerySource']
+                  as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('knowledgeBaseQuerySource')) {
+      knowledgeBaseQuerySource =
+          GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource
+              .fromJson(_json['knowledgeBaseQuerySource']
+                  as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('maxResults')) {
+      maxResults = _json['maxResults'] as core.int;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (confidenceThreshold != null)
+          'confidenceThreshold': confidenceThreshold!,
+        if (contextFilterSettings != null)
+          'contextFilterSettings': contextFilterSettings!.toJson(),
+        if (dialogflowQuerySource != null)
+          'dialogflowQuerySource': dialogflowQuerySource!.toJson(),
+        if (documentQuerySource != null)
+          'documentQuerySource': documentQuerySource!.toJson(),
+        if (knowledgeBaseQuerySource != null)
+          'knowledgeBaseQuerySource': knowledgeBaseQuerySource!.toJson(),
+        if (maxResults != null) 'maxResults': maxResults!,
+      };
+}
+
+/// Settings that determine how to filter recent conversation context when
+/// generating suggestions.
+class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings {
+  /// If set to true, the last message from virtual agent (hand off message) and
+  /// the message before it (trigger message of hand off) are dropped.
+  core.bool? dropHandoffMessages;
+
+  /// If set to true, all messages from ivr stage are dropped.
+  core.bool? dropIvrMessages;
+
+  /// If set to true, all messages from virtual agent are dropped.
+  core.bool? dropVirtualAgentMessages;
+
+  GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings();
+
+  GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('dropHandoffMessages')) {
+      dropHandoffMessages = _json['dropHandoffMessages'] as core.bool;
+    }
+    if (_json.containsKey('dropIvrMessages')) {
+      dropIvrMessages = _json['dropIvrMessages'] as core.bool;
+    }
+    if (_json.containsKey('dropVirtualAgentMessages')) {
+      dropVirtualAgentMessages = _json['dropVirtualAgentMessages'] as core.bool;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dropHandoffMessages != null)
+          'dropHandoffMessages': dropHandoffMessages!,
+        if (dropIvrMessages != null) 'dropIvrMessages': dropIvrMessages!,
+        if (dropVirtualAgentMessages != null)
+          'dropVirtualAgentMessages': dropVirtualAgentMessages!,
+      };
+}
+
+/// Dialogflow source setting.
+///
+/// Supported feature: DIALOGFLOW_ASSIST.
+class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource {
+  /// The name of a Dialogflow virtual agent used for end user side intent
+  /// detection and suggestion.
+  ///
+  /// Format: `projects//locations//agent`. When multiple agents are allowed in
+  /// the same Dialogflow project.
+  ///
+  /// Required.
+  core.String? agent;
+
+  GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource();
+
+  GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('agent')) {
+      agent = _json['agent'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (agent != null) 'agent': agent!,
+      };
+}
+
+/// Document source settings.
+///
+/// Supported features: SMART_REPLY, SMART_COMPOSE.
+class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource {
+  /// Knowledge documents to query from.
+  ///
+  /// Format: `projects//locations//knowledgeBases//documents/`. Currently, at
+  /// most 5 documents are supported.
+  ///
+  /// Required.
+  core.List<core.String>? documents;
+
+  GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource();
+
+  GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('documents')) {
+      documents = (_json['documents'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (documents != null) 'documents': documents!,
+      };
+}
+
+/// Knowledge base source settings.
+///
+/// Supported features: ARTICLE_SUGGESTION, FAQ.
+class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource {
+  /// Knowledge bases to query.
+  ///
+  /// Format: `projects//locations//knowledgeBases/`. Currently, at most 5
+  /// knowledge bases are supported.
+  ///
+  /// Required.
+  core.List<core.String>? knowledgeBases;
+
+  GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource();
+
+  GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('knowledgeBases')) {
+      knowledgeBases = (_json['knowledgeBases'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (knowledgeBases != null) 'knowledgeBases': knowledgeBases!,
+      };
+}
+
+/// Settings of suggestion trigger.
+class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettings {
+  /// Do not trigger if last utterance is small talk.
+  core.bool? noSmalltalk;
+
+  /// Only trigger suggestion if participant role of last utterance is END_USER.
+  core.bool? onlyEndUser;
+
+  GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettings();
+
+  GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettings.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('noSmalltalk')) {
+      noSmalltalk = _json['noSmalltalk'] as core.bool;
+    }
+    if (_json.containsKey('onlyEndUser')) {
+      onlyEndUser = _json['onlyEndUser'] as core.bool;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (noSmalltalk != null) 'noSmalltalk': noSmalltalk!,
+        if (onlyEndUser != null) 'onlyEndUser': onlyEndUser!,
+      };
+}
+
+/// Represents a notification sent to Cloud Pub/Sub subscribers for human agent
+/// assistant events in a specific conversation.
+class GoogleCloudDialogflowV2HumanAgentAssistantEvent {
+  /// The conversation this notification refers to.
+  ///
+  /// Format: `projects//conversations/`.
+  core.String? conversation;
+
+  /// The participant that the suggestion is compiled for.
+  ///
+  /// Format: `projects//conversations//participants/`. It will not be set in
+  /// legacy workflow.
+  core.String? participant;
+
+  /// The suggestion results payload that this notification refers to.
+  core.List<GoogleCloudDialogflowV2SuggestionResult>? suggestionResults;
+
+  GoogleCloudDialogflowV2HumanAgentAssistantEvent();
+
+  GoogleCloudDialogflowV2HumanAgentAssistantEvent.fromJson(core.Map _json) {
+    if (_json.containsKey('conversation')) {
+      conversation = _json['conversation'] as core.String;
+    }
+    if (_json.containsKey('participant')) {
+      participant = _json['participant'] as core.String;
+    }
+    if (_json.containsKey('suggestionResults')) {
+      suggestionResults = (_json['suggestionResults'] as core.List)
+          .map<GoogleCloudDialogflowV2SuggestionResult>((value) =>
+              GoogleCloudDialogflowV2SuggestionResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conversation != null) 'conversation': conversation!,
+        if (participant != null) 'participant': participant!,
+        if (suggestionResults != null)
+          'suggestionResults':
+              suggestionResults!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// Defines the hand off to a live agent, typically on which external agent
+/// service provider to connect to a conversation.
+///
+/// Currently, this feature is not general available, please contact Google to
+/// get access.
+class GoogleCloudDialogflowV2HumanAgentHandoffConfig {
+  /// Uses LivePerson (https://www.liveperson.com).
+  GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig?
+      livePersonConfig;
+
+  /// Uses Salesforce Live Agent.
+  GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig?
+      salesforceLiveAgentConfig;
+
+  GoogleCloudDialogflowV2HumanAgentHandoffConfig();
+
+  GoogleCloudDialogflowV2HumanAgentHandoffConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('livePersonConfig')) {
+      livePersonConfig =
+          GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig
+              .fromJson(_json['livePersonConfig']
+                  as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('salesforceLiveAgentConfig')) {
+      salesforceLiveAgentConfig =
+          GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig
+              .fromJson(_json['salesforceLiveAgentConfig']
+                  as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (livePersonConfig != null)
+          'livePersonConfig': livePersonConfig!.toJson(),
+        if (salesforceLiveAgentConfig != null)
+          'salesforceLiveAgentConfig': salesforceLiveAgentConfig!.toJson(),
+      };
+}
+
+/// Configuration specific to LivePerson (https://www.liveperson.com).
+class GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig {
+  /// Account number of the LivePerson account to connect.
+  ///
+  /// This is the account number you input at the login page.
+  ///
+  /// Required.
+  core.String? accountNumber;
+
+  GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig();
+
+  GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('accountNumber')) {
+      accountNumber = _json['accountNumber'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accountNumber != null) 'accountNumber': accountNumber!,
+      };
+}
+
+/// Configuration specific to Salesforce Live Agent.
+class GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig {
+  /// Live Agent chat button ID.
+  ///
+  /// Required.
+  core.String? buttonId;
+
+  /// Live Agent deployment ID.
+  ///
+  /// Required.
+  core.String? deploymentId;
+
+  /// Domain of the Live Agent endpoint for this agent.
+  ///
+  /// You can find the endpoint URL in the `Live Agent settings` page. For
+  /// example if URL has the form
+  /// https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in
+  /// d.la4-c2-phx.salesforceliveagent.com.
+  ///
+  /// Required.
+  core.String? endpointDomain;
+
+  /// The organization ID of the Salesforce account.
+  ///
+  /// Required.
+  core.String? organizationId;
+
+  GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig();
+
+  GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('buttonId')) {
+      buttonId = _json['buttonId'] as core.String;
+    }
+    if (_json.containsKey('deploymentId')) {
+      deploymentId = _json['deploymentId'] as core.String;
+    }
+    if (_json.containsKey('endpointDomain')) {
+      endpointDomain = _json['endpointDomain'] as core.String;
+    }
+    if (_json.containsKey('organizationId')) {
+      organizationId = _json['organizationId'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (buttonId != null) 'buttonId': buttonId!,
+        if (deploymentId != null) 'deploymentId': deploymentId!,
+        if (endpointDomain != null) 'endpointDomain': endpointDomain!,
+        if (organizationId != null) 'organizationId': organizationId!,
       };
 }
 
@@ -10736,6 +19917,13 @@ class GoogleCloudDialogflowV2InputAudioConfig {
   /// replaced with a single byte containing the block length. Only Speex
   /// wideband is supported. `sample_rate_hertz` must be 16000.
   core.String? audioEncoding;
+
+  /// Only used in Participants.AnalyzeContent and
+  /// Participants.StreamingAnalyzeContent.
+  ///
+  /// If `false` and recognition doesn't return any result, trigger
+  /// `NO_SPEECH_RECOGNIZED` event to Dialogflow agent.
+  core.bool? disableNoSpeechRecognizedEvent;
 
   /// If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult
   /// with information about the recognized speech words, e.g. start and end
@@ -10833,6 +20021,10 @@ class GoogleCloudDialogflowV2InputAudioConfig {
     if (_json.containsKey('audioEncoding')) {
       audioEncoding = _json['audioEncoding'] as core.String;
     }
+    if (_json.containsKey('disableNoSpeechRecognizedEvent')) {
+      disableNoSpeechRecognizedEvent =
+          _json['disableNoSpeechRecognizedEvent'] as core.bool;
+    }
     if (_json.containsKey('enableWordInfo')) {
       enableWordInfo = _json['enableWordInfo'] as core.bool;
     }
@@ -10867,6 +20059,8 @@ class GoogleCloudDialogflowV2InputAudioConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (audioEncoding != null) 'audioEncoding': audioEncoding!,
+        if (disableNoSpeechRecognizedEvent != null)
+          'disableNoSpeechRecognizedEvent': disableNoSpeechRecognizedEvent!,
         if (enableWordInfo != null) 'enableWordInfo': enableWordInfo!,
         if (languageCode != null) 'languageCode': languageCode!,
         if (model != null) 'model': model!,
@@ -10907,6 +20101,15 @@ class GoogleCloudDialogflowV2Intent {
   /// Required.
   core.String? displayName;
 
+  /// Indicates that this intent ends an interaction.
+  ///
+  /// Some integrations (e.g., Actions on Google or Dialogflow phone gateway)
+  /// use this information to close interaction with an end user. Default is
+  /// false.
+  ///
+  /// Optional.
+  core.bool? endInteraction;
+
   /// The collection of event names that trigger the intent.
   ///
   /// If the collection of input contexts is not empty, all of the contexts must
@@ -10934,6 +20137,15 @@ class GoogleCloudDialogflowV2Intent {
   ///
   /// Optional.
   core.bool? isFallback;
+
+  /// Indicates that a live agent should be brought in to handle the interaction
+  /// with the user.
+  ///
+  /// In most cases, when you set this flag to true, you would also want to set
+  /// end_interaction to true as well. Default is false.
+  ///
+  /// Optional.
+  core.bool? liveAgentHandoff;
 
   /// The collection of rich messages corresponding to the `Response` field in
   /// the Dialogflow console.
@@ -11039,6 +20251,9 @@ class GoogleCloudDialogflowV2Intent {
     if (_json.containsKey('displayName')) {
       displayName = _json['displayName'] as core.String;
     }
+    if (_json.containsKey('endInteraction')) {
+      endInteraction = _json['endInteraction'] as core.bool;
+    }
     if (_json.containsKey('events')) {
       events = (_json['events'] as core.List)
           .map<core.String>((value) => value as core.String)
@@ -11058,6 +20273,9 @@ class GoogleCloudDialogflowV2Intent {
     }
     if (_json.containsKey('isFallback')) {
       isFallback = _json['isFallback'] as core.bool;
+    }
+    if (_json.containsKey('liveAgentHandoff')) {
+      liveAgentHandoff = _json['liveAgentHandoff'] as core.bool;
     }
     if (_json.containsKey('messages')) {
       messages = (_json['messages'] as core.List)
@@ -11116,12 +20334,14 @@ class GoogleCloudDialogflowV2Intent {
         if (defaultResponsePlatforms != null)
           'defaultResponsePlatforms': defaultResponsePlatforms!,
         if (displayName != null) 'displayName': displayName!,
+        if (endInteraction != null) 'endInteraction': endInteraction!,
         if (events != null) 'events': events!,
         if (followupIntentInfo != null)
           'followupIntentInfo':
               followupIntentInfo!.map((value) => value.toJson()).toList(),
         if (inputContextNames != null) 'inputContextNames': inputContextNames!,
         if (isFallback != null) 'isFallback': isFallback!,
+        if (liveAgentHandoff != null) 'liveAgentHandoff': liveAgentHandoff!,
         if (messages != null)
           'messages': messages!.map((value) => value.toJson()).toList(),
         if (mlDisabled != null) 'mlDisabled': mlDisabled!,
@@ -12659,6 +21879,119 @@ class GoogleCloudDialogflowV2IntentTrainingPhrasePart {
       };
 }
 
+/// A knowledge base represents a collection of knowledge documents that you
+/// provide to Dialogflow.
+///
+/// Your knowledge documents contain information that may be useful during
+/// conversations with end-users. Some Dialogflow features use knowledge bases
+/// when looking for a response to an end-user input. For more information, see
+/// the
+/// [knowledge base guide](https://cloud.google.com/dialogflow/docs/how/knowledge-bases).
+/// Note: The `projects.agent.knowledgeBases` resource is deprecated; only use
+/// `projects.knowledgeBases`.
+class GoogleCloudDialogflowV2KnowledgeBase {
+  /// The display name of the knowledge base.
+  ///
+  /// The name must be 1024 bytes or less; otherwise, the creation request
+  /// fails.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// Language which represents the KnowledgeBase.
+  ///
+  /// When the KnowledgeBase is created/updated, expect this to be present for
+  /// non en-us languages. When unspecified, the default language code en-us
+  /// applies.
+  core.String? languageCode;
+
+  /// The knowledge base resource name.
+  ///
+  /// The name must be empty when creating a knowledge base. Format:
+  /// `projects//locations//knowledgeBases/`.
+  core.String? name;
+
+  GoogleCloudDialogflowV2KnowledgeBase();
+
+  GoogleCloudDialogflowV2KnowledgeBase.fromJson(core.Map _json) {
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'] as core.String;
+    }
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// Metadata in google::longrunning::Operation for Knowledge operations.
+class GoogleCloudDialogflowV2KnowledgeOperationMetadata {
+  /// The current state of this operation.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State unspecified.
+  /// - "PENDING" : The operation has been created.
+  /// - "RUNNING" : The operation is currently running.
+  /// - "DONE" : The operation is done, either cancelled or completed.
+  core.String? state;
+
+  GoogleCloudDialogflowV2KnowledgeOperationMetadata();
+
+  GoogleCloudDialogflowV2KnowledgeOperationMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey('state')) {
+      state = _json['state'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (state != null) 'state': state!,
+      };
+}
+
+/// Response message for AnswerRecords.ListAnswerRecords.
+class GoogleCloudDialogflowV2ListAnswerRecordsResponse {
+  /// The list of answer records.
+  core.List<GoogleCloudDialogflowV2AnswerRecord>? answerRecords;
+
+  /// A token to retrieve next page of results.
+  ///
+  /// Or empty if there are no more results. Pass this value in the
+  /// ListAnswerRecordsRequest.page_token field in the subsequent call to
+  /// `ListAnswerRecords` method to retrieve the next page of results.
+  core.String? nextPageToken;
+
+  GoogleCloudDialogflowV2ListAnswerRecordsResponse();
+
+  GoogleCloudDialogflowV2ListAnswerRecordsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('answerRecords')) {
+      answerRecords = (_json['answerRecords'] as core.List)
+          .map<GoogleCloudDialogflowV2AnswerRecord>((value) =>
+              GoogleCloudDialogflowV2AnswerRecord.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (answerRecords != null)
+          'answerRecords':
+              answerRecords!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// The response message for Contexts.ListContexts.
 class GoogleCloudDialogflowV2ListContextsResponse {
   /// The list of contexts.
@@ -12689,6 +22022,108 @@ class GoogleCloudDialogflowV2ListContextsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (contexts != null)
           'contexts': contexts!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// The response message for ConversationProfiles.ListConversationProfiles.
+class GoogleCloudDialogflowV2ListConversationProfilesResponse {
+  /// The list of project conversation profiles.
+  ///
+  /// There is a maximum number of items returned based on the page_size field
+  /// in the request.
+  core.List<GoogleCloudDialogflowV2ConversationProfile>? conversationProfiles;
+
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
+  core.String? nextPageToken;
+
+  GoogleCloudDialogflowV2ListConversationProfilesResponse();
+
+  GoogleCloudDialogflowV2ListConversationProfilesResponse.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('conversationProfiles')) {
+      conversationProfiles = (_json['conversationProfiles'] as core.List)
+          .map<GoogleCloudDialogflowV2ConversationProfile>((value) =>
+              GoogleCloudDialogflowV2ConversationProfile.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conversationProfiles != null)
+          'conversationProfiles':
+              conversationProfiles!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// The response message for Conversations.ListConversations.
+class GoogleCloudDialogflowV2ListConversationsResponse {
+  /// The list of conversations.
+  ///
+  /// There will be a maximum number of items returned based on the page_size
+  /// field in the request.
+  core.List<GoogleCloudDialogflowV2Conversation>? conversations;
+
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
+  core.String? nextPageToken;
+
+  GoogleCloudDialogflowV2ListConversationsResponse();
+
+  GoogleCloudDialogflowV2ListConversationsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('conversations')) {
+      conversations = (_json['conversations'] as core.List)
+          .map<GoogleCloudDialogflowV2Conversation>((value) =>
+              GoogleCloudDialogflowV2Conversation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conversations != null)
+          'conversations':
+              conversations!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response message for Documents.ListDocuments.
+class GoogleCloudDialogflowV2ListDocumentsResponse {
+  /// The list of documents.
+  core.List<GoogleCloudDialogflowV2Document>? documents;
+
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
+  core.String? nextPageToken;
+
+  GoogleCloudDialogflowV2ListDocumentsResponse();
+
+  GoogleCloudDialogflowV2ListDocumentsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('documents')) {
+      documents = (_json['documents'] as core.List)
+          .map<GoogleCloudDialogflowV2Document>((value) =>
+              GoogleCloudDialogflowV2Document.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (documents != null)
+          'documents': documents!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -12795,6 +22230,107 @@ class GoogleCloudDialogflowV2ListIntentsResponse {
       };
 }
 
+/// Response message for KnowledgeBases.ListKnowledgeBases.
+class GoogleCloudDialogflowV2ListKnowledgeBasesResponse {
+  /// The list of knowledge bases.
+  core.List<GoogleCloudDialogflowV2KnowledgeBase>? knowledgeBases;
+
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
+  core.String? nextPageToken;
+
+  GoogleCloudDialogflowV2ListKnowledgeBasesResponse();
+
+  GoogleCloudDialogflowV2ListKnowledgeBasesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('knowledgeBases')) {
+      knowledgeBases = (_json['knowledgeBases'] as core.List)
+          .map<GoogleCloudDialogflowV2KnowledgeBase>((value) =>
+              GoogleCloudDialogflowV2KnowledgeBase.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (knowledgeBases != null)
+          'knowledgeBases':
+              knowledgeBases!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// The response message for Conversations.ListMessages.
+class GoogleCloudDialogflowV2ListMessagesResponse {
+  /// The list of messages.
+  ///
+  /// There will be a maximum number of items returned based on the page_size
+  /// field in the request. `messages` is sorted by `create_time` in descending
+  /// order.
+  core.List<GoogleCloudDialogflowV2Message>? messages;
+
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
+  core.String? nextPageToken;
+
+  GoogleCloudDialogflowV2ListMessagesResponse();
+
+  GoogleCloudDialogflowV2ListMessagesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('messages')) {
+      messages = (_json['messages'] as core.List)
+          .map<GoogleCloudDialogflowV2Message>((value) =>
+              GoogleCloudDialogflowV2Message.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (messages != null)
+          'messages': messages!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// The response message for Participants.ListParticipants.
+class GoogleCloudDialogflowV2ListParticipantsResponse {
+  /// Token to retrieve the next page of results or empty if there are no more
+  /// results in the list.
+  core.String? nextPageToken;
+
+  /// The list of participants.
+  ///
+  /// There is a maximum number of items returned based on the page_size field
+  /// in the request.
+  core.List<GoogleCloudDialogflowV2Participant>? participants;
+
+  GoogleCloudDialogflowV2ListParticipantsResponse();
+
+  GoogleCloudDialogflowV2ListParticipantsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+    if (_json.containsKey('participants')) {
+      participants = (_json['participants'] as core.List)
+          .map<GoogleCloudDialogflowV2Participant>((value) =>
+              GoogleCloudDialogflowV2Participant.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (participants != null)
+          'participants': participants!.map((value) => value.toJson()).toList(),
+      };
+}
+
 /// The response message for SessionEntityTypes.ListSessionEntityTypes.
 class GoogleCloudDialogflowV2ListSessionEntityTypesResponse {
   /// Token to retrieve the next page of results, or empty if there are no more
@@ -12828,6 +22364,61 @@ class GoogleCloudDialogflowV2ListSessionEntityTypesResponse {
         if (sessionEntityTypes != null)
           'sessionEntityTypes':
               sessionEntityTypes!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// The response message for Versions.ListVersions.
+class GoogleCloudDialogflowV2ListVersionsResponse {
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
+  core.String? nextPageToken;
+
+  /// The list of agent versions.
+  ///
+  /// There will be a maximum number of items returned based on the page_size
+  /// field in the request.
+  core.List<GoogleCloudDialogflowV2Version>? versions;
+
+  GoogleCloudDialogflowV2ListVersionsResponse();
+
+  GoogleCloudDialogflowV2ListVersionsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+    if (_json.containsKey('versions')) {
+      versions = (_json['versions'] as core.List)
+          .map<GoogleCloudDialogflowV2Version>((value) =>
+              GoogleCloudDialogflowV2Version.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (versions != null)
+          'versions': versions!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// Defines logging behavior for conversation lifecycle events.
+class GoogleCloudDialogflowV2LoggingConfig {
+  /// Whether to log conversation events like CONVERSATION_STARTED to
+  /// Stackdriver in the conversation project as JSON format ConversationEvent
+  /// protos.
+  core.bool? enableStackdriverLogging;
+
+  GoogleCloudDialogflowV2LoggingConfig();
+
+  GoogleCloudDialogflowV2LoggingConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('enableStackdriverLogging')) {
+      enableStackdriverLogging = _json['enableStackdriverLogging'] as core.bool;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableStackdriverLogging != null)
+          'enableStackdriverLogging': enableStackdriverLogging!,
       };
 }
 
@@ -12951,6 +22542,42 @@ class GoogleCloudDialogflowV2MessageAnnotation {
       };
 }
 
+/// Defines notification behavior.
+class GoogleCloudDialogflowV2NotificationConfig {
+  /// Format of message.
+  /// Possible string values are:
+  /// - "MESSAGE_FORMAT_UNSPECIFIED" : If it is unspeified, PROTO will be used.
+  /// - "PROTO" : Pubsub message will be serialized proto.
+  /// - "JSON" : Pubsub message will be json.
+  core.String? messageFormat;
+
+  /// Name of the Pub/Sub topic to publish conversation events like
+  /// CONVERSATION_STARTED as serialized ConversationEvent protos.
+  ///
+  /// Notification works for phone calls, if this topic either is in the same
+  /// project as the conversation or you grant
+  /// `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow
+  /// Service Agent` role in the topic project. Format:
+  /// `projects//locations//topics/`.
+  core.String? topic;
+
+  GoogleCloudDialogflowV2NotificationConfig();
+
+  GoogleCloudDialogflowV2NotificationConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('messageFormat')) {
+      messageFormat = _json['messageFormat'] as core.String;
+    }
+    if (_json.containsKey('topic')) {
+      topic = _json['topic'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (messageFormat != null) 'messageFormat': messageFormat!,
+        if (topic != null) 'topic': topic!,
+      };
+}
+
 /// Represents the contents of the original request that was passed to the
 /// `[Streaming]DetectIntent` call.
 class GoogleCloudDialogflowV2OriginalDetectIntentRequest {
@@ -13009,6 +22636,38 @@ class GoogleCloudDialogflowV2OriginalDetectIntentRequest {
       };
 }
 
+/// Represents the natural language speech audio to be played to the end user.
+class GoogleCloudDialogflowV2OutputAudio {
+  /// The natural language speech audio.
+  core.String? audio;
+  core.List<core.int> get audioAsBytes => convert.base64.decode(audio!);
+
+  set audioAsBytes(core.List<core.int> _bytes) {
+    audio =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// Instructs the speech synthesizer how to generate the speech audio.
+  GoogleCloudDialogflowV2OutputAudioConfig? config;
+
+  GoogleCloudDialogflowV2OutputAudio();
+
+  GoogleCloudDialogflowV2OutputAudio.fromJson(core.Map _json) {
+    if (_json.containsKey('audio')) {
+      audio = _json['audio'] as core.String;
+    }
+    if (_json.containsKey('config')) {
+      config = GoogleCloudDialogflowV2OutputAudioConfig.fromJson(
+          _json['config'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (audio != null) 'audio': audio!,
+        if (config != null) 'config': config!.toJson(),
+      };
+}
+
 /// Instructs the speech synthesizer on how to generate the output audio
 /// content.
 ///
@@ -13024,11 +22683,14 @@ class GoogleCloudDialogflowV2OutputAudioConfig {
   /// little-endian samples (Linear PCM). Audio content returned as LINEAR16
   /// also contains a WAV header.
   /// - "OUTPUT_AUDIO_ENCODING_MP3" : MP3 audio at 32kbps.
+  /// - "OUTPUT_AUDIO_ENCODING_MP3_64_KBPS" : MP3 audio at 64kbps.
   /// - "OUTPUT_AUDIO_ENCODING_OGG_OPUS" : Opus encoded audio wrapped in an ogg
   /// container. The result will be a file which can be played natively on
   /// Android, and in browsers (at least Chrome and Firefox). The quality of the
   /// encoding is considerably higher than MP3 while using approximately the
   /// same bitrate.
+  /// - "OUTPUT_AUDIO_ENCODING_MULAW" : 8-bit samples that compand 14-bit audio
+  /// samples using G.711 PCMU/mu-law.
   core.String? audioEncoding;
 
   /// The synthesis sample rate (in hertz) for this audio.
@@ -13064,6 +22726,61 @@ class GoogleCloudDialogflowV2OutputAudioConfig {
         if (sampleRateHertz != null) 'sampleRateHertz': sampleRateHertz!,
         if (synthesizeSpeechConfig != null)
           'synthesizeSpeechConfig': synthesizeSpeechConfig!.toJson(),
+      };
+}
+
+/// Represents a conversation participant (human agent, virtual agent,
+/// end-user).
+class GoogleCloudDialogflowV2Participant {
+  /// The unique identifier of this participant.
+  ///
+  /// Format: `projects//locations//conversations//participants/`.
+  ///
+  /// Optional.
+  core.String? name;
+
+  /// The role this participant plays in the conversation.
+  ///
+  /// This field must be set during participant creation and is then immutable.
+  ///
+  /// Immutable.
+  /// Possible string values are:
+  /// - "ROLE_UNSPECIFIED" : Participant role not set.
+  /// - "HUMAN_AGENT" : Participant is a human agent.
+  /// - "AUTOMATED_AGENT" : Participant is an automated agent, such as a
+  /// Dialogflow agent.
+  /// - "END_USER" : Participant is an end user that has called or chatted with
+  /// Dialogflow services.
+  core.String? role;
+
+  /// Label applied to streams representing this participant in SIPREC XML
+  /// metadata and SDP.
+  ///
+  /// This is used to assign transcriptions from that media stream to this
+  /// participant. This field can be updated.
+  ///
+  /// Optional.
+  core.String? sipRecordingMediaLabel;
+
+  GoogleCloudDialogflowV2Participant();
+
+  GoogleCloudDialogflowV2Participant.fromJson(core.Map _json) {
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('role')) {
+      role = _json['role'] as core.String;
+    }
+    if (_json.containsKey('sipRecordingMediaLabel')) {
+      sipRecordingMediaLabel = _json['sipRecordingMediaLabel'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (role != null) 'role': role!,
+        if (sipRecordingMediaLabel != null)
+          'sipRecordingMediaLabel': sipRecordingMediaLabel!,
       };
 }
 
@@ -13448,6 +23165,29 @@ class GoogleCloudDialogflowV2QueryResult {
       };
 }
 
+/// Request message for Documents.ReloadDocument.
+class GoogleCloudDialogflowV2ReloadDocumentRequest {
+  /// The path of gcs source file for reloading document content.
+  ///
+  /// For now, only gcs uri is supported. For documents stored in Google Cloud
+  /// Storage, these URIs must have the form `gs:///`.
+  ///
+  /// Optional.
+  core.String? contentUri;
+
+  GoogleCloudDialogflowV2ReloadDocumentRequest();
+
+  GoogleCloudDialogflowV2ReloadDocumentRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('contentUri')) {
+      contentUri = _json['contentUri'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contentUri != null) 'contentUri': contentUri!,
+      };
+}
+
 /// The request message for Agents.RestoreAgent.
 class GoogleCloudDialogflowV2RestoreAgentRequest {
   /// Zip compressed raw byte content for agent.
@@ -13715,6 +23455,269 @@ class GoogleCloudDialogflowV2SpeechContext {
       };
 }
 
+/// Configures speech transcription for ConversationProfile.
+class GoogleCloudDialogflowV2SpeechToTextConfig {
+  /// The speech model used in speech to text.
+  ///
+  /// `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated
+  /// as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and
+  /// StreamingAnalyzeContentRequest request.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SPEECH_MODEL_VARIANT_UNSPECIFIED" : No model variant specified. In this
+  /// case Dialogflow defaults to USE_BEST_AVAILABLE.
+  /// - "USE_BEST_AVAILABLE" : Use the best available variant of the Speech
+  /// model that the caller is eligible for. Please see the
+  /// [Dialogflow docs](https://cloud.google.com/dialogflow/docs/data-logging)
+  /// for how to make your project eligible for enhanced models.
+  /// - "USE_STANDARD" : Use standard model variant even if an enhanced model is
+  /// available. See the
+  /// [Cloud Speech documentation](https://cloud.google.com/speech-to-text/docs/enhanced-models)
+  /// for details about enhanced models.
+  /// - "USE_ENHANCED" : Use an enhanced model variant: * If an enhanced variant
+  /// does not exist for the given model and request language, Dialogflow falls
+  /// back to the standard variant. The
+  /// [Cloud Speech documentation](https://cloud.google.com/speech-to-text/docs/enhanced-models)
+  /// describes which models have enhanced variants. * If the API caller isn't
+  /// eligible for enhanced models, Dialogflow returns an error. Please see the
+  /// [Dialogflow docs](https://cloud.google.com/dialogflow/docs/data-logging)
+  /// for how to make your project eligible.
+  core.String? speechModelVariant;
+
+  GoogleCloudDialogflowV2SpeechToTextConfig();
+
+  GoogleCloudDialogflowV2SpeechToTextConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('speechModelVariant')) {
+      speechModelVariant = _json['speechModelVariant'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (speechModelVariant != null)
+          'speechModelVariant': speechModelVariant!,
+      };
+}
+
+/// The request message for Participants.SuggestArticles.
+class GoogleCloudDialogflowV2SuggestArticlesRequest {
+  /// Max number of messages prior to and including latest_message to use as
+  /// context when compiling the suggestion.
+  ///
+  /// By default 20 and at most 50.
+  core.int? contextSize;
+
+  /// The name of the latest conversation message to compile suggestion for.
+  ///
+  /// If empty, it will be the latest message of the conversation. Format:
+  /// `projects//locations//conversations//messages/`.
+  core.String? latestMessage;
+
+  GoogleCloudDialogflowV2SuggestArticlesRequest();
+
+  GoogleCloudDialogflowV2SuggestArticlesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('contextSize')) {
+      contextSize = _json['contextSize'] as core.int;
+    }
+    if (_json.containsKey('latestMessage')) {
+      latestMessage = _json['latestMessage'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contextSize != null) 'contextSize': contextSize!,
+        if (latestMessage != null) 'latestMessage': latestMessage!,
+      };
+}
+
+/// The response message for Participants.SuggestArticles.
+class GoogleCloudDialogflowV2SuggestArticlesResponse {
+  /// Articles ordered by score in descending order.
+  core.List<GoogleCloudDialogflowV2ArticleAnswer>? articleAnswers;
+
+  /// Number of messages prior to and including latest_message to compile the
+  /// suggestion.
+  ///
+  /// It may be smaller than the SuggestArticlesRequest.context_size field in
+  /// the request if there aren't that many messages in the conversation.
+  core.int? contextSize;
+
+  /// The name of the latest conversation message used to compile suggestion
+  /// for.
+  ///
+  /// Format: `projects//locations//conversations//messages/`.
+  core.String? latestMessage;
+
+  GoogleCloudDialogflowV2SuggestArticlesResponse();
+
+  GoogleCloudDialogflowV2SuggestArticlesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('articleAnswers')) {
+      articleAnswers = (_json['articleAnswers'] as core.List)
+          .map<GoogleCloudDialogflowV2ArticleAnswer>((value) =>
+              GoogleCloudDialogflowV2ArticleAnswer.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('contextSize')) {
+      contextSize = _json['contextSize'] as core.int;
+    }
+    if (_json.containsKey('latestMessage')) {
+      latestMessage = _json['latestMessage'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (articleAnswers != null)
+          'articleAnswers':
+              articleAnswers!.map((value) => value.toJson()).toList(),
+        if (contextSize != null) 'contextSize': contextSize!,
+        if (latestMessage != null) 'latestMessage': latestMessage!,
+      };
+}
+
+/// The request message for Participants.SuggestFaqAnswers.
+class GoogleCloudDialogflowV2SuggestFaqAnswersRequest {
+  /// Max number of messages prior to and including \[latest_message\] to use as
+  /// context when compiling the suggestion.
+  ///
+  /// By default 20 and at most 50.
+  core.int? contextSize;
+
+  /// The name of the latest conversation message to compile suggestion for.
+  ///
+  /// If empty, it will be the latest message of the conversation. Format:
+  /// `projects//locations//conversations//messages/`.
+  core.String? latestMessage;
+
+  GoogleCloudDialogflowV2SuggestFaqAnswersRequest();
+
+  GoogleCloudDialogflowV2SuggestFaqAnswersRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('contextSize')) {
+      contextSize = _json['contextSize'] as core.int;
+    }
+    if (_json.containsKey('latestMessage')) {
+      latestMessage = _json['latestMessage'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contextSize != null) 'contextSize': contextSize!,
+        if (latestMessage != null) 'latestMessage': latestMessage!,
+      };
+}
+
+/// The request message for Participants.SuggestFaqAnswers.
+class GoogleCloudDialogflowV2SuggestFaqAnswersResponse {
+  /// Number of messages prior to and including latest_message to compile the
+  /// suggestion.
+  ///
+  /// It may be smaller than the SuggestFaqAnswersRequest.context_size field in
+  /// the request if there aren't that many messages in the conversation.
+  core.int? contextSize;
+
+  /// Answers extracted from FAQ documents.
+  core.List<GoogleCloudDialogflowV2FaqAnswer>? faqAnswers;
+
+  /// The name of the latest conversation message used to compile suggestion
+  /// for.
+  ///
+  /// Format: `projects//locations//conversations//messages/`.
+  core.String? latestMessage;
+
+  GoogleCloudDialogflowV2SuggestFaqAnswersResponse();
+
+  GoogleCloudDialogflowV2SuggestFaqAnswersResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('contextSize')) {
+      contextSize = _json['contextSize'] as core.int;
+    }
+    if (_json.containsKey('faqAnswers')) {
+      faqAnswers = (_json['faqAnswers'] as core.List)
+          .map<GoogleCloudDialogflowV2FaqAnswer>((value) =>
+              GoogleCloudDialogflowV2FaqAnswer.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('latestMessage')) {
+      latestMessage = _json['latestMessage'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contextSize != null) 'contextSize': contextSize!,
+        if (faqAnswers != null)
+          'faqAnswers': faqAnswers!.map((value) => value.toJson()).toList(),
+        if (latestMessage != null) 'latestMessage': latestMessage!,
+      };
+}
+
+/// The type of Human Agent Assistant API suggestion to perform, and the maximum
+/// number of results to return for that type.
+///
+/// Multiple `Feature` objects can be specified in the `features` list.
+class GoogleCloudDialogflowV2SuggestionFeature {
+  /// Type of Human Agent Assistant API feature to request.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Unspecified feature type.
+  /// - "ARTICLE_SUGGESTION" : Run article suggestion model.
+  /// - "FAQ" : Run FAQ model.
+  core.String? type;
+
+  GoogleCloudDialogflowV2SuggestionFeature();
+
+  GoogleCloudDialogflowV2SuggestionFeature.fromJson(core.Map _json) {
+    if (_json.containsKey('type')) {
+      type = _json['type'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (type != null) 'type': type!,
+      };
+}
+
+/// One response of different type of suggestion response which is used in the
+/// response of Participants.AnalyzeContent and Participants.AnalyzeContent, as
+/// well as HumanAgentAssistantEvent.
+class GoogleCloudDialogflowV2SuggestionResult {
+  /// Error status if the request failed.
+  GoogleRpcStatus? error;
+
+  /// SuggestArticlesResponse if request is for ARTICLE_SUGGESTION.
+  GoogleCloudDialogflowV2SuggestArticlesResponse? suggestArticlesResponse;
+
+  /// SuggestFaqAnswersResponse if request is for FAQ_ANSWER.
+  GoogleCloudDialogflowV2SuggestFaqAnswersResponse? suggestFaqAnswersResponse;
+
+  GoogleCloudDialogflowV2SuggestionResult();
+
+  GoogleCloudDialogflowV2SuggestionResult.fromJson(core.Map _json) {
+    if (_json.containsKey('error')) {
+      error = GoogleRpcStatus.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('suggestArticlesResponse')) {
+      suggestArticlesResponse =
+          GoogleCloudDialogflowV2SuggestArticlesResponse.fromJson(
+              _json['suggestArticlesResponse']
+                  as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('suggestFaqAnswersResponse')) {
+      suggestFaqAnswersResponse =
+          GoogleCloudDialogflowV2SuggestFaqAnswersResponse.fromJson(
+              _json['suggestFaqAnswersResponse']
+                  as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (error != null) 'error': error!.toJson(),
+        if (suggestArticlesResponse != null)
+          'suggestArticlesResponse': suggestArticlesResponse!.toJson(),
+        if (suggestFaqAnswersResponse != null)
+          'suggestFaqAnswersResponse': suggestFaqAnswersResponse!.toJson(),
+      };
+}
+
 /// Configuration of how speech should be synthesized.
 class GoogleCloudDialogflowV2SynthesizeSpeechConfig {
   /// An identifier which selects 'audio effects' profiles that are applied on
@@ -13828,6 +23831,91 @@ class GoogleCloudDialogflowV2TextInput {
       };
 }
 
+/// Instructs the speech synthesizer on how to generate the output audio
+/// content.
+class GoogleCloudDialogflowV2TextToSpeechSettings {
+  /// Indicates whether text to speech is enabled.
+  ///
+  /// Even when this field is false, other settings in this proto are still
+  /// retained.
+  ///
+  /// Optional.
+  core.bool? enableTextToSpeech;
+
+  /// Audio encoding of the synthesized audio content.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "OUTPUT_AUDIO_ENCODING_UNSPECIFIED" : Not specified.
+  /// - "OUTPUT_AUDIO_ENCODING_LINEAR_16" : Uncompressed 16-bit signed
+  /// little-endian samples (Linear PCM). Audio content returned as LINEAR16
+  /// also contains a WAV header.
+  /// - "OUTPUT_AUDIO_ENCODING_MP3" : MP3 audio at 32kbps.
+  /// - "OUTPUT_AUDIO_ENCODING_MP3_64_KBPS" : MP3 audio at 64kbps.
+  /// - "OUTPUT_AUDIO_ENCODING_OGG_OPUS" : Opus encoded audio wrapped in an ogg
+  /// container. The result will be a file which can be played natively on
+  /// Android, and in browsers (at least Chrome and Firefox). The quality of the
+  /// encoding is considerably higher than MP3 while using approximately the
+  /// same bitrate.
+  /// - "OUTPUT_AUDIO_ENCODING_MULAW" : 8-bit samples that compand 14-bit audio
+  /// samples using G.711 PCMU/mu-law.
+  core.String? outputAudioEncoding;
+
+  /// The synthesis sample rate (in hertz) for this audio.
+  ///
+  /// If not provided, then the synthesizer will use the default sample rate
+  /// based on the audio encoding. If this is different from the voice's natural
+  /// sample rate, then the synthesizer will honor this request by converting to
+  /// the desired sample rate (which might result in worse audio quality).
+  ///
+  /// Optional.
+  core.int? sampleRateHertz;
+
+  /// Configuration of how speech should be synthesized, mapping from language
+  /// (https://cloud.google.com/dialogflow/docs/reference/language) to
+  /// SynthesizeSpeechConfig.
+  ///
+  /// Optional.
+  core.Map<core.String, GoogleCloudDialogflowV2SynthesizeSpeechConfig>?
+      synthesizeSpeechConfigs;
+
+  GoogleCloudDialogflowV2TextToSpeechSettings();
+
+  GoogleCloudDialogflowV2TextToSpeechSettings.fromJson(core.Map _json) {
+    if (_json.containsKey('enableTextToSpeech')) {
+      enableTextToSpeech = _json['enableTextToSpeech'] as core.bool;
+    }
+    if (_json.containsKey('outputAudioEncoding')) {
+      outputAudioEncoding = _json['outputAudioEncoding'] as core.String;
+    }
+    if (_json.containsKey('sampleRateHertz')) {
+      sampleRateHertz = _json['sampleRateHertz'] as core.int;
+    }
+    if (_json.containsKey('synthesizeSpeechConfigs')) {
+      synthesizeSpeechConfigs = (_json['synthesizeSpeechConfigs']
+              as core.Map<core.String, core.dynamic>)
+          .map(
+        (key, item) => core.MapEntry(
+          key,
+          GoogleCloudDialogflowV2SynthesizeSpeechConfig.fromJson(
+              item as core.Map<core.String, core.dynamic>),
+        ),
+      );
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableTextToSpeech != null)
+          'enableTextToSpeech': enableTextToSpeech!,
+        if (outputAudioEncoding != null)
+          'outputAudioEncoding': outputAudioEncoding!,
+        if (sampleRateHertz != null) 'sampleRateHertz': sampleRateHertz!,
+        if (synthesizeSpeechConfigs != null)
+          'synthesizeSpeechConfigs': synthesizeSpeechConfigs!
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+      };
+}
+
 /// The request message for Agents.TrainAgent.
 class GoogleCloudDialogflowV2TrainAgentRequest {
   GoogleCloudDialogflowV2TrainAgentRequest();
@@ -13908,6 +23996,88 @@ class GoogleCloudDialogflowV2ValidationResult {
         if (validationErrors != null)
           'validationErrors':
               validationErrors!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// You can create multiple versions of your agent and publish them to separate
+/// environments.
+///
+/// When you edit an agent, you are editing the draft agent. At any point, you
+/// can save the draft agent as an agent version, which is an immutable snapshot
+/// of your agent. When you save the draft agent, it is published to the default
+/// environment. When you create agent versions, you can publish them to custom
+/// environments. You can create a variety of custom environments for: - testing
+/// - development - production - etc. For more information, see the
+/// [versions and environments guide](https://cloud.google.com/dialogflow/docs/agents-versions).
+class GoogleCloudDialogflowV2Version {
+  /// The creation time of this version.
+  ///
+  /// This field is read-only, i.e., it cannot be set by create and update
+  /// methods.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The developer-provided description of this version.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The unique identifier of this agent version.
+  ///
+  /// Supported formats: - `projects//agent/versions/` -
+  /// `projects//locations//agent/versions/`
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The status of this version.
+  ///
+  /// This field is read-only and cannot be set by create and update methods.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "VERSION_STATUS_UNSPECIFIED" : Not specified. This value is not used.
+  /// - "IN_PROGRESS" : Version is not ready to serve (e.g. training is in
+  /// progress).
+  /// - "READY" : Version is ready to serve.
+  /// - "FAILED" : Version training failed.
+  core.String? status;
+
+  /// The sequential number of this version.
+  ///
+  /// This field is read-only which means it cannot be set by create and update
+  /// methods.
+  ///
+  /// Output only.
+  core.int? versionNumber;
+
+  GoogleCloudDialogflowV2Version();
+
+  GoogleCloudDialogflowV2Version.fromJson(core.Map _json) {
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'] as core.String;
+    }
+    if (_json.containsKey('description')) {
+      description = _json['description'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('status')) {
+      status = _json['status'] as core.String;
+    }
+    if (_json.containsKey('versionNumber')) {
+      versionNumber = _json['versionNumber'] as core.int;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (name != null) 'name': name!,
+        if (status != null) 'status': status!,
+        if (versionNumber != null) 'versionNumber': versionNumber!,
       };
 }
 
@@ -14153,6 +24323,117 @@ class GoogleCloudDialogflowV2WebhookResponse {
       };
 }
 
+/// Represents a part of a message possibly annotated with an entity.
+///
+/// The part can be an entity or purely a part of the message between two
+/// entities or message start/end.
+class GoogleCloudDialogflowV2beta1AnnotatedMessagePart {
+  /// The
+  /// [Dialogflow system entity type](https://cloud.google.com/dialogflow/docs/reference/system-entities)
+  /// of this message part.
+  ///
+  /// If this is empty, Dialogflow could not annotate the phrase part with a
+  /// system entity.
+  ///
+  /// Optional.
+  core.String? entityType;
+
+  /// The
+  /// [Dialogflow system entity formatted value ](https://cloud.google.com/dialogflow/docs/reference/system-entities)
+  /// of this message part.
+  ///
+  /// For example for a system entity of type `@sys.unit-currency`, this may
+  /// contain: { "amount": 5, "currency": "USD" }
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object? formattedValue;
+
+  /// A part of a message possibly annotated with an entity.
+  ///
+  /// Required.
+  core.String? text;
+
+  GoogleCloudDialogflowV2beta1AnnotatedMessagePart();
+
+  GoogleCloudDialogflowV2beta1AnnotatedMessagePart.fromJson(core.Map _json) {
+    if (_json.containsKey('entityType')) {
+      entityType = _json['entityType'] as core.String;
+    }
+    if (_json.containsKey('formattedValue')) {
+      formattedValue = _json['formattedValue'] as core.Object;
+    }
+    if (_json.containsKey('text')) {
+      text = _json['text'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (entityType != null) 'entityType': entityType!,
+        if (formattedValue != null) 'formattedValue': formattedValue!,
+        if (text != null) 'text': text!,
+      };
+}
+
+/// Represents article answer.
+class GoogleCloudDialogflowV2beta1ArticleAnswer {
+  /// The name of answer record, in the format of
+  /// "projects//locations//answerRecords/"
+  core.String? answerRecord;
+
+  /// A map that contains metadata about the answer and the document from which
+  /// it originates.
+  core.Map<core.String, core.String>? metadata;
+
+  /// Article snippets.
+  ///
+  /// Output only.
+  core.List<core.String>? snippets;
+
+  /// The article title.
+  core.String? title;
+
+  /// The article URI.
+  core.String? uri;
+
+  GoogleCloudDialogflowV2beta1ArticleAnswer();
+
+  GoogleCloudDialogflowV2beta1ArticleAnswer.fromJson(core.Map _json) {
+    if (_json.containsKey('answerRecord')) {
+      answerRecord = _json['answerRecord'] as core.String;
+    }
+    if (_json.containsKey('metadata')) {
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
+    }
+    if (_json.containsKey('snippets')) {
+      snippets = (_json['snippets'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('title')) {
+      title = _json['title'] as core.String;
+    }
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (answerRecord != null) 'answerRecord': answerRecord!,
+        if (metadata != null) 'metadata': metadata!,
+        if (snippets != null) 'snippets': snippets!,
+        if (title != null) 'title': title!,
+        if (uri != null) 'uri': uri!,
+      };
+}
+
 /// The response message for EntityTypes.BatchUpdateEntityTypes.
 class GoogleCloudDialogflowV2beta1BatchUpdateEntityTypesResponse {
   /// The collection of updated or created entity types.
@@ -14283,6 +24564,76 @@ class GoogleCloudDialogflowV2beta1Context {
         if (lifespanCount != null) 'lifespanCount': lifespanCount!,
         if (name != null) 'name': name!,
         if (parameters != null) 'parameters': parameters!,
+      };
+}
+
+/// Represents a notification sent to Pub/Sub subscribers for conversation
+/// lifecycle events.
+class GoogleCloudDialogflowV2beta1ConversationEvent {
+  /// The unique identifier of the conversation this notification refers to.
+  ///
+  /// Format: `projects//conversations/`.
+  ///
+  /// Required.
+  core.String? conversation;
+
+  /// More detailed information about an error.
+  ///
+  /// Only set for type UNRECOVERABLE_ERROR_IN_PHONE_CALL.
+  ///
+  /// Optional.
+  GoogleRpcStatus? errorStatus;
+
+  /// Payload of NEW_MESSAGE event.
+  GoogleCloudDialogflowV2beta1Message? newMessagePayload;
+
+  /// The type of the event that this notification refers to.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Type not set.
+  /// - "CONVERSATION_STARTED" : A new conversation has been opened. This is
+  /// fired when a telephone call is answered, or a conversation is created via
+  /// the API.
+  /// - "CONVERSATION_FINISHED" : An existing conversation has closed. This is
+  /// fired when a telephone call is terminated, or a conversation is closed via
+  /// the API.
+  /// - "NEW_MESSAGE" : An existing conversation has received a new message,
+  /// either from API or telephony. It is configured in
+  /// ConversationProfile.new_message_event_notification_config
+  /// - "UNRECOVERABLE_ERROR" : Unrecoverable error during a telephone call. In
+  /// general non-recoverable errors only occur if something was misconfigured
+  /// in the ConversationProfile corresponding to the call. After a
+  /// non-recoverable error, Dialogflow may stop responding. We don't fire this
+  /// event: * in an API call because we can directly return the error, or, *
+  /// when we can recover from an error.
+  core.String? type;
+
+  GoogleCloudDialogflowV2beta1ConversationEvent();
+
+  GoogleCloudDialogflowV2beta1ConversationEvent.fromJson(core.Map _json) {
+    if (_json.containsKey('conversation')) {
+      conversation = _json['conversation'] as core.String;
+    }
+    if (_json.containsKey('errorStatus')) {
+      errorStatus = GoogleRpcStatus.fromJson(
+          _json['errorStatus'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('newMessagePayload')) {
+      newMessagePayload = GoogleCloudDialogflowV2beta1Message.fromJson(
+          _json['newMessagePayload'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('type')) {
+      type = _json['type'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conversation != null) 'conversation': conversation!,
+        if (errorStatus != null) 'errorStatus': errorStatus!.toJson(),
+        if (newMessagePayload != null)
+          'newMessagePayload': newMessagePayload!.toJson(),
+        if (type != null) 'type': type!,
       };
 }
 
@@ -14522,6 +24873,144 @@ class GoogleCloudDialogflowV2beta1ExportAgentResponse {
       };
 }
 
+/// Represents answer from "frequently asked questions".
+class GoogleCloudDialogflowV2beta1FaqAnswer {
+  /// The piece of text from the `source` knowledge base document.
+  core.String? answer;
+
+  /// The name of answer record, in the format of
+  /// "projects//locations//answerRecords/"
+  core.String? answerRecord;
+
+  /// The system's confidence score that this Knowledge answer is a good match
+  /// for this conversational query, range from 0.0 (completely uncertain) to
+  /// 1.0 (completely certain).
+  core.double? confidence;
+
+  /// A map that contains metadata about the answer and the document from which
+  /// it originates.
+  core.Map<core.String, core.String>? metadata;
+
+  /// The corresponding FAQ question.
+  core.String? question;
+
+  /// Indicates which Knowledge Document this answer was extracted from.
+  ///
+  /// Format: `projects//locations//agent/knowledgeBases//documents/`.
+  core.String? source;
+
+  GoogleCloudDialogflowV2beta1FaqAnswer();
+
+  GoogleCloudDialogflowV2beta1FaqAnswer.fromJson(core.Map _json) {
+    if (_json.containsKey('answer')) {
+      answer = _json['answer'] as core.String;
+    }
+    if (_json.containsKey('answerRecord')) {
+      answerRecord = _json['answerRecord'] as core.String;
+    }
+    if (_json.containsKey('confidence')) {
+      confidence = (_json['confidence'] as core.num).toDouble();
+    }
+    if (_json.containsKey('metadata')) {
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
+    }
+    if (_json.containsKey('question')) {
+      question = _json['question'] as core.String;
+    }
+    if (_json.containsKey('source')) {
+      source = _json['source'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (answer != null) 'answer': answer!,
+        if (answerRecord != null) 'answerRecord': answerRecord!,
+        if (confidence != null) 'confidence': confidence!,
+        if (metadata != null) 'metadata': metadata!,
+        if (question != null) 'question': question!,
+        if (source != null) 'source': source!,
+      };
+}
+
+/// Represents a notification sent to Pub/Sub subscribers for agent assistant
+/// events in a specific conversation.
+///
+/// Output only.
+class GoogleCloudDialogflowV2beta1HumanAgentAssistantEvent {
+  /// The conversation this notification refers to.
+  ///
+  /// Format: `projects//conversations/`.
+  core.String? conversation;
+
+  /// The participant that the suggestion is compiled for.
+  ///
+  /// And This field is used to call Participants.ListSuggestions API. Format:
+  /// `projects//conversations//participants/`. It will not be set in legacy
+  /// workflow. HumanAgentAssistantConfig.name for more information.
+  core.String? participant;
+
+  /// The suggestion results payload that this notification refers to.
+  ///
+  /// It will only be set when
+  /// HumanAgentAssistantConfig.SuggestionConfig.group_suggestion_responses sets
+  /// to true.
+  core.List<GoogleCloudDialogflowV2beta1SuggestionResult>? suggestionResults;
+
+  GoogleCloudDialogflowV2beta1HumanAgentAssistantEvent();
+
+  GoogleCloudDialogflowV2beta1HumanAgentAssistantEvent.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('conversation')) {
+      conversation = _json['conversation'] as core.String;
+    }
+    if (_json.containsKey('participant')) {
+      participant = _json['participant'] as core.String;
+    }
+    if (_json.containsKey('suggestionResults')) {
+      suggestionResults = (_json['suggestionResults'] as core.List)
+          .map<GoogleCloudDialogflowV2beta1SuggestionResult>((value) =>
+              GoogleCloudDialogflowV2beta1SuggestionResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conversation != null) 'conversation': conversation!,
+        if (participant != null) 'participant': participant!,
+        if (suggestionResults != null)
+          'suggestionResults':
+              suggestionResults!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// Response message for Documents.ImportDocuments.
+class GoogleCloudDialogflowV2beta1ImportDocumentsResponse {
+  /// Includes details about skipped documents or any other warnings.
+  core.List<GoogleRpcStatus>? warnings;
+
+  GoogleCloudDialogflowV2beta1ImportDocumentsResponse();
+
+  GoogleCloudDialogflowV2beta1ImportDocumentsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('warnings')) {
+      warnings = (_json['warnings'] as core.List)
+          .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (warnings != null)
+          'warnings': warnings!.map((value) => value.toJson()).toList(),
+      };
+}
+
 /// An intent categorizes an end-user's intention for one conversation turn.
 ///
 /// For each agent, you define many intents, where your combined intents can
@@ -14588,6 +25077,15 @@ class GoogleCloudDialogflowV2beta1Intent {
   ///
   /// Optional.
   core.bool? isFallback;
+
+  /// Indicates that a live agent should be brought in to handle the interaction
+  /// with the user.
+  ///
+  /// In most cases, when you set this flag to true, you would also want to set
+  /// end_interaction to true as well. Default is false.
+  ///
+  /// Optional.
+  core.bool? liveAgentHandoff;
 
   /// The collection of rich messages corresponding to the `Response` field in
   /// the Dialogflow console.
@@ -14733,6 +25231,9 @@ class GoogleCloudDialogflowV2beta1Intent {
     if (_json.containsKey('isFallback')) {
       isFallback = _json['isFallback'] as core.bool;
     }
+    if (_json.containsKey('liveAgentHandoff')) {
+      liveAgentHandoff = _json['liveAgentHandoff'] as core.bool;
+    }
     if (_json.containsKey('messages')) {
       messages = (_json['messages'] as core.List)
           .map<GoogleCloudDialogflowV2beta1IntentMessage>((value) =>
@@ -14800,6 +25301,7 @@ class GoogleCloudDialogflowV2beta1Intent {
               followupIntentInfo!.map((value) => value.toJson()).toList(),
         if (inputContextNames != null) 'inputContextNames': inputContextNames!,
         if (isFallback != null) 'isFallback': isFallback!,
+        if (liveAgentHandoff != null) 'liveAgentHandoff': liveAgentHandoff!,
         if (messages != null)
           'messages': messages!.map((value) => value.toJson()).toList(),
         if (mlDisabled != null) 'mlDisabled': mlDisabled!,
@@ -17058,6 +27560,156 @@ class GoogleCloudDialogflowV2beta1KnowledgeOperationMetadata {
       };
 }
 
+/// Represents a message posted into a conversation.
+class GoogleCloudDialogflowV2beta1Message {
+  /// The message content.
+  ///
+  /// Required.
+  core.String? content;
+
+  /// The time when the message was created in Contact Center AI.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The message language.
+  ///
+  /// This should be a \[BCP-47\](https://www.rfc-editor.org/rfc/bcp/bcp47.txt)
+  /// language tag. Example: "en-US".
+  ///
+  /// Optional.
+  core.String? languageCode;
+
+  /// The annotation for the message.
+  ///
+  /// Output only.
+  GoogleCloudDialogflowV2beta1MessageAnnotation? messageAnnotation;
+
+  /// The unique identifier of the message.
+  ///
+  /// Format: `projects//locations//conversations//messages/`.
+  ///
+  /// Optional.
+  core.String? name;
+
+  /// The participant that sends this message.
+  ///
+  /// Output only.
+  core.String? participant;
+
+  /// The role of the participant.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ROLE_UNSPECIFIED" : Participant role not set.
+  /// - "HUMAN_AGENT" : Participant is a human agent.
+  /// - "AUTOMATED_AGENT" : Participant is an automated agent, such as a
+  /// Dialogflow agent.
+  /// - "END_USER" : Participant is an end user that has called or chatted with
+  /// Dialogflow services.
+  core.String? participantRole;
+
+  /// The time when the message was sent.
+  ///
+  /// Optional.
+  core.String? sendTime;
+
+  /// The sentiment analysis result for the message.
+  ///
+  /// Output only.
+  GoogleCloudDialogflowV2beta1SentimentAnalysisResult? sentimentAnalysis;
+
+  GoogleCloudDialogflowV2beta1Message();
+
+  GoogleCloudDialogflowV2beta1Message.fromJson(core.Map _json) {
+    if (_json.containsKey('content')) {
+      content = _json['content'] as core.String;
+    }
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'] as core.String;
+    }
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'] as core.String;
+    }
+    if (_json.containsKey('messageAnnotation')) {
+      messageAnnotation =
+          GoogleCloudDialogflowV2beta1MessageAnnotation.fromJson(
+              _json['messageAnnotation']
+                  as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('participant')) {
+      participant = _json['participant'] as core.String;
+    }
+    if (_json.containsKey('participantRole')) {
+      participantRole = _json['participantRole'] as core.String;
+    }
+    if (_json.containsKey('sendTime')) {
+      sendTime = _json['sendTime'] as core.String;
+    }
+    if (_json.containsKey('sentimentAnalysis')) {
+      sentimentAnalysis =
+          GoogleCloudDialogflowV2beta1SentimentAnalysisResult.fromJson(
+              _json['sentimentAnalysis']
+                  as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (content != null) 'content': content!,
+        if (createTime != null) 'createTime': createTime!,
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (messageAnnotation != null)
+          'messageAnnotation': messageAnnotation!.toJson(),
+        if (name != null) 'name': name!,
+        if (participant != null) 'participant': participant!,
+        if (participantRole != null) 'participantRole': participantRole!,
+        if (sendTime != null) 'sendTime': sendTime!,
+        if (sentimentAnalysis != null)
+          'sentimentAnalysis': sentimentAnalysis!.toJson(),
+      };
+}
+
+/// Represents the result of annotation for the message.
+class GoogleCloudDialogflowV2beta1MessageAnnotation {
+  /// Indicates whether the text message contains entities.
+  ///
+  /// Required.
+  core.bool? containEntities;
+
+  /// The collection of annotated message parts ordered by their position in the
+  /// message.
+  ///
+  /// You can recover the annotated message by concatenating
+  /// \[AnnotatedMessagePart.text\].
+  ///
+  /// Optional.
+  core.List<GoogleCloudDialogflowV2beta1AnnotatedMessagePart>? parts;
+
+  GoogleCloudDialogflowV2beta1MessageAnnotation();
+
+  GoogleCloudDialogflowV2beta1MessageAnnotation.fromJson(core.Map _json) {
+    if (_json.containsKey('containEntities')) {
+      containEntities = _json['containEntities'] as core.bool;
+    }
+    if (_json.containsKey('parts')) {
+      parts = (_json['parts'] as core.List)
+          .map<GoogleCloudDialogflowV2beta1AnnotatedMessagePart>((value) =>
+              GoogleCloudDialogflowV2beta1AnnotatedMessagePart.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (containEntities != null) 'containEntities': containEntities!,
+        if (parts != null)
+          'parts': parts!.map((value) => value.toJson()).toList(),
+      };
+}
+
 /// Represents the contents of the original request that was passed to the
 /// `[Streaming]DetectIntent` call.
 class GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest {
@@ -17480,6 +28132,244 @@ class GoogleCloudDialogflowV2beta1SessionEntityType {
       };
 }
 
+/// Represents a smart reply answer.
+class GoogleCloudDialogflowV2beta1SmartReplyAnswer {
+  /// The name of answer record, in the format of
+  /// "projects//locations//answerRecords/"
+  core.String? answerRecord;
+
+  /// Smart reply confidence.
+  ///
+  /// The system's confidence score that this reply is a good match for this
+  /// conversation, as a value from 0.0 (completely uncertain) to 1.0
+  /// (completely certain).
+  core.double? confidence;
+
+  /// The content of the reply.
+  core.String? reply;
+
+  GoogleCloudDialogflowV2beta1SmartReplyAnswer();
+
+  GoogleCloudDialogflowV2beta1SmartReplyAnswer.fromJson(core.Map _json) {
+    if (_json.containsKey('answerRecord')) {
+      answerRecord = _json['answerRecord'] as core.String;
+    }
+    if (_json.containsKey('confidence')) {
+      confidence = (_json['confidence'] as core.num).toDouble();
+    }
+    if (_json.containsKey('reply')) {
+      reply = _json['reply'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (answerRecord != null) 'answerRecord': answerRecord!,
+        if (confidence != null) 'confidence': confidence!,
+        if (reply != null) 'reply': reply!,
+      };
+}
+
+/// The response message for Participants.SuggestArticles.
+class GoogleCloudDialogflowV2beta1SuggestArticlesResponse {
+  /// Articles ordered by score in descending order.
+  ///
+  /// Output only.
+  core.List<GoogleCloudDialogflowV2beta1ArticleAnswer>? articleAnswers;
+
+  /// Number of messages prior to and including latest_message to compile the
+  /// suggestion.
+  ///
+  /// It may be smaller than the SuggestArticlesResponse.context_size field in
+  /// the request if there aren't that many messages in the conversation.
+  core.int? contextSize;
+
+  /// The name of the latest conversation message used to compile suggestion
+  /// for.
+  ///
+  /// Format: `projects//locations//conversations//messages/`.
+  core.String? latestMessage;
+
+  GoogleCloudDialogflowV2beta1SuggestArticlesResponse();
+
+  GoogleCloudDialogflowV2beta1SuggestArticlesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('articleAnswers')) {
+      articleAnswers = (_json['articleAnswers'] as core.List)
+          .map<GoogleCloudDialogflowV2beta1ArticleAnswer>((value) =>
+              GoogleCloudDialogflowV2beta1ArticleAnswer.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('contextSize')) {
+      contextSize = _json['contextSize'] as core.int;
+    }
+    if (_json.containsKey('latestMessage')) {
+      latestMessage = _json['latestMessage'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (articleAnswers != null)
+          'articleAnswers':
+              articleAnswers!.map((value) => value.toJson()).toList(),
+        if (contextSize != null) 'contextSize': contextSize!,
+        if (latestMessage != null) 'latestMessage': latestMessage!,
+      };
+}
+
+/// The request message for Participants.SuggestFaqAnswers.
+class GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse {
+  /// Number of messages prior to and including latest_message to compile the
+  /// suggestion.
+  ///
+  /// It may be smaller than the SuggestFaqAnswersRequest.context_size field in
+  /// the request if there aren't that many messages in the conversation.
+  core.int? contextSize;
+
+  /// Answers extracted from FAQ documents.
+  ///
+  /// Output only.
+  core.List<GoogleCloudDialogflowV2beta1FaqAnswer>? faqAnswers;
+
+  /// The name of the latest conversation message used to compile suggestion
+  /// for.
+  ///
+  /// Format: `projects//locations//conversations//messages/`.
+  core.String? latestMessage;
+
+  GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse();
+
+  GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('contextSize')) {
+      contextSize = _json['contextSize'] as core.int;
+    }
+    if (_json.containsKey('faqAnswers')) {
+      faqAnswers = (_json['faqAnswers'] as core.List)
+          .map<GoogleCloudDialogflowV2beta1FaqAnswer>((value) =>
+              GoogleCloudDialogflowV2beta1FaqAnswer.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('latestMessage')) {
+      latestMessage = _json['latestMessage'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contextSize != null) 'contextSize': contextSize!,
+        if (faqAnswers != null)
+          'faqAnswers': faqAnswers!.map((value) => value.toJson()).toList(),
+        if (latestMessage != null) 'latestMessage': latestMessage!,
+      };
+}
+
+/// The response message for Participants.SuggestSmartReplies.
+class GoogleCloudDialogflowV2beta1SuggestSmartRepliesResponse {
+  /// Number of messages prior to and including latest_message to compile the
+  /// suggestion.
+  ///
+  /// It may be smaller than the SuggestSmartRepliesRequest.context_size field
+  /// in the request if there aren't that many messages in the conversation.
+  core.int? contextSize;
+
+  /// The name of the latest conversation message used to compile suggestion
+  /// for.
+  ///
+  /// Format: `projects//locations//conversations//messages/`.
+  core.String? latestMessage;
+
+  /// Multiple reply options provided by smart reply service.
+  ///
+  /// The order is based on the rank of the model prediction. The maximum number
+  /// of the returned replies is set in SmartReplyConfig.
+  ///
+  /// Output only.
+  core.List<GoogleCloudDialogflowV2beta1SmartReplyAnswer>? smartReplyAnswers;
+
+  GoogleCloudDialogflowV2beta1SuggestSmartRepliesResponse();
+
+  GoogleCloudDialogflowV2beta1SuggestSmartRepliesResponse.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('contextSize')) {
+      contextSize = _json['contextSize'] as core.int;
+    }
+    if (_json.containsKey('latestMessage')) {
+      latestMessage = _json['latestMessage'] as core.String;
+    }
+    if (_json.containsKey('smartReplyAnswers')) {
+      smartReplyAnswers = (_json['smartReplyAnswers'] as core.List)
+          .map<GoogleCloudDialogflowV2beta1SmartReplyAnswer>((value) =>
+              GoogleCloudDialogflowV2beta1SmartReplyAnswer.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contextSize != null) 'contextSize': contextSize!,
+        if (latestMessage != null) 'latestMessage': latestMessage!,
+        if (smartReplyAnswers != null)
+          'smartReplyAnswers':
+              smartReplyAnswers!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// One response of different type of suggestion response which is used in the
+/// response of Participants.AnalyzeContent and Participants.AnalyzeContent, as
+/// well as HumanAgentAssistantEvent.
+class GoogleCloudDialogflowV2beta1SuggestionResult {
+  /// Error status if the request failed.
+  GoogleRpcStatus? error;
+
+  /// SuggestArticlesResponse if request is for ARTICLE_SUGGESTION.
+  GoogleCloudDialogflowV2beta1SuggestArticlesResponse? suggestArticlesResponse;
+
+  /// SuggestFaqAnswersResponse if request is for FAQ_ANSWER.
+  GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse?
+      suggestFaqAnswersResponse;
+
+  /// SuggestSmartRepliesResponse if request is for SMART_REPLY.
+  GoogleCloudDialogflowV2beta1SuggestSmartRepliesResponse?
+      suggestSmartRepliesResponse;
+
+  GoogleCloudDialogflowV2beta1SuggestionResult();
+
+  GoogleCloudDialogflowV2beta1SuggestionResult.fromJson(core.Map _json) {
+    if (_json.containsKey('error')) {
+      error = GoogleRpcStatus.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('suggestArticlesResponse')) {
+      suggestArticlesResponse =
+          GoogleCloudDialogflowV2beta1SuggestArticlesResponse.fromJson(
+              _json['suggestArticlesResponse']
+                  as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('suggestFaqAnswersResponse')) {
+      suggestFaqAnswersResponse =
+          GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse.fromJson(
+              _json['suggestFaqAnswersResponse']
+                  as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('suggestSmartRepliesResponse')) {
+      suggestSmartRepliesResponse =
+          GoogleCloudDialogflowV2beta1SuggestSmartRepliesResponse.fromJson(
+              _json['suggestSmartRepliesResponse']
+                  as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (error != null) 'error': error!.toJson(),
+        if (suggestArticlesResponse != null)
+          'suggestArticlesResponse': suggestArticlesResponse!.toJson(),
+        if (suggestFaqAnswersResponse != null)
+          'suggestFaqAnswersResponse': suggestFaqAnswersResponse!.toJson(),
+        if (suggestSmartRepliesResponse != null)
+          'suggestSmartRepliesResponse': suggestSmartRepliesResponse!.toJson(),
+      };
+}
+
 /// The request message for a webhook call.
 class GoogleCloudDialogflowV2beta1WebhookRequest {
   /// Alternative query results from KnowledgeService.
@@ -17595,6 +28485,13 @@ class GoogleCloudDialogflowV2beta1WebhookResponse {
   /// Optional.
   core.String? fulfillmentText;
 
+  /// Indicates that a live agent should be brought in to handle the interaction
+  /// with the user.
+  ///
+  /// In most cases, when you set this flag to true, you would also want to set
+  /// end_interaction to true as well. Default is false.
+  core.bool? liveAgentHandoff;
+
   /// The collection of output contexts that will overwrite currently active
   /// contexts for the session and reset their lifespans.
   ///
@@ -17660,6 +28557,9 @@ class GoogleCloudDialogflowV2beta1WebhookResponse {
     if (_json.containsKey('fulfillmentText')) {
       fulfillmentText = _json['fulfillmentText'] as core.String;
     }
+    if (_json.containsKey('liveAgentHandoff')) {
+      liveAgentHandoff = _json['liveAgentHandoff'] as core.bool;
+    }
     if (_json.containsKey('outputContexts')) {
       outputContexts = (_json['outputContexts'] as core.List)
           .map<GoogleCloudDialogflowV2beta1Context>((value) =>
@@ -17695,6 +28595,7 @@ class GoogleCloudDialogflowV2beta1WebhookResponse {
           'fulfillmentMessages':
               fulfillmentMessages!.map((value) => value.toJson()).toList(),
         if (fulfillmentText != null) 'fulfillmentText': fulfillmentText!,
+        if (liveAgentHandoff != null) 'liveAgentHandoff': liveAgentHandoff!,
         if (outputContexts != null)
           'outputContexts':
               outputContexts!.map((value) => value.toJson()).toList(),
@@ -18062,8 +28963,8 @@ class GoogleRpcStatus {
 /// An object that represents a latitude/longitude pair.
 ///
 /// This is expressed as a pair of doubles to represent degrees latitude and
-/// degrees longitude. Unless specified otherwise, this must conform to the
-/// WGS84 standard. Values must be within normalized ranges.
+/// degrees longitude. Unless specified otherwise, this object must conform to
+/// the WGS84 standard. Values must be within normalized ranges.
 class GoogleTypeLatLng {
   /// The latitude in degrees.
   ///

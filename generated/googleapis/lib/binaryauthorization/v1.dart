@@ -42,7 +42,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// The management interface for Binary Authorization, a system providing policy
 /// control for images deployed to Kubernetes Engine clusters.
 class BinaryAuthorizationApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -835,8 +835,9 @@ class AdmissionRule {
 class AdmissionWhitelistPattern {
   /// An image name pattern to allowlist, in the form `registry/path/to/image`.
   ///
-  /// This supports a trailing `*` as a wildcard, but this is allowed only in
-  /// text after the `registry/` part.
+  /// This supports a trailing `*` wildcard, but this is allowed only in text
+  /// after the `registry/` part. This also supports a trailing `**` wildcard
+  /// which matches subdirectories of a given entry.
   core.String? namePattern;
 
   AdmissionWhitelistPattern();

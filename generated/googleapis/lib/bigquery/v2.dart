@@ -60,11 +60,7 @@ class BigqueryApi {
   static const bigqueryInsertdataScope =
       'https://www.googleapis.com/auth/bigquery.insertdata';
 
-  /// View your data in Google BigQuery
-  static const bigqueryReadonlyScope =
-      'https://www.googleapis.com/auth/bigquery.readonly';
-
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -447,6 +443,57 @@ class JobsResource {
     );
     return JobCancelResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Requests that a job is deleted.
+  ///
+  /// This call will return when the job is deleted. This method is available in
+  /// limited preview.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Required. Project ID of the job to be deleted.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [jobId] - Required. Job ID of the job to be deleted. If this is a parent
+  /// job which has child jobs, all child jobs will be deleted as well. Deletion
+  /// of child jobs directly is not allowed.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [location] - The geographic location of the job. Required. See details at:
+  /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> delete(
+    core.String projectId,
+    core.String jobId, {
+    core.String? location,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (location != null) 'location': [location],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'projects/' +
+        core.Uri.encodeFull('$projectId') +
+        '/jobs/' +
+        core.Uri.encodeFull('$jobId') +
+        '/delete';
+
+    await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+      downloadOptions: null,
+    );
   }
 
   /// Returns information about a specific job.
@@ -852,7 +899,9 @@ class ModelsResource {
 
   /// Lists all models in the specified dataset.
   ///
-  /// Requires the READER dataset role.
+  /// Requires the READER dataset role. After retrieving the list of models, you
+  /// can get information about a particular model by calling the models.get
+  /// method.
   ///
   /// Request parameters:
   ///
@@ -2427,6 +2476,15 @@ class ArimaModelInfo {
   /// It is always false when d is not 1.
   core.bool? hasDrift;
 
+  /// If true, holiday_effect is a part of time series decomposition result.
+  core.bool? hasHolidayEffect;
+
+  /// If true, spikes_and_dips is a part of time series decomposition result.
+  core.bool? hasSpikesAndDips;
+
+  /// If true, step_changes is a part of time series decomposition result.
+  core.bool? hasStepChanges;
+
   /// Non-seasonal order.
   ArimaOrder? nonSeasonalOrder;
 
@@ -2442,6 +2500,14 @@ class ArimaModelInfo {
   /// time_series_id_column training option was used.
   core.String? timeSeriesId;
 
+  /// The tuple of time_series_ids identifying this time series.
+  ///
+  /// It will be one of the unique tuples of values present in the
+  /// time_series_id_columns specified during ARIMA model training. Only present
+  /// when time_series_id_columns training option was used and the order of
+  /// values here are same as the order of time_series_id_columns.
+  core.List<core.String>? timeSeriesIds;
+
   ArimaModelInfo();
 
   ArimaModelInfo.fromJson(core.Map _json) {
@@ -2456,6 +2522,15 @@ class ArimaModelInfo {
     if (_json.containsKey('hasDrift')) {
       hasDrift = _json['hasDrift'] as core.bool;
     }
+    if (_json.containsKey('hasHolidayEffect')) {
+      hasHolidayEffect = _json['hasHolidayEffect'] as core.bool;
+    }
+    if (_json.containsKey('hasSpikesAndDips')) {
+      hasSpikesAndDips = _json['hasSpikesAndDips'] as core.bool;
+    }
+    if (_json.containsKey('hasStepChanges')) {
+      hasStepChanges = _json['hasStepChanges'] as core.bool;
+    }
     if (_json.containsKey('nonSeasonalOrder')) {
       nonSeasonalOrder = ArimaOrder.fromJson(
           _json['nonSeasonalOrder'] as core.Map<core.String, core.dynamic>);
@@ -2468,6 +2543,11 @@ class ArimaModelInfo {
     if (_json.containsKey('timeSeriesId')) {
       timeSeriesId = _json['timeSeriesId'] as core.String;
     }
+    if (_json.containsKey('timeSeriesIds')) {
+      timeSeriesIds = (_json['timeSeriesIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2476,10 +2556,14 @@ class ArimaModelInfo {
         if (arimaFittingMetrics != null)
           'arimaFittingMetrics': arimaFittingMetrics!.toJson(),
         if (hasDrift != null) 'hasDrift': hasDrift!,
+        if (hasHolidayEffect != null) 'hasHolidayEffect': hasHolidayEffect!,
+        if (hasSpikesAndDips != null) 'hasSpikesAndDips': hasSpikesAndDips!,
+        if (hasStepChanges != null) 'hasStepChanges': hasStepChanges!,
         if (nonSeasonalOrder != null)
           'nonSeasonalOrder': nonSeasonalOrder!.toJson(),
         if (seasonalPeriods != null) 'seasonalPeriods': seasonalPeriods!,
         if (timeSeriesId != null) 'timeSeriesId': timeSeriesId!,
+        if (timeSeriesIds != null) 'timeSeriesIds': timeSeriesIds!,
       };
 }
 
@@ -2565,6 +2649,15 @@ class ArimaSingleModelForecastingMetrics {
   /// It is always false when d is not 1.
   core.bool? hasDrift;
 
+  /// If true, holiday_effect is a part of time series decomposition result.
+  core.bool? hasHolidayEffect;
+
+  /// If true, spikes_and_dips is a part of time series decomposition result.
+  core.bool? hasSpikesAndDips;
+
+  /// If true, step_changes is a part of time series decomposition result.
+  core.bool? hasStepChanges;
+
   /// Non-seasonal order.
   ArimaOrder? nonSeasonalOrder;
 
@@ -2580,6 +2673,14 @@ class ArimaSingleModelForecastingMetrics {
   /// time_series_id_column training option was used.
   core.String? timeSeriesId;
 
+  /// The tuple of time_series_ids identifying this time series.
+  ///
+  /// It will be one of the unique tuples of values present in the
+  /// time_series_id_columns specified during ARIMA model training. Only present
+  /// when time_series_id_columns training option was used and the order of
+  /// values here are same as the order of time_series_id_columns.
+  core.List<core.String>? timeSeriesIds;
+
   ArimaSingleModelForecastingMetrics();
 
   ArimaSingleModelForecastingMetrics.fromJson(core.Map _json) {
@@ -2589,6 +2690,15 @@ class ArimaSingleModelForecastingMetrics {
     }
     if (_json.containsKey('hasDrift')) {
       hasDrift = _json['hasDrift'] as core.bool;
+    }
+    if (_json.containsKey('hasHolidayEffect')) {
+      hasHolidayEffect = _json['hasHolidayEffect'] as core.bool;
+    }
+    if (_json.containsKey('hasSpikesAndDips')) {
+      hasSpikesAndDips = _json['hasSpikesAndDips'] as core.bool;
+    }
+    if (_json.containsKey('hasStepChanges')) {
+      hasStepChanges = _json['hasStepChanges'] as core.bool;
     }
     if (_json.containsKey('nonSeasonalOrder')) {
       nonSeasonalOrder = ArimaOrder.fromJson(
@@ -2602,16 +2712,25 @@ class ArimaSingleModelForecastingMetrics {
     if (_json.containsKey('timeSeriesId')) {
       timeSeriesId = _json['timeSeriesId'] as core.String;
     }
+    if (_json.containsKey('timeSeriesIds')) {
+      timeSeriesIds = (_json['timeSeriesIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (arimaFittingMetrics != null)
           'arimaFittingMetrics': arimaFittingMetrics!.toJson(),
         if (hasDrift != null) 'hasDrift': hasDrift!,
+        if (hasHolidayEffect != null) 'hasHolidayEffect': hasHolidayEffect!,
+        if (hasSpikesAndDips != null) 'hasSpikesAndDips': hasSpikesAndDips!,
+        if (hasStepChanges != null) 'hasStepChanges': hasStepChanges!,
         if (nonSeasonalOrder != null)
           'nonSeasonalOrder': nonSeasonalOrder!.toJson(),
         if (seasonalPeriods != null) 'seasonalPeriods': seasonalPeriods!,
         if (timeSeriesId != null) 'timeSeriesId': timeSeriesId!,
+        if (timeSeriesIds != null) 'timeSeriesIds': timeSeriesIds!,
       };
 }
 
@@ -4296,27 +4415,6 @@ class DestinationTableProperties {
       };
 }
 
-/// Model evaluation metrics for dimensionality reduction models.
-class DimensionalityReductionMetrics {
-  /// Total percentage of variance explained by the selected principal
-  /// components.
-  core.double? totalExplainedVarianceRatio;
-
-  DimensionalityReductionMetrics();
-
-  DimensionalityReductionMetrics.fromJson(core.Map _json) {
-    if (_json.containsKey('totalExplainedVarianceRatio')) {
-      totalExplainedVarianceRatio =
-          (_json['totalExplainedVarianceRatio'] as core.num).toDouble();
-    }
-  }
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (totalExplainedVarianceRatio != null)
-          'totalExplainedVarianceRatio': totalExplainedVarianceRatio!,
-      };
-}
-
 class EncryptionConfiguration {
   /// Describes the Cloud KMS encryption key that will be used to protect
   /// destination BigQuery table.
@@ -4423,10 +4521,6 @@ class EvaluationMetrics {
   /// Populated for clustering models.
   ClusteringMetrics? clusteringMetrics;
 
-  /// Evaluation metrics when the model is a dimensionality reduction model,
-  /// which currently includes PCA.
-  DimensionalityReductionMetrics? dimensionalityReductionMetrics;
-
   /// Populated for multi-class classification/classifier models.
   MultiClassClassificationMetrics? multiClassClassificationMetrics;
 
@@ -4454,11 +4548,6 @@ class EvaluationMetrics {
       clusteringMetrics = ClusteringMetrics.fromJson(
           _json['clusteringMetrics'] as core.Map<core.String, core.dynamic>);
     }
-    if (_json.containsKey('dimensionalityReductionMetrics')) {
-      dimensionalityReductionMetrics = DimensionalityReductionMetrics.fromJson(
-          _json['dimensionalityReductionMetrics']
-              as core.Map<core.String, core.dynamic>);
-    }
     if (_json.containsKey('multiClassClassificationMetrics')) {
       multiClassClassificationMetrics =
           MultiClassClassificationMetrics.fromJson(
@@ -4482,9 +4571,6 @@ class EvaluationMetrics {
           'binaryClassificationMetrics': binaryClassificationMetrics!.toJson(),
         if (clusteringMetrics != null)
           'clusteringMetrics': clusteringMetrics!.toJson(),
-        if (dimensionalityReductionMetrics != null)
-          'dimensionalityReductionMetrics':
-              dimensionalityReductionMetrics!.toJson(),
         if (multiClassClassificationMetrics != null)
           'multiClassClassificationMetrics':
               multiClassClassificationMetrics!.toJson(),
@@ -5415,9 +5501,6 @@ class IterationResult {
   /// Learn rate used for this iteration.
   core.double? learnRate;
 
-  /// The information of the principal components.
-  core.List<PrincipalComponentInfo>? principalComponentInfos;
-
   /// Loss computed on the training data at the end of iteration.
   core.double? trainingLoss;
 
@@ -5446,13 +5529,6 @@ class IterationResult {
     if (_json.containsKey('learnRate')) {
       learnRate = (_json['learnRate'] as core.num).toDouble();
     }
-    if (_json.containsKey('principalComponentInfos')) {
-      principalComponentInfos = (_json['principalComponentInfos'] as core.List)
-          .map<PrincipalComponentInfo>((value) =>
-              PrincipalComponentInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
     if (_json.containsKey('trainingLoss')) {
       trainingLoss = (_json['trainingLoss'] as core.num).toDouble();
     }
@@ -5466,9 +5542,6 @@ class IterationResult {
         if (evalLoss != null) 'evalLoss': evalLoss!,
         if (index != null) 'index': index!,
         if (learnRate != null) 'learnRate': learnRate!,
-        if (principalComponentInfos != null)
-          'principalComponentInfos':
-              principalComponentInfos!.map((value) => value.toJson()).toList(),
         if (trainingLoss != null) 'trainingLoss': trainingLoss!,
       };
 }
@@ -6250,6 +6323,13 @@ class JobConfigurationQuery {
   /// Optional.
   core.String? createDisposition;
 
+  /// If true, creates a new session, where session id will be a server
+  /// generated random id.
+  ///
+  /// If false, runs query with an existing session_id passed in
+  /// ConnectionProperty, otherwise runs query in non-session mode.
+  core.bool? createSession;
+
   /// Specifies the default dataset to use for unqualified table names in the
   /// query.
   ///
@@ -6412,6 +6492,9 @@ class JobConfigurationQuery {
     if (_json.containsKey('createDisposition')) {
       createDisposition = _json['createDisposition'] as core.String;
     }
+    if (_json.containsKey('createSession')) {
+      createSession = _json['createSession'] as core.bool;
+    }
     if (_json.containsKey('defaultDataset')) {
       defaultDataset = DatasetReference.fromJson(
           _json['defaultDataset'] as core.Map<core.String, core.dynamic>);
@@ -6502,6 +6585,7 @@ class JobConfigurationQuery {
           'connectionProperties':
               connectionProperties!.map((value) => value.toJson()).toList(),
         if (createDisposition != null) 'createDisposition': createDisposition!,
+        if (createSession != null) 'createSession': createSession!,
         if (defaultDataset != null) 'defaultDataset': defaultDataset!.toJson(),
         if (destinationEncryptionConfiguration != null)
           'destinationEncryptionConfiguration':
@@ -6889,6 +6973,10 @@ class JobStatistics {
   /// \[Output-only\] Statistics for a child job of a script.
   ScriptStatistics? scriptStatistics;
 
+  /// \[Output-only\] \[Preview\] Information of the session if this job is part
+  /// of one.
+  SessionInfo? sessionInfoTemplate;
+
   /// \[Output-only\] Start time of this job, in milliseconds since the epoch.
   ///
   /// This field will be present when the job transitions from the PENDING state
@@ -6960,6 +7048,10 @@ class JobStatistics {
       scriptStatistics = ScriptStatistics.fromJson(
           _json['scriptStatistics'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('sessionInfoTemplate')) {
+      sessionInfoTemplate = SessionInfo.fromJson(
+          _json['sessionInfoTemplate'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('startTime')) {
       startTime = _json['startTime'] as core.String;
     }
@@ -6994,6 +7086,8 @@ class JobStatistics {
           'rowLevelSecurityStatistics': rowLevelSecurityStatistics!.toJson(),
         if (scriptStatistics != null)
           'scriptStatistics': scriptStatistics!.toJson(),
+        if (sessionInfoTemplate != null)
+          'sessionInfoTemplate': sessionInfoTemplate!.toJson(),
         if (startTime != null) 'startTime': startTime!,
         if (totalBytesProcessed != null)
           'totalBytesProcessed': totalBytesProcessed!,
@@ -7040,6 +7134,12 @@ class JobStatistics2 {
   ///
   /// Present only for DROP ALL ROW ACCESS POLICIES queries.
   core.String? ddlAffectedRowAccessPolicyCount;
+
+  /// \[Output-only\] The DDL destination table.
+  ///
+  /// Present only for ALTER TABLE RENAME TO queries. Note that ddl_target_table
+  /// is used just for its type information.
+  TableReference? ddlDestinationTable;
 
   /// The DDL operation performed, possibly dependent on the pre-existence of
   /// the DDL target.
@@ -7175,6 +7275,10 @@ class JobStatistics2 {
       ddlAffectedRowAccessPolicyCount =
           _json['ddlAffectedRowAccessPolicyCount'] as core.String;
     }
+    if (_json.containsKey('ddlDestinationTable')) {
+      ddlDestinationTable = TableReference.fromJson(
+          _json['ddlDestinationTable'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('ddlOperationPerformed')) {
       ddlOperationPerformed = _json['ddlOperationPerformed'] as core.String;
     }
@@ -7282,6 +7386,8 @@ class JobStatistics2 {
         if (cacheHit != null) 'cacheHit': cacheHit!,
         if (ddlAffectedRowAccessPolicyCount != null)
           'ddlAffectedRowAccessPolicyCount': ddlAffectedRowAccessPolicyCount!,
+        if (ddlDestinationTable != null)
+          'ddlDestinationTable': ddlDestinationTable!.toJson(),
         if (ddlOperationPerformed != null)
           'ddlOperationPerformed': ddlOperationPerformed!,
         if (ddlTargetDataset != null)
@@ -7667,6 +7773,9 @@ class MaterializedViewDefinition {
 }
 
 class Model {
+  /// The best trial_id across all training runs.
+  core.String? bestTrialId;
+
   /// The time when this model was created, in millisecs since the epoch.
   ///
   /// Output only.
@@ -7759,6 +7868,7 @@ class Model {
   /// - "ARIMA" : ARIMA model.
   /// - "AUTOML_REGRESSOR" : \[Beta\] AutoML Tables regression model.
   /// - "AUTOML_CLASSIFIER" : \[Beta\] AutoML Tables classification model.
+  /// - "ARIMA_PLUS" : New name for the ARIMA model.
   core.String? modelType;
 
   /// Information for all training runs in increasing order of start_time.
@@ -7769,6 +7879,9 @@ class Model {
   Model();
 
   Model.fromJson(core.Map _json) {
+    if (_json.containsKey('bestTrialId')) {
+      bestTrialId = _json['bestTrialId'] as core.String;
+    }
     if (_json.containsKey('creationTime')) {
       creationTime = _json['creationTime'] as core.String;
     }
@@ -7831,6 +7944,7 @@ class Model {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (bestTrialId != null) 'bestTrialId': bestTrialId!,
         if (creationTime != null) 'creationTime': creationTime!,
         if (description != null) 'description': description!,
         if (encryptionConfiguration != null)
@@ -8139,55 +8253,6 @@ class Policy {
       };
 }
 
-/// Principal component infos, used only for eigen decomposition based models,
-/// e.g., PCA.
-///
-/// Ordered by explained_variance in the descending order.
-class PrincipalComponentInfo {
-  /// The explained_variance is pre-ordered in the descending order to compute
-  /// the cumulative explained variance ratio.
-  core.double? cumulativeExplainedVarianceRatio;
-
-  /// Explained variance by this principal component, which is simply the
-  /// eigenvalue.
-  core.double? explainedVariance;
-
-  /// Explained_variance over the total explained variance.
-  core.double? explainedVarianceRatio;
-
-  /// Id of the principal component.
-  core.String? principalComponentId;
-
-  PrincipalComponentInfo();
-
-  PrincipalComponentInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('cumulativeExplainedVarianceRatio')) {
-      cumulativeExplainedVarianceRatio =
-          (_json['cumulativeExplainedVarianceRatio'] as core.num).toDouble();
-    }
-    if (_json.containsKey('explainedVariance')) {
-      explainedVariance = (_json['explainedVariance'] as core.num).toDouble();
-    }
-    if (_json.containsKey('explainedVarianceRatio')) {
-      explainedVarianceRatio =
-          (_json['explainedVarianceRatio'] as core.num).toDouble();
-    }
-    if (_json.containsKey('principalComponentId')) {
-      principalComponentId = _json['principalComponentId'] as core.String;
-    }
-  }
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (cumulativeExplainedVarianceRatio != null)
-          'cumulativeExplainedVarianceRatio': cumulativeExplainedVarianceRatio!,
-        if (explainedVariance != null) 'explainedVariance': explainedVariance!,
-        if (explainedVarianceRatio != null)
-          'explainedVarianceRatio': explainedVarianceRatio!,
-        if (principalComponentId != null)
-          'principalComponentId': principalComponentId!,
-      };
-}
-
 class ProjectListProjects {
   /// A descriptive name for this project.
   core.String? friendlyName;
@@ -8481,6 +8546,13 @@ class QueryRequest {
   /// Connection properties.
   core.List<ConnectionProperty>? connectionProperties;
 
+  /// If true, creates a new session, where session id will be a server
+  /// generated random id.
+  ///
+  /// If false, runs query with an existing session_id passed in
+  /// ConnectionProperty, otherwise runs query in non-session mode.
+  core.bool? createSession;
+
   /// Specifies the default datasetId and projectId to assume for any
   /// unqualified table names in the query.
   ///
@@ -8619,6 +8691,9 @@ class QueryRequest {
               value as core.Map<core.String, core.dynamic>))
           .toList();
     }
+    if (_json.containsKey('createSession')) {
+      createSession = _json['createSession'] as core.bool;
+    }
     if (_json.containsKey('defaultDataset')) {
       defaultDataset = DatasetReference.fromJson(
           _json['defaultDataset'] as core.Map<core.String, core.dynamic>);
@@ -8679,6 +8754,7 @@ class QueryRequest {
         if (connectionProperties != null)
           'connectionProperties':
               connectionProperties!.map((value) => value.toJson()).toList(),
+        if (createSession != null) 'createSession': createSession!,
         if (defaultDataset != null) 'defaultDataset': defaultDataset!.toJson(),
         if (dryRun != null) 'dryRun': dryRun!,
         if (kind != null) 'kind': kind!,
@@ -8749,6 +8825,10 @@ class QueryResponse {
   /// Present only when the query completes successfully.
   TableSchema? schema;
 
+  /// \[Output-only\] \[Preview\] Information of the session if this job is part
+  /// of one.
+  SessionInfo? sessionInfoTemplate;
+
   /// The total number of bytes processed for this query.
   ///
   /// If this query was a dry run, this is the number of bytes that would be
@@ -8797,6 +8877,10 @@ class QueryResponse {
       schema = TableSchema.fromJson(
           _json['schema'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('sessionInfoTemplate')) {
+      sessionInfoTemplate = SessionInfo.fromJson(
+          _json['sessionInfoTemplate'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('totalBytesProcessed')) {
       totalBytesProcessed = _json['totalBytesProcessed'] as core.String;
     }
@@ -8817,6 +8901,8 @@ class QueryResponse {
         if (pageToken != null) 'pageToken': pageToken!,
         if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
         if (schema != null) 'schema': schema!.toJson(),
+        if (sessionInfoTemplate != null)
+          'sessionInfoTemplate': sessionInfoTemplate!.toJson(),
         if (totalBytesProcessed != null)
           'totalBytesProcessed': totalBytesProcessed!,
         if (totalRows != null) 'totalRows': totalRows!,
@@ -9105,6 +9191,11 @@ class Routine {
   /// Output only.
   core.String? lastModifiedTime;
 
+  /// Set only if Routine is a "TABLE_VALUED_FUNCTION".
+  ///
+  /// Optional.
+  StandardSqlTableType? returnTableType;
+
   /// Optional if language = "SQL"; required otherwise.
   ///
   /// If absent, the return type is inferred from definition_body at query time
@@ -9134,6 +9225,7 @@ class Routine {
   /// - "ROUTINE_TYPE_UNSPECIFIED"
   /// - "SCALAR_FUNCTION" : Non-builtin permanent scalar function.
   /// - "PROCEDURE" : Stored procedure.
+  /// - "TABLE_VALUED_FUNCTION" : Non-builtin permanent TVF.
   core.String? routineType;
 
   Routine();
@@ -9171,6 +9263,10 @@ class Routine {
     if (_json.containsKey('lastModifiedTime')) {
       lastModifiedTime = _json['lastModifiedTime'] as core.String;
     }
+    if (_json.containsKey('returnTableType')) {
+      returnTableType = StandardSqlTableType.fromJson(
+          _json['returnTableType'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('returnType')) {
       returnType = StandardSqlDataType.fromJson(
           _json['returnType'] as core.Map<core.String, core.dynamic>);
@@ -9195,6 +9291,8 @@ class Routine {
         if (importedLibraries != null) 'importedLibraries': importedLibraries!,
         if (language != null) 'language': language!,
         if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime!,
+        if (returnTableType != null)
+          'returnTableType': returnTableType!.toJson(),
         if (returnType != null) 'returnType': returnType!.toJson(),
         if (routineReference != null)
           'routineReference': routineReference!.toJson(),
@@ -9493,6 +9591,23 @@ class ScriptStatistics {
       };
 }
 
+class SessionInfo {
+  /// \[Output-only\] // \[Preview\] Id of the session.
+  core.String? sessionId;
+
+  SessionInfo();
+
+  SessionInfo.fromJson(core.Map _json) {
+    if (_json.containsKey('sessionId')) {
+      sessionId = _json['sessionId'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (sessionId != null) 'sessionId': sessionId!,
+      };
+}
+
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`.
@@ -9589,9 +9704,11 @@ class StandardSqlDataType {
   /// - "TIME" : Encoded as RFC 3339 partial-time format string: 23:20:50.52
   /// - "DATETIME" : Encoded as RFC 3339 full-date "T" partial-time:
   /// 1985-04-12T23:20:50.52
+  /// - "INTERVAL" : Encoded as fully qualified 3 part: 0-5 15 2:30:45.6
   /// - "GEOGRAPHY" : Encoded as WKT
   /// - "NUMERIC" : Encoded as a decimal string.
   /// - "BIGNUMERIC" : Encoded as a decimal string.
+  /// - "JSON" : Encoded as a string.
   /// - "ARRAY" : Encoded as a list with types matching Type.array_type.
   /// - "STRUCT" : Encoded as a list with fields of type Type.struct_type\[i\].
   /// List is used because a JSON object cannot have duplicate field names.
@@ -9674,6 +9791,28 @@ class StandardSqlStructType {
   core.Map<core.String, core.dynamic> toJson() => {
         if (fields != null)
           'fields': fields!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// A table type
+class StandardSqlTableType {
+  /// The columns in this table type
+  core.List<StandardSqlField>? columns;
+
+  StandardSqlTableType();
+
+  StandardSqlTableType.fromJson(core.Map _json) {
+    if (_json.containsKey('columns')) {
+      columns = (_json['columns'] as core.List)
+          .map<StandardSqlField>((value) => StandardSqlField.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (columns != null)
+          'columns': columns!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -10316,6 +10455,17 @@ class TableFieldSchema {
   /// Optional.
   core.List<TableFieldSchema>? fields;
 
+  /// Maximum length of values of this field for STRINGS or BYTES.
+  ///
+  /// If max_length is not specified, no maximum length constraint is imposed on
+  /// this field. If type = "STRING", then max_length represents the maximum
+  /// UTF-8 length of strings in this field. If type = "BYTES", then max_length
+  /// represents the maximum number of bytes in this field. It is invalid to set
+  /// this field if type ≠ "STRING" and ≠ "BYTES".
+  ///
+  /// Optional.
+  core.String? maxLength;
+
   /// The field mode.
   ///
   /// Possible values include NULLABLE, REQUIRED and REPEATED. The default value
@@ -10328,19 +10478,46 @@ class TableFieldSchema {
   ///
   /// The name must contain only letters (a-z, A-Z), numbers (0-9), or
   /// underscores (_), and must start with a letter or underscore. The maximum
-  /// length is 128 characters.
+  /// length is 300 characters.
   ///
   /// Required.
   core.String? name;
   TableFieldSchemaPolicyTags? policyTags;
 
+  /// Precision (maximum number of total digits in base 10) and scale (maximum
+  /// number of digits in the fractional part in base 10) constraints for values
+  /// of this field for NUMERIC or BIGNUMERIC.
+  ///
+  /// It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠
+  /// "BIGNUMERIC". If precision and scale are not specified, no value range
+  /// constraint is imposed on this field insofar as values are permitted by the
+  /// type. Values of this NUMERIC or BIGNUMERIC field must be in this range
+  /// when: - Precision (P) and scale (S) are specified: \[-10P-S + 10-S, 10P-S
+  /// - 10-S\] - Precision (P) is specified but not scale (and thus scale is
+  /// interpreted to be equal to zero): \[-10P + 1, 10P - 1\]. Acceptable values
+  /// for precision and scale if both are specified: - If type = "NUMERIC": 1 ≤
+  /// precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤
+  /// precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision
+  /// if only precision is specified but not scale (and thus scale is
+  /// interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤
+  /// 29. - If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified
+  /// but not precision, then it is invalid.
+  ///
+  /// Optional.
+  core.String? precision;
+
+  /// See documentation for precision.
+  ///
+  /// Optional.
+  core.String? scale;
+
   /// The field data type.
   ///
   /// Possible values include STRING, BYTES, INTEGER, INT64 (same as INTEGER),
   /// FLOAT, FLOAT64 (same as FLOAT), NUMERIC, BIGNUMERIC, BOOLEAN, BOOL (same
-  /// as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, RECORD (where RECORD
-  /// indicates that the field contains a nested schema) or STRUCT (same as
-  /// RECORD).
+  /// as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, INTERVAL, RECORD (where
+  /// RECORD indicates that the field contains a nested schema) or STRUCT (same
+  /// as RECORD).
   ///
   /// Required.
   core.String? type;
@@ -10361,6 +10538,9 @@ class TableFieldSchema {
               value as core.Map<core.String, core.dynamic>))
           .toList();
     }
+    if (_json.containsKey('maxLength')) {
+      maxLength = _json['maxLength'] as core.String;
+    }
     if (_json.containsKey('mode')) {
       mode = _json['mode'] as core.String;
     }
@@ -10370,6 +10550,12 @@ class TableFieldSchema {
     if (_json.containsKey('policyTags')) {
       policyTags = TableFieldSchemaPolicyTags.fromJson(
           _json['policyTags'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('precision')) {
+      precision = _json['precision'] as core.String;
+    }
+    if (_json.containsKey('scale')) {
+      scale = _json['scale'] as core.String;
     }
     if (_json.containsKey('type')) {
       type = _json['type'] as core.String;
@@ -10381,9 +10567,12 @@ class TableFieldSchema {
         if (description != null) 'description': description!,
         if (fields != null)
           'fields': fields!.map((value) => value.toJson()).toList(),
+        if (maxLength != null) 'maxLength': maxLength!,
         if (mode != null) 'mode': mode!,
         if (name != null) 'name': name!,
         if (policyTags != null) 'policyTags': policyTags!.toJson(),
+        if (precision != null) 'precision': precision!,
+        if (scale != null) 'scale': scale!,
         if (type != null) 'type': type!,
       };
 }
@@ -10753,6 +10942,10 @@ class TimePartitioning {
 
 /// Options used in model training.
 class TrainingOptions {
+  /// If true, detect step changes and make data adjustment in the input time
+  /// series.
+  core.bool? adjustStepChanges;
+
   /// Whether to enable auto ARIMA or not.
   core.bool? autoArima;
 
@@ -10761,6 +10954,9 @@ class TrainingOptions {
 
   /// Batch size for dnn models.
   core.String? batchSize;
+
+  /// If true, clean spikes and dips in the input time series.
+  core.bool? cleanSpikesAndDips;
 
   /// The data frequency of a time series.
   /// Possible string values are:
@@ -10803,6 +10999,9 @@ class TrainingOptions {
   /// - "AUTO_SPLIT" : Splits data automatically: Uses NO_SPLIT if the data size
   /// is small. Otherwise uses RANDOM.
   core.String? dataSplitMethod;
+
+  /// If true, perform decompose time series and save the results.
+  core.bool? decomposeTimeSeries;
 
   /// Distance type for clustering models.
   /// Possible string values are:
@@ -11027,6 +11226,9 @@ class TrainingOptions {
   /// The time series id column that was used during ARIMA model training.
   core.String? timeSeriesIdColumn;
 
+  /// The time series id columns that were used during ARIMA model training.
+  core.List<core.String>? timeSeriesIdColumns;
+
   /// Column to be designated as time series timestamp for ARIMA model.
   core.String? timeSeriesTimestampColumn;
 
@@ -11043,6 +11245,9 @@ class TrainingOptions {
   TrainingOptions();
 
   TrainingOptions.fromJson(core.Map _json) {
+    if (_json.containsKey('adjustStepChanges')) {
+      adjustStepChanges = _json['adjustStepChanges'] as core.bool;
+    }
     if (_json.containsKey('autoArima')) {
       autoArima = _json['autoArima'] as core.bool;
     }
@@ -11051,6 +11256,9 @@ class TrainingOptions {
     }
     if (_json.containsKey('batchSize')) {
       batchSize = _json['batchSize'] as core.String;
+    }
+    if (_json.containsKey('cleanSpikesAndDips')) {
+      cleanSpikesAndDips = _json['cleanSpikesAndDips'] as core.bool;
     }
     if (_json.containsKey('dataFrequency')) {
       dataFrequency = _json['dataFrequency'] as core.String;
@@ -11064,6 +11272,9 @@ class TrainingOptions {
     }
     if (_json.containsKey('dataSplitMethod')) {
       dataSplitMethod = _json['dataSplitMethod'] as core.String;
+    }
+    if (_json.containsKey('decomposeTimeSeries')) {
+      decomposeTimeSeries = _json['decomposeTimeSeries'] as core.bool;
     }
     if (_json.containsKey('distanceType')) {
       distanceType = _json['distanceType'] as core.String;
@@ -11176,6 +11387,11 @@ class TrainingOptions {
     if (_json.containsKey('timeSeriesIdColumn')) {
       timeSeriesIdColumn = _json['timeSeriesIdColumn'] as core.String;
     }
+    if (_json.containsKey('timeSeriesIdColumns')) {
+      timeSeriesIdColumns = (_json['timeSeriesIdColumns'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
     if (_json.containsKey('timeSeriesTimestampColumn')) {
       timeSeriesTimestampColumn =
           _json['timeSeriesTimestampColumn'] as core.String;
@@ -11192,14 +11408,19 @@ class TrainingOptions {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (adjustStepChanges != null) 'adjustStepChanges': adjustStepChanges!,
         if (autoArima != null) 'autoArima': autoArima!,
         if (autoArimaMaxOrder != null) 'autoArimaMaxOrder': autoArimaMaxOrder!,
         if (batchSize != null) 'batchSize': batchSize!,
+        if (cleanSpikesAndDips != null)
+          'cleanSpikesAndDips': cleanSpikesAndDips!,
         if (dataFrequency != null) 'dataFrequency': dataFrequency!,
         if (dataSplitColumn != null) 'dataSplitColumn': dataSplitColumn!,
         if (dataSplitEvalFraction != null)
           'dataSplitEvalFraction': dataSplitEvalFraction!,
         if (dataSplitMethod != null) 'dataSplitMethod': dataSplitMethod!,
+        if (decomposeTimeSeries != null)
+          'decomposeTimeSeries': decomposeTimeSeries!,
         if (distanceType != null) 'distanceType': distanceType!,
         if (dropout != null) 'dropout': dropout!,
         if (earlyStop != null) 'earlyStop': earlyStop!,
@@ -11240,6 +11461,8 @@ class TrainingOptions {
           'timeSeriesDataColumn': timeSeriesDataColumn!,
         if (timeSeriesIdColumn != null)
           'timeSeriesIdColumn': timeSeriesIdColumn!,
+        if (timeSeriesIdColumns != null)
+          'timeSeriesIdColumns': timeSeriesIdColumns!,
         if (timeSeriesTimestampColumn != null)
           'timeSeriesTimestampColumn': timeSeriesTimestampColumn!,
         if (userColumn != null) 'userColumn': userColumn!,

@@ -42,7 +42,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// TPU API provides customers with access to Google TPU technology.
 class TPUApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -122,11 +122,15 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [filter] - The standard list filter.
+  /// [filter] - A filter to narrow down results to a preferred subset. The
+  /// filtering language accepts strings like "displayName=tokyo", and is
+  /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
   ///
-  /// [pageSize] - The standard list page size.
+  /// [pageSize] - The maximum number of results to return. If not set, the
+  /// service selects a default.
   ///
-  /// [pageToken] - The standard list page token.
+  /// [pageToken] - A page token received from the `next_page_token` field in
+  /// the response. Send that page token to receive the subsequent page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1154,6 +1158,16 @@ class Node {
   /// Required.
   core.String? acceleratorType;
 
+  /// The API version that created this Node.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "API_VERSION_UNSPECIFIED" : API version is unknown.
+  /// - "V1_ALPHA1" : TPU API V1Alpha1 version.
+  /// - "V1" : TPU API V1 version.
+  /// - "V2_ALPHA1" : TPU API V2Alpha1 version.
+  core.String? apiVersion;
+
   /// The CIDR block that the TPU node will use when selecting an IP address.
   ///
   /// This CIDR block must be a /29 block; the Compute Engine networks API
@@ -1292,6 +1306,9 @@ class Node {
     if (_json.containsKey('acceleratorType')) {
       acceleratorType = _json['acceleratorType'] as core.String;
     }
+    if (_json.containsKey('apiVersion')) {
+      apiVersion = _json['apiVersion'] as core.String;
+    }
     if (_json.containsKey('cidrBlock')) {
       cidrBlock = _json['cidrBlock'] as core.String;
     }
@@ -1359,6 +1376,7 @@ class Node {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (acceleratorType != null) 'acceleratorType': acceleratorType!,
+        if (apiVersion != null) 'apiVersion': apiVersion!,
         if (cidrBlock != null) 'cidrBlock': cidrBlock!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
@@ -1681,6 +1699,8 @@ class Symptom {
   /// - "MESH_BUILD_FAIL" : TPU runtime fails to construct a mesh that
   /// recognizes each TPU device's neighbors.
   /// - "HBM_OUT_OF_MEMORY" : TPU HBM is out of memory.
+  /// - "PROJECT_ABUSE" : Abusive behaviors have been identified on the current
+  /// project.
   core.String? symptomType;
 
   /// A string used to uniquely distinguish a worker within a TPU node.

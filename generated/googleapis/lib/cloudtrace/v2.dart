@@ -48,7 +48,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// used to interact with the Cloud Trace API directly. If you are looking to
 /// instrument your application for Cloud Trace, we recommend using OpenCensus.
 class CloudTraceApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 

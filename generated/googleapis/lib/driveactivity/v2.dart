@@ -476,7 +476,7 @@ class ConsolidationStrategy {
 
 /// An object was created by copying an existing object.
 class Copy {
-  /// The the original object.
+  /// The original object.
   TargetReference? originalObject;
 
   Copy();
@@ -592,7 +592,7 @@ class Domain {
   /// An opaque string used to identify this domain.
   core.String? legacyId;
 
-  /// The name of the domain, e.g. "google.com".
+  /// The name of the domain, e.g. `google.com`.
   core.String? name;
 
   Domain();
@@ -616,7 +616,7 @@ class Domain {
 class Drive {
   /// The resource name of the shared drive.
   ///
-  /// The format is "COLLECTION_ID/DRIVE_ID". Clients should not assume a
+  /// The format is `COLLECTION_ID/DRIVE_ID`. Clients should not assume a
   /// specific collection ID for this resource name.
   core.String? name;
 
@@ -787,7 +787,7 @@ class DriveItem {
 
   /// The target Drive item.
   ///
-  /// The format is "items/ITEM_ID".
+  /// The format is `items/ITEM_ID`.
   core.String? name;
 
   /// Information about the owner of this Drive item.
@@ -860,7 +860,7 @@ class DriveItemReference {
 
   /// The target Drive item.
   ///
-  /// The format is "items/ITEM_ID".
+  /// The format is `items/ITEM_ID`.
   core.String? name;
 
   /// The title of the Drive item.
@@ -907,7 +907,7 @@ class DriveItemReference {
 class DriveReference {
   /// The resource name of the shared drive.
   ///
-  /// The format is "COLLECTION_ID/DRIVE_ID". Clients should not assume a
+  /// The format is `COLLECTION_ID/DRIVE_ID`. Clients should not assume a
   /// specific collection ID for this resource name.
   core.String? name;
 
@@ -969,7 +969,7 @@ class FileComment {
   core.String? legacyDiscussionId;
 
   /// The link to the discussion thread containing this comment, for example,
-  /// "https://docs.google.com/DOCUMENT_ID/edit?disco=THREAD_ID".
+  /// `https://docs.google.com/DOCUMENT_ID/edit?disco=THREAD_ID`.
   core.String? linkToDiscussion;
 
   /// The Drive item containing this comment.
@@ -1085,7 +1085,7 @@ class KnownUser {
   /// The identifier for this user that can be used with the People API to get
   /// more information.
   ///
-  /// The format is "people/ACCOUNT_ID". See
+  /// The format is `people/ACCOUNT_ID`. See
   /// https://developers.google.com/people/.
   core.String? personName;
 
@@ -1237,7 +1237,8 @@ class Permission {
   /// The group to whom this permission applies.
   Group? group;
 
-  /// Indicates the Google Drive permissions role.
+  /// Indicates the
+  /// [Google Drive permissions role](https://developers.google.com/drive/web/manage-sharing#roles).
   ///
   /// The role determines a user's ability to read, write, and comment on items.
   /// Possible string values are:
@@ -1363,7 +1364,7 @@ class Post {
 class QueryDriveActivityRequest {
   /// Return activities for this Drive folder and all children and descendants.
   ///
-  /// The format is "items/ITEM_ID".
+  /// The format is `items/ITEM_ID`.
   core.String? ancestorName;
 
   /// Details on how to consolidate related actions that make up the activity.
@@ -1375,18 +1376,19 @@ class QueryDriveActivityRequest {
   ///
   /// The format of the filter string is a sequence of expressions, joined by an
   /// optional "AND", where each expression is of the form "field operator
-  /// value". Supported fields: - time: Uses numerical operators on date values
-  /// either in terms of milliseconds since Jan 1, 1970 or in RFC 3339 format.
-  /// Examples: - time > 1452409200000 AND time <= 1492812924310 - time >=
-  /// "2016-01-10T01:02:03-05:00" - detail.action_detail_case: Uses the "has"
-  /// operator (:) and either a singular value or a list of allowed action types
-  /// enclosed in parentheses. Examples: - detail.action_detail_case: RENAME -
-  /// detail.action_detail_case:(CREATE EDIT) - -detail.action_detail_case:MOVE
+  /// value". Supported fields: - `time`: Uses numerical operators on date
+  /// values either in terms of milliseconds since Jan 1, 1970 or in RFC 3339
+  /// format. Examples: - `time > 1452409200000 AND time <= 1492812924310` -
+  /// `time >= "2016-01-10T01:02:03-05:00"` - `detail.action_detail_case`: Uses
+  /// the "has" operator (:) and either a singular value or a list of allowed
+  /// action types enclosed in parentheses. Examples: -
+  /// `detail.action_detail_case: RENAME` - `detail.action_detail_case:(CREATE
+  /// EDIT)` - `-detail.action_detail_case:MOVE`
   core.String? filter;
 
   /// Return activities for this Drive item.
   ///
-  /// The format is "items/ITEM_ID".
+  /// The format is `items/ITEM_ID`.
   core.String? itemName;
 
   /// The miminum number of activities desired in the response; the server will

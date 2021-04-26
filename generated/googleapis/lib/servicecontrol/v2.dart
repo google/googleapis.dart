@@ -39,7 +39,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Provides admission control and telemetry reporting for services integrated
 /// with Service Infrastructure.
 class ServiceControlApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -843,10 +843,10 @@ class CheckResponse {
   /// Returns a set of request contexts generated from the `CheckRequest`.
   core.Map<core.String, core.String>? headers;
 
-  /// An 'OK' status allows the operation.
+  /// Operation is allowed when this field is not set.
   ///
-  /// Any other status indicates a denial; \[google.rpc.Status.details\]() would
-  /// contain additional details about the denial.
+  /// Any non-'OK' status indicates a denial; \[google.rpc.Status.details\]()
+  /// would contain additional details about the denial.
   Status? status;
 
   CheckResponse();
@@ -1052,7 +1052,7 @@ class Request {
   /// The HTTP request method, such as `GET`, `POST`.
   core.String? method;
 
-  /// The HTTP URL path.
+  /// The HTTP URL path, excluding the query parameters.
   core.String? path;
 
   /// The network protocol used with the request, such as "http/1.1", "spdy/3",
@@ -1476,7 +1476,7 @@ class ResourceLocation {
 ///
 /// It generally models semantics of an HTTP response.
 class Response {
-  /// The length of time it takes the backend service to fully respond to a
+  /// The amount of time it takes the backend service to fully respond to a
   /// request.
   ///
   /// Measured from when the destination service starts to send the request to
@@ -1575,9 +1575,9 @@ class ServiceAccountDelegationInfo {
       };
 }
 
-/// The context of a span, attached to Exemplars in Distribution values during
-/// aggregation.
+/// The context of a span.
 ///
+/// This is attached to an Exemplar in Distribution values during aggregation.
 /// It contains the name of a span with format:
 /// projects/\[PROJECT_ID_OR_NUMBER\]/traces/\[TRACE_ID\]/spans/\[SPAN_ID\]
 class SpanContext {

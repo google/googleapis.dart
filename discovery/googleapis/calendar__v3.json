@@ -814,7 +814,7 @@
                             "enumDescriptions": [
                                 "Notifications are sent to all guests.",
                                 "Notifications are sent to non-Google Calendar guests only.",
-                                "No notifications are sent. This value should only be used for migration use cases (note that in most migration cases the import method should be used)."
+                                "No notifications are sent. For calendar migration tasks, consider using the Events.import method instead."
                             ],
                             "location": "query",
                             "type": "string"
@@ -960,7 +960,7 @@
                             "enumDescriptions": [
                                 "Notifications are sent to all guests.",
                                 "Notifications are sent to non-Google Calendar guests only.",
-                                "No notifications are sent. This value should only be used for migration use cases (note that in most migration cases the import method should be used)."
+                                "No notifications are sent. For calendar migration tasks, consider using the Events.import method instead."
                             ],
                             "location": "query",
                             "type": "string"
@@ -1241,7 +1241,7 @@
                             "enumDescriptions": [
                                 "Notifications are sent to all guests.",
                                 "Notifications are sent to non-Google Calendar guests only.",
-                                "No notifications are sent. This value should only be used for migration use cases (note that in most migration cases the import method should be used)."
+                                "No notifications are sent. For calendar migration tasks, consider using the Events.import method instead."
                             ],
                             "location": "query",
                             "type": "string"
@@ -1312,7 +1312,7 @@
                             "enumDescriptions": [
                                 "Notifications are sent to all guests.",
                                 "Notifications are sent to non-Google Calendar guests only.",
-                                "No notifications are sent. This value should only be used for migration use cases (note that in most migration cases the import method should be used)."
+                                "No notifications are sent. For calendar migration tasks, consider using the Events.import method instead."
                             ],
                             "location": "query",
                             "type": "string"
@@ -1365,7 +1365,7 @@
                             "enumDescriptions": [
                                 "Notifications are sent to all guests.",
                                 "Notifications are sent to non-Google Calendar guests only.",
-                                "No notifications are sent. This value should only be used for migration use cases (note that in most migration cases the import method should be used)."
+                                "No notifications are sent. For calendar migration tasks, consider using the Events.import method instead."
                             ],
                             "location": "query",
                             "type": "string"
@@ -1442,7 +1442,7 @@
                             "enumDescriptions": [
                                 "Notifications are sent to all guests.",
                                 "Notifications are sent to non-Google Calendar guests only.",
-                                "No notifications are sent. This value should only be used for migration use cases (note that in most migration cases the import method should be used)."
+                                "No notifications are sent. For calendar migration tasks, consider using the Events.import method instead."
                             ],
                             "location": "query",
                             "type": "string"
@@ -1723,7 +1723,7 @@
             }
         }
     },
-    "revision": "20210222",
+    "revision": "20210518",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Acl": {
@@ -1764,7 +1764,7 @@
                     "type": "string"
                 },
                 "id": {
-                    "description": "Identifier of the ACL rule.",
+                    "description": "Identifier of the Access Control List (ACL) rule. See Sharing calendars.",
                     "type": "string"
                 },
                 "kind": {
@@ -1788,7 +1788,7 @@
                             "calendar.acl.update"
                         ]
                     },
-                    "description": "The scope of the rule.",
+                    "description": "The extent to which calendar access is granted by this ACL rule.",
                     "properties": {
                         "type": {
                             "annotations": {
@@ -2074,9 +2074,9 @@
                 "calendar": {
                     "additionalProperties": {
                         "$ref": "ColorDefinition",
-                        "description": "A calendar color defintion."
+                        "description": "A calendar color definition."
                     },
-                    "description": "A global palette of calendar colors, mapping from the color ID to its definition. A calendarListEntry resource refers to one of these color IDs in its color field. Read-only.",
+                    "description": "A global palette of calendar colors, mapping from the color ID to its definition. A calendarListEntry resource refers to one of these color IDs in its colorId field. Read-only.",
                     "type": "object"
                 },
                 "event": {
@@ -2084,7 +2084,7 @@
                         "$ref": "ColorDefinition",
                         "description": "An event color definition."
                     },
-                    "description": "A global palette of event colors, mapping from the color ID to its definition. An event resource may refer to one of these color IDs in its color field. Read-only.",
+                    "description": "A global palette of event colors, mapping from the color ID to its definition. An event resource may refer to one of these color IDs in its colorId field. Read-only.",
                     "type": "object"
                 },
                 "kind": {
@@ -2104,7 +2104,7 @@
             "id": "ConferenceData",
             "properties": {
                 "conferenceId": {
-                    "description": "The ID of the conference.\nCan be used by developers to keep track of conferences, should not be displayed to users.\nValues for solution types:  \n- \"eventHangout\": unset.\n- \"eventNamedHangout\": the name of the Hangout.\n- \"hangoutsMeet\": the 10-letter meeting code, for example \"aaa-bbbb-ccc\".\n- \"addOn\": defined by 3P conference provider.  Optional.",
+                    "description": "The ID of the conference.\nCan be used by developers to keep track of conferences, should not be displayed to users.\nThe ID value is formed differently for each conference solution type: `\n- eventHangout: ID is not set.\n- eventNamedHangout: ID is the name of the Hangout.\n- hangoutsMeet: ID is the 10-letter meeting code, for example aaa-bbbb-ccc.\n- addOn: ID is defined by the third-party provider.  Optional.",
                     "type": "string"
                 },
                 "conferenceSolution": {

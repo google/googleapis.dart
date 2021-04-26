@@ -1389,6 +1389,31 @@ class AdvancedSecurityOverrides {
   /// - "COMMON_CRITERIA_MODE_ENABLED" : Enables Common Criteria Mode.
   core.String? commonCriteriaMode;
 
+  /// Controls access to developer settings: developer options and safe boot.
+  ///
+  /// Replaces safeBootDisabled (deprecated) and debuggingFeaturesAllowed
+  /// (deprecated).
+  /// Possible string values are:
+  /// - "DEVELOPER_SETTINGS_UNSPECIFIED" : Unspecified. Defaults to
+  /// DEVELOPER_SETTINGS_DISABLED.
+  /// - "DEVELOPER_SETTINGS_DISABLED" : Default. Disables all developer settings
+  /// and prevents the user from accessing them.
+  /// - "DEVELOPER_SETTINGS_ALLOWED" : Allows all developer settings. The user
+  /// can access and optionally configure the settings.
+  core.String? developerSettings;
+
+  /// Whether Google Play Protect verification
+  /// (https://support.google.com/accounts/answer/2812853) is enforced.
+  ///
+  /// Replaces ensureVerifyAppsEnabled (deprecated).
+  /// Possible string values are:
+  /// - "GOOGLE_PLAY_PROTECT_VERIFY_APPS_UNSPECIFIED" : Unspecified. Defaults to
+  /// VERIFY_APPS_ENFORCED.
+  /// - "VERIFY_APPS_ENFORCED" : Default. Force-enables app verification.
+  /// - "VERIFY_APPS_USER_CHOICE" : Allows the user to choose whether to enable
+  /// app verification.
+  core.String? googlePlayProtectVerifyApps;
+
   /// The policy for untrusted apps (apps from unknown sources) enforced on the
   /// device.
   ///
@@ -1411,6 +1436,13 @@ class AdvancedSecurityOverrides {
     if (_json.containsKey('commonCriteriaMode')) {
       commonCriteriaMode = _json['commonCriteriaMode'] as core.String;
     }
+    if (_json.containsKey('developerSettings')) {
+      developerSettings = _json['developerSettings'] as core.String;
+    }
+    if (_json.containsKey('googlePlayProtectVerifyApps')) {
+      googlePlayProtectVerifyApps =
+          _json['googlePlayProtectVerifyApps'] as core.String;
+    }
     if (_json.containsKey('untrustedAppsPolicy')) {
       untrustedAppsPolicy = _json['untrustedAppsPolicy'] as core.String;
     }
@@ -1419,6 +1451,9 @@ class AdvancedSecurityOverrides {
   core.Map<core.String, core.dynamic> toJson() => {
         if (commonCriteriaMode != null)
           'commonCriteriaMode': commonCriteriaMode!,
+        if (developerSettings != null) 'developerSettings': developerSettings!,
+        if (googlePlayProtectVerifyApps != null)
+          'googlePlayProtectVerifyApps': googlePlayProtectVerifyApps!,
         if (untrustedAppsPolicy != null)
           'untrustedAppsPolicy': untrustedAppsPolicy!,
       };
@@ -2036,25 +2071,40 @@ class BlockAction {
       };
 }
 
-/// A rule for automatically choosing a private key and certificate to
-/// authenticate the device to a server.
+/// Controls apps' access to private keys.
+///
+/// The rule determines which private key, if any, Android Device Policy grants
+/// to the specified app. Access is granted either when the app calls
+/// KeyChain.choosePrivateKeyAlias
+/// (https://developer.android.com/reference/android/security/KeyChain#choosePrivateKeyAlias%28android.app.Activity,%20android.security.KeyChainAliasCallback,%20java.lang.String\[\],%20java.security.Principal\[\],%20java.lang.String,%20int,%20java.lang.String%29)
+/// (or any overloads) to request a private key alias for a given URL, or for
+/// rules that are not URL-specific (that is, if urlPattern is not set, or set
+/// to the empty string or .*) on Android 11 and above, directly so that the app
+/// can call KeyChain.getPrivateKey
+/// (https://developer.android.com/reference/android/security/KeyChain#getPrivateKey%28android.content.Context,%20java.lang.String%29),
+/// without first having to call KeyChain.choosePrivateKeyAlias.When an app
+/// calls KeyChain.choosePrivateKeyAlias if more than one choosePrivateKeyRules
+/// matches, the last matching rule defines which key alias to return.
 class ChoosePrivateKeyRule {
-  /// The package names for which outgoing requests are subject to this rule.
+  /// The package names to which this rule applies.
   ///
-  /// If no package names are specified, then the rule applies to all packages.
-  /// For each package name listed, the rule applies to that package and all
-  /// other packages that shared the same Android UID. The SHA256 hash of the
-  /// signing key signatures of each package_name will be verified against those
-  /// provided by Play
+  /// The hash of the signing certificate for each app is verified against the
+  /// hash provided by Play. If no package names are specified, then the alias
+  /// is provided to all apps that call KeyChain.choosePrivateKeyAlias
+  /// (https://developer.android.com/reference/android/security/KeyChain#choosePrivateKeyAlias%28android.app.Activity,%20android.security.KeyChainAliasCallback,%20java.lang.String\[\],%20java.security.Principal\[\],%20java.lang.String,%20int,%20java.lang.String%29)
+  /// or any overloads (but not without calling KeyChain.choosePrivateKeyAlias,
+  /// even on Android 11 and above). Any app with the same Android UID as a
+  /// package specified here will have access when they call
+  /// KeyChain.choosePrivateKeyAlias.
   core.List<core.String>? packageNames;
 
   /// The alias of the private key to be used.
   core.String? privateKeyAlias;
 
-  /// The URL pattern to match against the URL of the outgoing request.
+  /// The URL pattern to match against the URL of the request.
   ///
-  /// The pattern may contain asterisk (*) wildcards. Any URL is matched if
-  /// unspecified.
+  /// If not set or empty, it matches all URLs. This uses the regular expression
+  /// syntax of java.util.regex.Pattern.
   core.String? urlPattern;
 
   ChoosePrivateKeyRule();
@@ -2342,6 +2392,43 @@ class ContactInfo {
           'euRepresentativeName': euRepresentativeName!,
         if (euRepresentativePhone != null)
           'euRepresentativePhone': euRepresentativePhone!,
+      };
+}
+
+/// This feature is not generally available.
+class ContentProviderEndpoint {
+  /// This feature is not generally available.
+  core.String? packageName;
+
+  /// This feature is not generally available.
+  ///
+  /// Required.
+  core.List<core.String>? signingCertsSha256;
+
+  /// This feature is not generally available.
+  core.String? uri;
+
+  ContentProviderEndpoint();
+
+  ContentProviderEndpoint.fromJson(core.Map _json) {
+    if (_json.containsKey('packageName')) {
+      packageName = _json['packageName'] as core.String;
+    }
+    if (_json.containsKey('signingCertsSha256')) {
+      signingCertsSha256 = (_json['signingCertsSha256'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (packageName != null) 'packageName': packageName!,
+        if (signingCertsSha256 != null)
+          'signingCertsSha256': signingCertsSha256!,
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -2822,8 +2909,8 @@ class DeviceSettings {
   /// Whether installing apps from unknown sources is enabled.
   core.bool? unknownSourcesEnabled;
 
-  /// Whether Verify Apps (Google Play Protect
-  /// (https://support.google.com/googleplay/answer/2812853)) is enabled on the
+  /// Whether Google Play Protect verification
+  /// (https://support.google.com/accounts/answer/2812853) is enforced on the
   /// device.
   core.bool? verifyAppsEnabled;
 
@@ -4328,6 +4415,37 @@ class NonComplianceDetailCondition {
       };
 }
 
+/// This feature is not generally available.
+class OncCertificateProvider {
+  /// This feature is not generally available.
+  core.List<core.String>? certificateReferences;
+
+  /// This feature is not generally available.
+  ContentProviderEndpoint? contentProviderEndpoint;
+
+  OncCertificateProvider();
+
+  OncCertificateProvider.fromJson(core.Map _json) {
+    if (_json.containsKey('certificateReferences')) {
+      certificateReferences = (_json['certificateReferences'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('contentProviderEndpoint')) {
+      contentProviderEndpoint = ContentProviderEndpoint.fromJson(
+          _json['contentProviderEndpoint']
+              as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (certificateReferences != null)
+          'certificateReferences': certificateReferences!,
+        if (contentProviderEndpoint != null)
+          'contentProviderEndpoint': contentProviderEndpoint!.toJson(),
+      };
+}
+
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
@@ -4898,12 +5016,9 @@ class Policy {
   /// Whether configuring cell broadcast is disabled.
   core.bool? cellBroadcastsConfigDisabled;
 
-  /// Rules for automatically choosing a private key and certificate to
-  /// authenticate the device to a server.
+  /// Rules for determining apps' access to private keys.
   ///
-  /// The rules are ordered by increasing precedence, so if an outgoing request
-  /// matches more than one rule, the last rule defines which private key to
-  /// use.
+  /// See ChoosePrivateKeyRule for details.
   core.List<ChoosePrivateKeyRule>? choosePrivateKeyRules;
 
   /// Rules declaring which mitigating actions to take when a device is not
@@ -4971,8 +5086,7 @@ class Policy {
   /// Whether user installation of apps is disabled.
   core.bool? installAppsDisabled;
 
-  /// Whether the user is allowed to enable the "Unknown Sources" setting, which
-  /// allows installation of apps from unknown sources.
+  /// This field has no effect.
   core.bool? installUnknownSourcesAllowed;
 
   /// Whether the keyguard is disabled.
@@ -5047,11 +5161,16 @@ class Policy {
   /// forgotten and the device will continue booting. This prevents being unable
   /// to connect to a network if there is no suitable network in the last policy
   /// and the device boots into an app in lock task mode, or the user is
-  /// otherwise unable to reach device settings.
+  /// otherwise unable to reach device settings.Note: Setting wifiConfigDisabled
+  /// to true will override this setting under specific circumstances. Please
+  /// see wifiConfigDisabled for further details.
   core.bool? networkEscapeHatchEnabled;
 
   /// Whether resetting network settings is disabled.
   core.bool? networkResetDisabled;
+
+  /// This feature is not generally available.
+  core.List<OncCertificateProvider>? oncCertificateProviders;
 
   /// Network configuration for the device.
   ///
@@ -5076,7 +5195,9 @@ class Policy {
   /// Password requirements.
   ///
   /// The field password_requirements.require_password_unlock must not be set.
-  /// DEPRECATED - Use password_policies.
+  /// DEPRECATED - Use password_policies.Note:Complexity-based values of
+  /// PasswordQuality, that is, COMPLEXITY_LOW, COMPLEXITY_MEDIUM, and
+  /// COMPLEXITY_HIGH, cannot be used here.
   PasswordRequirements? passwordRequirements;
 
   /// Explicit permission or group grants or denials for all apps.
@@ -5223,7 +5344,10 @@ class Policy {
   /// Whether configuring VPN is disabled.
   core.bool? vpnConfigDisabled;
 
-  /// Whether configuring Wi-Fi access points is disabled.
+  /// Whether configuring Wi-Fi access points is disabled.Note: If a network
+  /// connection can't be made at boot time and configuring Wi-Fi is disabled
+  /// then network escape hatch will be shown in order to refresh the device
+  /// policy (see networkEscapeHatchEnabled).
   core.bool? wifiConfigDisabled;
 
   /// DEPRECATED - Use wifi_config_disabled.
@@ -5401,6 +5525,13 @@ class Policy {
     }
     if (_json.containsKey('networkResetDisabled')) {
       networkResetDisabled = _json['networkResetDisabled'] as core.bool;
+    }
+    if (_json.containsKey('oncCertificateProviders')) {
+      oncCertificateProviders = (_json['oncCertificateProviders'] as core.List)
+          .map<OncCertificateProvider>((value) =>
+              OncCertificateProvider.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
     }
     if (_json.containsKey('openNetworkConfiguration')) {
       openNetworkConfiguration = (_json['openNetworkConfiguration']
@@ -5638,6 +5769,9 @@ class Policy {
           'networkEscapeHatchEnabled': networkEscapeHatchEnabled!,
         if (networkResetDisabled != null)
           'networkResetDisabled': networkResetDisabled!,
+        if (oncCertificateProviders != null)
+          'oncCertificateProviders':
+              oncCertificateProviders!.map((value) => value.toJson()).toList(),
         if (openNetworkConfiguration != null)
           'openNetworkConfiguration': openNetworkConfiguration!,
         if (outgoingBeamDisabled != null)

@@ -20,6 +20,7 @@
 ///
 /// - [AccountsResource]
 ///   - [AccountsChannelPartnerLinksResource]
+///     - [AccountsChannelPartnerLinksCustomersResource]
 ///   - [AccountsCustomersResource]
 ///     - [AccountsCustomersEntitlementsResource]
 ///   - [AccountsOffersResource]
@@ -68,23 +69,23 @@ class AccountsResource {
 
   AccountsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Confirms the existence of Cloud Identity accounts, based on the domain and
-  /// whether the Cloud Identity accounts are owned by the reseller.
+  /// Confirms the existence of Cloud Identity accounts based on the domain and
+  /// if the Cloud Identity accounts are owned by the reseller.
   ///
-  /// Possible Error Codes: * PERMISSION_DENIED: If the reseller account making
-  /// the request and the reseller account being queried for are different. *
-  /// INVALID_ARGUMENT: Missing or invalid required parameters in the request. *
-  /// INVALID_VALUE: Invalid domain value in the request. Return Value: List of
-  /// CloudIdentityCustomerAccount resources for the domain. List may be empty.
-  /// Note: in the v1alpha1 version of the API, a NOT_FOUND error is returned if
-  /// no CloudIdentityCustomerAccount resources match the domain.
+  /// Possible error codes: * PERMISSION_DENIED: The reseller account making the
+  /// request is different from the reseller account in the API request. *
+  /// INVALID_ARGUMENT: Required request parameters are missing or invalid. *
+  /// INVALID_VALUE: Invalid domain value in the request. Return value: A list
+  /// of CloudIdentityCustomerAccount resources for the domain (may be empty)
+  /// Note: in the v1alpha1 version of the API, a NOT_FOUND error returns if no
+  /// CloudIdentityCustomerAccount resources match the domain.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The resource name of the reseller account. The parent
-  /// takes the format: accounts/{account_id}
+  /// [parent] - Required. The reseller account's resource name. Parent uses the
+  /// format: accounts/{account_id}
   /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -126,15 +127,14 @@ class AccountsResource {
   /// Lists service accounts with subscriber privileges on the Cloud Pub/Sub
   /// topic created for this Channel Services account.
   ///
-  /// Possible Error Codes: * PERMISSION_DENIED: If the reseller account making
-  /// the request and the reseller account being provided are different, or if
-  /// the account is not a super admin. * INVALID_ARGUMENT: Missing or invalid
-  /// required parameters in the request. * NOT_FOUND: If the topic resource
+  /// Possible error codes: * PERMISSION_DENIED: The reseller account making the
+  /// request and the provided reseller account are different, or the
+  /// impersonated user is not a super admin. * INVALID_ARGUMENT: Required
+  /// request parameters are missing or invalid. * NOT_FOUND: The topic resource
   /// doesn't exist. * INTERNAL: Any non-user error related to a technical issue
-  /// in the backend. In this case, contact Cloud Channel support. * UNKNOWN:
-  /// Any non-user error related to a technical issue in the backend. In this
-  /// case, contact Cloud Channel support. Return Value: List of service email
-  /// addresses if successful, otherwise error is returned.
+  /// in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user
+  /// error related to a technical issue in the backend. Contact Cloud Channel
+  /// support. Return value: A list of service email addresses.
   ///
   /// Request parameters:
   ///
@@ -142,9 +142,9 @@ class AccountsResource {
   /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of service accounts to return.
-  /// The service may return fewer than this value. If unspecified, at most 100
-  /// service accounts will be returned. The maximum value is 1000; values above
-  /// 1000 will be coerced to 1000.
+  /// The service may return fewer than this value. If unspecified, returns at
+  /// most 100 service accounts. The maximum value is 1000; the server will
+  /// coerce values above 1000.
   ///
   /// [pageToken] - Optional. A page token, received from a previous
   /// `ListSubscribers` call. Provide this to retrieve the subsequent page. When
@@ -187,15 +187,14 @@ class AccountsResource {
   /// List TransferableOffers of a customer based on Cloud Identity ID or
   /// Customer Name in the request.
   ///
-  /// This method is used when a reseller gets the entitlement information of a
-  /// customer that is not owned. The reseller should provide the customer's
-  /// Cloud Identity ID or Customer Name. Possible Error Codes: *
-  /// PERMISSION_DENIED: Appears because of one of the following: * If the
-  /// customer doesn't belong to the reseller and no auth token or invalid auth
-  /// token is supplied. * If the reseller account making the request and the
-  /// reseller account being queried for are different. * INVALID_ARGUMENT:
-  /// Missing or invalid required parameters in the request. Return Value: List
-  /// of TransferableOffer for the given customer and SKU.
+  /// Use this method when a reseller gets the entitlement information of an
+  /// unowned customer. The reseller should provide the customer's Cloud
+  /// Identity ID or Customer Name. Possible error codes: * PERMISSION_DENIED: *
+  /// The customer doesn't belong to the reseller and has no auth token. * The
+  /// supplied auth token is invalid. * The reseller account making the request
+  /// is different from the reseller account in the query. * INVALID_ARGUMENT:
+  /// Required request parameters are missing or invalid. Return value: List of
+  /// TransferableOffer for the given customer and SKU.
   ///
   /// [request] - The metadata request object.
   ///
@@ -238,25 +237,24 @@ class AccountsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// List TransferableSkus of a customer based on Cloud Identity ID or Customer
-  /// Name in the request.
+  /// List TransferableSkus of a customer based on the Cloud Identity ID or
+  /// Customer Name in the request.
   ///
-  /// This method is used when a reseller lists the entitlements information of
-  /// a customer that is not owned. The reseller should provide the customer's
-  /// Cloud Identity ID or Customer Name. Possible Error Codes: *
-  /// PERMISSION_DENIED: Appears because of one of the following - * The
-  /// customer doesn't belong to the reseller and no auth token. * The supplied
-  /// auth token is invalid. * The reseller account making the request and the
-  /// queries reseller account are different. * INVALID_ARGUMENT: Missing or
-  /// invalid required parameters in the request. Return Value: List of
-  /// TransferableSku for the given customer.
+  /// Use this method to list the entitlements information of an unowned
+  /// customer. You should provide the customer's Cloud Identity ID or Customer
+  /// Name. Possible error codes: * PERMISSION_DENIED: * The customer doesn't
+  /// belong to the reseller and has no auth token. * The supplied auth token is
+  /// invalid. * The reseller account making the request is different from the
+  /// reseller account in the query. * INVALID_ARGUMENT: Required request
+  /// parameters are missing or invalid. Return value: A list of the customer's
+  /// TransferableSku.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The resource name of the reseller's account. The
-  /// parent takes the format: accounts/{account_id}
+  /// [parent] - Required. The reseller account's resource name. Parent uses the
+  /// format: accounts/{account_id}
   /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -294,18 +292,17 @@ class AccountsResource {
   }
 
   /// Registers a service account with subscriber privileges on the Cloud
-  /// Pub/Sub topic created for this Channel Services account.
+  /// Pub/Sub topic for this Channel Services account.
   ///
-  /// Once you create a subscriber, you will get the events as per
-  /// SubscriberEvent Possible Error Codes: * PERMISSION_DENIED: If the reseller
-  /// account making the request and the reseller account being provided are
-  /// different, or if the impersonated user is not a super admin. *
-  /// INVALID_ARGUMENT: Missing or invalid required parameters in the request. *
-  /// INTERNAL: Any non-user error related to a technical issue in the backend.
-  /// In this case, contact Cloud Channel support. * UNKNOWN: Any non-user error
-  /// related to a technical issue in the backend. In this case, contact Cloud
-  /// Channel support. Return Value: Topic name with service email address
-  /// registered if successful, otherwise error is returned.
+  /// After you create a subscriber, you get the events through SubscriberEvent
+  /// Possible error codes: * PERMISSION_DENIED: The reseller account making the
+  /// request and the provided reseller account are different, or the
+  /// impersonated user is not a super admin. * INVALID_ARGUMENT: Required
+  /// request parameters are missing or invalid. * INTERNAL: Any non-user error
+  /// related to a technical issue in the backend. Contact Cloud Channel
+  /// support. * UNKNOWN: Any non-user error related to a technical issue in the
+  /// backend. Contact Cloud Channel support. Return value: The topic name with
+  /// the registered service email address.
   ///
   /// [request] - The metadata request object.
   ///
@@ -349,19 +346,18 @@ class AccountsResource {
   /// Unregisters a service account with subscriber privileges on the Cloud
   /// Pub/Sub topic created for this Channel Services account.
   ///
-  /// If there are no more service account left with sunbscriber privileges, the
-  /// topic will be deleted. You can check this by calling ListSubscribers api.
-  /// Possible Error Codes: * PERMISSION_DENIED: If the reseller account making
-  /// the request and the reseller account being provided are different, or if
-  /// the impersonated user is not a super admin. * INVALID_ARGUMENT: Missing or
-  /// invalid required parameters in the request. * NOT_FOUND: If the topic
-  /// resource doesn't exist. * INTERNAL: Any non-user error related to a
-  /// technical issue in the backend. In this case, contact Cloud Channel
-  /// support. * UNKNOWN: Any non-user error related to a technical issue in the
-  /// backend. In this case, contact Cloud Channel support. Return Value: Topic
-  /// name from which service email address has been unregistered if successful,
-  /// otherwise error is returned. If the service email was already not
-  /// associated with the topic, the success response will be returned.
+  /// If there are no service accounts left with subscriber privileges, this
+  /// deletes the topic. You can call ListSubscribers to check for these
+  /// accounts. Possible error codes: * PERMISSION_DENIED: The reseller account
+  /// making the request and the provided reseller account are different, or the
+  /// impersonated user is not a super admin. * INVALID_ARGUMENT: Required
+  /// request parameters are missing or invalid. * NOT_FOUND: The topic resource
+  /// doesn't exist. * INTERNAL: Any non-user error related to a technical issue
+  /// in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user
+  /// error related to a technical issue in the backend. Contact Cloud Channel
+  /// support. Return value: The topic name that unregistered the service email
+  /// address. Returns a success response if the service email address wasn't
+  /// registered with the topic.
   ///
   /// [request] - The metadata request object.
   ///
@@ -406,33 +402,34 @@ class AccountsResource {
 class AccountsChannelPartnerLinksResource {
   final commons.ApiRequester _requester;
 
+  AccountsChannelPartnerLinksCustomersResource get customers =>
+      AccountsChannelPartnerLinksCustomersResource(_requester);
+
   AccountsChannelPartnerLinksResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Initiates a channel partner link between a distributor and a reseller or
+  /// Initiates a channel partner link between a distributor and a reseller, or
   /// between resellers in an n-tier reseller channel.
   ///
-  /// To accept the invite, the invited partner should follow the
-  /// invite_link_uri provided in the response. If the link creation is
-  /// accepted, a valid link is set up between the two involved parties. To call
-  /// this method, you must be a distributor. Possible Error Codes: *
-  /// PERMISSION_DENIED: If the reseller account making the request and the
-  /// reseller account being queried for are different. * INVALID_ARGUMENT:
-  /// Missing or invalid required parameters in the request. * ALREADY_EXISTS:
-  /// If the ChannelPartnerLink sent in the request already exists. * NOT_FOUND:
-  /// If no Cloud Identity customer exists for domain provided. * INTERNAL: Any
-  /// non-user error related to a technical issue in the backend. In this case,
-  /// contact Cloud Channel support. * UNKNOWN: Any non-user error related to a
-  /// technical issue in the backend. In this case, contact Cloud Channel
-  /// support. Return Value: Newly created ChannelPartnerLink resource if
-  /// successful, otherwise error is returned.
+  /// Invited partners need to follow the invite_link_uri provided in the
+  /// response to accept. After accepting the invitation, a link is set up
+  /// between the two parties. You must be a distributor to call this method.
+  /// Possible error codes: * PERMISSION_DENIED: The reseller account making the
+  /// request is different from the reseller account in the API request. *
+  /// INVALID_ARGUMENT: Required request parameters are missing or invalid. *
+  /// ALREADY_EXISTS: The ChannelPartnerLink sent in the request already exists.
+  /// * NOT_FOUND: No Cloud Identity customer exists for provided domain. *
+  /// INTERNAL: Any non-user error related to a technical issue in the backend.
+  /// Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a
+  /// technical issue in the backend. Contact Cloud Channel support. Return
+  /// value: The new ChannelPartnerLink resource.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The resource name of reseller's account for which to
-  /// create a channel partner link. The parent takes the format:
+  /// [parent] - Required. Create a channel partner link for the provided
+  /// reseller account's resource name. Parent uses the format:
   /// accounts/{account_id}
   /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
@@ -469,20 +466,19 @@ class AccountsChannelPartnerLinksResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Returns a requested ChannelPartnerLink resource.
+  /// Returns the requested ChannelPartnerLink resource.
   ///
-  /// To call this method, you must be a distributor. Possible Error Codes: *
-  /// PERMISSION_DENIED: If the reseller account making the request and the
-  /// reseller account being queried for are different. * INVALID_ARGUMENT:
-  /// Missing or invalid required parameters in the request. * NOT_FOUND:
-  /// ChannelPartnerLink resource not found. Results due invalid channel partner
-  /// link name. Return Value: ChannelPartnerLink resource if found, otherwise
-  /// returns an error.
+  /// You must be a distributor to call this method. Possible error codes: *
+  /// PERMISSION_DENIED: The reseller account making the request is different
+  /// from the reseller account in the API request. * INVALID_ARGUMENT: Required
+  /// request parameters are missing or invalid. * NOT_FOUND: ChannelPartnerLink
+  /// resource not found because of an invalid channel partner link name. Return
+  /// value: The ChannelPartnerLink resource.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the channel partner link to
-  /// retrieve. The name takes the format:
+  /// retrieve. Name uses the format:
   /// accounts/{account_id}/channelPartnerLinks/{id} where {id} is the Cloud
   /// Identity ID of the partner.
   /// Value must have pattern `^accounts/\[^/\]+/channelPartnerLinks/\[^/\]+$`.
@@ -529,27 +525,25 @@ class AccountsChannelPartnerLinksResource {
 
   /// List ChannelPartnerLinks belonging to a distributor.
   ///
-  /// To call this method, you must be a distributor. Possible Error Codes: *
-  /// PERMISSION_DENIED: If the reseller account making the request and the
-  /// reseller account being queried for are different. * INVALID_ARGUMENT:
-  /// Missing or invalid required parameters in the request. Return Value: If
-  /// successful, returns the list of ChannelPartnerLink resources for the
-  /// distributor account, otherwise returns an error.
+  /// You must be a distributor to call this method. Possible error codes: *
+  /// PERMISSION_DENIED: The reseller account making the request is different
+  /// from the reseller account in the API request. * INVALID_ARGUMENT: Required
+  /// request parameters are missing or invalid. Return value: The list of the
+  /// distributor account's ChannelPartnerLink resources.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The resource name of the reseller account for listing
-  /// channel partner links. The parent takes the format: accounts/{account_id}
+  /// channel partner links. Parent uses the format: accounts/{account_id}
   /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. Requested page size. Server might return fewer
   /// results than requested. If unspecified, server will pick a default size
-  /// (25). The maximum value is 200, values above 200 will be coerced to 200.
+  /// (25). The maximum value is 200; the server will coerce values above 200.
   ///
-  /// [pageToken] - Optional. A token identifying a page of results, if other
-  /// than the first one. Typically obtained via
-  /// ListChannelPartnerLinksResponse.next_page_token of the previous
-  /// CloudChannelService.ListChannelPartnerLinks call.
+  /// [pageToken] - Optional. A token for a page of results other than the first
+  /// page. Obtained using ListChannelPartnerLinksResponse.next_page_token of
+  /// the previous CloudChannelService.ListChannelPartnerLinks call.
   ///
   /// [view] - Optional. The level of granularity the ChannelPartnerLink will
   /// display.
@@ -598,26 +592,25 @@ class AccountsChannelPartnerLinksResource {
 
   /// Updates a channel partner link.
   ///
-  /// A distributor calls this method to change a link's status. For example,
-  /// suspend a partner link. To call this method, you must be a distributor.
-  /// Possible Error Codes: * PERMISSION_DENIED: If the reseller account making
-  /// the request and the reseller account being queried for are different. *
-  /// INVALID_ARGUMENT: It can happen in following scenarios - * Missing or
-  /// invalid required parameters in the request. * Updating link state from
-  /// invited to active or suspended. * Sending reseller_cloud_identity_id,
-  /// invite_url or name in update mask. * NOT_FOUND: ChannelPartnerLink
-  /// resource not found. * INTERNAL: Any non-user error related to a technical
-  /// issue in the backend. In this case, contact Cloud Channel support. *
-  /// UNKNOWN: Any non-user error related to a technical issue in the backend.
-  /// In this case, contact Cloud Channel support. Return Value: If successful,
-  /// the updated ChannelPartnerLink resource, otherwise returns an error.
+  /// Distributors call this method to change a link's status. For example, to
+  /// suspend a partner link. You must be a distributor to call this method.
+  /// Possible error codes: * PERMISSION_DENIED: The reseller account making the
+  /// request is different from the reseller account in the API request. *
+  /// INVALID_ARGUMENT: * Required request parameters are missing or invalid. *
+  /// Link state cannot change from invited to active or suspended. * Cannot
+  /// send reseller_cloud_identity_id, invite_url, or name in update mask. *
+  /// NOT_FOUND: ChannelPartnerLink resource not found. * INTERNAL: Any non-user
+  /// error related to a technical issue in the backend. Contact Cloud Channel
+  /// support. * UNKNOWN: Any non-user error related to a technical issue in the
+  /// backend. Contact Cloud Channel support. Return value: The updated
+  /// ChannelPartnerLink resource.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the channel partner link to
-  /// cancel. The name takes the format:
+  /// cancel. Name uses the format:
   /// accounts/{account_id}/channelPartnerLinks/{id} where {id} is the Cloud
   /// Identity ID of the partner.
   /// Value must have pattern `^accounts/\[^/\]+/channelPartnerLinks/\[^/\]+$`.
@@ -655,6 +648,256 @@ class AccountsChannelPartnerLinksResource {
   }
 }
 
+class AccountsChannelPartnerLinksCustomersResource {
+  final commons.ApiRequester _requester;
+
+  AccountsChannelPartnerLinksCustomersResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new Customer resource under the reseller or distributor account.
+  ///
+  /// Possible error codes: * PERMISSION_DENIED: The reseller account making the
+  /// request is different from the reseller account in the API request. *
+  /// INVALID_ARGUMENT: * Required request parameters are missing or invalid. *
+  /// Domain field value doesn't match the primary email domain. Return value:
+  /// The newly created Customer resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of reseller account in which to
+  /// create the customer. Parent uses the format: accounts/{account_id}
+  /// Value must have pattern `^accounts/\[^/\]+/channelPartnerLinks/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudChannelV1Customer].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudChannelV1Customer> create(
+    GoogleCloudChannelV1Customer request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/customers';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudChannelV1Customer.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the given Customer permanently.
+  ///
+  /// Possible error codes: * PERMISSION_DENIED: The account making the request
+  /// does not own this customer. * INVALID_ARGUMENT: Required request
+  /// parameters are missing or invalid. * FAILED_PRECONDITION: The customer has
+  /// existing entitlements. * NOT_FOUND: No Customer resource found for the
+  /// name in the request.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the customer to delete.
+  /// Value must have pattern
+  /// `^accounts/\[^/\]+/channelPartnerLinks/\[^/\]+/customers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the requested Customer resource.
+  ///
+  /// Possible error codes: * PERMISSION_DENIED: The reseller account making the
+  /// request is different from the reseller account in the API request. *
+  /// INVALID_ARGUMENT: Required request parameters are missing or invalid. *
+  /// NOT_FOUND: The customer resource doesn't exist. Usually the result of an
+  /// invalid name parameter. Return value: The Customer resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the customer to retrieve. Name
+  /// uses the format: accounts/{account_id}/customers/{customer_id}
+  /// Value must have pattern
+  /// `^accounts/\[^/\]+/channelPartnerLinks/\[^/\]+/customers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudChannelV1Customer].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudChannelV1Customer> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudChannelV1Customer.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List Customers.
+  ///
+  /// Possible error codes: * PERMISSION_DENIED: The reseller account making the
+  /// request is different from the reseller account in the API request. *
+  /// INVALID_ARGUMENT: Required request parameters are missing or invalid.
+  /// Return value: List of Customers, or an empty list if there are no
+  /// customers.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the reseller account to list
+  /// customers from. Parent uses the format: accounts/{account_id}.
+  /// Value must have pattern `^accounts/\[^/\]+/channelPartnerLinks/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of customers to return. The
+  /// service may return fewer than this value. If unspecified, returns at most
+  /// 10 customers. The maximum value is 50.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results other than
+  /// the first page. Obtained through ListCustomersResponse.next_page_token of
+  /// the previous CloudChannelService.ListCustomers call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudChannelV1ListCustomersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudChannelV1ListCustomersResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/customers';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudChannelV1ListCustomersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an existing Customer resource for the reseller or distributor.
+  ///
+  /// Possible error codes: * PERMISSION_DENIED: The reseller account making the
+  /// request is different from the reseller account in the API request. *
+  /// INVALID_ARGUMENT: Required request parameters are missing or invalid. *
+  /// NOT_FOUND: No Customer resource found for the name in the request. Return
+  /// value: The updated Customer resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Resource name of the customer. Format:
+  /// accounts/{account_id}/customers/{customer_id}
+  /// Value must have pattern
+  /// `^accounts/\[^/\]+/channelPartnerLinks/\[^/\]+/customers/\[^/\]+$`.
+  ///
+  /// [updateMask] - The update mask that applies to the resource. Optional.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudChannelV1Customer].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudChannelV1Customer> patch(
+    GoogleCloudChannelV1Customer request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudChannelV1Customer.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class AccountsCustomersResource {
   final commons.ApiRequester _requester;
 
@@ -665,19 +908,18 @@ class AccountsCustomersResource {
 
   /// Creates a new Customer resource under the reseller or distributor account.
   ///
-  /// Possible Error Codes: * PERMISSION_DENIED: If the reseller account making
-  /// the request and the reseller account being queried for are different. *
-  /// INVALID_ARGUMENT: It can happen in following scenarios - * Missing or
-  /// invalid required parameters in the request. * Domain field value doesn't
-  /// match the domain specified in primary email. Return Value: If successful,
-  /// the newly created Customer resource, otherwise returns an error.
+  /// Possible error codes: * PERMISSION_DENIED: The reseller account making the
+  /// request is different from the reseller account in the API request. *
+  /// INVALID_ARGUMENT: * Required request parameters are missing or invalid. *
+  /// Domain field value doesn't match the primary email domain. Return value:
+  /// The newly created Customer resource.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The resource name of reseller account in which to
-  /// create the customer. The parent takes the format: accounts/{account_id}
+  /// create the customer. Parent uses the format: accounts/{account_id}
   /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -712,13 +954,13 @@ class AccountsCustomersResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes the given Customer permanently and irreversibly.
+  /// Deletes the given Customer permanently.
   ///
-  /// Possible Error Codes: * PERMISSION_DENIED: If the account making the
-  /// request does not own this customer. * INVALID_ARGUMENT: Missing or invalid
-  /// required parameters in the request. * FAILED_PRECONDITION: If the customer
-  /// has existing entitlements. * NOT_FOUND: No Customer resource found for the
-  /// name specified in the request.
+  /// Possible error codes: * PERMISSION_DENIED: The account making the request
+  /// does not own this customer. * INVALID_ARGUMENT: Required request
+  /// parameters are missing or invalid. * FAILED_PRECONDITION: The customer has
+  /// existing entitlements. * NOT_FOUND: No Customer resource found for the
+  /// name in the request.
   ///
   /// Request parameters:
   ///
@@ -754,19 +996,18 @@ class AccountsCustomersResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Returns a requested Customer resource.
+  /// Returns the requested Customer resource.
   ///
-  /// Possible Error Codes: * PERMISSION_DENIED: If the reseller account making
-  /// the request and the reseller account being queried for are different. *
-  /// INVALID_ARGUMENT: Missing or invalid required parameters in the request. *
-  /// NOT_FOUND: If the customer resource doesn't exist. Usually the result of
-  /// an invalid name parameter. Return Value: Customer resource if found, error
-  /// otherwise.
+  /// Possible error codes: * PERMISSION_DENIED: The reseller account making the
+  /// request is different from the reseller account in the API request. *
+  /// INVALID_ARGUMENT: Required request parameters are missing or invalid. *
+  /// NOT_FOUND: The customer resource doesn't exist. Usually the result of an
+  /// invalid name parameter. Return value: The Customer resource.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the customer to retrieve. The name
-  /// takes the format: accounts/{account_id}/customers/{customer_id}
+  /// [name] - Required. The resource name of the customer to retrieve. Name
+  /// uses the format: accounts/{account_id}/customers/{customer_id}
   /// Value must have pattern `^accounts/\[^/\]+/customers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -798,29 +1039,27 @@ class AccountsCustomersResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// List downstream Customers.
+  /// List Customers.
   ///
-  /// Possible Error Codes: * PERMISSION_DENIED: If the reseller account making
-  /// the request and the reseller account being queried for are different. *
-  /// INVALID_ARGUMENT: Missing or invalid required parameters in the request.
-  /// Return Value: List of Customers pertaining to the reseller or empty list
-  /// if there are none.
+  /// Possible error codes: * PERMISSION_DENIED: The reseller account making the
+  /// request is different from the reseller account in the API request. *
+  /// INVALID_ARGUMENT: Required request parameters are missing or invalid.
+  /// Return value: List of Customers, or an empty list if there are no
+  /// customers.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The resource name of the reseller account from which
-  /// to list customers. The parent takes the format: accounts/{account_id}.
+  /// [parent] - Required. The resource name of the reseller account to list
+  /// customers from. Parent uses the format: accounts/{account_id}.
   /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of customers to return. The
-  /// service may return fewer than this value. If unspecified, at most 10
-  /// customers will be returned. The maximum value is 50; values about 50 will
-  /// be coerced to 50.
+  /// service may return fewer than this value. If unspecified, returns at most
+  /// 10 customers. The maximum value is 50.
   ///
-  /// [pageToken] - Optional. A token identifying a page of results, if other
-  /// than the first one. Typically obtained via
-  /// ListCustomersResponse.next_page_token of the previous
-  /// CloudChannelService.ListCustomers call.
+  /// [pageToken] - Optional. A token identifying a page of results other than
+  /// the first page. Obtained through ListCustomersResponse.next_page_token of
+  /// the previous CloudChannelService.ListCustomers call.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -855,42 +1094,39 @@ class AccountsCustomersResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists the Purchasable Offers for the following cases: * Offers that can be
-  /// newly purchased for a customer * Offers that can be changed to, for an
-  /// entitlement.
+  /// Lists the following: * Offers that you can purchase for a customer.
   ///
-  /// Possible Error Codes: * PERMISSION_DENIED: If the customer doesn't belong
-  /// to the reseller * INVALID_ARGUMENT: Missing or invalid required parameters
-  /// in the request.
+  /// * Offers that you can change for an entitlement. Possible error codes: *
+  /// PERMISSION_DENIED: The customer doesn't belong to the reseller *
+  /// INVALID_ARGUMENT: Required request parameters are missing or invalid.
   ///
   /// Request parameters:
   ///
-  /// [customer] - Required. The resource name of the customer for which to list
-  /// Offers. Format: accounts/{account_id}/customers/{customer_id}.
+  /// [customer] - Required. The resource name of the customer to list Offers
+  /// for. Format: accounts/{account_id}/customers/{customer_id}.
   /// Value must have pattern `^accounts/\[^/\]+/customers/\[^/\]+$`.
   ///
   /// [changeOfferPurchase_entitlement] - Required. Resource name of the
   /// entitlement. Format:
   /// accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
   ///
-  /// [changeOfferPurchase_newSku] - Optional. Resource name of the SKU that is
-  /// being changed to. Should be provided if upgrading or downgrading an
-  /// entitlement. Format: products/{product_id}/skus/{sku_id}
+  /// [changeOfferPurchase_newSku] - Optional. Resource name of the new target
+  /// SKU. Provide this SKU when upgrading or downgrading an entitlement.
+  /// Format: products/{product_id}/skus/{sku_id}
   ///
   /// [createEntitlementPurchase_sku] - Required. SKU that the result should be
   /// restricted to. Format: products/{product_id}/skus/{sku_id}.
   ///
-  /// [languageCode] - Optional. The BCP-47 language code, such as "en-US". If
-  /// specified, the response will be localized to the corresponding language
-  /// code. Default is "en-US".
+  /// [languageCode] - Optional. The BCP-47 language code. For example, "en-US".
+  /// The response will localize in the corresponding language code, if
+  /// specified. The default value is "en-US".
   ///
   /// [pageSize] - Optional. Requested page size. Server might return fewer
-  /// results than requested. If unspecified, at most 100 Offers will be
-  /// returned. The maximum value is 1000; values above 1000 will be coerced to
-  /// 1000.
+  /// results than requested. If unspecified, returns at most 100 Offers. The
+  /// maximum value is 1000; the server will coerce values above 1000.
   ///
-  /// [pageToken] - Optional. A token identifying a page of results, if other
-  /// than the first one.
+  /// [pageToken] - Optional. A token for a page of results other than the first
+  /// page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -938,18 +1174,17 @@ class AccountsCustomersResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists the Purchasable SKUs for following cases: * SKUs that can be newly
-  /// purchased for a customer * SKUs that can be upgraded/downgraded to, for an
-  /// entitlement.
+  /// Lists the following: * SKUs that you can purchase for a customer * SKUs
+  /// that you can upgrade or downgrade for an entitlement.
   ///
-  /// Possible Error Codes: * PERMISSION_DENIED: If the customer doesn't belong
-  /// to the reseller * INVALID_ARGUMENT: Missing or invalid required parameters
-  /// in the request.
+  /// Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to
+  /// the reseller. * INVALID_ARGUMENT: Required request parameters are missing
+  /// or invalid.
   ///
   /// Request parameters:
   ///
-  /// [customer] - Required. The resource name of the customer for which to list
-  /// SKUs. Format: accounts/{account_id}/customers/{customer_id}.
+  /// [customer] - Required. The resource name of the customer to list SKUs for.
+  /// Format: accounts/{account_id}/customers/{customer_id}.
   /// Value must have pattern `^accounts/\[^/\]+/customers/\[^/\]+$`.
   ///
   /// [changeOfferPurchase_changeType] - Required. Change Type for the
@@ -967,16 +1202,16 @@ class AccountsCustomersResource {
   /// this Product. Format: products/{product_id}. Supports products/- to
   /// retrieve SKUs for all products.
   ///
-  /// [languageCode] - Optional. The BCP-47 language code, such as "en-US". If
-  /// specified, the response will be localized to the corresponding language
-  /// code. Default is "en-US".
+  /// [languageCode] - Optional. The BCP-47 language code. For example, "en-US".
+  /// The response will localize in the corresponding language code, if
+  /// specified. The default value is "en-US".
   ///
   /// [pageSize] - Optional. Requested page size. Server might return fewer
-  /// results than requested. If unspecified, at most 100 SKUs will be returned.
-  /// The maximum value is 1000; values above 1000 will be coerced to 1000.
+  /// results than requested. If unspecified, returns at most 100 SKUs. The
+  /// maximum value is 1000; the server will coerce values above 1000.
   ///
-  /// [pageToken] - Optional. A token identifying a page of results, if other
-  /// than the first one.
+  /// [pageToken] - Optional. A token for a page of results other than the first
+  /// page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1026,15 +1261,13 @@ class AccountsCustomersResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates an existing Customer resource belonging to the reseller or
-  /// distributor.
+  /// Updates an existing Customer resource for the reseller or distributor.
   ///
-  /// Possible Error Codes: * PERMISSION_DENIED: If the reseller account making
-  /// the request and the reseller account being queried for are different. *
-  /// INVALID_ARGUMENT: Missing or invalid required parameters in the request. *
-  /// NOT_FOUND: No Customer resource found for the name specified in the
-  /// request. Return Value: If successful, the updated Customer resource,
-  /// otherwise returns an error.
+  /// Possible error codes: * PERMISSION_DENIED: The reseller account making the
+  /// request is different from the reseller account in the API request. *
+  /// INVALID_ARGUMENT: Required request parameters are missing or invalid. *
+  /// NOT_FOUND: No Customer resource found for the name in the request. Return
+  /// value: The updated Customer resource.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1081,20 +1314,19 @@ class AccountsCustomersResource {
   }
 
   /// Creates a Cloud Identity for the given customer using the customer's
-  /// information or the information provided here, if present.
+  /// information, or the information provided here.
   ///
-  /// Possible Error Codes: * PERMISSION_DENIED: If the customer doesn't belong
-  /// to the reseller. * INVALID_ARGUMENT: Missing or invalid required
-  /// parameters in the request. * NOT_FOUND: If the customer is not found for
-  /// the reseller. * ALREADY_EXISTS: If the customer's primary email already
-  /// exists. In this case, retry after changing the customer's primary contact
-  /// email. * INTERNAL: Any non-user error related to a technical issue in the
-  /// backend. Contact Cloud Channel support in this case. * UNKNOWN: Any
-  /// non-user error related to a technical issue in the backend. Contact Cloud
-  /// Channel support in this case. Return Value: Long Running Operation ID. To
-  /// get the results of the operation, call the GetOperation method of
-  /// CloudChannelOperationsService. The Operation metadata will contain an
-  /// instance of OperationMetadata.
+  /// Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to
+  /// the reseller. * INVALID_ARGUMENT: Required request parameters are missing
+  /// or invalid. * NOT_FOUND: The customer was not found. * ALREADY_EXISTS: The
+  /// customer's primary email already exists. Retry after changing the
+  /// customer's primary contact email. * INTERNAL: Any non-user error related
+  /// to a technical issue in the backend. Contact Cloud Channel support. *
+  /// UNKNOWN: Any non-user error related to a technical issue in the backend.
+  /// Contact Cloud Channel support. Return value: The ID of a long-running
+  /// operation. To get the results of the operation, call the GetOperation
+  /// method of CloudChannelOperationsService. The Operation metadata contains
+  /// an instance of OperationMetadata.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1139,24 +1371,21 @@ class AccountsCustomersResource {
 
   /// Transfers customer entitlements to new reseller.
   ///
-  /// Possible Error Codes: * PERMISSION_DENIED: If the customer doesn't belong
-  /// to the reseller. * INVALID_ARGUMENT: Missing or invalid required
-  /// parameters in the request. * NOT_FOUND: If the customer or offer resource
-  /// is not found for the reseller. * ALREADY_EXISTS: If the SKU has been
-  /// already transferred for the customer. * CONDITION_NOT_MET or
-  /// FAILED_PRECONDITION: This failure can happen in the following cases: *
-  /// Transferring a SKU that requires domain verification and the domain has
-  /// not been verified. * Transferring an Add-On SKU like Vault or Drive
-  /// without transferring the pre-requisite SKU, such as G Suite Basic. *
-  /// Applicable only for developer accounts: reseller and resold domain must
-  /// follow the domain naming convention as follows: * Domain names must start
-  /// with goog-test. * Resold domain names must include the reseller domain. *
-  /// All transferring entitlements must be specified. * INTERNAL: Any non-user
-  /// error related to a technical issue in the backend. Please contact Cloud
-  /// Channel Support in this case. * UNKNOWN: Any non-user error related to a
-  /// technical issue in the backend. Please contact Cloud Channel Support in
-  /// this case. Return Value: Long Running Operation ID. To get the results of
-  /// the operation, call the GetOperation method of
+  /// Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to
+  /// the reseller. * INVALID_ARGUMENT: Required request parameters are missing
+  /// or invalid. * NOT_FOUND: The customer or offer resource was not found. *
+  /// ALREADY_EXISTS: The SKU was already transferred for the customer. *
+  /// CONDITION_NOT_MET or FAILED_PRECONDITION: * The SKU requires domain
+  /// verification to transfer, but the domain is not verified. * An Add-On SKU
+  /// (example, Vault or Drive) is missing the pre-requisite SKU (example, G
+  /// Suite Basic). * (Developer accounts only) Reseller and resold domain must
+  /// meet the following naming requirements: * Domain names must start with
+  /// goog-test. * Domain names must include the reseller domain. * Specify all
+  /// transferring entitlements. * INTERNAL: Any non-user error related to a
+  /// technical issue in the backend. Contact Cloud Channel support. * UNKNOWN:
+  /// Any non-user error related to a technical issue in the backend. Contact
+  /// Cloud Channel support. Return value: The ID of a long-running operation.
+  /// To get the results of the operation, call the GetOperation method of
   /// CloudChannelOperationsService. The Operation metadata will contain an
   /// instance of OperationMetadata.
   ///
@@ -1164,8 +1393,8 @@ class AccountsCustomersResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The resource name of reseller's customer account
-  /// where the entitlements transfer to. The parent takes the format:
+  /// [parent] - Required. The resource name of the reseller's customer account
+  /// that will receive transferred entitlements. Parent uses the format:
   /// accounts/{account_id}/customers/{customer_id}
   /// Value must have pattern `^accounts/\[^/\]+/customers/\[^/\]+$`.
   ///
@@ -1202,35 +1431,32 @@ class AccountsCustomersResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Transfers customer entitlements from current reseller to Google.
+  /// Transfers customer entitlements from their current reseller to Google.
   ///
-  /// Possible Error Codes: * PERMISSION_DENIED: If the customer doesn't belong
-  /// to the reseller. * INVALID_ARGUMENT: Missing or invalid required
-  /// parameters in the request. * NOT_FOUND: If the customer or offer resource
-  /// is not found for the reseller. * ALREADY_EXISTS: If the SKU has been
-  /// already transferred for the customer. * CONDITION_NOT_MET or
-  /// FAILED_PRECONDITION: This failure can happen in the following cases: *
-  /// Transferring a SKU that requires domain verification and the domain has
-  /// not been verified. * Transferring an Add-On SKU like Vault or Drive
-  /// without purchasing the pre-requisite SKU, such as G Suite Basic. *
-  /// Applicable only for developer accounts: reseller and resold domain must
-  /// follow the domain naming convention as follows: * Domain names must start
-  /// with goog-test. * Resold domain names must include the reseller domain. *
-  /// INTERNAL: Any non-user error related to a technical issue in the backend.
-  /// Please contact Cloud Channel Support in this case. * UNKNOWN: Any non-user
-  /// error related to a technical issue in the backend. Please contact Cloud
-  /// Channel Support in this case. Return Value: Long Running Operation ID. To
-  /// get the results of the operation, call the GetOperation method of
-  /// CloudChannelOperationsService. The response will contain
-  /// google.protobuf.Empty on success. The Operation metadata will contain an
-  /// instance of OperationMetadata.
+  /// Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to
+  /// the reseller. * INVALID_ARGUMENT: Required request parameters are missing
+  /// or invalid. * NOT_FOUND: The customer or offer resource was not found. *
+  /// ALREADY_EXISTS: The SKU was already transferred for the customer. *
+  /// CONDITION_NOT_MET or FAILED_PRECONDITION: * The SKU requires domain
+  /// verification to transfer, but the domain is not verified. * An Add-On SKU
+  /// (example, Vault or Drive) is missing the pre-requisite SKU (example, G
+  /// Suite Basic). * (Developer accounts only) Reseller and resold domain must
+  /// meet the following naming requirements: * Domain names must start with
+  /// goog-test. * Domain names must include the reseller domain. * INTERNAL:
+  /// Any non-user error related to a technical issue in the backend. Contact
+  /// Cloud Channel support. * UNKNOWN: Any non-user error related to a
+  /// technical issue in the backend. Contact Cloud Channel support. Return
+  /// value: The ID of a long-running operation. To get the results of the
+  /// operation, call the GetOperation method of CloudChannelOperationsService.
+  /// The response will contain google.protobuf.Empty on success. The Operation
+  /// metadata will contain an instance of OperationMetadata.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The resource name of reseller's customer account
-  /// where the entitlements transfer from. The parent takes the format:
+  /// [parent] - Required. The resource name of the reseller's customer account
+  /// where the entitlements transfer from. Parent uses the format:
   /// accounts/{account_id}/customers/{customer_id}
   /// Value must have pattern `^accounts/\[^/\]+/customers/\[^/\]+$`.
   ///
@@ -1277,23 +1503,20 @@ class AccountsCustomersEntitlementsResource {
 
   /// Activates a previously suspended entitlement.
   ///
-  /// The entitlement must be in a suspended state for it to be activated.
   /// Entitlements suspended for pending ToS acceptance can't be activated using
-  /// this method. An entitlement activation is a long-running operation and can
-  /// result in updates to the state of the customer entitlement. Possible Error
-  /// Codes: * PERMISSION_DENIED: If the customer doesn't belong to the reseller
-  /// or if the reseller account making the request and reseller account being
-  /// queried for are different. * INVALID_ARGUMENT: Missing or invalid required
-  /// parameters in the request. * NOT_FOUND: Entitlement resource not found. *
-  /// SUSPENSION_NOT_RESELLER_INITIATED: Can't activate an entitlement that is
-  /// pending TOS acceptance. Only reseller initiated suspensions can be
-  /// activated. * NOT_SUSPENDED: Can't activate entitlements that are already
-  /// in ACTIVE state. Can only activate suspended entitlements. * INTERNAL: Any
-  /// non-user error related to a technical issue in the backend. In this case,
-  /// contact Cloud Channel support. * UNKNOWN: Any non-user error related to a
-  /// technical issue in the backend. In this case, contact Cloud Channel
-  /// support. Return Value: Long Running Operation ID. To get the results of
-  /// the operation, call the GetOperation method of
+  /// this method. An entitlement activation is a long-running operation and it
+  /// updates the state of the customer entitlement. Possible error codes: *
+  /// PERMISSION_DENIED: The reseller account making the request is different
+  /// from the reseller account in the API request. * INVALID_ARGUMENT: Required
+  /// request parameters are missing or invalid. * NOT_FOUND: Entitlement
+  /// resource not found. * SUSPENSION_NOT_RESELLER_INITIATED: Can only activate
+  /// reseller-initiated suspensions and entitlements that have accepted the
+  /// TOS. * NOT_SUSPENDED: Can only activate suspended entitlements not in an
+  /// ACTIVE state. * INTERNAL: Any non-user error related to a technical issue
+  /// in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user
+  /// error related to a technical issue in the backend. Contact Cloud Channel
+  /// support. Return value: The ID of a long-running operation. To get the
+  /// results of the operation, call the GetOperation method of
   /// CloudChannelOperationsService. The Operation metadata will contain an
   /// instance of OperationMetadata.
   ///
@@ -1301,8 +1524,8 @@ class AccountsCustomersEntitlementsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the entitlement to activate. The
-  /// name takes the format:
+  /// [name] - Required. The resource name of the entitlement to activate. Name
+  /// uses the format:
   /// accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
   /// Value must have pattern
   /// `^accounts/\[^/\]+/customers/\[^/\]+/entitlements/\[^/\]+$`.
@@ -1341,20 +1564,19 @@ class AccountsCustomersEntitlementsResource {
 
   /// Cancels a previously fulfilled entitlement.
   ///
-  /// An entitlement cancellation is a long-running operation. Possible Error
-  /// Codes: * PERMISSION_DENIED: If the customer doesn't belong to the reseller
-  /// or if the reseller account making the request and reseller account being
-  /// queried for are different. * FAILED_PRECONDITION: If there are any Google
-  /// Cloud projects linked to the Google Cloud entitlement's Cloud Billing
-  /// subaccount. * INVALID_ARGUMENT: Missing or invalid required parameters in
-  /// the request. * NOT_FOUND: Entitlement resource not found. *
-  /// DELETION_TYPE_NOT_ALLOWED: Cancel is only allowed for Google Workspace
-  /// add-ons or entitlements for Google Cloud's development platform. *
-  /// INTERNAL: Any non-user error related to a technical issue in the backend.
-  /// In this case, contact Cloud Channel support. * UNKNOWN: Any non-user error
-  /// related to a technical issue in the backend. In this case, contact Cloud
-  /// Channel support. Return Value: Long Running Operation ID. To get the
-  /// results of the operation, call the GetOperation method of
+  /// An entitlement cancellation is a long-running operation. Possible error
+  /// codes: * PERMISSION_DENIED: The reseller account making the request is
+  /// different from the reseller account in the API request. *
+  /// FAILED_PRECONDITION: There are Google Cloud projects linked to the Google
+  /// Cloud entitlement's Cloud Billing subaccount. * INVALID_ARGUMENT: Required
+  /// request parameters are missing or invalid. * NOT_FOUND: Entitlement
+  /// resource not found. * DELETION_TYPE_NOT_ALLOWED: Cancel is only allowed
+  /// for Google Workspace add-ons, or entitlements for Google Cloud's
+  /// development platform. * INTERNAL: Any non-user error related to a
+  /// technical issue in the backend. Contact Cloud Channel support. * UNKNOWN:
+  /// Any non-user error related to a technical issue in the backend. Contact
+  /// Cloud Channel support. Return value: The ID of a long-running operation.
+  /// To get the results of the operation, call the GetOperation method of
   /// CloudChannelOperationsService. The response will contain
   /// google.protobuf.Empty on success. The Operation metadata will contain an
   /// instance of OperationMetadata.
@@ -1363,8 +1585,8 @@ class AccountsCustomersEntitlementsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the entitlement to cancel. The
-  /// name takes the format:
+  /// [name] - Required. The resource name of the entitlement to cancel. Name
+  /// uses the format:
   /// accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
   /// Value must have pattern
   /// `^accounts/\[^/\]+/customers/\[^/\]+/entitlements/\[^/\]+$`.
@@ -1403,24 +1625,24 @@ class AccountsCustomersEntitlementsResource {
 
   /// Updates the Offer for an existing customer entitlement.
   ///
-  /// An entitlement update is a long-running operation and results in updates
-  /// to the entitlement as a result of fulfillment. Possible Error Codes: *
-  /// PERMISSION_DENIED: If the customer doesn't belong to the reseller. *
-  /// INVALID_ARGUMENT: Missing or invalid required parameters in the request. *
+  /// An entitlement update is a long-running operation and it updates the
+  /// entitlement as a result of fulfillment. Possible error codes: *
+  /// PERMISSION_DENIED: The customer doesn't belong to the reseller. *
+  /// INVALID_ARGUMENT: Required request parameters are missing or invalid. *
   /// NOT_FOUND: Offer or Entitlement resource not found. * INTERNAL: Any
-  /// non-user error related to a technical issue in the backend. In this case,
-  /// contact Cloud Channel support. * UNKNOWN: Any non-user error related to a
-  /// technical issue in the backend. In this case, contact Cloud Channel
-  /// support. Return Value: Long Running Operation ID. To get the results of
-  /// the operation, call the GetOperation method of
-  /// CloudChannelOperationsService. The Operation metadata will contain an
-  /// instance of OperationMetadata.
+  /// non-user error related to a technical issue in the backend. Contact Cloud
+  /// Channel support. * UNKNOWN: Any non-user error related to a technical
+  /// issue in the backend. Contact Cloud Channel support. Return value: The ID
+  /// of a long-running operation. To get the results of the operation, call the
+  /// GetOperation method of CloudChannelOperationsService. The Operation
+  /// metadata will contain an instance of OperationMetadata.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the entitlement to update. Format:
+  /// [name] - Required. The resource name of the entitlement to update. Name
+  /// uses the format:
   /// accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
   /// Value must have pattern
   /// `^accounts/\[^/\]+/customers/\[^/\]+/entitlements/\[^/\]+$`.
@@ -1457,20 +1679,19 @@ class AccountsCustomersEntitlementsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Change parameters of the entitlement An entitlement parameters update is a
-  /// long-running operation and results in updates to the entitlement as a
-  /// result of fulfillment.
+  /// Change parameters of the entitlement.
   ///
-  /// Possible Error Codes: * PERMISSION_DENIED: If the customer doesn't belong
-  /// to the reseller. * INVALID_ARGUMENT: Missing or invalid required
-  /// parameters in the request. For example, if the number of seats being
-  /// changed to is greater than the allowed number of max seats for the
-  /// resource. Or decreasing seats for a commitment based plan. * NOT_FOUND:
-  /// Entitlement resource not found. * INTERNAL: Any non-user error related to
-  /// a technical issue in the backend. In this case, contact Cloud Channel
+  /// An entitlement update is a long-running operation and it updates the
+  /// entitlement as a result of fulfillment. Possible error codes: *
+  /// PERMISSION_DENIED: The customer doesn't belong to the reseller. *
+  /// INVALID_ARGUMENT: Required request parameters are missing or invalid. For
+  /// example, the number of seats being changed is greater than the allowed
+  /// number of max seats, or decreasing seats for a commitment based plan. *
+  /// NOT_FOUND: Entitlement resource not found. * INTERNAL: Any non-user error
+  /// related to a technical issue in the backend. Contact Cloud Channel
   /// support. * UNKNOWN: Any non-user error related to a technical issue in the
-  /// backend. In this case, contact Cloud Channel support. Return Value: Long
-  /// Running Operation ID. To get the results of the operation, call the
+  /// backend. Contact Cloud Channel support. Return value: The ID of a
+  /// long-running operation. To get the results of the operation, call the
   /// GetOperation method of CloudChannelOperationsService. The Operation
   /// metadata will contain an instance of OperationMetadata.
   ///
@@ -1478,8 +1699,8 @@ class AccountsCustomersEntitlementsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the entitlement to update. The name takes
-  /// the format:
+  /// [name] - Required. The name of the entitlement to update. Name uses the
+  /// format:
   /// accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
   /// Value must have pattern
   /// `^accounts/\[^/\]+/customers/\[^/\]+/entitlements/\[^/\]+$`.
@@ -1518,26 +1739,26 @@ class AccountsCustomersEntitlementsResource {
 
   /// Updates the renewal settings for an existing customer entitlement.
   ///
-  /// An entitlement update is a long-running operation and results in updates
-  /// to the entitlement as a result of fulfillment. Possible Error Codes: *
-  /// PERMISSION_DENIED: If the customer doesn't belong to the reseller. *
-  /// INVALID_ARGUMENT: Missing or invalid required parameters in the request. *
+  /// An entitlement update is a long-running operation and it updates the
+  /// entitlement as a result of fulfillment. Possible error codes: *
+  /// PERMISSION_DENIED: The customer doesn't belong to the reseller. *
+  /// INVALID_ARGUMENT: Required request parameters are missing or invalid. *
   /// NOT_FOUND: Entitlement resource not found. * NOT_COMMITMENT_PLAN: Renewal
   /// Settings are only applicable for a commitment plan. Can't enable or
-  /// disable renewal for non-commitment plans. * INTERNAL: Any non user error
-  /// related to a technical issue in the backend. In this case, contact Cloud
-  /// Channel support. * UNKNOWN: Any non user error related to a technical
-  /// issue in the backend. In this case, contact Cloud Channel support. Return
-  /// Value: Long Running Operation ID. To get the results of the operation,
-  /// call the GetOperation method of CloudChannelOperationsService. The
-  /// Operation metadata will contain an instance of OperationMetadata.
+  /// disable renewals for non-commitment plans. * INTERNAL: Any non-user error
+  /// related to a technical issue in the backend. Contact Cloud Channel
+  /// support. * UNKNOWN: Any non-user error related to a technical issue in the
+  /// backend. Contact Cloud Channel support. Return value: The ID of a
+  /// long-running operation. To get the results of the operation, call the
+  /// GetOperation method of CloudChannelOperationsService. The Operation
+  /// metadata will contain an instance of OperationMetadata.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the entitlement to update. The name takes
-  /// the format:
+  /// [name] - Required. The name of the entitlement to update. Name uses the
+  /// format:
   /// accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
   /// Value must have pattern
   /// `^accounts/\[^/\]+/customers/\[^/\]+/entitlements/\[^/\]+$`.
@@ -1577,38 +1798,34 @@ class AccountsCustomersEntitlementsResource {
 
   /// Creates an entitlement for a customer.
   ///
-  /// Possible Error Codes: * PERMISSION_DENIED: If the customer doesn't belong
-  /// to the reseller. * INVALID_ARGUMENT: It can happen in below scenarios - *
-  /// Missing or invalid required parameters in the request. * Cannot purchase
-  /// an entitlement if there is already an entitlement for customer, for a SKU
-  /// from the same product family. * INVALID_VALUE: Offer passed in isn't
-  /// valid. Make sure OfferId is valid. If it is valid, then contact Google
-  /// Channel support for further troubleshooting. * NOT_FOUND: If the customer
-  /// or offer resource is not found for the reseller. * ALREADY_EXISTS: This
-  /// failure can happen in the following cases: * If the SKU has been already
-  /// purchased for the customer. * If the customer's primary email already
-  /// exists. In this case retry after changing the customer's primary contact
-  /// email. * CONDITION_NOT_MET or FAILED_PRECONDITION: This failure can happen
-  /// in the following cases: * Purchasing a SKU that requires domain
-  /// verification and the domain has not been verified. * Purchasing an Add-On
-  /// SKU like Vault or Drive without purchasing the pre-requisite SKU, such as
-  /// Google Workspace Business Starter. * Applicable only for developer
-  /// accounts: reseller and resold domain. Must meet the following domain
-  /// naming requirements: * Domain names must start with goog-test. * Resold
-  /// domain names must include the reseller domain. * INTERNAL: Any non-user
-  /// error related to a technical issue in the backend. Contact Cloud Channel
-  /// Support in this case. * UNKNOWN: Any non-user error related to a technical
-  /// issue in the backend. Contact Cloud Channel Support in this case. Return
-  /// Value: Long Running Operation ID. To get the results of the operation,
-  /// call the GetOperation method of CloudChannelOperationsService. The
-  /// Operation metadata will contain an instance of OperationMetadata.
+  /// Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to
+  /// the reseller. * INVALID_ARGUMENT: * Required request parameters are
+  /// missing or invalid. * There is already a customer entitlement for a SKU
+  /// from the same product family. * INVALID_VALUE: Make sure the OfferId is
+  /// valid. If it is, contact Google Channel support for further
+  /// troubleshooting. * NOT_FOUND: The customer or offer resource was not
+  /// found. * ALREADY_EXISTS: * The SKU was already purchased for the customer.
+  /// * The customer's primary email already exists. Retry after changing the
+  /// customer's primary contact email. * CONDITION_NOT_MET or
+  /// FAILED_PRECONDITION: * The domain required for purchasing a SKU has not
+  /// been verified. * A pre-requisite SKU required to purchase an Add-On SKU is
+  /// missing. For example, Google Workspace Business Starter is required to
+  /// purchase Vault or Drive. * (Developer accounts only) Reseller and resold
+  /// domain must meet the following naming requirements: * Domain names must
+  /// start with goog-test. * Domain names must include the reseller domain. *
+  /// INTERNAL: Any non-user error related to a technical issue in the backend.
+  /// Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a
+  /// technical issue in the backend. Contact Cloud Channel support. Return
+  /// value: The ID of a long-running operation. To get the results of the
+  /// operation, call the GetOperation method of CloudChannelOperationsService.
+  /// The Operation metadata will contain an instance of OperationMetadata.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The resource name of reseller's customer account in
-  /// which to create the entitlement. The parent takes the format:
+  /// [parent] - Required. The resource name of the reseller's customer account
+  /// in which to create the entitlement. Parent uses the format:
   /// accounts/{account_id}/customers/{customer_id}
   /// Value must have pattern `^accounts/\[^/\]+/customers/\[^/\]+$`.
   ///
@@ -1644,19 +1861,18 @@ class AccountsCustomersEntitlementsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Returns a requested Entitlement resource.
+  /// Returns the requested Entitlement resource.
   ///
-  /// Possible Error Codes: * PERMISSION_DENIED: If the customer doesn't belong
-  /// to the reseller. * INVALID_ARGUMENT: Missing or invalid required
-  /// parameters in the request. * NOT_FOUND: If the entitlement is not found
-  /// for the customer. Return Value: If found, the requested Entitlement
-  /// resource, otherwise returns an error.
+  /// Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to
+  /// the reseller. * INVALID_ARGUMENT: Required request parameters are missing
+  /// or invalid. * NOT_FOUND: The customer entitlement was not found. Return
+  /// value: The requested Entitlement resource.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the entitlement to retrieve. The
-  /// name takes the format:
-  /// accounts/{account_id}/customers/{customer_id}/entitlements/{id}
+  /// [name] - Required. The resource name of the entitlement to retrieve. Name
+  /// uses the format:
+  /// accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
   /// Value must have pattern
   /// `^accounts/\[^/\]+/customers/\[^/\]+/entitlements/\[^/\]+$`.
   ///
@@ -1689,29 +1905,26 @@ class AccountsCustomersEntitlementsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// List Entitlements belonging to a customer.
+  /// Lists Entitlements belonging to a customer.
   ///
-  /// Possible Error Codes: * PERMISSION_DENIED: If the customer doesn't belong
-  /// to the reseller. * INVALID_ARGUMENT: Missing or invalid required
-  /// parameters in the request. Return Value: List of Entitlements belonging to
-  /// the customer, or empty list if there are none.
+  /// Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to
+  /// the reseller. * INVALID_ARGUMENT: Required request parameters are missing
+  /// or invalid. Return value: A list of the customer's Entitlements.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The resource name of the reseller's customer account
-  /// for which to list entitlements. The parent takes the format:
+  /// to list entitlements for. Parent uses the format:
   /// accounts/{account_id}/customers/{customer_id}
   /// Value must have pattern `^accounts/\[^/\]+/customers/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. Requested page size. Server might return fewer
-  /// results than requested. If unspecified, at most 50 entitlements will be
-  /// returned. The maximum value is 100; values above 100 will be coerced to
-  /// 100.
+  /// results than requested. If unspecified, return at most 50 entitlements.
+  /// The maximum value is 100; the server will coerce values above 100.
   ///
-  /// [pageToken] - Optional. A token identifying a page of results, if other
-  /// than the first one. Typically obtained via
-  /// ListEntitlementsResponse.next_page_token of the previous
-  /// CloudChannelService.ListEntitlements call.
+  /// [pageToken] - Optional. A token for a page of results other than the first
+  /// page. Obtained using ListEntitlementsResponse.next_page_token of the
+  /// previous CloudChannelService.ListEntitlements call.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1746,29 +1959,72 @@ class AccountsCustomersEntitlementsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Returns the requested Offer resource.
+  ///
+  /// Possible error codes: * PERMISSION_DENIED: The entitlement doesn't belong
+  /// to the reseller. * INVALID_ARGUMENT: Required request parameters are
+  /// missing or invalid. * NOT_FOUND: Entitlement or offer was not found.
+  /// Return value: The Offer resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [entitlement] - Required. The resource name of the entitlement to retrieve
+  /// the Offer. Entitlement uses the format:
+  /// accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
+  /// Value must have pattern
+  /// `^accounts/\[^/\]+/customers/\[^/\]+/entitlements/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudChannelV1Offer].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudChannelV1Offer> lookupOffer(
+    core.String entitlement, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$entitlement') + ':lookupOffer';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudChannelV1Offer.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Starts paid service for a trial entitlement.
   ///
   /// Starts paid service for a trial entitlement immediately. This method is
-  /// only applicable if a plan has already been set up for a trial entitlement
-  /// but has some trial days remaining. Possible Error Codes: *
-  /// PERMISSION_DENIED: If the customer doesn't belong to the reseller. *
-  /// INVALID_ARGUMENT: Missing or invalid required parameters in the request. *
-  /// NOT_FOUND: Entitlement resource not found. *
-  /// FAILED_PRECONDITION/NOT_IN_TRIAL: This method only works for entitlement
-  /// on trial plans. * INTERNAL: Any non-user error related to a technical
-  /// issue in the backend. In this case, contact Cloud Channel support. *
-  /// UNKNOWN: Any non-user error related to a technical issue in the backend.
-  /// In this case, contact Cloud Channel support. Return Value: Long Running
-  /// Operation ID. To get the results of the operation, call the GetOperation
-  /// method of CloudChannelOperationsService. The Operation metadata will
-  /// contain an instance of OperationMetadata.
+  /// only applicable if a plan is set up for a trial entitlement but has some
+  /// trial days remaining. Possible error codes: * PERMISSION_DENIED: The
+  /// customer doesn't belong to the reseller. * INVALID_ARGUMENT: Required
+  /// request parameters are missing or invalid. * NOT_FOUND: Entitlement
+  /// resource not found. * FAILED_PRECONDITION/NOT_IN_TRIAL: This method only
+  /// works for entitlement on trial plans. * INTERNAL: Any non-user error
+  /// related to a technical issue in the backend. Contact Cloud Channel
+  /// support. * UNKNOWN: Any non-user error related to a technical issue in the
+  /// backend. Contact Cloud Channel support. Return value: The ID of a
+  /// long-running operation. To get the results of the operation, call the
+  /// GetOperation method of CloudChannelOperationsService. The Operation
+  /// metadata will contain an instance of OperationMetadata.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the entitlement for which paid service is
-  /// being started. The name takes the format:
+  /// [name] - Required. The name of the entitlement to start a paid service
+  /// for. Name uses the format:
   /// accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
   /// Value must have pattern
   /// `^accounts/\[^/\]+/customers/\[^/\]+/entitlements/\[^/\]+$`.
@@ -1807,24 +2063,24 @@ class AccountsCustomersEntitlementsResource {
 
   /// Suspends a previously fulfilled entitlement.
   ///
-  /// An entitlement suspension is a long-running operation. Possible Error
-  /// Codes: * PERMISSION_DENIED: If the customer doesn't belong to the
-  /// reseller. * INVALID_ARGUMENT: Missing or invalid required parameters in
-  /// the request. * NOT_FOUND: Entitlement resource not found. * NOT_ACTIVE:
-  /// Entitlement is not active. * INTERNAL: Any non-user error related to a
-  /// technical issue in the backend. In this case, contact Cloud Channel
-  /// support. * UNKNOWN: Any non-user error related to a technical issue in the
-  /// backend. In this case, contact Cloud Channel support. Return Value: Long
-  /// Running Operation ID. To get the results of the operation, call the
-  /// GetOperation method of CloudChannelOperationsService. The Operation
-  /// metadata will contain an instance of OperationMetadata.
+  /// An entitlement suspension is a long-running operation. Possible error
+  /// codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller. *
+  /// INVALID_ARGUMENT: Required request parameters are missing or invalid. *
+  /// NOT_FOUND: Entitlement resource not found. * NOT_ACTIVE: Entitlement is
+  /// not active. * INTERNAL: Any non-user error related to a technical issue in
+  /// the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error
+  /// related to a technical issue in the backend. Contact Cloud Channel
+  /// support. Return value: The ID of a long-running operation. To get the
+  /// results of the operation, call the GetOperation method of
+  /// CloudChannelOperationsService. The Operation metadata will contain an
+  /// instance of OperationMetadata.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the entitlement to suspend. The
-  /// name takes the format:
+  /// [name] - Required. The resource name of the entitlement to suspend. Name
+  /// uses the format:
   /// accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
   /// Value must have pattern
   /// `^accounts/\[^/\]+/customers/\[^/\]+/entitlements/\[^/\]+$`.
@@ -1869,31 +2125,30 @@ class AccountsOffersResource {
 
   /// Lists the Offers the reseller can sell.
   ///
-  /// Possible Error Codes: * INVALID_ARGUMENT: Missing or invalid required
-  /// parameters in the request.
+  /// Possible error codes: * INVALID_ARGUMENT: Required request parameters are
+  /// missing or invalid.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The resource name of the reseller account from which
-  /// to list Offers. The parent takes the format: accounts/{account_id}.
+  /// to list Offers. Parent uses the format: accounts/{account_id}.
   /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
   /// [filter] - Optional. The expression to filter results by name (name of the
-  /// Offer), sku.name (name of the SKU) or sku.product.name (name of the
+  /// Offer), sku.name (name of the SKU), or sku.product.name (name of the
   /// Product). Example 1: sku.product.name=products/p1 AND
   /// sku.name!=products/p1/skus/s1 Example 2: name=accounts/a1/offers/o1
   ///
-  /// [languageCode] - Optional. The BCP-47 language code, such as "en-US". If
-  /// specified, the response will be localized to the corresponding language
-  /// code. Default is "en-US".
+  /// [languageCode] - Optional. The BCP-47 language code. For example, "en-US".
+  /// The response will localize in the corresponding language code, if
+  /// specified. The default value is "en-US".
   ///
   /// [pageSize] - Optional. Requested page size. Server might return fewer
-  /// results than requested. If unspecified, at most 500 Offers will be
-  /// returned. The maximum value is 1000; values above 1000 will be coerced to
-  /// 1000.
+  /// results than requested. If unspecified, returns at most 500 Offers. The
+  /// maximum value is 1000; the server will coerce values above 1000.
   ///
-  /// [pageToken] - Optional. A token identifying a page of results, if other
-  /// than the first one.
+  /// [pageToken] - Optional. A token for a page of results other than the first
+  /// page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2134,25 +2389,24 @@ class ProductsResource {
 
   /// Lists the Products the reseller is authorized to sell.
   ///
-  /// Possible Error Codes: * INVALID_ARGUMENT: Missing or invalid required
-  /// parameters in the request.
+  /// Possible error codes: * INVALID_ARGUMENT: Required request parameters are
+  /// missing or invalid.
   ///
   /// Request parameters:
   ///
   /// [account] - Required. The resource name of the reseller account. Format:
   /// accounts/{account_id}.
   ///
-  /// [languageCode] - Optional. The BCP-47 language code, such as "en-US". If
-  /// specified, the response will be localized to the corresponding language
-  /// code. Default is "en-US".
+  /// [languageCode] - Optional. The BCP-47 language code. For example, "en-US".
+  /// The response will localize in the corresponding language code, if
+  /// specified. The default value is "en-US".
   ///
   /// [pageSize] - Optional. Requested page size. Server might return fewer
-  /// results than requested. If unspecified, at most 100 Products will be
-  /// returned. The maximum value is 1000; values above 1000 will be coerced to
-  /// 1000.
+  /// results than requested. If unspecified, returns at most 100 Products. The
+  /// maximum value is 1000; the server will coerce values above 1000.
   ///
-  /// [pageToken] - Optional. A token identifying a page of results, if other
-  /// than the first one.
+  /// [pageToken] - Optional. A token for a page of results other than the first
+  /// page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2198,29 +2452,29 @@ class ProductsSkusResource {
 
   /// Lists the SKUs for a product the reseller is authorized to sell.
   ///
-  /// Possible Error Codes: * INVALID_ARGUMENT: Missing or invalid required
-  /// parameters in the request.
+  /// Possible error codes: * INVALID_ARGUMENT: Required request parameters are
+  /// missing or invalid.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The resource name of the Product for which to list
-  /// SKUs. The parent takes the format: products/{product_id}. Supports
-  /// products/- to retrieve SKUs for all products.
+  /// [parent] - Required. The resource name of the Product to list SKUs for.
+  /// Parent uses the format: products/{product_id}. Supports products/- to
+  /// retrieve SKUs for all products.
   /// Value must have pattern `^products/\[^/\]+$`.
   ///
   /// [account] - Required. Resource name of the reseller. Format:
   /// accounts/{account_id}.
   ///
-  /// [languageCode] - Optional. The BCP-47 language code, such as "en-US". If
-  /// specified, the response will be localized to the corresponding language
-  /// code. Default is "en-US".
+  /// [languageCode] - Optional. The BCP-47 language code. For example, "en-US".
+  /// The response will localize in the corresponding language code, if
+  /// specified. The default value is "en-US".
   ///
   /// [pageSize] - Optional. Requested page size. Server might return fewer
-  /// results than requested. If unspecified, at most 100 SKUs will be returned.
-  /// The maximum value is 1000; values above 1000 will be coerced to 1000.
+  /// results than requested. If unspecified, returns at most 100 SKUs. The
+  /// maximum value is 1000; the server will coerce values above 1000.
   ///
-  /// [pageToken] - Optional. A token identifying a page of results, if other
-  /// than the first one. Optional.
+  /// [pageToken] - Optional. A token for a page of results other than the first
+  /// page. Optional.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2262,17 +2516,15 @@ class ProductsSkusResource {
 
 /// Request message for CloudChannelService.ActivateEntitlement.
 class GoogleCloudChannelV1ActivateEntitlementRequest {
-  /// An optional request ID to identify requests.
+  /// You can specify an optional unique request ID, and if you need to retry
+  /// your request, the server will know to ignore the request if it's complete.
   ///
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// For example, consider a situation where you make an initial request and
-  /// the request times out. If you make the request again with the same request
-  /// ID, the server can check if the original operation with the same request
-  /// ID was received, and if so, will ignore the second request. The request ID
-  /// must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the
-  /// exception that zero UUID is not supported
-  /// (`00000000-0000-0000-0000-000000000000`).
+  /// For example, you make an initial request and the request times out. If you
+  /// make the request again with the same request ID, the server can check if
+  /// it received the original operation with the same request ID. If it did, it
+  /// will ignore the second request. The request ID must be a valid
+  /// [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero
+  /// UUID is not supported (`00000000-0000-0000-0000-000000000000`).
   ///
   /// Optional.
   core.String? requestId;
@@ -2342,17 +2594,15 @@ class GoogleCloudChannelV1AssociationInfo {
 
 /// Request message for CloudChannelService.CancelEntitlement.
 class GoogleCloudChannelV1CancelEntitlementRequest {
-  /// An optional request ID to identify requests.
+  /// You can specify an optional unique request ID, and if you need to retry
+  /// your request, the server will know to ignore the request if it's complete.
   ///
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// For example, consider a situation where you make an initial request and
-  /// the request times out. If you make the request again with the same request
-  /// ID, the server can check if the original operation with the same request
-  /// ID was received, and if so, will ignore the second request. The request ID
-  /// must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the
-  /// exception that zero UUID is not supported
-  /// (`00000000-0000-0000-0000-000000000000`).
+  /// For example, you make an initial request and the request times out. If you
+  /// make the request again with the same request ID, the server can check if
+  /// it received the original operation with the same request ID. If it did, it
+  /// will ignore the second request. The request ID must be a valid
+  /// [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero
+  /// UUID is not supported (`00000000-0000-0000-0000-000000000000`).
   ///
   /// Optional.
   core.String? requestId;
@@ -2389,17 +2639,15 @@ class GoogleCloudChannelV1ChangeOfferRequest {
   /// Optional.
   core.String? purchaseOrderId;
 
-  /// An optional request ID to identify requests.
+  /// You can specify an optional unique request ID, and if you need to retry
+  /// your request, the server will know to ignore the request if it's complete.
   ///
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// For example, consider a situation where you make an initial request and
-  /// the request times out. If you make the request again with the same request
-  /// ID, the server can check if the original operation with the same request
-  /// ID was received, and if so, will ignore the second request. The request ID
-  /// must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the
-  /// exception that zero UUID is not supported
-  /// (`00000000-0000-0000-0000-000000000000`).
+  /// For example, you make an initial request and the request times out. If you
+  /// make the request again with the same request ID, the server can check if
+  /// it received the original operation with the same request ID. If it did, it
+  /// will ignore the second request. The request ID must be a valid
+  /// [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero
+  /// UUID is not supported (`00000000-0000-0000-0000-000000000000`).
   ///
   /// Optional.
   core.String? requestId;
@@ -2438,7 +2686,7 @@ class GoogleCloudChannelV1ChangeOfferRequest {
 class GoogleCloudChannelV1ChangeParametersRequest {
   /// Entitlement parameters to update.
   ///
-  /// Only editable parameters are allowed to be changed.
+  /// You can only change editable parameters.
   ///
   /// Required.
   core.List<GoogleCloudChannelV1Parameter>? parameters;
@@ -2448,17 +2696,15 @@ class GoogleCloudChannelV1ChangeParametersRequest {
   /// Optional.
   core.String? purchaseOrderId;
 
-  /// An optional request ID to identify requests.
+  /// You can specify an optional unique request ID, and if you need to retry
+  /// your request, the server will know to ignore the request if it's complete.
   ///
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// For example, consider a situation where you make an initial request and
-  /// the request times out. If you make the request again with the same request
-  /// ID, the server can check if the original operation with the same request
-  /// ID was received, and if so, will ignore the second request. The request ID
-  /// must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the
-  /// exception that zero UUID is not supported
-  /// (`00000000-0000-0000-0000-000000000000`).
+  /// For example, you make an initial request and the request times out. If you
+  /// make the request again with the same request ID, the server can check if
+  /// it received the original operation with the same request ID. If it did, it
+  /// will ignore the second request. The request ID must be a valid
+  /// [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero
+  /// UUID is not supported (`00000000-0000-0000-0000-000000000000`).
   ///
   /// Optional.
   core.String? requestId;
@@ -2496,17 +2742,15 @@ class GoogleCloudChannelV1ChangeRenewalSettingsRequest {
   /// Required.
   GoogleCloudChannelV1RenewalSettings? renewalSettings;
 
-  /// A request ID to identify requests.
+  /// You can specify an optional unique request ID, and if you need to retry
+  /// your request, the server will know to ignore the request if it's complete.
   ///
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// For example, consider a situation where you make an initial request and
-  /// the request times out. If you make the request again with the same request
-  /// ID, the server can check if the original operation with the same request
-  /// ID was received, and if so, will ignore the second request. The request ID
-  /// must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the
-  /// exception that zero UUID is not supported
-  /// (`00000000-0000-0000-0000-000000000000`).
+  /// For example, you make an initial request and the request times out. If you
+  /// make the request again with the same request ID, the server can check if
+  /// it received the original operation with the same request ID. If it did, it
+  /// will ignore the second request. The request ID must be a valid
+  /// [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero
+  /// UUID is not supported (`00000000-0000-0000-0000-000000000000`).
   ///
   /// Optional.
   core.String? requestId;
@@ -2633,7 +2877,7 @@ class GoogleCloudChannelV1ChannelPartnerLink {
 
 /// Request message for CloudChannelService.CheckCloudIdentityAccountsExist.
 class GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest {
-  /// Domain for which the Cloud Identity account customer is fetched.
+  /// Domain to fetch for Cloud Identity account customer.
   ///
   /// Required.
   core.String? domain;
@@ -2678,25 +2922,24 @@ class GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse {
       };
 }
 
-/// Entity representing a Cloud Identity account which may or may not be
-/// associated with a Channel Services API partner.
+/// Entity representing a Cloud Identity account that may be associated with a
+/// Channel Services API partner.
 class GoogleCloudChannelV1CloudIdentityCustomerAccount {
-  /// Cloud Identity ID of the customer.
-  ///
-  /// This field is populated ONLY if existing = true.
+  /// If existing = true, the Cloud Identity ID of the customer.
   core.String? customerCloudIdentityId;
 
-  /// Name of the customer that owns the Cloud Identity account.
+  /// If owned = true, the name of the customer that owns the Cloud Identity
+  /// account.
   ///
-  /// This field is populated ONLY if owned = true. The customer_name takes the
-  /// format: accounts/{account_id}/customers/{customer_id}
+  /// Customer_name uses the format:
+  /// accounts/{account_id}/customers/{customer_id}
   core.String? customerName;
 
-  /// True if a Cloud Identity account exists for a specific domain.
+  /// Returns true if a Cloud Identity account exists for a specific domain.
   core.bool? existing;
 
-  /// True if the Cloud Identity account is associated with a customer belonging
-  /// to the Channel Services partner making the API call.
+  /// Returns true if the Cloud Identity account is associated with a customer
+  /// of the Channel Services partner.
   core.bool? owned;
 
   GoogleCloudChannelV1CloudIdentityCustomerAccount();
@@ -2748,6 +2991,13 @@ class GoogleCloudChannelV1CloudIdentityInfo {
   GoogleCloudChannelV1EduData? eduData;
 
   /// Whether the domain is verified.
+  ///
+  /// This field is not returned for a Customer's cloud_identity_info resource.
+  /// Partners can use the domains.get() method of the Workspace SDK's Directory
+  /// API, or listen to the PRIMARY_DOMAIN_VERIFIED Pub/Sub event in to track
+  /// domain verification of their resolve Workspace customers.
+  ///
+  /// Output only.
   core.bool? isDomainVerified;
 
   /// Language code.
@@ -2865,30 +3115,28 @@ class GoogleCloudChannelV1Constraints {
 
 /// Contact information for a customer account.
 class GoogleCloudChannelV1ContactInfo {
-  /// Display name of the contact in the customer account.
-  ///
-  /// Populated by combining customer first name and last name.
+  /// The customer account contact's display name, formatted as a combination of
+  /// the customer's first and last name.
   ///
   /// Output only.
   core.String? displayName;
 
-  /// Email of the contact in the customer account.
+  /// The customer account's contact email.
   ///
-  /// Email is required for entitlements that need creation of admin.google.com
-  /// accounts. The email will be the username used in credentials to access the
-  /// admin.google.com account.
+  /// Required for entitlements that create admin.google.com accounts, and
+  /// serves as the customer's username for those accounts.
   core.String? email;
 
-  /// First name of the contact in the customer account.
+  /// The customer account contact's first name.
   core.String? firstName;
 
-  /// Last name of the contact in the customer account.
+  /// The customer account contact's last name.
   core.String? lastName;
 
-  /// Phone number of the contact in the customer account.
+  /// The customer account's contact phone number.
   core.String? phone;
 
-  /// Job title of the contact in the customer account.
+  /// The customer account contact's job title.
   ///
   /// Optional.
   core.String? title;
@@ -2933,17 +3181,15 @@ class GoogleCloudChannelV1CreateEntitlementRequest {
   /// Required.
   GoogleCloudChannelV1Entitlement? entitlement;
 
-  /// An optional request ID to identify requests.
+  /// You can specify an optional unique request ID, and if you need to retry
+  /// your request, the server will know to ignore the request if it's complete.
   ///
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// For example, consider a situation where you make an initial request and
-  /// the request times out. If you make the request again with the same request
-  /// ID, the server can check if the original operation with the same request
-  /// ID was received, and if so, will ignore the second request. The request ID
-  /// must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the
-  /// exception that zero UUID is not supported
-  /// (`00000000-0000-0000-0000-000000000000`).
+  /// For example, you make an initial request and the request times out. If you
+  /// make the request again with the same request ID, the server can check if
+  /// it received the original operation with the same request ID. If it did, it
+  /// will ignore the second request. The request ID must be a valid
+  /// [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero
+  /// UUID is not supported (`00000000-0000-0000-0000-000000000000`).
   ///
   /// Optional.
   core.String? requestId;
@@ -2970,10 +3216,10 @@ class GoogleCloudChannelV1CreateEntitlementRequest {
 class GoogleCloudChannelV1Customer {
   /// Secondary contact email.
   ///
-  /// Alternate email and primary contact email are required to have different
-  /// domains if primary contact email is present. When creating
-  /// admin.google.com accounts, users get notified credentials at this email.
-  /// This email address is also used as a recovery email.
+  /// You need to provide an alternate email to create different domains if a
+  /// primary contact email already exists. Users will receive a notification
+  /// with credentials when you create an admin.google.com account. Secondary
+  /// emails are also recovery email addresses.
   core.String? alternateEmail;
 
   /// Cloud Identity ID of the customer's channel partner.
@@ -2981,9 +3227,8 @@ class GoogleCloudChannelV1Customer {
   /// Populated only if a channel partner exists for this customer.
   core.String? channelPartnerId;
 
-  /// Customer's cloud_identity_id.
-  ///
-  /// Populated only if a Cloud Identity resource exists for this customer.
+  /// The customer's Cloud Identity ID if the customer has a Cloud Identity
+  /// resource.
   ///
   /// Output only.
   core.String? cloudIdentityId;
@@ -2995,15 +3240,14 @@ class GoogleCloudChannelV1Customer {
   /// Output only.
   GoogleCloudChannelV1CloudIdentityInfo? cloudIdentityInfo;
 
-  /// The time at which the customer is created.
+  /// Time when the customer was created.
   ///
   /// Output only.
   core.String? createTime;
 
-  /// Primary domain used by the customer.
+  /// The customer's primary domain.
   ///
-  /// Domain of primary contact email is required to be same as the provided
-  /// domain.
+  /// Must match the primary contact email's domain.
   ///
   /// Required.
   core.String? domain;
@@ -3028,11 +3272,11 @@ class GoogleCloudChannelV1Customer {
   /// Required.
   core.String? orgDisplayName;
 
-  /// Address of the organization of the customer entity.
+  /// The organization address for the customer.
   ///
-  /// Region and zip codes are required to enforce US laws and embargoes. Valid
-  /// address lines are required for all customers. Language code is discarded.
-  /// Use the Customer-level language code to set the customer's language.
+  /// To enforce US laws and embargoes, we require a region and zip code. You
+  /// must provide valid addresses for every customer. To set the customer's
+  /// language, use the Customer-level language code.
   ///
   /// Required.
   GoogleTypePostalAddress? orgPostalAddress;
@@ -3040,7 +3284,7 @@ class GoogleCloudChannelV1Customer {
   /// Primary contact info.
   GoogleCloudChannelV1ContactInfo? primaryContactInfo;
 
-  /// The time at which the customer is updated.
+  /// Time when the customer was updated.
   ///
   /// Output only.
   core.String? updateTime;
@@ -3161,6 +3405,9 @@ class GoogleCloudChannelV1CustomerEvent {
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Default value. This state doesn't show unless an
   /// error occurs.
+  /// - "PRIMARY_DOMAIN_CHANGED" : Primary domain for customer was changed.
+  /// - "PRIMARY_DOMAIN_VERIFIED" : Primary domain of the customer has been
+  /// verified.
   core.String? eventType;
 
   GoogleCloudChannelV1CustomerEvent();
@@ -3398,6 +3645,7 @@ class GoogleCloudChannelV1EntitlementEvent {
   /// - "PAID_SERVICE_STARTED" : Paid service has started on trial entitlement.
   /// - "LICENSE_ASSIGNMENT_CHANGED" : License was assigned to or revoked from a
   /// user.
+  /// - "LICENSE_CAP_CHANGED" : License cap was changed for the entitlement.
   core.String? eventType;
 
   GoogleCloudChannelV1EntitlementEvent();
@@ -3452,7 +3700,7 @@ class GoogleCloudChannelV1ListChannelPartnerLinksResponse {
 
 /// Response message for CloudChannelService.ListCustomers.
 class GoogleCloudChannelV1ListCustomersResponse {
-  /// The customers belonging to the reseller or distributor.
+  /// The customers belonging to a reseller or distributor.
   core.List<GoogleCloudChannelV1Customer>? customers;
 
   /// A token to retrieve the next page of results.
@@ -3484,10 +3732,10 @@ class GoogleCloudChannelV1ListCustomersResponse {
 
 /// Response message for CloudChannelService.ListEntitlements.
 class GoogleCloudChannelV1ListEntitlementsResponse {
-  /// The entitlements belonging to the reseller's customer.
+  /// The reseller customer's entitlements.
   core.List<GoogleCloudChannelV1Entitlement>? entitlements;
 
-  /// A token to List next page of results.
+  /// A token to list the next page of results.
   ///
   /// Pass to ListEntitlementsRequest.page_token to obtain that page.
   core.String? nextPageToken;
@@ -3706,30 +3954,30 @@ class GoogleCloudChannelV1ListTransferableOffersRequest {
   /// Customer's Cloud Identity ID
   core.String? cloudIdentityId;
 
-  /// A reseller should create a customer and use the resource name of the
-  /// created customer here.
+  /// A reseller should create a customer and use the resource name of that
+  /// customer here.
   core.String? customerName;
 
-  /// The BCP-47 language code, such as "en-US".
+  /// The BCP-47 language code.
   ///
-  /// If specified, the response will be localized to the corresponding language
-  /// code. Default is "en-US".
+  /// For example, "en-US". The response will localize in the corresponding
+  /// language code, if specified. The default value is "en-US".
   core.String? languageCode;
 
   /// Requested page size.
   ///
-  /// Server might return fewer results than requested. If unspecified, at most
-  /// 100 Offers will be returned. The maximum value is 1000; values above 1000
-  /// will be coerced to 1000.
+  /// Server might return fewer results than requested. If unspecified, returns
+  /// at most 100 offers. The maximum value is 1000; the server will coerce
+  /// values above 1000.
   core.int? pageSize;
 
-  /// A token identifying a page of results, if other than the first one.
+  /// A token for a page of results other than the first page.
   ///
-  /// Typically obtained via ListTransferableOffersResponse.next_page_token of
-  /// the previous CloudChannelService.ListTransferableOffers call.
+  /// Obtained using ListTransferableOffersResponse.next_page_token of the
+  /// previous CloudChannelService.ListTransferableOffers call.
   core.String? pageToken;
 
-  /// SKU for which the Offers are being looked up.
+  /// The SKU to look up Offers for.
   ///
   /// Required.
   core.String? sku;
@@ -3802,11 +4050,11 @@ class GoogleCloudChannelV1ListTransferableOffersResponse {
 
 /// Request message for CloudChannelService.ListTransferableSkus
 class GoogleCloudChannelV1ListTransferableSkusRequest {
-  /// This token is generated by the Super Admin of the resold customer to
-  /// authorize a reseller to access their Cloud Identity and purchase
-  /// entitlements on their behalf.
+  /// The super admin of the resold customer generates this token to authorize a
+  /// reseller to access their Cloud Identity and purchase entitlements on their
+  /// behalf.
   ///
-  /// This token can be omitted once the authorization is generated. See
+  /// You can omit this token after authorization. See
   /// https://support.google.com/a/answer/7643790 for more details.
   core.String? authToken;
 
@@ -3816,26 +4064,26 @@ class GoogleCloudChannelV1ListTransferableSkusRequest {
   /// A reseller is required to create a customer and use the resource name of
   /// the created customer here.
   ///
-  /// The customer_name takes the format:
+  /// Customer_name uses the format:
   /// accounts/{account_id}/customers/{customer_id}
   core.String? customerName;
 
-  /// The BCP-47 language code, such as "en-US".
+  /// The BCP-47 language code.
   ///
-  /// If specified, the response will be localized to the corresponding language
-  /// code. Default is "en-US". Optional.
+  /// For example, "en-US". The response will localize in the corresponding
+  /// language code, if specified. The default value is "en-US". Optional.
   core.String? languageCode;
 
-  /// Requested page size.
+  /// The requested page size.
   ///
-  /// Server might return fewer results than requested. If unspecified, at most
-  /// 100 SKUs will be returned. The maximum value is 1000; values above 1000
-  /// will be coerced to 1000. Optional.
+  /// Server might return fewer results than requested. If unspecified, returns
+  /// at most 100 SKUs. The maximum value is 1000; the server will coerce values
+  /// above 1000. Optional.
   core.int? pageSize;
 
-  /// A token identifying a page of results, if other than the first one.
+  /// A token for a page of results other than the first page.
   ///
-  /// Typically obtained via ListTransferableSkusResponse.next_page_token of the
+  /// Obtained using ListTransferableSkusResponse.next_page_token of the
   /// previous CloudChannelService.ListTransferableSkus call. Optional.
   core.String? pageToken;
 
@@ -3879,8 +4127,7 @@ class GoogleCloudChannelV1ListTransferableSkusResponse {
   /// Pass to ListTransferableSkusRequest.page_token to obtain that page.
   core.String? nextPageToken;
 
-  /// Information about existing SKUs for a customer that would need to be
-  /// transferred.
+  /// Information about existing SKUs for a customer that needs a transfer.
   core.List<GoogleCloudChannelV1TransferableSku>? transferableSkus;
 
   GoogleCloudChannelV1ListTransferableSkusResponse();
@@ -4570,8 +4817,7 @@ class GoogleCloudChannelV1ProvisionCloudIdentityRequest {
   /// Admin user information.
   GoogleCloudChannelV1AdminUser? user;
 
-  /// If set, validate the request and preview the review, but do not actually
-  /// post it.
+  /// Validate the request and preview the review, but do not post it.
   core.bool? validateOnly;
 
   GoogleCloudChannelV1ProvisionCloudIdentityRequest();
@@ -4639,9 +4885,9 @@ class GoogleCloudChannelV1ProvisionedService {
       };
 }
 
-/// Offer that can be puchased for a customer.
+/// Offer that you can purchase for a customer.
 ///
-/// This is used in ListPurchasableOffer API response.
+/// This is used in the ListPurchasableOffer API response.
 class GoogleCloudChannelV1PurchasableOffer {
   /// Offer.
   GoogleCloudChannelV1Offer? offer;
@@ -4660,7 +4906,7 @@ class GoogleCloudChannelV1PurchasableOffer {
       };
 }
 
-/// SKU that can be used for a puchase.
+/// SKU that you can purchase.
 ///
 /// This is used in ListPurchasableSku API response.
 class GoogleCloudChannelV1PurchasableSku {
@@ -4683,8 +4929,7 @@ class GoogleCloudChannelV1PurchasableSku {
 
 /// Request Message for RegisterSubscriber.
 class GoogleCloudChannelV1RegisterSubscriberRequest {
-  /// Service account which will provide subscriber access to the registered
-  /// topic.
+  /// Service account that provides subscriber access to the registered topic.
   ///
   /// Required.
   core.String? serviceAccount;
@@ -4704,7 +4949,7 @@ class GoogleCloudChannelV1RegisterSubscriberRequest {
 
 /// Response Message for RegisterSubscriber.
 class GoogleCloudChannelV1RegisterSubscriberResponse {
-  /// Name of the topic to which the subscriber will listen to.
+  /// Name of the topic the subscriber will listen to.
   core.String? topic;
 
   GoogleCloudChannelV1RegisterSubscriberResponse();
@@ -4811,17 +5056,15 @@ class GoogleCloudChannelV1Sku {
 
 /// Request message for CloudChannelService.StartPaidService.
 class GoogleCloudChannelV1StartPaidServiceRequest {
-  /// An optional request ID to identify requests.
+  /// You can specify an optional unique request ID, and if you need to retry
+  /// your request, the server will know to ignore the request if it's complete.
   ///
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// For example, consider a situation where you make an initial request and
-  /// the request times out. If you make the request again with the same request
-  /// ID, the server can check if the original operation with the same request
-  /// ID was received, and if so, will ignore the second request. The request ID
-  /// must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the
-  /// exception that zero UUID is not supported
-  /// (`00000000-0000-0000-0000-000000000000`).
+  /// For example, you make an initial request and the request times out. If you
+  /// make the request again with the same request ID, the server can check if
+  /// it received the original operation with the same request ID. If it did, it
+  /// will ignore the second request. The request ID must be a valid
+  /// [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero
+  /// UUID is not supported (`00000000-0000-0000-0000-000000000000`).
   ///
   /// Optional.
   core.String? requestId;
@@ -4870,17 +5113,15 @@ class GoogleCloudChannelV1SubscriberEvent {
 
 /// Request message for CloudChannelService.SuspendEntitlement.
 class GoogleCloudChannelV1SuspendEntitlementRequest {
-  /// An optional request ID to identify requests.
+  /// You can specify an optional unique request ID, and if you need to retry
+  /// your request, the server will know to ignore the request if it's complete.
   ///
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// For example, consider a situation where you make an initial request and
-  /// the request times out. If you make the request again with the same request
-  /// ID, the server can check if the original operation with the same request
-  /// ID was received, and if so, will ignore the second request. The request ID
-  /// must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the
-  /// exception that zero UUID is not supported
-  /// (`00000000-0000-0000-0000-000000000000`).
+  /// For example, you make an initial request and the request times out. If you
+  /// make the request again with the same request ID, the server can check if
+  /// it received the original operation with the same request ID. If it did, it
+  /// will ignore the second request. The request ID must be a valid
+  /// [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero
+  /// UUID is not supported (`00000000-0000-0000-0000-000000000000`).
   ///
   /// Optional.
   core.String? requestId;
@@ -4939,30 +5180,28 @@ class GoogleCloudChannelV1TransferEligibility {
 
 /// Request message for CloudChannelService.TransferEntitlements.
 class GoogleCloudChannelV1TransferEntitlementsRequest {
-  /// This token is generated by the Super Admin of the resold customer to
-  /// authorize a reseller to access their Cloud Identity and purchase
-  /// entitlements on their behalf.
+  /// The super admin of the resold customer generates this token to authorize a
+  /// reseller to access their Cloud Identity and purchase entitlements on their
+  /// behalf.
   ///
-  /// This token can be omitted once the authorization is generated. See
+  /// You can omit this token after authorization. See
   /// https://support.google.com/a/answer/7643790 for more details.
   core.String? authToken;
 
-  /// The new entitlements to be created or transferred.
+  /// The new entitlements to create or transfer.
   ///
   /// Required.
   core.List<GoogleCloudChannelV1Entitlement>? entitlements;
 
-  /// An optional request ID to identify requests.
+  /// You can specify an optional unique request ID, and if you need to retry
+  /// your request, the server will know to ignore the request if it's complete.
   ///
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// For example, consider a situation where you make an initial request and
-  /// the request times out. If you make the request again with the same request
-  /// ID, the server can check if the original operation with the same request
-  /// ID was received, and if so, will ignore the second request. The request ID
-  /// must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the
-  /// exception that zero UUID is not supported
-  /// (`00000000-0000-0000-0000-000000000000`).
+  /// For example, you make an initial request and the request times out. If you
+  /// make the request again with the same request ID, the server can check if
+  /// it received the original operation with the same request ID. If it did, it
+  /// will ignore the second request. The request ID must be a valid
+  /// [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero
+  /// UUID is not supported (`00000000-0000-0000-0000-000000000000`).
   ///
   /// Optional.
   core.String? requestId;
@@ -4995,9 +5234,9 @@ class GoogleCloudChannelV1TransferEntitlementsRequest {
 
 /// Response message for CloudChannelService.TransferEntitlements.
 ///
-/// This will be put into the response field of google.longrunning.Operation.
+/// This is put in the response field of google.longrunning.Operation.
 class GoogleCloudChannelV1TransferEntitlementsResponse {
-  /// The entitlements that have been transferred.
+  /// The transferred entitlements.
   core.List<GoogleCloudChannelV1Entitlement>? entitlements;
 
   GoogleCloudChannelV1TransferEntitlementsResponse();
@@ -5020,22 +5259,20 @@ class GoogleCloudChannelV1TransferEntitlementsResponse {
 
 /// Request message for CloudChannelService.TransferEntitlementsToGoogle.
 class GoogleCloudChannelV1TransferEntitlementsToGoogleRequest {
-  /// The entitlements to be transferred to Google.
+  /// The entitlements to transfer to Google.
   ///
   /// Required.
   core.List<GoogleCloudChannelV1Entitlement>? entitlements;
 
-  /// An optional request ID to identify requests.
+  /// You can specify an optional unique request ID, and if you need to retry
+  /// your request, the server will know to ignore the request if it's complete.
   ///
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// For example, consider a situation where you make an initial request and
-  /// the request times out. If you make the request again with the same request
-  /// ID, the server can check if the original operation with the same request
-  /// ID was received, and if so, will ignore the second request. The request ID
-  /// must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the
-  /// exception that zero UUID is not supported
-  /// (`00000000-0000-0000-0000-000000000000`).
+  /// For example, you make an initial request and the request times out. If you
+  /// make the request again with the same request ID, the server can check if
+  /// it received the original operation with the same request ID. If it did, it
+  /// will ignore the second request. The request ID must be a valid
+  /// [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero
+  /// UUID is not supported (`00000000-0000-0000-0000-000000000000`).
   ///
   /// Optional.
   core.String? requestId;
@@ -5089,6 +5326,11 @@ class GoogleCloudChannelV1TransferableOffer {
 ///
 /// Read-only.
 class GoogleCloudChannelV1TransferableSku {
+  /// The customer to transfer has an entitlement with the populated legacy SKU.
+  ///
+  /// Optional.
+  GoogleCloudChannelV1Sku? legacySku;
+
   /// The SKU pertaining to the provisioning resource as specified in the Offer.
   GoogleCloudChannelV1Sku? sku;
 
@@ -5098,6 +5340,10 @@ class GoogleCloudChannelV1TransferableSku {
   GoogleCloudChannelV1TransferableSku();
 
   GoogleCloudChannelV1TransferableSku.fromJson(core.Map _json) {
+    if (_json.containsKey('legacySku')) {
+      legacySku = GoogleCloudChannelV1Sku.fromJson(
+          _json['legacySku'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('sku')) {
       sku = GoogleCloudChannelV1Sku.fromJson(
           _json['sku'] as core.Map<core.String, core.dynamic>);
@@ -5109,6 +5355,7 @@ class GoogleCloudChannelV1TransferableSku {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (legacySku != null) 'legacySku': legacySku!.toJson(),
         if (sku != null) 'sku': sku!.toJson(),
         if (transferEligibility != null)
           'transferEligibility': transferEligibility!.toJson(),
@@ -5148,8 +5395,7 @@ class GoogleCloudChannelV1TrialSettings {
 
 /// Request Message for UnregisterSubscriber.
 class GoogleCloudChannelV1UnregisterSubscriberRequest {
-  /// Service account which will be unregistered from getting subscriber access
-  /// to the topic.
+  /// Service account to unregister from subscriber access to the topic.
   ///
   /// Required.
   core.String? serviceAccount;
@@ -5169,8 +5415,7 @@ class GoogleCloudChannelV1UnregisterSubscriberRequest {
 
 /// Response Message for UnregisterSubscriber.
 class GoogleCloudChannelV1UnregisterSubscriberResponse {
-  /// Name of the topic from which the service account subscriber access has
-  /// been removed.
+  /// Name of the topic the service account subscriber access was removed from.
   core.String? topic;
 
   GoogleCloudChannelV1UnregisterSubscriberResponse();
@@ -5190,14 +5435,14 @@ class GoogleCloudChannelV1UnregisterSubscriberResponse {
 class GoogleCloudChannelV1UpdateChannelPartnerLinkRequest {
   /// The channel partner link to update.
   ///
-  /// Only field channel_partner_link.link_state is allowed to be updated.
+  /// Only channel_partner_link.link_state is allowed for updates.
   ///
   /// Required.
   GoogleCloudChannelV1ChannelPartnerLink? channelPartnerLink;
 
   /// The update mask that applies to the resource.
   ///
-  /// The only allowable value for update mask is
+  /// The only allowable value for an update mask is
   /// channel_partner_link.link_state.
   ///
   /// Required.
@@ -5224,6 +5469,9 @@ class GoogleCloudChannelV1UpdateChannelPartnerLinkRequest {
 
 /// Data type and value of a parameter.
 class GoogleCloudChannelV1Value {
+  /// Represents a boolean value.
+  core.bool? boolValue;
+
   /// Represents a double value.
   core.double? doubleValue;
 
@@ -5242,6 +5490,9 @@ class GoogleCloudChannelV1Value {
   GoogleCloudChannelV1Value();
 
   GoogleCloudChannelV1Value.fromJson(core.Map _json) {
+    if (_json.containsKey('boolValue')) {
+      boolValue = _json['boolValue'] as core.bool;
+    }
     if (_json.containsKey('doubleValue')) {
       doubleValue = (_json['doubleValue'] as core.num).toDouble();
     }
@@ -5263,6 +5514,7 @@ class GoogleCloudChannelV1Value {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (boolValue != null) 'boolValue': boolValue!,
         if (doubleValue != null) 'doubleValue': doubleValue!,
         if (int64Value != null) 'int64Value': int64Value!,
         if (protoValue != null) 'protoValue': protoValue!,
@@ -5339,6 +5591,9 @@ class GoogleCloudChannelV1alpha1CustomerEvent {
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Default value. This state doesn't show unless an
   /// error occurs.
+  /// - "PRIMARY_DOMAIN_CHANGED" : Primary domain for customer was changed.
+  /// - "PRIMARY_DOMAIN_VERIFIED" : Primary domain of the customer has been
+  /// verified.
   core.String? eventType;
 
   GoogleCloudChannelV1alpha1CustomerEvent();
@@ -5588,6 +5843,7 @@ class GoogleCloudChannelV1alpha1EntitlementEvent {
   /// - "PAID_SERVICE_STARTED" : Paid service has started on trial entitlement.
   /// - "LICENSE_ASSIGNMENT_CHANGED" : License was assigned to or revoked from a
   /// user.
+  /// - "LICENSE_CAP_CHANGED" : License cap was changed for the entitlement.
   core.String? eventType;
 
   GoogleCloudChannelV1alpha1EntitlementEvent();
@@ -5866,9 +6122,9 @@ class GoogleCloudChannelV1alpha1SubscriberEvent {
 
 /// Response message for CloudChannelService.TransferEntitlements.
 ///
-/// This will be put into the response field of google.longrunning.Operation.
+/// This is put in the response field of google.longrunning.Operation.
 class GoogleCloudChannelV1alpha1TransferEntitlementsResponse {
-  /// The entitlements that have been transferred.
+  /// The transferred entitlements.
   core.List<GoogleCloudChannelV1alpha1Entitlement>? entitlements;
 
   GoogleCloudChannelV1alpha1TransferEntitlementsResponse();
@@ -5923,6 +6179,9 @@ class GoogleCloudChannelV1alpha1TrialSettings {
 
 /// Data type and value of a parameter.
 class GoogleCloudChannelV1alpha1Value {
+  /// Represents a boolean value.
+  core.bool? boolValue;
+
   /// Represents a double value.
   core.double? doubleValue;
 
@@ -5941,6 +6200,9 @@ class GoogleCloudChannelV1alpha1Value {
   GoogleCloudChannelV1alpha1Value();
 
   GoogleCloudChannelV1alpha1Value.fromJson(core.Map _json) {
+    if (_json.containsKey('boolValue')) {
+      boolValue = _json['boolValue'] as core.bool;
+    }
     if (_json.containsKey('doubleValue')) {
       doubleValue = (_json['doubleValue'] as core.num).toDouble();
     }
@@ -5962,6 +6224,7 @@ class GoogleCloudChannelV1alpha1Value {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (boolValue != null) 'boolValue': boolValue!,
         if (doubleValue != null) 'doubleValue': doubleValue!,
         if (int64Value != null) 'int64Value': int64Value!,
         if (protoValue != null) 'protoValue': protoValue!,

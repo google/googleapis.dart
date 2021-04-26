@@ -23,6 +23,7 @@
 /// Create an instance of [CloudTalentSolutionApi] to access these resources:
 ///
 /// - [ProjectsResource]
+///   - [ProjectsOperationsResource]
 ///   - [ProjectsTenantsResource]
 ///     - [ProjectsTenantsClientEventsResource]
 ///     - [ProjectsTenantsCompaniesResource]
@@ -44,7 +45,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Cloud Talent Solution provides the capability to create, read, update, and
 /// delete job postings, as well as search jobs based on keywords and filters.
 class CloudTalentSolutionApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -65,9 +66,55 @@ class CloudTalentSolutionApi {
 class ProjectsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsOperationsResource get operations =>
+      ProjectsOperationsResource(_requester);
   ProjectsTenantsResource get tenants => ProjectsTenantsResource(_requester);
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsOperationsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern `^projects/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v4/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsTenantsResource {
@@ -2426,7 +2473,14 @@ class Job {
   /// not allowed. If the original requisition_id must be preserved, a custom
   /// field should be used for storage. It is also suggested to group the
   /// locations that close to each other in the same job for better search
-  /// experience. The maximum number of allowed characters is 500.
+  /// experience. Jobs with multiple addresses must have their addresses with
+  /// the same LocationType to allow location filtering to work properly. (For
+  /// example, a Job with addresses "1600 Amphitheatre Parkway, Mountain View,
+  /// CA, USA" and "London, UK" may not have location filters applied correctly
+  /// at search time since the first is a LocationType.STREET_ADDRESS and the
+  /// second is a LocationType.LOCALITY.) If a job needs to have multiple
+  /// addresses, it is suggested to split it into multiple jobs with same
+  /// LocationTypes. The maximum number of allowed characters is 500.
   core.List<core.String>? addresses;
 
   /// Job application information.
@@ -3452,14 +3506,18 @@ class LocationFilter {
   /// This field is ignored if `address` is provided.
   LatLng? latLng;
 
-  /// CLDR region code of the country/region of the address.
+  /// CLDR region code of the country/region.
   ///
-  /// This is used to address ambiguity of the user-input location, for example,
-  /// "Liverpool" against "Liverpool, NY, US" or "Liverpool, UK". Set this field
-  /// to bias location resolution toward a specific country or territory. If
-  /// this field is not set, application behavior is biased toward the United
-  /// States by default. See
-  /// https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html
+  /// This field may be used in two ways: 1) If telecommute preference is not
+  /// set, this field is used address ambiguity of the user-input address. For
+  /// example, "Liverpool" may refer to "Liverpool, NY, US" or "Liverpool, UK".
+  /// This region code biases the address resolution toward a specific country
+  /// or territory. If this field is not set, address resolution is biased
+  /// toward the United States by default. 2) If telecommute preference is set
+  /// to TELECOMMUTE_ALLOWED, the telecommute location filter will be limited to
+  /// the region specified in this field. If this field is not set, the
+  /// telecommute job locations will not be See
+  /// https://unicode-org.github.io/cldr-staging/charts/latest/supplemental/territory_information.html
   /// for details. Example: "CH" for Switzerland.
   core.String? regionCode;
 
@@ -4365,7 +4423,7 @@ class SearchJobsRequest {
   /// bucket(10000, 100000), bucket(100000, MAX)])` *
   /// `count(string_custom_attribute["some-string-custom-attribute"])` *
   /// `count(numeric_custom_attribute["some-numeric-custom-attribute"],
-  /// [bucket(MIN, 0, "negative"), bucket(0, MAX, "non-negative"])`
+  /// [bucket(MIN, 0, "negative"), bucket(0, MAX, "non-negative")])`
   core.List<HistogramQuery>? histogramQueries;
 
   /// Query used to search against jobs, such as keyword, location filters, etc.

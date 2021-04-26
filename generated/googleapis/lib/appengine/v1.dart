@@ -52,7 +52,7 @@ class AppengineApi {
   static const appengineAdminScope =
       'https://www.googleapis.com/auth/appengine.admin';
 
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -171,6 +171,7 @@ class AppsResource {
   /// You can update the following fields: auth_domain - Google authentication
   /// domain for controlling user access to the application.
   /// default_cookie_expiration - Cookie expiration policy for the application.
+  /// iap - Identity-Aware Proxy properties for the application.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1174,11 +1175,15 @@ class AppsLocationsResource {
   /// [appsId] - Part of `name`. The resource that owns the locations
   /// collection, if applicable.
   ///
-  /// [filter] - The standard list filter.
+  /// [filter] - A filter to narrow down results to a preferred subset. The
+  /// filtering language accepts strings like "displayName=tokyo", and is
+  /// documented in more detail in AIP-160 (https://google.aip.dev/160).
   ///
-  /// [pageSize] - The standard list page size.
+  /// [pageSize] - The maximum number of results to return. If not set, the
+  /// service selects a default.
   ///
-  /// [pageToken] - The standard list page token.
+  /// [pageToken] - A page token received from the next_page_token field in the
+  /// response. Send that page token to receive the subsequent page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3325,6 +3330,49 @@ class FirewallRule {
         if (description != null) 'description': description!,
         if (priority != null) 'priority': priority!,
         if (sourceRange != null) 'sourceRange': sourceRange!,
+      };
+}
+
+/// Metadata for the given google.cloud.location.Location.
+class GoogleAppengineV1betaLocationMetadata {
+  /// App Engine flexible environment is available in the given
+  /// location.@OutputOnly
+  core.bool? flexibleEnvironmentAvailable;
+
+  /// Search API
+  /// (https://cloud.google.com/appengine/docs/standard/python/search) is
+  /// available in the given location.
+  ///
+  /// Output only.
+  core.bool? searchApiAvailable;
+
+  /// App Engine standard environment is available in the given
+  /// location.@OutputOnly
+  core.bool? standardEnvironmentAvailable;
+
+  GoogleAppengineV1betaLocationMetadata();
+
+  GoogleAppengineV1betaLocationMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey('flexibleEnvironmentAvailable')) {
+      flexibleEnvironmentAvailable =
+          _json['flexibleEnvironmentAvailable'] as core.bool;
+    }
+    if (_json.containsKey('searchApiAvailable')) {
+      searchApiAvailable = _json['searchApiAvailable'] as core.bool;
+    }
+    if (_json.containsKey('standardEnvironmentAvailable')) {
+      standardEnvironmentAvailable =
+          _json['standardEnvironmentAvailable'] as core.bool;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (flexibleEnvironmentAvailable != null)
+          'flexibleEnvironmentAvailable': flexibleEnvironmentAvailable!,
+        if (searchApiAvailable != null)
+          'searchApiAvailable': searchApiAvailable!,
+        if (standardEnvironmentAvailable != null)
+          'standardEnvironmentAvailable': standardEnvironmentAvailable!,
       };
 }
 
@@ -5575,6 +5623,12 @@ class Version {
   /// The path or name of the app's main executable.
   core.String? runtimeMainExecutablePath;
 
+  /// The identity that the deployed version will run as.
+  ///
+  /// Admin API will use the App Engine Appspot service account as default if
+  /// this field is neither provided in app.yaml file nor through CLI flag.
+  core.String? serviceAccount;
+
   /// Current serving status of this version.
   ///
   /// Only the versions with a SERVING status create instances and can be
@@ -5751,6 +5805,9 @@ class Version {
       runtimeMainExecutablePath =
           _json['runtimeMainExecutablePath'] as core.String;
     }
+    if (_json.containsKey('serviceAccount')) {
+      serviceAccount = _json['serviceAccount'] as core.String;
+    }
     if (_json.containsKey('servingStatus')) {
       servingStatus = _json['servingStatus'] as core.String;
     }
@@ -5814,6 +5871,7 @@ class Version {
         if (runtimeChannel != null) 'runtimeChannel': runtimeChannel!,
         if (runtimeMainExecutablePath != null)
           'runtimeMainExecutablePath': runtimeMainExecutablePath!,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (servingStatus != null) 'servingStatus': servingStatus!,
         if (threadsafe != null) 'threadsafe': threadsafe!,
         if (versionUrl != null) 'versionUrl': versionUrl!,

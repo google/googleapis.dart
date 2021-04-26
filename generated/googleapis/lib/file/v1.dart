@@ -43,7 +43,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// The Cloud Filestore API is used for creating and managing cloud file
 /// servers.
 class CloudFilestoreApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -121,14 +121,18 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [filter] - The standard list filter.
+  /// [filter] - A filter to narrow down results to a preferred subset. The
+  /// filtering language accepts strings like "displayName=tokyo", and is
+  /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
   ///
   /// [includeUnrevealedLocations] - If true, the returned list will include
   /// locations which are not yet revealed.
   ///
-  /// [pageSize] - The standard list page size.
+  /// [pageSize] - The maximum number of results to return. If not set, the
+  /// service selects a default.
   ///
-  /// [pageToken] - The standard list page token.
+  /// [pageToken] - A page token received from the `next_page_token` field in
+  /// the response. Send that page token to receive the subsequent page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -918,6 +922,11 @@ class Backup {
   /// Output only.
   core.String? name;
 
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// Name of the file share in the source Cloud Filestore instance that the
   /// backup is created from.
   core.String? sourceFileShare;
@@ -992,6 +1001,9 @@ class Backup {
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
+    if (_json.containsKey('satisfiesPzs')) {
+      satisfiesPzs = _json['satisfiesPzs'] as core.bool;
+    }
     if (_json.containsKey('sourceFileShare')) {
       sourceFileShare = _json['sourceFileShare'] as core.String;
     }
@@ -1016,6 +1028,7 @@ class Backup {
         if (downloadBytes != null) 'downloadBytes': downloadBytes!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (sourceFileShare != null) 'sourceFileShare': sourceFileShare!,
         if (sourceInstance != null) 'sourceInstance': sourceInstance!,
         if (sourceInstanceTier != null)
@@ -1275,7 +1288,9 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
   /// Unique name of the resource.
   ///
   /// It uses the form:
-  /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
+  /// `projects/{project_id|project_number}/locations/{location_id}/instances/{instance_id}`
+  /// Note: Either project_id or project_number can be used, but keep it
+  /// consistent with other APIs (e.g. RescheduleUpdate)
   core.String? name;
 
   /// Custom string attributes used primarily to expose producer-specific
@@ -1467,9 +1482,11 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
 /// Maintenance schedule which is exposed to customer and potentially end user,
 /// indicating published upcoming future maintenance schedule
 class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule {
-  /// Can this scheduled update be rescheduled? By default, it's true and API
-  /// needs to do explicitly check whether it's set, if it's set as false
-  /// explicitly, it's false
+  /// This field is deprecated, and will be always set to true since reschedule
+  /// can happen multiple times now.
+  ///
+  /// This field should not be removed until all service producers remove this
+  /// for their customers.
   core.bool? canReschedule;
 
   /// The scheduled end time for the maintenance.
@@ -1938,6 +1955,11 @@ class Instance {
   /// For this version, only a single network is supported.
   core.List<NetworkConfig>? networks;
 
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// The instance state.
   ///
   /// Output only.
@@ -2010,6 +2032,9 @@ class Instance {
               value as core.Map<core.String, core.dynamic>))
           .toList();
     }
+    if (_json.containsKey('satisfiesPzs')) {
+      satisfiesPzs = _json['satisfiesPzs'] as core.bool;
+    }
     if (_json.containsKey('state')) {
       state = _json['state'] as core.String;
     }
@@ -2031,6 +2056,7 @@ class Instance {
         if (name != null) 'name': name!,
         if (networks != null)
           'networks': networks!.map((value) => value.toJson()).toList(),
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (state != null) 'state': state!,
         if (statusMessage != null) 'statusMessage': statusMessage!,
         if (tier != null) 'tier': tier!,

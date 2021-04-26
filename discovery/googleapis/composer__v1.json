@@ -3,7 +3,7 @@
         "oauth2": {
             "scopes": {
                 "https://www.googleapis.com/auth/cloud-platform": {
-                    "description": "View and manage your data across Google Cloud Platform services"
+                    "description": "See, edit, configure, and delete your Google Cloud Platform data"
                 }
             }
         }
@@ -395,7 +395,7 @@
             }
         }
     },
-    "revision": "20210217",
+    "revision": "20210510",
     "rootUrl": "https://composer.googleapis.com/",
     "schemas": {
         "AllowedIpRange": {
@@ -791,13 +791,15 @@
                         "TYPE_UNSPECIFIED",
                         "CREATE",
                         "DELETE",
-                        "UPDATE"
+                        "UPDATE",
+                        "CHECK"
                     ],
                     "enumDescriptions": [
                         "Unused.",
                         "A resource creation operation.",
                         "A resource deletion operation.",
-                        "A resource update operation."
+                        "A resource update operation.",
+                        "A resource check operation."
                     ],
                     "type": "string"
                 },
@@ -910,7 +912,7 @@
                     "type": "object"
                 },
                 "pythonVersion": {
-                    "description": "Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.",
+                    "description": "Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated.",
                     "type": "string"
                 }
             },

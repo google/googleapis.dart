@@ -28,6 +28,7 @@
 ///     - [ProjectsLocationsExecutionsResource]
 ///     - [ProjectsLocationsInstancesResource]
 ///     - [ProjectsLocationsOperationsResource]
+///     - [ProjectsLocationsRuntimesResource]
 ///     - [ProjectsLocationsSchedulesResource]
 library notebooks.v1;
 
@@ -46,7 +47,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// AI Platform Notebooks API is used to manage notebook resources in Google
 /// Cloud.
 class AIPlatformNotebooksApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -81,6 +82,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsInstancesResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
+  ProjectsLocationsRuntimesResource get runtimes =>
+      ProjectsLocationsRuntimesResource(_requester);
   ProjectsLocationsSchedulesResource get schedules =>
       ProjectsLocationsSchedulesResource(_requester);
 
@@ -128,11 +131,15 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [filter] - The standard list filter.
+  /// [filter] - A filter to narrow down results to a preferred subset. The
+  /// filtering language accepts strings like "displayName=tokyo", and is
+  /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
   ///
-  /// [pageSize] - The standard list page size.
+  /// [pageSize] - The maximum number of results to return. If not set, the
+  /// service selects a default.
   ///
-  /// [pageToken] - The standard list page token.
+  /// [pageToken] - A page token received from the `next_page_token` field in
+  /// the response. Send that page token to receive the subsequent page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -477,7 +484,8 @@ class ProjectsLocationsExecutionsResource {
   /// `parent=projects/{project_id}/locations/{location}`
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Filter applied to resulting executions.
+  /// [filter] - Filter applied to resulting executions. Currently only supports
+  /// filtering executions by a specified schedule_id. Format: "schedule_id="
   ///
   /// [orderBy] - Sort by field.
   ///
@@ -958,6 +966,48 @@ class ProjectsLocationsInstancesResource {
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Rollbacks a notebook instance to the previous version.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Format:
+  /// `projects/{project_id}/locations/{location}/instances/{instance_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> rollback(
+    RollbackInstanceRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':rollback';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Updates the guest accelerators of a single Instance.
   ///
   /// [request] - The metadata request object.
@@ -1264,6 +1314,49 @@ class ProjectsLocationsInstancesResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Updates the Shielded instance configuration of a single Instance.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Format:
+  /// `projects/{project_id}/locations/{location}/instances/{instance_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> updateShieldedInstanceConfig(
+    UpdateShieldedInstanceConfigRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/' + core.Uri.encodeFull('$name') + ':updateShieldedInstanceConfig';
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Upgrades a notebook instance to the latest version.
   ///
   /// [request] - The metadata request object.
@@ -1541,6 +1634,356 @@ class ProjectsLocationsOperationsResource {
     );
     return ListOperationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsRuntimesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsRuntimesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new Runtime in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Format:
+  /// `parent=projects/{project_id}/locations/{location}`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [runtimeId] - Required. User-defined unique ID of this Runtime.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    Runtime request,
+    core.String parent, {
+    core.String? runtimeId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (runtimeId != null) 'runtimeId': [runtimeId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/runtimes';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single Runtime.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Format:
+  /// `projects/{project_id}/locations/{location}/runtimes/{runtime_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/runtimes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single Runtime.
+  ///
+  /// The location must be a regional endpoint rather than zonal.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Format:
+  /// `projects/{project_id}/locations/{location}/runtimes/{runtime_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/runtimes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Runtime].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Runtime> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Runtime.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists Runtimes in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Format:
+  /// `parent=projects/{project_id}/locations/{location}`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Maximum return size of the list call.
+  ///
+  /// [pageToken] - A previous returned page token that can be used to continue
+  /// listing from the last result.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListRuntimesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListRuntimesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/runtimes';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListRuntimesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Resets a Managed Notebook Runtime.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Format:
+  /// `projects/{project_id}/locations/{location}/runtimes/{runtime_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/runtimes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> reset(
+    ResetRuntimeRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':reset';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Starts a Managed Notebook Runtime.
+  ///
+  /// Perform "Start" on GPU instances; "Resume" on CPU instances See:
+  /// https://cloud.google.com/compute/docs/instances/stop-start-instance
+  /// https://cloud.google.com/compute/docs/instances/suspend-resume-instance
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Format:
+  /// `projects/{project_id}/locations/{location}/runtimes/{runtime_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/runtimes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> start(
+    StartRuntimeRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':start';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Stops a Managed Notebook Runtime.
+  ///
+  /// Perform "Stop" on GPU instances; "Suspend" on CPU instances See:
+  /// https://cloud.google.com/compute/docs/instances/stop-start-instance
+  /// https://cloud.google.com/compute/docs/instances/suspend-resume-instance
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Format:
+  /// `projects/{project_id}/locations/{location}/runtimes/{runtime_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/runtimes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> stop(
+    StopRuntimeRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':stop';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Switch a Managed Notebook Runtime.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Format:
+  /// `projects/{project_id}/locations/{location}/runtimes/{runtime_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/runtimes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> switch_(
+    SwitchRuntimeRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':switch';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2082,6 +2525,31 @@ class Empty {
   core.Map<core.String, core.dynamic> toJson() => {};
 }
 
+/// Represents a custom encryption key configuration that can be applied to a
+/// resource.
+///
+/// This will encrypt all disks in Virtual Machine.
+class EncryptionConfig {
+  /// The Cloud KMS resource identifier of the customer-managed encryption key
+  /// used to protect a resource, such as a disks.
+  ///
+  /// It has the following format:
+  /// `projects/{PROJECT_ID}/locations/{REGION}/keyRings/{KEY_RING_NAME}/cryptoKeys/{KEY_NAME}`
+  core.String? kmsKey;
+
+  EncryptionConfig();
+
+  EncryptionConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('kmsKey')) {
+      kmsKey = _json['kmsKey'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kmsKey != null) 'kmsKey': kmsKey!,
+      };
+}
+
 /// Definition of a software environment that is used to start a notebook
 /// instance.
 class Environment {
@@ -2347,6 +2815,12 @@ class ExecutionTemplate {
   /// from your worker type and master type.
   core.String? scaleTier;
 
+  /// The email address of a service account to use when running the execution.
+  ///
+  /// You must have the `iam.serviceAccounts.actAs` permission for the specified
+  /// service account.
+  core.String? serviceAccount;
+
   ExecutionTemplate();
 
   ExecutionTemplate.fromJson(core.Map _json) {
@@ -2383,6 +2857,9 @@ class ExecutionTemplate {
     if (_json.containsKey('scaleTier')) {
       scaleTier = _json['scaleTier'] as core.String;
     }
+    if (_json.containsKey('serviceAccount')) {
+      serviceAccount = _json['serviceAccount'] as core.String;
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2397,6 +2874,7 @@ class ExecutionTemplate {
         if (parameters != null) 'parameters': parameters!,
         if (paramsYamlFile != null) 'paramsYamlFile': paramsYamlFile!,
         if (scaleTier != null) 'scaleTier': scaleTier!,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
       };
 }
 
@@ -2661,6 +3139,17 @@ class Instance {
   /// Format: `projects/{project_id}/global/networks/{network_id}`
   core.String? network;
 
+  /// The type of vNIC to be used on this interface.
+  ///
+  /// This may be gVNIC or VirtioNet.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "UNSPECIFIED_NIC_TYPE" : No type specified.
+  /// - "VIRTIO_NET" : VIRTIO
+  /// - "GVNIC" : GVNIC
+  core.String? nicType;
+
   /// If true, the notebook instance will not register with the proxy.
   core.bool? noProxyAccess;
 
@@ -2828,6 +3317,9 @@ class Instance {
     if (_json.containsKey('network')) {
       network = _json['network'] as core.String;
     }
+    if (_json.containsKey('nicType')) {
+      nicType = _json['nicType'] as core.String;
+    }
     if (_json.containsKey('noProxyAccess')) {
       noProxyAccess = _json['noProxyAccess'] as core.bool;
     }
@@ -2904,6 +3396,7 @@ class Instance {
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (network != null) 'network': network!,
+        if (nicType != null) 'nicType': nicType!,
         if (noProxyAccess != null) 'noProxyAccess': noProxyAccess!,
         if (noPublicIp != null) 'noPublicIp': noPublicIp!,
         if (noRemoveDataDisk != null) 'noRemoveDataDisk': noRemoveDataDisk!,
@@ -2927,6 +3420,12 @@ class Instance {
 
 /// Response for checking if a notebook instance is upgradeable.
 class IsInstanceUpgradeableResponse {
+  /// The new image self link this instance will be upgraded to if calling the
+  /// upgrade endpoint.
+  ///
+  /// This field will only be populated if field upgradeable is true.
+  core.String? upgradeImage;
+
   /// Additional information about upgrade.
   core.String? upgradeInfo;
 
@@ -2942,6 +3441,9 @@ class IsInstanceUpgradeableResponse {
   IsInstanceUpgradeableResponse();
 
   IsInstanceUpgradeableResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('upgradeImage')) {
+      upgradeImage = _json['upgradeImage'] as core.String;
+    }
     if (_json.containsKey('upgradeInfo')) {
       upgradeInfo = _json['upgradeInfo'] as core.String;
     }
@@ -2954,6 +3456,7 @@ class IsInstanceUpgradeableResponse {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (upgradeImage != null) 'upgradeImage': upgradeImage!,
         if (upgradeInfo != null) 'upgradeInfo': upgradeInfo!,
         if (upgradeVersion != null) 'upgradeVersion': upgradeVersion!,
         if (upgradeable != null) 'upgradeable': upgradeable!,
@@ -3142,6 +3645,48 @@ class ListOperationsResponse {
       };
 }
 
+/// Response for listing Managed Notebook Runtimes.
+class ListRuntimesResponse {
+  /// Page token that can be used to continue listing from the last result in
+  /// the next list call.
+  core.String? nextPageToken;
+
+  /// A list of returned Runtimes.
+  core.List<Runtime>? runtimes;
+
+  /// Locations that could not be reached.
+  ///
+  /// For example, \['us-west1', 'us-central1'\]. A ListRuntimesResponse will
+  /// only contain either runtimes or unreachables,
+  core.List<core.String>? unreachable;
+
+  ListRuntimesResponse();
+
+  ListRuntimesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+    if (_json.containsKey('runtimes')) {
+      runtimes = (_json['runtimes'] as core.List)
+          .map<Runtime>((value) =>
+              Runtime.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('unreachable')) {
+      unreachable = (_json['unreachable'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (runtimes != null)
+          'runtimes': runtimes!.map((value) => value.toJson()).toList(),
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
 /// Response for listing scheduled notebook job.
 class ListSchedulesResponse {
   /// Page token that can be used to continue listing from the last result in
@@ -3182,6 +3727,247 @@ class ListSchedulesResponse {
         if (schedules != null)
           'schedules': schedules!.map((value) => value.toJson()).toList(),
         if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// An Local attached disk resource.
+class LocalDisk {
+  /// Specifies whether the disk will be auto-deleted when the instance is
+  /// deleted (but not when the disk is detached from the instance).
+  ///
+  /// Output only.
+  core.bool? autoDelete;
+
+  /// Indicates that this is a boot disk.
+  ///
+  /// The virtual machine will use the first partition of the disk for its root
+  /// filesystem.
+  ///
+  /// Output only.
+  core.bool? boot;
+
+  /// Specifies a unique device name of your choice that is reflected into the
+  /// /dev/disk/by-id/google-* tree of a Linux operating system running within
+  /// the instance.
+  ///
+  /// This name can be used to reference the device for mounting, resizing, and
+  /// so on, from within the instance. If not specified, the server chooses a
+  /// default device name to apply to this disk, in the form persistent-disk-x,
+  /// where x is a number assigned by Google Compute Engine. This field is only
+  /// applicable for persistent disks.
+  ///
+  /// Output only.
+  core.String? deviceName;
+
+  /// Indicates a list of features to enable on the guest operating system.
+  ///
+  /// Applicable only for bootable images. Read Enabling guest operating system
+  /// features to see a list of available options.
+  ///
+  /// Output only.
+  core.List<RuntimeGuestOsFeature>? guestOsFeatures;
+
+  /// A zero-based index to this disk, where 0 is reserved for the boot disk.
+  ///
+  /// If you have many disks attached to an instance, each disk would have a
+  /// unique index number.
+  ///
+  /// Output only.
+  core.int? index;
+
+  /// Input only.
+  ///
+  /// \[Input Only\] Specifies the parameters for a new disk that will be
+  /// created alongside the new instance. Use initialization parameters to
+  /// create boot disks or local SSDs attached to the new instance. This
+  /// property is mutually exclusive with the source property; you can only
+  /// define one or the other, but not both.
+  LocalDiskInitializeParams? initializeParams;
+
+  /// Specifies the disk interface to use for attaching this disk, which is
+  /// either SCSI or NVME.
+  ///
+  /// The default is SCSI. Persistent disks must always use SCSI and the request
+  /// will fail if you attempt to attach a persistent disk in any other format
+  /// than SCSI. Local SSDs can use either NVME or SCSI. For performance
+  /// characteristics of SCSI over NVMe, see Local SSD performance. Valid
+  /// values: NVME SCSI
+  core.String? interface;
+
+  /// Type of the resource.
+  ///
+  /// Always compute#attachedDisk for attached disks.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// Any valid publicly visible licenses.
+  ///
+  /// Output only.
+  core.List<core.String>? licenses;
+
+  /// The mode in which to attach this disk, either READ_WRITE or READ_ONLY.
+  ///
+  /// If not specified, the default is to attach the disk in READ_WRITE mode.
+  /// Valid values: READ_ONLY READ_WRITE
+  core.String? mode;
+
+  /// Specifies a valid partial or full URL to an existing Persistent Disk
+  /// resource.
+  core.String? source;
+
+  /// Specifies the type of the disk, either SCRATCH or PERSISTENT.
+  ///
+  /// If not specified, the default is PERSISTENT. Valid values: PERSISTENT
+  /// SCRATCH
+  core.String? type;
+
+  LocalDisk();
+
+  LocalDisk.fromJson(core.Map _json) {
+    if (_json.containsKey('autoDelete')) {
+      autoDelete = _json['autoDelete'] as core.bool;
+    }
+    if (_json.containsKey('boot')) {
+      boot = _json['boot'] as core.bool;
+    }
+    if (_json.containsKey('deviceName')) {
+      deviceName = _json['deviceName'] as core.String;
+    }
+    if (_json.containsKey('guestOsFeatures')) {
+      guestOsFeatures = (_json['guestOsFeatures'] as core.List)
+          .map<RuntimeGuestOsFeature>((value) => RuntimeGuestOsFeature.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('index')) {
+      index = _json['index'] as core.int;
+    }
+    if (_json.containsKey('initializeParams')) {
+      initializeParams = LocalDiskInitializeParams.fromJson(
+          _json['initializeParams'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('interface')) {
+      interface = _json['interface'] as core.String;
+    }
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'] as core.String;
+    }
+    if (_json.containsKey('licenses')) {
+      licenses = (_json['licenses'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('mode')) {
+      mode = _json['mode'] as core.String;
+    }
+    if (_json.containsKey('source')) {
+      source = _json['source'] as core.String;
+    }
+    if (_json.containsKey('type')) {
+      type = _json['type'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (autoDelete != null) 'autoDelete': autoDelete!,
+        if (boot != null) 'boot': boot!,
+        if (deviceName != null) 'deviceName': deviceName!,
+        if (guestOsFeatures != null)
+          'guestOsFeatures':
+              guestOsFeatures!.map((value) => value.toJson()).toList(),
+        if (index != null) 'index': index!,
+        if (initializeParams != null)
+          'initializeParams': initializeParams!.toJson(),
+        if (interface != null) 'interface': interface!,
+        if (kind != null) 'kind': kind!,
+        if (licenses != null) 'licenses': licenses!,
+        if (mode != null) 'mode': mode!,
+        if (source != null) 'source': source!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// \[Input Only\] Specifies the parameters for a new disk that will be created
+/// alongside the new instance.
+///
+/// Use initialization parameters to create boot disks or local SSDs attached to
+/// the new runtime. This property is mutually exclusive with the source
+/// property; you can only define one or the other, but not both.
+class LocalDiskInitializeParams {
+  /// Provide this property when creating the disk.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Specifies the disk name.
+  ///
+  /// If not specified, the default is to use the name of the instance. If the
+  /// disk with the instance name exists already in the given zone/region, a new
+  /// name will be automatically generated.
+  ///
+  /// Optional.
+  core.String? diskName;
+
+  /// Specifies the size of the disk in base-2 GB.
+  ///
+  /// If not specified, the disk will be the same size as the image (usually
+  /// 10GB). If specified, the size must be equal to or larger than 10GB.
+  /// Default 100 GB.
+  ///
+  /// Optional.
+  core.String? diskSizeGb;
+
+  /// Input only.
+  ///
+  /// The type of the boot disk attached to this instance, defaults to standard
+  /// persistent disk (`PD_STANDARD`).
+  /// Possible string values are:
+  /// - "DISK_TYPE_UNSPECIFIED" : Disk type not set.
+  /// - "PD_STANDARD" : Standard persistent disk type.
+  /// - "PD_SSD" : SSD persistent disk type.
+  /// - "PD_BALANCED" : Balanced persistent disk type.
+  core.String? diskType;
+
+  /// Labels to apply to this disk.
+  ///
+  /// These can be later modified by the disks.setLabels method. This field is
+  /// only applicable for persistent disks.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  LocalDiskInitializeParams();
+
+  LocalDiskInitializeParams.fromJson(core.Map _json) {
+    if (_json.containsKey('description')) {
+      description = _json['description'] as core.String;
+    }
+    if (_json.containsKey('diskName')) {
+      diskName = _json['diskName'] as core.String;
+    }
+    if (_json.containsKey('diskSizeGb')) {
+      diskSizeGb = _json['diskSizeGb'] as core.String;
+    }
+    if (_json.containsKey('diskType')) {
+      diskType = _json['diskType'] as core.String;
+    }
+    if (_json.containsKey('labels')) {
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (diskName != null) 'diskName': diskName!,
+        if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
+        if (diskType != null) 'diskType': diskType!,
+        if (labels != null) 'labels': labels!,
       };
 }
 
@@ -3583,6 +4369,420 @@ class ResetInstanceRequest {
   core.Map<core.String, core.dynamic> toJson() => {};
 }
 
+/// Request for reseting a Managed Notebook Runtime.
+class ResetRuntimeRequest {
+  ResetRuntimeRequest();
+
+  ResetRuntimeRequest.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
+/// Request for rollbacking a notebook instance
+class RollbackInstanceRequest {
+  /// The snapshot for rollback.
+  ///
+  /// Example: "projects/test-project/global/snapshots/krwlzipynril".
+  ///
+  /// Required.
+  core.String? targetSnapshot;
+
+  RollbackInstanceRequest();
+
+  RollbackInstanceRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('targetSnapshot')) {
+      targetSnapshot = _json['targetSnapshot'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (targetSnapshot != null) 'targetSnapshot': targetSnapshot!,
+      };
+}
+
+/// The definition of a Runtime for a managed notebook instance.
+class Runtime {
+  /// The config settings for accessing runtime.
+  RuntimeAccessConfig? accessConfig;
+
+  /// Runtime creation time.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Runtime health_state.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "HEALTH_STATE_UNSPECIFIED" : The runtime substate is unknown.
+  /// - "HEALTHY" : The runtime is known to be in an healthy state (for example,
+  /// critical daemons are running) Applies to ACTIVE state.
+  /// - "UNHEALTHY" : The runtime is known to be in an unhealthy state (for
+  /// example, critical daemons are not running) Applies to ACTIVE state.
+  core.String? healthState;
+
+  /// Contains Runtime daemon metrics such as Service status and JupyterLab
+  /// stats.
+  ///
+  /// Output only.
+  RuntimeMetrics? metrics;
+
+  /// The resource name of the runtime.
+  ///
+  /// Format: `projects/{project}/locations/{location}/runtimes/{runtime}`
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The config settings for software inside the runtime.
+  RuntimeSoftwareConfig? softwareConfig;
+
+  /// Runtime state.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State is not specified.
+  /// - "STARTING" : The compute layer is starting the runtime. It is not ready
+  /// for use.
+  /// - "PROVISIONING" : The compute layer is installing required frameworks and
+  /// registering the runtime with notebook proxy. It cannot be used.
+  /// - "ACTIVE" : The runtime is currently running. It is ready for use.
+  /// - "STOPPING" : The control logic is stopping the runtime. It cannot be
+  /// used.
+  /// - "STOPPED" : The runtime is stopped. It cannot be used.
+  /// - "DELETING" : The runtime is being deleted. It cannot be used.
+  /// - "UPGRADING" : The runtime is upgrading. It cannot be used.
+  /// - "INITIALIZING" : The runtime is being created and set up. It is not
+  /// ready for use.
+  core.String? state;
+
+  /// Runtime update time.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// Use a Compute Engine VM image to start the managed notebook instance.
+  VirtualMachine? virtualMachine;
+
+  Runtime();
+
+  Runtime.fromJson(core.Map _json) {
+    if (_json.containsKey('accessConfig')) {
+      accessConfig = RuntimeAccessConfig.fromJson(
+          _json['accessConfig'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'] as core.String;
+    }
+    if (_json.containsKey('healthState')) {
+      healthState = _json['healthState'] as core.String;
+    }
+    if (_json.containsKey('metrics')) {
+      metrics = RuntimeMetrics.fromJson(
+          _json['metrics'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('softwareConfig')) {
+      softwareConfig = RuntimeSoftwareConfig.fromJson(
+          _json['softwareConfig'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('state')) {
+      state = _json['state'] as core.String;
+    }
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'] as core.String;
+    }
+    if (_json.containsKey('virtualMachine')) {
+      virtualMachine = VirtualMachine.fromJson(
+          _json['virtualMachine'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accessConfig != null) 'accessConfig': accessConfig!.toJson(),
+        if (createTime != null) 'createTime': createTime!,
+        if (healthState != null) 'healthState': healthState!,
+        if (metrics != null) 'metrics': metrics!.toJson(),
+        if (name != null) 'name': name!,
+        if (softwareConfig != null) 'softwareConfig': softwareConfig!.toJson(),
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (virtualMachine != null) 'virtualMachine': virtualMachine!.toJson(),
+      };
+}
+
+/// Definition of the types of hardware accelerators that can be used.
+///
+/// Definition of the types of hardware accelerators that can be used. See
+/// [Compute Engine AcceleratorTypes](https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes).
+/// Examples: * `nvidia-tesla-k80` * `nvidia-tesla-p100` * `nvidia-tesla-v100` *
+/// `nvidia-tesla-p4` * `nvidia-tesla-t4` * `nvidia-tesla-a100`
+class RuntimeAcceleratorConfig {
+  /// Count of cores of this accelerator.
+  core.String? coreCount;
+
+  /// Accelerator model.
+  /// Possible string values are:
+  /// - "ACCELERATOR_TYPE_UNSPECIFIED" : Accelerator type is not specified.
+  /// - "NVIDIA_TESLA_K80" : Accelerator type is Nvidia Tesla K80.
+  /// - "NVIDIA_TESLA_P100" : Accelerator type is Nvidia Tesla P100.
+  /// - "NVIDIA_TESLA_V100" : Accelerator type is Nvidia Tesla V100.
+  /// - "NVIDIA_TESLA_P4" : Accelerator type is Nvidia Tesla P4.
+  /// - "NVIDIA_TESLA_T4" : Accelerator type is Nvidia Tesla T4.
+  /// - "NVIDIA_TESLA_A100" : Accelerator type is Nvidia Tesla A100.
+  /// - "TPU_V2" : (Coming soon) Accelerator type is TPU V2.
+  /// - "TPU_V3" : (Coming soon) Accelerator type is TPU V3.
+  /// - "NVIDIA_TESLA_T4_VWS" : Accelerator type is NVIDIA Tesla T4 Virtual
+  /// Workstations.
+  /// - "NVIDIA_TESLA_P100_VWS" : Accelerator type is NVIDIA Tesla P100 Virtual
+  /// Workstations.
+  /// - "NVIDIA_TESLA_P4_VWS" : Accelerator type is NVIDIA Tesla P4 Virtual
+  /// Workstations.
+  core.String? type;
+
+  RuntimeAcceleratorConfig();
+
+  RuntimeAcceleratorConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('coreCount')) {
+      coreCount = _json['coreCount'] as core.String;
+    }
+    if (_json.containsKey('type')) {
+      type = _json['type'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (coreCount != null) 'coreCount': coreCount!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// Specifies the login configuration for Runtime
+class RuntimeAccessConfig {
+  /// The type of access mode this instance.
+  /// Possible string values are:
+  /// - "RUNTIME_ACCESS_TYPE_UNSPECIFIED" : Unspecified access.
+  /// - "SINGLE_USER" : Single user login.
+  core.String? accessType;
+
+  /// The proxy endpoint that is used to access the runtime.
+  ///
+  /// Output only.
+  core.String? proxyUri;
+
+  /// The owner of this runtime after creation.
+  ///
+  /// Format: `alias@example.com` Currently supports one owner only.
+  core.String? runtimeOwner;
+
+  RuntimeAccessConfig();
+
+  RuntimeAccessConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('accessType')) {
+      accessType = _json['accessType'] as core.String;
+    }
+    if (_json.containsKey('proxyUri')) {
+      proxyUri = _json['proxyUri'] as core.String;
+    }
+    if (_json.containsKey('runtimeOwner')) {
+      runtimeOwner = _json['runtimeOwner'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accessType != null) 'accessType': accessType!,
+        if (proxyUri != null) 'proxyUri': proxyUri!,
+        if (runtimeOwner != null) 'runtimeOwner': runtimeOwner!,
+      };
+}
+
+/// A list of features to enable on the guest operating system.
+///
+/// Applicable only for bootable images. Read Enabling guest operating system
+/// features to see a list of available options. Guest OS features for boot
+/// disk.
+class RuntimeGuestOsFeature {
+  /// The ID of a supported feature.
+  ///
+  /// Read Enabling guest operating system features to see a list of available
+  /// options. Valid values: FEATURE_TYPE_UNSPECIFIED MULTI_IP_SUBNET
+  /// SECURE_BOOT UEFI_COMPATIBLE VIRTIO_SCSI_MULTIQUEUE WINDOWS
+  core.String? type;
+
+  RuntimeGuestOsFeature();
+
+  RuntimeGuestOsFeature.fromJson(core.Map _json) {
+    if (_json.containsKey('type')) {
+      type = _json['type'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (type != null) 'type': type!,
+      };
+}
+
+/// Contains runtime daemon metrics, such as OS and kernels and sessions stats.
+class RuntimeMetrics {
+  /// The system metrics.
+  ///
+  /// Output only.
+  core.Map<core.String, core.String>? systemMetrics;
+
+  RuntimeMetrics();
+
+  RuntimeMetrics.fromJson(core.Map _json) {
+    if (_json.containsKey('systemMetrics')) {
+      systemMetrics =
+          (_json['systemMetrics'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (systemMetrics != null) 'systemMetrics': systemMetrics!,
+      };
+}
+
+/// A set of Shielded Instance options.
+///
+/// Check \[Images using supported Shielded VM features\] Not all combinations
+/// are valid.
+class RuntimeShieldedInstanceConfig {
+  /// Defines whether the instance has integrity monitoring enabled.
+  ///
+  /// Enables monitoring and attestation of the boot integrity of the instance.
+  /// The attestation is performed against the integrity policy baseline. This
+  /// baseline is initially derived from the implicitly trusted boot image when
+  /// the instance is created. Enabled by default.
+  core.bool? enableIntegrityMonitoring;
+
+  /// Defines whether the instance has Secure Boot enabled.
+  ///
+  /// Secure Boot helps ensure that the system only runs authentic software by
+  /// verifying the digital signature of all boot components, and halting the
+  /// boot process if signature verification fails. Disabled by default.
+  core.bool? enableSecureBoot;
+
+  /// Defines whether the instance has the vTPM enabled.
+  ///
+  /// Enabled by default.
+  core.bool? enableVtpm;
+
+  RuntimeShieldedInstanceConfig();
+
+  RuntimeShieldedInstanceConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('enableIntegrityMonitoring')) {
+      enableIntegrityMonitoring =
+          _json['enableIntegrityMonitoring'] as core.bool;
+    }
+    if (_json.containsKey('enableSecureBoot')) {
+      enableSecureBoot = _json['enableSecureBoot'] as core.bool;
+    }
+    if (_json.containsKey('enableVtpm')) {
+      enableVtpm = _json['enableVtpm'] as core.bool;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableIntegrityMonitoring != null)
+          'enableIntegrityMonitoring': enableIntegrityMonitoring!,
+        if (enableSecureBoot != null) 'enableSecureBoot': enableSecureBoot!,
+        if (enableVtpm != null) 'enableVtpm': enableVtpm!,
+      };
+}
+
+/// Specifies the selection and config of software inside the runtime.
+///
+/// / The properties to set on runtime. Properties keys are specified in
+/// `key:value` format, for example: * idle_shutdown: idle_shutdown=true *
+/// idle_shutdown_timeout: idle_shutdown_timeout=180 * report-system-health:
+/// report-system-health=true
+class RuntimeSoftwareConfig {
+  /// Specify a custom Cloud Storage path where the GPU driver is stored.
+  ///
+  /// If not specified, we'll automatically choose from official GPU drivers.
+  core.String? customGpuDriverPath;
+
+  /// Verifies core internal services are running.
+  ///
+  /// Default: True
+  core.bool? enableHealthMonitoring;
+
+  /// Runtime will automatically shutdown after idle_shutdown_time.
+  ///
+  /// Default: False
+  core.bool? idleShutdown;
+
+  /// Time in minutes to wait before shuting down runtime.
+  ///
+  /// Default: 90 minutes
+  core.int? idleShutdownTimeout;
+
+  /// Install Nvidia Driver automatically.
+  core.bool? installGpuDriver;
+
+  /// Cron expression in UTC timezone, used to schedule instance auto upgrade.
+  ///
+  /// Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
+  core.String? notebookUpgradeSchedule;
+
+  /// Path to a Bash script that automatically runs after a notebook instance
+  /// fully boots up.
+  ///
+  /// The path must be a URL or Cloud Storage path
+  /// (gs://path-to-file/file-name).
+  core.String? postStartupScript;
+
+  RuntimeSoftwareConfig();
+
+  RuntimeSoftwareConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('customGpuDriverPath')) {
+      customGpuDriverPath = _json['customGpuDriverPath'] as core.String;
+    }
+    if (_json.containsKey('enableHealthMonitoring')) {
+      enableHealthMonitoring = _json['enableHealthMonitoring'] as core.bool;
+    }
+    if (_json.containsKey('idleShutdown')) {
+      idleShutdown = _json['idleShutdown'] as core.bool;
+    }
+    if (_json.containsKey('idleShutdownTimeout')) {
+      idleShutdownTimeout = _json['idleShutdownTimeout'] as core.int;
+    }
+    if (_json.containsKey('installGpuDriver')) {
+      installGpuDriver = _json['installGpuDriver'] as core.bool;
+    }
+    if (_json.containsKey('notebookUpgradeSchedule')) {
+      notebookUpgradeSchedule = _json['notebookUpgradeSchedule'] as core.String;
+    }
+    if (_json.containsKey('postStartupScript')) {
+      postStartupScript = _json['postStartupScript'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customGpuDriverPath != null)
+          'customGpuDriverPath': customGpuDriverPath!,
+        if (enableHealthMonitoring != null)
+          'enableHealthMonitoring': enableHealthMonitoring!,
+        if (idleShutdown != null) 'idleShutdown': idleShutdown!,
+        if (idleShutdownTimeout != null)
+          'idleShutdownTimeout': idleShutdownTimeout!,
+        if (installGpuDriver != null) 'installGpuDriver': installGpuDriver!,
+        if (notebookUpgradeSchedule != null)
+          'notebookUpgradeSchedule': notebookUpgradeSchedule!,
+        if (postStartupScript != null) 'postStartupScript': postStartupScript!,
+      };
+}
+
 /// The definition of a schedule.
 class Schedule {
   /// Time the schedule was created.
@@ -3922,6 +5122,17 @@ class StartInstanceRequest {
   core.Map<core.String, core.dynamic> toJson() => {};
 }
 
+/// Request for starting a Managed Notebook Runtime.
+class StartRuntimeRequest {
+  StartRuntimeRequest();
+
+  StartRuntimeRequest.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
 ///
@@ -3987,6 +5198,44 @@ class StopInstanceRequest {
   core.Map<core.String, core.dynamic> toJson() => {};
 }
 
+/// Request for stopping a Managed Notebook Runtime.
+class StopRuntimeRequest {
+  StopRuntimeRequest();
+
+  StopRuntimeRequest.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
+/// Request for switching a Managed Notebook Runtime.
+class SwitchRuntimeRequest {
+  /// accelerator config.
+  RuntimeAcceleratorConfig? acceleratorConfig;
+
+  /// machine type.
+  core.String? machineType;
+
+  SwitchRuntimeRequest();
+
+  SwitchRuntimeRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('acceleratorConfig')) {
+      acceleratorConfig = RuntimeAcceleratorConfig.fromJson(
+          _json['acceleratorConfig'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('machineType')) {
+      machineType = _json['machineType'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (acceleratorConfig != null)
+          'acceleratorConfig': acceleratorConfig!.toJson(),
+        if (machineType != null) 'machineType': machineType!,
+      };
+}
+
 /// Request message for `TestIamPermissions` method.
 class TestIamPermissionsRequest {
   /// The set of permissions to check for the `resource`.
@@ -4041,6 +5290,29 @@ class TriggerScheduleRequest {
       core.Map _json);
 
   core.Map<core.String, core.dynamic> toJson() => {};
+}
+
+/// Request for updating the Shielded Instance config for a notebook instance.
+///
+/// You can only use this method on a stopped instance
+class UpdateShieldedInstanceConfigRequest {
+  /// ShieldedInstance configuration to be updated.
+  ShieldedInstanceConfig? shieldedInstanceConfig;
+
+  UpdateShieldedInstanceConfigRequest();
+
+  UpdateShieldedInstanceConfigRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('shieldedInstanceConfig')) {
+      shieldedInstanceConfig = ShieldedInstanceConfig.fromJson(
+          _json['shieldedInstanceConfig']
+              as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (shieldedInstanceConfig != null)
+          'shieldedInstanceConfig': shieldedInstanceConfig!.toJson(),
+      };
 }
 
 /// The entry of VM image upgrade history.
@@ -4168,6 +5440,268 @@ class UpgradeInstanceRequest {
       core.Map _json);
 
   core.Map<core.String, core.dynamic> toJson() => {};
+}
+
+/// Runtime using Virtual Machine for computing.
+class VirtualMachine {
+  /// The unique identifier of the Managed Compute Engine instance.
+  ///
+  /// Output only.
+  core.String? instanceId;
+
+  /// The user-friendly name of the Managed Compute Engine instance.
+  ///
+  /// Output only.
+  core.String? instanceName;
+
+  /// Virtual Machine configuration settings.
+  VirtualMachineConfig? virtualMachineConfig;
+
+  VirtualMachine();
+
+  VirtualMachine.fromJson(core.Map _json) {
+    if (_json.containsKey('instanceId')) {
+      instanceId = _json['instanceId'] as core.String;
+    }
+    if (_json.containsKey('instanceName')) {
+      instanceName = _json['instanceName'] as core.String;
+    }
+    if (_json.containsKey('virtualMachineConfig')) {
+      virtualMachineConfig = VirtualMachineConfig.fromJson(
+          _json['virtualMachineConfig'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (instanceId != null) 'instanceId': instanceId!,
+        if (instanceName != null) 'instanceName': instanceName!,
+        if (virtualMachineConfig != null)
+          'virtualMachineConfig': virtualMachineConfig!.toJson(),
+      };
+}
+
+/// The config settings for virtual machine.
+class VirtualMachineConfig {
+  /// The Compute Engine accelerator configuration for this runtime.
+  ///
+  /// Optional.
+  RuntimeAcceleratorConfig? acceleratorConfig;
+
+  /// Use a list of container images to start the notebook instance.
+  ///
+  /// Optional.
+  core.List<ContainerImage>? containerImages;
+
+  /// Data disk option configuration settings.
+  ///
+  /// Required.
+  LocalDisk? dataDisk;
+
+  /// Encryption settings for virtual machine data disk.
+  ///
+  /// Optional.
+  EncryptionConfig? encryptionConfig;
+
+  /// The Compute Engine guest attributes.
+  ///
+  /// (see
+  /// [Project and instance guest attributes](https://cloud.google.com/compute/docs/storing-retrieving-metadata#guest_attributes)).
+  ///
+  /// Output only.
+  core.Map<core.String, core.String>? guestAttributes;
+
+  /// If true, runtime will only have internal IP addresses.
+  ///
+  /// By default, runtimes are not restricted to internal IP addresses, and will
+  /// have ephemeral external IP addresses assigned to each vm. This
+  /// `internal_ip_only` restriction can only be enabled for subnetwork enabled
+  /// networks, and all dependencies must be configured to be accessible without
+  /// external IP addresses.
+  ///
+  /// Optional.
+  core.bool? internalIpOnly;
+
+  /// The labels to associate with this runtime.
+  ///
+  /// Label **keys** must contain 1 to 63 characters, and must conform to
+  /// [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+  /// empty, but, if present, must contain 1 to 63 characters, and must conform
+  /// to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32
+  /// labels can be associated with a cluster.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// The Compute Engine machine type used for runtimes.
+  ///
+  /// Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
+  ///
+  /// Required.
+  core.String? machineType;
+
+  /// The Compute Engine metadata entries to add to virtual machine.
+  ///
+  /// (see
+  /// [Project and instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? metadata;
+
+  /// The Compute Engine network to be used for machine communications.
+  ///
+  /// Cannot be specified with subnetwork. If neither `network` nor `subnet` is
+  /// specified, the "default" network of the project is used, if it exists. A
+  /// full URL or partial URI. Examples: *
+  /// `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default`
+  /// * `projects/[project_id]/regions/global/default` Runtimes are managed
+  /// resources inside Google Infrastructure. Runtimes support the following
+  /// network configurations: * Google Managed Network (Network & subnet are
+  /// empty) * Consumer Project VPC (network & subnet are required). Requires
+  /// configuring Private Service Access. * Shared VPC (network & subnet are
+  /// required). Requires configuring Private Service Access.
+  ///
+  /// Optional.
+  core.String? network;
+
+  /// The type of vNIC to be used on this interface.
+  ///
+  /// This may be gVNIC or VirtioNet.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "UNSPECIFIED_NIC_TYPE" : No type specified.
+  /// - "VIRTIO_NET" : VIRTIO
+  /// - "GVNIC" : GVNIC
+  core.String? nicType;
+
+  /// Shielded VM Instance configuration settings.
+  ///
+  /// Optional.
+  RuntimeShieldedInstanceConfig? shieldedInstanceConfig;
+
+  /// The Compute Engine subnetwork to be used for machine communications.
+  ///
+  /// Cannot be specified with network. A full URL or partial URI are valid.
+  /// Examples: *
+  /// `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0`
+  /// * `projects/[project_id]/regions/us-east1/subnetworks/sub0`
+  ///
+  /// Optional.
+  core.String? subnet;
+
+  /// The Compute Engine tags to add to runtime (see
+  /// [Tagging instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+  ///
+  /// Optional.
+  core.List<core.String>? tags;
+
+  /// The zone where the virtual machine is located.
+  ///
+  /// If using regional request, the notebooks service will pick a location in
+  /// the corresponding runtime region. On a get request, zone will always be
+  /// present. Example: * `us-central1-b`
+  ///
+  /// Output only.
+  core.String? zone;
+
+  VirtualMachineConfig();
+
+  VirtualMachineConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('acceleratorConfig')) {
+      acceleratorConfig = RuntimeAcceleratorConfig.fromJson(
+          _json['acceleratorConfig'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('containerImages')) {
+      containerImages = (_json['containerImages'] as core.List)
+          .map<ContainerImage>((value) => ContainerImage.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('dataDisk')) {
+      dataDisk = LocalDisk.fromJson(
+          _json['dataDisk'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('encryptionConfig')) {
+      encryptionConfig = EncryptionConfig.fromJson(
+          _json['encryptionConfig'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('guestAttributes')) {
+      guestAttributes =
+          (_json['guestAttributes'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
+    }
+    if (_json.containsKey('internalIpOnly')) {
+      internalIpOnly = _json['internalIpOnly'] as core.bool;
+    }
+    if (_json.containsKey('labels')) {
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
+    }
+    if (_json.containsKey('machineType')) {
+      machineType = _json['machineType'] as core.String;
+    }
+    if (_json.containsKey('metadata')) {
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
+    }
+    if (_json.containsKey('network')) {
+      network = _json['network'] as core.String;
+    }
+    if (_json.containsKey('nicType')) {
+      nicType = _json['nicType'] as core.String;
+    }
+    if (_json.containsKey('shieldedInstanceConfig')) {
+      shieldedInstanceConfig = RuntimeShieldedInstanceConfig.fromJson(
+          _json['shieldedInstanceConfig']
+              as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('subnet')) {
+      subnet = _json['subnet'] as core.String;
+    }
+    if (_json.containsKey('tags')) {
+      tags = (_json['tags'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('zone')) {
+      zone = _json['zone'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (acceleratorConfig != null)
+          'acceleratorConfig': acceleratorConfig!.toJson(),
+        if (containerImages != null)
+          'containerImages':
+              containerImages!.map((value) => value.toJson()).toList(),
+        if (dataDisk != null) 'dataDisk': dataDisk!.toJson(),
+        if (encryptionConfig != null)
+          'encryptionConfig': encryptionConfig!.toJson(),
+        if (guestAttributes != null) 'guestAttributes': guestAttributes!,
+        if (internalIpOnly != null) 'internalIpOnly': internalIpOnly!,
+        if (labels != null) 'labels': labels!,
+        if (machineType != null) 'machineType': machineType!,
+        if (metadata != null) 'metadata': metadata!,
+        if (network != null) 'network': network!,
+        if (nicType != null) 'nicType': nicType!,
+        if (shieldedInstanceConfig != null)
+          'shieldedInstanceConfig': shieldedInstanceConfig!.toJson(),
+        if (subnet != null) 'subnet': subnet!,
+        if (tags != null) 'tags': tags!,
+        if (zone != null) 'zone': zone!,
+      };
 }
 
 /// Definition of a custom Compute Engine virtual machine image for starting a

@@ -5910,7 +5910,7 @@ class Disapproval {
   /// context.
   /// - "MISUSE_BY_OMID_SCRIPT" : Misuse by an Open Measurement SDK script.
   /// - "NON_WHITELISTED_OMID_VENDOR" : Use of an Open Measurement SDK vendor
-  /// not on approved whitelist.
+  /// not on approved vendor list.
   /// - "DESTINATION_EXPERIENCE" : Unacceptable landing page.
   /// - "UNSUPPORTED_LANGUAGE" : Unsupported language.
   /// - "NON_SSL_COMPLIANT" : Non-SSL compliant.
@@ -6338,8 +6338,30 @@ class GuaranteedFixedPriceTerms {
   /// Required for deal, optional for product.
   core.String? guaranteedLooks;
 
+  /// The lifetime impression cap for CPM sponsorship deals.
+  ///
+  /// The deal will stop serving when the cap is reached.
+  core.String? impressionCap;
+
   /// Daily minimum looks for CPD deal types.
   core.String? minimumDailyLooks;
+
+  /// For sponsorship deals, this is the percentage of the seller's eligible
+  /// impressions that the deal will serve until the cap is reached.
+  core.String? percentShareOfVoice;
+
+  /// The reservation type for a Programmatic Guaranteed deal.
+  ///
+  /// This indicates whether the number of impressions is fixed, or a percent of
+  /// available impressions. If not specified, the default reservation type is
+  /// STANDARD.
+  /// Possible string values are:
+  /// - "RESERVATION_TYPE_UNSPECIFIED" : An unspecified reservation type.
+  /// - "STANDARD" : Non-sponsorship deal.
+  /// - "SPONSORSHIP" : Sponsorship deals don't have impression goal
+  /// (guaranteed_looks) and they are served based on the flight dates. For CPM
+  /// Sponsorship deals, impression_cap is the lifetime impression limit.
+  core.String? reservationType;
 
   GuaranteedFixedPriceTerms();
 
@@ -6356,8 +6378,17 @@ class GuaranteedFixedPriceTerms {
     if (_json.containsKey('guaranteedLooks')) {
       guaranteedLooks = _json['guaranteedLooks'] as core.String;
     }
+    if (_json.containsKey('impressionCap')) {
+      impressionCap = _json['impressionCap'] as core.String;
+    }
     if (_json.containsKey('minimumDailyLooks')) {
       minimumDailyLooks = _json['minimumDailyLooks'] as core.String;
+    }
+    if (_json.containsKey('percentShareOfVoice')) {
+      percentShareOfVoice = _json['percentShareOfVoice'] as core.String;
+    }
+    if (_json.containsKey('reservationType')) {
+      reservationType = _json['reservationType'] as core.String;
     }
   }
 
@@ -6367,7 +6398,11 @@ class GuaranteedFixedPriceTerms {
         if (guaranteedImpressions != null)
           'guaranteedImpressions': guaranteedImpressions!,
         if (guaranteedLooks != null) 'guaranteedLooks': guaranteedLooks!,
+        if (impressionCap != null) 'impressionCap': impressionCap!,
         if (minimumDailyLooks != null) 'minimumDailyLooks': minimumDailyLooks!,
+        if (percentShareOfVoice != null)
+          'percentShareOfVoice': percentShareOfVoice!,
+        if (reservationType != null) 'reservationType': reservationType!,
       };
 }
 
@@ -7601,9 +7636,6 @@ class NonGuaranteedAuctionTerms {
 }
 
 /// Terms for Preferred Deals.
-///
-/// Note that Preferred Deals cannot be created via the API at this time, but
-/// can be returned in a get or list request.
 class NonGuaranteedFixedPriceTerms {
   /// Fixed price for the specified buyer.
   core.List<PricePerBuyer>? fixedPrices;
@@ -7900,12 +7932,10 @@ class PrivateData {
       };
 }
 
-/// Note: this resource requires whitelisting for access.
+/// A product is a segment of inventory that a seller wishes to sell.
 ///
-/// Please contact your account manager for access to Marketplace resources. A
-/// product is a segment of inventory that a seller wishes to sell. It is
-/// associated with certain terms and targeting information which helps the
-/// buyer know more about the inventory.
+/// It is associated with certain terms and targeting information which helps
+/// the buyer know more about the inventory.
 class Product {
   /// The proposed end time for the deal.
   ///
@@ -8060,13 +8090,11 @@ class Product {
       };
 }
 
-/// Note: this resource requires whitelisting for access.
+/// Represents a proposal in the Marketplace.
 ///
-/// Please contact your account manager for access to Marketplace resources.
-/// Represents a proposal in the Marketplace. A proposal is the unit of
-/// negotiation between a seller and a buyer and contains deals which are
-/// served. Note: you can not update, create, or otherwise modify Private
-/// Auction or Preferred Deals deals through the API. Fields are updatable
+/// A proposal is the unit of negotiation between a seller and a buyer and
+/// contains deals which are served. Note: You can't update, create, or
+/// otherwise modify Private Auction deals through the API. Fields are updatable
 /// unless noted otherwise.
 class Proposal {
   /// Reference to the buyer that will get billed for this proposal.
@@ -8302,13 +8330,11 @@ class Proposal {
       };
 }
 
-/// Note: this resource requires whitelisting for access.
-///
-/// Please contact your account manager for access to Marketplace resources.
 /// Represents a publisher profile
-/// (https://support.google.com/admanager/answer/6035806) in Marketplace. All
-/// fields are read only. All string fields are free-form text entered by the
-/// publisher unless noted otherwise.
+/// (https://support.google.com/admanager/answer/6035806) in Marketplace.
+///
+/// All fields are read only. All string fields are free-form text entered by
+/// the publisher unless noted otherwise.
 class PublisherProfile {
   /// Description on the publisher's audience.
   core.String? audienceDescription;

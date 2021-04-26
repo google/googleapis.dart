@@ -43,7 +43,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Scans your Compute and App Engine apps for common web vulnerabilities.
 class WebSecurityScannerApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -1384,6 +1384,9 @@ class ScanConfig {
   /// Center.
   core.String? exportToSecurityCommandCenter;
 
+  /// Whether to keep scanning even if most requests return HTTP error codes.
+  core.bool? ignoreHttpStatusErrors;
+
   /// Whether the scan config is managed by Web Security Scanner, output only.
   core.bool? managedScan;
 
@@ -1450,6 +1453,9 @@ class ScanConfig {
       exportToSecurityCommandCenter =
           _json['exportToSecurityCommandCenter'] as core.String;
     }
+    if (_json.containsKey('ignoreHttpStatusErrors')) {
+      ignoreHttpStatusErrors = _json['ignoreHttpStatusErrors'] as core.bool;
+    }
     if (_json.containsKey('managedScan')) {
       managedScan = _json['managedScan'] as core.bool;
     }
@@ -1485,6 +1491,8 @@ class ScanConfig {
         if (displayName != null) 'displayName': displayName!,
         if (exportToSecurityCommandCenter != null)
           'exportToSecurityCommandCenter': exportToSecurityCommandCenter!,
+        if (ignoreHttpStatusErrors != null)
+          'ignoreHttpStatusErrors': ignoreHttpStatusErrors!,
         if (managedScan != null) 'managedScan': managedScan!,
         if (maxQps != null) 'maxQps': maxQps!,
         if (name != null) 'name': name!,

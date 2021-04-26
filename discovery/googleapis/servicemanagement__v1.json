@@ -3,7 +3,7 @@
         "oauth2": {
             "scopes": {
                 "https://www.googleapis.com/auth/cloud-platform": {
-                    "description": "View and manage your data across Google Cloud Platform services"
+                    "description": "See, edit, configure, and delete your Google Cloud Platform data"
                 },
                 "https://www.googleapis.com/auth/cloud-platform.read-only": {
                     "description": "View your data across Google Cloud Platform services"
@@ -222,33 +222,6 @@
                         "https://www.googleapis.com/auth/service.management"
                     ]
                 },
-                "enable": {
-                    "description": "Enables a service for a project, so it can be used for the project. See [Cloud Auth Guide](https://cloud.google.com/docs/authentication) for more information. Operation",
-                    "httpMethod": "POST",
-                    "id": "servicemanagement.services.enable",
-                    "parameterOrder": [
-                        "serviceName"
-                    ],
-                    "parameters": {
-                        "serviceName": {
-                            "description": "Required. Name of the service to enable. Specifying an unknown service name will cause the request to fail.",
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "v1/services/{serviceName}:enable",
-                    "request": {
-                        "$ref": "EnableServiceRequest"
-                    },
-                    "response": {
-                        "$ref": "Operation"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/service.management"
-                    ]
-                },
                 "generateConfigReport": {
                     "description": "Generates and returns a report (errors, warnings and changes from existing configurations) associated with GenerateConfigReportRequest.new_value If GenerateConfigReportRequest.old_value is specified, GenerateConfigReportRequest will contain a single ChangeReport based on the comparison between GenerateConfigReportRequest.new_value and GenerateConfigReportRequest.old_value. If GenerateConfigReportRequest.old_value is not specified, this method will compare GenerateConfigReportRequest.new_value with the last pushed service configuration.",
                     "httpMethod": "POST",
@@ -368,7 +341,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Lists managed services. Returns all public services. For authenticated users, also returns all services the calling user has \"servicemanagement.services.get\" permission for. **BETA:** If the caller specifies the `consumer_id`, it returns only the services enabled on the consumer. The `consumer_id` must have the format of \"project:{PROJECT-ID}\".",
+                    "description": "Lists managed services. Returns all public services. For authenticated users, also returns all services the calling user has \"servicemanagement.services.get\" permission for.",
                     "httpMethod": "GET",
                     "id": "servicemanagement.services.list",
                     "parameterOrder": [],
@@ -832,7 +805,7 @@
             }
         }
     },
-    "revision": "20210219",
+    "revision": "20210518",
     "rootUrl": "https://servicemanagement.googleapis.com/",
     "schemas": {
         "Advice": {
@@ -996,7 +969,7 @@
             "type": "object"
         },
         "Authentication": {
-            "description": "`Authentication` defines the authentication configuration for an API. Example for an API targeted for external use: name: calendar.googleapis.com authentication: providers: - id: google_calendar_auth jwks_uri: https://www.googleapis.com/oauth2/v1/certs issuer: https://securetoken.google.com rules: - selector: \"*\" requirements: provider_id: google_calendar_auth",
+            "description": "`Authentication` defines the authentication configuration for API methods provided by an API service. Example: name: calendar.googleapis.com authentication: providers: - id: google_calendar_auth jwks_uri: https://www.googleapis.com/oauth2/v1/certs issuer: https://securetoken.google.com rules: - selector: \"*\" requirements: provider_id: google_calendar_auth - selector: google.calendar.Delegate oauth: canonical_scopes: https://www.googleapis.com/auth/calendar.read",
             "id": "Authentication",
             "properties": {
                 "providers": {
@@ -1434,12 +1407,6 @@
             },
             "type": "object"
         },
-        "DisableServiceResponse": {
-            "description": "Operation payload for DisableService method.",
-            "id": "DisableServiceResponse",
-            "properties": {},
-            "type": "object"
-        },
         "Documentation": {
             "description": "`Documentation` provides the information for describing a service. Example: documentation: summary: > The Google Calendar API gives access to most calendar features. pages: - name: Overview content: (== include google/foo/overview.md ==) - name: Tutorial content: (== include google/foo/tutorial.md ==) subpages; - name: Java content: (== include google/foo/tutorial_java.md ==) rules: - selector: google.calendar.Calendar.Get description: > ... - selector: google.calendar.Calendar.Put description: > ... Documentation is provided in markdown syntax. In addition to standard markdown features, definition lists, tables and fenced code blocks are supported. Section headers can be provided and are interpreted relative to the section nesting of the context where a documentation fragment is embedded. Documentation from the IDL is merged with documentation defined via the config at normalization time, where documentation provided by config rules overrides IDL provided. A number of constructs specific to the API platform are supported in documentation text. In order to reference a proto element, the following notation can be used: [fully.qualified.proto.name][] To override the display text used for the link, this can be used: [display text][fully.qualified.proto.name] Text can be excluded from doc using the following notation: (-- internal comment --) A few directives are available in documentation. Note that directives must appear on a single line to be properly identified. The `include` directive includes a markdown file from an external source: (== include path/to/file ==) The `resource_for` directive marks a message to be the resource of a collection in REST view. If it is not specified, tools attempt to infer the resource from the operations in a collection: (== resource_for v1.shelves.books ==) The directive `suppress_warning` does not directly affect documentation and is documented together with service config validation.",
             "id": "Documentation",
@@ -1496,17 +1463,6 @@
             },
             "type": "object"
         },
-        "EnableServiceRequest": {
-            "description": "Request message for EnableService method.",
-            "id": "EnableServiceRequest",
-            "properties": {
-                "consumerId": {
-                    "description": "Required. The identity of consumer resource which service enablement will be applied to. The Google Service Management implementation accepts the following forms: - \"project:\" Note: this is made compatible with google.api.servicecontrol.v1.Operation.consumer_id.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "EnableServiceResponse": {
             "description": "Operation payload for EnableService method.",
             "id": "EnableServiceResponse",
@@ -1514,16 +1470,9 @@
             "type": "object"
         },
         "Endpoint": {
-            "description": "`Endpoint` describes a network endpoint of a service that serves a set of APIs. It is commonly known as a service endpoint. A service may expose any number of service endpoints, and all service endpoints share the same service definition, such as quota limits and monitoring metrics. Example service configuration: name: library-example.googleapis.com endpoints: # Below entry makes 'google.example.library.v1.Library' # API be served from endpoint address library-example.googleapis.com. # It also allows HTTP OPTIONS calls to be passed to the backend, for # it to decide whether the subsequent cross-origin request is # allowed to proceed. - name: library-example.googleapis.com allow_cors: true",
+            "description": "`Endpoint` describes a network address of a service that serves a set of APIs. It is commonly known as a service endpoint. A service may expose any number of service endpoints, and all service endpoints share the same service definition, such as quota limits and monitoring metrics. Example: type: google.api.Service name: library-example.googleapis.com endpoints: # Declares network address `https://library-example.googleapis.com` # for service `library-example.googleapis.com`. The `https` scheme # is implicit for all service endpoints. Other schemes may be # supported in the future. - name: library-example.googleapis.com allow_cors: false - name: content-staging-library-example.googleapis.com # Allows HTTP OPTIONS calls to be passed to the API frontend, for it # to decide whether the subsequent cross-origin request is allowed # to proceed. allow_cors: true",
             "id": "Endpoint",
             "properties": {
-                "aliases": {
-                    "description": "DEPRECATED: This field is no longer supported. Instead of using aliases, please specify multiple google.api.Endpoint for each of the intended aliases. Additional names that this endpoint will be hosted on.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "allowCors": {
                     "description": "Allowing [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka cross-domain traffic, would allow the backends served from this endpoint to receive and respond to HTTP OPTIONS requests. The response will be used by the browser to determine whether the subsequent cross-origin request is allowed to proceed.",
                     "type": "boolean"
@@ -2705,7 +2654,7 @@
             "type": "object"
         },
         "Service": {
-            "description": "`Service` is the root object of Google service configuration schema. It describes basic information about a service, such as the name and the title, and delegates other aspects to sub-sections. Each sub-section is either a proto message or a repeated proto message that configures a specific aspect, such as auth. See each proto message definition for details. Example: type: google.api.Service name: calendar.googleapis.com title: Google Calendar API apis: - name: google.calendar.v3.Calendar authentication: providers: - id: google_calendar_auth jwks_uri: https://www.googleapis.com/oauth2/v1/certs issuer: https://securetoken.google.com rules: - selector: \"*\" requirements: provider_id: google_calendar_auth",
+            "description": "`Service` is the root object of Google API service configuration (service config). It describes the basic information about a logical service, such as the service name and the user-facing title, and delegates other aspects to sub-sections. Each sub-section is either a proto message or a repeated proto message that configures a specific aspect, such as auth. For more information, see each proto message definition. Example: type: google.api.Service name: calendar.googleapis.com title: Google Calendar API apis: - name: google.calendar.v3.Calendar visibility: rules: - selector: \"google.calendar.v3.*\" restriction: PREVIEW backend: rules: - selector: \"google.calendar.v3.*\" address: calendar.example.com authentication: providers: - id: google_calendar_auth jwks_uri: https://www.googleapis.com/oauth2/v1/certs issuer: https://securetoken.google.com rules: - selector: \"*\" requirements: provider_id: google_calendar_auth",
             "id": "Service",
             "properties": {
                 "apis": {
@@ -2728,7 +2677,7 @@
                     "description": "Billing configuration."
                 },
                 "configVersion": {
-                    "description": "Deprecated. The service config compiler always sets this field to `3`.",
+                    "description": "Obsolete. Do not use. This field has no semantic meaning. The service config compiler always sets this field to `3`.",
                     "format": "uint32",
                     "type": "integer"
                 },

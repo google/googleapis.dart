@@ -40,7 +40,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Manages lightweight user-provided functions executed in response to events.
 class CloudFunctionsApi {
-  /// View and manage your data across Google Cloud Platform services
+  /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -189,11 +189,15 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [filter] - The standard list filter.
+  /// [filter] - A filter to narrow down results to a preferred subset. The
+  /// filtering language accepts strings like "displayName=tokyo", and is
+  /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
   ///
-  /// [pageSize] - The standard list page size.
+  /// [pageSize] - The maximum number of results to return. If not set, the
+  /// service selects a default.
   ///
-  /// [pageToken] - The standard list page token.
+  /// [pageToken] - A page token received from the `next_page_token` field in
+  /// the response. Send that page token to receive the subsequent page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1820,6 +1824,12 @@ class OperationMetadataV1 {
   /// This field is only populated for Create and Update operations.
   core.String? buildId;
 
+  /// The Cloud Build Name of the function deployment.
+  ///
+  /// This field is only populated for Create and Update operations.
+  /// projects//locations//builds/.
+  core.String? buildName;
+
   /// The original request that started the operation.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -1858,6 +1868,9 @@ class OperationMetadataV1 {
     if (_json.containsKey('buildId')) {
       buildId = _json['buildId'] as core.String;
     }
+    if (_json.containsKey('buildName')) {
+      buildName = _json['buildName'] as core.String;
+    }
     if (_json.containsKey('request')) {
       request = (_json['request'] as core.Map<core.String, core.dynamic>).map(
         (key, item) => core.MapEntry(
@@ -1885,6 +1898,7 @@ class OperationMetadataV1 {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (buildId != null) 'buildId': buildId!,
+        if (buildName != null) 'buildName': buildName!,
         if (request != null) 'request': request!,
         if (sourceToken != null) 'sourceToken': sourceToken!,
         if (target != null) 'target': target!,

@@ -1489,6 +1489,86 @@ class SettingsResource {
       SettingsSearchapplicationsResource(_requester);
 
   SettingsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Get customer settings.
+  ///
+  /// **Note:** This API requires an admin account to execute.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CustomerSettings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CustomerSettings> getCustomer({
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const _url = 'v1/settings/customer';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return CustomerSettings.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Update customer settings.
+  ///
+  /// **Note:** This API requires an admin account to execute.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [updateMask] - Update mask to control which fields get updated. If you
+  /// specify a field in the update_mask but don't specify its value here, that
+  /// field will be cleared. If the mask is not present or empty, all fields
+  /// will be updated. Currently supported field paths: vpc_settings and
+  /// audit_logging_settings
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> updateCustomer(
+    CustomerSettings request, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const _url = 'v1/settings/customer';
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class SettingsDatasourcesResource {
@@ -2564,6 +2644,54 @@ class StatsUserSearchapplicationsResource {
   }
 }
 
+/// Represents the settings for Cloud audit logging
+class AuditLoggingSettings {
+  /// Indicates whether audit logging is on/off for admin activity read APIs
+  /// i.e. Get/List DataSources, Get/List SearchApplications etc.
+  core.bool? logAdminReadActions;
+
+  /// Indicates whether audit logging is on/off for data access read APIs i.e.
+  /// ListItems, GetItem etc.
+  core.bool? logDataReadActions;
+
+  /// Indicates whether audit logging is on/off for data access write APIs i.e.
+  /// IndexItem etc.
+  core.bool? logDataWriteActions;
+
+  /// The resource name of the GCP Project to store audit logs.
+  ///
+  /// Cloud audit logging will be enabled after project_name has been updated
+  /// through CustomerService. Format: projects/{project_id}
+  core.String? project;
+
+  AuditLoggingSettings();
+
+  AuditLoggingSettings.fromJson(core.Map _json) {
+    if (_json.containsKey('logAdminReadActions')) {
+      logAdminReadActions = _json['logAdminReadActions'] as core.bool;
+    }
+    if (_json.containsKey('logDataReadActions')) {
+      logDataReadActions = _json['logDataReadActions'] as core.bool;
+    }
+    if (_json.containsKey('logDataWriteActions')) {
+      logDataWriteActions = _json['logDataWriteActions'] as core.bool;
+    }
+    if (_json.containsKey('project')) {
+      project = _json['project'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (logAdminReadActions != null)
+          'logAdminReadActions': logAdminReadActions!,
+        if (logDataReadActions != null)
+          'logDataReadActions': logDataReadActions!,
+        if (logDataWriteActions != null)
+          'logDataWriteActions': logDataWriteActions!,
+        if (project != null) 'project': project!,
+      };
+}
+
 /// Used to provide a search operator for boolean properties.
 ///
 /// This is optional. Search operators let users restrict the query to specific
@@ -2665,6 +2793,42 @@ class CompositeFilter {
       };
 }
 
+/// A named attribute associated with an item which can be used for influencing
+/// the ranking of the item based on the context in the request.
+class ContextAttribute {
+  /// The name of the attribute.
+  ///
+  /// It should not be empty. The maximum length is 32 characters. The name must
+  /// start with a letter and can only contain letters (A-Z, a-z) or numbers
+  /// (0-9). The name will be normalized (lower-cased) before being matched.
+  core.String? name;
+
+  /// Text values of the attribute.
+  ///
+  /// The maximum number of elements is 10. The maximum length of an element in
+  /// the array is 32 characters. The value will be normalized (lower-cased)
+  /// before being matched.
+  core.List<core.String>? values;
+
+  ContextAttribute();
+
+  ContextAttribute.fromJson(core.Map _json) {
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('values')) {
+      values = (_json['values'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (values != null) 'values': values!,
+      };
+}
+
 /// Aggregation of items by status code as of the specified date.
 class CustomerIndexStats {
   /// Date for which statistics were calculated.
@@ -2751,6 +2915,40 @@ class CustomerSessionStats {
         if (date != null) 'date': date!.toJson(),
         if (searchSessionsCount != null)
           'searchSessionsCount': searchSessionsCount!,
+      };
+}
+
+/// Represents settings at a customer level.
+class CustomerSettings {
+  /// Audit Logging settings for the customer.
+  ///
+  /// If update_mask is empty then this field will be updated based on
+  /// UpdateCustomerSettings request.
+  AuditLoggingSettings? auditLoggingSettings;
+
+  /// VPC SC settings for the customer.
+  ///
+  /// If update_mask is empty then this field will be updated based on
+  /// UpdateCustomerSettings request.
+  VPCSettings? vpcSettings;
+
+  CustomerSettings();
+
+  CustomerSettings.fromJson(core.Map _json) {
+    if (_json.containsKey('auditLoggingSettings')) {
+      auditLoggingSettings = AuditLoggingSettings.fromJson(
+          _json['auditLoggingSettings'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('vpcSettings')) {
+      vpcSettings = VPCSettings.fromJson(
+          _json['vpcSettings'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (auditLoggingSettings != null)
+          'auditLoggingSettings': auditLoggingSettings!.toJson(),
+        if (vpcSettings != null) 'vpcSettings': vpcSettings!.toJson(),
       };
 }
 
@@ -4755,6 +4953,12 @@ class ItemMetadata {
   /// maximum length is 32 characters.
   core.String? contentLanguage;
 
+  /// A set of named attributes associated with the item.
+  ///
+  /// This can be used for influencing the ranking of the item based on the
+  /// context in the request. The maximum number of elements is 10.
+  core.List<ContextAttribute>? contextAttributes;
+
   /// The time when the item was created in the source repository.
   core.String? createTime;
 
@@ -4819,6 +5023,12 @@ class ItemMetadata {
     if (_json.containsKey('contentLanguage')) {
       contentLanguage = _json['contentLanguage'] as core.String;
     }
+    if (_json.containsKey('contextAttributes')) {
+      contextAttributes = (_json['contextAttributes'] as core.List)
+          .map<ContextAttribute>((value) => ContextAttribute.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
     if (_json.containsKey('createTime')) {
       createTime = _json['createTime'] as core.String;
     }
@@ -4861,6 +5071,9 @@ class ItemMetadata {
   core.Map<core.String, core.dynamic> toJson() => {
         if (containerName != null) 'containerName': containerName!,
         if (contentLanguage != null) 'contentLanguage': contentLanguage!,
+        if (contextAttributes != null)
+          'contextAttributes':
+              contextAttributes!.map((value) => value.toJson()).toList(),
         if (createTime != null) 'createTime': createTime!,
         if (hash != null) 'hash': hash!,
         if (interactions != null)
@@ -7006,6 +7219,10 @@ class SearchApplication {
   /// The maximum length is 300 characters.
   core.String? displayName;
 
+  /// Indicates whether audit logging is on/off for requests made for the search
+  /// application in query APIs.
+  core.bool? enableAuditLog;
+
   /// Name of the Search Application.
   ///
   /// Format: searchapplications/{application_id}.
@@ -7047,6 +7264,9 @@ class SearchApplication {
     if (_json.containsKey('displayName')) {
       displayName = _json['displayName'] as core.String;
     }
+    if (_json.containsKey('enableAuditLog')) {
+      enableAuditLog = _json['enableAuditLog'] as core.bool;
+    }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
@@ -7077,6 +7297,7 @@ class SearchApplication {
         if (defaultSortOptions != null)
           'defaultSortOptions': defaultSortOptions!.toJson(),
         if (displayName != null) 'displayName': displayName!,
+        if (enableAuditLog != null) 'enableAuditLog': enableAuditLog!,
         if (name != null) 'name': name!,
         if (operationIds != null) 'operationIds': operationIds!,
         if (scoringConfig != null) 'scoringConfig': scoringConfig!.toJson(),
@@ -7275,6 +7496,12 @@ class SearchQualityMetadata {
 
 /// The search API request.
 class SearchRequest {
+  /// Context attributes for the request which will be used to adjust ranking of
+  /// search results.
+  ///
+  /// The maximum number of elements is 10.
+  core.List<ContextAttribute>? contextAttributes;
+
   /// The sources to use for querying.
   ///
   /// If not specified, all data sources from the current search application are
@@ -7309,6 +7536,12 @@ class SearchRequest {
   SearchRequest();
 
   SearchRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('contextAttributes')) {
+      contextAttributes = (_json['contextAttributes'] as core.List)
+          .map<ContextAttribute>((value) => ContextAttribute.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
     if (_json.containsKey('dataSourceRestrictions')) {
       dataSourceRestrictions = (_json['dataSourceRestrictions'] as core.List)
           .map<DataSourceRestriction>((value) => DataSourceRestriction.fromJson(
@@ -7346,6 +7579,9 @@ class SearchRequest {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (contextAttributes != null)
+          'contextAttributes':
+              contextAttributes!.map((value) => value.toJson()).toList(),
         if (dataSourceRestrictions != null)
           'dataSourceRestrictions':
               dataSourceRestrictions!.map((value) => value.toJson()).toList(),
@@ -8384,6 +8620,27 @@ class UploadItemRef {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
+      };
+}
+
+class VPCSettings {
+  /// The resource name of the GCP Project to be used for VPC SC policy check.
+  ///
+  /// VPC security settings on this project will be honored for Cloud Search
+  /// APIs after project_name has been updated through CustomerService. Format:
+  /// projects/{project_id}
+  core.String? project;
+
+  VPCSettings();
+
+  VPCSettings.fromJson(core.Map _json) {
+    if (_json.containsKey('project')) {
+      project = _json['project'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (project != null) 'project': project!,
       };
 }
 

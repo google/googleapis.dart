@@ -410,6 +410,61 @@
                 },
                 "campaigns": {
                     "methods": {
+                        "bulkListCampaignAssignedTargetingOptions": {
+                            "description": "Lists assigned targeting options of a campaign across targeting types.",
+                            "httpMethod": "GET",
+                            "id": "displayvideo.advertisers.campaigns.bulkListCampaignAssignedTargetingOptions",
+                            "parameterOrder": [
+                                "advertiserId",
+                                "campaignId"
+                            ],
+                            "parameters": {
+                                "advertiserId": {
+                                    "description": "Required. The ID of the advertiser the campaign belongs to.",
+                                    "format": "int64",
+                                    "location": "path",
+                                    "pattern": "^[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "campaignId": {
+                                    "description": "Required. The ID of the campaign to list assigned targeting options for.",
+                                    "format": "int64",
+                                    "location": "path",
+                                    "pattern": "^[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "filter": {
+                                    "description": "Allows filtering by assigned targeting option properties. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the logical operator `OR` on the same field. * A restriction has the form of `{field} {operator} {value}`. * The operator must be `EQUALS (=)`. * Supported fields: - `targetingType` - `inheritance` Examples: * AssignedTargetingOptions of targeting type TARGETING_TYPE_LANGUAGE or TARGETING_TYPE_GENDER `targetingType=\"TARGETING_TYPE_LANGUAGE\" OR targetingType=\"TARGETING_TYPE_GENDER\"` * AssignedTargetingOptions with inheritance status of NOT_INHERITED or INHERITED_FROM_PARTNER `inheritance=\"NOT_INHERITED\" OR inheritance=\"INHERITED_FROM_PARTNER\"` The length of this field should be no more than 500 characters.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "orderBy": {
+                                    "description": "Field by which to sort the list. Acceptable values are: * `targetingType` (default) The default sorting order is ascending. To specify descending order for a field, a suffix \"desc\" should be added to the field name. Example: `targetingType desc`.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "pageSize": {
+                                    "description": "Requested page size. The size must be an integer between `1` and `5000`. If unspecified, the default is `5000`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.",
+                                    "format": "int32",
+                                    "location": "query",
+                                    "type": "integer"
+                                },
+                                "pageToken": {
+                                    "description": "A token that lets the client fetch the next page of results. Typically, this is the value of next_page_token returned from the previous call to `BulkListCampaignAssignedTargetingOptions` method. If not specified, the first page of results will be returned.",
+                                    "location": "query",
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/advertisers/{+advertiserId}/campaigns/{+campaignId}:bulkListCampaignAssignedTargetingOptions",
+                            "response": {
+                                "$ref": "BulkListCampaignAssignedTargetingOptionsResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/display-video"
+                            ]
+                        },
                         "create": {
                             "description": "Creates a new campaign. Returns the newly created campaign if successful.",
                             "httpMethod": "POST",
@@ -599,6 +654,293 @@
                                 "https://www.googleapis.com/auth/display-video",
                                 "https://www.googleapis.com/auth/display-video-mediaplanning"
                             ]
+                        }
+                    },
+                    "resources": {
+                        "targetingTypes": {
+                            "resources": {
+                                "assignedTargetingOptions": {
+                                    "methods": {
+                                        "get": {
+                                            "description": "Gets a single targeting option assigned to a campaign.",
+                                            "httpMethod": "GET",
+                                            "id": "displayvideo.advertisers.campaigns.targetingTypes.assignedTargetingOptions.get",
+                                            "parameterOrder": [
+                                                "advertiserId",
+                                                "campaignId",
+                                                "targetingType",
+                                                "assignedTargetingOptionId"
+                                            ],
+                                            "parameters": {
+                                                "advertiserId": {
+                                                    "description": "Required. The ID of the advertiser the campaign belongs to.",
+                                                    "format": "int64",
+                                                    "location": "path",
+                                                    "pattern": "^[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "assignedTargetingOptionId": {
+                                                    "description": "Required. An identifier unique to the targeting type in this campaign that identifies the assigned targeting option being requested.",
+                                                    "location": "path",
+                                                    "pattern": "^[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "campaignId": {
+                                                    "description": "Required. The ID of the campaign the assigned targeting option belongs to.",
+                                                    "format": "int64",
+                                                    "location": "path",
+                                                    "pattern": "^[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "targetingType": {
+                                                    "description": "Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_VIEWABILITY`",
+                                                    "enum": [
+                                                        "TARGETING_TYPE_UNSPECIFIED",
+                                                        "TARGETING_TYPE_CHANNEL",
+                                                        "TARGETING_TYPE_APP_CATEGORY",
+                                                        "TARGETING_TYPE_APP",
+                                                        "TARGETING_TYPE_URL",
+                                                        "TARGETING_TYPE_DAY_AND_TIME",
+                                                        "TARGETING_TYPE_AGE_RANGE",
+                                                        "TARGETING_TYPE_REGIONAL_LOCATION_LIST",
+                                                        "TARGETING_TYPE_PROXIMITY_LOCATION_LIST",
+                                                        "TARGETING_TYPE_GENDER",
+                                                        "TARGETING_TYPE_VIDEO_PLAYER_SIZE",
+                                                        "TARGETING_TYPE_USER_REWARDED_CONTENT",
+                                                        "TARGETING_TYPE_PARENTAL_STATUS",
+                                                        "TARGETING_TYPE_CONTENT_INSTREAM_POSITION",
+                                                        "TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION",
+                                                        "TARGETING_TYPE_DEVICE_TYPE",
+                                                        "TARGETING_TYPE_AUDIENCE_GROUP",
+                                                        "TARGETING_TYPE_BROWSER",
+                                                        "TARGETING_TYPE_HOUSEHOLD_INCOME",
+                                                        "TARGETING_TYPE_ON_SCREEN_POSITION",
+                                                        "TARGETING_TYPE_THIRD_PARTY_VERIFIER",
+                                                        "TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION",
+                                                        "TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION",
+                                                        "TARGETING_TYPE_ENVIRONMENT",
+                                                        "TARGETING_TYPE_CARRIER_AND_ISP",
+                                                        "TARGETING_TYPE_OPERATING_SYSTEM",
+                                                        "TARGETING_TYPE_DEVICE_MAKE_MODEL",
+                                                        "TARGETING_TYPE_KEYWORD",
+                                                        "TARGETING_TYPE_NEGATIVE_KEYWORD_LIST",
+                                                        "TARGETING_TYPE_VIEWABILITY",
+                                                        "TARGETING_TYPE_CATEGORY",
+                                                        "TARGETING_TYPE_INVENTORY_SOURCE",
+                                                        "TARGETING_TYPE_LANGUAGE",
+                                                        "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS",
+                                                        "TARGETING_TYPE_GEO_REGION",
+                                                        "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
+                                                        "TARGETING_TYPE_EXCHANGE",
+                                                        "TARGETING_TYPE_SUB_EXCHANGE",
+                                                        "TARGETING_TYPE_NATIVE_CONTENT_POSITION"
+                                                    ],
+                                                    "enumDescriptions": [
+                                                        "Default value when type is not specified or is unknown in this version.",
+                                                        "Target a channel (a custom group of related websites or apps).",
+                                                        "Target an app category (for example, education or puzzle games).",
+                                                        "Target a specific app (for example, Angry Birds).",
+                                                        "Target a specific url (for example, quora.com).",
+                                                        "Target ads during a chosen time period on a specific day.",
+                                                        "Target ads to a specific age range (for example, 18-24).",
+                                                        "Target ads to the specified regions on a regional location list.",
+                                                        "Target ads to the specified points of interest on a proximity location list.",
+                                                        "Target ads to a specific gender (for example, female or male).",
+                                                        "Target a specific video player size for video ads.",
+                                                        "Target user rewarded content for video ads.",
+                                                        "Target ads to a specific parental status (for example, parent or not a parent).",
+                                                        "Target video or audio ads in a specific content instream position (for example, pre-roll, mid-roll, or post-roll).",
+                                                        "Target ads in a specific content outstream position.",
+                                                        "Target ads to a specific device type (for example, tablet or connected TV).",
+                                                        "Target ads to an audience or groups of audiences. Singleton field, at most one can exist on a single Lineitem at a time.",
+                                                        "Target ads to specific web browsers (for example, Chrome).",
+                                                        "Target ads to a specific household income range (for example, top 10%).",
+                                                        "Target ads in a specific on screen position.",
+                                                        "Filter web sites through third party verification (for example, IAS or DoubleVerify).",
+                                                        "Filter web sites by specific digital content label ratings (for example, DL-MA: suitable only for mature audiences).",
+                                                        "Filter website content by sensitive categories (for example, adult).",
+                                                        "Target ads to a specific environment (for example, web or app).",
+                                                        "Target ads to a specific network carrier or internet service provider (ISP) (for example, Comcast or Orange).",
+                                                        "Target ads to a specific operating system (for example, macOS).",
+                                                        "Target ads to a specific device make or model (for example, Roku or Samsung).",
+                                                        "Target ads to a specific keyword (for example, dog or retriever).",
+                                                        "Target ads to a specific negative keyword list.",
+                                                        "Target ads to a specific viewability (for example, 80% viewable).",
+                                                        "Target ads to a specific content category (for example, arts & entertainment).",
+                                                        "Purchase impressions from specific deals and auction packages.",
+                                                        "Target ads to a specific language (for example, English or Japanese).",
+                                                        "Target ads to ads.txt authorized sellers.",
+                                                        "Target ads to a specific regional location (for example, a city or state).",
+                                                        "Purchase impressions from a group of deals and auction packages.",
+                                                        "Purchase impressions from specific exchanges.",
+                                                        "Purchase impressions from specific sub-exchanges.",
+                                                        "Target ads to a specific native content position."
+                                                    ],
+                                                    "location": "path",
+                                                    "pattern": "^[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1/advertisers/{+advertiserId}/campaigns/{+campaignId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}",
+                                            "response": {
+                                                "$ref": "AssignedTargetingOption"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/display-video"
+                                            ]
+                                        },
+                                        "list": {
+                                            "description": "Lists the targeting options assigned to a campaign for a specified targeting type.",
+                                            "httpMethod": "GET",
+                                            "id": "displayvideo.advertisers.campaigns.targetingTypes.assignedTargetingOptions.list",
+                                            "parameterOrder": [
+                                                "advertiserId",
+                                                "campaignId",
+                                                "targetingType"
+                                            ],
+                                            "parameters": {
+                                                "advertiserId": {
+                                                    "description": "Required. The ID of the advertiser the campaign belongs to.",
+                                                    "format": "int64",
+                                                    "location": "path",
+                                                    "pattern": "^[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "campaignId": {
+                                                    "description": "Required. The ID of the campaign to list assigned targeting options for.",
+                                                    "format": "int64",
+                                                    "location": "path",
+                                                    "pattern": "^[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "filter": {
+                                                    "description": "Allows filtering by assigned targeting option properties. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the logical operator `OR`. * A restriction has the form of `{field} {operator} {value}`. * The operator must be `EQUALS (=)`. * Supported fields: - `assignedTargetingOptionId` - `inheritance` Examples: * AssignedTargetingOptions with ID 1 or 2 `assignedTargetingOptionId=\"1\" OR assignedTargetingOptionId=\"2\"` * AssignedTargetingOptions with inheritance status of NOT_INHERITED or INHERITED_FROM_PARTNER `inheritance=\"NOT_INHERITED\" OR inheritance=\"INHERITED_FROM_PARTNER\"` The length of this field should be no more than 500 characters.",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
+                                                "orderBy": {
+                                                    "description": "Field by which to sort the list. Acceptable values are: * `assignedTargetingOptionId` (default) The default sorting order is ascending. To specify descending order for a field, a suffix \"desc\" should be added to the field name. Example: `assignedTargetingOptionId desc`.",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
+                                                "pageSize": {
+                                                    "description": "Requested page size. Must be between `1` and `100`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.",
+                                                    "format": "int32",
+                                                    "location": "query",
+                                                    "type": "integer"
+                                                },
+                                                "pageToken": {
+                                                    "description": "A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListCampaignAssignedTargetingOptions` method. If not specified, the first page of results will be returned.",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
+                                                "targetingType": {
+                                                    "description": "Required. Identifies the type of assigned targeting options to list. Supported targeting types: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_VIEWABILITY`",
+                                                    "enum": [
+                                                        "TARGETING_TYPE_UNSPECIFIED",
+                                                        "TARGETING_TYPE_CHANNEL",
+                                                        "TARGETING_TYPE_APP_CATEGORY",
+                                                        "TARGETING_TYPE_APP",
+                                                        "TARGETING_TYPE_URL",
+                                                        "TARGETING_TYPE_DAY_AND_TIME",
+                                                        "TARGETING_TYPE_AGE_RANGE",
+                                                        "TARGETING_TYPE_REGIONAL_LOCATION_LIST",
+                                                        "TARGETING_TYPE_PROXIMITY_LOCATION_LIST",
+                                                        "TARGETING_TYPE_GENDER",
+                                                        "TARGETING_TYPE_VIDEO_PLAYER_SIZE",
+                                                        "TARGETING_TYPE_USER_REWARDED_CONTENT",
+                                                        "TARGETING_TYPE_PARENTAL_STATUS",
+                                                        "TARGETING_TYPE_CONTENT_INSTREAM_POSITION",
+                                                        "TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION",
+                                                        "TARGETING_TYPE_DEVICE_TYPE",
+                                                        "TARGETING_TYPE_AUDIENCE_GROUP",
+                                                        "TARGETING_TYPE_BROWSER",
+                                                        "TARGETING_TYPE_HOUSEHOLD_INCOME",
+                                                        "TARGETING_TYPE_ON_SCREEN_POSITION",
+                                                        "TARGETING_TYPE_THIRD_PARTY_VERIFIER",
+                                                        "TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION",
+                                                        "TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION",
+                                                        "TARGETING_TYPE_ENVIRONMENT",
+                                                        "TARGETING_TYPE_CARRIER_AND_ISP",
+                                                        "TARGETING_TYPE_OPERATING_SYSTEM",
+                                                        "TARGETING_TYPE_DEVICE_MAKE_MODEL",
+                                                        "TARGETING_TYPE_KEYWORD",
+                                                        "TARGETING_TYPE_NEGATIVE_KEYWORD_LIST",
+                                                        "TARGETING_TYPE_VIEWABILITY",
+                                                        "TARGETING_TYPE_CATEGORY",
+                                                        "TARGETING_TYPE_INVENTORY_SOURCE",
+                                                        "TARGETING_TYPE_LANGUAGE",
+                                                        "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS",
+                                                        "TARGETING_TYPE_GEO_REGION",
+                                                        "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
+                                                        "TARGETING_TYPE_EXCHANGE",
+                                                        "TARGETING_TYPE_SUB_EXCHANGE",
+                                                        "TARGETING_TYPE_NATIVE_CONTENT_POSITION"
+                                                    ],
+                                                    "enumDescriptions": [
+                                                        "Default value when type is not specified or is unknown in this version.",
+                                                        "Target a channel (a custom group of related websites or apps).",
+                                                        "Target an app category (for example, education or puzzle games).",
+                                                        "Target a specific app (for example, Angry Birds).",
+                                                        "Target a specific url (for example, quora.com).",
+                                                        "Target ads during a chosen time period on a specific day.",
+                                                        "Target ads to a specific age range (for example, 18-24).",
+                                                        "Target ads to the specified regions on a regional location list.",
+                                                        "Target ads to the specified points of interest on a proximity location list.",
+                                                        "Target ads to a specific gender (for example, female or male).",
+                                                        "Target a specific video player size for video ads.",
+                                                        "Target user rewarded content for video ads.",
+                                                        "Target ads to a specific parental status (for example, parent or not a parent).",
+                                                        "Target video or audio ads in a specific content instream position (for example, pre-roll, mid-roll, or post-roll).",
+                                                        "Target ads in a specific content outstream position.",
+                                                        "Target ads to a specific device type (for example, tablet or connected TV).",
+                                                        "Target ads to an audience or groups of audiences. Singleton field, at most one can exist on a single Lineitem at a time.",
+                                                        "Target ads to specific web browsers (for example, Chrome).",
+                                                        "Target ads to a specific household income range (for example, top 10%).",
+                                                        "Target ads in a specific on screen position.",
+                                                        "Filter web sites through third party verification (for example, IAS or DoubleVerify).",
+                                                        "Filter web sites by specific digital content label ratings (for example, DL-MA: suitable only for mature audiences).",
+                                                        "Filter website content by sensitive categories (for example, adult).",
+                                                        "Target ads to a specific environment (for example, web or app).",
+                                                        "Target ads to a specific network carrier or internet service provider (ISP) (for example, Comcast or Orange).",
+                                                        "Target ads to a specific operating system (for example, macOS).",
+                                                        "Target ads to a specific device make or model (for example, Roku or Samsung).",
+                                                        "Target ads to a specific keyword (for example, dog or retriever).",
+                                                        "Target ads to a specific negative keyword list.",
+                                                        "Target ads to a specific viewability (for example, 80% viewable).",
+                                                        "Target ads to a specific content category (for example, arts & entertainment).",
+                                                        "Purchase impressions from specific deals and auction packages.",
+                                                        "Target ads to a specific language (for example, English or Japanese).",
+                                                        "Target ads to ads.txt authorized sellers.",
+                                                        "Target ads to a specific regional location (for example, a city or state).",
+                                                        "Purchase impressions from a group of deals and auction packages.",
+                                                        "Purchase impressions from specific exchanges.",
+                                                        "Purchase impressions from specific sub-exchanges.",
+                                                        "Target ads to a specific native content position."
+                                                    ],
+                                                    "location": "path",
+                                                    "pattern": "^[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1/advertisers/{+advertiserId}/campaigns/{+campaignId}/targetingTypes/{+targetingType}/assignedTargetingOptions",
+                                            "response": {
+                                                "$ref": "ListCampaignAssignedTargetingOptionsResponse"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/display-video"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 },
@@ -943,7 +1285,7 @@
                                             "type": "string"
                                         },
                                         "pageSize": {
-                                            "description": "Requested page size. Must be between `1` and `100`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.",
+                                            "description": "Requested page size. Must be between `1` and `10000`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.",
                                             "format": "int32",
                                             "location": "query",
                                             "type": "integer"
@@ -963,6 +1305,42 @@
                                     "path": "v1/advertisers/{+advertiserId}/channels/{+channelId}/sites",
                                     "response": {
                                         "$ref": "ListSitesResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/display-video"
+                                    ]
+                                },
+                                "replace": {
+                                    "description": "Replaces all of the sites under a single channel. The operation will replace the sites under a channel with the sites provided in ReplaceSitesRequest.new_sites.",
+                                    "httpMethod": "POST",
+                                    "id": "displayvideo.advertisers.channels.sites.replace",
+                                    "parameterOrder": [
+                                        "advertiserId",
+                                        "channelId"
+                                    ],
+                                    "parameters": {
+                                        "advertiserId": {
+                                            "description": "The ID of the advertiser that owns the parent channel.",
+                                            "format": "int64",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "channelId": {
+                                            "description": "Required. The ID of the parent channel whose sites will be replaced.",
+                                            "format": "int64",
+                                            "location": "path",
+                                            "pattern": "^[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/advertisers/{advertiserId}/channels/{+channelId}/sites:replace",
+                                    "request": {
+                                        "$ref": "ReplaceSitesRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "ReplaceSitesResponse"
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/display-video"
@@ -1483,7 +1861,8 @@
                                                         "TARGETING_TYPE_GEO_REGION",
                                                         "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
                                                         "TARGETING_TYPE_EXCHANGE",
-                                                        "TARGETING_TYPE_SUB_EXCHANGE"
+                                                        "TARGETING_TYPE_SUB_EXCHANGE",
+                                                        "TARGETING_TYPE_NATIVE_CONTENT_POSITION"
                                                     ],
                                                     "enumDescriptions": [
                                                         "Default value when type is not specified or is unknown in this version.",
@@ -1523,7 +1902,8 @@
                                                         "Target ads to a specific regional location (for example, a city or state).",
                                                         "Purchase impressions from a group of deals and auction packages.",
                                                         "Purchase impressions from specific exchanges.",
-                                                        "Purchase impressions from specific sub-exchanges."
+                                                        "Purchase impressions from specific sub-exchanges.",
+                                                        "Target ads to a specific native content position."
                                                     ],
                                                     "location": "path",
                                                     "pattern": "^[^/]+$",
@@ -1626,7 +2006,8 @@
                                                         "TARGETING_TYPE_GEO_REGION",
                                                         "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
                                                         "TARGETING_TYPE_EXCHANGE",
-                                                        "TARGETING_TYPE_SUB_EXCHANGE"
+                                                        "TARGETING_TYPE_SUB_EXCHANGE",
+                                                        "TARGETING_TYPE_NATIVE_CONTENT_POSITION"
                                                     ],
                                                     "enumDescriptions": [
                                                         "Default value when type is not specified or is unknown in this version.",
@@ -1666,7 +2047,8 @@
                                                         "Target ads to a specific regional location (for example, a city or state).",
                                                         "Purchase impressions from a group of deals and auction packages.",
                                                         "Purchase impressions from specific exchanges.",
-                                                        "Purchase impressions from specific sub-exchanges."
+                                                        "Purchase impressions from specific sub-exchanges.",
+                                                        "Target ads to a specific native content position."
                                                     ],
                                                     "location": "path",
                                                     "pattern": "^[^/]+$",
@@ -1685,6 +2067,98 @@
                                     }
                                 }
                             }
+                        }
+                    }
+                },
+                "invoices": {
+                    "methods": {
+                        "list": {
+                            "description": "List invoices for an advertiser.",
+                            "httpMethod": "GET",
+                            "id": "displayvideo.advertisers.invoices.list",
+                            "parameterOrder": [
+                                "advertiserId"
+                            ],
+                            "parameters": {
+                                "advertiserId": {
+                                    "description": "Required. The ID of the advertiser to list invoices for.",
+                                    "format": "int64",
+                                    "location": "path",
+                                    "pattern": "^[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "issueMonth": {
+                                    "description": "Required. Month for which invoices are needed in the format YYYYMM.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "loiSapinInvoiceType": {
+                                    "description": "Select type of invoice to query for Loi Sapin advertisers. Otherwise its ignored.",
+                                    "enum": [
+                                        "LOI_SAPIN_INVOICE_TYPE_UNSPECIFIED",
+                                        "LOI_SAPIN_INVOICE_TYPE_MEDIA",
+                                        "LOI_SAPIN_INVOICE_TYPE_PLATFORM"
+                                    ],
+                                    "enumDescriptions": [
+                                        "Value is not specified.",
+                                        "Invoices with Media cost.",
+                                        "Invoices with Platform fee."
+                                    ],
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "pageSize": {
+                                    "description": "Requested page size. Must be between `1` and `100`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.",
+                                    "format": "int32",
+                                    "location": "query",
+                                    "type": "integer"
+                                },
+                                "pageToken": {
+                                    "description": "A token identifying a page of results the server should return. Typically, this is the value of [ListInvoicesResponse.next_page_token] returned from the previous call to `ListInvoice` method. If not specified, the first page of results will be returned.",
+                                    "location": "query",
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/advertisers/{+advertiserId}/invoices",
+                            "response": {
+                                "$ref": "ListInvoicesResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/display-video",
+                                "https://www.googleapis.com/auth/display-video-mediaplanning"
+                            ]
+                        },
+                        "lookupInvoiceCurrency": {
+                            "description": "Lookup invoice currency for an advertiser.",
+                            "httpMethod": "GET",
+                            "id": "displayvideo.advertisers.invoices.lookupInvoiceCurrency",
+                            "parameterOrder": [
+                                "advertiserId"
+                            ],
+                            "parameters": {
+                                "advertiserId": {
+                                    "description": "Required. The ID of the advertiser to lookup currency for.",
+                                    "format": "int64",
+                                    "location": "path",
+                                    "pattern": "^[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "invoiceMonth": {
+                                    "description": "Month for which currency is needed in the format YYYYMM. If not set Api would return currency based on current settings.",
+                                    "location": "query",
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/advertisers/{+advertiserId}/invoices:lookupInvoiceCurrency",
+                            "response": {
+                                "$ref": "LookupInvoiceCurrencyResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/display-video",
+                                "https://www.googleapis.com/auth/display-video-mediaplanning"
+                            ]
                         }
                     }
                 },
@@ -1844,6 +2318,34 @@
                                 "https://www.googleapis.com/auth/display-video"
                             ]
                         },
+                        "generateDefault": {
+                            "description": "Creates a new line item with settings (including targeting) inherited from the insertion order and an `ENTITY_STATUS_DRAFT` entity_status. Returns the newly created line item if successful. There are default values based on the three fields: * The insertion order's insertion_order_type * The insertion order's automation_type * The given line_item_type",
+                            "httpMethod": "POST",
+                            "id": "displayvideo.advertisers.lineItems.generateDefault",
+                            "parameterOrder": [
+                                "advertiserId"
+                            ],
+                            "parameters": {
+                                "advertiserId": {
+                                    "description": "Required. The ID of the advertiser this line item belongs to.",
+                                    "format": "int64",
+                                    "location": "path",
+                                    "pattern": "^[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/advertisers/{+advertiserId}/lineItems:generateDefault",
+                            "request": {
+                                "$ref": "GenerateDefaultLineItemRequest"
+                            },
+                            "response": {
+                                "$ref": "LineItem"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/display-video"
+                            ]
+                        },
                         "get": {
                             "description": "Gets a line item.",
                             "httpMethod": "GET",
@@ -1895,7 +2397,7 @@
                                     "type": "string"
                                 },
                                 "filter": {
-                                    "description": "Allows filtering by line item properties. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * The operator used on `flight.dateRange.endDate` must be LESS THAN (<). * The operator used on `updateTime` must be `GREATER THAN OR EQUAL TO (>=)` or `LESS THAN OR EQUAL TO (<=)`. * The operator used on `warningMessages` must be `HAS (:)`. * The operators used on all other fields must be `EQUALS (=)`. * Supported fields: - `campaignId` - `displayName` - `insertionOrderId` - `entityStatus` - `lineItemId` - `lineItemType` - `flight.dateRange.endDate` (input formatted as YYYY-MM-DD) - `warningMessages` - `flight.triggerId` - `updateTime` (input in ISO 8601 format, or YYYY-MM-DDTHH:MM:SSZ) * The operator can be `NO LESS THAN (>=)` or `NO GREATER THAN (<=)`. - `updateTime` (format of ISO 8601) Examples: * All line items under an insertion order: `insertionOrderId=\"1234\"` * All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` and `LINE_ITEM_TYPE_DISPLAY_DEFAULT` line items under an advertiser: `(entityStatus=\"ENTITY_STATUS_ACTIVE\" OR entityStatus=\"ENTITY_STATUS_PAUSED\") AND lineItemType=\"LINE_ITEM_TYPE_DISPLAY_DEFAULT\"` * All line items whose flight dates end before March 28, 2019: `flight.dateRange.endDate<\"2019-03-28\"` * All line items that have `NO_VALID_CREATIVE` in `warningMessages`: `warningMessages:\"NO_VALID_CREATIVE\"` * All line items with an update time less than or equal to `2020-11-04T18:54:47Z (format of ISO 8601)`: `updateTime<=\"2020-11-04T18:54:47Z\"` * All line items with an update time greater than or equal to `2020-11-04T18:54:47Z (format of ISO 8601)`: `updateTime>=\"2020-11-04T18:54:47Z\"` The length of this field should be no more than 500 characters.",
+                                    "description": "Allows filtering by line item properties. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * The operator used on `flight.dateRange.endDate` must be LESS THAN (<). * The operator used on `updateTime` must be `GREATER THAN OR EQUAL TO (>=)` or `LESS THAN OR EQUAL TO (<=)`. * The operator used on `warningMessages` must be `HAS (:)`. * The operators used on all other fields must be `EQUALS (=)`. * Supported properties: - `campaignId` - `displayName` - `insertionOrderId` - `entityStatus` - `lineItemId` - `lineItemType` - `flight.dateRange.endDate` (input formatted as YYYY-MM-DD) - `warningMessages` - `flight.triggerId` - `updateTime` (input in ISO 8601 format, or YYYY-MM-DDTHH:MM:SSZ) - `targetedChannelId` - `targetedNegativeKeywordListId` Examples: * All line items under an insertion order: `insertionOrderId=\"1234\"` * All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` and `LINE_ITEM_TYPE_DISPLAY_DEFAULT` line items under an advertiser: `(entityStatus=\"ENTITY_STATUS_ACTIVE\" OR entityStatus=\"ENTITY_STATUS_PAUSED\") AND lineItemType=\"LINE_ITEM_TYPE_DISPLAY_DEFAULT\"` * All line items whose flight dates end before March 28, 2019: `flight.dateRange.endDate<\"2019-03-28\"` * All line items that have `NO_VALID_CREATIVE` in `warningMessages`: `warningMessages:\"NO_VALID_CREATIVE\"` * All line items with an update time less than or equal to `2020-11-04T18:54:47Z (format of ISO 8601)`: `updateTime<=\"2020-11-04T18:54:47Z\"` * All line items with an update time greater than or equal to `2020-11-04T18:54:47Z (format of ISO 8601)`: `updateTime>=\"2020-11-04T18:54:47Z\"` * All line items that are using both the specified channel and specified negative keyword list in their targeting: `targetedNegativeKeywordListId=789 AND targetedChannelId=12345` The length of this field should be no more than 500 characters.",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -2039,7 +2541,8 @@
                                                         "TARGETING_TYPE_GEO_REGION",
                                                         "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
                                                         "TARGETING_TYPE_EXCHANGE",
-                                                        "TARGETING_TYPE_SUB_EXCHANGE"
+                                                        "TARGETING_TYPE_SUB_EXCHANGE",
+                                                        "TARGETING_TYPE_NATIVE_CONTENT_POSITION"
                                                     ],
                                                     "enumDescriptions": [
                                                         "Default value when type is not specified or is unknown in this version.",
@@ -2079,7 +2582,8 @@
                                                         "Target ads to a specific regional location (for example, a city or state).",
                                                         "Purchase impressions from a group of deals and auction packages.",
                                                         "Purchase impressions from specific exchanges.",
-                                                        "Purchase impressions from specific sub-exchanges."
+                                                        "Purchase impressions from specific sub-exchanges.",
+                                                        "Target ads to a specific native content position."
                                                     ],
                                                     "location": "path",
                                                     "pattern": "^[^/]+$",
@@ -2172,7 +2676,8 @@
                                                         "TARGETING_TYPE_GEO_REGION",
                                                         "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
                                                         "TARGETING_TYPE_EXCHANGE",
-                                                        "TARGETING_TYPE_SUB_EXCHANGE"
+                                                        "TARGETING_TYPE_SUB_EXCHANGE",
+                                                        "TARGETING_TYPE_NATIVE_CONTENT_POSITION"
                                                     ],
                                                     "enumDescriptions": [
                                                         "Default value when type is not specified or is unknown in this version.",
@@ -2212,7 +2717,8 @@
                                                         "Target ads to a specific regional location (for example, a city or state).",
                                                         "Purchase impressions from a group of deals and auction packages.",
                                                         "Purchase impressions from specific exchanges.",
-                                                        "Purchase impressions from specific sub-exchanges."
+                                                        "Purchase impressions from specific sub-exchanges.",
+                                                        "Target ads to a specific native content position."
                                                     ],
                                                     "location": "path",
                                                     "pattern": "^[^/]+$",
@@ -2302,7 +2808,8 @@
                                                         "TARGETING_TYPE_GEO_REGION",
                                                         "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
                                                         "TARGETING_TYPE_EXCHANGE",
-                                                        "TARGETING_TYPE_SUB_EXCHANGE"
+                                                        "TARGETING_TYPE_SUB_EXCHANGE",
+                                                        "TARGETING_TYPE_NATIVE_CONTENT_POSITION"
                                                     ],
                                                     "enumDescriptions": [
                                                         "Default value when type is not specified or is unknown in this version.",
@@ -2342,7 +2849,8 @@
                                                         "Target ads to a specific regional location (for example, a city or state).",
                                                         "Purchase impressions from a group of deals and auction packages.",
                                                         "Purchase impressions from specific exchanges.",
-                                                        "Purchase impressions from specific sub-exchanges."
+                                                        "Purchase impressions from specific sub-exchanges.",
+                                                        "Target ads to a specific native content position."
                                                     ],
                                                     "location": "path",
                                                     "pattern": "^[^/]+$",
@@ -2445,7 +2953,8 @@
                                                         "TARGETING_TYPE_GEO_REGION",
                                                         "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
                                                         "TARGETING_TYPE_EXCHANGE",
-                                                        "TARGETING_TYPE_SUB_EXCHANGE"
+                                                        "TARGETING_TYPE_SUB_EXCHANGE",
+                                                        "TARGETING_TYPE_NATIVE_CONTENT_POSITION"
                                                     ],
                                                     "enumDescriptions": [
                                                         "Default value when type is not specified or is unknown in this version.",
@@ -2485,7 +2994,8 @@
                                                         "Target ads to a specific regional location (for example, a city or state).",
                                                         "Purchase impressions from a group of deals and auction packages.",
                                                         "Purchase impressions from specific exchanges.",
-                                                        "Purchase impressions from specific sub-exchanges."
+                                                        "Purchase impressions from specific sub-exchanges.",
+                                                        "Target ads to a specific native content position."
                                                     ],
                                                     "location": "path",
                                                     "pattern": "^[^/]+$",
@@ -3390,7 +3900,7 @@
                                             "type": "string"
                                         },
                                         "pageSize": {
-                                            "description": "Requested page size. Must be between `1` and `100`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.",
+                                            "description": "Requested page size. Must be between `1` and `1000`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.",
                                             "format": "int32",
                                             "location": "query",
                                             "type": "integer"
@@ -3404,6 +3914,42 @@
                                     "path": "v1/advertisers/{+advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords",
                                     "response": {
                                         "$ref": "ListNegativeKeywordsResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/display-video"
+                                    ]
+                                },
+                                "replace": {
+                                    "description": "Replaces all negative keywords in a single negative keyword list. The operation will replace the keywords in a negative keyword list with keywords provided in ReplaceNegativeKeywordsRequest.new_negative_keywords.",
+                                    "httpMethod": "POST",
+                                    "id": "displayvideo.advertisers.negativeKeywordLists.negativeKeywords.replace",
+                                    "parameterOrder": [
+                                        "advertiserId",
+                                        "negativeKeywordListId"
+                                    ],
+                                    "parameters": {
+                                        "advertiserId": {
+                                            "description": "Required. The ID of the DV360 advertiser to which the parent negative keyword list belongs.",
+                                            "format": "int64",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "negativeKeywordListId": {
+                                            "description": "Required. The ID of the parent negative keyword list to which the negative keywords belong.",
+                                            "format": "int64",
+                                            "location": "path",
+                                            "pattern": "^[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords:replace",
+                                    "request": {
+                                        "$ref": "ReplaceNegativeKeywordsRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "ReplaceNegativeKeywordsResponse"
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/display-video"
@@ -3474,7 +4020,8 @@
                                                 "TARGETING_TYPE_GEO_REGION",
                                                 "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
                                                 "TARGETING_TYPE_EXCHANGE",
-                                                "TARGETING_TYPE_SUB_EXCHANGE"
+                                                "TARGETING_TYPE_SUB_EXCHANGE",
+                                                "TARGETING_TYPE_NATIVE_CONTENT_POSITION"
                                             ],
                                             "enumDescriptions": [
                                                 "Default value when type is not specified or is unknown in this version.",
@@ -3514,7 +4061,8 @@
                                                 "Target ads to a specific regional location (for example, a city or state).",
                                                 "Purchase impressions from a group of deals and auction packages.",
                                                 "Purchase impressions from specific exchanges.",
-                                                "Purchase impressions from specific sub-exchanges."
+                                                "Purchase impressions from specific sub-exchanges.",
+                                                "Target ads to a specific native content position."
                                             ],
                                             "location": "path",
                                             "pattern": "^[^/]+$",
@@ -3598,7 +4146,8 @@
                                                 "TARGETING_TYPE_GEO_REGION",
                                                 "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
                                                 "TARGETING_TYPE_EXCHANGE",
-                                                "TARGETING_TYPE_SUB_EXCHANGE"
+                                                "TARGETING_TYPE_SUB_EXCHANGE",
+                                                "TARGETING_TYPE_NATIVE_CONTENT_POSITION"
                                             ],
                                             "enumDescriptions": [
                                                 "Default value when type is not specified or is unknown in this version.",
@@ -3638,7 +4187,8 @@
                                                 "Target ads to a specific regional location (for example, a city or state).",
                                                 "Purchase impressions from a group of deals and auction packages.",
                                                 "Purchase impressions from specific exchanges.",
-                                                "Purchase impressions from specific sub-exchanges."
+                                                "Purchase impressions from specific sub-exchanges.",
+                                                "Target ads to a specific native content position."
                                             ],
                                             "location": "path",
                                             "pattern": "^[^/]+$",
@@ -3719,7 +4269,8 @@
                                                 "TARGETING_TYPE_GEO_REGION",
                                                 "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
                                                 "TARGETING_TYPE_EXCHANGE",
-                                                "TARGETING_TYPE_SUB_EXCHANGE"
+                                                "TARGETING_TYPE_SUB_EXCHANGE",
+                                                "TARGETING_TYPE_NATIVE_CONTENT_POSITION"
                                             ],
                                             "enumDescriptions": [
                                                 "Default value when type is not specified or is unknown in this version.",
@@ -3759,7 +4310,8 @@
                                                 "Target ads to a specific regional location (for example, a city or state).",
                                                 "Purchase impressions from a group of deals and auction packages.",
                                                 "Purchase impressions from specific exchanges.",
-                                                "Purchase impressions from specific sub-exchanges."
+                                                "Purchase impressions from specific sub-exchanges.",
+                                                "Target ads to a specific native content position."
                                             ],
                                             "location": "path",
                                             "pattern": "^[^/]+$",
@@ -3853,7 +4405,8 @@
                                                 "TARGETING_TYPE_GEO_REGION",
                                                 "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
                                                 "TARGETING_TYPE_EXCHANGE",
-                                                "TARGETING_TYPE_SUB_EXCHANGE"
+                                                "TARGETING_TYPE_SUB_EXCHANGE",
+                                                "TARGETING_TYPE_NATIVE_CONTENT_POSITION"
                                             ],
                                             "enumDescriptions": [
                                                 "Default value when type is not specified or is unknown in this version.",
@@ -3893,7 +4446,8 @@
                                                 "Target ads to a specific regional location (for example, a city or state).",
                                                 "Purchase impressions from a group of deals and auction packages.",
                                                 "Purchase impressions from specific exchanges.",
-                                                "Purchase impressions from specific sub-exchanges."
+                                                "Purchase impressions from specific sub-exchanges.",
+                                                "Target ads to a specific native content position."
                                             ],
                                             "location": "path",
                                             "pattern": "^[^/]+$",
@@ -5346,7 +5900,7 @@
                                             "type": "string"
                                         },
                                         "pageSize": {
-                                            "description": "Requested page size. Must be between `1` and `100`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.",
+                                            "description": "Requested page size. Must be between `1` and `10000`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.",
                                             "format": "int32",
                                             "location": "query",
                                             "type": "integer"
@@ -5368,6 +5922,42 @@
                                     "path": "v1/partners/{+partnerId}/channels/{+channelId}/sites",
                                     "response": {
                                         "$ref": "ListSitesResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/display-video"
+                                    ]
+                                },
+                                "replace": {
+                                    "description": "Replaces all of the sites under a single channel. The operation will replace the sites under a channel with the sites provided in ReplaceSitesRequest.new_sites.",
+                                    "httpMethod": "POST",
+                                    "id": "displayvideo.partners.channels.sites.replace",
+                                    "parameterOrder": [
+                                        "partnerId",
+                                        "channelId"
+                                    ],
+                                    "parameters": {
+                                        "channelId": {
+                                            "description": "Required. The ID of the parent channel whose sites will be replaced.",
+                                            "format": "int64",
+                                            "location": "path",
+                                            "pattern": "^[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "partnerId": {
+                                            "description": "The ID of the partner that owns the parent channel.",
+                                            "format": "int64",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/partners/{partnerId}/channels/{+channelId}/sites:replace",
+                                    "request": {
+                                        "$ref": "ReplaceSitesRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "ReplaceSitesResponse"
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/display-video"
@@ -5438,7 +6028,8 @@
                                                 "TARGETING_TYPE_GEO_REGION",
                                                 "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
                                                 "TARGETING_TYPE_EXCHANGE",
-                                                "TARGETING_TYPE_SUB_EXCHANGE"
+                                                "TARGETING_TYPE_SUB_EXCHANGE",
+                                                "TARGETING_TYPE_NATIVE_CONTENT_POSITION"
                                             ],
                                             "enumDescriptions": [
                                                 "Default value when type is not specified or is unknown in this version.",
@@ -5478,7 +6069,8 @@
                                                 "Target ads to a specific regional location (for example, a city or state).",
                                                 "Purchase impressions from a group of deals and auction packages.",
                                                 "Purchase impressions from specific exchanges.",
-                                                "Purchase impressions from specific sub-exchanges."
+                                                "Purchase impressions from specific sub-exchanges.",
+                                                "Target ads to a specific native content position."
                                             ],
                                             "location": "path",
                                             "pattern": "^[^/]+$",
@@ -5562,7 +6154,8 @@
                                                 "TARGETING_TYPE_GEO_REGION",
                                                 "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
                                                 "TARGETING_TYPE_EXCHANGE",
-                                                "TARGETING_TYPE_SUB_EXCHANGE"
+                                                "TARGETING_TYPE_SUB_EXCHANGE",
+                                                "TARGETING_TYPE_NATIVE_CONTENT_POSITION"
                                             ],
                                             "enumDescriptions": [
                                                 "Default value when type is not specified or is unknown in this version.",
@@ -5602,7 +6195,8 @@
                                                 "Target ads to a specific regional location (for example, a city or state).",
                                                 "Purchase impressions from a group of deals and auction packages.",
                                                 "Purchase impressions from specific exchanges.",
-                                                "Purchase impressions from specific sub-exchanges."
+                                                "Purchase impressions from specific sub-exchanges.",
+                                                "Target ads to a specific native content position."
                                             ],
                                             "location": "path",
                                             "pattern": "^[^/]+$",
@@ -5683,7 +6277,8 @@
                                                 "TARGETING_TYPE_GEO_REGION",
                                                 "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
                                                 "TARGETING_TYPE_EXCHANGE",
-                                                "TARGETING_TYPE_SUB_EXCHANGE"
+                                                "TARGETING_TYPE_SUB_EXCHANGE",
+                                                "TARGETING_TYPE_NATIVE_CONTENT_POSITION"
                                             ],
                                             "enumDescriptions": [
                                                 "Default value when type is not specified or is unknown in this version.",
@@ -5723,7 +6318,8 @@
                                                 "Target ads to a specific regional location (for example, a city or state).",
                                                 "Purchase impressions from a group of deals and auction packages.",
                                                 "Purchase impressions from specific exchanges.",
-                                                "Purchase impressions from specific sub-exchanges."
+                                                "Purchase impressions from specific sub-exchanges.",
+                                                "Target ads to a specific native content position."
                                             ],
                                             "location": "path",
                                             "pattern": "^[^/]+$",
@@ -5817,7 +6413,8 @@
                                                 "TARGETING_TYPE_GEO_REGION",
                                                 "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
                                                 "TARGETING_TYPE_EXCHANGE",
-                                                "TARGETING_TYPE_SUB_EXCHANGE"
+                                                "TARGETING_TYPE_SUB_EXCHANGE",
+                                                "TARGETING_TYPE_NATIVE_CONTENT_POSITION"
                                             ],
                                             "enumDescriptions": [
                                                 "Default value when type is not specified or is unknown in this version.",
@@ -5857,7 +6454,8 @@
                                                 "Target ads to a specific regional location (for example, a city or state).",
                                                 "Purchase impressions from a group of deals and auction packages.",
                                                 "Purchase impressions from specific exchanges.",
-                                                "Purchase impressions from specific sub-exchanges."
+                                                "Purchase impressions from specific sub-exchanges.",
+                                                "Target ads to a specific native content position."
                                             ],
                                             "location": "path",
                                             "pattern": "^[^/]+$",
@@ -5997,7 +6595,8 @@
                                         "TARGETING_TYPE_GEO_REGION",
                                         "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
                                         "TARGETING_TYPE_EXCHANGE",
-                                        "TARGETING_TYPE_SUB_EXCHANGE"
+                                        "TARGETING_TYPE_SUB_EXCHANGE",
+                                        "TARGETING_TYPE_NATIVE_CONTENT_POSITION"
                                     ],
                                     "enumDescriptions": [
                                         "Default value when type is not specified or is unknown in this version.",
@@ -6037,7 +6636,8 @@
                                         "Target ads to a specific regional location (for example, a city or state).",
                                         "Purchase impressions from a group of deals and auction packages.",
                                         "Purchase impressions from specific exchanges.",
-                                        "Purchase impressions from specific sub-exchanges."
+                                        "Purchase impressions from specific sub-exchanges.",
+                                        "Target ads to a specific native content position."
                                     ],
                                     "location": "path",
                                     "pattern": "^[^/]+$",
@@ -6128,7 +6728,8 @@
                                         "TARGETING_TYPE_GEO_REGION",
                                         "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
                                         "TARGETING_TYPE_EXCHANGE",
-                                        "TARGETING_TYPE_SUB_EXCHANGE"
+                                        "TARGETING_TYPE_SUB_EXCHANGE",
+                                        "TARGETING_TYPE_NATIVE_CONTENT_POSITION"
                                     ],
                                     "enumDescriptions": [
                                         "Default value when type is not specified or is unknown in this version.",
@@ -6168,7 +6769,8 @@
                                         "Target ads to a specific regional location (for example, a city or state).",
                                         "Purchase impressions from a group of deals and auction packages.",
                                         "Purchase impressions from specific exchanges.",
-                                        "Purchase impressions from specific sub-exchanges."
+                                        "Purchase impressions from specific sub-exchanges.",
+                                        "Target ads to a specific native content position."
                                     ],
                                     "location": "path",
                                     "pattern": "^[^/]+$",
@@ -6232,7 +6834,8 @@
                                         "TARGETING_TYPE_GEO_REGION",
                                         "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
                                         "TARGETING_TYPE_EXCHANGE",
-                                        "TARGETING_TYPE_SUB_EXCHANGE"
+                                        "TARGETING_TYPE_SUB_EXCHANGE",
+                                        "TARGETING_TYPE_NATIVE_CONTENT_POSITION"
                                     ],
                                     "enumDescriptions": [
                                         "Default value when type is not specified or is unknown in this version.",
@@ -6272,7 +6875,8 @@
                                         "Target ads to a specific regional location (for example, a city or state).",
                                         "Purchase impressions from a group of deals and auction packages.",
                                         "Purchase impressions from specific exchanges.",
-                                        "Purchase impressions from specific sub-exchanges."
+                                        "Purchase impressions from specific sub-exchanges.",
+                                        "Target ads to a specific native content position."
                                     ],
                                     "location": "path",
                                     "pattern": "^[^/]+$",
@@ -6465,7 +7069,7 @@
             }
         }
     },
-    "revision": "20210218",
+    "revision": "20210520",
     "rootUrl": "https://displayvideo.googleapis.com/",
     "schemas": {
         "ActivateManualTriggerRequest": {
@@ -6652,7 +7256,7 @@
                     "type": "string"
                 },
                 "entityStatus": {
-                    "description": "Required. Controls whether or not insertion orders and line items of the advertiser can spend their budgets and bid on inventory. * Accepted values are `ENTITY_STATUS_ACTIVE` and `ENTITY_STATUS_SCHEDULED_FOR_DELETION`. * If set to `ENTITY_STATUS_SCHEDULED_FOR_DELETION`, the advertiser will be deleted 30 days from when it was first scheduled for deletion.",
+                    "description": "Required. Controls whether or not insertion orders and line items of the advertiser can spend their budgets and bid on inventory. * Accepted values are `ENTITY_STATUS_ACTIVE`, `ENTITY_STATUS_PAUSED` and `ENTITY_STATUS_SCHEDULED_FOR_DELETION`. * If set to `ENTITY_STATUS_SCHEDULED_FOR_DELETION`, the advertiser will be deleted 30 days from when it was first scheduled for deletion.",
                     "enum": [
                         "ENTITY_STATUS_UNSPECIFIED",
                         "ENTITY_STATUS_ACTIVE",
@@ -6688,6 +7292,10 @@
                     "description": "Required. Immutable. The unique ID of the partner that the advertiser belongs to.",
                     "format": "int64",
                     "type": "string"
+                },
+                "prismaEnabled": {
+                    "description": "Whether integration with Mediaocean (Prisma) is enabled. By enabling this: On behalf of my company, I authorize Mediaocean (Prisma) to send budget segment plans to Google, and I authorize Google to send corresponding reporting and invoices from DV360 to Mediaocean for the purposes of budget planning, billing, and reconciliation for this advertiser.",
+                    "type": "boolean"
                 },
                 "servingConfig": {
                     "$ref": "AdvertiserTargetingConfig",
@@ -6874,6 +7482,36 @@
                     "description": "Required. The ID of the app. Android's Play store app uses bundle ID, for example `com.google.android.gm`. Apple's App store app ID uses 9 digit string, for example `422689480`.",
                     "type": "string"
                 },
+                "appPlatform": {
+                    "description": "Indicates the platform of the targeted app. If this field is not specified, the app platform will be assumed to be mobile (i.e., Android or iOS), and we will derive the appropriate mobile platform from the app ID.",
+                    "enum": [
+                        "APP_PLATFORM_UNSPECIFIED",
+                        "APP_PLATFORM_IOS",
+                        "APP_PLATFORM_ANDROID",
+                        "APP_PLATFORM_ROKU",
+                        "APP_PLATFORM_AMAZON_FIRETV",
+                        "APP_PLATFORM_PLAYSTATION",
+                        "APP_PLATFORM_APPLE_TV",
+                        "APP_PLATFORM_XBOX",
+                        "APP_PLATFORM_SAMSUNG_TV",
+                        "APP_PLATFORM_ANDROID_TV",
+                        "APP_PLATFORM_GENERIC_CTV"
+                    ],
+                    "enumDescriptions": [
+                        "Default value when app platform is not specified in this version. This enum is a placeholder for default value and does not represent a real platform option.",
+                        "The app platform is iOS.",
+                        "The app platform is Android.",
+                        "The app platform is Roku.",
+                        "The app platform is Amazon FireTV.",
+                        "The app platform is Playstation.",
+                        "The app platform is Apple TV.",
+                        "The app platform is Xbox.",
+                        "The app platform is Samsung TV.",
+                        "The app platform is Android TV.",
+                        "The app platform is a CTV platform that is not explicitly listed elsewhere."
+                    ],
+                    "type": "string"
+                },
                 "displayName": {
                     "description": "Output only. The display name of the app.",
                     "readOnly": true,
@@ -7037,88 +7675,88 @@
             "properties": {
                 "ageRangeDetails": {
                     "$ref": "AgeRangeAssignedTargetingOptionDetails",
-                    "description": "Age range details. This field will be populated when the TargetingType is `TARGETING_TYPE_AGE_RANGE`."
+                    "description": "Age range details. This field will be populated when the targeting_type is `TARGETING_TYPE_AGE_RANGE`."
                 },
                 "appCategoryDetails": {
                     "$ref": "AppCategoryAssignedTargetingOptionDetails",
-                    "description": "App category details. This field will be populated when the TargetingType is `TARGETING_TYPE_APP_CATEGORY`."
+                    "description": "App category details. This field will be populated when the targeting_type is `TARGETING_TYPE_APP_CATEGORY`."
                 },
                 "appDetails": {
                     "$ref": "AppAssignedTargetingOptionDetails",
-                    "description": "App details. This field will be populated when the TargetingType is `TARGETING_TYPE_APP`."
+                    "description": "App details. This field will be populated when the targeting_type is `TARGETING_TYPE_APP`."
                 },
                 "assignedTargetingOptionId": {
-                    "description": "Output only. The unique ID of the assigned targeting option. The ID is only unique within a given line item and targeting type. It may be reused in other contexts.",
+                    "description": "Output only. The unique ID of the assigned targeting option. The ID is only unique within a given resource and targeting type. It may be reused in other contexts.",
                     "readOnly": true,
                     "type": "string"
                 },
                 "audienceGroupDetails": {
                     "$ref": "AudienceGroupAssignedTargetingOptionDetails",
-                    "description": "Audience targeting details. This field will be populated when the TargetingType is `TARGETING_TYPE_AUDIENCE_GROUP`. You can only target one audience group option per line item."
+                    "description": "Audience targeting details. This field will be populated when the targeting_type is `TARGETING_TYPE_AUDIENCE_GROUP`. You can only target one audience group option per resource."
                 },
                 "authorizedSellerStatusDetails": {
                     "$ref": "AuthorizedSellerStatusAssignedTargetingOptionDetails",
-                    "description": "Authorized seller status details. This field will be populated when the TargetingType is `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`. You can only target one authorized seller status option per line item. If a line item doesn't have an authorized seller status option, all authorized sellers indicated as DIRECT or RESELLER in the ads.txt file are targeted by default."
+                    "description": "Authorized seller status details. This field will be populated when the targeting_type is `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`. You can only target one authorized seller status option per resource. If a resource doesn't have an authorized seller status option, all authorized sellers indicated as DIRECT or RESELLER in the ads.txt file are targeted by default."
                 },
                 "browserDetails": {
                     "$ref": "BrowserAssignedTargetingOptionDetails",
-                    "description": "Browser details. This field will be populated when the TargetingType is `TARGETING_TYPE_BROWSER`."
+                    "description": "Browser details. This field will be populated when the targeting_type is `TARGETING_TYPE_BROWSER`."
                 },
                 "carrierAndIspDetails": {
                     "$ref": "CarrierAndIspAssignedTargetingOptionDetails",
-                    "description": "Carrier and ISP details. This field will be populated when the TargetingType is `TARGETING_TYPE_CARRIER_AND_ISP`."
+                    "description": "Carrier and ISP details. This field will be populated when the targeting_type is `TARGETING_TYPE_CARRIER_AND_ISP`."
                 },
                 "categoryDetails": {
                     "$ref": "CategoryAssignedTargetingOptionDetails",
-                    "description": "Category details. This field will be populated when the TargetingType is `TARGETING_TYPE_CATEGORY`. Targeting a category will also target its subcategories. If a category is excluded from targeting and a subcategory is included, the exclusion will take precedence."
+                    "description": "Category details. This field will be populated when the targeting_type is `TARGETING_TYPE_CATEGORY`. Targeting a category will also target its subcategories. If a category is excluded from targeting and a subcategory is included, the exclusion will take precedence."
                 },
                 "channelDetails": {
                     "$ref": "ChannelAssignedTargetingOptionDetails",
-                    "description": "Channel details. This field will be populated when the TargetingType is `TARGETING_TYPE_CHANNEL`."
+                    "description": "Channel details. This field will be populated when the targeting_type is `TARGETING_TYPE_CHANNEL`."
                 },
                 "contentInstreamPositionDetails": {
                     "$ref": "ContentInstreamPositionAssignedTargetingOptionDetails",
-                    "description": "Content instream position details. This field will be populated when the TargetingType is `TARGETING_TYPE_CONTENT_INSTREAM_POSITION`."
+                    "description": "Content instream position details. This field will be populated when the targeting_type is `TARGETING_TYPE_CONTENT_INSTREAM_POSITION`."
                 },
                 "contentOutstreamPositionDetails": {
                     "$ref": "ContentOutstreamPositionAssignedTargetingOptionDetails",
-                    "description": "Content outstream position details. This field will be populated when the TargetingType is `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION`."
+                    "description": "Content outstream position details. This field will be populated when the targeting_type is `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION`."
                 },
                 "dayAndTimeDetails": {
                     "$ref": "DayAndTimeAssignedTargetingOptionDetails",
-                    "description": "Day and time details. This field will be populated when the TargetingType is `TARGETING_TYPE_DAY_AND_TIME`."
+                    "description": "Day and time details. This field will be populated when the targeting_type is `TARGETING_TYPE_DAY_AND_TIME`."
                 },
                 "deviceMakeModelDetails": {
                     "$ref": "DeviceMakeModelAssignedTargetingOptionDetails",
-                    "description": "Device make and model details. This field will be populated when the TargetingType is `TARGETING_TYPE_DEVICE_MAKE_MODEL`."
+                    "description": "Device make and model details. This field will be populated when the targeting_type is `TARGETING_TYPE_DEVICE_MAKE_MODEL`."
                 },
                 "deviceTypeDetails": {
                     "$ref": "DeviceTypeAssignedTargetingOptionDetails",
-                    "description": "Device Type details. This field will be populated when the TargetingType is `TARGETING_TYPE_DEVICE_TYPE`."
+                    "description": "Device Type details. This field will be populated when the targeting_type is `TARGETING_TYPE_DEVICE_TYPE`."
                 },
                 "digitalContentLabelExclusionDetails": {
                     "$ref": "DigitalContentLabelAssignedTargetingOptionDetails",
-                    "description": "Digital content label details. This field will be populated when the TargetingType is `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION`. Digital content labels are targeting exclusions. Advertiser level digital content label exclusions, if set, are always applied in serving (even though they aren't visible in line item settings). Line item settings can exclude content labels in addition to advertiser exclusions, but can't override them. A line item won't serve if all the digital content labels are excluded."
+                    "description": "Digital content label details. This field will be populated when the targeting_type is `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION`. Digital content labels are targeting exclusions. Advertiser level digital content label exclusions, if set, are always applied in serving (even though they aren't visible in resource settings). Resource settings can exclude content labels in addition to advertiser exclusions, but can't override them. A line item won't serve if all the digital content labels are excluded."
                 },
                 "environmentDetails": {
                     "$ref": "EnvironmentAssignedTargetingOptionDetails",
-                    "description": "Environment details. This field will be populated when the TargetingType is `TARGETING_TYPE_ENVIRONMENT`."
+                    "description": "Environment details. This field will be populated when the targeting_type is `TARGETING_TYPE_ENVIRONMENT`."
                 },
                 "exchangeDetails": {
                     "$ref": "ExchangeAssignedTargetingOptionDetails",
-                    "description": "Exchange details. This field will be populated when the TargetingType is `TARGETING_TYPE_EXCHANGE`."
+                    "description": "Exchange details. This field will be populated when the targeting_type is `TARGETING_TYPE_EXCHANGE`."
                 },
                 "genderDetails": {
                     "$ref": "GenderAssignedTargetingOptionDetails",
-                    "description": "Gender details. This field will be populated when the TargetingType is `TARGETING_TYPE_GENDER`."
+                    "description": "Gender details. This field will be populated when the targeting_type is `TARGETING_TYPE_GENDER`."
                 },
                 "geoRegionDetails": {
                     "$ref": "GeoRegionAssignedTargetingOptionDetails",
-                    "description": "Geographic region details. This field will be populated when the TargetingType is `TARGETING_TYPE_GEO_REGION`."
+                    "description": "Geographic region details. This field will be populated when the targeting_type is `TARGETING_TYPE_GEO_REGION`."
                 },
                 "householdIncomeDetails": {
                     "$ref": "HouseholdIncomeAssignedTargetingOptionDetails",
-                    "description": "Household income details. This field will be populated when the TargetingType is `TARGETING_TYPE_HOUSEHOLD_INCOME`."
+                    "description": "Household income details. This field will be populated when the targeting_type is `TARGETING_TYPE_HOUSEHOLD_INCOME`."
                 },
                 "inheritance": {
                     "description": "Output only. The inheritance status of the assigned targeting option.",
@@ -7139,56 +7777,60 @@
                 },
                 "inventorySourceDetails": {
                     "$ref": "InventorySourceAssignedTargetingOptionDetails",
-                    "description": "Inventory source details. This field will be populated when the TargetingType is `TARGETING_TYPE_INVENTORY_SOURCE`."
+                    "description": "Inventory source details. This field will be populated when the targeting_type is `TARGETING_TYPE_INVENTORY_SOURCE`."
                 },
                 "inventorySourceGroupDetails": {
                     "$ref": "InventorySourceGroupAssignedTargetingOptionDetails",
-                    "description": "Inventory source group details. This field will be populated when the TargetingType is `TARGETING_TYPE_INVENTORY_SOURCE_GROUP`."
+                    "description": "Inventory source group details. This field will be populated when the targeting_type is `TARGETING_TYPE_INVENTORY_SOURCE_GROUP`."
                 },
                 "keywordDetails": {
                     "$ref": "KeywordAssignedTargetingOptionDetails",
-                    "description": "Keyword details. This field will be populated when the TargetingType is `TARGETING_TYPE_KEYWORD`. A maximum of 5000 direct negative keywords can be assigned to a line item. No limit on number of positive keywords that can be assigned."
+                    "description": "Keyword details. This field will be populated when the targeting_type is `TARGETING_TYPE_KEYWORD`. A maximum of 5000 direct negative keywords can be assigned to a resource. No limit on number of positive keywords that can be assigned."
                 },
                 "languageDetails": {
                     "$ref": "LanguageAssignedTargetingOptionDetails",
-                    "description": "Language details. This field will be populated when the TargetingType is `TARGETING_TYPE_LANGUAGE`."
+                    "description": "Language details. This field will be populated when the targeting_type is `TARGETING_TYPE_LANGUAGE`."
                 },
                 "name": {
                     "description": "Output only. The resource name for this assigned targeting option.",
                     "readOnly": true,
                     "type": "string"
                 },
+                "nativeContentPositionDetails": {
+                    "$ref": "NativeContentPositionAssignedTargetingOptionDetails",
+                    "description": "Native content position details. This field will be populated when the targeting_type is `TARGETING_TYPE_NATIVE_CONTENT_POSITION`."
+                },
                 "negativeKeywordListDetails": {
                     "$ref": "NegativeKeywordListAssignedTargetingOptionDetails",
-                    "description": "Keyword details. This field will be populated when the TargetingType is `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST`. A maximum of 4 negative keyword lists can be assigned to a line item."
+                    "description": "Keyword details. This field will be populated when the targeting_type is `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST`. A maximum of 4 negative keyword lists can be assigned to a resource."
                 },
                 "onScreenPositionDetails": {
                     "$ref": "OnScreenPositionAssignedTargetingOptionDetails",
-                    "description": "On screen position details. This field will be populated when the TargetingType is `TARGETING_TYPE_ON_SCREEN_POSITION`."
+                    "description": "On screen position details. This field will be populated when the targeting_type is `TARGETING_TYPE_ON_SCREEN_POSITION`."
                 },
                 "operatingSystemDetails": {
                     "$ref": "OperatingSystemAssignedTargetingOptionDetails",
-                    "description": "Operating system details. This field will be populated when the TargetingType is `TARGETING_TYPE_OPERATING_SYSTEM`."
+                    "description": "Operating system details. This field will be populated when the targeting_type is `TARGETING_TYPE_OPERATING_SYSTEM`."
                 },
                 "parentalStatusDetails": {
                     "$ref": "ParentalStatusAssignedTargetingOptionDetails",
-                    "description": "Parental status details. This field will be populated when the TargetingType is `TARGETING_TYPE_PARENTAL_STATUS`."
+                    "description": "Parental status details. This field will be populated when the targeting_type is `TARGETING_TYPE_PARENTAL_STATUS`."
                 },
                 "proximityLocationListDetails": {
                     "$ref": "ProximityLocationListAssignedTargetingOptionDetails",
-                    "description": "Proximity location list details. This field will be populated when the TargetingType is `TARGETING_TYPE_PROXIMITY_LOCATION_LIST`."
+                    "description": "Proximity location list details. This field will be populated when the targeting_type is `TARGETING_TYPE_PROXIMITY_LOCATION_LIST`."
                 },
                 "regionalLocationListDetails": {
                     "$ref": "RegionalLocationListAssignedTargetingOptionDetails",
-                    "description": "Regional location list details. This field will be populated when the TargetingType is `TARGETING_TYPE_REGIONAL_LOCATION_LIST`."
+                    "description": "Regional location list details. This field will be populated when the targeting_type is `TARGETING_TYPE_REGIONAL_LOCATION_LIST`."
                 },
                 "sensitiveCategoryExclusionDetails": {
                     "$ref": "SensitiveCategoryAssignedTargetingOptionDetails",
-                    "description": "Sensitive category details. This field will be populated when the TargetingType is `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`. Sensitive categories are targeting exclusions. Advertiser level sensitive category exclusions, if set, are always applied in serving (even though they aren't visible in line item settings). Line item settings can exclude sensitive categories in addition to advertiser exclusions, but can't override them."
+                    "description": "Sensitive category details. This field will be populated when the targeting_type is `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`. Sensitive categories are targeting exclusions. Advertiser level sensitive category exclusions, if set, are always applied in serving (even though they aren't visible in resource settings). Resource settings can exclude sensitive categories in addition to advertiser exclusions, but can't override them."
                 },
                 "subExchangeDetails": {
                     "$ref": "SubExchangeAssignedTargetingOptionDetails",
-                    "description": "Sub-exchange details. This field will be populated when the TargetingType is `TARGETING_TYPE_SUB_EXCHANGE`."
+                    "description": "Sub-exchange details. This field will be populated when the targeting_type is `TARGETING_TYPE_SUB_EXCHANGE`."
                 },
                 "targetingType": {
                     "description": "Output only. Identifies the type of this assigned targeting option.",
@@ -7230,7 +7872,8 @@
                         "TARGETING_TYPE_GEO_REGION",
                         "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
                         "TARGETING_TYPE_EXCHANGE",
-                        "TARGETING_TYPE_SUB_EXCHANGE"
+                        "TARGETING_TYPE_SUB_EXCHANGE",
+                        "TARGETING_TYPE_NATIVE_CONTENT_POSITION"
                     ],
                     "enumDescriptions": [
                         "Default value when type is not specified or is unknown in this version.",
@@ -7270,30 +7913,31 @@
                         "Target ads to a specific regional location (for example, a city or state).",
                         "Purchase impressions from a group of deals and auction packages.",
                         "Purchase impressions from specific exchanges.",
-                        "Purchase impressions from specific sub-exchanges."
+                        "Purchase impressions from specific sub-exchanges.",
+                        "Target ads to a specific native content position."
                     ],
                     "readOnly": true,
                     "type": "string"
                 },
                 "thirdPartyVerifierDetails": {
                     "$ref": "ThirdPartyVerifierAssignedTargetingOptionDetails",
-                    "description": "Third party verification details. This field will be populated when the TargetingType is `TARGETING_TYPE_THIRD_PARTY_VERIFIER`."
+                    "description": "Third party verification details. This field will be populated when the targeting_type is `TARGETING_TYPE_THIRD_PARTY_VERIFIER`."
                 },
                 "urlDetails": {
                     "$ref": "UrlAssignedTargetingOptionDetails",
-                    "description": "URL details. This field will be populated when the TargetingType is `TARGETING_TYPE_URL`."
+                    "description": "URL details. This field will be populated when the targeting_type is `TARGETING_TYPE_URL`."
                 },
                 "userRewardedContentDetails": {
                     "$ref": "UserRewardedContentAssignedTargetingOptionDetails",
-                    "description": "User rewarded content details. This field will be populated when the TargetingType is `TARGETING_TYPE_USER_REWARDED_CONTENT`."
+                    "description": "User rewarded content details. This field will be populated when the targeting_type is `TARGETING_TYPE_USER_REWARDED_CONTENT`."
                 },
                 "videoPlayerSizeDetails": {
                     "$ref": "VideoPlayerSizeAssignedTargetingOptionDetails",
-                    "description": "Video player size details. This field will be populated when the TargetingType is `TARGETING_TYPE_VIDEO_PLAYER_SIZE`."
+                    "description": "Video player size details. This field will be populated when the targeting_type is `TARGETING_TYPE_VIDEO_PLAYER_SIZE`."
                 },
                 "viewabilityDetails": {
                     "$ref": "ViewabilityAssignedTargetingOptionDetails",
-                    "description": "Viewability details. This field will be populated when the TargetingType is `TARGETING_TYPE_VIEWABILITY`. You can only target one viewability option per line item."
+                    "description": "Viewability details. This field will be populated when the targeting_type is `TARGETING_TYPE_VIEWABILITY`. You can only target one viewability option per resource."
                 }
             },
             "type": "object"
@@ -7527,7 +8171,7 @@
                     "type": "string"
                 },
                 "negative": {
-                    "description": "Indicates if this option is being negatively targeted. All assigned browser targeting options on the same line item must have the same value for this field.",
+                    "description": "Indicates if this option is being negatively targeted. All assigned browser targeting options on the same resource must have the same value for this field.",
                     "type": "boolean"
                 },
                 "targetingOptionId": {
@@ -7543,6 +8187,41 @@
             "properties": {
                 "displayName": {
                     "description": "Output only. The display name of the browser.",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "BudgetSummary": {
+            "description": "Represents a summarized budget information associated with this invoice.",
+            "id": "BudgetSummary",
+            "properties": {
+                "externalBudgetId": {
+                    "description": "Output only. External budget id.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "preTaxAmountMicros": {
+                    "description": "Output only. The pre-tax amount for this budget, in micros of the invoice's currency. For example if currency_code is `USD`, then 1000000 micros is one US dollar.",
+                    "format": "int64",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "prismaCpeCode": {
+                    "$ref": "PrismaCpeCode",
+                    "description": "Output only. Codes specific to the MediaOcean Prisma tool.",
+                    "readOnly": true
+                },
+                "taxAmountMicros": {
+                    "description": "Output only. The tax amount for this budget, in micros of the invoice's currency. For example if currency_code is `USD`, then 1000000 micros is one US dollar.",
+                    "format": "int64",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "totalAmountMicros": {
+                    "description": "Output only. The total amount of charges for this budget, in micros of the invoice's currency. For example if currency_code is `USD`, then 1000000 micros is one US dollar.",
+                    "format": "int64",
                     "readOnly": true,
                     "type": "string"
                 }
@@ -7864,6 +8543,24 @@
             },
             "type": "object"
         },
+        "BulkListCampaignAssignedTargetingOptionsResponse": {
+            "description": "Response message for BulkListCampaignAssignedTargetingOptions.",
+            "id": "BulkListCampaignAssignedTargetingOptionsResponse",
+            "properties": {
+                "assignedTargetingOptions": {
+                    "description": "The list of assigned targeting options. This list will be absent if empty.",
+                    "items": {
+                        "$ref": "AssignedTargetingOption"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "A token identifying the next page of results. This value should be specified as the pageToken in a subsequent BulkListCampaignAssignedTargetingOptionsRequest to fetch the next page of results. This token will be absent if there are no more assigned_targeting_options to return.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "BulkListInsertionOrderAssignedTargetingOptionsResponse": {
             "description": "Response message for BulkListInsertionOrderAssignedTargetingOptions.",
             "id": "BulkListInsertionOrderAssignedTargetingOptionsResponse",
@@ -7908,6 +8605,13 @@
                     "format": "int64",
                     "readOnly": true,
                     "type": "string"
+                },
+                "campaignBudgets": {
+                    "description": "The list of budgets available to this campaign. Setting no budget gives an unlimited campaign budget.",
+                    "items": {
+                        "$ref": "CampaignBudget"
+                    },
+                    "type": "array"
                 },
                 "campaignFlight": {
                     "$ref": "CampaignFlight",
@@ -7961,6 +8665,71 @@
                     "format": "google-datetime",
                     "readOnly": true,
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CampaignBudget": {
+            "description": "Settings that control how the campaign budget is allocated.",
+            "id": "CampaignBudget",
+            "properties": {
+                "budgetAmountMicros": {
+                    "description": "Required. The budget amount the insertion order will spend for the given date_range. The amount is in micros. Must be greater than 0. For example, 500000000 represents 500 standard units of the currency.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "budgetId": {
+                    "description": "The unique ID of the campaign budget. If not included, budget is assumed to be new.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "budgetUnit": {
+                    "description": "Required. Immutable. The budget unit specifies whether the budget is currency based or impression based.",
+                    "enum": [
+                        "BUDGET_UNIT_UNSPECIFIED",
+                        "BUDGET_UNIT_CURRENCY",
+                        "BUDGET_UNIT_IMPRESSIONS"
+                    ],
+                    "enumDescriptions": [
+                        "Type value is not specified or is unknown in this version.",
+                        "Budgeting in currency amounts.",
+                        "Budgeting in impression amounts."
+                    ],
+                    "type": "string"
+                },
+                "dateRange": {
+                    "$ref": "DateRange",
+                    "description": "Required. The flight start and end time settings of the segment. Both `start_date` and `end_date` must be before the year 2037."
+                },
+                "displayName": {
+                    "description": "Required. The display name of the budget. Must be UTF-8 encoded with a maximum size of 240 bytes.",
+                    "type": "string"
+                },
+                "externalBudgetId": {
+                    "description": "Immutable. Must be unique under the campaign. If set, all impressions served against this budget will include this ID on the invoice if the customer has opted into budget-segment-level billing.",
+                    "type": "string"
+                },
+                "externalBudgetSource": {
+                    "description": "Required. The external source of the budget segment.",
+                    "enum": [
+                        "EXTERNAL_BUDGET_SOURCE_UNSPECIFIED",
+                        "EXTERNAL_BUDGET_SOURCE_NONE",
+                        "EXTERNAL_BUDGET_SOURCE_MEDIA_OCEAN"
+                    ],
+                    "enumDescriptions": [
+                        "External budget source value is not specified or unknown in this version.",
+                        "Budget has no external source.",
+                        "Budget source is MediaOcean."
+                    ],
+                    "type": "string"
+                },
+                "invoiceGroupingId": {
+                    "description": "Immutable. If set, all external_budget_id sharing the same invoice_grouping_id will include this ID on the invoice if the customer has opted into budget-segment-level billing.",
+                    "type": "string"
+                },
+                "prismaConfig": {
+                    "$ref": "PrismaConfig",
+                    "description": "Required for MediaOcean budgets. Additional metadata set by the MediaOcean Prisma tool."
                 }
             },
             "type": "object"
@@ -8020,7 +8789,7 @@
                     "type": "string"
                 },
                 "negative": {
-                    "description": "Indicates if this option is being negatively targeted. All assigned carrier and ISP targeting options on the same line item must have the same value for this field.",
+                    "description": "Indicates if this option is being negatively targeted. All assigned carrier and ISP targeting options on the same resource must have the same value for this field.",
                     "type": "boolean"
                 },
                 "targetingOptionId": {
@@ -8113,9 +8882,21 @@
                     "readOnly": true,
                     "type": "string"
                 },
+                "negativelyTargetedLineItemCount": {
+                    "description": "Output only. Number of line items that are directly targeting this channel negatively.",
+                    "format": "int64",
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "partnerId": {
                     "description": "The ID of the partner that owns the channel.",
                     "format": "int64",
+                    "type": "string"
+                },
+                "positivelyTargetedLineItemCount": {
+                    "description": "Output only. Number of line items that are directly targeting this channel positively.",
+                    "format": "int64",
+                    "readOnly": true,
                     "type": "string"
                 }
             },
@@ -8502,7 +9283,8 @@
                         "TARGETING_TYPE_GEO_REGION",
                         "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
                         "TARGETING_TYPE_EXCHANGE",
-                        "TARGETING_TYPE_SUB_EXCHANGE"
+                        "TARGETING_TYPE_SUB_EXCHANGE",
+                        "TARGETING_TYPE_NATIVE_CONTENT_POSITION"
                     ],
                     "enumDescriptions": [
                         "Default value when type is not specified or is unknown in this version.",
@@ -8542,7 +9324,8 @@
                         "Target ads to a specific regional location (for example, a city or state).",
                         "Purchase impressions from a group of deals and auction packages.",
                         "Purchase impressions from specific exchanges.",
-                        "Purchase impressions from specific sub-exchanges."
+                        "Purchase impressions from specific sub-exchanges.",
+                        "Target ads to a specific native content position."
                     ],
                     "type": "string"
                 }
@@ -9279,7 +10062,8 @@
                         "TARGETING_TYPE_GEO_REGION",
                         "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
                         "TARGETING_TYPE_EXCHANGE",
-                        "TARGETING_TYPE_SUB_EXCHANGE"
+                        "TARGETING_TYPE_SUB_EXCHANGE",
+                        "TARGETING_TYPE_NATIVE_CONTENT_POSITION"
                     ],
                     "enumDescriptions": [
                         "Default value when type is not specified or is unknown in this version.",
@@ -9319,7 +10103,8 @@
                         "Target ads to a specific regional location (for example, a city or state).",
                         "Purchase impressions from a group of deals and auction packages.",
                         "Purchase impressions from specific exchanges.",
-                        "Purchase impressions from specific sub-exchanges."
+                        "Purchase impressions from specific sub-exchanges.",
+                        "Target ads to a specific native content position."
                     ],
                     "type": "string"
                 }
@@ -9989,7 +10774,8 @@
                         "EXCHANGE_NEXSTAR_DIGITAL",
                         "EXCHANGE_WAZE",
                         "EXCHANGE_SOUNDCAST",
-                        "EXCHANGE_SHARETHROUGH"
+                        "EXCHANGE_SHARETHROUGH",
+                        "EXCHANGE_MEDIANET"
                     ],
                     "enumDescriptions": [
                         "Exchange is not specified or is unknown in this version.",
@@ -10054,7 +10840,8 @@
                         "Nexstar Digital.",
                         "Waze.",
                         "SoundCast.",
-                        "Sharethrough."
+                        "Sharethrough.",
+                        "Media.net."
                     ],
                     "type": "string"
                 },
@@ -10145,7 +10932,8 @@
                         "EXCHANGE_NEXSTAR_DIGITAL",
                         "EXCHANGE_WAZE",
                         "EXCHANGE_SOUNDCAST",
-                        "EXCHANGE_SHARETHROUGH"
+                        "EXCHANGE_SHARETHROUGH",
+                        "EXCHANGE_MEDIANET"
                     ],
                     "enumDescriptions": [
                         "Exchange is not specified or is unknown in this version.",
@@ -10210,7 +10998,8 @@
                         "Nexstar Digital.",
                         "Waze.",
                         "SoundCast.",
-                        "Sharethrough."
+                        "Sharethrough.",
+                        "Media.net."
                     ],
                     "type": "string"
                 },
@@ -10302,7 +11091,8 @@
                         "EXCHANGE_NEXSTAR_DIGITAL",
                         "EXCHANGE_WAZE",
                         "EXCHANGE_SOUNDCAST",
-                        "EXCHANGE_SHARETHROUGH"
+                        "EXCHANGE_SHARETHROUGH",
+                        "EXCHANGE_MEDIANET"
                     ],
                     "enumDescriptions": [
                         "Exchange is not specified or is unknown in this version.",
@@ -10367,7 +11157,8 @@
                         "Nexstar Digital.",
                         "Waze.",
                         "SoundCast.",
-                        "Sharethrough."
+                        "Sharethrough.",
+                        "Media.net."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -10594,7 +11385,7 @@
                         "RECENCY_21_DAYS",
                         "RECENCY_28_DAYS",
                         "RECENCY_30_DAYS",
-                        "RECENCY_40_DAYS",
+                        "RECENCY_45_DAYS",
                         "RECENCY_60_DAYS",
                         "RECENCY_90_DAYS",
                         "RECENCY_120_DAYS",
@@ -10625,7 +11416,7 @@
                         "Recency is 21 days.",
                         "Recency is 28 days.",
                         "Recency is 30 days.",
-                        "Recency is 40 days.",
+                        "Recency is 45 days.",
                         "Recency is 60 days.",
                         "Recency is 90 days.",
                         "Recency is 120 days.",
@@ -10709,12 +11500,12 @@
             "id": "FrequencyCap",
             "properties": {
                 "maxImpressions": {
-                    "description": "The maximum number of times a user may be shown with the same ad during this period. Must be greater than 0. Applicable when unlimited is `false`.",
+                    "description": "The maximum number of times a user may be shown with the same ad during this period. Must be greater than 0. Required when unlimited is `false`.",
                     "format": "int32",
                     "type": "integer"
                 },
                 "timeUnit": {
-                    "description": "The time unit in which the frequency cap will be applied. Applicable when unlimited is `false`.",
+                    "description": "The time unit in which the frequency cap will be applied. Required when unlimited is `false`.",
                     "enum": [
                         "TIME_UNIT_UNSPECIFIED",
                         "TIME_UNIT_LIFETIME",
@@ -10736,7 +11527,7 @@
                     "type": "string"
                 },
                 "timeUnitCount": {
-                    "description": "The number of time_unit the frequency cap will last. Applicable when unlimited is `false`. The following restrictions apply based on the value of time_unit: * `TIME_UNIT_LIFETIME` - this field is output only and will default to 1 * `TIME_UNIT_MONTHS` - must be between 1 and 2 * `TIME_UNIT_WEEKS` - must be between 1 and 4 * `TIME_UNIT_DAYS` - must be between 1 and 6 * `TIME_UNIT_HOURS` - must be between 1 and 23 * `TIME_UNIT_MINUTES` - must be between 1 and 59",
+                    "description": "The number of time_unit the frequency cap will last. Required when unlimited is `false`. The following restrictions apply based on the value of time_unit: * `TIME_UNIT_LIFETIME` - this field is output only and will default to 1 * `TIME_UNIT_MONTHS` - must be between 1 and 2 * `TIME_UNIT_WEEKS` - must be between 1 and 4 * `TIME_UNIT_DAYS` - must be between 1 and 6 * `TIME_UNIT_HOURS` - must be between 1 and 23 * `TIME_UNIT_MINUTES` - must be between 1 and 59",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -10795,6 +11586,52 @@
                     ],
                     "readOnly": true,
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GenerateDefaultLineItemRequest": {
+            "description": "Request message for LineItemService.GenerateDefaultLineItem.",
+            "id": "GenerateDefaultLineItemRequest",
+            "properties": {
+                "displayName": {
+                    "description": "Required. The display name of the line item. Must be UTF-8 encoded with a maximum size of 240 bytes.",
+                    "type": "string"
+                },
+                "insertionOrderId": {
+                    "description": "Required. The unique ID of the insertion order that the line item belongs to.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "lineItemType": {
+                    "description": "Required. The type of the line item.",
+                    "enum": [
+                        "LINE_ITEM_TYPE_UNSPECIFIED",
+                        "LINE_ITEM_TYPE_DISPLAY_DEFAULT",
+                        "LINE_ITEM_TYPE_DISPLAY_MOBILE_APP_INSTALL",
+                        "LINE_ITEM_TYPE_VIDEO_DEFAULT",
+                        "LINE_ITEM_TYPE_VIDEO_MOBILE_APP_INSTALL",
+                        "LINE_ITEM_TYPE_DISPLAY_MOBILE_APP_INVENTORY",
+                        "LINE_ITEM_TYPE_VIDEO_MOBILE_APP_INVENTORY",
+                        "LINE_ITEM_TYPE_AUDIO_DEFAULT",
+                        "LINE_ITEM_TYPE_VIDEO_OVER_THE_TOP"
+                    ],
+                    "enumDescriptions": [
+                        "Type value is not specified or is unknown in this version.",
+                        "Image, HTML5, native, or rich media ads.",
+                        "Display ads that drive installs of an app.",
+                        "Video ads sold on a CPM basis for a variety of environments.",
+                        "Video ads that drive installs of an app.",
+                        "Display ads served on mobile app inventory.",
+                        "Video ads served on mobile app inventory.",
+                        "RTB Audio ads sold for a variety of environments.",
+                        "Over-the-top ads present in OTT insertion orders. This type is only applicable to line items with an insertion order of insertion_order_type `OVER_THE_TOP`."
+                    ],
+                    "type": "string"
+                },
+                "mobileApp": {
+                    "$ref": "MobileApp",
+                    "description": "The mobile app promoted by the line item. This is applicable only when line_item_type is either `LINE_ITEM_TYPE_DISPLAY_MOBILE_APP_INSTALL` or `LINE_ITEM_TYPE_VIDEO_MOBILE_APP_INSTALL`."
                 }
             },
             "type": "object"
@@ -11687,7 +12524,8 @@
                         "EXCHANGE_NEXSTAR_DIGITAL",
                         "EXCHANGE_WAZE",
                         "EXCHANGE_SOUNDCAST",
-                        "EXCHANGE_SHARETHROUGH"
+                        "EXCHANGE_SHARETHROUGH",
+                        "EXCHANGE_MEDIANET"
                     ],
                     "enumDescriptions": [
                         "Exchange is not specified or is unknown in this version.",
@@ -11752,7 +12590,8 @@
                         "Nexstar Digital.",
                         "Waze.",
                         "SoundCast.",
-                        "Sharethrough."
+                        "Sharethrough.",
+                        "Media.net."
                     ],
                     "type": "string"
                 },
@@ -11962,6 +12801,133 @@
             },
             "type": "object"
         },
+        "Invoice": {
+            "description": "A single Invoice.",
+            "id": "Invoice",
+            "properties": {
+                "budgetInvoiceGroupingId": {
+                    "description": "Output only. Budget invoice grouping ID associated with the budget segment in the insertion order.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "budgetSummaries": {
+                    "description": "Output only. The list of summarized budget information associated with this invoice.",
+                    "items": {
+                        "$ref": "BudgetSummary"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                },
+                "correctedInvoiceId": {
+                    "description": "Output only. The originally issued invoice that is being adjusted by this invoice, if applicable. If there is a corrected invoice, the replaced_invoice_ids field will be empty. May appear on invoice PDF as `Reference invoice number`.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "currencyCode": {
+                    "description": "Output only. Invoice currency code in ISO 4217 format.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "displayName": {
+                    "description": "Output only. Display name of the invoice.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "dueDate": {
+                    "$ref": "Date",
+                    "description": "Output only. The invoice due date.",
+                    "readOnly": true
+                },
+                "invoiceId": {
+                    "description": "Output only. The unique ID of the invoice.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "invoiceType": {
+                    "description": "Output only. The type of invoice document.",
+                    "enum": [
+                        "INVOICE_TYPE_UNSPECIFIED",
+                        "INVOICE_TYPE_CREDIT",
+                        "INVOICE_TYPE_INVOICE"
+                    ],
+                    "enumDescriptions": [
+                        "Not specified or is unknown in this version.",
+                        "An Invoice with a negative amount.",
+                        "An Invoice with a positive amount."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "issueDate": {
+                    "$ref": "Date",
+                    "description": "Output only. The date when the invoice was issued.",
+                    "readOnly": true
+                },
+                "name": {
+                    "description": "Output only. The resource name of the invoice.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "nonBudgetMicros": {
+                    "description": "Output only. The total amount of costs or adjustments not tied to a particular budget, in micros of the invoice's currency. For example if currency_code is `USD`, then 1000000 micros is one US dollar.",
+                    "format": "int64",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "paymentsAccountId": {
+                    "description": "Output only. The ID of the payments account the invoice belongs to. Appears on the invoice PDF as `Billing Account Number`.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "paymentsProfileId": {
+                    "description": "Output only. The ID of the payments profile the invoice belongs to. Appears on the invoice PDF as `Billing ID`.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "pdfUrl": {
+                    "description": "Output only. The URL to download a PDF copy of the invoice. Note that this URL is user specific and requires a valid OAuth 2.0 access token to access. The access token must be provided in an `Authorization: Bearer` HTTP header and be authorized for one of the following scopes: * `https://www.googleapis.com/auth/display-video-mediaplanning` * `https://www.googleapis.com/auth/display-video` The URL will only be usable for 7 days from when the api is called.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "purchaseOrderNumber": {
+                    "description": "Output only. Purchase order number associated with the invoice.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "replacedInvoiceIds": {
+                    "description": "Output only. The originally issued invoice(s) that is being cancelled by this invoice, if applicable. If there are any replaced invoices, the corrected_invoice_id field will be empty. May appear on invoice PDF as `Replaced invoice numbers`. Note: There may be multiple replaced invoices due to consolidation of multiple invoices into a single invoice.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                },
+                "serviceDateRange": {
+                    "$ref": "DateRange",
+                    "description": "Output only. Service start and end dates which are covered by this invoice.",
+                    "readOnly": true
+                },
+                "subtotalAmountMicros": {
+                    "description": "Output only. The pre-tax subtotal amount, in micros of the invoice's currency. For example if currency_code is `USD`, then 1000000 micros is one US dollar.",
+                    "format": "int64",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "totalAmountMicros": {
+                    "description": "Output only. The invoice total amount, in micros of the invoice's currency. For example if currency_code is `USD`, then 1000000 micros is one US dollar.",
+                    "format": "int64",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "totalTaxAmountMicros": {
+                    "description": "Output only. The sum of all taxes in invoice, in micros of the invoice's currency. For example if currency_code is `USD`, then 1000000 micros is one US dollar.",
+                    "format": "int64",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "KeywordAssignedTargetingOptionDetails": {
             "description": "Details for assigned keyword targeting option. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_KEYWORD`.",
             "id": "KeywordAssignedTargetingOptionDetails",
@@ -11987,7 +12953,7 @@
                     "type": "string"
                 },
                 "negative": {
-                    "description": "Indicates if this option is being negatively targeted. All assigned language targeting options on the same line item must have the same value for this field.",
+                    "description": "Indicates if this option is being negatively targeted. All assigned language targeting options on the same resource must have the same value for this field.",
                     "type": "boolean"
                 },
                 "targetingOptionId": {
@@ -12357,6 +13323,24 @@
             },
             "type": "object"
         },
+        "ListCampaignAssignedTargetingOptionsResponse": {
+            "description": "Response message for ListCampaignAssignedTargetingOptions.",
+            "id": "ListCampaignAssignedTargetingOptionsResponse",
+            "properties": {
+                "assignedTargetingOptions": {
+                    "description": "The list of assigned targeting options. This list will be absent if empty.",
+                    "items": {
+                        "$ref": "AssignedTargetingOption"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "A token identifying the next page of results. This value should be specified as the pageToken in a subsequent ListCampaignAssignedTargetingOptionsRequest to fetch the next page of results. This token will be absent if there are no more assigned_targeting_options to return.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "ListCampaignsResponse": {
             "id": "ListCampaignsResponse",
             "properties": {
@@ -12558,6 +13542,24 @@
                 },
                 "nextPageToken": {
                     "description": "A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListInventorySources` method to retrieve the next page of results.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ListInvoicesResponse": {
+            "description": "Response message for InvoiceService.ListInvoices.",
+            "id": "ListInvoicesResponse",
+            "properties": {
+                "invoices": {
+                    "description": "The list of invoices. This list will be absent if empty.",
+                    "items": {
+                        "$ref": "Invoice"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "A token to retrieve the next page of results. Pass this value in the [ListInvoicesRequest.page_token] field in the subsequent call to `ListInvoices` method to retrieve the next page of results.",
                     "type": "string"
                 }
             },
@@ -12813,6 +13815,18 @@
             },
             "type": "object"
         },
+        "LookupInvoiceCurrencyResponse": {
+            "description": "Response message for InvoiceService.LookupInvoiceCurrency.",
+            "id": "LookupInvoiceCurrencyResponse",
+            "properties": {
+                "currencyCode": {
+                    "description": "Output only. Invoice currency code in ISO 4217 format.",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "ManualTrigger": {
             "description": "A single manual trigger in Display & Video 360.",
             "id": "ManualTrigger",
@@ -12979,6 +13993,66 @@
             },
             "type": "object"
         },
+        "NativeContentPositionAssignedTargetingOptionDetails": {
+            "description": "Details for native content position assigned targeting option. This will be populated in the native_content_position_details field when targeting_type is `TARGETING_TYPE_NATIVE_CONTENT_POSITION`. Explicitly targeting all options is not supported. Remove all native content position targeting options to achieve this effect.",
+            "id": "NativeContentPositionAssignedTargetingOptionDetails",
+            "properties": {
+                "contentPosition": {
+                    "description": "Output only. The content position.",
+                    "enum": [
+                        "NATIVE_CONTENT_POSITION_UNSPECIFIED",
+                        "NATIVE_CONTENT_POSITION_UNKNOWN",
+                        "NATIVE_CONTENT_POSITION_IN_ARTICLE",
+                        "NATIVE_CONTENT_POSITION_IN_FEED",
+                        "NATIVE_CONTENT_POSITION_PERIPHERAL",
+                        "NATIVE_CONTENT_POSITION_RECOMMENDATION"
+                    ],
+                    "enumDescriptions": [
+                        "Native content position is not specified in this version. This enum is a place holder for a default value and does not represent a real native content position.",
+                        "The native content position is unknown.",
+                        "Native content position is in-article, i.e., ads appear between the paragraphs of pages.",
+                        "Native content position is in-feed, i.e., ads appear in a scrollable stream of content. A feed is typically editorial (e.g. a list of articles or news) or listings (e.g. a list of products or services).",
+                        "Native content position is peripheral, i.e., ads appear outside of core content on pages, such as the right- or left-hand side of the page.",
+                        "Native content position is recommendation, i.e., ads appear in sections for recommended content."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "targetingOptionId": {
+                    "description": "Required. The targeting_option_id field when targeting_type is `TARGETING_TYPE_NATIVE_CONTENT_POSITION`.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "NativeContentPositionTargetingOptionDetails": {
+            "description": "Represents a targetable native content position. This will be populated in the native_content_position_details field when targeting_type is `TARGETING_TYPE_NATIVE_CONTENT_POSITION`.",
+            "id": "NativeContentPositionTargetingOptionDetails",
+            "properties": {
+                "contentPosition": {
+                    "description": "Output only. The content position.",
+                    "enum": [
+                        "NATIVE_CONTENT_POSITION_UNSPECIFIED",
+                        "NATIVE_CONTENT_POSITION_UNKNOWN",
+                        "NATIVE_CONTENT_POSITION_IN_ARTICLE",
+                        "NATIVE_CONTENT_POSITION_IN_FEED",
+                        "NATIVE_CONTENT_POSITION_PERIPHERAL",
+                        "NATIVE_CONTENT_POSITION_RECOMMENDATION"
+                    ],
+                    "enumDescriptions": [
+                        "Native content position is not specified in this version. This enum is a place holder for a default value and does not represent a real native content position.",
+                        "The native content position is unknown.",
+                        "Native content position is in-article, i.e., ads appear between the paragraphs of pages.",
+                        "Native content position is in-feed, i.e., ads appear in a scrollable stream of content. A feed is typically editorial (e.g. a list of articles or news) or listings (e.g. a list of products or services).",
+                        "Native content position is peripheral, i.e., ads appear outside of core content on pages, such as the right- or left-hand side of the page.",
+                        "Native content position is recommendation, i.e., ads appear in sections for recommended content."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "NegativeKeyword": {
             "description": "A negatively targeted keyword that belongs to a negative keyword list.",
             "id": "NegativeKeyword",
@@ -13016,6 +14090,12 @@
                 },
                 "negativeKeywordListId": {
                     "description": "Output only. The unique ID of the negative keyword list. Assigned by the system.",
+                    "format": "int64",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "targetedLineItemCount": {
+                    "description": "Output only. Number of line items that are directly targeting this negative keyword list.",
                     "format": "int64",
                     "readOnly": true,
                     "type": "string"
@@ -13733,6 +14813,62 @@
             },
             "type": "object"
         },
+        "PrismaConfig": {
+            "description": "Settings specific to the MediaOcean Prisma tool.",
+            "id": "PrismaConfig",
+            "properties": {
+                "prismaCpeCode": {
+                    "$ref": "PrismaCpeCode",
+                    "description": "Required. Google Payments Center supports searching and filtering on this code."
+                },
+                "prismaType": {
+                    "description": "Required. The Prisma type.",
+                    "enum": [
+                        "PRISMA_TYPE_UNSPECIFIED",
+                        "PRISMA_TYPE_DISPLAY",
+                        "PRISMA_TYPE_SEARCH",
+                        "PRISMA_TYPE_VIDEO",
+                        "PRISMA_TYPE_AUDIO",
+                        "PRISMA_TYPE_SOCIAL",
+                        "PRISMA_TYPE_FEE"
+                    ],
+                    "enumDescriptions": [
+                        "Type is not specified or unknown in this version.",
+                        "Display type.",
+                        "Search type.",
+                        "Video type.",
+                        "Audio type.",
+                        "Social type.",
+                        "Fee type."
+                    ],
+                    "type": "string"
+                },
+                "supplier": {
+                    "description": "Required. The entity allocated this budget (DSP, site, etc.).",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PrismaCpeCode": {
+            "description": "Google Payments Center supports searching and filtering on the component fields of this code.",
+            "id": "PrismaCpeCode",
+            "properties": {
+                "prismaClientCode": {
+                    "description": "The Prisma client code.",
+                    "type": "string"
+                },
+                "prismaEstimateCode": {
+                    "description": "The Prisma estimate code.",
+                    "type": "string"
+                },
+                "prismaProductCode": {
+                    "description": "The Prisma product code.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "ProximityLocationListAssignedTargetingOptionDetails": {
             "description": "Targeting details for proximity location list. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_PROXIMITY_LOCATION_LIST`.",
             "id": "ProximityLocationListAssignedTargetingOptionDetails",
@@ -13743,7 +14879,7 @@
                     "type": "string"
                 },
                 "proximityRadiusRange": {
-                    "description": "Required. Radius range for proximity location list. This represents the size of the area around a chosen location that will be targeted. `All` proximity location targeting under a single line item must have the same radius range value. Set this value to match any existing targeting. If updated, this field will change the radius range for all proximity targeting under the line item.",
+                    "description": "Required. Radius range for proximity location list. This represents the size of the area around a chosen location that will be targeted. `All` proximity location targeting under a single resource must have the same radius range value. Set this value to match any existing targeting. If updated, this field will change the radius range for all proximity targeting under the resource.",
                     "enum": [
                         "PROXIMITY_RADIUS_RANGE_UNSPECIFIED",
                         "PROXIMITY_RADIUS_RANGE_SMALL",
@@ -13839,6 +14975,72 @@
                     "description": "Required. ID of the regional location list. Should refer to the location_list_id field of a LocationList resource whose type is `TARGETING_LOCATION_TYPE_REGIONAL`.",
                     "format": "int64",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ReplaceNegativeKeywordsRequest": {
+            "description": "Request message for NegativeKeywordService.ReplaceNegativeKeywords.",
+            "id": "ReplaceNegativeKeywordsRequest",
+            "properties": {
+                "newNegativeKeywords": {
+                    "description": "The negative keywords that will replace the existing keywords in the negative keyword list, specified as a list of NegativeKeywords.",
+                    "items": {
+                        "$ref": "NegativeKeyword"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ReplaceNegativeKeywordsResponse": {
+            "description": "Response message for NegativeKeywordService.ReplaceNegativeKeywords.",
+            "id": "ReplaceNegativeKeywordsResponse",
+            "properties": {
+                "negativeKeywords": {
+                    "description": "The full list of negative keywords now present in the negative keyword list.",
+                    "items": {
+                        "$ref": "NegativeKeyword"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ReplaceSitesRequest": {
+            "description": "Request message for SiteService.ReplaceSites.",
+            "id": "ReplaceSitesRequest",
+            "properties": {
+                "advertiserId": {
+                    "description": "The ID of the advertiser that owns the parent channel.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "newSites": {
+                    "description": "The sites that will replace the existing sites assigned to the channel, specified as a list of Sites.",
+                    "items": {
+                        "$ref": "Site"
+                    },
+                    "type": "array"
+                },
+                "partnerId": {
+                    "description": "The ID of the partner that owns the parent channel.",
+                    "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ReplaceSitesResponse": {
+            "description": "Response message for SiteService.ReplaceSites.",
+            "id": "ReplaceSitesResponse",
+            "properties": {
+                "sites": {
+                    "description": "The list of sites in the channel after replacing.",
+                    "items": {
+                        "$ref": "Site"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -14166,7 +15368,7 @@
                     "type": "string"
                 },
                 "urlOrAppId": {
-                    "description": "Required. The URL or app ID of the site. Must be UTF-8 encoded with a maximum length of 240 bytes.",
+                    "description": "Required. The app ID or URL of the site. Must be UTF-8 encoded with a maximum length of 240 bytes.",
                     "type": "string"
                 }
             },
@@ -14332,6 +15534,10 @@
                     "readOnly": true,
                     "type": "string"
                 },
+                "nativeContentPositionDetails": {
+                    "$ref": "NativeContentPositionTargetingOptionDetails",
+                    "description": "Native content position details."
+                },
                 "onScreenPositionDetails": {
                     "$ref": "OnScreenPositionTargetingOptionDetails",
                     "description": "On screen position details."
@@ -14397,7 +15603,8 @@
                         "TARGETING_TYPE_GEO_REGION",
                         "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
                         "TARGETING_TYPE_EXCHANGE",
-                        "TARGETING_TYPE_SUB_EXCHANGE"
+                        "TARGETING_TYPE_SUB_EXCHANGE",
+                        "TARGETING_TYPE_NATIVE_CONTENT_POSITION"
                     ],
                     "enumDescriptions": [
                         "Default value when type is not specified or is unknown in this version.",
@@ -14437,7 +15644,8 @@
                         "Target ads to a specific regional location (for example, a city or state).",
                         "Purchase impressions from a group of deals and auction packages.",
                         "Purchase impressions from specific exchanges.",
-                        "Purchase impressions from specific sub-exchanges."
+                        "Purchase impressions from specific sub-exchanges.",
+                        "Target ads to a specific native content position."
                     ],
                     "readOnly": true,
                     "type": "string"
