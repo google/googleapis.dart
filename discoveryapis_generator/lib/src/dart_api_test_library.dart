@@ -98,20 +98,26 @@ class DartApiTestLibrary extends TestHelper {
     return '$sink';
   }
 
-  String get libraryHeader => """
+  String get libraryHeader {
+    final pkgImports = [
+      "import '$apiImportPath' as api;",
+      "import 'package:http/http.dart' as http;",
+      "import 'package:test/test.dart' as unittest;",
+    ]..sort();
+
+    return """
 ${ignoreForFileComments(_testIgnores)}
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
 import 'dart:core' as core;
 
-import 'package:http/http.dart' as http;
-import 'package:test/test.dart' as unittest;
-import '$apiImportPath' as api;
+${pkgImports.join('\n')}
 
 import '../$testSharedDartFileName';
 
 """;
+  }
 }
 
 const _testIgnores = {

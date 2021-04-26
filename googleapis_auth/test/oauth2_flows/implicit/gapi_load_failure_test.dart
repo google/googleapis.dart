@@ -6,9 +6,9 @@
 import 'dart:html';
 import 'dart:js' as js;
 
-import 'package:test/test.dart';
 import 'package:googleapis_auth/auth_browser.dart' as auth;
 import 'package:googleapis_auth/src/oauth2_flows/implicit.dart' as impl;
+import 'package:test/test.dart';
 
 import 'utils.dart';
 

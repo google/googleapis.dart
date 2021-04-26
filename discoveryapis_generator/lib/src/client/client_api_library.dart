@@ -125,14 +125,17 @@ library $libraryName;
       result += "import 'dart:core' as ${imports.core};\n";
     }
 
-    result += """
+    final pkgImports = [
+      '',
+      "import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as ${imports.commons};",
+      "import 'package:http/http.dart' as ${imports.http};",
+      schemaImports,
+      '',
+    ]..sort();
 
-import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as ${imports.commons};
-""";
+    result += pkgImports.join('\n');
 
     return """$result${"""
-import 'package:http/http.dart' as ${imports.http};
-$schemaImports
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
     ApiRequestError, DetailedApiRequestError$exportedMediaClasses;
 
