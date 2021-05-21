@@ -8,11 +8,8 @@ import 'dart:io';
 
 import 'package:http/http.dart';
 
-import 'access_credentials.dart';
-import 'auth_client.dart';
 import 'auth_functions.dart';
 import 'auth_http_utils.dart';
-import 'client_id.dart';
 import 'service_account_client.dart';
 import 'service_account_credentials.dart';
 

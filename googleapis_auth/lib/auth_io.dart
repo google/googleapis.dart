@@ -6,12 +6,9 @@ import 'dart:io';
 
 import 'package:http/http.dart';
 
-import 'src/access_credentials.dart';
 import 'src/adc_utils.dart';
-import 'src/auth_client.dart';
 import 'src/auth_functions.dart';
 import 'src/auth_http_utils.dart';
-import 'src/client_id.dart';
 import 'src/http_client_base.dart';
 import 'src/metadata_server_client.dart' show clientViaMetadataServer;
 import 'src/oauth2_flows/auth_code.dart';
