@@ -9,7 +9,6 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:discoveryapis_generator/discoveryapis_generator.dart';
-
 // ignore: implementation_imports
 import 'package:discoveryapis_generator/src/namer.dart';
 import 'package:yaml/yaml.dart';
@@ -274,7 +273,7 @@ package.
       }
 
       if (item.documentationLink != null) {
-        sb..writeln('- [Documentation](${item.documentationLink})');
+        sb.writeln('- [Documentation](${item.documentationLink})');
       }
       final pubUri = '$basePubUri$libraryName/$libraryName-library.html';
       sb..writeln('- [API details]($pubUri)')..writeln();
