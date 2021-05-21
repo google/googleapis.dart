@@ -9,6 +9,8 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:discoveryapis_generator/discoveryapis_generator.dart';
+// ignore: implementation_imports
+import 'package:discoveryapis_generator/src/namer.dart';
 import 'package:yaml/yaml.dart';
 
 import '../googleapis_generator.dart';
@@ -237,6 +239,8 @@ class DiscoveryPackagesConfiguration {
 
   static String _generateReadme(
     String readmeFile,
+    String packageName,
+    String packageVersion,
     List<RestDescription> items,
   ) {
     final sb = StringBuffer();
@@ -250,6 +254,10 @@ class DiscoveryPackagesConfiguration {
 The following is a list of APIs that are currently available inside this
 package.
 ''');
+
+    final basePubUri =
+        'https://pub.dev/documentation/$packageName/$packageVersion/';
+
     for (var item in items) {
       sb.write('#### ');
       if (item.icons != null &&
@@ -257,16 +265,18 @@ package.
           item.icons.x16.startsWith('https://')) {
         sb.write('![Logo](${item.icons.x16}) ');
       }
-      sb..writeln('${item.title} - ${item.name} ${item.version}')..writeln();
+      final libraryName = ApiLibraryNamer.libraryName(item.name, item.version);
+      sb..writeln('${item.title} - `$libraryName`')..writeln();
 
       if (item.description != null && item.description.isNotEmpty) {
         sb..writeln(item.description)..writeln();
       }
+
       if (item.documentationLink != null) {
-        sb
-          ..writeln('Official API documentation: ${item.documentationLink}')
-          ..writeln();
+        sb.writeln('- [Documentation](${item.documentationLink})');
       }
+      final pubUri = '$basePubUri$libraryName/$libraryName-library.html';
+      sb..writeln('- [API details]($pubUri)')..writeln();
     }
     return sb.toString();
   }
@@ -351,7 +361,7 @@ package.
     }
 
     // Generate the README.md file content.
-    final readme = _generateReadme(readmeFile, apiDescriptions);
+    final readme = _generateReadme(readmeFile, name, version, apiDescriptions);
 
     // Read the LICENSE
     final license = File(licenseFile).readAsStringSync();

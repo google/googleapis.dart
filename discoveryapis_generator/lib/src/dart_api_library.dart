@@ -87,7 +87,8 @@ class DartApiLibrary extends BaseApiLibrary {
     @required this.isPackage,
     bool useCorePrefixes = true,
   }) : super(description, 'Api', useCorePrefixes: useCorePrefixes) {
-    libraryName = namer.libraryName(description.name, description.version);
+    libraryName =
+        ApiLibraryNamer.libraryName(description.name, description.version);
     schemaDB = parseSchemas(imports, description);
     apiClass = parseResources(imports, schemaDB, description);
     exposeMedia = parseMediaUse(apiClass);
