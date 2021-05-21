@@ -148,7 +148,6 @@ packages:
     - osconfig:v1
     - oslogin:v1 # https://cloud.google.com/compute/docs/oslogin/rest/
     - pagespeedonline:v5 # https://developers.google.com/speed/docs/insights/about
-    - paymentsresellersubscription:v1
     - people:v1 # https://developers.google.com/people/
     - playablelocations:v3
     - playcustomapp:v1 # https://developers.google.com/android/work/play/custom-app-api
@@ -161,7 +160,6 @@ packages:
     - recaptchaenterprise:v1
     - recommender:v1
     - redis:v1 # https://cloud.google.com/memorystore/docs/redis/
-    - remotebuildexecution:v2
     - reseller:v1 # https://developers.google.com/admin-sdk/reseller/
     - retail:v2
     - run:v1
@@ -329,6 +327,7 @@ skipped_apis:
 - osconfig:v1beta # v1 included
 - oslogin:v1alpha # v1 available
 - oslogin:v1beta # v1 available
+- paymentsresellersubscription:v1 # not released yet
 - policytroubleshooter:v1beta # v1 included
 - pubsub:v1beta1a # v1beta1, v1bets2 and v1 included
 - pubsub:v1beta2 # v1 included
@@ -337,6 +336,7 @@ skipped_apis:
 - redis:v1beta1 # v1 included
 - remotebuildexecution:v1 # v2 included
 - remotebuildexecution:v1alpha # v2 included
+- remotebuildexecution:v2 # not released yet
 - retail:v2alpha # v2 included
 - retail:v2beta # v2 included
 - run:v1alpha1 #v1 included

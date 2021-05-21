@@ -299,14 +299,14 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-core.List<api.PartitionCursor> buildUnnamed7143() {
+core.List<api.PartitionCursor> buildUnnamed7087() {
   var o = <api.PartitionCursor>[];
   o.add(buildPartitionCursor());
   o.add(buildPartitionCursor());
   return o;
 }
 
-void checkUnnamed7143(core.List<api.PartitionCursor> o) {
+void checkUnnamed7087(core.List<api.PartitionCursor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPartitionCursor(o[0] as api.PartitionCursor);
   checkPartitionCursor(o[1] as api.PartitionCursor);
@@ -318,7 +318,7 @@ api.ListPartitionCursorsResponse buildListPartitionCursorsResponse() {
   buildCounterListPartitionCursorsResponse++;
   if (buildCounterListPartitionCursorsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.partitionCursors = buildUnnamed7143();
+    o.partitionCursors = buildUnnamed7087();
   }
   buildCounterListPartitionCursorsResponse--;
   return o;
@@ -331,19 +331,19 @@ void checkListPartitionCursorsResponse(api.ListPartitionCursorsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed7143(o.partitionCursors!);
+    checkUnnamed7087(o.partitionCursors!);
   }
   buildCounterListPartitionCursorsResponse--;
 }
 
-core.List<api.Subscription> buildUnnamed7144() {
+core.List<api.Subscription> buildUnnamed7088() {
   var o = <api.Subscription>[];
   o.add(buildSubscription());
   o.add(buildSubscription());
   return o;
 }
 
-void checkUnnamed7144(core.List<api.Subscription> o) {
+void checkUnnamed7088(core.List<api.Subscription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSubscription(o[0] as api.Subscription);
   checkSubscription(o[1] as api.Subscription);
@@ -355,7 +355,7 @@ api.ListSubscriptionsResponse buildListSubscriptionsResponse() {
   buildCounterListSubscriptionsResponse++;
   if (buildCounterListSubscriptionsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.subscriptions = buildUnnamed7144();
+    o.subscriptions = buildUnnamed7088();
   }
   buildCounterListSubscriptionsResponse--;
   return o;
@@ -368,19 +368,19 @@ void checkListSubscriptionsResponse(api.ListSubscriptionsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed7144(o.subscriptions!);
+    checkUnnamed7088(o.subscriptions!);
   }
   buildCounterListSubscriptionsResponse--;
 }
 
-core.List<core.String> buildUnnamed7145() {
+core.List<core.String> buildUnnamed7089() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed7145(core.List<core.String> o) {
+void checkUnnamed7089(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -398,7 +398,7 @@ api.ListTopicSubscriptionsResponse buildListTopicSubscriptionsResponse() {
   buildCounterListTopicSubscriptionsResponse++;
   if (buildCounterListTopicSubscriptionsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.subscriptions = buildUnnamed7145();
+    o.subscriptions = buildUnnamed7089();
   }
   buildCounterListTopicSubscriptionsResponse--;
   return o;
@@ -411,19 +411,19 @@ void checkListTopicSubscriptionsResponse(api.ListTopicSubscriptionsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed7145(o.subscriptions!);
+    checkUnnamed7089(o.subscriptions!);
   }
   buildCounterListTopicSubscriptionsResponse--;
 }
 
-core.List<api.Topic> buildUnnamed7146() {
+core.List<api.Topic> buildUnnamed7090() {
   var o = <api.Topic>[];
   o.add(buildTopic());
   o.add(buildTopic());
   return o;
 }
 
-void checkUnnamed7146(core.List<api.Topic> o) {
+void checkUnnamed7090(core.List<api.Topic> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTopic(o[0] as api.Topic);
   checkTopic(o[1] as api.Topic);
@@ -435,7 +435,7 @@ api.ListTopicsResponse buildListTopicsResponse() {
   buildCounterListTopicsResponse++;
   if (buildCounterListTopicsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.topics = buildUnnamed7146();
+    o.topics = buildUnnamed7090();
   }
   buildCounterListTopicsResponse--;
   return o;
@@ -448,7 +448,7 @@ void checkListTopicsResponse(api.ListTopicsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed7146(o.topics!);
+    checkUnnamed7090(o.topics!);
   }
   buildCounterListTopicsResponse--;
 }

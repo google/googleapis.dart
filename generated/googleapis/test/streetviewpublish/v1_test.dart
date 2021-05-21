@@ -27,14 +27,14 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<core.String> buildUnnamed7237() {
+core.List<core.String> buildUnnamed7181() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed7237(core.List<core.String> o) {
+void checkUnnamed7181(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -51,7 +51,7 @@ api.BatchDeletePhotosRequest buildBatchDeletePhotosRequest() {
   var o = api.BatchDeletePhotosRequest();
   buildCounterBatchDeletePhotosRequest++;
   if (buildCounterBatchDeletePhotosRequest < 3) {
-    o.photoIds = buildUnnamed7237();
+    o.photoIds = buildUnnamed7181();
   }
   buildCounterBatchDeletePhotosRequest--;
   return o;
@@ -60,19 +60,19 @@ api.BatchDeletePhotosRequest buildBatchDeletePhotosRequest() {
 void checkBatchDeletePhotosRequest(api.BatchDeletePhotosRequest o) {
   buildCounterBatchDeletePhotosRequest++;
   if (buildCounterBatchDeletePhotosRequest < 3) {
-    checkUnnamed7237(o.photoIds!);
+    checkUnnamed7181(o.photoIds!);
   }
   buildCounterBatchDeletePhotosRequest--;
 }
 
-core.List<api.Status> buildUnnamed7238() {
+core.List<api.Status> buildUnnamed7182() {
   var o = <api.Status>[];
   o.add(buildStatus());
   o.add(buildStatus());
   return o;
 }
 
-void checkUnnamed7238(core.List<api.Status> o) {
+void checkUnnamed7182(core.List<api.Status> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStatus(o[0] as api.Status);
   checkStatus(o[1] as api.Status);
@@ -83,7 +83,7 @@ api.BatchDeletePhotosResponse buildBatchDeletePhotosResponse() {
   var o = api.BatchDeletePhotosResponse();
   buildCounterBatchDeletePhotosResponse++;
   if (buildCounterBatchDeletePhotosResponse < 3) {
-    o.status = buildUnnamed7238();
+    o.status = buildUnnamed7182();
   }
   buildCounterBatchDeletePhotosResponse--;
   return o;
@@ -92,19 +92,19 @@ api.BatchDeletePhotosResponse buildBatchDeletePhotosResponse() {
 void checkBatchDeletePhotosResponse(api.BatchDeletePhotosResponse o) {
   buildCounterBatchDeletePhotosResponse++;
   if (buildCounterBatchDeletePhotosResponse < 3) {
-    checkUnnamed7238(o.status!);
+    checkUnnamed7182(o.status!);
   }
   buildCounterBatchDeletePhotosResponse--;
 }
 
-core.List<api.PhotoResponse> buildUnnamed7239() {
+core.List<api.PhotoResponse> buildUnnamed7183() {
   var o = <api.PhotoResponse>[];
   o.add(buildPhotoResponse());
   o.add(buildPhotoResponse());
   return o;
 }
 
-void checkUnnamed7239(core.List<api.PhotoResponse> o) {
+void checkUnnamed7183(core.List<api.PhotoResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPhotoResponse(o[0] as api.PhotoResponse);
   checkPhotoResponse(o[1] as api.PhotoResponse);
@@ -115,7 +115,7 @@ api.BatchGetPhotosResponse buildBatchGetPhotosResponse() {
   var o = api.BatchGetPhotosResponse();
   buildCounterBatchGetPhotosResponse++;
   if (buildCounterBatchGetPhotosResponse < 3) {
-    o.results = buildUnnamed7239();
+    o.results = buildUnnamed7183();
   }
   buildCounterBatchGetPhotosResponse--;
   return o;
@@ -124,19 +124,19 @@ api.BatchGetPhotosResponse buildBatchGetPhotosResponse() {
 void checkBatchGetPhotosResponse(api.BatchGetPhotosResponse o) {
   buildCounterBatchGetPhotosResponse++;
   if (buildCounterBatchGetPhotosResponse < 3) {
-    checkUnnamed7239(o.results!);
+    checkUnnamed7183(o.results!);
   }
   buildCounterBatchGetPhotosResponse--;
 }
 
-core.List<api.UpdatePhotoRequest> buildUnnamed7240() {
+core.List<api.UpdatePhotoRequest> buildUnnamed7184() {
   var o = <api.UpdatePhotoRequest>[];
   o.add(buildUpdatePhotoRequest());
   o.add(buildUpdatePhotoRequest());
   return o;
 }
 
-void checkUnnamed7240(core.List<api.UpdatePhotoRequest> o) {
+void checkUnnamed7184(core.List<api.UpdatePhotoRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUpdatePhotoRequest(o[0] as api.UpdatePhotoRequest);
   checkUpdatePhotoRequest(o[1] as api.UpdatePhotoRequest);
@@ -147,7 +147,7 @@ api.BatchUpdatePhotosRequest buildBatchUpdatePhotosRequest() {
   var o = api.BatchUpdatePhotosRequest();
   buildCounterBatchUpdatePhotosRequest++;
   if (buildCounterBatchUpdatePhotosRequest < 3) {
-    o.updatePhotoRequests = buildUnnamed7240();
+    o.updatePhotoRequests = buildUnnamed7184();
   }
   buildCounterBatchUpdatePhotosRequest--;
   return o;
@@ -156,19 +156,19 @@ api.BatchUpdatePhotosRequest buildBatchUpdatePhotosRequest() {
 void checkBatchUpdatePhotosRequest(api.BatchUpdatePhotosRequest o) {
   buildCounterBatchUpdatePhotosRequest++;
   if (buildCounterBatchUpdatePhotosRequest < 3) {
-    checkUnnamed7240(o.updatePhotoRequests!);
+    checkUnnamed7184(o.updatePhotoRequests!);
   }
   buildCounterBatchUpdatePhotosRequest--;
 }
 
-core.List<api.PhotoResponse> buildUnnamed7241() {
+core.List<api.PhotoResponse> buildUnnamed7185() {
   var o = <api.PhotoResponse>[];
   o.add(buildPhotoResponse());
   o.add(buildPhotoResponse());
   return o;
 }
 
-void checkUnnamed7241(core.List<api.PhotoResponse> o) {
+void checkUnnamed7185(core.List<api.PhotoResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPhotoResponse(o[0] as api.PhotoResponse);
   checkPhotoResponse(o[1] as api.PhotoResponse);
@@ -179,7 +179,7 @@ api.BatchUpdatePhotosResponse buildBatchUpdatePhotosResponse() {
   var o = api.BatchUpdatePhotosResponse();
   buildCounterBatchUpdatePhotosResponse++;
   if (buildCounterBatchUpdatePhotosResponse < 3) {
-    o.results = buildUnnamed7241();
+    o.results = buildUnnamed7185();
   }
   buildCounterBatchUpdatePhotosResponse--;
   return o;
@@ -188,7 +188,7 @@ api.BatchUpdatePhotosResponse buildBatchUpdatePhotosResponse() {
 void checkBatchUpdatePhotosResponse(api.BatchUpdatePhotosResponse o) {
   buildCounterBatchUpdatePhotosResponse++;
   if (buildCounterBatchUpdatePhotosResponse < 3) {
-    checkUnnamed7241(o.results!);
+    checkUnnamed7185(o.results!);
   }
   buildCounterBatchUpdatePhotosResponse--;
 }
@@ -281,14 +281,14 @@ void checkLevel(api.Level o) {
   buildCounterLevel--;
 }
 
-core.List<api.Photo> buildUnnamed7242() {
+core.List<api.Photo> buildUnnamed7186() {
   var o = <api.Photo>[];
   o.add(buildPhoto());
   o.add(buildPhoto());
   return o;
 }
 
-void checkUnnamed7242(core.List<api.Photo> o) {
+void checkUnnamed7186(core.List<api.Photo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPhoto(o[0] as api.Photo);
   checkPhoto(o[1] as api.Photo);
@@ -300,7 +300,7 @@ api.ListPhotosResponse buildListPhotosResponse() {
   buildCounterListPhotosResponse++;
   if (buildCounterListPhotosResponse < 3) {
     o.nextPageToken = 'foo';
-    o.photos = buildUnnamed7242();
+    o.photos = buildUnnamed7186();
   }
   buildCounterListPhotosResponse--;
   return o;
@@ -313,12 +313,12 @@ void checkListPhotosResponse(api.ListPhotosResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed7242(o.photos!);
+    checkUnnamed7186(o.photos!);
   }
   buildCounterListPhotosResponse--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed7243() {
+core.Map<core.String, core.Object> buildUnnamed7187() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -333,7 +333,7 @@ core.Map<core.String, core.Object> buildUnnamed7243() {
   return o;
 }
 
-void checkUnnamed7243(core.Map<core.String, core.Object> o) {
+void checkUnnamed7187(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -365,7 +365,7 @@ void checkUnnamed7243(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed7244() {
+core.Map<core.String, core.Object> buildUnnamed7188() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -380,7 +380,7 @@ core.Map<core.String, core.Object> buildUnnamed7244() {
   return o;
 }
 
-void checkUnnamed7244(core.Map<core.String, core.Object> o) {
+void checkUnnamed7188(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -419,9 +419,9 @@ api.Operation buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed7243();
+    o.metadata = buildUnnamed7187();
     o.name = 'foo';
-    o.response = buildUnnamed7244();
+    o.response = buildUnnamed7188();
   }
   buildCounterOperation--;
   return o;
@@ -432,37 +432,37 @@ void checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkStatus(o.error! as api.Status);
-    checkUnnamed7243(o.metadata!);
+    checkUnnamed7187(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed7244(o.response!);
+    checkUnnamed7188(o.response!);
   }
   buildCounterOperation--;
 }
 
-core.List<api.Connection> buildUnnamed7245() {
+core.List<api.Connection> buildUnnamed7189() {
   var o = <api.Connection>[];
   o.add(buildConnection());
   o.add(buildConnection());
   return o;
 }
 
-void checkUnnamed7245(core.List<api.Connection> o) {
+void checkUnnamed7189(core.List<api.Connection> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkConnection(o[0] as api.Connection);
   checkConnection(o[1] as api.Connection);
 }
 
-core.List<api.Place> buildUnnamed7246() {
+core.List<api.Place> buildUnnamed7190() {
   var o = <api.Place>[];
   o.add(buildPlace());
   o.add(buildPlace());
   return o;
 }
 
-void checkUnnamed7246(core.List<api.Place> o) {
+void checkUnnamed7190(core.List<api.Place> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlace(o[0] as api.Place);
   checkPlace(o[1] as api.Place);
@@ -474,11 +474,11 @@ api.Photo buildPhoto() {
   buildCounterPhoto++;
   if (buildCounterPhoto < 3) {
     o.captureTime = 'foo';
-    o.connections = buildUnnamed7245();
+    o.connections = buildUnnamed7189();
     o.downloadUrl = 'foo';
     o.mapsPublishStatus = 'foo';
     o.photoId = buildPhotoId();
-    o.places = buildUnnamed7246();
+    o.places = buildUnnamed7190();
     o.pose = buildPose();
     o.shareLink = 'foo';
     o.thumbnailUrl = 'foo';
@@ -497,7 +497,7 @@ void checkPhoto(api.Photo o) {
       o.captureTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed7245(o.connections!);
+    checkUnnamed7189(o.connections!);
     unittest.expect(
       o.downloadUrl!,
       unittest.equals('foo'),
@@ -507,7 +507,7 @@ void checkPhoto(api.Photo o) {
       unittest.equals('foo'),
     );
     checkPhotoId(o.photoId! as api.PhotoId);
-    checkUnnamed7246(o.places!);
+    checkUnnamed7190(o.places!);
     checkPose(o.pose! as api.Pose);
     unittest.expect(
       o.shareLink!,
@@ -651,7 +651,7 @@ void checkPose(api.Pose o) {
   buildCounterPose--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed7247() {
+core.Map<core.String, core.Object> buildUnnamed7191() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -666,7 +666,7 @@ core.Map<core.String, core.Object> buildUnnamed7247() {
   return o;
 }
 
-void checkUnnamed7247(core.Map<core.String, core.Object> o) {
+void checkUnnamed7191(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -698,17 +698,17 @@ void checkUnnamed7247(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed7248() {
+core.List<core.Map<core.String, core.Object>> buildUnnamed7192() {
   var o = <core.Map<core.String, core.Object>>[];
-  o.add(buildUnnamed7247());
-  o.add(buildUnnamed7247());
+  o.add(buildUnnamed7191());
+  o.add(buildUnnamed7191());
   return o;
 }
 
-void checkUnnamed7248(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed7192(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed7247(o[0]);
-  checkUnnamed7247(o[1]);
+  checkUnnamed7191(o[0]);
+  checkUnnamed7191(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -717,7 +717,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed7248();
+    o.details = buildUnnamed7192();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -731,7 +731,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed7248(o.details!);
+    checkUnnamed7192(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -786,14 +786,14 @@ void checkUploadRef(api.UploadRef o) {
   buildCounterUploadRef--;
 }
 
-core.List<core.String> buildUnnamed7249() {
+core.List<core.String> buildUnnamed7193() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed7249(core.List<core.String> o) {
+void checkUnnamed7193(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1356,7 +1356,7 @@ void main() {
       var mock = HttpServerMock();
       var res = api.StreetViewPublishApi(mock).photos;
       var arg_languageCode = 'foo';
-      var arg_photoIds = buildUnnamed7249();
+      var arg_photoIds = buildUnnamed7193();
       var arg_view = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
