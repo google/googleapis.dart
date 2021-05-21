@@ -28277,6 +28277,7 @@ class UserRolePermission {
   /// - "SUBACCOUNT_AND_ACCOUNT_BY_DEFAULT"
   /// - "ACCOUNT_ALWAYS"
   /// - "SUBACCOUNT_AND_ACCOUNT_ALWAYS"
+  /// - "USER_PROFILE_ONLY"
   core.String? availability;
 
   /// ID of this user role permission.

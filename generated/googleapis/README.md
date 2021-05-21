@@ -947,11 +947,6 @@ The PageSpeed Insights API lets you analyze the performance of your website with
 - [Documentation](https://developers.google.com/speed/docs/insights/v5/about)
 - [API details](https://pub.dev/documentation/googleapis/3.0.0/pagespeedonline.v5/pagespeedonline.v5-library.html)
 
-#### Payments Reseller Subscription API - `paymentsresellersubscription.v1`
-
-- [Documentation](https://developers.google.com/payments/reseller/subscription/)
-- [API details](https://pub.dev/documentation/googleapis/3.0.0/paymentsresellersubscription.v1/paymentsresellersubscription.v1-library.html)
-
 #### People API - `people.v1`
 
 Provides access to information about profiles and contacts.
@@ -1025,13 +1020,6 @@ Creates and manages Redis instances on the Google Cloud Platform.
 
 - [Documentation](https://cloud.google.com/memorystore/docs/redis/)
 - [API details](https://pub.dev/documentation/googleapis/3.0.0/redis.v1/redis.v1-library.html)
-
-#### Remote Build Execution API - `remotebuildexecution.v2`
-
-Supplies a Remote Execution API service for tools such as bazel.
-
-- [Documentation](https://cloud.google.com/remote-build-execution/docs/)
-- [API details](https://pub.dev/documentation/googleapis/3.0.0/remotebuildexecution.v2/remotebuildexecution.v2-library.html)
 
 #### Google Workspace Reseller API - `reseller.v1`
 

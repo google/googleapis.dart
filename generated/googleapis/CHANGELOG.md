@@ -15,9 +15,9 @@
 - `mybusinessplaceactions` - new!
 - `ondemandscanning` - new!
 - `orgpolicy` - new!
-- `paymentsresellersubscription` - new!
 - `policysimulator` - new!
 - `recaptchaenterprise` - new!
+- `remotebuildexecution` - **REMOVED** - not a valid API.
 
 ## 2.0.0
 

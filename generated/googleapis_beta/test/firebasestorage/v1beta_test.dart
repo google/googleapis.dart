@@ -81,14 +81,14 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-core.List<api.Bucket> buildUnnamed8415() {
+core.List<api.Bucket> buildUnnamed8359() {
   var o = <api.Bucket>[];
   o.add(buildBucket());
   o.add(buildBucket());
   return o;
 }
 
-void checkUnnamed8415(core.List<api.Bucket> o) {
+void checkUnnamed8359(core.List<api.Bucket> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBucket(o[0] as api.Bucket);
   checkBucket(o[1] as api.Bucket);
@@ -99,7 +99,7 @@ api.ListBucketsResponse buildListBucketsResponse() {
   var o = api.ListBucketsResponse();
   buildCounterListBucketsResponse++;
   if (buildCounterListBucketsResponse < 3) {
-    o.buckets = buildUnnamed8415();
+    o.buckets = buildUnnamed8359();
     o.nextPageToken = 'foo';
   }
   buildCounterListBucketsResponse--;
@@ -109,7 +109,7 @@ api.ListBucketsResponse buildListBucketsResponse() {
 void checkListBucketsResponse(api.ListBucketsResponse o) {
   buildCounterListBucketsResponse++;
   if (buildCounterListBucketsResponse < 3) {
-    checkUnnamed8415(o.buckets!);
+    checkUnnamed8359(o.buckets!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),

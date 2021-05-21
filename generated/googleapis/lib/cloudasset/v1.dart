@@ -71,8 +71,8 @@ class AssetsResource {
   ///
   /// [parent] - Required. Name of the organization or project the assets belong
   /// to. Format: "organizations/\[organization-number\]" (such as
-  /// "organizations/123"), "projects/\[project-number\]" (such as
-  /// "projects/my-project-id"), or "projects/\[project-id\]" (such as
+  /// "organizations/123"), "projects/\[project-id\]" (such as
+  /// "projects/my-project-id"), or "projects/\[project-number\]" (such as
   /// "projects/12345").
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
@@ -663,6 +663,71 @@ class V1Resource {
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Analyze moving a resource to a specified destination without kicking off
+  /// the actual move.
+  ///
+  /// The analysis is best effort depending on the user's permissions of viewing
+  /// different hierarchical policies and configurations. The policies and
+  /// configuration are subject to change before the actual resource migration
+  /// takes place.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - Required. Name of the resource to perform the analysis
+  /// against. Only GCP Project are supported as of today. Hence, this can only
+  /// be Project ID (such as "projects/my-project-id") or a Project Number (such
+  /// as "projects/12345").
+  /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
+  ///
+  /// [destinationParent] - Required. Name of the GCP Folder or Organization to
+  /// reparent the target resource. The analysis will be performed against
+  /// hypothetically moving the resource to this specified desitination parent.
+  /// This can only be a Folder number (such as "folders/123") or an
+  /// Organization number (such as "organizations/123").
+  ///
+  /// [view] - Analysis view indicating what information should be included in
+  /// the analysis response. If unspecified, the default view is FULL.
+  /// Possible string values are:
+  /// - "ANALYSIS_VIEW_UNSPECIFIED" : The default/unset value. The API will
+  /// default to the FULL view.
+  /// - "FULL" : Full analysis including all level of impacts of the specified
+  /// resource move.
+  /// - "BASIC" : Basic analysis only including blockers which will prevent the
+  /// specified resource move at runtime.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AnalyzeMoveResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AnalyzeMoveResponse> analyzeMove(
+    core.String resource, {
+    core.String? destinationParent,
+    core.String? view,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (destinationParent != null) 'destinationParent': [destinationParent],
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':analyzeMove';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return AnalyzeMoveResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Batch gets the update history of assets that overlap a time window.
   ///
   /// For IAM_POLICY content, this API outputs history when the asset and its
@@ -923,14 +988,16 @@ class V1Resource {
   /// expression syntax. If the regular expression does not match any supported
   /// asset type, an INVALID_ARGUMENT error will be returned.
   ///
-  /// [orderBy] - Optional. A comma separated list of fields specifying the
+  /// [orderBy] - Optional. A comma-separated list of fields specifying the
   /// sorting order of the results. The default order is ascending. Add " DESC"
   /// after the field name to indicate descending order. Redundant space
-  /// characters are ignored. Example: "location DESC, name". Only string fields
-  /// in the response are sortable, including `name`, `displayName`,
-  /// `description`, `location`. All the other fields such as repeated fields
-  /// (e.g., `networkTags`), map fields (e.g., `labels`) and struct fields
-  /// (e.g., `additionalAttributes`) are not supported.
+  /// characters are ignored. Example: "location DESC, name". Only singular
+  /// primitive fields in the response are sortable: * name * assetType *
+  /// project * displayName * description * location * kmsKey * createTime *
+  /// updateTime * state * parentFullResourceName * parentAssetType All the
+  /// other fields such as repeated fields (e.g., `networkTags`), map fields
+  /// (e.g., `labels`) and struct fields (e.g., `additionalAttributes`) are not
+  /// supported.
   ///
   /// [pageSize] - Optional. The page size for search result pagination. Page
   /// size is capped at 500 even if a larger value is given. If set to zero,
@@ -1134,6 +1201,31 @@ class AnalyzeIamPolicyResponse {
               serviceAccountImpersonationAnalysis!
                   .map((value) => value.toJson())
                   .toList(),
+      };
+}
+
+/// The response message for resource move analysis.
+class AnalyzeMoveResponse {
+  /// The list of analyses returned from performing the intended resource move
+  /// analysis.
+  ///
+  /// The analysis is grouped by different Cloud services.
+  core.List<MoveAnalysis>? moveAnalysis;
+
+  AnalyzeMoveResponse();
+
+  AnalyzeMoveResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('moveAnalysis')) {
+      moveAnalysis = (_json['moveAnalysis'] as core.List)
+          .map<MoveAnalysis>((value) => MoveAnalysis.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (moveAnalysis != null)
+          'moveAnalysis': moveAnalysis!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4702,6 +4794,98 @@ class ListFeedsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (feeds != null)
           'feeds': feeds!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// A message to group the analysis information.
+class MoveAnalysis {
+  /// Analysis result of moving the target resource.
+  MoveAnalysisResult? analysis;
+
+  /// The user friendly display name of the analysis.
+  ///
+  /// E.g. IAM, Organization Policy etc.
+  core.String? displayName;
+
+  /// Description of error encountered when performing the analysis.
+  Status? error;
+
+  MoveAnalysis();
+
+  MoveAnalysis.fromJson(core.Map _json) {
+    if (_json.containsKey('analysis')) {
+      analysis = MoveAnalysisResult.fromJson(
+          _json['analysis'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'] as core.String;
+    }
+    if (_json.containsKey('error')) {
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (analysis != null) 'analysis': analysis!.toJson(),
+        if (displayName != null) 'displayName': displayName!,
+        if (error != null) 'error': error!.toJson(),
+      };
+}
+
+/// An analysis result including blockers and warnings.
+class MoveAnalysisResult {
+  /// Blocking information that would prevent the target resource from moving to
+  /// the specified destination at runtime.
+  core.List<MoveImpact>? blockers;
+
+  /// Warning information indicating that moving the target resource to the
+  /// specified destination might be unsafe.
+  ///
+  /// This can include important policy information and configuration changes,
+  /// but will not block moves at runtime.
+  core.List<MoveImpact>? warnings;
+
+  MoveAnalysisResult();
+
+  MoveAnalysisResult.fromJson(core.Map _json) {
+    if (_json.containsKey('blockers')) {
+      blockers = (_json['blockers'] as core.List)
+          .map<MoveImpact>((value) =>
+              MoveImpact.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('warnings')) {
+      warnings = (_json['warnings'] as core.List)
+          .map<MoveImpact>((value) =>
+              MoveImpact.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (blockers != null)
+          'blockers': blockers!.map((value) => value.toJson()).toList(),
+        if (warnings != null)
+          'warnings': warnings!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// A message to group impacts of moving the target resource.
+class MoveImpact {
+  /// User friendly impact detail in a free form message.
+  core.String? detail;
+
+  MoveImpact();
+
+  MoveImpact.fromJson(core.Map _json) {
+    if (_json.containsKey('detail')) {
+      detail = _json['detail'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (detail != null) 'detail': detail!,
       };
 }
 
