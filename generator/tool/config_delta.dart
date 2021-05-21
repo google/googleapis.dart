@@ -24,6 +24,28 @@ Future<void> main(List<String> args) async {
     configs.expand((element) => element.apis.keys),
   );
 
+  for (var name in _names) {
+    stderr.writeln('\n### $name');
+    final oldVer = configs.singleWhere(
+        (element) => element.version == 'old' && element.name == name);
+    final newVer = configs.singleWhere(
+        (element) => element.version == 'new' && element.name == name);
+    for (var api in allApis) {
+      final oldApi = oldVer.apis[api].toString();
+      final newApi = newVer.apis[api].toString();
+      if (oldApi == newApi) {
+        continue;
+      }
+      stderr.writeln([
+        api.padRight(30),
+        'old:',
+        oldApi.padRight(10),
+        'new:',
+        newApi.padRight(10),
+      ].join('\t'));
+    }
+  }
+
   final rows = [
     [
       'api',
