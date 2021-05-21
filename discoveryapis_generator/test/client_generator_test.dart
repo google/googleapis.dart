@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 // Copyright (c) 2015, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
@@ -9,7 +8,6 @@ import 'dart:io';
 import 'package:discoveryapis_generator/clientstub_generator.dart';
 import 'package:discoveryapis_generator/discoveryapis_generator.dart';
 import 'package:discoveryapis_generator/src/dart_api_library.dart';
-import 'package:discoveryapis_generator/src/utils.dart';
 import 'package:path/path.dart' as p;
 import 'package:test/test.dart';
 

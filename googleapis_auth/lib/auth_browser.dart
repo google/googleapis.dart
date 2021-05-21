@@ -7,14 +7,10 @@ import 'dart:async';
 import 'package:http/browser_client.dart';
 import 'package:http/http.dart';
 
-import 'src/access_credentials.dart';
-import 'src/auth_client.dart';
 import 'src/auth_functions.dart';
 import 'src/auth_http_utils.dart';
-import 'src/client_id.dart';
 import 'src/http_client_base.dart';
 import 'src/oauth2_flows/implicit.dart';
-import 'src/response_type.dart';
 import 'src/service_account_credentials.dart';
 
 export 'googleapis_auth.dart';
