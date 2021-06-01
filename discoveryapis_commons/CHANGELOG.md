@@ -1,3 +1,7 @@
+## 1.0.1
+
+- Support Unicode file names in `MultipartMediaUploader`.
+
 ## 1.0.0
 
 - Add support for null-safety.
