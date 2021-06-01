@@ -44,12 +44,13 @@ class MultipartMediaUploader {
         'Content-Transfer-Encoding: base64\r\n\r\n';
     const bodyTail = '\r\n--$_boundary--';
 
-    final totalLength = bodyHead.length +
+    final headBytes = utf8.encode(bodyHead);
+
+    final totalLength = headBytes.length +
         _lengthOfBase64Stream(_uploadMedia.length!) +
         bodyTail.length;
 
-    final bodyController = StreamController<List<int>>()
-      ..add(ascii.encode(bodyHead));
+    final bodyController = StreamController<List<int>>()..add(headBytes);
 
     Future.microtask(() async {
       try {

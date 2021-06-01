@@ -10,7 +10,7 @@ import 'package:test/test.dart';
 import 'package:test_integration/test_integration.dart';
 
 final _bucketName = readConfig('storage_bucket') as String;
-const _fileName = 'upload1.txt';
+const _fileName = 'upload👍.txt';
 
 void main() {
   final random = Random();
