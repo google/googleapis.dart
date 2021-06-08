@@ -110,6 +110,7 @@
             "methods": {
                 "analyzeEntities": {
                     "description": "Finds named entities (currently proper names and common nouns) in the text along with entity types, salience, mentions for each entity, and other properties.",
+                    "flatPath": "v1/documents:analyzeEntities",
                     "httpMethod": "POST",
                     "id": "language.documents.analyzeEntities",
                     "parameterOrder": [],
@@ -128,6 +129,7 @@
                 },
                 "analyzeEntitySentiment": {
                     "description": "Finds entities, similar to AnalyzeEntities in the text and analyzes sentiment associated with each entity and its mentions.",
+                    "flatPath": "v1/documents:analyzeEntitySentiment",
                     "httpMethod": "POST",
                     "id": "language.documents.analyzeEntitySentiment",
                     "parameterOrder": [],
@@ -146,6 +148,7 @@
                 },
                 "analyzeSentiment": {
                     "description": "Analyzes the sentiment of the provided text.",
+                    "flatPath": "v1/documents:analyzeSentiment",
                     "httpMethod": "POST",
                     "id": "language.documents.analyzeSentiment",
                     "parameterOrder": [],
@@ -164,6 +167,7 @@
                 },
                 "analyzeSyntax": {
                     "description": "Analyzes the syntax of the text and provides sentence boundaries and tokenization along with part of speech tags, dependency trees, and other properties.",
+                    "flatPath": "v1/documents:analyzeSyntax",
                     "httpMethod": "POST",
                     "id": "language.documents.analyzeSyntax",
                     "parameterOrder": [],
@@ -182,6 +186,7 @@
                 },
                 "annotateText": {
                     "description": "A convenience method that provides all the features that analyzeSentiment, analyzeEntities, and analyzeSyntax provide in one call.",
+                    "flatPath": "v1/documents:annotateText",
                     "httpMethod": "POST",
                     "id": "language.documents.annotateText",
                     "parameterOrder": [],
@@ -200,6 +205,7 @@
                 },
                 "classifyText": {
                     "description": "Classifies a document into categories.",
+                    "flatPath": "v1/documents:classifyText",
                     "httpMethod": "POST",
                     "id": "language.documents.classifyText",
                     "parameterOrder": [],
@@ -219,7 +225,7 @@
             }
         }
     },
-    "revision": "20210508",
+    "revision": "20210605",
     "rootUrl": "https://language.googleapis.com/",
     "schemas": {
         "AnalyzeEntitiesRequest": {

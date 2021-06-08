@@ -616,14 +616,14 @@ void checkGuestUnitFeatures(api.GuestUnitFeatures o) {
   buildCounterGuestUnitFeatures--;
 }
 
-core.List<core.String> buildUnnamed4788() {
+core.List<core.String> buildUnnamed5196() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed4788(core.List<core.String> o) {
+void checkUnnamed5196(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -640,7 +640,7 @@ api.GuestUnitType buildGuestUnitType() {
   var o = api.GuestUnitType();
   buildCounterGuestUnitType++;
   if (buildCounterGuestUnitType < 3) {
-    o.codes = buildUnnamed4788();
+    o.codes = buildUnnamed5196();
     o.features = buildGuestUnitFeatures();
     o.label = 'foo';
   }
@@ -651,7 +651,7 @@ api.GuestUnitType buildGuestUnitType() {
 void checkGuestUnitType(api.GuestUnitType o) {
   buildCounterGuestUnitType++;
   if (buildCounterGuestUnitType < 3) {
-    checkUnnamed4788(o.codes!);
+    checkUnnamed5196(o.codes!);
     checkGuestUnitFeatures(o.features! as api.GuestUnitFeatures);
     unittest.expect(
       o.label!,
@@ -1402,14 +1402,14 @@ void checkLivingAreaSleeping(api.LivingAreaSleeping o) {
   buildCounterLivingAreaSleeping--;
 }
 
-core.List<api.GuestUnitType> buildUnnamed4789() {
+core.List<api.GuestUnitType> buildUnnamed5197() {
   var o = <api.GuestUnitType>[];
   o.add(buildGuestUnitType());
   o.add(buildGuestUnitType());
   return o;
 }
 
-void checkUnnamed4789(core.List<api.GuestUnitType> o) {
+void checkUnnamed5197(core.List<api.GuestUnitType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGuestUnitType(o[0] as api.GuestUnitType);
   checkGuestUnitType(o[1] as api.GuestUnitType);
@@ -1428,7 +1428,7 @@ api.Lodging buildLodging() {
     o.connectivity = buildConnectivity();
     o.families = buildFamilies();
     o.foodAndDrink = buildFoodAndDrink();
-    o.guestUnits = buildUnnamed4789();
+    o.guestUnits = buildUnnamed5197();
     o.healthAndSafety = buildHealthAndSafety();
     o.housekeeping = buildHousekeeping();
     o.metadata = buildLodgingMetadata();
@@ -1458,7 +1458,7 @@ void checkLodging(api.Lodging o) {
     checkConnectivity(o.connectivity! as api.Connectivity);
     checkFamilies(o.families! as api.Families);
     checkFoodAndDrink(o.foodAndDrink! as api.FoodAndDrink);
-    checkUnnamed4789(o.guestUnits!);
+    checkUnnamed5197(o.guestUnits!);
     checkHealthAndSafety(o.healthAndSafety! as api.HealthAndSafety);
     checkHousekeeping(o.housekeeping! as api.Housekeeping);
     checkLodgingMetadata(o.metadata! as api.LodgingMetadata);
@@ -2089,14 +2089,14 @@ void checkProperty(api.Property o) {
   buildCounterProperty--;
 }
 
-core.List<api.LanguageSpoken> buildUnnamed4790() {
+core.List<api.LanguageSpoken> buildUnnamed5198() {
   var o = <api.LanguageSpoken>[];
   o.add(buildLanguageSpoken());
   o.add(buildLanguageSpoken());
   return o;
 }
 
-void checkUnnamed4790(core.List<api.LanguageSpoken> o) {
+void checkUnnamed5198(core.List<api.LanguageSpoken> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLanguageSpoken(o[0] as api.LanguageSpoken);
   checkLanguageSpoken(o[1] as api.LanguageSpoken);
@@ -2123,7 +2123,7 @@ api.Services buildServices() {
     o.fullServiceLaundryException = 'foo';
     o.giftShop = true;
     o.giftShopException = 'foo';
-    o.languagesSpoken = buildUnnamed4790();
+    o.languagesSpoken = buildUnnamed5198();
     o.selfServiceLaundry = true;
     o.selfServiceLaundryException = 'foo';
     o.socialHour = true;
@@ -2180,7 +2180,7 @@ void checkServices(api.Services o) {
       o.giftShopException!,
       unittest.equals('foo'),
     );
-    checkUnnamed4790(o.languagesSpoken!);
+    checkUnnamed5198(o.languagesSpoken!);
     unittest.expect(o.selfServiceLaundry!, unittest.isTrue);
     unittest.expect(
       o.selfServiceLaundryException!,

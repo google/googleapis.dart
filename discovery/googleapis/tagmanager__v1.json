@@ -125,6 +125,7 @@
             "methods": {
                 "get": {
                     "description": "Gets a GTM Account.",
+                    "flatPath": "tagmanager/v1/accounts/{accountId}",
                     "httpMethod": "GET",
                     "id": "tagmanager.accounts.get",
                     "parameterOrder": [
@@ -150,6 +151,7 @@
                 },
                 "list": {
                     "description": "Lists all GTM Accounts that a user has access to.",
+                    "flatPath": "tagmanager/v1/accounts",
                     "httpMethod": "GET",
                     "id": "tagmanager.accounts.list",
                     "parameterOrder": [],
@@ -166,6 +168,7 @@
                 },
                 "update": {
                     "description": "Updates a GTM Account.",
+                    "flatPath": "tagmanager/v1/accounts/{accountId}",
                     "httpMethod": "PUT",
                     "id": "tagmanager.accounts.update",
                     "parameterOrder": [
@@ -201,6 +204,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a Container.",
+                            "flatPath": "tagmanager/v1/accounts/{accountId}/containers",
                             "httpMethod": "POST",
                             "id": "tagmanager.accounts.containers.create",
                             "parameterOrder": [
@@ -227,6 +231,7 @@
                         },
                         "delete": {
                             "description": "Deletes a Container.",
+                            "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}",
                             "httpMethod": "DELETE",
                             "id": "tagmanager.accounts.containers.delete",
                             "parameterOrder": [
@@ -254,6 +259,7 @@
                         },
                         "get": {
                             "description": "Gets a Container.",
+                            "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}",
                             "httpMethod": "GET",
                             "id": "tagmanager.accounts.containers.get",
                             "parameterOrder": [
@@ -285,6 +291,7 @@
                         },
                         "list": {
                             "description": "Lists all Containers that belongs to a GTM Account.",
+                            "flatPath": "tagmanager/v1/accounts/{accountId}/containers",
                             "httpMethod": "GET",
                             "id": "tagmanager.accounts.containers.list",
                             "parameterOrder": [
@@ -309,6 +316,7 @@
                         },
                         "update": {
                             "description": "Updates a Container.",
+                            "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}",
                             "httpMethod": "PUT",
                             "id": "tagmanager.accounts.containers.update",
                             "parameterOrder": [
@@ -351,6 +359,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a GTM Environment.",
+                                    "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments",
                                     "httpMethod": "POST",
                                     "id": "tagmanager.accounts.containers.environments.create",
                                     "parameterOrder": [
@@ -384,6 +393,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a GTM Environment.",
+                                    "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments/{environmentId}",
                                     "httpMethod": "DELETE",
                                     "id": "tagmanager.accounts.containers.environments.delete",
                                     "parameterOrder": [
@@ -418,6 +428,7 @@
                                 },
                                 "get": {
                                     "description": "Gets a GTM Environment.",
+                                    "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments/{environmentId}",
                                     "httpMethod": "GET",
                                     "id": "tagmanager.accounts.containers.environments.get",
                                     "parameterOrder": [
@@ -456,6 +467,7 @@
                                 },
                                 "list": {
                                     "description": "Lists all GTM Environments of a GTM Container.",
+                                    "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments",
                                     "httpMethod": "GET",
                                     "id": "tagmanager.accounts.containers.environments.list",
                                     "parameterOrder": [
@@ -487,6 +499,7 @@
                                 },
                                 "update": {
                                     "description": "Updates a GTM Environment.",
+                                    "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments/{environmentId}",
                                     "httpMethod": "PUT",
                                     "id": "tagmanager.accounts.containers.environments.update",
                                     "parameterOrder": [
@@ -536,6 +549,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a GTM Folder.",
+                                    "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders",
                                     "httpMethod": "POST",
                                     "id": "tagmanager.accounts.containers.folders.create",
                                     "parameterOrder": [
@@ -569,6 +583,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a GTM Folder.",
+                                    "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders/{folderId}",
                                     "httpMethod": "DELETE",
                                     "id": "tagmanager.accounts.containers.folders.delete",
                                     "parameterOrder": [
@@ -603,6 +618,7 @@
                                 },
                                 "get": {
                                     "description": "Gets a GTM Folder.",
+                                    "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders/{folderId}",
                                     "httpMethod": "GET",
                                     "id": "tagmanager.accounts.containers.folders.get",
                                     "parameterOrder": [
@@ -641,6 +657,7 @@
                                 },
                                 "list": {
                                     "description": "Lists all GTM Folders of a Container.",
+                                    "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders",
                                     "httpMethod": "GET",
                                     "id": "tagmanager.accounts.containers.folders.list",
                                     "parameterOrder": [
@@ -672,6 +689,7 @@
                                 },
                                 "update": {
                                     "description": "Updates a GTM Folder.",
+                                    "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders/{folderId}",
                                     "httpMethod": "PUT",
                                     "id": "tagmanager.accounts.containers.folders.update",
                                     "parameterOrder": [
@@ -721,6 +739,7 @@
                                     "methods": {
                                         "list": {
                                             "description": "List all entities in a GTM Folder.",
+                                            "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders/{folderId}/entities",
                                             "httpMethod": "GET",
                                             "id": "tagmanager.accounts.containers.folders.entities.list",
                                             "parameterOrder": [
@@ -765,6 +784,7 @@
                             "methods": {
                                 "update": {
                                     "description": "Moves entities to a GTM Folder.",
+                                    "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/move_folders/{folderId}",
                                     "httpMethod": "PUT",
                                     "id": "tagmanager.accounts.containers.move_folders.update",
                                     "parameterOrder": [
@@ -824,6 +844,7 @@
                             "methods": {
                                 "update": {
                                     "description": "Re-generates the authorization code for a GTM Environment.",
+                                    "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/reauthorize_environments/{environmentId}",
                                     "httpMethod": "PUT",
                                     "id": "tagmanager.accounts.containers.reauthorize_environments.update",
                                     "parameterOrder": [
@@ -868,6 +889,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a GTM Tag.",
+                                    "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags",
                                     "httpMethod": "POST",
                                     "id": "tagmanager.accounts.containers.tags.create",
                                     "parameterOrder": [
@@ -901,6 +923,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a GTM Tag.",
+                                    "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags/{tagId}",
                                     "httpMethod": "DELETE",
                                     "id": "tagmanager.accounts.containers.tags.delete",
                                     "parameterOrder": [
@@ -935,6 +958,7 @@
                                 },
                                 "get": {
                                     "description": "Gets a GTM Tag.",
+                                    "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags/{tagId}",
                                     "httpMethod": "GET",
                                     "id": "tagmanager.accounts.containers.tags.get",
                                     "parameterOrder": [
@@ -973,6 +997,7 @@
                                 },
                                 "list": {
                                     "description": "Lists all GTM Tags of a Container.",
+                                    "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags",
                                     "httpMethod": "GET",
                                     "id": "tagmanager.accounts.containers.tags.list",
                                     "parameterOrder": [
@@ -1004,6 +1029,7 @@
                                 },
                                 "update": {
                                     "description": "Updates a GTM Tag.",
+                                    "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags/{tagId}",
                                     "httpMethod": "PUT",
                                     "id": "tagmanager.accounts.containers.tags.update",
                                     "parameterOrder": [
@@ -1053,6 +1079,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a GTM Trigger.",
+                                    "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers",
                                     "httpMethod": "POST",
                                     "id": "tagmanager.accounts.containers.triggers.create",
                                     "parameterOrder": [
@@ -1086,6 +1113,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a GTM Trigger.",
+                                    "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers/{triggerId}",
                                     "httpMethod": "DELETE",
                                     "id": "tagmanager.accounts.containers.triggers.delete",
                                     "parameterOrder": [
@@ -1120,6 +1148,7 @@
                                 },
                                 "get": {
                                     "description": "Gets a GTM Trigger.",
+                                    "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers/{triggerId}",
                                     "httpMethod": "GET",
                                     "id": "tagmanager.accounts.containers.triggers.get",
                                     "parameterOrder": [
@@ -1158,6 +1187,7 @@
                                 },
                                 "list": {
                                     "description": "Lists all GTM Triggers of a Container.",
+                                    "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers",
                                     "httpMethod": "GET",
                                     "id": "tagmanager.accounts.containers.triggers.list",
                                     "parameterOrder": [
@@ -1189,6 +1219,7 @@
                                 },
                                 "update": {
                                     "description": "Updates a GTM Trigger.",
+                                    "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers/{triggerId}",
                                     "httpMethod": "PUT",
                                     "id": "tagmanager.accounts.containers.triggers.update",
                                     "parameterOrder": [
@@ -1238,6 +1269,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a GTM Variable.",
+                                    "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables",
                                     "httpMethod": "POST",
                                     "id": "tagmanager.accounts.containers.variables.create",
                                     "parameterOrder": [
@@ -1271,6 +1303,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a GTM Variable.",
+                                    "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables/{variableId}",
                                     "httpMethod": "DELETE",
                                     "id": "tagmanager.accounts.containers.variables.delete",
                                     "parameterOrder": [
@@ -1305,6 +1338,7 @@
                                 },
                                 "get": {
                                     "description": "Gets a GTM Variable.",
+                                    "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables/{variableId}",
                                     "httpMethod": "GET",
                                     "id": "tagmanager.accounts.containers.variables.get",
                                     "parameterOrder": [
@@ -1343,6 +1377,7 @@
                                 },
                                 "list": {
                                     "description": "Lists all GTM Variables of a Container.",
+                                    "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables",
                                     "httpMethod": "GET",
                                     "id": "tagmanager.accounts.containers.variables.list",
                                     "parameterOrder": [
@@ -1374,6 +1409,7 @@
                                 },
                                 "update": {
                                     "description": "Updates a GTM Variable.",
+                                    "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables/{variableId}",
                                     "httpMethod": "PUT",
                                     "id": "tagmanager.accounts.containers.variables.update",
                                     "parameterOrder": [
@@ -1423,6 +1459,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a Container Version.",
+                                    "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions",
                                     "httpMethod": "POST",
                                     "id": "tagmanager.accounts.containers.versions.create",
                                     "parameterOrder": [
@@ -1456,6 +1493,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a Container Version.",
+                                    "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}",
                                     "httpMethod": "DELETE",
                                     "id": "tagmanager.accounts.containers.versions.delete",
                                     "parameterOrder": [
@@ -1490,6 +1528,7 @@
                                 },
                                 "get": {
                                     "description": "Gets a Container Version.",
+                                    "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}",
                                     "httpMethod": "GET",
                                     "id": "tagmanager.accounts.containers.versions.get",
                                     "parameterOrder": [
@@ -1529,6 +1568,7 @@
                                 },
                                 "list": {
                                     "description": "Lists all Container Versions of a GTM Container.",
+                                    "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions",
                                     "httpMethod": "GET",
                                     "id": "tagmanager.accounts.containers.versions.list",
                                     "parameterOrder": [
@@ -1573,6 +1613,7 @@
                                 },
                                 "publish": {
                                     "description": "Publishes a Container Version.",
+                                    "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}/publish",
                                     "httpMethod": "POST",
                                     "id": "tagmanager.accounts.containers.versions.publish",
                                     "parameterOrder": [
@@ -1615,6 +1656,7 @@
                                 },
                                 "restore": {
                                     "description": "Restores a Container Version. This will overwrite the container's current configuration (including its variables, triggers and tags). The operation will not have any effect on the version that is being served (i.e. the published version).",
+                                    "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}/restore",
                                     "httpMethod": "POST",
                                     "id": "tagmanager.accounts.containers.versions.restore",
                                     "parameterOrder": [
@@ -1652,6 +1694,7 @@
                                 },
                                 "undelete": {
                                     "description": "Undeletes a Container Version.",
+                                    "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}/undelete",
                                     "httpMethod": "POST",
                                     "id": "tagmanager.accounts.containers.versions.undelete",
                                     "parameterOrder": [
@@ -1689,6 +1732,7 @@
                                 },
                                 "update": {
                                     "description": "Updates a Container Version.",
+                                    "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}",
                                     "httpMethod": "PUT",
                                     "id": "tagmanager.accounts.containers.versions.update",
                                     "parameterOrder": [
@@ -1740,6 +1784,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a user's Account & Container Permissions.",
+                            "flatPath": "tagmanager/v1/accounts/{accountId}/permissions",
                             "httpMethod": "POST",
                             "id": "tagmanager.accounts.permissions.create",
                             "parameterOrder": [
@@ -1766,6 +1811,7 @@
                         },
                         "delete": {
                             "description": "Removes a user from the account, revoking access to it and all of its containers.",
+                            "flatPath": "tagmanager/v1/accounts/{accountId}/permissions/{permissionId}",
                             "httpMethod": "DELETE",
                             "id": "tagmanager.accounts.permissions.delete",
                             "parameterOrder": [
@@ -1793,6 +1839,7 @@
                         },
                         "get": {
                             "description": "Gets a user's Account & Container Permissions.",
+                            "flatPath": "tagmanager/v1/accounts/{accountId}/permissions/{permissionId}",
                             "httpMethod": "GET",
                             "id": "tagmanager.accounts.permissions.get",
                             "parameterOrder": [
@@ -1823,6 +1870,7 @@
                         },
                         "list": {
                             "description": "List all users that have access to the account along with Account and Container Permissions granted to each of them.",
+                            "flatPath": "tagmanager/v1/accounts/{accountId}/permissions",
                             "httpMethod": "GET",
                             "id": "tagmanager.accounts.permissions.list",
                             "parameterOrder": [
@@ -1846,6 +1894,7 @@
                         },
                         "update": {
                             "description": "Updates a user's Account & Container Permissions.",
+                            "flatPath": "tagmanager/v1/accounts/{accountId}/permissions/{permissionId}",
                             "httpMethod": "PUT",
                             "id": "tagmanager.accounts.permissions.update",
                             "parameterOrder": [
@@ -1882,7 +1931,7 @@
             }
         }
     },
-    "revision": "20210519",
+    "revision": "20210609",
     "rootUrl": "https://tagmanager.googleapis.com/",
     "schemas": {
         "Account": {

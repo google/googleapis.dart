@@ -98,6 +98,7 @@
             "methods": {
                 "search": {
                     "description": "Searches for political divisions by their natural name or OCD ID.",
+                    "flatPath": "civicinfo/v2/divisions",
                     "httpMethod": "GET",
                     "id": "civicinfo.divisions.search",
                     "parameterOrder": [],
@@ -119,6 +120,7 @@
             "methods": {
                 "electionQuery": {
                     "description": "List of available elections to query.",
+                    "flatPath": "civicinfo/v2/elections",
                     "httpMethod": "GET",
                     "id": "civicinfo.elections.electionQuery",
                     "parameterOrder": [],
@@ -130,6 +132,7 @@
                 },
                 "voterInfoQuery": {
                     "description": "Looks up information relevant to a voter based on the voter's registered address.",
+                    "flatPath": "civicinfo/v2/voterinfo",
                     "httpMethod": "GET",
                     "id": "civicinfo.elections.voterInfoQuery",
                     "parameterOrder": [
@@ -173,6 +176,7 @@
             "methods": {
                 "representativeInfoByAddress": {
                     "description": "Looks up political geography and representative information for a single address.",
+                    "flatPath": "civicinfo/v2/representatives",
                     "httpMethod": "GET",
                     "id": "civicinfo.representatives.representativeInfoByAddress",
                     "parameterOrder": [],
@@ -256,6 +260,7 @@
                 },
                 "representativeInfoByDivision": {
                     "description": "Looks up representative information for a single geographic division.",
+                    "flatPath": "civicinfo/v2/representatives/{ocdId}",
                     "httpMethod": "GET",
                     "id": "civicinfo.representatives.representativeInfoByDivision",
                     "parameterOrder": [

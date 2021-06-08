@@ -937,7 +937,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
 
   /// Update the version of a CryptoKey that will be used in Encrypt.
   ///
-  /// Returns an error if called on an asymmetric key.
+  /// Returns an error if called on a key whose purpose is not ENCRYPT_DECRYPT.
   ///
   /// [request] - The metadata request object.
   ///

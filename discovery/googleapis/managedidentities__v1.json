@@ -109,6 +109,7 @@
                     "methods": {
                         "get": {
                             "description": "Gets information about a location.",
+                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}",
                             "httpMethod": "GET",
                             "id": "managedidentities.projects.locations.get",
                             "parameterOrder": [
@@ -133,6 +134,7 @@
                         },
                         "list": {
                             "description": "Lists information about the supported locations for this service.",
+                            "flatPath": "v1/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "managedidentities.projects.locations.list",
                             "parameterOrder": [
@@ -152,7 +154,7 @@
                                     "type": "string"
                                 },
                                 "pageSize": {
-                                    "description": "The maximum number of results to return. If not set, the service will select a default.",
+                                    "description": "The maximum number of results to return. If not set, the service selects a default.",
                                     "format": "int32",
                                     "location": "query",
                                     "type": "integer"
@@ -179,6 +181,7 @@
                                     "methods": {
                                         "attachTrust": {
                                             "description": "Adds an AD trust to a domain.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/global/domains/{domainsId}:attachTrust",
                                             "httpMethod": "POST",
                                             "id": "managedidentities.projects.locations.global.domains.attachTrust",
                                             "parameterOrder": [
@@ -206,6 +209,7 @@
                                         },
                                         "create": {
                                             "description": "Creates a Microsoft AD domain.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/global/domains",
                                             "httpMethod": "POST",
                                             "id": "managedidentities.projects.locations.global.domains.create",
                                             "parameterOrder": [
@@ -238,6 +242,7 @@
                                         },
                                         "delete": {
                                             "description": "Deletes a domain.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/global/domains/{domainsId}",
                                             "httpMethod": "DELETE",
                                             "id": "managedidentities.projects.locations.global.domains.delete",
                                             "parameterOrder": [
@@ -262,6 +267,7 @@
                                         },
                                         "detachTrust": {
                                             "description": "Removes an AD trust.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/global/domains/{domainsId}:detachTrust",
                                             "httpMethod": "POST",
                                             "id": "managedidentities.projects.locations.global.domains.detachTrust",
                                             "parameterOrder": [
@@ -289,6 +295,7 @@
                                         },
                                         "get": {
                                             "description": "Gets information about a domain.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/global/domains/{domainsId}",
                                             "httpMethod": "GET",
                                             "id": "managedidentities.projects.locations.global.domains.get",
                                             "parameterOrder": [
@@ -313,6 +320,7 @@
                                         },
                                         "getIamPolicy": {
                                             "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/global/domains/{domainsId}:getIamPolicy",
                                             "httpMethod": "GET",
                                             "id": "managedidentities.projects.locations.global.domains.getIamPolicy",
                                             "parameterOrder": [
@@ -343,6 +351,7 @@
                                         },
                                         "list": {
                                             "description": "Lists domains in a project.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/global/domains",
                                             "httpMethod": "GET",
                                             "id": "managedidentities.projects.locations.global.domains.list",
                                             "parameterOrder": [
@@ -388,6 +397,7 @@
                                         },
                                         "patch": {
                                             "description": "Updates the metadata and configuration of a domain.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/global/domains/{domainsId}",
                                             "httpMethod": "PATCH",
                                             "id": "managedidentities.projects.locations.global.domains.patch",
                                             "parameterOrder": [
@@ -421,6 +431,7 @@
                                         },
                                         "reconfigureTrust": {
                                             "description": "Updates the DNS conditional forwarder.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/global/domains/{domainsId}:reconfigureTrust",
                                             "httpMethod": "POST",
                                             "id": "managedidentities.projects.locations.global.domains.reconfigureTrust",
                                             "parameterOrder": [
@@ -448,6 +459,7 @@
                                         },
                                         "resetAdminPassword": {
                                             "description": "Resets a domain's administrator password.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/global/domains/{domainsId}:resetAdminPassword",
                                             "httpMethod": "POST",
                                             "id": "managedidentities.projects.locations.global.domains.resetAdminPassword",
                                             "parameterOrder": [
@@ -475,6 +487,7 @@
                                         },
                                         "setIamPolicy": {
                                             "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/global/domains/{domainsId}:setIamPolicy",
                                             "httpMethod": "POST",
                                             "id": "managedidentities.projects.locations.global.domains.setIamPolicy",
                                             "parameterOrder": [
@@ -502,6 +515,7 @@
                                         },
                                         "testIamPermissions": {
                                             "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/global/domains/{domainsId}:testIamPermissions",
                                             "httpMethod": "POST",
                                             "id": "managedidentities.projects.locations.global.domains.testIamPermissions",
                                             "parameterOrder": [
@@ -529,6 +543,7 @@
                                         },
                                         "validateTrust": {
                                             "description": "Validates a trust state, that the target domain is reachable, and that the target domain is able to accept incoming trust requests.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/global/domains/{domainsId}:validateTrust",
                                             "httpMethod": "POST",
                                             "id": "managedidentities.projects.locations.global.domains.validateTrust",
                                             "parameterOrder": [
@@ -554,12 +569,90 @@
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         }
+                                    },
+                                    "resources": {
+                                        "sqlIntegrations": {
+                                            "methods": {
+                                                "get": {
+                                                    "description": "Gets details of a single sqlIntegration.",
+                                                    "flatPath": "v1/projects/{projectsId}/locations/global/domains/{domainsId}/sqlIntegrations/{sqlIntegrationsId}",
+                                                    "httpMethod": "GET",
+                                                    "id": "managedidentities.projects.locations.global.domains.sqlIntegrations.get",
+                                                    "parameterOrder": [
+                                                        "name"
+                                                    ],
+                                                    "parameters": {
+                                                        "name": {
+                                                            "description": "Required. SQLIntegration resource name using the form: `projects/{project_id}/locations/global/domains/{domain}/sqlIntegrations/{name}`",
+                                                            "location": "path",
+                                                            "pattern": "^projects/[^/]+/locations/global/domains/[^/]+/sqlIntegrations/[^/]+$",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "path": "v1/{+name}",
+                                                    "response": {
+                                                        "$ref": "SqlIntegration"
+                                                    },
+                                                    "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-platform"
+                                                    ]
+                                                },
+                                                "list": {
+                                                    "description": "Lists SqlIntegrations in a given domain.",
+                                                    "flatPath": "v1/projects/{projectsId}/locations/global/domains/{domainsId}/sqlIntegrations",
+                                                    "httpMethod": "GET",
+                                                    "id": "managedidentities.projects.locations.global.domains.sqlIntegrations.list",
+                                                    "parameterOrder": [
+                                                        "parent"
+                                                    ],
+                                                    "parameters": {
+                                                        "filter": {
+                                                            "description": "Optional. Filter specifying constraints of a list operation. For example, `SqlIntegration.name=\"sql\"`.",
+                                                            "location": "query",
+                                                            "type": "string"
+                                                        },
+                                                        "orderBy": {
+                                                            "description": "Optional. Specifies the ordering of results following syntax at https://cloud.google.com/apis/design/design_patterns#sorting_order.",
+                                                            "location": "query",
+                                                            "type": "string"
+                                                        },
+                                                        "pageSize": {
+                                                            "description": "Optional. The maximum number of items to return. If not specified, a default value of 1000 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response'ANIZATIONs next_page_token to determine if there are more instances left to be queried.",
+                                                            "format": "int32",
+                                                            "location": "query",
+                                                            "type": "integer"
+                                                        },
+                                                        "pageToken": {
+                                                            "description": "Optional. The next_page_token value returned from a previous List request, if any.",
+                                                            "location": "query",
+                                                            "type": "string"
+                                                        },
+                                                        "parent": {
+                                                            "description": "Required. The resource name of the SqlIntegrations using the form: `projects/{project_id}/locations/global/domains/*`",
+                                                            "location": "path",
+                                                            "pattern": "^projects/[^/]+/locations/global/domains/[^/]+$",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "path": "v1/{+parent}/sqlIntegrations",
+                                                    "response": {
+                                                        "$ref": "ListSqlIntegrationsResponse"
+                                                    },
+                                                    "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-platform"
+                                                    ]
+                                                }
+                                            }
+                                        }
                                     }
                                 },
                                 "operations": {
                                     "methods": {
                                         "cancel": {
                                             "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/global/operations/{operationsId}:cancel",
                                             "httpMethod": "POST",
                                             "id": "managedidentities.projects.locations.global.operations.cancel",
                                             "parameterOrder": [
@@ -587,6 +680,7 @@
                                         },
                                         "delete": {
                                             "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/global/operations/{operationsId}",
                                             "httpMethod": "DELETE",
                                             "id": "managedidentities.projects.locations.global.operations.delete",
                                             "parameterOrder": [
@@ -611,6 +705,7 @@
                                         },
                                         "get": {
                                             "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/global/operations/{operationsId}",
                                             "httpMethod": "GET",
                                             "id": "managedidentities.projects.locations.global.operations.get",
                                             "parameterOrder": [
@@ -635,6 +730,7 @@
                                         },
                                         "list": {
                                             "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/global/operations",
                                             "httpMethod": "GET",
                                             "id": "managedidentities.projects.locations.global.operations.list",
                                             "parameterOrder": [
@@ -682,7 +778,7 @@
             }
         }
     },
-    "revision": "20210324",
+    "revision": "20210601",
     "rootUrl": "https://managedidentities.googleapis.com/",
     "schemas": {
         "AttachTrustRequest": {
@@ -1072,7 +1168,7 @@
                     "description": "Optional. The MaintenanceSettings associated with instance."
                 },
                 "name": {
-                    "description": "Unique name of the resource. It uses the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}`",
+                    "description": "Unique name of the resource. It uses the form: `projects/{project_id|project_number}/locations/{location_id}/instances/{instance_id}` Note: Either project_id or project_number can be used, but keep it consistent with other APIs (e.g. RescheduleUpdate)",
                     "type": "string"
                 },
                 "producerMetadata": {
@@ -1291,10 +1387,6 @@
             "description": "SloMetadata contains resources required for proper SLO classification of the instance.",
             "id": "GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata",
             "properties": {
-                "eligibility": {
-                    "$ref": "GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility",
-                    "description": "Optional. Global per-instance SLI eligibility which applies to all defined SLIs. Exactly one of 'eligibility' and 'per_sli_eligibility' fields must be used."
-                },
                 "exclusions": {
                     "description": "List of SLO exclusion windows. When multiple entries in the list match (matching the exclusion time-window against current time point) the exclusion reason used in the first matching entry will be published. It is not needed to include expired exclusion in this list, as only the currently applicable exclusions are taken into account by the eligibility exporting subsystem (the historical state of exclusions will be reflected in the historically produced timeseries regardless of the current state). This field can be used to mark the instance as temporary ineligible for the purpose of SLO calculation. For permanent instance SLO exclusion, use of custom instance eligibility is recommended. See 'eligibility' field below.",
                     "items": {
@@ -1311,7 +1403,7 @@
                 },
                 "perSliEligibility": {
                     "$ref": "GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility",
-                    "description": "Optional. Multiple per-instance SLI eligibilities which apply for individual SLIs. Exactly one of 'eligibility' and 'per_sli_eligibility' fields must be used."
+                    "description": "Optional. Multiple per-instance SLI eligibilities which apply for individual SLIs."
                 },
                 "tier": {
                     "description": "Name of the SLO tier the Instance belongs to. This name will be expected to match the tiers specified in the service SLO configuration. Field is mandatory and must not be empty.",
@@ -1375,6 +1467,31 @@
                     "description": "A list of operations that matches the specified filter in the request.",
                     "items": {
                         "$ref": "Operation"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ListSqlIntegrationsResponse": {
+            "description": "ListSqlIntegrationsResponse is the response message for ListSqlIntegrations method.",
+            "id": "ListSqlIntegrationsResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "Token to retrieve the next page of results, or empty if there are no more results in the list.",
+                    "type": "string"
+                },
+                "sqlIntegrations": {
+                    "description": "A list of SQLIntegrations of a domain.",
+                    "items": {
+                        "$ref": "SqlIntegration"
+                    },
+                    "type": "array"
+                },
+                "unreachable": {
+                    "description": "A list of locations that could not be reached.",
+                    "items": {
+                        "type": "string"
                     },
                     "type": "array"
                 }
@@ -1658,6 +1775,50 @@
                 "policy": {
                     "$ref": "Policy",
                     "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them."
+                }
+            },
+            "type": "object"
+        },
+        "SqlIntegration": {
+            "description": "Represents the Sql instance integrated with AD.",
+            "id": "SqlIntegration",
+            "properties": {
+                "createTime": {
+                    "description": "Output only. The time sql integration was created. Synthetic field is populated automatically by CCFE.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "name": {
+                    "description": "The unique name of the sql integration in the form of `projects/{project_id}/locations/global/domains/{domain_name}/sqlIntegrations/{sql_integration}`",
+                    "type": "string"
+                },
+                "sqlInstance": {
+                    "description": "The full resource name of an integrated sql instance",
+                    "type": "string"
+                },
+                "state": {
+                    "description": "Output only. The current state of the sql integration.",
+                    "enum": [
+                        "STATE_UNSPECIFIED",
+                        "CREATING",
+                        "DELETING",
+                        "READY"
+                    ],
+                    "enumDescriptions": [
+                        "Not Set",
+                        "The sqlIntegration is being created.",
+                        "The sqlIntegration is being deleted.",
+                        "The sqlIntegration is ready."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "Output only. The time sql integration was updated. Synthetic field is populated automatically by CCFE.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
                 }
             },
             "type": "object"

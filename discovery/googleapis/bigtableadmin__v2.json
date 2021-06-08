@@ -131,6 +131,7 @@
             "methods": {
                 "cancel": {
                     "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                    "flatPath": "v2/operations/{operationsId}:cancel",
                     "httpMethod": "POST",
                     "id": "bigtableadmin.operations.cancel",
                     "parameterOrder": [
@@ -160,6 +161,7 @@
                 },
                 "delete": {
                     "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                    "flatPath": "v2/operations/{operationsId}",
                     "httpMethod": "DELETE",
                     "id": "bigtableadmin.operations.delete",
                     "parameterOrder": [
@@ -189,6 +191,7 @@
                 },
                 "get": {
                     "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                    "flatPath": "v2/operations/{operationsId}",
                     "httpMethod": "GET",
                     "id": "bigtableadmin.operations.get",
                     "parameterOrder": [
@@ -225,6 +228,7 @@
                             "methods": {
                                 "list": {
                                     "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                                    "flatPath": "v2/operations/projects/{projectsId}/operations",
                                     "httpMethod": "GET",
                                     "id": "bigtableadmin.operations.projects.operations.list",
                                     "parameterOrder": [
@@ -281,6 +285,7 @@
                     "methods": {
                         "create": {
                             "description": "Create an instance within a project.",
+                            "flatPath": "v2/projects/{projectsId}/instances",
                             "httpMethod": "POST",
                             "id": "bigtableadmin.projects.instances.create",
                             "parameterOrder": [
@@ -313,6 +318,7 @@
                         },
                         "delete": {
                             "description": "Delete an instance from a project.",
+                            "flatPath": "v2/projects/{projectsId}/instances/{instancesId}",
                             "httpMethod": "DELETE",
                             "id": "bigtableadmin.projects.instances.delete",
                             "parameterOrder": [
@@ -342,6 +348,7 @@
                         },
                         "get": {
                             "description": "Gets information about an instance.",
+                            "flatPath": "v2/projects/{projectsId}/instances/{instancesId}",
                             "httpMethod": "GET",
                             "id": "bigtableadmin.projects.instances.get",
                             "parameterOrder": [
@@ -372,6 +379,7 @@
                         },
                         "getIamPolicy": {
                             "description": "Gets the access control policy for an instance resource. Returns an empty policy if an instance exists but does not have a policy set.",
+                            "flatPath": "v2/projects/{projectsId}/instances/{instancesId}:getIamPolicy",
                             "httpMethod": "POST",
                             "id": "bigtableadmin.projects.instances.getIamPolicy",
                             "parameterOrder": [
@@ -404,6 +412,7 @@
                         },
                         "list": {
                             "description": "Lists information about instances in a project.",
+                            "flatPath": "v2/projects/{projectsId}/instances",
                             "httpMethod": "GET",
                             "id": "bigtableadmin.projects.instances.list",
                             "parameterOrder": [
@@ -439,6 +448,7 @@
                         },
                         "partialUpdateInstance": {
                             "description": "Partially updates an instance within a project. This method can modify all fields of an Instance and is the preferred way to update an Instance.",
+                            "flatPath": "v2/projects/{projectsId}/instances/{instancesId}",
                             "httpMethod": "PATCH",
                             "id": "bigtableadmin.projects.instances.partialUpdateInstance",
                             "parameterOrder": [
@@ -477,6 +487,7 @@
                         },
                         "setIamPolicy": {
                             "description": "Sets the access control policy on an instance resource. Replaces any existing policy.",
+                            "flatPath": "v2/projects/{projectsId}/instances/{instancesId}:setIamPolicy",
                             "httpMethod": "POST",
                             "id": "bigtableadmin.projects.instances.setIamPolicy",
                             "parameterOrder": [
@@ -509,6 +520,7 @@
                         },
                         "testIamPermissions": {
                             "description": "Returns permissions that the caller has on the specified instance resource.",
+                            "flatPath": "v2/projects/{projectsId}/instances/{instancesId}:testIamPermissions",
                             "httpMethod": "POST",
                             "id": "bigtableadmin.projects.instances.testIamPermissions",
                             "parameterOrder": [
@@ -541,6 +553,7 @@
                         },
                         "update": {
                             "description": "Updates an instance within a project. This method updates only the display name and type for an Instance. To update other Instance properties, such as labels, use PartialUpdateInstance.",
+                            "flatPath": "v2/projects/{projectsId}/instances/{instancesId}",
                             "httpMethod": "PUT",
                             "id": "bigtableadmin.projects.instances.update",
                             "parameterOrder": [
@@ -577,6 +590,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates an app profile within an instance.",
+                                    "flatPath": "v2/projects/{projectsId}/instances/{instancesId}/appProfiles",
                                     "httpMethod": "POST",
                                     "id": "bigtableadmin.projects.instances.appProfiles.create",
                                     "parameterOrder": [
@@ -619,6 +633,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes an app profile from an instance.",
+                                    "flatPath": "v2/projects/{projectsId}/instances/{instancesId}/appProfiles/{appProfilesId}",
                                     "httpMethod": "DELETE",
                                     "id": "bigtableadmin.projects.instances.appProfiles.delete",
                                     "parameterOrder": [
@@ -653,6 +668,7 @@
                                 },
                                 "get": {
                                     "description": "Gets information about an app profile.",
+                                    "flatPath": "v2/projects/{projectsId}/instances/{instancesId}/appProfiles/{appProfilesId}",
                                     "httpMethod": "GET",
                                     "id": "bigtableadmin.projects.instances.appProfiles.get",
                                     "parameterOrder": [
@@ -683,6 +699,7 @@
                                 },
                                 "list": {
                                     "description": "Lists information about app profiles in an instance.",
+                                    "flatPath": "v2/projects/{projectsId}/instances/{instancesId}/appProfiles",
                                     "httpMethod": "GET",
                                     "id": "bigtableadmin.projects.instances.appProfiles.list",
                                     "parameterOrder": [
@@ -723,6 +740,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates an app profile within an instance.",
+                                    "flatPath": "v2/projects/{projectsId}/instances/{instancesId}/appProfiles/{appProfilesId}",
                                     "httpMethod": "PATCH",
                                     "id": "bigtableadmin.projects.instances.appProfiles.patch",
                                     "parameterOrder": [
@@ -770,6 +788,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a cluster within an instance.",
+                                    "flatPath": "v2/projects/{projectsId}/instances/{instancesId}/clusters",
                                     "httpMethod": "POST",
                                     "id": "bigtableadmin.projects.instances.clusters.create",
                                     "parameterOrder": [
@@ -807,6 +826,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a cluster from an instance.",
+                                    "flatPath": "v2/projects/{projectsId}/instances/{instancesId}/clusters/{clustersId}",
                                     "httpMethod": "DELETE",
                                     "id": "bigtableadmin.projects.instances.clusters.delete",
                                     "parameterOrder": [
@@ -836,6 +856,7 @@
                                 },
                                 "get": {
                                     "description": "Gets information about a cluster.",
+                                    "flatPath": "v2/projects/{projectsId}/instances/{instancesId}/clusters/{clustersId}",
                                     "httpMethod": "GET",
                                     "id": "bigtableadmin.projects.instances.clusters.get",
                                     "parameterOrder": [
@@ -866,6 +887,7 @@
                                 },
                                 "list": {
                                     "description": "Lists information about clusters in an instance.",
+                                    "flatPath": "v2/projects/{projectsId}/instances/{instancesId}/clusters",
                                     "httpMethod": "GET",
                                     "id": "bigtableadmin.projects.instances.clusters.list",
                                     "parameterOrder": [
@@ -901,6 +923,7 @@
                                 },
                                 "partialUpdateCluster": {
                                     "description": "Partially updates a cluster within a project. This method is the preferred way to update a Cluster. ",
+                                    "flatPath": "v2/projects/{projectsId}/instances/{instancesId}/clusters/{clustersId}",
                                     "httpMethod": "PATCH",
                                     "id": "bigtableadmin.projects.instances.clusters.partialUpdateCluster",
                                     "parameterOrder": [
@@ -939,6 +962,7 @@
                                 },
                                 "update": {
                                     "description": "Updates a cluster within an instance. UpdateCluster is deprecated. Please use PartialUpdateCluster instead.",
+                                    "flatPath": "v2/projects/{projectsId}/instances/{instancesId}/clusters/{clustersId}",
                                     "httpMethod": "PUT",
                                     "id": "bigtableadmin.projects.instances.clusters.update",
                                     "parameterOrder": [
@@ -975,6 +999,7 @@
                                     "methods": {
                                         "create": {
                                             "description": "Starts creating a new Cloud Bigtable Backup. The returned backup long-running operation can be used to track creation of the backup. The metadata field type is CreateBackupMetadata. The response field type is Backup, if successful. Cancelling the returned operation will stop the creation and delete the backup.",
+                                            "flatPath": "v2/projects/{projectsId}/instances/{instancesId}/clusters/{clustersId}/backups",
                                             "httpMethod": "POST",
                                             "id": "bigtableadmin.projects.instances.clusters.backups.create",
                                             "parameterOrder": [
@@ -1011,6 +1036,7 @@
                                         },
                                         "delete": {
                                             "description": "Deletes a pending or completed Cloud Bigtable backup.",
+                                            "flatPath": "v2/projects/{projectsId}/instances/{instancesId}/clusters/{clustersId}/backups/{backupsId}",
                                             "httpMethod": "DELETE",
                                             "id": "bigtableadmin.projects.instances.clusters.backups.delete",
                                             "parameterOrder": [
@@ -1039,6 +1065,7 @@
                                         },
                                         "get": {
                                             "description": "Gets metadata on a pending or completed Cloud Bigtable Backup.",
+                                            "flatPath": "v2/projects/{projectsId}/instances/{instancesId}/clusters/{clustersId}/backups/{backupsId}",
                                             "httpMethod": "GET",
                                             "id": "bigtableadmin.projects.instances.clusters.backups.get",
                                             "parameterOrder": [
@@ -1067,6 +1094,7 @@
                                         },
                                         "getIamPolicy": {
                                             "description": "Gets the access control policy for a Table resource. Returns an empty policy if the resource exists but does not have a policy set.",
+                                            "flatPath": "v2/projects/{projectsId}/instances/{instancesId}/clusters/{clustersId}/backups/{backupsId}:getIamPolicy",
                                             "httpMethod": "POST",
                                             "id": "bigtableadmin.projects.instances.clusters.backups.getIamPolicy",
                                             "parameterOrder": [
@@ -1098,6 +1126,7 @@
                                         },
                                         "list": {
                                             "description": "Lists Cloud Bigtable backups. Returns both completed and pending backups.",
+                                            "flatPath": "v2/projects/{projectsId}/instances/{instancesId}/clusters/{clustersId}/backups",
                                             "httpMethod": "GET",
                                             "id": "bigtableadmin.projects.instances.clusters.backups.list",
                                             "parameterOrder": [
@@ -1147,6 +1176,7 @@
                                         },
                                         "patch": {
                                             "description": "Updates a pending or completed Cloud Bigtable Backup.",
+                                            "flatPath": "v2/projects/{projectsId}/instances/{instancesId}/clusters/{clustersId}/backups/{backupsId}",
                                             "httpMethod": "PATCH",
                                             "id": "bigtableadmin.projects.instances.clusters.backups.patch",
                                             "parameterOrder": [
@@ -1184,6 +1214,7 @@
                                         },
                                         "setIamPolicy": {
                                             "description": "Sets the access control policy on a Table resource. Replaces any existing policy.",
+                                            "flatPath": "v2/projects/{projectsId}/instances/{instancesId}/clusters/{clustersId}/backups/{backupsId}:setIamPolicy",
                                             "httpMethod": "POST",
                                             "id": "bigtableadmin.projects.instances.clusters.backups.setIamPolicy",
                                             "parameterOrder": [
@@ -1215,6 +1246,7 @@
                                         },
                                         "testIamPermissions": {
                                             "description": "Returns permissions that the caller has on the specified table resource.",
+                                            "flatPath": "v2/projects/{projectsId}/instances/{instancesId}/clusters/{clustersId}/backups/{backupsId}:testIamPermissions",
                                             "httpMethod": "POST",
                                             "id": "bigtableadmin.projects.instances.clusters.backups.testIamPermissions",
                                             "parameterOrder": [
@@ -1252,6 +1284,7 @@
                             "methods": {
                                 "checkConsistency": {
                                     "description": "Checks replication consistency based on a consistency token, that is, if replication has caught up based on the conditions specified in the token and the check request.",
+                                    "flatPath": "v2/projects/{projectsId}/instances/{instancesId}/tables/{tablesId}:checkConsistency",
                                     "httpMethod": "POST",
                                     "id": "bigtableadmin.projects.instances.tables.checkConsistency",
                                     "parameterOrder": [
@@ -1283,6 +1316,7 @@
                                 },
                                 "create": {
                                     "description": "Creates a new table in the specified instance. The table can be created with a full set of initial column families, specified in the request.",
+                                    "flatPath": "v2/projects/{projectsId}/instances/{instancesId}/tables",
                                     "httpMethod": "POST",
                                     "id": "bigtableadmin.projects.instances.tables.create",
                                     "parameterOrder": [
@@ -1314,6 +1348,7 @@
                                 },
                                 "delete": {
                                     "description": "Permanently deletes a specified table and all of its data.",
+                                    "flatPath": "v2/projects/{projectsId}/instances/{instancesId}/tables/{tablesId}",
                                     "httpMethod": "DELETE",
                                     "id": "bigtableadmin.projects.instances.tables.delete",
                                     "parameterOrder": [
@@ -1342,6 +1377,7 @@
                                 },
                                 "dropRowRange": {
                                     "description": "Permanently drop/delete a row range from a specified table. The request can specify whether to delete all rows in a table, or only those that match a particular prefix.",
+                                    "flatPath": "v2/projects/{projectsId}/instances/{instancesId}/tables/{tablesId}:dropRowRange",
                                     "httpMethod": "POST",
                                     "id": "bigtableadmin.projects.instances.tables.dropRowRange",
                                     "parameterOrder": [
@@ -1373,6 +1409,7 @@
                                 },
                                 "generateConsistencyToken": {
                                     "description": "Generates a consistency token for a Table, which can be used in CheckConsistency to check whether mutations to the table that finished before this call started have been replicated. The tokens will be available for 90 days.",
+                                    "flatPath": "v2/projects/{projectsId}/instances/{instancesId}/tables/{tablesId}:generateConsistencyToken",
                                     "httpMethod": "POST",
                                     "id": "bigtableadmin.projects.instances.tables.generateConsistencyToken",
                                     "parameterOrder": [
@@ -1404,6 +1441,7 @@
                                 },
                                 "get": {
                                     "description": "Gets metadata information about the specified table.",
+                                    "flatPath": "v2/projects/{projectsId}/instances/{instancesId}/tables/{tablesId}",
                                     "httpMethod": "GET",
                                     "id": "bigtableadmin.projects.instances.tables.get",
                                     "parameterOrder": [
@@ -1454,6 +1492,7 @@
                                 },
                                 "getIamPolicy": {
                                     "description": "Gets the access control policy for a Table resource. Returns an empty policy if the resource exists but does not have a policy set.",
+                                    "flatPath": "v2/projects/{projectsId}/instances/{instancesId}/tables/{tablesId}:getIamPolicy",
                                     "httpMethod": "POST",
                                     "id": "bigtableadmin.projects.instances.tables.getIamPolicy",
                                     "parameterOrder": [
@@ -1485,6 +1524,7 @@
                                 },
                                 "list": {
                                     "description": "Lists all tables served from a specified instance.",
+                                    "flatPath": "v2/projects/{projectsId}/instances/{instancesId}/tables",
                                     "httpMethod": "GET",
                                     "id": "bigtableadmin.projects.instances.tables.list",
                                     "parameterOrder": [
@@ -1546,6 +1586,7 @@
                                 },
                                 "modifyColumnFamilies": {
                                     "description": "Performs a series of column family modifications on the specified table. Either all or none of the modifications will occur before this method returns, but data requests received prior to that point may see a table where only some modifications have taken effect.",
+                                    "flatPath": "v2/projects/{projectsId}/instances/{instancesId}/tables/{tablesId}:modifyColumnFamilies",
                                     "httpMethod": "POST",
                                     "id": "bigtableadmin.projects.instances.tables.modifyColumnFamilies",
                                     "parameterOrder": [
@@ -1576,7 +1617,8 @@
                                     ]
                                 },
                                 "restore": {
-                                    "description": "Create a new table by restoring from a completed backup. The new table must be in the same instance as the instance containing the backup. The returned table long-running operation can be used to track the progress of the operation, and to cancel it. The metadata field type is RestoreTableMetadata. The response type is Table, if successful.",
+                                    "description": "Create a new table by restoring from a completed backup. The new table must be in the same project as the instance containing the backup. The returned table long-running operation can be used to track the progress of the operation, and to cancel it. The metadata field type is RestoreTableMetadata. The response type is Table, if successful.",
+                                    "flatPath": "v2/projects/{projectsId}/instances/{instancesId}/tables:restore",
                                     "httpMethod": "POST",
                                     "id": "bigtableadmin.projects.instances.tables.restore",
                                     "parameterOrder": [
@@ -1584,7 +1626,7 @@
                                     ],
                                     "parameters": {
                                         "parent": {
-                                            "description": "Required. The name of the instance in which to create the restored table. This instance must be the parent of the source backup. Values are of the form `projects//instances/`.",
+                                            "description": "Required. The name of the instance in which to create the restored table. This instance must be in the same project as the source backup. Values are of the form `projects//instances/`.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/instances/[^/]+$",
                                             "required": true,
@@ -1608,6 +1650,7 @@
                                 },
                                 "setIamPolicy": {
                                     "description": "Sets the access control policy on a Table resource. Replaces any existing policy.",
+                                    "flatPath": "v2/projects/{projectsId}/instances/{instancesId}/tables/{tablesId}:setIamPolicy",
                                     "httpMethod": "POST",
                                     "id": "bigtableadmin.projects.instances.tables.setIamPolicy",
                                     "parameterOrder": [
@@ -1639,6 +1682,7 @@
                                 },
                                 "testIamPermissions": {
                                     "description": "Returns permissions that the caller has on the specified table resource.",
+                                    "flatPath": "v2/projects/{projectsId}/instances/{instancesId}/tables/{tablesId}:testIamPermissions",
                                     "httpMethod": "POST",
                                     "id": "bigtableadmin.projects.instances.tables.testIamPermissions",
                                     "parameterOrder": [
@@ -1676,6 +1720,7 @@
                     "methods": {
                         "get": {
                             "description": "Gets information about a location.",
+                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}",
                             "httpMethod": "GET",
                             "id": "bigtableadmin.projects.locations.get",
                             "parameterOrder": [
@@ -1706,6 +1751,7 @@
                         },
                         "list": {
                             "description": "Lists information about the supported locations for this service.",
+                            "flatPath": "v2/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "bigtableadmin.projects.locations.list",
                             "parameterOrder": [
@@ -1755,7 +1801,7 @@
             }
         }
     },
-    "revision": "20210504",
+    "revision": "20210521",
     "rootUrl": "https://bigtableadmin.googleapis.com/",
     "schemas": {
         "AppProfile": {

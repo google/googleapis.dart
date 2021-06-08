@@ -109,6 +109,7 @@
                     "methods": {
                         "get": {
                             "description": "Gets information about a location.",
+                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}",
                             "httpMethod": "GET",
                             "id": "file.projects.locations.get",
                             "parameterOrder": [
@@ -133,6 +134,7 @@
                         },
                         "list": {
                             "description": "Lists information about the supported locations for this service.",
+                            "flatPath": "v1/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "file.projects.locations.list",
                             "parameterOrder": [
@@ -182,6 +184,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a backup.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/backups",
                                     "httpMethod": "POST",
                                     "id": "file.projects.locations.backups.create",
                                     "parameterOrder": [
@@ -214,6 +217,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a backup.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/backups/{backupsId}",
                                     "httpMethod": "DELETE",
                                     "id": "file.projects.locations.backups.delete",
                                     "parameterOrder": [
@@ -238,6 +242,7 @@
                                 },
                                 "get": {
                                     "description": "Gets the details of a specific backup.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/backups/{backupsId}",
                                     "httpMethod": "GET",
                                     "id": "file.projects.locations.backups.get",
                                     "parameterOrder": [
@@ -262,6 +267,7 @@
                                 },
                                 "list": {
                                     "description": "Lists all backups in a project for either a specified location or for all locations.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/backups",
                                     "httpMethod": "GET",
                                     "id": "file.projects.locations.backups.list",
                                     "parameterOrder": [
@@ -307,6 +313,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates the settings of a specific backup.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/backups/{backupsId}",
                                     "httpMethod": "PATCH",
                                     "id": "file.projects.locations.backups.patch",
                                     "parameterOrder": [
@@ -344,6 +351,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates an instance. When creating from a backup, the capacity of the new instance needs to be equal to or larger than the capacity of the backup (and also equal to or larger than the minimum capacity of the tier).",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances",
                                     "httpMethod": "POST",
                                     "id": "file.projects.locations.instances.create",
                                     "parameterOrder": [
@@ -376,6 +384,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes an instance.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
                                     "httpMethod": "DELETE",
                                     "id": "file.projects.locations.instances.delete",
                                     "parameterOrder": [
@@ -400,6 +409,7 @@
                                 },
                                 "get": {
                                     "description": "Gets the details of a specific instance.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
                                     "httpMethod": "GET",
                                     "id": "file.projects.locations.instances.get",
                                     "parameterOrder": [
@@ -424,6 +434,7 @@
                                 },
                                 "list": {
                                     "description": "Lists all instances in a project for either a specified location or for all locations.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances",
                                     "httpMethod": "GET",
                                     "id": "file.projects.locations.instances.list",
                                     "parameterOrder": [
@@ -469,6 +480,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates the settings of a specific instance.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
                                     "httpMethod": "PATCH",
                                     "id": "file.projects.locations.instances.patch",
                                     "parameterOrder": [
@@ -502,6 +514,7 @@
                                 },
                                 "restore": {
                                     "description": "Restores an existing instance's file share from a backup. The capacity of the instance needs to be equal to or larger than the capacity of the backup (and also equal to or larger than the minimum capacity of the tier).",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:restore",
                                     "httpMethod": "POST",
                                     "id": "file.projects.locations.instances.restore",
                                     "parameterOrder": [
@@ -533,6 +546,7 @@
                             "methods": {
                                 "cancel": {
                                     "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
                                     "httpMethod": "POST",
                                     "id": "file.projects.locations.operations.cancel",
                                     "parameterOrder": [
@@ -560,6 +574,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                                     "httpMethod": "DELETE",
                                     "id": "file.projects.locations.operations.delete",
                                     "parameterOrder": [
@@ -584,6 +599,7 @@
                                 },
                                 "get": {
                                     "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                                     "httpMethod": "GET",
                                     "id": "file.projects.locations.operations.get",
                                     "parameterOrder": [
@@ -608,6 +624,7 @@
                                 },
                                 "list": {
                                     "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations",
                                     "httpMethod": "GET",
                                     "id": "file.projects.locations.operations.list",
                                     "parameterOrder": [

@@ -107,6 +107,7 @@
             "methods": {
                 "delete": {
                     "description": "Delete the achievement configuration with the given ID.",
+                    "flatPath": "games/v1configuration/achievements/{achievementId}",
                     "httpMethod": "DELETE",
                     "id": "gamesConfiguration.achievementConfigurations.delete",
                     "parameterOrder": [
@@ -127,6 +128,7 @@
                 },
                 "get": {
                     "description": "Retrieves the metadata of the achievement configuration with the given ID.",
+                    "flatPath": "games/v1configuration/achievements/{achievementId}",
                     "httpMethod": "GET",
                     "id": "gamesConfiguration.achievementConfigurations.get",
                     "parameterOrder": [
@@ -150,6 +152,7 @@
                 },
                 "insert": {
                     "description": "Insert a new achievement configuration in this application.",
+                    "flatPath": "games/v1configuration/applications/{applicationId}/achievements",
                     "httpMethod": "POST",
                     "id": "gamesConfiguration.achievementConfigurations.insert",
                     "parameterOrder": [
@@ -176,6 +179,7 @@
                 },
                 "list": {
                     "description": "Returns a list of the achievement configurations in this application.",
+                    "flatPath": "games/v1configuration/applications/{applicationId}/achievements",
                     "httpMethod": "GET",
                     "id": "gamesConfiguration.achievementConfigurations.list",
                     "parameterOrder": [
@@ -210,6 +214,7 @@
                 },
                 "update": {
                     "description": "Update the metadata of the achievement configuration with the given ID.",
+                    "flatPath": "games/v1configuration/achievements/{achievementId}",
                     "httpMethod": "PUT",
                     "id": "gamesConfiguration.achievementConfigurations.update",
                     "parameterOrder": [
@@ -240,6 +245,7 @@
             "methods": {
                 "upload": {
                     "description": "Uploads an image for a resource with the given ID and image type.",
+                    "flatPath": "games/v1configuration/images/{resourceId}/imageType/{imageType}",
                     "httpMethod": "POST",
                     "id": "gamesConfiguration.imageConfigurations.upload",
                     "mediaUpload": {
@@ -297,6 +303,7 @@
             "methods": {
                 "delete": {
                     "description": "Delete the leaderboard configuration with the given ID.",
+                    "flatPath": "games/v1configuration/leaderboards/{leaderboardId}",
                     "httpMethod": "DELETE",
                     "id": "gamesConfiguration.leaderboardConfigurations.delete",
                     "parameterOrder": [
@@ -317,6 +324,7 @@
                 },
                 "get": {
                     "description": "Retrieves the metadata of the leaderboard configuration with the given ID.",
+                    "flatPath": "games/v1configuration/leaderboards/{leaderboardId}",
                     "httpMethod": "GET",
                     "id": "gamesConfiguration.leaderboardConfigurations.get",
                     "parameterOrder": [
@@ -340,6 +348,7 @@
                 },
                 "insert": {
                     "description": "Insert a new leaderboard configuration in this application.",
+                    "flatPath": "games/v1configuration/applications/{applicationId}/leaderboards",
                     "httpMethod": "POST",
                     "id": "gamesConfiguration.leaderboardConfigurations.insert",
                     "parameterOrder": [
@@ -366,6 +375,7 @@
                 },
                 "list": {
                     "description": "Returns a list of the leaderboard configurations in this application.",
+                    "flatPath": "games/v1configuration/applications/{applicationId}/leaderboards",
                     "httpMethod": "GET",
                     "id": "gamesConfiguration.leaderboardConfigurations.list",
                     "parameterOrder": [
@@ -400,6 +410,7 @@
                 },
                 "update": {
                     "description": "Update the metadata of the leaderboard configuration with the given ID.",
+                    "flatPath": "games/v1configuration/leaderboards/{leaderboardId}",
                     "httpMethod": "PUT",
                     "id": "gamesConfiguration.leaderboardConfigurations.update",
                     "parameterOrder": [
@@ -427,7 +438,7 @@
             }
         }
     },
-    "revision": "20210513",
+    "revision": "20210614",
     "rootUrl": "https://gamesconfiguration.googleapis.com/",
     "schemas": {
         "AchievementConfiguration": {

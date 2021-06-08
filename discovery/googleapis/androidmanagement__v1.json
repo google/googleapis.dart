@@ -107,6 +107,7 @@
             "methods": {
                 "create": {
                     "description": "Creates an enterprise. This is the last step in the enterprise signup flow.",
+                    "flatPath": "v1/enterprises",
                     "httpMethod": "POST",
                     "id": "androidmanagement.enterprises.create",
                     "parameterOrder": [],
@@ -145,6 +146,7 @@
                 },
                 "delete": {
                     "description": "This feature is not generally available yet. Deletes an enterprise.",
+                    "flatPath": "v1/enterprises/{enterprisesId}",
                     "httpMethod": "DELETE",
                     "id": "androidmanagement.enterprises.delete",
                     "parameterOrder": [
@@ -169,6 +171,7 @@
                 },
                 "get": {
                     "description": "Gets an enterprise.",
+                    "flatPath": "v1/enterprises/{enterprisesId}",
                     "httpMethod": "GET",
                     "id": "androidmanagement.enterprises.get",
                     "parameterOrder": [
@@ -193,6 +196,7 @@
                 },
                 "list": {
                     "description": "This feature is not generally available yet. Lists enterprises that are managed by an EMM. Only partial views are returned.",
+                    "flatPath": "v1/enterprises",
                     "httpMethod": "GET",
                     "id": "androidmanagement.enterprises.list",
                     "parameterOrder": [],
@@ -237,6 +241,7 @@
                 },
                 "patch": {
                     "description": "Updates an enterprise.",
+                    "flatPath": "v1/enterprises/{enterprisesId}",
                     "httpMethod": "PATCH",
                     "id": "androidmanagement.enterprises.patch",
                     "parameterOrder": [
@@ -274,6 +279,7 @@
                     "methods": {
                         "get": {
                             "description": "Gets info about an application.",
+                            "flatPath": "v1/enterprises/{enterprisesId}/applications/{applicationsId}",
                             "httpMethod": "GET",
                             "id": "androidmanagement.enterprises.applications.get",
                             "parameterOrder": [
@@ -307,6 +313,7 @@
                     "methods": {
                         "delete": {
                             "description": "Deletes a device. This operation wipes the device.",
+                            "flatPath": "v1/enterprises/{enterprisesId}/devices/{devicesId}",
                             "httpMethod": "DELETE",
                             "id": "androidmanagement.enterprises.devices.delete",
                             "parameterOrder": [
@@ -352,6 +359,7 @@
                         },
                         "get": {
                             "description": "Gets a device.",
+                            "flatPath": "v1/enterprises/{enterprisesId}/devices/{devicesId}",
                             "httpMethod": "GET",
                             "id": "androidmanagement.enterprises.devices.get",
                             "parameterOrder": [
@@ -376,6 +384,7 @@
                         },
                         "issueCommand": {
                             "description": "Issues a command to a device. The Operation resource returned contains a Command in its metadata field. Use the get operation method to get the status of the command.",
+                            "flatPath": "v1/enterprises/{enterprisesId}/devices/{devicesId}:issueCommand",
                             "httpMethod": "POST",
                             "id": "androidmanagement.enterprises.devices.issueCommand",
                             "parameterOrder": [
@@ -403,6 +412,7 @@
                         },
                         "list": {
                             "description": "Lists devices for a given enterprise.",
+                            "flatPath": "v1/enterprises/{enterprisesId}/devices",
                             "httpMethod": "GET",
                             "id": "androidmanagement.enterprises.devices.list",
                             "parameterOrder": [
@@ -438,6 +448,7 @@
                         },
                         "patch": {
                             "description": "Updates a device.",
+                            "flatPath": "v1/enterprises/{enterprisesId}/devices/{devicesId}",
                             "httpMethod": "PATCH",
                             "id": "androidmanagement.enterprises.devices.patch",
                             "parameterOrder": [
@@ -475,6 +486,7 @@
                             "methods": {
                                 "cancel": {
                                     "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns google.rpc.Code.UNIMPLEMENTED. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to Code.CANCELLED.",
+                                    "flatPath": "v1/enterprises/{enterprisesId}/devices/{devicesId}/operations/{operationsId}:cancel",
                                     "httpMethod": "POST",
                                     "id": "androidmanagement.enterprises.devices.operations.cancel",
                                     "parameterOrder": [
@@ -499,6 +511,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns google.rpc.Code.UNIMPLEMENTED.",
+                                    "flatPath": "v1/enterprises/{enterprisesId}/devices/{devicesId}/operations/{operationsId}",
                                     "httpMethod": "DELETE",
                                     "id": "androidmanagement.enterprises.devices.operations.delete",
                                     "parameterOrder": [
@@ -523,6 +536,7 @@
                                 },
                                 "get": {
                                     "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                                    "flatPath": "v1/enterprises/{enterprisesId}/devices/{devicesId}/operations/{operationsId}",
                                     "httpMethod": "GET",
                                     "id": "androidmanagement.enterprises.devices.operations.get",
                                     "parameterOrder": [
@@ -547,6 +561,7 @@
                                 },
                                 "list": {
                                     "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns UNIMPLEMENTED.NOTE: the name binding allows API services to override the binding to use different resource name schemes, such as users/*/operations. To override the binding, API services can add a binding such as \"/v1/{name=users/*}/operations\" to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                                    "flatPath": "v1/enterprises/{enterprisesId}/devices/{devicesId}/operations",
                                     "httpMethod": "GET",
                                     "id": "androidmanagement.enterprises.devices.operations.list",
                                     "parameterOrder": [
@@ -593,6 +608,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates an enrollment token for a given enterprise.",
+                            "flatPath": "v1/enterprises/{enterprisesId}/enrollmentTokens",
                             "httpMethod": "POST",
                             "id": "androidmanagement.enterprises.enrollmentTokens.create",
                             "parameterOrder": [
@@ -620,6 +636,7 @@
                         },
                         "delete": {
                             "description": "Deletes an enrollment token. This operation invalidates the token, preventing its future use.",
+                            "flatPath": "v1/enterprises/{enterprisesId}/enrollmentTokens/{enrollmentTokensId}",
                             "httpMethod": "DELETE",
                             "id": "androidmanagement.enterprises.enrollmentTokens.delete",
                             "parameterOrder": [
@@ -648,6 +665,7 @@
                     "methods": {
                         "delete": {
                             "description": "Deletes a policy. This operation is only permitted if no devices are currently referencing the policy.",
+                            "flatPath": "v1/enterprises/{enterprisesId}/policies/{policiesId}",
                             "httpMethod": "DELETE",
                             "id": "androidmanagement.enterprises.policies.delete",
                             "parameterOrder": [
@@ -672,6 +690,7 @@
                         },
                         "get": {
                             "description": "Gets a policy.",
+                            "flatPath": "v1/enterprises/{enterprisesId}/policies/{policiesId}",
                             "httpMethod": "GET",
                             "id": "androidmanagement.enterprises.policies.get",
                             "parameterOrder": [
@@ -696,6 +715,7 @@
                         },
                         "list": {
                             "description": "Lists policies for a given enterprise.",
+                            "flatPath": "v1/enterprises/{enterprisesId}/policies",
                             "httpMethod": "GET",
                             "id": "androidmanagement.enterprises.policies.list",
                             "parameterOrder": [
@@ -731,6 +751,7 @@
                         },
                         "patch": {
                             "description": "Updates or creates a policy.",
+                            "flatPath": "v1/enterprises/{enterprisesId}/policies/{policiesId}",
                             "httpMethod": "PATCH",
                             "id": "androidmanagement.enterprises.policies.patch",
                             "parameterOrder": [
@@ -768,6 +789,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a web app.",
+                            "flatPath": "v1/enterprises/{enterprisesId}/webApps",
                             "httpMethod": "POST",
                             "id": "androidmanagement.enterprises.webApps.create",
                             "parameterOrder": [
@@ -795,6 +817,7 @@
                         },
                         "delete": {
                             "description": "Deletes a web app.",
+                            "flatPath": "v1/enterprises/{enterprisesId}/webApps/{webAppsId}",
                             "httpMethod": "DELETE",
                             "id": "androidmanagement.enterprises.webApps.delete",
                             "parameterOrder": [
@@ -819,6 +842,7 @@
                         },
                         "get": {
                             "description": "Gets a web app.",
+                            "flatPath": "v1/enterprises/{enterprisesId}/webApps/{webAppsId}",
                             "httpMethod": "GET",
                             "id": "androidmanagement.enterprises.webApps.get",
                             "parameterOrder": [
@@ -843,6 +867,7 @@
                         },
                         "list": {
                             "description": "Lists web apps for a given enterprise.",
+                            "flatPath": "v1/enterprises/{enterprisesId}/webApps",
                             "httpMethod": "GET",
                             "id": "androidmanagement.enterprises.webApps.list",
                             "parameterOrder": [
@@ -878,6 +903,7 @@
                         },
                         "patch": {
                             "description": "Updates a web app.",
+                            "flatPath": "v1/enterprises/{enterprisesId}/webApps/{webAppsId}",
                             "httpMethod": "PATCH",
                             "id": "androidmanagement.enterprises.webApps.patch",
                             "parameterOrder": [
@@ -915,6 +941,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a web token to access an embeddable managed Google Play web UI for a given enterprise.",
+                            "flatPath": "v1/enterprises/{enterprisesId}/webTokens",
                             "httpMethod": "POST",
                             "id": "androidmanagement.enterprises.webTokens.create",
                             "parameterOrder": [
@@ -948,6 +975,7 @@
             "methods": {
                 "create": {
                     "description": "Creates an enterprise signup URL.",
+                    "flatPath": "v1/signupUrls",
                     "httpMethod": "POST",
                     "id": "androidmanagement.signupUrls.create",
                     "parameterOrder": [],
@@ -974,7 +1002,7 @@
             }
         }
     },
-    "revision": "20210510",
+    "revision": "20210607",
     "rootUrl": "https://androidmanagement.googleapis.com/",
     "schemas": {
         "AdvancedSecurityOverrides": {
@@ -1189,7 +1217,7 @@
                     "type": "array"
                 },
                 "autoUpdateMode": {
-                    "description": "This feature is not generally available yet.",
+                    "description": "Controls the auto-update mode for the app.",
                     "enum": [
                         "AUTO_UPDATE_MODE_UNSPECIFIED",
                         "AUTO_UPDATE_DEFAULT",
@@ -1197,10 +1225,10 @@
                         "AUTO_UPDATE_HIGH_PRIORITY"
                     ],
                     "enumDescriptions": [
-                        "This feature is not generally available yet.",
-                        "This feature is not generally available yet.",
-                        "This feature is not generally available yet.",
-                        "This feature is not generally available yet."
+                        "Unspecified. Defaults to AUTO_UPDATE_DEFAULT.",
+                        "The app is automatically updated with low priority to minimize the impact on the user.The app is updated when all of the following constraints are met: The device is not actively used. The device is connected to an unmetered network. The device is charging.The device is notified about a new update within 24 hours after it is published by the developer, after which the app is updated the next time the constraints above are met.",
+                        "The app is not automatically updated for a maximum of 90 days after the app becomes out of date.90 days after the app becomes out of date, the latest available version is installed automatically with low priority (see AUTO_UPDATE_DEFAULT). After the app is updated it is not automatically updated again until 90 days after it becomes out of date again.The user can still manually update the app from the Play Store at any time.",
+                        "The app is updated as soon as possible. No constraints are applied.The device is notified immediately about a new update after it becomes available."
                     ],
                     "type": "string"
                 },
@@ -1683,6 +1711,13 @@
                     "description": "Reports for apps installed on the device. This information is only available when application_reports_enabled is true in the device's policy.",
                     "items": {
                         "$ref": "ApplicationReport"
+                    },
+                    "type": "array"
+                },
+                "appliedPasswordPolicies": {
+                    "description": "The password requirements currently applied to the device. The applied requirements may be slightly different from those specified in passwordPolicies in some cases. fieldPath is set based on passwordPolicies.",
+                    "items": {
+                        "$ref": "PasswordRequirements"
                     },
                     "type": "array"
                 },
@@ -2317,6 +2352,12 @@
                     "type": "array"
                 }
             },
+            "type": "object"
+        },
+        "IssueCommandResponse": {
+            "description": "Response on issuing a command. This is currently empty as a placeholder.",
+            "id": "IssueCommandResponse",
+            "properties": {},
             "type": "object"
         },
         "KeyedAppState": {
@@ -2983,17 +3024,23 @@
                         "NUMERIC_COMPLEX",
                         "ALPHABETIC",
                         "ALPHANUMERIC",
-                        "COMPLEX"
+                        "COMPLEX",
+                        "COMPLEXITY_LOW",
+                        "COMPLEXITY_MEDIUM",
+                        "COMPLEXITY_HIGH"
                     ],
                     "enumDescriptions": [
                         "There are no password requirements.",
-                        "The device must be secured with a low-security biometric recognition technology, at minimum. This includes technologies that can recognize the identity of an individual that are roughly equivalent to a 3-digit PIN (false detection is less than 1 in 1,000).",
-                        "A password is required, but there are no restrictions on what the password must contain.",
-                        "The password must contain numeric characters.",
-                        "The password must contain numeric characters with no repeating (4444) or ordered (1234, 4321, 2468) sequences.",
-                        "The password must contain alphabetic (or symbol) characters.",
-                        "The password must contain both numeric and alphabetic (or symbol) characters.",
-                        "The password must meet the minimum requirements specified in passwordMinimumLength, passwordMinimumLetters, passwordMinimumSymbols, etc. For example, if passwordMinimumSymbols is 2, the password must contain at least two symbols."
+                        "The device must be secured with a low-security biometric recognition technology, at minimum. This includes technologies that can recognize the identity of an individual that are roughly equivalent to a 3-digit PIN (false detection is less than 1 in 1,000).This, when applied on personally owned work profile devices on Android 12 device-scoped, will be treated as COMPLEXITY_LOW for application. See PasswordQuality for details.",
+                        "A password is required, but there are no restrictions on what the password must contain.This, when applied on personally owned work profile devices on Android 12 device-scoped, will be treated as COMPLEXITY_LOW for application. See PasswordQuality for details.",
+                        "The password must contain numeric characters.This, when applied on personally owned work profile devices on Android 12 device-scoped, will be treated as COMPLEXITY_MEDIUM for application. See PasswordQuality for details.",
+                        "The password must contain numeric characters with no repeating (4444) or ordered (1234, 4321, 2468) sequences.This, when applied on personally owned work profile devices on Android 12 device-scoped, will be treated as COMPLEXITY_MEDIUM for application. See PasswordQuality for details.",
+                        "The password must contain alphabetic (or symbol) characters.This, when applied on personally owned work profile devices on Android 12 device-scoped, will be treated as COMPLEXITY_HIGH for application. See PasswordQuality for details.",
+                        "The password must contain both numeric and alphabetic (or symbol) characters.This, when applied on personally owned work profile devices on Android 12 device-scoped, will be treated as COMPLEXITY_HIGH for application. See PasswordQuality for details.",
+                        "The password must meet the minimum requirements specified in passwordMinimumLength, passwordMinimumLetters, passwordMinimumSymbols, etc. For example, if passwordMinimumSymbols is 2, the password must contain at least two symbols.This, when applied on personally owned work profile devices on Android 12 device-scoped, will be treated as COMPLEXITY_HIGH for application. In this case, the requirements in passwordMinimumLength, passwordMinimumLetters, passwordMinimumSymbols, etc are not applied. See PasswordQuality for details.",
+                        "Password satisfies one of the following: pattern PIN with repeating (4444) or ordered (1234, 4321, 2468) sequencesEnforcement varies among different Android versions, management modes and password scopes. See PasswordQuality for details.",
+                        "Password satisfies one of the following: PIN with no repeating (4444) or ordered (1234, 4321, 2468) sequences, length at least 4 alphabetic, length at least 4 alphanumeric, length at least 4Enforcement varies among different Android versions, management modes and password scopes. See PasswordQuality for details.",
+                        "Password satisfies one of the following:On Android 12 and above: PIN with no repeating (4444) or ordered (1234, 4321, 2468) sequences, length at least 8 alphabetic, length at least 6 alphanumeric, length at least 6Enforcement varies among different Android versions, management modes and password scopes. See PasswordQuality for details."
                     ],
                     "type": "string"
                 },
@@ -3200,7 +3247,7 @@
                     "type": "array"
                 },
                 "appAutoUpdatePolicy": {
-                    "description": "The app auto update policy, which controls when automatic app updates can be applied.",
+                    "description": "Deprecated. Use autoUpdateMode instead.When autoUpdateMode is set to AUTO_UPDATE_POSTPONED or AUTO_UPDATE_HIGH_PRIORITY, this field has no effect.The app auto update policy, which controls when automatic app updates can be applied.",
                     "enum": [
                         "APP_AUTO_UPDATE_POLICY_UNSPECIFIED",
                         "CHOICE_TO_THE_USER",
@@ -4042,7 +4089,7 @@
                     "enumDescriptions": [
                         "Follow the default update behavior for the device, which typically requires the user to accept system updates.",
                         "Install automatically as soon as an update is available.",
-                        "Install automatically within a daily maintenance window. This also configures Play apps to be updated within the window. This is strongly recommended for kiosk devices because this is the only way apps persistently pinned to the foreground can be updated by Play.",
+                        "Install automatically within a daily maintenance window. This also configures Play apps to be updated within the window. This is strongly recommended for kiosk devices because this is the only way apps persistently pinned to the foreground can be updated by Play.If autoUpdateMode is set to AUTO_UPDATE_HIGH_PRIORITY for an app, then the maintenance window is ignored for that app and it is updated as soon as possible even outside of the maintenance window.",
                         "Postpone automatic install up to a maximum of 30 days."
                     ],
                     "type": "string"

@@ -47,7 +47,7 @@ class FitnessApi {
   static const fitnessActivityReadScope =
       'https://www.googleapis.com/auth/fitness.activity.read';
 
-  /// See and add to your Google Fit physical activity data
+  /// Add to your Google Fit physical activity data
   static const fitnessActivityWriteScope =
       'https://www.googleapis.com/auth/fitness.activity.write';
 
@@ -56,8 +56,8 @@ class FitnessApi {
   static const fitnessBloodGlucoseReadScope =
       'https://www.googleapis.com/auth/fitness.blood_glucose.read';
 
-  /// See and add info about your blood glucose to Google Fit. I consent to
-  /// Google sharing my blood glucose information with this app.
+  /// Add info about your blood glucose to Google Fit. I consent to Google using
+  /// my blood glucose information with this app.
   static const fitnessBloodGlucoseWriteScope =
       'https://www.googleapis.com/auth/fitness.blood_glucose.write';
 
@@ -66,8 +66,8 @@ class FitnessApi {
   static const fitnessBloodPressureReadScope =
       'https://www.googleapis.com/auth/fitness.blood_pressure.read';
 
-  /// See and add info about your blood pressure in Google Fit. I consent to
-  /// Google sharing my blood pressure information with this app.
+  /// Add info about your blood pressure in Google Fit. I consent to Google
+  /// using my blood pressure information with this app.
   static const fitnessBloodPressureWriteScope =
       'https://www.googleapis.com/auth/fitness.blood_pressure.write';
 
@@ -75,7 +75,7 @@ class FitnessApi {
   static const fitnessBodyReadScope =
       'https://www.googleapis.com/auth/fitness.body.read';
 
-  /// See and add info about your body measurements and heart rate to Google Fit
+  /// Add info about your body measurements and heart rate to Google Fit
   static const fitnessBodyWriteScope =
       'https://www.googleapis.com/auth/fitness.body.write';
 
@@ -84,8 +84,8 @@ class FitnessApi {
   static const fitnessBodyTemperatureReadScope =
       'https://www.googleapis.com/auth/fitness.body_temperature.read';
 
-  /// See and add to info about your body temperature in Google Fit. I consent
-  /// to Google sharing my body temperature information with this app.
+  /// Add to info about your body temperature in Google Fit. I consent to Google
+  /// using my body temperature information with this app.
   static const fitnessBodyTemperatureWriteScope =
       'https://www.googleapis.com/auth/fitness.body_temperature.write';
 
@@ -94,8 +94,8 @@ class FitnessApi {
   static const fitnessHeartRateReadScope =
       'https://www.googleapis.com/auth/fitness.heart_rate.read';
 
-  /// See and add to your heart rate data in Google Fit. I consent to Google
-  /// sharing my heart rate information with this app.
+  /// Add to your heart rate data in Google Fit. I consent to Google using my
+  /// heart rate information with this app.
   static const fitnessHeartRateWriteScope =
       'https://www.googleapis.com/auth/fitness.heart_rate.write';
 
@@ -103,7 +103,7 @@ class FitnessApi {
   static const fitnessLocationReadScope =
       'https://www.googleapis.com/auth/fitness.location.read';
 
-  /// See and add to your Google Fit location data
+  /// Add to your Google Fit location data
   static const fitnessLocationWriteScope =
       'https://www.googleapis.com/auth/fitness.location.write';
 
@@ -111,7 +111,7 @@ class FitnessApi {
   static const fitnessNutritionReadScope =
       'https://www.googleapis.com/auth/fitness.nutrition.read';
 
-  /// See and add to info about your nutrition in Google Fit
+  /// Add to info about your nutrition in Google Fit
   static const fitnessNutritionWriteScope =
       'https://www.googleapis.com/auth/fitness.nutrition.write';
 
@@ -120,8 +120,8 @@ class FitnessApi {
   static const fitnessOxygenSaturationReadScope =
       'https://www.googleapis.com/auth/fitness.oxygen_saturation.read';
 
-  /// See and add info about your oxygen saturation in Google Fit. I consent to
-  /// Google sharing my oxygen saturation information with this app.
+  /// Add info about your oxygen saturation in Google Fit. I consent to Google
+  /// using my oxygen saturation information with this app.
   static const fitnessOxygenSaturationWriteScope =
       'https://www.googleapis.com/auth/fitness.oxygen_saturation.write';
 
@@ -130,8 +130,8 @@ class FitnessApi {
   static const fitnessReproductiveHealthReadScope =
       'https://www.googleapis.com/auth/fitness.reproductive_health.read';
 
-  /// See and add info about your reproductive health in Google Fit. I consent
-  /// to Google sharing my reproductive health information with this app.
+  /// Add info about your reproductive health in Google Fit. I consent to Google
+  /// using my reproductive health information with this app.
   static const fitnessReproductiveHealthWriteScope =
       'https://www.googleapis.com/auth/fitness.reproductive_health.write';
 
@@ -140,8 +140,8 @@ class FitnessApi {
   static const fitnessSleepReadScope =
       'https://www.googleapis.com/auth/fitness.sleep.read';
 
-  /// See and add to your sleep data in Google Fit. I consent to Google sharing
-  /// my sleep information with this app.
+  /// Add to your sleep data in Google Fit. I consent to Google using my sleep
+  /// information with this app.
   static const fitnessSleepWriteScope =
       'https://www.googleapis.com/auth/fitness.sleep.write';
 

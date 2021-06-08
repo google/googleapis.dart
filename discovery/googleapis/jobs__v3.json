@@ -110,6 +110,7 @@
             "methods": {
                 "complete": {
                     "description": "Completes the specified prefix with keyword suggestions. Intended for use by a job search auto-complete search box.",
+                    "flatPath": "v3/projects/{projectsId}:complete",
                     "httpMethod": "GET",
                     "id": "jobs.projects.complete",
                     "parameterOrder": [
@@ -198,6 +199,7 @@
                     "methods": {
                         "create": {
                             "description": "Report events issued when end user interacts with customer's application that uses Cloud Talent Solution. You may inspect the created events in [self service tools](https://console.cloud.google.com/talent-solution/overview). [Learn more](https://cloud.google.com/talent-solution/docs/management-tools) about self service tools.",
+                            "flatPath": "v3/projects/{projectsId}/clientEvents",
                             "httpMethod": "POST",
                             "id": "jobs.projects.clientEvents.create",
                             "parameterOrder": [
@@ -230,6 +232,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a new company entity.",
+                            "flatPath": "v3/projects/{projectsId}/companies",
                             "httpMethod": "POST",
                             "id": "jobs.projects.companies.create",
                             "parameterOrder": [
@@ -258,6 +261,7 @@
                         },
                         "delete": {
                             "description": "Deletes specified company. Prerequisite: The company has no jobs associated with it.",
+                            "flatPath": "v3/projects/{projectsId}/companies/{companiesId}",
                             "httpMethod": "DELETE",
                             "id": "jobs.projects.companies.delete",
                             "parameterOrder": [
@@ -283,6 +287,7 @@
                         },
                         "get": {
                             "description": "Retrieves specified company.",
+                            "flatPath": "v3/projects/{projectsId}/companies/{companiesId}",
                             "httpMethod": "GET",
                             "id": "jobs.projects.companies.get",
                             "parameterOrder": [
@@ -308,6 +313,7 @@
                         },
                         "list": {
                             "description": "Lists all companies associated with the service account.",
+                            "flatPath": "v3/projects/{projectsId}/companies",
                             "httpMethod": "GET",
                             "id": "jobs.projects.companies.list",
                             "parameterOrder": [
@@ -349,6 +355,7 @@
                         },
                         "patch": {
                             "description": "Updates specified company. Company names can't be updated. To update a company name, delete the company and all jobs associated with it, and only then re-create them.",
+                            "flatPath": "v3/projects/{projectsId}/companies/{companiesId}",
                             "httpMethod": "PATCH",
                             "id": "jobs.projects.companies.patch",
                             "parameterOrder": [
@@ -381,6 +388,7 @@
                     "methods": {
                         "batchDelete": {
                             "description": "Deletes a list of Jobs by filter.",
+                            "flatPath": "v3/projects/{projectsId}/jobs:batchDelete",
                             "httpMethod": "POST",
                             "id": "jobs.projects.jobs.batchDelete",
                             "parameterOrder": [
@@ -409,6 +417,7 @@
                         },
                         "create": {
                             "description": "Creates a new job. Typically, the job becomes searchable within 10 seconds, but it may take up to 5 minutes.",
+                            "flatPath": "v3/projects/{projectsId}/jobs",
                             "httpMethod": "POST",
                             "id": "jobs.projects.jobs.create",
                             "parameterOrder": [
@@ -437,6 +446,7 @@
                         },
                         "delete": {
                             "description": "Deletes the specified job. Typically, the job becomes unsearchable within 10 seconds, but it may take up to 5 minutes.",
+                            "flatPath": "v3/projects/{projectsId}/jobs/{jobsId}",
                             "httpMethod": "DELETE",
                             "id": "jobs.projects.jobs.delete",
                             "parameterOrder": [
@@ -462,6 +472,7 @@
                         },
                         "get": {
                             "description": "Retrieves the specified job, whose status is OPEN or recently EXPIRED within the last 90 days.",
+                            "flatPath": "v3/projects/{projectsId}/jobs/{jobsId}",
                             "httpMethod": "GET",
                             "id": "jobs.projects.jobs.get",
                             "parameterOrder": [
@@ -487,6 +498,7 @@
                         },
                         "list": {
                             "description": "Lists jobs by filter.",
+                            "flatPath": "v3/projects/{projectsId}/jobs",
                             "httpMethod": "GET",
                             "id": "jobs.projects.jobs.list",
                             "parameterOrder": [
@@ -547,6 +559,7 @@
                         },
                         "patch": {
                             "description": "Updates specified job. Typically, updated contents become visible in search results within 10 seconds, but it may take up to 5 minutes.",
+                            "flatPath": "v3/projects/{projectsId}/jobs/{jobsId}",
                             "httpMethod": "PATCH",
                             "id": "jobs.projects.jobs.patch",
                             "parameterOrder": [
@@ -575,6 +588,7 @@
                         },
                         "search": {
                             "description": "Searches for jobs using the provided SearchJobsRequest. This call constrains the visibility of jobs present in the database, and only returns jobs that the caller has permission to search against.",
+                            "flatPath": "v3/projects/{projectsId}/jobs:search",
                             "httpMethod": "POST",
                             "id": "jobs.projects.jobs.search",
                             "parameterOrder": [
@@ -603,6 +617,7 @@
                         },
                         "searchForAlert": {
                             "description": "Searches for jobs using the provided SearchJobsRequest. This API call is intended for the use case of targeting passive job seekers (for example, job seekers who have signed up to receive email alerts about potential job opportunities), and has different algorithmic adjustments that are targeted to passive job seekers. This call constrains the visibility of jobs present in the database, and only returns jobs the caller has permission to search against.",
+                            "flatPath": "v3/projects/{projectsId}/jobs:searchForAlert",
                             "httpMethod": "POST",
                             "id": "jobs.projects.jobs.searchForAlert",
                             "parameterOrder": [
@@ -634,7 +649,7 @@
             }
         }
     },
-    "revision": "20210504",
+    "revision": "20210506",
     "rootUrl": "https://jobs.googleapis.com/",
     "schemas": {
         "ApplicationInfo": {
@@ -2045,7 +2060,7 @@
             "type": "object"
         },
         "LatLng": {
-            "description": "An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this must conform to the WGS84 standard. Values must be within normalized ranges.",
+            "description": "An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard. Values must be within normalized ranges.",
             "id": "LatLng",
             "properties": {
                 "latitude": {

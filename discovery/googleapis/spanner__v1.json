@@ -115,6 +115,7 @@
                     "methods": {
                         "get": {
                             "description": "Gets information about a particular instance configuration.",
+                            "flatPath": "v1/projects/{projectsId}/instanceConfigs/{instanceConfigsId}",
                             "httpMethod": "GET",
                             "id": "spanner.projects.instanceConfigs.get",
                             "parameterOrder": [
@@ -140,6 +141,7 @@
                         },
                         "list": {
                             "description": "Lists the supported instance configurations for a given project.",
+                            "flatPath": "v1/projects/{projectsId}/instanceConfigs",
                             "httpMethod": "GET",
                             "id": "spanner.projects.instanceConfigs.list",
                             "parameterOrder": [
@@ -180,6 +182,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates an instance and begins preparing it to begin serving. The returned long-running operation can be used to track the progress of preparing the new instance. The instance name is assigned by the caller. If the named instance already exists, `CreateInstance` returns `ALREADY_EXISTS`. Immediately upon completion of this request: * The instance is readable via the API, with all requested attributes but no allocated resources. Its state is `CREATING`. Until completion of the returned operation: * Cancelling the operation renders the instance immediately unreadable via the API. * The instance can be deleted. * All other attempts to modify the instance are rejected. Upon completion of the returned operation: * Billing for all successfully-allocated resources begins (some types may have lower than the requested levels). * Databases can be created in the instance. * The instance's allocated resource levels are readable via the API. * The instance's state becomes `READY`. The returned long-running operation will have a name of the format `/operations/` and can be used to track creation of the instance. The metadata field type is CreateInstanceMetadata. The response field type is Instance, if successful.",
+                            "flatPath": "v1/projects/{projectsId}/instances",
                             "httpMethod": "POST",
                             "id": "spanner.projects.instances.create",
                             "parameterOrder": [
@@ -208,6 +211,7 @@
                         },
                         "delete": {
                             "description": "Deletes an instance. Immediately upon completion of the request: * Billing ceases for all of the instance's reserved resources. Soon afterward: * The instance and *all of its databases* immediately and irrevocably disappear from the API. All data in the databases is permanently deleted.",
+                            "flatPath": "v1/projects/{projectsId}/instances/{instancesId}",
                             "httpMethod": "DELETE",
                             "id": "spanner.projects.instances.delete",
                             "parameterOrder": [
@@ -233,6 +237,7 @@
                         },
                         "get": {
                             "description": "Gets information about a particular instance.",
+                            "flatPath": "v1/projects/{projectsId}/instances/{instancesId}",
                             "httpMethod": "GET",
                             "id": "spanner.projects.instances.get",
                             "parameterOrder": [
@@ -264,6 +269,7 @@
                         },
                         "getIamPolicy": {
                             "description": "Gets the access control policy for an instance resource. Returns an empty policy if an instance exists but does not have a policy set. Authorization requires `spanner.instances.getIamPolicy` on resource.",
+                            "flatPath": "v1/projects/{projectsId}/instances/{instancesId}:getIamPolicy",
                             "httpMethod": "POST",
                             "id": "spanner.projects.instances.getIamPolicy",
                             "parameterOrder": [
@@ -292,6 +298,7 @@
                         },
                         "list": {
                             "description": "Lists all instances in the given project.",
+                            "flatPath": "v1/projects/{projectsId}/instances",
                             "httpMethod": "GET",
                             "id": "spanner.projects.instances.list",
                             "parameterOrder": [
@@ -339,6 +346,7 @@
                         },
                         "patch": {
                             "description": "Updates an instance, and begins allocating or releasing resources as requested. The returned long-running operation can be used to track the progress of updating the instance. If the named instance does not exist, returns `NOT_FOUND`. Immediately upon completion of this request: * For resource types for which a decrease in the instance's allocation has been requested, billing is based on the newly-requested level. Until completion of the returned operation: * Cancelling the operation sets its metadata's cancel_time, and begins restoring resources to their pre-request values. The operation is guaranteed to succeed at undoing all resource changes, after which point it terminates with a `CANCELLED` status. * All other attempts to modify the instance are rejected. * Reading the instance via the API continues to give the pre-request resource levels. Upon completion of the returned operation: * Billing begins for all successfully-allocated resources (some types may have lower than the requested levels). * All newly-reserved resources are available for serving the instance's tables. * The instance's new resource levels are readable via the API. The returned long-running operation will have a name of the format `/operations/` and can be used to track the instance modification. The metadata field type is UpdateInstanceMetadata. The response field type is Instance, if successful. Authorization requires `spanner.instances.update` permission on resource name.",
+                            "flatPath": "v1/projects/{projectsId}/instances/{instancesId}",
                             "httpMethod": "PATCH",
                             "id": "spanner.projects.instances.patch",
                             "parameterOrder": [
@@ -367,6 +375,7 @@
                         },
                         "setIamPolicy": {
                             "description": "Sets the access control policy on an instance resource. Replaces any existing policy. Authorization requires `spanner.instances.setIamPolicy` on resource.",
+                            "flatPath": "v1/projects/{projectsId}/instances/{instancesId}:setIamPolicy",
                             "httpMethod": "POST",
                             "id": "spanner.projects.instances.setIamPolicy",
                             "parameterOrder": [
@@ -395,6 +404,7 @@
                         },
                         "testIamPermissions": {
                             "description": "Returns permissions that the caller has on the specified instance resource. Attempting this RPC on a non-existent Cloud Spanner instance resource will result in a NOT_FOUND error if the user has `spanner.instances.list` permission on the containing Google Cloud Project. Otherwise returns an empty set of permissions.",
+                            "flatPath": "v1/projects/{projectsId}/instances/{instancesId}:testIamPermissions",
                             "httpMethod": "POST",
                             "id": "spanner.projects.instances.testIamPermissions",
                             "parameterOrder": [
@@ -427,6 +437,7 @@
                             "methods": {
                                 "list": {
                                     "description": "Lists the backup long-running operations in the given instance. A backup operation has a name of the form `projects//instances//backups//operations/`. The long-running operation metadata field type `metadata.type_url` describes the type of the metadata. Operations returned include those that have completed/failed/canceled within the last 7 days, and pending operations. Operations returned are ordered by `operation.metadata.value.progress.start_time` in descending order starting from the most recently started operation.",
+                                    "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/backupOperations",
                                     "httpMethod": "GET",
                                     "id": "spanner.projects.instances.backupOperations.list",
                                     "parameterOrder": [
@@ -472,6 +483,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Starts creating a new Cloud Spanner Backup. The returned backup long-running operation will have a name of the format `projects//instances//backups//operations/` and can be used to track creation of the backup. The metadata field type is CreateBackupMetadata. The response field type is Backup, if successful. Cancelling the returned operation will stop the creation and delete the backup. There can be only one pending backup creation per database. Backup creation of different databases can run concurrently.",
+                                    "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/backups",
                                     "httpMethod": "POST",
                                     "id": "spanner.projects.instances.backups.create",
                                     "parameterOrder": [
@@ -527,6 +539,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a pending or completed Backup.",
+                                    "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/backups/{backupsId}",
                                     "httpMethod": "DELETE",
                                     "id": "spanner.projects.instances.backups.delete",
                                     "parameterOrder": [
@@ -552,6 +565,7 @@
                                 },
                                 "get": {
                                     "description": "Gets metadata on a pending or completed Backup.",
+                                    "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/backups/{backupsId}",
                                     "httpMethod": "GET",
                                     "id": "spanner.projects.instances.backups.get",
                                     "parameterOrder": [
@@ -577,6 +591,7 @@
                                 },
                                 "getIamPolicy": {
                                     "description": "Gets the access control policy for a database or backup resource. Returns an empty policy if a database or backup exists but does not have a policy set. Authorization requires `spanner.databases.getIamPolicy` permission on resource. For backups, authorization requires `spanner.backups.getIamPolicy` permission on resource.",
+                                    "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/backups/{backupsId}:getIamPolicy",
                                     "httpMethod": "POST",
                                     "id": "spanner.projects.instances.backups.getIamPolicy",
                                     "parameterOrder": [
@@ -605,6 +620,7 @@
                                 },
                                 "list": {
                                     "description": "Lists completed and pending backups. Backups returned are ordered by `create_time` in descending order, starting from the most recent `create_time`.",
+                                    "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/backups",
                                     "httpMethod": "GET",
                                     "id": "spanner.projects.instances.backups.list",
                                     "parameterOrder": [
@@ -646,6 +662,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates a pending or completed Backup.",
+                                    "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/backups/{backupsId}",
                                     "httpMethod": "PATCH",
                                     "id": "spanner.projects.instances.backups.patch",
                                     "parameterOrder": [
@@ -680,6 +697,7 @@
                                 },
                                 "setIamPolicy": {
                                     "description": "Sets the access control policy on a database or backup resource. Replaces any existing policy. Authorization requires `spanner.databases.setIamPolicy` permission on resource. For backups, authorization requires `spanner.backups.setIamPolicy` permission on resource.",
+                                    "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/backups/{backupsId}:setIamPolicy",
                                     "httpMethod": "POST",
                                     "id": "spanner.projects.instances.backups.setIamPolicy",
                                     "parameterOrder": [
@@ -708,6 +726,7 @@
                                 },
                                 "testIamPermissions": {
                                     "description": "Returns permissions that the caller has on the specified database or backup resource. Attempting this RPC on a non-existent Cloud Spanner database will result in a NOT_FOUND error if the user has `spanner.databases.list` permission on the containing Cloud Spanner instance. Otherwise returns an empty set of permissions. Calling this method on a backup that does not exist will result in a NOT_FOUND error if the user has `spanner.backups.list` permission on the containing instance.",
+                                    "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/backups/{backupsId}:testIamPermissions",
                                     "httpMethod": "POST",
                                     "id": "spanner.projects.instances.backups.testIamPermissions",
                                     "parameterOrder": [
@@ -740,6 +759,7 @@
                                     "methods": {
                                         "cancel": {
                                             "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                                            "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/backups/{backupsId}/operations/{operationsId}:cancel",
                                             "httpMethod": "POST",
                                             "id": "spanner.projects.instances.backups.operations.cancel",
                                             "parameterOrder": [
@@ -765,6 +785,7 @@
                                         },
                                         "delete": {
                                             "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                                            "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/backups/{backupsId}/operations/{operationsId}",
                                             "httpMethod": "DELETE",
                                             "id": "spanner.projects.instances.backups.operations.delete",
                                             "parameterOrder": [
@@ -790,6 +811,7 @@
                                         },
                                         "get": {
                                             "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                                            "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/backups/{backupsId}/operations/{operationsId}",
                                             "httpMethod": "GET",
                                             "id": "spanner.projects.instances.backups.operations.get",
                                             "parameterOrder": [
@@ -815,6 +837,7 @@
                                         },
                                         "list": {
                                             "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                                            "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/backups/{backupsId}/operations",
                                             "httpMethod": "GET",
                                             "id": "spanner.projects.instances.backups.operations.list",
                                             "parameterOrder": [
@@ -862,6 +885,7 @@
                             "methods": {
                                 "list": {
                                     "description": "Lists database longrunning-operations. A database operation has a name of the form `projects//instances//databases//operations/`. The long-running operation metadata field type `metadata.type_url` describes the type of the metadata. Operations returned include those that have completed/failed/canceled within the last 7 days, and pending operations.",
+                                    "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/databaseOperations",
                                     "httpMethod": "GET",
                                     "id": "spanner.projects.instances.databaseOperations.list",
                                     "parameterOrder": [
@@ -907,6 +931,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a new Cloud Spanner database and starts to prepare it for serving. The returned long-running operation will have a name of the format `/operations/` and can be used to track preparation of the database. The metadata field type is CreateDatabaseMetadata. The response field type is Database, if successful.",
+                                    "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/databases",
                                     "httpMethod": "POST",
                                     "id": "spanner.projects.instances.databases.create",
                                     "parameterOrder": [
@@ -935,6 +960,7 @@
                                 },
                                 "dropDatabase": {
                                     "description": "Drops (aka deletes) a Cloud Spanner database. Completed backups for the database will be retained according to their `expire_time`.",
+                                    "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}",
                                     "httpMethod": "DELETE",
                                     "id": "spanner.projects.instances.databases.dropDatabase",
                                     "parameterOrder": [
@@ -960,6 +986,7 @@
                                 },
                                 "get": {
                                     "description": "Gets the state of a Cloud Spanner database.",
+                                    "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}",
                                     "httpMethod": "GET",
                                     "id": "spanner.projects.instances.databases.get",
                                     "parameterOrder": [
@@ -985,6 +1012,7 @@
                                 },
                                 "getDdl": {
                                     "description": "Returns the schema of a Cloud Spanner database as a list of formatted DDL statements. This method does not show pending schema updates, those may be queried using the Operations API.",
+                                    "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/ddl",
                                     "httpMethod": "GET",
                                     "id": "spanner.projects.instances.databases.getDdl",
                                     "parameterOrder": [
@@ -1010,6 +1038,7 @@
                                 },
                                 "getIamPolicy": {
                                     "description": "Gets the access control policy for a database or backup resource. Returns an empty policy if a database or backup exists but does not have a policy set. Authorization requires `spanner.databases.getIamPolicy` permission on resource. For backups, authorization requires `spanner.backups.getIamPolicy` permission on resource.",
+                                    "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}:getIamPolicy",
                                     "httpMethod": "POST",
                                     "id": "spanner.projects.instances.databases.getIamPolicy",
                                     "parameterOrder": [
@@ -1036,8 +1065,62 @@
                                         "https://www.googleapis.com/auth/spanner.admin"
                                     ]
                                 },
+                                "getScans": {
+                                    "description": "Request a specific scan with Database-specific data for Cloud Key Visualizer.",
+                                    "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/scans",
+                                    "httpMethod": "GET",
+                                    "id": "spanner.projects.instances.databases.getScans",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "endTime": {
+                                            "description": "The upper bound for the time range to retrieve Scan data for.",
+                                            "format": "google-datetime",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "description": "Required. The unique name of the scan containing the requested information, specific to the Database service implementing this interface.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/instances/[^/]+/databases/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "startTime": {
+                                            "description": "These fields restrict the Database-specific information returned in the `Scan.data` field. If a `View` is provided that does not include the `Scan.data` field, these are ignored. This range of time must be entirely contained within the defined time range of the targeted scan. The lower bound for the time range to retrieve Scan data for.",
+                                            "format": "google-datetime",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "view": {
+                                            "description": "Specifies which parts of the Scan should be returned in the response. Note, if left unspecified, the FULL view is assumed.",
+                                            "enum": [
+                                                "VIEW_UNSPECIFIED",
+                                                "SUMMARY",
+                                                "FULL"
+                                            ],
+                                            "enumDescriptions": [
+                                                "Not specified, equivalent to SUMMARY.",
+                                                "Server responses only include `name`, `details`, `start_time` and `end_time`. The default value. Note, the ListScans method may only use this view type, others view types are not supported.",
+                                                "Full representation of the scan is returned in the server response, including `data`."
+                                            ],
+                                            "location": "query",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}/scans",
+                                    "response": {
+                                        "$ref": "Scan"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/spanner.data"
+                                    ]
+                                },
                                 "list": {
                                     "description": "Lists Cloud Spanner databases.",
+                                    "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/databases",
                                     "httpMethod": "GET",
                                     "id": "spanner.projects.instances.databases.list",
                                     "parameterOrder": [
@@ -1074,6 +1157,7 @@
                                 },
                                 "restore": {
                                     "description": "Create a new database by restoring from a completed backup. The new database must be in the same project and in an instance with the same instance configuration as the instance containing the backup. The returned database long-running operation has a name of the format `projects//instances//databases//operations/`, and can be used to track the progress of the operation, and to cancel it. The metadata field type is RestoreDatabaseMetadata. The response type is Database, if successful. Cancelling the returned operation will stop the restore and delete the database. There can be only one database being restored into an instance at a time. Once the restore operation completes, a new restore operation can be initiated, without waiting for the optimize operation associated with the first restore to complete.",
+                                    "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/databases:restore",
                                     "httpMethod": "POST",
                                     "id": "spanner.projects.instances.databases.restore",
                                     "parameterOrder": [
@@ -1102,6 +1186,7 @@
                                 },
                                 "setIamPolicy": {
                                     "description": "Sets the access control policy on a database or backup resource. Replaces any existing policy. Authorization requires `spanner.databases.setIamPolicy` permission on resource. For backups, authorization requires `spanner.backups.setIamPolicy` permission on resource.",
+                                    "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}:setIamPolicy",
                                     "httpMethod": "POST",
                                     "id": "spanner.projects.instances.databases.setIamPolicy",
                                     "parameterOrder": [
@@ -1130,6 +1215,7 @@
                                 },
                                 "testIamPermissions": {
                                     "description": "Returns permissions that the caller has on the specified database or backup resource. Attempting this RPC on a non-existent Cloud Spanner database will result in a NOT_FOUND error if the user has `spanner.databases.list` permission on the containing Cloud Spanner instance. Otherwise returns an empty set of permissions. Calling this method on a backup that does not exist will result in a NOT_FOUND error if the user has `spanner.backups.list` permission on the containing instance.",
+                                    "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}:testIamPermissions",
                                     "httpMethod": "POST",
                                     "id": "spanner.projects.instances.databases.testIamPermissions",
                                     "parameterOrder": [
@@ -1158,6 +1244,7 @@
                                 },
                                 "updateDdl": {
                                     "description": "Updates the schema of a Cloud Spanner database by creating/altering/dropping tables, columns, indexes, etc. The returned long-running operation will have a name of the format `/operations/` and can be used to track execution of the schema change(s). The metadata field type is UpdateDatabaseDdlMetadata. The operation has no response.",
+                                    "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/ddl",
                                     "httpMethod": "PATCH",
                                     "id": "spanner.projects.instances.databases.updateDdl",
                                     "parameterOrder": [
@@ -1190,6 +1277,7 @@
                                     "methods": {
                                         "cancel": {
                                             "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                                            "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/operations/{operationsId}:cancel",
                                             "httpMethod": "POST",
                                             "id": "spanner.projects.instances.databases.operations.cancel",
                                             "parameterOrder": [
@@ -1215,6 +1303,7 @@
                                         },
                                         "delete": {
                                             "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                                            "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/operations/{operationsId}",
                                             "httpMethod": "DELETE",
                                             "id": "spanner.projects.instances.databases.operations.delete",
                                             "parameterOrder": [
@@ -1240,6 +1329,7 @@
                                         },
                                         "get": {
                                             "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                                            "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/operations/{operationsId}",
                                             "httpMethod": "GET",
                                             "id": "spanner.projects.instances.databases.operations.get",
                                             "parameterOrder": [
@@ -1265,6 +1355,7 @@
                                         },
                                         "list": {
                                             "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                                            "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/operations",
                                             "httpMethod": "GET",
                                             "id": "spanner.projects.instances.databases.operations.list",
                                             "parameterOrder": [
@@ -1310,6 +1401,7 @@
                                     "methods": {
                                         "batchCreate": {
                                             "description": "Creates multiple new sessions. This API can be used to initialize a session cache on the clients. See https://goo.gl/TgSFN2 for best practices on session cache management.",
+                                            "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/sessions:batchCreate",
                                             "httpMethod": "POST",
                                             "id": "spanner.projects.instances.databases.sessions.batchCreate",
                                             "parameterOrder": [
@@ -1338,6 +1430,7 @@
                                         },
                                         "beginTransaction": {
                                             "description": "Begins a new transaction. This step can often be skipped: Read, ExecuteSql and Commit can begin a new transaction as a side-effect.",
+                                            "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/sessions/{sessionsId}:beginTransaction",
                                             "httpMethod": "POST",
                                             "id": "spanner.projects.instances.databases.sessions.beginTransaction",
                                             "parameterOrder": [
@@ -1366,6 +1459,7 @@
                                         },
                                         "commit": {
                                             "description": "Commits a transaction. The request includes the mutations to be applied to rows in the database. `Commit` might return an `ABORTED` error. This can occur at any time; commonly, the cause is conflicts with concurrent transactions. However, it can also happen for a variety of other reasons. If `Commit` returns `ABORTED`, the caller should re-attempt the transaction from the beginning, re-using the same session. On very rare occasions, `Commit` might return `UNKNOWN`. This can happen, for example, if the client job experiences a 1+ hour networking failure. At that point, Cloud Spanner has lost track of the transaction outcome and we recommend that you perform another read from the database to see the state of things as they are now.",
+                                            "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/sessions/{sessionsId}:commit",
                                             "httpMethod": "POST",
                                             "id": "spanner.projects.instances.databases.sessions.commit",
                                             "parameterOrder": [
@@ -1394,6 +1488,7 @@
                                         },
                                         "create": {
                                             "description": "Creates a new session. A session can be used to perform transactions that read and/or modify data in a Cloud Spanner database. Sessions are meant to be reused for many consecutive transactions. Sessions can only execute one transaction at a time. To execute multiple concurrent read-write/write-only transactions, create multiple sessions. Note that standalone reads and queries use a transaction internally, and count toward the one transaction limit. Active sessions use additional server resources, so it is a good idea to delete idle and unneeded sessions. Aside from explicit deletes, Cloud Spanner may delete sessions for which no operations are sent for more than an hour. If a session is deleted, requests to it return `NOT_FOUND`. Idle sessions can be kept alive by sending a trivial SQL query periodically, e.g., `\"SELECT 1\"`.",
+                                            "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/sessions",
                                             "httpMethod": "POST",
                                             "id": "spanner.projects.instances.databases.sessions.create",
                                             "parameterOrder": [
@@ -1422,6 +1517,7 @@
                                         },
                                         "delete": {
                                             "description": "Ends a session, releasing server resources associated with it. This will asynchronously trigger cancellation of any operations that are running with this session.",
+                                            "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/sessions/{sessionsId}",
                                             "httpMethod": "DELETE",
                                             "id": "spanner.projects.instances.databases.sessions.delete",
                                             "parameterOrder": [
@@ -1447,6 +1543,7 @@
                                         },
                                         "executeBatchDml": {
                                             "description": "Executes a batch of SQL DML statements. This method allows many statements to be run with lower latency than submitting them sequentially with ExecuteSql. Statements are executed in sequential order. A request can succeed even if a statement fails. The ExecuteBatchDmlResponse.status field in the response provides information about the statement that failed. Clients must inspect this field to determine whether an error occurred. Execution stops after the first failed statement; the remaining statements are not executed.",
+                                            "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/sessions/{sessionsId}:executeBatchDml",
                                             "httpMethod": "POST",
                                             "id": "spanner.projects.instances.databases.sessions.executeBatchDml",
                                             "parameterOrder": [
@@ -1475,6 +1572,7 @@
                                         },
                                         "executeSql": {
                                             "description": "Executes an SQL statement, returning all results in a single reply. This method cannot be used to return a result set larger than 10 MiB; if the query yields more data than that, the query fails with a `FAILED_PRECONDITION` error. Operations inside read-write transactions might return `ABORTED`. If this occurs, the application should restart the transaction from the beginning. See Transaction for more details. Larger result sets can be fetched in streaming fashion by calling ExecuteStreamingSql instead.",
+                                            "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/sessions/{sessionsId}:executeSql",
                                             "httpMethod": "POST",
                                             "id": "spanner.projects.instances.databases.sessions.executeSql",
                                             "parameterOrder": [
@@ -1503,6 +1601,7 @@
                                         },
                                         "executeStreamingSql": {
                                             "description": "Like ExecuteSql, except returns the result set as a stream. Unlike ExecuteSql, there is no limit on the size of the returned result set. However, no individual row in the result set can exceed 100 MiB, and no column value can exceed 10 MiB.",
+                                            "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/sessions/{sessionsId}:executeStreamingSql",
                                             "httpMethod": "POST",
                                             "id": "spanner.projects.instances.databases.sessions.executeStreamingSql",
                                             "parameterOrder": [
@@ -1531,6 +1630,7 @@
                                         },
                                         "get": {
                                             "description": "Gets a session. Returns `NOT_FOUND` if the session does not exist. This is mainly useful for determining whether a session is still alive.",
+                                            "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/sessions/{sessionsId}",
                                             "httpMethod": "GET",
                                             "id": "spanner.projects.instances.databases.sessions.get",
                                             "parameterOrder": [
@@ -1556,6 +1656,7 @@
                                         },
                                         "list": {
                                             "description": "Lists all sessions in a given database.",
+                                            "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/sessions",
                                             "httpMethod": "GET",
                                             "id": "spanner.projects.instances.databases.sessions.list",
                                             "parameterOrder": [
@@ -1597,6 +1698,7 @@
                                         },
                                         "partitionQuery": {
                                             "description": "Creates a set of partition tokens that can be used to execute a query operation in parallel. Each of the returned partition tokens can be used by ExecuteStreamingSql to specify a subset of the query result to read. The same session and read-only transaction must be used by the PartitionQueryRequest used to create the partition tokens and the ExecuteSqlRequests that use the partition tokens. Partition tokens become invalid when the session used to create them is deleted, is idle for too long, begins a new transaction, or becomes too old. When any of these happen, it is not possible to resume the query, and the whole operation must be restarted from the beginning.",
+                                            "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/sessions/{sessionsId}:partitionQuery",
                                             "httpMethod": "POST",
                                             "id": "spanner.projects.instances.databases.sessions.partitionQuery",
                                             "parameterOrder": [
@@ -1625,6 +1727,7 @@
                                         },
                                         "partitionRead": {
                                             "description": "Creates a set of partition tokens that can be used to execute a read operation in parallel. Each of the returned partition tokens can be used by StreamingRead to specify a subset of the read result to read. The same session and read-only transaction must be used by the PartitionReadRequest used to create the partition tokens and the ReadRequests that use the partition tokens. There are no ordering guarantees on rows returned among the returned partition tokens, or even within each individual StreamingRead call issued with a partition_token. Partition tokens become invalid when the session used to create them is deleted, is idle for too long, begins a new transaction, or becomes too old. When any of these happen, it is not possible to resume the read, and the whole operation must be restarted from the beginning.",
+                                            "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/sessions/{sessionsId}:partitionRead",
                                             "httpMethod": "POST",
                                             "id": "spanner.projects.instances.databases.sessions.partitionRead",
                                             "parameterOrder": [
@@ -1653,6 +1756,7 @@
                                         },
                                         "read": {
                                             "description": "Reads rows from the database using key lookups and scans, as a simple key/value style alternative to ExecuteSql. This method cannot be used to return a result set larger than 10 MiB; if the read matches more data than that, the read fails with a `FAILED_PRECONDITION` error. Reads inside read-write transactions might return `ABORTED`. If this occurs, the application should restart the transaction from the beginning. See Transaction for more details. Larger result sets can be yielded in streaming fashion by calling StreamingRead instead.",
+                                            "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/sessions/{sessionsId}:read",
                                             "httpMethod": "POST",
                                             "id": "spanner.projects.instances.databases.sessions.read",
                                             "parameterOrder": [
@@ -1681,6 +1785,7 @@
                                         },
                                         "rollback": {
                                             "description": "Rolls back a transaction, releasing any locks it holds. It is a good idea to call this for any transaction that includes one or more Read or ExecuteSql requests and ultimately decides not to commit. `Rollback` returns `OK` if it successfully aborts the transaction, the transaction was already aborted, or the transaction is not found. `Rollback` never returns `ABORTED`.",
+                                            "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/sessions/{sessionsId}:rollback",
                                             "httpMethod": "POST",
                                             "id": "spanner.projects.instances.databases.sessions.rollback",
                                             "parameterOrder": [
@@ -1709,6 +1814,7 @@
                                         },
                                         "streamingRead": {
                                             "description": "Like Read, except returns the result set as a stream. Unlike Read, there is no limit on the size of the returned result set. However, no individual row in the result set can exceed 100 MiB, and no column value can exceed 10 MiB.",
+                                            "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/sessions/{sessionsId}:streamingRead",
                                             "httpMethod": "POST",
                                             "id": "spanner.projects.instances.databases.sessions.streamingRead",
                                             "parameterOrder": [
@@ -1743,6 +1849,7 @@
                             "methods": {
                                 "cancel": {
                                     "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                                    "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/operations/{operationsId}:cancel",
                                     "httpMethod": "POST",
                                     "id": "spanner.projects.instances.operations.cancel",
                                     "parameterOrder": [
@@ -1768,6 +1875,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                                    "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/operations/{operationsId}",
                                     "httpMethod": "DELETE",
                                     "id": "spanner.projects.instances.operations.delete",
                                     "parameterOrder": [
@@ -1793,6 +1901,7 @@
                                 },
                                 "get": {
                                     "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                                    "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/operations/{operationsId}",
                                     "httpMethod": "GET",
                                     "id": "spanner.projects.instances.operations.get",
                                     "parameterOrder": [
@@ -1818,6 +1927,7 @@
                                 },
                                 "list": {
                                     "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                                    "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/operations",
                                     "httpMethod": "GET",
                                     "id": "spanner.projects.instances.operations.list",
                                     "parameterOrder": [
@@ -1862,9 +1972,70 @@
                     }
                 }
             }
+        },
+        "scans": {
+            "methods": {
+                "list": {
+                    "description": "Return available scans given a Database-specific resource name.",
+                    "flatPath": "v1/scans",
+                    "httpMethod": "GET",
+                    "id": "spanner.scans.list",
+                    "parameterOrder": [
+                        "parent"
+                    ],
+                    "parameters": {
+                        "filter": {
+                            "description": "A filter expression to restrict the results based on information present in the available Scan collection. The filter applies to all fields within the Scan message except for `data`.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "pageSize": {
+                            "description": "The maximum number of items to return.",
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "description": "The next_page_token value returned from a previous List request, if any.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "parent": {
+                            "description": "Required. The unique name of the parent resource, specific to the Database service implementing this interface.",
+                            "location": "path",
+                            "pattern": "^scans$",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "view": {
+                            "description": "Specifies which parts of the Scan should be returned in the response. Note, only the SUMMARY view (the default) is currently supported for ListScans.",
+                            "enum": [
+                                "VIEW_UNSPECIFIED",
+                                "SUMMARY",
+                                "FULL"
+                            ],
+                            "enumDescriptions": [
+                                "Not specified, equivalent to SUMMARY.",
+                                "Server responses only include `name`, `details`, `start_time` and `end_time`. The default value. Note, the ListScans method may only use this view type, others view types are not supported.",
+                                "Full representation of the scan is returned in the server response, including `data`."
+                            ],
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/{+parent}",
+                    "response": {
+                        "$ref": "ListScansResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/spanner.data"
+                    ]
+                }
+            }
         }
     },
-    "revision": "20210428",
+    "revision": "20210603",
     "rootUrl": "https://spanner.googleapis.com/",
     "schemas": {
         "Backup": {
@@ -2096,9 +2267,47 @@
             "id": "CommitStats",
             "properties": {
                 "mutationCount": {
-                    "description": "The total number of mutations for the transaction. Knowing the `mutation_count` value can help you maximize the number of mutations in a transaction and minimize the number of API round trips. You can also monitor this value to prevent transactions from exceeding the system [limit](http://cloud.google.com/spanner/quotas#limits_for_creating_reading_updating_and_deleting_data). If the number of mutations exceeds the limit, the server returns [INVALID_ARGUMENT](http://cloud.google.com/spanner/docs/reference/rest/v1/Code#ENUM_VALUES.INVALID_ARGUMENT).",
+                    "description": "The total number of mutations for the transaction. Knowing the `mutation_count` value can help you maximize the number of mutations in a transaction and minimize the number of API round trips. You can also monitor this value to prevent transactions from exceeding the system [limit](https://cloud.google.com/spanner/quotas#limits_for_creating_reading_updating_and_deleting_data). If the number of mutations exceeds the limit, the server returns [INVALID_ARGUMENT](https://cloud.google.com/spanner/docs/reference/rest/v1/Code#ENUM_VALUES.INVALID_ARGUMENT).",
                     "format": "int64",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ContextValue": {
+            "description": "A message representing context for a KeyRangeInfo, including a label, value, unit, and severity.",
+            "id": "ContextValue",
+            "properties": {
+                "label": {
+                    "$ref": "LocalizedString",
+                    "description": "The label for the context value. e.g. \"latency\"."
+                },
+                "severity": {
+                    "description": "The severity of this context.",
+                    "enum": [
+                        "SEVERITY_UNSPECIFIED",
+                        "INFO",
+                        "WARNING",
+                        "ERROR",
+                        "FATAL"
+                    ],
+                    "enumDescriptions": [
+                        "Required default value.",
+                        "Lowest severity level \"Info\".",
+                        "Middle severity level \"Warning\".",
+                        "Severity level signaling an error \"Error\"",
+                        "Severity level signaling a non recoverable error \"Fatal\""
+                    ],
+                    "type": "string"
+                },
+                "unit": {
+                    "description": "The unit of the context value.",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "The value for the context.",
+                    "format": "float",
+                    "type": "number"
                 }
             },
             "type": "object"
@@ -2286,6 +2495,62 @@
                 "table": {
                     "description": "Required. The table whose rows will be deleted.",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DerivedMetric": {
+            "description": "A message representing a derived metric.",
+            "id": "DerivedMetric",
+            "properties": {
+                "denominator": {
+                    "$ref": "LocalizedString",
+                    "description": "The name of the denominator metric. e.g. \"rows\"."
+                },
+                "numerator": {
+                    "$ref": "LocalizedString",
+                    "description": "The name of the numerator metric. e.g. \"latency\"."
+                }
+            },
+            "type": "object"
+        },
+        "DiagnosticMessage": {
+            "description": "A message representing the key visualizer diagnostic messages.",
+            "id": "DiagnosticMessage",
+            "properties": {
+                "info": {
+                    "$ref": "LocalizedString",
+                    "description": "Information about this diagnostic information."
+                },
+                "metric": {
+                    "$ref": "LocalizedString",
+                    "description": "The metric."
+                },
+                "metricSpecific": {
+                    "description": "Whether this message is specific only for the current metric. By default Diagnostics are shown for all metrics, regardless which metric is the currently selected metric in the UI. However occasionally a metric will generate so many messages that the resulting visual clutter becomes overwhelming. In this case setting this to true, will show the diagnostic messages for that metric only if it is the currently selected metric.",
+                    "type": "boolean"
+                },
+                "severity": {
+                    "description": "The severity of the diagnostic message.",
+                    "enum": [
+                        "SEVERITY_UNSPECIFIED",
+                        "INFO",
+                        "WARNING",
+                        "ERROR",
+                        "FATAL"
+                    ],
+                    "enumDescriptions": [
+                        "Required default value.",
+                        "Lowest severity level \"Info\".",
+                        "Middle severity level \"Warning\".",
+                        "Severity level signaling an error \"Error\"",
+                        "Severity level signaling a non recoverable error \"Fatal\""
+                    ],
+                    "type": "string"
+                },
+                "shortMessage": {
+                    "$ref": "LocalizedString",
+                    "description": "The short message."
                 }
             },
             "type": "object"
@@ -2526,6 +2791,35 @@
             },
             "type": "object"
         },
+        "IndexedHotKey": {
+            "description": "A message representing a (sparse) collection of hot keys for specific key buckets.",
+            "id": "IndexedHotKey",
+            "properties": {
+                "sparseHotKeys": {
+                    "additionalProperties": {
+                        "format": "int32",
+                        "type": "integer"
+                    },
+                    "description": "A (sparse) mapping from key bucket index to the index of the specific hot row key for that key bucket. The index of the hot row key can be translated to the actual row key via the ScanData.VisualizationData.indexed_keys repeated field.",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "IndexedKeyRangeInfos": {
+            "description": "A message representing a (sparse) collection of KeyRangeInfos for specific key buckets.",
+            "id": "IndexedKeyRangeInfos",
+            "properties": {
+                "keyRangeInfos": {
+                    "additionalProperties": {
+                        "$ref": "KeyRangeInfos"
+                    },
+                    "description": "A (sparse) mapping from key bucket index to the KeyRangeInfos for that key bucket.",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "Instance": {
             "description": "An isolated set of Cloud Spanner resources on which databases can be hosted.",
             "id": "Instance",
@@ -2558,6 +2852,11 @@
                 },
                 "nodeCount": {
                     "description": "The number of nodes allocated to this instance. This may be zero in API responses for instances that are not yet in state `READY`. See [the documentation](https://cloud.google.com/spanner/docs/instances#node_count) for more information about nodes.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "processingUnits": {
+                    "description": "The number of processing units allocated to this instance. At most one of processing_units or node_count should be present in the message. This may be zero in API responses for instances that are not yet in state `READY`.",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -2632,6 +2931,71 @@
                         "type": "any"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "KeyRangeInfo": {
+            "description": "A message representing information for a key range (possibly one key).",
+            "id": "KeyRangeInfo",
+            "properties": {
+                "contextValues": {
+                    "description": "The list of context values for this key range.",
+                    "items": {
+                        "$ref": "ContextValue"
+                    },
+                    "type": "array"
+                },
+                "endKeyIndex": {
+                    "description": "The index of the end key in indexed_keys.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "info": {
+                    "$ref": "LocalizedString",
+                    "description": "Information about this key range, for all metrics."
+                },
+                "keysCount": {
+                    "description": "The number of keys this range covers.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "metric": {
+                    "$ref": "LocalizedString",
+                    "description": "The name of the metric. e.g. \"latency\"."
+                },
+                "startKeyIndex": {
+                    "description": "The index of the start key in indexed_keys.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "unit": {
+                    "$ref": "LocalizedString",
+                    "description": "The unit of the metric. This is an unstructured field and will be mapped as is to the user."
+                },
+                "value": {
+                    "description": "The value of the metric.",
+                    "format": "float",
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "KeyRangeInfos": {
+            "description": "A message representing a list of specific information for multiple key ranges.",
+            "id": "KeyRangeInfos",
+            "properties": {
+                "infos": {
+                    "description": "The list individual KeyRangeInfos.",
+                    "items": {
+                        "$ref": "KeyRangeInfo"
+                    },
+                    "type": "array"
+                },
+                "totalSize": {
+                    "description": "The total size of the list of all KeyRangeInfos. This may be larger than the number of repeated messages above. If that is the case, this number may be used to determine how many are not being shown.",
+                    "format": "int32",
+                    "type": "integer"
                 }
             },
             "type": "object"
@@ -2797,6 +3161,24 @@
             },
             "type": "object"
         },
+        "ListScansResponse": {
+            "description": "Response method from the ListScans method.",
+            "id": "ListScansResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "Token to retrieve the next page of results, or empty if there are no more results in the list.",
+                    "type": "string"
+                },
+                "scans": {
+                    "description": "Available scans based on the list query parameters.",
+                    "items": {
+                        "$ref": "Scan"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "ListSessionsResponse": {
             "description": "The response for ListSessions.",
             "id": "ListSessionsResponse",
@@ -2809,6 +3191,129 @@
                     "description": "The list of requested sessions.",
                     "items": {
                         "$ref": "Session"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "LocalizedString": {
+            "description": "A message representing a user-facing string whose value may need to be translated before being displayed.",
+            "id": "LocalizedString",
+            "properties": {
+                "args": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A map of arguments used when creating the localized message. Keys represent parameter names which may be used by the localized version when substituting dynamic values.",
+                    "type": "object"
+                },
+                "message": {
+                    "description": "The canonical English version of this message. If no token is provided or the front-end has no message associated with the token, this text will be displayed as-is.",
+                    "type": "string"
+                },
+                "token": {
+                    "description": "The token identifying the message, e.g. 'METRIC_READ_CPU'. This should be unique within the service.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Metric": {
+            "description": "A message representing the actual monitoring data, values for each key bucket over time, of a metric.",
+            "id": "Metric",
+            "properties": {
+                "aggregation": {
+                    "description": "The aggregation function used to aggregate each key bucket",
+                    "enum": [
+                        "AGGREGATION_UNSPECIFIED",
+                        "MAX",
+                        "SUM"
+                    ],
+                    "enumDescriptions": [
+                        "Required default value.",
+                        "Use the maximum of all values.",
+                        "Use the sum of all values."
+                    ],
+                    "type": "string"
+                },
+                "category": {
+                    "$ref": "LocalizedString",
+                    "description": "The category of the metric, e.g. \"Activity\", \"Alerts\", \"Reads\", etc."
+                },
+                "derived": {
+                    "$ref": "DerivedMetric",
+                    "description": "The references to numerator and denominator metrics for a derived metric."
+                },
+                "displayLabel": {
+                    "$ref": "LocalizedString",
+                    "description": "The displayed label of the metric."
+                },
+                "hasNonzeroData": {
+                    "description": "Whether the metric has any non-zero data.",
+                    "type": "boolean"
+                },
+                "hotValue": {
+                    "description": "The value that is considered hot for the metric. On a per metric basis hotness signals high utilization and something that might potentially be a cause for concern by the end user. hot_value is used to calibrate and scale visual color scales.",
+                    "format": "float",
+                    "type": "number"
+                },
+                "indexedHotKeys": {
+                    "additionalProperties": {
+                        "$ref": "IndexedHotKey"
+                    },
+                    "description": "The (sparse) mapping from time index to an IndexedHotKey message, representing those time intervals for which there are hot keys.",
+                    "type": "object"
+                },
+                "indexedKeyRangeInfos": {
+                    "additionalProperties": {
+                        "$ref": "IndexedKeyRangeInfos"
+                    },
+                    "description": "The (sparse) mapping from time interval index to an IndexedKeyRangeInfos message, representing those time intervals for which there are informational messages concerning key ranges.",
+                    "type": "object"
+                },
+                "info": {
+                    "$ref": "LocalizedString",
+                    "description": "Information about the metric."
+                },
+                "matrix": {
+                    "$ref": "MetricMatrix",
+                    "description": "The data for the metric as a matrix."
+                },
+                "unit": {
+                    "$ref": "LocalizedString",
+                    "description": "The unit of the metric."
+                },
+                "visible": {
+                    "description": "Whether the metric is visible to the end user.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "MetricMatrix": {
+            "description": "A message representing a matrix of floats.",
+            "id": "MetricMatrix",
+            "properties": {
+                "rows": {
+                    "description": "The rows of the matrix.",
+                    "items": {
+                        "$ref": "MetricMatrixRow"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "MetricMatrixRow": {
+            "description": "A message representing a row of a matrix of floats.",
+            "id": "MetricMatrixRow",
+            "properties": {
+                "cols": {
+                    "description": "The columns of the row.",
+                    "items": {
+                        "format": "float",
+                        "type": "number"
                     },
                     "type": "array"
                 }
@@ -3143,6 +3648,36 @@
                     "description": "Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
                     "format": "int32",
                     "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "PrefixNode": {
+            "description": "A message representing a key prefix node in the key prefix hierarchy. for eg. Bigtable keyspaces are lexicographically ordered mappings of keys to values. Keys often have a shared prefix structure where users use the keys to organize data. Eg ///employee In this case Keysight will possibly use one node for a company and reuse it for all employees that fall under the company. Doing so improves legibility in the UI.",
+            "id": "PrefixNode",
+            "properties": {
+                "dataSourceNode": {
+                    "description": "Whether this corresponds to a data_source name.",
+                    "type": "boolean"
+                },
+                "depth": {
+                    "description": "The depth in the prefix hierarchy.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "endIndex": {
+                    "description": "The index of the end key bucket of the range that this node spans.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "startIndex": {
+                    "description": "The index of the start key bucket of the range that this node spans.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "word": {
+                    "description": "The string represented by the prefix node.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -3517,6 +4052,61 @@
             },
             "type": "object"
         },
+        "Scan": {
+            "description": "Scan is a structure which describes Cloud Key Visualizer scan information.",
+            "id": "Scan",
+            "properties": {
+                "details": {
+                    "additionalProperties": {
+                        "description": "Properties of the object. Contains field @type with type URL.",
+                        "type": "any"
+                    },
+                    "description": "Additional information provided by the implementer.",
+                    "type": "object"
+                },
+                "endTime": {
+                    "description": "The upper bound for when the scan is defined.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "The unique name of the scan, specific to the Database service implementing this interface.",
+                    "type": "string"
+                },
+                "scanData": {
+                    "$ref": "ScanData",
+                    "description": "Output only. Cloud Key Visualizer scan data. Note, this field is not available to the ListScans method.",
+                    "readOnly": true
+                },
+                "startTime": {
+                    "description": "A range of time (inclusive) for when the scan is defined. The lower bound for when the scan is defined.",
+                    "format": "google-datetime",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ScanData": {
+            "description": "ScanData contains Cloud Key Visualizer scan data used by the caller to construct a visualization.",
+            "id": "ScanData",
+            "properties": {
+                "data": {
+                    "$ref": "VisualizationData",
+                    "description": "Cloud Key Visualizer scan data. The range of time this information covers is captured via the above time range fields. Note, this field is not available to the ListScans method."
+                },
+                "endTime": {
+                    "description": "The upper bound for when the contained data is defined.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "startTime": {
+                    "description": "A range of time (inclusive) for when the contained data is defined. The lower bound for when the contained data is defined.",
+                    "format": "google-datetime",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Session": {
             "description": "A session in the Cloud Spanner API.",
             "id": "Session",
@@ -3750,7 +4340,8 @@
                         "BYTES",
                         "ARRAY",
                         "STRUCT",
-                        "NUMERIC"
+                        "NUMERIC",
+                        "JSON"
                     ],
                     "enumDescriptions": [
                         "Not specified.",
@@ -3763,7 +4354,8 @@
                         "Encoded as a base64-encoded `string`, as described in RFC 4648, section 4.",
                         "Encoded as `list`, where the list elements are represented according to array_element_type.",
                         "Encoded as `list`, where list element `i` is represented according to [struct_type.fields[i]][google.spanner.v1.StructType.fields].",
-                        "Encoded as `string`, in decimal format or scientific notation format. Decimal format: `[+-]Digits[.[Digits]]` or `+-.Digits` Scientific notation: `[+-]Digits[.[Digits]][ExponentIndicator[+-]Digits]` or `+-.Digits[ExponentIndicator[+-]Digits]` (ExponentIndicator is `\"e\"` or `\"E\"`)"
+                        "Encoded as `string`, in decimal format or scientific notation format. Decimal format: `[+-]Digits[.[Digits]]` or `+-.Digits` Scientific notation: `[+-]Digits[.[Digits]][ExponentIndicator[+-]Digits]` or `+-.Digits[ExponentIndicator[+-]Digits]` (ExponentIndicator is `\"e\"` or `\"E\"`)",
+                        "Encoded as a JSON-formatted 'string' as described in RFC 7159. The following rules will be applied when parsing JSON input: - Whitespace will be stripped from the document. - If a JSON object has duplicate keys, only the first key will be preserved. - Members of a JSON object are not guaranteed to have their order preserved. JSON array elements will have their order preserved."
                     ],
                     "type": "string"
                 },
@@ -3868,6 +4460,77 @@
                 "instance": {
                     "$ref": "Instance",
                     "description": "Required. The instance to update, which must always include the instance name. Otherwise, only fields mentioned in field_mask need be included."
+                }
+            },
+            "type": "object"
+        },
+        "VisualizationData": {
+            "id": "VisualizationData",
+            "properties": {
+                "dataSourceEndToken": {
+                    "description": "The token signifying the end of a data_source.",
+                    "type": "string"
+                },
+                "dataSourceSeparatorToken": {
+                    "description": "The token delimiting a datasource name from the rest of a key in a data_source.",
+                    "type": "string"
+                },
+                "diagnosticMessages": {
+                    "description": "The list of messages (info, alerts, ...)",
+                    "items": {
+                        "$ref": "DiagnosticMessage"
+                    },
+                    "type": "array"
+                },
+                "endKeyStrings": {
+                    "description": "We discretize the entire keyspace into buckets. Assuming each bucket has an inclusive keyrange and covers keys from k(i) ... k(n). In this case k(n) would be an end key for a given range. end_key_string is the collection of all such end keys",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "hasPii": {
+                    "description": "Whether this scan contains PII.",
+                    "type": "boolean"
+                },
+                "indexedKeys": {
+                    "description": "Keys of key ranges that contribute significantly to a given metric Can be thought of as heavy hitters.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "keySeparator": {
+                    "description": "The token delimiting the key prefixes.",
+                    "type": "string"
+                },
+                "keyUnit": {
+                    "description": "The unit for the key: e.g. 'key' or 'chunk'.",
+                    "enum": [
+                        "KEY_UNIT_UNSPECIFIED",
+                        "KEY",
+                        "CHUNK"
+                    ],
+                    "enumDescriptions": [
+                        "Required default value",
+                        "Each entry corresponds to one key",
+                        "Each entry corresponds to a chunk of keys"
+                    ],
+                    "type": "string"
+                },
+                "metrics": {
+                    "description": "The list of data objects for each metric.",
+                    "items": {
+                        "$ref": "Metric"
+                    },
+                    "type": "array"
+                },
+                "prefixNodes": {
+                    "description": "The list of extracted key prefix nodes used in the key prefix hierarchy.",
+                    "items": {
+                        "$ref": "PrefixNode"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"

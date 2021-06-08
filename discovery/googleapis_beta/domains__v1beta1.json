@@ -109,6 +109,7 @@
                     "methods": {
                         "get": {
                             "description": "Gets information about a location.",
+                            "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}",
                             "httpMethod": "GET",
                             "id": "domains.projects.locations.get",
                             "parameterOrder": [
@@ -133,6 +134,7 @@
                         },
                         "list": {
                             "description": "Lists information about the supported locations for this service.",
+                            "flatPath": "v1beta1/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "domains.projects.locations.list",
                             "parameterOrder": [
@@ -177,6 +179,7 @@
                             "methods": {
                                 "get": {
                                     "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                                     "httpMethod": "GET",
                                     "id": "domains.projects.locations.operations.get",
                                     "parameterOrder": [
@@ -201,6 +204,7 @@
                                 },
                                 "list": {
                                     "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/operations",
                                     "httpMethod": "GET",
                                     "id": "domains.projects.locations.operations.list",
                                     "parameterOrder": [
@@ -245,6 +249,7 @@
                             "methods": {
                                 "configureContactSettings": {
                                     "description": "Updates a `Registration`'s contact settings. Some changes require confirmation by the domain's registrant contact .",
+                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/registrations/{registrationsId}:configureContactSettings",
                                     "httpMethod": "POST",
                                     "id": "domains.projects.locations.registrations.configureContactSettings",
                                     "parameterOrder": [
@@ -272,6 +277,7 @@
                                 },
                                 "configureDnsSettings": {
                                     "description": "Updates a `Registration`'s DNS settings.",
+                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/registrations/{registrationsId}:configureDnsSettings",
                                     "httpMethod": "POST",
                                     "id": "domains.projects.locations.registrations.configureDnsSettings",
                                     "parameterOrder": [
@@ -299,6 +305,7 @@
                                 },
                                 "configureManagementSettings": {
                                     "description": "Updates a `Registration`'s management settings.",
+                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/registrations/{registrationsId}:configureManagementSettings",
                                     "httpMethod": "POST",
                                     "id": "domains.projects.locations.registrations.configureManagementSettings",
                                     "parameterOrder": [
@@ -326,6 +333,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a `Registration` resource. This method only works on resources in one of the following states: * `state` is `EXPORTED` with `expire_time` in the past * `state` is `REGISTRATION_FAILED`",
+                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/registrations/{registrationsId}",
                                     "httpMethod": "DELETE",
                                     "id": "domains.projects.locations.registrations.delete",
                                     "parameterOrder": [
@@ -350,6 +358,7 @@
                                 },
                                 "export": {
                                     "description": "Exports a `Registration` that you no longer want to use with Cloud Domains. You can continue to use the domain in [Google Domains](https://domains.google/) until it expires. If the export is successful: * The resource's `state` becomes `EXPORTED`, meaning that it is no longer managed by Cloud Domains * Because individual users can own domains in Google Domains, the calling user becomes the domain's sole owner. Permissions for the domain are subsequently managed in Google Domains. * Without further action, the domain does not renew automatically. The new owner can set up billing in Google Domains to renew the domain if needed.",
+                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/registrations/{registrationsId}:export",
                                     "httpMethod": "POST",
                                     "id": "domains.projects.locations.registrations.export",
                                     "parameterOrder": [
@@ -377,6 +386,7 @@
                                 },
                                 "get": {
                                     "description": "Gets the details of a `Registration` resource.",
+                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/registrations/{registrationsId}",
                                     "httpMethod": "GET",
                                     "id": "domains.projects.locations.registrations.get",
                                     "parameterOrder": [
@@ -401,6 +411,7 @@
                                 },
                                 "getIamPolicy": {
                                     "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
+                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/registrations/{registrationsId}:getIamPolicy",
                                     "httpMethod": "GET",
                                     "id": "domains.projects.locations.registrations.getIamPolicy",
                                     "parameterOrder": [
@@ -431,6 +442,7 @@
                                 },
                                 "list": {
                                     "description": "Lists the `Registration` resources in a project.",
+                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/registrations",
                                     "httpMethod": "GET",
                                     "id": "domains.projects.locations.registrations.list",
                                     "parameterOrder": [
@@ -471,6 +483,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates select fields of a `Registration` resource, notably `labels`. To update other fields, use the appropriate custom update method: * To update management settings, see `ConfigureManagementSettings` * To update DNS configuration, see `ConfigureDnsSettings` * To update contact information, see `ConfigureContactSettings`",
+                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/registrations/{registrationsId}",
                                     "httpMethod": "PATCH",
                                     "id": "domains.projects.locations.registrations.patch",
                                     "parameterOrder": [
@@ -504,6 +517,7 @@
                                 },
                                 "register": {
                                     "description": "Registers a new domain name and creates a corresponding `Registration` resource. Call `RetrieveRegisterParameters` first to check availability of the domain name and determine parameters like price that are needed to build a call to this method. A successful call creates a `Registration` resource in state `REGISTRATION_PENDING`, which resolves to `ACTIVE` within 1-2 minutes, indicating that the domain was successfully registered. If the resource ends up in state `REGISTRATION_FAILED`, it indicates that the domain was not registered successfully, and you can safely delete the resource and retry registration.",
+                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/registrations:register",
                                     "httpMethod": "POST",
                                     "id": "domains.projects.locations.registrations.register",
                                     "parameterOrder": [
@@ -531,6 +545,7 @@
                                 },
                                 "resetAuthorizationCode": {
                                     "description": "Resets the authorization code of the `Registration` to a new random string. You can call this method only after 60 days have elapsed since the initial domain registration.",
+                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/registrations/{registrationsId}:resetAuthorizationCode",
                                     "httpMethod": "POST",
                                     "id": "domains.projects.locations.registrations.resetAuthorizationCode",
                                     "parameterOrder": [
@@ -558,6 +573,7 @@
                                 },
                                 "retrieveAuthorizationCode": {
                                     "description": "Gets the authorization code of the `Registration` for the purpose of transferring the domain to another registrar. You can call this method only after 60 days have elapsed since the initial domain registration.",
+                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/registrations/{registrationsId}:retrieveAuthorizationCode",
                                     "httpMethod": "GET",
                                     "id": "domains.projects.locations.registrations.retrieveAuthorizationCode",
                                     "parameterOrder": [
@@ -582,6 +598,7 @@
                                 },
                                 "retrieveRegisterParameters": {
                                     "description": "Gets parameters needed to register a new domain name, including price and up-to-date availability. Use the returned values to call `RegisterDomain`.",
+                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/registrations:retrieveRegisterParameters",
                                     "httpMethod": "GET",
                                     "id": "domains.projects.locations.registrations.retrieveRegisterParameters",
                                     "parameterOrder": [
@@ -611,6 +628,7 @@
                                 },
                                 "searchDomains": {
                                     "description": "Searches for available domain names similar to the provided query. Availability results from this method are approximate; call `RetrieveRegisterParameters` on a domain before registering to confirm availability.",
+                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/registrations:searchDomains",
                                     "httpMethod": "GET",
                                     "id": "domains.projects.locations.registrations.searchDomains",
                                     "parameterOrder": [
@@ -640,6 +658,7 @@
                                 },
                                 "setIamPolicy": {
                                     "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
+                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/registrations/{registrationsId}:setIamPolicy",
                                     "httpMethod": "POST",
                                     "id": "domains.projects.locations.registrations.setIamPolicy",
                                     "parameterOrder": [
@@ -667,6 +686,7 @@
                                 },
                                 "testIamPermissions": {
                                     "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
+                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/registrations/{registrationsId}:testIamPermissions",
                                     "httpMethod": "POST",
                                     "id": "domains.projects.locations.registrations.testIamPermissions",
                                     "parameterOrder": [
@@ -699,7 +719,7 @@
             }
         }
     },
-    "revision": "20210419",
+    "revision": "20210607",
     "rootUrl": "https://domains.googleapis.com/",
     "schemas": {
         "AuditConfig": {

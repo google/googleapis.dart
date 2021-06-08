@@ -107,6 +107,7 @@
             "methods": {
                 "deleteAccessApprovalSettings": {
                     "description": "Deletes the settings associated with a project, folder, or organization. This will have the effect of disabling Access Approval for the project, folder, or organization, but only if all ancestors also have Access Approval disabled. If Access Approval is enabled at a higher level of the hierarchy, then Access Approval will still be enabled at this level as the settings are inherited.",
+                    "flatPath": "v1/folders/{foldersId}/accessApprovalSettings",
                     "httpMethod": "DELETE",
                     "id": "accessapproval.folders.deleteAccessApprovalSettings",
                     "parameterOrder": [
@@ -131,6 +132,7 @@
                 },
                 "getAccessApprovalSettings": {
                     "description": "Gets the settings associated with a project, folder, or organization.",
+                    "flatPath": "v1/folders/{foldersId}/accessApprovalSettings",
                     "httpMethod": "GET",
                     "id": "accessapproval.folders.getAccessApprovalSettings",
                     "parameterOrder": [
@@ -155,6 +157,7 @@
                 },
                 "updateAccessApprovalSettings": {
                     "description": "Updates the settings associated with a project, folder, or organization. Settings to update are determined by the value of field_mask.",
+                    "flatPath": "v1/folders/{foldersId}/accessApprovalSettings",
                     "httpMethod": "PATCH",
                     "id": "accessapproval.folders.updateAccessApprovalSettings",
                     "parameterOrder": [
@@ -192,6 +195,7 @@
                     "methods": {
                         "approve": {
                             "description": "Approves a request and returns the updated ApprovalRequest. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the request exists but is not in a pending state.",
+                            "flatPath": "v1/folders/{foldersId}/approvalRequests/{approvalRequestsId}:approve",
                             "httpMethod": "POST",
                             "id": "accessapproval.folders.approvalRequests.approve",
                             "parameterOrder": [
@@ -219,6 +223,7 @@
                         },
                         "dismiss": {
                             "description": "Dismisses a request. Returns the updated ApprovalRequest. NOTE: This does not deny access to the resource if another request has been made and approved. It is equivalent in effect to ignoring the request altogether. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the request exists but is not in a pending state.",
+                            "flatPath": "v1/folders/{foldersId}/approvalRequests/{approvalRequestsId}:dismiss",
                             "httpMethod": "POST",
                             "id": "accessapproval.folders.approvalRequests.dismiss",
                             "parameterOrder": [
@@ -246,6 +251,7 @@
                         },
                         "get": {
                             "description": "Gets an approval request. Returns NOT_FOUND if the request does not exist.",
+                            "flatPath": "v1/folders/{foldersId}/approvalRequests/{approvalRequestsId}",
                             "httpMethod": "GET",
                             "id": "accessapproval.folders.approvalRequests.get",
                             "parameterOrder": [
@@ -270,6 +276,7 @@
                         },
                         "list": {
                             "description": "Lists approval requests associated with a project, folder, or organization. Approval requests can be filtered by state (pending, active, dismissed). The order is reverse chronological.",
+                            "flatPath": "v1/folders/{foldersId}/approvalRequests",
                             "httpMethod": "GET",
                             "id": "accessapproval.folders.approvalRequests.list",
                             "parameterOrder": [
@@ -316,6 +323,7 @@
             "methods": {
                 "deleteAccessApprovalSettings": {
                     "description": "Deletes the settings associated with a project, folder, or organization. This will have the effect of disabling Access Approval for the project, folder, or organization, but only if all ancestors also have Access Approval disabled. If Access Approval is enabled at a higher level of the hierarchy, then Access Approval will still be enabled at this level as the settings are inherited.",
+                    "flatPath": "v1/organizations/{organizationsId}/accessApprovalSettings",
                     "httpMethod": "DELETE",
                     "id": "accessapproval.organizations.deleteAccessApprovalSettings",
                     "parameterOrder": [
@@ -340,6 +348,7 @@
                 },
                 "getAccessApprovalSettings": {
                     "description": "Gets the settings associated with a project, folder, or organization.",
+                    "flatPath": "v1/organizations/{organizationsId}/accessApprovalSettings",
                     "httpMethod": "GET",
                     "id": "accessapproval.organizations.getAccessApprovalSettings",
                     "parameterOrder": [
@@ -364,6 +373,7 @@
                 },
                 "updateAccessApprovalSettings": {
                     "description": "Updates the settings associated with a project, folder, or organization. Settings to update are determined by the value of field_mask.",
+                    "flatPath": "v1/organizations/{organizationsId}/accessApprovalSettings",
                     "httpMethod": "PATCH",
                     "id": "accessapproval.organizations.updateAccessApprovalSettings",
                     "parameterOrder": [
@@ -401,6 +411,7 @@
                     "methods": {
                         "approve": {
                             "description": "Approves a request and returns the updated ApprovalRequest. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the request exists but is not in a pending state.",
+                            "flatPath": "v1/organizations/{organizationsId}/approvalRequests/{approvalRequestsId}:approve",
                             "httpMethod": "POST",
                             "id": "accessapproval.organizations.approvalRequests.approve",
                             "parameterOrder": [
@@ -428,6 +439,7 @@
                         },
                         "dismiss": {
                             "description": "Dismisses a request. Returns the updated ApprovalRequest. NOTE: This does not deny access to the resource if another request has been made and approved. It is equivalent in effect to ignoring the request altogether. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the request exists but is not in a pending state.",
+                            "flatPath": "v1/organizations/{organizationsId}/approvalRequests/{approvalRequestsId}:dismiss",
                             "httpMethod": "POST",
                             "id": "accessapproval.organizations.approvalRequests.dismiss",
                             "parameterOrder": [
@@ -455,6 +467,7 @@
                         },
                         "get": {
                             "description": "Gets an approval request. Returns NOT_FOUND if the request does not exist.",
+                            "flatPath": "v1/organizations/{organizationsId}/approvalRequests/{approvalRequestsId}",
                             "httpMethod": "GET",
                             "id": "accessapproval.organizations.approvalRequests.get",
                             "parameterOrder": [
@@ -479,6 +492,7 @@
                         },
                         "list": {
                             "description": "Lists approval requests associated with a project, folder, or organization. Approval requests can be filtered by state (pending, active, dismissed). The order is reverse chronological.",
+                            "flatPath": "v1/organizations/{organizationsId}/approvalRequests",
                             "httpMethod": "GET",
                             "id": "accessapproval.organizations.approvalRequests.list",
                             "parameterOrder": [
@@ -525,6 +539,7 @@
             "methods": {
                 "deleteAccessApprovalSettings": {
                     "description": "Deletes the settings associated with a project, folder, or organization. This will have the effect of disabling Access Approval for the project, folder, or organization, but only if all ancestors also have Access Approval disabled. If Access Approval is enabled at a higher level of the hierarchy, then Access Approval will still be enabled at this level as the settings are inherited.",
+                    "flatPath": "v1/projects/{projectsId}/accessApprovalSettings",
                     "httpMethod": "DELETE",
                     "id": "accessapproval.projects.deleteAccessApprovalSettings",
                     "parameterOrder": [
@@ -549,6 +564,7 @@
                 },
                 "getAccessApprovalSettings": {
                     "description": "Gets the settings associated with a project, folder, or organization.",
+                    "flatPath": "v1/projects/{projectsId}/accessApprovalSettings",
                     "httpMethod": "GET",
                     "id": "accessapproval.projects.getAccessApprovalSettings",
                     "parameterOrder": [
@@ -573,6 +589,7 @@
                 },
                 "updateAccessApprovalSettings": {
                     "description": "Updates the settings associated with a project, folder, or organization. Settings to update are determined by the value of field_mask.",
+                    "flatPath": "v1/projects/{projectsId}/accessApprovalSettings",
                     "httpMethod": "PATCH",
                     "id": "accessapproval.projects.updateAccessApprovalSettings",
                     "parameterOrder": [
@@ -610,6 +627,7 @@
                     "methods": {
                         "approve": {
                             "description": "Approves a request and returns the updated ApprovalRequest. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the request exists but is not in a pending state.",
+                            "flatPath": "v1/projects/{projectsId}/approvalRequests/{approvalRequestsId}:approve",
                             "httpMethod": "POST",
                             "id": "accessapproval.projects.approvalRequests.approve",
                             "parameterOrder": [
@@ -637,6 +655,7 @@
                         },
                         "dismiss": {
                             "description": "Dismisses a request. Returns the updated ApprovalRequest. NOTE: This does not deny access to the resource if another request has been made and approved. It is equivalent in effect to ignoring the request altogether. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the request exists but is not in a pending state.",
+                            "flatPath": "v1/projects/{projectsId}/approvalRequests/{approvalRequestsId}:dismiss",
                             "httpMethod": "POST",
                             "id": "accessapproval.projects.approvalRequests.dismiss",
                             "parameterOrder": [
@@ -664,6 +683,7 @@
                         },
                         "get": {
                             "description": "Gets an approval request. Returns NOT_FOUND if the request does not exist.",
+                            "flatPath": "v1/projects/{projectsId}/approvalRequests/{approvalRequestsId}",
                             "httpMethod": "GET",
                             "id": "accessapproval.projects.approvalRequests.get",
                             "parameterOrder": [
@@ -688,6 +708,7 @@
                         },
                         "list": {
                             "description": "Lists approval requests associated with a project, folder, or organization. Approval requests can be filtered by state (pending, active, dismissed). The order is reverse chronological.",
+                            "flatPath": "v1/projects/{projectsId}/approvalRequests",
                             "httpMethod": "GET",
                             "id": "accessapproval.projects.approvalRequests.list",
                             "parameterOrder": [
@@ -731,7 +752,7 @@
             }
         }
     },
-    "revision": "20210513",
+    "revision": "20210602",
     "rootUrl": "https://accessapproval.googleapis.com/",
     "schemas": {
         "AccessApprovalSettings": {

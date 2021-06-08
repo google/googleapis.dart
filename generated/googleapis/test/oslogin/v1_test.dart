@@ -66,27 +66,27 @@ void checkImportSshPublicKeyResponse(api.ImportSshPublicKeyResponse o) {
   buildCounterImportSshPublicKeyResponse--;
 }
 
-core.List<api.PosixAccount> buildUnnamed3468() {
+core.List<api.PosixAccount> buildUnnamed3558() {
   var o = <api.PosixAccount>[];
   o.add(buildPosixAccount());
   o.add(buildPosixAccount());
   return o;
 }
 
-void checkUnnamed3468(core.List<api.PosixAccount> o) {
+void checkUnnamed3558(core.List<api.PosixAccount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPosixAccount(o[0] as api.PosixAccount);
   checkPosixAccount(o[1] as api.PosixAccount);
 }
 
-core.Map<core.String, api.SshPublicKey> buildUnnamed3469() {
+core.Map<core.String, api.SshPublicKey> buildUnnamed3559() {
   var o = <core.String, api.SshPublicKey>{};
   o['x'] = buildSshPublicKey();
   o['y'] = buildSshPublicKey();
   return o;
 }
 
-void checkUnnamed3469(core.Map<core.String, api.SshPublicKey> o) {
+void checkUnnamed3559(core.Map<core.String, api.SshPublicKey> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSshPublicKey(o['x']! as api.SshPublicKey);
   checkSshPublicKey(o['y']! as api.SshPublicKey);
@@ -98,8 +98,8 @@ api.LoginProfile buildLoginProfile() {
   buildCounterLoginProfile++;
   if (buildCounterLoginProfile < 3) {
     o.name = 'foo';
-    o.posixAccounts = buildUnnamed3468();
-    o.sshPublicKeys = buildUnnamed3469();
+    o.posixAccounts = buildUnnamed3558();
+    o.sshPublicKeys = buildUnnamed3559();
   }
   buildCounterLoginProfile--;
   return o;
@@ -112,8 +112,8 @@ void checkLoginProfile(api.LoginProfile o) {
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed3468(o.posixAccounts!);
-    checkUnnamed3469(o.sshPublicKeys!);
+    checkUnnamed3558(o.posixAccounts!);
+    checkUnnamed3559(o.sshPublicKeys!);
   }
   buildCounterLoginProfile--;
 }

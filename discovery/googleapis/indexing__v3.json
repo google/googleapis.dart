@@ -107,6 +107,7 @@
             "methods": {
                 "getMetadata": {
                     "description": "Gets metadata about a Web Document. This method can _only_ be used to query URLs that were previously seen in successful Indexing API notifications. Includes the latest `UrlNotification` received via this API.",
+                    "flatPath": "v3/urlNotifications/metadata",
                     "httpMethod": "GET",
                     "id": "indexing.urlNotifications.getMetadata",
                     "parameterOrder": [],
@@ -127,6 +128,7 @@
                 },
                 "publish": {
                     "description": "Notifies that a URL has been updated or deleted.",
+                    "flatPath": "v3/urlNotifications:publish",
                     "httpMethod": "POST",
                     "id": "indexing.urlNotifications.publish",
                     "parameterOrder": [],
@@ -145,7 +147,7 @@
             }
         }
     },
-    "revision": "20210517",
+    "revision": "20210601",
     "rootUrl": "https://indexing.googleapis.com/",
     "schemas": {
         "PublishUrlNotificationResponse": {

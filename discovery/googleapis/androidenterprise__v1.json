@@ -107,6 +107,7 @@
             "methods": {
                 "forceReportUpload": {
                     "description": "Uploads a report containing any changes in app states on the device since the last report was generated. You can call this method up to 3 times every 24 hours for a given device. If you exceed the quota, then the Google Play EMM API returns HTTP 429 Too Many Requests.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/forceReportUpload",
                     "httpMethod": "POST",
                     "id": "androidenterprise.devices.forceReportUpload",
                     "parameterOrder": [
@@ -141,6 +142,7 @@
                 },
                 "get": {
                     "description": "Retrieves the details of a device.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}",
                     "httpMethod": "GET",
                     "id": "androidenterprise.devices.get",
                     "parameterOrder": [
@@ -178,6 +180,7 @@
                 },
                 "getState": {
                     "description": "Retrieves whether a device's access to Google services is enabled or disabled. The device state takes effect only if enforcing EMM policies on Android devices is enabled in the Google Admin Console. Otherwise, the device state is ignored and all devices are allowed access to Google services. This is only supported for Google-managed users.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/state",
                     "httpMethod": "GET",
                     "id": "androidenterprise.devices.getState",
                     "parameterOrder": [
@@ -215,6 +218,7 @@
                 },
                 "list": {
                     "description": "Retrieves the IDs of all of a user's devices.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices",
                     "httpMethod": "GET",
                     "id": "androidenterprise.devices.list",
                     "parameterOrder": [
@@ -245,6 +249,7 @@
                 },
                 "setState": {
                     "description": "Sets whether a device's access to Google services is enabled or disabled. The device state takes effect only if enforcing EMM policies on Android devices is enabled in the Google Admin Console. Otherwise, the device state is ignored and all devices are allowed access to Google services. This is only supported for Google-managed users.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/state",
                     "httpMethod": "PUT",
                     "id": "androidenterprise.devices.setState",
                     "parameterOrder": [
@@ -285,6 +290,7 @@
                 },
                 "update": {
                     "description": "Updates the device policy. To ensure the policy is properly enforced, you need to prevent unmanaged accounts from accessing Google Play by setting the allowed_accounts in the managed configuration for the Google Play package. See restrict accounts in Google Play.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}",
                     "httpMethod": "PUT",
                     "id": "androidenterprise.devices.update",
                     "parameterOrder": [
@@ -334,6 +340,7 @@
             "methods": {
                 "acknowledgeNotificationSet": {
                     "description": "Acknowledges notifications that were received from Enterprises.PullNotificationSet to prevent subsequent calls from returning the same notifications.",
+                    "flatPath": "androidenterprise/v1/enterprises/acknowledgeNotificationSet",
                     "httpMethod": "POST",
                     "id": "androidenterprise.enterprises.acknowledgeNotificationSet",
                     "parameterOrder": [],
@@ -351,6 +358,7 @@
                 },
                 "completeSignup": {
                     "description": "Completes the signup flow, by specifying the Completion token and Enterprise token. This request must not be called multiple times for a given Enterprise Token.",
+                    "flatPath": "androidenterprise/v1/enterprises/completeSignup",
                     "httpMethod": "POST",
                     "id": "androidenterprise.enterprises.completeSignup",
                     "parameterOrder": [],
@@ -376,6 +384,7 @@
                 },
                 "createWebToken": {
                     "description": "Returns a unique token to access an embeddable UI. To generate a web UI, pass the generated token into the managed Google Play javascript API. Each token may only be used to start one UI session. See the javascript API documentation for further information.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/createWebToken",
                     "httpMethod": "POST",
                     "id": "androidenterprise.enterprises.createWebToken",
                     "parameterOrder": [
@@ -402,6 +411,7 @@
                 },
                 "enroll": {
                     "description": "Enrolls an enterprise with the calling EMM.",
+                    "flatPath": "androidenterprise/v1/enterprises/enroll",
                     "httpMethod": "POST",
                     "id": "androidenterprise.enterprises.enroll",
                     "parameterOrder": [
@@ -428,6 +438,7 @@
                 },
                 "generateSignupUrl": {
                     "description": "Generates a sign-up URL.",
+                    "flatPath": "androidenterprise/v1/enterprises/signupUrl",
                     "httpMethod": "POST",
                     "id": "androidenterprise.enterprises.generateSignupUrl",
                     "parameterOrder": [],
@@ -448,6 +459,7 @@
                 },
                 "get": {
                     "description": "Retrieves the name and domain of an enterprise.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}",
                     "httpMethod": "GET",
                     "id": "androidenterprise.enterprises.get",
                     "parameterOrder": [
@@ -471,6 +483,7 @@
                 },
                 "getServiceAccount": {
                     "description": "Returns a service account and credentials. The service account can be bound to the enterprise by calling setAccount. The service account is unique to this enterprise and EMM, and will be deleted if the enterprise is unbound. The credentials contain private key data and are not stored server-side. This method can only be called after calling Enterprises.Enroll or Enterprises.CompleteSignup, and before Enterprises.SetAccount; at other times it will return an error. Subsequent calls after the first will generate a new, unique set of credentials, and invalidate the previously generated credentials. Once the service account is bound to the enterprise, it can be managed using the serviceAccountKeys resource.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/serviceAccount",
                     "httpMethod": "GET",
                     "id": "androidenterprise.enterprises.getServiceAccount",
                     "parameterOrder": [
@@ -507,6 +520,7 @@
                 },
                 "getStoreLayout": {
                     "description": "Returns the store layout for the enterprise. If the store layout has not been set, returns \"basic\" as the store layout type and no homepage.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout",
                     "httpMethod": "GET",
                     "id": "androidenterprise.enterprises.getStoreLayout",
                     "parameterOrder": [
@@ -530,6 +544,7 @@
                 },
                 "list": {
                     "description": "Looks up an enterprise by domain name. This is only supported for enterprises created via the Google-initiated creation flow. Lookup of the id is not needed for enterprises created via the EMM-initiated flow since the EMM learns the enterprise ID in the callback specified in the Enterprises.generateSignupUrl call.",
+                    "flatPath": "androidenterprise/v1/enterprises",
                     "httpMethod": "GET",
                     "id": "androidenterprise.enterprises.list",
                     "parameterOrder": [
@@ -553,6 +568,7 @@
                 },
                 "pullNotificationSet": {
                     "description": "Pulls and returns a notification set for the enterprises associated with the service account authenticated for the request. The notification set may be empty if no notification are pending. A notification set returned needs to be acknowledged within 20 seconds by calling Enterprises.AcknowledgeNotificationSet, unless the notification set is empty. Notifications that are not acknowledged within the 20 seconds will eventually be included again in the response to another PullNotificationSet request, and those that are never acknowledged will ultimately be deleted according to the Google Cloud Platform Pub/Sub system policy. Multiple requests might be performed concurrently to retrieve notifications, in which case the pending notifications (if any) will be split among each caller, if any are pending. If no notifications are present, an empty notification list is returned. Subsequent requests may return more notifications once they become available.",
+                    "flatPath": "androidenterprise/v1/enterprises/pullNotificationSet",
                     "httpMethod": "POST",
                     "id": "androidenterprise.enterprises.pullNotificationSet",
                     "parameterOrder": [],
@@ -581,6 +597,7 @@
                 },
                 "sendTestPushNotification": {
                     "description": "Sends a test notification to validate the EMM integration with the Google Cloud Pub/Sub service for this enterprise.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/sendTestPushNotification",
                     "httpMethod": "POST",
                     "id": "androidenterprise.enterprises.sendTestPushNotification",
                     "parameterOrder": [
@@ -604,6 +621,7 @@
                 },
                 "setAccount": {
                     "description": "Sets the account that will be used to authenticate to the API as the enterprise.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/account",
                     "httpMethod": "PUT",
                     "id": "androidenterprise.enterprises.setAccount",
                     "parameterOrder": [
@@ -630,6 +648,7 @@
                 },
                 "setStoreLayout": {
                     "description": "Sets the store layout for the enterprise. By default, storeLayoutType is set to \"basic\" and the basic store layout is enabled. The basic layout only contains apps approved by the admin, and that have been added to the available product set for a user (using the setAvailableProductSet call). Apps on the page are sorted in order of their product ID value. If you create a custom store layout (by setting storeLayoutType = \"custom\" and setting a homepage), the basic store layout is disabled.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout",
                     "httpMethod": "PUT",
                     "id": "androidenterprise.enterprises.setStoreLayout",
                     "parameterOrder": [
@@ -656,6 +675,7 @@
                 },
                 "unenroll": {
                     "description": "Unenrolls an enterprise from the calling EMM.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/unenroll",
                     "httpMethod": "POST",
                     "id": "androidenterprise.enterprises.unenroll",
                     "parameterOrder": [
@@ -680,6 +700,7 @@
             "methods": {
                 "delete": {
                     "description": "Removes an entitlement to an app for a user.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/entitlements/{entitlementId}",
                     "httpMethod": "DELETE",
                     "id": "androidenterprise.entitlements.delete",
                     "parameterOrder": [
@@ -714,6 +735,7 @@
                 },
                 "get": {
                     "description": "Retrieves details of an entitlement.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/entitlements/{entitlementId}",
                     "httpMethod": "GET",
                     "id": "androidenterprise.entitlements.get",
                     "parameterOrder": [
@@ -751,6 +773,7 @@
                 },
                 "list": {
                     "description": "Lists all entitlements for the specified user. Only the ID is set.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/entitlements",
                     "httpMethod": "GET",
                     "id": "androidenterprise.entitlements.list",
                     "parameterOrder": [
@@ -781,6 +804,7 @@
                 },
                 "update": {
                     "description": "Adds or updates an entitlement to an app for a user.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/entitlements/{entitlementId}",
                     "httpMethod": "PUT",
                     "id": "androidenterprise.entitlements.update",
                     "parameterOrder": [
@@ -830,6 +854,7 @@
             "methods": {
                 "get": {
                     "description": "Retrieves details of an enterprise's group license for a product.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/groupLicenses/{groupLicenseId}",
                     "httpMethod": "GET",
                     "id": "androidenterprise.grouplicenses.get",
                     "parameterOrder": [
@@ -860,6 +885,7 @@
                 },
                 "list": {
                     "description": "Retrieves IDs of all products for which the enterprise has a group license.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/groupLicenses",
                     "httpMethod": "GET",
                     "id": "androidenterprise.grouplicenses.list",
                     "parameterOrder": [
@@ -887,6 +913,7 @@
             "methods": {
                 "list": {
                     "description": "Retrieves the IDs of the users who have been granted entitlements under the license.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/groupLicenses/{groupLicenseId}/users",
                     "httpMethod": "GET",
                     "id": "androidenterprise.grouplicenseusers.list",
                     "parameterOrder": [
@@ -921,6 +948,7 @@
             "methods": {
                 "delete": {
                     "description": "Requests to remove an app from a device. A call to get or list will still show the app as installed on the device until it is actually removed.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/installs/{installId}",
                     "httpMethod": "DELETE",
                     "id": "androidenterprise.installs.delete",
                     "parameterOrder": [
@@ -962,6 +990,7 @@
                 },
                 "get": {
                     "description": "Retrieves details of an installation of an app on a device.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/installs/{installId}",
                     "httpMethod": "GET",
                     "id": "androidenterprise.installs.get",
                     "parameterOrder": [
@@ -1006,6 +1035,7 @@
                 },
                 "list": {
                     "description": "Retrieves the details of all apps installed on the specified device.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/installs",
                     "httpMethod": "GET",
                     "id": "androidenterprise.installs.list",
                     "parameterOrder": [
@@ -1043,6 +1073,7 @@
                 },
                 "update": {
                     "description": "Requests to install the latest version of an app to a device. If the app is already installed, then it is updated to the latest version if necessary.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/installs/{installId}",
                     "httpMethod": "PUT",
                     "id": "androidenterprise.installs.update",
                     "parameterOrder": [
@@ -1094,6 +1125,7 @@
             "methods": {
                 "delete": {
                     "description": "Removes a per-device managed configuration for an app for the specified device.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice/{managedConfigurationForDeviceId}",
                     "httpMethod": "DELETE",
                     "id": "androidenterprise.managedconfigurationsfordevice.delete",
                     "parameterOrder": [
@@ -1135,6 +1167,7 @@
                 },
                 "get": {
                     "description": "Retrieves details of a per-device managed configuration.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice/{managedConfigurationForDeviceId}",
                     "httpMethod": "GET",
                     "id": "androidenterprise.managedconfigurationsfordevice.get",
                     "parameterOrder": [
@@ -1179,6 +1212,7 @@
                 },
                 "list": {
                     "description": "Lists all the per-device managed configurations for the specified device. Only the ID is set.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice",
                     "httpMethod": "GET",
                     "id": "androidenterprise.managedconfigurationsfordevice.list",
                     "parameterOrder": [
@@ -1216,6 +1250,7 @@
                 },
                 "update": {
                     "description": "Adds or updates a per-device managed configuration for an app for the specified device.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice/{managedConfigurationForDeviceId}",
                     "httpMethod": "PUT",
                     "id": "androidenterprise.managedconfigurationsfordevice.update",
                     "parameterOrder": [
@@ -1267,6 +1302,7 @@
             "methods": {
                 "delete": {
                     "description": "Removes a per-user managed configuration for an app for the specified user.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser/{managedConfigurationForUserId}",
                     "httpMethod": "DELETE",
                     "id": "androidenterprise.managedconfigurationsforuser.delete",
                     "parameterOrder": [
@@ -1301,6 +1337,7 @@
                 },
                 "get": {
                     "description": "Retrieves details of a per-user managed configuration for an app for the specified user.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser/{managedConfigurationForUserId}",
                     "httpMethod": "GET",
                     "id": "androidenterprise.managedconfigurationsforuser.get",
                     "parameterOrder": [
@@ -1338,6 +1375,7 @@
                 },
                 "list": {
                     "description": "Lists all the per-user managed configurations for the specified user. Only the ID is set.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser",
                     "httpMethod": "GET",
                     "id": "androidenterprise.managedconfigurationsforuser.list",
                     "parameterOrder": [
@@ -1368,6 +1406,7 @@
                 },
                 "update": {
                     "description": "Adds or updates the managed configuration settings for an app for the specified user. If you support the Managed configurations iframe, you can apply managed configurations to a user by specifying an mcmId and its associated configuration variables (if any) in the request. Alternatively, all EMMs can apply managed configurations by passing a list of managed properties.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser/{managedConfigurationForUserId}",
                     "httpMethod": "PUT",
                     "id": "androidenterprise.managedconfigurationsforuser.update",
                     "parameterOrder": [
@@ -1412,6 +1451,7 @@
             "methods": {
                 "list": {
                     "description": "Lists all the managed configurations settings for the specified app.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/products/{productId}/managedConfigurationsSettings",
                     "httpMethod": "GET",
                     "id": "androidenterprise.managedconfigurationssettings.list",
                     "parameterOrder": [
@@ -1446,6 +1486,7 @@
             "methods": {
                 "get": {
                     "description": "Retrieves details of an Android app permission for display to an enterprise admin.",
+                    "flatPath": "androidenterprise/v1/permissions/{permissionId}",
                     "httpMethod": "GET",
                     "id": "androidenterprise.permissions.get",
                     "parameterOrder": [
@@ -1478,6 +1519,7 @@
             "methods": {
                 "approve": {
                     "description": " Approves the specified product and the relevant app permissions, if any. The maximum number of products that you can approve per enterprise customer is 1,000. To learn how to use managed Google Play to design and create a store layout to display approved products to your users, see Store Layout Design. ",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/products/{productId}/approve",
                     "httpMethod": "POST",
                     "id": "androidenterprise.products.approve",
                     "parameterOrder": [
@@ -1508,6 +1550,7 @@
                 },
                 "generateApprovalUrl": {
                     "description": "Generates a URL that can be rendered in an iframe to display the permissions (if any) of a product. An enterprise admin must view these permissions and accept them on behalf of their organization in order to approve that product. Admins should accept the displayed permissions by interacting with a separate UI element in the EMM console, which in turn should trigger the use of this URL as the approvalUrlInfo.approvalUrl property in a Products.approve call to approve the product. This URL can only be used to display permissions for up to 1 day.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/products/{productId}/generateApprovalUrl",
                     "httpMethod": "POST",
                     "id": "androidenterprise.products.generateApprovalUrl",
                     "parameterOrder": [
@@ -1543,6 +1586,7 @@
                 },
                 "get": {
                     "description": "Retrieves details of a product for display to an enterprise admin.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/products/{productId}",
                     "httpMethod": "GET",
                     "id": "androidenterprise.products.get",
                     "parameterOrder": [
@@ -1578,6 +1622,7 @@
                 },
                 "getAppRestrictionsSchema": {
                     "description": "Retrieves the schema that defines the configurable properties for this product. All products have a schema, but this schema may be empty if no managed configurations have been defined. This schema can be used to populate a UI that allows an admin to configure the product. To apply a managed configuration based on the schema obtained using this API, see Managed Configurations through Play.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/products/{productId}/appRestrictionsSchema",
                     "httpMethod": "GET",
                     "id": "androidenterprise.products.getAppRestrictionsSchema",
                     "parameterOrder": [
@@ -1613,6 +1658,7 @@
                 },
                 "getPermissions": {
                     "description": "Retrieves the Android app permissions required by this app.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/products/{productId}/permissions",
                     "httpMethod": "GET",
                     "id": "androidenterprise.products.getPermissions",
                     "parameterOrder": [
@@ -1643,6 +1689,7 @@
                 },
                 "list": {
                     "description": "Finds approved products that match a query, or all approved products if there is no query.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/products",
                     "httpMethod": "GET",
                     "id": "androidenterprise.products.list",
                     "parameterOrder": [
@@ -1692,6 +1739,7 @@
                 },
                 "unapprove": {
                     "description": "Unapproves the specified product (and the relevant app permissions, if any)",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/products/{productId}/unapprove",
                     "httpMethod": "POST",
                     "id": "androidenterprise.products.unapprove",
                     "parameterOrder": [
@@ -1723,6 +1771,7 @@
             "methods": {
                 "delete": {
                     "description": "Removes and invalidates the specified credentials for the service account associated with this enterprise. The calling service account must have been retrieved by calling Enterprises.GetServiceAccount and must have been set as the enterprise service account by calling Enterprises.SetAccount.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/serviceAccountKeys/{keyId}",
                     "httpMethod": "DELETE",
                     "id": "androidenterprise.serviceaccountkeys.delete",
                     "parameterOrder": [
@@ -1750,6 +1799,7 @@
                 },
                 "insert": {
                     "description": "Generates new credentials for the service account associated with this enterprise. The calling service account must have been retrieved by calling Enterprises.GetServiceAccount and must have been set as the enterprise service account by calling Enterprises.SetAccount. Only the type of the key should be populated in the resource to be inserted.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/serviceAccountKeys",
                     "httpMethod": "POST",
                     "id": "androidenterprise.serviceaccountkeys.insert",
                     "parameterOrder": [
@@ -1776,6 +1826,7 @@
                 },
                 "list": {
                     "description": "Lists all active credentials for the service account associated with this enterprise. Only the ID and key type are returned. The calling service account must have been retrieved by calling Enterprises.GetServiceAccount and must have been set as the enterprise service account by calling Enterprises.SetAccount.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/serviceAccountKeys",
                     "httpMethod": "GET",
                     "id": "androidenterprise.serviceaccountkeys.list",
                     "parameterOrder": [
@@ -1803,6 +1854,7 @@
             "methods": {
                 "delete": {
                     "description": "Deletes a cluster.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters/{clusterId}",
                     "httpMethod": "DELETE",
                     "id": "androidenterprise.storelayoutclusters.delete",
                     "parameterOrder": [
@@ -1837,6 +1889,7 @@
                 },
                 "get": {
                     "description": "Retrieves details of a cluster.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters/{clusterId}",
                     "httpMethod": "GET",
                     "id": "androidenterprise.storelayoutclusters.get",
                     "parameterOrder": [
@@ -1874,6 +1927,7 @@
                 },
                 "insert": {
                     "description": "Inserts a new cluster in a page.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters",
                     "httpMethod": "POST",
                     "id": "androidenterprise.storelayoutclusters.insert",
                     "parameterOrder": [
@@ -1907,6 +1961,7 @@
                 },
                 "list": {
                     "description": "Retrieves the details of all clusters on the specified page.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters",
                     "httpMethod": "GET",
                     "id": "androidenterprise.storelayoutclusters.list",
                     "parameterOrder": [
@@ -1937,6 +1992,7 @@
                 },
                 "update": {
                     "description": "Updates a cluster.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters/{clusterId}",
                     "httpMethod": "PUT",
                     "id": "androidenterprise.storelayoutclusters.update",
                     "parameterOrder": [
@@ -1981,6 +2037,7 @@
             "methods": {
                 "delete": {
                     "description": "Deletes a store page.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}",
                     "httpMethod": "DELETE",
                     "id": "androidenterprise.storelayoutpages.delete",
                     "parameterOrder": [
@@ -2008,6 +2065,7 @@
                 },
                 "get": {
                     "description": "Retrieves details of a store page.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}",
                     "httpMethod": "GET",
                     "id": "androidenterprise.storelayoutpages.get",
                     "parameterOrder": [
@@ -2038,6 +2096,7 @@
                 },
                 "insert": {
                     "description": "Inserts a new store page.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages",
                     "httpMethod": "POST",
                     "id": "androidenterprise.storelayoutpages.insert",
                     "parameterOrder": [
@@ -2064,6 +2123,7 @@
                 },
                 "list": {
                     "description": "Retrieves the details of all pages in the store.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages",
                     "httpMethod": "GET",
                     "id": "androidenterprise.storelayoutpages.list",
                     "parameterOrder": [
@@ -2087,6 +2147,7 @@
                 },
                 "update": {
                     "description": "Updates the content of a store page.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}",
                     "httpMethod": "PUT",
                     "id": "androidenterprise.storelayoutpages.update",
                     "parameterOrder": [
@@ -2124,6 +2185,7 @@
             "methods": {
                 "delete": {
                     "description": "Deleted an EMM-managed user.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}",
                     "httpMethod": "DELETE",
                     "id": "androidenterprise.users.delete",
                     "parameterOrder": [
@@ -2151,6 +2213,7 @@
                 },
                 "generateAuthenticationToken": {
                     "description": "Generates an authentication token which the device policy client can use to provision the given EMM-managed user account on a device. The generated token is single-use and expires after a few minutes. You can provision a maximum of 10 devices per user. This call only works with EMM-managed accounts.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/authenticationToken",
                     "httpMethod": "POST",
                     "id": "androidenterprise.users.generateAuthenticationToken",
                     "parameterOrder": [
@@ -2181,6 +2244,7 @@
                 },
                 "get": {
                     "description": "Retrieves a user's details.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}",
                     "httpMethod": "GET",
                     "id": "androidenterprise.users.get",
                     "parameterOrder": [
@@ -2211,6 +2275,7 @@
                 },
                 "getAvailableProductSet": {
                     "description": "Retrieves the set of products a user is entitled to access.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/availableProductSet",
                     "httpMethod": "GET",
                     "id": "androidenterprise.users.getAvailableProductSet",
                     "parameterOrder": [
@@ -2241,6 +2306,7 @@
                 },
                 "insert": {
                     "description": "Creates a new EMM-managed user. The Users resource passed in the body of the request should include an accountIdentifier and an accountType. If a corresponding user already exists with the same account identifier, the user will be updated with the resource. In this case only the displayName field can be changed.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users",
                     "httpMethod": "POST",
                     "id": "androidenterprise.users.insert",
                     "parameterOrder": [
@@ -2267,6 +2333,7 @@
                 },
                 "list": {
                     "description": "Looks up a user by primary email address. This is only supported for Google-managed users. Lookup of the id is not needed for EMM-managed users because the id is already returned in the result of the Users.insert call.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users",
                     "httpMethod": "GET",
                     "id": "androidenterprise.users.list",
                     "parameterOrder": [
@@ -2297,6 +2364,7 @@
                 },
                 "revokeDeviceAccess": {
                     "description": "Revokes access to all devices currently provisioned to the user. The user will no longer be able to use the managed Play store on any of their managed devices. This call only works with EMM-managed accounts.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/deviceAccess",
                     "httpMethod": "DELETE",
                     "id": "androidenterprise.users.revokeDeviceAccess",
                     "parameterOrder": [
@@ -2324,6 +2392,7 @@
                 },
                 "setAvailableProductSet": {
                     "description": "Modifies the set of products that a user is entitled to access (referred to as *whitelisted* products). Only products that are approved or products that were previously approved (products with revoked approval) can be whitelisted.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/availableProductSet",
                     "httpMethod": "PUT",
                     "id": "androidenterprise.users.setAvailableProductSet",
                     "parameterOrder": [
@@ -2357,6 +2426,7 @@
                 },
                 "update": {
                     "description": "Updates the details of an EMM-managed user. Can be used with EMM-managed users only (not Google managed users). Pass the new details in the Users resource in the request body. Only the displayName field can be changed. Other fields must either be unset or have the currently active value.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}",
                     "httpMethod": "PUT",
                     "id": "androidenterprise.users.update",
                     "parameterOrder": [
@@ -2394,6 +2464,7 @@
             "methods": {
                 "delete": {
                     "description": "Deletes an existing web app.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/webApps/{webAppId}",
                     "httpMethod": "DELETE",
                     "id": "androidenterprise.webapps.delete",
                     "parameterOrder": [
@@ -2421,6 +2492,7 @@
                 },
                 "get": {
                     "description": "Gets an existing web app.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/webApps/{webAppId}",
                     "httpMethod": "GET",
                     "id": "androidenterprise.webapps.get",
                     "parameterOrder": [
@@ -2451,6 +2523,7 @@
                 },
                 "insert": {
                     "description": "Creates a new web app for the enterprise.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/webApps",
                     "httpMethod": "POST",
                     "id": "androidenterprise.webapps.insert",
                     "parameterOrder": [
@@ -2477,6 +2550,7 @@
                 },
                 "list": {
                     "description": "Retrieves the details of all web apps for a given enterprise.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/webApps",
                     "httpMethod": "GET",
                     "id": "androidenterprise.webapps.list",
                     "parameterOrder": [
@@ -2500,6 +2574,7 @@
                 },
                 "update": {
                     "description": "Updates an existing web app.",
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/webApps/{webAppId}",
                     "httpMethod": "PUT",
                     "id": "androidenterprise.webapps.update",
                     "parameterOrder": [

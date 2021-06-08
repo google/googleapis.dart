@@ -98,6 +98,7 @@
             "methods": {
                 "get": {
                     "description": "Gets a site's Abusive Experience Report summary.",
+                    "flatPath": "v1/sites/{sitesId}",
                     "httpMethod": "GET",
                     "id": "abusiveexperiencereport.sites.get",
                     "parameterOrder": [
@@ -123,6 +124,7 @@
             "methods": {
                 "list": {
                     "description": "Lists sites that are failing in the Abusive Experience Report.",
+                    "flatPath": "v1/violatingSites",
                     "httpMethod": "GET",
                     "id": "abusiveexperiencereport.violatingSites.list",
                     "parameterOrder": [],
@@ -135,7 +137,7 @@
             }
         }
     },
-    "revision": "20210517",
+    "revision": "20210604",
     "rootUrl": "https://abusiveexperiencereport.googleapis.com/",
     "schemas": {
         "SiteSummaryResponse": {

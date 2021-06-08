@@ -109,6 +109,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates an annotation spec set by providing a set of labels.",
+                            "flatPath": "v1beta1/projects/{projectsId}/annotationSpecSets",
                             "httpMethod": "POST",
                             "id": "datalabeling.projects.annotationSpecSets.create",
                             "parameterOrder": [
@@ -136,6 +137,7 @@
                         },
                         "delete": {
                             "description": "Deletes an annotation spec set by resource name.",
+                            "flatPath": "v1beta1/projects/{projectsId}/annotationSpecSets/{annotationSpecSetsId}",
                             "httpMethod": "DELETE",
                             "id": "datalabeling.projects.annotationSpecSets.delete",
                             "parameterOrder": [
@@ -160,6 +162,7 @@
                         },
                         "get": {
                             "description": "Gets an annotation spec set by resource name.",
+                            "flatPath": "v1beta1/projects/{projectsId}/annotationSpecSets/{annotationSpecSetsId}",
                             "httpMethod": "GET",
                             "id": "datalabeling.projects.annotationSpecSets.get",
                             "parameterOrder": [
@@ -184,6 +187,7 @@
                         },
                         "list": {
                             "description": "Lists annotation spec sets for a project. Pagination is supported.",
+                            "flatPath": "v1beta1/projects/{projectsId}/annotationSpecSets",
                             "httpMethod": "GET",
                             "id": "datalabeling.projects.annotationSpecSets.list",
                             "parameterOrder": [
@@ -228,6 +232,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates dataset. If success return a Dataset resource.",
+                            "flatPath": "v1beta1/projects/{projectsId}/datasets",
                             "httpMethod": "POST",
                             "id": "datalabeling.projects.datasets.create",
                             "parameterOrder": [
@@ -255,6 +260,7 @@
                         },
                         "delete": {
                             "description": "Deletes a dataset by resource name.",
+                            "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}",
                             "httpMethod": "DELETE",
                             "id": "datalabeling.projects.datasets.delete",
                             "parameterOrder": [
@@ -279,6 +285,7 @@
                         },
                         "exportData": {
                             "description": "Exports data and annotations from dataset.",
+                            "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}:exportData",
                             "httpMethod": "POST",
                             "id": "datalabeling.projects.datasets.exportData",
                             "parameterOrder": [
@@ -306,6 +313,7 @@
                         },
                         "get": {
                             "description": "Gets dataset by resource name.",
+                            "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}",
                             "httpMethod": "GET",
                             "id": "datalabeling.projects.datasets.get",
                             "parameterOrder": [
@@ -330,6 +338,7 @@
                         },
                         "importData": {
                             "description": "Imports data into dataset based on source locations defined in request. It can be called multiple times for the same dataset. Each dataset can only have one long running operation running on it. For example, no labeling task (also long running operation) can be started while importing is still ongoing. Vice versa.",
+                            "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}:importData",
                             "httpMethod": "POST",
                             "id": "datalabeling.projects.datasets.importData",
                             "parameterOrder": [
@@ -357,6 +366,7 @@
                         },
                         "list": {
                             "description": "Lists datasets under a project. Pagination is supported.",
+                            "flatPath": "v1beta1/projects/{projectsId}/datasets",
                             "httpMethod": "GET",
                             "id": "datalabeling.projects.datasets.list",
                             "parameterOrder": [
@@ -401,6 +411,7 @@
                             "methods": {
                                 "delete": {
                                     "description": "Deletes an annotated dataset by resource name.",
+                                    "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets/{annotatedDatasetsId}",
                                     "httpMethod": "DELETE",
                                     "id": "datalabeling.projects.datasets.annotatedDatasets.delete",
                                     "parameterOrder": [
@@ -425,6 +436,7 @@
                                 },
                                 "get": {
                                     "description": "Gets an annotated dataset by resource name.",
+                                    "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets/{annotatedDatasetsId}",
                                     "httpMethod": "GET",
                                     "id": "datalabeling.projects.datasets.annotatedDatasets.get",
                                     "parameterOrder": [
@@ -449,6 +461,7 @@
                                 },
                                 "list": {
                                     "description": "Lists annotated datasets for a dataset. Pagination is supported.",
+                                    "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets",
                                     "httpMethod": "GET",
                                     "id": "datalabeling.projects.datasets.annotatedDatasets.list",
                                     "parameterOrder": [
@@ -493,6 +506,7 @@
                                     "methods": {
                                         "get": {
                                             "description": "Gets a data item in a dataset by resource name. This API can be called after data are imported into dataset.",
+                                            "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets/{annotatedDatasetsId}/dataItems/{dataItemsId}",
                                             "httpMethod": "GET",
                                             "id": "datalabeling.projects.datasets.annotatedDatasets.dataItems.get",
                                             "parameterOrder": [
@@ -517,6 +531,7 @@
                                         },
                                         "list": {
                                             "description": "Lists data items in a dataset. This API can be called after data are imported into dataset. Pagination is supported.",
+                                            "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets/{annotatedDatasetsId}/dataItems",
                                             "httpMethod": "GET",
                                             "id": "datalabeling.projects.datasets.annotatedDatasets.dataItems.list",
                                             "parameterOrder": [
@@ -561,6 +576,7 @@
                                     "methods": {
                                         "get": {
                                             "description": "Gets an example by resource name, including both data and annotation.",
+                                            "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets/{annotatedDatasetsId}/examples/{examplesId}",
                                             "httpMethod": "GET",
                                             "id": "datalabeling.projects.datasets.annotatedDatasets.examples.get",
                                             "parameterOrder": [
@@ -590,6 +606,7 @@
                                         },
                                         "list": {
                                             "description": "Lists examples in an annotated dataset. Pagination is supported.",
+                                            "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets/{annotatedDatasetsId}/examples",
                                             "httpMethod": "GET",
                                             "id": "datalabeling.projects.datasets.annotatedDatasets.examples.list",
                                             "parameterOrder": [
@@ -634,6 +651,7 @@
                                     "methods": {
                                         "delete": {
                                             "description": "Delete a FeedbackThread.",
+                                            "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets/{annotatedDatasetsId}/feedbackThreads/{feedbackThreadsId}",
                                             "httpMethod": "DELETE",
                                             "id": "datalabeling.projects.datasets.annotatedDatasets.feedbackThreads.delete",
                                             "parameterOrder": [
@@ -658,6 +676,7 @@
                                         },
                                         "get": {
                                             "description": "Get a FeedbackThread object.",
+                                            "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets/{annotatedDatasetsId}/feedbackThreads/{feedbackThreadsId}",
                                             "httpMethod": "GET",
                                             "id": "datalabeling.projects.datasets.annotatedDatasets.feedbackThreads.get",
                                             "parameterOrder": [
@@ -682,6 +701,7 @@
                                         },
                                         "list": {
                                             "description": "List FeedbackThreads with pagination.",
+                                            "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets/{annotatedDatasetsId}/feedbackThreads",
                                             "httpMethod": "GET",
                                             "id": "datalabeling.projects.datasets.annotatedDatasets.feedbackThreads.list",
                                             "parameterOrder": [
@@ -721,6 +741,7 @@
                                             "methods": {
                                                 "create": {
                                                     "description": "Create a FeedbackMessage object.",
+                                                    "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets/{annotatedDatasetsId}/feedbackThreads/{feedbackThreadsId}/feedbackMessages",
                                                     "httpMethod": "POST",
                                                     "id": "datalabeling.projects.datasets.annotatedDatasets.feedbackThreads.feedbackMessages.create",
                                                     "parameterOrder": [
@@ -748,6 +769,7 @@
                                                 },
                                                 "delete": {
                                                     "description": "Delete a FeedbackMessage.",
+                                                    "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets/{annotatedDatasetsId}/feedbackThreads/{feedbackThreadsId}/feedbackMessages/{feedbackMessagesId}",
                                                     "httpMethod": "DELETE",
                                                     "id": "datalabeling.projects.datasets.annotatedDatasets.feedbackThreads.feedbackMessages.delete",
                                                     "parameterOrder": [
@@ -772,6 +794,7 @@
                                                 },
                                                 "get": {
                                                     "description": "Get a FeedbackMessage object.",
+                                                    "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets/{annotatedDatasetsId}/feedbackThreads/{feedbackThreadsId}/feedbackMessages/{feedbackMessagesId}",
                                                     "httpMethod": "GET",
                                                     "id": "datalabeling.projects.datasets.annotatedDatasets.feedbackThreads.feedbackMessages.get",
                                                     "parameterOrder": [
@@ -796,6 +819,7 @@
                                                 },
                                                 "list": {
                                                     "description": "List FeedbackMessages with pagination.",
+                                                    "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets/{annotatedDatasetsId}/feedbackThreads/{feedbackThreadsId}/feedbackMessages",
                                                     "httpMethod": "GET",
                                                     "id": "datalabeling.projects.datasets.annotatedDatasets.feedbackThreads.feedbackMessages.list",
                                                     "parameterOrder": [
@@ -839,6 +863,7 @@
                             "methods": {
                                 "get": {
                                     "description": "Gets a data item in a dataset by resource name. This API can be called after data are imported into dataset.",
+                                    "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/dataItems/{dataItemsId}",
                                     "httpMethod": "GET",
                                     "id": "datalabeling.projects.datasets.dataItems.get",
                                     "parameterOrder": [
@@ -863,6 +888,7 @@
                                 },
                                 "list": {
                                     "description": "Lists data items in a dataset. This API can be called after data are imported into dataset. Pagination is supported.",
+                                    "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/dataItems",
                                     "httpMethod": "GET",
                                     "id": "datalabeling.projects.datasets.dataItems.list",
                                     "parameterOrder": [
@@ -907,6 +933,7 @@
                             "methods": {
                                 "get": {
                                     "description": "Gets an evaluation by resource name (to search, use projects.evaluations.search).",
+                                    "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/evaluations/{evaluationsId}",
                                     "httpMethod": "GET",
                                     "id": "datalabeling.projects.datasets.evaluations.get",
                                     "parameterOrder": [
@@ -935,6 +962,7 @@
                                     "methods": {
                                         "search": {
                                             "description": "Searches example comparisons from an evaluation. The return format is a list of example comparisons that show ground truth and prediction(s) for a single input. Search by providing an evaluation ID.",
+                                            "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/evaluations/{evaluationsId}/exampleComparisons:search",
                                             "httpMethod": "POST",
                                             "id": "datalabeling.projects.datasets.evaluations.exampleComparisons.search",
                                             "parameterOrder": [
@@ -968,6 +996,7 @@
                             "methods": {
                                 "label": {
                                     "description": "Starts a labeling task for image. The type of image labeling task is configured by feature in the request.",
+                                    "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/image:label",
                                     "httpMethod": "POST",
                                     "id": "datalabeling.projects.datasets.image.label",
                                     "parameterOrder": [
@@ -999,6 +1028,7 @@
                             "methods": {
                                 "label": {
                                     "description": "Starts a labeling task for text. The type of text labeling task is configured by feature in the request.",
+                                    "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/text:label",
                                     "httpMethod": "POST",
                                     "id": "datalabeling.projects.datasets.text.label",
                                     "parameterOrder": [
@@ -1030,6 +1060,7 @@
                             "methods": {
                                 "label": {
                                     "description": "Starts a labeling task for video. The type of video labeling task is configured by feature in the request.",
+                                    "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/video:label",
                                     "httpMethod": "POST",
                                     "id": "datalabeling.projects.datasets.video.label",
                                     "parameterOrder": [
@@ -1063,6 +1094,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates an evaluation job.",
+                            "flatPath": "v1beta1/projects/{projectsId}/evaluationJobs",
                             "httpMethod": "POST",
                             "id": "datalabeling.projects.evaluationJobs.create",
                             "parameterOrder": [
@@ -1090,6 +1122,7 @@
                         },
                         "delete": {
                             "description": "Stops and deletes an evaluation job.",
+                            "flatPath": "v1beta1/projects/{projectsId}/evaluationJobs/{evaluationJobsId}",
                             "httpMethod": "DELETE",
                             "id": "datalabeling.projects.evaluationJobs.delete",
                             "parameterOrder": [
@@ -1114,6 +1147,7 @@
                         },
                         "get": {
                             "description": "Gets an evaluation job by resource name.",
+                            "flatPath": "v1beta1/projects/{projectsId}/evaluationJobs/{evaluationJobsId}",
                             "httpMethod": "GET",
                             "id": "datalabeling.projects.evaluationJobs.get",
                             "parameterOrder": [
@@ -1138,6 +1172,7 @@
                         },
                         "list": {
                             "description": "Lists all evaluation jobs within a project with possible filters. Pagination is supported.",
+                            "flatPath": "v1beta1/projects/{projectsId}/evaluationJobs",
                             "httpMethod": "GET",
                             "id": "datalabeling.projects.evaluationJobs.list",
                             "parameterOrder": [
@@ -1178,6 +1213,7 @@
                         },
                         "patch": {
                             "description": "Updates an evaluation job. You can only update certain fields of the job's EvaluationJobConfig: `humanAnnotationConfig.instruction`, `exampleCount`, and `exampleSamplePercentage`. If you want to change any other aspect of the evaluation job, you must delete the job and create a new one.",
+                            "flatPath": "v1beta1/projects/{projectsId}/evaluationJobs/{evaluationJobsId}",
                             "httpMethod": "PATCH",
                             "id": "datalabeling.projects.evaluationJobs.patch",
                             "parameterOrder": [
@@ -1211,6 +1247,7 @@
                         },
                         "pause": {
                             "description": "Pauses an evaluation job. Pausing an evaluation job that is already in a `PAUSED` state is a no-op.",
+                            "flatPath": "v1beta1/projects/{projectsId}/evaluationJobs/{evaluationJobsId}:pause",
                             "httpMethod": "POST",
                             "id": "datalabeling.projects.evaluationJobs.pause",
                             "parameterOrder": [
@@ -1238,6 +1275,7 @@
                         },
                         "resume": {
                             "description": "Resumes a paused evaluation job. A deleted evaluation job can't be resumed. Resuming a running or scheduled evaluation job is a no-op.",
+                            "flatPath": "v1beta1/projects/{projectsId}/evaluationJobs/{evaluationJobsId}:resume",
                             "httpMethod": "POST",
                             "id": "datalabeling.projects.evaluationJobs.resume",
                             "parameterOrder": [
@@ -1269,6 +1307,7 @@
                     "methods": {
                         "search": {
                             "description": "Searches evaluations within a project.",
+                            "flatPath": "v1beta1/projects/{projectsId}/evaluations:search",
                             "httpMethod": "GET",
                             "id": "datalabeling.projects.evaluations.search",
                             "parameterOrder": [
@@ -1313,6 +1352,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates an instruction for how data should be labeled.",
+                            "flatPath": "v1beta1/projects/{projectsId}/instructions",
                             "httpMethod": "POST",
                             "id": "datalabeling.projects.instructions.create",
                             "parameterOrder": [
@@ -1340,6 +1380,7 @@
                         },
                         "delete": {
                             "description": "Deletes an instruction object by resource name.",
+                            "flatPath": "v1beta1/projects/{projectsId}/instructions/{instructionsId}",
                             "httpMethod": "DELETE",
                             "id": "datalabeling.projects.instructions.delete",
                             "parameterOrder": [
@@ -1364,6 +1405,7 @@
                         },
                         "get": {
                             "description": "Gets an instruction by resource name.",
+                            "flatPath": "v1beta1/projects/{projectsId}/instructions/{instructionsId}",
                             "httpMethod": "GET",
                             "id": "datalabeling.projects.instructions.get",
                             "parameterOrder": [
@@ -1388,6 +1430,7 @@
                         },
                         "list": {
                             "description": "Lists instructions for a project. Pagination is supported.",
+                            "flatPath": "v1beta1/projects/{projectsId}/instructions",
                             "httpMethod": "GET",
                             "id": "datalabeling.projects.instructions.list",
                             "parameterOrder": [
@@ -1432,6 +1475,7 @@
                     "methods": {
                         "cancel": {
                             "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                            "flatPath": "v1beta1/projects/{projectsId}/operations/{operationsId}:cancel",
                             "httpMethod": "GET",
                             "id": "datalabeling.projects.operations.cancel",
                             "parameterOrder": [
@@ -1456,6 +1500,7 @@
                         },
                         "delete": {
                             "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                            "flatPath": "v1beta1/projects/{projectsId}/operations/{operationsId}",
                             "httpMethod": "DELETE",
                             "id": "datalabeling.projects.operations.delete",
                             "parameterOrder": [
@@ -1480,6 +1525,7 @@
                         },
                         "get": {
                             "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                            "flatPath": "v1beta1/projects/{projectsId}/operations/{operationsId}",
                             "httpMethod": "GET",
                             "id": "datalabeling.projects.operations.get",
                             "parameterOrder": [
@@ -1504,6 +1550,7 @@
                         },
                         "list": {
                             "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                            "flatPath": "v1beta1/projects/{projectsId}/operations",
                             "httpMethod": "GET",
                             "id": "datalabeling.projects.operations.list",
                             "parameterOrder": [
@@ -1547,7 +1594,7 @@
             }
         }
     },
-    "revision": "20210420",
+    "revision": "20210608",
     "rootUrl": "https://datalabeling.googleapis.com/",
     "schemas": {
         "GoogleCloudDatalabelingV1alpha1CreateInstructionMetadata": {

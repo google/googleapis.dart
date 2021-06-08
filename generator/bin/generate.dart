@@ -88,6 +88,7 @@ Future<void> main(List<String> arguments) async {
       switch (commandOptions.command!.name) {
         case 'download':
           await downloadFromConfiguration(configFile);
+          await _applyDiffs(configFile);
           print('Done!');
           break;
         case 'generate':
@@ -99,5 +100,49 @@ Future<void> main(List<String> arguments) async {
           break;
       }
       break;
+  }
+}
+
+Future<void> _applyDiffs(String configFile) async {
+  final configFileUri = Uri.file(configFile);
+  final overridesPath = configFileUri.resolve('overrides').path;
+  final overridesType = FileSystemEntity.typeSync(overridesPath);
+  if (overridesType == FileSystemEntityType.notFound) {
+    print('No overrides to apply!');
+    return;
+  }
+
+  if (overridesType != FileSystemEntityType.directory) {
+    throw StateError(
+      '"$overridesPath" should be a directory! But it is a $overridesType',
+    );
+  }
+
+  print('');
+  print('Applying diffs!');
+
+  final overridesDirectory = Directory(overridesPath);
+  for (var entry in overridesDirectory.listSync(followLinks: false)) {
+    if (entry is! File || !entry.path.endsWith('.diff')) {
+      print('Ignoring "$entry');
+      continue;
+    }
+    print('  Running `git apply -v ${entry.path}`');
+    final result = await Process.start(
+      'git',
+      ['apply', '-v', entry.path],
+      mode: ProcessStartMode.inheritStdio,
+    );
+
+    final exitCode = await result.exitCode;
+    if (exitCode == 0) {
+      print('    Success!');
+    } else {
+      print([
+        'Failed!',
+        'Exit code: $exitCode',
+      ].map((e) => '      $e').join('\n'));
+    }
+    print('\n\n');
   }
 }

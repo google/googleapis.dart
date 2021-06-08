@@ -107,6 +107,7 @@
             "methods": {
                 "client_status": {
                     "description": "",
+                    "flatPath": "v2/discovery:client_status",
                     "httpMethod": "POST",
                     "id": "trafficdirector.discovery.client_status",
                     "parameterOrder": [],
@@ -125,7 +126,7 @@
             }
         }
     },
-    "revision": "20210428",
+    "revision": "20210610",
     "rootUrl": "https://trafficdirector.googleapis.com/",
     "schemas": {
         "Address": {

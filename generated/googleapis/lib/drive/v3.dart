@@ -4788,9 +4788,9 @@ class File {
   /// Not populated for items in shared drives.
   core.bool? ownedByMe;
 
-  /// The owners of the file.
+  /// The owner of this file.
   ///
-  /// Currently, only certain legacy files may have more than one owner. Not
+  /// Only certain legacy files may have more than one owner. This field isn't
   /// populated for items in shared drives.
   core.List<User>? owners;
 

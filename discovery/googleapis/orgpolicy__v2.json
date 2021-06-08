@@ -109,6 +109,7 @@
                     "methods": {
                         "list": {
                             "description": "Lists `Constraints` that could be applied on the specified resource.",
+                            "flatPath": "v2/folders/{foldersId}/constraints",
                             "httpMethod": "GET",
                             "id": "orgpolicy.folders.constraints.list",
                             "parameterOrder": [
@@ -148,6 +149,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the policy already exists on the given Cloud resource.",
+                            "flatPath": "v2/folders/{foldersId}/policies",
                             "httpMethod": "POST",
                             "id": "orgpolicy.folders.policies.create",
                             "parameterOrder": [
@@ -175,6 +177,7 @@
                         },
                         "delete": {
                             "description": "Deletes a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or Org Policy does not exist.",
+                            "flatPath": "v2/folders/{foldersId}/policies/{policiesId}",
                             "httpMethod": "DELETE",
                             "id": "orgpolicy.folders.policies.delete",
                             "parameterOrder": [
@@ -199,6 +202,7 @@
                         },
                         "get": {
                             "description": "Gets a `Policy` on a resource. If no `Policy` is set on the resource, NOT_FOUND is returned. The `etag` value can be used with `UpdatePolicy()` to update a `Policy` during read-modify-write.",
+                            "flatPath": "v2/folders/{foldersId}/policies/{policiesId}",
                             "httpMethod": "GET",
                             "id": "orgpolicy.folders.policies.get",
                             "parameterOrder": [
@@ -223,6 +227,7 @@
                         },
                         "getEffectivePolicy": {
                             "description": "Gets the effective `Policy` on a resource. This is the result of merging `Policies` in the resource hierarchy and evaluating conditions. The returned `Policy` will not have an `etag` or `condition` set because it is a computed `Policy` across multiple resources. Subtrees of Resource Manager resource hierarchy with 'under:' prefix will not be expanded.",
+                            "flatPath": "v2/folders/{foldersId}/policies/{policiesId}:getEffectivePolicy",
                             "httpMethod": "GET",
                             "id": "orgpolicy.folders.policies.getEffectivePolicy",
                             "parameterOrder": [
@@ -247,6 +252,7 @@
                         },
                         "list": {
                             "description": "Retrieves all of the `Policies` that exist on a particular resource.",
+                            "flatPath": "v2/folders/{foldersId}/policies",
                             "httpMethod": "GET",
                             "id": "orgpolicy.folders.policies.list",
                             "parameterOrder": [
@@ -282,6 +288,7 @@
                         },
                         "patch": {
                             "description": "Updates a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or the policy do not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ABORTED` if the etag supplied in the request does not match the persisted etag of the policy Note: the supplied policy will perform a full overwrite of all fields.",
+                            "flatPath": "v2/folders/{foldersId}/policies/{policiesId}",
                             "httpMethod": "PATCH",
                             "id": "orgpolicy.folders.policies.patch",
                             "parameterOrder": [
@@ -317,6 +324,7 @@
                     "methods": {
                         "list": {
                             "description": "Lists `Constraints` that could be applied on the specified resource.",
+                            "flatPath": "v2/organizations/{organizationsId}/constraints",
                             "httpMethod": "GET",
                             "id": "orgpolicy.organizations.constraints.list",
                             "parameterOrder": [
@@ -356,6 +364,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the policy already exists on the given Cloud resource.",
+                            "flatPath": "v2/organizations/{organizationsId}/policies",
                             "httpMethod": "POST",
                             "id": "orgpolicy.organizations.policies.create",
                             "parameterOrder": [
@@ -383,6 +392,7 @@
                         },
                         "delete": {
                             "description": "Deletes a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or Org Policy does not exist.",
+                            "flatPath": "v2/organizations/{organizationsId}/policies/{policiesId}",
                             "httpMethod": "DELETE",
                             "id": "orgpolicy.organizations.policies.delete",
                             "parameterOrder": [
@@ -407,6 +417,7 @@
                         },
                         "get": {
                             "description": "Gets a `Policy` on a resource. If no `Policy` is set on the resource, NOT_FOUND is returned. The `etag` value can be used with `UpdatePolicy()` to update a `Policy` during read-modify-write.",
+                            "flatPath": "v2/organizations/{organizationsId}/policies/{policiesId}",
                             "httpMethod": "GET",
                             "id": "orgpolicy.organizations.policies.get",
                             "parameterOrder": [
@@ -431,6 +442,7 @@
                         },
                         "getEffectivePolicy": {
                             "description": "Gets the effective `Policy` on a resource. This is the result of merging `Policies` in the resource hierarchy and evaluating conditions. The returned `Policy` will not have an `etag` or `condition` set because it is a computed `Policy` across multiple resources. Subtrees of Resource Manager resource hierarchy with 'under:' prefix will not be expanded.",
+                            "flatPath": "v2/organizations/{organizationsId}/policies/{policiesId}:getEffectivePolicy",
                             "httpMethod": "GET",
                             "id": "orgpolicy.organizations.policies.getEffectivePolicy",
                             "parameterOrder": [
@@ -455,6 +467,7 @@
                         },
                         "list": {
                             "description": "Retrieves all of the `Policies` that exist on a particular resource.",
+                            "flatPath": "v2/organizations/{organizationsId}/policies",
                             "httpMethod": "GET",
                             "id": "orgpolicy.organizations.policies.list",
                             "parameterOrder": [
@@ -490,6 +503,7 @@
                         },
                         "patch": {
                             "description": "Updates a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or the policy do not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ABORTED` if the etag supplied in the request does not match the persisted etag of the policy Note: the supplied policy will perform a full overwrite of all fields.",
+                            "flatPath": "v2/organizations/{organizationsId}/policies/{policiesId}",
                             "httpMethod": "PATCH",
                             "id": "orgpolicy.organizations.policies.patch",
                             "parameterOrder": [
@@ -525,6 +539,7 @@
                     "methods": {
                         "list": {
                             "description": "Lists `Constraints` that could be applied on the specified resource.",
+                            "flatPath": "v2/projects/{projectsId}/constraints",
                             "httpMethod": "GET",
                             "id": "orgpolicy.projects.constraints.list",
                             "parameterOrder": [
@@ -564,6 +579,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the policy already exists on the given Cloud resource.",
+                            "flatPath": "v2/projects/{projectsId}/policies",
                             "httpMethod": "POST",
                             "id": "orgpolicy.projects.policies.create",
                             "parameterOrder": [
@@ -591,6 +607,7 @@
                         },
                         "delete": {
                             "description": "Deletes a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or Org Policy does not exist.",
+                            "flatPath": "v2/projects/{projectsId}/policies/{policiesId}",
                             "httpMethod": "DELETE",
                             "id": "orgpolicy.projects.policies.delete",
                             "parameterOrder": [
@@ -615,6 +632,7 @@
                         },
                         "get": {
                             "description": "Gets a `Policy` on a resource. If no `Policy` is set on the resource, NOT_FOUND is returned. The `etag` value can be used with `UpdatePolicy()` to update a `Policy` during read-modify-write.",
+                            "flatPath": "v2/projects/{projectsId}/policies/{policiesId}",
                             "httpMethod": "GET",
                             "id": "orgpolicy.projects.policies.get",
                             "parameterOrder": [
@@ -639,6 +657,7 @@
                         },
                         "getEffectivePolicy": {
                             "description": "Gets the effective `Policy` on a resource. This is the result of merging `Policies` in the resource hierarchy and evaluating conditions. The returned `Policy` will not have an `etag` or `condition` set because it is a computed `Policy` across multiple resources. Subtrees of Resource Manager resource hierarchy with 'under:' prefix will not be expanded.",
+                            "flatPath": "v2/projects/{projectsId}/policies/{policiesId}:getEffectivePolicy",
                             "httpMethod": "GET",
                             "id": "orgpolicy.projects.policies.getEffectivePolicy",
                             "parameterOrder": [
@@ -663,6 +682,7 @@
                         },
                         "list": {
                             "description": "Retrieves all of the `Policies` that exist on a particular resource.",
+                            "flatPath": "v2/projects/{projectsId}/policies",
                             "httpMethod": "GET",
                             "id": "orgpolicy.projects.policies.list",
                             "parameterOrder": [
@@ -698,6 +718,7 @@
                         },
                         "patch": {
                             "description": "Updates a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or the policy do not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ABORTED` if the etag supplied in the request does not match the persisted etag of the policy Note: the supplied policy will perform a full overwrite of all fields.",
+                            "flatPath": "v2/projects/{projectsId}/policies/{policiesId}",
                             "httpMethod": "PATCH",
                             "id": "orgpolicy.projects.policies.patch",
                             "parameterOrder": [
@@ -728,7 +749,7 @@
             }
         }
     },
-    "revision": "20210520",
+    "revision": "20210614",
     "rootUrl": "https://orgpolicy.googleapis.com/",
     "schemas": {
         "GoogleCloudOrgpolicyV2Constraint": {

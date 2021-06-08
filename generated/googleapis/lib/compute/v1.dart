@@ -4846,8 +4846,8 @@ class FirewallPoliciesResource {
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists all the policies that have been configured for the specified
-  /// project.
+  /// Lists all the policies that have been configured for the specified folder
+  /// or organization.
   ///
   /// Request parameters:
   ///
@@ -43288,7 +43288,8 @@ class Address {
   /// reserved for Cloud NAT.
   /// - `IPSEC_INTERCONNECT` for addresses created from a private IP range that
   /// are reserved for a VLAN attachment in an IPsec-encrypted Cloud
-  /// Interconnect configuration. These addresses are regional resources.
+  /// Interconnect configuration. These addresses are regional resources. Not
+  /// currently available publicly.
   /// Possible string values are:
   /// - "DNS_RESOLVER"
   /// - "GCE_ENDPOINT"
@@ -47008,12 +47009,13 @@ class BackendService {
   ///
   /// The default is NONE.
   ///
-  /// When the loadBalancingScheme is EXTERNAL: * For Network Load Balancing,
-  /// the possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or
-  /// CLIENT_IP_PORT_PROTO. * For all other load balancers that use
-  /// loadBalancingScheme=EXTERNAL, the possible values are NONE, CLIENT_IP, or
-  /// GENERATED_COOKIE. * You can use GENERATED_COOKIE if the protocol is HTTP,
-  /// HTTP2, or HTTPS.
+  /// When the loadBalancingScheme is EXTERNAL:
+  ///
+  /// * For Network Load Balancing, the possible values are NONE, CLIENT_IP,
+  /// CLIENT_IP_PROTO, or CLIENT_IP_PORT_PROTO. * For all other load balancers
+  /// that use loadBalancingScheme=EXTERNAL, the possible values are NONE,
+  /// CLIENT_IP, or GENERATED_COOKIE. * You can use GENERATED_COOKIE if the
+  /// protocol is HTTP, HTTP2, or HTTPS.
   ///
   /// When the loadBalancingScheme is INTERNAL, possible values are NONE,
   /// CLIENT_IP, CLIENT_IP_PROTO, or CLIENT_IP_PORT_PROTO.
@@ -52080,6 +52082,13 @@ class ExternalVpnGateway {
   core.String? id;
 
   /// List of interfaces for this external VPN gateway.
+  ///
+  /// If your peer-side gateway is an on-premises gateway and non-AWS cloud
+  /// providers? gateway, at most two interfaces can be provided for an external
+  /// VPN gateway.
+  ///
+  /// If your peer side is an AWS virtual private gateway, four interfaces
+  /// should be provided for an external VPN gateway.
   core.List<ExternalVpnGatewayInterface>? interfaces;
 
   /// Type of the resource.
@@ -52200,8 +52209,10 @@ class ExternalVpnGatewayInterface {
   /// The numeric ID of this interface.
   ///
   /// The allowed input values for this id for different redundancy types of
-  /// external VPN gateway: SINGLE_IP_INTERNALLY_REDUNDANT - 0
-  /// TWO_IPS_REDUNDANCY - 0, 1 FOUR_IPS_REDUNDANCY - 0, 1, 2, 3
+  /// external VPN gateway:
+  /// - SINGLE_IP_INTERNALLY_REDUNDANT - 0
+  /// - TWO_IPS_REDUNDANCY - 0, 1
+  /// - FOUR_IPS_REDUNDANCY - 0, 1, 2, 3
   core.int? id;
 
   /// IP address of the interface in the external VPN gateway.
@@ -53687,7 +53698,7 @@ class FixedOrPercent {
   /// - If the value is a percent, then the calculated value is percent/100 *
   /// targetSize. For example, the calculated value of a 80% of a managed
   /// instance group with 150 instances would be (80/100 * 150) = 120 VM
-  /// instances. If there is a remainder, the number is rounded up.
+  /// instances. If there is a remainder, the number is rounded.
   ///
   /// Output only.
   core.int? calculated;
@@ -57748,7 +57759,7 @@ class HttpRouteAction {
   /// service, delays can be introduced by Loadbalancer on a percentage of
   /// requests before sending those request to the backend service. Similarly
   /// requests from clients can be aborted by the Loadbalancer for a percentage
-  /// of requests.
+  /// of requests. For the requests impacted by fault injection,
   /// timeout and retry_policy will be ignored by clients that are configured
   /// with a fault_injection_policy.
   HttpFaultInjection? faultInjectionPolicy;
@@ -61323,9 +61334,8 @@ class InstanceGroupManagerUpdatePolicy {
   ///
   /// This value can be either a fixed number or, if the group has 10 or more
   /// instances, a percentage. If you set a percentage, the number of instances
-  /// is rounded up if necessary. The default value for maxSurge is a fixed
-  /// value equal to the number of zones in which the managed instance group
-  /// operates.
+  /// is rounded if necessary. The default value for maxSurge is a fixed value
+  /// equal to the number of zones in which the managed instance group operates.
   ///
   /// At least one of either maxSurge or maxUnavailable must be greater than 0.
   /// Learn more about maxSurge.
@@ -61344,7 +61354,7 @@ class InstanceGroupManagerUpdatePolicy {
   /// the group, then the instance only needs to have a status of RUNNING to be
   /// considered available. This value can be either a fixed number or, if the
   /// group has 10 or more instances, a percentage. If you set a percentage, the
-  /// number of instances is rounded up if necessary. The default value for
+  /// number of instances is rounded if necessary. The default value for
   /// maxUnavailable is a fixed value equal to the number of zones in which the
   /// managed instance group operates.
   ///
@@ -61448,9 +61458,9 @@ class InstanceGroupManagerVersion {
   /// or instanceGroupManager.targetSize is used.
   /// - if expressed as a percent, the targetSize would be
   /// (targetSize.percent/100 * InstanceGroupManager.targetSize) If there is a
-  /// remainder, the number is rounded up. If unset, this version will update
-  /// any remaining instances not updated by another version. Read Starting a
-  /// canary update for more information.
+  /// remainder, the number is rounded. If unset, this version will update any
+  /// remaining instances not updated by another version. Read Starting a canary
+  /// update for more information.
   FixedOrPercent? targetSize;
 
   InstanceGroupManagerVersion();
@@ -64571,17 +64581,20 @@ class InterconnectAttachment {
   /// - "AVAILABILITY_DOMAIN_ANY"
   core.String? edgeAvailabilityDomain;
 
-  /// Indicates the user-supplied encryption option of this interconnect
-  /// attachment:
-  /// - NONE is the default value, which means that the attachment carries
-  /// unencrypted traffic.
+  /// Indicates the user-supplied encryption option of this VLAN attachment
+  /// (interconnectAttachment).
   ///
-  /// VMs can send traffic to, or receive traffic from, this type of attachment.
-  /// - IPSEC indicates that the attachment carries only traffic encrypted by an
-  /// IPsec device such as an HA VPN gateway. VMs cannot directly send traffic
-  /// to, or receive traffic from, such an attachment. To use IPsec-encrypted
-  /// Cloud Interconnect, create the attachment using this option.
-  /// Not currently available in all Interconnect locations.
+  /// Can only be specified at attachment creation for PARTNER or DEDICATED
+  /// attachments. Possible values are:
+  /// - NONE - This is the default value, which means that the VLAN attachment
+  /// carries unencrypted traffic. VMs are able to send traffic to, or receive
+  /// traffic from, such a VLAN attachment.
+  /// - IPSEC - The VLAN attachment carries only encrypted traffic that is
+  /// encrypted by an IPsec device, such as an HA VPN gateway or third-party
+  /// IPsec VPN. VMs cannot directly send traffic to, or receive traffic from,
+  /// such a VLAN attachment. To use IPsec-encrypted Cloud Interconnect, the
+  /// VLAN attachment must be created with this option.
+  /// Not currently available publicly.
   /// Possible string values are:
   /// - "IPSEC"
   /// - "NONE"
@@ -64606,22 +64619,21 @@ class InterconnectAttachment {
   /// will traverse through.
   core.String? interconnect;
 
-  /// URL of addresses that have been reserved for the interconnect attachment,
-  /// Used only for interconnect attachment that has the encryption option as
-  /// IPSEC.
+  /// List of URL of addresses that have been reserved for the VLAN attachment.
   ///
-  /// The addresses must be RFC 1918 IP address ranges. When creating HA VPN
-  /// gateway over the interconnect attachment, if the attachment is configured
-  /// to use an RFC 1918 IP address, then the VPN gateway's IP address will be
-  /// allocated from the IP address range specified here. For example, if the HA
-  /// VPN gateway's interface 0 is paired to this interconnect attachment, then
-  /// an RFC 1918 IP address for the VPN gateway interface 0 will be allocated
-  /// from the IP address specified for this interconnect attachment. If this
-  /// field is not specified for interconnect attachment that has encryption
-  /// option as IPSEC, later on when creating HA VPN gateway on this
-  /// interconnect attachment, the HA VPN gateway's IP address will be allocated
-  /// from regional external IP address pool.
-  /// Not currently available in all Interconnect locations.
+  /// Used only for the VLAN attachment that has the encryption option as IPSEC.
+  /// The addresses must be regional internal IP address ranges. When creating
+  /// an HA VPN gateway over the VLAN attachment, if the attachment is
+  /// configured to use a regional internal IP address, then the VPN gateway's
+  /// IP address is allocated from the IP address range specified here. For
+  /// example, if the HA VPN gateway's interface 0 is paired to this VLAN
+  /// attachment, then a regional internal IP address for the VPN gateway
+  /// interface 0 will be allocated from the IP address specified for this VLAN
+  /// attachment. If this field is not specified when creating the VLAN
+  /// attachment, then later on when creating an HA VPN gateway on this VLAN
+  /// attachment, the HA VPN gateway's IP address is allocated from the regional
+  /// external IP address pool.
+  /// Not currently available publicly.
   core.List<core.String>? ipsecInternalAddresses;
 
   /// Type of the resource.
@@ -66421,9 +66433,10 @@ class InterconnectOutageNotification {
   /// The event could be in the past, present, or future. See start_time and
   /// end_time for scheduling.
   /// - CANCELLED: The outage associated with this notification was cancelled
-  /// before the outage was due to start. Note that the versions of this enum
-  /// prefixed with "NS_" have been deprecated in favor of the unprefixed
-  /// values.
+  /// before the outage was due to start.
+  /// - COMPLETED: The outage associated with this notification is complete.
+  /// Note that the versions of this enum prefixed with "NS_" have been
+  /// deprecated in favor of the unprefixed values.
   /// Possible string values are:
   /// - "ACTIVE"
   /// - "CANCELLED"
@@ -77641,6 +77654,7 @@ class Quota {
   /// - "COMMITTED_NVIDIA_P4_GPUS"
   /// - "COMMITTED_NVIDIA_T4_GPUS"
   /// - "COMMITTED_NVIDIA_V100_GPUS"
+  /// - "COMMITTED_P2D_CPUS"
   /// - "CPUS"
   /// - "CPUS_ALL_REGIONS"
   /// - "DISKS_TOTAL_GB"
@@ -77689,6 +77703,7 @@ class Quota {
   /// - "NVIDIA_T4_GPUS"
   /// - "NVIDIA_T4_VWS_GPUS"
   /// - "NVIDIA_V100_GPUS"
+  /// - "P2D_CPUS"
   /// - "PACKET_MIRRORINGS"
   /// - "PD_EXTREME_TOTAL_PROVISIONED_IOPS"
   /// - "PREEMPTIBLE_CPUS"
@@ -80033,6 +80048,10 @@ class ReservationAffinity {
   core.String? key;
 
   /// Corresponds to the label values of a reservation resource.
+  ///
+  /// This can be either a name to a reservation in the same project or
+  /// "projects/different-project/reservations/some-reservation-name" to target
+  /// a shared reservation in the same zone but in a different project.
   core.List<core.String>? values;
 
   ReservationAffinity();
@@ -82345,9 +82364,9 @@ class Router {
   /// Provide this property when you create the resource.
   core.String? description;
 
-  /// Field to indicate if a router is dedicated to use with encrypted
-  /// Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
-  /// Not currently available in all Interconnect locations.
+  /// Indicates if a router is dedicated for use with encrypted VLAN attachments
+  /// (interconnectAttachments).
+  /// Not currently available publicly.
   core.bool? encryptedInterconnectRouter;
 
   /// The unique identifier for the resource.
@@ -82730,6 +82749,19 @@ class RouterBgp {
   /// will have the same local ASN.
   core.int? asn;
 
+  /// The interval in seconds between BGP keepalive messages that are sent to
+  /// the peer.
+  /// Hold time is three times the interval at which keepalive messages are
+  /// sent, and the hold time is the maximum number of seconds allowed to elapse
+  /// between successive keepalive messages that BGP receives from a peer.
+  /// BGP will use the smaller of either the local hold time value or the peer's
+  /// hold time value as the hold time for the BGP connection between the two
+  /// peers.
+  /// If set, this value must be between 20 and 60.
+  ///
+  /// The default is 20.
+  core.int? keepaliveInterval;
+
   RouterBgp();
 
   RouterBgp.fromJson(core.Map _json) {
@@ -82751,6 +82783,9 @@ class RouterBgp {
     if (_json.containsKey('asn')) {
       asn = _json['asn'] as core.int;
     }
+    if (_json.containsKey('keepaliveInterval')) {
+      keepaliveInterval = _json['keepaliveInterval'] as core.int;
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -82760,6 +82795,7 @@ class RouterBgp {
           'advertisedIpRanges':
               advertisedIpRanges!.map((value) => value.toJson()).toList(),
         if (asn != null) 'asn': asn!,
+        if (keepaliveInterval != null) 'keepaliveInterval': keepaliveInterval!,
       };
 }
 
@@ -82796,6 +82832,17 @@ class RouterBgpPeer {
   /// Where there is more than one matching route of maximum length, the routes
   /// with the lowest priority value win.
   core.int? advertisedRoutePriority;
+
+  /// The status of the BGP peer connection.
+  /// If set to FALSE, any active session with the peer is terminated and all
+  /// associated routing information is removed.
+  ///
+  /// If set to TRUE, the peer connection can be established with routing
+  /// information. The default is TRUE.
+  /// Possible string values are:
+  /// - "FALSE"
+  /// - "TRUE"
+  core.String? enable;
 
   /// Name of the interface the BGP peer is associated with.
   core.String? interfaceName;
@@ -82863,6 +82910,9 @@ class RouterBgpPeer {
     if (_json.containsKey('advertisedRoutePriority')) {
       advertisedRoutePriority = _json['advertisedRoutePriority'] as core.int;
     }
+    if (_json.containsKey('enable')) {
+      enable = _json['enable'] as core.String;
+    }
     if (_json.containsKey('interfaceName')) {
       interfaceName = _json['interfaceName'] as core.String;
     }
@@ -82891,6 +82941,7 @@ class RouterBgpPeer {
               advertisedIpRanges!.map((value) => value.toJson()).toList(),
         if (advertisedRoutePriority != null)
           'advertisedRoutePriority': advertisedRoutePriority!,
+        if (enable != null) 'enable': enable!,
         if (interfaceName != null) 'interfaceName': interfaceName!,
         if (ipAddress != null) 'ipAddress': ipAddress!,
         if (managementType != null) 'managementType': managementType!,
@@ -84288,6 +84339,8 @@ class SecurityPoliciesWafConfig {
 /// For more information, see Google Cloud Armor security policy overview. (==
 /// resource_for {$api_version}.securityPolicies ==)
 class SecurityPolicy {
+  SecurityPolicyAdvancedOptionsConfig? advancedOptionsConfig;
+
   /// Creation timestamp in RFC3339 text format.
   ///
   /// Output only.
@@ -84355,6 +84408,11 @@ class SecurityPolicy {
   SecurityPolicy();
 
   SecurityPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey('advancedOptionsConfig')) {
+      advancedOptionsConfig = SecurityPolicyAdvancedOptionsConfig.fromJson(
+          _json['advancedOptionsConfig']
+              as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('creationTimestamp')) {
       creationTimestamp = _json['creationTimestamp'] as core.String;
     }
@@ -84385,6 +84443,8 @@ class SecurityPolicy {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (advancedOptionsConfig != null)
+          'advancedOptionsConfig': advancedOptionsConfig!.toJson(),
         if (creationTimestamp != null) 'creationTimestamp': creationTimestamp!,
         if (description != null) 'description': description!,
         if (fingerprint != null) 'fingerprint': fingerprint!,
@@ -84394,6 +84454,36 @@ class SecurityPolicy {
         if (rules != null)
           'rules': rules!.map((value) => value.toJson()).toList(),
         if (selfLink != null) 'selfLink': selfLink!,
+      };
+}
+
+class SecurityPolicyAdvancedOptionsConfig {
+  ///
+  /// Possible string values are:
+  /// - "DISABLED"
+  /// - "STANDARD"
+  core.String? jsonParsing;
+
+  ///
+  /// Possible string values are:
+  /// - "NORMAL"
+  /// - "VERBOSE"
+  core.String? logLevel;
+
+  SecurityPolicyAdvancedOptionsConfig();
+
+  SecurityPolicyAdvancedOptionsConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('jsonParsing')) {
+      jsonParsing = _json['jsonParsing'] as core.String;
+    }
+    if (_json.containsKey('logLevel')) {
+      logLevel = _json['logLevel'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (jsonParsing != null) 'jsonParsing': jsonParsing!,
+        if (logLevel != null) 'logLevel': logLevel!,
       };
 }
 
@@ -93969,7 +94059,9 @@ class UsableSubnetworksAggregatedList {
   /// If the number of results is larger than maxResults, use the nextPageToken
   /// as a value for the query parameter pageToken in the next list request.
   /// Subsequent list requests will have their own nextPageToken to continue
-  /// paging through the results.
+  /// paging through the results. In special cases listUsable may return 0
+  /// subnetworks and nextPageToken which still should be used to get the next
+  /// page of results.
   ///
   /// Output only.
   core.String? nextPageToken;
@@ -94439,7 +94531,7 @@ class VpnGateway {
   /// Output only.
   core.String? selfLink;
 
-  /// A list of interfaces on this VPN gateway.
+  /// The list of VPN interfaces associated with this VPN gateway.
   core.List<VpnGatewayVpnGatewayInterface>? vpnInterfaces;
 
   VpnGateway();
@@ -95042,19 +95134,31 @@ class VpnGatewayStatusVpnConnection {
 
 /// A VPN gateway interface.
 class VpnGatewayVpnGatewayInterface {
-  /// The numeric ID of this VPN gateway interface.
+  /// Numeric identifier for this VPN interface associated with the VPN gateway.
+  ///
+  /// Output only.
   core.int? id;
 
-  /// URL of the interconnect attachment resource.
+  /// URL of the VLAN attachment (interconnectAttachment) resource for this VPN
+  /// gateway interface.
   ///
-  /// When the value of this field is present, the VPN Gateway will be used for
-  /// IPsec-encrypted Cloud Interconnect; all Egress or Ingress traffic for this
-  /// VPN Gateway interface will go through the specified interconnect
-  /// attachment resource.
-  /// Not currently available in all Interconnect locations.
+  /// When the value of this field is present, the VPN gateway is used for
+  /// IPsec-encrypted Cloud Interconnect; all egress or ingress traffic for this
+  /// VPN gateway interface goes through the specified VLAN attachment resource.
+  /// Not currently available publicly.
   core.String? interconnectAttachment;
 
-  /// The external IP address for this VPN gateway interface.
+  /// IP address for this VPN interface associated with the VPN gateway.
+  ///
+  /// The IP address could be either a regional external IP address or a
+  /// regional internal IP address. The two IP addresses for a VPN gateway must
+  /// be all regional external or regional internal IP addresses. There cannot
+  /// be a mix of regional external IP addresses and regional internal IP
+  /// addresses. For IPsec-encrypted Cloud Interconnect, the IP addresses for
+  /// both interfaces could either be regional internal IP addresses or regional
+  /// external IP addresses. For regular (non IPsec-encrypted Cloud
+  /// Interconnect) HA VPN tunnels, the IP address must be a regional external
+  /// IP address.
   ///
   /// Output only.
   core.String? ipAddress;

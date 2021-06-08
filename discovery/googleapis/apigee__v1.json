@@ -109,6 +109,7 @@
                     "methods": {
                         "list": {
                             "description": "Lists hybrid services and its trusted issuers service account ids. This api is authenticated and unauthorized(allow all the users) and used by runtime authn-authz service to query control plane's issuer service account ids.",
+                            "flatPath": "v1/hybrid/issuers",
                             "httpMethod": "GET",
                             "id": "apigee.hybrid.issuers.list",
                             "parameterOrder": [
@@ -139,6 +140,7 @@
             "methods": {
                 "create": {
                     "description": "Creates an Apigee organization. See [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).",
+                    "flatPath": "v1/organizations",
                     "httpMethod": "POST",
                     "id": "apigee.organizations.create",
                     "parameterOrder": [],
@@ -162,6 +164,7 @@
                 },
                 "delete": {
                     "description": "Delete an Apigee organization. Only supported for SubscriptionType TRIAL.",
+                    "flatPath": "v1/organizations/{organizationsId}",
                     "httpMethod": "DELETE",
                     "id": "apigee.organizations.delete",
                     "parameterOrder": [
@@ -186,6 +189,7 @@
                 },
                 "get": {
                     "description": "Gets the profile for an Apigee organization. See [Understanding organizations](https://cloud.google.com/apigee/docs/api-platform/fundamentals/organization-structure).",
+                    "flatPath": "v1/organizations/{organizationsId}",
                     "httpMethod": "GET",
                     "id": "apigee.organizations.get",
                     "parameterOrder": [
@@ -210,6 +214,7 @@
                 },
                 "getDeployedIngressConfig": {
                     "description": "Gets the deployed ingress configuration for an organization.",
+                    "flatPath": "v1/organizations/{organizationsId}/deployedIngressConfig",
                     "httpMethod": "GET",
                     "id": "apigee.organizations.getDeployedIngressConfig",
                     "parameterOrder": [
@@ -249,6 +254,7 @@
                 },
                 "getSyncAuthorization": {
                     "description": "Lists the service accounts with the permissions required to allow the Synchronizer to download environment data from the control plane. An ETag is returned in the response to `getSyncAuthorization`. Pass that ETag when calling [setSyncAuthorization](setSyncAuthorization) to ensure that you are updating the correct version. If you don't pass the ETag in the call to `setSyncAuthorization`, then the existing authorization is overwritten indiscriminately. For more information, see [Configure the Synchronizer](https://cloud.google.com/apigee/docs/hybrid/latest/synchronizer-access). **Note**: Available to Apigee hybrid only.",
+                    "flatPath": "v1/organizations/{organizationsId}:getSyncAuthorization",
                     "httpMethod": "POST",
                     "id": "apigee.organizations.getSyncAuthorization",
                     "parameterOrder": [
@@ -276,6 +282,7 @@
                 },
                 "list": {
                     "description": "Lists the Apigee organizations and associated GCP projects that you have permission to access. See [Understanding organizations](https://cloud.google.com/apigee/docs/api-platform/fundamentals/organization-structure).",
+                    "flatPath": "v1/organizations",
                     "httpMethod": "GET",
                     "id": "apigee.organizations.list",
                     "parameterOrder": [
@@ -300,6 +307,7 @@
                 },
                 "setAddons": {
                     "description": "Configures the add-ons for the Apigee organization. The existing add-on configuration will be fully replaced.",
+                    "flatPath": "v1/organizations/{organizationsId}:setAddons",
                     "httpMethod": "POST",
                     "id": "apigee.organizations.setAddons",
                     "parameterOrder": [
@@ -327,6 +335,7 @@
                 },
                 "setSyncAuthorization": {
                     "description": "Sets the permissions required to allow the Synchronizer to download environment data from the control plane. You must call this API to enable proper functioning of hybrid. Pass the ETag when calling `setSyncAuthorization` to ensure that you are updating the correct version. To get an ETag, call [getSyncAuthorization](getSyncAuthorization). If you don't pass the ETag in the call to `setSyncAuthorization`, then the existing authorization is overwritten indiscriminately. For more information, see [Configure the Synchronizer](https://cloud.google.com/apigee/docs/hybrid/latest/synchronizer-access). **Note**: Available to Apigee hybrid only.",
+                    "flatPath": "v1/organizations/{organizationsId}:setSyncAuthorization",
                     "httpMethod": "POST",
                     "id": "apigee.organizations.setSyncAuthorization",
                     "parameterOrder": [
@@ -354,6 +363,7 @@
                 },
                 "update": {
                     "description": "Updates the properties for an Apigee organization. No other fields in the organization profile will be updated.",
+                    "flatPath": "v1/organizations/{organizationsId}",
                     "httpMethod": "PUT",
                     "id": "apigee.organizations.update",
                     "parameterOrder": [
@@ -387,6 +397,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Create a Datastore for an org",
+                                    "flatPath": "v1/organizations/{organizationsId}/analytics/datastores",
                                     "httpMethod": "POST",
                                     "id": "apigee.organizations.analytics.datastores.create",
                                     "parameterOrder": [
@@ -414,6 +425,7 @@
                                 },
                                 "delete": {
                                     "description": "Delete a Datastore from an org.",
+                                    "flatPath": "v1/organizations/{organizationsId}/analytics/datastores/{datastoresId}",
                                     "httpMethod": "DELETE",
                                     "id": "apigee.organizations.analytics.datastores.delete",
                                     "parameterOrder": [
@@ -438,6 +450,7 @@
                                 },
                                 "get": {
                                     "description": "Get a Datastore",
+                                    "flatPath": "v1/organizations/{organizationsId}/analytics/datastores/{datastoresId}",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.analytics.datastores.get",
                                     "parameterOrder": [
@@ -462,6 +475,7 @@
                                 },
                                 "list": {
                                     "description": "List Datastores",
+                                    "flatPath": "v1/organizations/{organizationsId}/analytics/datastores",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.analytics.datastores.list",
                                     "parameterOrder": [
@@ -491,6 +505,7 @@
                                 },
                                 "test": {
                                     "description": "Test if Datastore configuration is correct. This includes checking if credentials provided by customer have required permissions in target destination storage",
+                                    "flatPath": "v1/organizations/{organizationsId}/analytics/datastores:test",
                                     "httpMethod": "POST",
                                     "id": "apigee.organizations.analytics.datastores.test",
                                     "parameterOrder": [
@@ -518,6 +533,7 @@
                                 },
                                 "update": {
                                     "description": "Update a Datastore",
+                                    "flatPath": "v1/organizations/{organizationsId}/analytics/datastores/{datastoresId}",
                                     "httpMethod": "PUT",
                                     "id": "apigee.organizations.analytics.datastores.update",
                                     "parameterOrder": [
@@ -551,6 +567,7 @@
                     "methods": {
                         "attributes": {
                             "description": "Updates or creates API product attributes. This API **replaces** the current list of attributes with the attributes specified in the request body. In this way, you can update existing attributes, add new attributes, or delete existing attributes by omitting them from the request body. **Note**: OAuth access tokens and Key Management Service (KMS) entities (apps, developers, and API products) are cached for 180 seconds (current default). Any custom attributes associated with entities also get cached for at least 180 seconds after entity is accessed during runtime. In this case, the `ExpiresIn` element on the OAuthV2 policy won't be able to expire an access token in less than 180 seconds.",
+                            "flatPath": "v1/organizations/{organizationsId}/apiproducts/{apiproductsId}/attributes",
                             "httpMethod": "POST",
                             "id": "apigee.organizations.apiproducts.attributes",
                             "parameterOrder": [
@@ -577,7 +594,8 @@
                             ]
                         },
                         "create": {
-                            "description": "Creates an API product in an organization. You create API products after you have proxied backend services using API proxies. An API product is a collection of API resources combined with quota settings and metadata that you can use to deliver customized and productized API bundles to your developer community. This metadata can include: - Scope - Environments - API proxies - Extensible profile API products enable you repackage APIs on-the-fly, without having to do any additional coding or configuration. Apigee recommends that you start with a simple API product including only required elements. You then provision credentials to apps to enable them to start testing your APIs. After you have authentication and authorization working against a simple API product, you can iterate to create finer grained API products, defining different sets of API resources for each API product. **WARNING:** - If you don't specify an API proxy in the request body, *any* app associated with the product can make calls to *any* API in your entire organization. - If you don't specify an environment in the request body, the product allows access to all environments. For more information, see What is an API product?",
+                            "description": "Creates an API product in an organization. You create API products after you have proxied backend services using API proxies. An API product is a collection of API resources combined with quota settings and metadata that you can use to deliver customized and productized API bundles to your developer community. This metadata can include: - Scope - Environments - API proxies - Extensible profile API products enable you repackage APIs on the fly, without having to do any additional coding or configuration. Apigee recommends that you start with a simple API product including only required elements. You then provision credentials to apps to enable them to start testing your APIs. After you have authentication and authorization working against a simple API product, you can iterate to create finer-grained API products, defining different sets of API resources for each API product. **WARNING:** - If you don't specify an API proxy in the request body, *any* app associated with the product can make calls to *any* API in your entire organization. - If you don't specify an environment in the request body, the product allows access to all environments. For more information, see What is an API product?",
+                            "flatPath": "v1/organizations/{organizationsId}/apiproducts",
                             "httpMethod": "POST",
                             "id": "apigee.organizations.apiproducts.create",
                             "parameterOrder": [
@@ -605,6 +623,7 @@
                         },
                         "delete": {
                             "description": "Deletes an API product from an organization. Deleting an API product causes app requests to the resource URIs defined in the API product to fail. Ensure that you create a new API product to serve existing apps, unless your intention is to disable access to the resources defined in the API product. The API product name required in the request URL is the internal name of the product, not the display name. While they may be the same, it depends on whether the API product was created via the UI or the API. View the list of API products to verify the internal name.",
+                            "flatPath": "v1/organizations/{organizationsId}/apiproducts/{apiproductsId}",
                             "httpMethod": "DELETE",
                             "id": "apigee.organizations.apiproducts.delete",
                             "parameterOrder": [
@@ -629,6 +648,7 @@
                         },
                         "get": {
                             "description": "Gets configuration details for an API product. The API product name required in the request URL is the internal name of the product, not the display name. While they may be the same, it depends on whether the API product was created via the UI or the API. View the list of API products to verify the internal name.",
+                            "flatPath": "v1/organizations/{organizationsId}/apiproducts/{apiproductsId}",
                             "httpMethod": "GET",
                             "id": "apigee.organizations.apiproducts.get",
                             "parameterOrder": [
@@ -652,7 +672,8 @@
                             ]
                         },
                         "list": {
-                            "description": "Lists all API product names for an organization. Filter the list by passing an `attributename` and `attibutevalue`. The limit on the number of API products returned by the API is 1000. You can paginate the list of API products returned using the `startKey` and `count` query parameters.",
+                            "description": "Lists all API product names for an organization. Filter the list by passing an `attributename` and `attibutevalue`. The maximum number of API products returned is 1000. You can paginate the list of API products returned using the `startKey` and `count` query parameters.",
+                            "flatPath": "v1/organizations/{organizationsId}/apiproducts",
                             "httpMethod": "GET",
                             "id": "apigee.organizations.apiproducts.list",
                             "parameterOrder": [
@@ -702,7 +723,8 @@
                             ]
                         },
                         "update": {
-                            "description": "Updates an existing API product. You must include all required values, whether or not you are updating them, as well as any optional values that you are updating. The API product name required in the request URL is the internal name of the product, not the Display Name. While they may be the same, it depends on whether the API product was created via UI or API. View the list of API products to identify their internal names.",
+                            "description": "Updates an existing API product. You must include all required values, whether or not you are updating them, as well as any optional values that you are updating. The API product name required in the request URL is the internal name of the product, not the display name. While they may be the same, it depends on whether the API product was created via UI or API. View the list of API products to identify their internal names.",
+                            "flatPath": "v1/organizations/{organizationsId}/apiproducts/{apiproductsId}",
                             "httpMethod": "PUT",
                             "id": "apigee.organizations.apiproducts.update",
                             "parameterOrder": [
@@ -734,6 +756,7 @@
                             "methods": {
                                 "delete": {
                                     "description": "Deletes an API product attribute.",
+                                    "flatPath": "v1/organizations/{organizationsId}/apiproducts/{apiproductsId}/attributes/{attributesId}",
                                     "httpMethod": "DELETE",
                                     "id": "apigee.organizations.apiproducts.attributes.delete",
                                     "parameterOrder": [
@@ -758,6 +781,7 @@
                                 },
                                 "get": {
                                     "description": "Gets the value of an API product attribute.",
+                                    "flatPath": "v1/organizations/{organizationsId}/apiproducts/{apiproductsId}/attributes/{attributesId}",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.apiproducts.attributes.get",
                                     "parameterOrder": [
@@ -782,6 +806,7 @@
                                 },
                                 "list": {
                                     "description": "Lists all API product attributes.",
+                                    "flatPath": "v1/organizations/{organizationsId}/apiproducts/{apiproductsId}/attributes",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.apiproducts.attributes.list",
                                     "parameterOrder": [
@@ -806,6 +831,7 @@
                                 },
                                 "updateApiProductAttribute": {
                                     "description": "Updates the value of an API product attribute. **Note**: OAuth access tokens and Key Management Service (KMS) entities (apps, developers, and API products) are cached for 180 seconds (current default). Any custom attributes associated with entities also get cached for at least 180 seconds after entity is accessed during runtime. In this case, the `ExpiresIn` element on the OAuthV2 policy won't be able to expire an access token in less than 180 seconds.",
+                                    "flatPath": "v1/organizations/{organizationsId}/apiproducts/{apiproductsId}/attributes/{attributesId}",
                                     "httpMethod": "POST",
                                     "id": "apigee.organizations.apiproducts.attributes.updateApiProductAttribute",
                                     "parameterOrder": [
@@ -837,6 +863,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Create a rate plan that is associated with an API product in an organization. Using rate plans, API product owners can monetize their API products by configuring one or more of the following: - Billing frequency - Initial setup fees for using an API product - Payment funding model (postpaid only) - Fixed recurring or consumption-based charges for using an API product - Revenue sharing with developer partners An API product can have multiple rate plans associated with it but *only one* rate plan can be active at any point of time. **Note: From the developer's perspective, they purchase API products not rate plans.",
+                                    "flatPath": "v1/organizations/{organizationsId}/apiproducts/{apiproductsId}/rateplans",
                                     "httpMethod": "POST",
                                     "id": "apigee.organizations.apiproducts.rateplans.create",
                                     "parameterOrder": [
@@ -864,6 +891,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a rate plan.",
+                                    "flatPath": "v1/organizations/{organizationsId}/apiproducts/{apiproductsId}/rateplans/{rateplansId}",
                                     "httpMethod": "DELETE",
                                     "id": "apigee.organizations.apiproducts.rateplans.delete",
                                     "parameterOrder": [
@@ -888,6 +916,7 @@
                                 },
                                 "get": {
                                     "description": "Gets the details of a rate plan.",
+                                    "flatPath": "v1/organizations/{organizationsId}/apiproducts/{apiproductsId}/rateplans/{rateplansId}",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.apiproducts.rateplans.get",
                                     "parameterOrder": [
@@ -912,6 +941,7 @@
                                 },
                                 "list": {
                                     "description": "Lists all the rate plans for an API product.",
+                                    "flatPath": "v1/organizations/{organizationsId}/apiproducts/{apiproductsId}/rateplans",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.apiproducts.rateplans.list",
                                     "parameterOrder": [
@@ -972,6 +1002,7 @@
                                 },
                                 "update": {
                                     "description": "Updates an existing rate plan.",
+                                    "flatPath": "v1/organizations/{organizationsId}/apiproducts/{apiproductsId}/rateplans/{rateplansId}",
                                     "httpMethod": "PUT",
                                     "id": "apigee.organizations.apiproducts.rateplans.update",
                                     "parameterOrder": [
@@ -1005,6 +1036,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates an API proxy. The API proxy created will not be accessible at runtime until it is deployed to an environment. Create a new API proxy by setting the `name` query parameter to the name of the API proxy. Import an API proxy configuration bundle stored in zip format on your local machine to your organization by doing the following: * Set the `name` query parameter to the name of the API proxy. * Set the `action` query parameter to `import`. * Set the `Content-Type` header to `multipart/form-data`. * Pass as a file the name of API proxy configuration bundle stored in zip format on your local machine using the `file` form field. **Note**: To validate the API proxy configuration bundle only without importing it, set the `action` query parameter to `validate`. When importing an API proxy configuration bundle, if the API proxy does not exist, it will be created. If the API proxy exists, then a new revision is created. Invalid API proxy configurations are rejected, and a list of validation errors is returned to the client.",
+                            "flatPath": "v1/organizations/{organizationsId}/apis",
                             "httpMethod": "POST",
                             "id": "apigee.organizations.apis.create",
                             "parameterOrder": [
@@ -1047,6 +1079,7 @@
                         },
                         "delete": {
                             "description": "Deletes an API proxy and all associated endpoints, policies, resources, and revisions. The API proxy must be undeployed before you can delete it.",
+                            "flatPath": "v1/organizations/{organizationsId}/apis/{apisId}",
                             "httpMethod": "DELETE",
                             "id": "apigee.organizations.apis.delete",
                             "parameterOrder": [
@@ -1071,6 +1104,7 @@
                         },
                         "get": {
                             "description": "Gets an API proxy including a list of existing revisions.",
+                            "flatPath": "v1/organizations/{organizationsId}/apis/{apisId}",
                             "httpMethod": "GET",
                             "id": "apigee.organizations.apis.get",
                             "parameterOrder": [
@@ -1095,6 +1129,7 @@
                         },
                         "list": {
                             "description": "Lists the names of all API proxies in an organization. The names returned correspond to the names defined in the configuration files for each API proxy.",
+                            "flatPath": "v1/organizations/{organizationsId}/apis",
                             "httpMethod": "GET",
                             "id": "apigee.organizations.apis.list",
                             "parameterOrder": [
@@ -1133,6 +1168,7 @@
                             "methods": {
                                 "list": {
                                     "description": "Lists all deployments of an API proxy.",
+                                    "flatPath": "v1/organizations/{organizationsId}/apis/{apisId}/deployments",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.apis.deployments.list",
                                     "parameterOrder": [
@@ -1161,6 +1197,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a key value map in an api proxy.",
+                                    "flatPath": "v1/organizations/{organizationsId}/apis/{apisId}/keyvaluemaps",
                                     "httpMethod": "POST",
                                     "id": "apigee.organizations.apis.keyvaluemaps.create",
                                     "parameterOrder": [
@@ -1188,6 +1225,7 @@
                                 },
                                 "delete": {
                                     "description": "Delete a key value map in an api proxy.",
+                                    "flatPath": "v1/organizations/{organizationsId}/apis/{apisId}/keyvaluemaps/{keyvaluemapsId}",
                                     "httpMethod": "DELETE",
                                     "id": "apigee.organizations.apis.keyvaluemaps.delete",
                                     "parameterOrder": [
@@ -1216,6 +1254,7 @@
                             "methods": {
                                 "delete": {
                                     "description": "Deletes an API proxy revision and all policies, resources, endpoints, and revisions associated with it. The API proxy revision must be undeployed before you can delete it.",
+                                    "flatPath": "v1/organizations/{organizationsId}/apis/{apisId}/revisions/{revisionsId}",
                                     "httpMethod": "DELETE",
                                     "id": "apigee.organizations.apis.revisions.delete",
                                     "parameterOrder": [
@@ -1240,6 +1279,7 @@
                                 },
                                 "get": {
                                     "description": "Gets an API proxy revision. To download the API proxy configuration bundle for the specified revision as a zip file, set the `format` query parameter to `bundle`. If you are using curl, specify `-o filename.zip` to save the output to a file; otherwise, it displays to `stdout`. Then, develop the API proxy configuration locally and upload the updated API proxy configuration revision, as described in [updateApiProxyRevision](updateApiProxyRevision).",
+                                    "flatPath": "v1/organizations/{organizationsId}/apis/{apisId}/revisions/{revisionsId}",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.apis.revisions.get",
                                     "parameterOrder": [
@@ -1269,6 +1309,7 @@
                                 },
                                 "updateApiProxyRevision": {
                                     "description": "Updates an existing API proxy revision by uploading the API proxy configuration bundle as a zip file from your local machine. You can update only API proxy revisions that have never been deployed. After deployment, an API proxy revision becomes immutable, even if it is undeployed. Set the `Content-Type` header to either `multipart/form-data` or `application/octet-stream`.",
+                                    "flatPath": "v1/organizations/{organizationsId}/apis/{apisId}/revisions/{revisionsId}",
                                     "httpMethod": "POST",
                                     "id": "apigee.organizations.apis.revisions.updateApiProxyRevision",
                                     "parameterOrder": [
@@ -1305,6 +1346,7 @@
                                     "methods": {
                                         "list": {
                                             "description": "Lists all deployments of an API proxy revision.",
+                                            "flatPath": "v1/organizations/{organizationsId}/apis/{apisId}/revisions/{revisionsId}/deployments",
                                             "httpMethod": "GET",
                                             "id": "apigee.organizations.apis.revisions.deployments.list",
                                             "parameterOrder": [
@@ -1337,6 +1379,7 @@
                     "methods": {
                         "get": {
                             "description": "Gets the app profile for the specified app ID.",
+                            "flatPath": "v1/organizations/{organizationsId}/apps/{appsId}",
                             "httpMethod": "GET",
                             "id": "apigee.organizations.apps.get",
                             "parameterOrder": [
@@ -1361,6 +1404,7 @@
                         },
                         "list": {
                             "description": "Lists IDs of apps within an organization that have the specified app status (approved or revoked) or are of the specified app type (developer or company).",
+                            "flatPath": "v1/organizations/{organizationsId}/apps",
                             "httpMethod": "GET",
                             "id": "apigee.organizations.apps.list",
                             "parameterOrder": [
@@ -1435,6 +1479,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a new data collector.",
+                            "flatPath": "v1/organizations/{organizationsId}/datacollectors",
                             "httpMethod": "POST",
                             "id": "apigee.organizations.datacollectors.create",
                             "parameterOrder": [
@@ -1467,6 +1512,7 @@
                         },
                         "delete": {
                             "description": "Deletes a data collector.",
+                            "flatPath": "v1/organizations/{organizationsId}/datacollectors/{datacollectorsId}",
                             "httpMethod": "DELETE",
                             "id": "apigee.organizations.datacollectors.delete",
                             "parameterOrder": [
@@ -1491,6 +1537,7 @@
                         },
                         "get": {
                             "description": "Gets a data collector.",
+                            "flatPath": "v1/organizations/{organizationsId}/datacollectors/{datacollectorsId}",
                             "httpMethod": "GET",
                             "id": "apigee.organizations.datacollectors.get",
                             "parameterOrder": [
@@ -1515,6 +1562,7 @@
                         },
                         "list": {
                             "description": "Lists all data collectors.",
+                            "flatPath": "v1/organizations/{organizationsId}/datacollectors",
                             "httpMethod": "GET",
                             "id": "apigee.organizations.datacollectors.list",
                             "parameterOrder": [
@@ -1550,6 +1598,7 @@
                         },
                         "patch": {
                             "description": "Updates a data collector.",
+                            "flatPath": "v1/organizations/{organizationsId}/datacollectors/{datacollectorsId}",
                             "httpMethod": "PATCH",
                             "id": "apigee.organizations.datacollectors.patch",
                             "parameterOrder": [
@@ -1587,6 +1636,7 @@
                     "methods": {
                         "list": {
                             "description": "Lists all deployments of API proxies or shared flows.",
+                            "flatPath": "v1/organizations/{organizationsId}/deployments",
                             "httpMethod": "GET",
                             "id": "apigee.organizations.deployments.list",
                             "parameterOrder": [
@@ -1620,6 +1670,7 @@
                     "methods": {
                         "attributes": {
                             "description": "Updates developer attributes. This API replaces the existing attributes with those specified in the request. Add new attributes, and include or exclude any existing attributes that you want to retain or remove, respectively. The custom attribute limit is 18. **Note**: OAuth access tokens and Key Management Service (KMS) entities (apps, developers, and API products) are cached for 180 seconds (default). Any custom attributes associated with these entities are cached for at least 180 seconds after the entity is accessed at runtime. Therefore, an `ExpiresIn` element on the OAuthV2 policy won't be able to expire an access token in less than 180 seconds.",
+                            "flatPath": "v1/organizations/{organizationsId}/developers/{developersId}/attributes",
                             "httpMethod": "POST",
                             "id": "apigee.organizations.developers.attributes",
                             "parameterOrder": [
@@ -1647,6 +1698,7 @@
                         },
                         "create": {
                             "description": "Creates a developer. Once created, the developer can register an app and obtain an API key. At creation time, a developer is set as `active`. To change the developer status, use the SetDeveloperStatus API.",
+                            "flatPath": "v1/organizations/{organizationsId}/developers",
                             "httpMethod": "POST",
                             "id": "apigee.organizations.developers.create",
                             "parameterOrder": [
@@ -1674,6 +1726,7 @@
                         },
                         "delete": {
                             "description": "Deletes a developer. All apps and API keys associated with the developer are also removed. **Warning**: This API will permanently delete the developer and related artifacts. To avoid permanently deleting developers and their artifacts, set the developer status to `inactive` using the SetDeveloperStatus API. **Note**: The delete operation is asynchronous. The developer app is deleted immediately, but its associated resources, such as apps and API keys, may take anywhere from a few seconds to a few minutes to be deleted.",
+                            "flatPath": "v1/organizations/{organizationsId}/developers/{developersId}",
                             "httpMethod": "DELETE",
                             "id": "apigee.organizations.developers.delete",
                             "parameterOrder": [
@@ -1698,6 +1751,7 @@
                         },
                         "get": {
                             "description": "Returns the developer details, including the developer's name, email address, apps, and other information. **Note**: The response includes only the first 100 developer apps.",
+                            "flatPath": "v1/organizations/{organizationsId}/developers/{developersId}",
                             "httpMethod": "GET",
                             "id": "apigee.organizations.developers.get",
                             "parameterOrder": [
@@ -1727,6 +1781,7 @@
                         },
                         "list": {
                             "description": "Lists all developers in an organization by email address. By default, the response does not include company developers. Set the `includeCompany` query parameter to `true` to include company developers. **Note**: A maximum of 1000 developers are returned in the response. You paginate the list of developers returned using the `startKey` and `count` query parameters.",
+                            "flatPath": "v1/organizations/{organizationsId}/developers",
                             "httpMethod": "GET",
                             "id": "apigee.organizations.developers.list",
                             "parameterOrder": [
@@ -1782,6 +1837,7 @@
                         },
                         "setDeveloperStatus": {
                             "description": "Sets the status of a developer. Valid values are `active` or `inactive`. A developer is `active` by default. If you set a developer's status to `inactive`, the API keys assigned to the developer apps are no longer valid even though the API keys are set to `approved`. Inactive developers can still sign in to the developer portal and create apps; however, any new API keys generated during app creation won't work. If successful, the API call returns the following HTTP status code: `204 No Content`",
+                            "flatPath": "v1/organizations/{organizationsId}/developers/{developersId}",
                             "httpMethod": "POST",
                             "id": "apigee.organizations.developers.setDeveloperStatus",
                             "parameterOrder": [
@@ -1811,6 +1867,7 @@
                         },
                         "update": {
                             "description": "Updates a developer. This API replaces the existing developer details with those specified in the request. Include or exclude any existing details that you want to retain or delete, respectively. The custom attribute limit is 18. **Note**: OAuth access tokens and Key Management Service (KMS) entities (apps, developers, and API products) are cached for 180 seconds (current default). Any custom attributes associated with these entities are cached for at least 180 seconds after the entity is accessed at runtime. Therefore, an `ExpiresIn` element on the OAuthV2 policy won't be able to expire an access token in less than 180 seconds.",
+                            "flatPath": "v1/organizations/{organizationsId}/developers/{developersId}",
                             "httpMethod": "PUT",
                             "id": "apigee.organizations.developers.update",
                             "parameterOrder": [
@@ -1842,6 +1899,7 @@
                             "methods": {
                                 "attributes": {
                                     "description": "Updates attributes for a developer app. This API replaces the current attributes with those specified in the request.",
+                                    "flatPath": "v1/organizations/{organizationsId}/developers/{developersId}/apps/{appsId}/attributes",
                                     "httpMethod": "POST",
                                     "id": "apigee.organizations.developers.apps.attributes",
                                     "parameterOrder": [
@@ -1869,6 +1927,7 @@
                                 },
                                 "create": {
                                     "description": "Creates an app associated with a developer. This API associates the developer app with the specified API product and auto-generates an API key for the app to use in calls to API proxies inside that API product. The `name` is the unique ID of the app that you can use in API calls. The `DisplayName` (set as an attribute) appears in the UI. If you don't set the `DisplayName` attribute, the `name` appears in the UI.",
+                                    "flatPath": "v1/organizations/{organizationsId}/developers/{developersId}/apps",
                                     "httpMethod": "POST",
                                     "id": "apigee.organizations.developers.apps.create",
                                     "parameterOrder": [
@@ -1896,6 +1955,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a developer app. **Note**: The delete operation is asynchronous. The developer app is deleted immediately, but its associated resources, such as app keys or access tokens, may take anywhere from a few seconds to a few minutes to be deleted.",
+                                    "flatPath": "v1/organizations/{organizationsId}/developers/{developersId}/apps/{appsId}",
                                     "httpMethod": "DELETE",
                                     "id": "apigee.organizations.developers.apps.delete",
                                     "parameterOrder": [
@@ -1920,6 +1980,7 @@
                                 },
                                 "generateKeyPairOrUpdateDeveloperAppStatus": {
                                     "description": "Manages access to a developer app by enabling you to: * Approve or revoke a developer app * Generate a new consumer key and secret for a developer app To approve or revoke a developer app, set the `action` query parameter to `approved` or `revoked`, respectively, and the `Content-Type` header to `application/octet-stream`. If a developer app is revoked, none of its API keys are valid for API calls even though the keys are still `approved`. If successful, the API call returns the following HTTP status code: `204 No Content` To generate a new consumer key and secret for a developer app, pass the new key/secret details. Rather than replace an existing key, this API generates a new key. In this case, multiple key pairs may be associated with a single developer app. Each key pair has an independent status (`approved` or `revoked`) and expiration time. Any approved, non-expired key can be used in an API call. For example, if you're using API key rotation, you can generate new keys with expiration times that overlap keys that are going to expire. You might also generate a new consumer key/secret if the security of the original key/secret is compromised. The `keyExpiresIn` property defines the expiration time for the API key in milliseconds. If you don't set this property or set it to `-1`, the API key never expires. **Notes**: * When generating a new key/secret, this API replaces the existing attributes, notes, and callback URLs with those specified in the request. Include or exclude any existing information that you want to retain or delete, respectively. * To migrate existing consumer keys and secrets to hybrid from another system, see the CreateDeveloperAppKey API.",
+                                    "flatPath": "v1/organizations/{organizationsId}/developers/{developersId}/apps/{appsId}",
                                     "httpMethod": "POST",
                                     "id": "apigee.organizations.developers.apps.generateKeyPairOrUpdateDeveloperAppStatus",
                                     "parameterOrder": [
@@ -1952,6 +2013,7 @@
                                 },
                                 "get": {
                                     "description": "Returns the details for a developer app.",
+                                    "flatPath": "v1/organizations/{organizationsId}/developers/{developersId}/apps/{appsId}",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.developers.apps.get",
                                     "parameterOrder": [
@@ -1986,6 +2048,7 @@
                                 },
                                 "list": {
                                     "description": "Lists all apps created by a developer in an Apigee organization. Optionally, you can request an expanded view of the developer apps. A maximum of 100 developer apps are returned per API call. You can paginate the list of deveoper apps returned using the `startKey` and `count` query parameters.",
+                                    "flatPath": "v1/organizations/{organizationsId}/developers/{developersId}/apps",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.developers.apps.list",
                                     "parameterOrder": [
@@ -2031,6 +2094,7 @@
                                 },
                                 "update": {
                                     "description": "Updates the details for a developer app. In addition, you can add an API product to a developer app and automatically generate an API key for the app to use when calling APIs in the API product. If you want to use an existing API key for the API product, add the API product to the API key using the UpdateDeveloperAppKey API. Using this API, you cannot update the following: * App name as it is the primary key used to identify the app and cannot be changed. * Scopes associated with the app. Instead, use the ReplaceDeveloperAppKey API. This API replaces the existing attributes with those specified in the request. Include or exclude any existing attributes that you want to retain or delete, respectively.",
+                                    "flatPath": "v1/organizations/{organizationsId}/developers/{developersId}/apps/{appsId}",
                                     "httpMethod": "PUT",
                                     "id": "apigee.organizations.developers.apps.update",
                                     "parameterOrder": [
@@ -2062,6 +2126,7 @@
                                     "methods": {
                                         "delete": {
                                             "description": "Deletes a developer app attribute.",
+                                            "flatPath": "v1/organizations/{organizationsId}/developers/{developersId}/apps/{appsId}/attributes/{attributesId}",
                                             "httpMethod": "DELETE",
                                             "id": "apigee.organizations.developers.apps.attributes.delete",
                                             "parameterOrder": [
@@ -2086,6 +2151,7 @@
                                         },
                                         "get": {
                                             "description": "Returns a developer app attribute.",
+                                            "flatPath": "v1/organizations/{organizationsId}/developers/{developersId}/apps/{appsId}/attributes/{attributesId}",
                                             "httpMethod": "GET",
                                             "id": "apigee.organizations.developers.apps.attributes.get",
                                             "parameterOrder": [
@@ -2110,6 +2176,7 @@
                                         },
                                         "list": {
                                             "description": "Returns a list of all developer app attributes.",
+                                            "flatPath": "v1/organizations/{organizationsId}/developers/{developersId}/apps/{appsId}/attributes",
                                             "httpMethod": "GET",
                                             "id": "apigee.organizations.developers.apps.attributes.list",
                                             "parameterOrder": [
@@ -2134,6 +2201,7 @@
                                         },
                                         "updateDeveloperAppAttribute": {
                                             "description": "Updates a developer app attribute. **Note**: OAuth access tokens and Key Management Service (KMS) entities (apps, developers, and API products) are cached for 180 seconds (current default). Any custom attributes associated with these entities are cached for at least 180 seconds after the entity is accessed at runtime. Therefore, an `ExpiresIn` element on the OAuthV2 policy won't be able to expire an access token in less than 180 seconds.",
+                                            "flatPath": "v1/organizations/{organizationsId}/developers/{developersId}/apps/{appsId}/attributes/{attributesId}",
                                             "httpMethod": "POST",
                                             "id": "apigee.organizations.developers.apps.attributes.updateDeveloperAppAttribute",
                                             "parameterOrder": [
@@ -2164,7 +2232,8 @@
                                 "keys": {
                                     "methods": {
                                         "create": {
-                                            "description": "Creates a custom consumer key and secret for a developer app. This is particularly useful if you want to migrate existing consumer keys and secrets to Apigee hybrid from another system. Consumer keys and secrets can contain letters, numbers, underscores, and hyphens. No other special characters are allowed. To avoid service disruptions, a consumer key and secret should not exceed 2 KBs each. **Note**: When creating the consumer key and secret, an association to API products will not be made. Therefore, you should not specify the associated API products in your request. Instead, use the UpdateDeveloperAppKey API to make the association after the consumer key and secret are created. If a consumer key and secret already exist, you can keep them or delete them using the DeleteDeveloperAppKey API.",
+                                            "description": "Creates a custom consumer key and secret for a developer app. This is particularly useful if you want to migrate existing consumer keys and secrets to Apigee from another system. Consumer keys and secrets can contain letters, numbers, underscores, and hyphens. No other special characters are allowed. To avoid service disruptions, a consumer key and secret should not exceed 2 KBs each. **Note**: When creating the consumer key and secret, an association to API products will not be made. Therefore, you should not specify the associated API products in your request. Instead, use the UpdateDeveloperAppKey API to make the association after the consumer key and secret are created. If a consumer key and secret already exist, you can keep them or delete them using the DeleteDeveloperAppKey API.",
+                                            "flatPath": "v1/organizations/{organizationsId}/developers/{developersId}/apps/{appsId}/keys",
                                             "httpMethod": "POST",
                                             "id": "apigee.organizations.developers.apps.keys.create",
                                             "parameterOrder": [
@@ -2192,6 +2261,7 @@
                                         },
                                         "delete": {
                                             "description": "Deletes an app's consumer key and removes all API products associated with the app. After the consumer key is deleted, it cannot be used to access any APIs. **Note**: After you delete a consumer key, you may want to: 1. Create a new consumer key and secret for the developer app using the CreateDeveloperAppKey API, and subsequently add an API product to the key using the UpdateDeveloperAppKey API. 2. Delete the developer app, if it is no longer required.",
+                                            "flatPath": "v1/organizations/{organizationsId}/developers/{developersId}/apps/{appsId}/keys/{keysId}",
                                             "httpMethod": "DELETE",
                                             "id": "apigee.organizations.developers.apps.keys.delete",
                                             "parameterOrder": [
@@ -2215,7 +2285,8 @@
                                             ]
                                         },
                                         "get": {
-                                            "description": "Returns details for a consumer key for a developer app, including the key and secret value, associated API products, and other information.",
+                                            "description": "Gets details for a consumer key for a developer app, including the key and secret value, associated API products, and other information.",
+                                            "flatPath": "v1/organizations/{organizationsId}/developers/{developersId}/apps/{appsId}/keys/{keysId}",
                                             "httpMethod": "GET",
                                             "id": "apigee.organizations.developers.apps.keys.get",
                                             "parameterOrder": [
@@ -2240,6 +2311,7 @@
                                         },
                                         "replaceDeveloperAppKey": {
                                             "description": "Updates the scope of an app. This API replaces the existing scopes with those specified in the request. Include or exclude any existing scopes that you want to retain or delete, respectively. The specified scopes must already be defined for the API products associated with the app. This API sets the `scopes` element under the `apiProducts` element in the attributes of the app.",
+                                            "flatPath": "v1/organizations/{organizationsId}/developers/{developersId}/apps/{appsId}/keys/{keysId}",
                                             "httpMethod": "PUT",
                                             "id": "apigee.organizations.developers.apps.keys.replaceDeveloperAppKey",
                                             "parameterOrder": [
@@ -2267,6 +2339,7 @@
                                         },
                                         "updateDeveloperAppKey": {
                                             "description": "Adds an API product to a developer app key, enabling the app that holds the key to access the API resources bundled in the API product. In addition, you can add attributes to a developer app key. This API replaces the existing attributes with those specified in the request. Include or exclude any existing attributes that you want to retain or delete, respectively. You can use the same key to access all API products associated with the app.",
+                                            "flatPath": "v1/organizations/{organizationsId}/developers/{developersId}/apps/{appsId}/keys/{keysId}",
                                             "httpMethod": "POST",
                                             "id": "apigee.organizations.developers.apps.keys.updateDeveloperAppKey",
                                             "parameterOrder": [
@@ -2303,6 +2376,7 @@
                                             "methods": {
                                                 "delete": {
                                                     "description": "Removes an API product from an app's consumer key. After the API product is removed, the app cannot access the API resources defined in that API product. **Note**: The consumer key is not removed, only its association with the API product.",
+                                                    "flatPath": "v1/organizations/{organizationsId}/developers/{developersId}/apps/{appsId}/keys/{keysId}/apiproducts/{apiproductsId}",
                                                     "httpMethod": "DELETE",
                                                     "id": "apigee.organizations.developers.apps.keys.apiproducts.delete",
                                                     "parameterOrder": [
@@ -2326,7 +2400,8 @@
                                                     ]
                                                 },
                                                 "updateDeveloperAppKeyApiProduct": {
-                                                    "description": "Approve or revoke an app's consumer key. After a consumer key is approved, the app can use it to access APIs. A consumer key that is revoked or pending cannot be used to access an API. Any access tokens associated with a revoked consumer key will remain active. However, Apigee hybrid checks the status of the consumer key and if set to `revoked` will not allow access to the API.",
+                                                    "description": "Approves or revokes the consumer key for an API product. After a consumer key is approved, the app can use it to access APIs. A consumer key that is revoked or pending cannot be used to access an API. Any access tokens associated with a revoked consumer key will remain active. However, Apigee checks the status of the consumer key and if set to `revoked` will not allow access to the API.",
+                                                    "flatPath": "v1/organizations/{organizationsId}/developers/{developersId}/apps/{appsId}/keys/{keysId}/apiproducts/{apiproductsId}",
                                                     "httpMethod": "POST",
                                                     "id": "apigee.organizations.developers.apps.keys.apiproducts.updateDeveloperAppKeyApiProduct",
                                                     "parameterOrder": [
@@ -2359,7 +2434,8 @@
                                         "create": {
                                             "methods": {
                                                 "create": {
-                                                    "description": "Creates a custom consumer key and secret for a developer app. This is particularly useful if you want to migrate existing consumer keys and secrets to Apigee hybrid from another system. Consumer keys and secrets can contain letters, numbers, underscores, and hyphens. No other special characters are allowed. To avoid service disruptions, a consumer key and secret should not exceed 2 KBs each. **Note**: When creating the consumer key and secret, an association to API products will not be made. Therefore, you should not specify the associated API products in your request. Instead, use the UpdateDeveloperAppKey API to make the association after the consumer key and secret are created. If a consumer key and secret already exist, you can keep them or delete them using the DeleteDeveloperAppKey API.",
+                                                    "description": "Creates a custom consumer key and secret for a developer app. This is particularly useful if you want to migrate existing consumer keys and secrets to Apigee from another system. Consumer keys and secrets can contain letters, numbers, underscores, and hyphens. No other special characters are allowed. To avoid service disruptions, a consumer key and secret should not exceed 2 KBs each. **Note**: When creating the consumer key and secret, an association to API products will not be made. Therefore, you should not specify the associated API products in your request. Instead, use the UpdateDeveloperAppKey API to make the association after the consumer key and secret are created. If a consumer key and secret already exist, you can keep them or delete them using the DeleteDeveloperAppKey API.",
+                                                    "flatPath": "v1/organizations/{organizationsId}/developers/{developersId}/apps/{appsId}/keys/create",
                                                     "httpMethod": "POST",
                                                     "id": "apigee.organizations.developers.apps.keys.create.create",
                                                     "parameterOrder": [
@@ -2395,6 +2471,7 @@
                             "methods": {
                                 "delete": {
                                     "description": "Deletes a developer attribute.",
+                                    "flatPath": "v1/organizations/{organizationsId}/developers/{developersId}/attributes/{attributesId}",
                                     "httpMethod": "DELETE",
                                     "id": "apigee.organizations.developers.attributes.delete",
                                     "parameterOrder": [
@@ -2419,6 +2496,7 @@
                                 },
                                 "get": {
                                     "description": "Returns the value of the specified developer attribute.",
+                                    "flatPath": "v1/organizations/{organizationsId}/developers/{developersId}/attributes/{attributesId}",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.developers.attributes.get",
                                     "parameterOrder": [
@@ -2443,6 +2521,7 @@
                                 },
                                 "list": {
                                     "description": "Returns a list of all developer attributes.",
+                                    "flatPath": "v1/organizations/{organizationsId}/developers/{developersId}/attributes",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.developers.attributes.list",
                                     "parameterOrder": [
@@ -2467,6 +2546,7 @@
                                 },
                                 "updateDeveloperAttribute": {
                                     "description": "Updates a developer attribute. **Note**: OAuth access tokens and Key Management Service (KMS) entities (apps, developers, and API products) are cached for 180 seconds (default). Any custom attributes associated with these entities are cached for at least 180 seconds after the entity is accessed at runtime. Therefore, an `ExpiresIn` element on the OAuthV2 policy won't be able to expire an access token in less than 180 seconds.",
+                                    "flatPath": "v1/organizations/{organizationsId}/developers/{developersId}/attributes/{attributesId}",
                                     "httpMethod": "POST",
                                     "id": "apigee.organizations.developers.attributes.updateDeveloperAttribute",
                                     "parameterOrder": [
@@ -2498,6 +2578,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a subscription to an API product. ",
+                                    "flatPath": "v1/organizations/{organizationsId}/developers/{developersId}/subscriptions",
                                     "httpMethod": "POST",
                                     "id": "apigee.organizations.developers.subscriptions.create",
                                     "parameterOrder": [
@@ -2525,6 +2606,7 @@
                                 },
                                 "expire": {
                                     "description": "Expires an API product subscription immediately.",
+                                    "flatPath": "v1/organizations/{organizationsId}/developers/{developersId}/subscriptions/{subscriptionsId}:expire",
                                     "httpMethod": "POST",
                                     "id": "apigee.organizations.developers.subscriptions.expire",
                                     "parameterOrder": [
@@ -2552,6 +2634,7 @@
                                 },
                                 "get": {
                                     "description": "Gets details for an API product subscription.",
+                                    "flatPath": "v1/organizations/{organizationsId}/developers/{developersId}/subscriptions/{subscriptionsId}",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.developers.subscriptions.get",
                                     "parameterOrder": [
@@ -2576,6 +2659,7 @@
                                 },
                                 "list": {
                                     "description": "Lists all API product subscriptions for a developer.",
+                                    "flatPath": "v1/organizations/{organizationsId}/developers/{developersId}/subscriptions",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.developers.subscriptions.list",
                                     "parameterOrder": [
@@ -2617,6 +2701,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a new environment group.",
+                            "flatPath": "v1/organizations/{organizationsId}/envgroups",
                             "httpMethod": "POST",
                             "id": "apigee.organizations.envgroups.create",
                             "parameterOrder": [
@@ -2649,6 +2734,7 @@
                         },
                         "delete": {
                             "description": "Deletes an environment group.",
+                            "flatPath": "v1/organizations/{organizationsId}/envgroups/{envgroupsId}",
                             "httpMethod": "DELETE",
                             "id": "apigee.organizations.envgroups.delete",
                             "parameterOrder": [
@@ -2673,6 +2759,7 @@
                         },
                         "get": {
                             "description": "Gets an environment group.",
+                            "flatPath": "v1/organizations/{organizationsId}/envgroups/{envgroupsId}",
                             "httpMethod": "GET",
                             "id": "apigee.organizations.envgroups.get",
                             "parameterOrder": [
@@ -2697,6 +2784,7 @@
                         },
                         "list": {
                             "description": "Lists all environment groups.",
+                            "flatPath": "v1/organizations/{organizationsId}/envgroups",
                             "httpMethod": "GET",
                             "id": "apigee.organizations.envgroups.list",
                             "parameterOrder": [
@@ -2732,6 +2820,7 @@
                         },
                         "patch": {
                             "description": "Updates an environment group.",
+                            "flatPath": "v1/organizations/{organizationsId}/envgroups/{envgroupsId}",
                             "httpMethod": "PATCH",
                             "id": "apigee.organizations.envgroups.patch",
                             "parameterOrder": [
@@ -2769,6 +2858,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a new attachment of an environment to an environment group.",
+                                    "flatPath": "v1/organizations/{organizationsId}/envgroups/{envgroupsId}/attachments",
                                     "httpMethod": "POST",
                                     "id": "apigee.organizations.envgroups.attachments.create",
                                     "parameterOrder": [
@@ -2796,6 +2886,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes an environment group attachment.",
+                                    "flatPath": "v1/organizations/{organizationsId}/envgroups/{envgroupsId}/attachments/{attachmentsId}",
                                     "httpMethod": "DELETE",
                                     "id": "apigee.organizations.envgroups.attachments.delete",
                                     "parameterOrder": [
@@ -2820,6 +2911,7 @@
                                 },
                                 "get": {
                                     "description": "Gets an environment group attachment.",
+                                    "flatPath": "v1/organizations/{organizationsId}/envgroups/{envgroupsId}/attachments/{attachmentsId}",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.envgroups.attachments.get",
                                     "parameterOrder": [
@@ -2844,6 +2936,7 @@
                                 },
                                 "list": {
                                     "description": "Lists all attachments of an environment group.",
+                                    "flatPath": "v1/organizations/{organizationsId}/envgroups/{envgroupsId}/attachments",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.envgroups.attachments.list",
                                     "parameterOrder": [
@@ -2885,6 +2978,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates an environment in an organization.",
+                            "flatPath": "v1/organizations/{organizationsId}/environments",
                             "httpMethod": "POST",
                             "id": "apigee.organizations.environments.create",
                             "parameterOrder": [
@@ -2917,6 +3011,7 @@
                         },
                         "delete": {
                             "description": "Deletes an environment from an organization.",
+                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}",
                             "httpMethod": "DELETE",
                             "id": "apigee.organizations.environments.delete",
                             "parameterOrder": [
@@ -2941,6 +3036,7 @@
                         },
                         "get": {
                             "description": "Gets environment details.",
+                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}",
                             "httpMethod": "GET",
                             "id": "apigee.organizations.environments.get",
                             "parameterOrder": [
@@ -2965,6 +3061,7 @@
                         },
                         "getDebugmask": {
                             "description": "Gets the debug mask singleton resource for an environment.",
+                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/debugmask",
                             "httpMethod": "GET",
                             "id": "apigee.organizations.environments.getDebugmask",
                             "parameterOrder": [
@@ -2989,6 +3086,7 @@
                         },
                         "getDeployedConfig": {
                             "description": "Gets the deployed configuration for an environment.",
+                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/deployedConfig",
                             "httpMethod": "GET",
                             "id": "apigee.organizations.environments.getDeployedConfig",
                             "parameterOrder": [
@@ -3013,6 +3111,7 @@
                         },
                         "getIamPolicy": {
                             "description": "Gets the IAM policy on an environment. For more information, see [Manage users, roles, and permissions using the API](https://cloud.google.com/apigee/docs/api-platform/system-administration/manage-users-roles). You must have the `apigee.environments.getIamPolicy` permission to call this API.",
+                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}:getIamPolicy",
                             "httpMethod": "GET",
                             "id": "apigee.organizations.environments.getIamPolicy",
                             "parameterOrder": [
@@ -3043,6 +3142,7 @@
                         },
                         "getTraceConfig": {
                             "description": "Get distributed trace configuration in an environment.",
+                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/traceConfig",
                             "httpMethod": "GET",
                             "id": "apigee.organizations.environments.getTraceConfig",
                             "parameterOrder": [
@@ -3067,6 +3167,7 @@
                         },
                         "setIamPolicy": {
                             "description": "Sets the IAM policy on an environment, if the policy already exists it will be replaced. For more information, see [Manage users, roles, and permissions using the API](https://cloud.google.com/apigee/docs/api-platform/system-administration/manage-users-roles). You must have the `apigee.environments.setIamPolicy` permission to call this API.",
+                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}:setIamPolicy",
                             "httpMethod": "POST",
                             "id": "apigee.organizations.environments.setIamPolicy",
                             "parameterOrder": [
@@ -3094,6 +3195,7 @@
                         },
                         "subscribe": {
                             "description": "Creates a subscription for the environment's Pub/Sub topic. The server will assign a random name for this subscription. The \"name\" and \"push_config\" must *not* be specified.",
+                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}:subscribe",
                             "httpMethod": "POST",
                             "id": "apigee.organizations.environments.subscribe",
                             "parameterOrder": [
@@ -3118,6 +3220,7 @@
                         },
                         "testIamPermissions": {
                             "description": "Tests the permissions of a user on an environment, and returns a subset of permissions that the user has on the environment. If the environment does not exist, an empty permission set is returned (a NOT_FOUND error is not returned).",
+                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}:testIamPermissions",
                             "httpMethod": "POST",
                             "id": "apigee.organizations.environments.testIamPermissions",
                             "parameterOrder": [
@@ -3145,6 +3248,7 @@
                         },
                         "unsubscribe": {
                             "description": "Deletes a subscription for the environment's Pub/Sub topic.",
+                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}:unsubscribe",
                             "httpMethod": "POST",
                             "id": "apigee.organizations.environments.unsubscribe",
                             "parameterOrder": [
@@ -3172,6 +3276,7 @@
                         },
                         "update": {
                             "description": "Updates an existing environment. When updating properties, you must pass all existing properties to the API, even if they are not being changed. If you omit properties from the payload, the properties are removed. To get the current list of properties for the environment, use the [Get Environment API](get).",
+                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}",
                             "httpMethod": "PUT",
                             "id": "apigee.organizations.environments.update",
                             "parameterOrder": [
@@ -3199,6 +3304,7 @@
                         },
                         "updateDebugmask": {
                             "description": "Updates the debug mask singleton resource for an environment.",
+                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/debugmask",
                             "httpMethod": "PATCH",
                             "id": "apigee.organizations.environments.updateDebugmask",
                             "parameterOrder": [
@@ -3237,6 +3343,7 @@
                         },
                         "updateEnvironment": {
                             "description": "Updates an existing environment. When updating properties, you must pass all existing properties to the API, even if they are not being changed. If you omit properties from the payload, the properties are removed. To get the current list of properties for the environment, use the [Get Environment API](get).",
+                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}",
                             "httpMethod": "POST",
                             "id": "apigee.organizations.environments.updateEnvironment",
                             "parameterOrder": [
@@ -3264,6 +3371,7 @@
                         },
                         "updateTraceConfig": {
                             "description": "Updates the trace configurations in an environment. Note that the repeated fields have replace semantics when included in the field mask and that they will be overwritten by the value of the fields in the request body.",
+                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/traceConfig",
                             "httpMethod": "PATCH",
                             "id": "apigee.organizations.environments.updateTraceConfig",
                             "parameterOrder": [
@@ -3303,6 +3411,7 @@
                                     "methods": {
                                         "getSchemav2": {
                                             "description": "Gets a list of metrics and dimensions that can be used to create analytics queries and reports. Each schema element contains the name of the field, its associated type, and a flag indicating whether it is a standard or custom field.",
+                                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/analytics/admin/schemav2",
                                             "httpMethod": "GET",
                                             "id": "apigee.organizations.environments.analytics.admin.getSchemav2",
                                             "parameterOrder": [
@@ -3341,6 +3450,7 @@
                                     "methods": {
                                         "create": {
                                             "description": "Submit a data export job to be processed in the background. If the request is successful, the API returns a 201 status, a URI that can be used to retrieve the status of the export job, and the `state` value of \"enqueued\".",
+                                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/analytics/exports",
                                             "httpMethod": "POST",
                                             "id": "apigee.organizations.environments.analytics.exports.create",
                                             "parameterOrder": [
@@ -3368,6 +3478,7 @@
                                         },
                                         "get": {
                                             "description": "Gets the details and status of an analytics export job. If the export job is still in progress, its `state` is set to \"running\". After the export job has completed successfully, its `state` is set to \"completed\". If the export job fails, its `state` is set to `failed`.",
+                                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/analytics/exports/{exportsId}",
                                             "httpMethod": "GET",
                                             "id": "apigee.organizations.environments.analytics.exports.get",
                                             "parameterOrder": [
@@ -3392,6 +3503,7 @@
                                         },
                                         "list": {
                                             "description": "Lists the details and status of all analytics export jobs belonging to the parent organization and environment.",
+                                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/analytics/exports",
                                             "httpMethod": "GET",
                                             "id": "apigee.organizations.environments.analytics.exports.list",
                                             "parameterOrder": [
@@ -3424,6 +3536,7 @@
                                     "methods": {
                                         "list": {
                                             "description": "Lists all deployments of an API proxy in an environment.",
+                                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/apis/{apisId}/deployments",
                                             "httpMethod": "GET",
                                             "id": "apigee.organizations.environments.apis.deployments.list",
                                             "parameterOrder": [
@@ -3452,6 +3565,7 @@
                                     "methods": {
                                         "deploy": {
                                             "description": "Deploys a revision of an API proxy. If another revision of the same API proxy revision is currently deployed, set the `override` parameter to `true` to have this revision replace the currently deployed revision. You cannot invoke an API proxy until it has been deployed to an environment. After you deploy an API proxy revision, you cannot edit it. To edit the API proxy, you must create and deploy a new revision. For a request path `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}/deployments`, two permissions are required: * `apigee.deployments.create` on the resource `organizations/{org}/environments/{env}` * `apigee.proxyrevisions.deploy` on the resource `organizations/{org}/apis/{api}/revisions/{rev}` ",
+                                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/apis/{apisId}/revisions/{revisionsId}/deployments",
                                             "httpMethod": "POST",
                                             "id": "apigee.organizations.environments.apis.revisions.deploy",
                                             "parameterOrder": [
@@ -3486,6 +3600,7 @@
                                         },
                                         "getDeployments": {
                                             "description": "Gets the deployment of an API proxy revision and actual state reported by runtime pods.",
+                                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/apis/{apisId}/revisions/{revisionsId}/deployments",
                                             "httpMethod": "GET",
                                             "id": "apigee.organizations.environments.apis.revisions.getDeployments",
                                             "parameterOrder": [
@@ -3510,6 +3625,7 @@
                                         },
                                         "undeploy": {
                                             "description": "Undeploys an API proxy revision from an environment. For a request path `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}/deployments`, two permissions are required: * `apigee.deployments.delete` on the resource `organizations/{org}/environments/{env}` * `apigee.proxyrevisions.undeploy` on the resource `organizations/{org}/apis/{api}/revisions/{rev}`",
+                                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/apis/{apisId}/revisions/{revisionsId}/deployments",
                                             "httpMethod": "DELETE",
                                             "id": "apigee.organizations.environments.apis.revisions.undeploy",
                                             "parameterOrder": [
@@ -3543,6 +3659,7 @@
                                             "methods": {
                                                 "create": {
                                                     "description": "Creates a debug session for a deployed API Proxy revision.",
+                                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/apis/{apisId}/revisions/{revisionsId}/debugsessions",
                                                     "httpMethod": "POST",
                                                     "id": "apigee.organizations.environments.apis.revisions.debugsessions.create",
                                                     "parameterOrder": [
@@ -3576,6 +3693,7 @@
                                                 },
                                                 "deleteData": {
                                                     "description": "Deletes the data from a debug session. This does not cancel the debug session or prevent further data from being collected if the session is still active in runtime pods.",
+                                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/apis/{apisId}/revisions/{revisionsId}/debugsessions/{debugsessionsId}/data",
                                                     "httpMethod": "DELETE",
                                                     "id": "apigee.organizations.environments.apis.revisions.debugsessions.deleteData",
                                                     "parameterOrder": [
@@ -3600,6 +3718,7 @@
                                                 },
                                                 "get": {
                                                     "description": "Retrieves a debug session.",
+                                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/apis/{apisId}/revisions/{revisionsId}/debugsessions/{debugsessionsId}",
                                                     "httpMethod": "GET",
                                                     "id": "apigee.organizations.environments.apis.revisions.debugsessions.get",
                                                     "parameterOrder": [
@@ -3624,6 +3743,7 @@
                                                 },
                                                 "list": {
                                                     "description": "Lists debug sessions that are currently active in the given API Proxy revision.",
+                                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/apis/{apisId}/revisions/{revisionsId}/debugsessions",
                                                     "httpMethod": "GET",
                                                     "id": "apigee.organizations.environments.apis.revisions.debugsessions.list",
                                                     "parameterOrder": [
@@ -3663,6 +3783,7 @@
                                                     "methods": {
                                                         "get": {
                                                             "description": "Gets the debug data from a transaction.",
+                                                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/apis/{apisId}/revisions/{revisionsId}/debugsessions/{debugsessionsId}/data/{dataId}",
                                                             "httpMethod": "GET",
                                                             "id": "apigee.organizations.environments.apis.revisions.debugsessions.data.get",
                                                             "parameterOrder": [
@@ -3693,6 +3814,7 @@
                                             "methods": {
                                                 "generateDeployChangeReport": {
                                                     "description": "Generates a report for a dry run analysis of a DeployApiProxy request without committing the deployment. In addition to the standard validations performed when adding deployments, additional analysis will be done to detect possible traffic routing changes that would result from this deployment being created. Any potential routing conflicts or unsafe changes will be reported in the response. This routing analysis is not performed for a non-dry-run DeployApiProxy request. For a request path `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}/deployments:generateDeployChangeReport`, two permissions are required: * `apigee.deployments.create` on the resource `organizations/{org}/environments/{env}` * `apigee.proxyrevisions.deploy` on the resource `organizations/{org}/apis/{api}/revisions/{rev}`",
+                                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/apis/{apisId}/revisions/{revisionsId}/deployments:generateDeployChangeReport",
                                                     "httpMethod": "POST",
                                                     "id": "apigee.organizations.environments.apis.revisions.deployments.generateDeployChangeReport",
                                                     "parameterOrder": [
@@ -3722,6 +3844,7 @@
                                                 },
                                                 "generateUndeployChangeReport": {
                                                     "description": "Generates a report for a dry run analysis of an UndeployApiProxy request without committing the undeploy. In addition to the standard validations performed when removing deployments, additional analysis will be done to detect possible traffic routing changes that would result from this deployment being removed. Any potential routing conflicts or unsafe changes will be reported in the response. This routing analysis is not performed for a non-dry-run UndeployApiProxy request. For a request path `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}/deployments:generateUndeployChangeReport`, two permissions are required: * `apigee.deployments.delete` on the resource `organizations/{org}/environments/{env}` * `apigee.proxyrevisions.undeploy` on the resource `organizations/{org}/apis/{api}/revisions/{rev}`",
+                                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/apis/{apisId}/revisions/{revisionsId}/deployments:generateUndeployChangeReport",
                                                     "httpMethod": "POST",
                                                     "id": "apigee.organizations.environments.apis.revisions.deployments.generateUndeployChangeReport",
                                                     "parameterOrder": [
@@ -3754,6 +3877,7 @@
                             "methods": {
                                 "delete": {
                                     "description": "Deletes a cache.",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/caches/{cachesId}",
                                     "httpMethod": "DELETE",
                                     "id": "apigee.organizations.environments.caches.delete",
                                     "parameterOrder": [
@@ -3782,6 +3906,7 @@
                             "methods": {
                                 "list": {
                                     "description": "Lists all deployments of API proxies or shared flows in an environment.",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/deployments",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.environments.deployments.list",
                                     "parameterOrder": [
@@ -3815,6 +3940,7 @@
                             "methods": {
                                 "attachSharedFlowToFlowHook": {
                                     "description": "Attaches a shared flow to a flow hook.",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/flowhooks/{flowhooksId}",
                                     "httpMethod": "PUT",
                                     "id": "apigee.organizations.environments.flowhooks.attachSharedFlowToFlowHook",
                                     "parameterOrder": [
@@ -3842,6 +3968,7 @@
                                 },
                                 "detachSharedFlowFromFlowHook": {
                                     "description": "Detaches a shared flow from a flow hook.",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/flowhooks/{flowhooksId}",
                                     "httpMethod": "DELETE",
                                     "id": "apigee.organizations.environments.flowhooks.detachSharedFlowFromFlowHook",
                                     "parameterOrder": [
@@ -3866,6 +3993,7 @@
                                 },
                                 "get": {
                                     "description": "Returns the name of the shared flow attached to the specified flow hook. If there's no shared flow attached to the flow hook, the API does not return an error; it simply does not return a name in the response.",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/flowhooks/{flowhooksId}",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.environments.flowhooks.get",
                                     "parameterOrder": [
@@ -3894,6 +4022,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a keystore or truststore. - Keystore: Contains certificates and their associated keys. - Truststore: Contains trusted certificates used to validate a server's certificate. These certificates are typically self-signed certificates or certificates that are not signed by a trusted CA.",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/keystores",
                                     "httpMethod": "POST",
                                     "id": "apigee.organizations.environments.keystores.create",
                                     "parameterOrder": [
@@ -3926,6 +4055,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a keystore or truststore.",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/keystores/{keystoresId}",
                                     "httpMethod": "DELETE",
                                     "id": "apigee.organizations.environments.keystores.delete",
                                     "parameterOrder": [
@@ -3950,6 +4080,7 @@
                                 },
                                 "get": {
                                     "description": "Gets a keystore or truststore.",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/keystores/{keystoresId}",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.environments.keystores.get",
                                     "parameterOrder": [
@@ -3978,6 +4109,7 @@
                                     "methods": {
                                         "create": {
                                             "description": "Creates an alias from a key/certificate pair. The structure of the request is controlled by the `format` query parameter: - `keycertfile` - Separate PEM-encoded key and certificate files are uploaded. Set `Content-Type: multipart/form-data` and include the `keyFile`, `certFile`, and `password` (if keys are encrypted) fields in the request body. If uploading to a truststore, omit `keyFile`. - `pkcs12` - A PKCS12 file is uploaded. Set `Content-Type: multipart/form-data`, provide the file in the `file` field, and include the `password` field if the file is encrypted in the request body. - `selfsignedcert` - A new private key and certificate are generated. Set `Content-Type: application/json` and include CertificateGenerationSpec in the request body.",
+                                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/keystores/{keystoresId}/aliases",
                                             "httpMethod": "POST",
                                             "id": "apigee.organizations.environments.keystores.aliases.create",
                                             "parameterOrder": [
@@ -4030,6 +4162,7 @@
                                         },
                                         "csr": {
                                             "description": "Generates a PKCS #10 Certificate Signing Request for the private key in an alias.",
+                                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/keystores/{keystoresId}/aliases/{aliasesId}/csr",
                                             "httpMethod": "GET",
                                             "id": "apigee.organizations.environments.keystores.aliases.csr",
                                             "parameterOrder": [
@@ -4054,6 +4187,7 @@
                                         },
                                         "delete": {
                                             "description": "Deletes an alias.",
+                                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/keystores/{keystoresId}/aliases/{aliasesId}",
                                             "httpMethod": "DELETE",
                                             "id": "apigee.organizations.environments.keystores.aliases.delete",
                                             "parameterOrder": [
@@ -4078,6 +4212,7 @@
                                         },
                                         "get": {
                                             "description": "Gets an alias.",
+                                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/keystores/{keystoresId}/aliases/{aliasesId}",
                                             "httpMethod": "GET",
                                             "id": "apigee.organizations.environments.keystores.aliases.get",
                                             "parameterOrder": [
@@ -4102,6 +4237,7 @@
                                         },
                                         "getCertificate": {
                                             "description": "Gets the certificate from an alias in PEM-encoded form.",
+                                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/keystores/{keystoresId}/aliases/{aliasesId}/certificate",
                                             "httpMethod": "GET",
                                             "id": "apigee.organizations.environments.keystores.aliases.getCertificate",
                                             "parameterOrder": [
@@ -4126,6 +4262,7 @@
                                         },
                                         "update": {
                                             "description": "Updates the certificate in an alias.",
+                                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/keystores/{keystoresId}/aliases/{aliasesId}",
                                             "httpMethod": "PUT",
                                             "id": "apigee.organizations.environments.keystores.aliases.update",
                                             "parameterOrder": [
@@ -4169,6 +4306,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a key value map in an environment.",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/keyvaluemaps",
                                     "httpMethod": "POST",
                                     "id": "apigee.organizations.environments.keyvaluemaps.create",
                                     "parameterOrder": [
@@ -4196,6 +4334,7 @@
                                 },
                                 "delete": {
                                     "description": "Delete a key value map in an environment.",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/keyvaluemaps/{keyvaluemapsId}",
                                     "httpMethod": "DELETE",
                                     "id": "apigee.organizations.environments.keyvaluemaps.delete",
                                     "parameterOrder": [
@@ -4224,6 +4363,7 @@
                             "methods": {
                                 "get": {
                                     "description": "This api is similar to GetStats except that the response is less verbose. In the current scheme, a query parameter _optimized instructs Edge Analytics to change the response but since this behavior is not possible with protocol buffer and since this parameter is predominantly used by Edge UI, we are introducing a separate api.",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/optimizedStats/{optimizedStatsId}",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.environments.optimizedStats.get",
                                     "parameterOrder": [
@@ -4327,6 +4467,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Submit a query to be processed in the background. If the submission of the query succeeds, the API returns a 201 status and an ID that refer to the query. In addition to the HTTP status 201, the `state` of \"enqueued\" means that the request succeeded.",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/queries",
                                     "httpMethod": "POST",
                                     "id": "apigee.organizations.environments.queries.create",
                                     "parameterOrder": [
@@ -4354,6 +4495,7 @@
                                 },
                                 "get": {
                                     "description": "Get query status If the query is still in progress, the `state` is set to \"running\" After the query has completed successfully, `state` is set to \"completed\"",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/queries/{queriesId}",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.environments.queries.get",
                                     "parameterOrder": [
@@ -4378,6 +4520,7 @@
                                 },
                                 "getResult": {
                                     "description": "After the query is completed, use this API to retrieve the results. If the request succeeds, and there is a non-zero result set, the result is downloaded to the client as a zipped JSON file. The name of the downloaded file will be: OfflineQueryResult-.zip Example: `OfflineQueryResult-9cfc0d85-0f30-46d6-ae6f-318d0cb961bd.zip`",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/queries/{queriesId}/result",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.environments.queries.getResult",
                                     "parameterOrder": [
@@ -4402,6 +4545,7 @@
                                 },
                                 "list": {
                                     "description": "Return a list of Asynchronous Queries",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/queries",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.environments.queries.list",
                                     "parameterOrder": [
@@ -4460,6 +4604,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a Reference in the specified environment.",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/references",
                                     "httpMethod": "POST",
                                     "id": "apigee.organizations.environments.references.create",
                                     "parameterOrder": [
@@ -4487,6 +4632,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a Reference from an environment. Returns the deleted Reference resource.",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/references/{referencesId}",
                                     "httpMethod": "DELETE",
                                     "id": "apigee.organizations.environments.references.delete",
                                     "parameterOrder": [
@@ -4511,6 +4657,7 @@
                                 },
                                 "get": {
                                     "description": "Gets a Reference resource.",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/references/{referencesId}",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.environments.references.get",
                                     "parameterOrder": [
@@ -4535,6 +4682,7 @@
                                 },
                                 "update": {
                                     "description": "Updates an existing Reference. Note that this operation has PUT semantics; it will replace the entirety of the existing Reference with the resource in the request body.",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/references/{referencesId}",
                                     "httpMethod": "PUT",
                                     "id": "apigee.organizations.environments.references.update",
                                     "parameterOrder": [
@@ -4566,6 +4714,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a resource file. Specify the `Content-Type` as `application/octet-stream` or `multipart/form-data`. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files).",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/resourcefiles",
                                     "httpMethod": "POST",
                                     "id": "apigee.organizations.environments.resourcefiles.create",
                                     "parameterOrder": [
@@ -4603,6 +4752,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a resource file. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files).",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/resourcefiles/{type}/{name}",
                                     "httpMethod": "DELETE",
                                     "id": "apigee.organizations.environments.resourcefiles.delete",
                                     "parameterOrder": [
@@ -4641,6 +4791,7 @@
                                 },
                                 "get": {
                                     "description": "Gets the contents of a resource file. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files).",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/resourcefiles/{type}/{name}",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.environments.resourcefiles.get",
                                     "parameterOrder": [
@@ -4679,6 +4830,7 @@
                                 },
                                 "list": {
                                     "description": "Lists all resource files, optionally filtering by type. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files).",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/resourcefiles",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.environments.resourcefiles.list",
                                     "parameterOrder": [
@@ -4708,6 +4860,7 @@
                                 },
                                 "listEnvironmentResources": {
                                     "description": "Lists all resource files, optionally filtering by type. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files).",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/resourcefiles/{type}",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.environments.resourcefiles.listEnvironmentResources",
                                     "parameterOrder": [
@@ -4739,6 +4892,7 @@
                                 },
                                 "update": {
                                     "description": "Updates a resource file. Specify the `Content-Type` as `application/octet-stream` or `multipart/form-data`. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files).",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/resourcefiles/{type}/{name}",
                                     "httpMethod": "PUT",
                                     "id": "apigee.organizations.environments.resourcefiles.update",
                                     "parameterOrder": [
@@ -4786,6 +4940,7 @@
                                     "methods": {
                                         "list": {
                                             "description": "Lists all deployments of a shared flow in an environment.",
+                                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/sharedflows/{sharedflowsId}/deployments",
                                             "httpMethod": "GET",
                                             "id": "apigee.organizations.environments.sharedflows.deployments.list",
                                             "parameterOrder": [
@@ -4814,6 +4969,7 @@
                                     "methods": {
                                         "deploy": {
                                             "description": "Deploys a revision of a shared flow. If another revision of the same shared flow is currently deployed, set the `override` parameter to `true` to have this revision replace the currently deployed revision. You cannot use a shared flow until it has been deployed to an environment. For a request path `organizations/{org}/environments/{env}/sharedflows/{sf}/revisions/{rev}/deployments`, two permissions are required: * `apigee.deployments.create` on the resource `organizations/{org}/environments/{env}` * `apigee.sharedflowrevisions.deploy` on the resource `organizations/{org}/sharedflows/{sf}/revisions/{rev}`",
+                                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/sharedflows/{sharedflowsId}/revisions/{revisionsId}/deployments",
                                             "httpMethod": "POST",
                                             "id": "apigee.organizations.environments.sharedflows.revisions.deploy",
                                             "parameterOrder": [
@@ -4843,6 +4999,7 @@
                                         },
                                         "getDeployments": {
                                             "description": "Gets the deployment of a shared flow revision and actual state reported by runtime pods.",
+                                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/sharedflows/{sharedflowsId}/revisions/{revisionsId}/deployments",
                                             "httpMethod": "GET",
                                             "id": "apigee.organizations.environments.sharedflows.revisions.getDeployments",
                                             "parameterOrder": [
@@ -4867,6 +5024,7 @@
                                         },
                                         "undeploy": {
                                             "description": "Undeploys a shared flow revision from an environment. For a request path `organizations/{org}/environments/{env}/sharedflows/{sf}/revisions/{rev}/deployments`, two permissions are required: * `apigee.deployments.delete` on the resource `organizations/{org}/environments/{env}` * `apigee.sharedflowrevisions.undeploy` on the resource `organizations/{org}/sharedflows/{sf}/revisions/{rev}`",
+                                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/sharedflows/{sharedflowsId}/revisions/{revisionsId}/deployments",
                                             "httpMethod": "DELETE",
                                             "id": "apigee.organizations.environments.sharedflows.revisions.undeploy",
                                             "parameterOrder": [
@@ -4897,6 +5055,7 @@
                             "methods": {
                                 "get": {
                                     "description": "Retrieve metrics grouped by dimensions. The types of metrics you can retrieve include traffic, message counts, API call latency, response size, and cache hits and counts. Dimensions let you view metrics in meaningful groups. The stats api does accept dimensions as path params. The dimensions are optional in which case the metrics are computed on the entire data for the given timerange.",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/stats/{statsId}",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.environments.stats.get",
                                     "parameterOrder": [
@@ -5000,6 +5159,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a TargetServer in the specified environment.",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/targetservers",
                                     "httpMethod": "POST",
                                     "id": "apigee.organizations.environments.targetservers.create",
                                     "parameterOrder": [
@@ -5032,6 +5192,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a TargetServer from an environment. Returns the deleted TargetServer resource.",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/targetservers/{targetserversId}",
                                     "httpMethod": "DELETE",
                                     "id": "apigee.organizations.environments.targetservers.delete",
                                     "parameterOrder": [
@@ -5056,6 +5217,7 @@
                                 },
                                 "get": {
                                     "description": "Gets a TargetServer resource.",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/targetservers/{targetserversId}",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.environments.targetservers.get",
                                     "parameterOrder": [
@@ -5080,6 +5242,7 @@
                                 },
                                 "update": {
                                     "description": "Updates an existing TargetServer. Note that this operation has PUT semantics; it will replace the entirety of the existing TargetServer with the resource in the request body.",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/targetservers/{targetserversId}",
                                     "httpMethod": "PUT",
                                     "id": "apigee.organizations.environments.targetservers.update",
                                     "parameterOrder": [
@@ -5113,6 +5276,7 @@
                                     "methods": {
                                         "create": {
                                             "description": "Creates a trace configuration override. The response contains a system-generated UUID, that can be used to view, update, or delete the configuration override. Use the List API to view the existing trace configuration overrides.",
+                                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/traceConfig/overrides",
                                             "httpMethod": "POST",
                                             "id": "apigee.organizations.environments.traceConfig.overrides.create",
                                             "parameterOrder": [
@@ -5140,6 +5304,7 @@
                                         },
                                         "delete": {
                                             "description": "Deletes a distributed trace configuration override.",
+                                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/traceConfig/overrides/{overridesId}",
                                             "httpMethod": "DELETE",
                                             "id": "apigee.organizations.environments.traceConfig.overrides.delete",
                                             "parameterOrder": [
@@ -5164,6 +5329,7 @@
                                         },
                                         "get": {
                                             "description": "Gets a trace configuration override.",
+                                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/traceConfig/overrides/{overridesId}",
                                             "httpMethod": "GET",
                                             "id": "apigee.organizations.environments.traceConfig.overrides.get",
                                             "parameterOrder": [
@@ -5188,6 +5354,7 @@
                                         },
                                         "list": {
                                             "description": "Lists all of the distributed trace configuration overrides in an environment.",
+                                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/traceConfig/overrides",
                                             "httpMethod": "GET",
                                             "id": "apigee.organizations.environments.traceConfig.overrides.list",
                                             "parameterOrder": [
@@ -5223,6 +5390,7 @@
                                         },
                                         "patch": {
                                             "description": "Updates a distributed trace configuration override. Note that the repeated fields have replace semantics when included in the field mask and that they will be overwritten by the value of the fields in the request body.",
+                                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/traceConfig/overrides/{overridesId}",
                                             "httpMethod": "PATCH",
                                             "id": "apigee.organizations.environments.traceConfig.overrides.patch",
                                             "parameterOrder": [
@@ -5264,6 +5432,7 @@
                     "methods": {
                         "create": {
                             "description": "Submit a query at host level to be processed in the background. If the submission of the query succeeds, the API returns a 201 status and an ID that refer to the query. In addition to the HTTP status 201, the `state` of \"enqueued\" means that the request succeeded.",
+                            "flatPath": "v1/organizations/{organizationsId}/hostQueries",
                             "httpMethod": "POST",
                             "id": "apigee.organizations.hostQueries.create",
                             "parameterOrder": [
@@ -5291,6 +5460,7 @@
                         },
                         "get": {
                             "description": "Get status of a query submitted at host level. If the query is still in progress, the `state` is set to \"running\" After the query has completed successfully, `state` is set to \"completed\"",
+                            "flatPath": "v1/organizations/{organizationsId}/hostQueries/{hostQueriesId}",
                             "httpMethod": "GET",
                             "id": "apigee.organizations.hostQueries.get",
                             "parameterOrder": [
@@ -5315,6 +5485,7 @@
                         },
                         "getResult": {
                             "description": "After the query is completed, use this API to retrieve the results. If the request succeeds, and there is a non-zero result set, the result is downloaded to the client as a zipped JSON file. The name of the downloaded file will be: OfflineQueryResult-.zip Example: `OfflineQueryResult-9cfc0d85-0f30-46d6-ae6f-318d0cb961bd.zip`",
+                            "flatPath": "v1/organizations/{organizationsId}/hostQueries/{hostQueriesId}/result",
                             "httpMethod": "GET",
                             "id": "apigee.organizations.hostQueries.getResult",
                             "parameterOrder": [
@@ -5339,6 +5510,7 @@
                         },
                         "getResultView": {
                             "description": "",
+                            "flatPath": "v1/organizations/{organizationsId}/hostQueries/{hostQueriesId}/resultView",
                             "httpMethod": "GET",
                             "id": "apigee.organizations.hostQueries.getResultView",
                             "parameterOrder": [
@@ -5363,6 +5535,7 @@
                         },
                         "list": {
                             "description": "Return a list of Asynchronous Queries at host level.",
+                            "flatPath": "v1/organizations/{organizationsId}/hostQueries",
                             "httpMethod": "GET",
                             "id": "apigee.organizations.hostQueries.list",
                             "parameterOrder": [
@@ -5426,6 +5599,7 @@
                     "methods": {
                         "get": {
                             "description": "Retrieve metrics grouped by dimensions in host level. The types of metrics you can retrieve include traffic, message counts, API call latency, response size, and cache hits and counts. Dimensions let you view metrics in meaningful groups. The stats api does accept dimensions as path params. The dimensions are optional in which case the metrics are computed on the entire data for the given timerange.",
+                            "flatPath": "v1/organizations/{organizationsId}/hostStats/{hostStatsId}",
                             "httpMethod": "GET",
                             "id": "apigee.organizations.hostStats.get",
                             "parameterOrder": [
@@ -5524,6 +5698,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates an Apigee runtime instance. The instance is accessible from the authorized network configured on the organization. **Note:** Not supported for Apigee hybrid.",
+                            "flatPath": "v1/organizations/{organizationsId}/instances",
                             "httpMethod": "POST",
                             "id": "apigee.organizations.instances.create",
                             "parameterOrder": [
@@ -5551,6 +5726,7 @@
                         },
                         "delete": {
                             "description": "Deletes an Apigee runtime instance. The instance stops serving requests and the runtime data is deleted. **Note:** Not supported for Apigee hybrid.",
+                            "flatPath": "v1/organizations/{organizationsId}/instances/{instancesId}",
                             "httpMethod": "DELETE",
                             "id": "apigee.organizations.instances.delete",
                             "parameterOrder": [
@@ -5575,6 +5751,7 @@
                         },
                         "get": {
                             "description": "Gets the details for an Apigee runtime instance. **Note:** Not supported for Apigee hybrid.",
+                            "flatPath": "v1/organizations/{organizationsId}/instances/{instancesId}",
                             "httpMethod": "GET",
                             "id": "apigee.organizations.instances.get",
                             "parameterOrder": [
@@ -5599,6 +5776,7 @@
                         },
                         "list": {
                             "description": "Lists all Apigee runtime instances for the organization. **Note:** Not supported for Apigee hybrid.",
+                            "flatPath": "v1/organizations/{organizationsId}/instances",
                             "httpMethod": "GET",
                             "id": "apigee.organizations.instances.list",
                             "parameterOrder": [
@@ -5634,6 +5812,7 @@
                         },
                         "reportStatus": {
                             "description": "Reports the latest status for a runtime instance.",
+                            "flatPath": "v1/organizations/{organizationsId}/instances/{instancesId}:reportStatus",
                             "httpMethod": "POST",
                             "id": "apigee.organizations.instances.reportStatus",
                             "parameterOrder": [
@@ -5665,6 +5844,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a new attachment of an environment to an instance. **Note:** Not supported for Apigee hybrid.",
+                                    "flatPath": "v1/organizations/{organizationsId}/instances/{instancesId}/attachments",
                                     "httpMethod": "POST",
                                     "id": "apigee.organizations.instances.attachments.create",
                                     "parameterOrder": [
@@ -5692,6 +5872,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes an attachment. **Note:** Not supported for Apigee hybrid.",
+                                    "flatPath": "v1/organizations/{organizationsId}/instances/{instancesId}/attachments/{attachmentsId}",
                                     "httpMethod": "DELETE",
                                     "id": "apigee.organizations.instances.attachments.delete",
                                     "parameterOrder": [
@@ -5716,6 +5897,7 @@
                                 },
                                 "get": {
                                     "description": "Gets an attachment. **Note:** Not supported for Apigee hybrid.",
+                                    "flatPath": "v1/organizations/{organizationsId}/instances/{instancesId}/attachments/{attachmentsId}",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.instances.attachments.get",
                                     "parameterOrder": [
@@ -5740,6 +5922,7 @@
                                 },
                                 "list": {
                                     "description": "Lists all attachments to an instance. **Note:** Not supported for Apigee hybrid.",
+                                    "flatPath": "v1/organizations/{organizationsId}/instances/{instancesId}/attachments",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.instances.attachments.list",
                                     "parameterOrder": [
@@ -5779,6 +5962,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a new canary evaluation for an organization.",
+                                    "flatPath": "v1/organizations/{organizationsId}/instances/{instancesId}/canaryevaluations",
                                     "httpMethod": "POST",
                                     "id": "apigee.organizations.instances.canaryevaluations.create",
                                     "parameterOrder": [
@@ -5806,6 +5990,7 @@
                                 },
                                 "get": {
                                     "description": "Gets a CanaryEvaluation for an organization.",
+                                    "flatPath": "v1/organizations/{organizationsId}/instances/{instancesId}/canaryevaluations/{canaryevaluationsId}",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.instances.canaryevaluations.get",
                                     "parameterOrder": [
@@ -5834,6 +6019,7 @@
                             "methods": {
                                 "activate": {
                                     "description": "Activates the NAT address. The Apigee instance can now use this for Internet egress traffic. **Note:** Not supported for Apigee hybrid.",
+                                    "flatPath": "v1/organizations/{organizationsId}/instances/{instancesId}/natAddresses/{natAddressesId}:activate",
                                     "httpMethod": "POST",
                                     "id": "apigee.organizations.instances.natAddresses.activate",
                                     "parameterOrder": [
@@ -5861,6 +6047,7 @@
                                 },
                                 "create": {
                                     "description": "Creates a NAT address. The address is created in the RESERVED state and a static external IP address will be provisioned. At this time, the instance will not use this IP address for Internet egress traffic. The address can be activated for use once any required firewall IP whitelisting has been completed. **Note:** Not supported for Apigee hybrid.",
+                                    "flatPath": "v1/organizations/{organizationsId}/instances/{instancesId}/natAddresses",
                                     "httpMethod": "POST",
                                     "id": "apigee.organizations.instances.natAddresses.create",
                                     "parameterOrder": [
@@ -5888,6 +6075,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes the NAT address. Connections that are actively using the address are drained before it is removed. **Note:** Not supported for Apigee hybrid.",
+                                    "flatPath": "v1/organizations/{organizationsId}/instances/{instancesId}/natAddresses/{natAddressesId}",
                                     "httpMethod": "DELETE",
                                     "id": "apigee.organizations.instances.natAddresses.delete",
                                     "parameterOrder": [
@@ -5912,6 +6100,7 @@
                                 },
                                 "get": {
                                     "description": "Gets the details of a NAT address. **Note:** Not supported for Apigee hybrid.",
+                                    "flatPath": "v1/organizations/{organizationsId}/instances/{instancesId}/natAddresses/{natAddressesId}",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.instances.natAddresses.get",
                                     "parameterOrder": [
@@ -5936,6 +6125,7 @@
                                 },
                                 "list": {
                                     "description": "Lists the NAT addresses for an Apigee instance. **Note:** Not supported for Apigee hybrid.",
+                                    "flatPath": "v1/organizations/{organizationsId}/instances/{instancesId}/natAddresses",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.instances.natAddresses.list",
                                     "parameterOrder": [
@@ -5977,6 +6167,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a key value map in an organization.",
+                            "flatPath": "v1/organizations/{organizationsId}/keyvaluemaps",
                             "httpMethod": "POST",
                             "id": "apigee.organizations.keyvaluemaps.create",
                             "parameterOrder": [
@@ -6004,6 +6195,7 @@
                         },
                         "delete": {
                             "description": "Delete a key value map in an organization.",
+                            "flatPath": "v1/organizations/{organizationsId}/keyvaluemaps/{keyvaluemapsId}",
                             "httpMethod": "DELETE",
                             "id": "apigee.organizations.keyvaluemaps.delete",
                             "parameterOrder": [
@@ -6032,6 +6224,7 @@
                     "methods": {
                         "get": {
                             "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                            "flatPath": "v1/organizations/{organizationsId}/operations/{operationsId}",
                             "httpMethod": "GET",
                             "id": "apigee.organizations.operations.get",
                             "parameterOrder": [
@@ -6056,6 +6249,7 @@
                         },
                         "list": {
                             "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                            "flatPath": "v1/organizations/{organizationsId}/operations",
                             "httpMethod": "GET",
                             "id": "apigee.organizations.operations.list",
                             "parameterOrder": [
@@ -6100,6 +6294,7 @@
                     "methods": {
                         "get": {
                             "description": "This api is similar to GetHostStats except that the response is less verbose.",
+                            "flatPath": "v1/organizations/{organizationsId}/optimizedHostStats/{optimizedHostStatsId}",
                             "httpMethod": "GET",
                             "id": "apigee.organizations.optimizedHostStats.get",
                             "parameterOrder": [
@@ -6198,6 +6393,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a Custom Report for an Organization. A Custom Report provides Apigee Customers to create custom dashboards in addition to the standard dashboards which are provided. The Custom Report in its simplest form contains specifications about metrics, dimensions and filters. It is important to note that the custom report by itself does not provide an executable entity. The Edge UI converts the custom report definition into an analytics query and displays the result in a chart.",
+                            "flatPath": "v1/organizations/{organizationsId}/reports",
                             "httpMethod": "POST",
                             "id": "apigee.organizations.reports.create",
                             "parameterOrder": [
@@ -6225,6 +6421,7 @@
                         },
                         "delete": {
                             "description": "Deletes an existing custom report definition",
+                            "flatPath": "v1/organizations/{organizationsId}/reports/{reportsId}",
                             "httpMethod": "DELETE",
                             "id": "apigee.organizations.reports.delete",
                             "parameterOrder": [
@@ -6249,6 +6446,7 @@
                         },
                         "get": {
                             "description": "Retrieve a custom report definition.",
+                            "flatPath": "v1/organizations/{organizationsId}/reports/{reportsId}",
                             "httpMethod": "GET",
                             "id": "apigee.organizations.reports.get",
                             "parameterOrder": [
@@ -6273,6 +6471,7 @@
                         },
                         "list": {
                             "description": "Return a list of Custom Reports",
+                            "flatPath": "v1/organizations/{organizationsId}/reports",
                             "httpMethod": "GET",
                             "id": "apigee.organizations.reports.list",
                             "parameterOrder": [
@@ -6302,6 +6501,7 @@
                         },
                         "update": {
                             "description": "Update an existing custom report definition",
+                            "flatPath": "v1/organizations/{organizationsId}/reports/{reportsId}",
                             "httpMethod": "PUT",
                             "id": "apigee.organizations.reports.update",
                             "parameterOrder": [
@@ -6333,6 +6533,7 @@
                     "methods": {
                         "create": {
                             "description": "Uploads a ZIP-formatted shared flow configuration bundle to an organization. If the shared flow already exists, this creates a new revision of it. If the shared flow does not exist, this creates it. Once imported, the shared flow revision must be deployed before it can be accessed at runtime. The size limit of a shared flow bundle is 15 MB.",
+                            "flatPath": "v1/organizations/{organizationsId}/sharedflows",
                             "httpMethod": "POST",
                             "id": "apigee.organizations.sharedflows.create",
                             "parameterOrder": [
@@ -6370,6 +6571,7 @@
                         },
                         "delete": {
                             "description": "Deletes a shared flow and all it's revisions. The shared flow must be undeployed before you can delete it.",
+                            "flatPath": "v1/organizations/{organizationsId}/sharedflows/{sharedflowsId}",
                             "httpMethod": "DELETE",
                             "id": "apigee.organizations.sharedflows.delete",
                             "parameterOrder": [
@@ -6394,6 +6596,7 @@
                         },
                         "get": {
                             "description": "Gets a shared flow by name, including a list of its revisions.",
+                            "flatPath": "v1/organizations/{organizationsId}/sharedflows/{sharedflowsId}",
                             "httpMethod": "GET",
                             "id": "apigee.organizations.sharedflows.get",
                             "parameterOrder": [
@@ -6418,6 +6621,7 @@
                         },
                         "list": {
                             "description": "Lists all shared flows in the organization.",
+                            "flatPath": "v1/organizations/{organizationsId}/sharedflows",
                             "httpMethod": "GET",
                             "id": "apigee.organizations.sharedflows.list",
                             "parameterOrder": [
@@ -6456,6 +6660,7 @@
                             "methods": {
                                 "list": {
                                     "description": "Lists all deployments of a shared flow.",
+                                    "flatPath": "v1/organizations/{organizationsId}/sharedflows/{sharedflowsId}/deployments",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.sharedflows.deployments.list",
                                     "parameterOrder": [
@@ -6484,6 +6689,7 @@
                             "methods": {
                                 "delete": {
                                     "description": "Deletes a shared flow and all associated policies, resources, and revisions. You must undeploy the shared flow before deleting it.",
+                                    "flatPath": "v1/organizations/{organizationsId}/sharedflows/{sharedflowsId}/revisions/{revisionsId}",
                                     "httpMethod": "DELETE",
                                     "id": "apigee.organizations.sharedflows.revisions.delete",
                                     "parameterOrder": [
@@ -6508,6 +6714,7 @@
                                 },
                                 "get": {
                                     "description": "Gets a revision of a shared flow. To download the shared flow configuration bundle for the specified revision as a zip file, set the `format` query parameter to `bundle`. If you are using curl, specify `-o filename.zip` to save the output to a file; otherwise, it displays to `stdout`. Then, develop the shared flow configuration locally and upload the updated sharedFlow configuration revision, as described in [updateSharedFlowRevision](updateSharedFlowRevision).",
+                                    "flatPath": "v1/organizations/{organizationsId}/sharedflows/{sharedflowsId}/revisions/{revisionsId}",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.sharedflows.revisions.get",
                                     "parameterOrder": [
@@ -6537,6 +6744,7 @@
                                 },
                                 "updateSharedFlowRevision": {
                                     "description": "Updates a shared flow revision. This operation is only allowed on revisions which have never been deployed. After deployment a revision becomes immutable, even if it becomes undeployed. The payload is a ZIP-formatted shared flow. Content type must be either multipart/form-data or application/octet-stream.",
+                                    "flatPath": "v1/organizations/{organizationsId}/sharedflows/{sharedflowsId}/revisions/{revisionsId}",
                                     "httpMethod": "POST",
                                     "id": "apigee.organizations.sharedflows.revisions.updateSharedFlowRevision",
                                     "parameterOrder": [
@@ -6573,6 +6781,7 @@
                                     "methods": {
                                         "list": {
                                             "description": "Lists all deployments of a shared flow revision.",
+                                            "flatPath": "v1/organizations/{organizationsId}/sharedflows/{sharedflowsId}/revisions/{revisionsId}/deployments",
                                             "httpMethod": "GET",
                                             "id": "apigee.organizations.sharedflows.revisions.deployments.list",
                                             "parameterOrder": [
@@ -6607,6 +6816,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a new category on the portal.",
+                                    "flatPath": "v1/organizations/{organizationsId}/sites/{sitesId}/apicategories",
                                     "httpMethod": "POST",
                                     "id": "apigee.organizations.sites.apicategories.create",
                                     "parameterOrder": [
@@ -6634,6 +6844,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a category from the portal.",
+                                    "flatPath": "v1/organizations/{organizationsId}/sites/{sitesId}/apicategories/{apicategoriesId}",
                                     "httpMethod": "DELETE",
                                     "id": "apigee.organizations.sites.apicategories.delete",
                                     "parameterOrder": [
@@ -6658,6 +6869,7 @@
                                 },
                                 "get": {
                                     "description": "Gets a category on the portal.",
+                                    "flatPath": "v1/organizations/{organizationsId}/sites/{sitesId}/apicategories/{apicategoriesId}",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.sites.apicategories.get",
                                     "parameterOrder": [
@@ -6682,6 +6894,7 @@
                                 },
                                 "list": {
                                     "description": "Lists the categories on the portal.",
+                                    "flatPath": "v1/organizations/{organizationsId}/sites/{sitesId}/apicategories",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.sites.apicategories.list",
                                     "parameterOrder": [
@@ -6706,6 +6919,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates a category on the portal.",
+                                    "flatPath": "v1/organizations/{organizationsId}/sites/{sitesId}/apicategories/{apicategoriesId}",
                                     "httpMethod": "PATCH",
                                     "id": "apigee.organizations.sites.apicategories.patch",
                                     "parameterOrder": [
@@ -6741,6 +6955,7 @@
             "methods": {
                 "provisionOrganization": {
                     "description": "Provisions a new Apigee organization with a functioning runtime. This is the standard way to create trial organizations for a free Apigee trial.",
+                    "flatPath": "v1/projects/{projectsId}:provisionOrganization",
                     "httpMethod": "POST",
                     "id": "apigee.projects.provisionOrganization",
                     "parameterOrder": [
@@ -6769,7 +6984,7 @@
             }
         }
     },
-    "revision": "20210513",
+    "revision": "20210604",
     "rootUrl": "https://apigee.googleapis.com/",
     "schemas": {
         "GoogleApiHttpBody": {
@@ -8309,6 +8524,7 @@
             "type": "object"
         },
         "GoogleCloudApigeeV1DeploymentConfig": {
+            "description": "NEXT ID: 9",
             "id": "GoogleCloudApigeeV1DeploymentConfig",
             "properties": {
                 "attributes": {
@@ -8332,6 +8548,10 @@
                 },
                 "proxyUid": {
                     "description": "Unique ID of the API proxy revision.",
+                    "type": "string"
+                },
+                "serviceAccount": {
+                    "description": "The service account identity associated with this deployment. If non-empty, will be in the following format: `projects/-/serviceAccounts/{account_email}`",
                     "type": "string"
                 },
                 "uid": {
@@ -9017,15 +9237,15 @@
             "type": "object"
         },
         "GoogleCloudApigeeV1GraphQLOperation": {
-            "description": "GraphQLOperation represents the pairing of graphQL operation types and the graphQL operation name.",
+            "description": "Represents the pairing of GraphQL operation types and the GraphQL operation name.",
             "id": "GoogleCloudApigeeV1GraphQLOperation",
             "properties": {
                 "operation": {
-                    "description": "GraphQL operation name, along with operation type which will be used to associate quotas with. If no name is specified, the quota will be applied to all graphQL operations irrespective of their operation names in the payload.",
+                    "description": "GraphQL operation name. The name and operation type will be used to apply quotas. If no name is specified, the quota will be applied to all GraphQL operations irrespective of their operation names in the payload.",
                     "type": "string"
                 },
                 "operationTypes": {
-                    "description": "Required. `query`, `mutation` and `subscription` are the three operation types offered by graphQL. Currently we support only `query` and `mutation`.",
+                    "description": "Required. GraphQL operation types. Valid values include `query` or `mutation`. **Note**: Apigee does not currently support `subscription` types.",
                     "items": {
                         "type": "string"
                     },
@@ -9035,11 +9255,11 @@
             "type": "object"
         },
         "GoogleCloudApigeeV1GraphQLOperationConfig": {
-            "description": "GraphQLOperationConfig binds the resources in a proxy or remote service with the graphQL operation and its associated quota enforcement.",
+            "description": "Binds the resources in a proxy or remote service with the GraphQL operation and its associated quota enforcement.",
             "id": "GoogleCloudApigeeV1GraphQLOperationConfig",
             "properties": {
                 "apiSource": {
-                    "description": "Required. API proxy endpoint or remote service name with which the graphQL operation, and quota are associated.",
+                    "description": "Required. Name of the API proxy endpoint or remote service with which the GraphQL operation and quota are associated.",
                     "type": "string"
                 },
                 "attributes": {
@@ -9050,7 +9270,7 @@
                     "type": "array"
                 },
                 "operations": {
-                    "description": "Required. List of graphQL name/Operation type pairs for the proxy/remote service, upon which quota will applied. If GraphQLOperation operation has only the operation type(s), that would imply that quota will be applied on all graphQL requests irrespective of the graphQL name. **Note**: Currently, we can specify only a single GraphQLOperation. Specifying more than one will result in failure of the operation.",
+                    "description": "Required. List of GraphQL name/operation type pairs for the proxy or remote service to which quota will be applied. If only operation types are specified, the quota will be applied to all GraphQL requests irrespective of the GraphQL name. **Note**: Currently, you can specify only a single GraphQLOperation. Specifying more than one will cause the operation to fail.",
                     "items": {
                         "$ref": "GoogleCloudApigeeV1GraphQLOperation"
                     },
@@ -9058,7 +9278,7 @@
                 },
                 "quota": {
                     "$ref": "GoogleCloudApigeeV1Quota",
-                    "description": "Quota parameters to be enforced for the resources, methods, api_source combination. If none are specified, quota enforcement will not be done."
+                    "description": "Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done."
                 }
             },
             "type": "object"
@@ -9068,7 +9288,7 @@
             "id": "GoogleCloudApigeeV1GraphQLOperationGroup",
             "properties": {
                 "operationConfigType": {
-                    "description": "Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.",
+                    "description": "Flag that specifies whether the configuration is for Apigee API proxy or a remote service. Valid values include `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.",
                     "type": "string"
                 },
                 "operationConfigs": {
@@ -9843,7 +10063,7 @@
             "type": "object"
         },
         "GoogleCloudApigeeV1Operation": {
-            "description": "Operation represents the pairing of REST resource path and the actions (verbs) allowed on the resource path.",
+            "description": "Represents the pairing of REST resource path and the actions (verbs) allowed on the resource path.",
             "id": "GoogleCloudApigeeV1Operation",
             "properties": {
                 "methods": {
@@ -9854,18 +10074,18 @@
                     "type": "array"
                 },
                 "resource": {
-                    "description": "Required. resource represents REST resource path associated with the proxy/remote service.",
+                    "description": "Required. REST resource path associated with the API proxy or remote service.",
                     "type": "string"
                 }
             },
             "type": "object"
         },
         "GoogleCloudApigeeV1OperationConfig": {
-            "description": "OperationConfig binds the resources in a proxy or remote service with the allowed REST methods and its associated quota enforcement.",
+            "description": "Binds the resources in an API proxy or remote service with the allowed REST methods and associated quota enforcement.",
             "id": "GoogleCloudApigeeV1OperationConfig",
             "properties": {
                 "apiSource": {
-                    "description": "Required. API proxy or remote service name with which the resources, methods, and quota are associated.",
+                    "description": "Required. Name of the API proxy or remote service with which the resources, methods, and quota are associated.",
                     "type": "string"
                 },
                 "attributes": {
@@ -9876,7 +10096,7 @@
                     "type": "array"
                 },
                 "operations": {
-                    "description": "List of resource/method pairs for the proxy/remote service, upon which quota will applied. **Note**: Currently, you can specify only a single resource/method pair. The call will fail if more than one resource/method pair is provided.",
+                    "description": "List of resource/method pairs for the API proxy or remote service to which quota will applied. **Note**: Currently, you can specify only a single resource/method pair. The call will fail if more than one resource/method pair is provided.",
                     "items": {
                         "$ref": "GoogleCloudApigeeV1Operation"
                     },
@@ -9884,7 +10104,7 @@
                 },
                 "quota": {
                     "$ref": "GoogleCloudApigeeV1Quota",
-                    "description": "Quota parameters to be enforced for the resources, methods, api_source combination. If none are specified, quota enforcement will not be done."
+                    "description": "Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done."
                 }
             },
             "type": "object"
@@ -9894,7 +10114,7 @@
             "id": "GoogleCloudApigeeV1OperationGroup",
             "properties": {
                 "operationConfigType": {
-                    "description": "Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.",
+                    "description": "Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values include `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.",
                     "type": "string"
                 },
                 "operationConfigs": {
@@ -10455,7 +10675,7 @@
             "type": "object"
         },
         "GoogleCloudApigeeV1Quota": {
-            "description": "Quota contains the essential parameters needed that can be applied on a proxy/remote service, resources and methods combination associated with this API product. While setting of Quota is optional, setting it prevents requests from exceeding the provisioned parameters.",
+            "description": "Quota contains the essential parameters needed that can be applied on the resources, methods, API source combination associated with this API product. While Quota is optional, setting it prevents requests from exceeding the provisioned parameters.",
             "id": "GoogleCloudApigeeV1Quota",
             "properties": {
                 "interval": {

@@ -109,6 +109,7 @@
                     "methods": {
                         "get": {
                             "description": "Gets information about a location.",
+                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}",
                             "httpMethod": "GET",
                             "id": "servicedirectory.projects.locations.get",
                             "parameterOrder": [
@@ -133,6 +134,7 @@
                         },
                         "list": {
                             "description": "Lists information about the supported locations for this service.",
+                            "flatPath": "v1/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "servicedirectory.projects.locations.list",
                             "parameterOrder": [
@@ -177,6 +179,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a namespace, and returns the new namespace.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/namespaces",
                                     "httpMethod": "POST",
                                     "id": "servicedirectory.projects.locations.namespaces.create",
                                     "parameterOrder": [
@@ -209,6 +212,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a namespace. This also deletes all services and endpoints in the namespace.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}",
                                     "httpMethod": "DELETE",
                                     "id": "servicedirectory.projects.locations.namespaces.delete",
                                     "parameterOrder": [
@@ -233,6 +237,7 @@
                                 },
                                 "get": {
                                     "description": "Gets a namespace.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}",
                                     "httpMethod": "GET",
                                     "id": "servicedirectory.projects.locations.namespaces.get",
                                     "parameterOrder": [
@@ -257,6 +262,7 @@
                                 },
                                 "getIamPolicy": {
                                     "description": "Gets the IAM Policy for a resource (namespace or service only).",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}:getIamPolicy",
                                     "httpMethod": "POST",
                                     "id": "servicedirectory.projects.locations.namespaces.getIamPolicy",
                                     "parameterOrder": [
@@ -284,6 +290,7 @@
                                 },
                                 "list": {
                                     "description": "Lists all namespaces.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/namespaces",
                                     "httpMethod": "GET",
                                     "id": "servicedirectory.projects.locations.namespaces.list",
                                     "parameterOrder": [
@@ -329,6 +336,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates a namespace.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}",
                                     "httpMethod": "PATCH",
                                     "id": "servicedirectory.projects.locations.namespaces.patch",
                                     "parameterOrder": [
@@ -362,6 +370,7 @@
                                 },
                                 "setIamPolicy": {
                                     "description": "Sets the IAM Policy for a resource (namespace or service only).",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}:setIamPolicy",
                                     "httpMethod": "POST",
                                     "id": "servicedirectory.projects.locations.namespaces.setIamPolicy",
                                     "parameterOrder": [
@@ -389,6 +398,7 @@
                                 },
                                 "testIamPermissions": {
                                     "description": "Tests IAM permissions for a resource (namespace or service only).",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}:testIamPermissions",
                                     "httpMethod": "POST",
                                     "id": "servicedirectory.projects.locations.namespaces.testIamPermissions",
                                     "parameterOrder": [
@@ -420,6 +430,7 @@
                                     "methods": {
                                         "create": {
                                             "description": "Creates a service, and returns the new service.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}/services",
                                             "httpMethod": "POST",
                                             "id": "servicedirectory.projects.locations.namespaces.services.create",
                                             "parameterOrder": [
@@ -452,6 +463,7 @@
                                         },
                                         "delete": {
                                             "description": "Deletes a service. This also deletes all endpoints associated with the service.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}/services/{servicesId}",
                                             "httpMethod": "DELETE",
                                             "id": "servicedirectory.projects.locations.namespaces.services.delete",
                                             "parameterOrder": [
@@ -476,6 +488,7 @@
                                         },
                                         "get": {
                                             "description": "Gets a service.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}/services/{servicesId}",
                                             "httpMethod": "GET",
                                             "id": "servicedirectory.projects.locations.namespaces.services.get",
                                             "parameterOrder": [
@@ -500,6 +513,7 @@
                                         },
                                         "getIamPolicy": {
                                             "description": "Gets the IAM Policy for a resource (namespace or service only).",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}/services/{servicesId}:getIamPolicy",
                                             "httpMethod": "POST",
                                             "id": "servicedirectory.projects.locations.namespaces.services.getIamPolicy",
                                             "parameterOrder": [
@@ -527,6 +541,7 @@
                                         },
                                         "list": {
                                             "description": "Lists all services belonging to a namespace.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}/services",
                                             "httpMethod": "GET",
                                             "id": "servicedirectory.projects.locations.namespaces.services.list",
                                             "parameterOrder": [
@@ -572,6 +587,7 @@
                                         },
                                         "patch": {
                                             "description": "Updates a service.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}/services/{servicesId}",
                                             "httpMethod": "PATCH",
                                             "id": "servicedirectory.projects.locations.namespaces.services.patch",
                                             "parameterOrder": [
@@ -605,6 +621,7 @@
                                         },
                                         "resolve": {
                                             "description": "Returns a service and its associated endpoints. Resolving a service is not considered an active developer method.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}/services/{servicesId}:resolve",
                                             "httpMethod": "POST",
                                             "id": "servicedirectory.projects.locations.namespaces.services.resolve",
                                             "parameterOrder": [
@@ -632,6 +649,7 @@
                                         },
                                         "setIamPolicy": {
                                             "description": "Sets the IAM Policy for a resource (namespace or service only).",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}/services/{servicesId}:setIamPolicy",
                                             "httpMethod": "POST",
                                             "id": "servicedirectory.projects.locations.namespaces.services.setIamPolicy",
                                             "parameterOrder": [
@@ -659,6 +677,7 @@
                                         },
                                         "testIamPermissions": {
                                             "description": "Tests IAM permissions for a resource (namespace or service only).",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}/services/{servicesId}:testIamPermissions",
                                             "httpMethod": "POST",
                                             "id": "servicedirectory.projects.locations.namespaces.services.testIamPermissions",
                                             "parameterOrder": [
@@ -690,6 +709,7 @@
                                             "methods": {
                                                 "create": {
                                                     "description": "Creates an endpoint, and returns the new endpoint.",
+                                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}/services/{servicesId}/endpoints",
                                                     "httpMethod": "POST",
                                                     "id": "servicedirectory.projects.locations.namespaces.services.endpoints.create",
                                                     "parameterOrder": [
@@ -722,6 +742,7 @@
                                                 },
                                                 "delete": {
                                                     "description": "Deletes an endpoint.",
+                                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}/services/{servicesId}/endpoints/{endpointsId}",
                                                     "httpMethod": "DELETE",
                                                     "id": "servicedirectory.projects.locations.namespaces.services.endpoints.delete",
                                                     "parameterOrder": [
@@ -746,6 +767,7 @@
                                                 },
                                                 "get": {
                                                     "description": "Gets an endpoint.",
+                                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}/services/{servicesId}/endpoints/{endpointsId}",
                                                     "httpMethod": "GET",
                                                     "id": "servicedirectory.projects.locations.namespaces.services.endpoints.get",
                                                     "parameterOrder": [
@@ -770,6 +792,7 @@
                                                 },
                                                 "list": {
                                                     "description": "Lists all endpoints.",
+                                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}/services/{servicesId}/endpoints",
                                                     "httpMethod": "GET",
                                                     "id": "servicedirectory.projects.locations.namespaces.services.endpoints.list",
                                                     "parameterOrder": [
@@ -815,6 +838,7 @@
                                                 },
                                                 "patch": {
                                                     "description": "Updates an endpoint.",
+                                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}/services/{servicesId}/endpoints/{endpointsId}",
                                                     "httpMethod": "PATCH",
                                                     "id": "servicedirectory.projects.locations.namespaces.services.endpoints.patch",
                                                     "parameterOrder": [
@@ -857,7 +881,7 @@
             }
         }
     },
-    "revision": "20210505",
+    "revision": "20210602",
     "rootUrl": "https://servicedirectory.googleapis.com/",
     "schemas": {
         "Binding": {

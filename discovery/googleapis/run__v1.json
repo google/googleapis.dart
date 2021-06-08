@@ -109,6 +109,7 @@
                     "methods": {
                         "list": {
                             "description": "List authorized domains.",
+                            "flatPath": "apis/domains.cloudrun.com/v1/namespaces/{namespacesId}/authorizeddomains",
                             "httpMethod": "GET",
                             "id": "run.namespaces.authorizeddomains.list",
                             "parameterOrder": [
@@ -148,6 +149,7 @@
                     "methods": {
                         "get": {
                             "description": "Get information about a configuration.",
+                            "flatPath": "apis/serving.knative.dev/v1/namespaces/{namespacesId}/configurations/{configurationsId}",
                             "httpMethod": "GET",
                             "id": "run.namespaces.configurations.get",
                             "parameterOrder": [
@@ -172,6 +174,7 @@
                         },
                         "list": {
                             "description": "List configurations.",
+                            "flatPath": "apis/serving.knative.dev/v1/namespaces/{namespacesId}/configurations",
                             "httpMethod": "GET",
                             "id": "run.namespaces.configurations.list",
                             "parameterOrder": [
@@ -236,6 +239,7 @@
                     "methods": {
                         "create": {
                             "description": "Create a new domain mapping.",
+                            "flatPath": "apis/domains.cloudrun.com/v1/namespaces/{namespacesId}/domainmappings",
                             "httpMethod": "POST",
                             "id": "run.namespaces.domainmappings.create",
                             "parameterOrder": [
@@ -268,6 +272,7 @@
                         },
                         "delete": {
                             "description": "Delete a domain mapping.",
+                            "flatPath": "apis/domains.cloudrun.com/v1/namespaces/{namespacesId}/domainmappings/{domainmappingsId}",
                             "httpMethod": "DELETE",
                             "id": "run.namespaces.domainmappings.delete",
                             "parameterOrder": [
@@ -312,6 +317,7 @@
                         },
                         "get": {
                             "description": "Get information about a domain mapping.",
+                            "flatPath": "apis/domains.cloudrun.com/v1/namespaces/{namespacesId}/domainmappings/{domainmappingsId}",
                             "httpMethod": "GET",
                             "id": "run.namespaces.domainmappings.get",
                             "parameterOrder": [
@@ -336,6 +342,7 @@
                         },
                         "list": {
                             "description": "List domain mappings.",
+                            "flatPath": "apis/domains.cloudrun.com/v1/namespaces/{namespacesId}/domainmappings",
                             "httpMethod": "GET",
                             "id": "run.namespaces.domainmappings.list",
                             "parameterOrder": [
@@ -400,6 +407,7 @@
                     "methods": {
                         "delete": {
                             "description": "Delete a revision.",
+                            "flatPath": "apis/serving.knative.dev/v1/namespaces/{namespacesId}/revisions/{revisionsId}",
                             "httpMethod": "DELETE",
                             "id": "run.namespaces.revisions.delete",
                             "parameterOrder": [
@@ -444,6 +452,7 @@
                         },
                         "get": {
                             "description": "Get information about a revision.",
+                            "flatPath": "apis/serving.knative.dev/v1/namespaces/{namespacesId}/revisions/{revisionsId}",
                             "httpMethod": "GET",
                             "id": "run.namespaces.revisions.get",
                             "parameterOrder": [
@@ -468,6 +477,7 @@
                         },
                         "list": {
                             "description": "List revisions.",
+                            "flatPath": "apis/serving.knative.dev/v1/namespaces/{namespacesId}/revisions",
                             "httpMethod": "GET",
                             "id": "run.namespaces.revisions.list",
                             "parameterOrder": [
@@ -532,6 +542,7 @@
                     "methods": {
                         "get": {
                             "description": "Get information about a route.",
+                            "flatPath": "apis/serving.knative.dev/v1/namespaces/{namespacesId}/routes/{routesId}",
                             "httpMethod": "GET",
                             "id": "run.namespaces.routes.get",
                             "parameterOrder": [
@@ -556,6 +567,7 @@
                         },
                         "list": {
                             "description": "List routes.",
+                            "flatPath": "apis/serving.knative.dev/v1/namespaces/{namespacesId}/routes",
                             "httpMethod": "GET",
                             "id": "run.namespaces.routes.list",
                             "parameterOrder": [
@@ -620,6 +632,7 @@
                     "methods": {
                         "create": {
                             "description": "Create a service.",
+                            "flatPath": "apis/serving.knative.dev/v1/namespaces/{namespacesId}/services",
                             "httpMethod": "POST",
                             "id": "run.namespaces.services.create",
                             "parameterOrder": [
@@ -652,6 +665,7 @@
                         },
                         "delete": {
                             "description": "Delete a service. This will cause the Service to stop serving traffic and will delete the child entities like Routes, Configurations and Revisions.",
+                            "flatPath": "apis/serving.knative.dev/v1/namespaces/{namespacesId}/services/{servicesId}",
                             "httpMethod": "DELETE",
                             "id": "run.namespaces.services.delete",
                             "parameterOrder": [
@@ -696,6 +710,7 @@
                         },
                         "get": {
                             "description": "Get information about a service.",
+                            "flatPath": "apis/serving.knative.dev/v1/namespaces/{namespacesId}/services/{servicesId}",
                             "httpMethod": "GET",
                             "id": "run.namespaces.services.get",
                             "parameterOrder": [
@@ -720,6 +735,7 @@
                         },
                         "list": {
                             "description": "List services.",
+                            "flatPath": "apis/serving.knative.dev/v1/namespaces/{namespacesId}/services",
                             "httpMethod": "GET",
                             "id": "run.namespaces.services.list",
                             "parameterOrder": [
@@ -780,6 +796,7 @@
                         },
                         "replaceService": {
                             "description": "Replace a service. Only the spec and metadata labels and annotations are modifiable. After the Update request, Cloud Run will work to make the 'status' match the requested 'spec'. May provide metadata.resourceVersion to enforce update from last read for optimistic concurrency control.",
+                            "flatPath": "apis/serving.knative.dev/v1/namespaces/{namespacesId}/services/{servicesId}",
                             "httpMethod": "PUT",
                             "id": "run.namespaces.services.replaceService",
                             "parameterOrder": [
@@ -820,6 +837,7 @@
                     "methods": {
                         "list": {
                             "description": "List authorized domains.",
+                            "flatPath": "v1/projects/{projectsId}/authorizeddomains",
                             "httpMethod": "GET",
                             "id": "run.projects.authorizeddomains.list",
                             "parameterOrder": [
@@ -859,6 +877,7 @@
                     "methods": {
                         "list": {
                             "description": "Lists information about the supported locations for this service.",
+                            "flatPath": "v1/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "run.projects.locations.list",
                             "parameterOrder": [
@@ -903,6 +922,7 @@
                             "methods": {
                                 "list": {
                                     "description": "List authorized domains.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/authorizeddomains",
                                     "httpMethod": "GET",
                                     "id": "run.projects.locations.authorizeddomains.list",
                                     "parameterOrder": [
@@ -942,6 +962,7 @@
                             "methods": {
                                 "get": {
                                     "description": "Get information about a configuration.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/configurations/{configurationsId}",
                                     "httpMethod": "GET",
                                     "id": "run.projects.locations.configurations.get",
                                     "parameterOrder": [
@@ -966,6 +987,7 @@
                                 },
                                 "list": {
                                     "description": "List configurations.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/configurations",
                                     "httpMethod": "GET",
                                     "id": "run.projects.locations.configurations.list",
                                     "parameterOrder": [
@@ -1030,6 +1052,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Create a new domain mapping.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/domainmappings",
                                     "httpMethod": "POST",
                                     "id": "run.projects.locations.domainmappings.create",
                                     "parameterOrder": [
@@ -1062,6 +1085,7 @@
                                 },
                                 "delete": {
                                     "description": "Delete a domain mapping.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/domainmappings/{domainmappingsId}",
                                     "httpMethod": "DELETE",
                                     "id": "run.projects.locations.domainmappings.delete",
                                     "parameterOrder": [
@@ -1106,6 +1130,7 @@
                                 },
                                 "get": {
                                     "description": "Get information about a domain mapping.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/domainmappings/{domainmappingsId}",
                                     "httpMethod": "GET",
                                     "id": "run.projects.locations.domainmappings.get",
                                     "parameterOrder": [
@@ -1130,6 +1155,7 @@
                                 },
                                 "list": {
                                     "description": "List domain mappings.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/domainmappings",
                                     "httpMethod": "GET",
                                     "id": "run.projects.locations.domainmappings.list",
                                     "parameterOrder": [
@@ -1194,6 +1220,7 @@
                             "methods": {
                                 "delete": {
                                     "description": "Delete a revision.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/revisions/{revisionsId}",
                                     "httpMethod": "DELETE",
                                     "id": "run.projects.locations.revisions.delete",
                                     "parameterOrder": [
@@ -1238,6 +1265,7 @@
                                 },
                                 "get": {
                                     "description": "Get information about a revision.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/revisions/{revisionsId}",
                                     "httpMethod": "GET",
                                     "id": "run.projects.locations.revisions.get",
                                     "parameterOrder": [
@@ -1262,6 +1290,7 @@
                                 },
                                 "list": {
                                     "description": "List revisions.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/revisions",
                                     "httpMethod": "GET",
                                     "id": "run.projects.locations.revisions.list",
                                     "parameterOrder": [
@@ -1326,6 +1355,7 @@
                             "methods": {
                                 "get": {
                                     "description": "Get information about a route.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/routes/{routesId}",
                                     "httpMethod": "GET",
                                     "id": "run.projects.locations.routes.get",
                                     "parameterOrder": [
@@ -1350,6 +1380,7 @@
                                 },
                                 "list": {
                                     "description": "List routes.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/routes",
                                     "httpMethod": "GET",
                                     "id": "run.projects.locations.routes.list",
                                     "parameterOrder": [
@@ -1414,6 +1445,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Create a service.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/services",
                                     "httpMethod": "POST",
                                     "id": "run.projects.locations.services.create",
                                     "parameterOrder": [
@@ -1446,6 +1478,7 @@
                                 },
                                 "delete": {
                                     "description": "Delete a service. This will cause the Service to stop serving traffic and will delete the child entities like Routes, Configurations and Revisions.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/services/{servicesId}",
                                     "httpMethod": "DELETE",
                                     "id": "run.projects.locations.services.delete",
                                     "parameterOrder": [
@@ -1490,6 +1523,7 @@
                                 },
                                 "get": {
                                     "description": "Get information about a service.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/services/{servicesId}",
                                     "httpMethod": "GET",
                                     "id": "run.projects.locations.services.get",
                                     "parameterOrder": [
@@ -1514,6 +1548,7 @@
                                 },
                                 "getIamPolicy": {
                                     "description": "Get the IAM Access Control policy currently in effect for the given Cloud Run service. This result does not include any inherited policies.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/services/{servicesId}:getIamPolicy",
                                     "httpMethod": "GET",
                                     "id": "run.projects.locations.services.getIamPolicy",
                                     "parameterOrder": [
@@ -1544,6 +1579,7 @@
                                 },
                                 "list": {
                                     "description": "List services.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/services",
                                     "httpMethod": "GET",
                                     "id": "run.projects.locations.services.list",
                                     "parameterOrder": [
@@ -1604,6 +1640,7 @@
                                 },
                                 "replaceService": {
                                     "description": "Replace a service. Only the spec and metadata labels and annotations are modifiable. After the Update request, Cloud Run will work to make the 'status' match the requested 'spec'. May provide metadata.resourceVersion to enforce update from last read for optimistic concurrency control.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/services/{servicesId}",
                                     "httpMethod": "PUT",
                                     "id": "run.projects.locations.services.replaceService",
                                     "parameterOrder": [
@@ -1636,6 +1673,7 @@
                                 },
                                 "setIamPolicy": {
                                     "description": "Sets the IAM Access control policy for the specified Service. Overwrites any existing policy.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/services/{servicesId}:setIamPolicy",
                                     "httpMethod": "POST",
                                     "id": "run.projects.locations.services.setIamPolicy",
                                     "parameterOrder": [
@@ -1663,6 +1701,7 @@
                                 },
                                 "testIamPermissions": {
                                     "description": "Returns permissions that a caller has on the specified Project. There are no permissions required for making this API call.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/services/{servicesId}:testIamPermissions",
                                     "httpMethod": "POST",
                                     "id": "run.projects.locations.services.testIamPermissions",
                                     "parameterOrder": [
@@ -1695,7 +1734,7 @@
             }
         }
     },
-    "revision": "20210517",
+    "revision": "20210604",
     "rootUrl": "https://run.googleapis.com/",
     "schemas": {
         "Addressable": {

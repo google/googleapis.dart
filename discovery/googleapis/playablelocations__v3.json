@@ -98,6 +98,7 @@
             "methods": {
                 "logImpressions": {
                     "description": "Logs new events when playable locations are displayed, and when they are interacted with. Impressions are not partially saved; either all impressions are saved and this request succeeds, or no impressions are saved, and this request fails.",
+                    "flatPath": "v3:logImpressions",
                     "httpMethod": "POST",
                     "id": "playablelocations.logImpressions",
                     "parameterOrder": [],
@@ -112,6 +113,7 @@
                 },
                 "logPlayerReports": {
                     "description": "Logs bad playable location reports submitted by players. Reports are not partially saved; either all reports are saved and this request succeeds, or no reports are saved, and this request fails.",
+                    "flatPath": "v3:logPlayerReports",
                     "httpMethod": "POST",
                     "id": "playablelocations.logPlayerReports",
                     "parameterOrder": [],
@@ -126,6 +128,7 @@
                 },
                 "samplePlayableLocations": {
                     "description": "Returns a set of playable locations that lie within a specified area, that satisfy optional filter criteria. Note: Identical `SamplePlayableLocations` requests can return different results as the state of the world changes over time.",
+                    "flatPath": "v3:samplePlayableLocations",
                     "httpMethod": "POST",
                     "id": "playablelocations.samplePlayableLocations",
                     "parameterOrder": [],
@@ -141,7 +144,7 @@
             }
         }
     },
-    "revision": "20210520",
+    "revision": "20210614",
     "rootUrl": "https://playablelocations.googleapis.com/",
     "schemas": {
         "GoogleMapsPlayablelocationsV3Impression": {

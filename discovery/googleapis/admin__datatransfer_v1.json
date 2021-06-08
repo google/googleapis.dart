@@ -111,6 +111,7 @@
             "methods": {
                 "get": {
                     "description": "Retrieves information about an application for the given application ID.",
+                    "flatPath": "admin/datatransfer/v1/applications/{applicationId}",
                     "httpMethod": "GET",
                     "id": "datatransfer.applications.get",
                     "parameterOrder": [
@@ -136,6 +137,7 @@
                 },
                 "list": {
                     "description": "Lists the applications available for data transfer for a customer.",
+                    "flatPath": "admin/datatransfer/v1/applications",
                     "httpMethod": "GET",
                     "id": "datatransfer.applications.list",
                     "parameterOrder": [],
@@ -174,6 +176,7 @@
             "methods": {
                 "get": {
                     "description": "Retrieves a data transfer request by its resource ID.",
+                    "flatPath": "admin/datatransfer/v1/transfers/{dataTransferId}",
                     "httpMethod": "GET",
                     "id": "datatransfer.transfers.get",
                     "parameterOrder": [
@@ -198,6 +201,7 @@
                 },
                 "insert": {
                     "description": "Inserts a data transfer request.",
+                    "flatPath": "admin/datatransfer/v1/transfers",
                     "httpMethod": "POST",
                     "id": "datatransfer.transfers.insert",
                     "parameterOrder": [],
@@ -215,6 +219,7 @@
                 },
                 "list": {
                     "description": "Lists the transfers for a customer by source user, destination user, or status.",
+                    "flatPath": "admin/datatransfer/v1/transfers",
                     "httpMethod": "GET",
                     "id": "datatransfer.transfers.list",
                     "parameterOrder": [],
@@ -265,7 +270,7 @@
             }
         }
     },
-    "revision": "20210511",
+    "revision": "20210615",
     "rootUrl": "https://admin.googleapis.com/",
     "schemas": {
         "Application": {

@@ -107,6 +107,7 @@
             "methods": {
                 "get": {
                     "description": "Gets a specific domain registered by the client. Returns NOT_FOUND if the domain does not exist.",
+                    "flatPath": "v1/domains/{domainsId}",
                     "httpMethod": "GET",
                     "id": "gmailpostmastertools.domains.get",
                     "parameterOrder": [
@@ -131,6 +132,7 @@
                 },
                 "list": {
                     "description": "Lists the domains that have been registered by the client. The order of domains in the response is unspecified and non-deterministic. Newly created domains will not necessarily be added to the end of this list.",
+                    "flatPath": "v1/domains",
                     "httpMethod": "GET",
                     "id": "gmailpostmastertools.domains.list",
                     "parameterOrder": [],
@@ -161,6 +163,7 @@
                     "methods": {
                         "get": {
                             "description": "Get traffic statistics for a domain on a specific date. Returns PERMISSION_DENIED if user does not have permission to access TrafficStats for the domain.",
+                            "flatPath": "v1/domains/{domainsId}/trafficStats/{trafficStatsId}",
                             "httpMethod": "GET",
                             "id": "gmailpostmastertools.domains.trafficStats.get",
                             "parameterOrder": [
@@ -185,6 +188,7 @@
                         },
                         "list": {
                             "description": "List traffic statistics for all available days. Returns PERMISSION_DENIED if user does not have permission to access TrafficStats for the domain.",
+                            "flatPath": "v1/domains/{domainsId}/trafficStats",
                             "httpMethod": "GET",
                             "id": "gmailpostmastertools.domains.trafficStats.list",
                             "parameterOrder": [
@@ -259,7 +263,7 @@
             }
         }
     },
-    "revision": "20210520",
+    "revision": "20210614",
     "rootUrl": "https://gmailpostmastertools.googleapis.com/",
     "schemas": {
         "DeliveryError": {

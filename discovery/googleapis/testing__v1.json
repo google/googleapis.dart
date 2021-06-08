@@ -109,6 +109,7 @@
             "methods": {
                 "getApkDetails": {
                     "description": "Gets the details of an Android application APK.",
+                    "flatPath": "v1/applicationDetailService/getApkDetails",
                     "httpMethod": "POST",
                     "id": "testing.applicationDetailService.getApkDetails",
                     "parameterOrder": [],
@@ -132,6 +133,7 @@
                     "methods": {
                         "cancel": {
                             "description": "Cancels unfinished test executions in a test matrix. This call returns immediately and cancellation proceeds asynchronously. If the matrix is already final, this operation will have no effect. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Test Matrix does not exist",
+                            "flatPath": "v1/projects/{projectId}/testMatrices/{testMatrixId}:cancel",
                             "httpMethod": "POST",
                             "id": "testing.projects.testMatrices.cancel",
                             "parameterOrder": [
@@ -162,6 +164,7 @@
                         },
                         "create": {
                             "description": "Creates and runs a matrix of tests according to the given specifications. Unsupported environments will be returned in the state UNSUPPORTED. A test matrix is limited to use at most 2000 devices in parallel. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed or if the matrix tries to use too many simultaneous devices.",
+                            "flatPath": "v1/projects/{projectId}/testMatrices",
                             "httpMethod": "POST",
                             "id": "testing.projects.testMatrices.create",
                             "parameterOrder": [
@@ -193,6 +196,7 @@
                         },
                         "get": {
                             "description": "Checks the status of a test matrix. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Test Matrix does not exist",
+                            "flatPath": "v1/projects/{projectId}/testMatrices/{testMatrixId}",
                             "httpMethod": "GET",
                             "id": "testing.projects.testMatrices.get",
                             "parameterOrder": [
@@ -230,6 +234,7 @@
             "methods": {
                 "get": {
                     "description": "Gets the catalog of supported test environments. May return any of the following canonical error codes: - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the environment type does not exist - INTERNAL - if an internal error occurred",
+                    "flatPath": "v1/testEnvironmentCatalog/{environmentType}",
                     "httpMethod": "GET",
                     "id": "testing.testEnvironmentCatalog.get",
                     "parameterOrder": [
@@ -276,7 +281,7 @@
             }
         }
     },
-    "revision": "20210510",
+    "revision": "20210607",
     "rootUrl": "https://testing.googleapis.com/",
     "schemas": {
         "Account": {

@@ -107,6 +107,7 @@
             "methods": {
                 "batchDelete": {
                     "description": "Performs batch delete operation on alerts.",
+                    "flatPath": "v1beta1/alerts:batchDelete",
                     "httpMethod": "POST",
                     "id": "alertcenter.alerts.batchDelete",
                     "parameterOrder": [],
@@ -124,6 +125,7 @@
                 },
                 "batchUndelete": {
                     "description": "Performs batch undelete operation on alerts.",
+                    "flatPath": "v1beta1/alerts:batchUndelete",
                     "httpMethod": "POST",
                     "id": "alertcenter.alerts.batchUndelete",
                     "parameterOrder": [],
@@ -141,6 +143,7 @@
                 },
                 "delete": {
                     "description": "Marks the specified alert for deletion. An alert that has been marked for deletion is removed from Alert Center after 30 days. Marking an alert for deletion has no effect on an alert which has already been marked for deletion. Attempting to mark a nonexistent alert for deletion results in a `NOT_FOUND` error.",
+                    "flatPath": "v1beta1/alerts/{alertId}",
                     "httpMethod": "DELETE",
                     "id": "alertcenter.alerts.delete",
                     "parameterOrder": [
@@ -169,6 +172,7 @@
                 },
                 "get": {
                     "description": "Gets the specified alert. Attempting to get a nonexistent alert returns `NOT_FOUND` error.",
+                    "flatPath": "v1beta1/alerts/{alertId}",
                     "httpMethod": "GET",
                     "id": "alertcenter.alerts.get",
                     "parameterOrder": [
@@ -197,6 +201,7 @@
                 },
                 "getMetadata": {
                     "description": "Returns the metadata of an alert. Attempting to get metadata for a non-existent alert returns `NOT_FOUND` error.",
+                    "flatPath": "v1beta1/alerts/{alertId}/metadata",
                     "httpMethod": "GET",
                     "id": "alertcenter.alerts.getMetadata",
                     "parameterOrder": [
@@ -225,6 +230,7 @@
                 },
                 "list": {
                     "description": "Lists the alerts.",
+                    "flatPath": "v1beta1/alerts",
                     "httpMethod": "GET",
                     "id": "alertcenter.alerts.list",
                     "parameterOrder": [],
@@ -235,7 +241,7 @@
                             "type": "string"
                         },
                         "filter": {
-                            "description": "Optional. A query string for filtering alert results. For more details, see [Query filters](/admin-sdk/alertcenter/guides/query-filters) and [Supported query filter fields](/admin-sdk/alertcenter/reference/filter-fields#alerts.list).",
+                            "description": "Optional. A query string for filtering alert results. For more details, see [Query filters](https://developers.google.com/admin-sdk/alertcenter/guides/query-filters) and [Supported query filter fields](https://developers.google.com/admin-sdk/alertcenter/reference/filter-fields#alerts.list).",
                             "location": "query",
                             "type": "string"
                         },
@@ -266,6 +272,7 @@
                 },
                 "undelete": {
                     "description": "Restores, or \"undeletes\", an alert that was marked for deletion within the past 30 days. Attempting to undelete an alert which was marked for deletion over 30 days ago (which has been removed from the Alert Center database) or a nonexistent alert returns a `NOT_FOUND` error. Attempting to undelete an alert which has not been marked for deletion has no effect.",
+                    "flatPath": "v1beta1/alerts/{alertId}:undelete",
                     "httpMethod": "POST",
                     "id": "alertcenter.alerts.undelete",
                     "parameterOrder": [
@@ -296,6 +303,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates new feedback for an alert. Attempting to create a feedback for a non-existent alert returns `NOT_FOUND` error. Attempting to create a feedback for an alert that is marked for deletion returns `FAILED_PRECONDITION' error.",
+                            "flatPath": "v1beta1/alerts/{alertId}/feedback",
                             "httpMethod": "POST",
                             "id": "alertcenter.alerts.feedback.create",
                             "parameterOrder": [
@@ -327,6 +335,7 @@
                         },
                         "list": {
                             "description": "Lists all the feedback for an alert. Attempting to list feedbacks for a non-existent alert returns `NOT_FOUND` error.",
+                            "flatPath": "v1beta1/alerts/{alertId}/feedback",
                             "httpMethod": "GET",
                             "id": "alertcenter.alerts.feedback.list",
                             "parameterOrder": [
@@ -345,7 +354,7 @@
                                     "type": "string"
                                 },
                                 "filter": {
-                                    "description": "Optional. A query string for filtering alert feedback results. For more details, see [Query filters](/admin-sdk/alertcenter/guides/query-filters) and [Supported query filter fields](/admin-sdk/alertcenter/reference/filter-fields#alerts.feedback.list).",
+                                    "description": "Optional. A query string for filtering alert feedback results. For more details, see [Query filters](https://developers.google.com/admin-sdk/alertcenter/guides/query-filters) and [Supported query filter fields](https://developers.google.com/admin-sdk/alertcenter/reference/filter-fields#alerts.feedback.list).",
                                     "location": "query",
                                     "type": "string"
                                 }
@@ -366,6 +375,7 @@
             "methods": {
                 "getSettings": {
                     "description": "Returns customer-level settings.",
+                    "flatPath": "v1beta1/settings",
                     "httpMethod": "GET",
                     "id": "alertcenter.getSettings",
                     "parameterOrder": [],
@@ -386,6 +396,7 @@
                 },
                 "updateSettings": {
                     "description": "Updates the customer-level settings.",
+                    "flatPath": "v1beta1/settings",
                     "httpMethod": "PATCH",
                     "id": "alertcenter.updateSettings",
                     "parameterOrder": [],
@@ -410,7 +421,7 @@
             }
         }
     },
-    "revision": "20210512",
+    "revision": "20210601",
     "rootUrl": "https://alertcenter.googleapis.com/",
     "schemas": {
         "AccountWarning": {
@@ -545,7 +556,7 @@
                     "type": "string"
                 },
                 "source": {
-                    "description": "Required. A unique identifier for the system that reported the alert. This is output only after alert is created. Supported sources are any of the following: * Google Operations * Mobile device management * Gmail phishing * Domain wide takeout * State sponsored attack * Google identity",
+                    "description": "Required. A unique identifier for the system that reported the alert. This is output only after alert is created. Supported sources are any of the following: * Google Operations * Mobile device management * Gmail phishing * Data Loss Prevention * Domain wide takeout * State sponsored attack * Google identity",
                     "type": "string"
                 },
                 "startTime": {
@@ -554,7 +565,7 @@
                     "type": "string"
                 },
                 "type": {
-                    "description": "Required. The type of the alert. This is output only after alert is created. For a list of available alert types see [Google Workspace Alert types](/admin-sdk/alertcenter/reference/alert-types).",
+                    "description": "Required. The type of the alert. This is output only after alert is created. For a list of available alert types see [Google Workspace Alert types](https://developers.google.com/admin-sdk/alertcenter/reference/alert-types).",
                     "type": "string"
                 },
                 "updateTime": {
@@ -1140,7 +1151,7 @@
             "type": "object"
         },
         "Notification": {
-            "description": "Settings for callback notifications. For more details see [Google Workspace Alert Notification](/admin-sdk/alertcenter/guides/notifications).",
+            "description": "Settings for callback notifications. For more details see [Google Workspace Alert Notification](https://developers.google.com/admin-sdk/alertcenter/guides/notifications).",
             "id": "Notification",
             "properties": {
                 "cloudPubsubTopic": {

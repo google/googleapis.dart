@@ -114,6 +114,7 @@
                             "methods": {
                                 "bindDeviceToGateway": {
                                     "description": "Associates the device with the gateway.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}:bindDeviceToGateway",
                                     "httpMethod": "POST",
                                     "id": "cloudiot.projects.locations.registries.bindDeviceToGateway",
                                     "parameterOrder": [
@@ -142,6 +143,7 @@
                                 },
                                 "create": {
                                     "description": "Creates a device registry that contains devices.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries",
                                     "httpMethod": "POST",
                                     "id": "cloudiot.projects.locations.registries.create",
                                     "parameterOrder": [
@@ -170,6 +172,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a device registry configuration.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}",
                                     "httpMethod": "DELETE",
                                     "id": "cloudiot.projects.locations.registries.delete",
                                     "parameterOrder": [
@@ -195,6 +198,7 @@
                                 },
                                 "get": {
                                     "description": "Gets a device registry configuration.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}",
                                     "httpMethod": "GET",
                                     "id": "cloudiot.projects.locations.registries.get",
                                     "parameterOrder": [
@@ -220,6 +224,7 @@
                                 },
                                 "getIamPolicy": {
                                     "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}:getIamPolicy",
                                     "httpMethod": "POST",
                                     "id": "cloudiot.projects.locations.registries.getIamPolicy",
                                     "parameterOrder": [
@@ -248,6 +253,7 @@
                                 },
                                 "list": {
                                     "description": "Lists device registries.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries",
                                     "httpMethod": "GET",
                                     "id": "cloudiot.projects.locations.registries.list",
                                     "parameterOrder": [
@@ -284,6 +290,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates a device registry configuration.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}",
                                     "httpMethod": "PATCH",
                                     "id": "cloudiot.projects.locations.registries.patch",
                                     "parameterOrder": [
@@ -318,6 +325,7 @@
                                 },
                                 "setIamPolicy": {
                                     "description": "Sets the access control policy on the specified resource. Replaces any existing policy.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}:setIamPolicy",
                                     "httpMethod": "POST",
                                     "id": "cloudiot.projects.locations.registries.setIamPolicy",
                                     "parameterOrder": [
@@ -346,6 +354,7 @@
                                 },
                                 "testIamPermissions": {
                                     "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}:testIamPermissions",
                                     "httpMethod": "POST",
                                     "id": "cloudiot.projects.locations.registries.testIamPermissions",
                                     "parameterOrder": [
@@ -374,6 +383,7 @@
                                 },
                                 "unbindDeviceFromGateway": {
                                     "description": "Deletes the association between the device and the gateway.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}:unbindDeviceFromGateway",
                                     "httpMethod": "POST",
                                     "id": "cloudiot.projects.locations.registries.unbindDeviceFromGateway",
                                     "parameterOrder": [
@@ -406,6 +416,7 @@
                                     "methods": {
                                         "create": {
                                             "description": "Creates a device in a device registry.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}/devices",
                                             "httpMethod": "POST",
                                             "id": "cloudiot.projects.locations.registries.devices.create",
                                             "parameterOrder": [
@@ -434,6 +445,7 @@
                                         },
                                         "delete": {
                                             "description": "Deletes a device.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}/devices/{devicesId}",
                                             "httpMethod": "DELETE",
                                             "id": "cloudiot.projects.locations.registries.devices.delete",
                                             "parameterOrder": [
@@ -459,6 +471,7 @@
                                         },
                                         "get": {
                                             "description": "Gets details about a device.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}/devices/{devicesId}",
                                             "httpMethod": "GET",
                                             "id": "cloudiot.projects.locations.registries.devices.get",
                                             "parameterOrder": [
@@ -490,6 +503,7 @@
                                         },
                                         "list": {
                                             "description": "List devices in a device registry.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}/devices",
                                             "httpMethod": "GET",
                                             "id": "cloudiot.projects.locations.registries.devices.list",
                                             "parameterOrder": [
@@ -570,6 +584,7 @@
                                         },
                                         "modifyCloudToDeviceConfig": {
                                             "description": "Modifies the configuration for the device, which is eventually sent from the Cloud IoT Core servers. Returns the modified configuration version and its metadata.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}/devices/{devicesId}:modifyCloudToDeviceConfig",
                                             "httpMethod": "POST",
                                             "id": "cloudiot.projects.locations.registries.devices.modifyCloudToDeviceConfig",
                                             "parameterOrder": [
@@ -598,6 +613,7 @@
                                         },
                                         "patch": {
                                             "description": "Updates a device.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}/devices/{devicesId}",
                                             "httpMethod": "PATCH",
                                             "id": "cloudiot.projects.locations.registries.devices.patch",
                                             "parameterOrder": [
@@ -632,6 +648,7 @@
                                         },
                                         "sendCommandToDevice": {
                                             "description": "Sends a command to the specified device. In order for a device to be able to receive commands, it must: 1) be connected to Cloud IoT Core using the MQTT protocol, and 2) be subscribed to the group of MQTT topics specified by /devices/{device-id}/commands/#. This subscription will receive commands at the top-level topic /devices/{device-id}/commands as well as commands for subfolders, like /devices/{device-id}/commands/subfolder. Note that subscribing to specific subfolders is not supported. If the command could not be delivered to the device, this method will return an error; in particular, if the device is not subscribed, this method will return FAILED_PRECONDITION. Otherwise, this method will return OK. If the subscription is QoS 1, at least once delivery will be guaranteed; for QoS 0, no acknowledgment will be expected from the device.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}/devices/{devicesId}:sendCommandToDevice",
                                             "httpMethod": "POST",
                                             "id": "cloudiot.projects.locations.registries.devices.sendCommandToDevice",
                                             "parameterOrder": [
@@ -664,6 +681,7 @@
                                             "methods": {
                                                 "list": {
                                                     "description": "Lists the last few versions of the device configuration in descending order (i.e.: newest first).",
+                                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}/devices/{devicesId}/configVersions",
                                                     "httpMethod": "GET",
                                                     "id": "cloudiot.projects.locations.registries.devices.configVersions.list",
                                                     "parameterOrder": [
@@ -699,6 +717,7 @@
                                             "methods": {
                                                 "list": {
                                                     "description": "Lists the last few versions of the device state in descending order (i.e.: newest first).",
+                                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}/devices/{devicesId}/states",
                                                     "httpMethod": "GET",
                                                     "id": "cloudiot.projects.locations.registries.devices.states.list",
                                                     "parameterOrder": [
@@ -736,6 +755,7 @@
                                     "methods": {
                                         "getIamPolicy": {
                                             "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}/groups/{groupsId}:getIamPolicy",
                                             "httpMethod": "POST",
                                             "id": "cloudiot.projects.locations.registries.groups.getIamPolicy",
                                             "parameterOrder": [
@@ -764,6 +784,7 @@
                                         },
                                         "setIamPolicy": {
                                             "description": "Sets the access control policy on the specified resource. Replaces any existing policy.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}/groups/{groupsId}:setIamPolicy",
                                             "httpMethod": "POST",
                                             "id": "cloudiot.projects.locations.registries.groups.setIamPolicy",
                                             "parameterOrder": [
@@ -792,6 +813,7 @@
                                         },
                                         "testIamPermissions": {
                                             "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}/groups/{groupsId}:testIamPermissions",
                                             "httpMethod": "POST",
                                             "id": "cloudiot.projects.locations.registries.groups.testIamPermissions",
                                             "parameterOrder": [
@@ -824,6 +846,7 @@
                                             "methods": {
                                                 "list": {
                                                     "description": "List devices in a device registry.",
+                                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}/groups/{groupsId}/devices",
                                                     "httpMethod": "GET",
                                                     "id": "cloudiot.projects.locations.registries.groups.devices.list",
                                                     "parameterOrder": [
@@ -913,7 +936,7 @@
             }
         }
     },
-    "revision": "20210510",
+    "revision": "20210528",
     "rootUrl": "https://cloudiot.googleapis.com/",
     "schemas": {
         "BindDeviceToGatewayRequest": {

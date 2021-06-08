@@ -42,14 +42,14 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-core.List<api.PlaceActionLink> buildUnnamed6160() {
+core.List<api.PlaceActionLink> buildUnnamed6577() {
   var o = <api.PlaceActionLink>[];
   o.add(buildPlaceActionLink());
   o.add(buildPlaceActionLink());
   return o;
 }
 
-void checkUnnamed6160(core.List<api.PlaceActionLink> o) {
+void checkUnnamed6577(core.List<api.PlaceActionLink> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlaceActionLink(o[0] as api.PlaceActionLink);
   checkPlaceActionLink(o[1] as api.PlaceActionLink);
@@ -61,7 +61,7 @@ api.ListPlaceActionLinksResponse buildListPlaceActionLinksResponse() {
   buildCounterListPlaceActionLinksResponse++;
   if (buildCounterListPlaceActionLinksResponse < 3) {
     o.nextPageToken = 'foo';
-    o.placeActionLinks = buildUnnamed6160();
+    o.placeActionLinks = buildUnnamed6577();
   }
   buildCounterListPlaceActionLinksResponse--;
   return o;
@@ -74,19 +74,19 @@ void checkListPlaceActionLinksResponse(api.ListPlaceActionLinksResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed6160(o.placeActionLinks!);
+    checkUnnamed6577(o.placeActionLinks!);
   }
   buildCounterListPlaceActionLinksResponse--;
 }
 
-core.List<api.PlaceActionTypeMetadata> buildUnnamed6161() {
+core.List<api.PlaceActionTypeMetadata> buildUnnamed6578() {
   var o = <api.PlaceActionTypeMetadata>[];
   o.add(buildPlaceActionTypeMetadata());
   o.add(buildPlaceActionTypeMetadata());
   return o;
 }
 
-void checkUnnamed6161(core.List<api.PlaceActionTypeMetadata> o) {
+void checkUnnamed6578(core.List<api.PlaceActionTypeMetadata> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlaceActionTypeMetadata(o[0] as api.PlaceActionTypeMetadata);
   checkPlaceActionTypeMetadata(o[1] as api.PlaceActionTypeMetadata);
@@ -99,7 +99,7 @@ api.ListPlaceActionTypeMetadataResponse
   buildCounterListPlaceActionTypeMetadataResponse++;
   if (buildCounterListPlaceActionTypeMetadataResponse < 3) {
     o.nextPageToken = 'foo';
-    o.placeActionTypeMetadata = buildUnnamed6161();
+    o.placeActionTypeMetadata = buildUnnamed6578();
   }
   buildCounterListPlaceActionTypeMetadataResponse--;
   return o;
@@ -113,7 +113,7 @@ void checkListPlaceActionTypeMetadataResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed6161(o.placeActionTypeMetadata!);
+    checkUnnamed6578(o.placeActionTypeMetadata!);
   }
   buildCounterListPlaceActionTypeMetadataResponse--;
 }

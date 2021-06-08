@@ -1,0 +1,14 @@
+diff --git a/discovery/googleapis/fcm__v1.json b/discovery/googleapis/fcm__v1.json
+index fb33bf517..1cbe3f94c 100644
+--- a/discovery/googleapis/fcm__v1.json
++++ b/discovery/googleapis/fcm__v1.json
+@@ -4,6 +4,9 @@
+             "scopes": {
+                 "https://www.googleapis.com/auth/cloud-platform": {
+                     "description": "See, edit, configure, and delete your Google Cloud Platform data"
++                },
++                "https://www.googleapis.com/auth/firebase.messaging": {
++                    "description": "Send messages and manage messaging subscriptions for your Firebase applications"
+                 }
+             }
+         }

@@ -109,6 +109,7 @@
             "methods": {
                 "get": {
                     "description": "Gets information about the selected AdSense account.",
+                    "flatPath": "v2/accounts/{accountsId}",
                     "httpMethod": "GET",
                     "id": "adsense.accounts.get",
                     "parameterOrder": [
@@ -134,6 +135,7 @@
                 },
                 "list": {
                     "description": "Lists all accounts available to this user.",
+                    "flatPath": "v2/accounts",
                     "httpMethod": "GET",
                     "id": "adsense.accounts.list",
                     "parameterOrder": [],
@@ -161,6 +163,7 @@
                 },
                 "listChildAccounts": {
                     "description": "Lists all accounts directly managed by the given AdSense account.",
+                    "flatPath": "v2/accounts/{accountsId}:listChildAccounts",
                     "httpMethod": "GET",
                     "id": "adsense.accounts.listChildAccounts",
                     "parameterOrder": [
@@ -201,6 +204,7 @@
                     "methods": {
                         "getAdcode": {
                             "description": "Gets the AdSense code for a given ad client. This returns what was previously known as the 'auto ad code'. This is only supported for ad clients with a product_code of AFC. For more information, see [About the AdSense code](https://support.google.com/adsense/answer/9274634).",
+                            "flatPath": "v2/accounts/{accountsId}/adclients/{adclientsId}/adcode",
                             "httpMethod": "GET",
                             "id": "adsense.accounts.adclients.getAdcode",
                             "parameterOrder": [
@@ -226,6 +230,7 @@
                         },
                         "list": {
                             "description": "Lists all the ad clients available in an account.",
+                            "flatPath": "v2/accounts/{accountsId}/adclients",
                             "httpMethod": "GET",
                             "id": "adsense.accounts.adclients.list",
                             "parameterOrder": [
@@ -266,6 +271,7 @@
                             "methods": {
                                 "get": {
                                     "description": "Gets an ad unit from a specified account and ad client.",
+                                    "flatPath": "v2/accounts/{accountsId}/adclients/{adclientsId}/adunits/{adunitsId}",
                                     "httpMethod": "GET",
                                     "id": "adsense.accounts.adclients.adunits.get",
                                     "parameterOrder": [
@@ -291,6 +297,7 @@
                                 },
                                 "getAdcode": {
                                     "description": "Gets the AdSense code for a given ad unit.",
+                                    "flatPath": "v2/accounts/{accountsId}/adclients/{adclientsId}/adunits/{adunitsId}/adcode",
                                     "httpMethod": "GET",
                                     "id": "adsense.accounts.adclients.adunits.getAdcode",
                                     "parameterOrder": [
@@ -316,6 +323,7 @@
                                 },
                                 "list": {
                                     "description": "Lists all ad units under a specified account and ad client.",
+                                    "flatPath": "v2/accounts/{accountsId}/adclients/{adclientsId}/adunits",
                                     "httpMethod": "GET",
                                     "id": "adsense.accounts.adclients.adunits.list",
                                     "parameterOrder": [
@@ -352,6 +360,7 @@
                                 },
                                 "listLinkedCustomChannels": {
                                     "description": "Lists all the custom channels available for an ad unit.",
+                                    "flatPath": "v2/accounts/{accountsId}/adclients/{adclientsId}/adunits/{adunitsId}:listLinkedCustomChannels",
                                     "httpMethod": "GET",
                                     "id": "adsense.accounts.adclients.adunits.listLinkedCustomChannels",
                                     "parameterOrder": [
@@ -392,6 +401,7 @@
                             "methods": {
                                 "get": {
                                     "description": "Gets information about the selected custom channel.",
+                                    "flatPath": "v2/accounts/{accountsId}/adclients/{adclientsId}/customchannels/{customchannelsId}",
                                     "httpMethod": "GET",
                                     "id": "adsense.accounts.adclients.customchannels.get",
                                     "parameterOrder": [
@@ -417,6 +427,7 @@
                                 },
                                 "list": {
                                     "description": "Lists all the custom channels available in an ad client.",
+                                    "flatPath": "v2/accounts/{accountsId}/adclients/{adclientsId}/customchannels",
                                     "httpMethod": "GET",
                                     "id": "adsense.accounts.adclients.customchannels.list",
                                     "parameterOrder": [
@@ -453,6 +464,7 @@
                                 },
                                 "listLinkedAdUnits": {
                                     "description": "Lists all the ad units available for a custom channel.",
+                                    "flatPath": "v2/accounts/{accountsId}/adclients/{adclientsId}/customchannels/{customchannelsId}:listLinkedAdUnits",
                                     "httpMethod": "GET",
                                     "id": "adsense.accounts.adclients.customchannels.listLinkedAdUnits",
                                     "parameterOrder": [
@@ -493,6 +505,7 @@
                             "methods": {
                                 "list": {
                                     "description": "Lists active url channels.",
+                                    "flatPath": "v2/accounts/{accountsId}/adclients/{adclientsId}/urlchannels",
                                     "httpMethod": "GET",
                                     "id": "adsense.accounts.adclients.urlchannels.list",
                                     "parameterOrder": [
@@ -535,6 +548,7 @@
                     "methods": {
                         "list": {
                             "description": "Lists all the alerts available in an account.",
+                            "flatPath": "v2/accounts/{accountsId}/alerts",
                             "httpMethod": "GET",
                             "id": "adsense.accounts.alerts.list",
                             "parameterOrder": [
@@ -569,6 +583,7 @@
                     "methods": {
                         "list": {
                             "description": "Lists all the payments available for an account.",
+                            "flatPath": "v2/accounts/{accountsId}/payments",
                             "httpMethod": "GET",
                             "id": "adsense.accounts.payments.list",
                             "parameterOrder": [
@@ -598,6 +613,7 @@
                     "methods": {
                         "generate": {
                             "description": "Generates an ad hoc report.",
+                            "flatPath": "v2/accounts/{accountsId}/reports:generate",
                             "httpMethod": "GET",
                             "id": "adsense.accounts.reports.generate",
                             "parameterOrder": [
@@ -901,6 +917,7 @@
                         },
                         "generateCsv": {
                             "description": "Generates a csv formatted ad hoc report.",
+                            "flatPath": "v2/accounts/{accountsId}/reports:generateCsv",
                             "httpMethod": "GET",
                             "id": "adsense.accounts.reports.generateCsv",
                             "parameterOrder": [
@@ -1208,6 +1225,7 @@
                             "methods": {
                                 "generate": {
                                     "description": "Generates a saved report.",
+                                    "flatPath": "v2/accounts/{accountsId}/reports/{reportsId}/saved:generate",
                                     "httpMethod": "GET",
                                     "id": "adsense.accounts.reports.saved.generate",
                                     "parameterOrder": [
@@ -1319,6 +1337,7 @@
                                 },
                                 "generateCsv": {
                                     "description": "Generates a csv formatted saved report.",
+                                    "flatPath": "v2/accounts/{accountsId}/reports/{reportsId}/saved:generateCsv",
                                     "httpMethod": "GET",
                                     "id": "adsense.accounts.reports.saved.generateCsv",
                                     "parameterOrder": [
@@ -1430,6 +1449,7 @@
                                 },
                                 "list": {
                                     "description": "Lists saved reports.",
+                                    "flatPath": "v2/accounts/{accountsId}/reports/saved",
                                     "httpMethod": "GET",
                                     "id": "adsense.accounts.reports.saved.list",
                                     "parameterOrder": [
@@ -1472,6 +1492,7 @@
                     "methods": {
                         "get": {
                             "description": "Gets information about the selected site.",
+                            "flatPath": "v2/accounts/{accountsId}/sites/{sitesId}",
                             "httpMethod": "GET",
                             "id": "adsense.accounts.sites.get",
                             "parameterOrder": [
@@ -1497,6 +1518,7 @@
                         },
                         "list": {
                             "description": "Lists all the sites available in an account.",
+                            "flatPath": "v2/accounts/{accountsId}/sites",
                             "httpMethod": "GET",
                             "id": "adsense.accounts.sites.list",
                             "parameterOrder": [
@@ -1536,7 +1558,7 @@
             }
         }
     },
-    "revision": "20210517",
+    "revision": "20210614",
     "rootUrl": "https://adsense.googleapis.com/",
     "schemas": {
         "Account": {

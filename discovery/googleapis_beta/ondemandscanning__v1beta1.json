@@ -111,6 +111,7 @@
                             "methods": {
                                 "cancel": {
                                     "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
                                     "httpMethod": "POST",
                                     "id": "ondemandscanning.projects.locations.operations.cancel",
                                     "parameterOrder": [
@@ -135,6 +136,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                                     "httpMethod": "DELETE",
                                     "id": "ondemandscanning.projects.locations.operations.delete",
                                     "parameterOrder": [
@@ -159,6 +161,7 @@
                                 },
                                 "get": {
                                     "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                                     "httpMethod": "GET",
                                     "id": "ondemandscanning.projects.locations.operations.get",
                                     "parameterOrder": [
@@ -183,6 +186,7 @@
                                 },
                                 "list": {
                                     "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/operations",
                                     "httpMethod": "GET",
                                     "id": "ondemandscanning.projects.locations.operations.list",
                                     "parameterOrder": [
@@ -223,6 +227,7 @@
                                 },
                                 "wait": {
                                     "description": "Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done.",
+                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:wait",
                                     "httpMethod": "POST",
                                     "id": "ondemandscanning.projects.locations.operations.wait",
                                     "parameterOrder": [
@@ -257,6 +262,7 @@
                             "methods": {
                                 "analyzePackages": {
                                     "description": "Initiates an analysis of the provided packages.",
+                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/scans:analyzePackages",
                                     "httpMethod": "POST",
                                     "id": "ondemandscanning.projects.locations.scans.analyzePackages",
                                     "parameterOrder": [
@@ -288,6 +294,7 @@
                                     "methods": {
                                         "list": {
                                             "description": "Lists vulnerabilities resulting from a successfully completed scan.",
+                                            "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/scans/{scansId}/vulnerabilities",
                                             "httpMethod": "GET",
                                             "id": "ondemandscanning.projects.locations.scans.vulnerabilities.list",
                                             "parameterOrder": [
@@ -330,7 +337,7 @@
             }
         }
     },
-    "revision": "20210508",
+    "revision": "20210524",
     "rootUrl": "https://ondemandscanning.googleapis.com/",
     "schemas": {
         "AliasContext": {
@@ -634,6 +641,22 @@
                     "description": "The ID(s) of the command(s) that this command depends on.",
                     "items": {
                         "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ComplianceOccurrence": {
+            "description": "An indication that the compliance checks in the associated ComplianceNote were not satisfied for particular resources or a specified reason.",
+            "id": "ComplianceOccurrence",
+            "properties": {
+                "nonComplianceReason": {
+                    "type": "string"
+                },
+                "nonCompliantFiles": {
+                    "items": {
+                        "$ref": "NonCompliantFile"
                     },
                     "type": "array"
                 }
@@ -965,6 +988,25 @@
             },
             "type": "object"
         },
+        "NonCompliantFile": {
+            "description": "Details about files that caused a compliance check to fail.",
+            "id": "NonCompliantFile",
+            "properties": {
+                "displayCommand": {
+                    "description": "Command to display the non-compliant files.",
+                    "type": "string"
+                },
+                "path": {
+                    "description": "display_command is a single command that can be used to display a list of non compliant files. When there is no such command, we can also iterate a list of non compliant file using 'path'. Empty if `display_command` is set.",
+                    "type": "string"
+                },
+                "reason": {
+                    "description": "Explains why a file is non compliant for a CIS check.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Occurrence": {
             "description": "An instance of an analysis type that has been found on a resource.",
             "id": "Occurrence",
@@ -976,6 +1018,10 @@
                 "build": {
                     "$ref": "BuildOccurrence",
                     "description": "Describes a verifiable build."
+                },
+                "compliance": {
+                    "$ref": "ComplianceOccurrence",
+                    "description": "Describes a compliance violation on a linked resource."
                 },
                 "createTime": {
                     "description": "Output only. The time this occurrence was created.",

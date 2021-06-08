@@ -3433,6 +3433,9 @@ class NativeContent {
   /// The URL to fetch a native video ad.
   core.String? videoUrl;
 
+  /// The contents of a VAST document for a native video ad.
+  core.String? videoVastXml;
+
   NativeContent();
 
   NativeContent.fromJson(core.Map _json) {
@@ -3475,6 +3478,9 @@ class NativeContent {
     if (_json.containsKey('videoUrl')) {
       videoUrl = _json['videoUrl'] as core.String;
     }
+    if (_json.containsKey('videoVastXml')) {
+      videoVastXml = _json['videoVastXml'] as core.String;
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3490,6 +3496,7 @@ class NativeContent {
         if (priceDisplayText != null) 'priceDisplayText': priceDisplayText!,
         if (starRating != null) 'starRating': starRating!,
         if (videoUrl != null) 'videoUrl': videoUrl!,
+        if (videoVastXml != null) 'videoVastXml': videoVastXml!,
       };
 }
 

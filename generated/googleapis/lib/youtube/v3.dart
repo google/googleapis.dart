@@ -14077,6 +14077,7 @@ class SuperStickerMetadata {
 }
 
 class TestItem {
+  core.bool? featuredPart;
   core.String? gaia;
   core.String? id;
   TestItemTestItemSnippet? snippet;
@@ -14084,6 +14085,9 @@ class TestItem {
   TestItem();
 
   TestItem.fromJson(core.Map _json) {
+    if (_json.containsKey('featuredPart')) {
+      featuredPart = _json['featuredPart'] as core.bool;
+    }
     if (_json.containsKey('gaia')) {
       gaia = _json['gaia'] as core.String;
     }
@@ -14097,6 +14101,7 @@ class TestItem {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (featuredPart != null) 'featuredPart': featuredPart!,
         if (gaia != null) 'gaia': gaia!,
         if (id != null) 'id': id!,
         if (snippet != null) 'snippet': snippet!.toJson(),

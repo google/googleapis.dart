@@ -112,6 +112,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a new budget. See [Quotas and limits](https://cloud.google.com/billing/quotas) for more information on the limits of the number of budgets you can create.",
+                            "flatPath": "v1/billingAccounts/{billingAccountsId}/budgets",
                             "httpMethod": "POST",
                             "id": "billingbudgets.billingAccounts.budgets.create",
                             "parameterOrder": [
@@ -140,6 +141,7 @@
                         },
                         "delete": {
                             "description": "Deletes a budget. Returns successfully if already deleted.",
+                            "flatPath": "v1/billingAccounts/{billingAccountsId}/budgets/{budgetsId}",
                             "httpMethod": "DELETE",
                             "id": "billingbudgets.billingAccounts.budgets.delete",
                             "parameterOrder": [
@@ -165,6 +167,7 @@
                         },
                         "get": {
                             "description": "Returns a budget. WARNING: There are some fields exposed on the Google Cloud Console that aren't available on this API. When reading from the API, you will not see these fields in the return value, though they may have been set in the Cloud Console.",
+                            "flatPath": "v1/billingAccounts/{billingAccountsId}/budgets/{budgetsId}",
                             "httpMethod": "GET",
                             "id": "billingbudgets.billingAccounts.budgets.get",
                             "parameterOrder": [
@@ -190,6 +193,7 @@
                         },
                         "list": {
                             "description": "Returns a list of budgets for a billing account. WARNING: There are some fields exposed on the Google Cloud Console that aren't available on this API. When reading from the API, you will not see these fields in the return value, though they may have been set in the Cloud Console.",
+                            "flatPath": "v1/billingAccounts/{billingAccountsId}/budgets",
                             "httpMethod": "GET",
                             "id": "billingbudgets.billingAccounts.budgets.list",
                             "parameterOrder": [
@@ -226,6 +230,7 @@
                         },
                         "patch": {
                             "description": "Updates a budget and returns the updated budget. WARNING: There are some fields exposed on the Google Cloud Console that aren't available on this API. Budget fields that are not exposed in this API will not be changed by this method.",
+                            "flatPath": "v1/billingAccounts/{billingAccountsId}/budgets/{budgetsId}",
                             "httpMethod": "PATCH",
                             "id": "billingbudgets.billingAccounts.budgets.patch",
                             "parameterOrder": [

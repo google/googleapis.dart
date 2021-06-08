@@ -107,6 +107,7 @@
             "methods": {
                 "reset": {
                     "description": "Resets the achievement with the given ID for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application.",
+                    "flatPath": "games/v1management/achievements/{achievementId}/reset",
                     "httpMethod": "POST",
                     "id": "gamesManagement.achievements.reset",
                     "parameterOrder": [
@@ -130,6 +131,7 @@
                 },
                 "resetAll": {
                     "description": "Resets all achievements for the currently authenticated player for your application. This method is only accessible to whitelisted tester accounts for your application.",
+                    "flatPath": "games/v1management/achievements/reset",
                     "httpMethod": "POST",
                     "id": "gamesManagement.achievements.resetAll",
                     "parameterOrder": [],
@@ -144,6 +146,7 @@
                 },
                 "resetAllForAllPlayers": {
                     "description": "Resets all draft achievements for all players. This method is only available to user accounts for your developer console.",
+                    "flatPath": "games/v1management/achievements/resetAllForAllPlayers",
                     "httpMethod": "POST",
                     "id": "gamesManagement.achievements.resetAllForAllPlayers",
                     "parameterOrder": [],
@@ -155,6 +158,7 @@
                 },
                 "resetForAllPlayers": {
                     "description": "Resets the achievement with the given ID for all players. This method is only available to user accounts for your developer console. Only draft achievements can be reset.",
+                    "flatPath": "games/v1management/achievements/{achievementId}/resetForAllPlayers",
                     "httpMethod": "POST",
                     "id": "gamesManagement.achievements.resetForAllPlayers",
                     "parameterOrder": [
@@ -175,6 +179,7 @@
                 },
                 "resetMultipleForAllPlayers": {
                     "description": "Resets achievements with the given IDs for all players. This method is only available to user accounts for your developer console. Only draft achievements may be reset.",
+                    "flatPath": "games/v1management/achievements/resetMultipleForAllPlayers",
                     "httpMethod": "POST",
                     "id": "gamesManagement.achievements.resetMultipleForAllPlayers",
                     "parameterOrder": [],
@@ -193,6 +198,7 @@
             "methods": {
                 "listHidden": {
                     "description": "Get the list of players hidden from the given application. This method is only available to user accounts for your developer console.",
+                    "flatPath": "games/v1management/applications/{applicationId}/players/hidden",
                     "httpMethod": "GET",
                     "id": "gamesManagement.applications.listHidden",
                     "parameterOrder": [
@@ -231,6 +237,7 @@
             "methods": {
                 "reset": {
                     "description": "Resets all player progress on the event with the given ID for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application.",
+                    "flatPath": "games/v1management/events/{eventId}/reset",
                     "httpMethod": "POST",
                     "id": "gamesManagement.events.reset",
                     "parameterOrder": [
@@ -251,6 +258,7 @@
                 },
                 "resetAll": {
                     "description": "Resets all player progress on all events for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application.",
+                    "flatPath": "games/v1management/events/reset",
                     "httpMethod": "POST",
                     "id": "gamesManagement.events.resetAll",
                     "parameterOrder": [],
@@ -262,6 +270,7 @@
                 },
                 "resetAllForAllPlayers": {
                     "description": "Resets all draft events for all players. This method is only available to user accounts for your developer console.",
+                    "flatPath": "games/v1management/events/resetAllForAllPlayers",
                     "httpMethod": "POST",
                     "id": "gamesManagement.events.resetAllForAllPlayers",
                     "parameterOrder": [],
@@ -273,6 +282,7 @@
                 },
                 "resetForAllPlayers": {
                     "description": "Resets the event with the given ID for all players. This method is only available to user accounts for your developer console. Only draft events can be reset.",
+                    "flatPath": "games/v1management/events/{eventId}/resetForAllPlayers",
                     "httpMethod": "POST",
                     "id": "gamesManagement.events.resetForAllPlayers",
                     "parameterOrder": [
@@ -293,6 +303,7 @@
                 },
                 "resetMultipleForAllPlayers": {
                     "description": "Resets events with the given IDs for all players. This method is only available to user accounts for your developer console. Only draft events may be reset.",
+                    "flatPath": "games/v1management/events/resetMultipleForAllPlayers",
                     "httpMethod": "POST",
                     "id": "gamesManagement.events.resetMultipleForAllPlayers",
                     "parameterOrder": [],
@@ -311,6 +322,7 @@
             "methods": {
                 "hide": {
                     "description": "Hide the given player's leaderboard scores from the given application. This method is only available to user accounts for your developer console.",
+                    "flatPath": "games/v1management/applications/{applicationId}/players/hidden/{playerId}",
                     "httpMethod": "POST",
                     "id": "gamesManagement.players.hide",
                     "parameterOrder": [
@@ -338,6 +350,7 @@
                 },
                 "unhide": {
                     "description": "Unhide the given player's leaderboard scores from the given application. This method is only available to user accounts for your developer console.",
+                    "flatPath": "games/v1management/applications/{applicationId}/players/hidden/{playerId}",
                     "httpMethod": "DELETE",
                     "id": "gamesManagement.players.unhide",
                     "parameterOrder": [
@@ -369,6 +382,7 @@
             "methods": {
                 "reset": {
                     "description": "Resets scores for the leaderboard with the given ID for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application.",
+                    "flatPath": "games/v1management/leaderboards/{leaderboardId}/scores/reset",
                     "httpMethod": "POST",
                     "id": "gamesManagement.scores.reset",
                     "parameterOrder": [
@@ -392,6 +406,7 @@
                 },
                 "resetAll": {
                     "description": "Resets all scores for all leaderboards for the currently authenticated players. This method is only accessible to whitelisted tester accounts for your application.",
+                    "flatPath": "games/v1management/scores/reset",
                     "httpMethod": "POST",
                     "id": "gamesManagement.scores.resetAll",
                     "parameterOrder": [],
@@ -406,6 +421,7 @@
                 },
                 "resetAllForAllPlayers": {
                     "description": "Resets scores for all draft leaderboards for all players. This method is only available to user accounts for your developer console.",
+                    "flatPath": "games/v1management/scores/resetAllForAllPlayers",
                     "httpMethod": "POST",
                     "id": "gamesManagement.scores.resetAllForAllPlayers",
                     "parameterOrder": [],
@@ -417,6 +433,7 @@
                 },
                 "resetForAllPlayers": {
                     "description": "Resets scores for the leaderboard with the given ID for all players. This method is only available to user accounts for your developer console. Only draft leaderboards can be reset.",
+                    "flatPath": "games/v1management/leaderboards/{leaderboardId}/scores/resetForAllPlayers",
                     "httpMethod": "POST",
                     "id": "gamesManagement.scores.resetForAllPlayers",
                     "parameterOrder": [
@@ -437,6 +454,7 @@
                 },
                 "resetMultipleForAllPlayers": {
                     "description": "Resets scores for the leaderboards with the given IDs for all players. This method is only available to user accounts for your developer console. Only draft leaderboards may be reset.",
+                    "flatPath": "games/v1management/scores/resetMultipleForAllPlayers",
                     "httpMethod": "POST",
                     "id": "gamesManagement.scores.resetMultipleForAllPlayers",
                     "parameterOrder": [],
@@ -452,7 +470,7 @@
             }
         }
     },
-    "revision": "20210513",
+    "revision": "20210614",
     "rootUrl": "https://gamesmanagement.googleapis.com/",
     "schemas": {
         "AchievementResetAllResponse": {

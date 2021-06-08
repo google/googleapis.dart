@@ -107,6 +107,7 @@
             "methods": {
                 "insert": {
                     "description": "Inserts a new mail into the archive of the Google group.",
+                    "flatPath": "groups/v1/groups/{groupId}/archive",
                     "httpMethod": "POST",
                     "id": "groupsmigration.archive.insert",
                     "mediaUpload": {
@@ -144,7 +145,7 @@
             }
         }
     },
-    "revision": "20210513",
+    "revision": "20210610",
     "rootUrl": "https://groupsmigration.googleapis.com/",
     "schemas": {
         "Groups": {

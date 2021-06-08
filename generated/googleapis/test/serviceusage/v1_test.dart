@@ -382,7 +382,6 @@ api.BackendRule buildBackendRule() {
     o.deadline = 42.0;
     o.disableAuth = true;
     o.jwtAudience = 'foo';
-    o.minDeadline = 42.0;
     o.operationDeadline = 42.0;
     o.pathTranslation = 'foo';
     o.protocol = 'foo';
@@ -407,10 +406,6 @@ void checkBackendRule(api.BackendRule o) {
     unittest.expect(
       o.jwtAudience!,
       unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.minDeadline!,
-      unittest.equals(42.0),
     );
     unittest.expect(
       o.operationDeadline!,

@@ -338,6 +338,7 @@
                 },
                 "delete": {
                     "description": "Requests that a job is deleted. This call will return when the job is deleted. This method is available in limited preview.",
+                    "flatPath": "projects/{projectsId}/jobs/{jobsId}/delete",
                     "httpMethod": "DELETE",
                     "id": "bigquery.jobs.delete",
                     "parameterOrder": [
@@ -635,6 +636,7 @@
             "methods": {
                 "delete": {
                     "description": "Deletes the model specified by modelId from the dataset.",
+                    "flatPath": "projects/{projectsId}/datasets/{datasetsId}/models/{modelsId}",
                     "httpMethod": "DELETE",
                     "id": "bigquery.models.delete",
                     "parameterOrder": [
@@ -673,6 +675,7 @@
                 },
                 "get": {
                     "description": "Gets the specified model resource by model ID.",
+                    "flatPath": "projects/{projectsId}/datasets/{datasetsId}/models/{modelsId}",
                     "httpMethod": "GET",
                     "id": "bigquery.models.get",
                     "parameterOrder": [
@@ -715,6 +718,7 @@
                 },
                 "list": {
                     "description": "Lists all models in the specified dataset. Requires the READER dataset role. After retrieving the list of models, you can get information about a particular model by calling the models.get method.",
+                    "flatPath": "projects/{projectsId}/datasets/{datasetsId}/models",
                     "httpMethod": "GET",
                     "id": "bigquery.models.list",
                     "parameterOrder": [
@@ -760,6 +764,7 @@
                 },
                 "patch": {
                     "description": "Patch specific fields in the specified model.",
+                    "flatPath": "projects/{projectsId}/datasets/{datasetsId}/models/{modelsId}",
                     "httpMethod": "PATCH",
                     "id": "bigquery.models.patch",
                     "parameterOrder": [
@@ -864,6 +869,7 @@
             "methods": {
                 "delete": {
                     "description": "Deletes the routine specified by routineId from the dataset.",
+                    "flatPath": "projects/{projectsId}/datasets/{datasetsId}/routines/{routinesId}",
                     "httpMethod": "DELETE",
                     "id": "bigquery.routines.delete",
                     "parameterOrder": [
@@ -902,6 +908,7 @@
                 },
                 "get": {
                     "description": "Gets the specified routine resource by routine ID.",
+                    "flatPath": "projects/{projectsId}/datasets/{datasetsId}/routines/{routinesId}",
                     "httpMethod": "GET",
                     "id": "bigquery.routines.get",
                     "parameterOrder": [
@@ -950,6 +957,7 @@
                 },
                 "insert": {
                     "description": "Creates a new routine in the dataset.",
+                    "flatPath": "projects/{projectsId}/datasets/{datasetsId}/routines",
                     "httpMethod": "POST",
                     "id": "bigquery.routines.insert",
                     "parameterOrder": [
@@ -986,6 +994,7 @@
                 },
                 "list": {
                     "description": "Lists all routines in the specified dataset. Requires the READER dataset role.",
+                    "flatPath": "projects/{projectsId}/datasets/{datasetsId}/routines",
                     "httpMethod": "GET",
                     "id": "bigquery.routines.list",
                     "parameterOrder": [
@@ -1042,6 +1051,7 @@
                 },
                 "update": {
                     "description": "Updates information in an existing routine. The update method replaces the entire Routine resource.",
+                    "flatPath": "projects/{projectsId}/datasets/{datasetsId}/routines/{routinesId}",
                     "httpMethod": "PUT",
                     "id": "bigquery.routines.update",
                     "parameterOrder": [
@@ -1090,6 +1100,7 @@
             "methods": {
                 "getIamPolicy": {
                     "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
+                    "flatPath": "projects/{projectsId}/datasets/{datasetsId}/tables/{tablesId}/rowAccessPolicies/{rowAccessPoliciesId}:getIamPolicy",
                     "httpMethod": "POST",
                     "id": "bigquery.rowAccessPolicies.getIamPolicy",
                     "parameterOrder": [
@@ -1119,6 +1130,7 @@
                 },
                 "list": {
                     "description": "Lists all row access policies on the specified table.",
+                    "flatPath": "projects/{projectsId}/datasets/{datasetsId}/tables/{tablesId}/rowAccessPolicies",
                     "httpMethod": "GET",
                     "id": "bigquery.rowAccessPolicies.list",
                     "parameterOrder": [
@@ -1172,6 +1184,7 @@
                 },
                 "setIamPolicy": {
                     "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
+                    "flatPath": "projects/{projectsId}/datasets/{datasetsId}/tables/{tablesId}/rowAccessPolicies/{rowAccessPoliciesId}:setIamPolicy",
                     "httpMethod": "POST",
                     "id": "bigquery.rowAccessPolicies.setIamPolicy",
                     "parameterOrder": [
@@ -1200,6 +1213,7 @@
                 },
                 "testIamPermissions": {
                     "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
+                    "flatPath": "projects/{projectsId}/datasets/{datasetsId}/tables/{tablesId}/rowAccessPolicies/{rowAccessPoliciesId}:testIamPermissions",
                     "httpMethod": "POST",
                     "id": "bigquery.rowAccessPolicies.testIamPermissions",
                     "parameterOrder": [
@@ -1419,6 +1433,7 @@
                 },
                 "getIamPolicy": {
                     "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
+                    "flatPath": "projects/{projectsId}/datasets/{datasetsId}/tables/{tablesId}:getIamPolicy",
                     "httpMethod": "POST",
                     "id": "bigquery.tables.getIamPolicy",
                     "parameterOrder": [
@@ -1566,6 +1581,7 @@
                 },
                 "setIamPolicy": {
                     "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
+                    "flatPath": "projects/{projectsId}/datasets/{datasetsId}/tables/{tablesId}:setIamPolicy",
                     "httpMethod": "POST",
                     "id": "bigquery.tables.setIamPolicy",
                     "parameterOrder": [
@@ -1594,6 +1610,7 @@
                 },
                 "testIamPermissions": {
                     "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
+                    "flatPath": "projects/{projectsId}/datasets/{datasetsId}/tables/{tablesId}:testIamPermissions",
                     "httpMethod": "POST",
                     "id": "bigquery.tables.testIamPermissions",
                     "parameterOrder": [
@@ -1665,7 +1682,7 @@
             }
         }
     },
-    "revision": "20210515",
+    "revision": "20210603",
     "rootUrl": "https://bigquery.googleapis.com/",
     "schemas": {
         "AggregateClassificationMetrics": {
@@ -3159,6 +3176,13 @@
                     "$ref": "CsvOptions",
                     "description": "Additional properties to set if sourceFormat is set to CSV."
                 },
+                "decimalTargetTypes": {
+                    "description": "[Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is [\"NUMERIC\", \"BIGNUMERIC\"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, [\"BIGNUMERIC\", \"NUMERIC\"] is the same as [\"NUMERIC\", \"BIGNUMERIC\"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to [\"NUMERIC\", \"STRING\"] for ORC and [\"NUMERIC\"] for the other file formats.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "googleSheetsOptions": {
                     "$ref": "GoogleSheetsOptions",
                     "description": "[Optional] Additional options if sourceFormat is set to GOOGLE_SHEETS."
@@ -3583,7 +3607,7 @@
                     "type": "string"
                 },
                 "decimalTargetTypes": {
-                    "description": "Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC ([Preview](/products/#product-launch-stages)), and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is [\"NUMERIC\", \"BIGNUMERIC\"]. If (precision,scale) is: * (38,9) -> NUMERIC; * (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); * (76,38) -> BIGNUMERIC; * (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, [\"BIGNUMERIC\", \"NUMERIC\"] is the same as [\"NUMERIC\", \"BIGNUMERIC\"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to [\"NUMERIC\", \"STRING\"] for ORC and [\"NUMERIC\"] for the other file formats.",
+                    "description": "[Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is [\"NUMERIC\", \"BIGNUMERIC\"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, [\"BIGNUMERIC\", \"NUMERIC\"] is the same as [\"NUMERIC\", \"BIGNUMERIC\"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to [\"NUMERIC\", \"STRING\"] for ORC and [\"NUMERIC\"] for the other file formats.",
                     "items": {
                         "type": "string"
                     },
@@ -4054,7 +4078,7 @@
                     "format": "int64",
                     "type": "string"
                 },
-                "transactionInfoTemplate": {
+                "transactionInfo": {
                     "$ref": "TransactionInfo",
                     "description": "[Output-only] [Alpha] Information of the multi-statement transaction if this job is part of one."
                 }
@@ -4101,6 +4125,10 @@
                 "ddlTargetTable": {
                     "$ref": "TableReference",
                     "description": "[Output-only] The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries."
+                },
+                "dmlStats": {
+                    "description": "[Output-only] Detailed statistics for DML statements Present only for DML statements INSERT, UPDATE, DELETE or TRUNCATE.",
+                    "type": "any"
                 },
                 "estimatedBytesProcessed": {
                     "description": "[Output-only] The original estimate of bytes processed for the job.",
@@ -4861,6 +4889,10 @@
                     "description": "Whether the query result was fetched from the query cache.",
                     "type": "boolean"
                 },
+                "dmlStats": {
+                    "description": "[Output-only] Detailed statistics for DML statements Present only for DML statements INSERT, UPDATE, DELETE or TRUNCATE.",
+                    "type": "any"
+                },
                 "errors": {
                     "description": "[Output-only] The first errors or warnings encountered during the running of the job. The final message includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the job has completed or was unsuccessful.",
                     "items": {
@@ -5323,10 +5355,10 @@
             "properties": {
                 "baseTableReference": {
                     "$ref": "TableReference",
-                    "description": "[Required] Reference describing the ID of the table that is snapshotted."
+                    "description": "[Required] Reference describing the ID of the table that was snapshot."
                 },
                 "snapshotTime": {
-                    "description": "[Required] The time at which the base table was snapshot.",
+                    "description": "[Required] The time at which the base table was snapshot. This value is reported in the JSON response using RFC3339 format.",
                     "format": "date-time",
                     "type": "string"
                 }
@@ -6506,6 +6538,10 @@
                 "query": {
                     "description": "[Required] A query that BigQuery executes when the view is referenced.",
                     "type": "string"
+                },
+                "useExplicitColumnNames": {
+                    "description": "True if the column names are explicitly specified. For example by using the 'CREATE VIEW v(c1, c2) AS ...' syntax. Can only be set using BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/",
+                    "type": "boolean"
                 },
                 "useLegacySql": {
                     "description": "Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to false, the view will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ Queries and views that reference this view must use the same flag value.",

@@ -138,11 +138,17 @@ class PagespeedapiResource {
 /// A light reference to an audit by id, used to group and weight audits in a
 /// given category.
 class AuditRefs {
+  /// The conventional acronym for the audit/metric.
+  core.String? acronym;
+
   /// The category group that the audit belongs to (optional).
   core.String? group;
 
   /// The audit ref id.
   core.String? id;
+
+  /// Any audit IDs closely relevant to this one.
+  core.List<core.String>? relevantAudits;
 
   /// The weight this audit's score has on the overall category score.
   core.double? weight;
@@ -150,11 +156,19 @@ class AuditRefs {
   AuditRefs();
 
   AuditRefs.fromJson(core.Map _json) {
+    if (_json.containsKey('acronym')) {
+      acronym = _json['acronym'] as core.String;
+    }
     if (_json.containsKey('group')) {
       group = _json['group'] as core.String;
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
+    }
+    if (_json.containsKey('relevantAudits')) {
+      relevantAudits = (_json['relevantAudits'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('weight')) {
       weight = (_json['weight'] as core.num).toDouble();
@@ -162,8 +176,10 @@ class AuditRefs {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (acronym != null) 'acronym': acronym!,
         if (group != null) 'group': group!,
         if (id != null) 'id': id!,
+        if (relevantAudits != null) 'relevantAudits': relevantAudits!,
         if (weight != null) 'weight': weight!,
       };
 }
@@ -411,6 +427,11 @@ class LighthouseAuditResultV5 {
   /// The audit's id.
   core.String? id;
 
+  /// The unit of the numeric_value field.
+  ///
+  /// Used to format the numeric value for display.
+  core.String? numericUnit;
+
   /// A numeric value that has a meaning specific to the audit, e.g. the number
   /// of nodes in the DOM or the timestamp of a specific load event.
   ///
@@ -461,6 +482,9 @@ class LighthouseAuditResultV5 {
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
     }
+    if (_json.containsKey('numericUnit')) {
+      numericUnit = _json['numericUnit'] as core.String;
+    }
     if (_json.containsKey('numericValue')) {
       numericValue = (_json['numericValue'] as core.num).toDouble();
     }
@@ -485,6 +509,7 @@ class LighthouseAuditResultV5 {
         if (errorMessage != null) 'errorMessage': errorMessage!,
         if (explanation != null) 'explanation': explanation!,
         if (id != null) 'id': id!,
+        if (numericUnit != null) 'numericUnit': numericUnit!,
         if (numericValue != null) 'numericValue': numericValue!,
         if (score != null) 'score': score!,
         if (scoreDisplayMode != null) 'scoreDisplayMode': scoreDisplayMode!,
@@ -866,11 +891,49 @@ class RendererFormattedStrings {
   /// The tooltip text on an expandable chevron icon.
   core.String? auditGroupExpandTooltip;
 
+  /// Text link pointing to the Lighthouse scoring calculator.
+  ///
+  /// This link immediately follows a sentence stating the performance score is
+  /// calculated from the perf metrics.
+  core.String? calculatorLink;
+
   /// The label for the initial request in a critical request chain.
   core.String? crcInitialNavigation;
 
   /// The label for values shown in the summary of critical request chains.
   core.String? crcLongestDurationLabel;
+
+  /// Option in a dropdown menu that copies the Lighthouse JSON object to the
+  /// system clipboard.
+  core.String? dropdownCopyJSON;
+
+  /// Option in a dropdown menu that toggles the themeing of the report between
+  /// Light(default) and Dark themes.
+  core.String? dropdownDarkTheme;
+
+  /// Option in a dropdown menu that opens a full Lighthouse report in a print
+  /// dialog.
+  core.String? dropdownPrintExpanded;
+
+  /// Option in a dropdown menu that opens a small, summary report in a print
+  /// dialog.
+  core.String? dropdownPrintSummary;
+
+  /// Option in a dropdown menu that saves the current report as a new GitHub
+  /// Gist.
+  core.String? dropdownSaveGist;
+
+  /// Option in a dropdown menu that saves the Lighthouse report HTML locally to
+  /// the system as a '.html' file.
+  core.String? dropdownSaveHTML;
+
+  /// Option in a dropdown menu that saves the Lighthouse JSON object to the
+  /// local system as a '.json' file.
+  core.String? dropdownSaveJSON;
+
+  /// Option in a dropdown menu that opens the current report in the Lighthouse
+  /// Viewer Application.
+  core.String? dropdownViewer;
 
   /// The label shown next to an audit or metric that has had an error.
   core.String? errorLabel;
@@ -878,10 +941,13 @@ class RendererFormattedStrings {
   /// The error string shown next to an erroring audit.
   core.String? errorMissingAuditInfo;
 
+  /// Label for button to create an issue against the Lighthouse GitHub project.
+  core.String? footerIssue;
+
   /// The title of the lab data performance category.
   core.String? labDataTitle;
 
-  /// The disclaimer shown under performance explaning that the network can
+  /// The disclaimer shown under performance explaining that the network can
   /// vary.
   core.String? lsPerformanceCategoryDescription;
 
@@ -901,8 +967,93 @@ class RendererFormattedStrings {
   /// The heading that is shown above a list of audits that are passing.
   core.String? passedAuditsGroupTitle;
 
+  /// Descriptive explanation for emulation setting when emulating a generic
+  /// desktop form factor, as opposed to a mobile-device like form factor.
+  core.String? runtimeDesktopEmulation;
+
+  /// Descriptive explanation for emulation setting when emulating a Nexus 5X
+  /// mobile device.
+  core.String? runtimeMobileEmulation;
+
+  /// Descriptive explanation for emulation setting when no device emulation is
+  /// set.
+  core.String? runtimeNoEmulation;
+
+  /// Label for a row in a table that shows the version of the Axe library used
+  core.String? runtimeSettingsAxeVersion;
+
+  /// Label for a row in a table that shows the estimated CPU power of the
+  /// machine running Lighthouse.
+  ///
+  /// Example row values: 532, 1492, 783.
+  core.String? runtimeSettingsBenchmark;
+
+  /// Label for a row in a table that describes the CPU throttling conditions
+  /// that were used during a Lighthouse run, if any.
+  core.String? runtimeSettingsCPUThrottling;
+
+  /// Label for a row in a table that shows in what tool Lighthouse is being run
+  /// (e.g. The lighthouse CLI, Chrome DevTools, Lightrider, WebPageTest, etc).
+  core.String? runtimeSettingsChannel;
+
+  /// Label for a row in a table that describes the kind of device that was
+  /// emulated for the Lighthouse run.
+  ///
+  /// Example values for row elements: 'No Emulation', 'Emulated Desktop', etc.
+  core.String? runtimeSettingsDevice;
+
+  /// Label for a row in a table that shows the time at which a Lighthouse run
+  /// was conducted; formatted as a timestamp, e.g. Jan 1, 1970 12:00 AM UTC.
+  core.String? runtimeSettingsFetchTime;
+
+  /// Label for a row in a table that describes the network throttling
+  /// conditions that were used during a Lighthouse run, if any.
+  core.String? runtimeSettingsNetworkThrottling;
+
+  /// Title of the Runtime settings table in a Lighthouse report.
+  ///
+  /// Runtime settings are the environment configurations that a specific report
+  /// used at auditing time.
+  core.String? runtimeSettingsTitle;
+
+  /// Label for a row in a table that shows the User Agent that was detected on
+  /// the Host machine that ran Lighthouse.
+  core.String? runtimeSettingsUA;
+
+  /// Label for a row in a table that shows the User Agent that was used to send
+  /// out all network requests during the Lighthouse run.
+  core.String? runtimeSettingsUANetwork;
+
+  /// Label for a row in a table that shows the URL that was audited during a
+  /// Lighthouse run.
+  core.String? runtimeSettingsUrl;
+
+  /// Descriptive explanation for a runtime setting that is set to an unknown
+  /// value.
+  core.String? runtimeUnknown;
+
   /// The label that explains the score gauges scale (0-49, 50-89, 90-100).
   core.String? scorescaleLabel;
+
+  /// Label preceding a radio control for filtering the list of audits.
+  ///
+  /// The radio choices are various performance metrics (FCP, LCP, TBT), and if
+  /// chosen, the audits in the report are hidden if they are not relevant to
+  /// the selected metric.
+  core.String? showRelevantAudits;
+
+  /// The label for the button to show only a few lines of a snippet
+  core.String? snippetCollapseButtonLabel;
+
+  /// The label for the button to show all lines of a snippet
+  core.String? snippetExpandButtonLabel;
+
+  /// This label is for a filter checkbox above a table of items
+  core.String? thirdPartyResourcesLabel;
+
+  /// Descriptive explanation for environment throttling that was provided by
+  /// the runtime environment instead of provided by Lighthouse throttling.
+  core.String? throttlingProvided;
 
   /// The label shown preceding important warnings that may have invalidated an
   /// entire report.
@@ -910,6 +1061,12 @@ class RendererFormattedStrings {
 
   /// The disclaimer shown below a performance metric value.
   core.String? varianceDisclaimer;
+
+  /// Label for a button that opens the Treemap App
+  core.String? viewTreemapLabel;
+
+  /// The heading that is shown above a list of audits that have warnings
+  core.String? warningAuditsGroupTitle;
 
   /// The label shown above a bulleted list of warnings.
   core.String? warningHeader;
@@ -920,17 +1077,47 @@ class RendererFormattedStrings {
     if (_json.containsKey('auditGroupExpandTooltip')) {
       auditGroupExpandTooltip = _json['auditGroupExpandTooltip'] as core.String;
     }
+    if (_json.containsKey('calculatorLink')) {
+      calculatorLink = _json['calculatorLink'] as core.String;
+    }
     if (_json.containsKey('crcInitialNavigation')) {
       crcInitialNavigation = _json['crcInitialNavigation'] as core.String;
     }
     if (_json.containsKey('crcLongestDurationLabel')) {
       crcLongestDurationLabel = _json['crcLongestDurationLabel'] as core.String;
     }
+    if (_json.containsKey('dropdownCopyJSON')) {
+      dropdownCopyJSON = _json['dropdownCopyJSON'] as core.String;
+    }
+    if (_json.containsKey('dropdownDarkTheme')) {
+      dropdownDarkTheme = _json['dropdownDarkTheme'] as core.String;
+    }
+    if (_json.containsKey('dropdownPrintExpanded')) {
+      dropdownPrintExpanded = _json['dropdownPrintExpanded'] as core.String;
+    }
+    if (_json.containsKey('dropdownPrintSummary')) {
+      dropdownPrintSummary = _json['dropdownPrintSummary'] as core.String;
+    }
+    if (_json.containsKey('dropdownSaveGist')) {
+      dropdownSaveGist = _json['dropdownSaveGist'] as core.String;
+    }
+    if (_json.containsKey('dropdownSaveHTML')) {
+      dropdownSaveHTML = _json['dropdownSaveHTML'] as core.String;
+    }
+    if (_json.containsKey('dropdownSaveJSON')) {
+      dropdownSaveJSON = _json['dropdownSaveJSON'] as core.String;
+    }
+    if (_json.containsKey('dropdownViewer')) {
+      dropdownViewer = _json['dropdownViewer'] as core.String;
+    }
     if (_json.containsKey('errorLabel')) {
       errorLabel = _json['errorLabel'] as core.String;
     }
     if (_json.containsKey('errorMissingAuditInfo')) {
       errorMissingAuditInfo = _json['errorMissingAuditInfo'] as core.String;
+    }
+    if (_json.containsKey('footerIssue')) {
+      footerIssue = _json['footerIssue'] as core.String;
     }
     if (_json.containsKey('labDataTitle')) {
       labDataTitle = _json['labDataTitle'] as core.String;
@@ -957,14 +1144,89 @@ class RendererFormattedStrings {
     if (_json.containsKey('passedAuditsGroupTitle')) {
       passedAuditsGroupTitle = _json['passedAuditsGroupTitle'] as core.String;
     }
+    if (_json.containsKey('runtimeDesktopEmulation')) {
+      runtimeDesktopEmulation = _json['runtimeDesktopEmulation'] as core.String;
+    }
+    if (_json.containsKey('runtimeMobileEmulation')) {
+      runtimeMobileEmulation = _json['runtimeMobileEmulation'] as core.String;
+    }
+    if (_json.containsKey('runtimeNoEmulation')) {
+      runtimeNoEmulation = _json['runtimeNoEmulation'] as core.String;
+    }
+    if (_json.containsKey('runtimeSettingsAxeVersion')) {
+      runtimeSettingsAxeVersion =
+          _json['runtimeSettingsAxeVersion'] as core.String;
+    }
+    if (_json.containsKey('runtimeSettingsBenchmark')) {
+      runtimeSettingsBenchmark =
+          _json['runtimeSettingsBenchmark'] as core.String;
+    }
+    if (_json.containsKey('runtimeSettingsCPUThrottling')) {
+      runtimeSettingsCPUThrottling =
+          _json['runtimeSettingsCPUThrottling'] as core.String;
+    }
+    if (_json.containsKey('runtimeSettingsChannel')) {
+      runtimeSettingsChannel = _json['runtimeSettingsChannel'] as core.String;
+    }
+    if (_json.containsKey('runtimeSettingsDevice')) {
+      runtimeSettingsDevice = _json['runtimeSettingsDevice'] as core.String;
+    }
+    if (_json.containsKey('runtimeSettingsFetchTime')) {
+      runtimeSettingsFetchTime =
+          _json['runtimeSettingsFetchTime'] as core.String;
+    }
+    if (_json.containsKey('runtimeSettingsNetworkThrottling')) {
+      runtimeSettingsNetworkThrottling =
+          _json['runtimeSettingsNetworkThrottling'] as core.String;
+    }
+    if (_json.containsKey('runtimeSettingsTitle')) {
+      runtimeSettingsTitle = _json['runtimeSettingsTitle'] as core.String;
+    }
+    if (_json.containsKey('runtimeSettingsUA')) {
+      runtimeSettingsUA = _json['runtimeSettingsUA'] as core.String;
+    }
+    if (_json.containsKey('runtimeSettingsUANetwork')) {
+      runtimeSettingsUANetwork =
+          _json['runtimeSettingsUANetwork'] as core.String;
+    }
+    if (_json.containsKey('runtimeSettingsUrl')) {
+      runtimeSettingsUrl = _json['runtimeSettingsUrl'] as core.String;
+    }
+    if (_json.containsKey('runtimeUnknown')) {
+      runtimeUnknown = _json['runtimeUnknown'] as core.String;
+    }
     if (_json.containsKey('scorescaleLabel')) {
       scorescaleLabel = _json['scorescaleLabel'] as core.String;
+    }
+    if (_json.containsKey('showRelevantAudits')) {
+      showRelevantAudits = _json['showRelevantAudits'] as core.String;
+    }
+    if (_json.containsKey('snippetCollapseButtonLabel')) {
+      snippetCollapseButtonLabel =
+          _json['snippetCollapseButtonLabel'] as core.String;
+    }
+    if (_json.containsKey('snippetExpandButtonLabel')) {
+      snippetExpandButtonLabel =
+          _json['snippetExpandButtonLabel'] as core.String;
+    }
+    if (_json.containsKey('thirdPartyResourcesLabel')) {
+      thirdPartyResourcesLabel =
+          _json['thirdPartyResourcesLabel'] as core.String;
+    }
+    if (_json.containsKey('throttlingProvided')) {
+      throttlingProvided = _json['throttlingProvided'] as core.String;
     }
     if (_json.containsKey('toplevelWarningsMessage')) {
       toplevelWarningsMessage = _json['toplevelWarningsMessage'] as core.String;
     }
     if (_json.containsKey('varianceDisclaimer')) {
       varianceDisclaimer = _json['varianceDisclaimer'] as core.String;
+    }
+    if (_json.containsKey('viewTreemapLabel')) {
+      viewTreemapLabel = _json['viewTreemapLabel'] as core.String;
+    }
+    if (_json.containsKey('warningAuditsGroupTitle')) {
+      warningAuditsGroupTitle = _json['warningAuditsGroupTitle'] as core.String;
     }
     if (_json.containsKey('warningHeader')) {
       warningHeader = _json['warningHeader'] as core.String;
@@ -974,13 +1236,25 @@ class RendererFormattedStrings {
   core.Map<core.String, core.dynamic> toJson() => {
         if (auditGroupExpandTooltip != null)
           'auditGroupExpandTooltip': auditGroupExpandTooltip!,
+        if (calculatorLink != null) 'calculatorLink': calculatorLink!,
         if (crcInitialNavigation != null)
           'crcInitialNavigation': crcInitialNavigation!,
         if (crcLongestDurationLabel != null)
           'crcLongestDurationLabel': crcLongestDurationLabel!,
+        if (dropdownCopyJSON != null) 'dropdownCopyJSON': dropdownCopyJSON!,
+        if (dropdownDarkTheme != null) 'dropdownDarkTheme': dropdownDarkTheme!,
+        if (dropdownPrintExpanded != null)
+          'dropdownPrintExpanded': dropdownPrintExpanded!,
+        if (dropdownPrintSummary != null)
+          'dropdownPrintSummary': dropdownPrintSummary!,
+        if (dropdownSaveGist != null) 'dropdownSaveGist': dropdownSaveGist!,
+        if (dropdownSaveHTML != null) 'dropdownSaveHTML': dropdownSaveHTML!,
+        if (dropdownSaveJSON != null) 'dropdownSaveJSON': dropdownSaveJSON!,
+        if (dropdownViewer != null) 'dropdownViewer': dropdownViewer!,
         if (errorLabel != null) 'errorLabel': errorLabel!,
         if (errorMissingAuditInfo != null)
           'errorMissingAuditInfo': errorMissingAuditInfo!,
+        if (footerIssue != null) 'footerIssue': footerIssue!,
         if (labDataTitle != null) 'labDataTitle': labDataTitle!,
         if (lsPerformanceCategoryDescription != null)
           'lsPerformanceCategoryDescription': lsPerformanceCategoryDescription!,
@@ -994,11 +1268,52 @@ class RendererFormattedStrings {
           'opportunitySavingsColumnLabel': opportunitySavingsColumnLabel!,
         if (passedAuditsGroupTitle != null)
           'passedAuditsGroupTitle': passedAuditsGroupTitle!,
+        if (runtimeDesktopEmulation != null)
+          'runtimeDesktopEmulation': runtimeDesktopEmulation!,
+        if (runtimeMobileEmulation != null)
+          'runtimeMobileEmulation': runtimeMobileEmulation!,
+        if (runtimeNoEmulation != null)
+          'runtimeNoEmulation': runtimeNoEmulation!,
+        if (runtimeSettingsAxeVersion != null)
+          'runtimeSettingsAxeVersion': runtimeSettingsAxeVersion!,
+        if (runtimeSettingsBenchmark != null)
+          'runtimeSettingsBenchmark': runtimeSettingsBenchmark!,
+        if (runtimeSettingsCPUThrottling != null)
+          'runtimeSettingsCPUThrottling': runtimeSettingsCPUThrottling!,
+        if (runtimeSettingsChannel != null)
+          'runtimeSettingsChannel': runtimeSettingsChannel!,
+        if (runtimeSettingsDevice != null)
+          'runtimeSettingsDevice': runtimeSettingsDevice!,
+        if (runtimeSettingsFetchTime != null)
+          'runtimeSettingsFetchTime': runtimeSettingsFetchTime!,
+        if (runtimeSettingsNetworkThrottling != null)
+          'runtimeSettingsNetworkThrottling': runtimeSettingsNetworkThrottling!,
+        if (runtimeSettingsTitle != null)
+          'runtimeSettingsTitle': runtimeSettingsTitle!,
+        if (runtimeSettingsUA != null) 'runtimeSettingsUA': runtimeSettingsUA!,
+        if (runtimeSettingsUANetwork != null)
+          'runtimeSettingsUANetwork': runtimeSettingsUANetwork!,
+        if (runtimeSettingsUrl != null)
+          'runtimeSettingsUrl': runtimeSettingsUrl!,
+        if (runtimeUnknown != null) 'runtimeUnknown': runtimeUnknown!,
         if (scorescaleLabel != null) 'scorescaleLabel': scorescaleLabel!,
+        if (showRelevantAudits != null)
+          'showRelevantAudits': showRelevantAudits!,
+        if (snippetCollapseButtonLabel != null)
+          'snippetCollapseButtonLabel': snippetCollapseButtonLabel!,
+        if (snippetExpandButtonLabel != null)
+          'snippetExpandButtonLabel': snippetExpandButtonLabel!,
+        if (thirdPartyResourcesLabel != null)
+          'thirdPartyResourcesLabel': thirdPartyResourcesLabel!,
+        if (throttlingProvided != null)
+          'throttlingProvided': throttlingProvided!,
         if (toplevelWarningsMessage != null)
           'toplevelWarningsMessage': toplevelWarningsMessage!,
         if (varianceDisclaimer != null)
           'varianceDisclaimer': varianceDisclaimer!,
+        if (viewTreemapLabel != null) 'viewTreemapLabel': viewTreemapLabel!,
+        if (warningAuditsGroupTitle != null)
+          'warningAuditsGroupTitle': warningAuditsGroupTitle!,
         if (warningHeader != null) 'warningHeader': warningHeader!,
       };
 }

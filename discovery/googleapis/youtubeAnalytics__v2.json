@@ -119,6 +119,7 @@
             "methods": {
                 "delete": {
                     "description": "Removes an item from a group.",
+                    "flatPath": "v2/groupItems",
                     "httpMethod": "DELETE",
                     "id": "youtubeAnalytics.groupItems.delete",
                     "parameterOrder": [],
@@ -148,6 +149,7 @@
                 },
                 "insert": {
                     "description": "Creates a group item.",
+                    "flatPath": "v2/groupItems",
                     "httpMethod": "POST",
                     "id": "youtubeAnalytics.groupItems.insert",
                     "parameterOrder": [],
@@ -175,6 +177,7 @@
                 },
                 "list": {
                     "description": "Returns a collection of group items that match the API request parameters.",
+                    "flatPath": "v2/groupItems",
                     "httpMethod": "GET",
                     "id": "youtubeAnalytics.groupItems.list",
                     "parameterOrder": [],
@@ -208,6 +211,7 @@
             "methods": {
                 "delete": {
                     "description": "Deletes a group.",
+                    "flatPath": "v2/groups",
                     "httpMethod": "DELETE",
                     "id": "youtubeAnalytics.groups.delete",
                     "parameterOrder": [],
@@ -237,6 +241,7 @@
                 },
                 "insert": {
                     "description": "Creates a group.",
+                    "flatPath": "v2/groups",
                     "httpMethod": "POST",
                     "id": "youtubeAnalytics.groups.insert",
                     "parameterOrder": [],
@@ -264,6 +269,7 @@
                 },
                 "list": {
                     "description": "Returns a collection of groups that match the API request parameters. For example, you can retrieve all groups that the authenticated user owns, or you can retrieve one or more groups by their unique IDs.",
+                    "flatPath": "v2/groups",
                     "httpMethod": "GET",
                     "id": "youtubeAnalytics.groups.list",
                     "parameterOrder": [],
@@ -303,6 +309,7 @@
                 },
                 "update": {
                     "description": "Modifies a group. For example, you could change a group's title.",
+                    "flatPath": "v2/groups",
                     "httpMethod": "PUT",
                     "id": "youtubeAnalytics.groups.update",
                     "parameterOrder": [],
@@ -334,6 +341,7 @@
             "methods": {
                 "query": {
                     "description": "Retrieve your YouTube Analytics reports.",
+                    "flatPath": "v2/reports",
                     "httpMethod": "GET",
                     "id": "youtubeAnalytics.reports.query",
                     "parameterOrder": [],
@@ -411,7 +419,7 @@
             }
         }
     },
-    "revision": "20210519",
+    "revision": "20210614",
     "rootUrl": "https://youtubeanalytics.googleapis.com/",
     "schemas": {
         "EmptyResponse": {

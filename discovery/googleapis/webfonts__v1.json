@@ -98,6 +98,7 @@
             "methods": {
                 "list": {
                     "description": "Retrieves the list of fonts currently served by the Google Fonts Developer API.",
+                    "flatPath": "v1/webfonts",
                     "httpMethod": "GET",
                     "id": "webfonts.webfonts.list",
                     "parameterOrder": [],

@@ -2,7 +2,7 @@
 # should be ignored.
 packages:
 - googleapis:
-    version: 3.0.0
+    version: 4.0.0-dev
     repository: https://github.com/google/googleapis.dart/tree/master/generated/googleapis
     readme: resources/README.md
     license: resources/LICENSE
@@ -38,7 +38,6 @@ packages:
     - appengine:v1 # https://cloud.google.com/appengine/docs/admin-api/
     - artifactregistry:v1
     - assuredworkloads:v1
-    - baremetalsolution:v1
     - bigquery:v2 # https://developers.google.com/bigquery/
     - bigquerydatatransfer:v1 # https://cloud.google.com/bigquery/transfer/
     - bigqueryreservation:v1
@@ -83,6 +82,7 @@ packages:
     - datastore:v1 # https://developers.google.com/datastore/
     - deploymentmanager:v2 # https://cloud.google.com/deployment-manager/
     - dfareporting:v3.4
+    - dfareporting:v3.5
     - dialogflow:v2 # https://cloud.google.com/dialogflow-enterprise/
     - dialogflow:v3 # https://cloud.google.com/dialogflow-enterprise/
     - digitalassetlinks:v1 # https://developers.google.com/digital-asset-links/
@@ -126,6 +126,7 @@ packages:
     - indexing:v3 # https://developers.google.com/search/apis/indexing-api/
     - jobs:v3 # https://cloud.google.com/job-discovery/docs
     - jobs:v4
+    - keep:v1
     - kgsearch:v1 # https://developers.google.com/knowledge-graph/
     - language:v1 # https://cloud.google.com/natural-language/
     - libraryagent:v1 # https://cloud.google.com/docs/quota
@@ -148,6 +149,7 @@ packages:
     - osconfig:v1
     - oslogin:v1 # https://cloud.google.com/compute/docs/oslogin/rest/
     - pagespeedonline:v5 # https://developers.google.com/speed/docs/insights/about
+    - paymentsresellersubscription:v1
     - people:v1 # https://developers.google.com/people/
     - playablelocations:v3
     - playcustomapp:v1 # https://developers.google.com/android/work/play/custom-app-api
@@ -156,6 +158,7 @@ packages:
     - poly:v1 # https://devsite.googleplex.com/poly/
     - pubsub:v1 # https://cloud.google.com/pubsub/
     - pubsublite:v1
+    - privateca:v1
     - realtimebidding:v1
     - recaptchaenterprise:v1
     - recommender:v1
@@ -211,7 +214,7 @@ packages:
     - youtubereporting:v1 # https://developers.google.com/youtube/reporting/v1/reports/
 
 - googleapis_beta:
-    version: 3.0.0
+    version: 4.0.0-dev
     repository: https://github.com/google/googleapis.dart/tree/master/generated/googleapis_beta
     readme: resources/README.md
     license: resources/LICENSE
@@ -233,12 +236,14 @@ packages:
     - domains:v1beta1
     - factchecktools:v1alpha1
     - firebase:v1beta1
+    - firebaseappcheck:v1beta
     - firebasedatabase:v1beta
     - firebasestorage:v1beta
     - lifesciences:v2beta
     - metastore:v1beta
     - networkconnectivity:v1alpha1
     - ondemandscanning:v1beta1
+    - osconfig:v1alpha
     - policysimulator:v1beta1
     - privateca:v1beta1
     - prod_tt_sasportal:v1alpha1
@@ -306,7 +311,6 @@ skipped_apis:
 - firestore:v1beta1 # v1 included
 - firestore:v1beta2 # v1 included
 - gameservices:v1beta # v1 included
-- genomics:v1 # Use lifeSciences v2 beta instead!
 - genomics:v2alpha1 # v1 included
 - gkehub:v1alpha
 - gkehub:v1alpha2
@@ -315,6 +319,7 @@ skipped_apis:
 - gmailpostmastertools:v1beta1 # v1 included
 - healthcare:v1beta1 # v1 included
 - iap:v1beta1 # v1 included
+- ideahub:v1alpha
 - jobs:v3p1beta1 # v3 included
 - language:v1beta1 # v1 included
 - language:v1beta2 # v1 included
@@ -327,7 +332,6 @@ skipped_apis:
 - osconfig:v1beta # v1 included
 - oslogin:v1alpha # v1 available
 - oslogin:v1beta # v1 available
-- paymentsresellersubscription:v1 # not released yet
 - policytroubleshooter:v1beta # v1 included
 - pubsub:v1beta1a # v1beta1, v1bets2 and v1 included
 - pubsub:v1beta2 # v1 included
@@ -336,7 +340,7 @@ skipped_apis:
 - redis:v1beta1 # v1 included
 - remotebuildexecution:v1 # v2 included
 - remotebuildexecution:v1alpha # v2 included
-- remotebuildexecution:v2 # not released yet
+- remotebuildexecution:v2 # skipping - docs not public - http://b/188925742
 - retail:v2alpha # v2 included
 - retail:v2beta # v2 included
 - run:v1alpha1 #v1 included

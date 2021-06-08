@@ -109,6 +109,7 @@
                     "methods": {
                         "countChromeVersions": {
                             "description": "Generate report of installed Chrome versions.",
+                            "flatPath": "v1/customers/{customersId}/reports:countChromeVersions",
                             "httpMethod": "GET",
                             "id": "chromemanagement.customers.reports.countChromeVersions",
                             "parameterOrder": [
@@ -154,6 +155,7 @@
                         },
                         "countInstalledApps": {
                             "description": "Generate report of app installations.",
+                            "flatPath": "v1/customers/{customersId}/reports:countInstalledApps",
                             "httpMethod": "GET",
                             "id": "chromemanagement.customers.reports.countInstalledApps",
                             "parameterOrder": [
@@ -204,6 +206,7 @@
                         },
                         "findInstalledAppDevices": {
                             "description": "Generate report of devices that have a specified app installed.",
+                            "flatPath": "v1/customers/{customersId}/reports:findInstalledAppDevices",
                             "httpMethod": "GET",
                             "id": "chromemanagement.customers.reports.findInstalledAppDevices",
                             "parameterOrder": [
@@ -283,7 +286,7 @@
             }
         }
     },
-    "revision": "20210520",
+    "revision": "20210614",
     "rootUrl": "https://chromemanagement.googleapis.com/",
     "schemas": {
         "GoogleChromeManagementV1BrowserVersion": {

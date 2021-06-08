@@ -1304,11 +1304,11 @@ class QueryResource {
   /// The Cloud Search Query API provides the search method, which returns the
   /// most relevant results from a user query.
   ///
-  /// The results can come from G Suite Apps, such as Gmail or Google Drive, or
-  /// they can come from data that you have indexed from a third party.
-  /// **Note:** This API requires a standard end user account to execute. A
-  /// service account can't perform Query API requests directly; to use a
-  /// service account to perform queries, set up \[G Suite domain-wide
+  /// The results can come from Google Workspace apps, such as Gmail or Google
+  /// Drive, or they can come from data that you have indexed from a third
+  /// party. **Note:** This API requires a standard end user account to execute.
+  /// A service account can't perform Query API requests directly; to use a
+  /// service account to perform queries, set up \[Google Workspace domain-wide
   /// delegation of
   /// authority\](https://developers.google.com/cloud-search/docs/guides/delegation/).
   ///
@@ -1351,7 +1351,7 @@ class QueryResource {
   ///
   /// **Note:** This API requires a standard end user account to execute. A
   /// service account can't perform Query API requests directly; to use a
-  /// service account to perform queries, set up \[G Suite domain-wide
+  /// service account to perform queries, set up \[Google Workspace domain-wide
   /// delegation of
   /// authority\](https://developers.google.com/cloud-search/docs/guides/delegation/).
   ///
@@ -1400,7 +1400,7 @@ class QuerySourcesResource {
   ///
   /// **Note:** This API requires a standard end user account to execute. A
   /// service account can't perform Query API requests directly; to use a
-  /// service account to perform queries, set up \[G Suite domain-wide
+  /// service account to perform queries, set up \[Google Workspace domain-wide
   /// delegation of
   /// authority\](https://developers.google.com/cloud-search/docs/guides/delegation/).
   ///

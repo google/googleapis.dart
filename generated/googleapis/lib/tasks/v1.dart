@@ -16,7 +16,7 @@
 ///
 /// The Google Tasks API lets you manage your tasks and task lists.
 ///
-/// For more information, see <>
+/// For more information, see <https://developers.google.com/tasks>
 ///
 /// Create an instance of [TasksApi] to access these resources:
 ///

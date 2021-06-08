@@ -90,10 +90,10 @@ class ProjectsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Tests may either provide `source` or a `Ruleset` resource name.
-  /// For tests against `source`, the resource name must refer to the project:
-  /// Format: `projects/{project_id}` For tests against a `Ruleset`, this must
-  /// be the `Ruleset` resource name: Format:
+  /// [name] - Required. Tests may either provide `source` or a `Ruleset`
+  /// resource name. For tests against `source`, the resource name must refer to
+  /// the project: Format: `projects/{project_id}` For tests against a
+  /// `Ruleset`, this must be the `Ruleset` resource name: Format:
   /// `projects/{project_id}/rulesets/{ruleset_id}`
   /// Value must have pattern `^projects/.*$`.
   ///
@@ -157,8 +157,8 @@ class ProjectsReleasesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name for the project which owns this `Release`. Format:
-  /// `projects/{project_id}`
+  /// [name] - Required. Resource name for the project which owns this
+  /// `Release`. Format: `projects/{project_id}`
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -196,7 +196,7 @@ class ProjectsReleasesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name for the `Release` to delete. Format:
+  /// [name] - Required. Resource name for the `Release` to delete. Format:
   /// `projects/{project_id}/releases/{release_id}`
   /// Value must have pattern `^projects/\[^/\]+/releases/.*$`.
   ///
@@ -232,7 +232,7 @@ class ProjectsReleasesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name of the `Release`. Format:
+  /// [name] - Required. Resource name of the `Release`. Format:
   /// `projects/{project_id}/releases/{release_id}`
   /// Value must have pattern `^projects/\[^/\]+/releases/.*$`.
   ///
@@ -268,7 +268,7 @@ class ProjectsReleasesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name of the `Release`. Format:
+  /// [name] - Required. Resource name of the `Release`. Format:
   /// `projects/{project_id}/releases/{release_id}`
   /// Value must have pattern `^projects/\[^/\]+/releases/.*$`.
   ///
@@ -320,25 +320,24 @@ class ProjectsReleasesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name for the project. Format: `projects/{project_id}`
+  /// [name] - Required. Resource name for the project. Format:
+  /// `projects/{project_id}`
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - `Release` filter. The list method supports filters with
-  /// restrictions on the `Release.name`, `Release.ruleset_name`, and
-  /// `Release.test_suite_name`. Example 1: A filter of 'name=prod*' might
-  /// return `Release`s with names within 'projects/foo' prefixed with 'prod':
-  /// Name | Ruleset Name ------------------------------|-------------
-  /// projects/foo/releases/prod | projects/foo/rulesets/uuid1234
-  /// projects/foo/releases/prod/v1 | projects/foo/rulesets/uuid1234
-  /// projects/foo/releases/prod/v2 | projects/foo/rulesets/uuid8888 Example 2:
+  /// restrictions on the `Release.name`, and `Release.ruleset_name`. Example 1:
+  /// A filter of 'name=prod*' might return `Release`s with names within
+  /// 'projects/foo' prefixed with 'prod': Name -> Ruleset Name: *
+  /// projects/foo/releases/prod -> projects/foo/rulesets/uuid1234 *
+  /// projects/foo/releases/prod/v1 -> projects/foo/rulesets/uuid1234 *
+  /// projects/foo/releases/prod/v2 -> projects/foo/rulesets/uuid8888 Example 2:
   /// A filter of `name=prod* ruleset_name=uuid1234` would return only `Release`
   /// instances for 'projects/foo' with names prefixed with 'prod' referring to
-  /// the same `Ruleset` name of 'uuid1234': Name | Ruleset Name
-  /// ------------------------------|------------- projects/foo/releases/prod |
-  /// projects/foo/rulesets/1234 projects/foo/releases/prod/v1 |
-  /// projects/foo/rulesets/1234 In the examples, the filter parameters refer to
-  /// the search filters are relative to the project. Fully qualified prefixed
-  /// may also be used. e.g. `test_suite_name=projects/foo/testsuites/uuid1`
+  /// the same `Ruleset` name of 'uuid1234': Name -> Ruleset Name: *
+  /// projects/foo/releases/prod -> projects/foo/rulesets/1234 *
+  /// projects/foo/releases/prod/v1 -> projects/foo/rulesets/1234 In the
+  /// examples, the filter parameters refer to the search filters are relative
+  /// to the project. Fully qualified prefixed may also be used.
   ///
   /// [pageSize] - Page size to load. Maximum of 100. Defaults to 10. Note:
   /// `page_size` is just a hint and the service may choose to load fewer than
@@ -385,16 +384,15 @@ class ProjectsReleasesResource {
 
   /// Update a `Release` via PATCH.
   ///
-  /// Only updates to the `ruleset_name` and `test_suite_name` fields will be
-  /// honored. `Release` rename is not supported. To create a `Release` use the
-  /// CreateRelease method.
+  /// Only updates to `ruleset_name` will be honored. `Release` rename is not
+  /// supported. To create a `Release` use the CreateRelease method.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name for the project which owns this `Release`. Format:
-  /// `projects/{project_id}`
+  /// [name] - Required. Resource name for the project which owns this
+  /// `Release`. Format: `projects/{project_id}`
   /// Value must have pattern `^projects/\[^/\]+/releases/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -445,8 +443,8 @@ class ProjectsRulesetsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name for Project which owns this `Ruleset`. Format:
-  /// `projects/{project_id}`
+  /// [name] - Required. Resource name for Project which owns this `Ruleset`.
+  /// Format: `projects/{project_id}`
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -486,7 +484,7 @@ class ProjectsRulesetsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name for the ruleset to delete. Format:
+  /// [name] - Required. Resource name for the ruleset to delete. Format:
   /// `projects/{project_id}/rulesets/{ruleset_id}`
   /// Value must have pattern `^projects/\[^/\]+/rulesets/\[^/\]+$`.
   ///
@@ -522,7 +520,7 @@ class ProjectsRulesetsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name for the ruleset to get. Format:
+  /// [name] - Required. Resource name for the ruleset to get. Format:
   /// `projects/{project_id}/rulesets/{ruleset_id}`
   /// Value must have pattern `^projects/\[^/\]+/rulesets/\[^/\]+$`.
   ///
@@ -562,7 +560,8 @@ class ProjectsRulesetsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name for the project. Format: `projects/{project_id}`
+  /// [name] - Required. Resource name for the project. Format:
+  /// `projects/{project_id}`
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - `Ruleset` filter. The list method supports filters with
@@ -1031,23 +1030,7 @@ class Release {
   /// Output only.
   core.String? createTime;
 
-  /// Resource name for the `Release`.
-  ///
-  /// `Release` names may be structured `app1/prod/v2` or flat `app1_prod_v2`
-  /// which affords developers a great deal of flexibility in mapping the name
-  /// to the style that best fits their existing development practices. For
-  /// example, a name could refer to an environment, an app, a version, or some
-  /// combination of three. In the table below, for the project name
-  /// `projects/foo`, the following relative release paths show how flat and
-  /// structured names might be chosen to match a desired development /
-  /// deployment strategy. Use Case | Flat Name | Structured Name
-  /// -------------|---------------------|---------------- Environments |
-  /// releases/qa | releases/qa Apps | releases/app1_qa | releases/app1/qa
-  /// Versions | releases/app1_v2_qa | releases/app1/v2/qa The delimiter between
-  /// the release name path elements can be almost anything and it should work
-  /// equally well with the release name list filter, but in many ways the
-  /// structured paths provide a clearer picture of the relationship between
-  /// `Release` instances. Format: `projects/{project_id}/releases/{release_id}`
+  /// Format: `projects/{project_id}/releases/{release_id}`
   core.String? name;
 
   /// Name of the `Ruleset` referred to by this `Release`.
@@ -1132,7 +1115,9 @@ class Ruleset {
   /// Name of the `Ruleset`.
   ///
   /// The ruleset_id is auto generated by the service. Format:
-  /// `projects/{project_id}/rulesets/{ruleset_id}` Output only.
+  /// `projects/{project_id}/rulesets/{ruleset_id}`
+  ///
+  /// Output only.
   core.String? name;
 
   /// `Source` for the `Ruleset`.
@@ -1450,7 +1435,11 @@ class TestRulesetRequest {
   /// This field must not be set when the resource name refers to a `Ruleset`.
   Source? source;
 
-  /// Inline `TestSuite` to run.
+  /// The tests to execute against the `Source`.
+  ///
+  /// When `Source` is provided inline, the test cases will only be run if the
+  /// `Source` is syntactically and semantically valid. Inline `TestSuite` to
+  /// run.
   TestSuite? testSuite;
 
   TestRulesetRequest();
@@ -1536,7 +1525,7 @@ class TestSuite {
       };
 }
 
-/// The request for FirebaseRulesService.UpdateReleasePatch.
+/// The request for FirebaseRulesService.UpdateRelease.
 class UpdateReleaseRequest {
   /// `Release` to update.
   Release? release;

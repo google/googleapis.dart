@@ -4116,8 +4116,7 @@ class Environment {
   ///
   /// This field should be used for SDK related experiments and not for service
   /// related experiments. The proper field for service related experiments is
-  /// service_options. For more details see the rationale at
-  /// go/user-specified-service-options.
+  /// service_options.
   core.List<core.String>? experiments;
 
   /// Which Flexible Resource Scheduling mode to run in.
@@ -4159,8 +4158,7 @@ class Environment {
   ///
   /// This field should be used for service related experiments only. These
   /// experiments, when graduating to GA, should be replaced by dedicated fields
-  /// or become default (i.e. always on). For more details see the rationale at
-  /// go/user-specified-service-options.
+  /// or become default (i.e. always on).
   core.List<core.String>? serviceOptions;
 
   /// The shuffle mode used for the job.
@@ -4638,6 +4636,13 @@ class FlexTemplateRuntimeEnvironment {
   /// The initial number of Google Compute Engine instances for the job.
   core.int? numWorkers;
 
+  /// Docker registry location of container image to use for the 'worker
+  /// harness.
+  ///
+  /// Default is the container for the version of the SDK. Note this field is
+  /// only valid for portable pipelines.
+  core.String? sdkContainerImage;
+
   /// The email address of the service account to run the job as.
   core.String? serviceAccountEmail;
 
@@ -4727,6 +4732,9 @@ class FlexTemplateRuntimeEnvironment {
     if (_json.containsKey('numWorkers')) {
       numWorkers = _json['numWorkers'] as core.int;
     }
+    if (_json.containsKey('sdkContainerImage')) {
+      sdkContainerImage = _json['sdkContainerImage'] as core.String;
+    }
     if (_json.containsKey('serviceAccountEmail')) {
       serviceAccountEmail = _json['serviceAccountEmail'] as core.String;
     }
@@ -4764,6 +4772,7 @@ class FlexTemplateRuntimeEnvironment {
         if (maxWorkers != null) 'maxWorkers': maxWorkers!,
         if (network != null) 'network': network!,
         if (numWorkers != null) 'numWorkers': numWorkers!,
+        if (sdkContainerImage != null) 'sdkContainerImage': sdkContainerImage!,
         if (serviceAccountEmail != null)
           'serviceAccountEmail': serviceAccountEmail!,
         if (stagingLocation != null) 'stagingLocation': stagingLocation!,
@@ -11104,7 +11113,7 @@ class WorkerPool {
   /// at the worker unless explicitly specified by the job.
   /// - "DEFAULT_PACKAGE_SET_JAVA" : Stage packages typically useful to workers
   /// written in Java.
-  /// - "DEFAULT_PACKAGE_SET_PYTHON" : Stage pacakges typically useful to
+  /// - "DEFAULT_PACKAGE_SET_PYTHON" : Stage packages typically useful to
   /// workers written in Python.
   core.String? defaultPackageSet;
 

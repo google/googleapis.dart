@@ -111,6 +111,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a job template in the specified region.",
+                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/jobTemplates",
                                     "httpMethod": "POST",
                                     "id": "transcoder.projects.locations.jobTemplates.create",
                                     "parameterOrder": [
@@ -143,6 +144,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a job template.",
+                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/jobTemplates/{jobTemplatesId}",
                                     "httpMethod": "DELETE",
                                     "id": "transcoder.projects.locations.jobTemplates.delete",
                                     "parameterOrder": [
@@ -167,6 +169,7 @@
                                 },
                                 "get": {
                                     "description": "Returns the job template data.",
+                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/jobTemplates/{jobTemplatesId}",
                                     "httpMethod": "GET",
                                     "id": "transcoder.projects.locations.jobTemplates.get",
                                     "parameterOrder": [
@@ -191,6 +194,7 @@
                                 },
                                 "list": {
                                     "description": "Lists job templates in the specified region.",
+                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/jobTemplates",
                                     "httpMethod": "GET",
                                     "id": "transcoder.projects.locations.jobTemplates.list",
                                     "parameterOrder": [
@@ -230,6 +234,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a job in the specified region.",
+                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/jobs",
                                     "httpMethod": "POST",
                                     "id": "transcoder.projects.locations.jobs.create",
                                     "parameterOrder": [
@@ -257,6 +262,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a job.",
+                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}",
                                     "httpMethod": "DELETE",
                                     "id": "transcoder.projects.locations.jobs.delete",
                                     "parameterOrder": [
@@ -281,6 +287,7 @@
                                 },
                                 "get": {
                                     "description": "Returns the job data.",
+                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}",
                                     "httpMethod": "GET",
                                     "id": "transcoder.projects.locations.jobs.get",
                                     "parameterOrder": [
@@ -305,6 +312,7 @@
                                 },
                                 "list": {
                                     "description": "Lists jobs in the specified region.",
+                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/jobs",
                                     "httpMethod": "GET",
                                     "id": "transcoder.projects.locations.jobs.list",
                                     "parameterOrder": [
@@ -345,7 +353,7 @@
             }
         }
     },
-    "revision": "20210415",
+    "revision": "20210608",
     "rootUrl": "https://transcoder.googleapis.com/",
     "schemas": {
         "AdBreak": {

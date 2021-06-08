@@ -4,6 +4,9 @@
             "scopes": {
                 "https://www.googleapis.com/auth/sdm.service": {
                     "description": "See and/or control the devices that you selected"
+                },
+                "https://www.googleapis.com/auth/sdm.thermostat.service": {
+                    "description": "See and control the Nest thermostats that you select"
                 }
             }
         }
@@ -109,6 +112,7 @@
                     "methods": {
                         "executeCommand": {
                             "description": "Executes a command to device managed by the enterprise.",
+                            "flatPath": "v1/enterprises/{enterprisesId}/devices/{devicesId}:executeCommand",
                             "httpMethod": "POST",
                             "id": "smartdevicemanagement.enterprises.devices.executeCommand",
                             "parameterOrder": [
@@ -131,11 +135,13 @@
                                 "$ref": "GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sdm.service"
+                                "https://www.googleapis.com/auth/sdm.service",
+                                "https://www.googleapis.com/auth/sdm.thermostat.service"
                             ]
                         },
                         "get": {
                             "description": "Gets a device managed by the enterprise.",
+                            "flatPath": "v1/enterprises/{enterprisesId}/devices/{devicesId}",
                             "httpMethod": "GET",
                             "id": "smartdevicemanagement.enterprises.devices.get",
                             "parameterOrder": [
@@ -155,11 +161,13 @@
                                 "$ref": "GoogleHomeEnterpriseSdmV1Device"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sdm.service"
+                                "https://www.googleapis.com/auth/sdm.service",
+                                "https://www.googleapis.com/auth/sdm.thermostat.service"
                             ]
                         },
                         "list": {
                             "description": "Lists devices managed by the enterprise.",
+                            "flatPath": "v1/enterprises/{enterprisesId}/devices",
                             "httpMethod": "GET",
                             "id": "smartdevicemanagement.enterprises.devices.list",
                             "parameterOrder": [
@@ -195,7 +203,8 @@
                                 "$ref": "GoogleHomeEnterpriseSdmV1ListDevicesResponse"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sdm.service"
+                                "https://www.googleapis.com/auth/sdm.service",
+                                "https://www.googleapis.com/auth/sdm.thermostat.service"
                             ]
                         }
                     }
@@ -204,6 +213,7 @@
                     "methods": {
                         "get": {
                             "description": "Gets a structure managed by the enterprise.",
+                            "flatPath": "v1/enterprises/{enterprisesId}/structures/{structuresId}",
                             "httpMethod": "GET",
                             "id": "smartdevicemanagement.enterprises.structures.get",
                             "parameterOrder": [
@@ -223,11 +233,13 @@
                                 "$ref": "GoogleHomeEnterpriseSdmV1Structure"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sdm.service"
+                                "https://www.googleapis.com/auth/sdm.service",
+                                "https://www.googleapis.com/auth/sdm.thermostat.service"
                             ]
                         },
                         "list": {
                             "description": "Lists structures managed by the enterprise.",
+                            "flatPath": "v1/enterprises/{enterprisesId}/structures",
                             "httpMethod": "GET",
                             "id": "smartdevicemanagement.enterprises.structures.list",
                             "parameterOrder": [
@@ -263,7 +275,8 @@
                                 "$ref": "GoogleHomeEnterpriseSdmV1ListStructuresResponse"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sdm.service"
+                                "https://www.googleapis.com/auth/sdm.service",
+                                "https://www.googleapis.com/auth/sdm.thermostat.service"
                             ]
                         }
                     },
@@ -272,6 +285,7 @@
                             "methods": {
                                 "get": {
                                     "description": "Gets a room managed by the enterprise.",
+                                    "flatPath": "v1/enterprises/{enterprisesId}/structures/{structuresId}/rooms/{roomsId}",
                                     "httpMethod": "GET",
                                     "id": "smartdevicemanagement.enterprises.structures.rooms.get",
                                     "parameterOrder": [
@@ -291,11 +305,13 @@
                                         "$ref": "GoogleHomeEnterpriseSdmV1Room"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sdm.service"
+                                        "https://www.googleapis.com/auth/sdm.service",
+                                        "https://www.googleapis.com/auth/sdm.thermostat.service"
                                     ]
                                 },
                                 "list": {
                                     "description": "Lists rooms managed by the enterprise.",
+                                    "flatPath": "v1/enterprises/{enterprisesId}/structures/{structuresId}/rooms",
                                     "httpMethod": "GET",
                                     "id": "smartdevicemanagement.enterprises.structures.rooms.list",
                                     "parameterOrder": [
@@ -326,7 +342,8 @@
                                         "$ref": "GoogleHomeEnterpriseSdmV1ListRoomsResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sdm.service"
+                                        "https://www.googleapis.com/auth/sdm.service",
+                                        "https://www.googleapis.com/auth/sdm.thermostat.service"
                                     ]
                                 }
                             }
@@ -336,7 +353,7 @@
             }
         }
     },
-    "revision": "20210512",
+    "revision": "20210604",
     "rootUrl": "https://smartdevicemanagement.googleapis.com/",
     "schemas": {
         "GoogleHomeEnterpriseSdmV1Device": {

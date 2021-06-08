@@ -118,6 +118,7 @@
                     "methods": {
                         "list": {
                             "description": "Lists time series that match a filter. This method does not require a Workspace.",
+                            "flatPath": "v3/folders/{foldersId}/timeSeries",
                             "httpMethod": "GET",
                             "id": "monitoring.folders.timeSeries.list",
                             "parameterOrder": [
@@ -390,6 +391,7 @@
                     "methods": {
                         "list": {
                             "description": "Lists time series that match a filter. This method does not require a Workspace.",
+                            "flatPath": "v3/organizations/{organizationsId}/timeSeries",
                             "httpMethod": "GET",
                             "id": "monitoring.organizations.timeSeries.list",
                             "parameterOrder": [
@@ -662,6 +664,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a new alerting policy.",
+                            "flatPath": "v3/projects/{projectsId}/alertPolicies",
                             "httpMethod": "POST",
                             "id": "monitoring.projects.alertPolicies.create",
                             "parameterOrder": [
@@ -690,6 +693,7 @@
                         },
                         "delete": {
                             "description": "Deletes an alerting policy.",
+                            "flatPath": "v3/projects/{projectsId}/alertPolicies/{alertPoliciesId}",
                             "httpMethod": "DELETE",
                             "id": "monitoring.projects.alertPolicies.delete",
                             "parameterOrder": [
@@ -715,6 +719,7 @@
                         },
                         "get": {
                             "description": "Gets a single alerting policy.",
+                            "flatPath": "v3/projects/{projectsId}/alertPolicies/{alertPoliciesId}",
                             "httpMethod": "GET",
                             "id": "monitoring.projects.alertPolicies.get",
                             "parameterOrder": [
@@ -741,6 +746,7 @@
                         },
                         "list": {
                             "description": "Lists the existing alerting policies for the workspace.",
+                            "flatPath": "v3/projects/{projectsId}/alertPolicies",
                             "httpMethod": "GET",
                             "id": "monitoring.projects.alertPolicies.list",
                             "parameterOrder": [
@@ -788,6 +794,7 @@
                         },
                         "patch": {
                             "description": "Updates an alerting policy. You can either replace the entire policy with a new one or replace only certain fields in the current alerting policy by specifying the fields to be updated via updateMask. Returns the updated alerting policy.",
+                            "flatPath": "v3/projects/{projectsId}/alertPolicies/{alertPoliciesId}",
                             "httpMethod": "PATCH",
                             "id": "monitoring.projects.alertPolicies.patch",
                             "parameterOrder": [
@@ -826,6 +833,7 @@
                     "methods": {
                         "create": {
                             "description": "Stackdriver Monitoring Agent only: Creates a new time series.This method is only for use by the Stackdriver Monitoring Agent. Use projects.timeSeries.create instead.",
+                            "flatPath": "v3/projects/{projectsId}/collectdTimeSeries",
                             "httpMethod": "POST",
                             "id": "monitoring.projects.collectdTimeSeries.create",
                             "parameterOrder": [
@@ -859,6 +867,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a new group.",
+                            "flatPath": "v3/projects/{projectsId}/groups",
                             "httpMethod": "POST",
                             "id": "monitoring.projects.groups.create",
                             "parameterOrder": [
@@ -892,6 +901,7 @@
                         },
                         "delete": {
                             "description": "Deletes an existing group.",
+                            "flatPath": "v3/projects/{projectsId}/groups/{groupsId}",
                             "httpMethod": "DELETE",
                             "id": "monitoring.projects.groups.delete",
                             "parameterOrder": [
@@ -922,6 +932,7 @@
                         },
                         "get": {
                             "description": "Gets a single group.",
+                            "flatPath": "v3/projects/{projectsId}/groups/{groupsId}",
                             "httpMethod": "GET",
                             "id": "monitoring.projects.groups.get",
                             "parameterOrder": [
@@ -948,6 +959,7 @@
                         },
                         "list": {
                             "description": "Lists the existing groups.",
+                            "flatPath": "v3/projects/{projectsId}/groups",
                             "httpMethod": "GET",
                             "id": "monitoring.projects.groups.list",
                             "parameterOrder": [
@@ -1000,6 +1012,7 @@
                         },
                         "update": {
                             "description": "Updates an existing group. You can change any group attributes except name.",
+                            "flatPath": "v3/projects/{projectsId}/groups/{groupsId}",
                             "httpMethod": "PUT",
                             "id": "monitoring.projects.groups.update",
                             "parameterOrder": [
@@ -1037,6 +1050,7 @@
                             "methods": {
                                 "list": {
                                     "description": "Lists the monitored resources that are members of a group.",
+                                    "flatPath": "v3/projects/{projectsId}/groups/{groupsId}/members",
                                     "httpMethod": "GET",
                                     "id": "monitoring.projects.groups.members.list",
                                     "parameterOrder": [
@@ -1097,6 +1111,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a new metric descriptor. User-created metric descriptors define custom metrics (https://cloud.google.com/monitoring/custom-metrics).",
+                            "flatPath": "v3/projects/{projectsId}/metricDescriptors",
                             "httpMethod": "POST",
                             "id": "monitoring.projects.metricDescriptors.create",
                             "parameterOrder": [
@@ -1126,6 +1141,7 @@
                         },
                         "delete": {
                             "description": "Deletes a metric descriptor. Only user-created custom metrics (https://cloud.google.com/monitoring/custom-metrics) can be deleted.",
+                            "flatPath": "v3/projects/{projectsId}/metricDescriptors/{metricDescriptorsId}",
                             "httpMethod": "DELETE",
                             "id": "monitoring.projects.metricDescriptors.delete",
                             "parameterOrder": [
@@ -1151,6 +1167,7 @@
                         },
                         "get": {
                             "description": "Gets a single metric descriptor. This method does not require a Workspace.",
+                            "flatPath": "v3/projects/{projectsId}/metricDescriptors/{metricDescriptorsId}",
                             "httpMethod": "GET",
                             "id": "monitoring.projects.metricDescriptors.get",
                             "parameterOrder": [
@@ -1178,6 +1195,7 @@
                         },
                         "list": {
                             "description": "Lists metric descriptors that match a filter. This method does not require a Workspace.",
+                            "flatPath": "v3/projects/{projectsId}/metricDescriptors",
                             "httpMethod": "GET",
                             "id": "monitoring.projects.metricDescriptors.list",
                             "parameterOrder": [
@@ -1225,6 +1243,7 @@
                     "methods": {
                         "get": {
                             "description": "Gets a single monitored resource descriptor. This method does not require a Workspace.",
+                            "flatPath": "v3/projects/{projectsId}/monitoredResourceDescriptors/{monitoredResourceDescriptorsId}",
                             "httpMethod": "GET",
                             "id": "monitoring.projects.monitoredResourceDescriptors.get",
                             "parameterOrder": [
@@ -1252,6 +1271,7 @@
                         },
                         "list": {
                             "description": "Lists monitored resource descriptors that match a filter. This method does not require a Workspace.",
+                            "flatPath": "v3/projects/{projectsId}/monitoredResourceDescriptors",
                             "httpMethod": "GET",
                             "id": "monitoring.projects.monitoredResourceDescriptors.list",
                             "parameterOrder": [
@@ -1299,6 +1319,7 @@
                     "methods": {
                         "get": {
                             "description": "Gets a single channel descriptor. The descriptor indicates which fields are expected / permitted for a notification channel of the given type.",
+                            "flatPath": "v3/projects/{projectsId}/notificationChannelDescriptors/{notificationChannelDescriptorsId}",
                             "httpMethod": "GET",
                             "id": "monitoring.projects.notificationChannelDescriptors.get",
                             "parameterOrder": [
@@ -1325,6 +1346,7 @@
                         },
                         "list": {
                             "description": "Lists the descriptors for supported channel types. The use of descriptors makes it possible for new channel types to be dynamically added.",
+                            "flatPath": "v3/projects/{projectsId}/notificationChannelDescriptors",
                             "httpMethod": "GET",
                             "id": "monitoring.projects.notificationChannelDescriptors.list",
                             "parameterOrder": [
@@ -1366,6 +1388,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a new notification channel, representing a single notification endpoint such as an email address, SMS number, or PagerDuty service.",
+                            "flatPath": "v3/projects/{projectsId}/notificationChannels",
                             "httpMethod": "POST",
                             "id": "monitoring.projects.notificationChannels.create",
                             "parameterOrder": [
@@ -1394,6 +1417,7 @@
                         },
                         "delete": {
                             "description": "Deletes a notification channel.",
+                            "flatPath": "v3/projects/{projectsId}/notificationChannels/{notificationChannelsId}",
                             "httpMethod": "DELETE",
                             "id": "monitoring.projects.notificationChannels.delete",
                             "parameterOrder": [
@@ -1424,6 +1448,7 @@
                         },
                         "get": {
                             "description": "Gets a single notification channel. The channel includes the relevant configuration details with which the channel was created. However, the response may truncate or omit passwords, API keys, or other private key matter and thus the response may not be 100% identical to the information that was supplied in the call to the create method.",
+                            "flatPath": "v3/projects/{projectsId}/notificationChannels/{notificationChannelsId}",
                             "httpMethod": "GET",
                             "id": "monitoring.projects.notificationChannels.get",
                             "parameterOrder": [
@@ -1450,6 +1475,7 @@
                         },
                         "getVerificationCode": {
                             "description": "Requests a verification code for an already verified channel that can then be used in a call to VerifyNotificationChannel() on a different channel with an equivalent identity in the same or in a different project. This makes it possible to copy a channel between projects without requiring manual reverification of the channel. If the channel is not in the verified state, this method will fail (in other words, this may only be used if the SendNotificationChannelVerificationCode and VerifyNotificationChannel paths have already been used to put the given channel into the verified state).There is no guarantee that the verification codes returned by this method will be of a similar structure or form as the ones that are delivered to the channel via SendNotificationChannelVerificationCode; while VerifyNotificationChannel() will recognize both the codes delivered via SendNotificationChannelVerificationCode() and returned from GetNotificationChannelVerificationCode(), it is typically the case that the verification codes delivered via SendNotificationChannelVerificationCode() will be shorter and also have a shorter expiration (e.g. codes such as \"G-123456\") whereas GetVerificationCode() will typically return a much longer, websafe base 64 encoded string that has a longer expiration time.",
+                            "flatPath": "v3/projects/{projectsId}/notificationChannels/{notificationChannelsId}:getVerificationCode",
                             "httpMethod": "POST",
                             "id": "monitoring.projects.notificationChannels.getVerificationCode",
                             "parameterOrder": [
@@ -1478,6 +1504,7 @@
                         },
                         "list": {
                             "description": "Lists the notification channels that have been created for the project.",
+                            "flatPath": "v3/projects/{projectsId}/notificationChannels",
                             "httpMethod": "GET",
                             "id": "monitoring.projects.notificationChannels.list",
                             "parameterOrder": [
@@ -1525,6 +1552,7 @@
                         },
                         "patch": {
                             "description": "Updates a notification channel. Fields not specified in the field mask remain unchanged.",
+                            "flatPath": "v3/projects/{projectsId}/notificationChannels/{notificationChannelsId}",
                             "httpMethod": "PATCH",
                             "id": "monitoring.projects.notificationChannels.patch",
                             "parameterOrder": [
@@ -1559,6 +1587,7 @@
                         },
                         "sendVerificationCode": {
                             "description": "Causes a verification code to be delivered to the channel. The code can then be supplied in VerifyNotificationChannel to verify the channel.",
+                            "flatPath": "v3/projects/{projectsId}/notificationChannels/{notificationChannelsId}:sendVerificationCode",
                             "httpMethod": "POST",
                             "id": "monitoring.projects.notificationChannels.sendVerificationCode",
                             "parameterOrder": [
@@ -1587,6 +1616,7 @@
                         },
                         "verify": {
                             "description": "Verifies a NotificationChannel by proving receipt of the code delivered to the channel as a result of calling SendNotificationChannelVerificationCode.",
+                            "flatPath": "v3/projects/{projectsId}/notificationChannels/{notificationChannelsId}:verify",
                             "httpMethod": "POST",
                             "id": "monitoring.projects.notificationChannels.verify",
                             "parameterOrder": [
@@ -1619,6 +1649,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates or adds data to one or more time series. The response is empty if all time series in the request were written. If any time series could not be written, a corresponding failure message is included in the error response.",
+                            "flatPath": "v3/projects/{projectsId}/timeSeries",
                             "httpMethod": "POST",
                             "id": "monitoring.projects.timeSeries.create",
                             "parameterOrder": [
@@ -1648,6 +1679,7 @@
                         },
                         "list": {
                             "description": "Lists time series that match a filter. This method does not require a Workspace.",
+                            "flatPath": "v3/projects/{projectsId}/timeSeries",
                             "httpMethod": "GET",
                             "id": "monitoring.projects.timeSeries.list",
                             "parameterOrder": [
@@ -1912,6 +1944,7 @@
                         },
                         "query": {
                             "description": "Queries time series using Monitoring Query Language. This method does not require a Workspace.",
+                            "flatPath": "v3/projects/{projectsId}/timeSeries:query",
                             "httpMethod": "POST",
                             "id": "monitoring.projects.timeSeries.query",
                             "parameterOrder": [
@@ -1945,6 +1978,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a new Uptime check configuration.",
+                            "flatPath": "v3/projects/{projectsId}/uptimeCheckConfigs",
                             "httpMethod": "POST",
                             "id": "monitoring.projects.uptimeCheckConfigs.create",
                             "parameterOrder": [
@@ -1973,6 +2007,7 @@
                         },
                         "delete": {
                             "description": "Deletes an Uptime check configuration. Note that this method will fail if the Uptime check configuration is referenced by an alert policy or other dependent configs that would be rendered invalid by the deletion.",
+                            "flatPath": "v3/projects/{projectsId}/uptimeCheckConfigs/{uptimeCheckConfigsId}",
                             "httpMethod": "DELETE",
                             "id": "monitoring.projects.uptimeCheckConfigs.delete",
                             "parameterOrder": [
@@ -1998,6 +2033,7 @@
                         },
                         "get": {
                             "description": "Gets a single Uptime check configuration.",
+                            "flatPath": "v3/projects/{projectsId}/uptimeCheckConfigs/{uptimeCheckConfigsId}",
                             "httpMethod": "GET",
                             "id": "monitoring.projects.uptimeCheckConfigs.get",
                             "parameterOrder": [
@@ -2024,6 +2060,7 @@
                         },
                         "list": {
                             "description": "Lists the existing valid Uptime check configurations for the project (leaving out any invalid configurations).",
+                            "flatPath": "v3/projects/{projectsId}/uptimeCheckConfigs",
                             "httpMethod": "GET",
                             "id": "monitoring.projects.uptimeCheckConfigs.list",
                             "parameterOrder": [
@@ -2061,6 +2098,7 @@
                         },
                         "patch": {
                             "description": "Updates an Uptime check configuration. You can either replace the entire configuration with a new one or replace only certain fields in the current configuration by specifying the fields to be updated via updateMask. Returns the updated configuration.",
+                            "flatPath": "v3/projects/{projectsId}/uptimeCheckConfigs/{uptimeCheckConfigsId}",
                             "httpMethod": "PATCH",
                             "id": "monitoring.projects.uptimeCheckConfigs.patch",
                             "parameterOrder": [
@@ -2101,6 +2139,7 @@
             "methods": {
                 "create": {
                     "description": "Create a Service.",
+                    "flatPath": "v3/{v3Id}/{v3Id1}/services",
                     "httpMethod": "POST",
                     "id": "monitoring.services.create",
                     "parameterOrder": [
@@ -2134,6 +2173,7 @@
                 },
                 "delete": {
                     "description": "Soft delete this Service.",
+                    "flatPath": "v3/{v3Id}/{v3Id1}/services/{servicesId}",
                     "httpMethod": "DELETE",
                     "id": "monitoring.services.delete",
                     "parameterOrder": [
@@ -2159,6 +2199,7 @@
                 },
                 "get": {
                     "description": "Get the named Service.",
+                    "flatPath": "v3/{v3Id}/{v3Id1}/services/{servicesId}",
                     "httpMethod": "GET",
                     "id": "monitoring.services.get",
                     "parameterOrder": [
@@ -2185,6 +2226,7 @@
                 },
                 "list": {
                     "description": "List Services for this workspace.",
+                    "flatPath": "v3/{v3Id}/{v3Id1}/services",
                     "httpMethod": "GET",
                     "id": "monitoring.services.list",
                     "parameterOrder": [
@@ -2227,6 +2269,7 @@
                 },
                 "patch": {
                     "description": "Update this Service.",
+                    "flatPath": "v3/{v3Id}/{v3Id1}/services/{servicesId}",
                     "httpMethod": "PATCH",
                     "id": "monitoring.services.patch",
                     "parameterOrder": [
@@ -2265,6 +2308,7 @@
                     "methods": {
                         "create": {
                             "description": "Create a ServiceLevelObjective for the given Service.",
+                            "flatPath": "v3/{v3Id}/{v3Id1}/services/{servicesId}/serviceLevelObjectives",
                             "httpMethod": "POST",
                             "id": "monitoring.services.serviceLevelObjectives.create",
                             "parameterOrder": [
@@ -2298,6 +2342,7 @@
                         },
                         "delete": {
                             "description": "Delete the given ServiceLevelObjective.",
+                            "flatPath": "v3/{v3Id}/{v3Id1}/services/{servicesId}/serviceLevelObjectives/{serviceLevelObjectivesId}",
                             "httpMethod": "DELETE",
                             "id": "monitoring.services.serviceLevelObjectives.delete",
                             "parameterOrder": [
@@ -2323,6 +2368,7 @@
                         },
                         "get": {
                             "description": "Get a ServiceLevelObjective by name.",
+                            "flatPath": "v3/{v3Id}/{v3Id1}/services/{servicesId}/serviceLevelObjectives/{serviceLevelObjectivesId}",
                             "httpMethod": "GET",
                             "id": "monitoring.services.serviceLevelObjectives.get",
                             "parameterOrder": [
@@ -2364,6 +2410,7 @@
                         },
                         "list": {
                             "description": "List the ServiceLevelObjectives for the given Service.",
+                            "flatPath": "v3/{v3Id}/{v3Id1}/services/{servicesId}/serviceLevelObjectives",
                             "httpMethod": "GET",
                             "id": "monitoring.services.serviceLevelObjectives.list",
                             "parameterOrder": [
@@ -2421,6 +2468,7 @@
                         },
                         "patch": {
                             "description": "Update the given ServiceLevelObjective.",
+                            "flatPath": "v3/{v3Id}/{v3Id1}/services/{servicesId}/serviceLevelObjectives/{serviceLevelObjectivesId}",
                             "httpMethod": "PATCH",
                             "id": "monitoring.services.serviceLevelObjectives.patch",
                             "parameterOrder": [
@@ -2461,6 +2509,7 @@
             "methods": {
                 "list": {
                     "description": "Returns the list of IP addresses that checkers run from",
+                    "flatPath": "v3/uptimeCheckIps",
                     "httpMethod": "GET",
                     "id": "monitoring.uptimeCheckIps.list",
                     "parameterOrder": [],
@@ -2490,7 +2539,7 @@
             }
         }
     },
-    "revision": "20210514",
+    "revision": "20210606",
     "rootUrl": "https://monitoring.googleapis.com/",
     "schemas": {
         "Aggregation": {

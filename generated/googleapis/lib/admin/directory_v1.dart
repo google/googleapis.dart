@@ -10356,7 +10356,7 @@ class User {
   /// Output only.
   core.bool? agreedToTerms;
 
-  /// List of the user's alias email addresses.
+  /// A list of the user's alias email addresses.
   ///
   /// Output only.
   core.List<core.String>? aliases;

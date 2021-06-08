@@ -1775,45 +1775,16 @@ class AddFirebaseRequest {
   /// Deprecated.
   core.String? locationId;
 
-  /// Instead, to link a Project with a Google Analytics account, call
-  /// \[`AddGoogleAnalytics`\](../../v1beta1/projects/addGoogleAnalytics) after
-  /// you add Firebase resources to the GCP `Project`.
-  ///
-  /// The region code (CLDR) that the account will use for Google Analytics data
-  /// For example: US, GB, or DE In Java, use
-  /// `com.google.i18n.identifiers.RegionCode`.
-  ///
-  /// Deprecated.
-  core.String? regionCode;
-
-  /// Instead, to link a Project with a Google Analytics account, call
-  /// \[`AddGoogleAnalytics`\](../../v1beta1/projects/addGoogleAnalytics) after
-  /// you add Firebase resources to the GCP `Project`.
-  ///
-  /// The time zone that the account will use for Google Analytics data. For
-  /// example: America/Los_Angeles or Africa/Abidjan
-  ///
-  /// Deprecated.
-  core.String? timeZone;
-
   AddFirebaseRequest();
 
   AddFirebaseRequest.fromJson(core.Map _json) {
     if (_json.containsKey('locationId')) {
       locationId = _json['locationId'] as core.String;
     }
-    if (_json.containsKey('regionCode')) {
-      regionCode = _json['regionCode'] as core.String;
-    }
-    if (_json.containsKey('timeZone')) {
-      timeZone = _json['timeZone'] as core.String;
-    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (locationId != null) 'locationId': locationId!,
-        if (regionCode != null) 'regionCode': regionCode!,
-        if (timeZone != null) 'timeZone': timeZone!,
       };
 }
 

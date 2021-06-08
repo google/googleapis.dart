@@ -975,12 +975,12 @@ class OrganizationsApiproductsResource {
   /// quota settings and metadata that you can use to deliver customized and
   /// productized API bundles to your developer community. This metadata can
   /// include: - Scope - Environments - API proxies - Extensible profile API
-  /// products enable you repackage APIs on-the-fly, without having to do any
+  /// products enable you repackage APIs on the fly, without having to do any
   /// additional coding or configuration. Apigee recommends that you start with
   /// a simple API product including only required elements. You then provision
   /// credentials to apps to enable them to start testing your APIs. After you
   /// have authentication and authorization working against a simple API
-  /// product, you can iterate to create finer grained API products, defining
+  /// product, you can iterate to create finer-grained API products, defining
   /// different sets of API resources for each API product. **WARNING:** - If
   /// you don't specify an API proxy in the request body, *any* app associated
   /// with the product can make calls to *any* API in your entire organization.
@@ -1120,9 +1120,9 @@ class OrganizationsApiproductsResource {
   /// Lists all API product names for an organization.
   ///
   /// Filter the list by passing an `attributename` and `attibutevalue`. The
-  /// limit on the number of API products returned by the API is 1000. You can
-  /// paginate the list of API products returned using the `startKey` and
-  /// `count` query parameters.
+  /// maximum number of API products returned is 1000. You can paginate the list
+  /// of API products returned using the `startKey` and `count` query
+  /// parameters.
   ///
   /// Request parameters:
   ///
@@ -1190,7 +1190,7 @@ class OrganizationsApiproductsResource {
   /// You must include all required values, whether or not you are updating
   /// them, as well as any optional values that you are updating. The API
   /// product name required in the request URL is the internal name of the
-  /// product, not the Display Name. While they may be the same, it depends on
+  /// product, not the display name. While they may be the same, it depends on
   /// whether the API product was created via UI or API. View the list of API
   /// products to identify their internal names.
   ///
@@ -3588,11 +3588,11 @@ class OrganizationsDevelopersAppsKeysResource {
   /// Creates a custom consumer key and secret for a developer app.
   ///
   /// This is particularly useful if you want to migrate existing consumer keys
-  /// and secrets to Apigee hybrid from another system. Consumer keys and
-  /// secrets can contain letters, numbers, underscores, and hyphens. No other
-  /// special characters are allowed. To avoid service disruptions, a consumer
-  /// key and secret should not exceed 2 KBs each. **Note**: When creating the
-  /// consumer key and secret, an association to API products will not be made.
+  /// and secrets to Apigee from another system. Consumer keys and secrets can
+  /// contain letters, numbers, underscores, and hyphens. No other special
+  /// characters are allowed. To avoid service disruptions, a consumer key and
+  /// secret should not exceed 2 KBs each. **Note**: When creating the consumer
+  /// key and secret, an association to API products will not be made.
   /// Therefore, you should not specify the associated API products in your
   /// request. Instead, use the UpdateDeveloperAppKey API to make the
   /// association after the consumer key and secret are created. If a consumer
@@ -3687,8 +3687,8 @@ class OrganizationsDevelopersAppsKeysResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Returns details for a consumer key for a developer app, including the key
-  /// and secret value, associated API products, and other information.
+  /// Gets details for a consumer key for a developer app, including the key and
+  /// secret value, associated API products, and other information.
   ///
   /// Request parameters:
   ///
@@ -3884,13 +3884,13 @@ class OrganizationsDevelopersAppsKeysApiproductsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Approve or revoke an app's consumer key.
+  /// Approves or revokes the consumer key for an API product.
   ///
   /// After a consumer key is approved, the app can use it to access APIs. A
   /// consumer key that is revoked or pending cannot be used to access an API.
   /// Any access tokens associated with a revoked consumer key will remain
-  /// active. However, Apigee hybrid checks the status of the consumer key and
-  /// if set to `revoked` will not allow access to the API.
+  /// active. However, Apigee checks the status of the consumer key and if set
+  /// to `revoked` will not allow access to the API.
   ///
   /// Request parameters:
   ///
@@ -3944,11 +3944,11 @@ class OrganizationsDevelopersAppsKeysCreateResource {
   /// Creates a custom consumer key and secret for a developer app.
   ///
   /// This is particularly useful if you want to migrate existing consumer keys
-  /// and secrets to Apigee hybrid from another system. Consumer keys and
-  /// secrets can contain letters, numbers, underscores, and hyphens. No other
-  /// special characters are allowed. To avoid service disruptions, a consumer
-  /// key and secret should not exceed 2 KBs each. **Note**: When creating the
-  /// consumer key and secret, an association to API products will not be made.
+  /// and secrets to Apigee from another system. Consumer keys and secrets can
+  /// contain letters, numbers, underscores, and hyphens. No other special
+  /// characters are allowed. To avoid service disruptions, a consumer key and
+  /// secret should not exceed 2 KBs each. **Note**: When creating the consumer
+  /// key and secret, an association to API products will not be made.
   /// Therefore, you should not specify the associated API products in your
   /// request. Instead, use the UpdateDeveloperAppKey API to make the
   /// association after the consumer key and secret are created. If a consumer
@@ -13725,6 +13725,7 @@ class GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment {
       };
 }
 
+/// NEXT ID: 9
 class GoogleCloudApigeeV1DeploymentConfig {
   /// Additional key-value metadata for the deployment.
   core.Map<core.String, core.String>? attributes;
@@ -13744,6 +13745,12 @@ class GoogleCloudApigeeV1DeploymentConfig {
 
   /// Unique ID of the API proxy revision.
   core.String? proxyUid;
+
+  /// The service account identity associated with this deployment.
+  ///
+  /// If non-empty, will be in the following format:
+  /// `projects/-/serviceAccounts/{account_email}`
+  core.String? serviceAccount;
 
   /// Unique ID.
   ///
@@ -13774,6 +13781,9 @@ class GoogleCloudApigeeV1DeploymentConfig {
     if (_json.containsKey('proxyUid')) {
       proxyUid = _json['proxyUid'] as core.String;
     }
+    if (_json.containsKey('serviceAccount')) {
+      serviceAccount = _json['serviceAccount'] as core.String;
+    }
     if (_json.containsKey('uid')) {
       uid = _json['uid'] as core.String;
     }
@@ -13785,6 +13795,7 @@ class GoogleCloudApigeeV1DeploymentConfig {
         if (location != null) 'location': location!,
         if (name != null) 'name': name!,
         if (proxyUid != null) 'proxyUid': proxyUid!,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (uid != null) 'uid': uid!,
       };
 }
@@ -15006,20 +15017,20 @@ class GoogleCloudApigeeV1GetSyncAuthorizationRequest {
   core.Map<core.String, core.dynamic> toJson() => {};
 }
 
-/// GraphQLOperation represents the pairing of graphQL operation types and the
-/// graphQL operation name.
+/// Represents the pairing of GraphQL operation types and the GraphQL operation
+/// name.
 class GoogleCloudApigeeV1GraphQLOperation {
-  /// GraphQL operation name, along with operation type which will be used to
-  /// associate quotas with.
+  /// GraphQL operation name.
   ///
-  /// If no name is specified, the quota will be applied to all graphQL
-  /// operations irrespective of their operation names in the payload.
+  /// The name and operation type will be used to apply quotas. If no name is
+  /// specified, the quota will be applied to all GraphQL operations
+  /// irrespective of their operation names in the payload.
   core.String? operation;
 
-  /// `query`, `mutation` and `subscription` are the three operation types
-  /// offered by graphQL.
+  /// GraphQL operation types.
   ///
-  /// Currently we support only `query` and `mutation`.
+  /// Valid values include `query` or `mutation`. **Note**: Apigee does not
+  /// currently support `subscription` types.
   ///
   /// Required.
   core.List<core.String>? operationTypes;
@@ -15043,11 +15054,11 @@ class GoogleCloudApigeeV1GraphQLOperation {
       };
 }
 
-/// GraphQLOperationConfig binds the resources in a proxy or remote service with
-/// the graphQL operation and its associated quota enforcement.
+/// Binds the resources in a proxy or remote service with the GraphQL operation
+/// and its associated quota enforcement.
 class GoogleCloudApigeeV1GraphQLOperationConfig {
-  /// API proxy endpoint or remote service name with which the graphQL
-  /// operation, and quota are associated.
+  /// Name of the API proxy endpoint or remote service with which the GraphQL
+  /// operation and quota are associated.
   ///
   /// Required.
   core.String? apiSource;
@@ -15055,19 +15066,18 @@ class GoogleCloudApigeeV1GraphQLOperationConfig {
   /// Custom attributes associated with the operation.
   core.List<GoogleCloudApigeeV1Attribute>? attributes;
 
-  /// List of graphQL name/Operation type pairs for the proxy/remote service,
-  /// upon which quota will applied.
+  /// List of GraphQL name/operation type pairs for the proxy or remote service
+  /// to which quota will be applied.
   ///
-  /// If GraphQLOperation operation has only the operation type(s), that would
-  /// imply that quota will be applied on all graphQL requests irrespective of
-  /// the graphQL name. **Note**: Currently, we can specify only a single
-  /// GraphQLOperation. Specifying more than one will result in failure of the
-  /// operation.
+  /// If only operation types are specified, the quota will be applied to all
+  /// GraphQL requests irrespective of the GraphQL name. **Note**: Currently,
+  /// you can specify only a single GraphQLOperation. Specifying more than one
+  /// will cause the operation to fail.
   ///
   /// Required.
   core.List<GoogleCloudApigeeV1GraphQLOperation>? operations;
 
-  /// Quota parameters to be enforced for the resources, methods, api_source
+  /// Quota parameters to be enforced for the resources, methods, and API source
   /// combination.
   ///
   /// If none are specified, quota enforcement will not be done.
@@ -15114,13 +15124,13 @@ class GoogleCloudApigeeV1GraphQLOperationConfig {
 ///
 /// Remote services are non-Apigee proxies, such as Istio-Envoy.
 class GoogleCloudApigeeV1GraphQLOperationGroup {
-  /// Flag that specifes whether the configuration is for Apigee API proxy or a
+  /// Flag that specifies whether the configuration is for Apigee API proxy or a
   /// remote service.
   ///
-  /// Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to
-  /// `proxy` when Apigee API proxies are associated with the API product. Set
-  /// to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated
-  /// with the API product.
+  /// Valid values include `proxy` or `remoteservice`. Defaults to `proxy`. Set
+  /// to `proxy` when Apigee API proxies are associated with the API product.
+  /// Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are
+  /// associated with the API product.
   core.String? operationConfigType;
 
   /// List of operation configurations for either Apigee API proxies or other
@@ -16467,8 +16477,8 @@ class GoogleCloudApigeeV1NatAddress {
       };
 }
 
-/// Operation represents the pairing of REST resource path and the actions
-/// (verbs) allowed on the resource path.
+/// Represents the pairing of REST resource path and the actions (verbs) allowed
+/// on the resource path.
 class GoogleCloudApigeeV1Operation {
   /// methods refers to the REST verbs as in
   /// https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html.
@@ -16476,8 +16486,7 @@ class GoogleCloudApigeeV1Operation {
   /// When none specified, all verb types are allowed.
   core.List<core.String>? methods;
 
-  /// resource represents REST resource path associated with the proxy/remote
-  /// service.
+  /// REST resource path associated with the API proxy or remote service.
   ///
   /// Required.
   core.String? resource;
@@ -16501,11 +16510,11 @@ class GoogleCloudApigeeV1Operation {
       };
 }
 
-/// OperationConfig binds the resources in a proxy or remote service with the
-/// allowed REST methods and its associated quota enforcement.
+/// Binds the resources in an API proxy or remote service with the allowed REST
+/// methods and associated quota enforcement.
 class GoogleCloudApigeeV1OperationConfig {
-  /// API proxy or remote service name with which the resources, methods, and
-  /// quota are associated.
+  /// Name of the API proxy or remote service with which the resources, methods,
+  /// and quota are associated.
   ///
   /// Required.
   core.String? apiSource;
@@ -16513,14 +16522,14 @@ class GoogleCloudApigeeV1OperationConfig {
   /// Custom attributes associated with the operation.
   core.List<GoogleCloudApigeeV1Attribute>? attributes;
 
-  /// List of resource/method pairs for the proxy/remote service, upon which
+  /// List of resource/method pairs for the API proxy or remote service to which
   /// quota will applied.
   ///
   /// **Note**: Currently, you can specify only a single resource/method pair.
   /// The call will fail if more than one resource/method pair is provided.
   core.List<GoogleCloudApigeeV1Operation>? operations;
 
-  /// Quota parameters to be enforced for the resources, methods, api_source
+  /// Quota parameters to be enforced for the resources, methods, and API source
   /// combination.
   ///
   /// If none are specified, quota enforcement will not be done.
@@ -16570,10 +16579,10 @@ class GoogleCloudApigeeV1OperationGroup {
   /// Flag that specifes whether the configuration is for Apigee API proxy or a
   /// remote service.
   ///
-  /// Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to
-  /// `proxy` when Apigee API proxies are associated with the API product. Set
-  /// to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated
-  /// with the API product.
+  /// Valid values include `proxy` or `remoteservice`. Defaults to `proxy`. Set
+  /// to `proxy` when Apigee API proxies are associated with the API product.
+  /// Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are
+  /// associated with the API product.
   core.String? operationConfigType;
 
   /// List of operation configurations for either Apigee API proxies or other
@@ -17552,12 +17561,11 @@ class GoogleCloudApigeeV1QueryMetric {
       };
 }
 
-/// Quota contains the essential parameters needed that can be applied on a
-/// proxy/remote service, resources and methods combination associated with this
-/// API product.
+/// Quota contains the essential parameters needed that can be applied on the
+/// resources, methods, API source combination associated with this API product.
 ///
-/// While setting of Quota is optional, setting it prevents requests from
-/// exceeding the provisioned parameters.
+/// While Quota is optional, setting it prevents requests from exceeding the
+/// provisioned parameters.
 class GoogleCloudApigeeV1Quota {
   /// Time interval over which the number of request messages is calculated.
   ///

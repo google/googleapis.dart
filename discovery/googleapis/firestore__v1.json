@@ -112,6 +112,7 @@
                     "methods": {
                         "exportDocuments": {
                             "description": "Exports a copy of all or a subset of documents from Google Cloud Firestore to another storage system, such as Google Cloud Storage. Recent updates to documents may not be reflected in the export. The export occurs in the background and its progress can be monitored and managed via the Operation resource that is created. The output of an export may only be used once the associated operation is done. If an export operation is cancelled before completion it may leave partial data behind in Google Cloud Storage. For more details on export behavior and output format, refer to: https://cloud.google.com/firestore/docs/manage-data/export-import",
+                            "flatPath": "v1/projects/{projectsId}/databases/{databasesId}:exportDocuments",
                             "httpMethod": "POST",
                             "id": "firestore.projects.databases.exportDocuments",
                             "parameterOrder": [
@@ -140,6 +141,7 @@
                         },
                         "importDocuments": {
                             "description": "Imports documents into Google Cloud Firestore. Existing documents with the same name are overwritten. The import occurs in the background and its progress can be monitored and managed via the Operation resource that is created. If an ImportDocuments operation is cancelled, it is possible that a subset of the data has already been imported to Cloud Firestore.",
+                            "flatPath": "v1/projects/{projectsId}/databases/{databasesId}:importDocuments",
                             "httpMethod": "POST",
                             "id": "firestore.projects.databases.importDocuments",
                             "parameterOrder": [
@@ -174,6 +176,7 @@
                                     "methods": {
                                         "get": {
                                             "description": "Gets the metadata and configuration for a Field.",
+                                            "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/fields/{fieldsId}",
                                             "httpMethod": "GET",
                                             "id": "firestore.projects.databases.collectionGroups.fields.get",
                                             "parameterOrder": [
@@ -198,7 +201,8 @@
                                             ]
                                         },
                                         "list": {
-                                            "description": "Lists the field configuration and metadata for this database. Currently, FirestoreAdmin.ListFields only supports listing fields that have been explicitly overridden. To issue this query, call FirestoreAdmin.ListFields with the filter set to `indexConfig.usesAncestorConfig:false`.",
+                                            "description": "Lists the field configuration and metadata for this database. Currently, FirestoreAdmin.ListFields only supports listing fields that have been explicitly overridden. To issue this query, call FirestoreAdmin.ListFields with the filter set to `indexConfig.usesAncestorConfig:false` .",
+                                            "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/fields",
                                             "httpMethod": "GET",
                                             "id": "firestore.projects.databases.collectionGroups.fields.list",
                                             "parameterOrder": [
@@ -206,7 +210,7 @@
                                             ],
                                             "parameters": {
                                                 "filter": {
-                                                    "description": "The filter to apply to list results. Currently, FirestoreAdmin.ListFields only supports listing fields that have been explicitly overridden. To issue this query, call FirestoreAdmin.ListFields with the filter set to `indexConfig.usesAncestorConfig:false`.",
+                                                    "description": "The filter to apply to list results. Currently, FirestoreAdmin.ListFields only supports listing fields that have been explicitly overridden. To issue this query, call FirestoreAdmin.ListFields with a filter that includes `indexConfig.usesAncestorConfig:false` .",
                                                     "location": "query",
                                                     "type": "string"
                                                 },
@@ -240,6 +244,7 @@
                                         },
                                         "patch": {
                                             "description": "Updates a field configuration. Currently, field updates apply only to single field index configuration. However, calls to FirestoreAdmin.UpdateField should provide a field mask to avoid changing any configuration that the caller isn't aware of. The field mask should be specified as: `{ paths: \"index_config\" }`. This call returns a google.longrunning.Operation which may be used to track the status of the field update. The metadata for the operation will be the type FieldOperationMetadata. To configure the default field settings for the database, use the special `Field` with resource name: `projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields/*`.",
+                                            "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/fields/{fieldsId}",
                                             "httpMethod": "PATCH",
                                             "id": "firestore.projects.databases.collectionGroups.fields.patch",
                                             "parameterOrder": [
@@ -278,6 +283,7 @@
                                     "methods": {
                                         "create": {
                                             "description": "Creates a composite index. This returns a google.longrunning.Operation which may be used to track the status of the creation. The metadata for the operation will be the type IndexOperationMetadata.",
+                                            "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/indexes",
                                             "httpMethod": "POST",
                                             "id": "firestore.projects.databases.collectionGroups.indexes.create",
                                             "parameterOrder": [
@@ -306,6 +312,7 @@
                                         },
                                         "delete": {
                                             "description": "Deletes a composite index.",
+                                            "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/indexes/{indexesId}",
                                             "httpMethod": "DELETE",
                                             "id": "firestore.projects.databases.collectionGroups.indexes.delete",
                                             "parameterOrder": [
@@ -331,6 +338,7 @@
                                         },
                                         "get": {
                                             "description": "Gets a composite index.",
+                                            "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/indexes/{indexesId}",
                                             "httpMethod": "GET",
                                             "id": "firestore.projects.databases.collectionGroups.indexes.get",
                                             "parameterOrder": [
@@ -356,6 +364,7 @@
                                         },
                                         "list": {
                                             "description": "Lists composite indexes.",
+                                            "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/indexes",
                                             "httpMethod": "GET",
                                             "id": "firestore.projects.databases.collectionGroups.indexes.list",
                                             "parameterOrder": [
@@ -403,6 +412,7 @@
                             "methods": {
                                 "batchGet": {
                                     "description": "Gets multiple documents. Documents returned by this method are not guaranteed to be returned in the same order that they were requested.",
+                                    "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/documents:batchGet",
                                     "httpMethod": "POST",
                                     "id": "firestore.projects.databases.documents.batchGet",
                                     "parameterOrder": [
@@ -431,6 +441,7 @@
                                 },
                                 "batchWrite": {
                                     "description": "Applies a batch of write operations. The BatchWrite method does not apply the write operations atomically and can apply them out of order. Method does not allow more than one write per document. Each write succeeds or fails independently. See the BatchWriteResponse for the success status of each write. If you require an atomically applied set of writes, use Commit instead.",
+                                    "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/documents:batchWrite",
                                     "httpMethod": "POST",
                                     "id": "firestore.projects.databases.documents.batchWrite",
                                     "parameterOrder": [
@@ -459,6 +470,7 @@
                                 },
                                 "beginTransaction": {
                                     "description": "Starts a new transaction.",
+                                    "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/documents:beginTransaction",
                                     "httpMethod": "POST",
                                     "id": "firestore.projects.databases.documents.beginTransaction",
                                     "parameterOrder": [
@@ -487,6 +499,7 @@
                                 },
                                 "commit": {
                                     "description": "Commits a transaction, while optionally updating documents.",
+                                    "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/documents:commit",
                                     "httpMethod": "POST",
                                     "id": "firestore.projects.databases.documents.commit",
                                     "parameterOrder": [
@@ -515,6 +528,7 @@
                                 },
                                 "createDocument": {
                                     "description": "Creates a new document.",
+                                    "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/documents/{documentsId}/{collectionId}",
                                     "httpMethod": "POST",
                                     "id": "firestore.projects.databases.documents.createDocument",
                                     "parameterOrder": [
@@ -561,6 +575,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a document.",
+                                    "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/documents/{documentsId}/{documentsId1}",
                                     "httpMethod": "DELETE",
                                     "id": "firestore.projects.databases.documents.delete",
                                     "parameterOrder": [
@@ -597,6 +612,7 @@
                                 },
                                 "get": {
                                     "description": "Gets a single document.",
+                                    "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/documents/{documentsId}/{documentsId1}",
                                     "httpMethod": "GET",
                                     "id": "firestore.projects.databases.documents.get",
                                     "parameterOrder": [
@@ -640,6 +656,7 @@
                                 },
                                 "list": {
                                     "description": "Lists documents.",
+                                    "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/documents/{documentsId}/{documentsId1}/{collectionId}",
                                     "httpMethod": "GET",
                                     "id": "firestore.projects.databases.documents.list",
                                     "parameterOrder": [
@@ -711,6 +728,7 @@
                                 },
                                 "listCollectionIds": {
                                     "description": "Lists all the collection IDs underneath a document.",
+                                    "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/documents/{documentsId}/{documentsId1}:listCollectionIds",
                                     "httpMethod": "POST",
                                     "id": "firestore.projects.databases.documents.listCollectionIds",
                                     "parameterOrder": [
@@ -739,6 +757,7 @@
                                 },
                                 "listen": {
                                     "description": "Listens to changes.",
+                                    "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/documents:listen",
                                     "httpMethod": "POST",
                                     "id": "firestore.projects.databases.documents.listen",
                                     "parameterOrder": [
@@ -767,6 +786,7 @@
                                 },
                                 "partitionQuery": {
                                     "description": "Partitions a query by returning partition cursors that can be used to run the query in parallel. The returned partition cursors are split points that can be used by RunQuery as starting/end points for the query results.",
+                                    "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/documents/{documentsId}/{documentsId1}:partitionQuery",
                                     "httpMethod": "POST",
                                     "id": "firestore.projects.databases.documents.partitionQuery",
                                     "parameterOrder": [
@@ -795,6 +815,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates or inserts a document.",
+                                    "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/documents/{documentsId}/{documentsId1}",
                                     "httpMethod": "PATCH",
                                     "id": "firestore.projects.databases.documents.patch",
                                     "parameterOrder": [
@@ -846,6 +867,7 @@
                                 },
                                 "rollback": {
                                     "description": "Rolls back a transaction.",
+                                    "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/documents:rollback",
                                     "httpMethod": "POST",
                                     "id": "firestore.projects.databases.documents.rollback",
                                     "parameterOrder": [
@@ -874,6 +896,7 @@
                                 },
                                 "runQuery": {
                                     "description": "Runs a query.",
+                                    "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/documents/{documentsId}/{documentsId1}:runQuery",
                                     "httpMethod": "POST",
                                     "id": "firestore.projects.databases.documents.runQuery",
                                     "parameterOrder": [
@@ -902,6 +925,7 @@
                                 },
                                 "write": {
                                     "description": "Streams batches of document updates and deletes, in order.",
+                                    "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/documents:write",
                                     "httpMethod": "POST",
                                     "id": "firestore.projects.databases.documents.write",
                                     "parameterOrder": [
@@ -934,6 +958,7 @@
                             "methods": {
                                 "cancel": {
                                     "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                                    "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/operations/{operationsId}:cancel",
                                     "httpMethod": "POST",
                                     "id": "firestore.projects.databases.operations.cancel",
                                     "parameterOrder": [
@@ -962,6 +987,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                                    "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/operations/{operationsId}",
                                     "httpMethod": "DELETE",
                                     "id": "firestore.projects.databases.operations.delete",
                                     "parameterOrder": [
@@ -987,6 +1013,7 @@
                                 },
                                 "get": {
                                     "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                                    "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/operations/{operationsId}",
                                     "httpMethod": "GET",
                                     "id": "firestore.projects.databases.operations.get",
                                     "parameterOrder": [
@@ -1012,6 +1039,7 @@
                                 },
                                 "list": {
                                     "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                                    "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/operations",
                                     "httpMethod": "GET",
                                     "id": "firestore.projects.databases.operations.list",
                                     "parameterOrder": [
@@ -1059,6 +1087,7 @@
                     "methods": {
                         "get": {
                             "description": "Gets information about a location.",
+                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}",
                             "httpMethod": "GET",
                             "id": "firestore.projects.locations.get",
                             "parameterOrder": [
@@ -1084,6 +1113,7 @@
                         },
                         "list": {
                             "description": "Lists information about the supported locations for this service.",
+                            "flatPath": "v1/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "firestore.projects.locations.list",
                             "parameterOrder": [
@@ -1128,7 +1158,7 @@
             }
         }
     },
-    "revision": "20210426",
+    "revision": "20210607",
     "rootUrl": "https://firestore.googleapis.com/",
     "schemas": {
         "ArrayValue": {

@@ -6,67 +6,67 @@
                     "description": "Use Google Fit to see and store your physical activity data"
                 },
                 "https://www.googleapis.com/auth/fitness.activity.write": {
-                    "description": "See and add to your Google Fit physical activity data"
+                    "description": "Add to your Google Fit physical activity data"
                 },
                 "https://www.googleapis.com/auth/fitness.blood_glucose.read": {
                     "description": "See info about your blood glucose in Google Fit. I consent to Google sharing my blood glucose information with this app."
                 },
                 "https://www.googleapis.com/auth/fitness.blood_glucose.write": {
-                    "description": "See and add info about your blood glucose to Google Fit. I consent to Google sharing my blood glucose information with this app."
+                    "description": "Add info about your blood glucose to Google Fit. I consent to Google using my blood glucose information with this app."
                 },
                 "https://www.googleapis.com/auth/fitness.blood_pressure.read": {
                     "description": "See info about your blood pressure in Google Fit. I consent to Google sharing my blood pressure information with this app."
                 },
                 "https://www.googleapis.com/auth/fitness.blood_pressure.write": {
-                    "description": "See and add info about your blood pressure in Google Fit. I consent to Google sharing my blood pressure information with this app."
+                    "description": "Add info about your blood pressure in Google Fit. I consent to Google using my blood pressure information with this app."
                 },
                 "https://www.googleapis.com/auth/fitness.body.read": {
                     "description": "See info about your body measurements and heart rate in Google Fit"
                 },
                 "https://www.googleapis.com/auth/fitness.body.write": {
-                    "description": "See and add info about your body measurements and heart rate to Google Fit"
+                    "description": "Add info about your body measurements and heart rate to Google Fit"
                 },
                 "https://www.googleapis.com/auth/fitness.body_temperature.read": {
                     "description": "See info about your body temperature in Google Fit. I consent to Google sharing my body temperature information with this app."
                 },
                 "https://www.googleapis.com/auth/fitness.body_temperature.write": {
-                    "description": "See and add to info about your body temperature in Google Fit. I consent to Google sharing my body temperature information with this app."
+                    "description": "Add to info about your body temperature in Google Fit. I consent to Google using my body temperature information with this app."
                 },
                 "https://www.googleapis.com/auth/fitness.heart_rate.read": {
                     "description": "See your heart rate data in Google Fit. I consent to Google sharing my heart rate information with this app."
                 },
                 "https://www.googleapis.com/auth/fitness.heart_rate.write": {
-                    "description": "See and add to your heart rate data in Google Fit. I consent to Google sharing my heart rate information with this app."
+                    "description": "Add to your heart rate data in Google Fit. I consent to Google using my heart rate information with this app."
                 },
                 "https://www.googleapis.com/auth/fitness.location.read": {
                     "description": "See your Google Fit speed and distance data"
                 },
                 "https://www.googleapis.com/auth/fitness.location.write": {
-                    "description": "See and add to your Google Fit location data"
+                    "description": "Add to your Google Fit location data"
                 },
                 "https://www.googleapis.com/auth/fitness.nutrition.read": {
                     "description": "See info about your nutrition in Google Fit"
                 },
                 "https://www.googleapis.com/auth/fitness.nutrition.write": {
-                    "description": "See and add to info about your nutrition in Google Fit"
+                    "description": "Add to info about your nutrition in Google Fit"
                 },
                 "https://www.googleapis.com/auth/fitness.oxygen_saturation.read": {
                     "description": "See info about your oxygen saturation in Google Fit. I consent to Google sharing my oxygen saturation information with this app."
                 },
                 "https://www.googleapis.com/auth/fitness.oxygen_saturation.write": {
-                    "description": "See and add info about your oxygen saturation in Google Fit. I consent to Google sharing my oxygen saturation information with this app."
+                    "description": "Add info about your oxygen saturation in Google Fit. I consent to Google using my oxygen saturation information with this app."
                 },
                 "https://www.googleapis.com/auth/fitness.reproductive_health.read": {
                     "description": "See info about your reproductive health in Google Fit. I consent to Google sharing my reproductive health information with this app."
                 },
                 "https://www.googleapis.com/auth/fitness.reproductive_health.write": {
-                    "description": "See and add info about your reproductive health in Google Fit. I consent to Google sharing my reproductive health information with this app."
+                    "description": "Add info about your reproductive health in Google Fit. I consent to Google using my reproductive health information with this app."
                 },
                 "https://www.googleapis.com/auth/fitness.sleep.read": {
                     "description": "See your sleep data in Google Fit. I consent to Google sharing my sleep information with this app."
                 },
                 "https://www.googleapis.com/auth/fitness.sleep.write": {
-                    "description": "See and add to your sleep data in Google Fit. I consent to Google sharing my sleep information with this app."
+                    "description": "Add to your sleep data in Google Fit. I consent to Google using my sleep information with this app."
                 }
             }
         }
@@ -171,6 +171,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a new data source that is unique across all data sources belonging to this user. A data source is a unique source of sensor data. Data sources can expose raw data coming from hardware sensors on local or companion devices. They can also expose derived data, created by transforming or merging other data sources. Multiple data sources can exist for the same data type. Every data point in every dataset inserted into or read from the Fitness API has an associated data source. Each data source produces a unique stream of dataset updates, with a unique data source identifier. Not all changes to data source affect the data stream ID, so that data collected by updated versions of the same application/device can still be considered to belong to the same data source. Data sources are identified using a string generated by the server, based on the contents of the source being created. The dataStreamId field should not be set when invoking this method. It will be automatically generated by the server with the correct format. If a dataStreamId is set, it must match the format that the server would generate. This format is a combination of some fields from the data source, and has a specific order. If it doesn't match, the request will fail with an error. Specifying a DataType which is not a known type (beginning with \"com.google.\") will create a DataSource with a *custom data type*. Custom data types are only readable by the application that created them. Custom data types are *deprecated*; use standard data types instead. In addition to the data source fields included in the data source ID, the developer project number that is authenticated when creating the data source is included. This developer project number is obfuscated when read by any other developer reading public data types.",
+                            "flatPath": "{userId}/dataSources",
                             "httpMethod": "POST",
                             "id": "fitness.users.dataSources.create",
                             "parameterOrder": [
@@ -207,6 +208,7 @@
                         },
                         "delete": {
                             "description": "Deletes the specified data source. The request will fail if the data source contains any data points.",
+                            "flatPath": "{userId}/dataSources/{dataSourceId}",
                             "httpMethod": "DELETE",
                             "id": "fitness.users.dataSources.delete",
                             "parameterOrder": [
@@ -247,6 +249,7 @@
                         },
                         "get": {
                             "description": "Returns the specified data source.",
+                            "flatPath": "{userId}/dataSources/{dataSourceId}",
                             "httpMethod": "GET",
                             "id": "fitness.users.dataSources.get",
                             "parameterOrder": [
@@ -298,6 +301,7 @@
                         },
                         "list": {
                             "description": "Lists all data sources that are visible to the developer, using the OAuth scopes provided. The list is not exhaustive; the user may have private data sources that are only visible to other developers, or calls using other scopes.",
+                            "flatPath": "{userId}/dataSources",
                             "httpMethod": "GET",
                             "id": "fitness.users.dataSources.list",
                             "parameterOrder": [
@@ -348,6 +352,7 @@
                         },
                         "update": {
                             "description": "Updates the specified data source. The dataStreamId, dataType, type, dataStreamName, and device properties with the exception of version, cannot be modified. Data sources are identified by their dataStreamId.",
+                            "flatPath": "{userId}/dataSources/{dataSourceId}",
                             "httpMethod": "PUT",
                             "id": "fitness.users.dataSources.update",
                             "parameterOrder": [
@@ -395,6 +400,7 @@
                             "methods": {
                                 "list": {
                                     "description": "Queries for user's data point changes for a particular data source.",
+                                    "flatPath": "{userId}/dataSources/{dataSourceId}/dataPointChanges",
                                     "httpMethod": "GET",
                                     "id": "fitness.users.dataSources.dataPointChanges.list",
                                     "parameterOrder": [
@@ -461,6 +467,7 @@
                             "methods": {
                                 "delete": {
                                     "description": "Performs an inclusive delete of all data points whose start and end times have any overlap with the time range specified by the dataset ID. For most data types, the entire data point will be deleted. For data types where the time span represents a consistent value (such as com.google.activity.segment), and a data point straddles either end point of the dataset, only the overlapping portion of the data point will be deleted.",
+                                    "flatPath": "{userId}/dataSources/{dataSourceId}/datasets/{datasetId}",
                                     "httpMethod": "DELETE",
                                     "id": "fitness.users.dataSources.datasets.delete",
                                     "parameterOrder": [
@@ -505,6 +512,7 @@
                                 },
                                 "get": {
                                     "description": "Returns a dataset containing all data points whose start and end times overlap with the specified range of the dataset minimum start time and maximum end time. Specifically, any data point whose start time is less than or equal to the dataset end time and whose end time is greater than or equal to the dataset start time.",
+                                    "flatPath": "{userId}/dataSources/{dataSourceId}/datasets/{datasetId}",
                                     "httpMethod": "GET",
                                     "id": "fitness.users.dataSources.datasets.get",
                                     "parameterOrder": [
@@ -574,6 +582,7 @@
                                 },
                                 "patch": {
                                     "description": "Adds data points to a dataset. The dataset need not be previously created. All points within the given dataset will be returned with subsquent calls to retrieve this dataset. Data points can belong to more than one dataset. This method does not use patch semantics: the data points provided are merely inserted, with no existing data replaced.",
+                                    "flatPath": "{userId}/dataSources/{dataSourceId}/datasets/{datasetId}",
                                     "httpMethod": "PATCH",
                                     "id": "fitness.users.dataSources.datasets.patch",
                                     "parameterOrder": [
@@ -630,6 +639,7 @@
                     "methods": {
                         "aggregate": {
                             "description": "Aggregates data of a certain type or stream into buckets divided by a given type of boundary. Multiple data sets of multiple types and from multiple sources can be aggregated into exactly one bucket type per request.",
+                            "flatPath": "{userId}/dataset:aggregate",
                             "httpMethod": "POST",
                             "id": "fitness.users.dataset.aggregate",
                             "parameterOrder": [
@@ -681,6 +691,7 @@
                     "methods": {
                         "delete": {
                             "description": "Deletes a session specified by the given session ID.",
+                            "flatPath": "{userId}/sessions/{sessionId}",
                             "httpMethod": "DELETE",
                             "id": "fitness.users.sessions.delete",
                             "parameterOrder": [
@@ -709,6 +720,7 @@
                         },
                         "list": {
                             "description": "Lists sessions previously created.",
+                            "flatPath": "{userId}/sessions",
                             "httpMethod": "GET",
                             "id": "fitness.users.sessions.list",
                             "parameterOrder": [
@@ -780,6 +792,7 @@
                         },
                         "update": {
                             "description": "Updates or insert a given session.",
+                            "flatPath": "{userId}/sessions/{sessionId}",
                             "httpMethod": "PUT",
                             "id": "fitness.users.sessions.update",
                             "parameterOrder": [
@@ -817,7 +830,7 @@
             }
         }
     },
-    "revision": "20210517",
+    "revision": "20210610",
     "rootUrl": "https://fitness.googleapis.com/",
     "schemas": {
         "AggregateBucket": {

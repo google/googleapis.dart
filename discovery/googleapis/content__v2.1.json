@@ -107,6 +107,7 @@
             "methods": {
                 "authinfo": {
                     "description": "Returns information about the authenticated user.",
+                    "flatPath": "accounts/authinfo",
                     "httpMethod": "GET",
                     "id": "content.accounts.authinfo",
                     "parameterOrder": [],
@@ -121,6 +122,7 @@
                 },
                 "claimwebsite": {
                     "description": "Claims the website of a Merchant Center sub-account.",
+                    "flatPath": "{merchantId}/accounts/{accountId}/claimwebsite",
                     "httpMethod": "POST",
                     "id": "content.accounts.claimwebsite",
                     "parameterOrder": [
@@ -158,6 +160,7 @@
                 },
                 "custombatch": {
                     "description": "Retrieves, inserts, updates, and deletes multiple Merchant Center (sub-)accounts in a single request.",
+                    "flatPath": "accounts/batch",
                     "httpMethod": "POST",
                     "id": "content.accounts.custombatch",
                     "parameterOrder": [],
@@ -175,6 +178,7 @@
                 },
                 "delete": {
                     "description": "Deletes a Merchant Center sub-account.",
+                    "flatPath": "{merchantId}/accounts/{accountId}",
                     "httpMethod": "DELETE",
                     "id": "content.accounts.delete",
                     "parameterOrder": [
@@ -210,6 +214,7 @@
                 },
                 "get": {
                     "description": "Retrieves a Merchant Center account.",
+                    "flatPath": "{merchantId}/accounts/{accountId}",
                     "httpMethod": "GET",
                     "id": "content.accounts.get",
                     "parameterOrder": [
@@ -255,6 +260,7 @@
                 },
                 "insert": {
                     "description": "Creates a Merchant Center sub-account.",
+                    "flatPath": "{merchantId}/accounts",
                     "httpMethod": "POST",
                     "id": "content.accounts.insert",
                     "parameterOrder": [
@@ -282,6 +288,7 @@
                 },
                 "link": {
                     "description": "Performs an action on a link between two Merchant Center accounts, namely accountId and linkedAccountId.",
+                    "flatPath": "{merchantId}/accounts/{accountId}/link",
                     "httpMethod": "POST",
                     "id": "content.accounts.link",
                     "parameterOrder": [
@@ -317,6 +324,7 @@
                 },
                 "list": {
                     "description": "Lists the sub-accounts in your Merchant Center account.",
+                    "flatPath": "{merchantId}/accounts",
                     "httpMethod": "GET",
                     "id": "content.accounts.list",
                     "parameterOrder": [
@@ -371,6 +379,7 @@
                 },
                 "listlinks": {
                     "description": "Returns the list of accounts linked to your Merchant Center account.",
+                    "flatPath": "{merchantId}/accounts/{accountId}/listlinks",
                     "httpMethod": "GET",
                     "id": "content.accounts.listlinks",
                     "parameterOrder": [
@@ -414,6 +423,7 @@
                 },
                 "update": {
                     "description": "Updates a Merchant Center account. Any fields that are not provided are deleted from the resource.",
+                    "flatPath": "{merchantId}/accounts/{accountId}",
                     "httpMethod": "PUT",
                     "id": "content.accounts.update",
                     "parameterOrder": [
@@ -449,6 +459,7 @@
                 },
                 "updatelabels": {
                     "description": "Updates labels that are assigned to the Merchant Center account by CSS user.",
+                    "flatPath": "{merchantId}/accounts/{accountId}/updatelabels",
                     "httpMethod": "POST",
                     "id": "content.accounts.updatelabels",
                     "parameterOrder": [
@@ -488,6 +499,7 @@
                     "methods": {
                         "create": {
                             "description": "Uploads credentials for the Merchant Center account. If credentials already exist for this Merchant Center account and purpose, this method updates them.",
+                            "flatPath": "accounts/{accountId}/credentials",
                             "httpMethod": "POST",
                             "id": "content.accounts.credentials.create",
                             "parameterOrder": [
@@ -519,6 +531,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a new label, not assigned to any account.",
+                            "flatPath": "accounts/{accountId}/labels",
                             "httpMethod": "POST",
                             "id": "content.accounts.labels.create",
                             "parameterOrder": [
@@ -546,6 +559,7 @@
                         },
                         "delete": {
                             "description": "Deletes a label and removes it from all accounts to which it was assigned.",
+                            "flatPath": "accounts/{accountId}/labels/{labelId}",
                             "httpMethod": "DELETE",
                             "id": "content.accounts.labels.delete",
                             "parameterOrder": [
@@ -575,6 +589,7 @@
                         },
                         "list": {
                             "description": "Lists the labels assigned to an account.",
+                            "flatPath": "accounts/{accountId}/labels",
                             "httpMethod": "GET",
                             "id": "content.accounts.labels.list",
                             "parameterOrder": [
@@ -610,6 +625,7 @@
                         },
                         "patch": {
                             "description": "Updates a label.",
+                            "flatPath": "accounts/{accountId}/labels/{labelId}",
                             "httpMethod": "PATCH",
                             "id": "content.accounts.labels.patch",
                             "parameterOrder": [
@@ -649,6 +665,7 @@
                     "methods": {
                         "create": {
                             "description": "Links return carrier to a merchant account.",
+                            "flatPath": "accounts/{accountId}/returncarrier",
                             "httpMethod": "POST",
                             "id": "content.accounts.returncarrier.create",
                             "parameterOrder": [
@@ -676,6 +693,7 @@
                         },
                         "delete": {
                             "description": "Delete a return carrier in the merchant account.",
+                            "flatPath": "accounts/{accountId}/returncarrier/{carrierAccountId}",
                             "httpMethod": "DELETE",
                             "id": "content.accounts.returncarrier.delete",
                             "parameterOrder": [
@@ -705,6 +723,7 @@
                         },
                         "list": {
                             "description": "Lists available return carriers in the merchant account.",
+                            "flatPath": "accounts/{accountId}/returncarrier",
                             "httpMethod": "GET",
                             "id": "content.accounts.returncarrier.list",
                             "parameterOrder": [
@@ -729,6 +748,7 @@
                         },
                         "patch": {
                             "description": "Updates a return carrier in the merchant account.",
+                            "flatPath": "accounts/{accountId}/returncarrier/{carrierAccountId}",
                             "httpMethod": "PATCH",
                             "id": "content.accounts.returncarrier.patch",
                             "parameterOrder": [
@@ -770,6 +790,7 @@
             "methods": {
                 "custombatch": {
                     "description": "Retrieves multiple Merchant Center account statuses in a single request.",
+                    "flatPath": "accountstatuses/batch",
                     "httpMethod": "POST",
                     "id": "content.accountstatuses.custombatch",
                     "parameterOrder": [],
@@ -787,6 +808,7 @@
                 },
                 "get": {
                     "description": "Retrieves the status of a Merchant Center account. No itemLevelIssues are returned for multi-client accounts.",
+                    "flatPath": "{merchantId}/accountstatuses/{accountId}",
                     "httpMethod": "GET",
                     "id": "content.accountstatuses.get",
                     "parameterOrder": [
@@ -825,6 +847,7 @@
                 },
                 "list": {
                     "description": "Lists the statuses of the sub-accounts in your Merchant Center account.",
+                    "flatPath": "{merchantId}/accountstatuses",
                     "httpMethod": "GET",
                     "id": "content.accountstatuses.list",
                     "parameterOrder": [
@@ -870,6 +893,7 @@
             "methods": {
                 "custombatch": {
                     "description": "Retrieves and updates tax settings of multiple accounts in a single request.",
+                    "flatPath": "accounttax/batch",
                     "httpMethod": "POST",
                     "id": "content.accounttax.custombatch",
                     "parameterOrder": [],
@@ -887,6 +911,7 @@
                 },
                 "get": {
                     "description": "Retrieves the tax settings of the account.",
+                    "flatPath": "{merchantId}/accounttax/{accountId}",
                     "httpMethod": "GET",
                     "id": "content.accounttax.get",
                     "parameterOrder": [
@@ -919,6 +944,7 @@
                 },
                 "list": {
                     "description": "Lists the tax settings of the sub-accounts in your Merchant Center account.",
+                    "flatPath": "{merchantId}/accounttax",
                     "httpMethod": "GET",
                     "id": "content.accounttax.list",
                     "parameterOrder": [
@@ -954,6 +980,7 @@
                 },
                 "update": {
                     "description": "Updates the tax settings of the account. Any fields that are not provided are deleted from the resource.",
+                    "flatPath": "{merchantId}/accounttax/{accountId}",
                     "httpMethod": "PUT",
                     "id": "content.accounttax.update",
                     "parameterOrder": [
@@ -993,6 +1020,7 @@
             "methods": {
                 "activate": {
                     "description": "Reactivates the BoG program in your Merchant Center account. Moves the program to the active state when allowed, e.g. when paused. Important: This method is only whitelisted for selected merchants.",
+                    "flatPath": "{merchantId}/buyongoogleprograms/{regionCode}/activate",
                     "httpMethod": "POST",
                     "id": "content.buyongoogleprograms.activate",
                     "parameterOrder": [
@@ -1024,6 +1052,7 @@
                 },
                 "get": {
                     "description": "Retrieves a status of the BoG program for your Merchant Center account.",
+                    "flatPath": "{merchantId}/buyongoogleprograms/{regionCode}",
                     "httpMethod": "GET",
                     "id": "content.buyongoogleprograms.get",
                     "parameterOrder": [
@@ -1055,6 +1084,7 @@
                 },
                 "onboard": {
                     "description": "Onboards the BoG program in your Merchant Center account. By using this method, you agree to the [Terms of Service](https://merchants.google.com/mc/termsofservice/transactions/US/latest). Calling this method is only possible if the authenticated account is the same as the merchant id in the request. Calling this method multiple times will only accept Terms of Service if the latest version is not currently signed.",
+                    "flatPath": "{merchantId}/buyongoogleprograms/{regionCode}/onboard",
                     "httpMethod": "POST",
                     "id": "content.buyongoogleprograms.onboard",
                     "parameterOrder": [
@@ -1086,6 +1116,7 @@
                 },
                 "pause": {
                     "description": "Pauses the BoG program in your Merchant Center account. Important: This method is only whitelisted for selected merchants.",
+                    "flatPath": "{merchantId}/buyongoogleprograms/{regionCode}/pause",
                     "httpMethod": "POST",
                     "id": "content.buyongoogleprograms.pause",
                     "parameterOrder": [
@@ -1117,6 +1148,7 @@
                 },
                 "requestreview": {
                     "description": "Requests review and then activates the BoG program in your Merchant Center account for the first time. Moves the program to the REVIEW_PENDING state. Important: This method is only whitelisted for selected merchants.",
+                    "flatPath": "{merchantId}/buyongoogleprograms/{regionCode}/requestreview",
                     "httpMethod": "POST",
                     "id": "content.buyongoogleprograms.requestreview",
                     "parameterOrder": [
@@ -1152,6 +1184,7 @@
             "methods": {
                 "create": {
                     "description": "Uploads a collection to your Merchant Center account. If a collection with the same collectionId already exists, this method updates that entry. In each update, the collection is completely replaced by the fields in the body of the update request.",
+                    "flatPath": "{merchantId}/collections",
                     "httpMethod": "POST",
                     "id": "content.collections.create",
                     "parameterOrder": [
@@ -1179,6 +1212,7 @@
                 },
                 "delete": {
                     "description": "Deletes a collection from your Merchant Center account.",
+                    "flatPath": "{merchantId}/collections/{collectionId}",
                     "httpMethod": "DELETE",
                     "id": "content.collections.delete",
                     "parameterOrder": [
@@ -1207,6 +1241,7 @@
                 },
                 "get": {
                     "description": "Retrieves a collection from your Merchant Center account.",
+                    "flatPath": "{merchantId}/collections/{collectionId}",
                     "httpMethod": "GET",
                     "id": "content.collections.get",
                     "parameterOrder": [
@@ -1238,6 +1273,7 @@
                 },
                 "list": {
                     "description": "Lists the collections in your Merchant Center account. The response might contain fewer items than specified by page_size. Rely on next_page_token to determine if there are more items to be requested.",
+                    "flatPath": "{merchantId}/collections",
                     "httpMethod": "GET",
                     "id": "content.collections.list",
                     "parameterOrder": [
@@ -1277,6 +1313,7 @@
             "methods": {
                 "get": {
                     "description": "Gets the status of a collection from your Merchant Center account.",
+                    "flatPath": "{merchantId}/collectionstatuses/{collectionId}",
                     "httpMethod": "GET",
                     "id": "content.collectionstatuses.get",
                     "parameterOrder": [
@@ -1308,6 +1345,7 @@
                 },
                 "list": {
                     "description": "Lists the statuses of the collections in your Merchant Center account.",
+                    "flatPath": "{merchantId}/collectionstatuses",
                     "httpMethod": "GET",
                     "id": "content.collectionstatuses.list",
                     "parameterOrder": [
@@ -1347,6 +1385,7 @@
             "methods": {
                 "get": {
                     "description": "Retrieves a single CSS domain by ID.",
+                    "flatPath": "{cssGroupId}/csses/{cssDomainId}",
                     "httpMethod": "GET",
                     "id": "content.csses.get",
                     "parameterOrder": [
@@ -1379,6 +1418,7 @@
                 },
                 "list": {
                     "description": "Lists CSS domains affiliated with a CSS group.",
+                    "flatPath": "{cssGroupId}/csses",
                     "httpMethod": "GET",
                     "id": "content.csses.list",
                     "parameterOrder": [
@@ -1414,6 +1454,7 @@
                 },
                 "updatelabels": {
                     "description": "Updates labels that are assigned to a CSS domain by its CSS group.",
+                    "flatPath": "{cssGroupId}/csses/{cssDomainId}/updatelabels",
                     "httpMethod": "POST",
                     "id": "content.csses.updatelabels",
                     "parameterOrder": [
@@ -1453,6 +1494,7 @@
             "methods": {
                 "custombatch": {
                     "description": "Deletes, fetches, gets, inserts and updates multiple datafeeds in a single request.",
+                    "flatPath": "datafeeds/batch",
                     "httpMethod": "POST",
                     "id": "content.datafeeds.custombatch",
                     "parameterOrder": [],
@@ -1470,6 +1512,7 @@
                 },
                 "delete": {
                     "description": "Deletes a datafeed configuration from your Merchant Center account.",
+                    "flatPath": "{merchantId}/datafeeds/{datafeedId}",
                     "httpMethod": "DELETE",
                     "id": "content.datafeeds.delete",
                     "parameterOrder": [
@@ -1499,6 +1542,7 @@
                 },
                 "fetchnow": {
                     "description": "Invokes a fetch for the datafeed in your Merchant Center account. If you need to call this method more than once per day, we recommend you use the Products service to update your product data.",
+                    "flatPath": "{merchantId}/datafeeds/{datafeedId}/fetchNow",
                     "httpMethod": "POST",
                     "id": "content.datafeeds.fetchnow",
                     "parameterOrder": [
@@ -1531,6 +1575,7 @@
                 },
                 "get": {
                     "description": "Retrieves a datafeed configuration from your Merchant Center account.",
+                    "flatPath": "{merchantId}/datafeeds/{datafeedId}",
                     "httpMethod": "GET",
                     "id": "content.datafeeds.get",
                     "parameterOrder": [
@@ -1563,6 +1608,7 @@
                 },
                 "insert": {
                     "description": "Registers a datafeed configuration with your Merchant Center account.",
+                    "flatPath": "{merchantId}/datafeeds",
                     "httpMethod": "POST",
                     "id": "content.datafeeds.insert",
                     "parameterOrder": [
@@ -1590,6 +1636,7 @@
                 },
                 "list": {
                     "description": "Lists the configurations for datafeeds in your Merchant Center account.",
+                    "flatPath": "{merchantId}/datafeeds",
                     "httpMethod": "GET",
                     "id": "content.datafeeds.list",
                     "parameterOrder": [
@@ -1625,6 +1672,7 @@
                 },
                 "update": {
                     "description": "Updates a datafeed configuration of your Merchant Center account. Any fields that are not provided are deleted from the resource.",
+                    "flatPath": "{merchantId}/datafeeds/{datafeedId}",
                     "httpMethod": "PUT",
                     "id": "content.datafeeds.update",
                     "parameterOrder": [
@@ -1664,6 +1712,7 @@
             "methods": {
                 "custombatch": {
                     "description": "Gets multiple Merchant Center datafeed statuses in a single request.",
+                    "flatPath": "datafeedstatuses/batch",
                     "httpMethod": "POST",
                     "id": "content.datafeedstatuses.custombatch",
                     "parameterOrder": [],
@@ -1681,6 +1730,7 @@
                 },
                 "get": {
                     "description": "Retrieves the status of a datafeed from your Merchant Center account.",
+                    "flatPath": "{merchantId}/datafeedstatuses/{datafeedId}",
                     "httpMethod": "GET",
                     "id": "content.datafeedstatuses.get",
                     "parameterOrder": [
@@ -1723,6 +1773,7 @@
                 },
                 "list": {
                     "description": "Lists the statuses of the datafeeds in your Merchant Center account.",
+                    "flatPath": "{merchantId}/datafeedstatuses",
                     "httpMethod": "GET",
                     "id": "content.datafeedstatuses.list",
                     "parameterOrder": [
@@ -1762,6 +1813,7 @@
             "methods": {
                 "custombatch": {
                     "description": "Retrieves and/or updates the LIA settings of multiple accounts in a single request.",
+                    "flatPath": "liasettings/batch",
                     "httpMethod": "POST",
                     "id": "content.liasettings.custombatch",
                     "parameterOrder": [],
@@ -1779,6 +1831,7 @@
                 },
                 "get": {
                     "description": "Retrieves the LIA settings of the account.",
+                    "flatPath": "{merchantId}/liasettings/{accountId}",
                     "httpMethod": "GET",
                     "id": "content.liasettings.get",
                     "parameterOrder": [
@@ -1811,6 +1864,7 @@
                 },
                 "getaccessiblegmbaccounts": {
                     "description": "Retrieves the list of accessible Google My Business accounts.",
+                    "flatPath": "{merchantId}/liasettings/{accountId}/accessiblegmbaccounts",
                     "httpMethod": "GET",
                     "id": "content.liasettings.getaccessiblegmbaccounts",
                     "parameterOrder": [
@@ -1843,6 +1897,7 @@
                 },
                 "list": {
                     "description": "Lists the LIA settings of the sub-accounts in your Merchant Center account.",
+                    "flatPath": "{merchantId}/liasettings",
                     "httpMethod": "GET",
                     "id": "content.liasettings.list",
                     "parameterOrder": [
@@ -1878,6 +1933,7 @@
                 },
                 "listposdataproviders": {
                     "description": "Retrieves the list of POS data providers that have active settings for the all eiligible countries.",
+                    "flatPath": "liasettings/posdataproviders",
                     "httpMethod": "GET",
                     "id": "content.liasettings.listposdataproviders",
                     "parameterOrder": [],
@@ -1892,6 +1948,7 @@
                 },
                 "requestgmbaccess": {
                     "description": "Requests access to a specified Google My Business account.",
+                    "flatPath": "{merchantId}/liasettings/{accountId}/requestgmbaccess",
                     "httpMethod": "POST",
                     "id": "content.liasettings.requestgmbaccess",
                     "parameterOrder": [
@@ -1931,6 +1988,7 @@
                 },
                 "requestinventoryverification": {
                     "description": "Requests inventory validation for the specified country.",
+                    "flatPath": "{merchantId}/liasettings/{accountId}/requestinventoryverification/{country}",
                     "httpMethod": "POST",
                     "id": "content.liasettings.requestinventoryverification",
                     "parameterOrder": [
@@ -1970,6 +2028,7 @@
                 },
                 "setinventoryverificationcontact": {
                     "description": "Sets the inventory verification contract for the specified country.",
+                    "flatPath": "{merchantId}/liasettings/{accountId}/setinventoryverificationcontact",
                     "httpMethod": "POST",
                     "id": "content.liasettings.setinventoryverificationcontact",
                     "parameterOrder": [
@@ -2030,6 +2089,7 @@
                 },
                 "setposdataprovider": {
                     "description": "Sets the POS data provider for the specified country.",
+                    "flatPath": "{merchantId}/liasettings/{accountId}/setposdataprovider",
                     "httpMethod": "POST",
                     "id": "content.liasettings.setposdataprovider",
                     "parameterOrder": [
@@ -2080,6 +2140,7 @@
                 },
                 "update": {
                     "description": "Updates the LIA settings of the account. Any fields that are not provided are deleted from the resource.",
+                    "flatPath": "{merchantId}/liasettings/{accountId}",
                     "httpMethod": "PUT",
                     "id": "content.liasettings.update",
                     "parameterOrder": [
@@ -2119,6 +2180,7 @@
             "methods": {
                 "custombatch": {
                     "description": "Updates local inventory for multiple products or stores in a single request.",
+                    "flatPath": "localinventory/batch",
                     "httpMethod": "POST",
                     "id": "content.localinventory.custombatch",
                     "parameterOrder": [],
@@ -2136,6 +2198,7 @@
                 },
                 "insert": {
                     "description": "Updates the local inventory of a product in your Merchant Center account.",
+                    "flatPath": "{merchantId}/products/{productId}/localinventory",
                     "httpMethod": "POST",
                     "id": "content.localinventory.insert",
                     "parameterOrder": [
@@ -2174,6 +2237,7 @@
             "methods": {
                 "createchargeinvoice": {
                     "description": "Creates a charge invoice for a shipment group, and triggers a charge capture for orderinvoice enabled orders.",
+                    "flatPath": "{merchantId}/orderinvoices/{orderId}/createChargeInvoice",
                     "httpMethod": "POST",
                     "id": "content.orderinvoices.createchargeinvoice",
                     "parameterOrder": [
@@ -2208,6 +2272,7 @@
                 },
                 "createrefundinvoice": {
                     "description": "Creates a refund invoice for one or more shipment groups, and triggers a refund for orderinvoice enabled orders. This can only be used for line items that have previously been charged using `createChargeInvoice`. All amounts (except for the summary) are incremental with respect to the previous invoice.",
+                    "flatPath": "{merchantId}/orderinvoices/{orderId}/createRefundInvoice",
                     "httpMethod": "POST",
                     "id": "content.orderinvoices.createrefundinvoice",
                     "parameterOrder": [
@@ -2246,6 +2311,7 @@
             "methods": {
                 "listdisbursements": {
                     "description": "Retrieves a report for disbursements from your Merchant Center account.",
+                    "flatPath": "{merchantId}/orderreports/disbursements",
                     "httpMethod": "GET",
                     "id": "content.orderreports.listdisbursements",
                     "parameterOrder": [
@@ -2291,6 +2357,7 @@
                 },
                 "listtransactions": {
                     "description": "Retrieves a list of transactions for a disbursement from your Merchant Center account.",
+                    "flatPath": "{merchantId}/orderreports/disbursements/{disbursementId}/transactions",
                     "httpMethod": "GET",
                     "id": "content.orderreports.listtransactions",
                     "parameterOrder": [
@@ -2347,6 +2414,7 @@
             "methods": {
                 "acknowledge": {
                     "description": "Acks an order return in your Merchant Center account.",
+                    "flatPath": "{merchantId}/orderreturns/{returnId}/acknowledge",
                     "httpMethod": "POST",
                     "id": "content.orderreturns.acknowledge",
                     "parameterOrder": [
@@ -2381,6 +2449,7 @@
                 },
                 "createorderreturn": {
                     "description": "Create return in your Merchant Center account.",
+                    "flatPath": "{merchantId}/orderreturns/createOrderReturn",
                     "httpMethod": "POST",
                     "id": "content.orderreturns.createorderreturn",
                     "parameterOrder": [
@@ -2408,6 +2477,7 @@
                 },
                 "get": {
                     "description": "Retrieves an order return from your Merchant Center account.",
+                    "flatPath": "{merchantId}/orderreturns/{returnId}",
                     "httpMethod": "GET",
                     "id": "content.orderreturns.get",
                     "parameterOrder": [
@@ -2439,6 +2509,7 @@
                 },
                 "list": {
                     "description": "Lists order returns in your Merchant Center account.",
+                    "flatPath": "{merchantId}/orderreturns",
                     "httpMethod": "GET",
                     "id": "content.orderreturns.list",
                     "parameterOrder": [
@@ -2566,6 +2637,7 @@
                 },
                 "process": {
                     "description": "Processes return in your Merchant Center account.",
+                    "flatPath": "{merchantId}/orderreturns/{returnId}/process",
                     "httpMethod": "POST",
                     "id": "content.orderreturns.process",
                     "parameterOrder": [
@@ -2604,6 +2676,7 @@
                     "methods": {
                         "create": {
                             "description": "Links a return shipping label to a return id. You can only create one return label per return id. Since the label is sent to the buyer, the linked return label cannot be updated or deleted. If you try to create multiple return shipping labels for a single return id, every create request except the first will fail.",
+                            "flatPath": "{merchantId}/orderreturns/{returnId}/labels",
                             "httpMethod": "POST",
                             "id": "content.orderreturns.labels.create",
                             "parameterOrder": [
@@ -2644,6 +2717,7 @@
             "methods": {
                 "acknowledge": {
                     "description": "Marks an order as acknowledged.",
+                    "flatPath": "{merchantId}/orders/{orderId}/acknowledge",
                     "httpMethod": "POST",
                     "id": "content.orders.acknowledge",
                     "parameterOrder": [
@@ -2678,6 +2752,7 @@
                 },
                 "advancetestorder": {
                     "description": "Sandbox only. Moves a test order from state \"`inProgress`\" to state \"`pendingShipment`\".",
+                    "flatPath": "{merchantId}/testorders/{orderId}/advance",
                     "httpMethod": "POST",
                     "id": "content.orders.advancetestorder",
                     "parameterOrder": [
@@ -2709,6 +2784,7 @@
                 },
                 "cancel": {
                     "description": "Cancels all line items in an order, making a full refund.",
+                    "flatPath": "{merchantId}/orders/{orderId}/cancel",
                     "httpMethod": "POST",
                     "id": "content.orders.cancel",
                     "parameterOrder": [
@@ -2743,6 +2819,7 @@
                 },
                 "cancellineitem": {
                     "description": "Cancels a line item, making a full refund.",
+                    "flatPath": "{merchantId}/orders/{orderId}/cancelLineItem",
                     "httpMethod": "POST",
                     "id": "content.orders.cancellineitem",
                     "parameterOrder": [
@@ -2777,6 +2854,7 @@
                 },
                 "canceltestorderbycustomer": {
                     "description": "Sandbox only. Cancels a test order for customer-initiated cancellation.",
+                    "flatPath": "{merchantId}/testorders/{orderId}/cancelByCustomer",
                     "httpMethod": "POST",
                     "id": "content.orders.canceltestorderbycustomer",
                     "parameterOrder": [
@@ -2811,6 +2889,7 @@
                 },
                 "createtestorder": {
                     "description": "Sandbox only. Creates a test order.",
+                    "flatPath": "{merchantId}/testorders",
                     "httpMethod": "POST",
                     "id": "content.orders.createtestorder",
                     "parameterOrder": [
@@ -2838,6 +2917,7 @@
                 },
                 "createtestreturn": {
                     "description": "Sandbox only. Creates a test return.",
+                    "flatPath": "{merchantId}/orders/{orderId}/testreturn",
                     "httpMethod": "POST",
                     "id": "content.orders.createtestreturn",
                     "parameterOrder": [
@@ -2872,6 +2952,7 @@
                 },
                 "get": {
                     "description": "Retrieves an order from your Merchant Center account.",
+                    "flatPath": "{merchantId}/orders/{orderId}",
                     "httpMethod": "GET",
                     "id": "content.orders.get",
                     "parameterOrder": [
@@ -2903,6 +2984,7 @@
                 },
                 "getbymerchantorderid": {
                     "description": "Retrieves an order using merchant order ID.",
+                    "flatPath": "{merchantId}/ordersbymerchantid/{merchantOrderId}",
                     "httpMethod": "GET",
                     "id": "content.orders.getbymerchantorderid",
                     "parameterOrder": [
@@ -2934,6 +3016,7 @@
                 },
                 "gettestordertemplate": {
                     "description": "Sandbox only. Retrieves an order template that can be used to quickly create a new order in sandbox.",
+                    "flatPath": "{merchantId}/testordertemplates/{templateName}",
                     "httpMethod": "GET",
                     "id": "content.orders.gettestordertemplate",
                     "parameterOrder": [
@@ -2986,6 +3069,7 @@
                 },
                 "instorerefundlineitem": {
                     "description": "Deprecated. Notifies that item return and refund was handled directly by merchant outside of Google payments processing (e.g. cash refund done in store). Note: We recommend calling the returnrefundlineitem method to refund in-store returns. We will issue the refund directly to the customer. This helps to prevent possible differences arising between merchant and Google transaction records. We also recommend having the point of sale system communicate with Google to ensure that customers do not receive a double refund by first refunding via Google then via an in-store return.",
+                    "flatPath": "{merchantId}/orders/{orderId}/inStoreRefundLineItem",
                     "httpMethod": "POST",
                     "id": "content.orders.instorerefundlineitem",
                     "parameterOrder": [
@@ -3020,6 +3104,7 @@
                 },
                 "list": {
                     "description": "Lists the orders in your Merchant Center account.",
+                    "flatPath": "{merchantId}/orders",
                     "httpMethod": "GET",
                     "id": "content.orders.list",
                     "parameterOrder": [
@@ -3107,6 +3192,7 @@
                 },
                 "refunditem": {
                     "description": "Issues a partial or total refund for items and shipment.",
+                    "flatPath": "{merchantId}/orders/{orderId}/refunditem",
                     "httpMethod": "POST",
                     "id": "content.orders.refunditem",
                     "parameterOrder": [
@@ -3141,6 +3227,7 @@
                 },
                 "refundorder": {
                     "description": "Issues a partial or total refund for an order.",
+                    "flatPath": "{merchantId}/orders/{orderId}/refundorder",
                     "httpMethod": "POST",
                     "id": "content.orders.refundorder",
                     "parameterOrder": [
@@ -3175,6 +3262,7 @@
                 },
                 "rejectreturnlineitem": {
                     "description": "Rejects return on an line item.",
+                    "flatPath": "{merchantId}/orders/{orderId}/rejectReturnLineItem",
                     "httpMethod": "POST",
                     "id": "content.orders.rejectreturnlineitem",
                     "parameterOrder": [
@@ -3209,6 +3297,7 @@
                 },
                 "returnrefundlineitem": {
                     "description": "Returns and refunds a line item. Note that this method can only be called on fully shipped orders. Please also note that the Orderreturns API is the preferred way to handle returns after you receive a return from a customer. You can use Orderreturns.list or Orderreturns.get to search for the return, and then use Orderreturns.processreturn to issue the refund. If the return cannot be found, then we recommend using this API to issue a refund.",
+                    "flatPath": "{merchantId}/orders/{orderId}/returnRefundLineItem",
                     "httpMethod": "POST",
                     "id": "content.orders.returnrefundlineitem",
                     "parameterOrder": [
@@ -3243,6 +3332,7 @@
                 },
                 "setlineitemmetadata": {
                     "description": "Sets (or overrides if it already exists) merchant provided annotations in the form of key-value pairs. A common use case would be to supply us with additional structured information about a line item that cannot be provided via other methods. Submitted key-value pairs can be retrieved as part of the orders resource.",
+                    "flatPath": "{merchantId}/orders/{orderId}/setLineItemMetadata",
                     "httpMethod": "POST",
                     "id": "content.orders.setlineitemmetadata",
                     "parameterOrder": [
@@ -3277,6 +3367,7 @@
                 },
                 "shiplineitems": {
                     "description": "Marks line item(s) as shipped.",
+                    "flatPath": "{merchantId}/orders/{orderId}/shipLineItems",
                     "httpMethod": "POST",
                     "id": "content.orders.shiplineitems",
                     "parameterOrder": [
@@ -3311,6 +3402,7 @@
                 },
                 "updatelineitemshippingdetails": {
                     "description": "Updates ship by and delivery by dates for a line item.",
+                    "flatPath": "{merchantId}/orders/{orderId}/updateLineItemShippingDetails",
                     "httpMethod": "POST",
                     "id": "content.orders.updatelineitemshippingdetails",
                     "parameterOrder": [
@@ -3345,6 +3437,7 @@
                 },
                 "updatemerchantorderid": {
                     "description": "Updates the merchant order ID for a given order.",
+                    "flatPath": "{merchantId}/orders/{orderId}/updateMerchantOrderId",
                     "httpMethod": "POST",
                     "id": "content.orders.updatemerchantorderid",
                     "parameterOrder": [
@@ -3379,6 +3472,7 @@
                 },
                 "updateshipment": {
                     "description": "Updates a shipment's status, carrier, and/or tracking ID.",
+                    "flatPath": "{merchantId}/orders/{orderId}/updateShipment",
                     "httpMethod": "POST",
                     "id": "content.orders.updateshipment",
                     "parameterOrder": [
@@ -3417,6 +3511,7 @@
             "methods": {
                 "create": {
                     "description": "Creates new order tracking signal.",
+                    "flatPath": "{merchantId}/ordertrackingsignals",
                     "httpMethod": "POST",
                     "id": "content.ordertrackingsignals.create",
                     "parameterOrder": [
@@ -3448,6 +3543,7 @@
             "methods": {
                 "custombatch": {
                     "description": "Batches multiple POS-related calls in a single request.",
+                    "flatPath": "pos/batch",
                     "httpMethod": "POST",
                     "id": "content.pos.custombatch",
                     "parameterOrder": [],
@@ -3465,6 +3561,7 @@
                 },
                 "delete": {
                     "description": "Deletes a store for the given merchant.",
+                    "flatPath": "{merchantId}/pos/{targetMerchantId}/store/{storeCode}",
                     "httpMethod": "DELETE",
                     "id": "content.pos.delete",
                     "parameterOrder": [
@@ -3501,6 +3598,7 @@
                 },
                 "get": {
                     "description": "Retrieves information about the given store.",
+                    "flatPath": "{merchantId}/pos/{targetMerchantId}/store/{storeCode}",
                     "httpMethod": "GET",
                     "id": "content.pos.get",
                     "parameterOrder": [
@@ -3540,6 +3638,7 @@
                 },
                 "insert": {
                     "description": "Creates a store for the given merchant.",
+                    "flatPath": "{merchantId}/pos/{targetMerchantId}/store",
                     "httpMethod": "POST",
                     "id": "content.pos.insert",
                     "parameterOrder": [
@@ -3575,6 +3674,7 @@
                 },
                 "inventory": {
                     "description": "Submit inventory for the given merchant.",
+                    "flatPath": "{merchantId}/pos/{targetMerchantId}/inventory",
                     "httpMethod": "POST",
                     "id": "content.pos.inventory",
                     "parameterOrder": [
@@ -3610,6 +3710,7 @@
                 },
                 "list": {
                     "description": "Lists the stores of the target merchant.",
+                    "flatPath": "{merchantId}/pos/{targetMerchantId}/store",
                     "httpMethod": "GET",
                     "id": "content.pos.list",
                     "parameterOrder": [
@@ -3642,6 +3743,7 @@
                 },
                 "sale": {
                     "description": "Submit a sale event for the given merchant.",
+                    "flatPath": "{merchantId}/pos/{targetMerchantId}/sale",
                     "httpMethod": "POST",
                     "id": "content.pos.sale",
                     "parameterOrder": [
@@ -3681,6 +3783,7 @@
             "methods": {
                 "custombatch": {
                     "description": "Retrieves, inserts, and deletes multiple products in a single request.",
+                    "flatPath": "products/batch",
                     "httpMethod": "POST",
                     "id": "content.products.custombatch",
                     "parameterOrder": [],
@@ -3698,6 +3801,7 @@
                 },
                 "delete": {
                     "description": "Deletes a product from your Merchant Center account.",
+                    "flatPath": "{merchantId}/products/{productId}",
                     "httpMethod": "DELETE",
                     "id": "content.products.delete",
                     "parameterOrder": [
@@ -3732,6 +3836,7 @@
                 },
                 "get": {
                     "description": "Retrieves a product from your Merchant Center account.",
+                    "flatPath": "{merchantId}/products/{productId}",
                     "httpMethod": "GET",
                     "id": "content.products.get",
                     "parameterOrder": [
@@ -3763,6 +3868,7 @@
                 },
                 "insert": {
                     "description": "Uploads a product to your Merchant Center account. If an item with the same channel, contentLanguage, offerId, and targetCountry already exists, this method updates that entry.",
+                    "flatPath": "{merchantId}/products",
                     "httpMethod": "POST",
                     "id": "content.products.insert",
                     "parameterOrder": [
@@ -3796,6 +3902,7 @@
                 },
                 "list": {
                     "description": "Lists the products in your Merchant Center account. The response might contain fewer items than specified by maxResults. Rely on nextPageToken to determine if there are more items to be requested.",
+                    "flatPath": "{merchantId}/products",
                     "httpMethod": "GET",
                     "id": "content.products.list",
                     "parameterOrder": [
@@ -3831,6 +3938,7 @@
                 },
                 "update": {
                     "description": "Updates an existing product in your Merchant Center account. Only updates attributes provided in the request.",
+                    "flatPath": "{merchantId}/products/{productId}",
                     "httpMethod": "PATCH",
                     "id": "content.products.update",
                     "parameterOrder": [
@@ -3852,7 +3960,7 @@
                             "type": "string"
                         },
                         "updateMask": {
-                            "description": "The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product. Only top-level product attributes can be updated. If not defined, product attributes with set values will be updated and other attributes will stay unchanged.",
+                            "description": "The comma-separated list of product attributes to be updated. Example: `\"title,salePrice\"`. Attributes specified in the update mask without a value specified in the body will be deleted from the product. Only top-level product attributes can be updated. If not defined, product attributes with set values will be updated and other attributes will stay unchanged.",
                             "format": "google-fieldmask",
                             "location": "query",
                             "type": "string"
@@ -3875,6 +3983,7 @@
             "methods": {
                 "custombatch": {
                     "description": "Gets the statuses of multiple products in a single request.",
+                    "flatPath": "productstatuses/batch",
                     "httpMethod": "POST",
                     "id": "content.productstatuses.custombatch",
                     "parameterOrder": [],
@@ -3892,6 +4001,7 @@
                 },
                 "get": {
                     "description": "Gets the status of a product from your Merchant Center account.",
+                    "flatPath": "{merchantId}/productstatuses/{productId}",
                     "httpMethod": "GET",
                     "id": "content.productstatuses.get",
                     "parameterOrder": [
@@ -3929,6 +4039,7 @@
                 },
                 "list": {
                     "description": "Lists the statuses of the products in your Merchant Center account.",
+                    "flatPath": "{merchantId}/productstatuses",
                     "httpMethod": "GET",
                     "id": "content.productstatuses.list",
                     "parameterOrder": [
@@ -3974,6 +4085,7 @@
                     "methods": {
                         "list": {
                             "description": "Lists the metrics report for a given Repricing product.",
+                            "flatPath": "{merchantId}/productstatuses/{productId}/repricingreports",
                             "httpMethod": "GET",
                             "id": "content.productstatuses.repricingreports.list",
                             "parameterOrder": [
@@ -4037,6 +4149,7 @@
             "methods": {
                 "get": {
                     "description": "Retrieves a Merchant Center account's pubsub notification settings.",
+                    "flatPath": "{merchantId}/pubsubnotificationsettings",
                     "httpMethod": "GET",
                     "id": "content.pubsubnotificationsettings.get",
                     "parameterOrder": [
@@ -4061,6 +4174,7 @@
                 },
                 "update": {
                     "description": "Register a Merchant Center account for pubsub notifications. Note that cloud topic name should not be provided as part of the request.",
+                    "flatPath": "{merchantId}/pubsubnotificationsettings",
                     "httpMethod": "PUT",
                     "id": "content.pubsubnotificationsettings.update",
                     "parameterOrder": [
@@ -4092,6 +4206,7 @@
             "methods": {
                 "custombatch": {
                     "description": "Updates regional inventory for multiple products or regions in a single request.",
+                    "flatPath": "regionalinventory/batch",
                     "httpMethod": "POST",
                     "id": "content.regionalinventory.custombatch",
                     "parameterOrder": [],
@@ -4109,6 +4224,7 @@
                 },
                 "insert": {
                     "description": "Update the regional inventory of a product in your Merchant Center account. If a regional inventory with the same region ID already exists, this method updates that entry.",
+                    "flatPath": "{merchantId}/products/{productId}/regionalinventory",
                     "httpMethod": "POST",
                     "id": "content.regionalinventory.insert",
                     "parameterOrder": [
@@ -4147,6 +4263,7 @@
             "methods": {
                 "create": {
                     "description": "Creates a region definition in your Merchant Center account.",
+                    "flatPath": "{merchantId}/regions",
                     "httpMethod": "POST",
                     "id": "content.regions.create",
                     "parameterOrder": [
@@ -4179,6 +4296,7 @@
                 },
                 "delete": {
                     "description": "Deletes a region definition from your Merchant Center account.",
+                    "flatPath": "{merchantId}/regions/{regionId}",
                     "httpMethod": "DELETE",
                     "id": "content.regions.delete",
                     "parameterOrder": [
@@ -4207,6 +4325,7 @@
                 },
                 "get": {
                     "description": "Retrieves a region defined in your Merchant Center account.",
+                    "flatPath": "{merchantId}/regions/{regionId}",
                     "httpMethod": "GET",
                     "id": "content.regions.get",
                     "parameterOrder": [
@@ -4238,6 +4357,7 @@
                 },
                 "list": {
                     "description": "Lists the regions in your Merchant Center account.",
+                    "flatPath": "{merchantId}/regions",
                     "httpMethod": "GET",
                     "id": "content.regions.list",
                     "parameterOrder": [
@@ -4273,6 +4393,7 @@
                 },
                 "patch": {
                     "description": "Updates a region definition in your Merchant Center account.",
+                    "flatPath": "{merchantId}/regions/{regionId}",
                     "httpMethod": "PATCH",
                     "id": "content.regions.patch",
                     "parameterOrder": [
@@ -4294,7 +4415,7 @@
                             "type": "string"
                         },
                         "updateMask": {
-                            "description": "Optional. The field mask indicating the fields to update.",
+                            "description": "Optional. The comma-separated field mask indicating the fields to update. Example: `\"displayName,postalCodeArea.regionCode\"`.",
                             "format": "google-fieldmask",
                             "location": "query",
                             "type": "string"
@@ -4317,6 +4438,7 @@
             "methods": {
                 "search": {
                     "description": "Retrieves merchant performance mertrics matching the search query and optionally segmented by selected dimensions.",
+                    "flatPath": "{merchantId}/reports/search",
                     "httpMethod": "POST",
                     "id": "content.reports.search",
                     "parameterOrder": [
@@ -4348,6 +4470,7 @@
             "methods": {
                 "create": {
                     "description": "Creates a repricing rule for your Merchant Center account.",
+                    "flatPath": "{merchantId}/repricingrules",
                     "httpMethod": "POST",
                     "id": "content.repricingrules.create",
                     "parameterOrder": [
@@ -4380,6 +4503,7 @@
                 },
                 "delete": {
                     "description": "Deletes a repricing rule in your Merchant Center account.",
+                    "flatPath": "{merchantId}/repricingrules/{ruleId}",
                     "httpMethod": "DELETE",
                     "id": "content.repricingrules.delete",
                     "parameterOrder": [
@@ -4408,6 +4532,7 @@
                 },
                 "get": {
                     "description": "Retrieves a repricing rule from your Merchant Center account.",
+                    "flatPath": "{merchantId}/repricingrules/{ruleId}",
                     "httpMethod": "GET",
                     "id": "content.repricingrules.get",
                     "parameterOrder": [
@@ -4439,6 +4564,7 @@
                 },
                 "list": {
                     "description": "Lists the repricing rules in your Merchant Center account.",
+                    "flatPath": "{merchantId}/repricingrules",
                     "httpMethod": "GET",
                     "id": "content.repricingrules.list",
                     "parameterOrder": [
@@ -4484,6 +4610,7 @@
                 },
                 "patch": {
                     "description": "Updates a repricing rule in your Merchant Center account. All mutable fields will be overwritten in each update request. In each update, you must provide all required mutable fields, or an error will be thrown. If you do not provide an optional field in the update request, if that field currently exists, it will be deleted from the rule.",
+                    "flatPath": "{merchantId}/repricingrules/{ruleId}",
                     "httpMethod": "PATCH",
                     "id": "content.repricingrules.patch",
                     "parameterOrder": [
@@ -4522,6 +4649,7 @@
                     "methods": {
                         "list": {
                             "description": "Lists the metrics report for a given Repricing rule.",
+                            "flatPath": "{merchantId}/repricingrules/{ruleId}/repricingreports",
                             "httpMethod": "GET",
                             "id": "content.repricingrules.repricingreports.list",
                             "parameterOrder": [
@@ -4580,6 +4708,7 @@
             "methods": {
                 "custombatch": {
                     "description": "Batches multiple return address related calls in a single request.",
+                    "flatPath": "returnaddress/batch",
                     "httpMethod": "POST",
                     "id": "content.returnaddress.custombatch",
                     "parameterOrder": [],
@@ -4597,6 +4726,7 @@
                 },
                 "delete": {
                     "description": "Deletes a return address for the given Merchant Center account.",
+                    "flatPath": "{merchantId}/returnaddress/{returnAddressId}",
                     "httpMethod": "DELETE",
                     "id": "content.returnaddress.delete",
                     "parameterOrder": [
@@ -4625,6 +4755,7 @@
                 },
                 "get": {
                     "description": "Gets a return address of the Merchant Center account.",
+                    "flatPath": "{merchantId}/returnaddress/{returnAddressId}",
                     "httpMethod": "GET",
                     "id": "content.returnaddress.get",
                     "parameterOrder": [
@@ -4656,6 +4787,7 @@
                 },
                 "insert": {
                     "description": "Inserts a return address for the Merchant Center account.",
+                    "flatPath": "{merchantId}/returnaddress",
                     "httpMethod": "POST",
                     "id": "content.returnaddress.insert",
                     "parameterOrder": [
@@ -4683,6 +4815,7 @@
                 },
                 "list": {
                     "description": "Lists the return addresses of the Merchant Center account.",
+                    "flatPath": "{merchantId}/returnaddress",
                     "httpMethod": "GET",
                     "id": "content.returnaddress.list",
                     "parameterOrder": [
@@ -4727,6 +4860,7 @@
             "methods": {
                 "custombatch": {
                     "description": "Batches multiple return policy related calls in a single request.",
+                    "flatPath": "returnpolicy/batch",
                     "httpMethod": "POST",
                     "id": "content.returnpolicy.custombatch",
                     "parameterOrder": [],
@@ -4744,6 +4878,7 @@
                 },
                 "delete": {
                     "description": "Deletes a return policy for the given Merchant Center account.",
+                    "flatPath": "{merchantId}/returnpolicy/{returnPolicyId}",
                     "httpMethod": "DELETE",
                     "id": "content.returnpolicy.delete",
                     "parameterOrder": [
@@ -4772,6 +4907,7 @@
                 },
                 "get": {
                     "description": "Gets a return policy of the Merchant Center account.",
+                    "flatPath": "{merchantId}/returnpolicy/{returnPolicyId}",
                     "httpMethod": "GET",
                     "id": "content.returnpolicy.get",
                     "parameterOrder": [
@@ -4803,6 +4939,7 @@
                 },
                 "insert": {
                     "description": "Inserts a return policy for the Merchant Center account.",
+                    "flatPath": "{merchantId}/returnpolicy",
                     "httpMethod": "POST",
                     "id": "content.returnpolicy.insert",
                     "parameterOrder": [
@@ -4830,6 +4967,7 @@
                 },
                 "list": {
                     "description": "Lists the return policies of the Merchant Center account.",
+                    "flatPath": "{merchantId}/returnpolicy",
                     "httpMethod": "GET",
                     "id": "content.returnpolicy.list",
                     "parameterOrder": [
@@ -4858,6 +4996,7 @@
             "methods": {
                 "create": {
                     "description": "Creates a new return policy.",
+                    "flatPath": "{merchantId}/returnpolicyonline",
                     "httpMethod": "POST",
                     "id": "content.returnpolicyonline.create",
                     "parameterOrder": [
@@ -4885,6 +5024,7 @@
                 },
                 "delete": {
                     "description": "Deletes an existing return policy.",
+                    "flatPath": "{merchantId}/returnpolicyonline/{returnPolicyId}",
                     "httpMethod": "DELETE",
                     "id": "content.returnpolicyonline.delete",
                     "parameterOrder": [
@@ -4913,6 +5053,7 @@
                 },
                 "get": {
                     "description": "Gets an existing return policy.",
+                    "flatPath": "{merchantId}/returnpolicyonline/{returnPolicyId}",
                     "httpMethod": "GET",
                     "id": "content.returnpolicyonline.get",
                     "parameterOrder": [
@@ -4944,6 +5085,7 @@
                 },
                 "list": {
                     "description": "Lists all existing return policies.",
+                    "flatPath": "{merchantId}/returnpolicyonline",
                     "httpMethod": "GET",
                     "id": "content.returnpolicyonline.list",
                     "parameterOrder": [
@@ -4968,6 +5110,7 @@
                 },
                 "patch": {
                     "description": "Updates an existing return policy.",
+                    "flatPath": "{merchantId}/returnpolicyonline/{returnPolicyId}",
                     "httpMethod": "PATCH",
                     "id": "content.returnpolicyonline.patch",
                     "parameterOrder": [
@@ -5006,6 +5149,7 @@
             "methods": {
                 "get": {
                     "description": "Retrieves a settlement report from your Merchant Center account.",
+                    "flatPath": "{merchantId}/settlementreports/{settlementId}",
                     "httpMethod": "GET",
                     "id": "content.settlementreports.get",
                     "parameterOrder": [
@@ -5037,6 +5181,7 @@
                 },
                 "list": {
                     "description": "Retrieves a list of settlement reports from your Merchant Center account.",
+                    "flatPath": "{merchantId}/settlementreports",
                     "httpMethod": "GET",
                     "id": "content.settlementreports.list",
                     "parameterOrder": [
@@ -5086,6 +5231,7 @@
             "methods": {
                 "list": {
                     "description": "Retrieves a list of transactions for the settlement.",
+                    "flatPath": "{merchantId}/settlementreports/{settlementId}/transactions",
                     "httpMethod": "GET",
                     "id": "content.settlementtransactions.list",
                     "parameterOrder": [
@@ -5138,6 +5284,7 @@
             "methods": {
                 "custombatch": {
                     "description": "Retrieves and updates the shipping settings of multiple accounts in a single request.",
+                    "flatPath": "shippingsettings/batch",
                     "httpMethod": "POST",
                     "id": "content.shippingsettings.custombatch",
                     "parameterOrder": [],
@@ -5155,6 +5302,7 @@
                 },
                 "get": {
                     "description": "Retrieves the shipping settings of the account.",
+                    "flatPath": "{merchantId}/shippingsettings/{accountId}",
                     "httpMethod": "GET",
                     "id": "content.shippingsettings.get",
                     "parameterOrder": [
@@ -5187,6 +5335,7 @@
                 },
                 "getsupportedcarriers": {
                     "description": "Retrieves supported carriers and carrier services for an account.",
+                    "flatPath": "{merchantId}/supportedCarriers",
                     "httpMethod": "GET",
                     "id": "content.shippingsettings.getsupportedcarriers",
                     "parameterOrder": [
@@ -5211,6 +5360,7 @@
                 },
                 "getsupportedholidays": {
                     "description": "Retrieves supported holidays for an account.",
+                    "flatPath": "{merchantId}/supportedHolidays",
                     "httpMethod": "GET",
                     "id": "content.shippingsettings.getsupportedholidays",
                     "parameterOrder": [
@@ -5235,6 +5385,7 @@
                 },
                 "getsupportedpickupservices": {
                     "description": "Retrieves supported pickup services for an account.",
+                    "flatPath": "{merchantId}/supportedPickupServices",
                     "httpMethod": "GET",
                     "id": "content.shippingsettings.getsupportedpickupservices",
                     "parameterOrder": [
@@ -5259,6 +5410,7 @@
                 },
                 "list": {
                     "description": "Lists the shipping settings of the sub-accounts in your Merchant Center account.",
+                    "flatPath": "{merchantId}/shippingsettings",
                     "httpMethod": "GET",
                     "id": "content.shippingsettings.list",
                     "parameterOrder": [
@@ -5294,6 +5446,7 @@
                 },
                 "update": {
                     "description": "Updates the shipping settings of the account. Any fields that are not provided are deleted from the resource.",
+                    "flatPath": "{merchantId}/shippingsettings/{accountId}",
                     "httpMethod": "PUT",
                     "id": "content.shippingsettings.update",
                     "parameterOrder": [
@@ -5330,7 +5483,7 @@
             }
         }
     },
-    "revision": "20210514",
+    "revision": "20210611",
     "rootUrl": "https://shoppingcontent.googleapis.com/",
     "schemas": {
         "Account": {
@@ -8439,6 +8592,16 @@
             "description": "Performance metrics. Values are only set for metrics requested explicitly in the request's search query.",
             "id": "Metrics",
             "properties": {
+                "aos": {
+                    "description": "Average order size - the average number of items in an order. **This metric cannot be segmented by product dimensions.**",
+                    "format": "double",
+                    "type": "number"
+                },
+                "aovMicros": {
+                    "description": "Average order value - the average value (total price of items) of all placed orders. The currency of the returned value is stored in the currency_code segment. If this metric is selected, 'segments.currency_code' is automatically added to the SELECT clause in the search query (unless it is explicitly selected by the user) and the currency_code segment is populated in the response. **This metric cannot be segmented by product dimensions.**",
+                    "format": "double",
+                    "type": "number"
+                },
                 "clicks": {
                     "description": "Number of clicks.",
                     "format": "int64",
@@ -8449,10 +8612,85 @@
                     "format": "double",
                     "type": "number"
                 },
+                "daysToShip": {
+                    "description": "Average number of days between an order being placed and the order being fully shipped, reported on the last shipment date. **This metric cannot be segmented by product dimensions.**",
+                    "format": "double",
+                    "type": "number"
+                },
                 "impressions": {
                     "description": "Number of times merchant's products are shown.",
                     "format": "int64",
                     "type": "string"
+                },
+                "itemDaysToShip": {
+                    "description": "Average number of days between an item being ordered and the item being",
+                    "format": "double",
+                    "type": "number"
+                },
+                "itemFillRate": {
+                    "description": "Percentage of shipped items in relation to all finalized items (shipped or rejected by the merchant; unshipped items are not taken into account), reported on the order date. Item fill rate is lowered by merchant rejections.",
+                    "format": "double",
+                    "type": "number"
+                },
+                "orderedItemSalesMicros": {
+                    "description": "Total price of ordered items. Excludes shipping, taxes (US only), and customer cancellations that happened within 30 minutes of placing the order. The currency of the returned value is stored in the currency_code segment. If this metric is selected, 'segments.currency_code' is automatically added to the SELECT clause in the search query (unless it is explicitly selected by the user) and the currency_code segment is populated in the response.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "orderedItems": {
+                    "description": "Number of ordered items. Excludes customer cancellations that happened within 30 minutes of placing the order.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "orders": {
+                    "description": "Number of placed orders. Excludes customer cancellations that happened within 30 minutes of placing the order. **This metric cannot be segmented by product dimensions.**",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "rejectedItems": {
+                    "description": "Number of ordered items canceled by the merchant, reported on the order date.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "returnRate": {
+                    "description": "Total price of returned items divided by the total price of shipped items, reported on the order date. If this metric is selected, 'segments.currency_code' is automatically added to the SELECT clause in the search query (unless it is explicitly selected by the user) and the currency_code segment is populated in the response.",
+                    "format": "double",
+                    "type": "number"
+                },
+                "returnedItems": {
+                    "description": "Number of ordered items sent back for return, reported on the date when the merchant accepted the return.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "returnsMicros": {
+                    "description": "Total price of ordered items sent back for return, reported on the date when the merchant accepted the return. The currency of the returned value is stored in the currency_code segment. If this metric is selected, 'segments.currency_code' is automatically added to the SELECT clause in the search query (unless it is explicitly selected by the user) and the currency_code segment is populated in the response.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "shippedItemSalesMicros": {
+                    "description": "Total price of shipped items, reported on the order date. Excludes shipping and taxes (US only). The currency of the returned value is stored in the currency_code segment. If this metric is selected, 'segments.currency_code' is automatically added to the SELECT clause in the search query (unless it is explicitly selected by the user) and the currency_code segment is populated in the response.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "shippedItems": {
+                    "description": "Number of shipped items, reported on the shipment date.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "shippedOrders": {
+                    "description": "Number of fully shipped orders, reported on the last shipment date. **This metric cannot be segmented by product dimensions.**",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "unshippedItems": {
+                    "description": "Number of ordered items not shipped up until the end of the queried day. If a multi-day period is specified in the search query, the returned value is the average number of unshipped items over the days in the queried period.",
+                    "format": "double",
+                    "type": "number"
+                },
+                "unshippedOrders": {
+                    "description": "Number of orders not shipped or partially shipped up until the end of the queried day. If a multi-day period is specified in the search query, the returned value is the average number of unshipped orders over the days in the queried period. **This metric cannot be segmented by product dimensions.**",
+                    "format": "double",
+                    "type": "number"
                 }
             },
             "type": "object"
@@ -9325,7 +9563,7 @@
             "id": "OrderShipment",
             "properties": {
                 "carrier": {
-                    "description": "The carrier handling the shipment. For supported carriers, Google includes the carrier name and tracking URL in emails to customers. For select supported carriers, Google also automatically updates the shipment status based on the provided shipment ID. *Note:* You can also use unsupported carriers, but emails to customers will not include the carrier name or tracking URL, and there will be no automatic order status updates. Supported carriers for US are: - \"`ups`\" (United Parcel Service) *automatic status updates* - \"`usps`\" (United States Postal Service) *automatic status updates* - \"`fedex`\" (FedEx) *automatic status updates * - \"`dhl`\" (DHL eCommerce) *automatic status updates* (US only) - \"`ontrac`\" (OnTrac) *automatic status updates * - \"`dhl express`\" (DHL Express) - \"`deliv`\" (Deliv) - \"`dynamex`\" (TForce) - \"`lasership`\" (LaserShip) - \"`mpx`\" (Military Parcel Xpress) - \"`uds`\" (United Delivery Service) - \"`efw`\" (Estes Forwarding Worldwide) - \"`jd logistics`\" (JD Logistics) - \"`yunexpress`\" (YunExpress) - \"`china post`\" (China Post) - \"`china ems`\" (China Post Express Mail Service) - \"`singapore post`\" (Singapore Post) - \"`pos malaysia`\" (Pos Malaysia) - \"`postnl`\" (PostNL) - \"`ptt`\" (PTT Turkish Post) - \"`eub`\" (ePacket) - \"`chukou1`\" (Chukou1 Logistics) - \"`bestex`\" (Best Express) - \"`canada post`\" (Canada Post) - \"`purolator`\" (Purolator) - \"`canpar`\" (Canpar) - \"`india post`\" (India Post) - \"`blue dart`\" (Blue Dart) - \"`delhivery`\" (Delhivery) - \"`dtdc`\" (DTDC) - \"`tpc india`\" (TPC India) Supported carriers for FR are: - \"`la poste`\" (La Poste) *automatic status updates * - \"`colissimo`\" (Colissimo by La Poste) *automatic status updates* - \"`ups`\" (United Parcel Service) *automatic status updates * - \"`chronopost`\" (Chronopost by La Poste) - \"`gls`\" (General Logistics Systems France) - \"`dpd`\" (DPD Group by GeoPost) - \"`bpost`\" (Belgian Post Group) - \"`colis prive`\" (Colis Privé) - \"`boxtal`\" (Boxtal) - \"`geodis`\" (GEODIS) - \"`tnt`\" (TNT) - \"`db schenker`\" (DB Schenker) - \"`aramex`\" (Aramex) ",
+                    "description": "The carrier handling the shipment. For supported carriers, Google includes the carrier name and tracking URL in emails to customers. For select supported carriers, Google also automatically updates the shipment status based on the provided shipment ID. *Note:* You can also use unsupported carriers, but emails to customers will not include the carrier name or tracking URL, and there will be no automatic order status updates. Supported carriers for US are: - \"`ups`\" (United Parcel Service) *automatic status updates* - \"`usps`\" (United States Postal Service) *automatic status updates* - \"`fedex`\" (FedEx) *automatic status updates * - \"`dhl`\" (DHL eCommerce) *automatic status updates* (US only) - \"`ontrac`\" (OnTrac) *automatic status updates * - \"`dhl express`\" (DHL Express) - \"`deliv`\" (Deliv) - \"`dynamex`\" (TForce) - \"`lasership`\" (LaserShip) - \"`mpx`\" (Military Parcel Xpress) - \"`uds`\" (United Delivery Service) - \"`efw`\" (Estes Forwarding Worldwide) - \"`jd logistics`\" (JD Logistics) - \"`yunexpress`\" (YunExpress) - \"`china post`\" (China Post) - \"`china ems`\" (China Post Express Mail Service) - \"`singapore post`\" (Singapore Post) - \"`pos malaysia`\" (Pos Malaysia) - \"`postnl`\" (PostNL) - \"`ptt`\" (PTT Turkish Post) - \"`eub`\" (ePacket) - \"`chukou1`\" (Chukou1 Logistics) - \"`bestex`\" (Best Express) - \"`canada post`\" (Canada Post) - \"`purolator`\" (Purolator) - \"`canpar`\" (Canpar) - \"`india post`\" (India Post) - \"`blue dart`\" (Blue Dart) - \"`delhivery`\" (Delhivery) - \"`dtdc`\" (DTDC) - \"`tpc india`\" (TPC India) - \"`lso`\" (Lone Star Overnight) - \"`tww`\" (Team Worldwide) Supported carriers for FR are: - \"`la poste`\" (La Poste) *automatic status updates * - \"`colissimo`\" (Colissimo by La Poste) *automatic status updates* - \"`ups`\" (United Parcel Service) *automatic status updates * - \"`chronopost`\" (Chronopost by La Poste) - \"`gls`\" (General Logistics Systems France) - \"`dpd`\" (DPD Group by GeoPost) - \"`bpost`\" (Belgian Post Group) - \"`colis prive`\" (Colis Privé) - \"`boxtal`\" (Boxtal) - \"`geodis`\" (GEODIS) - \"`tnt`\" (TNT) - \"`db schenker`\" (DB Schenker) - \"`aramex`\" (Aramex) ",
                     "type": "string"
                 },
                 "creationDate": {
@@ -11458,6 +11696,10 @@
                     "description": "URL directly linking to your item's page on your website.",
                     "type": "string"
                 },
+                "linkTemplate": {
+                    "description": "URL template for merchant hosted local storefront.",
+                    "type": "string"
+                },
                 "loyaltyPoints": {
                     "$ref": "LoyaltyPoints",
                     "description": "Loyalty points that users receive after purchasing the item. Japan only."
@@ -11488,6 +11730,10 @@
                     "description": "URL for the mobile-optimized version of your item's landing page.",
                     "type": "string"
                 },
+                "mobileLinkTemplate": {
+                    "description": "URL template for merchant hosted local storefront optimized for mobile devices.",
+                    "type": "string"
+                },
                 "mpn": {
                     "description": "Manufacturer Part Number (MPN) of the item.",
                     "type": "string"
@@ -11503,6 +11749,14 @@
                 },
                 "pattern": {
                     "description": "The item's pattern (e.g. polka dots).",
+                    "type": "string"
+                },
+                "pickupMethod": {
+                    "description": "The pick up option for the item. Acceptable values are: - \"`buy`\" - \"`reserve`\" - \"`ship to store`\" - \"`not supported`\" ",
+                    "type": "string"
+                },
+                "pickupSla": {
+                    "description": "Item store pickup timeline. Acceptable values are: - \"`same day`\" - \"`next day`\" - \"`2-day`\" - \"`3-day`\" - \"`4-day`\" - \"`5-day`\" - \"`6-day`\" - \"`7-day`\" - \"`multi-week`\" ",
                     "type": "string"
                 },
                 "price": {
@@ -12017,7 +12271,7 @@
                     "type": "string"
                 },
                 "updateMask": {
-                    "description": "The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product. Only top-level product attributes can be updated. If not defined, product attributes with set values will be updated and other attributes will stay unchanged. Only defined if the method is `update`.",
+                    "description": "The comma-separated list of product attributes to be updated. Example: `\"title,salePrice\"`. Attributes specified in the update mask without a value specified in the body will be deleted from the product. Only top-level product attributes can be updated. If not defined, product attributes with set values will be updated and other attributes will stay unchanged. Only defined if the method is `update`.",
                     "format": "google-fieldmask",
                     "type": "string"
                 }
@@ -13546,12 +13800,80 @@
             "description": "Dimensions according to which metrics are segmented in the response. Values of product dimensions, e.g., offer id, reflect the state of a product at the time of the corresponding event, e.g., impression or order. Segment fields cannot be selected in queries without also selecting at least one metric field. Values are only set for dimensions requested explicitly in the request's search query.",
             "id": "Segments",
             "properties": {
+                "brand": {
+                    "description": "Brand of the product.",
+                    "type": "string"
+                },
+                "categoryL1": {
+                    "description": "Product category (1st level) in Google's product taxonomy.",
+                    "type": "string"
+                },
+                "categoryL2": {
+                    "description": "Product category (2nd level) in Google's product taxonomy.",
+                    "type": "string"
+                },
+                "categoryL3": {
+                    "description": "Product category (3rd level) in Google's product taxonomy.",
+                    "type": "string"
+                },
+                "categoryL4": {
+                    "description": "Product category (4th level) in Google's product taxonomy.",
+                    "type": "string"
+                },
+                "categoryL5": {
+                    "description": "Product category (5th level) in Google's product taxonomy.",
+                    "type": "string"
+                },
+                "currencyCode": {
+                    "description": "Currency in which price metrics are represented, e.g., if you select `ordered_item_sales_micros`, the returned value will be represented by this currency.",
+                    "type": "string"
+                },
+                "customLabel0": {
+                    "description": "Custom label 0 for custom grouping of products.",
+                    "type": "string"
+                },
+                "customLabel1": {
+                    "description": "Custom label 1 for custom grouping of products.",
+                    "type": "string"
+                },
+                "customLabel2": {
+                    "description": "Custom label 2 for custom grouping of products.",
+                    "type": "string"
+                },
+                "customLabel3": {
+                    "description": "Custom label 3 for custom grouping of products.",
+                    "type": "string"
+                },
+                "customLabel4": {
+                    "description": "Custom label 4 for custom grouping of products.",
+                    "type": "string"
+                },
                 "date": {
                     "$ref": "Date",
                     "description": "Date in the merchant timezone to which metrics apply."
                 },
                 "offerId": {
                     "description": "Merchant-provided id of the product.",
+                    "type": "string"
+                },
+                "productTypeL1": {
+                    "description": "Product category (1st level) in merchant's own product taxonomy.",
+                    "type": "string"
+                },
+                "productTypeL2": {
+                    "description": "Product category (2nd level) in merchant's own product taxonomy.",
+                    "type": "string"
+                },
+                "productTypeL3": {
+                    "description": "Product category (3rd level) in merchant's own product taxonomy.",
+                    "type": "string"
+                },
+                "productTypeL4": {
+                    "description": "Product category (4th level) in merchant's own product taxonomy.",
+                    "type": "string"
+                },
+                "productTypeL5": {
+                    "description": "Product category (5th level) in merchant's own product taxonomy.",
                     "type": "string"
                 },
                 "program": {
@@ -13571,6 +13893,14 @@
                         "Buy on Google Listing."
                     ],
                     "type": "string"
+                },
+                "title": {
+                    "description": "Title of the product.",
+                    "type": "string"
+                },
+                "week": {
+                    "$ref": "Date",
+                    "description": "First day of the week (Monday) of the metrics date in the merchant timezone."
                 }
             },
             "type": "object"
@@ -14527,7 +14857,7 @@
                     "type": "string"
                 },
                 "value": {
-                    "description": "Required. The weight represented as a number.",
+                    "description": "Required. The weight represented as a number. The weight can have a maximum precision of four decimal places.",
                     "type": "string"
                 }
             },

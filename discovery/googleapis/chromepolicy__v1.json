@@ -112,6 +112,7 @@
                     "methods": {
                         "resolve": {
                             "description": "Gets the resolved policy values for a list of policies that match a search query.",
+                            "flatPath": "v1/customers/{customersId}/policies:resolve",
                             "httpMethod": "POST",
                             "id": "chromepolicy.customers.policies.resolve",
                             "parameterOrder": [
@@ -144,6 +145,7 @@
                             "methods": {
                                 "batchInherit": {
                                     "description": "Modify multiple policy values that are applied to a specific org unit so that they now inherit the value from a parent (if applicable). All targets must have the same target format. That is to say that they must point to the same target resource and must have the same keys specified in `additionalTargetKeyNames`. On failure the request will return the error details as part of the google.rpc.Status.",
+                                    "flatPath": "v1/customers/{customersId}/policies/orgunits:batchInherit",
                                     "httpMethod": "POST",
                                     "id": "chromepolicy.customers.policies.orgunits.batchInherit",
                                     "parameterOrder": [
@@ -171,6 +173,7 @@
                                 },
                                 "batchModify": {
                                     "description": "Modify multiple policy values that are applied to a specific org unit. All targets must have the same target format. That is to say that they must point to the same target resource and must have the same keys specified in `additionalTargetKeyNames`. On failure the request will return the error details as part of the google.rpc.Status.",
+                                    "flatPath": "v1/customers/{customersId}/policies/orgunits:batchModify",
                                     "httpMethod": "POST",
                                     "id": "chromepolicy.customers.policies.orgunits.batchModify",
                                     "parameterOrder": [
@@ -204,6 +207,7 @@
                     "methods": {
                         "get": {
                             "description": "Get a specific policy schema for a customer by its resource name.",
+                            "flatPath": "v1/customers/{customersId}/policySchemas/{policySchemasId}",
                             "httpMethod": "GET",
                             "id": "chromepolicy.customers.policySchemas.get",
                             "parameterOrder": [
@@ -229,6 +233,7 @@
                         },
                         "list": {
                             "description": "Gets a list of policy schemas that match a specified filter value for a given customer.",
+                            "flatPath": "v1/customers/{customersId}/policySchemas",
                             "httpMethod": "GET",
                             "id": "chromepolicy.customers.policySchemas.list",
                             "parameterOrder": [
@@ -276,6 +281,7 @@
             "methods": {
                 "upload": {
                     "description": "Creates an enterprise file from the content provided by user. Returns a public download url for end user.",
+                    "flatPath": "v1/customers/{customersId}/policies/files:uploadPolicyFile",
                     "httpMethod": "POST",
                     "id": "chromepolicy.media.upload",
                     "mediaUpload": {
@@ -316,7 +322,7 @@
             }
         }
     },
-    "revision": "20210517",
+    "revision": "20210614",
     "rootUrl": "https://chromepolicy.googleapis.com/",
     "schemas": {
         "GoogleChromePolicyV1AdditionalTargetKeyName": {

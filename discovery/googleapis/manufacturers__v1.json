@@ -109,6 +109,7 @@
                     "methods": {
                         "delete": {
                             "description": "Deletes the product from a Manufacturer Center account.",
+                            "flatPath": "v1/accounts/{accountsId}/products/{productsId}",
                             "httpMethod": "DELETE",
                             "id": "manufacturers.accounts.products.delete",
                             "parameterOrder": [
@@ -141,6 +142,7 @@
                         },
                         "get": {
                             "description": "Gets the product from a Manufacturer Center account, including product issues. A recently updated product takes around 15 minutes to process. Changes are only visible after it has been processed. While some issues may be available once the product has been processed, other issues may take days to appear.",
+                            "flatPath": "v1/accounts/{accountsId}/products/{productsId}",
                             "httpMethod": "GET",
                             "id": "manufacturers.accounts.products.get",
                             "parameterOrder": [
@@ -191,6 +193,7 @@
                         },
                         "list": {
                             "description": "Lists all the products in a Manufacturer Center account.",
+                            "flatPath": "v1/accounts/{accountsId}/products",
                             "httpMethod": "GET",
                             "id": "manufacturers.accounts.products.list",
                             "parameterOrder": [
@@ -244,6 +247,7 @@
                         },
                         "update": {
                             "description": "Inserts or updates the attributes of the product in a Manufacturer Center account. Creates a product with the provided attributes. If the product already exists, then all attributes are replaced with the new ones. The checks at upload time are minimal. All required attributes need to be present for a product to be valid. Issues may show up later after the API has accepted a new upload for a product and it is possible to overwrite an existing valid product with an invalid product. To detect this, you should retrieve the product and check it for issues once the new version is available. Uploaded attributes first need to be processed before they can be retrieved. Until then, new products will be unavailable, and retrieval of previously uploaded products will return the original state of the product.",
+                            "flatPath": "v1/accounts/{accountsId}/products/{productsId}",
                             "httpMethod": "PUT",
                             "id": "manufacturers.accounts.products.update",
                             "parameterOrder": [
@@ -282,7 +286,7 @@
             }
         }
     },
-    "revision": "20210512",
+    "revision": "20210609",
     "rootUrl": "https://manufacturers.googleapis.com/",
     "schemas": {
         "Attributes": {

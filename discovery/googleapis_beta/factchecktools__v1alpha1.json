@@ -107,6 +107,7 @@
             "methods": {
                 "search": {
                     "description": "Search through fact-checked claims.",
+                    "flatPath": "v1alpha1/claims:search",
                     "httpMethod": "GET",
                     "id": "factchecktools.claims.search",
                     "parameterOrder": [],
@@ -161,6 +162,7 @@
             "methods": {
                 "create": {
                     "description": "Create `ClaimReview` markup on a page.",
+                    "flatPath": "v1alpha1/pages",
                     "httpMethod": "POST",
                     "id": "factchecktools.pages.create",
                     "parameterOrder": [],
@@ -178,6 +180,7 @@
                 },
                 "delete": {
                     "description": "Delete all `ClaimReview` markup on a page.",
+                    "flatPath": "v1alpha1/pages/{pagesId}",
                     "httpMethod": "DELETE",
                     "id": "factchecktools.pages.delete",
                     "parameterOrder": [
@@ -202,6 +205,7 @@
                 },
                 "get": {
                     "description": "Get all `ClaimReview` markup on a page.",
+                    "flatPath": "v1alpha1/pages/{pagesId}",
                     "httpMethod": "GET",
                     "id": "factchecktools.pages.get",
                     "parameterOrder": [
@@ -226,6 +230,7 @@
                 },
                 "list": {
                     "description": "List the `ClaimReview` markup pages for a specific URL or for an organization.",
+                    "flatPath": "v1alpha1/pages",
                     "httpMethod": "GET",
                     "id": "factchecktools.pages.list",
                     "parameterOrder": [],
@@ -268,6 +273,7 @@
                 },
                 "update": {
                     "description": "Update for all `ClaimReview` markup on a page Note that this is a full update. To retain the existing `ClaimReview` markup on a page, first perform a Get operation, then modify the returned markup, and finally call Update with the entire `ClaimReview` markup as the body.",
+                    "flatPath": "v1alpha1/pages/{pagesId}",
                     "httpMethod": "PUT",
                     "id": "factchecktools.pages.update",
                     "parameterOrder": [
@@ -296,7 +302,7 @@
             }
         }
     },
-    "revision": "20210520",
+    "revision": "20210614",
     "rootUrl": "https://factchecktools.googleapis.com/",
     "schemas": {
         "GoogleFactcheckingFactchecktoolsV1alpha1Claim": {

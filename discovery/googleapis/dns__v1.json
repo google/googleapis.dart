@@ -116,6 +116,7 @@
             "methods": {
                 "create": {
                     "description": "Atomically updates the ResourceRecordSet collection.",
+                    "flatPath": "dns/v1/projects/{project}/managedZones/{managedZone}/changes",
                     "httpMethod": "POST",
                     "id": "dns.changes.create",
                     "parameterOrder": [
@@ -155,6 +156,7 @@
                 },
                 "get": {
                     "description": "Fetches the representation of an existing Change.",
+                    "flatPath": "dns/v1/projects/{project}/managedZones/{managedZone}/changes/{changeId}",
                     "httpMethod": "GET",
                     "id": "dns.changes.get",
                     "parameterOrder": [
@@ -200,6 +202,7 @@
                 },
                 "list": {
                     "description": "Enumerates Changes to a ResourceRecordSet collection.",
+                    "flatPath": "dns/v1/projects/{project}/managedZones/{managedZone}/changes",
                     "httpMethod": "GET",
                     "id": "dns.changes.list",
                     "parameterOrder": [
@@ -265,6 +268,7 @@
             "methods": {
                 "get": {
                     "description": "Fetches the representation of an existing DnsKey.",
+                    "flatPath": "dns/v1/projects/{project}/managedZones/{managedZone}/dnsKeys/{dnsKeyId}",
                     "httpMethod": "GET",
                     "id": "dns.dnsKeys.get",
                     "parameterOrder": [
@@ -315,6 +319,7 @@
                 },
                 "list": {
                     "description": "Enumerates DnsKeys to a ResourceRecordSet collection.",
+                    "flatPath": "dns/v1/projects/{project}/managedZones/{managedZone}/dnsKeys",
                     "httpMethod": "GET",
                     "id": "dns.dnsKeys.list",
                     "parameterOrder": [
@@ -368,6 +373,7 @@
             "methods": {
                 "get": {
                     "description": "Fetches the representation of an existing Operation.",
+                    "flatPath": "dns/v1/projects/{project}/managedZones/{managedZone}/operations/{operation}",
                     "httpMethod": "GET",
                     "id": "dns.managedZoneOperations.get",
                     "parameterOrder": [
@@ -413,6 +419,7 @@
                 },
                 "list": {
                     "description": "Enumerates Operations for the given ManagedZone.",
+                    "flatPath": "dns/v1/projects/{project}/managedZones/{managedZone}/operations",
                     "httpMethod": "GET",
                     "id": "dns.managedZoneOperations.list",
                     "parameterOrder": [
@@ -475,6 +482,7 @@
             "methods": {
                 "create": {
                     "description": "Creates a new ManagedZone.",
+                    "flatPath": "dns/v1/projects/{project}/managedZones",
                     "httpMethod": "POST",
                     "id": "dns.managedZones.create",
                     "parameterOrder": [
@@ -507,6 +515,7 @@
                 },
                 "delete": {
                     "description": "Deletes a previously created ManagedZone.",
+                    "flatPath": "dns/v1/projects/{project}/managedZones/{managedZone}",
                     "httpMethod": "DELETE",
                     "id": "dns.managedZones.delete",
                     "parameterOrder": [
@@ -540,6 +549,7 @@
                 },
                 "get": {
                     "description": "Fetches the representation of an existing ManagedZone.",
+                    "flatPath": "dns/v1/projects/{project}/managedZones/{managedZone}",
                     "httpMethod": "GET",
                     "id": "dns.managedZones.get",
                     "parameterOrder": [
@@ -578,6 +588,7 @@
                 },
                 "list": {
                     "description": "Enumerates ManagedZones that have been created but not yet deleted.",
+                    "flatPath": "dns/v1/projects/{project}/managedZones",
                     "httpMethod": "GET",
                     "id": "dns.managedZones.list",
                     "parameterOrder": [
@@ -620,6 +631,7 @@
                 },
                 "patch": {
                     "description": "Applies a partial update to an existing ManagedZone.",
+                    "flatPath": "dns/v1/projects/{project}/managedZones/{managedZone}",
                     "httpMethod": "PATCH",
                     "id": "dns.managedZones.patch",
                     "parameterOrder": [
@@ -659,6 +671,7 @@
                 },
                 "update": {
                     "description": "Updates an existing ManagedZone.",
+                    "flatPath": "dns/v1/projects/{project}/managedZones/{managedZone}",
                     "httpMethod": "PUT",
                     "id": "dns.managedZones.update",
                     "parameterOrder": [
@@ -702,6 +715,7 @@
             "methods": {
                 "create": {
                     "description": "Creates a new Policy.",
+                    "flatPath": "dns/v1/projects/{project}/policies",
                     "httpMethod": "POST",
                     "id": "dns.policies.create",
                     "parameterOrder": [
@@ -734,6 +748,7 @@
                 },
                 "delete": {
                     "description": "Deletes a previously created Policy. Fails if the policy is still being referenced by a network.",
+                    "flatPath": "dns/v1/projects/{project}/policies/{policy}",
                     "httpMethod": "DELETE",
                     "id": "dns.policies.delete",
                     "parameterOrder": [
@@ -767,6 +782,7 @@
                 },
                 "get": {
                     "description": "Fetches the representation of an existing Policy.",
+                    "flatPath": "dns/v1/projects/{project}/policies/{policy}",
                     "httpMethod": "GET",
                     "id": "dns.policies.get",
                     "parameterOrder": [
@@ -805,6 +821,7 @@
                 },
                 "list": {
                     "description": "Enumerates all Policies associated with a project.",
+                    "flatPath": "dns/v1/projects/{project}/policies",
                     "httpMethod": "GET",
                     "id": "dns.policies.list",
                     "parameterOrder": [
@@ -842,6 +859,7 @@
                 },
                 "patch": {
                     "description": "Applies a partial update to an existing Policy.",
+                    "flatPath": "dns/v1/projects/{project}/policies/{policy}",
                     "httpMethod": "PATCH",
                     "id": "dns.policies.patch",
                     "parameterOrder": [
@@ -881,6 +899,7 @@
                 },
                 "update": {
                     "description": "Updates an existing Policy.",
+                    "flatPath": "dns/v1/projects/{project}/policies/{policy}",
                     "httpMethod": "PUT",
                     "id": "dns.policies.update",
                     "parameterOrder": [
@@ -924,6 +943,7 @@
             "methods": {
                 "get": {
                     "description": "Fetches the representation of an existing Project.",
+                    "flatPath": "dns/v1/projects/{project}",
                     "httpMethod": "GET",
                     "id": "dns.projects.get",
                     "parameterOrder": [
@@ -961,6 +981,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a new ResourceRecordSet.",
+                                    "flatPath": "dns/v1/projects/{project}/managedZones/{managedZone}/rrsets",
                                     "httpMethod": "POST",
                                     "id": "dns.projects.managedZones.rrsets.create",
                                     "parameterOrder": [
@@ -1000,6 +1021,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a previously created ResourceRecordSet.",
+                                    "flatPath": "dns/v1/projects/{project}/managedZones/{managedZone}/rrsets/{name}/{type}",
                                     "httpMethod": "DELETE",
                                     "id": "dns.projects.managedZones.rrsets.delete",
                                     "parameterOrder": [
@@ -1050,6 +1072,7 @@
                                 },
                                 "get": {
                                     "description": "Fetches the representation of an existing ResourceRecordSet.",
+                                    "flatPath": "dns/v1/projects/{project}/managedZones/{managedZone}/rrsets/{name}/{type}",
                                     "httpMethod": "GET",
                                     "id": "dns.projects.managedZones.rrsets.get",
                                     "parameterOrder": [
@@ -1102,6 +1125,7 @@
                                 },
                                 "patch": {
                                     "description": "Applies a partial update to an existing ResourceRecordSet.",
+                                    "flatPath": "dns/v1/projects/{project}/managedZones/{managedZone}/rrsets/{name}/{type}",
                                     "httpMethod": "PATCH",
                                     "id": "dns.projects.managedZones.rrsets.patch",
                                     "parameterOrder": [
@@ -1163,6 +1187,7 @@
             "methods": {
                 "list": {
                     "description": "Enumerates ResourceRecordSets that you have created but not yet deleted.",
+                    "flatPath": "dns/v1/projects/{project}/managedZones/{managedZone}/rrsets",
                     "httpMethod": "GET",
                     "id": "dns.resourceRecordSets.list",
                     "parameterOrder": [
@@ -1218,7 +1243,7 @@
             }
         }
     },
-    "revision": "20210513",
+    "revision": "20210608",
     "rootUrl": "https://dns.googleapis.com/",
     "schemas": {
         "Change": {

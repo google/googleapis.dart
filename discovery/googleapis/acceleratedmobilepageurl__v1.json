@@ -98,6 +98,7 @@
             "methods": {
                 "batchGet": {
                     "description": "Returns AMP URL(s) and equivalent [AMP Cache URL(s)](/amp/cache/overview#amp-cache-url-format).",
+                    "flatPath": "v1/ampUrls:batchGet",
                     "httpMethod": "POST",
                     "id": "acceleratedmobilepageurl.ampUrls.batchGet",
                     "parameterOrder": [],
@@ -113,7 +114,7 @@
             }
         }
     },
-    "revision": "20210519",
+    "revision": "20210614",
     "rootUrl": "https://acceleratedmobilepageurl.googleapis.com/",
     "schemas": {
         "AmpUrl": {

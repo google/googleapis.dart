@@ -1403,6 +1403,24 @@ class Resource {
 
 /// Describes a resource referenced in the request.
 class ResourceInfo {
+  /// The identifier of the container of this resource.
+  ///
+  /// For Google Cloud APIs, the resource container must be one of the following
+  /// formats: - `projects/` - `folders/` - `organizations/` For the policy
+  /// enforcement on the container level (VPCSC and Location Policy check), this
+  /// field takes precedence on the container extracted from name when presents.
+  ///
+  /// Optional.
+  core.String? container;
+
+  /// The location of the resource.
+  ///
+  /// The value must be a valid zone, region or multiregion. For example:
+  /// "europe-west4" or "northamerica-northeast1-a"
+  ///
+  /// Optional.
+  core.String? location;
+
   /// The name of the resource referenced in the request.
   core.String? name;
 
@@ -1417,6 +1435,12 @@ class ResourceInfo {
   ResourceInfo();
 
   ResourceInfo.fromJson(core.Map _json) {
+    if (_json.containsKey('container')) {
+      container = _json['container'] as core.String;
+    }
+    if (_json.containsKey('location')) {
+      location = _json['location'] as core.String;
+    }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
@@ -1429,6 +1453,8 @@ class ResourceInfo {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (container != null) 'container': container!,
+        if (location != null) 'location': location!,
         if (name != null) 'name': name!,
         if (permission != null) 'permission': permission!,
         if (type != null) 'type': type!,
@@ -1544,7 +1570,11 @@ class ServiceAccountDelegationInfo {
 
   /// A string representing the principal_subject associated with the identity.
   ///
-  /// See go/3pical for more info on how principal_subject is formatted.
+  /// For most identities, the format will be
+  /// `principal://iam.googleapis.com/{identity pool name}/subject/{subject)`
+  /// except for some GKE identities (GKE_WORKLOAD, FREEFORM, GKE_HUB_WORKLOAD)
+  /// that are still in the legacy format `serviceAccount:{identity pool
+  /// name}[{subject}]`
   core.String? principalSubject;
 
   /// Third party identity as the real authority.

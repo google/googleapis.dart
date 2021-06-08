@@ -98,6 +98,7 @@
             "methods": {
                 "list": {
                     "description": "Lists the user's customer accounts.",
+                    "flatPath": "v1/customers",
                     "httpMethod": "GET",
                     "id": "androiddeviceprovisioning.customers.list",
                     "parameterOrder": [],
@@ -125,6 +126,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a new configuration. Once created, a customer can apply the configuration to devices.",
+                            "flatPath": "v1/customers/{customersId}/configurations",
                             "httpMethod": "POST",
                             "id": "androiddeviceprovisioning.customers.configurations.create",
                             "parameterOrder": [
@@ -149,6 +151,7 @@
                         },
                         "delete": {
                             "description": "Deletes an unused configuration. The API call fails if the customer has devices with the configuration applied.",
+                            "flatPath": "v1/customers/{customersId}/configurations/{configurationsId}",
                             "httpMethod": "DELETE",
                             "id": "androiddeviceprovisioning.customers.configurations.delete",
                             "parameterOrder": [
@@ -170,6 +173,7 @@
                         },
                         "get": {
                             "description": "Gets the details of a configuration.",
+                            "flatPath": "v1/customers/{customersId}/configurations/{configurationsId}",
                             "httpMethod": "GET",
                             "id": "androiddeviceprovisioning.customers.configurations.get",
                             "parameterOrder": [
@@ -191,6 +195,7 @@
                         },
                         "list": {
                             "description": "Lists a customer's configurations.",
+                            "flatPath": "v1/customers/{customersId}/configurations",
                             "httpMethod": "GET",
                             "id": "androiddeviceprovisioning.customers.configurations.list",
                             "parameterOrder": [
@@ -212,6 +217,7 @@
                         },
                         "patch": {
                             "description": "Updates a configuration's field values.",
+                            "flatPath": "v1/customers/{customersId}/configurations/{configurationsId}",
                             "httpMethod": "PATCH",
                             "id": "androiddeviceprovisioning.customers.configurations.patch",
                             "parameterOrder": [
@@ -246,6 +252,7 @@
                     "methods": {
                         "applyConfiguration": {
                             "description": "Applies a Configuration to the device to register the device for zero-touch enrollment. After applying a configuration to a device, the device automatically provisions itself on first boot, or next factory reset.",
+                            "flatPath": "v1/customers/{customersId}/devices:applyConfiguration",
                             "httpMethod": "POST",
                             "id": "androiddeviceprovisioning.customers.devices.applyConfiguration",
                             "parameterOrder": [
@@ -270,6 +277,7 @@
                         },
                         "get": {
                             "description": "Gets the details of a device.",
+                            "flatPath": "v1/customers/{customersId}/devices/{devicesId}",
                             "httpMethod": "GET",
                             "id": "androiddeviceprovisioning.customers.devices.get",
                             "parameterOrder": [
@@ -291,6 +299,7 @@
                         },
                         "list": {
                             "description": "Lists a customer's devices.",
+                            "flatPath": "v1/customers/{customersId}/devices",
                             "httpMethod": "GET",
                             "id": "androiddeviceprovisioning.customers.devices.list",
                             "parameterOrder": [
@@ -323,6 +332,7 @@
                         },
                         "removeConfiguration": {
                             "description": "Removes a configuration from device.",
+                            "flatPath": "v1/customers/{customersId}/devices:removeConfiguration",
                             "httpMethod": "POST",
                             "id": "androiddeviceprovisioning.customers.devices.removeConfiguration",
                             "parameterOrder": [
@@ -347,6 +357,7 @@
                         },
                         "unclaim": {
                             "description": "Unclaims a device from a customer and removes it from zero-touch enrollment. After removing a device, a customer must contact their reseller to register the device into zero-touch enrollment again.",
+                            "flatPath": "v1/customers/{customersId}/devices:unclaim",
                             "httpMethod": "POST",
                             "id": "androiddeviceprovisioning.customers.devices.unclaim",
                             "parameterOrder": [
@@ -375,6 +386,7 @@
                     "methods": {
                         "list": {
                             "description": "Lists the DPCs (device policy controllers) that support zero-touch enrollment.",
+                            "flatPath": "v1/customers/{customersId}/dpcs",
                             "httpMethod": "GET",
                             "id": "androiddeviceprovisioning.customers.dpcs.list",
                             "parameterOrder": [
@@ -402,6 +414,7 @@
             "methods": {
                 "get": {
                     "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                    "flatPath": "v1/operations/{operationsId}",
                     "httpMethod": "GET",
                     "id": "androiddeviceprovisioning.operations.get",
                     "parameterOrder": [
@@ -429,6 +442,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a customer for zero-touch enrollment. After the method returns successfully, admin and owner roles can manage devices and EMM configs by calling API methods or using their zero-touch enrollment portal. The customer receives an email that welcomes them to zero-touch enrollment and explains how to sign into the portal.",
+                            "flatPath": "v1/partners/{partnersId}/customers",
                             "httpMethod": "POST",
                             "id": "androiddeviceprovisioning.partners.customers.create",
                             "parameterOrder": [
@@ -453,6 +467,7 @@
                         },
                         "list": {
                             "description": "Lists the customers that are enrolled to the reseller identified by the `partnerId` argument. This list includes customers that the reseller created and customers that enrolled themselves using the portal.",
+                            "flatPath": "v1/partners/{partnersId}/customers",
                             "httpMethod": "GET",
                             "id": "androiddeviceprovisioning.partners.customers.list",
                             "parameterOrder": [
@@ -490,6 +505,7 @@
                     "methods": {
                         "claim": {
                             "description": "Claims a device for a customer and adds it to zero-touch enrollment. If the device is already claimed by another customer, the call returns an error.",
+                            "flatPath": "v1/partners/{partnersId}/devices:claim",
                             "httpMethod": "POST",
                             "id": "androiddeviceprovisioning.partners.devices.claim",
                             "parameterOrder": [
@@ -515,6 +531,7 @@
                         },
                         "claimAsync": {
                             "description": "Claims a batch of devices for a customer asynchronously. Adds the devices to zero-touch enrollment. To learn more, read [Long‑running batch operations](/zero-touch/guides/how-it-works#operations).",
+                            "flatPath": "v1/partners/{partnersId}/devices:claimAsync",
                             "httpMethod": "POST",
                             "id": "androiddeviceprovisioning.partners.devices.claimAsync",
                             "parameterOrder": [
@@ -540,6 +557,7 @@
                         },
                         "findByIdentifier": {
                             "description": "Finds devices by hardware identifiers, such as IMEI.",
+                            "flatPath": "v1/partners/{partnersId}/devices:findByIdentifier",
                             "httpMethod": "POST",
                             "id": "androiddeviceprovisioning.partners.devices.findByIdentifier",
                             "parameterOrder": [
@@ -565,6 +583,7 @@
                         },
                         "findByOwner": {
                             "description": "Finds devices claimed for customers. The results only contain devices registered to the reseller that's identified by the `partnerId` argument. The customer's devices purchased from other resellers don't appear in the results.",
+                            "flatPath": "v1/partners/{partnersId}/devices:findByOwner",
                             "httpMethod": "POST",
                             "id": "androiddeviceprovisioning.partners.devices.findByOwner",
                             "parameterOrder": [
@@ -590,6 +609,7 @@
                         },
                         "get": {
                             "description": "Gets a device.",
+                            "flatPath": "v1/partners/{partnersId}/devices/{devicesId}",
                             "httpMethod": "GET",
                             "id": "androiddeviceprovisioning.partners.devices.get",
                             "parameterOrder": [
@@ -611,6 +631,7 @@
                         },
                         "metadata": {
                             "description": "Updates reseller metadata associated with the device.",
+                            "flatPath": "v1/partners/{partnersId}/devices/{devicesId}/metadata",
                             "httpMethod": "POST",
                             "id": "androiddeviceprovisioning.partners.devices.metadata",
                             "parameterOrder": [
@@ -645,6 +666,7 @@
                         },
                         "unclaim": {
                             "description": "Unclaims a device from a customer and removes it from zero-touch enrollment.",
+                            "flatPath": "v1/partners/{partnersId}/devices:unclaim",
                             "httpMethod": "POST",
                             "id": "androiddeviceprovisioning.partners.devices.unclaim",
                             "parameterOrder": [
@@ -670,6 +692,7 @@
                         },
                         "unclaimAsync": {
                             "description": "Unclaims a batch of devices for a customer asynchronously. Removes the devices from zero-touch enrollment. To learn more, read [Long‑running batch operations](/zero-touch/guides/how-it-works#operations).",
+                            "flatPath": "v1/partners/{partnersId}/devices:unclaimAsync",
                             "httpMethod": "POST",
                             "id": "androiddeviceprovisioning.partners.devices.unclaimAsync",
                             "parameterOrder": [
@@ -695,6 +718,7 @@
                         },
                         "updateMetadataAsync": {
                             "description": "Updates the reseller metadata attached to a batch of devices. This method updates devices asynchronously and returns an `Operation` that can be used to track progress. Read [Long‑running batch operations](/zero-touch/guides/how-it-works#operations).",
+                            "flatPath": "v1/partners/{partnersId}/devices:updateMetadataAsync",
                             "httpMethod": "POST",
                             "id": "androiddeviceprovisioning.partners.devices.updateMetadataAsync",
                             "parameterOrder": [
@@ -724,6 +748,7 @@
                     "methods": {
                         "list": {
                             "description": "Lists the vendors of the partner.",
+                            "flatPath": "v1/partners/{partnersId}/vendors",
                             "httpMethod": "GET",
                             "id": "androiddeviceprovisioning.partners.vendors.list",
                             "parameterOrder": [
@@ -760,6 +785,7 @@
                             "methods": {
                                 "list": {
                                     "description": "Lists the customers of the vendor.",
+                                    "flatPath": "v1/partners/{partnersId}/vendors/{vendorsId}/customers",
                                     "httpMethod": "GET",
                                     "id": "androiddeviceprovisioning.partners.vendors.customers.list",
                                     "parameterOrder": [
@@ -797,7 +823,7 @@
             }
         }
     },
-    "revision": "20210519",
+    "revision": "20210613",
     "rootUrl": "https://androiddeviceprovisioning.googleapis.com/",
     "schemas": {
         "ClaimDeviceRequest": {

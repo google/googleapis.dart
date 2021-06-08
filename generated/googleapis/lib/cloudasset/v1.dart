@@ -1974,7 +1974,7 @@ class Feed {
   /// with name `temporal_asset`. Example: a Feed with expression
   /// ("temporal_asset.deleted == true") will only publish Asset deletions.
   /// Other fields of `Expr` are optional. See our
-  /// [user guide](https://cloud.google.com/asset-inventory/docs/monitoring-asset-changes#feed_with_condition)
+  /// [user guide](https://cloud.google.com/asset-inventory/docs/monitoring-asset-changes-with-condition)
   /// for detailed instructions.
   Expr? condition;
 

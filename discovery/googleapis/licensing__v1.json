@@ -106,6 +106,7 @@
             "methods": {
                 "delete": {
                     "description": "Revoke a license.",
+                    "flatPath": "apps/licensing/v1/product/{productId}/sku/{skuId}/user/{userId}",
                     "httpMethod": "DELETE",
                     "id": "licensing.licenseAssignments.delete",
                     "parameterOrder": [
@@ -143,6 +144,7 @@
                 },
                 "get": {
                     "description": "Get a specific user's license by product SKU.",
+                    "flatPath": "apps/licensing/v1/product/{productId}/sku/{skuId}/user/{userId}",
                     "httpMethod": "GET",
                     "id": "licensing.licenseAssignments.get",
                     "parameterOrder": [
@@ -180,6 +182,7 @@
                 },
                 "insert": {
                     "description": "Assign a license.",
+                    "flatPath": "apps/licensing/v1/product/{productId}/sku/{skuId}/user",
                     "httpMethod": "POST",
                     "id": "licensing.licenseAssignments.insert",
                     "parameterOrder": [
@@ -213,6 +216,7 @@
                 },
                 "listForProduct": {
                     "description": "List all users assigned licenses for a specific product SKU.",
+                    "flatPath": "apps/licensing/v1/product/{productId}/users",
                     "httpMethod": "GET",
                     "id": "licensing.licenseAssignments.listForProduct",
                     "parameterOrder": [
@@ -258,6 +262,7 @@
                 },
                 "listForProductAndSku": {
                     "description": "List all users assigned licenses for a specific product SKU.",
+                    "flatPath": "apps/licensing/v1/product/{productId}/sku/{skuId}/users",
                     "httpMethod": "GET",
                     "id": "licensing.licenseAssignments.listForProductAndSku",
                     "parameterOrder": [
@@ -310,6 +315,7 @@
                 },
                 "patch": {
                     "description": "Reassign a user's product SKU with a different SKU in the same product. This method supports patch semantics.",
+                    "flatPath": "apps/licensing/v1/product/{productId}/sku/{skuId}/user/{userId}",
                     "httpMethod": "PATCH",
                     "id": "licensing.licenseAssignments.patch",
                     "parameterOrder": [
@@ -350,6 +356,7 @@
                 },
                 "update": {
                     "description": "Reassign a user's product SKU with a different SKU in the same product.",
+                    "flatPath": "apps/licensing/v1/product/{productId}/sku/{skuId}/user/{userId}",
                     "httpMethod": "PUT",
                     "id": "licensing.licenseAssignments.update",
                     "parameterOrder": [
@@ -391,7 +398,7 @@
             }
         }
     },
-    "revision": "20210518",
+    "revision": "20210614",
     "rootUrl": "https://licensing.googleapis.com/",
     "schemas": {
         "Empty": {

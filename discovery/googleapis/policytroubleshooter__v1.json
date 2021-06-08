@@ -107,6 +107,7 @@
             "methods": {
                 "troubleshoot": {
                     "description": "Checks whether a member has a specific permission for a specific resource, and explains why the member does or does not have that permission.",
+                    "flatPath": "v1/iam:troubleshoot",
                     "httpMethod": "POST",
                     "id": "policytroubleshooter.iam.troubleshoot",
                     "parameterOrder": [],
@@ -125,7 +126,7 @@
             }
         }
     },
-    "revision": "20210514",
+    "revision": "20210613",
     "rootUrl": "https://policytroubleshooter.googleapis.com/",
     "schemas": {
         "GoogleCloudPolicytroubleshooterV1AccessTuple": {

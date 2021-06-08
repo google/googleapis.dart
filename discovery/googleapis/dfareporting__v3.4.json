@@ -113,6 +113,7 @@
             "methods": {
                 "get": {
                     "description": "Gets the account's active ad summary by account ID.",
+                    "flatPath": "userprofiles/{profileId}/accountActiveAdSummaries/{summaryAccountId}",
                     "httpMethod": "GET",
                     "id": "dfareporting.accountActiveAdSummaries.get",
                     "parameterOrder": [
@@ -149,6 +150,7 @@
             "methods": {
                 "get": {
                     "description": "Gets one account permission group by ID.",
+                    "flatPath": "userprofiles/{profileId}/accountPermissionGroups/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.accountPermissionGroups.get",
                     "parameterOrder": [
@@ -181,6 +183,7 @@
                 },
                 "list": {
                     "description": "Retrieves the list of account permission groups.",
+                    "flatPath": "userprofiles/{profileId}/accountPermissionGroups",
                     "httpMethod": "GET",
                     "id": "dfareporting.accountPermissionGroups.list",
                     "parameterOrder": [
@@ -209,6 +212,7 @@
             "methods": {
                 "get": {
                     "description": "Gets one account permission by ID.",
+                    "flatPath": "userprofiles/{profileId}/accountPermissions/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.accountPermissions.get",
                     "parameterOrder": [
@@ -241,6 +245,7 @@
                 },
                 "list": {
                     "description": "Retrieves the list of account permissions.",
+                    "flatPath": "userprofiles/{profileId}/accountPermissions",
                     "httpMethod": "GET",
                     "id": "dfareporting.accountPermissions.list",
                     "parameterOrder": [
@@ -269,6 +274,7 @@
             "methods": {
                 "get": {
                     "description": "Gets one account user profile by ID.",
+                    "flatPath": "userprofiles/{profileId}/accountUserProfiles/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.accountUserProfiles.get",
                     "parameterOrder": [
@@ -301,6 +307,7 @@
                 },
                 "insert": {
                     "description": "Inserts a new account user profile.",
+                    "flatPath": "userprofiles/{profileId}/accountUserProfiles",
                     "httpMethod": "POST",
                     "id": "dfareporting.accountUserProfiles.insert",
                     "parameterOrder": [
@@ -328,6 +335,7 @@
                 },
                 "list": {
                     "description": "Retrieves a list of account user profiles, possibly filtered. This method supports paging.",
+                    "flatPath": "userprofiles/{profileId}/accountUserProfiles",
                     "httpMethod": "GET",
                     "id": "dfareporting.accountUserProfiles.list",
                     "parameterOrder": [
@@ -423,6 +431,7 @@
                 },
                 "patch": {
                     "description": "Updates an existing account user profile. This method supports patch semantics.",
+                    "flatPath": "userprofiles/{profileId}/accountUserProfiles",
                     "httpMethod": "PATCH",
                     "id": "dfareporting.accountUserProfiles.patch",
                     "parameterOrder": [
@@ -458,6 +467,7 @@
                 },
                 "update": {
                     "description": "Updates an existing account user profile.",
+                    "flatPath": "userprofiles/{profileId}/accountUserProfiles",
                     "httpMethod": "PUT",
                     "id": "dfareporting.accountUserProfiles.update",
                     "parameterOrder": [
@@ -489,6 +499,7 @@
             "methods": {
                 "get": {
                     "description": "Gets one account by ID.",
+                    "flatPath": "userprofiles/{profileId}/accounts/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.accounts.get",
                     "parameterOrder": [
@@ -521,6 +532,7 @@
                 },
                 "list": {
                     "description": "Retrieves the list of accounts, possibly filtered. This method supports paging.",
+                    "flatPath": "userprofiles/{profileId}/accounts",
                     "httpMethod": "GET",
                     "id": "dfareporting.accounts.list",
                     "parameterOrder": [
@@ -604,6 +616,7 @@
                 },
                 "patch": {
                     "description": "Updates an existing account. This method supports patch semantics.",
+                    "flatPath": "userprofiles/{profileId}/accounts",
                     "httpMethod": "PATCH",
                     "id": "dfareporting.accounts.patch",
                     "parameterOrder": [
@@ -639,6 +652,7 @@
                 },
                 "update": {
                     "description": "Updates an existing account.",
+                    "flatPath": "userprofiles/{profileId}/accounts",
                     "httpMethod": "PUT",
                     "id": "dfareporting.accounts.update",
                     "parameterOrder": [
@@ -670,6 +684,7 @@
             "methods": {
                 "get": {
                     "description": "Gets one ad by ID.",
+                    "flatPath": "userprofiles/{profileId}/ads/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.ads.get",
                     "parameterOrder": [
@@ -702,6 +717,7 @@
                 },
                 "insert": {
                     "description": "Inserts a new ad.",
+                    "flatPath": "userprofiles/{profileId}/ads",
                     "httpMethod": "POST",
                     "id": "dfareporting.ads.insert",
                     "parameterOrder": [
@@ -729,6 +745,7 @@
                 },
                 "list": {
                     "description": "Retrieves a list of ads, possibly filtered. This method supports paging.",
+                    "flatPath": "userprofiles/{profileId}/ads",
                     "httpMethod": "GET",
                     "id": "dfareporting.ads.list",
                     "parameterOrder": [
@@ -941,6 +958,7 @@
                 },
                 "patch": {
                     "description": "Updates an existing ad. This method supports patch semantics.",
+                    "flatPath": "userprofiles/{profileId}/ads",
                     "httpMethod": "PATCH",
                     "id": "dfareporting.ads.patch",
                     "parameterOrder": [
@@ -976,6 +994,7 @@
                 },
                 "update": {
                     "description": "Updates an existing ad.",
+                    "flatPath": "userprofiles/{profileId}/ads",
                     "httpMethod": "PUT",
                     "id": "dfareporting.ads.update",
                     "parameterOrder": [
@@ -1007,6 +1026,7 @@
             "methods": {
                 "delete": {
                     "description": "Deletes an existing advertiser group.",
+                    "flatPath": "userprofiles/{profileId}/advertiserGroups/{id}",
                     "httpMethod": "DELETE",
                     "id": "dfareporting.advertiserGroups.delete",
                     "parameterOrder": [
@@ -1036,6 +1056,7 @@
                 },
                 "get": {
                     "description": "Gets one advertiser group by ID.",
+                    "flatPath": "userprofiles/{profileId}/advertiserGroups/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.advertiserGroups.get",
                     "parameterOrder": [
@@ -1068,6 +1089,7 @@
                 },
                 "insert": {
                     "description": "Inserts a new advertiser group.",
+                    "flatPath": "userprofiles/{profileId}/advertiserGroups",
                     "httpMethod": "POST",
                     "id": "dfareporting.advertiserGroups.insert",
                     "parameterOrder": [
@@ -1095,6 +1117,7 @@
                 },
                 "list": {
                     "description": "Retrieves a list of advertiser groups, possibly filtered. This method supports paging.",
+                    "flatPath": "userprofiles/{profileId}/advertiserGroups",
                     "httpMethod": "GET",
                     "id": "dfareporting.advertiserGroups.list",
                     "parameterOrder": [
@@ -1173,6 +1196,7 @@
                 },
                 "patch": {
                     "description": "Updates an existing advertiser group. This method supports patch semantics.",
+                    "flatPath": "userprofiles/{profileId}/advertiserGroups",
                     "httpMethod": "PATCH",
                     "id": "dfareporting.advertiserGroups.patch",
                     "parameterOrder": [
@@ -1208,6 +1232,7 @@
                 },
                 "update": {
                     "description": "Updates an existing advertiser group.",
+                    "flatPath": "userprofiles/{profileId}/advertiserGroups",
                     "httpMethod": "PUT",
                     "id": "dfareporting.advertiserGroups.update",
                     "parameterOrder": [
@@ -1239,6 +1264,7 @@
             "methods": {
                 "get": {
                     "description": "Gets one landing page by ID.",
+                    "flatPath": "userprofiles/{profileId}/advertiserLandingPages/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.advertiserLandingPages.get",
                     "parameterOrder": [
@@ -1271,6 +1297,7 @@
                 },
                 "insert": {
                     "description": "Inserts a new landing page.",
+                    "flatPath": "userprofiles/{profileId}/advertiserLandingPages",
                     "httpMethod": "POST",
                     "id": "dfareporting.advertiserLandingPages.insert",
                     "parameterOrder": [
@@ -1298,6 +1325,7 @@
                 },
                 "list": {
                     "description": "Retrieves a list of landing pages.",
+                    "flatPath": "userprofiles/{profileId}/advertiserLandingPages",
                     "httpMethod": "GET",
                     "id": "dfareporting.advertiserLandingPages.list",
                     "parameterOrder": [
@@ -1401,6 +1429,7 @@
                 },
                 "patch": {
                     "description": "Updates an existing advertiser landing page. This method supports patch semantics.",
+                    "flatPath": "userprofiles/{profileId}/advertiserLandingPages",
                     "httpMethod": "PATCH",
                     "id": "dfareporting.advertiserLandingPages.patch",
                     "parameterOrder": [
@@ -1436,6 +1465,7 @@
                 },
                 "update": {
                     "description": "Updates an existing landing page.",
+                    "flatPath": "userprofiles/{profileId}/advertiserLandingPages",
                     "httpMethod": "PUT",
                     "id": "dfareporting.advertiserLandingPages.update",
                     "parameterOrder": [
@@ -1467,6 +1497,7 @@
             "methods": {
                 "get": {
                     "description": "Gets one advertiser by ID.",
+                    "flatPath": "userprofiles/{profileId}/advertisers/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.advertisers.get",
                     "parameterOrder": [
@@ -1499,6 +1530,7 @@
                 },
                 "insert": {
                     "description": "Inserts a new advertiser.",
+                    "flatPath": "userprofiles/{profileId}/advertisers",
                     "httpMethod": "POST",
                     "id": "dfareporting.advertisers.insert",
                     "parameterOrder": [
@@ -1526,6 +1558,7 @@
                 },
                 "list": {
                     "description": "Retrieves a list of advertisers, possibly filtered. This method supports paging.",
+                    "flatPath": "userprofiles/{profileId}/advertisers",
                     "httpMethod": "GET",
                     "id": "dfareporting.advertisers.list",
                     "parameterOrder": [
@@ -1647,6 +1680,7 @@
                 },
                 "patch": {
                     "description": "Updates an existing advertiser. This method supports patch semantics.",
+                    "flatPath": "userprofiles/{profileId}/advertisers",
                     "httpMethod": "PATCH",
                     "id": "dfareporting.advertisers.patch",
                     "parameterOrder": [
@@ -1682,6 +1716,7 @@
                 },
                 "update": {
                     "description": "Updates an existing advertiser.",
+                    "flatPath": "userprofiles/{profileId}/advertisers",
                     "httpMethod": "PUT",
                     "id": "dfareporting.advertisers.update",
                     "parameterOrder": [
@@ -1713,6 +1748,7 @@
             "methods": {
                 "list": {
                     "description": "Retrieves a list of browsers.",
+                    "flatPath": "userprofiles/{profileId}/browsers",
                     "httpMethod": "GET",
                     "id": "dfareporting.browsers.list",
                     "parameterOrder": [
@@ -1741,6 +1777,7 @@
             "methods": {
                 "insert": {
                     "description": "Associates a creative with the specified campaign. This method creates a default ad with dimensions matching the creative in the campaign if such a default ad does not exist already.",
+                    "flatPath": "userprofiles/{profileId}/campaigns/{campaignId}/campaignCreativeAssociations",
                     "httpMethod": "POST",
                     "id": "dfareporting.campaignCreativeAssociations.insert",
                     "parameterOrder": [
@@ -1776,6 +1813,7 @@
                 },
                 "list": {
                     "description": "Retrieves the list of creative IDs associated with the specified campaign. This method supports paging.",
+                    "flatPath": "userprofiles/{profileId}/campaigns/{campaignId}/campaignCreativeAssociations",
                     "httpMethod": "GET",
                     "id": "dfareporting.campaignCreativeAssociations.list",
                     "parameterOrder": [
@@ -1840,6 +1878,7 @@
             "methods": {
                 "get": {
                     "description": "Gets one campaign by ID.",
+                    "flatPath": "userprofiles/{profileId}/campaigns/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.campaigns.get",
                     "parameterOrder": [
@@ -1872,6 +1911,7 @@
                 },
                 "insert": {
                     "description": "Inserts a new campaign.",
+                    "flatPath": "userprofiles/{profileId}/campaigns",
                     "httpMethod": "POST",
                     "id": "dfareporting.campaigns.insert",
                     "parameterOrder": [
@@ -1899,6 +1939,7 @@
                 },
                 "list": {
                     "description": "Retrieves a list of campaigns, possibly filtered. This method supports paging.",
+                    "flatPath": "userprofiles/{profileId}/campaigns",
                     "httpMethod": "GET",
                     "id": "dfareporting.campaigns.list",
                     "parameterOrder": [
@@ -2020,6 +2061,7 @@
                 },
                 "patch": {
                     "description": "Updates an existing campaign. This method supports patch semantics.",
+                    "flatPath": "userprofiles/{profileId}/campaigns",
                     "httpMethod": "PATCH",
                     "id": "dfareporting.campaigns.patch",
                     "parameterOrder": [
@@ -2055,6 +2097,7 @@
                 },
                 "update": {
                     "description": "Updates an existing campaign.",
+                    "flatPath": "userprofiles/{profileId}/campaigns",
                     "httpMethod": "PUT",
                     "id": "dfareporting.campaigns.update",
                     "parameterOrder": [
@@ -2086,6 +2129,7 @@
             "methods": {
                 "get": {
                     "description": "Gets one change log by ID.",
+                    "flatPath": "userprofiles/{profileId}/changeLogs/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.changeLogs.get",
                     "parameterOrder": [
@@ -2118,6 +2162,7 @@
                 },
                 "list": {
                     "description": "Retrieves a list of change logs. This method supports paging.",
+                    "flatPath": "userprofiles/{profileId}/changeLogs",
                     "httpMethod": "GET",
                     "id": "dfareporting.changeLogs.list",
                     "parameterOrder": [
@@ -2328,6 +2373,7 @@
             "methods": {
                 "list": {
                     "description": "Retrieves a list of cities, possibly filtered.",
+                    "flatPath": "userprofiles/{profileId}/cities",
                     "httpMethod": "GET",
                     "id": "dfareporting.cities.list",
                     "parameterOrder": [
@@ -2382,6 +2428,7 @@
             "methods": {
                 "get": {
                     "description": "Gets one connection type by ID.",
+                    "flatPath": "userprofiles/{profileId}/connectionTypes/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.connectionTypes.get",
                     "parameterOrder": [
@@ -2414,6 +2461,7 @@
                 },
                 "list": {
                     "description": "Retrieves a list of connection types.",
+                    "flatPath": "userprofiles/{profileId}/connectionTypes",
                     "httpMethod": "GET",
                     "id": "dfareporting.connectionTypes.list",
                     "parameterOrder": [
@@ -2442,6 +2490,7 @@
             "methods": {
                 "delete": {
                     "description": "Deletes an existing content category.",
+                    "flatPath": "userprofiles/{profileId}/contentCategories/{id}",
                     "httpMethod": "DELETE",
                     "id": "dfareporting.contentCategories.delete",
                     "parameterOrder": [
@@ -2471,6 +2520,7 @@
                 },
                 "get": {
                     "description": "Gets one content category by ID.",
+                    "flatPath": "userprofiles/{profileId}/contentCategories/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.contentCategories.get",
                     "parameterOrder": [
@@ -2503,6 +2553,7 @@
                 },
                 "insert": {
                     "description": "Inserts a new content category.",
+                    "flatPath": "userprofiles/{profileId}/contentCategories",
                     "httpMethod": "POST",
                     "id": "dfareporting.contentCategories.insert",
                     "parameterOrder": [
@@ -2530,6 +2581,7 @@
                 },
                 "list": {
                     "description": "Retrieves a list of content categories, possibly filtered. This method supports paging.",
+                    "flatPath": "userprofiles/{profileId}/contentCategories",
                     "httpMethod": "GET",
                     "id": "dfareporting.contentCategories.list",
                     "parameterOrder": [
@@ -2608,6 +2660,7 @@
                 },
                 "patch": {
                     "description": "Updates an existing content category. This method supports patch semantics.",
+                    "flatPath": "userprofiles/{profileId}/contentCategories",
                     "httpMethod": "PATCH",
                     "id": "dfareporting.contentCategories.patch",
                     "parameterOrder": [
@@ -2643,6 +2696,7 @@
                 },
                 "update": {
                     "description": "Updates an existing content category.",
+                    "flatPath": "userprofiles/{profileId}/contentCategories",
                     "httpMethod": "PUT",
                     "id": "dfareporting.contentCategories.update",
                     "parameterOrder": [
@@ -2674,6 +2728,7 @@
             "methods": {
                 "batchinsert": {
                     "description": "Inserts conversions.",
+                    "flatPath": "userprofiles/{profileId}/conversions/batchinsert",
                     "httpMethod": "POST",
                     "id": "dfareporting.conversions.batchinsert",
                     "parameterOrder": [
@@ -2701,6 +2756,7 @@
                 },
                 "batchupdate": {
                     "description": "Updates existing conversions.",
+                    "flatPath": "userprofiles/{profileId}/conversions/batchupdate",
                     "httpMethod": "POST",
                     "id": "dfareporting.conversions.batchupdate",
                     "parameterOrder": [
@@ -2732,6 +2788,7 @@
             "methods": {
                 "get": {
                     "description": "Gets one country by ID.",
+                    "flatPath": "userprofiles/{profileId}/countries/{dartId}",
                     "httpMethod": "GET",
                     "id": "dfareporting.countries.get",
                     "parameterOrder": [
@@ -2764,6 +2821,7 @@
                 },
                 "list": {
                     "description": "Retrieves a list of countries.",
+                    "flatPath": "userprofiles/{profileId}/countries",
                     "httpMethod": "GET",
                     "id": "dfareporting.countries.list",
                     "parameterOrder": [
@@ -2792,6 +2850,7 @@
             "methods": {
                 "insert": {
                     "description": "Inserts a new creative asset.",
+                    "flatPath": "userprofiles/{profileId}/creativeAssets/{advertiserId}/creativeAssets",
                     "httpMethod": "POST",
                     "id": "dfareporting.creativeAssets.insert",
                     "mediaUpload": {
@@ -2844,6 +2903,7 @@
             "methods": {
                 "delete": {
                     "description": "Deletes an existing creative field value.",
+                    "flatPath": "userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues/{id}",
                     "httpMethod": "DELETE",
                     "id": "dfareporting.creativeFieldValues.delete",
                     "parameterOrder": [
@@ -2881,6 +2941,7 @@
                 },
                 "get": {
                     "description": "Gets one creative field value by ID.",
+                    "flatPath": "userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.creativeFieldValues.get",
                     "parameterOrder": [
@@ -2921,6 +2982,7 @@
                 },
                 "insert": {
                     "description": "Inserts a new creative field value.",
+                    "flatPath": "userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues",
                     "httpMethod": "POST",
                     "id": "dfareporting.creativeFieldValues.insert",
                     "parameterOrder": [
@@ -2956,6 +3018,7 @@
                 },
                 "list": {
                     "description": "Retrieves a list of creative field values, possibly filtered. This method supports paging.",
+                    "flatPath": "userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues",
                     "httpMethod": "GET",
                     "id": "dfareporting.creativeFieldValues.list",
                     "parameterOrder": [
@@ -3042,6 +3105,7 @@
                 },
                 "patch": {
                     "description": "Updates an existing creative field value. This method supports patch semantics.",
+                    "flatPath": "userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues",
                     "httpMethod": "PATCH",
                     "id": "dfareporting.creativeFieldValues.patch",
                     "parameterOrder": [
@@ -3085,6 +3149,7 @@
                 },
                 "update": {
                     "description": "Updates an existing creative field value.",
+                    "flatPath": "userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues",
                     "httpMethod": "PUT",
                     "id": "dfareporting.creativeFieldValues.update",
                     "parameterOrder": [
@@ -3124,6 +3189,7 @@
             "methods": {
                 "delete": {
                     "description": "Deletes an existing creative field.",
+                    "flatPath": "userprofiles/{profileId}/creativeFields/{id}",
                     "httpMethod": "DELETE",
                     "id": "dfareporting.creativeFields.delete",
                     "parameterOrder": [
@@ -3153,6 +3219,7 @@
                 },
                 "get": {
                     "description": "Gets one creative field by ID.",
+                    "flatPath": "userprofiles/{profileId}/creativeFields/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.creativeFields.get",
                     "parameterOrder": [
@@ -3185,6 +3252,7 @@
                 },
                 "insert": {
                     "description": "Inserts a new creative field.",
+                    "flatPath": "userprofiles/{profileId}/creativeFields",
                     "httpMethod": "POST",
                     "id": "dfareporting.creativeFields.insert",
                     "parameterOrder": [
@@ -3212,6 +3280,7 @@
                 },
                 "list": {
                     "description": "Retrieves a list of creative fields, possibly filtered. This method supports paging.",
+                    "flatPath": "userprofiles/{profileId}/creativeFields",
                     "httpMethod": "GET",
                     "id": "dfareporting.creativeFields.list",
                     "parameterOrder": [
@@ -3297,6 +3366,7 @@
                 },
                 "patch": {
                     "description": "Updates an existing creative field. This method supports patch semantics.",
+                    "flatPath": "userprofiles/{profileId}/creativeFields",
                     "httpMethod": "PATCH",
                     "id": "dfareporting.creativeFields.patch",
                     "parameterOrder": [
@@ -3332,6 +3402,7 @@
                 },
                 "update": {
                     "description": "Updates an existing creative field.",
+                    "flatPath": "userprofiles/{profileId}/creativeFields",
                     "httpMethod": "PUT",
                     "id": "dfareporting.creativeFields.update",
                     "parameterOrder": [
@@ -3363,6 +3434,7 @@
             "methods": {
                 "get": {
                     "description": "Gets one creative group by ID.",
+                    "flatPath": "userprofiles/{profileId}/creativeGroups/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.creativeGroups.get",
                     "parameterOrder": [
@@ -3395,6 +3467,7 @@
                 },
                 "insert": {
                     "description": "Inserts a new creative group.",
+                    "flatPath": "userprofiles/{profileId}/creativeGroups",
                     "httpMethod": "POST",
                     "id": "dfareporting.creativeGroups.insert",
                     "parameterOrder": [
@@ -3422,6 +3495,7 @@
                 },
                 "list": {
                     "description": "Retrieves a list of creative groups, possibly filtered. This method supports paging.",
+                    "flatPath": "userprofiles/{profileId}/creativeGroups",
                     "httpMethod": "GET",
                     "id": "dfareporting.creativeGroups.list",
                     "parameterOrder": [
@@ -3515,6 +3589,7 @@
                 },
                 "patch": {
                     "description": "Updates an existing creative group. This method supports patch semantics.",
+                    "flatPath": "userprofiles/{profileId}/creativeGroups",
                     "httpMethod": "PATCH",
                     "id": "dfareporting.creativeGroups.patch",
                     "parameterOrder": [
@@ -3550,6 +3625,7 @@
                 },
                 "update": {
                     "description": "Updates an existing creative group.",
+                    "flatPath": "userprofiles/{profileId}/creativeGroups",
                     "httpMethod": "PUT",
                     "id": "dfareporting.creativeGroups.update",
                     "parameterOrder": [
@@ -3581,6 +3657,7 @@
             "methods": {
                 "get": {
                     "description": "Gets one creative by ID.",
+                    "flatPath": "userprofiles/{profileId}/creatives/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.creatives.get",
                     "parameterOrder": [
@@ -3613,6 +3690,7 @@
                 },
                 "insert": {
                     "description": "Inserts a new creative.",
+                    "flatPath": "userprofiles/{profileId}/creatives",
                     "httpMethod": "POST",
                     "id": "dfareporting.creatives.insert",
                     "parameterOrder": [
@@ -3640,6 +3718,7 @@
                 },
                 "list": {
                     "description": "Retrieves a list of creatives, possibly filtered. This method supports paging.",
+                    "flatPath": "userprofiles/{profileId}/creatives",
                     "httpMethod": "GET",
                     "id": "dfareporting.creatives.list",
                     "parameterOrder": [
@@ -3834,6 +3913,7 @@
                 },
                 "patch": {
                     "description": "Updates an existing creative. This method supports patch semantics.",
+                    "flatPath": "userprofiles/{profileId}/creatives",
                     "httpMethod": "PATCH",
                     "id": "dfareporting.creatives.patch",
                     "parameterOrder": [
@@ -3869,6 +3949,7 @@
                 },
                 "update": {
                     "description": "Updates an existing creative.",
+                    "flatPath": "userprofiles/{profileId}/creatives",
                     "httpMethod": "PUT",
                     "id": "dfareporting.creatives.update",
                     "parameterOrder": [
@@ -3900,6 +3981,7 @@
             "methods": {
                 "batchinsert": {
                     "description": "Inserts custom events.",
+                    "flatPath": "userprofiles/{profileId}/customEvents/batchinsert",
                     "httpMethod": "POST",
                     "id": "dfareporting.customEvents.batchinsert",
                     "parameterOrder": [
@@ -3931,6 +4013,7 @@
             "methods": {
                 "query": {
                     "description": "Retrieves list of report dimension values for a list of filters.",
+                    "flatPath": "userprofiles/{profileId}/dimensionvalues/query",
                     "httpMethod": "POST",
                     "id": "dfareporting.dimensionValues.query",
                     "parameterOrder": [
@@ -3976,6 +4059,7 @@
             "methods": {
                 "get": {
                     "description": "Gets one directory site by ID.",
+                    "flatPath": "userprofiles/{profileId}/directorySites/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.directorySites.get",
                     "parameterOrder": [
@@ -4008,6 +4092,7 @@
                 },
                 "insert": {
                     "description": "Inserts a new directory site.",
+                    "flatPath": "userprofiles/{profileId}/directorySites",
                     "httpMethod": "POST",
                     "id": "dfareporting.directorySites.insert",
                     "parameterOrder": [
@@ -4035,6 +4120,7 @@
                 },
                 "list": {
                     "description": "Retrieves a list of directory sites, possibly filtered. This method supports paging.",
+                    "flatPath": "userprofiles/{profileId}/directorySites",
                     "httpMethod": "GET",
                     "id": "dfareporting.directorySites.list",
                     "parameterOrder": [
@@ -4142,6 +4228,7 @@
             "methods": {
                 "delete": {
                     "description": "Deletes an existing dynamic targeting key.",
+                    "flatPath": "userprofiles/{profileId}/dynamicTargetingKeys/{objectId}",
                     "httpMethod": "DELETE",
                     "id": "dfareporting.dynamicTargetingKeys.delete",
                     "parameterOrder": [
@@ -4197,6 +4284,7 @@
                 },
                 "insert": {
                     "description": "Inserts a new dynamic targeting key. Keys must be created at the advertiser level before being assigned to the advertiser's ads, creatives, or placements. There is a maximum of 1000 keys per advertiser, out of which a maximum of 20 keys can be assigned per ad, creative, or placement.",
+                    "flatPath": "userprofiles/{profileId}/dynamicTargetingKeys",
                     "httpMethod": "POST",
                     "id": "dfareporting.dynamicTargetingKeys.insert",
                     "parameterOrder": [
@@ -4224,6 +4312,7 @@
                 },
                 "list": {
                     "description": "Retrieves a list of dynamic targeting keys.",
+                    "flatPath": "userprofiles/{profileId}/dynamicTargetingKeys",
                     "httpMethod": "GET",
                     "id": "dfareporting.dynamicTargetingKeys.list",
                     "parameterOrder": [
@@ -4287,6 +4376,7 @@
             "methods": {
                 "delete": {
                     "description": "Deletes an existing event tag.",
+                    "flatPath": "userprofiles/{profileId}/eventTags/{id}",
                     "httpMethod": "DELETE",
                     "id": "dfareporting.eventTags.delete",
                     "parameterOrder": [
@@ -4316,6 +4406,7 @@
                 },
                 "get": {
                     "description": "Gets one event tag by ID.",
+                    "flatPath": "userprofiles/{profileId}/eventTags/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.eventTags.get",
                     "parameterOrder": [
@@ -4348,6 +4439,7 @@
                 },
                 "insert": {
                     "description": "Inserts a new event tag.",
+                    "flatPath": "userprofiles/{profileId}/eventTags",
                     "httpMethod": "POST",
                     "id": "dfareporting.eventTags.insert",
                     "parameterOrder": [
@@ -4375,6 +4467,7 @@
                 },
                 "list": {
                     "description": "Retrieves a list of event tags, possibly filtered.",
+                    "flatPath": "userprofiles/{profileId}/eventTags",
                     "httpMethod": "GET",
                     "id": "dfareporting.eventTags.list",
                     "parameterOrder": [
@@ -4483,6 +4576,7 @@
                 },
                 "patch": {
                     "description": "Updates an existing event tag. This method supports patch semantics.",
+                    "flatPath": "userprofiles/{profileId}/eventTags",
                     "httpMethod": "PATCH",
                     "id": "dfareporting.eventTags.patch",
                     "parameterOrder": [
@@ -4518,6 +4612,7 @@
                 },
                 "update": {
                     "description": "Updates an existing event tag.",
+                    "flatPath": "userprofiles/{profileId}/eventTags",
                     "httpMethod": "PUT",
                     "id": "dfareporting.eventTags.update",
                     "parameterOrder": [
@@ -4549,6 +4644,7 @@
             "methods": {
                 "get": {
                     "description": "Retrieves a report file by its report ID and file ID. This method supports media download.",
+                    "flatPath": "reports/{reportId}/files/{fileId}",
                     "httpMethod": "GET",
                     "id": "dfareporting.files.get",
                     "parameterOrder": [
@@ -4582,6 +4678,7 @@
                 },
                 "list": {
                     "description": "Lists files for a user profile.",
+                    "flatPath": "userprofiles/{profileId}/files",
                     "httpMethod": "GET",
                     "id": "dfareporting.files.list",
                     "parameterOrder": [
@@ -4668,6 +4765,7 @@
             "methods": {
                 "delete": {
                     "description": "Deletes an existing floodlight activity.",
+                    "flatPath": "userprofiles/{profileId}/floodlightActivities/{id}",
                     "httpMethod": "DELETE",
                     "id": "dfareporting.floodlightActivities.delete",
                     "parameterOrder": [
@@ -4697,6 +4795,7 @@
                 },
                 "generatetag": {
                     "description": "Generates a tag for a floodlight activity.",
+                    "flatPath": "userprofiles/{profileId}/floodlightActivities/generatetag",
                     "httpMethod": "POST",
                     "id": "dfareporting.floodlightActivities.generatetag",
                     "parameterOrder": [
@@ -4727,6 +4826,7 @@
                 },
                 "get": {
                     "description": "Gets one floodlight activity by ID.",
+                    "flatPath": "userprofiles/{profileId}/floodlightActivities/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.floodlightActivities.get",
                     "parameterOrder": [
@@ -4759,6 +4859,7 @@
                 },
                 "insert": {
                     "description": "Inserts a new floodlight activity.",
+                    "flatPath": "userprofiles/{profileId}/floodlightActivities",
                     "httpMethod": "POST",
                     "id": "dfareporting.floodlightActivities.insert",
                     "parameterOrder": [
@@ -4786,6 +4887,7 @@
                 },
                 "list": {
                     "description": "Retrieves a list of floodlight activities, possibly filtered. This method supports paging.",
+                    "flatPath": "userprofiles/{profileId}/floodlightActivities",
                     "httpMethod": "GET",
                     "id": "dfareporting.floodlightActivities.list",
                     "parameterOrder": [
@@ -4911,6 +5013,7 @@
                 },
                 "patch": {
                     "description": "Updates an existing floodlight activity. This method supports patch semantics.",
+                    "flatPath": "userprofiles/{profileId}/floodlightActivities",
                     "httpMethod": "PATCH",
                     "id": "dfareporting.floodlightActivities.patch",
                     "parameterOrder": [
@@ -4946,6 +5049,7 @@
                 },
                 "update": {
                     "description": "Updates an existing floodlight activity.",
+                    "flatPath": "userprofiles/{profileId}/floodlightActivities",
                     "httpMethod": "PUT",
                     "id": "dfareporting.floodlightActivities.update",
                     "parameterOrder": [
@@ -4977,6 +5081,7 @@
             "methods": {
                 "get": {
                     "description": "Gets one floodlight activity group by ID.",
+                    "flatPath": "userprofiles/{profileId}/floodlightActivityGroups/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.floodlightActivityGroups.get",
                     "parameterOrder": [
@@ -5009,6 +5114,7 @@
                 },
                 "insert": {
                     "description": "Inserts a new floodlight activity group.",
+                    "flatPath": "userprofiles/{profileId}/floodlightActivityGroups",
                     "httpMethod": "POST",
                     "id": "dfareporting.floodlightActivityGroups.insert",
                     "parameterOrder": [
@@ -5036,6 +5142,7 @@
                 },
                 "list": {
                     "description": "Retrieves a list of floodlight activity groups, possibly filtered. This method supports paging.",
+                    "flatPath": "userprofiles/{profileId}/floodlightActivityGroups",
                     "httpMethod": "GET",
                     "id": "dfareporting.floodlightActivityGroups.list",
                     "parameterOrder": [
@@ -5139,6 +5246,7 @@
                 },
                 "patch": {
                     "description": "Updates an existing floodlight activity group. This method supports patch semantics.",
+                    "flatPath": "userprofiles/{profileId}/floodlightActivityGroups",
                     "httpMethod": "PATCH",
                     "id": "dfareporting.floodlightActivityGroups.patch",
                     "parameterOrder": [
@@ -5174,6 +5282,7 @@
                 },
                 "update": {
                     "description": "Updates an existing floodlight activity group.",
+                    "flatPath": "userprofiles/{profileId}/floodlightActivityGroups",
                     "httpMethod": "PUT",
                     "id": "dfareporting.floodlightActivityGroups.update",
                     "parameterOrder": [
@@ -5205,6 +5314,7 @@
             "methods": {
                 "get": {
                     "description": "Gets one floodlight configuration by ID.",
+                    "flatPath": "userprofiles/{profileId}/floodlightConfigurations/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.floodlightConfigurations.get",
                     "parameterOrder": [
@@ -5237,6 +5347,7 @@
                 },
                 "list": {
                     "description": "Retrieves a list of floodlight configurations, possibly filtered.",
+                    "flatPath": "userprofiles/{profileId}/floodlightConfigurations",
                     "httpMethod": "GET",
                     "id": "dfareporting.floodlightConfigurations.list",
                     "parameterOrder": [
@@ -5268,6 +5379,7 @@
                 },
                 "patch": {
                     "description": "Updates an existing floodlight configuration. This method supports patch semantics.",
+                    "flatPath": "userprofiles/{profileId}/floodlightConfigurations",
                     "httpMethod": "PATCH",
                     "id": "dfareporting.floodlightConfigurations.patch",
                     "parameterOrder": [
@@ -5303,6 +5415,7 @@
                 },
                 "update": {
                     "description": "Updates an existing floodlight configuration.",
+                    "flatPath": "userprofiles/{profileId}/floodlightConfigurations",
                     "httpMethod": "PUT",
                     "id": "dfareporting.floodlightConfigurations.update",
                     "parameterOrder": [
@@ -5334,6 +5447,7 @@
             "methods": {
                 "get": {
                     "description": "Gets one inventory item by ID.",
+                    "flatPath": "userprofiles/{profileId}/projects/{projectId}/inventoryItems/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.inventoryItems.get",
                     "parameterOrder": [
@@ -5374,6 +5488,7 @@
                 },
                 "list": {
                     "description": "Retrieves a list of inventory items, possibly filtered. This method supports paging.",
+                    "flatPath": "userprofiles/{profileId}/projects/{projectId}/inventoryItems",
                     "httpMethod": "GET",
                     "id": "dfareporting.inventoryItems.list",
                     "parameterOrder": [
@@ -5491,6 +5606,7 @@
             "methods": {
                 "list": {
                     "description": "Retrieves a list of languages.",
+                    "flatPath": "userprofiles/{profileId}/languages",
                     "httpMethod": "GET",
                     "id": "dfareporting.languages.list",
                     "parameterOrder": [
@@ -5519,6 +5635,7 @@
             "methods": {
                 "list": {
                     "description": "Retrieves a list of metros.",
+                    "flatPath": "userprofiles/{profileId}/metros",
                     "httpMethod": "GET",
                     "id": "dfareporting.metros.list",
                     "parameterOrder": [
@@ -5547,6 +5664,7 @@
             "methods": {
                 "get": {
                     "description": "Gets one mobile app by ID.",
+                    "flatPath": "userprofiles/{profileId}/mobileApps/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.mobileApps.get",
                     "parameterOrder": [
@@ -5578,6 +5696,7 @@
                 },
                 "list": {
                     "description": "Retrieves list of available mobile apps.",
+                    "flatPath": "userprofiles/{profileId}/mobileApps",
                     "httpMethod": "GET",
                     "id": "dfareporting.mobileApps.list",
                     "parameterOrder": [
@@ -5647,6 +5766,7 @@
             "methods": {
                 "get": {
                     "description": "Gets one mobile carrier by ID.",
+                    "flatPath": "userprofiles/{profileId}/mobileCarriers/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.mobileCarriers.get",
                     "parameterOrder": [
@@ -5679,6 +5799,7 @@
                 },
                 "list": {
                     "description": "Retrieves a list of mobile carriers.",
+                    "flatPath": "userprofiles/{profileId}/mobileCarriers",
                     "httpMethod": "GET",
                     "id": "dfareporting.mobileCarriers.list",
                     "parameterOrder": [
@@ -5707,6 +5828,7 @@
             "methods": {
                 "get": {
                     "description": "Gets one operating system version by ID.",
+                    "flatPath": "userprofiles/{profileId}/operatingSystemVersions/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.operatingSystemVersions.get",
                     "parameterOrder": [
@@ -5739,6 +5861,7 @@
                 },
                 "list": {
                     "description": "Retrieves a list of operating system versions.",
+                    "flatPath": "userprofiles/{profileId}/operatingSystemVersions",
                     "httpMethod": "GET",
                     "id": "dfareporting.operatingSystemVersions.list",
                     "parameterOrder": [
@@ -5767,6 +5890,7 @@
             "methods": {
                 "get": {
                     "description": "Gets one operating system by DART ID.",
+                    "flatPath": "userprofiles/{profileId}/operatingSystems/{dartId}",
                     "httpMethod": "GET",
                     "id": "dfareporting.operatingSystems.get",
                     "parameterOrder": [
@@ -5799,6 +5923,7 @@
                 },
                 "list": {
                     "description": "Retrieves a list of operating systems.",
+                    "flatPath": "userprofiles/{profileId}/operatingSystems",
                     "httpMethod": "GET",
                     "id": "dfareporting.operatingSystems.list",
                     "parameterOrder": [
@@ -5827,6 +5952,7 @@
             "methods": {
                 "get": {
                     "description": "Gets one order document by ID.",
+                    "flatPath": "userprofiles/{profileId}/projects/{projectId}/orderDocuments/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.orderDocuments.get",
                     "parameterOrder": [
@@ -5867,6 +5993,7 @@
                 },
                 "list": {
                     "description": "Retrieves a list of order documents, possibly filtered. This method supports paging.",
+                    "flatPath": "userprofiles/{profileId}/projects/{projectId}/orderDocuments",
                     "httpMethod": "GET",
                     "id": "dfareporting.orderDocuments.list",
                     "parameterOrder": [
@@ -5976,6 +6103,7 @@
             "methods": {
                 "get": {
                     "description": "Gets one order by ID.",
+                    "flatPath": "userprofiles/{profileId}/projects/{projectId}/orders/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.orders.get",
                     "parameterOrder": [
@@ -6016,6 +6144,7 @@
                 },
                 "list": {
                     "description": "Retrieves a list of orders, possibly filtered. This method supports paging.",
+                    "flatPath": "userprofiles/{profileId}/projects/{projectId}/orders",
                     "httpMethod": "GET",
                     "id": "dfareporting.orders.list",
                     "parameterOrder": [
@@ -6113,6 +6242,7 @@
             "methods": {
                 "get": {
                     "description": "Gets one placement group by ID.",
+                    "flatPath": "userprofiles/{profileId}/placementGroups/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.placementGroups.get",
                     "parameterOrder": [
@@ -6145,6 +6275,7 @@
                 },
                 "insert": {
                     "description": "Inserts a new placement group.",
+                    "flatPath": "userprofiles/{profileId}/placementGroups",
                     "httpMethod": "POST",
                     "id": "dfareporting.placementGroups.insert",
                     "parameterOrder": [
@@ -6172,6 +6303,7 @@
                 },
                 "list": {
                     "description": "Retrieves a list of placement groups, possibly filtered. This method supports paging.",
+                    "flatPath": "userprofiles/{profileId}/placementGroups",
                     "httpMethod": "GET",
                     "id": "dfareporting.placementGroups.list",
                     "parameterOrder": [
@@ -6352,6 +6484,7 @@
                 },
                 "patch": {
                     "description": "Updates an existing placement group. This method supports patch semantics.",
+                    "flatPath": "userprofiles/{profileId}/placementGroups",
                     "httpMethod": "PATCH",
                     "id": "dfareporting.placementGroups.patch",
                     "parameterOrder": [
@@ -6387,6 +6520,7 @@
                 },
                 "update": {
                     "description": "Updates an existing placement group.",
+                    "flatPath": "userprofiles/{profileId}/placementGroups",
                     "httpMethod": "PUT",
                     "id": "dfareporting.placementGroups.update",
                     "parameterOrder": [
@@ -6418,6 +6552,7 @@
             "methods": {
                 "delete": {
                     "description": "Deletes an existing placement strategy.",
+                    "flatPath": "userprofiles/{profileId}/placementStrategies/{id}",
                     "httpMethod": "DELETE",
                     "id": "dfareporting.placementStrategies.delete",
                     "parameterOrder": [
@@ -6447,6 +6582,7 @@
                 },
                 "get": {
                     "description": "Gets one placement strategy by ID.",
+                    "flatPath": "userprofiles/{profileId}/placementStrategies/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.placementStrategies.get",
                     "parameterOrder": [
@@ -6479,6 +6615,7 @@
                 },
                 "insert": {
                     "description": "Inserts a new placement strategy.",
+                    "flatPath": "userprofiles/{profileId}/placementStrategies",
                     "httpMethod": "POST",
                     "id": "dfareporting.placementStrategies.insert",
                     "parameterOrder": [
@@ -6506,6 +6643,7 @@
                 },
                 "list": {
                     "description": "Retrieves a list of placement strategies, possibly filtered. This method supports paging.",
+                    "flatPath": "userprofiles/{profileId}/placementStrategies",
                     "httpMethod": "GET",
                     "id": "dfareporting.placementStrategies.list",
                     "parameterOrder": [
@@ -6584,6 +6722,7 @@
                 },
                 "patch": {
                     "description": "Updates an existing placement strategy. This method supports patch semantics.",
+                    "flatPath": "userprofiles/{profileId}/placementStrategies",
                     "httpMethod": "PATCH",
                     "id": "dfareporting.placementStrategies.patch",
                     "parameterOrder": [
@@ -6619,6 +6758,7 @@
                 },
                 "update": {
                     "description": "Updates an existing placement strategy.",
+                    "flatPath": "userprofiles/{profileId}/placementStrategies",
                     "httpMethod": "PUT",
                     "id": "dfareporting.placementStrategies.update",
                     "parameterOrder": [
@@ -6650,6 +6790,7 @@
             "methods": {
                 "generatetags": {
                     "description": "Generates tags for a placement.",
+                    "flatPath": "userprofiles/{profileId}/placements/generatetags",
                     "httpMethod": "POST",
                     "id": "dfareporting.placements.generatetags",
                     "parameterOrder": [
@@ -6735,6 +6876,7 @@
                 },
                 "get": {
                     "description": "Gets one placement by ID.",
+                    "flatPath": "userprofiles/{profileId}/placements/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.placements.get",
                     "parameterOrder": [
@@ -6767,6 +6909,7 @@
                 },
                 "insert": {
                     "description": "Inserts a new placement.",
+                    "flatPath": "userprofiles/{profileId}/placements",
                     "httpMethod": "POST",
                     "id": "dfareporting.placements.insert",
                     "parameterOrder": [
@@ -6794,6 +6937,7 @@
                 },
                 "list": {
                     "description": "Retrieves a list of placements, possibly filtered. This method supports paging.",
+                    "flatPath": "userprofiles/{profileId}/placements",
                     "httpMethod": "GET",
                     "id": "dfareporting.placements.list",
                     "parameterOrder": [
@@ -7010,6 +7154,7 @@
                 },
                 "patch": {
                     "description": "Updates an existing placement. This method supports patch semantics.",
+                    "flatPath": "userprofiles/{profileId}/placements",
                     "httpMethod": "PATCH",
                     "id": "dfareporting.placements.patch",
                     "parameterOrder": [
@@ -7045,6 +7190,7 @@
                 },
                 "update": {
                     "description": "Updates an existing placement.",
+                    "flatPath": "userprofiles/{profileId}/placements",
                     "httpMethod": "PUT",
                     "id": "dfareporting.placements.update",
                     "parameterOrder": [
@@ -7076,6 +7222,7 @@
             "methods": {
                 "get": {
                     "description": "Gets one platform type by ID.",
+                    "flatPath": "userprofiles/{profileId}/platformTypes/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.platformTypes.get",
                     "parameterOrder": [
@@ -7108,6 +7255,7 @@
                 },
                 "list": {
                     "description": "Retrieves a list of platform types.",
+                    "flatPath": "userprofiles/{profileId}/platformTypes",
                     "httpMethod": "GET",
                     "id": "dfareporting.platformTypes.list",
                     "parameterOrder": [
@@ -7136,6 +7284,7 @@
             "methods": {
                 "get": {
                     "description": "Gets one postal code by ID.",
+                    "flatPath": "userprofiles/{profileId}/postalCodes/{code}",
                     "httpMethod": "GET",
                     "id": "dfareporting.postalCodes.get",
                     "parameterOrder": [
@@ -7167,6 +7316,7 @@
                 },
                 "list": {
                     "description": "Retrieves a list of postal codes.",
+                    "flatPath": "userprofiles/{profileId}/postalCodes",
                     "httpMethod": "GET",
                     "id": "dfareporting.postalCodes.list",
                     "parameterOrder": [
@@ -7195,6 +7345,7 @@
             "methods": {
                 "get": {
                     "description": "Gets one project by ID.",
+                    "flatPath": "userprofiles/{profileId}/projects/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.projects.get",
                     "parameterOrder": [
@@ -7227,6 +7378,7 @@
                 },
                 "list": {
                     "description": "Retrieves a list of projects, possibly filtered. This method supports paging .",
+                    "flatPath": "userprofiles/{profileId}/projects",
                     "httpMethod": "GET",
                     "id": "dfareporting.projects.list",
                     "parameterOrder": [
@@ -7316,6 +7468,7 @@
             "methods": {
                 "list": {
                     "description": "Retrieves a list of regions.",
+                    "flatPath": "userprofiles/{profileId}/regions",
                     "httpMethod": "GET",
                     "id": "dfareporting.regions.list",
                     "parameterOrder": [
@@ -7344,6 +7497,7 @@
             "methods": {
                 "get": {
                     "description": "Gets one remarketing list share by remarketing list ID.",
+                    "flatPath": "userprofiles/{profileId}/remarketingListShares/{remarketingListId}",
                     "httpMethod": "GET",
                     "id": "dfareporting.remarketingListShares.get",
                     "parameterOrder": [
@@ -7376,6 +7530,7 @@
                 },
                 "patch": {
                     "description": "Updates an existing remarketing list share. This method supports patch semantics.",
+                    "flatPath": "userprofiles/{profileId}/remarketingListShares",
                     "httpMethod": "PATCH",
                     "id": "dfareporting.remarketingListShares.patch",
                     "parameterOrder": [
@@ -7411,6 +7566,7 @@
                 },
                 "update": {
                     "description": "Updates an existing remarketing list share.",
+                    "flatPath": "userprofiles/{profileId}/remarketingListShares",
                     "httpMethod": "PUT",
                     "id": "dfareporting.remarketingListShares.update",
                     "parameterOrder": [
@@ -7442,6 +7598,7 @@
             "methods": {
                 "get": {
                     "description": "Gets one remarketing list by ID.",
+                    "flatPath": "userprofiles/{profileId}/remarketingLists/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.remarketingLists.get",
                     "parameterOrder": [
@@ -7474,6 +7631,7 @@
                 },
                 "insert": {
                     "description": "Inserts a new remarketing list.",
+                    "flatPath": "userprofiles/{profileId}/remarketingLists",
                     "httpMethod": "POST",
                     "id": "dfareporting.remarketingLists.insert",
                     "parameterOrder": [
@@ -7501,6 +7659,7 @@
                 },
                 "list": {
                     "description": "Retrieves a list of remarketing lists, possibly filtered. This method supports paging.",
+                    "flatPath": "userprofiles/{profileId}/remarketingLists",
                     "httpMethod": "GET",
                     "id": "dfareporting.remarketingLists.list",
                     "parameterOrder": [
@@ -7591,6 +7750,7 @@
                 },
                 "patch": {
                     "description": "Updates an existing remarketing list. This method supports patch semantics.",
+                    "flatPath": "userprofiles/{profileId}/remarketingLists",
                     "httpMethod": "PATCH",
                     "id": "dfareporting.remarketingLists.patch",
                     "parameterOrder": [
@@ -7626,6 +7786,7 @@
                 },
                 "update": {
                     "description": "Updates an existing remarketing list.",
+                    "flatPath": "userprofiles/{profileId}/remarketingLists",
                     "httpMethod": "PUT",
                     "id": "dfareporting.remarketingLists.update",
                     "parameterOrder": [
@@ -7657,6 +7818,7 @@
             "methods": {
                 "delete": {
                     "description": "Deletes a report by its ID.",
+                    "flatPath": "userprofiles/{profileId}/reports/{reportId}",
                     "httpMethod": "DELETE",
                     "id": "dfareporting.reports.delete",
                     "parameterOrder": [
@@ -7686,6 +7848,7 @@
                 },
                 "get": {
                     "description": "Retrieves a report by its ID.",
+                    "flatPath": "userprofiles/{profileId}/reports/{reportId}",
                     "httpMethod": "GET",
                     "id": "dfareporting.reports.get",
                     "parameterOrder": [
@@ -7718,6 +7881,7 @@
                 },
                 "insert": {
                     "description": "Creates a report.",
+                    "flatPath": "userprofiles/{profileId}/reports",
                     "httpMethod": "POST",
                     "id": "dfareporting.reports.insert",
                     "parameterOrder": [
@@ -7745,6 +7909,7 @@
                 },
                 "list": {
                     "description": "Retrieves list of reports.",
+                    "flatPath": "userprofiles/{profileId}/reports",
                     "httpMethod": "GET",
                     "id": "dfareporting.reports.list",
                     "parameterOrder": [
@@ -7827,6 +7992,7 @@
                 },
                 "patch": {
                     "description": "Updates an existing report. This method supports patch semantics.",
+                    "flatPath": "userprofiles/{profileId}/reports/{reportId}",
                     "httpMethod": "PATCH",
                     "id": "dfareporting.reports.patch",
                     "parameterOrder": [
@@ -7862,6 +8028,7 @@
                 },
                 "run": {
                     "description": "Runs a report.",
+                    "flatPath": "userprofiles/{profileId}/reports/{reportId}/run",
                     "httpMethod": "POST",
                     "id": "dfareporting.reports.run",
                     "parameterOrder": [
@@ -7900,6 +8067,7 @@
                 },
                 "update": {
                     "description": "Updates a report.",
+                    "flatPath": "userprofiles/{profileId}/reports/{reportId}",
                     "httpMethod": "PUT",
                     "id": "dfareporting.reports.update",
                     "parameterOrder": [
@@ -7939,6 +8107,7 @@
                     "methods": {
                         "query": {
                             "description": "Returns the fields that are compatible to be selected in the respective sections of a report criteria, given the fields already selected in the input report and user permissions.",
+                            "flatPath": "userprofiles/{profileId}/reports/compatiblefields/query",
                             "httpMethod": "POST",
                             "id": "dfareporting.reports.compatibleFields.query",
                             "parameterOrder": [
@@ -7970,6 +8139,7 @@
                     "methods": {
                         "get": {
                             "description": "Retrieves a report file by its report ID and file ID. This method supports media download.",
+                            "flatPath": "userprofiles/{profileId}/reports/{reportId}/files/{fileId}",
                             "httpMethod": "GET",
                             "id": "dfareporting.reports.files.get",
                             "parameterOrder": [
@@ -8011,6 +8181,7 @@
                         },
                         "list": {
                             "description": "Lists files for a report.",
+                            "flatPath": "userprofiles/{profileId}/reports/{reportId}/files",
                             "httpMethod": "GET",
                             "id": "dfareporting.reports.files.list",
                             "parameterOrder": [
@@ -8091,6 +8262,7 @@
             "methods": {
                 "get": {
                     "description": "Gets one site by ID.",
+                    "flatPath": "userprofiles/{profileId}/sites/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.sites.get",
                     "parameterOrder": [
@@ -8123,6 +8295,7 @@
                 },
                 "insert": {
                     "description": "Inserts a new site.",
+                    "flatPath": "userprofiles/{profileId}/sites",
                     "httpMethod": "POST",
                     "id": "dfareporting.sites.insert",
                     "parameterOrder": [
@@ -8150,6 +8323,7 @@
                 },
                 "list": {
                     "description": "Retrieves a list of sites, possibly filtered. This method supports paging.",
+                    "flatPath": "userprofiles/{profileId}/sites",
                     "httpMethod": "GET",
                     "id": "dfareporting.sites.list",
                     "parameterOrder": [
@@ -8278,6 +8452,7 @@
                 },
                 "patch": {
                     "description": "Updates an existing site. This method supports patch semantics.",
+                    "flatPath": "userprofiles/{profileId}/sites",
                     "httpMethod": "PATCH",
                     "id": "dfareporting.sites.patch",
                     "parameterOrder": [
@@ -8313,6 +8488,7 @@
                 },
                 "update": {
                     "description": "Updates an existing site.",
+                    "flatPath": "userprofiles/{profileId}/sites",
                     "httpMethod": "PUT",
                     "id": "dfareporting.sites.update",
                     "parameterOrder": [
@@ -8344,6 +8520,7 @@
             "methods": {
                 "get": {
                     "description": "Gets one size by ID.",
+                    "flatPath": "userprofiles/{profileId}/sizes/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.sizes.get",
                     "parameterOrder": [
@@ -8376,6 +8553,7 @@
                 },
                 "insert": {
                     "description": "Inserts a new size.",
+                    "flatPath": "userprofiles/{profileId}/sizes",
                     "httpMethod": "POST",
                     "id": "dfareporting.sizes.insert",
                     "parameterOrder": [
@@ -8403,6 +8581,7 @@
                 },
                 "list": {
                     "description": "Retrieves a list of sizes, possibly filtered. Retrieved sizes are globally unique and may include values not currently in use by your account. Due to this, the list of sizes returned by this method may differ from the list seen in the Trafficking UI.",
+                    "flatPath": "userprofiles/{profileId}/sizes",
                     "httpMethod": "GET",
                     "id": "dfareporting.sizes.list",
                     "parameterOrder": [
@@ -8459,6 +8638,7 @@
             "methods": {
                 "get": {
                     "description": "Gets one subaccount by ID.",
+                    "flatPath": "userprofiles/{profileId}/subaccounts/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.subaccounts.get",
                     "parameterOrder": [
@@ -8491,6 +8671,7 @@
                 },
                 "insert": {
                     "description": "Inserts a new subaccount.",
+                    "flatPath": "userprofiles/{profileId}/subaccounts",
                     "httpMethod": "POST",
                     "id": "dfareporting.subaccounts.insert",
                     "parameterOrder": [
@@ -8518,6 +8699,7 @@
                 },
                 "list": {
                     "description": "Gets a list of subaccounts, possibly filtered. This method supports paging.",
+                    "flatPath": "userprofiles/{profileId}/subaccounts",
                     "httpMethod": "GET",
                     "id": "dfareporting.subaccounts.list",
                     "parameterOrder": [
@@ -8596,6 +8778,7 @@
                 },
                 "patch": {
                     "description": "Updates an existing subaccount. This method supports patch semantics.",
+                    "flatPath": "userprofiles/{profileId}/subaccounts",
                     "httpMethod": "PATCH",
                     "id": "dfareporting.subaccounts.patch",
                     "parameterOrder": [
@@ -8631,6 +8814,7 @@
                 },
                 "update": {
                     "description": "Updates an existing subaccount.",
+                    "flatPath": "userprofiles/{profileId}/subaccounts",
                     "httpMethod": "PUT",
                     "id": "dfareporting.subaccounts.update",
                     "parameterOrder": [
@@ -8662,6 +8846,7 @@
             "methods": {
                 "get": {
                     "description": "Gets one remarketing list by ID.",
+                    "flatPath": "userprofiles/{profileId}/targetableRemarketingLists/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.targetableRemarketingLists.get",
                     "parameterOrder": [
@@ -8694,6 +8879,7 @@
                 },
                 "list": {
                     "description": "Retrieves a list of targetable remarketing lists, possibly filtered. This method supports paging.",
+                    "flatPath": "userprofiles/{profileId}/targetableRemarketingLists",
                     "httpMethod": "GET",
                     "id": "dfareporting.targetableRemarketingLists.list",
                     "parameterOrder": [
@@ -8782,6 +8968,7 @@
             "methods": {
                 "get": {
                     "description": "Gets one targeting template by ID.",
+                    "flatPath": "userprofiles/{profileId}/targetingTemplates/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.targetingTemplates.get",
                     "parameterOrder": [
@@ -8814,6 +9001,7 @@
                 },
                 "insert": {
                     "description": "Inserts a new targeting template.",
+                    "flatPath": "userprofiles/{profileId}/targetingTemplates",
                     "httpMethod": "POST",
                     "id": "dfareporting.targetingTemplates.insert",
                     "parameterOrder": [
@@ -8841,6 +9029,7 @@
                 },
                 "list": {
                     "description": "Retrieves a list of targeting templates, optionally filtered. This method supports paging.",
+                    "flatPath": "userprofiles/{profileId}/targetingTemplates",
                     "httpMethod": "GET",
                     "id": "dfareporting.targetingTemplates.list",
                     "parameterOrder": [
@@ -8925,6 +9114,7 @@
                 },
                 "patch": {
                     "description": "Updates an existing targeting template. This method supports patch semantics.",
+                    "flatPath": "userprofiles/{profileId}/targetingTemplates",
                     "httpMethod": "PATCH",
                     "id": "dfareporting.targetingTemplates.patch",
                     "parameterOrder": [
@@ -8960,6 +9150,7 @@
                 },
                 "update": {
                     "description": "Updates an existing targeting template.",
+                    "flatPath": "userprofiles/{profileId}/targetingTemplates",
                     "httpMethod": "PUT",
                     "id": "dfareporting.targetingTemplates.update",
                     "parameterOrder": [
@@ -8991,6 +9182,7 @@
             "methods": {
                 "get": {
                     "description": "Gets one user profile by ID.",
+                    "flatPath": "userprofiles/{profileId}",
                     "httpMethod": "GET",
                     "id": "dfareporting.userProfiles.get",
                     "parameterOrder": [
@@ -9017,6 +9209,7 @@
                 },
                 "list": {
                     "description": "Retrieves list of user profiles for a user.",
+                    "flatPath": "userprofiles",
                     "httpMethod": "GET",
                     "id": "dfareporting.userProfiles.list",
                     "parameterOrder": [],
@@ -9037,6 +9230,7 @@
             "methods": {
                 "get": {
                     "description": "Gets one user role permission group by ID.",
+                    "flatPath": "userprofiles/{profileId}/userRolePermissionGroups/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.userRolePermissionGroups.get",
                     "parameterOrder": [
@@ -9069,6 +9263,7 @@
                 },
                 "list": {
                     "description": "Gets a list of all supported user role permission groups.",
+                    "flatPath": "userprofiles/{profileId}/userRolePermissionGroups",
                     "httpMethod": "GET",
                     "id": "dfareporting.userRolePermissionGroups.list",
                     "parameterOrder": [
@@ -9097,6 +9292,7 @@
             "methods": {
                 "get": {
                     "description": "Gets one user role permission by ID.",
+                    "flatPath": "userprofiles/{profileId}/userRolePermissions/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.userRolePermissions.get",
                     "parameterOrder": [
@@ -9129,6 +9325,7 @@
                 },
                 "list": {
                     "description": "Gets a list of user role permissions, possibly filtered.",
+                    "flatPath": "userprofiles/{profileId}/userRolePermissions",
                     "httpMethod": "GET",
                     "id": "dfareporting.userRolePermissions.list",
                     "parameterOrder": [
@@ -9164,6 +9361,7 @@
             "methods": {
                 "delete": {
                     "description": "Deletes an existing user role.",
+                    "flatPath": "userprofiles/{profileId}/userRoles/{id}",
                     "httpMethod": "DELETE",
                     "id": "dfareporting.userRoles.delete",
                     "parameterOrder": [
@@ -9193,6 +9391,7 @@
                 },
                 "get": {
                     "description": "Gets one user role by ID.",
+                    "flatPath": "userprofiles/{profileId}/userRoles/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.userRoles.get",
                     "parameterOrder": [
@@ -9225,6 +9424,7 @@
                 },
                 "insert": {
                     "description": "Inserts a new user role.",
+                    "flatPath": "userprofiles/{profileId}/userRoles",
                     "httpMethod": "POST",
                     "id": "dfareporting.userRoles.insert",
                     "parameterOrder": [
@@ -9252,6 +9452,7 @@
                 },
                 "list": {
                     "description": "Retrieves a list of user roles, possibly filtered. This method supports paging.",
+                    "flatPath": "userprofiles/{profileId}/userRoles",
                     "httpMethod": "GET",
                     "id": "dfareporting.userRoles.list",
                     "parameterOrder": [
@@ -9341,6 +9542,7 @@
                 },
                 "patch": {
                     "description": "Updates an existing user role. This method supports patch semantics.",
+                    "flatPath": "userprofiles/{profileId}/userRoles",
                     "httpMethod": "PATCH",
                     "id": "dfareporting.userRoles.patch",
                     "parameterOrder": [
@@ -9376,6 +9578,7 @@
                 },
                 "update": {
                     "description": "Updates an existing user role.",
+                    "flatPath": "userprofiles/{profileId}/userRoles",
                     "httpMethod": "PUT",
                     "id": "dfareporting.userRoles.update",
                     "parameterOrder": [
@@ -9407,6 +9610,7 @@
             "methods": {
                 "get": {
                     "description": "Gets one video format by ID.",
+                    "flatPath": "userprofiles/{profileId}/videoFormats/{id}",
                     "httpMethod": "GET",
                     "id": "dfareporting.videoFormats.get",
                     "parameterOrder": [
@@ -9439,6 +9643,7 @@
                 },
                 "list": {
                     "description": "Lists available video formats.",
+                    "flatPath": "userprofiles/{profileId}/videoFormats",
                     "httpMethod": "GET",
                     "id": "dfareporting.videoFormats.list",
                     "parameterOrder": [
@@ -9464,7 +9669,7 @@
             }
         }
     },
-    "revision": "20210521",
+    "revision": "20210524",
     "rootUrl": "https://dfareporting.googleapis.com/",
     "schemas": {
         "Account": {

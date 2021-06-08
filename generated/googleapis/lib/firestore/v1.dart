@@ -249,7 +249,7 @@ class ProjectsDatabasesCollectionGroupsFieldsResource {
   /// Currently, FirestoreAdmin.ListFields only supports listing fields that
   /// have been explicitly overridden. To issue this query, call
   /// FirestoreAdmin.ListFields with the filter set to
-  /// `indexConfig.usesAncestorConfig:false`.
+  /// `indexConfig.usesAncestorConfig:false` .
   ///
   /// Request parameters:
   ///
@@ -261,7 +261,7 @@ class ProjectsDatabasesCollectionGroupsFieldsResource {
   /// [filter] - The filter to apply to list results. Currently,
   /// FirestoreAdmin.ListFields only supports listing fields that have been
   /// explicitly overridden. To issue this query, call FirestoreAdmin.ListFields
-  /// with the filter set to `indexConfig.usesAncestorConfig:false`.
+  /// with a filter that includes `indexConfig.usesAncestorConfig:false` .
   ///
   /// [pageSize] - The number of results to return.
   ///

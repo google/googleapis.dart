@@ -45,6 +45,10 @@ class SmartDeviceManagementApi {
   /// See and/or control the devices that you selected
   static const sdmServiceScope = 'https://www.googleapis.com/auth/sdm.service';
 
+  /// See and control the Nest thermostats that you select
+  static const sdmThermostatServiceScope =
+      'https://www.googleapis.com/auth/sdm.thermostat.service';
+
   final commons.ApiRequester _requester;
 
   EnterprisesResource get enterprises => EnterprisesResource(_requester);

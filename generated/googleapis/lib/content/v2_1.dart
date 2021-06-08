@@ -5272,11 +5272,12 @@ class ProductsResource {
   ///
   /// [productId] - The REST ID of the product for which to update.
   ///
-  /// [updateMask] - The list of product attributes to be updated. Attributes
-  /// specified in the update mask without a value specified in the body will be
-  /// deleted from the product. Only top-level product attributes can be
-  /// updated. If not defined, product attributes with set values will be
-  /// updated and other attributes will stay unchanged.
+  /// [updateMask] - The comma-separated list of product attributes to be
+  /// updated. Example: `"title,salePrice"`. Attributes specified in the update
+  /// mask without a value specified in the body will be deleted from the
+  /// product. Only top-level product attributes can be updated. If not defined,
+  /// product attributes with set values will be updated and other attributes
+  /// will stay unchanged.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5910,7 +5911,8 @@ class RegionsResource {
   ///
   /// [regionId] - Required. The id of the region to update.
   ///
-  /// [updateMask] - Optional. The field mask indicating the fields to update.
+  /// [updateMask] - Optional. The comma-separated field mask indicating the
+  /// fields to update. Example: `"displayName,postalCodeArea.regionCode"`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -13140,6 +13142,21 @@ class MerchantRejectionReason {
 /// Values are only set for metrics requested explicitly in the request's search
 /// query.
 class Metrics {
+  /// Average order size - the average number of items in an order.
+  ///
+  /// **This metric cannot be segmented by product dimensions.**
+  core.double? aos;
+
+  /// Average order value - the average value (total price of items) of all
+  /// placed orders.
+  ///
+  /// The currency of the returned value is stored in the currency_code segment.
+  /// If this metric is selected, 'segments.currency_code' is automatically
+  /// added to the SELECT clause in the search query (unless it is explicitly
+  /// selected by the user) and the currency_code segment is populated in the
+  /// response. **This metric cannot be segmented by product dimensions.**
+  core.double? aovMicros;
+
   /// Number of clicks.
   core.String? clicks;
 
@@ -13148,27 +13165,194 @@ class Metrics {
   /// (impressions).
   core.double? ctr;
 
+  /// Average number of days between an order being placed and the order being
+  /// fully shipped, reported on the last shipment date.
+  ///
+  /// **This metric cannot be segmented by product dimensions.**
+  core.double? daysToShip;
+
   /// Number of times merchant's products are shown.
   core.String? impressions;
+
+  /// Average number of days between an item being ordered and the item being
+  core.double? itemDaysToShip;
+
+  /// Percentage of shipped items in relation to all finalized items (shipped or
+  /// rejected by the merchant; unshipped items are not taken into account),
+  /// reported on the order date.
+  ///
+  /// Item fill rate is lowered by merchant rejections.
+  core.double? itemFillRate;
+
+  /// Total price of ordered items.
+  ///
+  /// Excludes shipping, taxes (US only), and customer cancellations that
+  /// happened within 30 minutes of placing the order. The currency of the
+  /// returned value is stored in the currency_code segment. If this metric is
+  /// selected, 'segments.currency_code' is automatically added to the SELECT
+  /// clause in the search query (unless it is explicitly selected by the user)
+  /// and the currency_code segment is populated in the response.
+  core.String? orderedItemSalesMicros;
+
+  /// Number of ordered items.
+  ///
+  /// Excludes customer cancellations that happened within 30 minutes of placing
+  /// the order.
+  core.String? orderedItems;
+
+  /// Number of placed orders.
+  ///
+  /// Excludes customer cancellations that happened within 30 minutes of placing
+  /// the order. **This metric cannot be segmented by product dimensions.**
+  core.String? orders;
+
+  /// Number of ordered items canceled by the merchant, reported on the order
+  /// date.
+  core.String? rejectedItems;
+
+  /// Total price of returned items divided by the total price of shipped items,
+  /// reported on the order date.
+  ///
+  /// If this metric is selected, 'segments.currency_code' is automatically
+  /// added to the SELECT clause in the search query (unless it is explicitly
+  /// selected by the user) and the currency_code segment is populated in the
+  /// response.
+  core.double? returnRate;
+
+  /// Number of ordered items sent back for return, reported on the date when
+  /// the merchant accepted the return.
+  core.String? returnedItems;
+
+  /// Total price of ordered items sent back for return, reported on the date
+  /// when the merchant accepted the return.
+  ///
+  /// The currency of the returned value is stored in the currency_code segment.
+  /// If this metric is selected, 'segments.currency_code' is automatically
+  /// added to the SELECT clause in the search query (unless it is explicitly
+  /// selected by the user) and the currency_code segment is populated in the
+  /// response.
+  core.String? returnsMicros;
+
+  /// Total price of shipped items, reported on the order date.
+  ///
+  /// Excludes shipping and taxes (US only). The currency of the returned value
+  /// is stored in the currency_code segment. If this metric is selected,
+  /// 'segments.currency_code' is automatically added to the SELECT clause in
+  /// the search query (unless it is explicitly selected by the user) and the
+  /// currency_code segment is populated in the response.
+  core.String? shippedItemSalesMicros;
+
+  /// Number of shipped items, reported on the shipment date.
+  core.String? shippedItems;
+
+  /// Number of fully shipped orders, reported on the last shipment date.
+  ///
+  /// **This metric cannot be segmented by product dimensions.**
+  core.String? shippedOrders;
+
+  /// Number of ordered items not shipped up until the end of the queried day.
+  ///
+  /// If a multi-day period is specified in the search query, the returned value
+  /// is the average number of unshipped items over the days in the queried
+  /// period.
+  core.double? unshippedItems;
+
+  /// Number of orders not shipped or partially shipped up until the end of the
+  /// queried day.
+  ///
+  /// If a multi-day period is specified in the search query, the returned value
+  /// is the average number of unshipped orders over the days in the queried
+  /// period. **This metric cannot be segmented by product dimensions.**
+  core.double? unshippedOrders;
 
   Metrics();
 
   Metrics.fromJson(core.Map _json) {
+    if (_json.containsKey('aos')) {
+      aos = (_json['aos'] as core.num).toDouble();
+    }
+    if (_json.containsKey('aovMicros')) {
+      aovMicros = (_json['aovMicros'] as core.num).toDouble();
+    }
     if (_json.containsKey('clicks')) {
       clicks = _json['clicks'] as core.String;
     }
     if (_json.containsKey('ctr')) {
       ctr = (_json['ctr'] as core.num).toDouble();
     }
+    if (_json.containsKey('daysToShip')) {
+      daysToShip = (_json['daysToShip'] as core.num).toDouble();
+    }
     if (_json.containsKey('impressions')) {
       impressions = _json['impressions'] as core.String;
+    }
+    if (_json.containsKey('itemDaysToShip')) {
+      itemDaysToShip = (_json['itemDaysToShip'] as core.num).toDouble();
+    }
+    if (_json.containsKey('itemFillRate')) {
+      itemFillRate = (_json['itemFillRate'] as core.num).toDouble();
+    }
+    if (_json.containsKey('orderedItemSalesMicros')) {
+      orderedItemSalesMicros = _json['orderedItemSalesMicros'] as core.String;
+    }
+    if (_json.containsKey('orderedItems')) {
+      orderedItems = _json['orderedItems'] as core.String;
+    }
+    if (_json.containsKey('orders')) {
+      orders = _json['orders'] as core.String;
+    }
+    if (_json.containsKey('rejectedItems')) {
+      rejectedItems = _json['rejectedItems'] as core.String;
+    }
+    if (_json.containsKey('returnRate')) {
+      returnRate = (_json['returnRate'] as core.num).toDouble();
+    }
+    if (_json.containsKey('returnedItems')) {
+      returnedItems = _json['returnedItems'] as core.String;
+    }
+    if (_json.containsKey('returnsMicros')) {
+      returnsMicros = _json['returnsMicros'] as core.String;
+    }
+    if (_json.containsKey('shippedItemSalesMicros')) {
+      shippedItemSalesMicros = _json['shippedItemSalesMicros'] as core.String;
+    }
+    if (_json.containsKey('shippedItems')) {
+      shippedItems = _json['shippedItems'] as core.String;
+    }
+    if (_json.containsKey('shippedOrders')) {
+      shippedOrders = _json['shippedOrders'] as core.String;
+    }
+    if (_json.containsKey('unshippedItems')) {
+      unshippedItems = (_json['unshippedItems'] as core.num).toDouble();
+    }
+    if (_json.containsKey('unshippedOrders')) {
+      unshippedOrders = (_json['unshippedOrders'] as core.num).toDouble();
     }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (aos != null) 'aos': aos!,
+        if (aovMicros != null) 'aovMicros': aovMicros!,
         if (clicks != null) 'clicks': clicks!,
         if (ctr != null) 'ctr': ctr!,
+        if (daysToShip != null) 'daysToShip': daysToShip!,
         if (impressions != null) 'impressions': impressions!,
+        if (itemDaysToShip != null) 'itemDaysToShip': itemDaysToShip!,
+        if (itemFillRate != null) 'itemFillRate': itemFillRate!,
+        if (orderedItemSalesMicros != null)
+          'orderedItemSalesMicros': orderedItemSalesMicros!,
+        if (orderedItems != null) 'orderedItems': orderedItems!,
+        if (orders != null) 'orders': orders!,
+        if (rejectedItems != null) 'rejectedItems': rejectedItems!,
+        if (returnRate != null) 'returnRate': returnRate!,
+        if (returnedItems != null) 'returnedItems': returnedItems!,
+        if (returnsMicros != null) 'returnsMicros': returnsMicros!,
+        if (shippedItemSalesMicros != null)
+          'shippedItemSalesMicros': shippedItemSalesMicros!,
+        if (shippedItems != null) 'shippedItems': shippedItems!,
+        if (shippedOrders != null) 'shippedOrders': shippedOrders!,
+        if (unshippedItems != null) 'unshippedItems': unshippedItems!,
+        if (unshippedOrders != null) 'unshippedOrders': unshippedOrders!,
       };
 }
 
@@ -14929,15 +15113,15 @@ class OrderShipment {
   /// "`chukou1`" (Chukou1 Logistics) - "`bestex`" (Best Express) - "`canada
   /// post`" (Canada Post) - "`purolator`" (Purolator) - "`canpar`" (Canpar) -
   /// "`india post`" (India Post) - "`blue dart`" (Blue Dart) - "`delhivery`"
-  /// (Delhivery) - "`dtdc`" (DTDC) - "`tpc india`" (TPC India) Supported
-  /// carriers for FR are: - "`la poste`" (La Poste) *automatic status updates *
-  /// - "`colissimo`" (Colissimo by La Poste) *automatic status updates* -
-  /// "`ups`" (United Parcel Service) *automatic status updates * -
-  /// "`chronopost`" (Chronopost by La Poste) - "`gls`" (General Logistics
-  /// Systems France) - "`dpd`" (DPD Group by GeoPost) - "`bpost`" (Belgian Post
-  /// Group) - "`colis prive`" (Colis Privé) - "`boxtal`" (Boxtal) - "`geodis`"
-  /// (GEODIS) - "`tnt`" (TNT) - "`db schenker`" (DB Schenker) - "`aramex`"
-  /// (Aramex)
+  /// (Delhivery) - "`dtdc`" (DTDC) - "`tpc india`" (TPC India) - "`lso`" (Lone
+  /// Star Overnight) - "`tww`" (Team Worldwide) Supported carriers for FR are:
+  /// - "`la poste`" (La Poste) *automatic status updates * - "`colissimo`"
+  /// (Colissimo by La Poste) *automatic status updates* - "`ups`" (United
+  /// Parcel Service) *automatic status updates * - "`chronopost`" (Chronopost
+  /// by La Poste) - "`gls`" (General Logistics Systems France) - "`dpd`" (DPD
+  /// Group by GeoPost) - "`bpost`" (Belgian Post Group) - "`colis prive`"
+  /// (Colis Privé) - "`boxtal`" (Boxtal) - "`geodis`" (GEODIS) - "`tnt`" (TNT)
+  /// - "`db schenker`" (DB Schenker) - "`aramex`" (Aramex)
   core.String? carrier;
 
   /// Date on which the shipment has been created, in ISO 8601 format.
@@ -19112,6 +19296,9 @@ class Product {
   /// URL directly linking to your item's page on your website.
   core.String? link;
 
+  /// URL template for merchant hosted local storefront.
+  core.String? linkTemplate;
+
   /// Loyalty points that users receive after purchasing the item.
   ///
   /// Japan only.
@@ -19135,6 +19322,10 @@ class Product {
   /// URL for the mobile-optimized version of your item's landing page.
   core.String? mobileLink;
 
+  /// URL template for merchant hosted local storefront optimized for mobile
+  /// devices.
+  core.String? mobileLinkTemplate;
+
   /// Manufacturer Part Number (MPN) of the item.
   core.String? mpn;
 
@@ -19154,6 +19345,18 @@ class Product {
 
   /// The item's pattern (e.g. polka dots).
   core.String? pattern;
+
+  /// The pick up option for the item.
+  ///
+  /// Acceptable values are: - "`buy`" - "`reserve`" - "`ship to store`" - "`not
+  /// supported`"
+  core.String? pickupMethod;
+
+  /// Item store pickup timeline.
+  ///
+  /// Acceptable values are: - "`same day`" - "`next day`" - "`2-day`" -
+  /// "`3-day`" - "`4-day`" - "`5-day`" - "`6-day`" - "`7-day`" - "`multi-week`"
+  core.String? pickupSla;
 
   /// Price of the item.
   Price? price;
@@ -19406,6 +19609,9 @@ class Product {
     if (_json.containsKey('link')) {
       link = _json['link'] as core.String;
     }
+    if (_json.containsKey('linkTemplate')) {
+      linkTemplate = _json['linkTemplate'] as core.String;
+    }
     if (_json.containsKey('loyaltyPoints')) {
       loyaltyPoints = LoyaltyPoints.fromJson(
           _json['loyaltyPoints'] as core.Map<core.String, core.dynamic>);
@@ -19430,6 +19636,9 @@ class Product {
     if (_json.containsKey('mobileLink')) {
       mobileLink = _json['mobileLink'] as core.String;
     }
+    if (_json.containsKey('mobileLinkTemplate')) {
+      mobileLinkTemplate = _json['mobileLinkTemplate'] as core.String;
+    }
     if (_json.containsKey('mpn')) {
       mpn = _json['mpn'] as core.String;
     }
@@ -19441,6 +19650,12 @@ class Product {
     }
     if (_json.containsKey('pattern')) {
       pattern = _json['pattern'] as core.String;
+    }
+    if (_json.containsKey('pickupMethod')) {
+      pickupMethod = _json['pickupMethod'] as core.String;
+    }
+    if (_json.containsKey('pickupSla')) {
+      pickupSla = _json['pickupSla'] as core.String;
     }
     if (_json.containsKey('price')) {
       price =
@@ -19609,6 +19824,7 @@ class Product {
         if (itemGroupId != null) 'itemGroupId': itemGroupId!,
         if (kind != null) 'kind': kind!,
         if (link != null) 'link': link!,
+        if (linkTemplate != null) 'linkTemplate': linkTemplate!,
         if (loyaltyPoints != null) 'loyaltyPoints': loyaltyPoints!.toJson(),
         if (material != null) 'material': material!,
         if (maxEnergyEfficiencyClass != null)
@@ -19618,10 +19834,14 @@ class Product {
           'minEnergyEfficiencyClass': minEnergyEfficiencyClass!,
         if (minHandlingTime != null) 'minHandlingTime': minHandlingTime!,
         if (mobileLink != null) 'mobileLink': mobileLink!,
+        if (mobileLinkTemplate != null)
+          'mobileLinkTemplate': mobileLinkTemplate!,
         if (mpn != null) 'mpn': mpn!,
         if (multipack != null) 'multipack': multipack!,
         if (offerId != null) 'offerId': offerId!,
         if (pattern != null) 'pattern': pattern!,
+        if (pickupMethod != null) 'pickupMethod': pickupMethod!,
+        if (pickupSla != null) 'pickupSla': pickupSla!,
         if (price != null) 'price': price!.toJson(),
         if (productDetails != null)
           'productDetails':
@@ -20296,13 +20516,13 @@ class ProductsCustomBatchRequestEntry {
   /// Only defined if the method is `get` or `delete`.
   core.String? productId;
 
-  /// The list of product attributes to be updated.
+  /// The comma-separated list of product attributes to be updated.
   ///
-  /// Attributes specified in the update mask without a value specified in the
-  /// body will be deleted from the product. Only top-level product attributes
-  /// can be updated. If not defined, product attributes with set values will be
-  /// updated and other attributes will stay unchanged. Only defined if the
-  /// method is `update`.
+  /// Example: `"title,salePrice"`. Attributes specified in the update mask
+  /// without a value specified in the body will be deleted from the product.
+  /// Only top-level product attributes can be updated. If not defined, product
+  /// attributes with set values will be updated and other attributes will stay
+  /// unchanged. Only defined if the method is `update`.
   core.String? updateMask;
 
   ProductsCustomBatchRequestEntry();
@@ -23209,11 +23429,64 @@ class SearchResponse {
 /// metric field. Values are only set for dimensions requested explicitly in the
 /// request's search query.
 class Segments {
+  /// Brand of the product.
+  core.String? brand;
+
+  /// Product category (1st level) in Google's product taxonomy.
+  core.String? categoryL1;
+
+  /// Product category (2nd level) in Google's product taxonomy.
+  core.String? categoryL2;
+
+  /// Product category (3rd level) in Google's product taxonomy.
+  core.String? categoryL3;
+
+  /// Product category (4th level) in Google's product taxonomy.
+  core.String? categoryL4;
+
+  /// Product category (5th level) in Google's product taxonomy.
+  core.String? categoryL5;
+
+  /// Currency in which price metrics are represented, e.g., if you select
+  /// `ordered_item_sales_micros`, the returned value will be represented by
+  /// this currency.
+  core.String? currencyCode;
+
+  /// Custom label 0 for custom grouping of products.
+  core.String? customLabel0;
+
+  /// Custom label 1 for custom grouping of products.
+  core.String? customLabel1;
+
+  /// Custom label 2 for custom grouping of products.
+  core.String? customLabel2;
+
+  /// Custom label 3 for custom grouping of products.
+  core.String? customLabel3;
+
+  /// Custom label 4 for custom grouping of products.
+  core.String? customLabel4;
+
   /// Date in the merchant timezone to which metrics apply.
   Date? date;
 
   /// Merchant-provided id of the product.
   core.String? offerId;
+
+  /// Product category (1st level) in merchant's own product taxonomy.
+  core.String? productTypeL1;
+
+  /// Product category (2nd level) in merchant's own product taxonomy.
+  core.String? productTypeL2;
+
+  /// Product category (3rd level) in merchant's own product taxonomy.
+  core.String? productTypeL3;
+
+  /// Product category (4th level) in merchant's own product taxonomy.
+  core.String? productTypeL4;
+
+  /// Product category (5th level) in merchant's own product taxonomy.
+  core.String? productTypeL5;
 
   /// Program to which metrics apply, e.g., Free Product Listing.
   /// Possible string values are:
@@ -23224,9 +23497,52 @@ class Segments {
   /// - "BUY_ON_GOOGLE_LISTING" : Buy on Google Listing.
   core.String? program;
 
+  /// Title of the product.
+  core.String? title;
+
+  /// First day of the week (Monday) of the metrics date in the merchant
+  /// timezone.
+  Date? week;
+
   Segments();
 
   Segments.fromJson(core.Map _json) {
+    if (_json.containsKey('brand')) {
+      brand = _json['brand'] as core.String;
+    }
+    if (_json.containsKey('categoryL1')) {
+      categoryL1 = _json['categoryL1'] as core.String;
+    }
+    if (_json.containsKey('categoryL2')) {
+      categoryL2 = _json['categoryL2'] as core.String;
+    }
+    if (_json.containsKey('categoryL3')) {
+      categoryL3 = _json['categoryL3'] as core.String;
+    }
+    if (_json.containsKey('categoryL4')) {
+      categoryL4 = _json['categoryL4'] as core.String;
+    }
+    if (_json.containsKey('categoryL5')) {
+      categoryL5 = _json['categoryL5'] as core.String;
+    }
+    if (_json.containsKey('currencyCode')) {
+      currencyCode = _json['currencyCode'] as core.String;
+    }
+    if (_json.containsKey('customLabel0')) {
+      customLabel0 = _json['customLabel0'] as core.String;
+    }
+    if (_json.containsKey('customLabel1')) {
+      customLabel1 = _json['customLabel1'] as core.String;
+    }
+    if (_json.containsKey('customLabel2')) {
+      customLabel2 = _json['customLabel2'] as core.String;
+    }
+    if (_json.containsKey('customLabel3')) {
+      customLabel3 = _json['customLabel3'] as core.String;
+    }
+    if (_json.containsKey('customLabel4')) {
+      customLabel4 = _json['customLabel4'] as core.String;
+    }
     if (_json.containsKey('date')) {
       date =
           Date.fromJson(_json['date'] as core.Map<core.String, core.dynamic>);
@@ -23234,15 +23550,56 @@ class Segments {
     if (_json.containsKey('offerId')) {
       offerId = _json['offerId'] as core.String;
     }
+    if (_json.containsKey('productTypeL1')) {
+      productTypeL1 = _json['productTypeL1'] as core.String;
+    }
+    if (_json.containsKey('productTypeL2')) {
+      productTypeL2 = _json['productTypeL2'] as core.String;
+    }
+    if (_json.containsKey('productTypeL3')) {
+      productTypeL3 = _json['productTypeL3'] as core.String;
+    }
+    if (_json.containsKey('productTypeL4')) {
+      productTypeL4 = _json['productTypeL4'] as core.String;
+    }
+    if (_json.containsKey('productTypeL5')) {
+      productTypeL5 = _json['productTypeL5'] as core.String;
+    }
     if (_json.containsKey('program')) {
       program = _json['program'] as core.String;
+    }
+    if (_json.containsKey('title')) {
+      title = _json['title'] as core.String;
+    }
+    if (_json.containsKey('week')) {
+      week =
+          Date.fromJson(_json['week'] as core.Map<core.String, core.dynamic>);
     }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (brand != null) 'brand': brand!,
+        if (categoryL1 != null) 'categoryL1': categoryL1!,
+        if (categoryL2 != null) 'categoryL2': categoryL2!,
+        if (categoryL3 != null) 'categoryL3': categoryL3!,
+        if (categoryL4 != null) 'categoryL4': categoryL4!,
+        if (categoryL5 != null) 'categoryL5': categoryL5!,
+        if (currencyCode != null) 'currencyCode': currencyCode!,
+        if (customLabel0 != null) 'customLabel0': customLabel0!,
+        if (customLabel1 != null) 'customLabel1': customLabel1!,
+        if (customLabel2 != null) 'customLabel2': customLabel2!,
+        if (customLabel3 != null) 'customLabel3': customLabel3!,
+        if (customLabel4 != null) 'customLabel4': customLabel4!,
         if (date != null) 'date': date!.toJson(),
         if (offerId != null) 'offerId': offerId!,
+        if (productTypeL1 != null) 'productTypeL1': productTypeL1!,
+        if (productTypeL2 != null) 'productTypeL2': productTypeL2!,
+        if (productTypeL3 != null) 'productTypeL3': productTypeL3!,
+        if (productTypeL4 != null) 'productTypeL4': productTypeL4!,
+        if (productTypeL5 != null) 'productTypeL5': productTypeL5!,
         if (program != null) 'program': program!,
+        if (title != null) 'title': title!,
+        if (week != null) 'week': week!.toJson(),
       };
 }
 
@@ -25227,6 +25584,8 @@ class Weight {
   core.String? unit;
 
   /// The weight represented as a number.
+  ///
+  /// The weight can have a maximum precision of four decimal places.
   ///
   /// Required.
   core.String? value;

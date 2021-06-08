@@ -98,6 +98,7 @@
             "methods": {
                 "getLodging": {
                     "description": "Returns the Lodging of a specific location.",
+                    "flatPath": "v1/locations/{locationsId}/lodging",
                     "httpMethod": "GET",
                     "id": "mybusinesslodging.locations.getLodging",
                     "parameterOrder": [
@@ -125,6 +126,7 @@
                 },
                 "updateLodging": {
                     "description": "Updates the Lodging of a specific location.",
+                    "flatPath": "v1/locations/{locationsId}/lodging",
                     "httpMethod": "PATCH",
                     "id": "mybusinesslodging.locations.updateLodging",
                     "parameterOrder": [
@@ -159,6 +161,7 @@
                     "methods": {
                         "getGoogleUpdated": {
                             "description": "Returns the Google updated Lodging of a specific location.",
+                            "flatPath": "v1/locations/{locationsId}/lodging:getGoogleUpdated",
                             "httpMethod": "GET",
                             "id": "mybusinesslodging.locations.lodging.getGoogleUpdated",
                             "parameterOrder": [
@@ -189,7 +192,7 @@
             }
         }
     },
-    "revision": "20210518",
+    "revision": "20210614",
     "rootUrl": "https://mybusinesslodging.googleapis.com/",
     "schemas": {
         "Accessibility": {

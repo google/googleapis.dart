@@ -98,6 +98,7 @@
             "methods": {
                 "queryRecord": {
                     "description": "Queries the Chrome User Experience for a single `record` for a given site. Returns a `record` that contains one or more `metrics` corresponding to performance data about the requested site.",
+                    "flatPath": "v1/records:queryRecord",
                     "httpMethod": "POST",
                     "id": "chromeuxreport.records.queryRecord",
                     "parameterOrder": [],
@@ -113,7 +114,7 @@
             }
         }
     },
-    "revision": "20210520",
+    "revision": "20210614",
     "rootUrl": "https://chromeuxreport.googleapis.com/",
     "schemas": {
         "Bin": {
@@ -225,7 +226,7 @@
                     "type": "string"
                 },
                 "metrics": {
-                    "description": "The metrics that should be included in the response. If none are specified then any metrics found will be returned. Allowed values: [\"first_contentful_paint\", \"first_input_delay\", \"largest_contentful_paint\", \"cumulative_layout_shift\"]",
+                    "description": "The metrics that should be included in the response. If none are specified then any metrics found will be returned. Allowed values: [\"first_contentful_paint\", \"first_input_delay\", \"largest_contentful_paint\", \"cumulative_layout_shift\", \"experimental_uncapped_cumulative_layout_shift\"]",
                     "items": {
                         "type": "string"
                     },

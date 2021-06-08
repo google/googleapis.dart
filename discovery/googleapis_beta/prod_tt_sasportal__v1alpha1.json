@@ -107,6 +107,7 @@
             "methods": {
                 "get": {
                     "description": "Returns a requested customer.",
+                    "flatPath": "v1alpha1/customers/{customersId}",
                     "httpMethod": "GET",
                     "id": "prod_tt_sasportal.customers.get",
                     "parameterOrder": [
@@ -131,6 +132,7 @@
                 },
                 "list": {
                     "description": "Returns a list of requested customers.",
+                    "flatPath": "v1alpha1/customers",
                     "httpMethod": "GET",
                     "id": "prod_tt_sasportal.customers.list",
                     "parameterOrder": [],
@@ -157,6 +159,7 @@
                 },
                 "patch": {
                     "description": "Updates an existing customer.",
+                    "flatPath": "v1alpha1/customers/{customersId}",
                     "httpMethod": "PATCH",
                     "id": "prod_tt_sasportal.customers.patch",
                     "parameterOrder": [
@@ -194,6 +197,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a new deployment.",
+                            "flatPath": "v1alpha1/customers/{customersId}/deployments",
                             "httpMethod": "POST",
                             "id": "prod_tt_sasportal.customers.deployments.create",
                             "parameterOrder": [
@@ -221,6 +225,7 @@
                         },
                         "delete": {
                             "description": "Deletes a deployment.",
+                            "flatPath": "v1alpha1/customers/{customersId}/deployments/{deploymentsId}",
                             "httpMethod": "DELETE",
                             "id": "prod_tt_sasportal.customers.deployments.delete",
                             "parameterOrder": [
@@ -245,6 +250,7 @@
                         },
                         "get": {
                             "description": "Returns a requested deployment.",
+                            "flatPath": "v1alpha1/customers/{customersId}/deployments/{deploymentsId}",
                             "httpMethod": "GET",
                             "id": "prod_tt_sasportal.customers.deployments.get",
                             "parameterOrder": [
@@ -269,6 +275,7 @@
                         },
                         "list": {
                             "description": "Lists deployments.",
+                            "flatPath": "v1alpha1/customers/{customersId}/deployments",
                             "httpMethod": "GET",
                             "id": "prod_tt_sasportal.customers.deployments.list",
                             "parameterOrder": [
@@ -309,6 +316,7 @@
                         },
                         "move": {
                             "description": "Moves a deployment under another node or customer.",
+                            "flatPath": "v1alpha1/customers/{customersId}/deployments/{deploymentsId}:move",
                             "httpMethod": "POST",
                             "id": "prod_tt_sasportal.customers.deployments.move",
                             "parameterOrder": [
@@ -336,6 +344,7 @@
                         },
                         "patch": {
                             "description": "Updates an existing deployment.",
+                            "flatPath": "v1alpha1/customers/{customersId}/deployments/{deploymentsId}",
                             "httpMethod": "PATCH",
                             "id": "prod_tt_sasportal.customers.deployments.patch",
                             "parameterOrder": [
@@ -373,6 +382,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a device under a node or customer.",
+                                    "flatPath": "v1alpha1/customers/{customersId}/deployments/{deploymentsId}/devices",
                                     "httpMethod": "POST",
                                     "id": "prod_tt_sasportal.customers.deployments.devices.create",
                                     "parameterOrder": [
@@ -400,6 +410,7 @@
                                 },
                                 "createSigned": {
                                     "description": "Creates a signed device under a node or customer.",
+                                    "flatPath": "v1alpha1/customers/{customersId}/deployments/{deploymentsId}/devices:createSigned",
                                     "httpMethod": "POST",
                                     "id": "prod_tt_sasportal.customers.deployments.devices.createSigned",
                                     "parameterOrder": [
@@ -427,6 +438,7 @@
                                 },
                                 "list": {
                                     "description": "Lists devices under a node or customer.",
+                                    "flatPath": "v1alpha1/customers/{customersId}/deployments/{deploymentsId}/devices",
                                     "httpMethod": "GET",
                                     "id": "prod_tt_sasportal.customers.deployments.devices.list",
                                     "parameterOrder": [
@@ -473,6 +485,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a device under a node or customer.",
+                            "flatPath": "v1alpha1/customers/{customersId}/devices",
                             "httpMethod": "POST",
                             "id": "prod_tt_sasportal.customers.devices.create",
                             "parameterOrder": [
@@ -500,6 +513,7 @@
                         },
                         "createSigned": {
                             "description": "Creates a signed device under a node or customer.",
+                            "flatPath": "v1alpha1/customers/{customersId}/devices:createSigned",
                             "httpMethod": "POST",
                             "id": "prod_tt_sasportal.customers.devices.createSigned",
                             "parameterOrder": [
@@ -527,6 +541,7 @@
                         },
                         "delete": {
                             "description": "Deletes a device.",
+                            "flatPath": "v1alpha1/customers/{customersId}/devices/{devicesId}",
                             "httpMethod": "DELETE",
                             "id": "prod_tt_sasportal.customers.devices.delete",
                             "parameterOrder": [
@@ -551,6 +566,7 @@
                         },
                         "get": {
                             "description": "Gets details about a device.",
+                            "flatPath": "v1alpha1/customers/{customersId}/devices/{devicesId}",
                             "httpMethod": "GET",
                             "id": "prod_tt_sasportal.customers.devices.get",
                             "parameterOrder": [
@@ -575,6 +591,7 @@
                         },
                         "list": {
                             "description": "Lists devices under a node or customer.",
+                            "flatPath": "v1alpha1/customers/{customersId}/devices",
                             "httpMethod": "GET",
                             "id": "prod_tt_sasportal.customers.devices.list",
                             "parameterOrder": [
@@ -615,6 +632,7 @@
                         },
                         "move": {
                             "description": "Moves a device under another node or customer.",
+                            "flatPath": "v1alpha1/customers/{customersId}/devices/{devicesId}:move",
                             "httpMethod": "POST",
                             "id": "prod_tt_sasportal.customers.devices.move",
                             "parameterOrder": [
@@ -642,6 +660,7 @@
                         },
                         "patch": {
                             "description": "Updates a device.",
+                            "flatPath": "v1alpha1/customers/{customersId}/devices/{devicesId}",
                             "httpMethod": "PATCH",
                             "id": "prod_tt_sasportal.customers.devices.patch",
                             "parameterOrder": [
@@ -675,6 +694,7 @@
                         },
                         "signDevice": {
                             "description": "Signs a device.",
+                            "flatPath": "v1alpha1/customers/{customersId}/devices/{devicesId}:signDevice",
                             "httpMethod": "POST",
                             "id": "prod_tt_sasportal.customers.devices.signDevice",
                             "parameterOrder": [
@@ -702,6 +722,7 @@
                         },
                         "updateSigned": {
                             "description": "Updates a signed device.",
+                            "flatPath": "v1alpha1/customers/{customersId}/devices/{devicesId}:updateSigned",
                             "httpMethod": "PATCH",
                             "id": "prod_tt_sasportal.customers.devices.updateSigned",
                             "parameterOrder": [
@@ -733,6 +754,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a new node.",
+                            "flatPath": "v1alpha1/customers/{customersId}/nodes",
                             "httpMethod": "POST",
                             "id": "prod_tt_sasportal.customers.nodes.create",
                             "parameterOrder": [
@@ -760,6 +782,7 @@
                         },
                         "delete": {
                             "description": "Deletes a node.",
+                            "flatPath": "v1alpha1/customers/{customersId}/nodes/{nodesId}",
                             "httpMethod": "DELETE",
                             "id": "prod_tt_sasportal.customers.nodes.delete",
                             "parameterOrder": [
@@ -784,6 +807,7 @@
                         },
                         "get": {
                             "description": "Returns a requested node.",
+                            "flatPath": "v1alpha1/customers/{customersId}/nodes/{nodesId}",
                             "httpMethod": "GET",
                             "id": "prod_tt_sasportal.customers.nodes.get",
                             "parameterOrder": [
@@ -808,6 +832,7 @@
                         },
                         "list": {
                             "description": "Lists nodes.",
+                            "flatPath": "v1alpha1/customers/{customersId}/nodes",
                             "httpMethod": "GET",
                             "id": "prod_tt_sasportal.customers.nodes.list",
                             "parameterOrder": [
@@ -848,6 +873,7 @@
                         },
                         "move": {
                             "description": "Moves a node under another node or customer.",
+                            "flatPath": "v1alpha1/customers/{customersId}/nodes/{nodesId}:move",
                             "httpMethod": "POST",
                             "id": "prod_tt_sasportal.customers.nodes.move",
                             "parameterOrder": [
@@ -875,6 +901,7 @@
                         },
                         "patch": {
                             "description": "Updates an existing node.",
+                            "flatPath": "v1alpha1/customers/{customersId}/nodes/{nodesId}",
                             "httpMethod": "PATCH",
                             "id": "prod_tt_sasportal.customers.nodes.patch",
                             "parameterOrder": [
@@ -912,6 +939,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a new deployment.",
+                                    "flatPath": "v1alpha1/customers/{customersId}/nodes/{nodesId}/deployments",
                                     "httpMethod": "POST",
                                     "id": "prod_tt_sasportal.customers.nodes.deployments.create",
                                     "parameterOrder": [
@@ -939,6 +967,7 @@
                                 },
                                 "list": {
                                     "description": "Lists deployments.",
+                                    "flatPath": "v1alpha1/customers/{customersId}/nodes/{nodesId}/deployments",
                                     "httpMethod": "GET",
                                     "id": "prod_tt_sasportal.customers.nodes.deployments.list",
                                     "parameterOrder": [
@@ -983,6 +1012,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a device under a node or customer.",
+                                    "flatPath": "v1alpha1/customers/{customersId}/nodes/{nodesId}/devices",
                                     "httpMethod": "POST",
                                     "id": "prod_tt_sasportal.customers.nodes.devices.create",
                                     "parameterOrder": [
@@ -1010,6 +1040,7 @@
                                 },
                                 "createSigned": {
                                     "description": "Creates a signed device under a node or customer.",
+                                    "flatPath": "v1alpha1/customers/{customersId}/nodes/{nodesId}/devices:createSigned",
                                     "httpMethod": "POST",
                                     "id": "prod_tt_sasportal.customers.nodes.devices.createSigned",
                                     "parameterOrder": [
@@ -1037,6 +1068,7 @@
                                 },
                                 "list": {
                                     "description": "Lists devices under a node or customer.",
+                                    "flatPath": "v1alpha1/customers/{customersId}/nodes/{nodesId}/devices",
                                     "httpMethod": "GET",
                                     "id": "prod_tt_sasportal.customers.nodes.devices.list",
                                     "parameterOrder": [
@@ -1081,6 +1113,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a new node.",
+                                    "flatPath": "v1alpha1/customers/{customersId}/nodes/{nodesId}/nodes",
                                     "httpMethod": "POST",
                                     "id": "prod_tt_sasportal.customers.nodes.nodes.create",
                                     "parameterOrder": [
@@ -1108,6 +1141,7 @@
                                 },
                                 "list": {
                                     "description": "Lists nodes.",
+                                    "flatPath": "v1alpha1/customers/{customersId}/nodes/{nodesId}/nodes",
                                     "httpMethod": "GET",
                                     "id": "prod_tt_sasportal.customers.nodes.nodes.list",
                                     "parameterOrder": [
@@ -1156,6 +1190,7 @@
             "methods": {
                 "get": {
                     "description": "Returns a requested deployment.",
+                    "flatPath": "v1alpha1/deployments/{deploymentsId}",
                     "httpMethod": "GET",
                     "id": "prod_tt_sasportal.deployments.get",
                     "parameterOrder": [
@@ -1184,6 +1219,7 @@
                     "methods": {
                         "delete": {
                             "description": "Deletes a device.",
+                            "flatPath": "v1alpha1/deployments/{deploymentsId}/devices/{devicesId}",
                             "httpMethod": "DELETE",
                             "id": "prod_tt_sasportal.deployments.devices.delete",
                             "parameterOrder": [
@@ -1208,6 +1244,7 @@
                         },
                         "get": {
                             "description": "Gets details about a device.",
+                            "flatPath": "v1alpha1/deployments/{deploymentsId}/devices/{devicesId}",
                             "httpMethod": "GET",
                             "id": "prod_tt_sasportal.deployments.devices.get",
                             "parameterOrder": [
@@ -1232,6 +1269,7 @@
                         },
                         "move": {
                             "description": "Moves a device under another node or customer.",
+                            "flatPath": "v1alpha1/deployments/{deploymentsId}/devices/{devicesId}:move",
                             "httpMethod": "POST",
                             "id": "prod_tt_sasportal.deployments.devices.move",
                             "parameterOrder": [
@@ -1259,6 +1297,7 @@
                         },
                         "patch": {
                             "description": "Updates a device.",
+                            "flatPath": "v1alpha1/deployments/{deploymentsId}/devices/{devicesId}",
                             "httpMethod": "PATCH",
                             "id": "prod_tt_sasportal.deployments.devices.patch",
                             "parameterOrder": [
@@ -1292,6 +1331,7 @@
                         },
                         "signDevice": {
                             "description": "Signs a device.",
+                            "flatPath": "v1alpha1/deployments/{deploymentsId}/devices/{devicesId}:signDevice",
                             "httpMethod": "POST",
                             "id": "prod_tt_sasportal.deployments.devices.signDevice",
                             "parameterOrder": [
@@ -1319,6 +1359,7 @@
                         },
                         "updateSigned": {
                             "description": "Updates a signed device.",
+                            "flatPath": "v1alpha1/deployments/{deploymentsId}/devices/{devicesId}:updateSigned",
                             "httpMethod": "PATCH",
                             "id": "prod_tt_sasportal.deployments.devices.updateSigned",
                             "parameterOrder": [
@@ -1352,6 +1393,7 @@
             "methods": {
                 "generateSecret": {
                     "description": "Generates a secret to be used with the ValidateInstaller.",
+                    "flatPath": "v1alpha1/installer:generateSecret",
                     "httpMethod": "POST",
                     "id": "prod_tt_sasportal.installer.generateSecret",
                     "parameterOrder": [],
@@ -1369,6 +1411,7 @@
                 },
                 "validate": {
                     "description": "Validates the identity of a Certified Professional Installer (CPI).",
+                    "flatPath": "v1alpha1/installer:validate",
                     "httpMethod": "POST",
                     "id": "prod_tt_sasportal.installer.validate",
                     "parameterOrder": [],
@@ -1390,6 +1433,7 @@
             "methods": {
                 "get": {
                     "description": "Returns a requested node.",
+                    "flatPath": "v1alpha1/nodes/{nodesId}",
                     "httpMethod": "GET",
                     "id": "prod_tt_sasportal.nodes.get",
                     "parameterOrder": [
@@ -1418,6 +1462,7 @@
                     "methods": {
                         "delete": {
                             "description": "Deletes a deployment.",
+                            "flatPath": "v1alpha1/nodes/{nodesId}/deployments/{deploymentsId}",
                             "httpMethod": "DELETE",
                             "id": "prod_tt_sasportal.nodes.deployments.delete",
                             "parameterOrder": [
@@ -1442,6 +1487,7 @@
                         },
                         "get": {
                             "description": "Returns a requested deployment.",
+                            "flatPath": "v1alpha1/nodes/{nodesId}/deployments/{deploymentsId}",
                             "httpMethod": "GET",
                             "id": "prod_tt_sasportal.nodes.deployments.get",
                             "parameterOrder": [
@@ -1466,6 +1512,7 @@
                         },
                         "list": {
                             "description": "Lists deployments.",
+                            "flatPath": "v1alpha1/nodes/{nodesId}/deployments",
                             "httpMethod": "GET",
                             "id": "prod_tt_sasportal.nodes.deployments.list",
                             "parameterOrder": [
@@ -1506,6 +1553,7 @@
                         },
                         "move": {
                             "description": "Moves a deployment under another node or customer.",
+                            "flatPath": "v1alpha1/nodes/{nodesId}/deployments/{deploymentsId}:move",
                             "httpMethod": "POST",
                             "id": "prod_tt_sasportal.nodes.deployments.move",
                             "parameterOrder": [
@@ -1533,6 +1581,7 @@
                         },
                         "patch": {
                             "description": "Updates an existing deployment.",
+                            "flatPath": "v1alpha1/nodes/{nodesId}/deployments/{deploymentsId}",
                             "httpMethod": "PATCH",
                             "id": "prod_tt_sasportal.nodes.deployments.patch",
                             "parameterOrder": [
@@ -1570,6 +1619,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a device under a node or customer.",
+                                    "flatPath": "v1alpha1/nodes/{nodesId}/deployments/{deploymentsId}/devices",
                                     "httpMethod": "POST",
                                     "id": "prod_tt_sasportal.nodes.deployments.devices.create",
                                     "parameterOrder": [
@@ -1597,6 +1647,7 @@
                                 },
                                 "createSigned": {
                                     "description": "Creates a signed device under a node or customer.",
+                                    "flatPath": "v1alpha1/nodes/{nodesId}/deployments/{deploymentsId}/devices:createSigned",
                                     "httpMethod": "POST",
                                     "id": "prod_tt_sasportal.nodes.deployments.devices.createSigned",
                                     "parameterOrder": [
@@ -1624,6 +1675,7 @@
                                 },
                                 "list": {
                                     "description": "Lists devices under a node or customer.",
+                                    "flatPath": "v1alpha1/nodes/{nodesId}/deployments/{deploymentsId}/devices",
                                     "httpMethod": "GET",
                                     "id": "prod_tt_sasportal.nodes.deployments.devices.list",
                                     "parameterOrder": [
@@ -1670,6 +1722,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a device under a node or customer.",
+                            "flatPath": "v1alpha1/nodes/{nodesId}/devices",
                             "httpMethod": "POST",
                             "id": "prod_tt_sasportal.nodes.devices.create",
                             "parameterOrder": [
@@ -1697,6 +1750,7 @@
                         },
                         "createSigned": {
                             "description": "Creates a signed device under a node or customer.",
+                            "flatPath": "v1alpha1/nodes/{nodesId}/devices:createSigned",
                             "httpMethod": "POST",
                             "id": "prod_tt_sasportal.nodes.devices.createSigned",
                             "parameterOrder": [
@@ -1724,6 +1778,7 @@
                         },
                         "delete": {
                             "description": "Deletes a device.",
+                            "flatPath": "v1alpha1/nodes/{nodesId}/devices/{devicesId}",
                             "httpMethod": "DELETE",
                             "id": "prod_tt_sasportal.nodes.devices.delete",
                             "parameterOrder": [
@@ -1748,6 +1803,7 @@
                         },
                         "get": {
                             "description": "Gets details about a device.",
+                            "flatPath": "v1alpha1/nodes/{nodesId}/devices/{devicesId}",
                             "httpMethod": "GET",
                             "id": "prod_tt_sasportal.nodes.devices.get",
                             "parameterOrder": [
@@ -1772,6 +1828,7 @@
                         },
                         "list": {
                             "description": "Lists devices under a node or customer.",
+                            "flatPath": "v1alpha1/nodes/{nodesId}/devices",
                             "httpMethod": "GET",
                             "id": "prod_tt_sasportal.nodes.devices.list",
                             "parameterOrder": [
@@ -1812,6 +1869,7 @@
                         },
                         "move": {
                             "description": "Moves a device under another node or customer.",
+                            "flatPath": "v1alpha1/nodes/{nodesId}/devices/{devicesId}:move",
                             "httpMethod": "POST",
                             "id": "prod_tt_sasportal.nodes.devices.move",
                             "parameterOrder": [
@@ -1839,6 +1897,7 @@
                         },
                         "patch": {
                             "description": "Updates a device.",
+                            "flatPath": "v1alpha1/nodes/{nodesId}/devices/{devicesId}",
                             "httpMethod": "PATCH",
                             "id": "prod_tt_sasportal.nodes.devices.patch",
                             "parameterOrder": [
@@ -1872,6 +1931,7 @@
                         },
                         "signDevice": {
                             "description": "Signs a device.",
+                            "flatPath": "v1alpha1/nodes/{nodesId}/devices/{devicesId}:signDevice",
                             "httpMethod": "POST",
                             "id": "prod_tt_sasportal.nodes.devices.signDevice",
                             "parameterOrder": [
@@ -1899,6 +1959,7 @@
                         },
                         "updateSigned": {
                             "description": "Updates a signed device.",
+                            "flatPath": "v1alpha1/nodes/{nodesId}/devices/{devicesId}:updateSigned",
                             "httpMethod": "PATCH",
                             "id": "prod_tt_sasportal.nodes.devices.updateSigned",
                             "parameterOrder": [
@@ -1930,6 +1991,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a new node.",
+                            "flatPath": "v1alpha1/nodes/{nodesId}/nodes",
                             "httpMethod": "POST",
                             "id": "prod_tt_sasportal.nodes.nodes.create",
                             "parameterOrder": [
@@ -1957,6 +2019,7 @@
                         },
                         "delete": {
                             "description": "Deletes a node.",
+                            "flatPath": "v1alpha1/nodes/{nodesId}/nodes/{nodesId1}",
                             "httpMethod": "DELETE",
                             "id": "prod_tt_sasportal.nodes.nodes.delete",
                             "parameterOrder": [
@@ -1981,6 +2044,7 @@
                         },
                         "get": {
                             "description": "Returns a requested node.",
+                            "flatPath": "v1alpha1/nodes/{nodesId}/nodes/{nodesId1}",
                             "httpMethod": "GET",
                             "id": "prod_tt_sasportal.nodes.nodes.get",
                             "parameterOrder": [
@@ -2005,6 +2069,7 @@
                         },
                         "list": {
                             "description": "Lists nodes.",
+                            "flatPath": "v1alpha1/nodes/{nodesId}/nodes",
                             "httpMethod": "GET",
                             "id": "prod_tt_sasportal.nodes.nodes.list",
                             "parameterOrder": [
@@ -2045,6 +2110,7 @@
                         },
                         "move": {
                             "description": "Moves a node under another node or customer.",
+                            "flatPath": "v1alpha1/nodes/{nodesId}/nodes/{nodesId1}:move",
                             "httpMethod": "POST",
                             "id": "prod_tt_sasportal.nodes.nodes.move",
                             "parameterOrder": [
@@ -2072,6 +2138,7 @@
                         },
                         "patch": {
                             "description": "Updates an existing node.",
+                            "flatPath": "v1alpha1/nodes/{nodesId}/nodes/{nodesId1}",
                             "httpMethod": "PATCH",
                             "id": "prod_tt_sasportal.nodes.nodes.patch",
                             "parameterOrder": [
@@ -2109,6 +2176,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a new deployment.",
+                                    "flatPath": "v1alpha1/nodes/{nodesId}/nodes/{nodesId1}/deployments",
                                     "httpMethod": "POST",
                                     "id": "prod_tt_sasportal.nodes.nodes.deployments.create",
                                     "parameterOrder": [
@@ -2136,6 +2204,7 @@
                                 },
                                 "list": {
                                     "description": "Lists deployments.",
+                                    "flatPath": "v1alpha1/nodes/{nodesId}/nodes/{nodesId1}/deployments",
                                     "httpMethod": "GET",
                                     "id": "prod_tt_sasportal.nodes.nodes.deployments.list",
                                     "parameterOrder": [
@@ -2180,6 +2249,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a device under a node or customer.",
+                                    "flatPath": "v1alpha1/nodes/{nodesId}/nodes/{nodesId1}/devices",
                                     "httpMethod": "POST",
                                     "id": "prod_tt_sasportal.nodes.nodes.devices.create",
                                     "parameterOrder": [
@@ -2207,6 +2277,7 @@
                                 },
                                 "createSigned": {
                                     "description": "Creates a signed device under a node or customer.",
+                                    "flatPath": "v1alpha1/nodes/{nodesId}/nodes/{nodesId1}/devices:createSigned",
                                     "httpMethod": "POST",
                                     "id": "prod_tt_sasportal.nodes.nodes.devices.createSigned",
                                     "parameterOrder": [
@@ -2234,6 +2305,7 @@
                                 },
                                 "list": {
                                     "description": "Lists devices under a node or customer.",
+                                    "flatPath": "v1alpha1/nodes/{nodesId}/nodes/{nodesId1}/devices",
                                     "httpMethod": "GET",
                                     "id": "prod_tt_sasportal.nodes.nodes.devices.list",
                                     "parameterOrder": [
@@ -2278,6 +2350,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a new node.",
+                                    "flatPath": "v1alpha1/nodes/{nodesId}/nodes/{nodesId1}/nodes",
                                     "httpMethod": "POST",
                                     "id": "prod_tt_sasportal.nodes.nodes.nodes.create",
                                     "parameterOrder": [
@@ -2305,6 +2378,7 @@
                                 },
                                 "list": {
                                     "description": "Lists nodes.",
+                                    "flatPath": "v1alpha1/nodes/{nodesId}/nodes/{nodesId1}/nodes",
                                     "httpMethod": "GET",
                                     "id": "prod_tt_sasportal.nodes.nodes.nodes.list",
                                     "parameterOrder": [
@@ -2353,6 +2427,7 @@
             "methods": {
                 "get": {
                     "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
+                    "flatPath": "v1alpha1/policies:get",
                     "httpMethod": "POST",
                     "id": "prod_tt_sasportal.policies.get",
                     "parameterOrder": [],
@@ -2370,6 +2445,7 @@
                 },
                 "set": {
                     "description": "Sets the access control policy on the specified resource. Replaces any existing policy.",
+                    "flatPath": "v1alpha1/policies:set",
                     "httpMethod": "POST",
                     "id": "prod_tt_sasportal.policies.set",
                     "parameterOrder": [],
@@ -2387,6 +2463,7 @@
                 },
                 "test": {
                     "description": "Returns permissions that a caller has on the specified resource.",
+                    "flatPath": "v1alpha1/policies:test",
                     "httpMethod": "POST",
                     "id": "prod_tt_sasportal.policies.test",
                     "parameterOrder": [],
@@ -2405,7 +2482,7 @@
             }
         }
     },
-    "revision": "20210519",
+    "revision": "20210614",
     "rootUrl": "https://prod-tt-sasportal.googleapis.com/",
     "schemas": {
         "SasPortalAssignment": {
@@ -3172,6 +3249,10 @@
             "description": "Request message for `SetPolicy` method.",
             "id": "SasPortalSetPolicyRequest",
             "properties": {
+                "disableNotification": {
+                    "description": "Optional. Set the field as true when we would like to disable the onboarding notification.",
+                    "type": "boolean"
+                },
                 "policy": {
                     "$ref": "SasPortalPolicy",
                     "description": "Required. The policy to be applied to the `resource`."

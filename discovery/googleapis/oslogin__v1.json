@@ -110,6 +110,7 @@
             "methods": {
                 "getLoginProfile": {
                     "description": "Retrieves the profile information used for logging in to a virtual machine on Google Compute Engine.",
+                    "flatPath": "v1/users/{usersId}/loginProfile",
                     "httpMethod": "GET",
                     "id": "oslogin.users.getLoginProfile",
                     "parameterOrder": [
@@ -145,6 +146,7 @@
                 },
                 "importSshPublicKey": {
                     "description": "Adds an SSH public key and returns the profile information. Default POSIX account information is set when no username and UID exist as part of the login profile.",
+                    "flatPath": "v1/users/{usersId}:importSshPublicKey",
                     "httpMethod": "POST",
                     "id": "oslogin.users.importSshPublicKey",
                     "parameterOrder": [
@@ -182,6 +184,7 @@
                     "methods": {
                         "delete": {
                             "description": "Deletes a POSIX account.",
+                            "flatPath": "v1/users/{usersId}/projects/{projectsId}",
                             "httpMethod": "DELETE",
                             "id": "oslogin.users.projects.delete",
                             "parameterOrder": [
@@ -211,6 +214,7 @@
                     "methods": {
                         "delete": {
                             "description": "Deletes an SSH public key.",
+                            "flatPath": "v1/users/{usersId}/sshPublicKeys/{sshPublicKeysId}",
                             "httpMethod": "DELETE",
                             "id": "oslogin.users.sshPublicKeys.delete",
                             "parameterOrder": [
@@ -236,6 +240,7 @@
                         },
                         "get": {
                             "description": "Retrieves an SSH public key.",
+                            "flatPath": "v1/users/{usersId}/sshPublicKeys/{sshPublicKeysId}",
                             "httpMethod": "GET",
                             "id": "oslogin.users.sshPublicKeys.get",
                             "parameterOrder": [
@@ -261,6 +266,7 @@
                         },
                         "patch": {
                             "description": "Updates an SSH public key and returns the profile information. This method supports patch semantics.",
+                            "flatPath": "v1/users/{usersId}/sshPublicKeys/{sshPublicKeysId}",
                             "httpMethod": "PATCH",
                             "id": "oslogin.users.sshPublicKeys.patch",
                             "parameterOrder": [
@@ -298,7 +304,7 @@
             }
         }
     },
-    "revision": "20210514",
+    "revision": "20210605",
     "rootUrl": "https://oslogin.googleapis.com/",
     "schemas": {
         "Empty": {

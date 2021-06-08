@@ -441,7 +441,6 @@ class DockerImage {
   /// which can be easily used with the JavaScript Date constructor and keeps
   /// the Version timestamps returned via OnePlatform consistent, as JSON
   /// marshals google.protobuf.Timestamp into an RFC 3339 string.
-  /// (http://google3/cloud/containers/artifacts/metadata/v1beta2/builder/data.go?l=158-159&rcl=364878183).
   core.String? buildTime;
 
   /// Calculated size of the image.
@@ -725,6 +724,10 @@ class Repository {
   /// Possible string values are:
   /// - "FORMAT_UNSPECIFIED" : Unspecified package format.
   /// - "DOCKER" : Docker package format.
+  /// - "MAVEN" : Maven package format.
+  /// - "NPM" : NPM package format.
+  /// - "PYPI" : PyPI package format.
+  /// - "PYTHON" : Python package format.
   core.String? format;
 
   /// The Cloud KMS resource name of the customer managed encryption key that’s

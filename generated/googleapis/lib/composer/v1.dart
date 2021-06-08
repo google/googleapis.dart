@@ -597,6 +597,55 @@ class AllowedIpRange {
       };
 }
 
+/// Message containing information about the result of an upgrade check
+/// operation.
+class CheckUpgradeResponse {
+  /// Url for a docker build log of an upgraded image.
+  ///
+  /// Output only.
+  core.String? buildLogUri;
+
+  /// Whether build has succeeded or failed on modules conflicts.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CONFLICT_RESULT_UNSPECIFIED" : It is unknown whether build had
+  /// conflicts or not.
+  /// - "CONFLICT" : There were python packages conflicts.
+  /// - "NO_CONFLICT" : There were no python packages conflicts.
+  core.String? containsPypiModulesConflict;
+
+  /// Extract from a docker image build log containing information about pypi
+  /// modules conflicts.
+  ///
+  /// Output only.
+  core.String? pypiConflictBuildLogExtract;
+
+  CheckUpgradeResponse();
+
+  CheckUpgradeResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('buildLogUri')) {
+      buildLogUri = _json['buildLogUri'] as core.String;
+    }
+    if (_json.containsKey('containsPypiModulesConflict')) {
+      containsPypiModulesConflict =
+          _json['containsPypiModulesConflict'] as core.String;
+    }
+    if (_json.containsKey('pypiConflictBuildLogExtract')) {
+      pypiConflictBuildLogExtract =
+          _json['pypiConflictBuildLogExtract'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (buildLogUri != null) 'buildLogUri': buildLogUri!,
+        if (containsPypiModulesConflict != null)
+          'containsPypiModulesConflict': containsPypiModulesConflict!,
+        if (pypiConflictBuildLogExtract != null)
+          'pypiConflictBuildLogExtract': pypiConflictBuildLogExtract!,
+      };
+}
+
 /// The configuration of Cloud SQL instance that is used by the Apache Airflow
 /// software.
 class DatabaseConfig {

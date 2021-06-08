@@ -110,6 +110,7 @@
             "methods": {
                 "check": {
                     "description": "Private Preview. This feature is only available for approved services. This method provides admission control for services that are integrated with [Service Infrastructure](/service-infrastructure). It checks whether an operation should be allowed based on the service configuration and relevant policies. It must be called before the operation is executed. For more information, see [Admission Control](/service-infrastructure/docs/admission-control). NOTE: The admission control has an expected policy propagation delay of 60s. The caller **must** not depend on the most recent policy changes. NOTE: The admission control has a hard limit of 1 referenced resources per call. If an operation refers to more than 1 resources, the caller must call the Check method multiple times. This method requires the `servicemanagement.services.check` permission on the specified service. For more information, see [Service Control API Access Control](https://cloud.google.com/service-infrastructure/docs/service-control/access-control).",
+                    "flatPath": "v2/services/{serviceName}:check",
                     "httpMethod": "POST",
                     "id": "servicecontrol.services.check",
                     "parameterOrder": [
@@ -137,6 +138,7 @@
                 },
                 "report": {
                     "description": "Private Preview. This feature is only available for approved services. This method provides telemetry reporting for services that are integrated with [Service Infrastructure](/service-infrastructure). It reports a list of operations that have occurred on a service. It must be called after the operations have been executed. For more information, see [Telemetry Reporting](/service-infrastructure/docs/telemetry-reporting). NOTE: The telemetry reporting has a hard limit of 1000 operations and 1MB per Report call. It is recommended to have no more than 100 operations per call. This method requires the `servicemanagement.services.report` permission on the specified service. For more information, see [Service Control API Access Control](https://cloud.google.com/service-infrastructure/docs/service-control/access-control).",
+                    "flatPath": "v2/services/{serviceName}:report",
                     "httpMethod": "POST",
                     "id": "servicecontrol.services.report",
                     "parameterOrder": [
@@ -165,7 +167,7 @@
             }
         }
     },
-    "revision": "20210508",
+    "revision": "20210603",
     "rootUrl": "https://servicecontrol.googleapis.com/",
     "schemas": {
         "Api": {
@@ -695,6 +697,14 @@
             "description": "Describes a resource referenced in the request.",
             "id": "ResourceInfo",
             "properties": {
+                "container": {
+                    "description": "Optional. The identifier of the container of this resource. For Google Cloud APIs, the resource container must be one of the following formats: - `projects/` - `folders/` - `organizations/` For the policy enforcement on the container level (VPCSC and Location Policy check), this field takes precedence on the container extracted from name when presents.",
+                    "type": "string"
+                },
+                "location": {
+                    "description": "Optional. The location of the resource. The value must be a valid zone, region or multiregion. For example: \"europe-west4\" or \"northamerica-northeast1-a\"",
+                    "type": "string"
+                },
                 "name": {
                     "description": "The name of the resource referenced in the request.",
                     "type": "string"
@@ -774,7 +784,7 @@
                     "description": "First party (Google) identity as the real authority."
                 },
                 "principalSubject": {
-                    "description": "A string representing the principal_subject associated with the identity. See go/3pical for more info on how principal_subject is formatted.",
+                    "description": "A string representing the principal_subject associated with the identity. For most identities, the format will be `principal://iam.googleapis.com/{identity pool name}/subject/{subject)` except for some GKE identities (GKE_WORKLOAD, FREEFORM, GKE_HUB_WORKLOAD) that are still in the legacy format `serviceAccount:{identity pool name}[{subject}]`",
                     "type": "string"
                 },
                 "thirdPartyPrincipal": {

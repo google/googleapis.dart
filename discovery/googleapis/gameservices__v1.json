@@ -109,6 +109,7 @@
                     "methods": {
                         "get": {
                             "description": "Gets information about a location.",
+                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}",
                             "httpMethod": "GET",
                             "id": "gameservices.projects.locations.get",
                             "parameterOrder": [
@@ -133,6 +134,7 @@
                         },
                         "list": {
                             "description": "Lists information about the supported locations for this service.",
+                            "flatPath": "v1/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "gameservices.projects.locations.list",
                             "parameterOrder": [
@@ -182,6 +184,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a new game server deployment in a given project and location.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/gameServerDeployments",
                                     "httpMethod": "POST",
                                     "id": "gameservices.projects.locations.gameServerDeployments.create",
                                     "parameterOrder": [
@@ -214,6 +217,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a single game server deployment.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/gameServerDeployments/{gameServerDeploymentsId}",
                                     "httpMethod": "DELETE",
                                     "id": "gameservices.projects.locations.gameServerDeployments.delete",
                                     "parameterOrder": [
@@ -238,6 +242,7 @@
                                 },
                                 "fetchDeploymentState": {
                                     "description": "Retrieves information about the current state of the game server deployment. Gathers all the Agones fleets and Agones autoscalers, including fleets running an older version of the game server deployment.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/gameServerDeployments/{gameServerDeploymentsId}:fetchDeploymentState",
                                     "httpMethod": "POST",
                                     "id": "gameservices.projects.locations.gameServerDeployments.fetchDeploymentState",
                                     "parameterOrder": [
@@ -265,6 +270,7 @@
                                 },
                                 "get": {
                                     "description": "Gets details of a single game server deployment.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/gameServerDeployments/{gameServerDeploymentsId}",
                                     "httpMethod": "GET",
                                     "id": "gameservices.projects.locations.gameServerDeployments.get",
                                     "parameterOrder": [
@@ -289,6 +295,7 @@
                                 },
                                 "getIamPolicy": {
                                     "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/gameServerDeployments/{gameServerDeploymentsId}:getIamPolicy",
                                     "httpMethod": "GET",
                                     "id": "gameservices.projects.locations.gameServerDeployments.getIamPolicy",
                                     "parameterOrder": [
@@ -319,6 +326,7 @@
                                 },
                                 "getRollout": {
                                     "description": "Gets details a single game server deployment rollout.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/gameServerDeployments/{gameServerDeploymentsId}/rollout",
                                     "httpMethod": "GET",
                                     "id": "gameservices.projects.locations.gameServerDeployments.getRollout",
                                     "parameterOrder": [
@@ -343,6 +351,7 @@
                                 },
                                 "list": {
                                     "description": "Lists game server deployments in a given project and location.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/gameServerDeployments",
                                     "httpMethod": "GET",
                                     "id": "gameservices.projects.locations.gameServerDeployments.list",
                                     "parameterOrder": [
@@ -388,6 +397,7 @@
                                 },
                                 "patch": {
                                     "description": "Patches a game server deployment.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/gameServerDeployments/{gameServerDeploymentsId}",
                                     "httpMethod": "PATCH",
                                     "id": "gameservices.projects.locations.gameServerDeployments.patch",
                                     "parameterOrder": [
@@ -421,6 +431,7 @@
                                 },
                                 "previewRollout": {
                                     "description": "Previews the game server deployment rollout. This API does not mutate the rollout resource.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/gameServerDeployments/{gameServerDeploymentsId}/rollout:preview",
                                     "httpMethod": "PATCH",
                                     "id": "gameservices.projects.locations.gameServerDeployments.previewRollout",
                                     "parameterOrder": [
@@ -460,6 +471,7 @@
                                 },
                                 "setIamPolicy": {
                                     "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/gameServerDeployments/{gameServerDeploymentsId}:setIamPolicy",
                                     "httpMethod": "POST",
                                     "id": "gameservices.projects.locations.gameServerDeployments.setIamPolicy",
                                     "parameterOrder": [
@@ -487,6 +499,7 @@
                                 },
                                 "testIamPermissions": {
                                     "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/gameServerDeployments/{gameServerDeploymentsId}:testIamPermissions",
                                     "httpMethod": "POST",
                                     "id": "gameservices.projects.locations.gameServerDeployments.testIamPermissions",
                                     "parameterOrder": [
@@ -514,6 +527,7 @@
                                 },
                                 "updateRollout": {
                                     "description": "Patches a single game server deployment rollout. The method will not return an error if the update does not affect any existing realms. For example - if the default_game_server_config is changed but all existing realms use the override, that is valid. Similarly, if a non existing realm is explicitly called out in game_server_config_overrides field, that will also not result in an error.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/gameServerDeployments/{gameServerDeploymentsId}/rollout",
                                     "httpMethod": "PATCH",
                                     "id": "gameservices.projects.locations.gameServerDeployments.updateRollout",
                                     "parameterOrder": [
@@ -551,6 +565,7 @@
                                     "methods": {
                                         "create": {
                                             "description": "Creates a new game server config in a given project, location, and game server deployment. Game server configs are immutable, and are not applied until referenced in the game server deployment rollout resource.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/gameServerDeployments/{gameServerDeploymentsId}/configs",
                                             "httpMethod": "POST",
                                             "id": "gameservices.projects.locations.gameServerDeployments.configs.create",
                                             "parameterOrder": [
@@ -583,6 +598,7 @@
                                         },
                                         "delete": {
                                             "description": "Deletes a single game server config. The deletion will fail if the game server config is referenced in a game server deployment rollout.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/gameServerDeployments/{gameServerDeploymentsId}/configs/{configsId}",
                                             "httpMethod": "DELETE",
                                             "id": "gameservices.projects.locations.gameServerDeployments.configs.delete",
                                             "parameterOrder": [
@@ -607,6 +623,7 @@
                                         },
                                         "get": {
                                             "description": "Gets details of a single game server config.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/gameServerDeployments/{gameServerDeploymentsId}/configs/{configsId}",
                                             "httpMethod": "GET",
                                             "id": "gameservices.projects.locations.gameServerDeployments.configs.get",
                                             "parameterOrder": [
@@ -631,6 +648,7 @@
                                         },
                                         "list": {
                                             "description": "Lists game server configs in a given project, location, and game server deployment.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/gameServerDeployments/{gameServerDeploymentsId}/configs",
                                             "httpMethod": "GET",
                                             "id": "gameservices.projects.locations.gameServerDeployments.configs.list",
                                             "parameterOrder": [
@@ -682,6 +700,7 @@
                             "methods": {
                                 "cancel": {
                                     "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
                                     "httpMethod": "POST",
                                     "id": "gameservices.projects.locations.operations.cancel",
                                     "parameterOrder": [
@@ -709,6 +728,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                                     "httpMethod": "DELETE",
                                     "id": "gameservices.projects.locations.operations.delete",
                                     "parameterOrder": [
@@ -733,6 +753,7 @@
                                 },
                                 "get": {
                                     "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                                     "httpMethod": "GET",
                                     "id": "gameservices.projects.locations.operations.get",
                                     "parameterOrder": [
@@ -757,6 +778,7 @@
                                 },
                                 "list": {
                                     "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations",
                                     "httpMethod": "GET",
                                     "id": "gameservices.projects.locations.operations.list",
                                     "parameterOrder": [
@@ -801,6 +823,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a new realm in a given project and location.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/realms",
                                     "httpMethod": "POST",
                                     "id": "gameservices.projects.locations.realms.create",
                                     "parameterOrder": [
@@ -833,6 +856,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a single realm.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/realms/{realmsId}",
                                     "httpMethod": "DELETE",
                                     "id": "gameservices.projects.locations.realms.delete",
                                     "parameterOrder": [
@@ -857,6 +881,7 @@
                                 },
                                 "get": {
                                     "description": "Gets details of a single realm.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/realms/{realmsId}",
                                     "httpMethod": "GET",
                                     "id": "gameservices.projects.locations.realms.get",
                                     "parameterOrder": [
@@ -881,6 +906,7 @@
                                 },
                                 "list": {
                                     "description": "Lists realms in a given project and location.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/realms",
                                     "httpMethod": "GET",
                                     "id": "gameservices.projects.locations.realms.list",
                                     "parameterOrder": [
@@ -926,6 +952,7 @@
                                 },
                                 "patch": {
                                     "description": "Patches a single realm.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/realms/{realmsId}",
                                     "httpMethod": "PATCH",
                                     "id": "gameservices.projects.locations.realms.patch",
                                     "parameterOrder": [
@@ -959,6 +986,7 @@
                                 },
                                 "previewUpdate": {
                                     "description": "Previews patches to a single realm.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/realms/{realmsId}:previewUpdate",
                                     "httpMethod": "PATCH",
                                     "id": "gameservices.projects.locations.realms.previewUpdate",
                                     "parameterOrder": [
@@ -1002,6 +1030,7 @@
                                     "methods": {
                                         "create": {
                                             "description": "Creates a new game server cluster in a given project and location.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/realms/{realmsId}/gameServerClusters",
                                             "httpMethod": "POST",
                                             "id": "gameservices.projects.locations.realms.gameServerClusters.create",
                                             "parameterOrder": [
@@ -1034,6 +1063,7 @@
                                         },
                                         "delete": {
                                             "description": "Deletes a single game server cluster.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/realms/{realmsId}/gameServerClusters/{gameServerClustersId}",
                                             "httpMethod": "DELETE",
                                             "id": "gameservices.projects.locations.realms.gameServerClusters.delete",
                                             "parameterOrder": [
@@ -1058,6 +1088,7 @@
                                         },
                                         "get": {
                                             "description": "Gets details of a single game server cluster.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/realms/{realmsId}/gameServerClusters/{gameServerClustersId}",
                                             "httpMethod": "GET",
                                             "id": "gameservices.projects.locations.realms.gameServerClusters.get",
                                             "parameterOrder": [
@@ -1082,6 +1113,7 @@
                                         },
                                         "list": {
                                             "description": "Lists game server clusters in a given project and location.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/realms/{realmsId}/gameServerClusters",
                                             "httpMethod": "GET",
                                             "id": "gameservices.projects.locations.realms.gameServerClusters.list",
                                             "parameterOrder": [
@@ -1127,6 +1159,7 @@
                                         },
                                         "patch": {
                                             "description": "Patches a single game server cluster.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/realms/{realmsId}/gameServerClusters/{gameServerClustersId}",
                                             "httpMethod": "PATCH",
                                             "id": "gameservices.projects.locations.realms.gameServerClusters.patch",
                                             "parameterOrder": [
@@ -1160,6 +1193,7 @@
                                         },
                                         "previewCreate": {
                                             "description": "Previews creation of a new game server cluster in a given project and location.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/realms/{realmsId}/gameServerClusters:previewCreate",
                                             "httpMethod": "POST",
                                             "id": "gameservices.projects.locations.realms.gameServerClusters.previewCreate",
                                             "parameterOrder": [
@@ -1198,6 +1232,7 @@
                                         },
                                         "previewDelete": {
                                             "description": "Previews deletion of a single game server cluster.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/realms/{realmsId}/gameServerClusters/{gameServerClustersId}:previewDelete",
                                             "httpMethod": "DELETE",
                                             "id": "gameservices.projects.locations.realms.gameServerClusters.previewDelete",
                                             "parameterOrder": [
@@ -1228,6 +1263,7 @@
                                         },
                                         "previewUpdate": {
                                             "description": "Previews updating a GameServerCluster.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/realms/{realmsId}/gameServerClusters/{gameServerClustersId}:previewUpdate",
                                             "httpMethod": "PATCH",
                                             "id": "gameservices.projects.locations.realms.gameServerClusters.previewUpdate",
                                             "parameterOrder": [
@@ -1274,7 +1310,7 @@
             }
         }
     },
-    "revision": "20210511",
+    "revision": "20210610",
     "rootUrl": "https://gameservices.googleapis.com/",
     "schemas": {
         "AuditConfig": {

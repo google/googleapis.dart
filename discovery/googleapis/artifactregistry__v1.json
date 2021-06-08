@@ -110,6 +110,7 @@
             "methods": {
                 "cancel": {
                     "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                    "flatPath": "v1/operations/{operationsId}:cancel",
                     "httpMethod": "POST",
                     "id": "artifactregistry.operations.cancel",
                     "parameterOrder": [
@@ -137,6 +138,7 @@
                 },
                 "delete": {
                     "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                    "flatPath": "v1/operations/{operationsId}",
                     "httpMethod": "DELETE",
                     "id": "artifactregistry.operations.delete",
                     "parameterOrder": [
@@ -161,6 +163,7 @@
                 },
                 "get": {
                     "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                    "flatPath": "v1/operations/{operationsId}",
                     "httpMethod": "GET",
                     "id": "artifactregistry.operations.get",
                     "parameterOrder": [
@@ -186,6 +189,7 @@
                 },
                 "list": {
                     "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                    "flatPath": "v1/operations",
                     "httpMethod": "GET",
                     "id": "artifactregistry.operations.list",
                     "parameterOrder": [],
@@ -231,6 +235,7 @@
                             "methods": {
                                 "get": {
                                     "description": "Gets a repository.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/repositories/{repositoriesId}",
                                     "httpMethod": "GET",
                                     "id": "artifactregistry.projects.locations.repositories.get",
                                     "parameterOrder": [
@@ -256,6 +261,7 @@
                                 },
                                 "list": {
                                     "description": "Lists repositories.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/repositories",
                                     "httpMethod": "GET",
                                     "id": "artifactregistry.projects.locations.repositories.list",
                                     "parameterOrder": [
@@ -296,6 +302,7 @@
                                     "methods": {
                                         "list": {
                                             "description": "Lists docker images.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/repositories/{repositoriesId}/dockerImages",
                                             "httpMethod": "GET",
                                             "id": "artifactregistry.projects.locations.repositories.dockerImages.list",
                                             "parameterOrder": [
@@ -339,7 +346,7 @@
             }
         }
     },
-    "revision": "20210509",
+    "revision": "20210527",
     "rootUrl": "https://artifactregistry.googleapis.com/",
     "schemas": {
         "CancelOperationRequest": {
@@ -353,7 +360,7 @@
             "id": "DockerImage",
             "properties": {
                 "buildTime": {
-                    "description": "The time this image was built. This field is returned as the 'metadata.buildTime' field in the Version resource. The build time is returned to the client as an RFC 3339 string, which can be easily used with the JavaScript Date constructor and keeps the Version timestamps returned via OnePlatform consistent, as JSON marshals google.protobuf.Timestamp into an RFC 3339 string. (http://google3/cloud/containers/artifacts/metadata/v1beta2/builder/data.go?l=158-159&rcl=364878183).",
+                    "description": "The time this image was built. This field is returned as the 'metadata.buildTime' field in the Version resource. The build time is returned to the client as an RFC 3339 string, which can be easily used with the JavaScript Date constructor and keeps the Version timestamps returned via OnePlatform consistent, as JSON marshals google.protobuf.Timestamp into an RFC 3339 string.",
                     "format": "google-datetime",
                     "type": "string"
                 },
@@ -501,11 +508,19 @@
                     "description": "The format of packages that are stored in the repository.",
                     "enum": [
                         "FORMAT_UNSPECIFIED",
-                        "DOCKER"
+                        "DOCKER",
+                        "MAVEN",
+                        "NPM",
+                        "PYPI",
+                        "PYTHON"
                     ],
                     "enumDescriptions": [
                         "Unspecified package format.",
-                        "Docker package format."
+                        "Docker package format.",
+                        "Maven package format.",
+                        "NPM package format.",
+                        "PyPI package format.",
+                        "Python package format."
                     ],
                     "type": "string"
                 },

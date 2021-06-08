@@ -107,6 +107,7 @@
             "methods": {
                 "get": {
                     "description": "Gets a bidder account by its name.",
+                    "flatPath": "v1/bidders/{biddersId}",
                     "httpMethod": "GET",
                     "id": "realtimebidding.bidders.get",
                     "parameterOrder": [
@@ -131,6 +132,7 @@
                 },
                 "list": {
                     "description": "Lists all the bidder accounts that belong to the caller.",
+                    "flatPath": "v1/bidders",
                     "httpMethod": "GET",
                     "id": "realtimebidding.bidders.list",
                     "parameterOrder": [],
@@ -161,6 +163,7 @@
                     "methods": {
                         "list": {
                             "description": "Lists creatives.",
+                            "flatPath": "v1/bidders/{biddersId}/creatives",
                             "httpMethod": "GET",
                             "id": "realtimebidding.bidders.creatives.list",
                             "parameterOrder": [
@@ -216,6 +219,7 @@
                         },
                         "watch": {
                             "description": "Watches all creatives pertaining to a bidder. It is sufficient to invoke this endpoint once per bidder. A Pub/Sub topic will be created and notifications will be pushed to the topic when any of the bidder's creatives change status. All of the bidder's service accounts will have access to read from the topic. Subsequent invocations of this method will return the existing Pub/Sub configuration.",
+                            "flatPath": "v1/bidders/{biddersId}/creatives:watch",
                             "httpMethod": "POST",
                             "id": "realtimebidding.bidders.creatives.watch",
                             "parameterOrder": [
@@ -247,6 +251,7 @@
                     "methods": {
                         "get": {
                             "description": "Gets a bidder endpoint by its name.",
+                            "flatPath": "v1/bidders/{biddersId}/endpoints/{endpointsId}",
                             "httpMethod": "GET",
                             "id": "realtimebidding.bidders.endpoints.get",
                             "parameterOrder": [
@@ -271,6 +276,7 @@
                         },
                         "list": {
                             "description": "Lists all the bidder's endpoints.",
+                            "flatPath": "v1/bidders/{biddersId}/endpoints",
                             "httpMethod": "GET",
                             "id": "realtimebidding.bidders.endpoints.list",
                             "parameterOrder": [
@@ -310,6 +316,7 @@
                     "methods": {
                         "activate": {
                             "description": "Activates a pretargeting configuration.",
+                            "flatPath": "v1/bidders/{biddersId}/pretargetingConfigs/{pretargetingConfigsId}:activate",
                             "httpMethod": "POST",
                             "id": "realtimebidding.bidders.pretargetingConfigs.activate",
                             "parameterOrder": [
@@ -337,6 +344,7 @@
                         },
                         "addTargetedApps": {
                             "description": "Adds targeted apps to the pretargeting configuration.",
+                            "flatPath": "v1/bidders/{biddersId}/pretargetingConfigs/{pretargetingConfigsId}:addTargetedApps",
                             "httpMethod": "POST",
                             "id": "realtimebidding.bidders.pretargetingConfigs.addTargetedApps",
                             "parameterOrder": [
@@ -364,6 +372,7 @@
                         },
                         "addTargetedPublishers": {
                             "description": "Adds targeted publishers to the pretargeting config.",
+                            "flatPath": "v1/bidders/{biddersId}/pretargetingConfigs/{pretargetingConfigsId}:addTargetedPublishers",
                             "httpMethod": "POST",
                             "id": "realtimebidding.bidders.pretargetingConfigs.addTargetedPublishers",
                             "parameterOrder": [
@@ -391,6 +400,7 @@
                         },
                         "addTargetedSites": {
                             "description": "Adds targeted sites to the pretargeting configuration.",
+                            "flatPath": "v1/bidders/{biddersId}/pretargetingConfigs/{pretargetingConfigsId}:addTargetedSites",
                             "httpMethod": "POST",
                             "id": "realtimebidding.bidders.pretargetingConfigs.addTargetedSites",
                             "parameterOrder": [
@@ -418,6 +428,7 @@
                         },
                         "create": {
                             "description": "Creates a pretargeting configuration. A pretargeting configuration's state (PretargetingConfig.state) is active upon creation, and it will start to affect traffic shortly after. A bidder may create a maximum of 10 pretargeting configurations. Attempts to exceed this maximum results in a 400 bad request error.",
+                            "flatPath": "v1/bidders/{biddersId}/pretargetingConfigs",
                             "httpMethod": "POST",
                             "id": "realtimebidding.bidders.pretargetingConfigs.create",
                             "parameterOrder": [
@@ -445,6 +456,7 @@
                         },
                         "delete": {
                             "description": "Deletes a pretargeting configuration.",
+                            "flatPath": "v1/bidders/{biddersId}/pretargetingConfigs/{pretargetingConfigsId}",
                             "httpMethod": "DELETE",
                             "id": "realtimebidding.bidders.pretargetingConfigs.delete",
                             "parameterOrder": [
@@ -469,6 +481,7 @@
                         },
                         "get": {
                             "description": "Gets a pretargeting configuration.",
+                            "flatPath": "v1/bidders/{biddersId}/pretargetingConfigs/{pretargetingConfigsId}",
                             "httpMethod": "GET",
                             "id": "realtimebidding.bidders.pretargetingConfigs.get",
                             "parameterOrder": [
@@ -493,6 +506,7 @@
                         },
                         "list": {
                             "description": "Lists all pretargeting configurations for a single bidder.",
+                            "flatPath": "v1/bidders/{biddersId}/pretargetingConfigs",
                             "httpMethod": "GET",
                             "id": "realtimebidding.bidders.pretargetingConfigs.list",
                             "parameterOrder": [
@@ -528,6 +542,7 @@
                         },
                         "patch": {
                             "description": "Updates a pretargeting configuration.",
+                            "flatPath": "v1/bidders/{biddersId}/pretargetingConfigs/{pretargetingConfigsId}",
                             "httpMethod": "PATCH",
                             "id": "realtimebidding.bidders.pretargetingConfigs.patch",
                             "parameterOrder": [
@@ -561,6 +576,7 @@
                         },
                         "removeTargetedApps": {
                             "description": "Removes targeted apps from the pretargeting configuration.",
+                            "flatPath": "v1/bidders/{biddersId}/pretargetingConfigs/{pretargetingConfigsId}:removeTargetedApps",
                             "httpMethod": "POST",
                             "id": "realtimebidding.bidders.pretargetingConfigs.removeTargetedApps",
                             "parameterOrder": [
@@ -588,6 +604,7 @@
                         },
                         "removeTargetedPublishers": {
                             "description": "Removes targeted publishers from the pretargeting config.",
+                            "flatPath": "v1/bidders/{biddersId}/pretargetingConfigs/{pretargetingConfigsId}:removeTargetedPublishers",
                             "httpMethod": "POST",
                             "id": "realtimebidding.bidders.pretargetingConfigs.removeTargetedPublishers",
                             "parameterOrder": [
@@ -615,6 +632,7 @@
                         },
                         "removeTargetedSites": {
                             "description": "Removes targeted sites from the pretargeting configuration.",
+                            "flatPath": "v1/bidders/{biddersId}/pretargetingConfigs/{pretargetingConfigsId}:removeTargetedSites",
                             "httpMethod": "POST",
                             "id": "realtimebidding.bidders.pretargetingConfigs.removeTargetedSites",
                             "parameterOrder": [
@@ -642,6 +660,7 @@
                         },
                         "suspend": {
                             "description": "Suspends a pretargeting configuration.",
+                            "flatPath": "v1/bidders/{biddersId}/pretargetingConfigs/{pretargetingConfigsId}:suspend",
                             "httpMethod": "POST",
                             "id": "realtimebidding.bidders.pretargetingConfigs.suspend",
                             "parameterOrder": [
@@ -675,6 +694,7 @@
             "methods": {
                 "get": {
                     "description": "Gets a buyer account by its name.",
+                    "flatPath": "v1/buyers/{buyersId}",
                     "httpMethod": "GET",
                     "id": "realtimebidding.buyers.get",
                     "parameterOrder": [
@@ -699,6 +719,7 @@
                 },
                 "getRemarketingTag": {
                     "description": "Gets remarketing tag for a buyer. A remarketing tag is a piece of JavaScript code that can be placed on a web page. When a user visits a page containing a remarketing tag, Google adds the user to a user list.",
+                    "flatPath": "v1/buyers/{buyersId}:getRemarketingTag",
                     "httpMethod": "GET",
                     "id": "realtimebidding.buyers.getRemarketingTag",
                     "parameterOrder": [
@@ -723,6 +744,7 @@
                 },
                 "list": {
                     "description": "Lists all buyer account information the calling buyer user or service account is permissioned to manage.",
+                    "flatPath": "v1/buyers",
                     "httpMethod": "GET",
                     "id": "realtimebidding.buyers.list",
                     "parameterOrder": [],
@@ -753,6 +775,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a creative.",
+                            "flatPath": "v1/buyers/{buyersId}/creatives",
                             "httpMethod": "POST",
                             "id": "realtimebidding.buyers.creatives.create",
                             "parameterOrder": [
@@ -780,6 +803,7 @@
                         },
                         "get": {
                             "description": "Gets a creative.",
+                            "flatPath": "v1/buyers/{buyersId}/creatives/{creativesId}",
                             "httpMethod": "GET",
                             "id": "realtimebidding.buyers.creatives.get",
                             "parameterOrder": [
@@ -819,6 +843,7 @@
                         },
                         "list": {
                             "description": "Lists creatives.",
+                            "flatPath": "v1/buyers/{buyersId}/creatives",
                             "httpMethod": "GET",
                             "id": "realtimebidding.buyers.creatives.list",
                             "parameterOrder": [
@@ -874,6 +899,7 @@
                         },
                         "patch": {
                             "description": "Updates a creative.",
+                            "flatPath": "v1/buyers/{buyersId}/creatives/{creativesId}",
                             "httpMethod": "PATCH",
                             "id": "realtimebidding.buyers.creatives.patch",
                             "parameterOrder": [
@@ -911,6 +937,7 @@
                     "methods": {
                         "close": {
                             "description": "Change the status of a user list to CLOSED. This prevents new users from being added to the user list.",
+                            "flatPath": "v1/buyers/{buyersId}/userLists/{userListsId}:close",
                             "httpMethod": "POST",
                             "id": "realtimebidding.buyers.userLists.close",
                             "parameterOrder": [
@@ -938,6 +965,7 @@
                         },
                         "create": {
                             "description": "Create a new user list.",
+                            "flatPath": "v1/buyers/{buyersId}/userLists",
                             "httpMethod": "POST",
                             "id": "realtimebidding.buyers.userLists.create",
                             "parameterOrder": [
@@ -965,6 +993,7 @@
                         },
                         "get": {
                             "description": "Gets a user list by its name.",
+                            "flatPath": "v1/buyers/{buyersId}/userLists/{userListsId}",
                             "httpMethod": "GET",
                             "id": "realtimebidding.buyers.userLists.get",
                             "parameterOrder": [
@@ -989,6 +1018,7 @@
                         },
                         "getRemarketingTag": {
                             "description": "Gets remarketing tag for a buyer. A remarketing tag is a piece of JavaScript code that can be placed on a web page. When a user visits a page containing a remarketing tag, Google adds the user to a user list.",
+                            "flatPath": "v1/buyers/{buyersId}/userLists/{userListsId}:getRemarketingTag",
                             "httpMethod": "GET",
                             "id": "realtimebidding.buyers.userLists.getRemarketingTag",
                             "parameterOrder": [
@@ -1013,6 +1043,7 @@
                         },
                         "list": {
                             "description": "Lists the user lists visible to the current user.",
+                            "flatPath": "v1/buyers/{buyersId}/userLists",
                             "httpMethod": "GET",
                             "id": "realtimebidding.buyers.userLists.list",
                             "parameterOrder": [
@@ -1048,6 +1079,7 @@
                         },
                         "open": {
                             "description": "Change the status of a user list to OPEN. This allows new users to be added to the user list.",
+                            "flatPath": "v1/buyers/{buyersId}/userLists/{userListsId}:open",
                             "httpMethod": "POST",
                             "id": "realtimebidding.buyers.userLists.open",
                             "parameterOrder": [
@@ -1075,6 +1107,7 @@
                         },
                         "update": {
                             "description": "Update the given user list. Only user lists with URLRestrictions can be updated.",
+                            "flatPath": "v1/buyers/{buyersId}/userLists/{userListsId}",
                             "httpMethod": "PUT",
                             "id": "realtimebidding.buyers.userLists.update",
                             "parameterOrder": [
@@ -1105,7 +1138,7 @@
             }
         }
     },
-    "revision": "20210520",
+    "revision": "20210615",
     "rootUrl": "https://realtimebidding.googleapis.com/",
     "schemas": {
         "ActivatePretargetingConfigRequest": {
@@ -2359,6 +2392,10 @@
                 },
                 "videoUrl": {
                     "description": "The URL to fetch a native video ad.",
+                    "type": "string"
+                },
+                "videoVastXml": {
+                    "description": "The contents of a VAST document for a native video ad.",
                     "type": "string"
                 }
             },

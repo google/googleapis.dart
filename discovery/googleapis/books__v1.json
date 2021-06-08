@@ -106,6 +106,7 @@
             "methods": {
                 "get": {
                     "description": "Retrieves metadata for a specific bookshelf for the specified user.",
+                    "flatPath": "books/v1/users/{userId}/bookshelves/{shelf}",
                     "httpMethod": "GET",
                     "id": "books.bookshelves.get",
                     "parameterOrder": [
@@ -141,6 +142,7 @@
                 },
                 "list": {
                     "description": "Retrieves a list of public bookshelves for the specified user.",
+                    "flatPath": "books/v1/users/{userId}/bookshelves",
                     "httpMethod": "GET",
                     "id": "books.bookshelves.list",
                     "parameterOrder": [
@@ -173,6 +175,7 @@
                     "methods": {
                         "list": {
                             "description": "Retrieves volumes in a specific bookshelf for the specified user.",
+                            "flatPath": "books/v1/users/{userId}/bookshelves/{shelf}/volumes",
                             "httpMethod": "GET",
                             "id": "books.bookshelves.volumes.list",
                             "parameterOrder": [
@@ -233,6 +236,7 @@
             "methods": {
                 "addBook": {
                     "description": "Add a user-upload volume and triggers processing.",
+                    "flatPath": "books/v1/cloudloading/addBook",
                     "httpMethod": "POST",
                     "id": "books.cloudloading.addBook",
                     "parameterOrder": [],
@@ -268,6 +272,7 @@
                 },
                 "deleteBook": {
                     "description": "Remove the book and its contents",
+                    "flatPath": "books/v1/cloudloading/deleteBook",
                     "httpMethod": "POST",
                     "id": "books.cloudloading.deleteBook",
                     "parameterOrder": [
@@ -291,6 +296,7 @@
                 },
                 "updateBook": {
                     "description": "Updates a user-upload volume.",
+                    "flatPath": "books/v1/cloudloading/updateBook",
                     "httpMethod": "POST",
                     "id": "books.cloudloading.updateBook",
                     "parameterOrder": [],
@@ -312,6 +318,7 @@
             "methods": {
                 "listOfflineMetadata": {
                     "description": "Returns a list of offline dictionary metadata available",
+                    "flatPath": "books/v1/dictionary/listOfflineMetadata",
                     "httpMethod": "GET",
                     "id": "books.dictionary.listOfflineMetadata",
                     "parameterOrder": [
@@ -339,6 +346,7 @@
             "methods": {
                 "getFamilyInfo": {
                     "description": "Gets information regarding the family that the user is part of.",
+                    "flatPath": "books/v1/familysharing/getFamilyInfo",
                     "httpMethod": "GET",
                     "id": "books.familysharing.getFamilyInfo",
                     "parameterOrder": [],
@@ -359,6 +367,7 @@
                 },
                 "share": {
                     "description": "Initiates sharing of the content with the user's family. Empty response indicates success.",
+                    "flatPath": "books/v1/familysharing/share",
                     "httpMethod": "POST",
                     "id": "books.familysharing.share",
                     "parameterOrder": [],
@@ -389,6 +398,7 @@
                 },
                 "unshare": {
                     "description": "Initiates revoking content that has already been shared with the user's family. Empty response indicates success.",
+                    "flatPath": "books/v1/familysharing/unshare",
                     "httpMethod": "POST",
                     "id": "books.familysharing.unshare",
                     "parameterOrder": [],
@@ -423,6 +433,7 @@
             "methods": {
                 "get": {
                     "description": "Gets the layer summary for a volume.",
+                    "flatPath": "books/v1/volumes/{volumeId}/layersummary/{summaryId}",
                     "httpMethod": "GET",
                     "id": "books.layers.get",
                     "parameterOrder": [
@@ -463,6 +474,7 @@
                 },
                 "list": {
                     "description": "List the layer summaries for a volume.",
+                    "flatPath": "books/v1/volumes/{volumeId}/layersummary",
                     "httpMethod": "GET",
                     "id": "books.layers.list",
                     "parameterOrder": [
@@ -513,6 +525,7 @@
                     "methods": {
                         "get": {
                             "description": "Gets the annotation data.",
+                            "flatPath": "books/v1/volumes/{volumeId}/layers/{layerId}/data/{annotationDataId}",
                             "httpMethod": "GET",
                             "id": "books.layers.annotationData.get",
                             "parameterOrder": [
@@ -591,6 +604,7 @@
                         },
                         "list": {
                             "description": "Gets the annotation data for a volume and layer.",
+                            "flatPath": "books/v1/volumes/{volumeId}/layers/{layerId}/data",
                             "httpMethod": "GET",
                             "id": "books.layers.annotationData.list",
                             "parameterOrder": [
@@ -690,6 +704,7 @@
                     "methods": {
                         "get": {
                             "description": "Gets the volume annotation.",
+                            "flatPath": "books/v1/volumes/{volumeId}/layers/{layerId}/annotations/{annotationId}",
                             "httpMethod": "GET",
                             "id": "books.layers.volumeAnnotations.get",
                             "parameterOrder": [
@@ -737,6 +752,7 @@
                         },
                         "list": {
                             "description": "Gets the volume annotations for a volume and layer.",
+                            "flatPath": "books/v1/volumes/{volumeId}/layers/{layerId}",
                             "httpMethod": "GET",
                             "id": "books.layers.volumeAnnotations.list",
                             "parameterOrder": [
@@ -843,6 +859,7 @@
             "methods": {
                 "getUserSettings": {
                     "description": "Gets the current settings for the user.",
+                    "flatPath": "books/v1/myconfig/getUserSettings",
                     "httpMethod": "GET",
                     "id": "books.myconfig.getUserSettings",
                     "parameterOrder": [],
@@ -863,6 +880,7 @@
                 },
                 "releaseDownloadAccess": {
                     "description": "Release downloaded content access restriction.",
+                    "flatPath": "books/v1/myconfig/releaseDownloadAccess",
                     "httpMethod": "POST",
                     "id": "books.myconfig.releaseDownloadAccess",
                     "parameterOrder": [
@@ -904,6 +922,7 @@
                 },
                 "requestAccess": {
                     "description": "Request concurrent and download access restrictions.",
+                    "flatPath": "books/v1/myconfig/requestAccess",
                     "httpMethod": "POST",
                     "id": "books.myconfig.requestAccess",
                     "parameterOrder": [
@@ -970,6 +989,7 @@
                 },
                 "syncVolumeLicenses": {
                     "description": "Request downloaded content access for specified volumes on the My eBooks shelf.",
+                    "flatPath": "books/v1/myconfig/syncVolumeLicenses",
                     "httpMethod": "POST",
                     "id": "books.myconfig.syncVolumeLicenses",
                     "parameterOrder": [
@@ -1042,6 +1062,7 @@
                 },
                 "updateUserSettings": {
                     "description": "Sets the settings for the user. If a sub-object is specified, it will overwrite the existing sub-object stored in the server. Unspecified sub-objects will retain the existing value.",
+                    "flatPath": "books/v1/myconfig/updateUserSettings",
                     "httpMethod": "POST",
                     "id": "books.myconfig.updateUserSettings",
                     "parameterOrder": [],
@@ -1065,6 +1086,7 @@
                     "methods": {
                         "delete": {
                             "description": "Deletes an annotation.",
+                            "flatPath": "books/v1/mylibrary/annotations/{annotationId}",
                             "httpMethod": "DELETE",
                             "id": "books.mylibrary.annotations.delete",
                             "parameterOrder": [
@@ -1093,6 +1115,7 @@
                         },
                         "insert": {
                             "description": "Inserts a new annotation.",
+                            "flatPath": "books/v1/mylibrary/annotations",
                             "httpMethod": "POST",
                             "id": "books.mylibrary.annotations.insert",
                             "parameterOrder": [],
@@ -1131,6 +1154,7 @@
                         },
                         "list": {
                             "description": "Retrieves a list of annotations, possibly filtered.",
+                            "flatPath": "books/v1/mylibrary/annotations",
                             "httpMethod": "GET",
                             "id": "books.mylibrary.annotations.list",
                             "parameterOrder": [],
@@ -1200,6 +1224,7 @@
                         },
                         "summary": {
                             "description": "Gets the summary of specified layers.",
+                            "flatPath": "books/v1/mylibrary/annotations/summary",
                             "httpMethod": "POST",
                             "id": "books.mylibrary.annotations.summary",
                             "parameterOrder": [
@@ -1231,6 +1256,7 @@
                         },
                         "update": {
                             "description": "Updates an existing annotation.",
+                            "flatPath": "books/v1/mylibrary/annotations/{annotationId}",
                             "httpMethod": "PUT",
                             "id": "books.mylibrary.annotations.update",
                             "parameterOrder": [
@@ -1266,6 +1292,7 @@
                     "methods": {
                         "addVolume": {
                             "description": "Adds a volume to a bookshelf.",
+                            "flatPath": "books/v1/mylibrary/bookshelves/{shelf}/addVolume",
                             "httpMethod": "POST",
                             "id": "books.mylibrary.bookshelves.addVolume",
                             "parameterOrder": [
@@ -1318,6 +1345,7 @@
                         },
                         "clearVolumes": {
                             "description": "Clears all volumes from a bookshelf.",
+                            "flatPath": "books/v1/mylibrary/bookshelves/{shelf}/clearVolumes",
                             "httpMethod": "POST",
                             "id": "books.mylibrary.bookshelves.clearVolumes",
                             "parameterOrder": [
@@ -1346,6 +1374,7 @@
                         },
                         "get": {
                             "description": "Retrieves metadata for a specific bookshelf belonging to the authenticated user.",
+                            "flatPath": "books/v1/mylibrary/bookshelves/{shelf}",
                             "httpMethod": "GET",
                             "id": "books.mylibrary.bookshelves.get",
                             "parameterOrder": [
@@ -1374,6 +1403,7 @@
                         },
                         "list": {
                             "description": "Retrieves a list of bookshelves belonging to the authenticated user.",
+                            "flatPath": "books/v1/mylibrary/bookshelves",
                             "httpMethod": "GET",
                             "id": "books.mylibrary.bookshelves.list",
                             "parameterOrder": [],
@@ -1394,6 +1424,7 @@
                         },
                         "moveVolume": {
                             "description": "Moves a volume within a bookshelf.",
+                            "flatPath": "books/v1/mylibrary/bookshelves/{shelf}/moveVolume",
                             "httpMethod": "POST",
                             "id": "books.mylibrary.bookshelves.moveVolume",
                             "parameterOrder": [
@@ -1437,6 +1468,7 @@
                         },
                         "removeVolume": {
                             "description": "Removes a volume from a bookshelf.",
+                            "flatPath": "books/v1/mylibrary/bookshelves/{shelf}/removeVolume",
                             "httpMethod": "POST",
                             "id": "books.mylibrary.bookshelves.removeVolume",
                             "parameterOrder": [
@@ -1489,6 +1521,7 @@
                             "methods": {
                                 "list": {
                                     "description": "Gets volume information for volumes on a bookshelf.",
+                                    "flatPath": "books/v1/mylibrary/bookshelves/{shelf}/volumes",
                                     "httpMethod": "GET",
                                     "id": "books.mylibrary.bookshelves.volumes.list",
                                     "parameterOrder": [
@@ -1567,6 +1600,7 @@
                     "methods": {
                         "get": {
                             "description": "Retrieves my reading position information for a volume.",
+                            "flatPath": "books/v1/mylibrary/readingpositions/{volumeId}",
                             "httpMethod": "GET",
                             "id": "books.mylibrary.readingpositions.get",
                             "parameterOrder": [
@@ -1600,6 +1634,7 @@
                         },
                         "setPosition": {
                             "description": "Sets my reading position information for a volume.",
+                            "flatPath": "books/v1/mylibrary/readingpositions/{volumeId}/setPosition",
                             "httpMethod": "POST",
                             "id": "books.mylibrary.readingpositions.setPosition",
                             "parameterOrder": [
@@ -1681,6 +1716,7 @@
             "methods": {
                 "get": {
                     "description": "Returns notification details for a given notification id.",
+                    "flatPath": "books/v1/notification/get",
                     "httpMethod": "GET",
                     "id": "books.notification.get",
                     "parameterOrder": [
@@ -1718,6 +1754,7 @@
             "methods": {
                 "listCategories": {
                     "description": "List categories for onboarding experience.",
+                    "flatPath": "books/v1/onboarding/listCategories",
                     "httpMethod": "GET",
                     "id": "books.onboarding.listCategories",
                     "parameterOrder": [],
@@ -1738,6 +1775,7 @@
                 },
                 "listCategoryVolumes": {
                     "description": "List available volumes under categories for onboarding experience.",
+                    "flatPath": "books/v1/onboarding/listCategoryVolumes",
                     "httpMethod": "GET",
                     "id": "books.onboarding.listCategoryVolumes",
                     "parameterOrder": [],
@@ -1794,6 +1832,7 @@
             "methods": {
                 "get": {
                     "description": "Returns a stream of personalized book clusters",
+                    "flatPath": "books/v1/personalizedstream/get",
                     "httpMethod": "GET",
                     "id": "books.personalizedstream.get",
                     "parameterOrder": [],
@@ -1838,6 +1877,7 @@
             "methods": {
                 "accept": {
                     "description": "Accepts the promo offer.",
+                    "flatPath": "books/v1/promooffer/accept",
                     "httpMethod": "POST",
                     "id": "books.promooffer.accept",
                     "parameterOrder": [],
@@ -1892,6 +1932,7 @@
                 },
                 "dismiss": {
                     "description": "Marks the promo offer as dismissed.",
+                    "flatPath": "books/v1/promooffer/dismiss",
                     "httpMethod": "POST",
                     "id": "books.promooffer.dismiss",
                     "parameterOrder": [],
@@ -1942,6 +1983,7 @@
                 },
                 "get": {
                     "description": "Returns a list of promo offers available to the user",
+                    "flatPath": "books/v1/promooffer/get",
                     "httpMethod": "GET",
                     "id": "books.promooffer.get",
                     "parameterOrder": [],
@@ -1991,6 +2033,7 @@
             "methods": {
                 "get": {
                     "description": "Returns Series metadata for the given series ids.",
+                    "flatPath": "books/v1/series/get",
                     "httpMethod": "GET",
                     "id": "books.series.get",
                     "parameterOrder": [
@@ -2019,6 +2062,7 @@
                     "methods": {
                         "get": {
                             "description": "Returns Series membership data given the series id.",
+                            "flatPath": "books/v1/series/membership/get",
                             "httpMethod": "GET",
                             "id": "books.series.membership.get",
                             "parameterOrder": [
@@ -2059,6 +2103,7 @@
             "methods": {
                 "get": {
                     "description": "Gets volume information for a single volume.",
+                    "flatPath": "books/v1/volumes/{volumeId}",
                     "httpMethod": "GET",
                     "id": "books.volumes.get",
                     "parameterOrder": [
@@ -2121,6 +2166,7 @@
                 },
                 "list": {
                     "description": "Performs a book search.",
+                    "flatPath": "books/v1/volumes",
                     "httpMethod": "GET",
                     "id": "books.volumes.list",
                     "parameterOrder": [
@@ -2294,6 +2340,7 @@
                     "methods": {
                         "list": {
                             "description": "Return a list of associated books.",
+                            "flatPath": "books/v1/volumes/{volumeId}/associated",
                             "httpMethod": "GET",
                             "id": "books.volumes.associated.list",
                             "parameterOrder": [
@@ -2363,6 +2410,7 @@
                     "methods": {
                         "list": {
                             "description": "Return a list of books in My Library.",
+                            "flatPath": "books/v1/volumes/mybooks",
                             "httpMethod": "GET",
                             "id": "books.volumes.mybooks.list",
                             "parameterOrder": [],
@@ -2458,6 +2506,7 @@
                     "methods": {
                         "list": {
                             "description": "Return a list of recommended books for the current user.",
+                            "flatPath": "books/v1/volumes/recommended",
                             "httpMethod": "GET",
                             "id": "books.volumes.recommended.list",
                             "parameterOrder": [],
@@ -2498,6 +2547,7 @@
                         },
                         "rate": {
                             "description": "Rate a recommended book for the current user.",
+                            "flatPath": "books/v1/volumes/recommended/rate",
                             "httpMethod": "POST",
                             "id": "books.volumes.recommended.rate",
                             "parameterOrder": [
@@ -2552,6 +2602,7 @@
                     "methods": {
                         "list": {
                             "description": "Return a list of books uploaded by the current user.",
+                            "flatPath": "books/v1/volumes/useruploaded",
                             "httpMethod": "GET",
                             "id": "books.volumes.useruploaded.list",
                             "parameterOrder": [],
@@ -2619,7 +2670,7 @@
             }
         }
     },
-    "revision": "20210519",
+    "revision": "20210606",
     "rootUrl": "https://books.googleapis.com/",
     "schemas": {
         "Annotation": {

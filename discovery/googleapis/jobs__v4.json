@@ -112,6 +112,7 @@
                     "methods": {
                         "get": {
                             "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                            "flatPath": "v4/projects/{projectsId}/operations/{operationsId}",
                             "httpMethod": "GET",
                             "id": "jobs.projects.operations.get",
                             "parameterOrder": [
@@ -141,6 +142,7 @@
                     "methods": {
                         "completeQuery": {
                             "description": "Completes the specified prefix with keyword suggestions. Intended for use by a job search auto-complete search box.",
+                            "flatPath": "v4/projects/{projectsId}/tenants/{tenantsId}:completeQuery",
                             "httpMethod": "GET",
                             "id": "jobs.projects.tenants.completeQuery",
                             "parameterOrder": [
@@ -220,6 +222,7 @@
                         },
                         "create": {
                             "description": "Creates a new tenant entity.",
+                            "flatPath": "v4/projects/{projectsId}/tenants",
                             "httpMethod": "POST",
                             "id": "jobs.projects.tenants.create",
                             "parameterOrder": [
@@ -248,6 +251,7 @@
                         },
                         "delete": {
                             "description": "Deletes specified tenant.",
+                            "flatPath": "v4/projects/{projectsId}/tenants/{tenantsId}",
                             "httpMethod": "DELETE",
                             "id": "jobs.projects.tenants.delete",
                             "parameterOrder": [
@@ -273,6 +277,7 @@
                         },
                         "get": {
                             "description": "Retrieves specified tenant.",
+                            "flatPath": "v4/projects/{projectsId}/tenants/{tenantsId}",
                             "httpMethod": "GET",
                             "id": "jobs.projects.tenants.get",
                             "parameterOrder": [
@@ -298,6 +303,7 @@
                         },
                         "list": {
                             "description": "Lists all tenants associated with the project.",
+                            "flatPath": "v4/projects/{projectsId}/tenants",
                             "httpMethod": "GET",
                             "id": "jobs.projects.tenants.list",
                             "parameterOrder": [
@@ -334,6 +340,7 @@
                         },
                         "patch": {
                             "description": "Updates specified tenant.",
+                            "flatPath": "v4/projects/{projectsId}/tenants/{tenantsId}",
                             "httpMethod": "PATCH",
                             "id": "jobs.projects.tenants.patch",
                             "parameterOrder": [
@@ -372,6 +379,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Report events issued when end user interacts with customer's application that uses Cloud Talent Solution. You may inspect the created events in [self service tools](https://console.cloud.google.com/talent-solution/overview). [Learn more](https://cloud.google.com/talent-solution/docs/management-tools) about self service tools.",
+                                    "flatPath": "v4/projects/{projectsId}/tenants/{tenantsId}/clientEvents",
                                     "httpMethod": "POST",
                                     "id": "jobs.projects.tenants.clientEvents.create",
                                     "parameterOrder": [
@@ -404,6 +412,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a new company entity.",
+                                    "flatPath": "v4/projects/{projectsId}/tenants/{tenantsId}/companies",
                                     "httpMethod": "POST",
                                     "id": "jobs.projects.tenants.companies.create",
                                     "parameterOrder": [
@@ -432,6 +441,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes specified company. Prerequisite: The company has no jobs associated with it.",
+                                    "flatPath": "v4/projects/{projectsId}/tenants/{tenantsId}/companies/{companiesId}",
                                     "httpMethod": "DELETE",
                                     "id": "jobs.projects.tenants.companies.delete",
                                     "parameterOrder": [
@@ -457,6 +467,7 @@
                                 },
                                 "get": {
                                     "description": "Retrieves specified company.",
+                                    "flatPath": "v4/projects/{projectsId}/tenants/{tenantsId}/companies/{companiesId}",
                                     "httpMethod": "GET",
                                     "id": "jobs.projects.tenants.companies.get",
                                     "parameterOrder": [
@@ -482,6 +493,7 @@
                                 },
                                 "list": {
                                     "description": "Lists all companies associated with the project.",
+                                    "flatPath": "v4/projects/{projectsId}/tenants/{tenantsId}/companies",
                                     "httpMethod": "GET",
                                     "id": "jobs.projects.tenants.companies.list",
                                     "parameterOrder": [
@@ -523,6 +535,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates specified company.",
+                                    "flatPath": "v4/projects/{projectsId}/tenants/{tenantsId}/companies/{companiesId}",
                                     "httpMethod": "PATCH",
                                     "id": "jobs.projects.tenants.companies.patch",
                                     "parameterOrder": [
@@ -561,6 +574,7 @@
                             "methods": {
                                 "batchCreate": {
                                     "description": "Begins executing a batch create jobs operation.",
+                                    "flatPath": "v4/projects/{projectsId}/tenants/{tenantsId}/jobs:batchCreate",
                                     "httpMethod": "POST",
                                     "id": "jobs.projects.tenants.jobs.batchCreate",
                                     "parameterOrder": [
@@ -589,6 +603,7 @@
                                 },
                                 "batchDelete": {
                                     "description": "Begins executing a batch delete jobs operation.",
+                                    "flatPath": "v4/projects/{projectsId}/tenants/{tenantsId}/jobs:batchDelete",
                                     "httpMethod": "POST",
                                     "id": "jobs.projects.tenants.jobs.batchDelete",
                                     "parameterOrder": [
@@ -617,6 +632,7 @@
                                 },
                                 "batchUpdate": {
                                     "description": "Begins executing a batch update jobs operation.",
+                                    "flatPath": "v4/projects/{projectsId}/tenants/{tenantsId}/jobs:batchUpdate",
                                     "httpMethod": "POST",
                                     "id": "jobs.projects.tenants.jobs.batchUpdate",
                                     "parameterOrder": [
@@ -645,6 +661,7 @@
                                 },
                                 "create": {
                                     "description": "Creates a new job. Typically, the job becomes searchable within 10 seconds, but it may take up to 5 minutes.",
+                                    "flatPath": "v4/projects/{projectsId}/tenants/{tenantsId}/jobs",
                                     "httpMethod": "POST",
                                     "id": "jobs.projects.tenants.jobs.create",
                                     "parameterOrder": [
@@ -673,6 +690,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes the specified job. Typically, the job becomes unsearchable within 10 seconds, but it may take up to 5 minutes.",
+                                    "flatPath": "v4/projects/{projectsId}/tenants/{tenantsId}/jobs/{jobsId}",
                                     "httpMethod": "DELETE",
                                     "id": "jobs.projects.tenants.jobs.delete",
                                     "parameterOrder": [
@@ -698,6 +716,7 @@
                                 },
                                 "get": {
                                     "description": "Retrieves the specified job, whose status is OPEN or recently EXPIRED within the last 90 days.",
+                                    "flatPath": "v4/projects/{projectsId}/tenants/{tenantsId}/jobs/{jobsId}",
                                     "httpMethod": "GET",
                                     "id": "jobs.projects.tenants.jobs.get",
                                     "parameterOrder": [
@@ -723,6 +742,7 @@
                                 },
                                 "list": {
                                     "description": "Lists jobs by filter.",
+                                    "flatPath": "v4/projects/{projectsId}/tenants/{tenantsId}/jobs",
                                     "httpMethod": "GET",
                                     "id": "jobs.projects.tenants.jobs.list",
                                     "parameterOrder": [
@@ -783,6 +803,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates specified job. Typically, updated contents become visible in search results within 10 seconds, but it may take up to 5 minutes.",
+                                    "flatPath": "v4/projects/{projectsId}/tenants/{tenantsId}/jobs/{jobsId}",
                                     "httpMethod": "PATCH",
                                     "id": "jobs.projects.tenants.jobs.patch",
                                     "parameterOrder": [
@@ -817,6 +838,7 @@
                                 },
                                 "search": {
                                     "description": "Searches for jobs using the provided SearchJobsRequest. This call constrains the visibility of jobs present in the database, and only returns jobs that the caller has permission to search against.",
+                                    "flatPath": "v4/projects/{projectsId}/tenants/{tenantsId}/jobs:search",
                                     "httpMethod": "POST",
                                     "id": "jobs.projects.tenants.jobs.search",
                                     "parameterOrder": [
@@ -845,6 +867,7 @@
                                 },
                                 "searchForAlert": {
                                     "description": "Searches for jobs using the provided SearchJobsRequest. This API call is intended for the use case of targeting passive job seekers (for example, job seekers who have signed up to receive email alerts about potential job opportunities), it has different algorithmic adjustments that are designed to specifically target passive job seekers. This call constrains the visibility of jobs present in the database, and only returns jobs the caller has permission to search against.",
+                                    "flatPath": "v4/projects/{projectsId}/tenants/{tenantsId}/jobs:searchForAlert",
                                     "httpMethod": "POST",
                                     "id": "jobs.projects.tenants.jobs.searchForAlert",
                                     "parameterOrder": [
@@ -878,7 +901,7 @@
             }
         }
     },
-    "revision": "20210504",
+    "revision": "20210506",
     "rootUrl": "https://jobs.googleapis.com/",
     "schemas": {
         "ApplicationInfo": {
@@ -2205,7 +2228,7 @@
             "type": "object"
         },
         "LatLng": {
-            "description": "An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this must conform to the WGS84 standard. Values must be within normalized ranges.",
+            "description": "An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard. Values must be within normalized ranges.",
             "id": "LatLng",
             "properties": {
                 "latitude": {

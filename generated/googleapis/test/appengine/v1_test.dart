@@ -3094,6 +3094,7 @@ api.VpcAccessConnector buildVpcAccessConnector() {
   var o = api.VpcAccessConnector();
   buildCounterVpcAccessConnector++;
   if (buildCounterVpcAccessConnector < 3) {
+    o.egressSetting = 'foo';
     o.name = 'foo';
   }
   buildCounterVpcAccessConnector--;
@@ -3103,6 +3104,10 @@ api.VpcAccessConnector buildVpcAccessConnector() {
 void checkVpcAccessConnector(api.VpcAccessConnector o) {
   buildCounterVpcAccessConnector++;
   if (buildCounterVpcAccessConnector < 3) {
+    unittest.expect(
+      o.egressSetting!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.name!,
       unittest.equals('foo'),

@@ -110,6 +110,7 @@
             "methods": {
                 "list": {
                     "description": "Lists all the achievement definitions for your application.",
+                    "flatPath": "games/v1/achievements",
                     "httpMethod": "GET",
                     "id": "games.achievementDefinitions.list",
                     "parameterOrder": [],
@@ -145,6 +146,7 @@
             "methods": {
                 "increment": {
                     "description": "Increments the steps of the achievement with the given ID for the currently authenticated player.",
+                    "flatPath": "games/v1/achievements/{achievementId}/increment",
                     "httpMethod": "POST",
                     "id": "games.achievements.increment",
                     "parameterOrder": [
@@ -182,6 +184,7 @@
                 },
                 "list": {
                     "description": "Lists the progress for all your application's achievements for the currently authenticated player.",
+                    "flatPath": "games/v1/players/{playerId}/achievements",
                     "httpMethod": "GET",
                     "id": "games.achievements.list",
                     "parameterOrder": [
@@ -238,6 +241,7 @@
                 },
                 "reveal": {
                     "description": "Sets the state of the achievement with the given ID to `REVEALED` for the currently authenticated player.",
+                    "flatPath": "games/v1/achievements/{achievementId}/reveal",
                     "httpMethod": "POST",
                     "id": "games.achievements.reveal",
                     "parameterOrder": [
@@ -261,6 +265,7 @@
                 },
                 "setStepsAtLeast": {
                     "description": "Sets the steps for the currently authenticated player towards unlocking an achievement. If the steps parameter is less than the current number of steps that the player already gained for the achievement, the achievement is not modified.",
+                    "flatPath": "games/v1/achievements/{achievementId}/setStepsAtLeast",
                     "httpMethod": "POST",
                     "id": "games.achievements.setStepsAtLeast",
                     "parameterOrder": [
@@ -292,6 +297,7 @@
                 },
                 "unlock": {
                     "description": "Unlocks this achievement for the currently authenticated player.",
+                    "flatPath": "games/v1/achievements/{achievementId}/unlock",
                     "httpMethod": "POST",
                     "id": "games.achievements.unlock",
                     "parameterOrder": [
@@ -315,6 +321,7 @@
                 },
                 "updateMultiple": {
                     "description": "Updates multiple achievements for the currently authenticated player.",
+                    "flatPath": "games/v1/achievements/updateMultiple",
                     "httpMethod": "POST",
                     "id": "games.achievements.updateMultiple",
                     "parameterOrder": [],
@@ -336,6 +343,7 @@
             "methods": {
                 "get": {
                     "description": "Retrieves the metadata of the application with the given ID. If the requested application is not available for the specified `platformType`, the returned response will not include any instance data.",
+                    "flatPath": "games/v1/applications/{applicationId}",
                     "httpMethod": "GET",
                     "id": "games.applications.get",
                     "parameterOrder": [
@@ -381,6 +389,7 @@
                 },
                 "getEndPoint": {
                     "description": "Returns a URL for the requested end point type.",
+                    "flatPath": "games/v1/applications/getEndPoint",
                     "httpMethod": "POST",
                     "id": "games.applications.getEndPoint",
                     "parameterOrder": [],
@@ -416,6 +425,7 @@
                 },
                 "played": {
                     "description": "Indicate that the currently authenticated user is playing your application.",
+                    "flatPath": "games/v1/applications/played",
                     "httpMethod": "POST",
                     "id": "games.applications.played",
                     "parameterOrder": [],
@@ -427,6 +437,7 @@
                 },
                 "verify": {
                     "description": "Verifies the auth token provided with this request is for the application with the specified ID, and returns the ID of the player it was granted for.",
+                    "flatPath": "games/v1/applications/{applicationId}/verify",
                     "httpMethod": "GET",
                     "id": "games.applications.verify",
                     "parameterOrder": [
@@ -454,6 +465,7 @@
             "methods": {
                 "listByPlayer": {
                     "description": "Returns a list showing the current progress on events in this application for the currently authenticated user.",
+                    "flatPath": "games/v1/events",
                     "httpMethod": "GET",
                     "id": "games.events.listByPlayer",
                     "parameterOrder": [],
@@ -485,6 +497,7 @@
                 },
                 "listDefinitions": {
                     "description": "Returns a list of the event definitions in this application.",
+                    "flatPath": "games/v1/eventDefinitions",
                     "httpMethod": "GET",
                     "id": "games.events.listDefinitions",
                     "parameterOrder": [],
@@ -516,6 +529,7 @@
                 },
                 "record": {
                     "description": "Records a batch of changes to the number of times events have occurred for the currently authenticated user of this application.",
+                    "flatPath": "games/v1/events",
                     "httpMethod": "POST",
                     "id": "games.events.record",
                     "parameterOrder": [],
@@ -543,6 +557,7 @@
             "methods": {
                 "get": {
                     "description": "Retrieves the metadata of the leaderboard with the given ID.",
+                    "flatPath": "games/v1/leaderboards/{leaderboardId}",
                     "httpMethod": "GET",
                     "id": "games.leaderboards.get",
                     "parameterOrder": [
@@ -571,6 +586,7 @@
                 },
                 "list": {
                     "description": "Lists all the leaderboard metadata for your application.",
+                    "flatPath": "games/v1/leaderboards",
                     "httpMethod": "GET",
                     "id": "games.leaderboards.list",
                     "parameterOrder": [],
@@ -606,6 +622,7 @@
             "methods": {
                 "getMetagameConfig": {
                     "description": "Return the metagame configuration data for the calling application.",
+                    "flatPath": "games/v1/metagameConfig",
                     "httpMethod": "GET",
                     "id": "games.metagame.getMetagameConfig",
                     "parameterOrder": [],
@@ -620,6 +637,7 @@
                 },
                 "listCategoriesByPlayer": {
                     "description": "List play data aggregated per category for the player corresponding to `playerId`.",
+                    "flatPath": "games/v1/players/{playerId}/categories/{collection}",
                     "httpMethod": "GET",
                     "id": "games.metagame.listCategoriesByPlayer",
                     "parameterOrder": [
@@ -678,6 +696,7 @@
             "methods": {
                 "get": {
                     "description": "Retrieves the Player resource with the given ID. To retrieve the player for the currently authenticated user, set `playerId` to `me`.",
+                    "flatPath": "games/v1/players/{playerId}",
                     "httpMethod": "GET",
                     "id": "games.players.get",
                     "parameterOrder": [
@@ -706,6 +725,7 @@
                 },
                 "list": {
                     "description": "Get the collection of players for the currently authenticated user.",
+                    "flatPath": "games/v1/players/me/players/{collection}",
                     "httpMethod": "GET",
                     "id": "games.players.list",
                     "parameterOrder": [
@@ -759,6 +779,7 @@
             "methods": {
                 "check": {
                     "description": "Checks whether the games client is out of date.",
+                    "flatPath": "games/v1/revisions/check",
                     "httpMethod": "GET",
                     "id": "games.revisions.check",
                     "parameterOrder": [
@@ -786,6 +807,7 @@
             "methods": {
                 "get": {
                     "description": "Get high scores, and optionally ranks, in leaderboards for the currently authenticated player. For a specific time span, `leaderboardId` can be set to `ALL` to retrieve data for all leaderboards in a given time span. `NOTE: You cannot ask for 'ALL' leaderboards and 'ALL' timeSpans in the same request; only one parameter may be set to 'ALL'.",
+                    "flatPath": "games/v1/players/{playerId}/leaderboards/{leaderboardId}/scores/{timeSpan}",
                     "httpMethod": "GET",
                     "id": "games.scores.get",
                     "parameterOrder": [
@@ -872,6 +894,7 @@
                 },
                 "list": {
                     "description": "Lists the scores in a leaderboard, starting from the top.",
+                    "flatPath": "games/v1/leaderboards/{leaderboardId}/scores/{collection}",
                     "httpMethod": "GET",
                     "id": "games.scores.list",
                     "parameterOrder": [
@@ -949,6 +972,7 @@
                 },
                 "listWindow": {
                     "description": "Lists the scores in a leaderboard around (and including) a player's score.",
+                    "flatPath": "games/v1/leaderboards/{leaderboardId}/window/{collection}",
                     "httpMethod": "GET",
                     "id": "games.scores.listWindow",
                     "parameterOrder": [
@@ -1037,6 +1061,7 @@
                 },
                 "submit": {
                     "description": "Submits a score to the specified leaderboard.",
+                    "flatPath": "games/v1/leaderboards/{leaderboardId}/scores",
                     "httpMethod": "POST",
                     "id": "games.scores.submit",
                     "parameterOrder": [
@@ -1079,6 +1104,7 @@
                 },
                 "submitMultiple": {
                     "description": "Submits multiple scores to leaderboards.",
+                    "flatPath": "games/v1/leaderboards/scores",
                     "httpMethod": "POST",
                     "id": "games.scores.submitMultiple",
                     "parameterOrder": [],
@@ -1106,6 +1132,7 @@
             "methods": {
                 "get": {
                     "description": "Retrieves the metadata for a given snapshot ID.",
+                    "flatPath": "games/v1/snapshots/{snapshotId}",
                     "httpMethod": "GET",
                     "id": "games.snapshots.get",
                     "parameterOrder": [
@@ -1135,6 +1162,7 @@
                 },
                 "list": {
                     "description": "Retrieves a list of snapshots created by your application for the player corresponding to the player ID.",
+                    "flatPath": "games/v1/players/{playerId}/snapshots",
                     "httpMethod": "GET",
                     "id": "games.snapshots.list",
                     "parameterOrder": [
@@ -1179,6 +1207,7 @@
             "methods": {
                 "get": {
                     "description": "Returns engagement and spend statistics in this application for the currently authenticated user.",
+                    "flatPath": "games/v1/stats",
                     "httpMethod": "GET",
                     "id": "games.stats.get",
                     "parameterOrder": [],
@@ -1194,7 +1223,7 @@
             }
         }
     },
-    "revision": "20210513",
+    "revision": "20210614",
     "rootUrl": "https://games.googleapis.com/",
     "schemas": {
         "AchievementDefinition": {

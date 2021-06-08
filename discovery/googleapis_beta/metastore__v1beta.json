@@ -109,6 +109,7 @@
                     "methods": {
                         "get": {
                             "description": "Gets information about a location.",
+                            "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}",
                             "httpMethod": "GET",
                             "id": "metastore.projects.locations.get",
                             "parameterOrder": [
@@ -133,6 +134,7 @@
                         },
                         "list": {
                             "description": "Lists information about the supported locations for this service.",
+                            "flatPath": "v1beta/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "metastore.projects.locations.list",
                             "parameterOrder": [
@@ -177,6 +179,7 @@
                             "methods": {
                                 "delete": {
                                     "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns google.rpc.Code.UNIMPLEMENTED.",
+                                    "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                                     "httpMethod": "DELETE",
                                     "id": "metastore.projects.locations.operations.delete",
                                     "parameterOrder": [
@@ -201,6 +204,7 @@
                                 },
                                 "get": {
                                     "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                                    "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                                     "httpMethod": "GET",
                                     "id": "metastore.projects.locations.operations.get",
                                     "parameterOrder": [
@@ -225,6 +229,7 @@
                                 },
                                 "list": {
                                     "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns UNIMPLEMENTED.NOTE: the name binding allows API services to override the binding to use different resource name schemes, such as users/*/operations. To override the binding, API services can add a binding such as \"/v1/{name=users/*}/operations\" to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                                    "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/operations",
                                     "httpMethod": "GET",
                                     "id": "metastore.projects.locations.operations.list",
                                     "parameterOrder": [
@@ -269,6 +274,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a metastore service in a project and location.",
+                                    "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services",
                                     "httpMethod": "POST",
                                     "id": "metastore.projects.locations.services.create",
                                     "parameterOrder": [
@@ -306,6 +312,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a single service.",
+                                    "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}",
                                     "httpMethod": "DELETE",
                                     "id": "metastore.projects.locations.services.delete",
                                     "parameterOrder": [
@@ -335,6 +342,7 @@
                                 },
                                 "exportMetadata": {
                                     "description": "Exports metadata from a service.",
+                                    "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}:exportMetadata",
                                     "httpMethod": "POST",
                                     "id": "metastore.projects.locations.services.exportMetadata",
                                     "parameterOrder": [
@@ -362,6 +370,7 @@
                                 },
                                 "get": {
                                     "description": "Gets the details of a single service.",
+                                    "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}",
                                     "httpMethod": "GET",
                                     "id": "metastore.projects.locations.services.get",
                                     "parameterOrder": [
@@ -386,6 +395,7 @@
                                 },
                                 "getIamPolicy": {
                                     "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
+                                    "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}:getIamPolicy",
                                     "httpMethod": "GET",
                                     "id": "metastore.projects.locations.services.getIamPolicy",
                                     "parameterOrder": [
@@ -416,6 +426,7 @@
                                 },
                                 "list": {
                                     "description": "Lists services in a project and location.",
+                                    "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services",
                                     "httpMethod": "GET",
                                     "id": "metastore.projects.locations.services.list",
                                     "parameterOrder": [
@@ -461,6 +472,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates the parameters of a single service.",
+                                    "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}",
                                     "httpMethod": "PATCH",
                                     "id": "metastore.projects.locations.services.patch",
                                     "parameterOrder": [
@@ -499,6 +511,7 @@
                                 },
                                 "restore": {
                                     "description": "Restores a service from a backup.",
+                                    "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}:restore",
                                     "httpMethod": "POST",
                                     "id": "metastore.projects.locations.services.restore",
                                     "parameterOrder": [
@@ -526,6 +539,7 @@
                                 },
                                 "setIamPolicy": {
                                     "description": "Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.",
+                                    "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}:setIamPolicy",
                                     "httpMethod": "POST",
                                     "id": "metastore.projects.locations.services.setIamPolicy",
                                     "parameterOrder": [
@@ -553,6 +567,7 @@
                                 },
                                 "testIamPermissions": {
                                     "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
+                                    "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}:testIamPermissions",
                                     "httpMethod": "POST",
                                     "id": "metastore.projects.locations.services.testIamPermissions",
                                     "parameterOrder": [
@@ -584,6 +599,7 @@
                                     "methods": {
                                         "create": {
                                             "description": "Creates a new backup in a given project and location.",
+                                            "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/backups",
                                             "httpMethod": "POST",
                                             "id": "metastore.projects.locations.services.backups.create",
                                             "parameterOrder": [
@@ -621,6 +637,7 @@
                                         },
                                         "delete": {
                                             "description": "Deletes a single backup.",
+                                            "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/backups/{backupsId}",
                                             "httpMethod": "DELETE",
                                             "id": "metastore.projects.locations.services.backups.delete",
                                             "parameterOrder": [
@@ -650,6 +667,7 @@
                                         },
                                         "get": {
                                             "description": "Gets details of a single backup.",
+                                            "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/backups/{backupsId}",
                                             "httpMethod": "GET",
                                             "id": "metastore.projects.locations.services.backups.get",
                                             "parameterOrder": [
@@ -672,8 +690,40 @@
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
+                                        "getIamPolicy": {
+                                            "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
+                                            "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/backups/{backupsId}:getIamPolicy",
+                                            "httpMethod": "GET",
+                                            "id": "metastore.projects.locations.services.backups.getIamPolicy",
+                                            "parameterOrder": [
+                                                "resource"
+                                            ],
+                                            "parameters": {
+                                                "options.requestedPolicyVersion": {
+                                                    "description": "Optional. The policy format version to be returned.Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.Requests for policies with any conditional bindings must specify version 3. Policies without any conditional bindings may specify any valid value or leave the field unset.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).",
+                                                    "format": "int32",
+                                                    "location": "query",
+                                                    "type": "integer"
+                                                },
+                                                "resource": {
+                                                    "description": "REQUIRED: The resource for which the policy is being requested. See the operation documentation for the appropriate value for this field.",
+                                                    "location": "path",
+                                                    "pattern": "^projects/[^/]+/locations/[^/]+/services/[^/]+/backups/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1beta/{+resource}:getIamPolicy",
+                                            "response": {
+                                                "$ref": "Policy"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
+                                        },
                                         "list": {
                                             "description": "Lists backups in a service.",
+                                            "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/backups",
                                             "httpMethod": "GET",
                                             "id": "metastore.projects.locations.services.backups.list",
                                             "parameterOrder": [
@@ -716,6 +766,62 @@
                                             "scopes": [
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
+                                        },
+                                        "setIamPolicy": {
+                                            "description": "Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.",
+                                            "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/backups/{backupsId}:setIamPolicy",
+                                            "httpMethod": "POST",
+                                            "id": "metastore.projects.locations.services.backups.setIamPolicy",
+                                            "parameterOrder": [
+                                                "resource"
+                                            ],
+                                            "parameters": {
+                                                "resource": {
+                                                    "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
+                                                    "location": "path",
+                                                    "pattern": "^projects/[^/]+/locations/[^/]+/services/[^/]+/backups/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1beta/{+resource}:setIamPolicy",
+                                            "request": {
+                                                "$ref": "SetIamPolicyRequest"
+                                            },
+                                            "response": {
+                                                "$ref": "Policy"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
+                                        },
+                                        "testIamPermissions": {
+                                            "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
+                                            "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/backups/{backupsId}:testIamPermissions",
+                                            "httpMethod": "POST",
+                                            "id": "metastore.projects.locations.services.backups.testIamPermissions",
+                                            "parameterOrder": [
+                                                "resource"
+                                            ],
+                                            "parameters": {
+                                                "resource": {
+                                                    "description": "REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for the appropriate value for this field.",
+                                                    "location": "path",
+                                                    "pattern": "^projects/[^/]+/locations/[^/]+/services/[^/]+/backups/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1beta/{+resource}:testIamPermissions",
+                                            "request": {
+                                                "$ref": "TestIamPermissionsRequest"
+                                            },
+                                            "response": {
+                                                "$ref": "TestIamPermissionsResponse"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
                                         }
                                     }
                                 },
@@ -723,6 +829,7 @@
                                     "methods": {
                                         "create": {
                                             "description": "Creates a new MetadataImport in a given project and location.",
+                                            "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/metadataImports",
                                             "httpMethod": "POST",
                                             "id": "metastore.projects.locations.services.metadataImports.create",
                                             "parameterOrder": [
@@ -760,6 +867,7 @@
                                         },
                                         "get": {
                                             "description": "Gets details of a single import.",
+                                            "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/metadataImports/{metadataImportsId}",
                                             "httpMethod": "GET",
                                             "id": "metastore.projects.locations.services.metadataImports.get",
                                             "parameterOrder": [
@@ -784,6 +892,7 @@
                                         },
                                         "list": {
                                             "description": "Lists imports in a service.",
+                                            "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/metadataImports",
                                             "httpMethod": "GET",
                                             "id": "metastore.projects.locations.services.metadataImports.list",
                                             "parameterOrder": [
@@ -829,6 +938,7 @@
                                         },
                                         "patch": {
                                             "description": "Updates a single import. Only the description field of MetadataImport is supported to be updated.",
+                                            "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/metadataImports/{metadataImportsId}",
                                             "httpMethod": "PATCH",
                                             "id": "metastore.projects.locations.services.metadataImports.patch",
                                             "parameterOrder": [
@@ -874,7 +984,7 @@
             }
         }
     },
-    "revision": "20210513",
+    "revision": "20210527",
     "rootUrl": "https://metastore.googleapis.com/",
     "schemas": {
         "AuditConfig": {

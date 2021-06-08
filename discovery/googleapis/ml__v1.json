@@ -110,6 +110,7 @@
             "methods": {
                 "explain": {
                     "description": "Performs explanation on the data in the request. {% dynamic include \"/ai-platform/includes/___explain-request\" %} ",
+                    "flatPath": "v1/projects/{projectsId}:explain",
                     "httpMethod": "POST",
                     "id": "ml.projects.explain",
                     "parameterOrder": [
@@ -137,6 +138,7 @@
                 },
                 "getConfig": {
                     "description": "Get the service account information associated with your project. You need this information in order to grant the service account permissions for the Google Cloud Storage location where you put your model training code for training the model with Google Cloud Machine Learning.",
+                    "flatPath": "v1/projects/{projectsId}:getConfig",
                     "httpMethod": "GET",
                     "id": "ml.projects.getConfig",
                     "parameterOrder": [
@@ -161,6 +163,7 @@
                 },
                 "predict": {
                     "description": "Performs online prediction on the data in the request. {% dynamic include \"/ai-platform/includes/___predict-request\" %} ",
+                    "flatPath": "v1/projects/{projectsId}:predict",
                     "httpMethod": "POST",
                     "id": "ml.projects.predict",
                     "parameterOrder": [
@@ -192,6 +195,7 @@
                     "methods": {
                         "cancel": {
                             "description": "Cancels a running job.",
+                            "flatPath": "v1/projects/{projectsId}/jobs/{jobsId}:cancel",
                             "httpMethod": "POST",
                             "id": "ml.projects.jobs.cancel",
                             "parameterOrder": [
@@ -219,6 +223,7 @@
                         },
                         "create": {
                             "description": "Creates a training or a batch prediction job.",
+                            "flatPath": "v1/projects/{projectsId}/jobs",
                             "httpMethod": "POST",
                             "id": "ml.projects.jobs.create",
                             "parameterOrder": [
@@ -246,6 +251,7 @@
                         },
                         "get": {
                             "description": "Describes a job.",
+                            "flatPath": "v1/projects/{projectsId}/jobs/{jobsId}",
                             "httpMethod": "GET",
                             "id": "ml.projects.jobs.get",
                             "parameterOrder": [
@@ -271,6 +277,7 @@
                         },
                         "getIamPolicy": {
                             "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
+                            "flatPath": "v1/projects/{projectsId}/jobs/{jobsId}:getIamPolicy",
                             "httpMethod": "GET",
                             "id": "ml.projects.jobs.getIamPolicy",
                             "parameterOrder": [
@@ -301,6 +308,7 @@
                         },
                         "list": {
                             "description": "Lists the jobs in the project. If there are no jobs that match the request parameters, the list request returns an empty response body: {}.",
+                            "flatPath": "v1/projects/{projectsId}/jobs",
                             "httpMethod": "GET",
                             "id": "ml.projects.jobs.list",
                             "parameterOrder": [
@@ -342,6 +350,7 @@
                         },
                         "patch": {
                             "description": "Updates a specific job resource. Currently the only supported fields to update are `labels`.",
+                            "flatPath": "v1/projects/{projectsId}/jobs/{jobsId}",
                             "httpMethod": "PATCH",
                             "id": "ml.projects.jobs.patch",
                             "parameterOrder": [
@@ -375,6 +384,7 @@
                         },
                         "setIamPolicy": {
                             "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
+                            "flatPath": "v1/projects/{projectsId}/jobs/{jobsId}:setIamPolicy",
                             "httpMethod": "POST",
                             "id": "ml.projects.jobs.setIamPolicy",
                             "parameterOrder": [
@@ -402,6 +412,7 @@
                         },
                         "testIamPermissions": {
                             "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
+                            "flatPath": "v1/projects/{projectsId}/jobs/{jobsId}:testIamPermissions",
                             "httpMethod": "POST",
                             "id": "ml.projects.jobs.testIamPermissions",
                             "parameterOrder": [
@@ -433,6 +444,7 @@
                     "methods": {
                         "get": {
                             "description": "Get the complete list of CMLE capabilities in a location, along with their location-specific properties.",
+                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}",
                             "httpMethod": "GET",
                             "id": "ml.projects.locations.get",
                             "parameterOrder": [
@@ -458,6 +470,7 @@
                         },
                         "list": {
                             "description": "List all locations that provides at least one type of CMLE capability.",
+                            "flatPath": "v1/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "ml.projects.locations.list",
                             "parameterOrder": [
@@ -498,6 +511,7 @@
                             "methods": {
                                 "cancel": {
                                     "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
                                     "httpMethod": "POST",
                                     "id": "ml.projects.locations.operations.cancel",
                                     "parameterOrder": [
@@ -522,6 +536,7 @@
                                 },
                                 "get": {
                                     "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                                     "httpMethod": "GET",
                                     "id": "ml.projects.locations.operations.get",
                                     "parameterOrder": [
@@ -550,6 +565,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a study.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/studies",
                                     "httpMethod": "POST",
                                     "id": "ml.projects.locations.studies.create",
                                     "parameterOrder": [
@@ -582,6 +598,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a study.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}",
                                     "httpMethod": "DELETE",
                                     "id": "ml.projects.locations.studies.delete",
                                     "parameterOrder": [
@@ -606,6 +623,7 @@
                                 },
                                 "get": {
                                     "description": "Gets a study.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}",
                                     "httpMethod": "GET",
                                     "id": "ml.projects.locations.studies.get",
                                     "parameterOrder": [
@@ -630,6 +648,7 @@
                                 },
                                 "list": {
                                     "description": "Lists all the studies in a region for an associated project.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/studies",
                                     "httpMethod": "GET",
                                     "id": "ml.projects.locations.studies.list",
                                     "parameterOrder": [
@@ -658,6 +677,7 @@
                                     "methods": {
                                         "addMeasurement": {
                                             "description": "Adds a measurement of the objective metrics to a trial. This measurement is assumed to have been taken before the trial is complete.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}/trials/{trialsId}:addMeasurement",
                                             "httpMethod": "POST",
                                             "id": "ml.projects.locations.studies.trials.addMeasurement",
                                             "parameterOrder": [
@@ -685,6 +705,7 @@
                                         },
                                         "checkEarlyStoppingState": {
                                             "description": "Checks whether a trial should stop or not. Returns a long-running operation. When the operation is successful, it will contain a CheckTrialEarlyStoppingStateResponse.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}/trials/{trialsId}:checkEarlyStoppingState",
                                             "httpMethod": "POST",
                                             "id": "ml.projects.locations.studies.trials.checkEarlyStoppingState",
                                             "parameterOrder": [
@@ -712,6 +733,7 @@
                                         },
                                         "complete": {
                                             "description": "Marks a trial as complete.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}/trials/{trialsId}:complete",
                                             "httpMethod": "POST",
                                             "id": "ml.projects.locations.studies.trials.complete",
                                             "parameterOrder": [
@@ -739,6 +761,7 @@
                                         },
                                         "create": {
                                             "description": "Adds a user provided trial to a study.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}/trials",
                                             "httpMethod": "POST",
                                             "id": "ml.projects.locations.studies.trials.create",
                                             "parameterOrder": [
@@ -766,6 +789,7 @@
                                         },
                                         "delete": {
                                             "description": "Deletes a trial.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}/trials/{trialsId}",
                                             "httpMethod": "DELETE",
                                             "id": "ml.projects.locations.studies.trials.delete",
                                             "parameterOrder": [
@@ -790,6 +814,7 @@
                                         },
                                         "get": {
                                             "description": "Gets a trial.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}/trials/{trialsId}",
                                             "httpMethod": "GET",
                                             "id": "ml.projects.locations.studies.trials.get",
                                             "parameterOrder": [
@@ -814,6 +839,7 @@
                                         },
                                         "list": {
                                             "description": "Lists the trials associated with a study.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}/trials",
                                             "httpMethod": "GET",
                                             "id": "ml.projects.locations.studies.trials.list",
                                             "parameterOrder": [
@@ -838,6 +864,7 @@
                                         },
                                         "listOptimalTrials": {
                                             "description": "Lists the pareto-optimal trials for multi-objective study or the optimal trials for single-objective study. The definition of pareto-optimal can be checked in wiki page. https://en.wikipedia.org/wiki/Pareto_efficiency",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}/trials:listOptimalTrials",
                                             "httpMethod": "POST",
                                             "id": "ml.projects.locations.studies.trials.listOptimalTrials",
                                             "parameterOrder": [
@@ -865,6 +892,7 @@
                                         },
                                         "stop": {
                                             "description": "Stops a trial.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}/trials/{trialsId}:stop",
                                             "httpMethod": "POST",
                                             "id": "ml.projects.locations.studies.trials.stop",
                                             "parameterOrder": [
@@ -892,6 +920,7 @@
                                         },
                                         "suggest": {
                                             "description": "Adds one or more trials to a study, with parameter values suggested by AI Platform Vizier. Returns a long-running operation associated with the generation of trial suggestions. When this long-running operation succeeds, it will contain a SuggestTrialsResponse.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}/trials:suggest",
                                             "httpMethod": "POST",
                                             "id": "ml.projects.locations.studies.trials.suggest",
                                             "parameterOrder": [
@@ -927,6 +956,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a model which will later contain one or more versions. You must add at least one version before you can request predictions from the model. Add versions by calling projects.models.versions.create.",
+                            "flatPath": "v1/projects/{projectsId}/models",
                             "httpMethod": "POST",
                             "id": "ml.projects.models.create",
                             "parameterOrder": [
@@ -954,6 +984,7 @@
                         },
                         "delete": {
                             "description": "Deletes a model. You can only delete a model if there are no versions in it. You can delete versions by calling projects.models.versions.delete.",
+                            "flatPath": "v1/projects/{projectsId}/models/{modelsId}",
                             "httpMethod": "DELETE",
                             "id": "ml.projects.models.delete",
                             "parameterOrder": [
@@ -978,6 +1009,7 @@
                         },
                         "get": {
                             "description": "Gets information about a model, including its name, the description (if set), and the default version (if at least one version of the model has been deployed).",
+                            "flatPath": "v1/projects/{projectsId}/models/{modelsId}",
                             "httpMethod": "GET",
                             "id": "ml.projects.models.get",
                             "parameterOrder": [
@@ -1003,6 +1035,7 @@
                         },
                         "getIamPolicy": {
                             "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
+                            "flatPath": "v1/projects/{projectsId}/models/{modelsId}:getIamPolicy",
                             "httpMethod": "GET",
                             "id": "ml.projects.models.getIamPolicy",
                             "parameterOrder": [
@@ -1033,6 +1066,7 @@
                         },
                         "list": {
                             "description": "Lists the models in a project. Each project can contain multiple models, and each model can have multiple versions. If there are no models that match the request parameters, the list request returns an empty response body: {}.",
+                            "flatPath": "v1/projects/{projectsId}/models",
                             "httpMethod": "GET",
                             "id": "ml.projects.models.list",
                             "parameterOrder": [
@@ -1074,6 +1108,7 @@
                         },
                         "patch": {
                             "description": "Updates a specific model resource. Currently the only supported fields to update are `description` and `default_version.name`.",
+                            "flatPath": "v1/projects/{projectsId}/models/{modelsId}",
                             "httpMethod": "PATCH",
                             "id": "ml.projects.models.patch",
                             "parameterOrder": [
@@ -1107,6 +1142,7 @@
                         },
                         "setIamPolicy": {
                             "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
+                            "flatPath": "v1/projects/{projectsId}/models/{modelsId}:setIamPolicy",
                             "httpMethod": "POST",
                             "id": "ml.projects.models.setIamPolicy",
                             "parameterOrder": [
@@ -1134,6 +1170,7 @@
                         },
                         "testIamPermissions": {
                             "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
+                            "flatPath": "v1/projects/{projectsId}/models/{modelsId}:testIamPermissions",
                             "httpMethod": "POST",
                             "id": "ml.projects.models.testIamPermissions",
                             "parameterOrder": [
@@ -1165,6 +1202,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a new version of a model from a trained TensorFlow model. If the version created in the cloud by this call is the first deployed version of the specified model, it will be made the default version of the model. When you add a version to a model that already has one or more versions, the default version does not automatically change. If you want a new version to be the default, you must call projects.models.versions.setDefault.",
+                                    "flatPath": "v1/projects/{projectsId}/models/{modelsId}/versions",
                                     "httpMethod": "POST",
                                     "id": "ml.projects.models.versions.create",
                                     "parameterOrder": [
@@ -1192,6 +1230,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a model version. Each model can have multiple versions deployed and in use at any given time. Use this method to remove a single version. Note: You cannot delete the version that is set as the default version of the model unless it is the only remaining version.",
+                                    "flatPath": "v1/projects/{projectsId}/models/{modelsId}/versions/{versionsId}",
                                     "httpMethod": "DELETE",
                                     "id": "ml.projects.models.versions.delete",
                                     "parameterOrder": [
@@ -1216,6 +1255,7 @@
                                 },
                                 "get": {
                                     "description": "Gets information about a model version. Models can have multiple versions. You can call projects.models.versions.list to get the same information that this method returns for all of the versions of a model.",
+                                    "flatPath": "v1/projects/{projectsId}/models/{modelsId}/versions/{versionsId}",
                                     "httpMethod": "GET",
                                     "id": "ml.projects.models.versions.get",
                                     "parameterOrder": [
@@ -1240,6 +1280,7 @@
                                 },
                                 "list": {
                                     "description": "Gets basic information about all the versions of a model. If you expect that a model has many versions, or if you need to handle only a limited number of results at a time, you can request that the list be retrieved in batches (called pages). If there are no versions that match the request parameters, the list request returns an empty response body: {}.",
+                                    "flatPath": "v1/projects/{projectsId}/models/{modelsId}/versions",
                                     "httpMethod": "GET",
                                     "id": "ml.projects.models.versions.list",
                                     "parameterOrder": [
@@ -1281,6 +1322,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates the specified Version resource. Currently the only update-able fields are `description`, `requestLoggingConfig`, `autoScaling.minNodes`, and `manualScaling.nodes`.",
+                                    "flatPath": "v1/projects/{projectsId}/models/{modelsId}/versions/{versionsId}",
                                     "httpMethod": "PATCH",
                                     "id": "ml.projects.models.versions.patch",
                                     "parameterOrder": [
@@ -1314,6 +1356,7 @@
                                 },
                                 "setDefault": {
                                     "description": "Designates a version to be the default for the model. The default version is used for prediction requests made against the model that don't specify a version. The first version to be created for a model is automatically set as the default. You must make any subsequent changes to the default version setting manually using this method.",
+                                    "flatPath": "v1/projects/{projectsId}/models/{modelsId}/versions/{versionsId}:setDefault",
                                     "httpMethod": "POST",
                                     "id": "ml.projects.models.versions.setDefault",
                                     "parameterOrder": [
@@ -1347,6 +1390,7 @@
                     "methods": {
                         "cancel": {
                             "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                            "flatPath": "v1/projects/{projectsId}/operations/{operationsId}:cancel",
                             "httpMethod": "POST",
                             "id": "ml.projects.operations.cancel",
                             "parameterOrder": [
@@ -1371,6 +1415,7 @@
                         },
                         "get": {
                             "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                            "flatPath": "v1/projects/{projectsId}/operations/{operationsId}",
                             "httpMethod": "GET",
                             "id": "ml.projects.operations.get",
                             "parameterOrder": [
@@ -1395,6 +1440,7 @@
                         },
                         "list": {
                             "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                            "flatPath": "v1/projects/{projectsId}/operations",
                             "httpMethod": "GET",
                             "id": "ml.projects.operations.list",
                             "parameterOrder": [
@@ -1438,7 +1484,7 @@
             }
         }
     },
-    "revision": "20210429",
+    "revision": "20210601",
     "rootUrl": "https://ml.googleapis.com/",
     "schemas": {
         "GoogleApi__HttpBody": {

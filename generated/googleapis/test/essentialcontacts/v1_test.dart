@@ -27,14 +27,14 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<api.GoogleCloudEssentialcontactsV1Contact> buildUnnamed639() {
+core.List<api.GoogleCloudEssentialcontactsV1Contact> buildUnnamed640() {
   var o = <api.GoogleCloudEssentialcontactsV1Contact>[];
   o.add(buildGoogleCloudEssentialcontactsV1Contact());
   o.add(buildGoogleCloudEssentialcontactsV1Contact());
   return o;
 }
 
-void checkUnnamed639(core.List<api.GoogleCloudEssentialcontactsV1Contact> o) {
+void checkUnnamed640(core.List<api.GoogleCloudEssentialcontactsV1Contact> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudEssentialcontactsV1Contact(
       o[0] as api.GoogleCloudEssentialcontactsV1Contact);
@@ -48,7 +48,7 @@ api.GoogleCloudEssentialcontactsV1ComputeContactsResponse
   var o = api.GoogleCloudEssentialcontactsV1ComputeContactsResponse();
   buildCounterGoogleCloudEssentialcontactsV1ComputeContactsResponse++;
   if (buildCounterGoogleCloudEssentialcontactsV1ComputeContactsResponse < 3) {
-    o.contacts = buildUnnamed639();
+    o.contacts = buildUnnamed640();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudEssentialcontactsV1ComputeContactsResponse--;
@@ -59,7 +59,7 @@ void checkGoogleCloudEssentialcontactsV1ComputeContactsResponse(
     api.GoogleCloudEssentialcontactsV1ComputeContactsResponse o) {
   buildCounterGoogleCloudEssentialcontactsV1ComputeContactsResponse++;
   if (buildCounterGoogleCloudEssentialcontactsV1ComputeContactsResponse < 3) {
-    checkUnnamed639(o.contacts!);
+    checkUnnamed640(o.contacts!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -68,14 +68,14 @@ void checkGoogleCloudEssentialcontactsV1ComputeContactsResponse(
   buildCounterGoogleCloudEssentialcontactsV1ComputeContactsResponse--;
 }
 
-core.List<core.String> buildUnnamed640() {
+core.List<core.String> buildUnnamed641() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed640(core.List<core.String> o) {
+void checkUnnamed641(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -96,7 +96,7 @@ api.GoogleCloudEssentialcontactsV1Contact
     o.email = 'foo';
     o.languageTag = 'foo';
     o.name = 'foo';
-    o.notificationCategorySubscriptions = buildUnnamed640();
+    o.notificationCategorySubscriptions = buildUnnamed641();
     o.validateTime = 'foo';
     o.validationState = 'foo';
   }
@@ -120,7 +120,7 @@ void checkGoogleCloudEssentialcontactsV1Contact(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed640(o.notificationCategorySubscriptions!);
+    checkUnnamed641(o.notificationCategorySubscriptions!);
     unittest.expect(
       o.validateTime!,
       unittest.equals('foo'),
@@ -133,14 +133,14 @@ void checkGoogleCloudEssentialcontactsV1Contact(
   buildCounterGoogleCloudEssentialcontactsV1Contact--;
 }
 
-core.List<api.GoogleCloudEssentialcontactsV1Contact> buildUnnamed641() {
+core.List<api.GoogleCloudEssentialcontactsV1Contact> buildUnnamed642() {
   var o = <api.GoogleCloudEssentialcontactsV1Contact>[];
   o.add(buildGoogleCloudEssentialcontactsV1Contact());
   o.add(buildGoogleCloudEssentialcontactsV1Contact());
   return o;
 }
 
-void checkUnnamed641(core.List<api.GoogleCloudEssentialcontactsV1Contact> o) {
+void checkUnnamed642(core.List<api.GoogleCloudEssentialcontactsV1Contact> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudEssentialcontactsV1Contact(
       o[0] as api.GoogleCloudEssentialcontactsV1Contact);
@@ -154,7 +154,7 @@ api.GoogleCloudEssentialcontactsV1ListContactsResponse
   var o = api.GoogleCloudEssentialcontactsV1ListContactsResponse();
   buildCounterGoogleCloudEssentialcontactsV1ListContactsResponse++;
   if (buildCounterGoogleCloudEssentialcontactsV1ListContactsResponse < 3) {
-    o.contacts = buildUnnamed641();
+    o.contacts = buildUnnamed642();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudEssentialcontactsV1ListContactsResponse--;
@@ -165,7 +165,7 @@ void checkGoogleCloudEssentialcontactsV1ListContactsResponse(
     api.GoogleCloudEssentialcontactsV1ListContactsResponse o) {
   buildCounterGoogleCloudEssentialcontactsV1ListContactsResponse++;
   if (buildCounterGoogleCloudEssentialcontactsV1ListContactsResponse < 3) {
-    checkUnnamed641(o.contacts!);
+    checkUnnamed642(o.contacts!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -174,14 +174,14 @@ void checkGoogleCloudEssentialcontactsV1ListContactsResponse(
   buildCounterGoogleCloudEssentialcontactsV1ListContactsResponse--;
 }
 
-core.List<core.String> buildUnnamed642() {
+core.List<core.String> buildUnnamed643() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed642(core.List<core.String> o) {
+void checkUnnamed643(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -199,7 +199,7 @@ api.GoogleCloudEssentialcontactsV1SendTestMessageRequest
   var o = api.GoogleCloudEssentialcontactsV1SendTestMessageRequest();
   buildCounterGoogleCloudEssentialcontactsV1SendTestMessageRequest++;
   if (buildCounterGoogleCloudEssentialcontactsV1SendTestMessageRequest < 3) {
-    o.contacts = buildUnnamed642();
+    o.contacts = buildUnnamed643();
     o.notificationCategory = 'foo';
   }
   buildCounterGoogleCloudEssentialcontactsV1SendTestMessageRequest--;
@@ -210,7 +210,7 @@ void checkGoogleCloudEssentialcontactsV1SendTestMessageRequest(
     api.GoogleCloudEssentialcontactsV1SendTestMessageRequest o) {
   buildCounterGoogleCloudEssentialcontactsV1SendTestMessageRequest++;
   if (buildCounterGoogleCloudEssentialcontactsV1SendTestMessageRequest < 3) {
-    checkUnnamed642(o.contacts!);
+    checkUnnamed643(o.contacts!);
     unittest.expect(
       o.notificationCategory!,
       unittest.equals('foo'),
@@ -232,25 +232,6 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty++;
   if (buildCounterGoogleProtobufEmpty < 3) {}
   buildCounterGoogleProtobufEmpty--;
-}
-
-core.List<core.String> buildUnnamed643() {
-  var o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
-
-void checkUnnamed643(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
 }
 
 core.List<core.String> buildUnnamed644() {
@@ -280,6 +261,25 @@ core.List<core.String> buildUnnamed645() {
 }
 
 void checkUnnamed645(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed646() {
+  var o = <core.String>[];
+  o.add('foo');
+  o.add('foo');
+  return o;
+}
+
+void checkUnnamed646(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -356,7 +356,7 @@ void main() {
       var mock = HttpServerMock();
       var res = api.EssentialcontactsApi(mock).folders.contacts;
       var arg_parent = 'foo';
-      var arg_notificationCategories = buildUnnamed643();
+      var arg_notificationCategories = buildUnnamed644();
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
@@ -792,7 +792,7 @@ void main() {
       var mock = HttpServerMock();
       var res = api.EssentialcontactsApi(mock).organizations.contacts;
       var arg_parent = 'foo';
-      var arg_notificationCategories = buildUnnamed644();
+      var arg_notificationCategories = buildUnnamed645();
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
@@ -1228,7 +1228,7 @@ void main() {
       var mock = HttpServerMock();
       var res = api.EssentialcontactsApi(mock).projects.contacts;
       var arg_parent = 'foo';
-      var arg_notificationCategories = buildUnnamed645();
+      var arg_notificationCategories = buildUnnamed646();
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';

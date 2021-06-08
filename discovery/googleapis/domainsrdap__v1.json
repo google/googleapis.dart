@@ -98,6 +98,7 @@
             "methods": {
                 "get": {
                     "description": "The RDAP API recognizes this command from the RDAP specification but does not support it. The response is a formatted 501 error.",
+                    "flatPath": "v1/autnum/{autnumId}",
                     "httpMethod": "GET",
                     "id": "domainsrdap.autnum.get",
                     "parameterOrder": [
@@ -121,6 +122,7 @@
             "methods": {
                 "get": {
                     "description": "Look up RDAP information for a domain by name.",
+                    "flatPath": "v1/domain/{domainId}",
                     "httpMethod": "GET",
                     "id": "domainsrdap.domain.get",
                     "parameterOrder": [
@@ -146,6 +148,7 @@
             "methods": {
                 "get": {
                     "description": "The RDAP API recognizes this command from the RDAP specification but does not support it. The response is a formatted 501 error.",
+                    "flatPath": "v1/entity/{entityId}",
                     "httpMethod": "GET",
                     "id": "domainsrdap.entity.get",
                     "parameterOrder": [
@@ -169,6 +172,7 @@
             "methods": {
                 "get": {
                     "description": "The RDAP API recognizes this command from the RDAP specification but does not support it. The response is a formatted 501 error.",
+                    "flatPath": "v1/ip/{ipId}/{ipId1}",
                     "httpMethod": "GET",
                     "id": "domainsrdap.ip.get",
                     "parameterOrder": [
@@ -198,6 +202,7 @@
             "methods": {
                 "get": {
                     "description": "The RDAP API recognizes this command from the RDAP specification but does not support it. The response is a formatted 501 error.",
+                    "flatPath": "v1/nameserver/{nameserverId}",
                     "httpMethod": "GET",
                     "id": "domainsrdap.nameserver.get",
                     "parameterOrder": [
@@ -221,6 +226,7 @@
             "methods": {
                 "getDomains": {
                     "description": "The RDAP API recognizes this command from the RDAP specification but does not support it. The response is a formatted 501 error.",
+                    "flatPath": "v1/domains",
                     "httpMethod": "GET",
                     "id": "domainsrdap.getDomains",
                     "parameterOrder": [],
@@ -232,6 +238,7 @@
                 },
                 "getEntities": {
                     "description": "The RDAP API recognizes this command from the RDAP specification but does not support it. The response is a formatted 501 error.",
+                    "flatPath": "v1/entities",
                     "httpMethod": "GET",
                     "id": "domainsrdap.getEntities",
                     "parameterOrder": [],
@@ -243,6 +250,7 @@
                 },
                 "getHelp": {
                     "description": "Get help information for the RDAP API, including links to documentation.",
+                    "flatPath": "v1/help",
                     "httpMethod": "GET",
                     "id": "domainsrdap.getHelp",
                     "parameterOrder": [],
@@ -254,6 +262,7 @@
                 },
                 "getIp": {
                     "description": "The RDAP API recognizes this command from the RDAP specification but does not support it. The response is a formatted 501 error.",
+                    "flatPath": "v1/ip",
                     "httpMethod": "GET",
                     "id": "domainsrdap.getIp",
                     "parameterOrder": [],
@@ -265,6 +274,7 @@
                 },
                 "getNameservers": {
                     "description": "The RDAP API recognizes this command from the RDAP specification but does not support it. The response is a formatted 501 error.",
+                    "flatPath": "v1/nameservers",
                     "httpMethod": "GET",
                     "id": "domainsrdap.getNameservers",
                     "parameterOrder": [],
@@ -277,7 +287,7 @@
             }
         }
     },
-    "revision": "20210520",
+    "revision": "20210614",
     "rootUrl": "https://domainsrdap.googleapis.com/",
     "schemas": {
         "HttpBody": {

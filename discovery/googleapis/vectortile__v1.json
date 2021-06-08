@@ -98,6 +98,7 @@
             "methods": {
                 "get": {
                     "description": "Gets a feature tile by its tile resource name.",
+                    "flatPath": "v1/featuretiles/{featuretilesId}",
                     "httpMethod": "GET",
                     "id": "vectortile.featuretiles.get",
                     "parameterOrder": [
@@ -228,6 +229,7 @@
             "methods": {
                 "get": {
                     "description": "Gets a terrain tile by its tile resource name.",
+                    "flatPath": "v1/terraintiles/{terraintilesId}",
                     "httpMethod": "GET",
                     "id": "vectortile.terraintiles.get",
                     "parameterOrder": [
@@ -339,7 +341,7 @@
             }
         }
     },
-    "revision": "20210520",
+    "revision": "20210614",
     "rootUrl": "https://vectortile.googleapis.com/",
     "schemas": {
         "Area": {

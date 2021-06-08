@@ -3730,6 +3730,9 @@ class AutoprovisioningNodePoolDefaults {
   /// 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
   core.String? diskType;
 
+  /// The image type to use for NAP created node.
+  core.String? imageType;
+
   /// Specifies the node management options for NAP created node-pools.
   NodeManagement? management;
 
@@ -3767,6 +3770,9 @@ class AutoprovisioningNodePoolDefaults {
     if (_json.containsKey('diskType')) {
       diskType = _json['diskType'] as core.String;
     }
+    if (_json.containsKey('imageType')) {
+      imageType = _json['imageType'] as core.String;
+    }
     if (_json.containsKey('management')) {
       management = NodeManagement.fromJson(
           _json['management'] as core.Map<core.String, core.dynamic>);
@@ -3797,6 +3803,7 @@ class AutoprovisioningNodePoolDefaults {
         if (bootDiskKmsKey != null) 'bootDiskKmsKey': bootDiskKmsKey!,
         if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
         if (diskType != null) 'diskType': diskType!,
+        if (imageType != null) 'imageType': imageType!,
         if (management != null) 'management': management!.toJson(),
         if (minCpuPlatform != null) 'minCpuPlatform': minCpuPlatform!,
         if (oauthScopes != null) 'oauthScopes': oauthScopes!,
@@ -9015,7 +9022,8 @@ class StatusCondition {
   /// - "SET_BY_OPERATOR" : Cluster state was manually changed by an SRE due to
   /// a system logic error.
   /// - "CLOUD_KMS_KEY_ERROR" : Unable to perform an encrypt operation against
-  /// the CloudKMS key used for etcd level encryption. More codes TBA
+  /// the CloudKMS key used for etcd level encryption.
+  /// - "CA_EXPIRING" : Cluster CA is expiring soon.
   core.String? code;
 
   /// Human-friendly representation of the condition

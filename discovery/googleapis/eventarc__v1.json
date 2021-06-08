@@ -109,6 +109,7 @@
                     "methods": {
                         "get": {
                             "description": "Gets information about a location.",
+                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}",
                             "httpMethod": "GET",
                             "id": "eventarc.projects.locations.get",
                             "parameterOrder": [
@@ -133,6 +134,7 @@
                         },
                         "list": {
                             "description": "Lists information about the supported locations for this service.",
+                            "flatPath": "v1/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "eventarc.projects.locations.list",
                             "parameterOrder": [
@@ -177,6 +179,7 @@
                             "methods": {
                                 "cancel": {
                                     "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
                                     "httpMethod": "POST",
                                     "id": "eventarc.projects.locations.operations.cancel",
                                     "parameterOrder": [
@@ -204,6 +207,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                                     "httpMethod": "DELETE",
                                     "id": "eventarc.projects.locations.operations.delete",
                                     "parameterOrder": [
@@ -228,6 +232,7 @@
                                 },
                                 "get": {
                                     "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                                     "httpMethod": "GET",
                                     "id": "eventarc.projects.locations.operations.get",
                                     "parameterOrder": [
@@ -252,6 +257,7 @@
                                 },
                                 "list": {
                                     "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations",
                                     "httpMethod": "GET",
                                     "id": "eventarc.projects.locations.operations.list",
                                     "parameterOrder": [
@@ -296,6 +302,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Create a new trigger in a particular project and location.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/triggers",
                                     "httpMethod": "POST",
                                     "id": "eventarc.projects.locations.triggers.create",
                                     "parameterOrder": [
@@ -333,6 +340,7 @@
                                 },
                                 "delete": {
                                     "description": "Delete a single trigger.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/triggers/{triggersId}",
                                     "httpMethod": "DELETE",
                                     "id": "eventarc.projects.locations.triggers.delete",
                                     "parameterOrder": [
@@ -372,6 +380,7 @@
                                 },
                                 "get": {
                                     "description": "Get a single trigger.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/triggers/{triggersId}",
                                     "httpMethod": "GET",
                                     "id": "eventarc.projects.locations.triggers.get",
                                     "parameterOrder": [
@@ -396,6 +405,7 @@
                                 },
                                 "getIamPolicy": {
                                     "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/triggers/{triggersId}:getIamPolicy",
                                     "httpMethod": "GET",
                                     "id": "eventarc.projects.locations.triggers.getIamPolicy",
                                     "parameterOrder": [
@@ -426,6 +436,7 @@
                                 },
                                 "list": {
                                     "description": "List triggers.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/triggers",
                                     "httpMethod": "GET",
                                     "id": "eventarc.projects.locations.triggers.list",
                                     "parameterOrder": [
@@ -466,6 +477,7 @@
                                 },
                                 "patch": {
                                     "description": "Update a single trigger.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/triggers/{triggersId}",
                                     "httpMethod": "PATCH",
                                     "id": "eventarc.projects.locations.triggers.patch",
                                     "parameterOrder": [
@@ -509,6 +521,7 @@
                                 },
                                 "setIamPolicy": {
                                     "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/triggers/{triggersId}:setIamPolicy",
                                     "httpMethod": "POST",
                                     "id": "eventarc.projects.locations.triggers.setIamPolicy",
                                     "parameterOrder": [
@@ -536,6 +549,7 @@
                                 },
                                 "testIamPermissions": {
                                     "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/triggers/{triggersId}:testIamPermissions",
                                     "httpMethod": "POST",
                                     "id": "eventarc.projects.locations.triggers.testIamPermissions",
                                     "parameterOrder": [
@@ -568,7 +582,7 @@
             }
         }
     },
-    "revision": "20210514",
+    "revision": "20210604",
     "rootUrl": "https://eventarc.googleapis.com/",
     "schemas": {
         "AuditConfig": {

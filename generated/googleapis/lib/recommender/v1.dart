@@ -154,7 +154,7 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists insights for a Cloud project.
+  /// Lists insights for the specified Cloud Resource.
   ///
   /// Requires the recommender.*.list IAM permission for the specified insight
   /// type.
@@ -337,7 +337,7 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists recommendations for a Cloud project.
+  /// Lists recommendations for the specified Cloud Resource.
   ///
   /// Requires the recommender.*.list IAM permission for the specified
   /// recommender.
@@ -639,7 +639,7 @@ class FoldersLocationsInsightTypesInsightsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists insights for a Cloud project.
+  /// Lists insights for the specified Cloud Resource.
   ///
   /// Requires the recommender.*.list IAM permission for the specified insight
   /// type.
@@ -820,7 +820,7 @@ class FoldersLocationsRecommendersRecommendationsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists recommendations for a Cloud project.
+  /// Lists recommendations for the specified Cloud Resource.
   ///
   /// Requires the recommender.*.list IAM permission for the specified
   /// recommender.
@@ -1124,7 +1124,7 @@ class OrganizationsLocationsInsightTypesInsightsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists insights for a Cloud project.
+  /// Lists insights for the specified Cloud Resource.
   ///
   /// Requires the recommender.*.list IAM permission for the specified insight
   /// type.
@@ -1306,7 +1306,7 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists recommendations for a Cloud project.
+  /// Lists recommendations for the specified Cloud Resource.
   ///
   /// Requires the recommender.*.list IAM permission for the specified
   /// recommender.
@@ -1608,7 +1608,7 @@ class ProjectsLocationsInsightTypesInsightsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists insights for a Cloud project.
+  /// Lists insights for the specified Cloud Resource.
   ///
   /// Requires the recommender.*.list IAM permission for the specified insight
   /// type.
@@ -1789,7 +1789,7 @@ class ProjectsLocationsRecommendersRecommendationsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists recommendations for a Cloud project.
+  /// Lists recommendations for the specified Cloud Resource.
   ///
   /// Requires the recommender.*.list IAM permission for the specified
   /// recommender.
@@ -2524,7 +2524,7 @@ class GoogleCloudRecommenderV1MarkRecommendationSucceededRequest {
 class GoogleCloudRecommenderV1Operation {
   /// Type of this operation.
   ///
-  /// Contains one of 'and', 'remove', 'replace', 'move', 'copy', 'test' and
+  /// Contains one of 'add', 'remove', 'replace', 'move', 'copy', 'test' and
   /// custom operations. This field is case-insensitive and always populated.
   core.String? action;
 

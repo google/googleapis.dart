@@ -111,6 +111,7 @@
                             "methods": {
                                 "list": {
                                     "description": "Lists all the catalog configurations associated with the project.",
+                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs",
                                     "httpMethod": "GET",
                                     "id": "recommendationengine.projects.locations.catalogs.list",
                                     "parameterOrder": [
@@ -146,6 +147,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates the catalog configuration.",
+                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}",
                                     "httpMethod": "PATCH",
                                     "id": "recommendationengine.projects.locations.catalogs.patch",
                                     "parameterOrder": [
@@ -183,6 +185,7 @@
                                     "methods": {
                                         "create": {
                                             "description": "Creates a catalog item.",
+                                            "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/catalogItems",
                                             "httpMethod": "POST",
                                             "id": "recommendationengine.projects.locations.catalogs.catalogItems.create",
                                             "parameterOrder": [
@@ -210,6 +213,7 @@
                                         },
                                         "delete": {
                                             "description": "Deletes a catalog item.",
+                                            "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/catalogItems/{catalogItemsId}",
                                             "httpMethod": "DELETE",
                                             "id": "recommendationengine.projects.locations.catalogs.catalogItems.delete",
                                             "parameterOrder": [
@@ -234,6 +238,7 @@
                                         },
                                         "get": {
                                             "description": "Gets a specific catalog item.",
+                                            "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/catalogItems/{catalogItemsId}",
                                             "httpMethod": "GET",
                                             "id": "recommendationengine.projects.locations.catalogs.catalogItems.get",
                                             "parameterOrder": [
@@ -258,6 +263,7 @@
                                         },
                                         "import": {
                                             "description": "Bulk import of multiple catalog items. Request processing may be synchronous. No partial updating supported. Non-existing items will be created. Operation.response is of type ImportResponse. Note that it is possible for a subset of the items to be successfully updated.",
+                                            "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/catalogItems:import",
                                             "httpMethod": "POST",
                                             "id": "recommendationengine.projects.locations.catalogs.catalogItems.import",
                                             "parameterOrder": [
@@ -285,6 +291,7 @@
                                         },
                                         "list": {
                                             "description": "Gets a list of catalog items.",
+                                            "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/catalogItems",
                                             "httpMethod": "GET",
                                             "id": "recommendationengine.projects.locations.catalogs.catalogItems.list",
                                             "parameterOrder": [
@@ -325,6 +332,7 @@
                                         },
                                         "patch": {
                                             "description": "Updates a catalog item. Partial updating is supported. Non-existing items will be created.",
+                                            "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/catalogItems/{catalogItemsId}",
                                             "httpMethod": "PATCH",
                                             "id": "recommendationengine.projects.locations.catalogs.catalogItems.patch",
                                             "parameterOrder": [
@@ -364,6 +372,7 @@
                                             "methods": {
                                                 "get": {
                                                     "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/eventStores/{eventStoresId}/operations/{operationsId}",
                                                     "httpMethod": "GET",
                                                     "id": "recommendationengine.projects.locations.catalogs.eventStores.operations.get",
                                                     "parameterOrder": [
@@ -388,6 +397,7 @@
                                                 },
                                                 "list": {
                                                     "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/eventStores/{eventStoresId}/operations",
                                                     "httpMethod": "GET",
                                                     "id": "recommendationengine.projects.locations.catalogs.eventStores.operations.list",
                                                     "parameterOrder": [
@@ -432,6 +442,7 @@
                                             "methods": {
                                                 "predict": {
                                                     "description": "Makes a recommendation prediction. If using API Key based authentication, the API Key must be registered using the PredictionApiKeyRegistry service. [Learn more](https://cloud.google.com/recommendations-ai/docs/setting-up#register-key).",
+                                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/eventStores/{eventStoresId}/placements/{placementsId}:predict",
                                                     "httpMethod": "POST",
                                                     "id": "recommendationengine.projects.locations.catalogs.eventStores.placements.predict",
                                                     "parameterOrder": [
@@ -463,6 +474,7 @@
                                             "methods": {
                                                 "create": {
                                                     "description": "Register an API key for use with predict method.",
+                                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/eventStores/{eventStoresId}/predictionApiKeyRegistrations",
                                                     "httpMethod": "POST",
                                                     "id": "recommendationengine.projects.locations.catalogs.eventStores.predictionApiKeyRegistrations.create",
                                                     "parameterOrder": [
@@ -490,6 +502,7 @@
                                                 },
                                                 "delete": {
                                                     "description": "Unregister an apiKey from using for predict method.",
+                                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/eventStores/{eventStoresId}/predictionApiKeyRegistrations/{predictionApiKeyRegistrationsId}",
                                                     "httpMethod": "DELETE",
                                                     "id": "recommendationengine.projects.locations.catalogs.eventStores.predictionApiKeyRegistrations.delete",
                                                     "parameterOrder": [
@@ -514,6 +527,7 @@
                                                 },
                                                 "list": {
                                                     "description": "List the registered apiKeys for use with predict method.",
+                                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/eventStores/{eventStoresId}/predictionApiKeyRegistrations",
                                                     "httpMethod": "GET",
                                                     "id": "recommendationengine.projects.locations.catalogs.eventStores.predictionApiKeyRegistrations.list",
                                                     "parameterOrder": [
@@ -553,6 +567,7 @@
                                             "methods": {
                                                 "collect": {
                                                     "description": "Writes a single user event from the browser. This uses a GET request to due to browser restriction of POST-ing to a 3rd party domain. This method is used only by the Recommendations AI JavaScript pixel. Users should not call this method directly.",
+                                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/eventStores/{eventStoresId}/userEvents:collect",
                                                     "httpMethod": "GET",
                                                     "id": "recommendationengine.projects.locations.catalogs.eventStores.userEvents.collect",
                                                     "parameterOrder": [
@@ -593,6 +608,7 @@
                                                 },
                                                 "import": {
                                                     "description": "Bulk import of User events. Request processing might be synchronous. Events that already exist are skipped. Use this method for backfilling historical user events. Operation.response is of type ImportResponse. Note that it is possible for a subset of the items to be successfully inserted. Operation.metadata is of type ImportMetadata.",
+                                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/eventStores/{eventStoresId}/userEvents:import",
                                                     "httpMethod": "POST",
                                                     "id": "recommendationengine.projects.locations.catalogs.eventStores.userEvents.import",
                                                     "parameterOrder": [
@@ -620,6 +636,7 @@
                                                 },
                                                 "list": {
                                                     "description": "Gets a list of user events within a time range, with potential filtering. The method does not list unjoined user events. Unjoined user event definition: when a user event is ingested from Recommendations AI User Event APIs, the catalog item included in the user event is connected with the current catalog. If a catalog item of the ingested event is not in the current catalog, it could lead to degraded model quality. This is called an unjoined event.",
+                                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/eventStores/{eventStoresId}/userEvents",
                                                     "httpMethod": "GET",
                                                     "id": "recommendationengine.projects.locations.catalogs.eventStores.userEvents.list",
                                                     "parameterOrder": [
@@ -660,6 +677,7 @@
                                                 },
                                                 "purge": {
                                                     "description": "Deletes permanently all user events specified by the filter provided. Depending on the number of events specified by the filter, this operation could take hours or days to complete. To test a filter, use the list command first.",
+                                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/eventStores/{eventStoresId}/userEvents:purge",
                                                     "httpMethod": "POST",
                                                     "id": "recommendationengine.projects.locations.catalogs.eventStores.userEvents.purge",
                                                     "parameterOrder": [
@@ -687,6 +705,7 @@
                                                 },
                                                 "rejoin": {
                                                     "description": "Triggers a user event rejoin operation with latest catalog data. Events will not be annotated with detailed catalog information if catalog item is missing at the time the user event is ingested, and these events are stored as unjoined events with a limited usage on training and serving. This API can be used to trigger a 'join' operation on specified events with latest version of catalog items. It can also be used to correct events joined with wrong catalog items.",
+                                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/eventStores/{eventStoresId}/userEvents:rejoin",
                                                     "httpMethod": "POST",
                                                     "id": "recommendationengine.projects.locations.catalogs.eventStores.userEvents.rejoin",
                                                     "parameterOrder": [
@@ -714,6 +733,7 @@
                                                 },
                                                 "write": {
                                                     "description": "Writes a single user event.",
+                                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/eventStores/{eventStoresId}/userEvents:write",
                                                     "httpMethod": "POST",
                                                     "id": "recommendationengine.projects.locations.catalogs.eventStores.userEvents.write",
                                                     "parameterOrder": [
@@ -747,6 +767,7 @@
                                     "methods": {
                                         "get": {
                                             "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                                            "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/operations/{operationsId}",
                                             "httpMethod": "GET",
                                             "id": "recommendationengine.projects.locations.catalogs.operations.get",
                                             "parameterOrder": [
@@ -771,6 +792,7 @@
                                         },
                                         "list": {
                                             "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                                            "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/operations",
                                             "httpMethod": "GET",
                                             "id": "recommendationengine.projects.locations.catalogs.operations.list",
                                             "parameterOrder": [
@@ -818,7 +840,7 @@
             }
         }
     },
-    "revision": "20210514",
+    "revision": "20210528",
     "rootUrl": "https://recommendationengine.googleapis.com/",
     "schemas": {
         "GoogleApiHttpBody": {

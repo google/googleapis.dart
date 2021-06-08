@@ -1756,7 +1756,9 @@ class ReplicationStatus {
 class Rotation {
   /// Timestamp in UTC at which the Secret is scheduled to rotate.
   ///
-  /// next_rotation_time MUST be set if rotation_period is set.
+  /// Cannot be set to less than 300s (5 min) in the future and at most
+  /// 3153600000s (100 years). next_rotation_time MUST be set if rotation_period
+  /// is set.
   ///
   /// Optional.
   core.String? nextRotationTime;

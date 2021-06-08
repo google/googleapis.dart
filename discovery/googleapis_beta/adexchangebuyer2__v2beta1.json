@@ -109,6 +109,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a new client buyer.",
+                            "flatPath": "v2beta1/accounts/{accountId}/clients",
                             "httpMethod": "POST",
                             "id": "adexchangebuyer2.accounts.clients.create",
                             "parameterOrder": [
@@ -136,6 +137,7 @@
                         },
                         "get": {
                             "description": "Gets a client buyer with a given client account ID.",
+                            "flatPath": "v2beta1/accounts/{accountId}/clients/{clientAccountId}",
                             "httpMethod": "GET",
                             "id": "adexchangebuyer2.accounts.clients.get",
                             "parameterOrder": [
@@ -168,6 +170,7 @@
                         },
                         "list": {
                             "description": "Lists all the clients for the current sponsor buyer.",
+                            "flatPath": "v2beta1/accounts/{accountId}/clients",
                             "httpMethod": "GET",
                             "id": "adexchangebuyer2.accounts.clients.list",
                             "parameterOrder": [
@@ -208,6 +211,7 @@
                         },
                         "update": {
                             "description": "Updates an existing client buyer.",
+                            "flatPath": "v2beta1/accounts/{accountId}/clients/{clientAccountId}",
                             "httpMethod": "PUT",
                             "id": "adexchangebuyer2.accounts.clients.update",
                             "parameterOrder": [
@@ -247,6 +251,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates and sends out an email invitation to access an Ad Exchange client buyer account.",
+                                    "flatPath": "v2beta1/accounts/{accountId}/clients/{clientAccountId}/invitations",
                                     "httpMethod": "POST",
                                     "id": "adexchangebuyer2.accounts.clients.invitations.create",
                                     "parameterOrder": [
@@ -282,6 +287,7 @@
                                 },
                                 "get": {
                                     "description": "Retrieves an existing client user invitation.",
+                                    "flatPath": "v2beta1/accounts/{accountId}/clients/{clientAccountId}/invitations/{invitationId}",
                                     "httpMethod": "GET",
                                     "id": "adexchangebuyer2.accounts.clients.invitations.get",
                                     "parameterOrder": [
@@ -322,6 +328,7 @@
                                 },
                                 "list": {
                                     "description": "Lists all the client users invitations for a client with a given account ID.",
+                                    "flatPath": "v2beta1/accounts/{accountId}/clients/{clientAccountId}/invitations",
                                     "httpMethod": "GET",
                                     "id": "adexchangebuyer2.accounts.clients.invitations.list",
                                     "parameterOrder": [
@@ -368,6 +375,7 @@
                             "methods": {
                                 "get": {
                                     "description": "Retrieves an existing client user.",
+                                    "flatPath": "v2beta1/accounts/{accountId}/clients/{clientAccountId}/users/{userId}",
                                     "httpMethod": "GET",
                                     "id": "adexchangebuyer2.accounts.clients.users.get",
                                     "parameterOrder": [
@@ -408,6 +416,7 @@
                                 },
                                 "list": {
                                     "description": "Lists all the known client users for a specified sponsor buyer account ID.",
+                                    "flatPath": "v2beta1/accounts/{accountId}/clients/{clientAccountId}/users",
                                     "httpMethod": "GET",
                                     "id": "adexchangebuyer2.accounts.clients.users.list",
                                     "parameterOrder": [
@@ -450,6 +459,7 @@
                                 },
                                 "update": {
                                     "description": "Updates an existing client user. Only the user status can be changed on update.",
+                                    "flatPath": "v2beta1/accounts/{accountId}/clients/{clientAccountId}/users/{userId}",
                                     "httpMethod": "PUT",
                                     "id": "adexchangebuyer2.accounts.clients.users.update",
                                     "parameterOrder": [
@@ -499,6 +509,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a creative.",
+                            "flatPath": "v2beta1/accounts/{accountId}/creatives",
                             "httpMethod": "POST",
                             "id": "adexchangebuyer2.accounts.creatives.create",
                             "parameterOrder": [
@@ -538,6 +549,7 @@
                         },
                         "get": {
                             "description": "Gets a creative.",
+                            "flatPath": "v2beta1/accounts/{accountId}/creatives/{creativeId}",
                             "httpMethod": "GET",
                             "id": "adexchangebuyer2.accounts.creatives.get",
                             "parameterOrder": [
@@ -568,6 +580,7 @@
                         },
                         "list": {
                             "description": "Lists creatives.",
+                            "flatPath": "v2beta1/accounts/{accountId}/creatives",
                             "httpMethod": "GET",
                             "id": "adexchangebuyer2.accounts.creatives.list",
                             "parameterOrder": [
@@ -607,6 +620,7 @@
                         },
                         "stopWatching": {
                             "description": "Stops watching a creative. Will stop push notifications being sent to the topics when the creative changes status.",
+                            "flatPath": "v2beta1/accounts/{accountId}/creatives/{creativeId}:stopWatching",
                             "httpMethod": "POST",
                             "id": "adexchangebuyer2.accounts.creatives.stopWatching",
                             "parameterOrder": [
@@ -640,6 +654,7 @@
                         },
                         "update": {
                             "description": "Updates a creative.",
+                            "flatPath": "v2beta1/accounts/{accountId}/creatives/{creativeId}",
                             "httpMethod": "PUT",
                             "id": "adexchangebuyer2.accounts.creatives.update",
                             "parameterOrder": [
@@ -673,6 +688,7 @@
                         },
                         "watch": {
                             "description": "Watches a creative. Will result in push notifications being sent to the topic when the creative changes status.",
+                            "flatPath": "v2beta1/accounts/{accountId}/creatives/{creativeId}:watch",
                             "httpMethod": "POST",
                             "id": "adexchangebuyer2.accounts.creatives.watch",
                             "parameterOrder": [
@@ -710,6 +726,7 @@
                             "methods": {
                                 "add": {
                                     "description": "Associate an existing deal with a creative.",
+                                    "flatPath": "v2beta1/accounts/{accountId}/creatives/{creativeId}/dealAssociations:add",
                                     "httpMethod": "POST",
                                     "id": "adexchangebuyer2.accounts.creatives.dealAssociations.add",
                                     "parameterOrder": [
@@ -743,6 +760,7 @@
                                 },
                                 "list": {
                                     "description": "List all creative-deal associations.",
+                                    "flatPath": "v2beta1/accounts/{accountId}/creatives/{creativeId}/dealAssociations",
                                     "httpMethod": "GET",
                                     "id": "adexchangebuyer2.accounts.creatives.dealAssociations.list",
                                     "parameterOrder": [
@@ -789,6 +807,7 @@
                                 },
                                 "remove": {
                                     "description": "Remove the association between a deal and a creative.",
+                                    "flatPath": "v2beta1/accounts/{accountId}/creatives/{creativeId}/dealAssociations:remove",
                                     "httpMethod": "POST",
                                     "id": "adexchangebuyer2.accounts.creatives.dealAssociations.remove",
                                     "parameterOrder": [
@@ -828,6 +847,7 @@
                     "methods": {
                         "list": {
                             "description": "List finalized proposals, regardless if a proposal is being renegotiated. A filter expression (PQL query) may be specified to filter the results. The notes will not be returned.",
+                            "flatPath": "v2beta1/accounts/{accountId}/finalizedProposals",
                             "httpMethod": "GET",
                             "id": "adexchangebuyer2.accounts.finalizedProposals.list",
                             "parameterOrder": [
@@ -879,6 +899,74 @@
                             "scopes": [
                                 "https://www.googleapis.com/auth/adexchange.buyer"
                             ]
+                        },
+                        "pause": {
+                            "description": "Update given deals to pause serving. This method will set the `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to true for all listed deals in the request. Currently, this method only applies to PG and PD deals. For PA deals, please call accounts.proposals.pause endpoint. It is a no-op to pause already-paused deals. It is an error to call PauseProposalDeals for deals which are not part of the proposal of proposal_id or which are not finalized or renegotiating.",
+                            "flatPath": "v2beta1/accounts/{accountId}/finalizedProposals/{proposalId}:pause",
+                            "httpMethod": "POST",
+                            "id": "adexchangebuyer2.accounts.finalizedProposals.pause",
+                            "parameterOrder": [
+                                "accountId",
+                                "proposalId"
+                            ],
+                            "parameters": {
+                                "accountId": {
+                                    "description": "Account ID of the buyer.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "proposalId": {
+                                    "description": "The proposal_id of the proposal containing the deals.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v2beta1/accounts/{accountId}/finalizedProposals/{proposalId}:pause",
+                            "request": {
+                                "$ref": "PauseProposalDealsRequest"
+                            },
+                            "response": {
+                                "$ref": "Proposal"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/adexchange.buyer"
+                            ]
+                        },
+                        "resume": {
+                            "description": "Update given deals to resume serving. This method will set the `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to false for all listed deals in the request. Currently, this method only applies to PG and PD deals. For PA deals, please call accounts.proposals.resume endpoint. It is a no-op to resume running deals or deals paused by the other party. It is an error to call ResumeProposalDeals for deals which are not part of the proposal of proposal_id or which are not finalized or renegotiating.",
+                            "flatPath": "v2beta1/accounts/{accountId}/finalizedProposals/{proposalId}:resume",
+                            "httpMethod": "POST",
+                            "id": "adexchangebuyer2.accounts.finalizedProposals.resume",
+                            "parameterOrder": [
+                                "accountId",
+                                "proposalId"
+                            ],
+                            "parameters": {
+                                "accountId": {
+                                    "description": "Account ID of the buyer.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "proposalId": {
+                                    "description": "The proposal_id of the proposal containing the deals.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v2beta1/accounts/{accountId}/finalizedProposals/{proposalId}:resume",
+                            "request": {
+                                "$ref": "ResumeProposalDealsRequest"
+                            },
+                            "response": {
+                                "$ref": "Proposal"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/adexchange.buyer"
+                            ]
                         }
                     }
                 },
@@ -886,6 +974,7 @@
                     "methods": {
                         "get": {
                             "description": "Gets the requested product by ID.",
+                            "flatPath": "v2beta1/accounts/{accountId}/products/{productId}",
                             "httpMethod": "GET",
                             "id": "adexchangebuyer2.accounts.products.get",
                             "parameterOrder": [
@@ -916,6 +1005,7 @@
                         },
                         "list": {
                             "description": "List all products visible to the buyer (optionally filtered by the specified PQL query).",
+                            "flatPath": "v2beta1/accounts/{accountId}/products",
                             "httpMethod": "GET",
                             "id": "adexchangebuyer2.accounts.products.list",
                             "parameterOrder": [
@@ -959,6 +1049,7 @@
                     "methods": {
                         "accept": {
                             "description": "Mark the proposal as accepted at the given revision number. If the number does not match the server's revision number an `ABORTED` error message will be returned. This call updates the proposal_state from `PROPOSED` to `BUYER_ACCEPTED`, or from `SELLER_ACCEPTED` to `FINALIZED`. Upon calling this endpoint, the buyer implicitly agrees to the terms and conditions optionally set within the proposal by the publisher.",
+                            "flatPath": "v2beta1/accounts/{accountId}/proposals/{proposalId}:accept",
                             "httpMethod": "POST",
                             "id": "adexchangebuyer2.accounts.proposals.accept",
                             "parameterOrder": [
@@ -992,6 +1083,7 @@
                         },
                         "addNote": {
                             "description": "Create a new note and attach it to the proposal. The note is assigned a unique ID by the server. The proposal revision number will not increase when associated with a new note.",
+                            "flatPath": "v2beta1/accounts/{accountId}/proposals/{proposalId}:addNote",
                             "httpMethod": "POST",
                             "id": "adexchangebuyer2.accounts.proposals.addNote",
                             "parameterOrder": [
@@ -1025,6 +1117,7 @@
                         },
                         "cancelNegotiation": {
                             "description": "Cancel an ongoing negotiation on a proposal. This does not cancel or end serving for the deals if the proposal has been finalized, but only cancels a negotiation unilaterally.",
+                            "flatPath": "v2beta1/accounts/{accountId}/proposals/{proposalId}:cancelNegotiation",
                             "httpMethod": "POST",
                             "id": "adexchangebuyer2.accounts.proposals.cancelNegotiation",
                             "parameterOrder": [
@@ -1058,6 +1151,7 @@
                         },
                         "completeSetup": {
                             "description": "Update the given proposal to indicate that setup has been completed. This method is called by the buyer when the line items have been created on their end for a finalized proposal and all the required creatives have been uploaded using the creatives API. This call updates the `is_setup_completed` bit on the proposal and also notifies the seller. The server will advance the revision number of the most recent proposal.",
+                            "flatPath": "v2beta1/accounts/{accountId}/proposals/{proposalId}:completeSetup",
                             "httpMethod": "POST",
                             "id": "adexchangebuyer2.accounts.proposals.completeSetup",
                             "parameterOrder": [
@@ -1091,6 +1185,7 @@
                         },
                         "create": {
                             "description": "Create the given proposal. Each created proposal and any deals it contains are assigned a unique ID by the server.",
+                            "flatPath": "v2beta1/accounts/{accountId}/proposals",
                             "httpMethod": "POST",
                             "id": "adexchangebuyer2.accounts.proposals.create",
                             "parameterOrder": [
@@ -1117,6 +1212,7 @@
                         },
                         "get": {
                             "description": "Gets a proposal given its ID. The proposal is returned at its head revision.",
+                            "flatPath": "v2beta1/accounts/{accountId}/proposals/{proposalId}",
                             "httpMethod": "GET",
                             "id": "adexchangebuyer2.accounts.proposals.get",
                             "parameterOrder": [
@@ -1147,6 +1243,7 @@
                         },
                         "list": {
                             "description": "List proposals. A filter expression (PQL query) may be specified to filter the results. To retrieve all finalized proposals, regardless if a proposal is being renegotiated, see the FinalizedProposals resource. Note that Bidder/ChildSeat relationships differ from the usual behavior. A Bidder account can only see its child seats' proposals by specifying the ChildSeat's accountId in the request path.",
+                            "flatPath": "v2beta1/accounts/{accountId}/proposals",
                             "httpMethod": "GET",
                             "id": "adexchangebuyer2.accounts.proposals.list",
                             "parameterOrder": [
@@ -1201,6 +1298,7 @@
                         },
                         "pause": {
                             "description": "Update the given proposal to pause serving. This method will set the `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to true for all deals in the proposal. It is a no-op to pause an already-paused proposal. It is an error to call PauseProposal for a proposal that is not finalized or renegotiating.",
+                            "flatPath": "v2beta1/accounts/{accountId}/proposals/{proposalId}:pause",
                             "httpMethod": "POST",
                             "id": "adexchangebuyer2.accounts.proposals.pause",
                             "parameterOrder": [
@@ -1234,6 +1332,7 @@
                         },
                         "resume": {
                             "description": "Update the given proposal to resume serving. This method will set the `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to false for all deals in the proposal. Note that if the `has_seller_paused` bit is also set, serving will not resume until the seller also resumes. It is a no-op to resume an already-running proposal. It is an error to call ResumeProposal for a proposal that is not finalized or renegotiating.",
+                            "flatPath": "v2beta1/accounts/{accountId}/proposals/{proposalId}:resume",
                             "httpMethod": "POST",
                             "id": "adexchangebuyer2.accounts.proposals.resume",
                             "parameterOrder": [
@@ -1267,6 +1366,7 @@
                         },
                         "update": {
                             "description": "Update the given proposal at the client known revision number. If the server revision has advanced since the passed-in `proposal.proposal_revision`, an `ABORTED` error message will be returned. Only the buyer-modifiable fields of the proposal will be updated. Note that the deals in the proposal will be updated to match the passed-in copy. If a passed-in deal does not have a `deal_id`, the server will assign a new unique ID and create the deal. If passed-in deal has a `deal_id`, it will be updated to match the passed-in copy. Any existing deals not present in the passed-in proposal will be deleted. It is an error to pass in a deal with a `deal_id` not present at head.",
+                            "flatPath": "v2beta1/accounts/{accountId}/proposals/{proposalId}",
                             "httpMethod": "PUT",
                             "id": "adexchangebuyer2.accounts.proposals.update",
                             "parameterOrder": [
@@ -1304,6 +1404,7 @@
                     "methods": {
                         "get": {
                             "description": "Gets the requested publisher profile by id.",
+                            "flatPath": "v2beta1/accounts/{accountId}/publisherProfiles/{publisherProfileId}",
                             "httpMethod": "GET",
                             "id": "adexchangebuyer2.accounts.publisherProfiles.get",
                             "parameterOrder": [
@@ -1334,6 +1435,7 @@
                         },
                         "list": {
                             "description": "List all publisher profiles visible to the buyer",
+                            "flatPath": "v2beta1/accounts/{accountId}/publisherProfiles",
                             "httpMethod": "GET",
                             "id": "adexchangebuyer2.accounts.publisherProfiles.list",
                             "parameterOrder": [
@@ -1378,6 +1480,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates the specified filter set for the account with the given account ID.",
+                                    "flatPath": "v2beta1/bidders/{biddersId}/accounts/{accountsId}/filterSets",
                                     "httpMethod": "POST",
                                     "id": "adexchangebuyer2.bidders.accounts.filterSets.create",
                                     "parameterOrder": [
@@ -1410,6 +1513,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes the requested filter set from the account with the given account ID.",
+                                    "flatPath": "v2beta1/bidders/{biddersId}/accounts/{accountsId}/filterSets/{filterSetsId}",
                                     "httpMethod": "DELETE",
                                     "id": "adexchangebuyer2.bidders.accounts.filterSets.delete",
                                     "parameterOrder": [
@@ -1434,6 +1538,7 @@
                                 },
                                 "get": {
                                     "description": "Retrieves the requested filter set for the account with the given account ID.",
+                                    "flatPath": "v2beta1/bidders/{biddersId}/accounts/{accountsId}/filterSets/{filterSetsId}",
                                     "httpMethod": "GET",
                                     "id": "adexchangebuyer2.bidders.accounts.filterSets.get",
                                     "parameterOrder": [
@@ -1458,6 +1563,7 @@
                                 },
                                 "list": {
                                     "description": "Lists all filter sets for the account with the given account ID.",
+                                    "flatPath": "v2beta1/bidders/{biddersId}/accounts/{accountsId}/filterSets",
                                     "httpMethod": "GET",
                                     "id": "adexchangebuyer2.bidders.accounts.filterSets.list",
                                     "parameterOrder": [
@@ -1497,6 +1603,7 @@
                                     "methods": {
                                         "list": {
                                             "description": "Lists all metrics that are measured in terms of number of bids.",
+                                            "flatPath": "v2beta1/bidders/{biddersId}/accounts/{accountsId}/filterSets/{filterSetsId}/bidMetrics",
                                             "httpMethod": "GET",
                                             "id": "adexchangebuyer2.bidders.accounts.filterSets.bidMetrics.list",
                                             "parameterOrder": [
@@ -1536,6 +1643,7 @@
                                     "methods": {
                                         "list": {
                                             "description": "List all errors that occurred in bid responses, with the number of bid responses affected for each reason.",
+                                            "flatPath": "v2beta1/bidders/{biddersId}/accounts/{accountsId}/filterSets/{filterSetsId}/bidResponseErrors",
                                             "httpMethod": "GET",
                                             "id": "adexchangebuyer2.bidders.accounts.filterSets.bidResponseErrors.list",
                                             "parameterOrder": [
@@ -1575,6 +1683,7 @@
                                     "methods": {
                                         "list": {
                                             "description": "List all reasons for which bid responses were considered to have no applicable bids, with the number of bid responses affected for each reason.",
+                                            "flatPath": "v2beta1/bidders/{biddersId}/accounts/{accountsId}/filterSets/{filterSetsId}/bidResponsesWithoutBids",
                                             "httpMethod": "GET",
                                             "id": "adexchangebuyer2.bidders.accounts.filterSets.bidResponsesWithoutBids.list",
                                             "parameterOrder": [
@@ -1614,6 +1723,7 @@
                                     "methods": {
                                         "list": {
                                             "description": "List all reasons that caused a bid request not to be sent for an impression, with the number of bid requests not sent for each reason.",
+                                            "flatPath": "v2beta1/bidders/{biddersId}/accounts/{accountsId}/filterSets/{filterSetsId}/filteredBidRequests",
                                             "httpMethod": "GET",
                                             "id": "adexchangebuyer2.bidders.accounts.filterSets.filteredBidRequests.list",
                                             "parameterOrder": [
@@ -1653,6 +1763,7 @@
                                     "methods": {
                                         "list": {
                                             "description": "List all reasons for which bids were filtered, with the number of bids filtered for each reason.",
+                                            "flatPath": "v2beta1/bidders/{biddersId}/accounts/{accountsId}/filterSets/{filterSetsId}/filteredBids",
                                             "httpMethod": "GET",
                                             "id": "adexchangebuyer2.bidders.accounts.filterSets.filteredBids.list",
                                             "parameterOrder": [
@@ -1692,6 +1803,7 @@
                                             "methods": {
                                                 "list": {
                                                     "description": "List all creatives associated with a specific reason for which bids were filtered, with the number of bids filtered for each creative.",
+                                                    "flatPath": "v2beta1/bidders/{biddersId}/accounts/{accountsId}/filterSets/{filterSetsId}/filteredBids/{creativeStatusId}/creatives",
                                                     "httpMethod": "GET",
                                                     "id": "adexchangebuyer2.bidders.accounts.filterSets.filteredBids.creatives.list",
                                                     "parameterOrder": [
@@ -1739,6 +1851,7 @@
                                             "methods": {
                                                 "list": {
                                                     "description": "List all details associated with a specific reason for which bids were filtered, with the number of bids filtered for each detail.",
+                                                    "flatPath": "v2beta1/bidders/{biddersId}/accounts/{accountsId}/filterSets/{filterSetsId}/filteredBids/{creativeStatusId}/details",
                                                     "httpMethod": "GET",
                                                     "id": "adexchangebuyer2.bidders.accounts.filterSets.filteredBids.details.list",
                                                     "parameterOrder": [
@@ -1788,6 +1901,7 @@
                                     "methods": {
                                         "list": {
                                             "description": "Lists all metrics that are measured in terms of number of impressions.",
+                                            "flatPath": "v2beta1/bidders/{biddersId}/accounts/{accountsId}/filterSets/{filterSetsId}/impressionMetrics",
                                             "httpMethod": "GET",
                                             "id": "adexchangebuyer2.bidders.accounts.filterSets.impressionMetrics.list",
                                             "parameterOrder": [
@@ -1827,6 +1941,7 @@
                                     "methods": {
                                         "list": {
                                             "description": "List all reasons for which bids lost in the auction, with the number of bids that lost for each reason.",
+                                            "flatPath": "v2beta1/bidders/{biddersId}/accounts/{accountsId}/filterSets/{filterSetsId}/losingBids",
                                             "httpMethod": "GET",
                                             "id": "adexchangebuyer2.bidders.accounts.filterSets.losingBids.list",
                                             "parameterOrder": [
@@ -1866,6 +1981,7 @@
                                     "methods": {
                                         "list": {
                                             "description": "List all reasons for which winning bids were not billable, with the number of bids not billed for each reason.",
+                                            "flatPath": "v2beta1/bidders/{biddersId}/accounts/{accountsId}/filterSets/{filterSetsId}/nonBillableWinningBids",
                                             "httpMethod": "GET",
                                             "id": "adexchangebuyer2.bidders.accounts.filterSets.nonBillableWinningBids.list",
                                             "parameterOrder": [
@@ -1909,6 +2025,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates the specified filter set for the account with the given account ID.",
+                            "flatPath": "v2beta1/bidders/{biddersId}/filterSets",
                             "httpMethod": "POST",
                             "id": "adexchangebuyer2.bidders.filterSets.create",
                             "parameterOrder": [
@@ -1941,6 +2058,7 @@
                         },
                         "delete": {
                             "description": "Deletes the requested filter set from the account with the given account ID.",
+                            "flatPath": "v2beta1/bidders/{biddersId}/filterSets/{filterSetsId}",
                             "httpMethod": "DELETE",
                             "id": "adexchangebuyer2.bidders.filterSets.delete",
                             "parameterOrder": [
@@ -1965,6 +2083,7 @@
                         },
                         "get": {
                             "description": "Retrieves the requested filter set for the account with the given account ID.",
+                            "flatPath": "v2beta1/bidders/{biddersId}/filterSets/{filterSetsId}",
                             "httpMethod": "GET",
                             "id": "adexchangebuyer2.bidders.filterSets.get",
                             "parameterOrder": [
@@ -1989,6 +2108,7 @@
                         },
                         "list": {
                             "description": "Lists all filter sets for the account with the given account ID.",
+                            "flatPath": "v2beta1/bidders/{biddersId}/filterSets",
                             "httpMethod": "GET",
                             "id": "adexchangebuyer2.bidders.filterSets.list",
                             "parameterOrder": [
@@ -2028,6 +2148,7 @@
                             "methods": {
                                 "list": {
                                     "description": "Lists all metrics that are measured in terms of number of bids.",
+                                    "flatPath": "v2beta1/bidders/{biddersId}/filterSets/{filterSetsId}/bidMetrics",
                                     "httpMethod": "GET",
                                     "id": "adexchangebuyer2.bidders.filterSets.bidMetrics.list",
                                     "parameterOrder": [
@@ -2067,6 +2188,7 @@
                             "methods": {
                                 "list": {
                                     "description": "List all errors that occurred in bid responses, with the number of bid responses affected for each reason.",
+                                    "flatPath": "v2beta1/bidders/{biddersId}/filterSets/{filterSetsId}/bidResponseErrors",
                                     "httpMethod": "GET",
                                     "id": "adexchangebuyer2.bidders.filterSets.bidResponseErrors.list",
                                     "parameterOrder": [
@@ -2106,6 +2228,7 @@
                             "methods": {
                                 "list": {
                                     "description": "List all reasons for which bid responses were considered to have no applicable bids, with the number of bid responses affected for each reason.",
+                                    "flatPath": "v2beta1/bidders/{biddersId}/filterSets/{filterSetsId}/bidResponsesWithoutBids",
                                     "httpMethod": "GET",
                                     "id": "adexchangebuyer2.bidders.filterSets.bidResponsesWithoutBids.list",
                                     "parameterOrder": [
@@ -2145,6 +2268,7 @@
                             "methods": {
                                 "list": {
                                     "description": "List all reasons that caused a bid request not to be sent for an impression, with the number of bid requests not sent for each reason.",
+                                    "flatPath": "v2beta1/bidders/{biddersId}/filterSets/{filterSetsId}/filteredBidRequests",
                                     "httpMethod": "GET",
                                     "id": "adexchangebuyer2.bidders.filterSets.filteredBidRequests.list",
                                     "parameterOrder": [
@@ -2184,6 +2308,7 @@
                             "methods": {
                                 "list": {
                                     "description": "List all reasons for which bids were filtered, with the number of bids filtered for each reason.",
+                                    "flatPath": "v2beta1/bidders/{biddersId}/filterSets/{filterSetsId}/filteredBids",
                                     "httpMethod": "GET",
                                     "id": "adexchangebuyer2.bidders.filterSets.filteredBids.list",
                                     "parameterOrder": [
@@ -2223,6 +2348,7 @@
                                     "methods": {
                                         "list": {
                                             "description": "List all creatives associated with a specific reason for which bids were filtered, with the number of bids filtered for each creative.",
+                                            "flatPath": "v2beta1/bidders/{biddersId}/filterSets/{filterSetsId}/filteredBids/{creativeStatusId}/creatives",
                                             "httpMethod": "GET",
                                             "id": "adexchangebuyer2.bidders.filterSets.filteredBids.creatives.list",
                                             "parameterOrder": [
@@ -2270,6 +2396,7 @@
                                     "methods": {
                                         "list": {
                                             "description": "List all details associated with a specific reason for which bids were filtered, with the number of bids filtered for each detail.",
+                                            "flatPath": "v2beta1/bidders/{biddersId}/filterSets/{filterSetsId}/filteredBids/{creativeStatusId}/details",
                                             "httpMethod": "GET",
                                             "id": "adexchangebuyer2.bidders.filterSets.filteredBids.details.list",
                                             "parameterOrder": [
@@ -2319,6 +2446,7 @@
                             "methods": {
                                 "list": {
                                     "description": "Lists all metrics that are measured in terms of number of impressions.",
+                                    "flatPath": "v2beta1/bidders/{biddersId}/filterSets/{filterSetsId}/impressionMetrics",
                                     "httpMethod": "GET",
                                     "id": "adexchangebuyer2.bidders.filterSets.impressionMetrics.list",
                                     "parameterOrder": [
@@ -2358,6 +2486,7 @@
                             "methods": {
                                 "list": {
                                     "description": "List all reasons for which bids lost in the auction, with the number of bids that lost for each reason.",
+                                    "flatPath": "v2beta1/bidders/{biddersId}/filterSets/{filterSetsId}/losingBids",
                                     "httpMethod": "GET",
                                     "id": "adexchangebuyer2.bidders.filterSets.losingBids.list",
                                     "parameterOrder": [
@@ -2397,6 +2526,7 @@
                             "methods": {
                                 "list": {
                                     "description": "List all reasons for which winning bids were not billable, with the number of bids not billed for each reason.",
+                                    "flatPath": "v2beta1/bidders/{biddersId}/filterSets/{filterSetsId}/nonBillableWinningBids",
                                     "httpMethod": "GET",
                                     "id": "adexchangebuyer2.bidders.filterSets.nonBillableWinningBids.list",
                                     "parameterOrder": [
@@ -2437,7 +2567,7 @@
             }
         }
     },
-    "revision": "20210520",
+    "revision": "20210615",
     "rootUrl": "https://adexchangebuyer.googleapis.com/",
     "schemas": {
         "AbsoluteDateRange": {
@@ -4273,7 +4403,9 @@
                         "DAY",
                         "WEEK",
                         "MONTH",
-                        "LIFETIME"
+                        "LIFETIME",
+                        "POD",
+                        "STREAM"
                     ],
                     "enumDescriptions": [
                         "A placeholder for an undefined time unit type. This just indicates the variable with this value hasn't been initialized.",
@@ -4282,7 +4414,9 @@
                         "Day",
                         "Week",
                         "Month",
-                        "Lifetime"
+                        "Lifetime",
+                        "Pod",
+                        "Stream"
                     ],
                     "type": "string"
                 }
@@ -5077,6 +5211,24 @@
             },
             "type": "object"
         },
+        "PauseProposalDealsRequest": {
+            "description": "Request message to pause serving for finalized deals.",
+            "id": "PauseProposalDealsRequest",
+            "properties": {
+                "externalDealIds": {
+                    "description": "The external_deal_id's of the deals to be paused. If empty, all the deals in the proposal will be paused.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "reason": {
+                    "description": "The reason why the deals are being paused. This human readable message will be displayed in the seller's UI. (Max length: 1000 unicode code units.)",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "PauseProposalRequest": {
             "description": "Request message to pause serving for an already-finalized proposal.",
             "id": "PauseProposalRequest",
@@ -5592,6 +5744,20 @@
                 "association": {
                     "$ref": "CreativeDealAssociation",
                     "description": "The association between a creative and a deal that should be removed."
+                }
+            },
+            "type": "object"
+        },
+        "ResumeProposalDealsRequest": {
+            "description": "Request message to resume (unpause) serving for already-finalized deals.",
+            "id": "ResumeProposalDealsRequest",
+            "properties": {
+                "externalDealIds": {
+                    "description": "The external_deal_id's of the deals to resume. If empty, all the deals in the proposal will be resumed.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"

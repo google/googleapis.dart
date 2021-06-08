@@ -106,6 +106,7 @@
             "methods": {
                 "get": {
                     "description": "Returns the Google service account that is used by Storage Transfer Service to access buckets in the project where transfers run or in other projects. Each Google service account is associated with one Google Cloud Platform Console project. Users should add this service account to the Google Cloud Storage bucket ACLs to grant access to Storage Transfer Service. This service account is created and owned by Storage Transfer Service and can only be used by Storage Transfer Service.",
+                    "flatPath": "v1/googleServiceAccounts/{projectId}",
                     "httpMethod": "GET",
                     "id": "storagetransfer.googleServiceAccounts.get",
                     "parameterOrder": [
@@ -133,6 +134,7 @@
             "methods": {
                 "create": {
                     "description": "Creates a transfer job that runs periodically.",
+                    "flatPath": "v1/transferJobs",
                     "httpMethod": "POST",
                     "id": "storagetransfer.transferJobs.create",
                     "parameterOrder": [],
@@ -150,6 +152,7 @@
                 },
                 "get": {
                     "description": "Gets a transfer job.",
+                    "flatPath": "v1/transferJobs/{transferJobsId}",
                     "httpMethod": "GET",
                     "id": "storagetransfer.transferJobs.get",
                     "parameterOrder": [
@@ -181,6 +184,7 @@
                 },
                 "list": {
                     "description": "Lists transfer jobs.",
+                    "flatPath": "v1/transferJobs",
                     "httpMethod": "GET",
                     "id": "storagetransfer.transferJobs.list",
                     "parameterOrder": [
@@ -215,6 +219,7 @@
                 },
                 "patch": {
                     "description": "Updates a transfer job. Updating a job's transfer spec does not affect transfer operations that are running already. **Note:** The job's status field can be modified using this RPC (for example, to set a job's status to DELETED, DISABLED, or ENABLED).",
+                    "flatPath": "v1/transferJobs/{transferJobsId}",
                     "httpMethod": "PATCH",
                     "id": "storagetransfer.transferJobs.patch",
                     "parameterOrder": [
@@ -242,6 +247,7 @@
                 },
                 "run": {
                     "description": "Attempts to start a new TransferOperation for the current TransferJob. A TransferJob has a maximum of one active TransferOperation. If this method is called while a TransferOperation is active, an error wil be returned.",
+                    "flatPath": "v1/transferJobs/{transferJobsId}:run",
                     "httpMethod": "POST",
                     "id": "storagetransfer.transferJobs.run",
                     "parameterOrder": [
@@ -273,6 +279,7 @@
             "methods": {
                 "cancel": {
                     "description": "Cancels a transfer. Use the transferOperations.get method to check if the cancellation succeeded or if the operation completed despite the `cancel` request. When you cancel an operation, the currently running transfer is interrupted. For recurring transfer jobs, the next instance of the transfer job will still run. For example, if your job is configured to run every day at 1pm and you cancel Monday's operation at 1:05pm, Monday's transfer will stop. However, a transfer job will still be attempted on Tuesday. This applies only to currently running operations. If an operation is not currently running, `cancel` does nothing. *Caution:* Canceling a transfer job can leave your data in an unknown state. We recommend that you restore the state at both the destination and the source after the `cancel` request completes so that your data is in a consistent state. When you cancel a job, the next job computes a delta of files and may repair any inconsistent state. For instance, if you run a job every day, and today's job found 10 new files and transferred five files before you canceled the job, tomorrow's transfer operation will compute a new delta with the five files that were not copied today plus any new files discovered tomorrow.",
+                    "flatPath": "v1/transferOperations/{transferOperationsId}:cancel",
                     "httpMethod": "POST",
                     "id": "storagetransfer.transferOperations.cancel",
                     "parameterOrder": [
@@ -300,6 +307,7 @@
                 },
                 "get": {
                     "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                    "flatPath": "v1/transferOperations/{transferOperationsId}",
                     "httpMethod": "GET",
                     "id": "storagetransfer.transferOperations.get",
                     "parameterOrder": [
@@ -324,6 +332,7 @@
                 },
                 "list": {
                     "description": "Lists transfer operations. Operations are ordered by their creation time in reverse chronological order.",
+                    "flatPath": "v1/transferOperations",
                     "httpMethod": "GET",
                     "id": "storagetransfer.transferOperations.list",
                     "parameterOrder": [
@@ -366,6 +375,7 @@
                 },
                 "pause": {
                     "description": "Pauses a transfer operation.",
+                    "flatPath": "v1/transferOperations/{transferOperationsId}:pause",
                     "httpMethod": "POST",
                     "id": "storagetransfer.transferOperations.pause",
                     "parameterOrder": [
@@ -393,6 +403,7 @@
                 },
                 "resume": {
                     "description": "Resumes a transfer operation that is paused.",
+                    "flatPath": "v1/transferOperations/{transferOperationsId}:resume",
                     "httpMethod": "POST",
                     "id": "storagetransfer.transferOperations.resume",
                     "parameterOrder": [
@@ -421,7 +432,7 @@
             }
         }
     },
-    "revision": "20210506",
+    "revision": "20210602",
     "rootUrl": "https://storagetransfer.googleapis.com/",
     "schemas": {
         "AwsAccessKey": {
@@ -445,7 +456,7 @@
             "properties": {
                 "awsAccessKey": {
                     "$ref": "AwsAccessKey",
-                    "description": "Required. Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials)."
+                    "description": "Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. This field is required. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials)."
                 },
                 "bucketName": {
                     "description": "Required. S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).",

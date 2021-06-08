@@ -1134,7 +1134,7 @@ class OrganizationsLocationsDlpJobsResource {
   ///
   /// [type] - The type of job. Defaults to `DlpJobType.INSPECT`
   /// Possible string values are:
-  /// - "DLP_JOB_TYPE_UNSPECIFIED" : Unused
+  /// - "DLP_JOB_TYPE_UNSPECIFIED" : Defaults to INSPECT_JOB.
   /// - "INSPECT_JOB" : The job inspected Google Cloud for sensitive data.
   /// - "RISK_ANALYSIS_JOB" : The job executed a Risk Analysis computation.
   ///
@@ -1640,6 +1640,12 @@ class OrganizationsLocationsJobTriggersResource {
   /// [pageToken] - Page token to continue retrieval. Comes from previous call
   /// to ListJobTriggers. `order_by` field must not change for subsequent calls.
   ///
+  /// [type] - The type of jobs. Will use `DlpJobType.INSPECT` if not set.
+  /// Possible string values are:
+  /// - "DLP_JOB_TYPE_UNSPECIFIED" : Defaults to INSPECT_JOB.
+  /// - "INSPECT_JOB" : The job inspected Google Cloud for sensitive data.
+  /// - "RISK_ANALYSIS_JOB" : The job executed a Risk Analysis computation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1657,6 +1663,7 @@ class OrganizationsLocationsJobTriggersResource {
     core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
+    core.String? type,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
@@ -1665,6 +1672,7 @@ class OrganizationsLocationsJobTriggersResource {
       if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (type != null) 'type': [type],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2977,7 +2985,7 @@ class ProjectsDlpJobsResource {
   ///
   /// [type] - The type of job. Defaults to `DlpJobType.INSPECT`
   /// Possible string values are:
-  /// - "DLP_JOB_TYPE_UNSPECIFIED" : Unused
+  /// - "DLP_JOB_TYPE_UNSPECIFIED" : Defaults to INSPECT_JOB.
   /// - "INSPECT_JOB" : The job inspected Google Cloud for sensitive data.
   /// - "RISK_ANALYSIS_JOB" : The job executed a Risk Analysis computation.
   ///
@@ -3586,6 +3594,12 @@ class ProjectsJobTriggersResource {
   /// [pageToken] - Page token to continue retrieval. Comes from previous call
   /// to ListJobTriggers. `order_by` field must not change for subsequent calls.
   ///
+  /// [type] - The type of jobs. Will use `DlpJobType.INSPECT` if not set.
+  /// Possible string values are:
+  /// - "DLP_JOB_TYPE_UNSPECIFIED" : Defaults to INSPECT_JOB.
+  /// - "INSPECT_JOB" : The job inspected Google Cloud for sensitive data.
+  /// - "RISK_ANALYSIS_JOB" : The job executed a Risk Analysis computation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3603,6 +3617,7 @@ class ProjectsJobTriggersResource {
     core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
+    core.String? type,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
@@ -3611,6 +3626,7 @@ class ProjectsJobTriggersResource {
       if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (type != null) 'type': [type],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -4477,7 +4493,7 @@ class ProjectsLocationsDlpJobsResource {
   ///
   /// [type] - The type of job. Defaults to `DlpJobType.INSPECT`
   /// Possible string values are:
-  /// - "DLP_JOB_TYPE_UNSPECIFIED" : Unused
+  /// - "DLP_JOB_TYPE_UNSPECIFIED" : Defaults to INSPECT_JOB.
   /// - "INSPECT_JOB" : The job inspected Google Cloud for sensitive data.
   /// - "RISK_ANALYSIS_JOB" : The job executed a Risk Analysis computation.
   ///
@@ -5139,6 +5155,12 @@ class ProjectsLocationsJobTriggersResource {
   /// [pageToken] - Page token to continue retrieval. Comes from previous call
   /// to ListJobTriggers. `order_by` field must not change for subsequent calls.
   ///
+  /// [type] - The type of jobs. Will use `DlpJobType.INSPECT` if not set.
+  /// Possible string values are:
+  /// - "DLP_JOB_TYPE_UNSPECIFIED" : Defaults to INSPECT_JOB.
+  /// - "INSPECT_JOB" : The job inspected Google Cloud for sensitive data.
+  /// - "RISK_ANALYSIS_JOB" : The job executed a Risk Analysis computation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -5156,6 +5178,7 @@ class ProjectsLocationsJobTriggersResource {
     core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
+    core.String? type,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
@@ -5164,6 +5187,7 @@ class ProjectsLocationsJobTriggersResource {
       if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (type != null) 'type': [type],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -8389,7 +8413,7 @@ class GooglePrivacyDlpV2DlpJob {
 
   /// The type of job.
   /// Possible string values are:
-  /// - "DLP_JOB_TYPE_UNSPECIFIED" : Unused
+  /// - "DLP_JOB_TYPE_UNSPECIFIED" : Defaults to INSPECT_JOB.
   /// - "INSPECT_JOB" : The job inspected Google Cloud for sensitive data.
   /// - "RISK_ANALYSIS_JOB" : The job executed a Risk Analysis computation.
   core.String? type;
@@ -8964,12 +8988,12 @@ class GooglePrivacyDlpV2FinishDlpJobRequest {
 /// The Bucketing transformation can provide all of this functionality, but
 /// requires more configuration. This message is provided as a convenience to
 /// the user for simple bucketing strategies. The transformed value will be a
-/// hyphenated string of {lower_bound}-{upper_bound}, i.e if lower_bound = 10
-/// and upper_bound = 20 all values that are within this bucket will be replaced
-/// with "10-20". This can be used on data of type: double, long. If the bound
-/// Value type differs from the type of data being transformed, we will first
-/// attempt converting the type of the data to be transformed to match the type
-/// of the bound before comparing. See
+/// hyphenated string of {lower_bound}-{upper_bound}. For example, if
+/// lower_bound = 10 and upper_bound = 20, all values that are within this
+/// bucket will be replaced with "10-20". This can be used on data of type:
+/// double, long. If the bound Value type differs from the type of data being
+/// transformed, we will first attempt converting the type of the data to be
+/// transformed to match the type of the bound before comparing. See
 /// https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
 class GooglePrivacyDlpV2FixedSizeBucketingConfig {
   /// Size of each bucket (except for minimum and maximum buckets).
@@ -10573,9 +10597,11 @@ class GooglePrivacyDlpV2KindExpression {
 
 /// Include to use an existing data crypto key wrapped by KMS.
 ///
-/// The wrapped key must be a 128/192/256 bit key. Authorization requires the
-/// following IAM permissions when sending a request to perform a crypto
-/// transformation using a kms-wrapped crypto key: dlp.kms.encrypt
+/// The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires
+/// the following IAM permissions when sending a request to perform a crypto
+/// transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more
+/// information, see
+/// [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key).
 class GooglePrivacyDlpV2KmsWrappedCryptoKey {
   /// The resource name of the KMS CryptoKey to use for unwrapping.
   ///

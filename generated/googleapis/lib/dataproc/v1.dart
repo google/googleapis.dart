@@ -4539,6 +4539,9 @@ class ClusterStatus {
   /// - "RUNNING" : The cluster is currently running and healthy. It is ready
   /// for use.
   /// - "ERROR" : The cluster encountered an error. It is not ready for use.
+  /// - "ERROR_DUE_TO_UPDATE" : The cluster has encountered an error while being
+  /// updated. Jobs can still be submitted to the cluster, but it can no longer
+  /// be updated.
   /// - "DELETING" : The cluster is being deleted. It cannot be used.
   /// - "UPDATING" : The cluster is being updated. It continues to accept and
   /// process jobs.
@@ -5630,7 +5633,10 @@ class InstanceReference {
   /// The user-friendly name of the Compute Engine instance.
   core.String? instanceName;
 
-  /// The public key used for sharing data with this instance.
+  /// The public ECIES key used for sharing data with this instance.
+  core.String? publicEciesKey;
+
+  /// The public RSA key used for sharing data with this instance.
   core.String? publicKey;
 
   InstanceReference();
@@ -5642,6 +5648,9 @@ class InstanceReference {
     if (_json.containsKey('instanceName')) {
       instanceName = _json['instanceName'] as core.String;
     }
+    if (_json.containsKey('publicEciesKey')) {
+      publicEciesKey = _json['publicEciesKey'] as core.String;
+    }
     if (_json.containsKey('publicKey')) {
       publicKey = _json['publicKey'] as core.String;
     }
@@ -5650,6 +5659,7 @@ class InstanceReference {
   core.Map<core.String, core.dynamic> toJson() => {
         if (instanceId != null) 'instanceId': instanceId!,
         if (instanceName != null) 'instanceName': instanceName!,
+        if (publicEciesKey != null) 'publicEciesKey': publicEciesKey!,
         if (publicKey != null) 'publicKey': publicKey!,
       };
 }

@@ -278,10 +278,10 @@ class AlertsResource {
   /// Inferred from the caller identity if not provided.
   ///
   /// [filter] - Optional. A query string for filtering alert results. For more
-  /// details, see \[Query
-  /// filters\](/admin-sdk/alertcenter/guides/query-filters) and \[Supported
-  /// query filter
-  /// fields\](/admin-sdk/alertcenter/reference/filter-fields#alerts.list).
+  /// details, see
+  /// [Query filters](https://developers.google.com/admin-sdk/alertcenter/guides/query-filters)
+  /// and
+  /// [Supported query filter fields](https://developers.google.com/admin-sdk/alertcenter/reference/filter-fields#alerts.list).
   ///
   /// [orderBy] - Optional. The sort order of the list results. If not specified
   /// results may be returned in arbitrary order. You can sort the results in
@@ -454,10 +454,10 @@ class AlertsFeedbackResource {
   /// with. Inferred from the caller identity if not provided.
   ///
   /// [filter] - Optional. A query string for filtering alert feedback results.
-  /// For more details, see \[Query
-  /// filters\](/admin-sdk/alertcenter/guides/query-filters) and \[Supported
-  /// query filter
-  /// fields\](/admin-sdk/alertcenter/reference/filter-fields#alerts.feedback.list).
+  /// For more details, see
+  /// [Query filters](https://developers.google.com/admin-sdk/alertcenter/guides/query-filters)
+  /// and
+  /// [Supported query filter fields](https://developers.google.com/admin-sdk/alertcenter/reference/filter-fields#alerts.feedback.list).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -804,7 +804,8 @@ class Alert {
   ///
   /// This is output only after alert is created. Supported sources are any of
   /// the following: * Google Operations * Mobile device management * Gmail
-  /// phishing * Domain wide takeout * State sponsored attack * Google identity
+  /// phishing * Data Loss Prevention * Domain wide takeout * State sponsored
+  /// attack * Google identity
   ///
   /// Required.
   core.String? source;
@@ -817,8 +818,8 @@ class Alert {
   /// The type of the alert.
   ///
   /// This is output only after alert is created. For a list of available alert
-  /// types see \[Google Workspace Alert
-  /// types\](/admin-sdk/alertcenter/reference/alert-types).
+  /// types see
+  /// [Google Workspace Alert types](https://developers.google.com/admin-sdk/alertcenter/reference/alert-types).
   ///
   /// Required.
   core.String? type;
@@ -1936,8 +1937,8 @@ class MatchInfo {
 
 /// Settings for callback notifications.
 ///
-/// For more details see \[Google Workspace Alert
-/// Notification\](/admin-sdk/alertcenter/guides/notifications).
+/// For more details see
+/// [Google Workspace Alert Notification](https://developers.google.com/admin-sdk/alertcenter/guides/notifications).
 class Notification {
   /// A Google Cloud Pub/sub topic destination.
   CloudPubsubTopic? cloudPubsubTopic;

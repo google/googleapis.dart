@@ -116,6 +116,7 @@
             "methods": {
                 "list": {
                     "description": "Returns summaries of all accounts accessible by the caller.",
+                    "flatPath": "v1alpha/accountSummaries",
                     "httpMethod": "GET",
                     "id": "analyticsadmin.accountSummaries.list",
                     "parameterOrder": [],
@@ -147,6 +148,7 @@
             "methods": {
                 "delete": {
                     "description": "Marks target Account as soft-deleted (ie: \"trashed\") and returns it. This API does not have a method to restore soft-deleted accounts. However, they can be restored using the Trash Can UI. If the accounts are not restored before the expiration time, the account and all child resources (eg: Properties, GoogleAdsLinks, Streams, UserLinks) will be permanently purged. https://support.google.com/analytics/answer/6154772 Returns an error if the target is not found.",
+                    "flatPath": "v1alpha/accounts/{accountsId}",
                     "httpMethod": "DELETE",
                     "id": "analyticsadmin.accounts.delete",
                     "parameterOrder": [
@@ -171,6 +173,7 @@
                 },
                 "get": {
                     "description": "Lookup for a single Account.",
+                    "flatPath": "v1alpha/accounts/{accountsId}",
                     "httpMethod": "GET",
                     "id": "analyticsadmin.accounts.get",
                     "parameterOrder": [
@@ -196,6 +199,7 @@
                 },
                 "getDataSharingSettings": {
                     "description": "Get data sharing settings on an account. Data sharing settings are singletons.",
+                    "flatPath": "v1alpha/accounts/{accountsId}/dataSharingSettings",
                     "httpMethod": "GET",
                     "id": "analyticsadmin.accounts.getDataSharingSettings",
                     "parameterOrder": [
@@ -221,6 +225,7 @@
                 },
                 "list": {
                     "description": "Returns all accounts accessible by the caller. Note that these accounts might not currently have GA4 properties. Soft-deleted (ie: \"trashed\") accounts are excluded by default. Returns an empty list if no relevant accounts are found.",
+                    "flatPath": "v1alpha/accounts",
                     "httpMethod": "GET",
                     "id": "analyticsadmin.accounts.list",
                     "parameterOrder": [],
@@ -253,6 +258,7 @@
                 },
                 "patch": {
                     "description": "Updates an account.",
+                    "flatPath": "v1alpha/accounts/{accountsId}",
                     "httpMethod": "PATCH",
                     "id": "analyticsadmin.accounts.patch",
                     "parameterOrder": [
@@ -286,6 +292,7 @@
                 },
                 "provisionAccountTicket": {
                     "description": "Requests a ticket for creating an account.",
+                    "flatPath": "v1alpha/accounts:provisionAccountTicket",
                     "httpMethod": "POST",
                     "id": "analyticsadmin.accounts.provisionAccountTicket",
                     "parameterOrder": [],
@@ -303,6 +310,7 @@
                 },
                 "searchChangeHistoryEvents": {
                     "description": "Searches through all changes to an account or its children given the specified set of filters.",
+                    "flatPath": "v1alpha/accounts/{accountsId}:searchChangeHistoryEvents",
                     "httpMethod": "POST",
                     "id": "analyticsadmin.accounts.searchChangeHistoryEvents",
                     "parameterOrder": [
@@ -334,6 +342,7 @@
                     "methods": {
                         "audit": {
                             "description": "Lists all user links on an account or property, including implicit ones that come from effective permissions granted by groups or organization admin roles. If a returned user link does not have direct permissions, they cannot be removed from the account or property directly with the DeleteUserLink command. They have to be removed from the group/etc that gives them permissions, which is currently only usable/discoverable in the GA or GMP UIs.",
+                            "flatPath": "v1alpha/accounts/{accountsId}/userLinks:audit",
                             "httpMethod": "POST",
                             "id": "analyticsadmin.accounts.userLinks.audit",
                             "parameterOrder": [
@@ -362,6 +371,7 @@
                         },
                         "batchCreate": {
                             "description": "Creates information about multiple users' links to an account or property. This method is transactional. If any UserLink cannot be created, none of the UserLinks will be created.",
+                            "flatPath": "v1alpha/accounts/{accountsId}/userLinks:batchCreate",
                             "httpMethod": "POST",
                             "id": "analyticsadmin.accounts.userLinks.batchCreate",
                             "parameterOrder": [
@@ -389,6 +399,7 @@
                         },
                         "batchDelete": {
                             "description": "Deletes information about multiple users' links to an account or property.",
+                            "flatPath": "v1alpha/accounts/{accountsId}/userLinks:batchDelete",
                             "httpMethod": "POST",
                             "id": "analyticsadmin.accounts.userLinks.batchDelete",
                             "parameterOrder": [
@@ -416,6 +427,7 @@
                         },
                         "batchGet": {
                             "description": "Gets information about multiple users' links to an account or property.",
+                            "flatPath": "v1alpha/accounts/{accountsId}/userLinks:batchGet",
                             "httpMethod": "GET",
                             "id": "analyticsadmin.accounts.userLinks.batchGet",
                             "parameterOrder": [
@@ -447,6 +459,7 @@
                         },
                         "batchUpdate": {
                             "description": "Updates information about multiple users' links to an account or property.",
+                            "flatPath": "v1alpha/accounts/{accountsId}/userLinks:batchUpdate",
                             "httpMethod": "POST",
                             "id": "analyticsadmin.accounts.userLinks.batchUpdate",
                             "parameterOrder": [
@@ -474,6 +487,7 @@
                         },
                         "create": {
                             "description": "Creates a user link on an account or property. If the user with the specified email already has permissions on the account or property, then the user's existing permissions will be unioned with the permissions specified in the new UserLink.",
+                            "flatPath": "v1alpha/accounts/{accountsId}/userLinks",
                             "httpMethod": "POST",
                             "id": "analyticsadmin.accounts.userLinks.create",
                             "parameterOrder": [
@@ -506,6 +520,7 @@
                         },
                         "delete": {
                             "description": "Deletes a user link on an account or property.",
+                            "flatPath": "v1alpha/accounts/{accountsId}/userLinks/{userLinksId}",
                             "httpMethod": "DELETE",
                             "id": "analyticsadmin.accounts.userLinks.delete",
                             "parameterOrder": [
@@ -530,6 +545,7 @@
                         },
                         "get": {
                             "description": "Gets information about a user's link to an account or property.",
+                            "flatPath": "v1alpha/accounts/{accountsId}/userLinks/{userLinksId}",
                             "httpMethod": "GET",
                             "id": "analyticsadmin.accounts.userLinks.get",
                             "parameterOrder": [
@@ -555,6 +571,7 @@
                         },
                         "list": {
                             "description": "Lists all user links on an account or property.",
+                            "flatPath": "v1alpha/accounts/{accountsId}/userLinks",
                             "httpMethod": "GET",
                             "id": "analyticsadmin.accounts.userLinks.list",
                             "parameterOrder": [
@@ -591,6 +608,7 @@
                         },
                         "patch": {
                             "description": "Updates a user link on an account or property.",
+                            "flatPath": "v1alpha/accounts/{accountsId}/userLinks/{userLinksId}",
                             "httpMethod": "PATCH",
                             "id": "analyticsadmin.accounts.userLinks.patch",
                             "parameterOrder": [
@@ -624,6 +642,7 @@
             "methods": {
                 "create": {
                     "description": "Creates an \"GA4\" property with the specified location and attributes.",
+                    "flatPath": "v1alpha/properties",
                     "httpMethod": "POST",
                     "id": "analyticsadmin.properties.create",
                     "parameterOrder": [],
@@ -641,6 +660,7 @@
                 },
                 "delete": {
                     "description": "Marks target Property as soft-deleted (ie: \"trashed\") and returns it. This API does not have a method to restore soft-deleted properties. However, they can be restored using the Trash Can UI. If the properties are not restored before the expiration time, the Property and all child resources (eg: GoogleAdsLinks, Streams, UserLinks) will be permanently purged. https://support.google.com/analytics/answer/6154772 Returns an error if the target is not found, or is not an GA4 Property.",
+                    "flatPath": "v1alpha/properties/{propertiesId}",
                     "httpMethod": "DELETE",
                     "id": "analyticsadmin.properties.delete",
                     "parameterOrder": [
@@ -665,6 +685,7 @@
                 },
                 "get": {
                     "description": "Lookup for a single \"GA4\" Property.",
+                    "flatPath": "v1alpha/properties/{propertiesId}",
                     "httpMethod": "GET",
                     "id": "analyticsadmin.properties.get",
                     "parameterOrder": [
@@ -690,6 +711,7 @@
                 },
                 "getGoogleSignalsSettings": {
                     "description": "Lookup for Google Signals settings for a property.",
+                    "flatPath": "v1alpha/properties/{propertiesId}/googleSignalsSettings",
                     "httpMethod": "GET",
                     "id": "analyticsadmin.properties.getGoogleSignalsSettings",
                     "parameterOrder": [
@@ -715,6 +737,7 @@
                 },
                 "list": {
                     "description": "Returns child Properties under the specified parent Account. Only \"GA4\" properties will be returned. Properties will be excluded if the caller does not have access. Soft-deleted (ie: \"trashed\") properties are excluded by default. Returns an empty list if no relevant properties are found.",
+                    "flatPath": "v1alpha/properties",
                     "httpMethod": "GET",
                     "id": "analyticsadmin.properties.list",
                     "parameterOrder": [],
@@ -752,6 +775,7 @@
                 },
                 "patch": {
                     "description": "Updates a property.",
+                    "flatPath": "v1alpha/properties/{propertiesId}",
                     "httpMethod": "PATCH",
                     "id": "analyticsadmin.properties.patch",
                     "parameterOrder": [
@@ -785,6 +809,7 @@
                 },
                 "updateGoogleSignalsSettings": {
                     "description": "Updates Google Signals settings for a property.",
+                    "flatPath": "v1alpha/properties/{propertiesId}/googleSignalsSettings",
                     "httpMethod": "PATCH",
                     "id": "analyticsadmin.properties.updateGoogleSignalsSettings",
                     "parameterOrder": [
@@ -822,6 +847,7 @@
                     "methods": {
                         "delete": {
                             "description": "Deletes an android app stream on a property.",
+                            "flatPath": "v1alpha/properties/{propertiesId}/androidAppDataStreams/{androidAppDataStreamsId}",
                             "httpMethod": "DELETE",
                             "id": "analyticsadmin.properties.androidAppDataStreams.delete",
                             "parameterOrder": [
@@ -846,6 +872,7 @@
                         },
                         "get": {
                             "description": "Lookup for a single AndroidAppDataStream",
+                            "flatPath": "v1alpha/properties/{propertiesId}/androidAppDataStreams/{androidAppDataStreamsId}",
                             "httpMethod": "GET",
                             "id": "analyticsadmin.properties.androidAppDataStreams.get",
                             "parameterOrder": [
@@ -871,6 +898,7 @@
                         },
                         "list": {
                             "description": "Returns child android app streams under the specified parent property. Android app streams will be excluded if the caller does not have access. Returns an empty list if no relevant android app streams are found.",
+                            "flatPath": "v1alpha/properties/{propertiesId}/androidAppDataStreams",
                             "httpMethod": "GET",
                             "id": "analyticsadmin.properties.androidAppDataStreams.list",
                             "parameterOrder": [
@@ -907,6 +935,7 @@
                         },
                         "patch": {
                             "description": "Updates an android app stream on a property.",
+                            "flatPath": "v1alpha/properties/{propertiesId}/androidAppDataStreams/{androidAppDataStreamsId}",
                             "httpMethod": "PATCH",
                             "id": "analyticsadmin.properties.androidAppDataStreams.patch",
                             "parameterOrder": [
@@ -944,6 +973,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a measurement protocol secret.",
+                                    "flatPath": "v1alpha/properties/{propertiesId}/androidAppDataStreams/{androidAppDataStreamsId}/measurementProtocolSecrets",
                                     "httpMethod": "POST",
                                     "id": "analyticsadmin.properties.androidAppDataStreams.measurementProtocolSecrets.create",
                                     "parameterOrder": [
@@ -971,6 +1001,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes target MeasurementProtocolSecret.",
+                                    "flatPath": "v1alpha/properties/{propertiesId}/androidAppDataStreams/{androidAppDataStreamsId}/measurementProtocolSecrets/{measurementProtocolSecretsId}",
                                     "httpMethod": "DELETE",
                                     "id": "analyticsadmin.properties.androidAppDataStreams.measurementProtocolSecrets.delete",
                                     "parameterOrder": [
@@ -995,6 +1026,7 @@
                                 },
                                 "get": {
                                     "description": "Lookup for a single \"GA4\" MeasurementProtocolSecret.",
+                                    "flatPath": "v1alpha/properties/{propertiesId}/androidAppDataStreams/{androidAppDataStreamsId}/measurementProtocolSecrets/{measurementProtocolSecretsId}",
                                     "httpMethod": "GET",
                                     "id": "analyticsadmin.properties.androidAppDataStreams.measurementProtocolSecrets.get",
                                     "parameterOrder": [
@@ -1020,6 +1052,7 @@
                                 },
                                 "list": {
                                     "description": "Returns child MeasurementProtocolSecrets under the specified parent Property.",
+                                    "flatPath": "v1alpha/properties/{propertiesId}/androidAppDataStreams/{androidAppDataStreamsId}/measurementProtocolSecrets",
                                     "httpMethod": "GET",
                                     "id": "analyticsadmin.properties.androidAppDataStreams.measurementProtocolSecrets.list",
                                     "parameterOrder": [
@@ -1056,6 +1089,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates a measurement protocol secret.",
+                                    "flatPath": "v1alpha/properties/{propertiesId}/androidAppDataStreams/{androidAppDataStreamsId}/measurementProtocolSecrets/{measurementProtocolSecretsId}",
                                     "httpMethod": "PATCH",
                                     "id": "analyticsadmin.properties.androidAppDataStreams.measurementProtocolSecrets.patch",
                                     "parameterOrder": [
@@ -1095,6 +1129,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a conversion event with the specified attributes.",
+                            "flatPath": "v1alpha/properties/{propertiesId}/conversionEvents",
                             "httpMethod": "POST",
                             "id": "analyticsadmin.properties.conversionEvents.create",
                             "parameterOrder": [
@@ -1122,6 +1157,7 @@
                         },
                         "delete": {
                             "description": "Deletes a conversion event in a property.",
+                            "flatPath": "v1alpha/properties/{propertiesId}/conversionEvents/{conversionEventsId}",
                             "httpMethod": "DELETE",
                             "id": "analyticsadmin.properties.conversionEvents.delete",
                             "parameterOrder": [
@@ -1146,6 +1182,7 @@
                         },
                         "get": {
                             "description": "Retrieve a single conversion event.",
+                            "flatPath": "v1alpha/properties/{propertiesId}/conversionEvents/{conversionEventsId}",
                             "httpMethod": "GET",
                             "id": "analyticsadmin.properties.conversionEvents.get",
                             "parameterOrder": [
@@ -1171,6 +1208,7 @@
                         },
                         "list": {
                             "description": "Returns a list of conversion events in the specified parent property. Returns an empty list if no conversion events are found.",
+                            "flatPath": "v1alpha/properties/{propertiesId}/conversionEvents",
                             "httpMethod": "GET",
                             "id": "analyticsadmin.properties.conversionEvents.list",
                             "parameterOrder": [
@@ -1211,6 +1249,7 @@
                     "methods": {
                         "archive": {
                             "description": "Archives a CustomDimension on a property.",
+                            "flatPath": "v1alpha/properties/{propertiesId}/customDimensions/{customDimensionsId}:archive",
                             "httpMethod": "POST",
                             "id": "analyticsadmin.properties.customDimensions.archive",
                             "parameterOrder": [
@@ -1238,6 +1277,7 @@
                         },
                         "create": {
                             "description": "Creates a CustomDimension.",
+                            "flatPath": "v1alpha/properties/{propertiesId}/customDimensions",
                             "httpMethod": "POST",
                             "id": "analyticsadmin.properties.customDimensions.create",
                             "parameterOrder": [
@@ -1265,6 +1305,7 @@
                         },
                         "get": {
                             "description": "Lookup for a single CustomDimension.",
+                            "flatPath": "v1alpha/properties/{propertiesId}/customDimensions/{customDimensionsId}",
                             "httpMethod": "GET",
                             "id": "analyticsadmin.properties.customDimensions.get",
                             "parameterOrder": [
@@ -1290,6 +1331,7 @@
                         },
                         "list": {
                             "description": "Lists CustomDimensions on a property.",
+                            "flatPath": "v1alpha/properties/{propertiesId}/customDimensions",
                             "httpMethod": "GET",
                             "id": "analyticsadmin.properties.customDimensions.list",
                             "parameterOrder": [
@@ -1326,6 +1368,7 @@
                         },
                         "patch": {
                             "description": "Updates a CustomDimension on a property.",
+                            "flatPath": "v1alpha/properties/{propertiesId}/customDimensions/{customDimensionsId}",
                             "httpMethod": "PATCH",
                             "id": "analyticsadmin.properties.customDimensions.patch",
                             "parameterOrder": [
@@ -1363,6 +1406,7 @@
                     "methods": {
                         "archive": {
                             "description": "Archives a CustomMetric on a property.",
+                            "flatPath": "v1alpha/properties/{propertiesId}/customMetrics/{customMetricsId}:archive",
                             "httpMethod": "POST",
                             "id": "analyticsadmin.properties.customMetrics.archive",
                             "parameterOrder": [
@@ -1390,6 +1434,7 @@
                         },
                         "create": {
                             "description": "Creates a CustomMetric.",
+                            "flatPath": "v1alpha/properties/{propertiesId}/customMetrics",
                             "httpMethod": "POST",
                             "id": "analyticsadmin.properties.customMetrics.create",
                             "parameterOrder": [
@@ -1417,6 +1462,7 @@
                         },
                         "get": {
                             "description": "Lookup for a single CustomMetric.",
+                            "flatPath": "v1alpha/properties/{propertiesId}/customMetrics/{customMetricsId}",
                             "httpMethod": "GET",
                             "id": "analyticsadmin.properties.customMetrics.get",
                             "parameterOrder": [
@@ -1442,6 +1488,7 @@
                         },
                         "list": {
                             "description": "Lists CustomMetrics on a property.",
+                            "flatPath": "v1alpha/properties/{propertiesId}/customMetrics",
                             "httpMethod": "GET",
                             "id": "analyticsadmin.properties.customMetrics.list",
                             "parameterOrder": [
@@ -1478,6 +1525,7 @@
                         },
                         "patch": {
                             "description": "Updates a CustomMetric on a property.",
+                            "flatPath": "v1alpha/properties/{propertiesId}/customMetrics/{customMetricsId}",
                             "httpMethod": "PATCH",
                             "id": "analyticsadmin.properties.customMetrics.patch",
                             "parameterOrder": [
@@ -1515,6 +1563,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a FirebaseLink. Properties can have at most one FirebaseLink.",
+                            "flatPath": "v1alpha/properties/{propertiesId}/firebaseLinks",
                             "httpMethod": "POST",
                             "id": "analyticsadmin.properties.firebaseLinks.create",
                             "parameterOrder": [
@@ -1542,6 +1591,7 @@
                         },
                         "delete": {
                             "description": "Deletes a FirebaseLink on a property",
+                            "flatPath": "v1alpha/properties/{propertiesId}/firebaseLinks/{firebaseLinksId}",
                             "httpMethod": "DELETE",
                             "id": "analyticsadmin.properties.firebaseLinks.delete",
                             "parameterOrder": [
@@ -1566,6 +1616,7 @@
                         },
                         "list": {
                             "description": "Lists FirebaseLinks on a property. Properties can have at most one FirebaseLink.",
+                            "flatPath": "v1alpha/properties/{propertiesId}/firebaseLinks",
                             "httpMethod": "GET",
                             "id": "analyticsadmin.properties.firebaseLinks.list",
                             "parameterOrder": [
@@ -1602,6 +1653,7 @@
                         },
                         "patch": {
                             "description": "Updates a FirebaseLink on a property",
+                            "flatPath": "v1alpha/properties/{propertiesId}/firebaseLinks/{firebaseLinksId}",
                             "httpMethod": "PATCH",
                             "id": "analyticsadmin.properties.firebaseLinks.patch",
                             "parameterOrder": [
@@ -1639,6 +1691,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a GoogleAdsLink.",
+                            "flatPath": "v1alpha/properties/{propertiesId}/googleAdsLinks",
                             "httpMethod": "POST",
                             "id": "analyticsadmin.properties.googleAdsLinks.create",
                             "parameterOrder": [
@@ -1666,6 +1719,7 @@
                         },
                         "delete": {
                             "description": "Deletes a GoogleAdsLink on a property",
+                            "flatPath": "v1alpha/properties/{propertiesId}/googleAdsLinks/{googleAdsLinksId}",
                             "httpMethod": "DELETE",
                             "id": "analyticsadmin.properties.googleAdsLinks.delete",
                             "parameterOrder": [
@@ -1690,6 +1744,7 @@
                         },
                         "list": {
                             "description": "Lists GoogleAdsLinks on a property.",
+                            "flatPath": "v1alpha/properties/{propertiesId}/googleAdsLinks",
                             "httpMethod": "GET",
                             "id": "analyticsadmin.properties.googleAdsLinks.list",
                             "parameterOrder": [
@@ -1726,6 +1781,7 @@
                         },
                         "patch": {
                             "description": "Updates a GoogleAdsLink on a property",
+                            "flatPath": "v1alpha/properties/{propertiesId}/googleAdsLinks/{googleAdsLinksId}",
                             "httpMethod": "PATCH",
                             "id": "analyticsadmin.properties.googleAdsLinks.patch",
                             "parameterOrder": [
@@ -1763,6 +1819,7 @@
                     "methods": {
                         "delete": {
                             "description": "Deletes an iOS app stream on a property.",
+                            "flatPath": "v1alpha/properties/{propertiesId}/iosAppDataStreams/{iosAppDataStreamsId}",
                             "httpMethod": "DELETE",
                             "id": "analyticsadmin.properties.iosAppDataStreams.delete",
                             "parameterOrder": [
@@ -1787,6 +1844,7 @@
                         },
                         "get": {
                             "description": "Lookup for a single IosAppDataStream",
+                            "flatPath": "v1alpha/properties/{propertiesId}/iosAppDataStreams/{iosAppDataStreamsId}",
                             "httpMethod": "GET",
                             "id": "analyticsadmin.properties.iosAppDataStreams.get",
                             "parameterOrder": [
@@ -1812,6 +1870,7 @@
                         },
                         "list": {
                             "description": "Returns child iOS app data streams under the specified parent property. iOS app data streams will be excluded if the caller does not have access. Returns an empty list if no relevant iOS app data streams are found.",
+                            "flatPath": "v1alpha/properties/{propertiesId}/iosAppDataStreams",
                             "httpMethod": "GET",
                             "id": "analyticsadmin.properties.iosAppDataStreams.list",
                             "parameterOrder": [
@@ -1848,6 +1907,7 @@
                         },
                         "patch": {
                             "description": "Updates an iOS app stream on a property.",
+                            "flatPath": "v1alpha/properties/{propertiesId}/iosAppDataStreams/{iosAppDataStreamsId}",
                             "httpMethod": "PATCH",
                             "id": "analyticsadmin.properties.iosAppDataStreams.patch",
                             "parameterOrder": [
@@ -1885,6 +1945,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a measurement protocol secret.",
+                                    "flatPath": "v1alpha/properties/{propertiesId}/iosAppDataStreams/{iosAppDataStreamsId}/measurementProtocolSecrets",
                                     "httpMethod": "POST",
                                     "id": "analyticsadmin.properties.iosAppDataStreams.measurementProtocolSecrets.create",
                                     "parameterOrder": [
@@ -1912,6 +1973,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes target MeasurementProtocolSecret.",
+                                    "flatPath": "v1alpha/properties/{propertiesId}/iosAppDataStreams/{iosAppDataStreamsId}/measurementProtocolSecrets/{measurementProtocolSecretsId}",
                                     "httpMethod": "DELETE",
                                     "id": "analyticsadmin.properties.iosAppDataStreams.measurementProtocolSecrets.delete",
                                     "parameterOrder": [
@@ -1936,6 +1998,7 @@
                                 },
                                 "get": {
                                     "description": "Lookup for a single \"GA4\" MeasurementProtocolSecret.",
+                                    "flatPath": "v1alpha/properties/{propertiesId}/iosAppDataStreams/{iosAppDataStreamsId}/measurementProtocolSecrets/{measurementProtocolSecretsId}",
                                     "httpMethod": "GET",
                                     "id": "analyticsadmin.properties.iosAppDataStreams.measurementProtocolSecrets.get",
                                     "parameterOrder": [
@@ -1961,6 +2024,7 @@
                                 },
                                 "list": {
                                     "description": "Returns child MeasurementProtocolSecrets under the specified parent Property.",
+                                    "flatPath": "v1alpha/properties/{propertiesId}/iosAppDataStreams/{iosAppDataStreamsId}/measurementProtocolSecrets",
                                     "httpMethod": "GET",
                                     "id": "analyticsadmin.properties.iosAppDataStreams.measurementProtocolSecrets.list",
                                     "parameterOrder": [
@@ -1997,6 +2061,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates a measurement protocol secret.",
+                                    "flatPath": "v1alpha/properties/{propertiesId}/iosAppDataStreams/{iosAppDataStreamsId}/measurementProtocolSecrets/{measurementProtocolSecretsId}",
                                     "httpMethod": "PATCH",
                                     "id": "analyticsadmin.properties.iosAppDataStreams.measurementProtocolSecrets.patch",
                                     "parameterOrder": [
@@ -2036,6 +2101,7 @@
                     "methods": {
                         "audit": {
                             "description": "Lists all user links on an account or property, including implicit ones that come from effective permissions granted by groups or organization admin roles. If a returned user link does not have direct permissions, they cannot be removed from the account or property directly with the DeleteUserLink command. They have to be removed from the group/etc that gives them permissions, which is currently only usable/discoverable in the GA or GMP UIs.",
+                            "flatPath": "v1alpha/properties/{propertiesId}/userLinks:audit",
                             "httpMethod": "POST",
                             "id": "analyticsadmin.properties.userLinks.audit",
                             "parameterOrder": [
@@ -2064,6 +2130,7 @@
                         },
                         "batchCreate": {
                             "description": "Creates information about multiple users' links to an account or property. This method is transactional. If any UserLink cannot be created, none of the UserLinks will be created.",
+                            "flatPath": "v1alpha/properties/{propertiesId}/userLinks:batchCreate",
                             "httpMethod": "POST",
                             "id": "analyticsadmin.properties.userLinks.batchCreate",
                             "parameterOrder": [
@@ -2091,6 +2158,7 @@
                         },
                         "batchDelete": {
                             "description": "Deletes information about multiple users' links to an account or property.",
+                            "flatPath": "v1alpha/properties/{propertiesId}/userLinks:batchDelete",
                             "httpMethod": "POST",
                             "id": "analyticsadmin.properties.userLinks.batchDelete",
                             "parameterOrder": [
@@ -2118,6 +2186,7 @@
                         },
                         "batchGet": {
                             "description": "Gets information about multiple users' links to an account or property.",
+                            "flatPath": "v1alpha/properties/{propertiesId}/userLinks:batchGet",
                             "httpMethod": "GET",
                             "id": "analyticsadmin.properties.userLinks.batchGet",
                             "parameterOrder": [
@@ -2149,6 +2218,7 @@
                         },
                         "batchUpdate": {
                             "description": "Updates information about multiple users' links to an account or property.",
+                            "flatPath": "v1alpha/properties/{propertiesId}/userLinks:batchUpdate",
                             "httpMethod": "POST",
                             "id": "analyticsadmin.properties.userLinks.batchUpdate",
                             "parameterOrder": [
@@ -2176,6 +2246,7 @@
                         },
                         "create": {
                             "description": "Creates a user link on an account or property. If the user with the specified email already has permissions on the account or property, then the user's existing permissions will be unioned with the permissions specified in the new UserLink.",
+                            "flatPath": "v1alpha/properties/{propertiesId}/userLinks",
                             "httpMethod": "POST",
                             "id": "analyticsadmin.properties.userLinks.create",
                             "parameterOrder": [
@@ -2208,6 +2279,7 @@
                         },
                         "delete": {
                             "description": "Deletes a user link on an account or property.",
+                            "flatPath": "v1alpha/properties/{propertiesId}/userLinks/{userLinksId}",
                             "httpMethod": "DELETE",
                             "id": "analyticsadmin.properties.userLinks.delete",
                             "parameterOrder": [
@@ -2232,6 +2304,7 @@
                         },
                         "get": {
                             "description": "Gets information about a user's link to an account or property.",
+                            "flatPath": "v1alpha/properties/{propertiesId}/userLinks/{userLinksId}",
                             "httpMethod": "GET",
                             "id": "analyticsadmin.properties.userLinks.get",
                             "parameterOrder": [
@@ -2257,6 +2330,7 @@
                         },
                         "list": {
                             "description": "Lists all user links on an account or property.",
+                            "flatPath": "v1alpha/properties/{propertiesId}/userLinks",
                             "httpMethod": "GET",
                             "id": "analyticsadmin.properties.userLinks.list",
                             "parameterOrder": [
@@ -2293,6 +2367,7 @@
                         },
                         "patch": {
                             "description": "Updates a user link on an account or property.",
+                            "flatPath": "v1alpha/properties/{propertiesId}/userLinks/{userLinksId}",
                             "httpMethod": "PATCH",
                             "id": "analyticsadmin.properties.userLinks.patch",
                             "parameterOrder": [
@@ -2324,6 +2399,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a web stream with the specified location and attributes.",
+                            "flatPath": "v1alpha/properties/{propertiesId}/webDataStreams",
                             "httpMethod": "POST",
                             "id": "analyticsadmin.properties.webDataStreams.create",
                             "parameterOrder": [
@@ -2351,6 +2427,7 @@
                         },
                         "delete": {
                             "description": "Deletes a web stream on a property.",
+                            "flatPath": "v1alpha/properties/{propertiesId}/webDataStreams/{webDataStreamsId}",
                             "httpMethod": "DELETE",
                             "id": "analyticsadmin.properties.webDataStreams.delete",
                             "parameterOrder": [
@@ -2375,6 +2452,7 @@
                         },
                         "get": {
                             "description": "Lookup for a single WebDataStream",
+                            "flatPath": "v1alpha/properties/{propertiesId}/webDataStreams/{webDataStreamsId}",
                             "httpMethod": "GET",
                             "id": "analyticsadmin.properties.webDataStreams.get",
                             "parameterOrder": [
@@ -2400,6 +2478,7 @@
                         },
                         "getEnhancedMeasurementSettings": {
                             "description": "Returns the singleton enhanced measurement settings for this web stream. Note that the stream must enable enhanced measurement for these settings to take effect.",
+                            "flatPath": "v1alpha/properties/{propertiesId}/webDataStreams/{webDataStreamsId}/enhancedMeasurementSettings",
                             "httpMethod": "GET",
                             "id": "analyticsadmin.properties.webDataStreams.getEnhancedMeasurementSettings",
                             "parameterOrder": [
@@ -2425,6 +2504,7 @@
                         },
                         "getGlobalSiteTag": {
                             "description": "Returns the Site Tag for the specified web stream. Site Tags are immutable singletons.",
+                            "flatPath": "v1alpha/properties/{propertiesId}/webDataStreams/{webDataStreamsId}/globalSiteTag",
                             "httpMethod": "GET",
                             "id": "analyticsadmin.properties.webDataStreams.getGlobalSiteTag",
                             "parameterOrder": [
@@ -2450,6 +2530,7 @@
                         },
                         "list": {
                             "description": "Returns child web data streams under the specified parent property. Web data streams will be excluded if the caller does not have access. Returns an empty list if no relevant web data streams are found.",
+                            "flatPath": "v1alpha/properties/{propertiesId}/webDataStreams",
                             "httpMethod": "GET",
                             "id": "analyticsadmin.properties.webDataStreams.list",
                             "parameterOrder": [
@@ -2486,6 +2567,7 @@
                         },
                         "patch": {
                             "description": "Updates a web stream on a property.",
+                            "flatPath": "v1alpha/properties/{propertiesId}/webDataStreams/{webDataStreamsId}",
                             "httpMethod": "PATCH",
                             "id": "analyticsadmin.properties.webDataStreams.patch",
                             "parameterOrder": [
@@ -2519,6 +2601,7 @@
                         },
                         "updateEnhancedMeasurementSettings": {
                             "description": "Updates the singleton enhanced measurement settings for this web stream. Note that the stream must enable enhanced measurement for these settings to take effect.",
+                            "flatPath": "v1alpha/properties/{propertiesId}/webDataStreams/{webDataStreamsId}/enhancedMeasurementSettings",
                             "httpMethod": "PATCH",
                             "id": "analyticsadmin.properties.webDataStreams.updateEnhancedMeasurementSettings",
                             "parameterOrder": [
@@ -2556,6 +2639,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a measurement protocol secret.",
+                                    "flatPath": "v1alpha/properties/{propertiesId}/webDataStreams/{webDataStreamsId}/measurementProtocolSecrets",
                                     "httpMethod": "POST",
                                     "id": "analyticsadmin.properties.webDataStreams.measurementProtocolSecrets.create",
                                     "parameterOrder": [
@@ -2583,6 +2667,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes target MeasurementProtocolSecret.",
+                                    "flatPath": "v1alpha/properties/{propertiesId}/webDataStreams/{webDataStreamsId}/measurementProtocolSecrets/{measurementProtocolSecretsId}",
                                     "httpMethod": "DELETE",
                                     "id": "analyticsadmin.properties.webDataStreams.measurementProtocolSecrets.delete",
                                     "parameterOrder": [
@@ -2607,6 +2692,7 @@
                                 },
                                 "get": {
                                     "description": "Lookup for a single \"GA4\" MeasurementProtocolSecret.",
+                                    "flatPath": "v1alpha/properties/{propertiesId}/webDataStreams/{webDataStreamsId}/measurementProtocolSecrets/{measurementProtocolSecretsId}",
                                     "httpMethod": "GET",
                                     "id": "analyticsadmin.properties.webDataStreams.measurementProtocolSecrets.get",
                                     "parameterOrder": [
@@ -2632,6 +2718,7 @@
                                 },
                                 "list": {
                                     "description": "Returns child MeasurementProtocolSecrets under the specified parent Property.",
+                                    "flatPath": "v1alpha/properties/{propertiesId}/webDataStreams/{webDataStreamsId}/measurementProtocolSecrets",
                                     "httpMethod": "GET",
                                     "id": "analyticsadmin.properties.webDataStreams.measurementProtocolSecrets.list",
                                     "parameterOrder": [
@@ -2668,6 +2755,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates a measurement protocol secret.",
+                                    "flatPath": "v1alpha/properties/{propertiesId}/webDataStreams/{webDataStreamsId}/measurementProtocolSecrets/{measurementProtocolSecretsId}",
                                     "httpMethod": "PATCH",
                                     "id": "analyticsadmin.properties.webDataStreams.measurementProtocolSecrets.patch",
                                     "parameterOrder": [
@@ -2706,7 +2794,7 @@
             }
         }
     },
-    "revision": "20210520",
+    "revision": "20210614",
     "rootUrl": "https://analyticsadmin.googleapis.com/",
     "schemas": {
         "GoogleAnalyticsAdminV1alphaAccount": {
@@ -3119,6 +3207,11 @@
                     "readOnly": true,
                     "type": "string"
                 },
+                "custom": {
+                    "description": "Output only. If set to true, this conversion event refers to a custom event. If set to false, this conversion event refers to a default event in GA. Default events typically have special meaning in GA. Default events are usually created for you by the GA system, but in some cases can be created by property admins. Custom events count towards the maximum number of custom conversion events that may be created per property.",
+                    "readOnly": true,
+                    "type": "boolean"
+                },
                 "eventName": {
                     "description": "Immutable. The event name for this conversion event. Examples: 'click', 'purchase'",
                     "type": "string"
@@ -3374,24 +3467,6 @@
                     "readOnly": true,
                     "type": "string"
                 },
-                "maximumUserAccess": {
-                    "description": "Maximum user access to the GA4 property allowed to admins of the linked Firebase project.",
-                    "enum": [
-                        "MAXIMUM_USER_ACCESS_UNSPECIFIED",
-                        "NO_ACCESS",
-                        "READ_AND_ANALYZE",
-                        "EDITOR_WITHOUT_LINK_MANAGEMENT",
-                        "EDITOR_INCLUDING_LINK_MANAGEMENT"
-                    ],
-                    "enumDescriptions": [
-                        "Unspecified maximum user access.",
-                        "Firebase users have no access to the Analytics property.",
-                        "Firebase users have Read & Analyze access to the Analytics property.",
-                        "Firebase users have edit access to the Analytics property, but may not manage the Firebase link.",
-                        "Firebase users have edit access to the Analytics property and may manage the Firebase link."
-                    ],
-                    "type": "string"
-                },
                 "name": {
                     "description": "Output only. Example format: properties/1234/firebaseLinks/5678",
                     "readOnly": true,
@@ -3439,13 +3514,13 @@
                     "readOnly": true,
                     "type": "string"
                 },
-                "customerId": {
-                    "description": "Immutable. Google Ads customer ID.",
-                    "type": "string"
-                },
-                "emailAddress": {
+                "creatorEmailAddress": {
                     "description": "Output only. Email address of the user that created the link. An empty string will be returned if the email address can't be retrieved.",
                     "readOnly": true,
+                    "type": "string"
+                },
+                "customerId": {
+                    "description": "Immutable. Google Ads customer ID.",
                     "type": "string"
                 },
                 "name": {

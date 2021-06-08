@@ -111,6 +111,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates new autoscaling policy.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/autoscalingPolicies",
                                     "httpMethod": "POST",
                                     "id": "dataproc.projects.locations.autoscalingPolicies.create",
                                     "parameterOrder": [
@@ -138,6 +139,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes an autoscaling policy. It is an error to delete an autoscaling policy that is in use by one or more clusters.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/autoscalingPolicies/{autoscalingPoliciesId}",
                                     "httpMethod": "DELETE",
                                     "id": "dataproc.projects.locations.autoscalingPolicies.delete",
                                     "parameterOrder": [
@@ -162,6 +164,7 @@
                                 },
                                 "get": {
                                     "description": "Retrieves autoscaling policy.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/autoscalingPolicies/{autoscalingPoliciesId}",
                                     "httpMethod": "GET",
                                     "id": "dataproc.projects.locations.autoscalingPolicies.get",
                                     "parameterOrder": [
@@ -186,6 +189,7 @@
                                 },
                                 "getIamPolicy": {
                                     "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/autoscalingPolicies/{autoscalingPoliciesId}:getIamPolicy",
                                     "httpMethod": "POST",
                                     "id": "dataproc.projects.locations.autoscalingPolicies.getIamPolicy",
                                     "parameterOrder": [
@@ -213,6 +217,7 @@
                                 },
                                 "list": {
                                     "description": "Lists autoscaling policies in the project.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/autoscalingPolicies",
                                     "httpMethod": "GET",
                                     "id": "dataproc.projects.locations.autoscalingPolicies.list",
                                     "parameterOrder": [
@@ -248,6 +253,7 @@
                                 },
                                 "setIamPolicy": {
                                     "description": "Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/autoscalingPolicies/{autoscalingPoliciesId}:setIamPolicy",
                                     "httpMethod": "POST",
                                     "id": "dataproc.projects.locations.autoscalingPolicies.setIamPolicy",
                                     "parameterOrder": [
@@ -275,6 +281,7 @@
                                 },
                                 "testIamPermissions": {
                                     "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/autoscalingPolicies/{autoscalingPoliciesId}:testIamPermissions",
                                     "httpMethod": "POST",
                                     "id": "dataproc.projects.locations.autoscalingPolicies.testIamPermissions",
                                     "parameterOrder": [
@@ -302,6 +309,7 @@
                                 },
                                 "update": {
                                     "description": "Updates (replaces) autoscaling policy.Disabled check for update_mask, because all updates will be full replacements.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/autoscalingPolicies/{autoscalingPoliciesId}",
                                     "httpMethod": "PUT",
                                     "id": "dataproc.projects.locations.autoscalingPolicies.update",
                                     "parameterOrder": [
@@ -333,6 +341,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates new workflow template.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/workflowTemplates",
                                     "httpMethod": "POST",
                                     "id": "dataproc.projects.locations.workflowTemplates.create",
                                     "parameterOrder": [
@@ -360,6 +369,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a workflow template. It does not cancel in-progress workflows.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/workflowTemplates/{workflowTemplatesId}",
                                     "httpMethod": "DELETE",
                                     "id": "dataproc.projects.locations.workflowTemplates.delete",
                                     "parameterOrder": [
@@ -390,6 +400,7 @@
                                 },
                                 "get": {
                                     "description": "Retrieves the latest workflow template.Can retrieve previously instantiated template by specifying optional version parameter.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/workflowTemplates/{workflowTemplatesId}",
                                     "httpMethod": "GET",
                                     "id": "dataproc.projects.locations.workflowTemplates.get",
                                     "parameterOrder": [
@@ -420,6 +431,7 @@
                                 },
                                 "getIamPolicy": {
                                     "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/workflowTemplates/{workflowTemplatesId}:getIamPolicy",
                                     "httpMethod": "POST",
                                     "id": "dataproc.projects.locations.workflowTemplates.getIamPolicy",
                                     "parameterOrder": [
@@ -447,6 +459,7 @@
                                 },
                                 "instantiate": {
                                     "description": "Instantiates a template and begins execution.The returned Operation can be used to track execution of workflow by polling operations.get. The Operation will complete when entire workflow is finished.The running workflow can be aborted via operations.cancel. This will cause any inflight jobs to be cancelled and workflow-owned clusters to be deleted.The Operation.metadata will be WorkflowMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#workflowmetadata). Also see Using WorkflowMetadata (https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On successful completion, Operation.response will be Empty.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/workflowTemplates/{workflowTemplatesId}:instantiate",
                                     "httpMethod": "POST",
                                     "id": "dataproc.projects.locations.workflowTemplates.instantiate",
                                     "parameterOrder": [
@@ -474,6 +487,7 @@
                                 },
                                 "instantiateInline": {
                                     "description": "Instantiates a template and begins execution.This method is equivalent to executing the sequence CreateWorkflowTemplate, InstantiateWorkflowTemplate, DeleteWorkflowTemplate.The returned Operation can be used to track execution of workflow by polling operations.get. The Operation will complete when entire workflow is finished.The running workflow can be aborted via operations.cancel. This will cause any inflight jobs to be cancelled and workflow-owned clusters to be deleted.The Operation.metadata will be WorkflowMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#workflowmetadata). Also see Using WorkflowMetadata (https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On successful completion, Operation.response will be Empty.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/workflowTemplates:instantiateInline",
                                     "httpMethod": "POST",
                                     "id": "dataproc.projects.locations.workflowTemplates.instantiateInline",
                                     "parameterOrder": [
@@ -506,6 +520,7 @@
                                 },
                                 "list": {
                                     "description": "Lists workflows that match the specified filter in the request.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/workflowTemplates",
                                     "httpMethod": "GET",
                                     "id": "dataproc.projects.locations.workflowTemplates.list",
                                     "parameterOrder": [
@@ -541,6 +556,7 @@
                                 },
                                 "setIamPolicy": {
                                     "description": "Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/workflowTemplates/{workflowTemplatesId}:setIamPolicy",
                                     "httpMethod": "POST",
                                     "id": "dataproc.projects.locations.workflowTemplates.setIamPolicy",
                                     "parameterOrder": [
@@ -568,6 +584,7 @@
                                 },
                                 "testIamPermissions": {
                                     "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/workflowTemplates/{workflowTemplatesId}:testIamPermissions",
                                     "httpMethod": "POST",
                                     "id": "dataproc.projects.locations.workflowTemplates.testIamPermissions",
                                     "parameterOrder": [
@@ -595,6 +612,7 @@
                                 },
                                 "update": {
                                     "description": "Updates (replaces) workflow template. The updated template must contain version that matches the current server version.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/workflowTemplates/{workflowTemplatesId}",
                                     "httpMethod": "PUT",
                                     "id": "dataproc.projects.locations.workflowTemplates.update",
                                     "parameterOrder": [
@@ -630,6 +648,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates new autoscaling policy.",
+                                    "flatPath": "v1/projects/{projectsId}/regions/{regionsId}/autoscalingPolicies",
                                     "httpMethod": "POST",
                                     "id": "dataproc.projects.regions.autoscalingPolicies.create",
                                     "parameterOrder": [
@@ -657,6 +676,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes an autoscaling policy. It is an error to delete an autoscaling policy that is in use by one or more clusters.",
+                                    "flatPath": "v1/projects/{projectsId}/regions/{regionsId}/autoscalingPolicies/{autoscalingPoliciesId}",
                                     "httpMethod": "DELETE",
                                     "id": "dataproc.projects.regions.autoscalingPolicies.delete",
                                     "parameterOrder": [
@@ -681,6 +701,7 @@
                                 },
                                 "get": {
                                     "description": "Retrieves autoscaling policy.",
+                                    "flatPath": "v1/projects/{projectsId}/regions/{regionsId}/autoscalingPolicies/{autoscalingPoliciesId}",
                                     "httpMethod": "GET",
                                     "id": "dataproc.projects.regions.autoscalingPolicies.get",
                                     "parameterOrder": [
@@ -705,6 +726,7 @@
                                 },
                                 "getIamPolicy": {
                                     "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
+                                    "flatPath": "v1/projects/{projectsId}/regions/{regionsId}/autoscalingPolicies/{autoscalingPoliciesId}:getIamPolicy",
                                     "httpMethod": "POST",
                                     "id": "dataproc.projects.regions.autoscalingPolicies.getIamPolicy",
                                     "parameterOrder": [
@@ -732,6 +754,7 @@
                                 },
                                 "list": {
                                     "description": "Lists autoscaling policies in the project.",
+                                    "flatPath": "v1/projects/{projectsId}/regions/{regionsId}/autoscalingPolicies",
                                     "httpMethod": "GET",
                                     "id": "dataproc.projects.regions.autoscalingPolicies.list",
                                     "parameterOrder": [
@@ -767,6 +790,7 @@
                                 },
                                 "setIamPolicy": {
                                     "description": "Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.",
+                                    "flatPath": "v1/projects/{projectsId}/regions/{regionsId}/autoscalingPolicies/{autoscalingPoliciesId}:setIamPolicy",
                                     "httpMethod": "POST",
                                     "id": "dataproc.projects.regions.autoscalingPolicies.setIamPolicy",
                                     "parameterOrder": [
@@ -794,6 +818,7 @@
                                 },
                                 "testIamPermissions": {
                                     "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
+                                    "flatPath": "v1/projects/{projectsId}/regions/{regionsId}/autoscalingPolicies/{autoscalingPoliciesId}:testIamPermissions",
                                     "httpMethod": "POST",
                                     "id": "dataproc.projects.regions.autoscalingPolicies.testIamPermissions",
                                     "parameterOrder": [
@@ -821,6 +846,7 @@
                                 },
                                 "update": {
                                     "description": "Updates (replaces) autoscaling policy.Disabled check for update_mask, because all updates will be full replacements.",
+                                    "flatPath": "v1/projects/{projectsId}/regions/{regionsId}/autoscalingPolicies/{autoscalingPoliciesId}",
                                     "httpMethod": "PUT",
                                     "id": "dataproc.projects.regions.autoscalingPolicies.update",
                                     "parameterOrder": [
@@ -852,6 +878,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a cluster in a project. The returned Operation.metadata will be ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata).",
+                                    "flatPath": "v1/projects/{projectId}/regions/{region}/clusters",
                                     "httpMethod": "POST",
                                     "id": "dataproc.projects.regions.clusters.create",
                                     "parameterOrder": [
@@ -890,6 +917,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a cluster in a project. The returned Operation.metadata will be ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata).",
+                                    "flatPath": "v1/projects/{projectId}/regions/{region}/clusters/{clusterName}",
                                     "httpMethod": "DELETE",
                                     "id": "dataproc.projects.regions.clusters.delete",
                                     "parameterOrder": [
@@ -937,6 +965,7 @@
                                 },
                                 "diagnose": {
                                     "description": "Gets cluster diagnostic information. The returned Operation.metadata will be ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata). After the operation completes, Operation.response contains DiagnoseClusterResults (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#diagnoseclusterresults).",
+                                    "flatPath": "v1/projects/{projectId}/regions/{region}/clusters/{clusterName}:diagnose",
                                     "httpMethod": "POST",
                                     "id": "dataproc.projects.regions.clusters.diagnose",
                                     "parameterOrder": [
@@ -977,6 +1006,7 @@
                                 },
                                 "get": {
                                     "description": "Gets the resource representation for a cluster in a project.",
+                                    "flatPath": "v1/projects/{projectId}/regions/{region}/clusters/{clusterName}",
                                     "httpMethod": "GET",
                                     "id": "dataproc.projects.regions.clusters.get",
                                     "parameterOrder": [
@@ -1014,6 +1044,7 @@
                                 },
                                 "getIamPolicy": {
                                     "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
+                                    "flatPath": "v1/projects/{projectsId}/regions/{regionsId}/clusters/{clustersId}:getIamPolicy",
                                     "httpMethod": "POST",
                                     "id": "dataproc.projects.regions.clusters.getIamPolicy",
                                     "parameterOrder": [
@@ -1041,6 +1072,7 @@
                                 },
                                 "injectCredentials": {
                                     "description": "Inject encrypted credentials into all of the VMs in a cluster.The target cluster must be a personal auth cluster assigned to the user who is issuing the RPC.",
+                                    "flatPath": "v1/projects/{projectsId}/regions/{regionsId}/clusters/{clustersId}:injectCredentials",
                                     "httpMethod": "POST",
                                     "id": "dataproc.projects.regions.clusters.injectCredentials",
                                     "parameterOrder": [
@@ -1084,6 +1116,7 @@
                                 },
                                 "list": {
                                     "description": "Lists all regions/{region}/clusters in a project alphabetically.",
+                                    "flatPath": "v1/projects/{projectId}/regions/{region}/clusters",
                                     "httpMethod": "GET",
                                     "id": "dataproc.projects.regions.clusters.list",
                                     "parameterOrder": [
@@ -1130,6 +1163,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates a cluster in a project. The returned Operation.metadata will be ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata).",
+                                    "flatPath": "v1/projects/{projectId}/regions/{region}/clusters/{clusterName}",
                                     "httpMethod": "PATCH",
                                     "id": "dataproc.projects.regions.clusters.patch",
                                     "parameterOrder": [
@@ -1187,6 +1221,7 @@
                                 },
                                 "setIamPolicy": {
                                     "description": "Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.",
+                                    "flatPath": "v1/projects/{projectsId}/regions/{regionsId}/clusters/{clustersId}:setIamPolicy",
                                     "httpMethod": "POST",
                                     "id": "dataproc.projects.regions.clusters.setIamPolicy",
                                     "parameterOrder": [
@@ -1214,6 +1249,7 @@
                                 },
                                 "start": {
                                     "description": "Starts a cluster in a project.",
+                                    "flatPath": "v1/projects/{projectId}/regions/{region}/clusters/{clusterName}:start",
                                     "httpMethod": "POST",
                                     "id": "dataproc.projects.regions.clusters.start",
                                     "parameterOrder": [
@@ -1254,6 +1290,7 @@
                                 },
                                 "stop": {
                                     "description": "Stops a cluster in a project.",
+                                    "flatPath": "v1/projects/{projectId}/regions/{region}/clusters/{clusterName}:stop",
                                     "httpMethod": "POST",
                                     "id": "dataproc.projects.regions.clusters.stop",
                                     "parameterOrder": [
@@ -1294,6 +1331,7 @@
                                 },
                                 "testIamPermissions": {
                                     "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
+                                    "flatPath": "v1/projects/{projectsId}/regions/{regionsId}/clusters/{clustersId}:testIamPermissions",
                                     "httpMethod": "POST",
                                     "id": "dataproc.projects.regions.clusters.testIamPermissions",
                                     "parameterOrder": [
@@ -1325,6 +1363,7 @@
                             "methods": {
                                 "cancel": {
                                     "description": "Starts a job cancellation request. To access the job resource after cancellation, call regions/{region}/jobs.list (https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs/list) or regions/{region}/jobs.get (https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs/get).",
+                                    "flatPath": "v1/projects/{projectId}/regions/{region}/jobs/{jobId}:cancel",
                                     "httpMethod": "POST",
                                     "id": "dataproc.projects.regions.jobs.cancel",
                                     "parameterOrder": [
@@ -1365,6 +1404,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes the job from the project. If the job is active, the delete fails, and the response returns FAILED_PRECONDITION.",
+                                    "flatPath": "v1/projects/{projectId}/regions/{region}/jobs/{jobId}",
                                     "httpMethod": "DELETE",
                                     "id": "dataproc.projects.regions.jobs.delete",
                                     "parameterOrder": [
@@ -1402,6 +1442,7 @@
                                 },
                                 "get": {
                                     "description": "Gets the resource representation for a job in a project.",
+                                    "flatPath": "v1/projects/{projectId}/regions/{region}/jobs/{jobId}",
                                     "httpMethod": "GET",
                                     "id": "dataproc.projects.regions.jobs.get",
                                     "parameterOrder": [
@@ -1439,6 +1480,7 @@
                                 },
                                 "getIamPolicy": {
                                     "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
+                                    "flatPath": "v1/projects/{projectsId}/regions/{regionsId}/jobs/{jobsId}:getIamPolicy",
                                     "httpMethod": "POST",
                                     "id": "dataproc.projects.regions.jobs.getIamPolicy",
                                     "parameterOrder": [
@@ -1466,6 +1508,7 @@
                                 },
                                 "list": {
                                     "description": "Lists regions/{region}/jobs in a project.",
+                                    "flatPath": "v1/projects/{projectId}/regions/{region}/jobs",
                                     "httpMethod": "GET",
                                     "id": "dataproc.projects.regions.jobs.list",
                                     "parameterOrder": [
@@ -1532,6 +1575,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates a job in a project.",
+                                    "flatPath": "v1/projects/{projectId}/regions/{region}/jobs/{jobId}",
                                     "httpMethod": "PATCH",
                                     "id": "dataproc.projects.regions.jobs.patch",
                                     "parameterOrder": [
@@ -1578,6 +1622,7 @@
                                 },
                                 "setIamPolicy": {
                                     "description": "Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.",
+                                    "flatPath": "v1/projects/{projectsId}/regions/{regionsId}/jobs/{jobsId}:setIamPolicy",
                                     "httpMethod": "POST",
                                     "id": "dataproc.projects.regions.jobs.setIamPolicy",
                                     "parameterOrder": [
@@ -1605,6 +1650,7 @@
                                 },
                                 "submit": {
                                     "description": "Submits a job to a cluster.",
+                                    "flatPath": "v1/projects/{projectId}/regions/{region}/jobs:submit",
                                     "httpMethod": "POST",
                                     "id": "dataproc.projects.regions.jobs.submit",
                                     "parameterOrder": [
@@ -1638,6 +1684,7 @@
                                 },
                                 "submitAsOperation": {
                                     "description": "Submits job to a cluster.",
+                                    "flatPath": "v1/projects/{projectId}/regions/{region}/jobs:submitAsOperation",
                                     "httpMethod": "POST",
                                     "id": "dataproc.projects.regions.jobs.submitAsOperation",
                                     "parameterOrder": [
@@ -1671,6 +1718,7 @@
                                 },
                                 "testIamPermissions": {
                                     "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
+                                    "flatPath": "v1/projects/{projectsId}/regions/{regionsId}/jobs/{jobsId}:testIamPermissions",
                                     "httpMethod": "POST",
                                     "id": "dataproc.projects.regions.jobs.testIamPermissions",
                                     "parameterOrder": [
@@ -1702,6 +1750,7 @@
                             "methods": {
                                 "cancel": {
                                     "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns google.rpc.Code.UNIMPLEMENTED. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to Code.CANCELLED.",
+                                    "flatPath": "v1/projects/{projectsId}/regions/{regionsId}/operations/{operationsId}:cancel",
                                     "httpMethod": "POST",
                                     "id": "dataproc.projects.regions.operations.cancel",
                                     "parameterOrder": [
@@ -1726,6 +1775,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns google.rpc.Code.UNIMPLEMENTED.",
+                                    "flatPath": "v1/projects/{projectsId}/regions/{regionsId}/operations/{operationsId}",
                                     "httpMethod": "DELETE",
                                     "id": "dataproc.projects.regions.operations.delete",
                                     "parameterOrder": [
@@ -1750,6 +1800,7 @@
                                 },
                                 "get": {
                                     "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                                    "flatPath": "v1/projects/{projectsId}/regions/{regionsId}/operations/{operationsId}",
                                     "httpMethod": "GET",
                                     "id": "dataproc.projects.regions.operations.get",
                                     "parameterOrder": [
@@ -1774,6 +1825,7 @@
                                 },
                                 "getIamPolicy": {
                                     "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
+                                    "flatPath": "v1/projects/{projectsId}/regions/{regionsId}/operations/{operationsId}:getIamPolicy",
                                     "httpMethod": "POST",
                                     "id": "dataproc.projects.regions.operations.getIamPolicy",
                                     "parameterOrder": [
@@ -1801,6 +1853,7 @@
                                 },
                                 "list": {
                                     "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns UNIMPLEMENTED.NOTE: the name binding allows API services to override the binding to use different resource name schemes, such as users/*/operations. To override the binding, API services can add a binding such as \"/v1/{name=users/*}/operations\" to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                                    "flatPath": "v1/projects/{projectsId}/regions/{regionsId}/operations",
                                     "httpMethod": "GET",
                                     "id": "dataproc.projects.regions.operations.list",
                                     "parameterOrder": [
@@ -1841,6 +1894,7 @@
                                 },
                                 "setIamPolicy": {
                                     "description": "Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.",
+                                    "flatPath": "v1/projects/{projectsId}/regions/{regionsId}/operations/{operationsId}:setIamPolicy",
                                     "httpMethod": "POST",
                                     "id": "dataproc.projects.regions.operations.setIamPolicy",
                                     "parameterOrder": [
@@ -1868,6 +1922,7 @@
                                 },
                                 "testIamPermissions": {
                                     "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
+                                    "flatPath": "v1/projects/{projectsId}/regions/{regionsId}/operations/{operationsId}:testIamPermissions",
                                     "httpMethod": "POST",
                                     "id": "dataproc.projects.regions.operations.testIamPermissions",
                                     "parameterOrder": [
@@ -1899,6 +1954,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates new workflow template.",
+                                    "flatPath": "v1/projects/{projectsId}/regions/{regionsId}/workflowTemplates",
                                     "httpMethod": "POST",
                                     "id": "dataproc.projects.regions.workflowTemplates.create",
                                     "parameterOrder": [
@@ -1926,6 +1982,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a workflow template. It does not cancel in-progress workflows.",
+                                    "flatPath": "v1/projects/{projectsId}/regions/{regionsId}/workflowTemplates/{workflowTemplatesId}",
                                     "httpMethod": "DELETE",
                                     "id": "dataproc.projects.regions.workflowTemplates.delete",
                                     "parameterOrder": [
@@ -1956,6 +2013,7 @@
                                 },
                                 "get": {
                                     "description": "Retrieves the latest workflow template.Can retrieve previously instantiated template by specifying optional version parameter.",
+                                    "flatPath": "v1/projects/{projectsId}/regions/{regionsId}/workflowTemplates/{workflowTemplatesId}",
                                     "httpMethod": "GET",
                                     "id": "dataproc.projects.regions.workflowTemplates.get",
                                     "parameterOrder": [
@@ -1986,6 +2044,7 @@
                                 },
                                 "getIamPolicy": {
                                     "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
+                                    "flatPath": "v1/projects/{projectsId}/regions/{regionsId}/workflowTemplates/{workflowTemplatesId}:getIamPolicy",
                                     "httpMethod": "POST",
                                     "id": "dataproc.projects.regions.workflowTemplates.getIamPolicy",
                                     "parameterOrder": [
@@ -2013,6 +2072,7 @@
                                 },
                                 "instantiate": {
                                     "description": "Instantiates a template and begins execution.The returned Operation can be used to track execution of workflow by polling operations.get. The Operation will complete when entire workflow is finished.The running workflow can be aborted via operations.cancel. This will cause any inflight jobs to be cancelled and workflow-owned clusters to be deleted.The Operation.metadata will be WorkflowMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#workflowmetadata). Also see Using WorkflowMetadata (https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On successful completion, Operation.response will be Empty.",
+                                    "flatPath": "v1/projects/{projectsId}/regions/{regionsId}/workflowTemplates/{workflowTemplatesId}:instantiate",
                                     "httpMethod": "POST",
                                     "id": "dataproc.projects.regions.workflowTemplates.instantiate",
                                     "parameterOrder": [
@@ -2040,6 +2100,7 @@
                                 },
                                 "instantiateInline": {
                                     "description": "Instantiates a template and begins execution.This method is equivalent to executing the sequence CreateWorkflowTemplate, InstantiateWorkflowTemplate, DeleteWorkflowTemplate.The returned Operation can be used to track execution of workflow by polling operations.get. The Operation will complete when entire workflow is finished.The running workflow can be aborted via operations.cancel. This will cause any inflight jobs to be cancelled and workflow-owned clusters to be deleted.The Operation.metadata will be WorkflowMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#workflowmetadata). Also see Using WorkflowMetadata (https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On successful completion, Operation.response will be Empty.",
+                                    "flatPath": "v1/projects/{projectsId}/regions/{regionsId}/workflowTemplates:instantiateInline",
                                     "httpMethod": "POST",
                                     "id": "dataproc.projects.regions.workflowTemplates.instantiateInline",
                                     "parameterOrder": [
@@ -2072,6 +2133,7 @@
                                 },
                                 "list": {
                                     "description": "Lists workflows that match the specified filter in the request.",
+                                    "flatPath": "v1/projects/{projectsId}/regions/{regionsId}/workflowTemplates",
                                     "httpMethod": "GET",
                                     "id": "dataproc.projects.regions.workflowTemplates.list",
                                     "parameterOrder": [
@@ -2107,6 +2169,7 @@
                                 },
                                 "setIamPolicy": {
                                     "description": "Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.",
+                                    "flatPath": "v1/projects/{projectsId}/regions/{regionsId}/workflowTemplates/{workflowTemplatesId}:setIamPolicy",
                                     "httpMethod": "POST",
                                     "id": "dataproc.projects.regions.workflowTemplates.setIamPolicy",
                                     "parameterOrder": [
@@ -2134,6 +2197,7 @@
                                 },
                                 "testIamPermissions": {
                                     "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
+                                    "flatPath": "v1/projects/{projectsId}/regions/{regionsId}/workflowTemplates/{workflowTemplatesId}:testIamPermissions",
                                     "httpMethod": "POST",
                                     "id": "dataproc.projects.regions.workflowTemplates.testIamPermissions",
                                     "parameterOrder": [
@@ -2161,6 +2225,7 @@
                                 },
                                 "update": {
                                     "description": "Updates (replaces) workflow template. The updated template must contain version that matches the current server version.",
+                                    "flatPath": "v1/projects/{projectsId}/regions/{regionsId}/workflowTemplates/{workflowTemplatesId}",
                                     "httpMethod": "PUT",
                                     "id": "dataproc.projects.regions.workflowTemplates.update",
                                     "parameterOrder": [
@@ -2193,7 +2258,7 @@
             }
         }
     },
-    "revision": "20210507",
+    "revision": "20210604",
     "rootUrl": "https://dataproc.googleapis.com/",
     "schemas": {
         "AcceleratorConfig": {
@@ -2675,6 +2740,7 @@
                         "CREATING",
                         "RUNNING",
                         "ERROR",
+                        "ERROR_DUE_TO_UPDATE",
                         "DELETING",
                         "UPDATING",
                         "STOPPING",
@@ -2686,6 +2752,7 @@
                         "The cluster is being created and set up. It is not ready for use.",
                         "The cluster is currently running and healthy. It is ready for use.",
                         "The cluster encountered an error. It is not ready for use.",
+                        "The cluster has encountered an error while being updated. Jobs can still be submitted to the cluster, but it can no longer be updated.",
                         "The cluster is being deleted. It cannot be used.",
                         "The cluster is being updated. It continues to accept and process jobs.",
                         "The cluster is being stopped. It cannot be used.",
@@ -3174,8 +3241,12 @@
                     "description": "The user-friendly name of the Compute Engine instance.",
                     "type": "string"
                 },
+                "publicEciesKey": {
+                    "description": "The public ECIES key used for sharing data with this instance.",
+                    "type": "string"
+                },
                 "publicKey": {
-                    "description": "The public key used for sharing data with this instance.",
+                    "description": "The public RSA key used for sharing data with this instance.",
                     "type": "string"
                 }
             },

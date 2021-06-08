@@ -107,6 +107,7 @@
             "methods": {
                 "list": {
                     "description": "Returns a list of the sensitive information types that the DLP API supports. See https://cloud.google.com/dlp/docs/infotypes-reference to learn more.",
+                    "flatPath": "v2/infoTypes",
                     "httpMethod": "GET",
                     "id": "dlp.infoTypes.list",
                     "parameterOrder": [],
@@ -148,6 +149,7 @@
                     "methods": {
                         "list": {
                             "description": "Returns a list of the sensitive information types that the DLP API supports. See https://cloud.google.com/dlp/docs/infotypes-reference to learn more.",
+                            "flatPath": "v2/locations/{locationsId}/infoTypes",
                             "httpMethod": "GET",
                             "id": "dlp.locations.infoTypes.list",
                             "parameterOrder": [
@@ -195,6 +197,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a DeidentifyTemplate for re-using frequently used configuration for de-identifying content, images, and storage. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.",
+                            "flatPath": "v2/organizations/{organizationsId}/deidentifyTemplates",
                             "httpMethod": "POST",
                             "id": "dlp.organizations.deidentifyTemplates.create",
                             "parameterOrder": [
@@ -222,6 +225,7 @@
                         },
                         "delete": {
                             "description": "Deletes a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.",
+                            "flatPath": "v2/organizations/{organizationsId}/deidentifyTemplates/{deidentifyTemplatesId}",
                             "httpMethod": "DELETE",
                             "id": "dlp.organizations.deidentifyTemplates.delete",
                             "parameterOrder": [
@@ -246,6 +250,7 @@
                         },
                         "get": {
                             "description": "Gets a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.",
+                            "flatPath": "v2/organizations/{organizationsId}/deidentifyTemplates/{deidentifyTemplatesId}",
                             "httpMethod": "GET",
                             "id": "dlp.organizations.deidentifyTemplates.get",
                             "parameterOrder": [
@@ -270,6 +275,7 @@
                         },
                         "list": {
                             "description": "Lists DeidentifyTemplates. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.",
+                            "flatPath": "v2/organizations/{organizationsId}/deidentifyTemplates",
                             "httpMethod": "GET",
                             "id": "dlp.organizations.deidentifyTemplates.list",
                             "parameterOrder": [
@@ -315,6 +321,7 @@
                         },
                         "patch": {
                             "description": "Updates the DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.",
+                            "flatPath": "v2/organizations/{organizationsId}/deidentifyTemplates/{deidentifyTemplatesId}",
                             "httpMethod": "PATCH",
                             "id": "dlp.organizations.deidentifyTemplates.patch",
                             "parameterOrder": [
@@ -346,6 +353,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates an InspectTemplate for re-using frequently used configuration for inspecting content, images, and storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.",
+                            "flatPath": "v2/organizations/{organizationsId}/inspectTemplates",
                             "httpMethod": "POST",
                             "id": "dlp.organizations.inspectTemplates.create",
                             "parameterOrder": [
@@ -373,6 +381,7 @@
                         },
                         "delete": {
                             "description": "Deletes an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.",
+                            "flatPath": "v2/organizations/{organizationsId}/inspectTemplates/{inspectTemplatesId}",
                             "httpMethod": "DELETE",
                             "id": "dlp.organizations.inspectTemplates.delete",
                             "parameterOrder": [
@@ -397,6 +406,7 @@
                         },
                         "get": {
                             "description": "Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.",
+                            "flatPath": "v2/organizations/{organizationsId}/inspectTemplates/{inspectTemplatesId}",
                             "httpMethod": "GET",
                             "id": "dlp.organizations.inspectTemplates.get",
                             "parameterOrder": [
@@ -421,6 +431,7 @@
                         },
                         "list": {
                             "description": "Lists InspectTemplates. See https://cloud.google.com/dlp/docs/creating-templates to learn more.",
+                            "flatPath": "v2/organizations/{organizationsId}/inspectTemplates",
                             "httpMethod": "GET",
                             "id": "dlp.organizations.inspectTemplates.list",
                             "parameterOrder": [
@@ -466,6 +477,7 @@
                         },
                         "patch": {
                             "description": "Updates the InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.",
+                            "flatPath": "v2/organizations/{organizationsId}/inspectTemplates/{inspectTemplatesId}",
                             "httpMethod": "PATCH",
                             "id": "dlp.organizations.inspectTemplates.patch",
                             "parameterOrder": [
@@ -499,6 +511,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a DeidentifyTemplate for re-using frequently used configuration for de-identifying content, images, and storage. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.",
+                                    "flatPath": "v2/organizations/{organizationsId}/locations/{locationsId}/deidentifyTemplates",
                                     "httpMethod": "POST",
                                     "id": "dlp.organizations.locations.deidentifyTemplates.create",
                                     "parameterOrder": [
@@ -526,6 +539,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.",
+                                    "flatPath": "v2/organizations/{organizationsId}/locations/{locationsId}/deidentifyTemplates/{deidentifyTemplatesId}",
                                     "httpMethod": "DELETE",
                                     "id": "dlp.organizations.locations.deidentifyTemplates.delete",
                                     "parameterOrder": [
@@ -550,6 +564,7 @@
                                 },
                                 "get": {
                                     "description": "Gets a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.",
+                                    "flatPath": "v2/organizations/{organizationsId}/locations/{locationsId}/deidentifyTemplates/{deidentifyTemplatesId}",
                                     "httpMethod": "GET",
                                     "id": "dlp.organizations.locations.deidentifyTemplates.get",
                                     "parameterOrder": [
@@ -574,6 +589,7 @@
                                 },
                                 "list": {
                                     "description": "Lists DeidentifyTemplates. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.",
+                                    "flatPath": "v2/organizations/{organizationsId}/locations/{locationsId}/deidentifyTemplates",
                                     "httpMethod": "GET",
                                     "id": "dlp.organizations.locations.deidentifyTemplates.list",
                                     "parameterOrder": [
@@ -619,6 +635,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates the DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.",
+                                    "flatPath": "v2/organizations/{organizationsId}/locations/{locationsId}/deidentifyTemplates/{deidentifyTemplatesId}",
                                     "httpMethod": "PATCH",
                                     "id": "dlp.organizations.locations.deidentifyTemplates.patch",
                                     "parameterOrder": [
@@ -650,6 +667,7 @@
                             "methods": {
                                 "list": {
                                     "description": "Lists DlpJobs that match the specified filter in the request. See https://cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.",
+                                    "flatPath": "v2/organizations/{organizationsId}/locations/{locationsId}/dlpJobs",
                                     "httpMethod": "GET",
                                     "id": "dlp.organizations.locations.dlpJobs.list",
                                     "parameterOrder": [
@@ -697,7 +715,7 @@
                                                 "RISK_ANALYSIS_JOB"
                                             ],
                                             "enumDescriptions": [
-                                                "Unused",
+                                                "Defaults to INSPECT_JOB.",
                                                 "The job inspected Google Cloud for sensitive data.",
                                                 "The job executed a Risk Analysis computation."
                                             ],
@@ -719,6 +737,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates an InspectTemplate for re-using frequently used configuration for inspecting content, images, and storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.",
+                                    "flatPath": "v2/organizations/{organizationsId}/locations/{locationsId}/inspectTemplates",
                                     "httpMethod": "POST",
                                     "id": "dlp.organizations.locations.inspectTemplates.create",
                                     "parameterOrder": [
@@ -746,6 +765,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.",
+                                    "flatPath": "v2/organizations/{organizationsId}/locations/{locationsId}/inspectTemplates/{inspectTemplatesId}",
                                     "httpMethod": "DELETE",
                                     "id": "dlp.organizations.locations.inspectTemplates.delete",
                                     "parameterOrder": [
@@ -770,6 +790,7 @@
                                 },
                                 "get": {
                                     "description": "Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.",
+                                    "flatPath": "v2/organizations/{organizationsId}/locations/{locationsId}/inspectTemplates/{inspectTemplatesId}",
                                     "httpMethod": "GET",
                                     "id": "dlp.organizations.locations.inspectTemplates.get",
                                     "parameterOrder": [
@@ -794,6 +815,7 @@
                                 },
                                 "list": {
                                     "description": "Lists InspectTemplates. See https://cloud.google.com/dlp/docs/creating-templates to learn more.",
+                                    "flatPath": "v2/organizations/{organizationsId}/locations/{locationsId}/inspectTemplates",
                                     "httpMethod": "GET",
                                     "id": "dlp.organizations.locations.inspectTemplates.list",
                                     "parameterOrder": [
@@ -839,6 +861,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates the InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.",
+                                    "flatPath": "v2/organizations/{organizationsId}/locations/{locationsId}/inspectTemplates/{inspectTemplatesId}",
                                     "httpMethod": "PATCH",
                                     "id": "dlp.organizations.locations.inspectTemplates.patch",
                                     "parameterOrder": [
@@ -870,6 +893,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a job trigger to run DLP actions such as scanning storage for sensitive information on a set schedule. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.",
+                                    "flatPath": "v2/organizations/{organizationsId}/locations/{locationsId}/jobTriggers",
                                     "httpMethod": "POST",
                                     "id": "dlp.organizations.locations.jobTriggers.create",
                                     "parameterOrder": [
@@ -897,6 +921,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.",
+                                    "flatPath": "v2/organizations/{organizationsId}/locations/{locationsId}/jobTriggers/{jobTriggersId}",
                                     "httpMethod": "DELETE",
                                     "id": "dlp.organizations.locations.jobTriggers.delete",
                                     "parameterOrder": [
@@ -921,6 +946,7 @@
                                 },
                                 "get": {
                                     "description": "Gets a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.",
+                                    "flatPath": "v2/organizations/{organizationsId}/locations/{locationsId}/jobTriggers/{jobTriggersId}",
                                     "httpMethod": "GET",
                                     "id": "dlp.organizations.locations.jobTriggers.get",
                                     "parameterOrder": [
@@ -945,6 +971,7 @@
                                 },
                                 "list": {
                                     "description": "Lists job triggers. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.",
+                                    "flatPath": "v2/organizations/{organizationsId}/locations/{locationsId}/jobTriggers",
                                     "httpMethod": "GET",
                                     "id": "dlp.organizations.locations.jobTriggers.list",
                                     "parameterOrder": [
@@ -983,6 +1010,21 @@
                                             "pattern": "^organizations/[^/]+/locations/[^/]+$",
                                             "required": true,
                                             "type": "string"
+                                        },
+                                        "type": {
+                                            "description": "The type of jobs. Will use `DlpJobType.INSPECT` if not set.",
+                                            "enum": [
+                                                "DLP_JOB_TYPE_UNSPECIFIED",
+                                                "INSPECT_JOB",
+                                                "RISK_ANALYSIS_JOB"
+                                            ],
+                                            "enumDescriptions": [
+                                                "Defaults to INSPECT_JOB.",
+                                                "The job inspected Google Cloud for sensitive data.",
+                                                "The job executed a Risk Analysis computation."
+                                            ],
+                                            "location": "query",
+                                            "type": "string"
                                         }
                                     },
                                     "path": "v2/{+parent}/jobTriggers",
@@ -995,6 +1037,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.",
+                                    "flatPath": "v2/organizations/{organizationsId}/locations/{locationsId}/jobTriggers/{jobTriggersId}",
                                     "httpMethod": "PATCH",
                                     "id": "dlp.organizations.locations.jobTriggers.patch",
                                     "parameterOrder": [
@@ -1026,6 +1069,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a pre-built stored infoType to be used for inspection. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.",
+                                    "flatPath": "v2/organizations/{organizationsId}/locations/{locationsId}/storedInfoTypes",
                                     "httpMethod": "POST",
                                     "id": "dlp.organizations.locations.storedInfoTypes.create",
                                     "parameterOrder": [
@@ -1053,6 +1097,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.",
+                                    "flatPath": "v2/organizations/{organizationsId}/locations/{locationsId}/storedInfoTypes/{storedInfoTypesId}",
                                     "httpMethod": "DELETE",
                                     "id": "dlp.organizations.locations.storedInfoTypes.delete",
                                     "parameterOrder": [
@@ -1077,6 +1122,7 @@
                                 },
                                 "get": {
                                     "description": "Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.",
+                                    "flatPath": "v2/organizations/{organizationsId}/locations/{locationsId}/storedInfoTypes/{storedInfoTypesId}",
                                     "httpMethod": "GET",
                                     "id": "dlp.organizations.locations.storedInfoTypes.get",
                                     "parameterOrder": [
@@ -1101,6 +1147,7 @@
                                 },
                                 "list": {
                                     "description": "Lists stored infoTypes. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.",
+                                    "flatPath": "v2/organizations/{organizationsId}/locations/{locationsId}/storedInfoTypes",
                                     "httpMethod": "GET",
                                     "id": "dlp.organizations.locations.storedInfoTypes.list",
                                     "parameterOrder": [
@@ -1146,6 +1193,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates the stored infoType by creating a new version. The existing version will continue to be used until the new version is ready. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.",
+                                    "flatPath": "v2/organizations/{organizationsId}/locations/{locationsId}/storedInfoTypes/{storedInfoTypesId}",
                                     "httpMethod": "PATCH",
                                     "id": "dlp.organizations.locations.storedInfoTypes.patch",
                                     "parameterOrder": [
@@ -1179,6 +1227,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a pre-built stored infoType to be used for inspection. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.",
+                            "flatPath": "v2/organizations/{organizationsId}/storedInfoTypes",
                             "httpMethod": "POST",
                             "id": "dlp.organizations.storedInfoTypes.create",
                             "parameterOrder": [
@@ -1206,6 +1255,7 @@
                         },
                         "delete": {
                             "description": "Deletes a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.",
+                            "flatPath": "v2/organizations/{organizationsId}/storedInfoTypes/{storedInfoTypesId}",
                             "httpMethod": "DELETE",
                             "id": "dlp.organizations.storedInfoTypes.delete",
                             "parameterOrder": [
@@ -1230,6 +1280,7 @@
                         },
                         "get": {
                             "description": "Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.",
+                            "flatPath": "v2/organizations/{organizationsId}/storedInfoTypes/{storedInfoTypesId}",
                             "httpMethod": "GET",
                             "id": "dlp.organizations.storedInfoTypes.get",
                             "parameterOrder": [
@@ -1254,6 +1305,7 @@
                         },
                         "list": {
                             "description": "Lists stored infoTypes. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.",
+                            "flatPath": "v2/organizations/{organizationsId}/storedInfoTypes",
                             "httpMethod": "GET",
                             "id": "dlp.organizations.storedInfoTypes.list",
                             "parameterOrder": [
@@ -1299,6 +1351,7 @@
                         },
                         "patch": {
                             "description": "Updates the stored infoType by creating a new version. The existing version will continue to be used until the new version is ready. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.",
+                            "flatPath": "v2/organizations/{organizationsId}/storedInfoTypes/{storedInfoTypesId}",
                             "httpMethod": "PATCH",
                             "id": "dlp.organizations.storedInfoTypes.patch",
                             "parameterOrder": [
@@ -1334,6 +1387,7 @@
                     "methods": {
                         "deidentify": {
                             "description": "De-identifies potentially sensitive info from a ContentItem. This method has limits on input size and output size. See https://cloud.google.com/dlp/docs/deidentify-sensitive-data to learn more. When no InfoTypes or CustomInfoTypes are specified in this request, the system will automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated.",
+                            "flatPath": "v2/projects/{projectsId}/content:deidentify",
                             "httpMethod": "POST",
                             "id": "dlp.projects.content.deidentify",
                             "parameterOrder": [
@@ -1361,6 +1415,7 @@
                         },
                         "inspect": {
                             "description": "Finds potentially sensitive info in content. This method has limits on input size, processing time, and output size. When no InfoTypes or CustomInfoTypes are specified in this request, the system will automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated. For how to guides, see https://cloud.google.com/dlp/docs/inspecting-images and https://cloud.google.com/dlp/docs/inspecting-text,",
+                            "flatPath": "v2/projects/{projectsId}/content:inspect",
                             "httpMethod": "POST",
                             "id": "dlp.projects.content.inspect",
                             "parameterOrder": [
@@ -1388,6 +1443,7 @@
                         },
                         "reidentify": {
                             "description": "Re-identifies content that has been de-identified. See https://cloud.google.com/dlp/docs/pseudonymization#re-identification_in_free_text_code_example to learn more.",
+                            "flatPath": "v2/projects/{projectsId}/content:reidentify",
                             "httpMethod": "POST",
                             "id": "dlp.projects.content.reidentify",
                             "parameterOrder": [
@@ -1419,6 +1475,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a DeidentifyTemplate for re-using frequently used configuration for de-identifying content, images, and storage. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.",
+                            "flatPath": "v2/projects/{projectsId}/deidentifyTemplates",
                             "httpMethod": "POST",
                             "id": "dlp.projects.deidentifyTemplates.create",
                             "parameterOrder": [
@@ -1446,6 +1503,7 @@
                         },
                         "delete": {
                             "description": "Deletes a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.",
+                            "flatPath": "v2/projects/{projectsId}/deidentifyTemplates/{deidentifyTemplatesId}",
                             "httpMethod": "DELETE",
                             "id": "dlp.projects.deidentifyTemplates.delete",
                             "parameterOrder": [
@@ -1470,6 +1528,7 @@
                         },
                         "get": {
                             "description": "Gets a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.",
+                            "flatPath": "v2/projects/{projectsId}/deidentifyTemplates/{deidentifyTemplatesId}",
                             "httpMethod": "GET",
                             "id": "dlp.projects.deidentifyTemplates.get",
                             "parameterOrder": [
@@ -1494,6 +1553,7 @@
                         },
                         "list": {
                             "description": "Lists DeidentifyTemplates. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.",
+                            "flatPath": "v2/projects/{projectsId}/deidentifyTemplates",
                             "httpMethod": "GET",
                             "id": "dlp.projects.deidentifyTemplates.list",
                             "parameterOrder": [
@@ -1539,6 +1599,7 @@
                         },
                         "patch": {
                             "description": "Updates the DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.",
+                            "flatPath": "v2/projects/{projectsId}/deidentifyTemplates/{deidentifyTemplatesId}",
                             "httpMethod": "PATCH",
                             "id": "dlp.projects.deidentifyTemplates.patch",
                             "parameterOrder": [
@@ -1570,6 +1631,7 @@
                     "methods": {
                         "cancel": {
                             "description": "Starts asynchronous cancellation on a long-running DlpJob. The server makes a best effort to cancel the DlpJob, but success is not guaranteed. See https://cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.",
+                            "flatPath": "v2/projects/{projectsId}/dlpJobs/{dlpJobsId}:cancel",
                             "httpMethod": "POST",
                             "id": "dlp.projects.dlpJobs.cancel",
                             "parameterOrder": [
@@ -1597,6 +1659,7 @@
                         },
                         "create": {
                             "description": "Creates a new job to inspect storage or calculate risk metrics. See https://cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more. When no InfoTypes or CustomInfoTypes are specified in inspect jobs, the system will automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated.",
+                            "flatPath": "v2/projects/{projectsId}/dlpJobs",
                             "httpMethod": "POST",
                             "id": "dlp.projects.dlpJobs.create",
                             "parameterOrder": [
@@ -1624,6 +1687,7 @@
                         },
                         "delete": {
                             "description": "Deletes a long-running DlpJob. This method indicates that the client is no longer interested in the DlpJob result. The job will be cancelled if possible. See https://cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.",
+                            "flatPath": "v2/projects/{projectsId}/dlpJobs/{dlpJobsId}",
                             "httpMethod": "DELETE",
                             "id": "dlp.projects.dlpJobs.delete",
                             "parameterOrder": [
@@ -1648,6 +1712,7 @@
                         },
                         "get": {
                             "description": "Gets the latest state of a long-running DlpJob. See https://cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.",
+                            "flatPath": "v2/projects/{projectsId}/dlpJobs/{dlpJobsId}",
                             "httpMethod": "GET",
                             "id": "dlp.projects.dlpJobs.get",
                             "parameterOrder": [
@@ -1672,6 +1737,7 @@
                         },
                         "list": {
                             "description": "Lists DlpJobs that match the specified filter in the request. See https://cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.",
+                            "flatPath": "v2/projects/{projectsId}/dlpJobs",
                             "httpMethod": "GET",
                             "id": "dlp.projects.dlpJobs.list",
                             "parameterOrder": [
@@ -1719,7 +1785,7 @@
                                         "RISK_ANALYSIS_JOB"
                                     ],
                                     "enumDescriptions": [
-                                        "Unused",
+                                        "Defaults to INSPECT_JOB.",
                                         "The job inspected Google Cloud for sensitive data.",
                                         "The job executed a Risk Analysis computation."
                                     ],
@@ -1741,6 +1807,7 @@
                     "methods": {
                         "redact": {
                             "description": "Redacts potentially sensitive info from an image. This method has limits on input size, processing time, and output size. See https://cloud.google.com/dlp/docs/redacting-sensitive-data-images to learn more. When no InfoTypes or CustomInfoTypes are specified in this request, the system will automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated.",
+                            "flatPath": "v2/projects/{projectsId}/image:redact",
                             "httpMethod": "POST",
                             "id": "dlp.projects.image.redact",
                             "parameterOrder": [
@@ -1772,6 +1839,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates an InspectTemplate for re-using frequently used configuration for inspecting content, images, and storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.",
+                            "flatPath": "v2/projects/{projectsId}/inspectTemplates",
                             "httpMethod": "POST",
                             "id": "dlp.projects.inspectTemplates.create",
                             "parameterOrder": [
@@ -1799,6 +1867,7 @@
                         },
                         "delete": {
                             "description": "Deletes an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.",
+                            "flatPath": "v2/projects/{projectsId}/inspectTemplates/{inspectTemplatesId}",
                             "httpMethod": "DELETE",
                             "id": "dlp.projects.inspectTemplates.delete",
                             "parameterOrder": [
@@ -1823,6 +1892,7 @@
                         },
                         "get": {
                             "description": "Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.",
+                            "flatPath": "v2/projects/{projectsId}/inspectTemplates/{inspectTemplatesId}",
                             "httpMethod": "GET",
                             "id": "dlp.projects.inspectTemplates.get",
                             "parameterOrder": [
@@ -1847,6 +1917,7 @@
                         },
                         "list": {
                             "description": "Lists InspectTemplates. See https://cloud.google.com/dlp/docs/creating-templates to learn more.",
+                            "flatPath": "v2/projects/{projectsId}/inspectTemplates",
                             "httpMethod": "GET",
                             "id": "dlp.projects.inspectTemplates.list",
                             "parameterOrder": [
@@ -1892,6 +1963,7 @@
                         },
                         "patch": {
                             "description": "Updates the InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.",
+                            "flatPath": "v2/projects/{projectsId}/inspectTemplates/{inspectTemplatesId}",
                             "httpMethod": "PATCH",
                             "id": "dlp.projects.inspectTemplates.patch",
                             "parameterOrder": [
@@ -1923,6 +1995,7 @@
                     "methods": {
                         "activate": {
                             "description": "Activate a job trigger. Causes the immediate execute of a trigger instead of waiting on the trigger event to occur.",
+                            "flatPath": "v2/projects/{projectsId}/jobTriggers/{jobTriggersId}:activate",
                             "httpMethod": "POST",
                             "id": "dlp.projects.jobTriggers.activate",
                             "parameterOrder": [
@@ -1950,6 +2023,7 @@
                         },
                         "create": {
                             "description": "Creates a job trigger to run DLP actions such as scanning storage for sensitive information on a set schedule. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.",
+                            "flatPath": "v2/projects/{projectsId}/jobTriggers",
                             "httpMethod": "POST",
                             "id": "dlp.projects.jobTriggers.create",
                             "parameterOrder": [
@@ -1977,6 +2051,7 @@
                         },
                         "delete": {
                             "description": "Deletes a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.",
+                            "flatPath": "v2/projects/{projectsId}/jobTriggers/{jobTriggersId}",
                             "httpMethod": "DELETE",
                             "id": "dlp.projects.jobTriggers.delete",
                             "parameterOrder": [
@@ -2001,6 +2076,7 @@
                         },
                         "get": {
                             "description": "Gets a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.",
+                            "flatPath": "v2/projects/{projectsId}/jobTriggers/{jobTriggersId}",
                             "httpMethod": "GET",
                             "id": "dlp.projects.jobTriggers.get",
                             "parameterOrder": [
@@ -2025,6 +2101,7 @@
                         },
                         "list": {
                             "description": "Lists job triggers. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.",
+                            "flatPath": "v2/projects/{projectsId}/jobTriggers",
                             "httpMethod": "GET",
                             "id": "dlp.projects.jobTriggers.list",
                             "parameterOrder": [
@@ -2063,6 +2140,21 @@
                                     "pattern": "^projects/[^/]+$",
                                     "required": true,
                                     "type": "string"
+                                },
+                                "type": {
+                                    "description": "The type of jobs. Will use `DlpJobType.INSPECT` if not set.",
+                                    "enum": [
+                                        "DLP_JOB_TYPE_UNSPECIFIED",
+                                        "INSPECT_JOB",
+                                        "RISK_ANALYSIS_JOB"
+                                    ],
+                                    "enumDescriptions": [
+                                        "Defaults to INSPECT_JOB.",
+                                        "The job inspected Google Cloud for sensitive data.",
+                                        "The job executed a Risk Analysis computation."
+                                    ],
+                                    "location": "query",
+                                    "type": "string"
                                 }
                             },
                             "path": "v2/{+parent}/jobTriggers",
@@ -2075,6 +2167,7 @@
                         },
                         "patch": {
                             "description": "Updates a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.",
+                            "flatPath": "v2/projects/{projectsId}/jobTriggers/{jobTriggersId}",
                             "httpMethod": "PATCH",
                             "id": "dlp.projects.jobTriggers.patch",
                             "parameterOrder": [
@@ -2108,6 +2201,7 @@
                             "methods": {
                                 "deidentify": {
                                     "description": "De-identifies potentially sensitive info from a ContentItem. This method has limits on input size and output size. See https://cloud.google.com/dlp/docs/deidentify-sensitive-data to learn more. When no InfoTypes or CustomInfoTypes are specified in this request, the system will automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/content:deidentify",
                                     "httpMethod": "POST",
                                     "id": "dlp.projects.locations.content.deidentify",
                                     "parameterOrder": [
@@ -2135,6 +2229,7 @@
                                 },
                                 "inspect": {
                                     "description": "Finds potentially sensitive info in content. This method has limits on input size, processing time, and output size. When no InfoTypes or CustomInfoTypes are specified in this request, the system will automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated. For how to guides, see https://cloud.google.com/dlp/docs/inspecting-images and https://cloud.google.com/dlp/docs/inspecting-text,",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/content:inspect",
                                     "httpMethod": "POST",
                                     "id": "dlp.projects.locations.content.inspect",
                                     "parameterOrder": [
@@ -2162,6 +2257,7 @@
                                 },
                                 "reidentify": {
                                     "description": "Re-identifies content that has been de-identified. See https://cloud.google.com/dlp/docs/pseudonymization#re-identification_in_free_text_code_example to learn more.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/content:reidentify",
                                     "httpMethod": "POST",
                                     "id": "dlp.projects.locations.content.reidentify",
                                     "parameterOrder": [
@@ -2193,6 +2289,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a DeidentifyTemplate for re-using frequently used configuration for de-identifying content, images, and storage. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/deidentifyTemplates",
                                     "httpMethod": "POST",
                                     "id": "dlp.projects.locations.deidentifyTemplates.create",
                                     "parameterOrder": [
@@ -2220,6 +2317,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/deidentifyTemplates/{deidentifyTemplatesId}",
                                     "httpMethod": "DELETE",
                                     "id": "dlp.projects.locations.deidentifyTemplates.delete",
                                     "parameterOrder": [
@@ -2244,6 +2342,7 @@
                                 },
                                 "get": {
                                     "description": "Gets a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/deidentifyTemplates/{deidentifyTemplatesId}",
                                     "httpMethod": "GET",
                                     "id": "dlp.projects.locations.deidentifyTemplates.get",
                                     "parameterOrder": [
@@ -2268,6 +2367,7 @@
                                 },
                                 "list": {
                                     "description": "Lists DeidentifyTemplates. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/deidentifyTemplates",
                                     "httpMethod": "GET",
                                     "id": "dlp.projects.locations.deidentifyTemplates.list",
                                     "parameterOrder": [
@@ -2313,6 +2413,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates the DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/deidentifyTemplates/{deidentifyTemplatesId}",
                                     "httpMethod": "PATCH",
                                     "id": "dlp.projects.locations.deidentifyTemplates.patch",
                                     "parameterOrder": [
@@ -2344,6 +2445,7 @@
                             "methods": {
                                 "cancel": {
                                     "description": "Starts asynchronous cancellation on a long-running DlpJob. The server makes a best effort to cancel the DlpJob, but success is not guaranteed. See https://cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/dlpJobs/{dlpJobsId}:cancel",
                                     "httpMethod": "POST",
                                     "id": "dlp.projects.locations.dlpJobs.cancel",
                                     "parameterOrder": [
@@ -2371,6 +2473,7 @@
                                 },
                                 "create": {
                                     "description": "Creates a new job to inspect storage or calculate risk metrics. See https://cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more. When no InfoTypes or CustomInfoTypes are specified in inspect jobs, the system will automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/dlpJobs",
                                     "httpMethod": "POST",
                                     "id": "dlp.projects.locations.dlpJobs.create",
                                     "parameterOrder": [
@@ -2398,6 +2501,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a long-running DlpJob. This method indicates that the client is no longer interested in the DlpJob result. The job will be cancelled if possible. See https://cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/dlpJobs/{dlpJobsId}",
                                     "httpMethod": "DELETE",
                                     "id": "dlp.projects.locations.dlpJobs.delete",
                                     "parameterOrder": [
@@ -2422,6 +2526,7 @@
                                 },
                                 "finish": {
                                     "description": "Finish a running hybrid DlpJob. Triggers the finalization steps and running of any enabled actions that have not yet run.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/dlpJobs/{dlpJobsId}:finish",
                                     "httpMethod": "POST",
                                     "id": "dlp.projects.locations.dlpJobs.finish",
                                     "parameterOrder": [
@@ -2449,6 +2554,7 @@
                                 },
                                 "get": {
                                     "description": "Gets the latest state of a long-running DlpJob. See https://cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/dlpJobs/{dlpJobsId}",
                                     "httpMethod": "GET",
                                     "id": "dlp.projects.locations.dlpJobs.get",
                                     "parameterOrder": [
@@ -2473,6 +2579,7 @@
                                 },
                                 "hybridInspect": {
                                     "description": "Inspect hybrid content and store findings to a job. To review the findings, inspect the job. Inspection will occur asynchronously.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/dlpJobs/{dlpJobsId}:hybridInspect",
                                     "httpMethod": "POST",
                                     "id": "dlp.projects.locations.dlpJobs.hybridInspect",
                                     "parameterOrder": [
@@ -2500,6 +2607,7 @@
                                 },
                                 "list": {
                                     "description": "Lists DlpJobs that match the specified filter in the request. See https://cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/dlpJobs",
                                     "httpMethod": "GET",
                                     "id": "dlp.projects.locations.dlpJobs.list",
                                     "parameterOrder": [
@@ -2547,7 +2655,7 @@
                                                 "RISK_ANALYSIS_JOB"
                                             ],
                                             "enumDescriptions": [
-                                                "Unused",
+                                                "Defaults to INSPECT_JOB.",
                                                 "The job inspected Google Cloud for sensitive data.",
                                                 "The job executed a Risk Analysis computation."
                                             ],
@@ -2569,6 +2677,7 @@
                             "methods": {
                                 "redact": {
                                     "description": "Redacts potentially sensitive info from an image. This method has limits on input size, processing time, and output size. See https://cloud.google.com/dlp/docs/redacting-sensitive-data-images to learn more. When no InfoTypes or CustomInfoTypes are specified in this request, the system will automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/image:redact",
                                     "httpMethod": "POST",
                                     "id": "dlp.projects.locations.image.redact",
                                     "parameterOrder": [
@@ -2600,6 +2709,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates an InspectTemplate for re-using frequently used configuration for inspecting content, images, and storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/inspectTemplates",
                                     "httpMethod": "POST",
                                     "id": "dlp.projects.locations.inspectTemplates.create",
                                     "parameterOrder": [
@@ -2627,6 +2737,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/inspectTemplates/{inspectTemplatesId}",
                                     "httpMethod": "DELETE",
                                     "id": "dlp.projects.locations.inspectTemplates.delete",
                                     "parameterOrder": [
@@ -2651,6 +2762,7 @@
                                 },
                                 "get": {
                                     "description": "Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/inspectTemplates/{inspectTemplatesId}",
                                     "httpMethod": "GET",
                                     "id": "dlp.projects.locations.inspectTemplates.get",
                                     "parameterOrder": [
@@ -2675,6 +2787,7 @@
                                 },
                                 "list": {
                                     "description": "Lists InspectTemplates. See https://cloud.google.com/dlp/docs/creating-templates to learn more.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/inspectTemplates",
                                     "httpMethod": "GET",
                                     "id": "dlp.projects.locations.inspectTemplates.list",
                                     "parameterOrder": [
@@ -2720,6 +2833,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates the InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/inspectTemplates/{inspectTemplatesId}",
                                     "httpMethod": "PATCH",
                                     "id": "dlp.projects.locations.inspectTemplates.patch",
                                     "parameterOrder": [
@@ -2751,6 +2865,7 @@
                             "methods": {
                                 "activate": {
                                     "description": "Activate a job trigger. Causes the immediate execute of a trigger instead of waiting on the trigger event to occur.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/jobTriggers/{jobTriggersId}:activate",
                                     "httpMethod": "POST",
                                     "id": "dlp.projects.locations.jobTriggers.activate",
                                     "parameterOrder": [
@@ -2778,6 +2893,7 @@
                                 },
                                 "create": {
                                     "description": "Creates a job trigger to run DLP actions such as scanning storage for sensitive information on a set schedule. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/jobTriggers",
                                     "httpMethod": "POST",
                                     "id": "dlp.projects.locations.jobTriggers.create",
                                     "parameterOrder": [
@@ -2805,6 +2921,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/jobTriggers/{jobTriggersId}",
                                     "httpMethod": "DELETE",
                                     "id": "dlp.projects.locations.jobTriggers.delete",
                                     "parameterOrder": [
@@ -2829,6 +2946,7 @@
                                 },
                                 "get": {
                                     "description": "Gets a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/jobTriggers/{jobTriggersId}",
                                     "httpMethod": "GET",
                                     "id": "dlp.projects.locations.jobTriggers.get",
                                     "parameterOrder": [
@@ -2853,6 +2971,7 @@
                                 },
                                 "hybridInspect": {
                                     "description": "Inspect hybrid content and store findings to a trigger. The inspection will be processed asynchronously. To review the findings monitor the jobs within the trigger.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/jobTriggers/{jobTriggersId}:hybridInspect",
                                     "httpMethod": "POST",
                                     "id": "dlp.projects.locations.jobTriggers.hybridInspect",
                                     "parameterOrder": [
@@ -2880,6 +2999,7 @@
                                 },
                                 "list": {
                                     "description": "Lists job triggers. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/jobTriggers",
                                     "httpMethod": "GET",
                                     "id": "dlp.projects.locations.jobTriggers.list",
                                     "parameterOrder": [
@@ -2918,6 +3038,21 @@
                                             "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
                                             "type": "string"
+                                        },
+                                        "type": {
+                                            "description": "The type of jobs. Will use `DlpJobType.INSPECT` if not set.",
+                                            "enum": [
+                                                "DLP_JOB_TYPE_UNSPECIFIED",
+                                                "INSPECT_JOB",
+                                                "RISK_ANALYSIS_JOB"
+                                            ],
+                                            "enumDescriptions": [
+                                                "Defaults to INSPECT_JOB.",
+                                                "The job inspected Google Cloud for sensitive data.",
+                                                "The job executed a Risk Analysis computation."
+                                            ],
+                                            "location": "query",
+                                            "type": "string"
                                         }
                                     },
                                     "path": "v2/{+parent}/jobTriggers",
@@ -2930,6 +3065,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/jobTriggers/{jobTriggersId}",
                                     "httpMethod": "PATCH",
                                     "id": "dlp.projects.locations.jobTriggers.patch",
                                     "parameterOrder": [
@@ -2961,6 +3097,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a pre-built stored infoType to be used for inspection. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/storedInfoTypes",
                                     "httpMethod": "POST",
                                     "id": "dlp.projects.locations.storedInfoTypes.create",
                                     "parameterOrder": [
@@ -2988,6 +3125,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/storedInfoTypes/{storedInfoTypesId}",
                                     "httpMethod": "DELETE",
                                     "id": "dlp.projects.locations.storedInfoTypes.delete",
                                     "parameterOrder": [
@@ -3012,6 +3150,7 @@
                                 },
                                 "get": {
                                     "description": "Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/storedInfoTypes/{storedInfoTypesId}",
                                     "httpMethod": "GET",
                                     "id": "dlp.projects.locations.storedInfoTypes.get",
                                     "parameterOrder": [
@@ -3036,6 +3175,7 @@
                                 },
                                 "list": {
                                     "description": "Lists stored infoTypes. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/storedInfoTypes",
                                     "httpMethod": "GET",
                                     "id": "dlp.projects.locations.storedInfoTypes.list",
                                     "parameterOrder": [
@@ -3081,6 +3221,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates the stored infoType by creating a new version. The existing version will continue to be used until the new version is ready. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/storedInfoTypes/{storedInfoTypesId}",
                                     "httpMethod": "PATCH",
                                     "id": "dlp.projects.locations.storedInfoTypes.patch",
                                     "parameterOrder": [
@@ -3114,6 +3255,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a pre-built stored infoType to be used for inspection. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.",
+                            "flatPath": "v2/projects/{projectsId}/storedInfoTypes",
                             "httpMethod": "POST",
                             "id": "dlp.projects.storedInfoTypes.create",
                             "parameterOrder": [
@@ -3141,6 +3283,7 @@
                         },
                         "delete": {
                             "description": "Deletes a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.",
+                            "flatPath": "v2/projects/{projectsId}/storedInfoTypes/{storedInfoTypesId}",
                             "httpMethod": "DELETE",
                             "id": "dlp.projects.storedInfoTypes.delete",
                             "parameterOrder": [
@@ -3165,6 +3308,7 @@
                         },
                         "get": {
                             "description": "Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.",
+                            "flatPath": "v2/projects/{projectsId}/storedInfoTypes/{storedInfoTypesId}",
                             "httpMethod": "GET",
                             "id": "dlp.projects.storedInfoTypes.get",
                             "parameterOrder": [
@@ -3189,6 +3333,7 @@
                         },
                         "list": {
                             "description": "Lists stored infoTypes. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.",
+                            "flatPath": "v2/projects/{projectsId}/storedInfoTypes",
                             "httpMethod": "GET",
                             "id": "dlp.projects.storedInfoTypes.list",
                             "parameterOrder": [
@@ -3234,6 +3379,7 @@
                         },
                         "patch": {
                             "description": "Updates the stored infoType by creating a new version. The existing version will continue to be used until the new version is ready. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.",
+                            "flatPath": "v2/projects/{projectsId}/storedInfoTypes/{storedInfoTypesId}",
                             "httpMethod": "PATCH",
                             "id": "dlp.projects.storedInfoTypes.patch",
                             "parameterOrder": [
@@ -3264,7 +3410,7 @@
             }
         }
     },
-    "revision": "20210508",
+    "revision": "20210613",
     "rootUrl": "https://dlp.googleapis.com/",
     "schemas": {
         "GooglePrivacyDlpV2Action": {
@@ -4620,7 +4766,7 @@
                         "RISK_ANALYSIS_JOB"
                     ],
                     "enumDescriptions": [
-                        "Unused",
+                        "Defaults to INSPECT_JOB.",
                         "The job inspected Google Cloud for sensitive data.",
                         "The job executed a Risk Analysis computation."
                     ],
@@ -4906,7 +5052,7 @@
             "type": "object"
         },
         "GooglePrivacyDlpV2FixedSizeBucketingConfig": {
-            "description": "Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies. The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}, i.e if lower_bound = 10 and upper_bound = 20 all values that are within this bucket will be replaced with \"10-20\". This can be used on data of type: double, long. If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.",
+            "description": "Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies. The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with \"10-20\". This can be used on data of type: double, long. If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.",
             "id": "GooglePrivacyDlpV2FixedSizeBucketingConfig",
             "properties": {
                 "bucketSize": {
@@ -5741,7 +5887,7 @@
             "type": "object"
         },
         "GooglePrivacyDlpV2KmsWrappedCryptoKey": {
-            "description": "Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128/192/256 bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a kms-wrapped crypto key: dlp.kms.encrypt",
+            "description": "Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key).",
             "id": "GooglePrivacyDlpV2KmsWrappedCryptoKey",
             "properties": {
                 "cryptoKeyName": {

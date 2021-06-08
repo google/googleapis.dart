@@ -109,6 +109,7 @@
                     "methods": {
                         "annotate": {
                             "description": "Annotates a previously created Assessment to provide additional information on whether the event turned out to be authentic or fraudulent.",
+                            "flatPath": "v1/projects/{projectsId}/assessments/{assessmentsId}:annotate",
                             "httpMethod": "POST",
                             "id": "recaptchaenterprise.projects.assessments.annotate",
                             "parameterOrder": [
@@ -136,6 +137,7 @@
                         },
                         "create": {
                             "description": "Creates an Assessment of the likelihood an event is legitimate.",
+                            "flatPath": "v1/projects/{projectsId}/assessments",
                             "httpMethod": "POST",
                             "id": "recaptchaenterprise.projects.assessments.create",
                             "parameterOrder": [
@@ -167,6 +169,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a new reCAPTCHA Enterprise key.",
+                            "flatPath": "v1/projects/{projectsId}/keys",
                             "httpMethod": "POST",
                             "id": "recaptchaenterprise.projects.keys.create",
                             "parameterOrder": [
@@ -194,6 +197,7 @@
                         },
                         "delete": {
                             "description": "Deletes the specified key.",
+                            "flatPath": "v1/projects/{projectsId}/keys/{keysId}",
                             "httpMethod": "DELETE",
                             "id": "recaptchaenterprise.projects.keys.delete",
                             "parameterOrder": [
@@ -218,6 +222,7 @@
                         },
                         "get": {
                             "description": "Returns the specified key.",
+                            "flatPath": "v1/projects/{projectsId}/keys/{keysId}",
                             "httpMethod": "GET",
                             "id": "recaptchaenterprise.projects.keys.get",
                             "parameterOrder": [
@@ -242,6 +247,7 @@
                         },
                         "getMetrics": {
                             "description": "Get some aggregated metrics for a Key. This data can be used to build dashboards.",
+                            "flatPath": "v1/projects/{projectsId}/keys/{keysId}/metrics",
                             "httpMethod": "GET",
                             "id": "recaptchaenterprise.projects.keys.getMetrics",
                             "parameterOrder": [
@@ -266,6 +272,7 @@
                         },
                         "list": {
                             "description": "Returns the list of all keys that belong to a project.",
+                            "flatPath": "v1/projects/{projectsId}/keys",
                             "httpMethod": "GET",
                             "id": "recaptchaenterprise.projects.keys.list",
                             "parameterOrder": [
@@ -301,6 +308,7 @@
                         },
                         "migrate": {
                             "description": "Migrates an existing key from reCAPTCHA to reCAPTCHA Enterprise. Once a key is migrated, it can be used from either product. SiteVerify requests are billed as CreateAssessment calls. You must be authenticated as one of the current owners of the reCAPTCHA Site Key, and your user must have the reCAPTCHA Enterprise Admin IAM role in the destination project.",
+                            "flatPath": "v1/projects/{projectsId}/keys/{keysId}:migrate",
                             "httpMethod": "POST",
                             "id": "recaptchaenterprise.projects.keys.migrate",
                             "parameterOrder": [
@@ -328,6 +336,7 @@
                         },
                         "patch": {
                             "description": "Updates the specified key.",
+                            "flatPath": "v1/projects/{projectsId}/keys/{keysId}",
                             "httpMethod": "PATCH",
                             "id": "recaptchaenterprise.projects.keys.patch",
                             "parameterOrder": [
@@ -364,7 +373,7 @@
             }
         }
     },
-    "revision": "20210514",
+    "revision": "20210604",
     "rootUrl": "https://recaptchaenterprise.googleapis.com/",
     "schemas": {
         "GoogleCloudRecaptchaenterpriseV1AndroidKeySettings": {
@@ -410,6 +419,7 @@
                             "REASON_UNSPECIFIED",
                             "CHARGEBACK",
                             "PAYMENT_HEURISTICS",
+                            "INITIATED_TWO_FACTOR",
                             "PASSED_TWO_FACTOR",
                             "FAILED_TWO_FACTOR",
                             "CORRECT_PASSWORD",
@@ -419,6 +429,7 @@
                             "Default unspecified reason.",
                             "Indicates a chargeback for fraud was issued for the transaction associated with the assessment.",
                             "Indicates the transaction associated with the assessment is suspected of being fraudulent based on the payment method, billing details, shipping address or other transaction information.",
+                            "Indicates that the user was served a 2FA challenge. Sufficiently old assessments with this reason that have not been overwritten with PASSED_TWO_FACTOR will be treated as an abandoned 2FA flow, equivalent to FAILED_TWO_FACTOR.",
                             "Indicates that the user passed a 2FA challenge.",
                             "Indicates that the user failed a 2FA challenge.",
                             "Indicates the user provided the correct password.",

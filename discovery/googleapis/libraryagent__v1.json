@@ -107,6 +107,7 @@
             "methods": {
                 "get": {
                     "description": "Gets a shelf. Returns NOT_FOUND if the shelf does not exist.",
+                    "flatPath": "v1/shelves/{shelvesId}",
                     "httpMethod": "GET",
                     "id": "libraryagent.shelves.get",
                     "parameterOrder": [
@@ -131,6 +132,7 @@
                 },
                 "list": {
                     "description": "Lists shelves. The order is unspecified but deterministic. Newly created shelves will not necessarily be added to the end of this list.",
+                    "flatPath": "v1/shelves",
                     "httpMethod": "GET",
                     "id": "libraryagent.shelves.list",
                     "parameterOrder": [],
@@ -161,6 +163,7 @@
                     "methods": {
                         "borrow": {
                             "description": "Borrow a book from the library. Returns the book if it is borrowed successfully. Returns NOT_FOUND if the book does not exist in the library. Returns quota exceeded error if the amount of books borrowed exceeds allocation quota in any dimensions.",
+                            "flatPath": "v1/shelves/{shelvesId}/books/{booksId}:borrow",
                             "httpMethod": "POST",
                             "id": "libraryagent.shelves.books.borrow",
                             "parameterOrder": [
@@ -185,6 +188,7 @@
                         },
                         "get": {
                             "description": "Gets a book. Returns NOT_FOUND if the book does not exist.",
+                            "flatPath": "v1/shelves/{shelvesId}/books/{booksId}",
                             "httpMethod": "GET",
                             "id": "libraryagent.shelves.books.get",
                             "parameterOrder": [
@@ -209,6 +213,7 @@
                         },
                         "list": {
                             "description": "Lists books in a shelf. The order is unspecified but deterministic. Newly created books will not necessarily be added to the end of this list. Returns NOT_FOUND if the shelf does not exist.",
+                            "flatPath": "v1/shelves/{shelvesId}/books",
                             "httpMethod": "GET",
                             "id": "libraryagent.shelves.books.list",
                             "parameterOrder": [
@@ -244,6 +249,7 @@
                         },
                         "return": {
                             "description": "Return a book to the library. Returns the book if it is returned to the library successfully. Returns error if the book does not belong to the library or the users didn't borrow before.",
+                            "flatPath": "v1/shelves/{shelvesId}/books/{booksId}:return",
                             "httpMethod": "POST",
                             "id": "libraryagent.shelves.books.return",
                             "parameterOrder": [
@@ -271,7 +277,7 @@
             }
         }
     },
-    "revision": "20210520",
+    "revision": "20210614",
     "rootUrl": "https://libraryagent.googleapis.com/",
     "schemas": {
         "GoogleExampleLibraryagentV1Book": {

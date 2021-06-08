@@ -116,6 +116,7 @@
             "methods": {
                 "getConfig": {
                     "description": "Returns the Cloud Source Repositories configuration of the project.",
+                    "flatPath": "v1/projects/{projectsId}/config",
                     "httpMethod": "GET",
                     "id": "sourcerepo.projects.getConfig",
                     "parameterOrder": [
@@ -140,6 +141,7 @@
                 },
                 "updateConfig": {
                     "description": "Updates the Cloud Source Repositories configuration of the project.",
+                    "flatPath": "v1/projects/{projectsId}/config",
                     "httpMethod": "PATCH",
                     "id": "sourcerepo.projects.updateConfig",
                     "parameterOrder": [
@@ -171,6 +173,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a repo in the given project with the given name. If the named repository already exists, `CreateRepo` returns `ALREADY_EXISTS`.",
+                            "flatPath": "v1/projects/{projectsId}/repos",
                             "httpMethod": "POST",
                             "id": "sourcerepo.projects.repos.create",
                             "parameterOrder": [
@@ -199,6 +202,7 @@
                         },
                         "delete": {
                             "description": "Deletes a repo.",
+                            "flatPath": "v1/projects/{projectsId}/repos/{reposId}",
                             "httpMethod": "DELETE",
                             "id": "sourcerepo.projects.repos.delete",
                             "parameterOrder": [
@@ -224,6 +228,7 @@
                         },
                         "get": {
                             "description": "Returns information about a repo.",
+                            "flatPath": "v1/projects/{projectsId}/repos/{reposId}",
                             "httpMethod": "GET",
                             "id": "sourcerepo.projects.repos.get",
                             "parameterOrder": [
@@ -251,6 +256,7 @@
                         },
                         "getIamPolicy": {
                             "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
+                            "flatPath": "v1/projects/{projectsId}/repos/{reposId}:getIamPolicy",
                             "httpMethod": "GET",
                             "id": "sourcerepo.projects.repos.getIamPolicy",
                             "parameterOrder": [
@@ -284,6 +290,7 @@
                         },
                         "list": {
                             "description": "Returns all repos belonging to a project. The sizes of the repos are not set by ListRepos. To get the size of a repo, use GetRepo.",
+                            "flatPath": "v1/projects/{projectsId}/repos",
                             "httpMethod": "GET",
                             "id": "sourcerepo.projects.repos.list",
                             "parameterOrder": [
@@ -322,6 +329,7 @@
                         },
                         "patch": {
                             "description": "Updates information about a repo.",
+                            "flatPath": "v1/projects/{projectsId}/repos/{reposId}",
                             "httpMethod": "PATCH",
                             "id": "sourcerepo.projects.repos.patch",
                             "parameterOrder": [
@@ -349,6 +357,7 @@
                         },
                         "setIamPolicy": {
                             "description": "Sets the access control policy on the specified resource. Replaces any existing policy.",
+                            "flatPath": "v1/projects/{projectsId}/repos/{reposId}:setIamPolicy",
                             "httpMethod": "POST",
                             "id": "sourcerepo.projects.repos.setIamPolicy",
                             "parameterOrder": [
@@ -377,6 +386,7 @@
                         },
                         "sync": {
                             "description": "Synchronize a connected repo. The response contains SyncRepoMetadata in the metadata field.",
+                            "flatPath": "v1/projects/{projectsId}/repos/{reposId}:sync",
                             "httpMethod": "POST",
                             "id": "sourcerepo.projects.repos.sync",
                             "parameterOrder": [
@@ -404,6 +414,7 @@
                         },
                         "testIamPermissions": {
                             "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.",
+                            "flatPath": "v1/projects/{projectsId}/repos/{reposId}:testIamPermissions",
                             "httpMethod": "POST",
                             "id": "sourcerepo.projects.repos.testIamPermissions",
                             "parameterOrder": [

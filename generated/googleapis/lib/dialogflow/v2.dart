@@ -10409,6 +10409,56 @@ class GoogleCloudDialogflowCxV3BatchRunTestCasesResponse {
       };
 }
 
+/// Represents a result from running a test case in an agent environment.
+class GoogleCloudDialogflowCxV3ContinuousTestResult {
+  /// The resource name for the continuous test result.
+  ///
+  /// Format:
+  /// `projects//locations//agents//environments//continuousTestResults/`.
+  core.String? name;
+
+  /// The result of this continuous test run, i.e. whether all the tests in this
+  /// continuous test run pass or not.
+  /// Possible string values are:
+  /// - "AGGREGATED_TEST_RESULT_UNSPECIFIED" : Not specified. Should never be
+  /// used.
+  /// - "PASSED" : All the tests passed.
+  /// - "FAILED" : At least one test did not pass.
+  core.String? result;
+
+  /// Time when the continuous testing run starts.
+  core.String? runTime;
+
+  /// A list of individual test case results names in this continuous test run.
+  core.List<core.String>? testCaseResults;
+
+  GoogleCloudDialogflowCxV3ContinuousTestResult();
+
+  GoogleCloudDialogflowCxV3ContinuousTestResult.fromJson(core.Map _json) {
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('result')) {
+      result = _json['result'] as core.String;
+    }
+    if (_json.containsKey('runTime')) {
+      runTime = _json['runTime'] as core.String;
+    }
+    if (_json.containsKey('testCaseResults')) {
+      testCaseResults = (_json['testCaseResults'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (result != null) 'result': result!,
+        if (runTime != null) 'runTime': runTime!,
+        if (testCaseResults != null) 'testCaseResults': testCaseResults!,
+      };
+}
+
 /// One interaction between a human and virtual agent.
 ///
 /// The human provides some input and the virtual agent provides a response.
@@ -10444,6 +10494,9 @@ class GoogleCloudDialogflowCxV3ConversationTurn {
 
 /// The input from the human user.
 class GoogleCloudDialogflowCxV3ConversationTurnUserInput {
+  /// Whether sentiment analysis is enabled.
+  core.bool? enableSentimentAnalysis;
+
   /// Parameters that need to be injected into the conversation during intent
   /// detection.
   ///
@@ -10463,6 +10516,9 @@ class GoogleCloudDialogflowCxV3ConversationTurnUserInput {
   GoogleCloudDialogflowCxV3ConversationTurnUserInput();
 
   GoogleCloudDialogflowCxV3ConversationTurnUserInput.fromJson(core.Map _json) {
+    if (_json.containsKey('enableSentimentAnalysis')) {
+      enableSentimentAnalysis = _json['enableSentimentAnalysis'] as core.bool;
+    }
     if (_json.containsKey('injectedParameters')) {
       injectedParameters =
           (_json['injectedParameters'] as core.Map<core.String, core.dynamic>)
@@ -10483,6 +10539,8 @@ class GoogleCloudDialogflowCxV3ConversationTurnUserInput {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (enableSentimentAnalysis != null)
+          'enableSentimentAnalysis': enableSentimentAnalysis!,
         if (injectedParameters != null)
           'injectedParameters': injectedParameters!,
         if (input != null) 'input': input!.toJson(),
@@ -11080,6 +11138,17 @@ class GoogleCloudDialogflowCxV3Fulfillment {
   /// The list of rich message responses to present to the user.
   core.List<GoogleCloudDialogflowCxV3ResponseMessage>? messages;
 
+  /// Whether Dialogflow should return currently queued fulfillment response
+  /// messages in streaming APIs.
+  ///
+  /// If a webhook is specified, it happens before Dialogflow invokes webhook.
+  /// Warning: 1) This flag only affects streaming API. Responses are still
+  /// queued and returned once in non-streaming API. 2) The flag can be enabled
+  /// in any fulfillment but only the first 3 partial responses will be
+  /// returned. You may only want to apply it to fulfillments that have slow
+  /// webhooks.
+  core.bool? returnPartialResponses;
+
   /// Set parameter values before executing the webhook.
   core.List<GoogleCloudDialogflowCxV3FulfillmentSetParameterAction>?
       setParameterActions;
@@ -11111,6 +11180,9 @@ class GoogleCloudDialogflowCxV3Fulfillment {
                   value as core.Map<core.String, core.dynamic>))
           .toList();
     }
+    if (_json.containsKey('returnPartialResponses')) {
+      returnPartialResponses = _json['returnPartialResponses'] as core.bool;
+    }
     if (_json.containsKey('setParameterActions')) {
       setParameterActions = (_json['setParameterActions'] as core.List)
           .map<GoogleCloudDialogflowCxV3FulfillmentSetParameterAction>(
@@ -11132,6 +11204,8 @@ class GoogleCloudDialogflowCxV3Fulfillment {
               conditionalCases!.map((value) => value.toJson()).toList(),
         if (messages != null)
           'messages': messages!.map((value) => value.toJson()).toList(),
+        if (returnPartialResponses != null)
+          'returnPartialResponses': returnPartialResponses!,
         if (setParameterActions != null)
           'setParameterActions':
               setParameterActions!.map((value) => value.toJson()).toList(),
@@ -12577,6 +12651,52 @@ class GoogleCloudDialogflowCxV3ResponseMessageText {
       };
 }
 
+/// Metadata returned for the Environments.RunContinuousTest long running
+/// operation.
+class GoogleCloudDialogflowCxV3RunContinuousTestMetadata {
+  /// The test errors.
+  core.List<GoogleCloudDialogflowCxV3TestError>? errors;
+
+  GoogleCloudDialogflowCxV3RunContinuousTestMetadata();
+
+  GoogleCloudDialogflowCxV3RunContinuousTestMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey('errors')) {
+      errors = (_json['errors'] as core.List)
+          .map<GoogleCloudDialogflowCxV3TestError>((value) =>
+              GoogleCloudDialogflowCxV3TestError.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (errors != null)
+          'errors': errors!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// The response message for Environments.RunContinuousTest.
+class GoogleCloudDialogflowCxV3RunContinuousTestResponse {
+  /// The result for a continuous test run.
+  GoogleCloudDialogflowCxV3ContinuousTestResult? continuousTestResult;
+
+  GoogleCloudDialogflowCxV3RunContinuousTestResponse();
+
+  GoogleCloudDialogflowCxV3RunContinuousTestResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('continuousTestResult')) {
+      continuousTestResult =
+          GoogleCloudDialogflowCxV3ContinuousTestResult.fromJson(
+              _json['continuousTestResult']
+                  as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (continuousTestResult != null)
+          'continuousTestResult': continuousTestResult!.toJson(),
+      };
+}
+
 /// Metadata returned for the TestCases.RunTestCase long running operation.
 class GoogleCloudDialogflowCxV3RunTestCaseMetadata {
   GoogleCloudDialogflowCxV3RunTestCaseMetadata();
@@ -13562,6 +13682,56 @@ class GoogleCloudDialogflowCxV3beta1BatchRunTestCasesResponse {
       };
 }
 
+/// Represents a result from running a test case in an agent environment.
+class GoogleCloudDialogflowCxV3beta1ContinuousTestResult {
+  /// The resource name for the continuous test result.
+  ///
+  /// Format:
+  /// `projects//locations//agents//environments//continuousTestResults/`.
+  core.String? name;
+
+  /// The result of this continuous test run, i.e. whether all the tests in this
+  /// continuous test run pass or not.
+  /// Possible string values are:
+  /// - "AGGREGATED_TEST_RESULT_UNSPECIFIED" : Not specified. Should never be
+  /// used.
+  /// - "PASSED" : All the tests passed.
+  /// - "FAILED" : At least one test did not pass.
+  core.String? result;
+
+  /// Time when the continuous testing run starts.
+  core.String? runTime;
+
+  /// A list of individual test case results names in this continuous test run.
+  core.List<core.String>? testCaseResults;
+
+  GoogleCloudDialogflowCxV3beta1ContinuousTestResult();
+
+  GoogleCloudDialogflowCxV3beta1ContinuousTestResult.fromJson(core.Map _json) {
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('result')) {
+      result = _json['result'] as core.String;
+    }
+    if (_json.containsKey('runTime')) {
+      runTime = _json['runTime'] as core.String;
+    }
+    if (_json.containsKey('testCaseResults')) {
+      testCaseResults = (_json['testCaseResults'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (result != null) 'result': result!,
+        if (runTime != null) 'runTime': runTime!,
+        if (testCaseResults != null) 'testCaseResults': testCaseResults!,
+      };
+}
+
 /// One interaction between a human and virtual agent.
 ///
 /// The human provides some input and the virtual agent provides a response.
@@ -13598,6 +13768,9 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurn {
 
 /// The input from the human user.
 class GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput {
+  /// Whether sentiment analysis is enabled.
+  core.bool? enableSentimentAnalysis;
+
   /// Parameters that need to be injected into the conversation during intent
   /// detection.
   ///
@@ -13618,6 +13791,9 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput {
 
   GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput.fromJson(
       core.Map _json) {
+    if (_json.containsKey('enableSentimentAnalysis')) {
+      enableSentimentAnalysis = _json['enableSentimentAnalysis'] as core.bool;
+    }
     if (_json.containsKey('injectedParameters')) {
       injectedParameters =
           (_json['injectedParameters'] as core.Map<core.String, core.dynamic>)
@@ -13638,6 +13814,8 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (enableSentimentAnalysis != null)
+          'enableSentimentAnalysis': enableSentimentAnalysis!,
         if (injectedParameters != null)
           'injectedParameters': injectedParameters!,
         if (input != null) 'input': input!.toJson(),
@@ -14242,6 +14420,17 @@ class GoogleCloudDialogflowCxV3beta1Fulfillment {
   /// The list of rich message responses to present to the user.
   core.List<GoogleCloudDialogflowCxV3beta1ResponseMessage>? messages;
 
+  /// Whether Dialogflow should return currently queued fulfillment response
+  /// messages in streaming APIs.
+  ///
+  /// If a webhook is specified, it happens before Dialogflow invokes webhook.
+  /// Warning: 1) This flag only affects streaming API. Responses are still
+  /// queued and returned once in non-streaming API. 2) The flag can be enabled
+  /// in any fulfillment but only the first 3 partial responses will be
+  /// returned. You may only want to apply it to fulfillments that have slow
+  /// webhooks.
+  core.bool? returnPartialResponses;
+
   /// Set parameter values before executing the webhook.
   core.List<GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction>?
       setParameterActions;
@@ -14274,6 +14463,9 @@ class GoogleCloudDialogflowCxV3beta1Fulfillment {
                   value as core.Map<core.String, core.dynamic>))
           .toList();
     }
+    if (_json.containsKey('returnPartialResponses')) {
+      returnPartialResponses = _json['returnPartialResponses'] as core.bool;
+    }
     if (_json.containsKey('setParameterActions')) {
       setParameterActions = (_json['setParameterActions'] as core.List)
           .map<GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction>(
@@ -14296,6 +14488,8 @@ class GoogleCloudDialogflowCxV3beta1Fulfillment {
               conditionalCases!.map((value) => value.toJson()).toList(),
         if (messages != null)
           'messages': messages!.map((value) => value.toJson()).toList(),
+        if (returnPartialResponses != null)
+          'returnPartialResponses': returnPartialResponses!,
         if (setParameterActions != null)
           'setParameterActions':
               setParameterActions!.map((value) => value.toJson()).toList(),
@@ -15755,6 +15949,54 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageText {
         if (allowPlaybackInterruption != null)
           'allowPlaybackInterruption': allowPlaybackInterruption!,
         if (text != null) 'text': text!,
+      };
+}
+
+/// Metadata returned for the Environments.RunContinuousTest long running
+/// operation.
+class GoogleCloudDialogflowCxV3beta1RunContinuousTestMetadata {
+  /// The test errors.
+  core.List<GoogleCloudDialogflowCxV3beta1TestError>? errors;
+
+  GoogleCloudDialogflowCxV3beta1RunContinuousTestMetadata();
+
+  GoogleCloudDialogflowCxV3beta1RunContinuousTestMetadata.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('errors')) {
+      errors = (_json['errors'] as core.List)
+          .map<GoogleCloudDialogflowCxV3beta1TestError>((value) =>
+              GoogleCloudDialogflowCxV3beta1TestError.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (errors != null)
+          'errors': errors!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// The response message for Environments.RunContinuousTest.
+class GoogleCloudDialogflowCxV3beta1RunContinuousTestResponse {
+  /// The result for a continuous test run.
+  GoogleCloudDialogflowCxV3beta1ContinuousTestResult? continuousTestResult;
+
+  GoogleCloudDialogflowCxV3beta1RunContinuousTestResponse();
+
+  GoogleCloudDialogflowCxV3beta1RunContinuousTestResponse.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('continuousTestResult')) {
+      continuousTestResult =
+          GoogleCloudDialogflowCxV3beta1ContinuousTestResult.fromJson(
+              _json['continuousTestResult']
+                  as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (continuousTestResult != null)
+          'continuousTestResult': continuousTestResult!.toJson(),
       };
 }
 
@@ -17370,14 +17612,35 @@ class GoogleCloudDialogflowV2AutomatedAgentConfig {
 
 /// Represents a response from an automated agent.
 class GoogleCloudDialogflowV2AutomatedAgentReply {
-  /// Response of the Dialogflow Sessions.DetectIntent call.
+  /// Indicates whether the partial automated agent reply is interruptible when
+  /// a later reply message arrives.
   ///
-  /// Required.
+  /// e.g. if the agent specified some music as partial response, it can be
+  /// cancelled.
+  core.bool? allowCancellation;
+
+  /// AutomatedAgentReply type.
+  /// Possible string values are:
+  /// - "AUTOMATED_AGENT_REPLY_TYPE_UNSPECIFIED" : Not specified. This should
+  /// never happen.
+  /// - "PARTIAL" : Partial reply. e.g. Aggregated responses in a `Fulfillment`
+  /// that enables `return_partial_response` can be returned as partial reply.
+  /// WARNING: partial reply is not eligible for barge-in.
+  /// - "FINAL" : Final reply.
+  core.String? automatedAgentReplyType;
+
+  /// Response of the Dialogflow Sessions.DetectIntent call.
   GoogleCloudDialogflowV2DetectIntentResponse? detectIntentResponse;
 
   GoogleCloudDialogflowV2AutomatedAgentReply();
 
   GoogleCloudDialogflowV2AutomatedAgentReply.fromJson(core.Map _json) {
+    if (_json.containsKey('allowCancellation')) {
+      allowCancellation = _json['allowCancellation'] as core.bool;
+    }
+    if (_json.containsKey('automatedAgentReplyType')) {
+      automatedAgentReplyType = _json['automatedAgentReplyType'] as core.String;
+    }
     if (_json.containsKey('detectIntentResponse')) {
       detectIntentResponse =
           GoogleCloudDialogflowV2DetectIntentResponse.fromJson(
@@ -17387,6 +17650,9 @@ class GoogleCloudDialogflowV2AutomatedAgentReply {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (allowCancellation != null) 'allowCancellation': allowCancellation!,
+        if (automatedAgentReplyType != null)
+          'automatedAgentReplyType': automatedAgentReplyType!,
         if (detectIntentResponse != null)
           'detectIntentResponse': detectIntentResponse!.toJson(),
       };
@@ -22959,6 +23225,10 @@ class GoogleCloudDialogflowV2QueryResult {
   /// matched intent doesn't contain any required parameters.
   core.bool? allRequiredParamsPresent;
 
+  /// Indicates whether the conversational query triggers a cancellation for
+  /// slot filling.
+  core.bool? cancelsSlotFilling;
+
   /// Free-form diagnostic information for the associated detect intent request.
   ///
   /// The fields of this data can change without notice, so you should not write
@@ -23065,6 +23335,9 @@ class GoogleCloudDialogflowV2QueryResult {
     if (_json.containsKey('allRequiredParamsPresent')) {
       allRequiredParamsPresent = _json['allRequiredParamsPresent'] as core.bool;
     }
+    if (_json.containsKey('cancelsSlotFilling')) {
+      cancelsSlotFilling = _json['cancelsSlotFilling'] as core.bool;
+    }
     if (_json.containsKey('diagnosticInfo')) {
       diagnosticInfo =
           (_json['diagnosticInfo'] as core.Map<core.String, core.dynamic>).map(
@@ -23142,6 +23415,8 @@ class GoogleCloudDialogflowV2QueryResult {
         if (action != null) 'action': action!,
         if (allRequiredParamsPresent != null)
           'allRequiredParamsPresent': allRequiredParamsPresent!,
+        if (cancelsSlotFilling != null)
+          'cancelsSlotFilling': cancelsSlotFilling!,
         if (diagnosticInfo != null) 'diagnosticInfo': diagnosticInfo!,
         if (fulfillmentMessages != null)
           'fulfillmentMessages':
@@ -27782,6 +28057,10 @@ class GoogleCloudDialogflowV2beta1QueryResult {
   /// matched intent doesn't contain any required parameters.
   core.bool? allRequiredParamsPresent;
 
+  /// Indicates whether the conversational query triggers a cancellation for
+  /// slot filling.
+  core.bool? cancelsSlotFilling;
+
   /// Free-form diagnostic information for the associated detect intent request.
   ///
   /// The fields of this data can change without notice, so you should not write
@@ -27892,6 +28171,9 @@ class GoogleCloudDialogflowV2beta1QueryResult {
     if (_json.containsKey('allRequiredParamsPresent')) {
       allRequiredParamsPresent = _json['allRequiredParamsPresent'] as core.bool;
     }
+    if (_json.containsKey('cancelsSlotFilling')) {
+      cancelsSlotFilling = _json['cancelsSlotFilling'] as core.bool;
+    }
     if (_json.containsKey('diagnosticInfo')) {
       diagnosticInfo =
           (_json['diagnosticInfo'] as core.Map<core.String, core.dynamic>).map(
@@ -27973,6 +28255,8 @@ class GoogleCloudDialogflowV2beta1QueryResult {
         if (action != null) 'action': action!,
         if (allRequiredParamsPresent != null)
           'allRequiredParamsPresent': allRequiredParamsPresent!,
+        if (cancelsSlotFilling != null)
+          'cancelsSlotFilling': cancelsSlotFilling!,
         if (diagnosticInfo != null) 'diagnosticInfo': diagnosticInfo!,
         if (fulfillmentMessages != null)
           'fulfillmentMessages':

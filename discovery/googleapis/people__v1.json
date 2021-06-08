@@ -140,6 +140,7 @@
             "methods": {
                 "batchGet": {
                     "description": "Get a list of contact groups owned by the authenticated user by specifying a list of contact group resource names.",
+                    "flatPath": "v1/contactGroups:batchGet",
                     "httpMethod": "GET",
                     "id": "people.contactGroups.batchGet",
                     "parameterOrder": [],
@@ -157,7 +158,7 @@
                             "type": "integer"
                         },
                         "resourceNames": {
-                            "description": "Required. The resource names of the contact groups to get.",
+                            "description": "Required. The resource names of the contact groups to get. There is a maximum of 200 resource names.",
                             "location": "query",
                             "repeated": true,
                             "type": "string"
@@ -174,6 +175,7 @@
                 },
                 "create": {
                     "description": "Create a new contact group owned by the authenticated user.",
+                    "flatPath": "v1/contactGroups",
                     "httpMethod": "POST",
                     "id": "people.contactGroups.create",
                     "parameterOrder": [],
@@ -191,6 +193,7 @@
                 },
                 "delete": {
                     "description": "Delete an existing contact group owned by the authenticated user by specifying a contact group resource name.",
+                    "flatPath": "v1/contactGroups/{contactGroupsId}",
                     "httpMethod": "DELETE",
                     "id": "people.contactGroups.delete",
                     "parameterOrder": [
@@ -220,6 +223,7 @@
                 },
                 "get": {
                     "description": "Get a specific contact group owned by the authenticated user by specifying a contact group resource name.",
+                    "flatPath": "v1/contactGroups/{contactGroupsId}",
                     "httpMethod": "GET",
                     "id": "people.contactGroups.get",
                     "parameterOrder": [
@@ -257,6 +261,7 @@
                 },
                 "list": {
                     "description": "List all contact groups owned by the authenticated user. Members of the contact groups are not populated.",
+                    "flatPath": "v1/contactGroups",
                     "httpMethod": "GET",
                     "id": "people.contactGroups.list",
                     "parameterOrder": [],
@@ -295,6 +300,7 @@
                 },
                 "update": {
                     "description": "Update the name of an existing contact group owned by the authenticated user.",
+                    "flatPath": "v1/contactGroups/{contactGroupsId}",
                     "httpMethod": "PUT",
                     "id": "people.contactGroups.update",
                     "parameterOrder": [
@@ -326,6 +332,7 @@
                     "methods": {
                         "modify": {
                             "description": "Modify the members of a contact group owned by the authenticated user. The only system contact groups that can have members added are `contactGroups/myContacts` and `contactGroups/starred`. Other system contact groups are deprecated and can only have contacts removed.",
+                            "flatPath": "v1/contactGroups/{contactGroupsId}/members:modify",
                             "httpMethod": "POST",
                             "id": "people.contactGroups.members.modify",
                             "parameterOrder": [
@@ -359,6 +366,7 @@
             "methods": {
                 "copyOtherContactToMyContactsGroup": {
                     "description": "Copies an \"Other contact\" to a new contact in the user's \"myContacts\" group",
+                    "flatPath": "v1/otherContacts/{otherContactsId}:copyOtherContactToMyContactsGroup",
                     "httpMethod": "POST",
                     "id": "people.otherContacts.copyOtherContactToMyContactsGroup",
                     "parameterOrder": [
@@ -387,6 +395,7 @@
                 },
                 "list": {
                     "description": "List all \"Other contacts\", that is contacts that are not in a contact group. \"Other contacts\" are typically auto created contacts from interactions.",
+                    "flatPath": "v1/otherContacts",
                     "httpMethod": "GET",
                     "id": "people.otherContacts.list",
                     "parameterOrder": [],
@@ -414,7 +423,7 @@
                             "type": "boolean"
                         },
                         "syncToken": {
-                            "description": "Optional. A sync token, received from a previous `ListOtherContacts` call. Provide this to retrieve only the resources changed since the last request. Sync requests that specify `sync_token` have an additional rate limit. When syncing, all other parameters provided to `ListOtherContacts` must match the call that provided the sync token.",
+                            "description": "Optional. A sync token, received from a previous `ListOtherContacts` call. Provide this to retrieve only the resources changed since the last request. Sync requests that specify `sync_token` have an additional rate limit. When the `syncToken` is specified, resources deleted since the last sync will be returned as a person with [`PersonMetadata.deleted`](/people/api/rest/v1/people#Person.PersonMetadata.FIELDS.deleted) set to true. When the `syncToken` is specified, all other parameters provided to `ListOtherContacts` must match the call that provided the sync token.",
                             "location": "query",
                             "type": "string"
                         }
@@ -428,7 +437,8 @@
                     ]
                 },
                 "search": {
-                    "description": "Provides a list of contacts in the authenticated user's other contacts that matches the search query. The query matches on a contact's `names`, `emailAddresses`, and `phoneNumbers` fields that are from the OTHER_CONTACT source.",
+                    "description": "Provides a list of contacts in the authenticated user's other contacts that matches the search query. The query matches on a contact's `names`, `emailAddresses`, and `phoneNumbers` fields that are from the OTHER_CONTACT source. **IMPORTANT**: Before searching, clients should send a warmup request with an empty query to update the cache. See https://developers.google.com/people/v1/other-contacts#search_the_users_other_contacts",
+                    "flatPath": "v1/otherContacts:search",
                     "httpMethod": "GET",
                     "id": "people.otherContacts.search",
                     "parameterOrder": [],
@@ -465,6 +475,7 @@
             "methods": {
                 "batchCreateContacts": {
                     "description": "Create a batch of new contacts and return the PersonResponses for the newly created contacts. Limited to 10 parallel requests per user.",
+                    "flatPath": "v1/people:batchCreateContacts",
                     "httpMethod": "POST",
                     "id": "people.people.batchCreateContacts",
                     "parameterOrder": [],
@@ -482,6 +493,7 @@
                 },
                 "batchDeleteContacts": {
                     "description": "Delete a batch of contacts. Any non-contact data will not be deleted. Limited to 10 parallel requests per user.",
+                    "flatPath": "v1/people:batchDeleteContacts",
                     "httpMethod": "POST",
                     "id": "people.people.batchDeleteContacts",
                     "parameterOrder": [],
@@ -499,6 +511,7 @@
                 },
                 "batchUpdateContacts": {
                     "description": "Update a batch of contacts and return a map of resource names to PersonResponses for the updated contacts. Limited to 10 parallel requests per user.",
+                    "flatPath": "v1/people:batchUpdateContacts",
                     "httpMethod": "POST",
                     "id": "people.people.batchUpdateContacts",
                     "parameterOrder": [],
@@ -516,6 +529,7 @@
                 },
                 "createContact": {
                     "description": "Create a new contact and return the person resource for that contact. The request returns a 400 error if more than one field is specified on a field that is a singleton for contact sources: * biographies * birthdays * genders * names",
+                    "flatPath": "v1/people:createContact",
                     "httpMethod": "POST",
                     "id": "people.people.createContact",
                     "parameterOrder": [],
@@ -558,6 +572,7 @@
                 },
                 "deleteContact": {
                     "description": "Delete a contact person. Any non-contact data will not be deleted.",
+                    "flatPath": "v1/people/{peopleId}:deleteContact",
                     "httpMethod": "DELETE",
                     "id": "people.people.deleteContact",
                     "parameterOrder": [
@@ -582,6 +597,7 @@
                 },
                 "deleteContactPhoto": {
                     "description": "Delete a contact's photo.",
+                    "flatPath": "v1/people/{peopleId}:deleteContactPhoto",
                     "httpMethod": "DELETE",
                     "id": "people.people.deleteContactPhoto",
                     "parameterOrder": [
@@ -630,6 +646,7 @@
                 },
                 "get": {
                     "description": "Provides information about a person by specifying a resource name. Use `people/me` to indicate the authenticated user. The request returns a 400 error if 'personFields' is not specified.",
+                    "flatPath": "v1/people/{peopleId}",
                     "httpMethod": "GET",
                     "id": "people.people.get",
                     "parameterOrder": [
@@ -694,6 +711,7 @@
                 },
                 "getBatchGet": {
                     "description": "Provides information about a list of specific people by specifying a list of requested resource names. Use `people/me` to indicate the authenticated user. The request returns a 400 error if 'personFields' is not specified.",
+                    "flatPath": "v1/people:batchGet",
                     "httpMethod": "GET",
                     "id": "people.people.getBatchGet",
                     "parameterOrder": [],
@@ -711,7 +729,7 @@
                             "type": "string"
                         },
                         "resourceNames": {
-                            "description": "Required. The resource names of the people to provide information about. It's repeatable. The URL query parameter should be resourceNames=<name1>&resourceNames=<name2>&... - To get information about the authenticated user, specify `people/me`. - To get information about a google account, specify `people/{account_id}`. - To get information about a contact, specify the resource name that identifies the contact as returned by [`people.connections.list`](/people/api/rest/v1/people.connections/list). You can include up to 200 resource names in one request.",
+                            "description": "Required. The resource names of the people to provide information about. It's repeatable. The URL query parameter should be resourceNames=<name1>&resourceNames=<name2>&... - To get information about the authenticated user, specify `people/me`. - To get information about a google account, specify `people/{account_id}`. - To get information about a contact, specify the resource name that identifies the contact as returned by [`people.connections.list`](/people/api/rest/v1/people.connections/list). There is a maximum of 200 resource names.",
                             "location": "query",
                             "repeated": true,
                             "type": "string"
@@ -755,6 +773,7 @@
                 },
                 "listDirectoryPeople": {
                     "description": "Provides a list of domain profiles and domain contacts in the authenticated user's domain directory.",
+                    "flatPath": "v1/people:listDirectoryPeople",
                     "httpMethod": "GET",
                     "id": "people.people.listDirectoryPeople",
                     "parameterOrder": [],
@@ -804,8 +823,8 @@
                             ],
                             "enumDescriptions": [
                                 "Unspecified.",
-                                "G Suite domain shared contact.",
-                                "G Suite domain profile."
+                                "Google Workspace domain shared contact.",
+                                "Google Workspace domain profile."
                             ],
                             "location": "query",
                             "repeated": true,
@@ -826,7 +845,8 @@
                     ]
                 },
                 "searchContacts": {
-                    "description": "Provides a list of contacts in the authenticated user's grouped contacts that matches the search query. The query matches on a contact's `names`, `nickNames`, `emailAddresses`, `phoneNumbers`, and `organizations` fields that are from the CONTACT\" source.",
+                    "description": "Provides a list of contacts in the authenticated user's grouped contacts that matches the search query. The query matches on a contact's `names`, `nickNames`, `emailAddresses`, `phoneNumbers`, and `organizations` fields that are from the CONTACT\" source. **IMPORTANT**: Before searching, clients should send a warmup request with an empty query to update the cache. See https://developers.google.com/people/v1/contacts#search_the_users_contacts",
+                    "flatPath": "v1/people:searchContacts",
                     "httpMethod": "GET",
                     "id": "people.people.searchContacts",
                     "parameterOrder": [],
@@ -878,6 +898,7 @@
                 },
                 "searchDirectoryPeople": {
                     "description": "Provides a list of domain profiles and domain contacts in the authenticated user's domain directory that match the search query.",
+                    "flatPath": "v1/people:searchDirectoryPeople",
                     "httpMethod": "GET",
                     "id": "people.people.searchDirectoryPeople",
                     "parameterOrder": [],
@@ -927,8 +948,8 @@
                             ],
                             "enumDescriptions": [
                                 "Unspecified.",
-                                "G Suite domain shared contact.",
-                                "G Suite domain profile."
+                                "Google Workspace domain shared contact.",
+                                "Google Workspace domain profile."
                             ],
                             "location": "query",
                             "repeated": true,
@@ -945,6 +966,7 @@
                 },
                 "updateContact": {
                     "description": "Update contact data for an existing contact person. Any non-contact data will not be modified. Any non-contact data in the person to update will be ignored. All fields specified in the `update_mask` will be replaced. The server returns a 400 error if `person.metadata.sources` is not specified for the contact to be updated or if there is no contact source. The server returns a 400 error with reason `\"failedPrecondition\"` if `person.metadata.sources.etag` is different than the contact's etag, which indicates the contact has changed since its data was read. Clients should get the latest person and merge their updates into the latest person. The server returns a 400 error if `memberships` are being updated and there are no contact group memberships specified on the person. The server returns a 400 error if more than one field is specified on a field that is a singleton for contact sources: * biographies * birthdays * genders * names",
+                    "flatPath": "v1/people/{peopleId}:updateContact",
                     "httpMethod": "PATCH",
                     "id": "people.people.updateContact",
                     "parameterOrder": [
@@ -1002,6 +1024,7 @@
                 },
                 "updateContactPhoto": {
                     "description": "Update a contact's photo.",
+                    "flatPath": "v1/people/{peopleId}:updateContactPhoto",
                     "httpMethod": "PATCH",
                     "id": "people.people.updateContactPhoto",
                     "parameterOrder": [
@@ -1033,6 +1056,7 @@
                     "methods": {
                         "list": {
                             "description": "Provides a list of the authenticated user's contacts. The request returns a 400 error if `personFields` is not specified. The request returns a 410 error if `sync_token` is specified and is expired. Sync tokens expire after 7 days to prevent data drift between clients and the server. To handle a sync token expired error, a request should be sent without `sync_token` to get all contacts.",
+                            "flatPath": "v1/people/{peopleId}/connections",
                             "httpMethod": "GET",
                             "id": "people.people.connections.list",
                             "parameterOrder": [
@@ -1110,7 +1134,7 @@
                                     "type": "string"
                                 },
                                 "syncToken": {
-                                    "description": "Optional. A sync token, received from a previous `ListConnections` call. Provide this to retrieve only the resources changed since the last request. When syncing, all other parameters provided to `ListConnections` except `page_size` and `page_token` must match the initial call that provided the sync token. Sync tokens expire after seven days, after which a full sync request without a `sync_token` should be made.",
+                                    "description": "Optional. A sync token, received from a previous `ListConnections` call. Provide this to retrieve only the resources changed since the last request. When the `syncToken` is specified, resources deleted since the last sync will be returned as a person with [`PersonMetadata.deleted`](/people/api/rest/v1/people#Person.PersonMetadata.FIELDS.deleted) set to true. When the `syncToken` is specified, all other parameters provided to `ListConnections` except `page_size` and `page_token` must match the initial call that provided the sync token. Sync tokens expire after seven days, after which a full sync request without a `sync_token` should be made.",
                                     "location": "query",
                                     "type": "string"
                                 }
@@ -1129,7 +1153,7 @@
             }
         }
     },
-    "revision": "20210519",
+    "revision": "20210613",
     "rootUrl": "https://people.googleapis.com/",
     "schemas": {
         "Address": {
@@ -1692,11 +1716,11 @@
             "type": "object"
         },
         "DomainMembership": {
-            "description": "A G Suite Domain membership.",
+            "description": "A Google Workspace Domain membership.",
             "id": "DomainMembership",
             "properties": {
                 "inViewerDomain": {
-                    "description": "True if the person is in the viewer's G Suite domain.",
+                    "description": "True if the person is in the viewer's Google Workspace domain.",
                     "type": "boolean"
                 }
             },
@@ -2667,7 +2691,7 @@
             "id": "PersonMetadata",
             "properties": {
                 "deleted": {
-                    "description": "Output only. True if the person resource has been deleted. Populated only for [`connections.list`](/people/api/rest/v1/people.connections/list) requests that include a sync token.",
+                    "description": "Output only. True if the person resource has been deleted. Populated only for [`connections.list`](/people/api/rest/v1/people.connections/list) and [`otherContacts.list`](/people/api/rest/v1/otherContacts/list) requests that include a sync token.",
                     "readOnly": true,
                     "type": "boolean"
                 },
@@ -2689,7 +2713,7 @@
                     "enumDescriptions": [
                         "Unspecified.",
                         "Person.",
-                        "[Currents Page.](https://gsuite.google.com/products/currents/)"
+                        "[Currents Page.](https://workspace.google.com/products/currents/)"
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -2798,7 +2822,7 @@
                     "enumDescriptions": [
                         "Unspecified.",
                         "Person.",
-                        "[Currents Page.](https://gsuite.google.com/products/currents/)"
+                        "[Currents Page.](https://workspace.google.com/products/currents/)"
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -2816,7 +2840,7 @@
                             "The user type is not known.",
                             "The user is a Google user.",
                             "The user is a Currents user.",
-                            "The user is a G Suite user."
+                            "The user is a Google Workspace user."
                         ],
                         "type": "string"
                     },
@@ -3028,10 +3052,10 @@
                         "Unspecified.",
                         "[Google Account](https://accounts.google.com).",
                         "[Google profile](https://profiles.google.com). You can view the profile at [https://profiles.google.com/](https://profiles.google.com/){id}, where {id} is the source id.",
-                        "[G Suite domain profile](https://support.google.com/a/answer/1628008).",
+                        "[Google Workspace domain profile](https://support.google.com/a/answer/1628008).",
                         "[Google contact](https://contacts.google.com). You can view the contact at [https://contact.google.com/](https://contact.google.com/){id}, where {id} is the source id.",
                         "[Google \"Other contact\"](https://contacts.google.com/other).",
-                        "[G Suite domain shared contact](https://support.google.com/a/answer/9281635)."
+                        "[Google Workspace domain shared contact](https://support.google.com/a/answer/9281635)."
                     ],
                     "type": "string"
                 },

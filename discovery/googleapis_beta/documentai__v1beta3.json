@@ -109,6 +109,7 @@
                     "methods": {
                         "fetchProcessorTypes": {
                             "description": "Fetches processor types.",
+                            "flatPath": "v1beta3/projects/{projectsId}/locations/{locationsId}:fetchProcessorTypes",
                             "httpMethod": "GET",
                             "id": "documentai.projects.locations.fetchProcessorTypes",
                             "parameterOrder": [
@@ -133,6 +134,7 @@
                         },
                         "get": {
                             "description": "Gets information about a location.",
+                            "flatPath": "v1beta3/projects/{projectsId}/locations/{locationsId}",
                             "httpMethod": "GET",
                             "id": "documentai.projects.locations.get",
                             "parameterOrder": [
@@ -157,6 +159,7 @@
                         },
                         "list": {
                             "description": "Lists information about the supported locations for this service.",
+                            "flatPath": "v1beta3/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "documentai.projects.locations.list",
                             "parameterOrder": [
@@ -199,8 +202,34 @@
                     "resources": {
                         "operations": {
                             "methods": {
+                                "cancelOperation": {
+                                    "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                                    "flatPath": "v1beta3/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                                    "httpMethod": "DELETE",
+                                    "id": "documentai.projects.locations.operations.cancelOperation",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "The name of the operation resource to be cancelled.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1beta3/{+name}",
+                                    "response": {
+                                        "$ref": "GoogleProtobufEmpty"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
                                 "get": {
                                     "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                                    "flatPath": "v1beta3/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                                     "httpMethod": "GET",
                                     "id": "documentai.projects.locations.operations.get",
                                     "parameterOrder": [
@@ -222,6 +251,47 @@
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
+                                },
+                                "list": {
+                                    "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                                    "flatPath": "v1beta3/projects/{projectsId}/locations/{locationsId}/operations",
+                                    "httpMethod": "GET",
+                                    "id": "documentai.projects.locations.operations.list",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "filter": {
+                                            "description": "The standard list filter.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "description": "The name of the operation's parent resource.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/operations$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "pageSize": {
+                                            "description": "The standard list page size.",
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        },
+                                        "pageToken": {
+                                            "description": "The standard list page token.",
+                                            "location": "query",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1beta3/{+name}",
+                                    "response": {
+                                        "$ref": "GoogleLongrunningListOperationsResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
                                 }
                             }
                         },
@@ -229,6 +299,7 @@
                             "methods": {
                                 "batchProcess": {
                                     "description": "LRO endpoint to batch process many documents. The output is written to Cloud Storage as JSON in the [Document] format.",
+                                    "flatPath": "v1beta3/projects/{projectsId}/locations/{locationsId}/processors/{processorsId}:batchProcess",
                                     "httpMethod": "POST",
                                     "id": "documentai.projects.locations.processors.batchProcess",
                                     "parameterOrder": [
@@ -256,6 +327,7 @@
                                 },
                                 "create": {
                                     "description": "Creates a processor from the type processor that the user chose. The processor will be at \"ENABLED\" state by default after its creation.",
+                                    "flatPath": "v1beta3/projects/{projectsId}/locations/{locationsId}/processors",
                                     "httpMethod": "POST",
                                     "id": "documentai.projects.locations.processors.create",
                                     "parameterOrder": [
@@ -283,6 +355,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes the processor, unloads all deployed model artifacts if it was enabled and then deletes all artifacts associated with this processor.",
+                                    "flatPath": "v1beta3/projects/{projectsId}/locations/{locationsId}/processors/{processorsId}",
                                     "httpMethod": "DELETE",
                                     "id": "documentai.projects.locations.processors.delete",
                                     "parameterOrder": [
@@ -307,6 +380,7 @@
                                 },
                                 "disable": {
                                     "description": "Disables a processor",
+                                    "flatPath": "v1beta3/projects/{projectsId}/locations/{locationsId}/processors/{processorsId}:disable",
                                     "httpMethod": "POST",
                                     "id": "documentai.projects.locations.processors.disable",
                                     "parameterOrder": [
@@ -334,6 +408,7 @@
                                 },
                                 "enable": {
                                     "description": "Enables a processor",
+                                    "flatPath": "v1beta3/projects/{projectsId}/locations/{locationsId}/processors/{processorsId}:enable",
                                     "httpMethod": "POST",
                                     "id": "documentai.projects.locations.processors.enable",
                                     "parameterOrder": [
@@ -361,6 +436,7 @@
                                 },
                                 "list": {
                                     "description": "Lists all processors which belong to this project.",
+                                    "flatPath": "v1beta3/projects/{projectsId}/locations/{locationsId}/processors",
                                     "httpMethod": "GET",
                                     "id": "documentai.projects.locations.processors.list",
                                     "parameterOrder": [
@@ -396,6 +472,7 @@
                                 },
                                 "process": {
                                     "description": "Processes a single document.",
+                                    "flatPath": "v1beta3/projects/{projectsId}/locations/{locationsId}/processors/{processorsId}:process",
                                     "httpMethod": "POST",
                                     "id": "documentai.projects.locations.processors.process",
                                     "parameterOrder": [
@@ -427,6 +504,7 @@
                                     "methods": {
                                         "reviewDocument": {
                                             "description": "Send a document for Human Review. The input document should be processed by the specified processor.",
+                                            "flatPath": "v1beta3/projects/{projectsId}/locations/{locationsId}/processors/{processorsId}/humanReviewConfig:reviewDocument",
                                             "httpMethod": "POST",
                                             "id": "documentai.projects.locations.processors.humanReviewConfig.reviewDocument",
                                             "parameterOrder": [
@@ -458,6 +536,7 @@
                                     "methods": {
                                         "batchProcess": {
                                             "description": "LRO endpoint to batch process many documents. The output is written to Cloud Storage as JSON in the [Document] format.",
+                                            "flatPath": "v1beta3/projects/{projectsId}/locations/{locationsId}/processors/{processorsId}/processorVersions/{processorVersionsId}:batchProcess",
                                             "httpMethod": "POST",
                                             "id": "documentai.projects.locations.processors.processorVersions.batchProcess",
                                             "parameterOrder": [
@@ -485,6 +564,7 @@
                                         },
                                         "process": {
                                             "description": "Processes a single document.",
+                                            "flatPath": "v1beta3/projects/{projectsId}/locations/{locationsId}/processors/{processorsId}/processorVersions/{processorVersionsId}:process",
                                             "httpMethod": "POST",
                                             "id": "documentai.projects.locations.processors.processorVersions.process",
                                             "parameterOrder": [
@@ -519,7 +599,7 @@
             }
         }
     },
-    "revision": "20210513",
+    "revision": "20210607",
     "rootUrl": "https://documentai.googleapis.com/",
     "schemas": {
         "GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata": {
@@ -1242,6 +1322,10 @@
                     },
                     "type": "array"
                 },
+                "provenance": {
+                    "$ref": "GoogleCloudDocumentaiV1beta1DocumentProvenance",
+                    "description": "The history of this page."
+                },
                 "tables": {
                     "description": "A list of visually detected tables on the page.",
                     "items": {
@@ -1329,7 +1413,7 @@
                     "type": "string"
                 },
                 "page": {
-                    "description": "Required. Index into the Document.pages element, for example using Document.pages to locate the related page element.",
+                    "description": "Required. Index into the Document.pages element, for example using Document.pages to locate the related page element. This field is skipped when its value is the default 0. See https://developers.google.com/protocol-buffers/docs/proto3#json.",
                     "format": "int64",
                     "type": "string"
                 }
@@ -1413,6 +1497,10 @@
                         "$ref": "GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage"
                     },
                     "type": "array"
+                },
+                "provenance": {
+                    "$ref": "GoogleCloudDocumentaiV1beta1DocumentProvenance",
+                    "description": "The history of this annotation."
                 },
                 "valueDetectedLanguages": {
                     "description": "A list of detected languages for value together with confidence.",
@@ -2397,6 +2485,10 @@
                     },
                     "type": "array"
                 },
+                "provenance": {
+                    "$ref": "GoogleCloudDocumentaiV1beta2DocumentProvenance",
+                    "description": "The history of this page."
+                },
                 "tables": {
                     "description": "A list of visually detected tables on the page.",
                     "items": {
@@ -2484,7 +2576,7 @@
                     "type": "string"
                 },
                 "page": {
-                    "description": "Required. Index into the Document.pages element, for example using Document.pages to locate the related page element.",
+                    "description": "Required. Index into the Document.pages element, for example using Document.pages to locate the related page element. This field is skipped when its value is the default 0. See https://developers.google.com/protocol-buffers/docs/proto3#json.",
                     "format": "int64",
                     "type": "string"
                 }
@@ -2568,6 +2660,10 @@
                         "$ref": "GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage"
                     },
                     "type": "array"
+                },
+                "provenance": {
+                    "$ref": "GoogleCloudDocumentaiV1beta2DocumentProvenance",
+                    "description": "The history of this annotation."
                 },
                 "valueDetectedLanguages": {
                     "description": "A list of detected languages for value together with confidence.",
@@ -3476,9 +3572,37 @@
             },
             "type": "object"
         },
+        "GoogleCloudDocumentaiV1beta3DeleteProcessorMetadata": {
+            "description": "The long running operation metadata for delete processor method.",
+            "id": "GoogleCloudDocumentaiV1beta3DeleteProcessorMetadata",
+            "properties": {
+                "commonMetadata": {
+                    "$ref": "GoogleCloudDocumentaiV1beta3CommonOperationMetadata",
+                    "description": "The basic metadata of the long running operation."
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudDocumentaiV1beta3DisableProcessorMetadata": {
+            "description": "The long running operation metadata for disable processor method.",
+            "id": "GoogleCloudDocumentaiV1beta3DisableProcessorMetadata",
+            "properties": {
+                "commonMetadata": {
+                    "$ref": "GoogleCloudDocumentaiV1beta3CommonOperationMetadata",
+                    "description": "The basic metadata of the long running operation."
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudDocumentaiV1beta3DisableProcessorRequest": {
             "description": "Request message for the disable processor method.",
             "id": "GoogleCloudDocumentaiV1beta3DisableProcessorRequest",
+            "properties": {},
+            "type": "object"
+        },
+        "GoogleCloudDocumentaiV1beta3DisableProcessorResponse": {
+            "description": "Response message for the disable processor method. Intentionally empty proto for adding fields in future.",
+            "id": "GoogleCloudDocumentaiV1beta3DisableProcessorResponse",
             "properties": {},
             "type": "object"
         },
@@ -3739,6 +3863,10 @@
                     },
                     "type": "array"
                 },
+                "provenance": {
+                    "$ref": "GoogleCloudDocumentaiV1beta3DocumentProvenance",
+                    "description": "The history of this page."
+                },
                 "tables": {
                     "description": "A list of visually detected tables on the page.",
                     "items": {
@@ -3826,7 +3954,7 @@
                     "type": "string"
                 },
                 "page": {
-                    "description": "Required. Index into the Document.pages element, for example using Document.pages to locate the related page element.",
+                    "description": "Required. Index into the Document.pages element, for example using Document.pages to locate the related page element. This field is skipped when its value is the default 0. See https://developers.google.com/protocol-buffers/docs/proto3#json.",
                     "format": "int64",
                     "type": "string"
                 }
@@ -3910,6 +4038,10 @@
                         "$ref": "GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage"
                     },
                     "type": "array"
+                },
+                "provenance": {
+                    "$ref": "GoogleCloudDocumentaiV1beta3DocumentProvenance",
+                    "description": "The history of this annotation."
                 },
                 "valueDetectedLanguages": {
                     "description": "A list of detected languages for value together with confidence.",
@@ -4454,9 +4586,26 @@
             },
             "type": "object"
         },
+        "GoogleCloudDocumentaiV1beta3EnableProcessorMetadata": {
+            "description": "The long running operation metadata for enable processor method.",
+            "id": "GoogleCloudDocumentaiV1beta3EnableProcessorMetadata",
+            "properties": {
+                "commonMetadata": {
+                    "$ref": "GoogleCloudDocumentaiV1beta3CommonOperationMetadata",
+                    "description": "The basic metadata of the long running operation."
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudDocumentaiV1beta3EnableProcessorRequest": {
             "description": "Request message for the enable processor method.",
             "id": "GoogleCloudDocumentaiV1beta3EnableProcessorRequest",
+            "properties": {},
+            "type": "object"
+        },
+        "GoogleCloudDocumentaiV1beta3EnableProcessorResponse": {
+            "description": "Response message for the enable processor method. Intentionally empty proto for adding fields in future.",
+            "id": "GoogleCloudDocumentaiV1beta3EnableProcessorResponse",
             "properties": {},
             "type": "object"
         },
@@ -4794,16 +4943,32 @@
             "type": "object"
         },
         "GoogleCloudDocumentaiV1beta3ReviewDocumentRequest": {
-            "description": "Request message for review document method.",
+            "description": "Request message for review document method. Next Id: 6.",
             "id": "GoogleCloudDocumentaiV1beta3ReviewDocumentRequest",
             "properties": {
                 "document": {
                     "$ref": "GoogleCloudDocumentaiV1beta3Document",
                     "description": "The document that needs human review."
                 },
+                "enableSchemaValidation": {
+                    "description": "Whether the validation should be performed on the ad-hoc review request.",
+                    "type": "boolean"
+                },
                 "inlineDocument": {
                     "$ref": "GoogleCloudDocumentaiV1beta3Document",
                     "description": "An inline document proto."
+                },
+                "priority": {
+                    "description": "The priority of the human review task.",
+                    "enum": [
+                        "DEFAULT",
+                        "URGENT"
+                    ],
+                    "enumDescriptions": [
+                        "The default priority level.",
+                        "The urgent priority level. The labeling manager should allocate labeler resource to the urgent task queue to respect this priority level."
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -4854,7 +5019,7 @@
                     "type": "string"
                 },
                 "enumValues": {
-                    "description": "For some entity types there are only a few possible values. They can be specified here.",
+                    "description": "If specified, lists all the possible values for this entity.",
                     "items": {
                         "type": "string"
                     },
@@ -4971,6 +5136,24 @@
                 "name": {
                     "description": "Resource name for the location, which may vary between implementations. For example: `\"projects/example-project/locations/us-east1\"`",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleLongrunningListOperationsResponse": {
+            "description": "The response message for Operations.ListOperations.",
+            "id": "GoogleLongrunningListOperationsResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "The standard List next-page token.",
+                    "type": "string"
+                },
+                "operations": {
+                    "description": "A list of operations that matches the specified filter in the request.",
+                    "items": {
+                        "$ref": "GoogleLongrunningOperation"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"

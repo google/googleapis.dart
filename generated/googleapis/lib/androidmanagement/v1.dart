@@ -1686,14 +1686,27 @@ class ApplicationPolicy {
   /// each track are available in AppTrackInfo.
   core.List<core.String>? accessibleTrackIds;
 
-  /// This feature is not generally available yet.
+  /// Controls the auto-update mode for the app.
   /// Possible string values are:
-  /// - "AUTO_UPDATE_MODE_UNSPECIFIED" : This feature is not generally available
-  /// yet.
-  /// - "AUTO_UPDATE_DEFAULT" : This feature is not generally available yet.
-  /// - "AUTO_UPDATE_POSTPONED" : This feature is not generally available yet.
-  /// - "AUTO_UPDATE_HIGH_PRIORITY" : This feature is not generally available
-  /// yet.
+  /// - "AUTO_UPDATE_MODE_UNSPECIFIED" : Unspecified. Defaults to
+  /// AUTO_UPDATE_DEFAULT.
+  /// - "AUTO_UPDATE_DEFAULT" : The app is automatically updated with low
+  /// priority to minimize the impact on the user.The app is updated when all of
+  /// the following constraints are met: The device is not actively used. The
+  /// device is connected to an unmetered network. The device is charging.The
+  /// device is notified about a new update within 24 hours after it is
+  /// published by the developer, after which the app is updated the next time
+  /// the constraints above are met.
+  /// - "AUTO_UPDATE_POSTPONED" : The app is not automatically updated for a
+  /// maximum of 90 days after the app becomes out of date.90 days after the app
+  /// becomes out of date, the latest available version is installed
+  /// automatically with low priority (see AUTO_UPDATE_DEFAULT). After the app
+  /// is updated it is not automatically updated again until 90 days after it
+  /// becomes out of date again.The user can still manually update the app from
+  /// the Play Store at any time.
+  /// - "AUTO_UPDATE_HIGH_PRIORITY" : The app is updated as soon as possible. No
+  /// constraints are applied.The device is notified immediately about a new
+  /// update after it becomes available.
   core.String? autoUpdateMode;
 
   /// Controls whether the app can communicate with itself across a device’s
@@ -2493,6 +2506,13 @@ class Device {
   /// true in the device's policy.
   core.List<ApplicationReport>? applicationReports;
 
+  /// The password requirements currently applied to the device.
+  ///
+  /// The applied requirements may be slightly different from those specified in
+  /// passwordPolicies in some cases. fieldPath is set based on
+  /// passwordPolicies.
+  core.List<PasswordRequirements>? appliedPasswordPolicies;
+
   /// The name of the policy currently applied to the device.
   core.String? appliedPolicyName;
 
@@ -2685,6 +2705,12 @@ class Device {
               value as core.Map<core.String, core.dynamic>))
           .toList();
     }
+    if (_json.containsKey('appliedPasswordPolicies')) {
+      appliedPasswordPolicies = (_json['appliedPasswordPolicies'] as core.List)
+          .map<PasswordRequirements>((value) => PasswordRequirements.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
     if (_json.containsKey('appliedPolicyName')) {
       appliedPolicyName = _json['appliedPolicyName'] as core.String;
     }
@@ -2823,6 +2849,9 @@ class Device {
         if (applicationReports != null)
           'applicationReports':
               applicationReports!.map((value) => value.toJson()).toList(),
+        if (appliedPasswordPolicies != null)
+          'appliedPasswordPolicies':
+              appliedPasswordPolicies!.map((value) => value.toJson()).toList(),
         if (appliedPolicyName != null) 'appliedPolicyName': appliedPolicyName!,
         if (appliedPolicyVersion != null)
           'appliedPolicyVersion': appliedPolicyVersion!,
@@ -3601,6 +3630,19 @@ class HardwareStatus {
         if (gpuTemperatures != null) 'gpuTemperatures': gpuTemperatures!,
         if (skinTemperatures != null) 'skinTemperatures': skinTemperatures!,
       };
+}
+
+/// Response on issuing a command.
+///
+/// This is currently empty as a placeholder.
+class IssueCommandResponse {
+  IssueCommandResponse();
+
+  IssueCommandResponse.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Keyed app state reported by the app.
@@ -4611,20 +4653,53 @@ class PasswordRequirements {
   /// - "BIOMETRIC_WEAK" : The device must be secured with a low-security
   /// biometric recognition technology, at minimum. This includes technologies
   /// that can recognize the identity of an individual that are roughly
-  /// equivalent to a 3-digit PIN (false detection is less than 1 in 1,000).
+  /// equivalent to a 3-digit PIN (false detection is less than 1 in
+  /// 1,000).This, when applied on personally owned work profile devices on
+  /// Android 12 device-scoped, will be treated as COMPLEXITY_LOW for
+  /// application. See PasswordQuality for details.
   /// - "SOMETHING" : A password is required, but there are no restrictions on
-  /// what the password must contain.
-  /// - "NUMERIC" : The password must contain numeric characters.
+  /// what the password must contain.This, when applied on personally owned work
+  /// profile devices on Android 12 device-scoped, will be treated as
+  /// COMPLEXITY_LOW for application. See PasswordQuality for details.
+  /// - "NUMERIC" : The password must contain numeric characters.This, when
+  /// applied on personally owned work profile devices on Android 12
+  /// device-scoped, will be treated as COMPLEXITY_MEDIUM for application. See
+  /// PasswordQuality for details.
   /// - "NUMERIC_COMPLEX" : The password must contain numeric characters with no
-  /// repeating (4444) or ordered (1234, 4321, 2468) sequences.
+  /// repeating (4444) or ordered (1234, 4321, 2468) sequences.This, when
+  /// applied on personally owned work profile devices on Android 12
+  /// device-scoped, will be treated as COMPLEXITY_MEDIUM for application. See
+  /// PasswordQuality for details.
   /// - "ALPHABETIC" : The password must contain alphabetic (or symbol)
-  /// characters.
+  /// characters.This, when applied on personally owned work profile devices on
+  /// Android 12 device-scoped, will be treated as COMPLEXITY_HIGH for
+  /// application. See PasswordQuality for details.
   /// - "ALPHANUMERIC" : The password must contain both numeric and alphabetic
-  /// (or symbol) characters.
+  /// (or symbol) characters.This, when applied on personally owned work profile
+  /// devices on Android 12 device-scoped, will be treated as COMPLEXITY_HIGH
+  /// for application. See PasswordQuality for details.
   /// - "COMPLEX" : The password must meet the minimum requirements specified in
   /// passwordMinimumLength, passwordMinimumLetters, passwordMinimumSymbols,
   /// etc. For example, if passwordMinimumSymbols is 2, the password must
-  /// contain at least two symbols.
+  /// contain at least two symbols.This, when applied on personally owned work
+  /// profile devices on Android 12 device-scoped, will be treated as
+  /// COMPLEXITY_HIGH for application. In this case, the requirements in
+  /// passwordMinimumLength, passwordMinimumLetters, passwordMinimumSymbols, etc
+  /// are not applied. See PasswordQuality for details.
+  /// - "COMPLEXITY_LOW" : Password satisfies one of the following: pattern PIN
+  /// with repeating (4444) or ordered (1234, 4321, 2468) sequencesEnforcement
+  /// varies among different Android versions, management modes and password
+  /// scopes. See PasswordQuality for details.
+  /// - "COMPLEXITY_MEDIUM" : Password satisfies one of the following: PIN with
+  /// no repeating (4444) or ordered (1234, 4321, 2468) sequences, length at
+  /// least 4 alphabetic, length at least 4 alphanumeric, length at least
+  /// 4Enforcement varies among different Android versions, management modes and
+  /// password scopes. See PasswordQuality for details.
+  /// - "COMPLEXITY_HIGH" : Password satisfies one of the following:On Android
+  /// 12 and above: PIN with no repeating (4444) or ordered (1234, 4321, 2468)
+  /// sequences, length at least 8 alphabetic, length at least 6 alphanumeric,
+  /// length at least 6Enforcement varies among different Android versions,
+  /// management modes and password scopes. See PasswordQuality for details.
   core.String? passwordQuality;
 
   /// The scope that the password requirement applies to.
@@ -4958,8 +5033,12 @@ class Policy {
   /// tracks are specified, then the device only uses the production track.
   core.List<core.String>? androidDevicePolicyTracks;
 
-  /// The app auto update policy, which controls when automatic app updates can
-  /// be applied.
+  /// Use autoUpdateMode instead.When autoUpdateMode is set to
+  /// AUTO_UPDATE_POSTPONED or AUTO_UPDATE_HIGH_PRIORITY, this field has no
+  /// effect.The app auto update policy, which controls when automatic app
+  /// updates can be applied.
+  ///
+  /// Deprecated.
   /// Possible string values are:
   /// - "APP_AUTO_UPDATE_POLICY_UNSPECIFIED" : The auto-update policy is not
   /// set. Equivalent to CHOICE_TO_THE_USER.
@@ -6496,7 +6575,10 @@ class SystemUpdate {
   /// - "WINDOWED" : Install automatically within a daily maintenance window.
   /// This also configures Play apps to be updated within the window. This is
   /// strongly recommended for kiosk devices because this is the only way apps
-  /// persistently pinned to the foreground can be updated by Play.
+  /// persistently pinned to the foreground can be updated by Play.If
+  /// autoUpdateMode is set to AUTO_UPDATE_HIGH_PRIORITY for an app, then the
+  /// maintenance window is ignored for that app and it is updated as soon as
+  /// possible even outside of the maintenance window.
   /// - "POSTPONE" : Postpone automatic install up to a maximum of 30 days.
   core.String? type;
 

@@ -127,14 +127,14 @@ void checkGcsSource(api.GcsSource o) {
   buildCounterGcsSource--;
 }
 
-core.Map<core.String, api.GoogleCloudRedisV1ZoneMetadata> buildUnnamed2898() {
+core.Map<core.String, api.GoogleCloudRedisV1ZoneMetadata> buildUnnamed2986() {
   var o = <core.String, api.GoogleCloudRedisV1ZoneMetadata>{};
   o['x'] = buildGoogleCloudRedisV1ZoneMetadata();
   o['y'] = buildGoogleCloudRedisV1ZoneMetadata();
   return o;
 }
 
-void checkUnnamed2898(
+void checkUnnamed2986(
     core.Map<core.String, api.GoogleCloudRedisV1ZoneMetadata> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRedisV1ZoneMetadata(
@@ -149,7 +149,7 @@ api.GoogleCloudRedisV1LocationMetadata
   var o = api.GoogleCloudRedisV1LocationMetadata();
   buildCounterGoogleCloudRedisV1LocationMetadata++;
   if (buildCounterGoogleCloudRedisV1LocationMetadata < 3) {
-    o.availableZones = buildUnnamed2898();
+    o.availableZones = buildUnnamed2986();
   }
   buildCounterGoogleCloudRedisV1LocationMetadata--;
   return o;
@@ -159,7 +159,7 @@ void checkGoogleCloudRedisV1LocationMetadata(
     api.GoogleCloudRedisV1LocationMetadata o) {
   buildCounterGoogleCloudRedisV1LocationMetadata++;
   if (buildCounterGoogleCloudRedisV1LocationMetadata < 3) {
-    checkUnnamed2898(o.availableZones!);
+    checkUnnamed2986(o.availableZones!);
   }
   buildCounterGoogleCloudRedisV1LocationMetadata--;
 }
@@ -268,14 +268,14 @@ void checkInputConfig(api.InputConfig o) {
   buildCounterInputConfig--;
 }
 
-core.Map<core.String, core.String> buildUnnamed2899() {
+core.Map<core.String, core.String> buildUnnamed2987() {
   var o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
 }
 
-void checkUnnamed2899(core.Map<core.String, core.String> o) {
+void checkUnnamed2987(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -287,14 +287,14 @@ void checkUnnamed2899(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.String> buildUnnamed2900() {
+core.Map<core.String, core.String> buildUnnamed2988() {
   var o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
 }
 
-void checkUnnamed2900(core.Map<core.String, core.String> o) {
+void checkUnnamed2988(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -306,14 +306,14 @@ void checkUnnamed2900(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<api.TlsCertificate> buildUnnamed2901() {
+core.List<api.TlsCertificate> buildUnnamed2989() {
   var o = <api.TlsCertificate>[];
   o.add(buildTlsCertificate());
   o.add(buildTlsCertificate());
   return o;
 }
 
-void checkUnnamed2901(core.List<api.TlsCertificate> o) {
+void checkUnnamed2989(core.List<api.TlsCertificate> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTlsCertificate(o[0] as api.TlsCertificate);
   checkTlsCertificate(o[1] as api.TlsCertificate);
@@ -332,16 +332,18 @@ api.Instance buildInstance() {
     o.currentLocationId = 'foo';
     o.displayName = 'foo';
     o.host = 'foo';
-    o.labels = buildUnnamed2899();
+    o.labels = buildUnnamed2987();
     o.locationId = 'foo';
+    o.maintenancePolicy = buildMaintenancePolicy();
+    o.maintenanceSchedule = buildMaintenanceSchedule();
     o.memorySizeGb = 42;
     o.name = 'foo';
     o.persistenceIamIdentity = 'foo';
     o.port = 42;
-    o.redisConfigs = buildUnnamed2900();
+    o.redisConfigs = buildUnnamed2988();
     o.redisVersion = 'foo';
     o.reservedIpRange = 'foo';
-    o.serverCaCerts = buildUnnamed2901();
+    o.serverCaCerts = buildUnnamed2989();
     o.state = 'foo';
     o.statusMessage = 'foo';
     o.tier = 'foo';
@@ -383,11 +385,13 @@ void checkInstance(api.Instance o) {
       o.host!,
       unittest.equals('foo'),
     );
-    checkUnnamed2899(o.labels!);
+    checkUnnamed2987(o.labels!);
     unittest.expect(
       o.locationId!,
       unittest.equals('foo'),
     );
+    checkMaintenancePolicy(o.maintenancePolicy! as api.MaintenancePolicy);
+    checkMaintenanceSchedule(o.maintenanceSchedule! as api.MaintenanceSchedule);
     unittest.expect(
       o.memorySizeGb!,
       unittest.equals(42),
@@ -404,7 +408,7 @@ void checkInstance(api.Instance o) {
       o.port!,
       unittest.equals(42),
     );
-    checkUnnamed2900(o.redisConfigs!);
+    checkUnnamed2988(o.redisConfigs!);
     unittest.expect(
       o.redisVersion!,
       unittest.equals('foo'),
@@ -413,7 +417,7 @@ void checkInstance(api.Instance o) {
       o.reservedIpRange!,
       unittest.equals('foo'),
     );
-    checkUnnamed2901(o.serverCaCerts!);
+    checkUnnamed2989(o.serverCaCerts!);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),
@@ -456,27 +460,27 @@ void checkInstanceAuthString(api.InstanceAuthString o) {
   buildCounterInstanceAuthString--;
 }
 
-core.List<api.Instance> buildUnnamed2902() {
+core.List<api.Instance> buildUnnamed2990() {
   var o = <api.Instance>[];
   o.add(buildInstance());
   o.add(buildInstance());
   return o;
 }
 
-void checkUnnamed2902(core.List<api.Instance> o) {
+void checkUnnamed2990(core.List<api.Instance> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInstance(o[0] as api.Instance);
   checkInstance(o[1] as api.Instance);
 }
 
-core.List<core.String> buildUnnamed2903() {
+core.List<core.String> buildUnnamed2991() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed2903(core.List<core.String> o) {
+void checkUnnamed2991(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -493,9 +497,9 @@ api.ListInstancesResponse buildListInstancesResponse() {
   var o = api.ListInstancesResponse();
   buildCounterListInstancesResponse++;
   if (buildCounterListInstancesResponse < 3) {
-    o.instances = buildUnnamed2902();
+    o.instances = buildUnnamed2990();
     o.nextPageToken = 'foo';
-    o.unreachable = buildUnnamed2903();
+    o.unreachable = buildUnnamed2991();
   }
   buildCounterListInstancesResponse--;
   return o;
@@ -504,24 +508,24 @@ api.ListInstancesResponse buildListInstancesResponse() {
 void checkListInstancesResponse(api.ListInstancesResponse o) {
   buildCounterListInstancesResponse++;
   if (buildCounterListInstancesResponse < 3) {
-    checkUnnamed2902(o.instances!);
+    checkUnnamed2990(o.instances!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed2903(o.unreachable!);
+    checkUnnamed2991(o.unreachable!);
   }
   buildCounterListInstancesResponse--;
 }
 
-core.List<api.Location> buildUnnamed2904() {
+core.List<api.Location> buildUnnamed2992() {
   var o = <api.Location>[];
   o.add(buildLocation());
   o.add(buildLocation());
   return o;
 }
 
-void checkUnnamed2904(core.List<api.Location> o) {
+void checkUnnamed2992(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocation(o[0] as api.Location);
   checkLocation(o[1] as api.Location);
@@ -532,7 +536,7 @@ api.ListLocationsResponse buildListLocationsResponse() {
   var o = api.ListLocationsResponse();
   buildCounterListLocationsResponse++;
   if (buildCounterListLocationsResponse < 3) {
-    o.locations = buildUnnamed2904();
+    o.locations = buildUnnamed2992();
     o.nextPageToken = 'foo';
   }
   buildCounterListLocationsResponse--;
@@ -542,7 +546,7 @@ api.ListLocationsResponse buildListLocationsResponse() {
 void checkListLocationsResponse(api.ListLocationsResponse o) {
   buildCounterListLocationsResponse++;
   if (buildCounterListLocationsResponse < 3) {
-    checkUnnamed2904(o.locations!);
+    checkUnnamed2992(o.locations!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -551,14 +555,14 @@ void checkListLocationsResponse(api.ListLocationsResponse o) {
   buildCounterListLocationsResponse--;
 }
 
-core.List<api.Operation> buildUnnamed2905() {
+core.List<api.Operation> buildUnnamed2993() {
   var o = <api.Operation>[];
   o.add(buildOperation());
   o.add(buildOperation());
   return o;
 }
 
-void checkUnnamed2905(core.List<api.Operation> o) {
+void checkUnnamed2993(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0] as api.Operation);
   checkOperation(o[1] as api.Operation);
@@ -570,7 +574,7 @@ api.ListOperationsResponse buildListOperationsResponse() {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed2905();
+    o.operations = buildUnnamed2993();
   }
   buildCounterListOperationsResponse--;
   return o;
@@ -583,19 +587,19 @@ void checkListOperationsResponse(api.ListOperationsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed2905(o.operations!);
+    checkUnnamed2993(o.operations!);
   }
   buildCounterListOperationsResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed2906() {
+core.Map<core.String, core.String> buildUnnamed2994() {
   var o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
 }
 
-void checkUnnamed2906(core.Map<core.String, core.String> o) {
+void checkUnnamed2994(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -607,7 +611,7 @@ void checkUnnamed2906(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed2907() {
+core.Map<core.String, core.Object> buildUnnamed2995() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -622,7 +626,7 @@ core.Map<core.String, core.Object> buildUnnamed2907() {
   return o;
 }
 
-void checkUnnamed2907(core.Map<core.String, core.Object> o) {
+void checkUnnamed2995(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -660,9 +664,9 @@ api.Location buildLocation() {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
     o.displayName = 'foo';
-    o.labels = buildUnnamed2906();
+    o.labels = buildUnnamed2994();
     o.locationId = 'foo';
-    o.metadata = buildUnnamed2907();
+    o.metadata = buildUnnamed2995();
     o.name = 'foo';
   }
   buildCounterLocation--;
@@ -676,12 +680,12 @@ void checkLocation(api.Location o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed2906(o.labels!);
+    checkUnnamed2994(o.labels!);
     unittest.expect(
       o.locationId!,
       unittest.equals('foo'),
     );
-    checkUnnamed2907(o.metadata!);
+    checkUnnamed2995(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -690,7 +694,88 @@ void checkLocation(api.Location o) {
   buildCounterLocation--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed2908() {
+core.List<api.WeeklyMaintenanceWindow> buildUnnamed2996() {
+  var o = <api.WeeklyMaintenanceWindow>[];
+  o.add(buildWeeklyMaintenanceWindow());
+  o.add(buildWeeklyMaintenanceWindow());
+  return o;
+}
+
+void checkUnnamed2996(core.List<api.WeeklyMaintenanceWindow> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkWeeklyMaintenanceWindow(o[0] as api.WeeklyMaintenanceWindow);
+  checkWeeklyMaintenanceWindow(o[1] as api.WeeklyMaintenanceWindow);
+}
+
+core.int buildCounterMaintenancePolicy = 0;
+api.MaintenancePolicy buildMaintenancePolicy() {
+  var o = api.MaintenancePolicy();
+  buildCounterMaintenancePolicy++;
+  if (buildCounterMaintenancePolicy < 3) {
+    o.createTime = 'foo';
+    o.description = 'foo';
+    o.updateTime = 'foo';
+    o.weeklyMaintenanceWindow = buildUnnamed2996();
+  }
+  buildCounterMaintenancePolicy--;
+  return o;
+}
+
+void checkMaintenancePolicy(api.MaintenancePolicy o) {
+  buildCounterMaintenancePolicy++;
+  if (buildCounterMaintenancePolicy < 3) {
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed2996(o.weeklyMaintenanceWindow!);
+  }
+  buildCounterMaintenancePolicy--;
+}
+
+core.int buildCounterMaintenanceSchedule = 0;
+api.MaintenanceSchedule buildMaintenanceSchedule() {
+  var o = api.MaintenanceSchedule();
+  buildCounterMaintenanceSchedule++;
+  if (buildCounterMaintenanceSchedule < 3) {
+    o.canReschedule = true;
+    o.endTime = 'foo';
+    o.scheduleDeadlineTime = 'foo';
+    o.startTime = 'foo';
+  }
+  buildCounterMaintenanceSchedule--;
+  return o;
+}
+
+void checkMaintenanceSchedule(api.MaintenanceSchedule o) {
+  buildCounterMaintenanceSchedule++;
+  if (buildCounterMaintenanceSchedule < 3) {
+    unittest.expect(o.canReschedule!, unittest.isTrue);
+    unittest.expect(
+      o.endTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.scheduleDeadlineTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.startTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterMaintenanceSchedule--;
+}
+
+core.Map<core.String, core.Object> buildUnnamed2997() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -705,7 +790,7 @@ core.Map<core.String, core.Object> buildUnnamed2908() {
   return o;
 }
 
-void checkUnnamed2908(core.Map<core.String, core.Object> o) {
+void checkUnnamed2997(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -737,7 +822,7 @@ void checkUnnamed2908(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed2909() {
+core.Map<core.String, core.Object> buildUnnamed2998() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -752,7 +837,7 @@ core.Map<core.String, core.Object> buildUnnamed2909() {
   return o;
 }
 
-void checkUnnamed2909(core.Map<core.String, core.Object> o) {
+void checkUnnamed2998(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -791,9 +876,9 @@ api.Operation buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed2908();
+    o.metadata = buildUnnamed2997();
     o.name = 'foo';
-    o.response = buildUnnamed2909();
+    o.response = buildUnnamed2998();
   }
   buildCounterOperation--;
   return o;
@@ -804,12 +889,12 @@ void checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkStatus(o.error! as api.Status);
-    checkUnnamed2908(o.metadata!);
+    checkUnnamed2997(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed2909(o.response!);
+    checkUnnamed2998(o.response!);
   }
   buildCounterOperation--;
 }
@@ -833,7 +918,34 @@ void checkOutputConfig(api.OutputConfig o) {
   buildCounterOutputConfig--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed2910() {
+core.int buildCounterRescheduleMaintenanceRequest = 0;
+api.RescheduleMaintenanceRequest buildRescheduleMaintenanceRequest() {
+  var o = api.RescheduleMaintenanceRequest();
+  buildCounterRescheduleMaintenanceRequest++;
+  if (buildCounterRescheduleMaintenanceRequest < 3) {
+    o.rescheduleType = 'foo';
+    o.scheduleTime = 'foo';
+  }
+  buildCounterRescheduleMaintenanceRequest--;
+  return o;
+}
+
+void checkRescheduleMaintenanceRequest(api.RescheduleMaintenanceRequest o) {
+  buildCounterRescheduleMaintenanceRequest++;
+  if (buildCounterRescheduleMaintenanceRequest < 3) {
+    unittest.expect(
+      o.rescheduleType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.scheduleTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterRescheduleMaintenanceRequest--;
+}
+
+core.Map<core.String, core.Object> buildUnnamed2999() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -848,7 +960,7 @@ core.Map<core.String, core.Object> buildUnnamed2910() {
   return o;
 }
 
-void checkUnnamed2910(core.Map<core.String, core.Object> o) {
+void checkUnnamed2999(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -880,17 +992,17 @@ void checkUnnamed2910(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed2911() {
+core.List<core.Map<core.String, core.Object>> buildUnnamed3000() {
   var o = <core.Map<core.String, core.Object>>[];
-  o.add(buildUnnamed2910());
-  o.add(buildUnnamed2910());
+  o.add(buildUnnamed2999());
+  o.add(buildUnnamed2999());
   return o;
 }
 
-void checkUnnamed2911(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed3000(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed2910(o[0]);
-  checkUnnamed2910(o[1]);
+  checkUnnamed2999(o[0]);
+  checkUnnamed2999(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -899,7 +1011,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed2911();
+    o.details = buildUnnamed3000();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -913,13 +1025,50 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed2911(o.details!);
+    checkUnnamed3000(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
     );
   }
   buildCounterStatus--;
+}
+
+core.int buildCounterTimeOfDay = 0;
+api.TimeOfDay buildTimeOfDay() {
+  var o = api.TimeOfDay();
+  buildCounterTimeOfDay++;
+  if (buildCounterTimeOfDay < 3) {
+    o.hours = 42;
+    o.minutes = 42;
+    o.nanos = 42;
+    o.seconds = 42;
+  }
+  buildCounterTimeOfDay--;
+  return o;
+}
+
+void checkTimeOfDay(api.TimeOfDay o) {
+  buildCounterTimeOfDay++;
+  if (buildCounterTimeOfDay < 3) {
+    unittest.expect(
+      o.hours!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.minutes!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.nanos!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.seconds!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterTimeOfDay--;
 }
 
 core.int buildCounterTlsCertificate = 0;
@@ -984,6 +1133,35 @@ void checkUpgradeInstanceRequest(api.UpgradeInstanceRequest o) {
     );
   }
   buildCounterUpgradeInstanceRequest--;
+}
+
+core.int buildCounterWeeklyMaintenanceWindow = 0;
+api.WeeklyMaintenanceWindow buildWeeklyMaintenanceWindow() {
+  var o = api.WeeklyMaintenanceWindow();
+  buildCounterWeeklyMaintenanceWindow++;
+  if (buildCounterWeeklyMaintenanceWindow < 3) {
+    o.day = 'foo';
+    o.duration = 'foo';
+    o.startTime = buildTimeOfDay();
+  }
+  buildCounterWeeklyMaintenanceWindow--;
+  return o;
+}
+
+void checkWeeklyMaintenanceWindow(api.WeeklyMaintenanceWindow o) {
+  buildCounterWeeklyMaintenanceWindow++;
+  if (buildCounterWeeklyMaintenanceWindow < 3) {
+    unittest.expect(
+      o.day!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.duration!,
+      unittest.equals('foo'),
+    );
+    checkTimeOfDay(o.startTime! as api.TimeOfDay);
+  }
+  buildCounterWeeklyMaintenanceWindow--;
 }
 
 void main() {
@@ -1149,6 +1327,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-MaintenancePolicy', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildMaintenancePolicy();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.MaintenancePolicy.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMaintenancePolicy(od as api.MaintenancePolicy);
+    });
+  });
+
+  unittest.group('obj-schema-MaintenanceSchedule', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildMaintenanceSchedule();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.MaintenanceSchedule.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMaintenanceSchedule(od as api.MaintenanceSchedule);
+    });
+  });
+
   unittest.group('obj-schema-Operation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildOperation();
@@ -1169,6 +1367,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-RescheduleMaintenanceRequest', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildRescheduleMaintenanceRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.RescheduleMaintenanceRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRescheduleMaintenanceRequest(od as api.RescheduleMaintenanceRequest);
+    });
+  });
+
   unittest.group('obj-schema-Status', () {
     unittest.test('to-json--from-json', () async {
       var o = buildStatus();
@@ -1176,6 +1384,16 @@ void main() {
       var od =
           api.Status.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkStatus(od as api.Status);
+    });
+  });
+
+  unittest.group('obj-schema-TimeOfDay', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildTimeOfDay();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.TimeOfDay.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkTimeOfDay(od as api.TimeOfDay);
     });
   });
 
@@ -1196,6 +1414,16 @@ void main() {
       var od = api.UpgradeInstanceRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkUpgradeInstanceRequest(od as api.UpgradeInstanceRequest);
+    });
+  });
+
+  unittest.group('obj-schema-WeeklyMaintenanceWindow', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildWeeklyMaintenanceWindow();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.WeeklyMaintenanceWindow.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkWeeklyMaintenanceWindow(od as api.WeeklyMaintenanceWindow);
     });
   });
 
@@ -1843,6 +2071,65 @@ void main() {
       }), true);
       final response = await res.patch(arg_request, arg_name,
           updateMask: arg_updateMask, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--rescheduleMaintenance', () async {
+      var mock = HttpServerMock();
+      var res = api.CloudRedisApi(mock).projects.locations.instances;
+      var arg_request = buildRescheduleMaintenanceRequest();
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = api.RescheduleMaintenanceRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkRescheduleMaintenanceRequest(
+            obj as api.RescheduleMaintenanceRequest);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        var h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        var resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.rescheduleMaintenance(arg_request, arg_name,
+          $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });
 

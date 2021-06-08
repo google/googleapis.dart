@@ -107,6 +107,7 @@
             "methods": {
                 "commit": {
                     "description": "Commits an app edit.",
+                    "flatPath": "androidpublisher/v3/applications/{packageName}/edits/{editId}:commit",
                     "httpMethod": "POST",
                     "id": "androidpublisher.edits.commit",
                     "parameterOrder": [
@@ -142,6 +143,7 @@
                 },
                 "delete": {
                     "description": "Deletes an app edit.",
+                    "flatPath": "androidpublisher/v3/applications/{packageName}/edits/{editId}",
                     "httpMethod": "DELETE",
                     "id": "androidpublisher.edits.delete",
                     "parameterOrder": [
@@ -169,6 +171,7 @@
                 },
                 "get": {
                     "description": "Gets an app edit.",
+                    "flatPath": "androidpublisher/v3/applications/{packageName}/edits/{editId}",
                     "httpMethod": "GET",
                     "id": "androidpublisher.edits.get",
                     "parameterOrder": [
@@ -199,6 +202,7 @@
                 },
                 "insert": {
                     "description": "Creates a new edit for an app.",
+                    "flatPath": "androidpublisher/v3/applications/{packageName}/edits",
                     "httpMethod": "POST",
                     "id": "androidpublisher.edits.insert",
                     "parameterOrder": [
@@ -225,6 +229,7 @@
                 },
                 "validate": {
                     "description": "Validates an app edit.",
+                    "flatPath": "androidpublisher/v3/applications/{packageName}/edits/{editId}:validate",
                     "httpMethod": "POST",
                     "id": "androidpublisher.edits.validate",
                     "parameterOrder": [
@@ -259,6 +264,7 @@
                     "methods": {
                         "addexternallyhosted": {
                             "description": "Creates a new APK without uploading the APK itself to Google Play, instead hosting the APK at a specified URL. This function is only available to organizations using Managed Play whose application is configured to restrict distribution to the organizations.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/externallyHosted",
                             "httpMethod": "POST",
                             "id": "androidpublisher.edits.apks.addexternallyhosted",
                             "parameterOrder": [
@@ -292,6 +298,7 @@
                         },
                         "list": {
                             "description": "Lists all current APKs of the app and edit.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks",
                             "httpMethod": "GET",
                             "id": "androidpublisher.edits.apks.list",
                             "parameterOrder": [
@@ -322,6 +329,7 @@
                         },
                         "upload": {
                             "description": "Uploads an APK and adds to the current edit.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks",
                             "httpMethod": "POST",
                             "id": "androidpublisher.edits.apks.upload",
                             "mediaUpload": {
@@ -374,6 +382,7 @@
                     "methods": {
                         "list": {
                             "description": "Lists all current Android App Bundles of the app and edit.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/edits/{editId}/bundles",
                             "httpMethod": "GET",
                             "id": "androidpublisher.edits.bundles.list",
                             "parameterOrder": [
@@ -404,6 +413,7 @@
                         },
                         "upload": {
                             "description": "Uploads a new Android App Bundle to this edit. If you are using the Google API client libraries, please increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is recommended). See [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors) for an example in java.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/edits/{editId}/bundles",
                             "httpMethod": "POST",
                             "id": "androidpublisher.edits.bundles.upload",
                             "mediaUpload": {
@@ -460,6 +470,7 @@
                     "methods": {
                         "upload": {
                             "description": "Uploads a new deobfuscation file and attaches to the specified APK.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/deobfuscationFiles/{deobfuscationFileType}",
                             "httpMethod": "POST",
                             "id": "androidpublisher.edits.deobfuscationfiles.upload",
                             "mediaUpload": {
@@ -536,6 +547,7 @@
                     "methods": {
                         "get": {
                             "description": "Gets details of an app.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/edits/{editId}/details",
                             "httpMethod": "GET",
                             "id": "androidpublisher.edits.details.get",
                             "parameterOrder": [
@@ -566,6 +578,7 @@
                         },
                         "patch": {
                             "description": "Patches details of an app.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/edits/{editId}/details",
                             "httpMethod": "PATCH",
                             "id": "androidpublisher.edits.details.patch",
                             "parameterOrder": [
@@ -599,6 +612,7 @@
                         },
                         "update": {
                             "description": "Updates details of an app.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/edits/{editId}/details",
                             "httpMethod": "PUT",
                             "id": "androidpublisher.edits.details.update",
                             "parameterOrder": [
@@ -636,6 +650,7 @@
                     "methods": {
                         "get": {
                             "description": "Fetches the expansion file configuration for the specified APK.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}",
                             "httpMethod": "GET",
                             "id": "androidpublisher.edits.expansionfiles.get",
                             "parameterOrder": [
@@ -691,6 +706,7 @@
                         },
                         "patch": {
                             "description": "Patches the APK's expansion file configuration to reference another APK's expansion file. To add a new expansion file use the Upload method.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}",
                             "httpMethod": "PATCH",
                             "id": "androidpublisher.edits.expansionfiles.patch",
                             "parameterOrder": [
@@ -749,6 +765,7 @@
                         },
                         "update": {
                             "description": "Updates the APK's expansion file configuration to reference another APK's expansion file. To add a new expansion file use the Upload method.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}",
                             "httpMethod": "PUT",
                             "id": "androidpublisher.edits.expansionfiles.update",
                             "parameterOrder": [
@@ -807,6 +824,7 @@
                         },
                         "upload": {
                             "description": "Uploads a new expansion file and attaches to the specified APK.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}",
                             "httpMethod": "POST",
                             "id": "androidpublisher.edits.expansionfiles.upload",
                             "mediaUpload": {
@@ -883,6 +901,7 @@
                     "methods": {
                         "delete": {
                             "description": "Deletes the image (specified by id) from the edit.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}/{imageType}/{imageId}",
                             "httpMethod": "DELETE",
                             "id": "androidpublisher.edits.images.delete",
                             "parameterOrder": [
@@ -953,6 +972,7 @@
                         },
                         "deleteall": {
                             "description": "Deletes all images for the specified language and image type. Returns an empty response if no images are found.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}/{imageType}",
                             "httpMethod": "DELETE",
                             "id": "androidpublisher.edits.images.deleteall",
                             "parameterOrder": [
@@ -1019,6 +1039,7 @@
                         },
                         "list": {
                             "description": "Lists all images. The response may be empty.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}/{imageType}",
                             "httpMethod": "GET",
                             "id": "androidpublisher.edits.images.list",
                             "parameterOrder": [
@@ -1085,6 +1106,7 @@
                         },
                         "upload": {
                             "description": "Uploads an image of the specified language and image type, and adds to the edit.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}/{imageType}",
                             "httpMethod": "POST",
                             "id": "androidpublisher.edits.images.upload",
                             "mediaUpload": {
@@ -1172,6 +1194,7 @@
                     "methods": {
                         "delete": {
                             "description": "Deletes a localized store listing.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}",
                             "httpMethod": "DELETE",
                             "id": "androidpublisher.edits.listings.delete",
                             "parameterOrder": [
@@ -1206,6 +1229,7 @@
                         },
                         "deleteall": {
                             "description": "Deletes all store listings.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings",
                             "httpMethod": "DELETE",
                             "id": "androidpublisher.edits.listings.deleteall",
                             "parameterOrder": [
@@ -1233,6 +1257,7 @@
                         },
                         "get": {
                             "description": "Gets a localized store listing.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}",
                             "httpMethod": "GET",
                             "id": "androidpublisher.edits.listings.get",
                             "parameterOrder": [
@@ -1270,6 +1295,7 @@
                         },
                         "list": {
                             "description": "Lists all localized store listings.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings",
                             "httpMethod": "GET",
                             "id": "androidpublisher.edits.listings.list",
                             "parameterOrder": [
@@ -1300,6 +1326,7 @@
                         },
                         "patch": {
                             "description": "Patches a localized store listing.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}",
                             "httpMethod": "PATCH",
                             "id": "androidpublisher.edits.listings.patch",
                             "parameterOrder": [
@@ -1340,6 +1367,7 @@
                         },
                         "update": {
                             "description": "Creates or updates a localized store listing.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}",
                             "httpMethod": "PUT",
                             "id": "androidpublisher.edits.listings.update",
                             "parameterOrder": [
@@ -1384,6 +1412,7 @@
                     "methods": {
                         "get": {
                             "description": "Gets testers.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/edits/{editId}/testers/{track}",
                             "httpMethod": "GET",
                             "id": "androidpublisher.edits.testers.get",
                             "parameterOrder": [
@@ -1421,6 +1450,7 @@
                         },
                         "patch": {
                             "description": "Patches testers.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/edits/{editId}/testers/{track}",
                             "httpMethod": "PATCH",
                             "id": "androidpublisher.edits.testers.patch",
                             "parameterOrder": [
@@ -1461,6 +1491,7 @@
                         },
                         "update": {
                             "description": "Updates testers.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/edits/{editId}/testers/{track}",
                             "httpMethod": "PUT",
                             "id": "androidpublisher.edits.testers.update",
                             "parameterOrder": [
@@ -1505,6 +1536,7 @@
                     "methods": {
                         "get": {
                             "description": "Gets a track.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/edits/{editId}/tracks/{track}",
                             "httpMethod": "GET",
                             "id": "androidpublisher.edits.tracks.get",
                             "parameterOrder": [
@@ -1542,6 +1574,7 @@
                         },
                         "list": {
                             "description": "Lists all tracks.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/edits/{editId}/tracks",
                             "httpMethod": "GET",
                             "id": "androidpublisher.edits.tracks.list",
                             "parameterOrder": [
@@ -1572,6 +1605,7 @@
                         },
                         "patch": {
                             "description": "Patches a track.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/edits/{editId}/tracks/{track}",
                             "httpMethod": "PATCH",
                             "id": "androidpublisher.edits.tracks.patch",
                             "parameterOrder": [
@@ -1612,6 +1646,7 @@
                         },
                         "update": {
                             "description": "Updates a track.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/edits/{editId}/tracks/{track}",
                             "httpMethod": "PUT",
                             "id": "androidpublisher.edits.tracks.update",
                             "parameterOrder": [
@@ -1658,6 +1693,7 @@
             "methods": {
                 "delete": {
                     "description": "Deletes an in-app product (i.e. a managed product or a subscriptions).",
+                    "flatPath": "androidpublisher/v3/applications/{packageName}/inappproducts/{sku}",
                     "httpMethod": "DELETE",
                     "id": "androidpublisher.inappproducts.delete",
                     "parameterOrder": [
@@ -1685,6 +1721,7 @@
                 },
                 "get": {
                     "description": "Gets an in-app product, which can be a managed product or a subscription.",
+                    "flatPath": "androidpublisher/v3/applications/{packageName}/inappproducts/{sku}",
                     "httpMethod": "GET",
                     "id": "androidpublisher.inappproducts.get",
                     "parameterOrder": [
@@ -1715,6 +1752,7 @@
                 },
                 "insert": {
                     "description": "Creates an in-app product (i.e. a managed product or a subscriptions).",
+                    "flatPath": "androidpublisher/v3/applications/{packageName}/inappproducts",
                     "httpMethod": "POST",
                     "id": "androidpublisher.inappproducts.insert",
                     "parameterOrder": [
@@ -1746,6 +1784,7 @@
                 },
                 "list": {
                     "description": "Lists all in-app products - both managed products and subscriptions.",
+                    "flatPath": "androidpublisher/v3/applications/{packageName}/inappproducts",
                     "httpMethod": "GET",
                     "id": "androidpublisher.inappproducts.list",
                     "parameterOrder": [
@@ -1786,6 +1825,7 @@
                 },
                 "patch": {
                     "description": "Patches an in-app product (i.e. a managed product or a subscriptions).",
+                    "flatPath": "androidpublisher/v3/applications/{packageName}/inappproducts/{sku}",
                     "httpMethod": "PATCH",
                     "id": "androidpublisher.inappproducts.patch",
                     "parameterOrder": [
@@ -1824,6 +1864,7 @@
                 },
                 "update": {
                     "description": "Updates an in-app product (i.e. a managed product or a subscriptions).",
+                    "flatPath": "androidpublisher/v3/applications/{packageName}/inappproducts/{sku}",
                     "httpMethod": "PUT",
                     "id": "androidpublisher.inappproducts.update",
                     "parameterOrder": [
@@ -1866,6 +1907,7 @@
             "methods": {
                 "uploadapk": {
                     "description": "Uploads an APK to internal app sharing. If you are using the Google API client libraries, please increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is recommended). See [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors) for an example in java.",
+                    "flatPath": "androidpublisher/v3/applications/internalappsharing/{packageName}/artifacts/apk",
                     "httpMethod": "POST",
                     "id": "androidpublisher.internalappsharingartifacts.uploadapk",
                     "mediaUpload": {
@@ -1907,6 +1949,7 @@
                 },
                 "uploadbundle": {
                     "description": "Uploads an app bundle to internal app sharing. If you are using the Google API client libraries, please increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is recommended). See [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors) for an example in java.",
+                    "flatPath": "androidpublisher/v3/applications/internalappsharing/{packageName}/artifacts/bundle",
                     "httpMethod": "POST",
                     "id": "androidpublisher.internalappsharingartifacts.uploadbundle",
                     "mediaUpload": {
@@ -1951,6 +1994,7 @@
             "methods": {
                 "refund": {
                     "description": "Refund a user's subscription or in-app purchase order.",
+                    "flatPath": "androidpublisher/v3/applications/{packageName}/orders/{orderId}:refund",
                     "httpMethod": "POST",
                     "id": "androidpublisher.orders.refund",
                     "parameterOrder": [
@@ -1989,6 +2033,7 @@
                     "methods": {
                         "acknowledge": {
                             "description": "Acknowledges a purchase of an inapp item.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/purchases/products/{productId}/tokens/{token}:acknowledge",
                             "httpMethod": "POST",
                             "id": "androidpublisher.purchases.products.acknowledge",
                             "parameterOrder": [
@@ -2026,6 +2071,7 @@
                         },
                         "get": {
                             "description": "Checks the purchase and consumption status of an inapp item.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/purchases/products/{productId}/tokens/{token}",
                             "httpMethod": "GET",
                             "id": "androidpublisher.purchases.products.get",
                             "parameterOrder": [
@@ -2067,6 +2113,7 @@
                     "methods": {
                         "acknowledge": {
                             "description": "Acknowledges a subscription purchase.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:acknowledge",
                             "httpMethod": "POST",
                             "id": "androidpublisher.purchases.subscriptions.acknowledge",
                             "parameterOrder": [
@@ -2104,6 +2151,7 @@
                         },
                         "cancel": {
                             "description": "Cancels a user's subscription purchase. The subscription remains valid until its expiration time.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:cancel",
                             "httpMethod": "POST",
                             "id": "androidpublisher.purchases.subscriptions.cancel",
                             "parameterOrder": [
@@ -2138,6 +2186,7 @@
                         },
                         "defer": {
                             "description": "Defers a user's subscription purchase until a specified future expiration time.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:defer",
                             "httpMethod": "POST",
                             "id": "androidpublisher.purchases.subscriptions.defer",
                             "parameterOrder": [
@@ -2178,6 +2227,7 @@
                         },
                         "get": {
                             "description": "Checks whether a user's subscription purchase is valid and returns its expiry time.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}",
                             "httpMethod": "GET",
                             "id": "androidpublisher.purchases.subscriptions.get",
                             "parameterOrder": [
@@ -2215,6 +2265,7 @@
                         },
                         "refund": {
                             "description": "Refunds a user's subscription purchase, but the subscription remains valid until its expiration time and it will continue to recur.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:refund",
                             "httpMethod": "POST",
                             "id": "androidpublisher.purchases.subscriptions.refund",
                             "parameterOrder": [
@@ -2249,6 +2300,7 @@
                         },
                         "revoke": {
                             "description": "Refunds and immediately revokes a user's subscription purchase. Access to the subscription will be terminated immediately and it will stop recurring.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:revoke",
                             "httpMethod": "POST",
                             "id": "androidpublisher.purchases.subscriptions.revoke",
                             "parameterOrder": [
@@ -2287,6 +2339,7 @@
                     "methods": {
                         "list": {
                             "description": "Lists the purchases that were canceled, refunded or charged-back.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/purchases/voidedpurchases",
                             "httpMethod": "GET",
                             "id": "androidpublisher.purchases.voidedpurchases.list",
                             "parameterOrder": [
@@ -2351,6 +2404,7 @@
             "methods": {
                 "get": {
                     "description": "Gets a single review.",
+                    "flatPath": "androidpublisher/v3/applications/{packageName}/reviews/{reviewId}",
                     "httpMethod": "GET",
                     "id": "androidpublisher.reviews.get",
                     "parameterOrder": [
@@ -2386,6 +2440,7 @@
                 },
                 "list": {
                     "description": "Lists all reviews.",
+                    "flatPath": "androidpublisher/v3/applications/{packageName}/reviews",
                     "httpMethod": "GET",
                     "id": "androidpublisher.reviews.list",
                     "parameterOrder": [
@@ -2431,6 +2486,7 @@
                 },
                 "reply": {
                     "description": "Replies to a single review, or updates an existing reply.",
+                    "flatPath": "androidpublisher/v3/applications/{packageName}/reviews/{reviewId}:reply",
                     "httpMethod": "POST",
                     "id": "androidpublisher.reviews.reply",
                     "parameterOrder": [
@@ -2470,6 +2526,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates an APK which is suitable for inclusion in a system image from an already uploaded Android App Bundle.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/systemApks/{versionCode}/variants",
                             "httpMethod": "POST",
                             "id": "androidpublisher.systemapks.variants.create",
                             "parameterOrder": [
@@ -2504,6 +2561,7 @@
                         },
                         "download": {
                             "description": "Downloads a previously created system APK which is suitable for inclusion in a system image.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/systemApks/{versionCode}/variants/{variantId}:download",
                             "httpMethod": "GET",
                             "id": "androidpublisher.systemapks.variants.download",
                             "parameterOrder": [
@@ -2542,6 +2600,7 @@
                         },
                         "get": {
                             "description": "Returns a previously created system APK variant.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/systemApks/{versionCode}/variants/{variantId}",
                             "httpMethod": "GET",
                             "id": "androidpublisher.systemapks.variants.get",
                             "parameterOrder": [
@@ -2581,6 +2640,7 @@
                         },
                         "list": {
                             "description": "Returns the list of previously created system APK variants.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/systemApks/{versionCode}/variants",
                             "httpMethod": "GET",
                             "id": "androidpublisher.systemapks.variants.list",
                             "parameterOrder": [
@@ -2615,7 +2675,7 @@
             }
         }
     },
-    "revision": "20210519",
+    "revision": "20210615",
     "rootUrl": "https://androidpublisher.googleapis.com/",
     "schemas": {
         "Apk": {
@@ -3655,7 +3715,7 @@
                     "type": "string"
                 },
                 "orderId": {
-                    "description": "The order id of the latest recurring order associated with the purchase of the subscription.",
+                    "description": "The order id of the latest recurring order associated with the purchase of the subscription. If the subscription was canceled because payment was declined, this will be the order id from the payment declined order.",
                     "type": "string"
                 },
                 "paymentState": {
@@ -3664,7 +3724,7 @@
                     "type": "integer"
                 },
                 "priceAmountMicros": {
-                    "description": "Price of the subscription, not including tax. Price is expressed in micro-units, where 1,000,000 micro-units represents one unit of the currency. For example, if the subscription price is €1.99, price_amount_micros is 1990000.",
+                    "description": "Price of the subscription, For tax exclusive countries, the price doesn't include tax. For tax inclusive countries, the price includes tax. Price is expressed in micro-units, where 1,000,000 micro-units represents one unit of the currency. For example, if the subscription price is €1.99, price_amount_micros is 1990000.",
                     "format": "int64",
                     "type": "string"
                 },

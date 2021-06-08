@@ -121,14 +121,14 @@ void checkAchievementConfigurationDetail(api.AchievementConfigurationDetail o) {
   buildCounterAchievementConfigurationDetail--;
 }
 
-core.List<api.AchievementConfiguration> buildUnnamed3546() {
+core.List<api.AchievementConfiguration> buildUnnamed3636() {
   var o = <api.AchievementConfiguration>[];
   o.add(buildAchievementConfiguration());
   o.add(buildAchievementConfiguration());
   return o;
 }
 
-void checkUnnamed3546(core.List<api.AchievementConfiguration> o) {
+void checkUnnamed3636(core.List<api.AchievementConfiguration> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAchievementConfiguration(o[0] as api.AchievementConfiguration);
   checkAchievementConfiguration(o[1] as api.AchievementConfiguration);
@@ -140,7 +140,7 @@ api.AchievementConfigurationListResponse
   var o = api.AchievementConfigurationListResponse();
   buildCounterAchievementConfigurationListResponse++;
   if (buildCounterAchievementConfigurationListResponse < 3) {
-    o.items = buildUnnamed3546();
+    o.items = buildUnnamed3636();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -152,7 +152,7 @@ void checkAchievementConfigurationListResponse(
     api.AchievementConfigurationListResponse o) {
   buildCounterAchievementConfigurationListResponse++;
   if (buildCounterAchievementConfigurationListResponse < 3) {
-    checkUnnamed3546(o.items!);
+    checkUnnamed3636(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -356,14 +356,14 @@ void checkLeaderboardConfigurationDetail(api.LeaderboardConfigurationDetail o) {
   buildCounterLeaderboardConfigurationDetail--;
 }
 
-core.List<api.LeaderboardConfiguration> buildUnnamed3547() {
+core.List<api.LeaderboardConfiguration> buildUnnamed3637() {
   var o = <api.LeaderboardConfiguration>[];
   o.add(buildLeaderboardConfiguration());
   o.add(buildLeaderboardConfiguration());
   return o;
 }
 
-void checkUnnamed3547(core.List<api.LeaderboardConfiguration> o) {
+void checkUnnamed3637(core.List<api.LeaderboardConfiguration> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLeaderboardConfiguration(o[0] as api.LeaderboardConfiguration);
   checkLeaderboardConfiguration(o[1] as api.LeaderboardConfiguration);
@@ -375,7 +375,7 @@ api.LeaderboardConfigurationListResponse
   var o = api.LeaderboardConfigurationListResponse();
   buildCounterLeaderboardConfigurationListResponse++;
   if (buildCounterLeaderboardConfigurationListResponse < 3) {
-    o.items = buildUnnamed3547();
+    o.items = buildUnnamed3637();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -387,7 +387,7 @@ void checkLeaderboardConfigurationListResponse(
     api.LeaderboardConfigurationListResponse o) {
   buildCounterLeaderboardConfigurationListResponse++;
   if (buildCounterLeaderboardConfigurationListResponse < 3) {
-    checkUnnamed3547(o.items!);
+    checkUnnamed3637(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -432,14 +432,14 @@ void checkLocalizedString(api.LocalizedString o) {
   buildCounterLocalizedString--;
 }
 
-core.List<api.LocalizedString> buildUnnamed3548() {
+core.List<api.LocalizedString> buildUnnamed3638() {
   var o = <api.LocalizedString>[];
   o.add(buildLocalizedString());
   o.add(buildLocalizedString());
   return o;
 }
 
-void checkUnnamed3548(core.List<api.LocalizedString> o) {
+void checkUnnamed3638(core.List<api.LocalizedString> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocalizedString(o[0] as api.LocalizedString);
   checkLocalizedString(o[1] as api.LocalizedString);
@@ -451,7 +451,7 @@ api.LocalizedStringBundle buildLocalizedStringBundle() {
   buildCounterLocalizedStringBundle++;
   if (buildCounterLocalizedStringBundle < 3) {
     o.kind = 'foo';
-    o.translations = buildUnnamed3548();
+    o.translations = buildUnnamed3638();
   }
   buildCounterLocalizedStringBundle--;
   return o;
@@ -464,7 +464,7 @@ void checkLocalizedStringBundle(api.LocalizedStringBundle o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed3548(o.translations!);
+    checkUnnamed3638(o.translations!);
   }
   buildCounterLocalizedStringBundle--;
 }

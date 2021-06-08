@@ -115,6 +115,7 @@
                     "methods": {
                         "checkValidCreds": {
                             "description": "Returns true if valid credentials exist for the given data source and requesting user. Some data sources doesn't support service account, so we need to talk to them on behalf of the end user. This API just checks whether we have OAuth token for the particular user, which is a pre-requisite before user can create a transfer config.",
+                            "flatPath": "v1/projects/{projectsId}/dataSources/{dataSourcesId}:checkValidCreds",
                             "httpMethod": "POST",
                             "id": "bigquerydatatransfer.projects.dataSources.checkValidCreds",
                             "parameterOrder": [
@@ -144,6 +145,7 @@
                         },
                         "get": {
                             "description": "Retrieves a supported data source and returns its settings, which can be used for UI rendering.",
+                            "flatPath": "v1/projects/{projectsId}/dataSources/{dataSourcesId}",
                             "httpMethod": "GET",
                             "id": "bigquerydatatransfer.projects.dataSources.get",
                             "parameterOrder": [
@@ -170,6 +172,7 @@
                         },
                         "list": {
                             "description": "Lists supported data sources and returns their settings, which can be used for UI rendering.",
+                            "flatPath": "v1/projects/{projectsId}/dataSources",
                             "httpMethod": "GET",
                             "id": "bigquerydatatransfer.projects.dataSources.list",
                             "parameterOrder": [
@@ -211,6 +214,7 @@
                     "methods": {
                         "get": {
                             "description": "Gets information about a location.",
+                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}",
                             "httpMethod": "GET",
                             "id": "bigquerydatatransfer.projects.locations.get",
                             "parameterOrder": [
@@ -237,6 +241,7 @@
                         },
                         "list": {
                             "description": "Lists information about the supported locations for this service.",
+                            "flatPath": "v1/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "bigquerydatatransfer.projects.locations.list",
                             "parameterOrder": [
@@ -283,6 +288,7 @@
                             "methods": {
                                 "checkValidCreds": {
                                     "description": "Returns true if valid credentials exist for the given data source and requesting user. Some data sources doesn't support service account, so we need to talk to them on behalf of the end user. This API just checks whether we have OAuth token for the particular user, which is a pre-requisite before user can create a transfer config.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/dataSources/{dataSourcesId}:checkValidCreds",
                                     "httpMethod": "POST",
                                     "id": "bigquerydatatransfer.projects.locations.dataSources.checkValidCreds",
                                     "parameterOrder": [
@@ -312,6 +318,7 @@
                                 },
                                 "get": {
                                     "description": "Retrieves a supported data source and returns its settings, which can be used for UI rendering.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/dataSources/{dataSourcesId}",
                                     "httpMethod": "GET",
                                     "id": "bigquerydatatransfer.projects.locations.dataSources.get",
                                     "parameterOrder": [
@@ -338,6 +345,7 @@
                                 },
                                 "list": {
                                     "description": "Lists supported data sources and returns their settings, which can be used for UI rendering.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/dataSources",
                                     "httpMethod": "GET",
                                     "id": "bigquerydatatransfer.projects.locations.dataSources.list",
                                     "parameterOrder": [
@@ -379,6 +387,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a new data transfer configuration.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs",
                                     "httpMethod": "POST",
                                     "id": "bigquerydatatransfer.projects.locations.transferConfigs.create",
                                     "parameterOrder": [
@@ -421,6 +430,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a data transfer configuration, including any associated transfer runs and logs.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs/{transferConfigsId}",
                                     "httpMethod": "DELETE",
                                     "id": "bigquerydatatransfer.projects.locations.transferConfigs.delete",
                                     "parameterOrder": [
@@ -446,6 +456,7 @@
                                 },
                                 "get": {
                                     "description": "Returns information about a data transfer config.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs/{transferConfigsId}",
                                     "httpMethod": "GET",
                                     "id": "bigquerydatatransfer.projects.locations.transferConfigs.get",
                                     "parameterOrder": [
@@ -472,6 +483,7 @@
                                 },
                                 "list": {
                                     "description": "Returns information about all data transfers in the project.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs",
                                     "httpMethod": "GET",
                                     "id": "bigquerydatatransfer.projects.locations.transferConfigs.list",
                                     "parameterOrder": [
@@ -515,6 +527,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates a data transfer configuration. All fields must be set, even if they are not updated.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs/{transferConfigsId}",
                                     "httpMethod": "PATCH",
                                     "id": "bigquerydatatransfer.projects.locations.transferConfigs.patch",
                                     "parameterOrder": [
@@ -563,6 +576,7 @@
                                 },
                                 "scheduleRuns": {
                                     "description": "Creates transfer runs for a time range [start_time, end_time]. For each date - or whatever granularity the data source supports - in the range, one transfer run is created. Note that runs are created per UTC time in the time range. DEPRECATED: use StartManualTransferRuns instead.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs/{transferConfigsId}:scheduleRuns",
                                     "httpMethod": "POST",
                                     "id": "bigquerydatatransfer.projects.locations.transferConfigs.scheduleRuns",
                                     "parameterOrder": [
@@ -591,6 +605,7 @@
                                 },
                                 "startManualRuns": {
                                     "description": "Start manual transfer runs to be executed now with schedule_time equal to current time. The transfer runs can be created for a time range where the run_time is between start_time (inclusive) and end_time (exclusive), or for a specific run_time.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs/{transferConfigsId}:startManualRuns",
                                     "httpMethod": "POST",
                                     "id": "bigquerydatatransfer.projects.locations.transferConfigs.startManualRuns",
                                     "parameterOrder": [
@@ -623,6 +638,7 @@
                                     "methods": {
                                         "delete": {
                                             "description": "Deletes the specified transfer run.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs/{transferConfigsId}/runs/{runsId}",
                                             "httpMethod": "DELETE",
                                             "id": "bigquerydatatransfer.projects.locations.transferConfigs.runs.delete",
                                             "parameterOrder": [
@@ -648,6 +664,7 @@
                                         },
                                         "get": {
                                             "description": "Returns information about the particular transfer run.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs/{transferConfigsId}/runs/{runsId}",
                                             "httpMethod": "GET",
                                             "id": "bigquerydatatransfer.projects.locations.transferConfigs.runs.get",
                                             "parameterOrder": [
@@ -674,6 +691,7 @@
                                         },
                                         "list": {
                                             "description": "Returns information about running and completed jobs.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs/{transferConfigsId}/runs",
                                             "httpMethod": "GET",
                                             "id": "bigquerydatatransfer.projects.locations.transferConfigs.runs.list",
                                             "parameterOrder": [
@@ -750,6 +768,7 @@
                                             "methods": {
                                                 "list": {
                                                     "description": "Returns user facing log messages for the data transfer run.",
+                                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs/{transferConfigsId}/runs/{runsId}/transferLogs",
                                                     "httpMethod": "GET",
                                                     "id": "bigquerydatatransfer.projects.locations.transferConfigs.runs.transferLogs.list",
                                                     "parameterOrder": [
@@ -815,6 +834,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a new data transfer configuration.",
+                            "flatPath": "v1/projects/{projectsId}/transferConfigs",
                             "httpMethod": "POST",
                             "id": "bigquerydatatransfer.projects.transferConfigs.create",
                             "parameterOrder": [
@@ -857,6 +877,7 @@
                         },
                         "delete": {
                             "description": "Deletes a data transfer configuration, including any associated transfer runs and logs.",
+                            "flatPath": "v1/projects/{projectsId}/transferConfigs/{transferConfigsId}",
                             "httpMethod": "DELETE",
                             "id": "bigquerydatatransfer.projects.transferConfigs.delete",
                             "parameterOrder": [
@@ -882,6 +903,7 @@
                         },
                         "get": {
                             "description": "Returns information about a data transfer config.",
+                            "flatPath": "v1/projects/{projectsId}/transferConfigs/{transferConfigsId}",
                             "httpMethod": "GET",
                             "id": "bigquerydatatransfer.projects.transferConfigs.get",
                             "parameterOrder": [
@@ -908,6 +930,7 @@
                         },
                         "list": {
                             "description": "Returns information about all data transfers in the project.",
+                            "flatPath": "v1/projects/{projectsId}/transferConfigs",
                             "httpMethod": "GET",
                             "id": "bigquerydatatransfer.projects.transferConfigs.list",
                             "parameterOrder": [
@@ -951,6 +974,7 @@
                         },
                         "patch": {
                             "description": "Updates a data transfer configuration. All fields must be set, even if they are not updated.",
+                            "flatPath": "v1/projects/{projectsId}/transferConfigs/{transferConfigsId}",
                             "httpMethod": "PATCH",
                             "id": "bigquerydatatransfer.projects.transferConfigs.patch",
                             "parameterOrder": [
@@ -999,6 +1023,7 @@
                         },
                         "scheduleRuns": {
                             "description": "Creates transfer runs for a time range [start_time, end_time]. For each date - or whatever granularity the data source supports - in the range, one transfer run is created. Note that runs are created per UTC time in the time range. DEPRECATED: use StartManualTransferRuns instead.",
+                            "flatPath": "v1/projects/{projectsId}/transferConfigs/{transferConfigsId}:scheduleRuns",
                             "httpMethod": "POST",
                             "id": "bigquerydatatransfer.projects.transferConfigs.scheduleRuns",
                             "parameterOrder": [
@@ -1027,6 +1052,7 @@
                         },
                         "startManualRuns": {
                             "description": "Start manual transfer runs to be executed now with schedule_time equal to current time. The transfer runs can be created for a time range where the run_time is between start_time (inclusive) and end_time (exclusive), or for a specific run_time.",
+                            "flatPath": "v1/projects/{projectsId}/transferConfigs/{transferConfigsId}:startManualRuns",
                             "httpMethod": "POST",
                             "id": "bigquerydatatransfer.projects.transferConfigs.startManualRuns",
                             "parameterOrder": [
@@ -1059,6 +1085,7 @@
                             "methods": {
                                 "delete": {
                                     "description": "Deletes the specified transfer run.",
+                                    "flatPath": "v1/projects/{projectsId}/transferConfigs/{transferConfigsId}/runs/{runsId}",
                                     "httpMethod": "DELETE",
                                     "id": "bigquerydatatransfer.projects.transferConfigs.runs.delete",
                                     "parameterOrder": [
@@ -1084,6 +1111,7 @@
                                 },
                                 "get": {
                                     "description": "Returns information about the particular transfer run.",
+                                    "flatPath": "v1/projects/{projectsId}/transferConfigs/{transferConfigsId}/runs/{runsId}",
                                     "httpMethod": "GET",
                                     "id": "bigquerydatatransfer.projects.transferConfigs.runs.get",
                                     "parameterOrder": [
@@ -1110,6 +1138,7 @@
                                 },
                                 "list": {
                                     "description": "Returns information about running and completed jobs.",
+                                    "flatPath": "v1/projects/{projectsId}/transferConfigs/{transferConfigsId}/runs",
                                     "httpMethod": "GET",
                                     "id": "bigquerydatatransfer.projects.transferConfigs.runs.list",
                                     "parameterOrder": [
@@ -1186,6 +1215,7 @@
                                     "methods": {
                                         "list": {
                                             "description": "Returns user facing log messages for the data transfer run.",
+                                            "flatPath": "v1/projects/{projectsId}/transferConfigs/{transferConfigsId}/runs/{runsId}/transferLogs",
                                             "httpMethod": "GET",
                                             "id": "bigquerydatatransfer.projects.transferConfigs.runs.transferLogs.list",
                                             "parameterOrder": [
@@ -1248,7 +1278,7 @@
             }
         }
     },
-    "revision": "20210422",
+    "revision": "20210604",
     "rootUrl": "https://bigquerydatatransfer.googleapis.com/",
     "schemas": {
         "CheckValidCredsRequest": {

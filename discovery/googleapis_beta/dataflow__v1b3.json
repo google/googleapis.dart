@@ -116,6 +116,7 @@
             "methods": {
                 "deleteSnapshots": {
                     "description": "Deletes a snapshot.",
+                    "flatPath": "v1b3/projects/{projectId}/snapshots",
                     "httpMethod": "DELETE",
                     "id": "dataflow.projects.deleteSnapshots",
                     "parameterOrder": [
@@ -152,6 +153,7 @@
                 },
                 "workerMessages": {
                     "description": "Send a worker_message to the service.",
+                    "flatPath": "v1b3/projects/{projectId}/WorkerMessages",
                     "httpMethod": "POST",
                     "id": "dataflow.projects.workerMessages",
                     "parameterOrder": [
@@ -185,6 +187,7 @@
                     "methods": {
                         "aggregated": {
                             "description": "List the jobs of a project across all regions.",
+                            "flatPath": "v1b3/projects/{projectId}/jobs:aggregated",
                             "httpMethod": "GET",
                             "id": "dataflow.projects.jobs.aggregated",
                             "parameterOrder": [
@@ -261,6 +264,7 @@
                         },
                         "create": {
                             "description": "Creates a Cloud Dataflow job. To create a job, we recommend using `projects.locations.jobs.create` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.create` is not recommended, as your job will always start in `us-central1`.",
+                            "flatPath": "v1b3/projects/{projectId}/jobs",
                             "httpMethod": "POST",
                             "id": "dataflow.projects.jobs.create",
                             "parameterOrder": [
@@ -317,6 +321,7 @@
                         },
                         "get": {
                             "description": "Gets the state of the specified Cloud Dataflow job. To get the state of a job, we recommend using `projects.locations.jobs.get` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.get` is not recommended, as you can only get the state of jobs that are running in `us-central1`.",
+                            "flatPath": "v1b3/projects/{projectId}/jobs/{jobId}",
                             "httpMethod": "GET",
                             "id": "dataflow.projects.jobs.get",
                             "parameterOrder": [
@@ -372,6 +377,7 @@
                         },
                         "getMetrics": {
                             "description": "Request the job status. To request the status of a job, we recommend using `projects.locations.jobs.getMetrics` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.getMetrics` is not recommended, as you can only request the status of jobs that are running in `us-central1`.",
+                            "flatPath": "v1b3/projects/{projectId}/jobs/{jobId}/metrics",
                             "httpMethod": "GET",
                             "id": "dataflow.projects.jobs.getMetrics",
                             "parameterOrder": [
@@ -416,6 +422,7 @@
                         },
                         "list": {
                             "description": "List the jobs of a project. To list the jobs of a project in a region, we recommend using `projects.locations.jobs.list` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). To list the all jobs across all regions, use `projects.jobs.aggregated`. Using `projects.jobs.list` is not recommended, as you can only get the list of jobs that are running in `us-central1`.",
+                            "flatPath": "v1b3/projects/{projectId}/jobs",
                             "httpMethod": "GET",
                             "id": "dataflow.projects.jobs.list",
                             "parameterOrder": [
@@ -492,6 +499,7 @@
                         },
                         "snapshot": {
                             "description": "Snapshot the state of a streaming job.",
+                            "flatPath": "v1b3/projects/{projectId}/jobs/{jobId}:snapshot",
                             "httpMethod": "POST",
                             "id": "dataflow.projects.jobs.snapshot",
                             "parameterOrder": [
@@ -528,6 +536,7 @@
                         },
                         "update": {
                             "description": "Updates the state of an existing Cloud Dataflow job. To update the state of an existing job, we recommend using `projects.locations.jobs.update` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.update` is not recommended, as you can only update the state of jobs that are running in `us-central1`.",
+                            "flatPath": "v1b3/projects/{projectId}/jobs/{jobId}",
                             "httpMethod": "PUT",
                             "id": "dataflow.projects.jobs.update",
                             "parameterOrder": [
@@ -573,6 +582,7 @@
                             "methods": {
                                 "getConfig": {
                                     "description": "Get encoded debug configuration for component. Not cacheable.",
+                                    "flatPath": "v1b3/projects/{projectId}/jobs/{jobId}/debug/getConfig",
                                     "httpMethod": "POST",
                                     "id": "dataflow.projects.jobs.debug.getConfig",
                                     "parameterOrder": [
@@ -609,6 +619,7 @@
                                 },
                                 "sendCapture": {
                                     "description": "Send encoded debug capture data for component.",
+                                    "flatPath": "v1b3/projects/{projectId}/jobs/{jobId}/debug/sendCapture",
                                     "httpMethod": "POST",
                                     "id": "dataflow.projects.jobs.debug.sendCapture",
                                     "parameterOrder": [
@@ -649,6 +660,7 @@
                             "methods": {
                                 "list": {
                                     "description": "Request the job status. To request the status of a job, we recommend using `projects.locations.jobs.messages.list` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.messages.list` is not recommended, as you can only request the status of jobs that are running in `us-central1`.",
+                                    "flatPath": "v1b3/projects/{projectId}/jobs/{jobId}/messages",
                                     "httpMethod": "GET",
                                     "id": "dataflow.projects.jobs.messages.list",
                                     "parameterOrder": [
@@ -735,6 +747,7 @@
                             "methods": {
                                 "lease": {
                                     "description": "Leases a dataflow WorkItem to run.",
+                                    "flatPath": "v1b3/projects/{projectId}/jobs/{jobId}/workItems:lease",
                                     "httpMethod": "POST",
                                     "id": "dataflow.projects.jobs.workItems.lease",
                                     "parameterOrder": [
@@ -771,6 +784,7 @@
                                 },
                                 "reportStatus": {
                                     "description": "Reports the status of dataflow WorkItems leased by a worker.",
+                                    "flatPath": "v1b3/projects/{projectId}/jobs/{jobId}/workItems:reportStatus",
                                     "httpMethod": "POST",
                                     "id": "dataflow.projects.jobs.workItems.reportStatus",
                                     "parameterOrder": [
@@ -813,6 +827,7 @@
                     "methods": {
                         "workerMessages": {
                             "description": "Send a worker_message to the service.",
+                            "flatPath": "v1b3/projects/{projectId}/locations/{location}/WorkerMessages",
                             "httpMethod": "POST",
                             "id": "dataflow.projects.locations.workerMessages",
                             "parameterOrder": [
@@ -853,6 +868,7 @@
                             "methods": {
                                 "launch": {
                                     "description": "Launch a job with a FlexTemplate.",
+                                    "flatPath": "v1b3/projects/{projectId}/locations/{location}/flexTemplates:launch",
                                     "httpMethod": "POST",
                                     "id": "dataflow.projects.locations.flexTemplates.launch",
                                     "parameterOrder": [
@@ -893,6 +909,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a Cloud Dataflow job. To create a job, we recommend using `projects.locations.jobs.create` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.create` is not recommended, as your job will always start in `us-central1`.",
+                                    "flatPath": "v1b3/projects/{projectId}/locations/{location}/jobs",
                                     "httpMethod": "POST",
                                     "id": "dataflow.projects.locations.jobs.create",
                                     "parameterOrder": [
@@ -951,6 +968,7 @@
                                 },
                                 "get": {
                                     "description": "Gets the state of the specified Cloud Dataflow job. To get the state of a job, we recommend using `projects.locations.jobs.get` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.get` is not recommended, as you can only get the state of jobs that are running in `us-central1`.",
+                                    "flatPath": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}",
                                     "httpMethod": "GET",
                                     "id": "dataflow.projects.locations.jobs.get",
                                     "parameterOrder": [
@@ -1008,6 +1026,7 @@
                                 },
                                 "getExecutionDetails": {
                                     "description": "Request detailed information about the execution status of the job. EXPERIMENTAL. This API is subject to change or removal without notice.",
+                                    "flatPath": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/executionDetails",
                                     "httpMethod": "GET",
                                     "id": "dataflow.projects.locations.jobs.getExecutionDetails",
                                     "parameterOrder": [
@@ -1059,6 +1078,7 @@
                                 },
                                 "getMetrics": {
                                     "description": "Request the job status. To request the status of a job, we recommend using `projects.locations.jobs.getMetrics` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.getMetrics` is not recommended, as you can only request the status of jobs that are running in `us-central1`.",
+                                    "flatPath": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/metrics",
                                     "httpMethod": "GET",
                                     "id": "dataflow.projects.locations.jobs.getMetrics",
                                     "parameterOrder": [
@@ -1105,6 +1125,7 @@
                                 },
                                 "list": {
                                     "description": "List the jobs of a project. To list the jobs of a project in a region, we recommend using `projects.locations.jobs.list` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). To list the all jobs across all regions, use `projects.jobs.aggregated`. Using `projects.jobs.list` is not recommended, as you can only get the list of jobs that are running in `us-central1`.",
+                                    "flatPath": "v1b3/projects/{projectId}/locations/{location}/jobs",
                                     "httpMethod": "GET",
                                     "id": "dataflow.projects.locations.jobs.list",
                                     "parameterOrder": [
@@ -1183,6 +1204,7 @@
                                 },
                                 "snapshot": {
                                     "description": "Snapshot the state of a streaming job.",
+                                    "flatPath": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}:snapshot",
                                     "httpMethod": "POST",
                                     "id": "dataflow.projects.locations.jobs.snapshot",
                                     "parameterOrder": [
@@ -1226,6 +1248,7 @@
                                 },
                                 "update": {
                                     "description": "Updates the state of an existing Cloud Dataflow job. To update the state of an existing job, we recommend using `projects.locations.jobs.update` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.update` is not recommended, as you can only update the state of jobs that are running in `us-central1`.",
+                                    "flatPath": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}",
                                     "httpMethod": "PUT",
                                     "id": "dataflow.projects.locations.jobs.update",
                                     "parameterOrder": [
@@ -1273,6 +1296,7 @@
                                     "methods": {
                                         "getConfig": {
                                             "description": "Get encoded debug configuration for component. Not cacheable.",
+                                            "flatPath": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/debug/getConfig",
                                             "httpMethod": "POST",
                                             "id": "dataflow.projects.locations.jobs.debug.getConfig",
                                             "parameterOrder": [
@@ -1316,6 +1340,7 @@
                                         },
                                         "sendCapture": {
                                             "description": "Send encoded debug capture data for component.",
+                                            "flatPath": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/debug/sendCapture",
                                             "httpMethod": "POST",
                                             "id": "dataflow.projects.locations.jobs.debug.sendCapture",
                                             "parameterOrder": [
@@ -1363,6 +1388,7 @@
                                     "methods": {
                                         "list": {
                                             "description": "Request the job status. To request the status of a job, we recommend using `projects.locations.jobs.messages.list` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.messages.list` is not recommended, as you can only request the status of jobs that are running in `us-central1`.",
+                                            "flatPath": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/messages",
                                             "httpMethod": "GET",
                                             "id": "dataflow.projects.locations.jobs.messages.list",
                                             "parameterOrder": [
@@ -1451,6 +1477,7 @@
                                     "methods": {
                                         "list": {
                                             "description": "Lists snapshots.",
+                                            "flatPath": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/snapshots",
                                             "httpMethod": "GET",
                                             "id": "dataflow.projects.locations.jobs.snapshots.list",
                                             "parameterOrder": [
@@ -1495,6 +1522,7 @@
                                     "methods": {
                                         "getExecutionDetails": {
                                             "description": "Request detailed information about the execution status of a stage of the job. EXPERIMENTAL. This API is subject to change or removal without notice.",
+                                            "flatPath": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/stages/{stageId}/executionDetails",
                                             "httpMethod": "GET",
                                             "id": "dataflow.projects.locations.jobs.stages.getExecutionDetails",
                                             "parameterOrder": [
@@ -1569,6 +1597,7 @@
                                     "methods": {
                                         "lease": {
                                             "description": "Leases a dataflow WorkItem to run.",
+                                            "flatPath": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/workItems:lease",
                                             "httpMethod": "POST",
                                             "id": "dataflow.projects.locations.jobs.workItems.lease",
                                             "parameterOrder": [
@@ -1612,6 +1641,7 @@
                                         },
                                         "reportStatus": {
                                             "description": "Reports the status of dataflow WorkItems leased by a worker.",
+                                            "flatPath": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/workItems:reportStatus",
                                             "httpMethod": "POST",
                                             "id": "dataflow.projects.locations.jobs.workItems.reportStatus",
                                             "parameterOrder": [
@@ -1661,6 +1691,7 @@
                             "methods": {
                                 "delete": {
                                     "description": "Deletes a snapshot.",
+                                    "flatPath": "v1b3/projects/{projectId}/locations/{location}/snapshots/{snapshotId}",
                                     "httpMethod": "DELETE",
                                     "id": "dataflow.projects.locations.snapshots.delete",
                                     "parameterOrder": [
@@ -1701,6 +1732,7 @@
                                 },
                                 "get": {
                                     "description": "Gets information about a snapshot.",
+                                    "flatPath": "v1b3/projects/{projectId}/locations/{location}/snapshots/{snapshotId}",
                                     "httpMethod": "GET",
                                     "id": "dataflow.projects.locations.snapshots.get",
                                     "parameterOrder": [
@@ -1741,6 +1773,7 @@
                                 },
                                 "list": {
                                     "description": "Lists snapshots.",
+                                    "flatPath": "v1b3/projects/{projectId}/locations/{location}/snapshots",
                                     "httpMethod": "GET",
                                     "id": "dataflow.projects.locations.snapshots.list",
                                     "parameterOrder": [
@@ -1783,6 +1816,7 @@
                             "methods": {
                                 "validate": {
                                     "description": "Validates a GoogleSQL query for Cloud Dataflow syntax. Will always confirm the given query parses correctly, and if able to look up schema information from DataCatalog, will validate that the query analyzes properly as well.",
+                                    "flatPath": "v1b3/projects/{projectId}/locations/{location}/sql:validate",
                                     "httpMethod": "GET",
                                     "id": "dataflow.projects.locations.sql.validate",
                                     "parameterOrder": [
@@ -1823,6 +1857,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a Cloud Dataflow job from a template.",
+                                    "flatPath": "v1b3/projects/{projectId}/locations/{location}/templates",
                                     "httpMethod": "POST",
                                     "id": "dataflow.projects.locations.templates.create",
                                     "parameterOrder": [
@@ -1859,6 +1894,7 @@
                                 },
                                 "get": {
                                     "description": "Get the template associated with a template.",
+                                    "flatPath": "v1b3/projects/{projectId}/locations/{location}/templates:get",
                                     "httpMethod": "GET",
                                     "id": "dataflow.projects.locations.templates.get",
                                     "parameterOrder": [
@@ -1908,6 +1944,7 @@
                                 },
                                 "launch": {
                                     "description": "Launch a template.",
+                                    "flatPath": "v1b3/projects/{projectId}/locations/{location}/templates:launch",
                                     "httpMethod": "POST",
                                     "id": "dataflow.projects.locations.templates.launch",
                                     "parameterOrder": [
@@ -1970,6 +2007,7 @@
                     "methods": {
                         "get": {
                             "description": "Gets information about a snapshot.",
+                            "flatPath": "v1b3/projects/{projectId}/snapshots/{snapshotId}",
                             "httpMethod": "GET",
                             "id": "dataflow.projects.snapshots.get",
                             "parameterOrder": [
@@ -2008,6 +2046,7 @@
                         },
                         "list": {
                             "description": "Lists snapshots.",
+                            "flatPath": "v1b3/projects/{projectId}/snapshots",
                             "httpMethod": "GET",
                             "id": "dataflow.projects.snapshots.list",
                             "parameterOrder": [
@@ -2048,6 +2087,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a Cloud Dataflow job from a template.",
+                            "flatPath": "v1b3/projects/{projectId}/templates",
                             "httpMethod": "POST",
                             "id": "dataflow.projects.templates.create",
                             "parameterOrder": [
@@ -2077,6 +2117,7 @@
                         },
                         "get": {
                             "description": "Get the template associated with a template.",
+                            "flatPath": "v1b3/projects/{projectId}/templates:get",
                             "httpMethod": "GET",
                             "id": "dataflow.projects.templates.get",
                             "parameterOrder": [
@@ -2124,6 +2165,7 @@
                         },
                         "launch": {
                             "description": "Launch a template.",
+                            "flatPath": "v1b3/projects/{projectId}/templates:launch",
                             "httpMethod": "POST",
                             "id": "dataflow.projects.templates.launch",
                             "parameterOrder": [
@@ -2181,7 +2223,7 @@
             }
         }
     },
-    "revision": "20210504",
+    "revision": "20210529",
     "rootUrl": "https://dataflow.googleapis.com/",
     "schemas": {
         "ApproximateProgress": {
@@ -2986,7 +3028,7 @@
                     "description": "Any debugging options to be supplied to the job."
                 },
                 "experiments": {
-                    "description": "The list of experiments to enable. This field should be used for SDK related experiments and not for service related experiments. The proper field for service related experiments is service_options. For more details see the rationale at go/user-specified-service-options.",
+                    "description": "The list of experiments to enable. This field should be used for SDK related experiments and not for service related experiments. The proper field for service related experiments is service_options.",
                     "items": {
                         "type": "string"
                     },
@@ -3031,7 +3073,7 @@
                     "type": "string"
                 },
                 "serviceOptions": {
-                    "description": "The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on). For more details see the rationale at go/user-specified-service-options.",
+                    "description": "The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on).",
                     "items": {
                         "type": "string"
                     },
@@ -3323,6 +3365,10 @@
                     "description": "The initial number of Google Compute Engine instances for the job.",
                     "format": "int32",
                     "type": "integer"
+                },
+                "sdkContainerImage": {
+                    "description": "Docker registry location of container image to use for the 'worker harness. Default is the container for the version of the SDK. Note this field is only valid for portable pipelines.",
+                    "type": "string"
                 },
                 "serviceAccountEmail": {
                     "description": "The email address of the service account to run the job as.",
@@ -6836,7 +6882,7 @@
                         "The default set of packages to stage is unknown, or unspecified.",
                         "Indicates that no packages should be staged at the worker unless explicitly specified by the job.",
                         "Stage packages typically useful to workers written in Java.",
-                        "Stage pacakges typically useful to workers written in Python."
+                        "Stage packages typically useful to workers written in Python."
                     ],
                     "type": "string"
                 },

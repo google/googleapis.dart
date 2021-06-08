@@ -979,6 +979,35 @@ class Command {
       };
 }
 
+/// An indication that the compliance checks in the associated ComplianceNote
+/// were not satisfied for particular resources or a specified reason.
+class ComplianceOccurrence {
+  core.String? nonComplianceReason;
+  core.List<NonCompliantFile>? nonCompliantFiles;
+
+  ComplianceOccurrence();
+
+  ComplianceOccurrence.fromJson(core.Map _json) {
+    if (_json.containsKey('nonComplianceReason')) {
+      nonComplianceReason = _json['nonComplianceReason'] as core.String;
+    }
+    if (_json.containsKey('nonCompliantFiles')) {
+      nonCompliantFiles = (_json['nonCompliantFiles'] as core.List)
+          .map<NonCompliantFile>((value) => NonCompliantFile.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nonComplianceReason != null)
+          'nonComplianceReason': nonComplianceReason!,
+        if (nonCompliantFiles != null)
+          'nonCompliantFiles':
+              nonCompliantFiles!.map((value) => value.toJson()).toList(),
+      };
+}
+
 /// The period during which some deployable was active in a runtime.
 class DeploymentOccurrence {
   /// Address of the runtime element hosting this deployment.
@@ -1532,6 +1561,42 @@ class Location {
       };
 }
 
+/// Details about files that caused a compliance check to fail.
+class NonCompliantFile {
+  /// Command to display the non-compliant files.
+  core.String? displayCommand;
+
+  /// display_command is a single command that can be used to display a list of
+  /// non compliant files.
+  ///
+  /// When there is no such command, we can also iterate a list of non compliant
+  /// file using 'path'. Empty if `display_command` is set.
+  core.String? path;
+
+  /// Explains why a file is non compliant for a CIS check.
+  core.String? reason;
+
+  NonCompliantFile();
+
+  NonCompliantFile.fromJson(core.Map _json) {
+    if (_json.containsKey('displayCommand')) {
+      displayCommand = _json['displayCommand'] as core.String;
+    }
+    if (_json.containsKey('path')) {
+      path = _json['path'] as core.String;
+    }
+    if (_json.containsKey('reason')) {
+      reason = _json['reason'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayCommand != null) 'displayCommand': displayCommand!,
+        if (path != null) 'path': path!,
+        if (reason != null) 'reason': reason!,
+      };
+}
+
 /// An instance of an analysis type that has been found on a resource.
 class Occurrence {
   /// Describes an attestation of an artifact.
@@ -1539,6 +1604,9 @@ class Occurrence {
 
   /// Describes a verifiable build.
   BuildOccurrence? build;
+
+  /// Describes a compliance violation on a linked resource.
+  ComplianceOccurrence? compliance;
 
   /// The time this occurrence was created.
   ///
@@ -1624,6 +1692,10 @@ class Occurrence {
       build = BuildOccurrence.fromJson(
           _json['build'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('compliance')) {
+      compliance = ComplianceOccurrence.fromJson(
+          _json['compliance'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('createTime')) {
       createTime = _json['createTime'] as core.String;
     }
@@ -1674,6 +1746,7 @@ class Occurrence {
   core.Map<core.String, core.dynamic> toJson() => {
         if (attestation != null) 'attestation': attestation!.toJson(),
         if (build != null) 'build': build!.toJson(),
+        if (compliance != null) 'compliance': compliance!.toJson(),
         if (createTime != null) 'createTime': createTime!,
         if (deployment != null) 'deployment': deployment!.toJson(),
         if (discovery != null) 'discovery': discovery!.toJson(),

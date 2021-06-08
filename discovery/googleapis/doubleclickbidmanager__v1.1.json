@@ -107,6 +107,7 @@
             "methods": {
                 "createquery": {
                     "description": "Creates a query.",
+                    "flatPath": "query",
                     "httpMethod": "POST",
                     "id": "doubleclickbidmanager.queries.createquery",
                     "parameterOrder": [],
@@ -131,6 +132,7 @@
                 },
                 "deletequery": {
                     "description": "Deletes a stored query as well as the associated stored reports.",
+                    "flatPath": "query/{queryId}",
                     "httpMethod": "DELETE",
                     "id": "doubleclickbidmanager.queries.deletequery",
                     "parameterOrder": [
@@ -152,6 +154,7 @@
                 },
                 "getquery": {
                     "description": "Retrieves a stored query.",
+                    "flatPath": "query/{queryId}",
                     "httpMethod": "GET",
                     "id": "doubleclickbidmanager.queries.getquery",
                     "parameterOrder": [
@@ -176,6 +179,7 @@
                 },
                 "listqueries": {
                     "description": "Retrieves stored queries.",
+                    "flatPath": "queries",
                     "httpMethod": "GET",
                     "id": "doubleclickbidmanager.queries.listqueries",
                     "parameterOrder": [],
@@ -202,6 +206,7 @@
                 },
                 "runquery": {
                     "description": "Runs a stored query to generate a report.",
+                    "flatPath": "query/{queryId}",
                     "httpMethod": "POST",
                     "id": "doubleclickbidmanager.queries.runquery",
                     "parameterOrder": [
@@ -236,6 +241,7 @@
             "methods": {
                 "listreports": {
                     "description": "Retrieves stored reports.",
+                    "flatPath": "queries/{queryId}/reports",
                     "httpMethod": "GET",
                     "id": "doubleclickbidmanager.reports.listreports",
                     "parameterOrder": [
@@ -272,7 +278,7 @@
             }
         }
     },
-    "revision": "20210504",
+    "revision": "20210601",
     "rootUrl": "https://doubleclickbidmanager.googleapis.com/",
     "schemas": {
         "ChannelGrouping": {
@@ -2006,9 +2012,13 @@
                             "METRIC_CM360_POST_CLICK_REVENUE_CROSS_ENVIRONMENT",
                             "METRIC_CM360_POST_VIEW_REVENUE_CROSS_ENVIRONMENT",
                             "METRIC_PERCENTAGE_FROM_CURRENT_IO_GOAL",
-                            "METRIC_OMID_CAPABLE"
+                            "METRIC_DUPLICATE_FLOODLIGHT_IMPRESSIONS",
+                            "METRIC_COOKIE_CONSENTED_FLOODLIGHT_IMPRESSIONS",
+                            "METRIC_COOKIE_UNCONSENTED_FLOODLIGHT_IMPRESSIONS"
                         ],
                         "enumDescriptions": [
+                            "",
+                            "",
                             "",
                             "",
                             "",

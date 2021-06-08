@@ -109,6 +109,7 @@
                     "methods": {
                         "create": {
                             "description": "Constructs a new OAuth brand for the project if one does not exist. The created brand is \"internal only\", meaning that OAuth clients created under it only accept requests from users who belong to the same G Suite organization as the project. The brand is created in an un-reviewed status. NOTE: The \"internal only\" status can be manually changed in the Google Cloud console. Requires that a brand does not already exist for the project, and that the specified support email is owned by the caller.",
+                            "flatPath": "v1/projects/{projectsId}/brands",
                             "httpMethod": "POST",
                             "id": "iap.projects.brands.create",
                             "parameterOrder": [
@@ -136,6 +137,7 @@
                         },
                         "get": {
                             "description": "Retrieves the OAuth brand of the project.",
+                            "flatPath": "v1/projects/{projectsId}/brands/{brandsId}",
                             "httpMethod": "GET",
                             "id": "iap.projects.brands.get",
                             "parameterOrder": [
@@ -160,6 +162,7 @@
                         },
                         "list": {
                             "description": "Lists the existing brands for the project.",
+                            "flatPath": "v1/projects/{projectsId}/brands",
                             "httpMethod": "GET",
                             "id": "iap.projects.brands.list",
                             "parameterOrder": [
@@ -188,6 +191,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates an Identity Aware Proxy (IAP) OAuth client. The client is owned by IAP. Requires that the brand for the project exists and that it is set for internal-only use.",
+                                    "flatPath": "v1/projects/{projectsId}/brands/{brandsId}/identityAwareProxyClients",
                                     "httpMethod": "POST",
                                     "id": "iap.projects.brands.identityAwareProxyClients.create",
                                     "parameterOrder": [
@@ -215,6 +219,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes an Identity Aware Proxy (IAP) OAuth client. Useful for removing obsolete clients, managing the number of clients in a given project, and cleaning up after tests. Requires that the client is owned by IAP.",
+                                    "flatPath": "v1/projects/{projectsId}/brands/{brandsId}/identityAwareProxyClients/{identityAwareProxyClientsId}",
                                     "httpMethod": "DELETE",
                                     "id": "iap.projects.brands.identityAwareProxyClients.delete",
                                     "parameterOrder": [
@@ -239,6 +244,7 @@
                                 },
                                 "get": {
                                     "description": "Retrieves an Identity Aware Proxy (IAP) OAuth client. Requires that the client is owned by IAP.",
+                                    "flatPath": "v1/projects/{projectsId}/brands/{brandsId}/identityAwareProxyClients/{identityAwareProxyClientsId}",
                                     "httpMethod": "GET",
                                     "id": "iap.projects.brands.identityAwareProxyClients.get",
                                     "parameterOrder": [
@@ -263,6 +269,7 @@
                                 },
                                 "list": {
                                     "description": "Lists the existing clients for the brand.",
+                                    "flatPath": "v1/projects/{projectsId}/brands/{brandsId}/identityAwareProxyClients",
                                     "httpMethod": "GET",
                                     "id": "iap.projects.brands.identityAwareProxyClients.list",
                                     "parameterOrder": [
@@ -298,6 +305,7 @@
                                 },
                                 "resetSecret": {
                                     "description": "Resets an Identity Aware Proxy (IAP) OAuth client secret. Useful if the secret was compromised. Requires that the client is owned by IAP.",
+                                    "flatPath": "v1/projects/{projectsId}/brands/{brandsId}/identityAwareProxyClients/{identityAwareProxyClientsId}:resetSecret",
                                     "httpMethod": "POST",
                                     "id": "iap.projects.brands.identityAwareProxyClients.resetSecret",
                                     "parameterOrder": [
@@ -333,6 +341,7 @@
             "methods": {
                 "getIamPolicy": {
                     "description": "Gets the access control policy for an Identity-Aware Proxy protected resource. More information about managing access via IAP can be found at: https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api",
+                    "flatPath": "v1/{v1Id}:getIamPolicy",
                     "httpMethod": "POST",
                     "id": "iap.getIamPolicy",
                     "parameterOrder": [
@@ -360,6 +369,7 @@
                 },
                 "getIapSettings": {
                     "description": "Gets the IAP settings on a particular IAP protected resource.",
+                    "flatPath": "v1/{v1Id}:iapSettings",
                     "httpMethod": "GET",
                     "id": "iap.getIapSettings",
                     "parameterOrder": [
@@ -384,6 +394,7 @@
                 },
                 "setIamPolicy": {
                     "description": "Sets the access control policy for an Identity-Aware Proxy protected resource. Replaces any existing policy. More information about managing access via IAP can be found at: https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api",
+                    "flatPath": "v1/{v1Id}:setIamPolicy",
                     "httpMethod": "POST",
                     "id": "iap.setIamPolicy",
                     "parameterOrder": [
@@ -411,6 +422,7 @@
                 },
                 "testIamPermissions": {
                     "description": "Returns permissions that a caller has on the Identity-Aware Proxy protected resource. More information about managing access via IAP can be found at: https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api",
+                    "flatPath": "v1/{v1Id}:testIamPermissions",
                     "httpMethod": "POST",
                     "id": "iap.testIamPermissions",
                     "parameterOrder": [
@@ -438,6 +450,7 @@
                 },
                 "updateIapSettings": {
                     "description": "Updates the IAP settings on a particular IAP protected resource. It replaces all fields unless the `update_mask` is set.",
+                    "flatPath": "v1/{v1Id}:iapSettings",
                     "httpMethod": "PATCH",
                     "id": "iap.updateIapSettings",
                     "parameterOrder": [

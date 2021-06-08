@@ -116,6 +116,7 @@
             "methods": {
                 "audit": {
                     "description": "Audits an advertiser. Returns the counts of used entities per resource type under the advertiser provided. Used entities count towards their respective resource limit. See https://support.google.com/displayvideo/answer/6071450.",
+                    "flatPath": "v1/advertisers/{advertisersId}:audit",
                     "httpMethod": "GET",
                     "id": "displayvideo.advertisers.audit",
                     "parameterOrder": [
@@ -147,6 +148,7 @@
                 },
                 "bulkEditAdvertiserAssignedTargetingOptions": {
                     "description": "Bulk edits targeting options under a single advertiser. The operation will delete the assigned targeting options provided in BulkEditAdvertiserAssignedTargetingOptionsRequest.delete_requests and then create the assigned targeting options provided in BulkEditAdvertiserAssignedTargetingOptionsRequest.create_requests .",
+                    "flatPath": "v1/advertisers/{advertisersId}:bulkEditAdvertiserAssignedTargetingOptions",
                     "httpMethod": "POST",
                     "id": "displayvideo.advertisers.bulkEditAdvertiserAssignedTargetingOptions",
                     "parameterOrder": [
@@ -175,6 +177,7 @@
                 },
                 "bulkListAdvertiserAssignedTargetingOptions": {
                     "description": "Lists assigned targeting options of an advertiser across targeting types.",
+                    "flatPath": "v1/advertisers/{advertisersId}:bulkListAdvertiserAssignedTargetingOptions",
                     "httpMethod": "GET",
                     "id": "displayvideo.advertisers.bulkListAdvertiserAssignedTargetingOptions",
                     "parameterOrder": [
@@ -221,6 +224,7 @@
                 },
                 "create": {
                     "description": "Creates a new advertiser. Returns the newly created advertiser if successful. This method can take up to 180 seconds to complete.",
+                    "flatPath": "v1/advertisers",
                     "httpMethod": "POST",
                     "id": "displayvideo.advertisers.create",
                     "parameterOrder": [],
@@ -238,6 +242,7 @@
                 },
                 "delete": {
                     "description": "Deletes an advertiser. Deleting an advertiser will delete all of its child resources, for example, campaigns, insertion orders and line items. A deleted advertiser cannot be recovered.",
+                    "flatPath": "v1/advertisers/{advertisersId}",
                     "httpMethod": "DELETE",
                     "id": "displayvideo.advertisers.delete",
                     "parameterOrder": [
@@ -263,6 +268,7 @@
                 },
                 "get": {
                     "description": "Gets an advertiser.",
+                    "flatPath": "v1/advertisers/{advertisersId}",
                     "httpMethod": "GET",
                     "id": "displayvideo.advertisers.get",
                     "parameterOrder": [
@@ -288,6 +294,7 @@
                 },
                 "list": {
                     "description": "Lists advertisers that are accessible to the current user. The order is defined by the order_by parameter. A single partner_id is required. Cross-partner listing is not supported.",
+                    "flatPath": "v1/advertisers",
                     "httpMethod": "GET",
                     "id": "displayvideo.advertisers.list",
                     "parameterOrder": [],
@@ -330,6 +337,7 @@
                 },
                 "patch": {
                     "description": "Updates an existing advertiser. Returns the updated advertiser if successful.",
+                    "flatPath": "v1/advertisers/{advertisersId}",
                     "httpMethod": "PATCH",
                     "id": "displayvideo.advertisers.patch",
                     "parameterOrder": [
@@ -368,6 +376,7 @@
                     "methods": {
                         "upload": {
                             "description": "Uploads an asset. Returns the ID of the newly uploaded asset if successful. The asset file size should be no more than 10 MB for images, 200 MB for ZIP files, and 1 GB for videos.",
+                            "flatPath": "v1/advertisers/{advertisersId}/assets",
                             "httpMethod": "POST",
                             "id": "displayvideo.advertisers.assets.upload",
                             "mediaUpload": {
@@ -412,6 +421,7 @@
                     "methods": {
                         "bulkListCampaignAssignedTargetingOptions": {
                             "description": "Lists assigned targeting options of a campaign across targeting types.",
+                            "flatPath": "v1/advertisers/{advertisersId}/campaigns/{campaignsId}:bulkListCampaignAssignedTargetingOptions",
                             "httpMethod": "GET",
                             "id": "displayvideo.advertisers.campaigns.bulkListCampaignAssignedTargetingOptions",
                             "parameterOrder": [
@@ -467,6 +477,7 @@
                         },
                         "create": {
                             "description": "Creates a new campaign. Returns the newly created campaign if successful.",
+                            "flatPath": "v1/advertisers/{advertisersId}/campaigns",
                             "httpMethod": "POST",
                             "id": "displayvideo.advertisers.campaigns.create",
                             "parameterOrder": [
@@ -496,6 +507,7 @@
                         },
                         "delete": {
                             "description": "Permanently deletes a campaign. A deleted campaign cannot be recovered. The campaign should be archived first, i.e. set entity_status to `ENTITY_STATUS_ARCHIVED`, to be able to delete it.",
+                            "flatPath": "v1/advertisers/{advertisersId}/campaigns/{campaignsId}",
                             "httpMethod": "DELETE",
                             "id": "displayvideo.advertisers.campaigns.delete",
                             "parameterOrder": [
@@ -531,6 +543,7 @@
                         },
                         "get": {
                             "description": "Gets a campaign.",
+                            "flatPath": "v1/advertisers/{advertisersId}/campaigns/{campaignsId}",
                             "httpMethod": "GET",
                             "id": "displayvideo.advertisers.campaigns.get",
                             "parameterOrder": [
@@ -566,6 +579,7 @@
                         },
                         "list": {
                             "description": "Lists campaigns in an advertiser. The order is defined by the order_by parameter. If a filter by entity_status is not specified, campaigns with `ENTITY_STATUS_ARCHIVED` will not be included in the results.",
+                            "flatPath": "v1/advertisers/{advertisersId}/campaigns",
                             "httpMethod": "GET",
                             "id": "displayvideo.advertisers.campaigns.list",
                             "parameterOrder": [
@@ -613,6 +627,7 @@
                         },
                         "patch": {
                             "description": "Updates an existing campaign. Returns the updated campaign if successful.",
+                            "flatPath": "v1/advertisers/{advertisersId}/campaigns/{campaignsId}",
                             "httpMethod": "PATCH",
                             "id": "displayvideo.advertisers.campaigns.patch",
                             "parameterOrder": [
@@ -663,6 +678,7 @@
                                     "methods": {
                                         "get": {
                                             "description": "Gets a single targeting option assigned to a campaign.",
+                                            "flatPath": "v1/advertisers/{advertisersId}/campaigns/{campaignsId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions/{assignedTargetingOptionsId}",
                                             "httpMethod": "GET",
                                             "id": "displayvideo.advertisers.campaigns.targetingTypes.assignedTargetingOptions.get",
                                             "parameterOrder": [
@@ -795,6 +811,7 @@
                                         },
                                         "list": {
                                             "description": "Lists the targeting options assigned to a campaign for a specified targeting type.",
+                                            "flatPath": "v1/advertisers/{advertisersId}/campaigns/{campaignsId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions",
                                             "httpMethod": "GET",
                                             "id": "displayvideo.advertisers.campaigns.targetingTypes.assignedTargetingOptions.list",
                                             "parameterOrder": [
@@ -948,6 +965,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a new channel. Returns the newly created channel if successful.",
+                            "flatPath": "v1/advertisers/{advertisersId}/channels",
                             "httpMethod": "POST",
                             "id": "displayvideo.advertisers.channels.create",
                             "parameterOrder": [
@@ -982,6 +1000,7 @@
                         },
                         "get": {
                             "description": "Gets a channel for a partner or advertiser.",
+                            "flatPath": "v1/advertisers/{advertisersId}/channels/{channelsId}",
                             "httpMethod": "GET",
                             "id": "displayvideo.advertisers.channels.get",
                             "parameterOrder": [
@@ -1022,6 +1041,7 @@
                         },
                         "list": {
                             "description": "Lists channels for a partner or advertiser.",
+                            "flatPath": "v1/advertisers/{advertisersId}/channels",
                             "httpMethod": "GET",
                             "id": "displayvideo.advertisers.channels.list",
                             "parameterOrder": [
@@ -1074,6 +1094,7 @@
                         },
                         "patch": {
                             "description": "Updates a channel. Returns the updated channel if successful.",
+                            "flatPath": "v1/advertisers/{advertisersId}/channels/{channelId}",
                             "httpMethod": "PATCH",
                             "id": "displayvideo.advertisers.channels.patch",
                             "parameterOrder": [
@@ -1126,6 +1147,7 @@
                             "methods": {
                                 "bulkEdit": {
                                     "description": "Bulk edits sites under a single channel. The operation will delete the sites provided in BulkEditSitesRequest.deleted_sites and then create the sites provided in BulkEditSitesRequest.created_sites.",
+                                    "flatPath": "v1/advertisers/{advertiserId}/channels/{channelsId}/sites:bulkEdit",
                                     "httpMethod": "POST",
                                     "id": "displayvideo.advertisers.channels.sites.bulkEdit",
                                     "parameterOrder": [
@@ -1162,6 +1184,7 @@
                                 },
                                 "create": {
                                     "description": "Creates a site in a channel.",
+                                    "flatPath": "v1/advertisers/{advertiserId}/channels/{channelsId}/sites",
                                     "httpMethod": "POST",
                                     "id": "displayvideo.advertisers.channels.sites.create",
                                     "parameterOrder": [
@@ -1204,6 +1227,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a site from a channel.",
+                                    "flatPath": "v1/advertisers/{advertiserId}/channels/{channelsId}/sites/{sitesId}",
                                     "httpMethod": "DELETE",
                                     "id": "displayvideo.advertisers.channels.sites.delete",
                                     "parameterOrder": [
@@ -1251,6 +1275,7 @@
                                 },
                                 "list": {
                                     "description": "Lists sites in a channel.",
+                                    "flatPath": "v1/advertisers/{advertisersId}/channels/{channelsId}/sites",
                                     "httpMethod": "GET",
                                     "id": "displayvideo.advertisers.channels.sites.list",
                                     "parameterOrder": [
@@ -1312,6 +1337,7 @@
                                 },
                                 "replace": {
                                     "description": "Replaces all of the sites under a single channel. The operation will replace the sites under a channel with the sites provided in ReplaceSitesRequest.new_sites.",
+                                    "flatPath": "v1/advertisers/{advertiserId}/channels/{channelsId}/sites:replace",
                                     "httpMethod": "POST",
                                     "id": "displayvideo.advertisers.channels.sites.replace",
                                     "parameterOrder": [
@@ -1354,6 +1380,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a new creative. Returns the newly created creative if successful.",
+                            "flatPath": "v1/advertisers/{advertisersId}/creatives",
                             "httpMethod": "POST",
                             "id": "displayvideo.advertisers.creatives.create",
                             "parameterOrder": [
@@ -1382,6 +1409,7 @@
                         },
                         "delete": {
                             "description": "Deletes a creative. Returns error code `NOT_FOUND` if the creative does not exist. The creative should be archived first, i.e. set entity_status to `ENTITY_STATUS_ARCHIVED`, before it can be deleted.",
+                            "flatPath": "v1/advertisers/{advertisersId}/creatives/{creativesId}",
                             "httpMethod": "DELETE",
                             "id": "displayvideo.advertisers.creatives.delete",
                             "parameterOrder": [
@@ -1416,6 +1444,7 @@
                         },
                         "get": {
                             "description": "Gets a creative.",
+                            "flatPath": "v1/advertisers/{advertisersId}/creatives/{creativesId}",
                             "httpMethod": "GET",
                             "id": "displayvideo.advertisers.creatives.get",
                             "parameterOrder": [
@@ -1450,6 +1479,7 @@
                         },
                         "list": {
                             "description": "Lists creatives in an advertiser. The order is defined by the order_by parameter. If a filter by entity_status is not specified, creatives with `ENTITY_STATUS_ARCHIVED` will not be included in the results.",
+                            "flatPath": "v1/advertisers/{advertisersId}/creatives",
                             "httpMethod": "GET",
                             "id": "displayvideo.advertisers.creatives.list",
                             "parameterOrder": [
@@ -1496,6 +1526,7 @@
                         },
                         "patch": {
                             "description": "Updates an existing creative. Returns the updated creative if successful.",
+                            "flatPath": "v1/advertisers/{advertisersId}/creatives/{creativesId}",
                             "httpMethod": "PATCH",
                             "id": "displayvideo.advertisers.creatives.patch",
                             "parameterOrder": [
@@ -1543,6 +1574,7 @@
                     "methods": {
                         "bulkListInsertionOrderAssignedTargetingOptions": {
                             "description": "Lists assigned targeting options of an insertion order across targeting types.",
+                            "flatPath": "v1/advertisers/{advertisersId}/insertionOrders/{insertionOrdersId}:bulkListInsertionOrderAssignedTargetingOptions",
                             "httpMethod": "GET",
                             "id": "displayvideo.advertisers.insertionOrders.bulkListInsertionOrderAssignedTargetingOptions",
                             "parameterOrder": [
@@ -1598,6 +1630,7 @@
                         },
                         "create": {
                             "description": "Creates a new insertion order. Returns the newly created insertion order if successful.",
+                            "flatPath": "v1/advertisers/{advertisersId}/insertionOrders",
                             "httpMethod": "POST",
                             "id": "displayvideo.advertisers.insertionOrders.create",
                             "parameterOrder": [
@@ -1626,6 +1659,7 @@
                         },
                         "delete": {
                             "description": "Deletes an insertion order. Returns error code `NOT_FOUND` if the insertion order does not exist. The insertion order should be archived first, i.e. set entity_status to `ENTITY_STATUS_ARCHIVED`, to be able to delete it.",
+                            "flatPath": "v1/advertisers/{advertisersId}/insertionOrders/{insertionOrdersId}",
                             "httpMethod": "DELETE",
                             "id": "displayvideo.advertisers.insertionOrders.delete",
                             "parameterOrder": [
@@ -1660,6 +1694,7 @@
                         },
                         "get": {
                             "description": "Gets an insertion order. Returns error code `NOT_FOUND` if the insertion order does not exist.",
+                            "flatPath": "v1/advertisers/{advertisersId}/insertionOrders/{insertionOrdersId}",
                             "httpMethod": "GET",
                             "id": "displayvideo.advertisers.insertionOrders.get",
                             "parameterOrder": [
@@ -1694,6 +1729,7 @@
                         },
                         "list": {
                             "description": "Lists insertion orders in an advertiser. The order is defined by the order_by parameter. If a filter by entity_status is not specified, insertion orders with `ENTITY_STATUS_ARCHIVED` will not be included in the results.",
+                            "flatPath": "v1/advertisers/{advertisersId}/insertionOrders",
                             "httpMethod": "GET",
                             "id": "displayvideo.advertisers.insertionOrders.list",
                             "parameterOrder": [
@@ -1740,6 +1776,7 @@
                         },
                         "patch": {
                             "description": "Updates an existing insertion order. Returns the updated insertion order if successful.",
+                            "flatPath": "v1/advertisers/{advertisersId}/insertionOrders/{insertionOrdersId}",
                             "httpMethod": "PATCH",
                             "id": "displayvideo.advertisers.insertionOrders.patch",
                             "parameterOrder": [
@@ -1789,6 +1826,7 @@
                                     "methods": {
                                         "get": {
                                             "description": "Gets a single targeting option assigned to an insertion order.",
+                                            "flatPath": "v1/advertisers/{advertisersId}/insertionOrders/{insertionOrdersId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions/{assignedTargetingOptionsId}",
                                             "httpMethod": "GET",
                                             "id": "displayvideo.advertisers.insertionOrders.targetingTypes.assignedTargetingOptions.get",
                                             "parameterOrder": [
@@ -1921,6 +1959,7 @@
                                         },
                                         "list": {
                                             "description": "Lists the targeting options assigned to an insertion order.",
+                                            "flatPath": "v1/advertisers/{advertisersId}/insertionOrders/{insertionOrdersId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions",
                                             "httpMethod": "GET",
                                             "id": "displayvideo.advertisers.insertionOrders.targetingTypes.assignedTargetingOptions.list",
                                             "parameterOrder": [
@@ -2073,7 +2112,8 @@
                 "invoices": {
                     "methods": {
                         "list": {
-                            "description": "List invoices for an advertiser.",
+                            "description": "Lists invoices posted for an advertiser in a given month. Invoices generated by billing profiles with a \"Partner\" invoice level are not retrievable through this method.",
+                            "flatPath": "v1/advertisers/{advertisersId}/invoices",
                             "httpMethod": "GET",
                             "id": "displayvideo.advertisers.invoices.list",
                             "parameterOrder": [
@@ -2089,12 +2129,12 @@
                                     "type": "string"
                                 },
                                 "issueMonth": {
-                                    "description": "Required. Month for which invoices are needed in the format YYYYMM.",
+                                    "description": "The month to list the invoices for. If not set, the request will retrieve invoices for the previous month. Must be in the format YYYYMM.",
                                     "location": "query",
                                     "type": "string"
                                 },
                                 "loiSapinInvoiceType": {
-                                    "description": "Select type of invoice to query for Loi Sapin advertisers. Otherwise its ignored.",
+                                    "description": "Select type of invoice to retrieve for Loi Sapin advertisers. Only applicable to Loi Sapin advertisers. Will be ignored otherwise.",
                                     "enum": [
                                         "LOI_SAPIN_INVOICE_TYPE_UNSPECIFIED",
                                         "LOI_SAPIN_INVOICE_TYPE_MEDIA",
@@ -2115,7 +2155,7 @@
                                     "type": "integer"
                                 },
                                 "pageToken": {
-                                    "description": "A token identifying a page of results the server should return. Typically, this is the value of [ListInvoicesResponse.next_page_token] returned from the previous call to `ListInvoice` method. If not specified, the first page of results will be returned.",
+                                    "description": "A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListInvoices` method. If not specified, the first page of results will be returned.",
                                     "location": "query",
                                     "type": "string"
                                 }
@@ -2130,7 +2170,8 @@
                             ]
                         },
                         "lookupInvoiceCurrency": {
-                            "description": "Lookup invoice currency for an advertiser.",
+                            "description": "Retrieves the invoice currency used by an advertiser in a given month.",
+                            "flatPath": "v1/advertisers/{advertisersId}/invoices:lookupInvoiceCurrency",
                             "httpMethod": "GET",
                             "id": "displayvideo.advertisers.invoices.lookupInvoiceCurrency",
                             "parameterOrder": [
@@ -2146,7 +2187,7 @@
                                     "type": "string"
                                 },
                                 "invoiceMonth": {
-                                    "description": "Month for which currency is needed in the format YYYYMM. If not set Api would return currency based on current settings.",
+                                    "description": "Month for which the currency is needed. If not set, the request will return existing currency settings for the advertiser. Must be in the format YYYYMM.",
                                     "location": "query",
                                     "type": "string"
                                 }
@@ -2166,6 +2207,7 @@
                     "methods": {
                         "bulkEditLineItemAssignedTargetingOptions": {
                             "description": "Bulk edits targeting options under a single line item. The operation will delete the assigned targeting options provided in BulkEditLineItemAssignedTargetingOptionsRequest.delete_requests and then create the assigned targeting options provided in BulkEditLineItemAssignedTargetingOptionsRequest.create_requests .",
+                            "flatPath": "v1/advertisers/{advertisersId}/lineItems/{lineItemsId}:bulkEditLineItemAssignedTargetingOptions",
                             "httpMethod": "POST",
                             "id": "displayvideo.advertisers.lineItems.bulkEditLineItemAssignedTargetingOptions",
                             "parameterOrder": [
@@ -2203,6 +2245,7 @@
                         },
                         "bulkListLineItemAssignedTargetingOptions": {
                             "description": "Lists assigned targeting options of a line item across targeting types.",
+                            "flatPath": "v1/advertisers/{advertisersId}/lineItems/{lineItemsId}:bulkListLineItemAssignedTargetingOptions",
                             "httpMethod": "GET",
                             "id": "displayvideo.advertisers.lineItems.bulkListLineItemAssignedTargetingOptions",
                             "parameterOrder": [
@@ -2258,6 +2301,7 @@
                         },
                         "create": {
                             "description": "Creates a new line item. Returns the newly created line item if successful.",
+                            "flatPath": "v1/advertisers/{advertisersId}/lineItems",
                             "httpMethod": "POST",
                             "id": "displayvideo.advertisers.lineItems.create",
                             "parameterOrder": [
@@ -2286,6 +2330,7 @@
                         },
                         "delete": {
                             "description": "Deletes a line item. Returns error code `NOT_FOUND` if the line item does not exist. The line item should be archived first, i.e. set entity_status to `ENTITY_STATUS_ARCHIVED`, to be able to delete it.",
+                            "flatPath": "v1/advertisers/{advertisersId}/lineItems/{lineItemsId}",
                             "httpMethod": "DELETE",
                             "id": "displayvideo.advertisers.lineItems.delete",
                             "parameterOrder": [
@@ -2320,6 +2365,7 @@
                         },
                         "generateDefault": {
                             "description": "Creates a new line item with settings (including targeting) inherited from the insertion order and an `ENTITY_STATUS_DRAFT` entity_status. Returns the newly created line item if successful. There are default values based on the three fields: * The insertion order's insertion_order_type * The insertion order's automation_type * The given line_item_type",
+                            "flatPath": "v1/advertisers/{advertisersId}/lineItems:generateDefault",
                             "httpMethod": "POST",
                             "id": "displayvideo.advertisers.lineItems.generateDefault",
                             "parameterOrder": [
@@ -2348,6 +2394,7 @@
                         },
                         "get": {
                             "description": "Gets a line item.",
+                            "flatPath": "v1/advertisers/{advertisersId}/lineItems/{lineItemsId}",
                             "httpMethod": "GET",
                             "id": "displayvideo.advertisers.lineItems.get",
                             "parameterOrder": [
@@ -2382,6 +2429,7 @@
                         },
                         "list": {
                             "description": "Lists line items in an advertiser. The order is defined by the order_by parameter. If a filter by entity_status is not specified, line items with `ENTITY_STATUS_ARCHIVED` will not be included in the results.",
+                            "flatPath": "v1/advertisers/{advertisersId}/lineItems",
                             "httpMethod": "GET",
                             "id": "displayvideo.advertisers.lineItems.list",
                             "parameterOrder": [
@@ -2428,6 +2476,7 @@
                         },
                         "patch": {
                             "description": "Updates an existing line item. Returns the updated line item if successful.",
+                            "flatPath": "v1/advertisers/{advertisersId}/lineItems/{lineItemsId}",
                             "httpMethod": "PATCH",
                             "id": "displayvideo.advertisers.lineItems.patch",
                             "parameterOrder": [
@@ -2477,6 +2526,7 @@
                                     "methods": {
                                         "create": {
                                             "description": "Assigns a targeting option to a line item. Returns the assigned targeting option if successful.",
+                                            "flatPath": "v1/advertisers/{advertisersId}/lineItems/{lineItemsId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions",
                                             "httpMethod": "POST",
                                             "id": "displayvideo.advertisers.lineItems.targetingTypes.assignedTargetingOptions.create",
                                             "parameterOrder": [
@@ -2604,6 +2654,7 @@
                                         },
                                         "delete": {
                                             "description": "Deletes an assigned targeting option from a line item.",
+                                            "flatPath": "v1/advertisers/{advertisersId}/lineItems/{lineItemsId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions/{assignedTargetingOptionsId}",
                                             "httpMethod": "DELETE",
                                             "id": "displayvideo.advertisers.lineItems.targetingTypes.assignedTargetingOptions.delete",
                                             "parameterOrder": [
@@ -2736,6 +2787,7 @@
                                         },
                                         "get": {
                                             "description": "Gets a single targeting option assigned to a line item.",
+                                            "flatPath": "v1/advertisers/{advertisersId}/lineItems/{lineItemsId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions/{assignedTargetingOptionsId}",
                                             "httpMethod": "GET",
                                             "id": "displayvideo.advertisers.lineItems.targetingTypes.assignedTargetingOptions.get",
                                             "parameterOrder": [
@@ -2868,6 +2920,7 @@
                                         },
                                         "list": {
                                             "description": "Lists the targeting options assigned to a line item.",
+                                            "flatPath": "v1/advertisers/{advertisersId}/lineItems/{lineItemsId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions",
                                             "httpMethod": "GET",
                                             "id": "displayvideo.advertisers.lineItems.targetingTypes.assignedTargetingOptions.list",
                                             "parameterOrder": [
@@ -3021,6 +3074,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a new location list. Returns the newly created location list if successful.",
+                            "flatPath": "v1/advertisers/{advertisersId}/locationLists",
                             "httpMethod": "POST",
                             "id": "displayvideo.advertisers.locationLists.create",
                             "parameterOrder": [
@@ -3049,6 +3103,7 @@
                         },
                         "get": {
                             "description": "Gets a location list.",
+                            "flatPath": "v1/advertisers/{advertisersId}/locationLists/{locationListsId}",
                             "httpMethod": "GET",
                             "id": "displayvideo.advertisers.locationLists.get",
                             "parameterOrder": [
@@ -3083,6 +3138,7 @@
                         },
                         "list": {
                             "description": "Lists location lists based on a given advertiser id.",
+                            "flatPath": "v1/advertisers/{advertisersId}/locationLists",
                             "httpMethod": "GET",
                             "id": "displayvideo.advertisers.locationLists.list",
                             "parameterOrder": [
@@ -3129,6 +3185,7 @@
                         },
                         "patch": {
                             "description": "Updates a location list. Returns the updated location list if successful.",
+                            "flatPath": "v1/advertisers/{advertisersId}/locationLists/{locationListId}",
                             "httpMethod": "PATCH",
                             "id": "displayvideo.advertisers.locationLists.patch",
                             "parameterOrder": [
@@ -3175,6 +3232,7 @@
                             "methods": {
                                 "bulkEdit": {
                                     "description": "Bulk edits multiple assignments between locations and a single location list. The operation will delete the assigned locations provided in BulkEditAssignedLocationsRequest.deleted_assigned_locations and then create the assigned locations provided in BulkEditAssignedLocationsRequest.created_assigned_locations.",
+                                    "flatPath": "v1/advertisers/{advertiserId}/locationLists/{locationListsId}/assignedLocations:bulkEdit",
                                     "httpMethod": "POST",
                                     "id": "displayvideo.advertisers.locationLists.assignedLocations.bulkEdit",
                                     "parameterOrder": [
@@ -3211,6 +3269,7 @@
                                 },
                                 "create": {
                                     "description": "Creates an assignment between a location and a location list.",
+                                    "flatPath": "v1/advertisers/{advertiserId}/locationLists/{locationListId}/assignedLocations",
                                     "httpMethod": "POST",
                                     "id": "displayvideo.advertisers.locationLists.assignedLocations.create",
                                     "parameterOrder": [
@@ -3246,6 +3305,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes the assignment between a location and a location list.",
+                                    "flatPath": "v1/advertisers/{advertiserId}/locationLists/{locationListId}/assignedLocations/{assignedLocationsId}",
                                     "httpMethod": "DELETE",
                                     "id": "displayvideo.advertisers.locationLists.assignedLocations.delete",
                                     "parameterOrder": [
@@ -3287,6 +3347,7 @@
                                 },
                                 "list": {
                                     "description": "Lists locations assigned to a location list.",
+                                    "flatPath": "v1/advertisers/{advertiserId}/locationLists/{locationListId}/assignedLocations",
                                     "httpMethod": "GET",
                                     "id": "displayvideo.advertisers.locationLists.assignedLocations.list",
                                     "parameterOrder": [
@@ -3346,6 +3407,7 @@
                     "methods": {
                         "activate": {
                             "description": "Activates a manual trigger. Each activation of the manual trigger must be at least 5 minutes apart, otherwise an error will be returned.",
+                            "flatPath": "v1/advertisers/{advertisersId}/manualTriggers/{manualTriggersId}:activate",
                             "httpMethod": "POST",
                             "id": "displayvideo.advertisers.manualTriggers.activate",
                             "parameterOrder": [
@@ -3383,6 +3445,7 @@
                         },
                         "create": {
                             "description": "Creates a new manual trigger. Returns the newly created manual trigger if successful.",
+                            "flatPath": "v1/advertisers/{advertisersId}/manualTriggers",
                             "httpMethod": "POST",
                             "id": "displayvideo.advertisers.manualTriggers.create",
                             "parameterOrder": [
@@ -3411,6 +3474,7 @@
                         },
                         "deactivate": {
                             "description": "Deactivates a manual trigger.",
+                            "flatPath": "v1/advertisers/{advertisersId}/manualTriggers/{manualTriggersId}:deactivate",
                             "httpMethod": "POST",
                             "id": "displayvideo.advertisers.manualTriggers.deactivate",
                             "parameterOrder": [
@@ -3448,6 +3512,7 @@
                         },
                         "get": {
                             "description": "Gets a manual trigger.",
+                            "flatPath": "v1/advertisers/{advertisersId}/manualTriggers/{manualTriggersId}",
                             "httpMethod": "GET",
                             "id": "displayvideo.advertisers.manualTriggers.get",
                             "parameterOrder": [
@@ -3482,6 +3547,7 @@
                         },
                         "list": {
                             "description": "Lists manual triggers that are accessible to the current user for a given advertiser ID. The order is defined by the order_by parameter. A single advertiser_id is required.",
+                            "flatPath": "v1/advertisers/{advertisersId}/manualTriggers",
                             "httpMethod": "GET",
                             "id": "displayvideo.advertisers.manualTriggers.list",
                             "parameterOrder": [
@@ -3528,6 +3594,7 @@
                         },
                         "patch": {
                             "description": "Updates a manual trigger. Returns the updated manual trigger if successful.",
+                            "flatPath": "v1/advertisers/{advertisersId}/manualTriggers/{manualTriggersId}",
                             "httpMethod": "PATCH",
                             "id": "displayvideo.advertisers.manualTriggers.patch",
                             "parameterOrder": [
@@ -3575,6 +3642,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a new negative keyword list. Returns the newly created negative keyword list if successful.",
+                            "flatPath": "v1/advertisers/{advertisersId}/negativeKeywordLists",
                             "httpMethod": "POST",
                             "id": "displayvideo.advertisers.negativeKeywordLists.create",
                             "parameterOrder": [
@@ -3603,6 +3671,7 @@
                         },
                         "delete": {
                             "description": "Deletes a negative keyword list given an advertiser ID and a negative keyword list ID.",
+                            "flatPath": "v1/advertisers/{advertisersId}/negativeKeywordLists/{negativeKeywordListsId}",
                             "httpMethod": "DELETE",
                             "id": "displayvideo.advertisers.negativeKeywordLists.delete",
                             "parameterOrder": [
@@ -3637,6 +3706,7 @@
                         },
                         "get": {
                             "description": "Gets a negative keyword list given an advertiser ID and a negative keyword list ID.",
+                            "flatPath": "v1/advertisers/{advertisersId}/negativeKeywordLists/{negativeKeywordListsId}",
                             "httpMethod": "GET",
                             "id": "displayvideo.advertisers.negativeKeywordLists.get",
                             "parameterOrder": [
@@ -3671,6 +3741,7 @@
                         },
                         "list": {
                             "description": "Lists negative keyword lists based on a given advertiser id.",
+                            "flatPath": "v1/advertisers/{advertisersId}/negativeKeywordLists",
                             "httpMethod": "GET",
                             "id": "displayvideo.advertisers.negativeKeywordLists.list",
                             "parameterOrder": [
@@ -3707,6 +3778,7 @@
                         },
                         "patch": {
                             "description": "Updates a negative keyword list. Returns the updated negative keyword list if successful.",
+                            "flatPath": "v1/advertisers/{advertisersId}/negativeKeywordLists/{negativeKeywordListId}",
                             "httpMethod": "PATCH",
                             "id": "displayvideo.advertisers.negativeKeywordLists.patch",
                             "parameterOrder": [
@@ -3753,6 +3825,7 @@
                             "methods": {
                                 "bulkEdit": {
                                     "description": "Bulk edits negative keywords in a single negative keyword list. The operation will delete the negative keywords provided in BulkEditNegativeKeywordsRequest.deleted_negative_keywords and then create the negative keywords provided in BulkEditNegativeKeywordsRequest.created_negative_keywords. This operation is guaranteed to be atomic and will never result in a partial success or partial failure.",
+                                    "flatPath": "v1/advertisers/{advertiserId}/negativeKeywordLists/{negativeKeywordListsId}/negativeKeywords:bulkEdit",
                                     "httpMethod": "POST",
                                     "id": "displayvideo.advertisers.negativeKeywordLists.negativeKeywords.bulkEdit",
                                     "parameterOrder": [
@@ -3789,6 +3862,7 @@
                                 },
                                 "create": {
                                     "description": "Creates a negative keyword in a negative keyword list.",
+                                    "flatPath": "v1/advertisers/{advertiserId}/negativeKeywordLists/{negativeKeywordListsId}/negativeKeywords",
                                     "httpMethod": "POST",
                                     "id": "displayvideo.advertisers.negativeKeywordLists.negativeKeywords.create",
                                     "parameterOrder": [
@@ -3825,6 +3899,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a negative keyword from a negative keyword list.",
+                                    "flatPath": "v1/advertisers/{advertiserId}/negativeKeywordLists/{negativeKeywordListsId}/negativeKeywords/{negativeKeywordsId}",
                                     "httpMethod": "DELETE",
                                     "id": "displayvideo.advertisers.negativeKeywordLists.negativeKeywords.delete",
                                     "parameterOrder": [
@@ -3866,6 +3941,7 @@
                                 },
                                 "list": {
                                     "description": "Lists negative keywords in a negative keyword list.",
+                                    "flatPath": "v1/advertisers/{advertisersId}/negativeKeywordLists/{negativeKeywordListsId}/negativeKeywords",
                                     "httpMethod": "GET",
                                     "id": "displayvideo.advertisers.negativeKeywordLists.negativeKeywords.list",
                                     "parameterOrder": [
@@ -3921,6 +3997,7 @@
                                 },
                                 "replace": {
                                     "description": "Replaces all negative keywords in a single negative keyword list. The operation will replace the keywords in a negative keyword list with keywords provided in ReplaceNegativeKeywordsRequest.new_negative_keywords.",
+                                    "flatPath": "v1/advertisers/{advertiserId}/negativeKeywordLists/{negativeKeywordListsId}/negativeKeywords:replace",
                                     "httpMethod": "POST",
                                     "id": "displayvideo.advertisers.negativeKeywordLists.negativeKeywords.replace",
                                     "parameterOrder": [
@@ -3965,6 +4042,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Assigns a targeting option to an advertiser. Returns the assigned targeting option if successful.",
+                                    "flatPath": "v1/advertisers/{advertisersId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions",
                                     "httpMethod": "POST",
                                     "id": "displayvideo.advertisers.targetingTypes.assignedTargetingOptions.create",
                                     "parameterOrder": [
@@ -4083,6 +4161,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes an assigned targeting option from an advertiser.",
+                                    "flatPath": "v1/advertisers/{advertisersId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions/{assignedTargetingOptionsId}",
                                     "httpMethod": "DELETE",
                                     "id": "displayvideo.advertisers.targetingTypes.assignedTargetingOptions.delete",
                                     "parameterOrder": [
@@ -4206,6 +4285,7 @@
                                 },
                                 "get": {
                                     "description": "Gets a single targeting option assigned to an advertiser.",
+                                    "flatPath": "v1/advertisers/{advertisersId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions/{assignedTargetingOptionsId}",
                                     "httpMethod": "GET",
                                     "id": "displayvideo.advertisers.targetingTypes.assignedTargetingOptions.get",
                                     "parameterOrder": [
@@ -4329,6 +4409,7 @@
                                 },
                                 "list": {
                                     "description": "Lists the targeting options assigned to an advertiser.",
+                                    "flatPath": "v1/advertisers/{advertisersId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions",
                                     "httpMethod": "GET",
                                     "id": "displayvideo.advertisers.targetingTypes.assignedTargetingOptions.list",
                                     "parameterOrder": [
@@ -4473,6 +4554,7 @@
             "methods": {
                 "get": {
                     "description": "Gets a combined audience.",
+                    "flatPath": "v1/combinedAudiences/{combinedAudiencesId}",
                     "httpMethod": "GET",
                     "id": "displayvideo.combinedAudiences.get",
                     "parameterOrder": [
@@ -4510,6 +4592,7 @@
                 },
                 "list": {
                     "description": "Lists combined audiences. The order is defined by the order_by parameter.",
+                    "flatPath": "v1/combinedAudiences",
                     "httpMethod": "GET",
                     "id": "displayvideo.combinedAudiences.list",
                     "parameterOrder": [],
@@ -4562,6 +4645,7 @@
             "methods": {
                 "get": {
                     "description": "Gets a custom bidding algorithm.",
+                    "flatPath": "v1/customBiddingAlgorithms/{customBiddingAlgorithmsId}",
                     "httpMethod": "GET",
                     "id": "displayvideo.customBiddingAlgorithms.get",
                     "parameterOrder": [
@@ -4599,6 +4683,7 @@
                 },
                 "list": {
                     "description": "Lists custom bidding algorithms that are accessible to the current user and can be used in bidding stratgies. The order is defined by the order_by parameter.",
+                    "flatPath": "v1/customBiddingAlgorithms",
                     "httpMethod": "GET",
                     "id": "displayvideo.customBiddingAlgorithms.list",
                     "parameterOrder": [],
@@ -4651,6 +4736,7 @@
             "methods": {
                 "get": {
                     "description": "Gets a custom list.",
+                    "flatPath": "v1/customLists/{customListsId}",
                     "httpMethod": "GET",
                     "id": "displayvideo.customLists.get",
                     "parameterOrder": [
@@ -4682,6 +4768,7 @@
                 },
                 "list": {
                     "description": "Lists custom lists. The order is defined by the order_by parameter.",
+                    "flatPath": "v1/customLists",
                     "httpMethod": "GET",
                     "id": "displayvideo.customLists.list",
                     "parameterOrder": [],
@@ -4728,6 +4815,7 @@
             "methods": {
                 "get": {
                     "description": "Gets a first and third party audience.",
+                    "flatPath": "v1/firstAndThirdPartyAudiences/{firstAndThirdPartyAudiencesId}",
                     "httpMethod": "GET",
                     "id": "displayvideo.firstAndThirdPartyAudiences.get",
                     "parameterOrder": [
@@ -4765,6 +4853,7 @@
                 },
                 "list": {
                     "description": "Lists first and third party audiences. The order is defined by the order_by parameter.",
+                    "flatPath": "v1/firstAndThirdPartyAudiences",
                     "httpMethod": "GET",
                     "id": "displayvideo.firstAndThirdPartyAudiences.list",
                     "parameterOrder": [],
@@ -4817,6 +4906,7 @@
             "methods": {
                 "get": {
                     "description": "Gets a Floodlight group.",
+                    "flatPath": "v1/floodlightGroups/{floodlightGroupsId}",
                     "httpMethod": "GET",
                     "id": "displayvideo.floodlightGroups.get",
                     "parameterOrder": [
@@ -4848,6 +4938,7 @@
                 },
                 "patch": {
                     "description": "Updates an existing Floodlight group. Returns the updated Floodlight group if successful.",
+                    "flatPath": "v1/floodlightGroups/{floodlightGroupId}",
                     "httpMethod": "PATCH",
                     "id": "displayvideo.floodlightGroups.patch",
                     "parameterOrder": [
@@ -4891,6 +4982,7 @@
             "methods": {
                 "get": {
                     "description": "Gets a Google audience.",
+                    "flatPath": "v1/googleAudiences/{googleAudiencesId}",
                     "httpMethod": "GET",
                     "id": "displayvideo.googleAudiences.get",
                     "parameterOrder": [
@@ -4928,6 +5020,7 @@
                 },
                 "list": {
                     "description": "Lists Google audiences. The order is defined by the order_by parameter.",
+                    "flatPath": "v1/googleAudiences",
                     "httpMethod": "GET",
                     "id": "displayvideo.googleAudiences.list",
                     "parameterOrder": [],
@@ -4980,6 +5073,7 @@
             "methods": {
                 "create": {
                     "description": "Creates a new inventory source group. Returns the newly created inventory source group if successful.",
+                    "flatPath": "v1/inventorySourceGroups",
                     "httpMethod": "POST",
                     "id": "displayvideo.inventorySourceGroups.create",
                     "parameterOrder": [],
@@ -5010,6 +5104,7 @@
                 },
                 "delete": {
                     "description": "Deletes an inventory source group.",
+                    "flatPath": "v1/inventorySourceGroups/{inventorySourceGroupsId}",
                     "httpMethod": "DELETE",
                     "id": "displayvideo.inventorySourceGroups.delete",
                     "parameterOrder": [
@@ -5047,6 +5142,7 @@
                 },
                 "get": {
                     "description": "Gets an inventory source group.",
+                    "flatPath": "v1/inventorySourceGroups/{inventorySourceGroupsId}",
                     "httpMethod": "GET",
                     "id": "displayvideo.inventorySourceGroups.get",
                     "parameterOrder": [
@@ -5084,6 +5180,7 @@
                 },
                 "list": {
                     "description": "Lists inventory source groups that are accessible to the current user. The order is defined by the order_by parameter.",
+                    "flatPath": "v1/inventorySourceGroups",
                     "httpMethod": "GET",
                     "id": "displayvideo.inventorySourceGroups.list",
                     "parameterOrder": [],
@@ -5132,6 +5229,7 @@
                 },
                 "patch": {
                     "description": "Updates an inventory source group. Returns the updated inventory source group if successful.",
+                    "flatPath": "v1/inventorySourceGroups/{inventorySourceGroupId}",
                     "httpMethod": "PATCH",
                     "id": "displayvideo.inventorySourceGroups.patch",
                     "parameterOrder": [
@@ -5181,6 +5279,7 @@
                     "methods": {
                         "bulkEdit": {
                             "description": "Bulk edits multiple assignments between inventory sources and a single inventory source group. The operation will delete the assigned inventory sources provided in BulkEditAssignedInventorySourcesRequest.deleted_assigned_inventory_sources and then create the assigned inventory sources provided in BulkEditAssignedInventorySourcesRequest.created_assigned_inventory_sources.",
+                            "flatPath": "v1/inventorySourceGroups/{inventorySourceGroupsId}/assignedInventorySources:bulkEdit",
                             "httpMethod": "POST",
                             "id": "displayvideo.inventorySourceGroups.assignedInventorySources.bulkEdit",
                             "parameterOrder": [
@@ -5209,6 +5308,7 @@
                         },
                         "create": {
                             "description": "Creates an assignment between an inventory source and an inventory source group.",
+                            "flatPath": "v1/inventorySourceGroups/{inventorySourceGroupsId}/assignedInventorySources",
                             "httpMethod": "POST",
                             "id": "displayvideo.inventorySourceGroups.assignedInventorySources.create",
                             "parameterOrder": [
@@ -5249,6 +5349,7 @@
                         },
                         "delete": {
                             "description": "Deletes the assignment between an inventory source and an inventory source group.",
+                            "flatPath": "v1/inventorySourceGroups/{inventorySourceGroupsId}/assignedInventorySources/{assignedInventorySourcesId}",
                             "httpMethod": "DELETE",
                             "id": "displayvideo.inventorySourceGroups.assignedInventorySources.delete",
                             "parameterOrder": [
@@ -5295,6 +5396,7 @@
                         },
                         "list": {
                             "description": "Lists inventory sources assigned to an inventory source group.",
+                            "flatPath": "v1/inventorySourceGroups/{inventorySourceGroupsId}/assignedInventorySources",
                             "httpMethod": "GET",
                             "id": "displayvideo.inventorySourceGroups.assignedInventorySources.list",
                             "parameterOrder": [
@@ -5359,6 +5461,7 @@
             "methods": {
                 "get": {
                     "description": "Gets an inventory source.",
+                    "flatPath": "v1/inventorySources/{inventorySourcesId}",
                     "httpMethod": "GET",
                     "id": "displayvideo.inventorySources.get",
                     "parameterOrder": [
@@ -5390,6 +5493,7 @@
                 },
                 "list": {
                     "description": "Lists inventory sources that are accessible to the current user. The order is defined by the order_by parameter. If a filter by entity_status is not specified, inventory sources with entity status `ENTITY_STATUS_ARCHIVED` will not be included in the results.",
+                    "flatPath": "v1/inventorySources",
                     "httpMethod": "GET",
                     "id": "displayvideo.inventorySources.list",
                     "parameterOrder": [],
@@ -5442,6 +5546,7 @@
             "methods": {
                 "download": {
                     "description": "Downloads media. Download is supported on the URI `/download/{resource_name=**}?alt=media.` **Note**: Download requests will not be successful without including `alt=media` query string.",
+                    "flatPath": "download/{downloadId}",
                     "httpMethod": "GET",
                     "id": "displayvideo.media.download",
                     "parameterOrder": [
@@ -5472,6 +5577,7 @@
             "methods": {
                 "bulkEditPartnerAssignedTargetingOptions": {
                     "description": "Bulk edits targeting options under a single partner. The operation will delete the assigned targeting options provided in BulkEditPartnerAssignedTargetingOptionsRequest.deleteRequests and then create the assigned targeting options provided in BulkEditPartnerAssignedTargetingOptionsRequest.createRequests .",
+                    "flatPath": "v1/partners/{partnersId}:bulkEditPartnerAssignedTargetingOptions",
                     "httpMethod": "POST",
                     "id": "displayvideo.partners.bulkEditPartnerAssignedTargetingOptions",
                     "parameterOrder": [
@@ -5500,6 +5606,7 @@
                 },
                 "get": {
                     "description": "Gets a partner.",
+                    "flatPath": "v1/partners/{partnersId}",
                     "httpMethod": "GET",
                     "id": "displayvideo.partners.get",
                     "parameterOrder": [
@@ -5525,6 +5632,7 @@
                 },
                 "list": {
                     "description": "Lists partners that are accessible to the current user. The order is defined by the order_by parameter.",
+                    "flatPath": "v1/partners",
                     "httpMethod": "GET",
                     "id": "displayvideo.partners.list",
                     "parameterOrder": [],
@@ -5565,6 +5673,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a new channel. Returns the newly created channel if successful.",
+                            "flatPath": "v1/partners/{partnersId}/channels",
                             "httpMethod": "POST",
                             "id": "displayvideo.partners.channels.create",
                             "parameterOrder": [
@@ -5599,6 +5708,7 @@
                         },
                         "get": {
                             "description": "Gets a channel for a partner or advertiser.",
+                            "flatPath": "v1/partners/{partnersId}/channels/{channelsId}",
                             "httpMethod": "GET",
                             "id": "displayvideo.partners.channels.get",
                             "parameterOrder": [
@@ -5639,6 +5749,7 @@
                         },
                         "list": {
                             "description": "Lists channels for a partner or advertiser.",
+                            "flatPath": "v1/partners/{partnersId}/channels",
                             "httpMethod": "GET",
                             "id": "displayvideo.partners.channels.list",
                             "parameterOrder": [
@@ -5691,6 +5802,7 @@
                         },
                         "patch": {
                             "description": "Updates a channel. Returns the updated channel if successful.",
+                            "flatPath": "v1/partners/{partnersId}/channels/{channelId}",
                             "httpMethod": "PATCH",
                             "id": "displayvideo.partners.channels.patch",
                             "parameterOrder": [
@@ -5743,6 +5855,7 @@
                             "methods": {
                                 "bulkEdit": {
                                     "description": "Bulk edits sites under a single channel. The operation will delete the sites provided in BulkEditSitesRequest.deleted_sites and then create the sites provided in BulkEditSitesRequest.created_sites.",
+                                    "flatPath": "v1/partners/{partnerId}/channels/{channelsId}/sites:bulkEdit",
                                     "httpMethod": "POST",
                                     "id": "displayvideo.partners.channels.sites.bulkEdit",
                                     "parameterOrder": [
@@ -5779,6 +5892,7 @@
                                 },
                                 "create": {
                                     "description": "Creates a site in a channel.",
+                                    "flatPath": "v1/partners/{partnerId}/channels/{channelsId}/sites",
                                     "httpMethod": "POST",
                                     "id": "displayvideo.partners.channels.sites.create",
                                     "parameterOrder": [
@@ -5821,6 +5935,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a site from a channel.",
+                                    "flatPath": "v1/partners/{partnerId}/channels/{channelsId}/sites/{sitesId}",
                                     "httpMethod": "DELETE",
                                     "id": "displayvideo.partners.channels.sites.delete",
                                     "parameterOrder": [
@@ -5868,6 +5983,7 @@
                                 },
                                 "list": {
                                     "description": "Lists sites in a channel.",
+                                    "flatPath": "v1/partners/{partnersId}/channels/{channelsId}/sites",
                                     "httpMethod": "GET",
                                     "id": "displayvideo.partners.channels.sites.list",
                                     "parameterOrder": [
@@ -5929,6 +6045,7 @@
                                 },
                                 "replace": {
                                     "description": "Replaces all of the sites under a single channel. The operation will replace the sites under a channel with the sites provided in ReplaceSitesRequest.new_sites.",
+                                    "flatPath": "v1/partners/{partnerId}/channels/{channelsId}/sites:replace",
                                     "httpMethod": "POST",
                                     "id": "displayvideo.partners.channels.sites.replace",
                                     "parameterOrder": [
@@ -5973,6 +6090,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Assigns a targeting option to a partner. Returns the assigned targeting option if successful.",
+                                    "flatPath": "v1/partners/{partnersId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions",
                                     "httpMethod": "POST",
                                     "id": "displayvideo.partners.targetingTypes.assignedTargetingOptions.create",
                                     "parameterOrder": [
@@ -6091,6 +6209,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes an assigned targeting option from a partner.",
+                                    "flatPath": "v1/partners/{partnersId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions/{assignedTargetingOptionsId}",
                                     "httpMethod": "DELETE",
                                     "id": "displayvideo.partners.targetingTypes.assignedTargetingOptions.delete",
                                     "parameterOrder": [
@@ -6214,6 +6333,7 @@
                                 },
                                 "get": {
                                     "description": "Gets a single targeting option assigned to a partner.",
+                                    "flatPath": "v1/partners/{partnersId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions/{assignedTargetingOptionsId}",
                                     "httpMethod": "GET",
                                     "id": "displayvideo.partners.targetingTypes.assignedTargetingOptions.get",
                                     "parameterOrder": [
@@ -6337,6 +6457,7 @@
                                 },
                                 "list": {
                                     "description": "Lists the targeting options assigned to a partner.",
+                                    "flatPath": "v1/partners/{partnersId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions",
                                     "httpMethod": "GET",
                                     "id": "displayvideo.partners.targetingTypes.assignedTargetingOptions.list",
                                     "parameterOrder": [
@@ -6481,6 +6602,7 @@
             "methods": {
                 "create": {
                     "description": "Creates an SDF Download Task. Returns an Operation. An SDF Download Task is a long-running, asynchronous operation. The metadata type of this operation is SdfDownloadTaskMetadata. If the request is successful, the response type of the operation is SdfDownloadTask. The response will not include the download files, which must be retrieved with media.download. The state of operation can be retrieved with sdfdownloadtask.operations.get. Any errors can be found in the error.message. Note that error.details is expected to be empty.",
+                    "flatPath": "v1/sdfdownloadtasks",
                     "httpMethod": "POST",
                     "id": "displayvideo.sdfdownloadtasks.create",
                     "parameterOrder": [],
@@ -6502,6 +6624,7 @@
                     "methods": {
                         "get": {
                             "description": "Gets the latest state of an asynchronous SDF download task operation. Clients should poll this method at intervals of 30 seconds.",
+                            "flatPath": "v1/sdfdownloadtasks/operations/{operationsId}",
                             "httpMethod": "GET",
                             "id": "displayvideo.sdfdownloadtasks.operations.get",
                             "parameterOrder": [
@@ -6535,6 +6658,7 @@
                     "methods": {
                         "get": {
                             "description": "Gets a single targeting option.",
+                            "flatPath": "v1/targetingTypes/{targetingTypesId}/targetingOptions/{targetingOptionsId}",
                             "httpMethod": "GET",
                             "id": "displayvideo.targetingTypes.targetingOptions.get",
                             "parameterOrder": [
@@ -6655,6 +6779,7 @@
                         },
                         "list": {
                             "description": "Lists targeting options of a given type.",
+                            "flatPath": "v1/targetingTypes/{targetingTypesId}/targetingOptions",
                             "httpMethod": "GET",
                             "id": "displayvideo.targetingTypes.targetingOptions.list",
                             "parameterOrder": [
@@ -6788,6 +6913,7 @@
                         },
                         "search": {
                             "description": "Searches for targeting options of a given type based on the given search terms.",
+                            "flatPath": "v1/targetingTypes/{targetingTypesId}/targetingOptions:search",
                             "httpMethod": "POST",
                             "id": "displayvideo.targetingTypes.targetingOptions.search",
                             "parameterOrder": [
@@ -6903,6 +7029,7 @@
             "methods": {
                 "bulkEditAssignedUserRoles": {
                     "description": "Bulk edits user roles for a user. The operation will delete the assigned user roles provided in BulkEditAssignedUserRolesRequest.deletedAssignedUserRoles and then assign the user roles provided in BulkEditAssignedUserRolesRequest.createdAssignedUserRoles.",
+                    "flatPath": "v1/users/{usersId}:bulkEditAssignedUserRoles",
                     "httpMethod": "POST",
                     "id": "displayvideo.users.bulkEditAssignedUserRoles",
                     "parameterOrder": [
@@ -6931,6 +7058,7 @@
                 },
                 "create": {
                     "description": "Creates a new user. Returns the newly created user if successful.",
+                    "flatPath": "v1/users",
                     "httpMethod": "POST",
                     "id": "displayvideo.users.create",
                     "parameterOrder": [],
@@ -6948,6 +7076,7 @@
                 },
                 "delete": {
                     "description": "Deletes a user.",
+                    "flatPath": "v1/users/{usersId}",
                     "httpMethod": "DELETE",
                     "id": "displayvideo.users.delete",
                     "parameterOrder": [
@@ -6973,6 +7102,7 @@
                 },
                 "get": {
                     "description": "Gets a user.",
+                    "flatPath": "v1/users/{usersId}",
                     "httpMethod": "GET",
                     "id": "displayvideo.users.get",
                     "parameterOrder": [
@@ -6998,6 +7128,7 @@
                 },
                 "list": {
                     "description": "Lists users that are accessible to the current user. If two users have user roles on the same partner or advertiser, they can access each other.",
+                    "flatPath": "v1/users",
                     "httpMethod": "GET",
                     "id": "displayvideo.users.list",
                     "parameterOrder": [],
@@ -7034,6 +7165,7 @@
                 },
                 "patch": {
                     "description": "Updates an existing user. Returns the updated user if successful.",
+                    "flatPath": "v1/users/{usersId}",
                     "httpMethod": "PATCH",
                     "id": "displayvideo.users.patch",
                     "parameterOrder": [
@@ -7069,7 +7201,7 @@
             }
         }
     },
-    "revision": "20210520",
+    "revision": "20210611",
     "rootUrl": "https://displayvideo.googleapis.com/",
     "schemas": {
         "ActivateManualTriggerRequest": {
@@ -7294,7 +7426,7 @@
                     "type": "string"
                 },
                 "prismaEnabled": {
-                    "description": "Whether integration with Mediaocean (Prisma) is enabled. By enabling this: On behalf of my company, I authorize Mediaocean (Prisma) to send budget segment plans to Google, and I authorize Google to send corresponding reporting and invoices from DV360 to Mediaocean for the purposes of budget planning, billing, and reconciliation for this advertiser.",
+                    "description": "Whether integration with Mediaocean (Prisma) is enabled. By enabling this, you agree to the following: On behalf of my company, I authorize Mediaocean (Prisma) to send budget segment plans to Google, and I authorize Google to send corresponding reporting and invoices from DV360 to Mediaocean for the purposes of budget planning, billing, and reconciliation for this advertiser.",
                     "type": "boolean"
                 },
                 "servingConfig": {
@@ -8194,35 +8326,30 @@
             "type": "object"
         },
         "BudgetSummary": {
-            "description": "Represents a summarized budget information associated with this invoice.",
+            "description": "Summarized information of an individual campaign budget.",
             "id": "BudgetSummary",
             "properties": {
                 "externalBudgetId": {
-                    "description": "Output only. External budget id.",
-                    "readOnly": true,
+                    "description": "Corresponds to the external_budget_id of a campaign budget. If the value is not set in the campaign budget, this field will be empty.",
                     "type": "string"
                 },
                 "preTaxAmountMicros": {
-                    "description": "Output only. The pre-tax amount for this budget, in micros of the invoice's currency. For example if currency_code is `USD`, then 1000000 micros is one US dollar.",
+                    "description": "The sum of charges made under this budget before taxes, in micros of the invoice's currency. For example, if currency_code is `USD`, then 1000000 represents one US dollar.",
                     "format": "int64",
-                    "readOnly": true,
                     "type": "string"
                 },
                 "prismaCpeCode": {
                     "$ref": "PrismaCpeCode",
-                    "description": "Output only. Codes specific to the MediaOcean Prisma tool.",
-                    "readOnly": true
+                    "description": "Relevant client, product, and estimate codes from the Mediaocean Prisma tool. Only applicable for campaign budgets with an external_budget_source of EXTERNAL_BUDGET_SOURCE_MEDIA_OCEAN."
                 },
                 "taxAmountMicros": {
-                    "description": "Output only. The tax amount for this budget, in micros of the invoice's currency. For example if currency_code is `USD`, then 1000000 micros is one US dollar.",
+                    "description": "The amount of tax applied to charges under this budget, in micros of the invoice's currency. For example, if currency_code is `USD`, then 1000000 represents one US dollar.",
                     "format": "int64",
-                    "readOnly": true,
                     "type": "string"
                 },
                 "totalAmountMicros": {
-                    "description": "Output only. The total amount of charges for this budget, in micros of the invoice's currency. For example if currency_code is `USD`, then 1000000 micros is one US dollar.",
+                    "description": "The total sum of charges made under this budget, including tax, in micros of the invoice's currency. For example, if currency_code is `USD`, then 1000000 represents one US dollar.",
                     "format": "int64",
-                    "readOnly": true,
                     "type": "string"
                 }
             },
@@ -8607,7 +8734,7 @@
                     "type": "string"
                 },
                 "campaignBudgets": {
-                    "description": "The list of budgets available to this campaign. Setting no budget gives an unlimited campaign budget.",
+                    "description": "The list of budgets available to this campaign. If this field is not set, the campaign uses an unlimited budget.",
                     "items": {
                         "$ref": "CampaignBudget"
                     },
@@ -8674,17 +8801,17 @@
             "id": "CampaignBudget",
             "properties": {
                 "budgetAmountMicros": {
-                    "description": "Required. The budget amount the insertion order will spend for the given date_range. The amount is in micros. Must be greater than 0. For example, 500000000 represents 500 standard units of the currency.",
+                    "description": "Required. The total amount the linked insertion order segments can budget. The amount is in micros. Must be greater than 0. For example, 500000000 represents 500 standard units of the currency.",
                     "format": "int64",
                     "type": "string"
                 },
                 "budgetId": {
-                    "description": "The unique ID of the campaign budget. If not included, budget is assumed to be new.",
+                    "description": "The unique ID of the campaign budget. Assigned by the system. Do not set for new budgets. Must be included when updating or adding budgets to campaign_budgets. Otherwise, a new ID will be generated and assigned.",
                     "format": "int64",
                     "type": "string"
                 },
                 "budgetUnit": {
-                    "description": "Required. Immutable. The budget unit specifies whether the budget is currency based or impression based.",
+                    "description": "Required. Immutable. Specifies whether the budget is measured in currency or impressions.",
                     "enum": [
                         "BUDGET_UNIT_UNSPECIFIED",
                         "BUDGET_UNIT_CURRENCY",
@@ -8699,18 +8826,18 @@
                 },
                 "dateRange": {
                     "$ref": "DateRange",
-                    "description": "Required. The flight start and end time settings of the segment. Both `start_date` and `end_date` must be before the year 2037."
+                    "description": "Required. The date range for the campaign budget. Linked budget segments may have a different date range. They are resolved relative to the parent advertiser's time zone. Both `start_date` and `end_date` must be before the year 2037."
                 },
                 "displayName": {
                     "description": "Required. The display name of the budget. Must be UTF-8 encoded with a maximum size of 240 bytes.",
                     "type": "string"
                 },
                 "externalBudgetId": {
-                    "description": "Immutable. Must be unique under the campaign. If set, all impressions served against this budget will include this ID on the invoice if the customer has opted into budget-segment-level billing.",
+                    "description": "Immutable. The ID identifying this budget to the external source. If this field is set and the invoice detail level of the corresponding billing profile is set to \"Budget level PO\", all impressions served against this budget will include this ID on the invoice. Must be unique under the campaign.",
                     "type": "string"
                 },
                 "externalBudgetSource": {
-                    "description": "Required. The external source of the budget segment.",
+                    "description": "Required. The external source of the budget.",
                     "enum": [
                         "EXTERNAL_BUDGET_SOURCE_UNSPECIFIED",
                         "EXTERNAL_BUDGET_SOURCE_NONE",
@@ -8719,17 +8846,17 @@
                     "enumDescriptions": [
                         "External budget source value is not specified or unknown in this version.",
                         "Budget has no external source.",
-                        "Budget source is MediaOcean."
+                        "Budget source is Mediaocean."
                     ],
                     "type": "string"
                 },
                 "invoiceGroupingId": {
-                    "description": "Immutable. If set, all external_budget_id sharing the same invoice_grouping_id will include this ID on the invoice if the customer has opted into budget-segment-level billing.",
+                    "description": "Immutable. The ID used to group budgets to be included the same invoice. If this field is set and the invoice level of the corresponding billing profile is set to \"Budget invoice grouping ID\", all external_budget_id sharing the same invoice_grouping_id will be grouped in the same invoice.",
                     "type": "string"
                 },
                 "prismaConfig": {
                     "$ref": "PrismaConfig",
-                    "description": "Required for MediaOcean budgets. Additional metadata set by the MediaOcean Prisma tool."
+                    "description": "Additional metadata for use by the Mediaocean Prisma tool. Required for Mediaocean budgets. Only applicable to prisma_enabled advertisers."
                 }
             },
             "type": "object"
@@ -11385,6 +11512,7 @@
                         "RECENCY_21_DAYS",
                         "RECENCY_28_DAYS",
                         "RECENCY_30_DAYS",
+                        "RECENCY_40_DAYS",
                         "RECENCY_45_DAYS",
                         "RECENCY_60_DAYS",
                         "RECENCY_90_DAYS",
@@ -11416,6 +11544,7 @@
                         "Recency is 21 days.",
                         "Recency is 28 days.",
                         "Recency is 30 days.",
+                        "Recency is 40 days.",
                         "Recency is 45 days.",
                         "Recency is 60 days.",
                         "Recency is 90 days.",
@@ -12177,7 +12306,7 @@
                     "type": "string"
                 },
                 "campaignBudgetId": {
-                    "description": "The ID of the campaign budget linked to this insertion order budget segment.",
+                    "description": "The budget_id of the campaign budget that this insertion order budget segment is a part of.",
                     "format": "int64",
                     "type": "string"
                 },
@@ -12802,49 +12931,42 @@
             "type": "object"
         },
         "Invoice": {
-            "description": "A single Invoice.",
+            "description": "A single invoice.",
             "id": "Invoice",
             "properties": {
                 "budgetInvoiceGroupingId": {
-                    "description": "Output only. Budget invoice grouping ID associated with the budget segment in the insertion order.",
-                    "readOnly": true,
+                    "description": "The budget grouping ID for this invoice. This field will only be set if the invoice level of the corresponding billing profile was set to \"Budget invoice grouping ID\".",
                     "type": "string"
                 },
                 "budgetSummaries": {
-                    "description": "Output only. The list of summarized budget information associated with this invoice.",
+                    "description": "The list of summarized information for each budget associated with this invoice. This field will only be set if the invoice detail level of the corresponding billing profile was set to \"Budget level PO\".",
                     "items": {
                         "$ref": "BudgetSummary"
                     },
-                    "readOnly": true,
                     "type": "array"
                 },
                 "correctedInvoiceId": {
-                    "description": "Output only. The originally issued invoice that is being adjusted by this invoice, if applicable. If there is a corrected invoice, the replaced_invoice_ids field will be empty. May appear on invoice PDF as `Reference invoice number`.",
-                    "readOnly": true,
+                    "description": "The ID of the original invoice being adjusted by this invoice, if applicable. May appear on the invoice PDF as `Reference invoice number`. If replaced_invoice_ids is set, this field will be empty.",
                     "type": "string"
                 },
                 "currencyCode": {
-                    "description": "Output only. Invoice currency code in ISO 4217 format.",
-                    "readOnly": true,
+                    "description": "The currency used in the invoice in ISO 4217 format.",
                     "type": "string"
                 },
                 "displayName": {
-                    "description": "Output only. Display name of the invoice.",
-                    "readOnly": true,
+                    "description": "The display name of the invoice.",
                     "type": "string"
                 },
                 "dueDate": {
                     "$ref": "Date",
-                    "description": "Output only. The invoice due date.",
-                    "readOnly": true
+                    "description": "The date when the invoice is due."
                 },
                 "invoiceId": {
-                    "description": "Output only. The unique ID of the invoice.",
-                    "readOnly": true,
+                    "description": "The unique ID of the invoice.",
                     "type": "string"
                 },
                 "invoiceType": {
-                    "description": "Output only. The type of invoice document.",
+                    "description": "The type of invoice document.",
                     "enum": [
                         "INVOICE_TYPE_UNSPECIFIED",
                         "INVOICE_TYPE_CREDIT",
@@ -12852,77 +12974,64 @@
                     ],
                     "enumDescriptions": [
                         "Not specified or is unknown in this version.",
-                        "An Invoice with a negative amount.",
-                        "An Invoice with a positive amount."
+                        "The invoice has a negative amount.",
+                        "The invoice has a positive amount."
                     ],
-                    "readOnly": true,
                     "type": "string"
                 },
                 "issueDate": {
                     "$ref": "Date",
-                    "description": "Output only. The date when the invoice was issued.",
-                    "readOnly": true
+                    "description": "The date when the invoice was issued."
                 },
                 "name": {
-                    "description": "Output only. The resource name of the invoice.",
-                    "readOnly": true,
+                    "description": "The resource name of the invoice.",
                     "type": "string"
                 },
                 "nonBudgetMicros": {
-                    "description": "Output only. The total amount of costs or adjustments not tied to a particular budget, in micros of the invoice's currency. For example if currency_code is `USD`, then 1000000 micros is one US dollar.",
+                    "description": "The total amount of costs or adjustments not tied to a particular budget, in micros of the invoice's currency. For example, if currency_code is `USD`, then 1000000 represents one US dollar.",
                     "format": "int64",
-                    "readOnly": true,
                     "type": "string"
                 },
                 "paymentsAccountId": {
-                    "description": "Output only. The ID of the payments account the invoice belongs to. Appears on the invoice PDF as `Billing Account Number`.",
-                    "readOnly": true,
+                    "description": "The ID of the payments account the invoice belongs to. Appears on the invoice PDF as `Billing Account Number`.",
                     "type": "string"
                 },
                 "paymentsProfileId": {
-                    "description": "Output only. The ID of the payments profile the invoice belongs to. Appears on the invoice PDF as `Billing ID`.",
-                    "readOnly": true,
+                    "description": "The ID of the payments profile the invoice belongs to. Appears on the invoice PDF as `Billing ID`.",
                     "type": "string"
                 },
                 "pdfUrl": {
-                    "description": "Output only. The URL to download a PDF copy of the invoice. Note that this URL is user specific and requires a valid OAuth 2.0 access token to access. The access token must be provided in an `Authorization: Bearer` HTTP header and be authorized for one of the following scopes: * `https://www.googleapis.com/auth/display-video-mediaplanning` * `https://www.googleapis.com/auth/display-video` The URL will only be usable for 7 days from when the api is called.",
-                    "readOnly": true,
+                    "description": "The URL to download a PDF copy of the invoice. This URL is user specific and requires a valid OAuth 2.0 access token to access. The access token must be provided in an `Authorization: Bearer` HTTP header and be authorized for one of the following scopes: * `https://www.googleapis.com/auth/display-video-mediaplanning` * `https://www.googleapis.com/auth/display-video` The URL will be valid for 7 days after retrieval of this invoice object or until this invoice is retrieved again.",
                     "type": "string"
                 },
                 "purchaseOrderNumber": {
-                    "description": "Output only. Purchase order number associated with the invoice.",
-                    "readOnly": true,
+                    "description": "Purchase order number associated with the invoice.",
                     "type": "string"
                 },
                 "replacedInvoiceIds": {
-                    "description": "Output only. The originally issued invoice(s) that is being cancelled by this invoice, if applicable. If there are any replaced invoices, the corrected_invoice_id field will be empty. May appear on invoice PDF as `Replaced invoice numbers`. Note: There may be multiple replaced invoices due to consolidation of multiple invoices into a single invoice.",
+                    "description": "The ID(s) of any originally issued invoice that is being cancelled by this invoice, if applicable. Multiple invoices may be listed if those invoices are being consolidated into a single invoice. May appear on invoice PDF as `Replaced invoice numbers`. If corrected_invoice_id is set, this field will be empty.",
                     "items": {
                         "type": "string"
                     },
-                    "readOnly": true,
                     "type": "array"
                 },
                 "serviceDateRange": {
                     "$ref": "DateRange",
-                    "description": "Output only. Service start and end dates which are covered by this invoice.",
-                    "readOnly": true
+                    "description": "The service start and end dates which are covered by this invoice."
                 },
                 "subtotalAmountMicros": {
-                    "description": "Output only. The pre-tax subtotal amount, in micros of the invoice's currency. For example if currency_code is `USD`, then 1000000 micros is one US dollar.",
+                    "description": "The pre-tax subtotal amount, in micros of the invoice's currency. For example, if currency_code is `USD`, then 1000000 represents one US dollar.",
                     "format": "int64",
-                    "readOnly": true,
                     "type": "string"
                 },
                 "totalAmountMicros": {
-                    "description": "Output only. The invoice total amount, in micros of the invoice's currency. For example if currency_code is `USD`, then 1000000 micros is one US dollar.",
+                    "description": "The invoice total amount, in micros of the invoice's currency. For example, if currency_code is `USD`, then 1000000 represents one US dollar.",
                     "format": "int64",
-                    "readOnly": true,
                     "type": "string"
                 },
                 "totalTaxAmountMicros": {
-                    "description": "Output only. The sum of all taxes in invoice, in micros of the invoice's currency. For example if currency_code is `USD`, then 1000000 micros is one US dollar.",
+                    "description": "The sum of all taxes in invoice, in micros of the invoice's currency. For example, if currency_code is `USD`, then 1000000 represents one US dollar.",
                     "format": "int64",
-                    "readOnly": true,
                     "type": "string"
                 }
             },
@@ -13548,7 +13657,6 @@
             "type": "object"
         },
         "ListInvoicesResponse": {
-            "description": "Response message for InvoiceService.ListInvoices.",
             "id": "ListInvoicesResponse",
             "properties": {
                 "invoices": {
@@ -13559,7 +13667,7 @@
                     "type": "array"
                 },
                 "nextPageToken": {
-                    "description": "A token to retrieve the next page of results. Pass this value in the [ListInvoicesRequest.page_token] field in the subsequent call to `ListInvoices` method to retrieve the next page of results.",
+                    "description": "A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListInvoices` method to retrieve the next page of results. This token will be absent if there are no more invoices to return.",
                     "type": "string"
                 }
             },
@@ -13816,12 +13924,10 @@
             "type": "object"
         },
         "LookupInvoiceCurrencyResponse": {
-            "description": "Response message for InvoiceService.LookupInvoiceCurrency.",
             "id": "LookupInvoiceCurrencyResponse",
             "properties": {
                 "currencyCode": {
-                    "description": "Output only. Invoice currency code in ISO 4217 format.",
-                    "readOnly": true,
+                    "description": "Currency used by the advertiser in ISO 4217 format.",
                     "type": "string"
                 }
             },
@@ -14814,12 +14920,12 @@
             "type": "object"
         },
         "PrismaConfig": {
-            "description": "Settings specific to the MediaOcean Prisma tool.",
+            "description": "Settings specific to the Mediaocean Prisma tool.",
             "id": "PrismaConfig",
             "properties": {
                 "prismaCpeCode": {
                     "$ref": "PrismaCpeCode",
-                    "description": "Required. Google Payments Center supports searching and filtering on this code."
+                    "description": "Required. Relevant client, product, and estimate codes from the Mediaocean Prisma tool."
                 },
                 "prismaType": {
                     "description": "Required. The Prisma type.",

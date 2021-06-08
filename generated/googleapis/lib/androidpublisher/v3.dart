@@ -5213,6 +5213,9 @@ class SubscriptionPurchase {
 
   /// The order id of the latest recurring order associated with the purchase of
   /// the subscription.
+  ///
+  /// If the subscription was canceled because payment was declined, this will
+  /// be the order id from the payment declined order.
   core.String? orderId;
 
   /// The payment state of the subscription.
@@ -5222,10 +5225,12 @@ class SubscriptionPurchase {
   /// subscriptions.
   core.int? paymentState;
 
-  /// Price of the subscription, not including tax.
+  /// Price of the subscription, For tax exclusive countries, the price doesn't
+  /// include tax.
   ///
-  /// Price is expressed in micro-units, where 1,000,000 micro-units represents
-  /// one unit of the currency. For example, if the subscription price is €1.99,
+  /// For tax inclusive countries, the price includes tax. Price is expressed in
+  /// micro-units, where 1,000,000 micro-units represents one unit of the
+  /// currency. For example, if the subscription price is €1.99,
   /// price_amount_micros is 1990000.
   core.String? priceAmountMicros;
 

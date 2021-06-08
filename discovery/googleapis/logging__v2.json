@@ -121,6 +121,7 @@
                     "methods": {
                         "get": {
                             "description": "Gets a bucket.",
+                            "flatPath": "v2/billingAccounts/{billingAccountsId}/buckets/{bucketsId}",
                             "httpMethod": "GET",
                             "id": "logging.billingAccounts.buckets.get",
                             "parameterOrder": [
@@ -152,6 +153,7 @@
                             "methods": {
                                 "get": {
                                     "description": "Gets a view.",
+                                    "flatPath": "v2/billingAccounts/{billingAccountsId}/buckets/{bucketsId}/views/{viewsId}",
                                     "httpMethod": "GET",
                                     "id": "logging.billingAccounts.buckets.views.get",
                                     "parameterOrder": [
@@ -185,6 +187,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a new exclusion in a specified parent resource. Only log entries belonging to that resource can be excluded. You can have up to 10 exclusions in a resource.",
+                            "flatPath": "v2/billingAccounts/{billingAccountsId}/exclusions",
                             "httpMethod": "POST",
                             "id": "logging.billingAccounts.exclusions.create",
                             "parameterOrder": [
@@ -213,6 +216,7 @@
                         },
                         "delete": {
                             "description": "Deletes an exclusion.",
+                            "flatPath": "v2/billingAccounts/{billingAccountsId}/exclusions/{exclusionsId}",
                             "httpMethod": "DELETE",
                             "id": "logging.billingAccounts.exclusions.delete",
                             "parameterOrder": [
@@ -238,6 +242,7 @@
                         },
                         "get": {
                             "description": "Gets the description of an exclusion.",
+                            "flatPath": "v2/billingAccounts/{billingAccountsId}/exclusions/{exclusionsId}",
                             "httpMethod": "GET",
                             "id": "logging.billingAccounts.exclusions.get",
                             "parameterOrder": [
@@ -265,6 +270,7 @@
                         },
                         "list": {
                             "description": "Lists all the exclusions in a parent resource.",
+                            "flatPath": "v2/billingAccounts/{billingAccountsId}/exclusions",
                             "httpMethod": "GET",
                             "id": "logging.billingAccounts.exclusions.list",
                             "parameterOrder": [
@@ -303,6 +309,7 @@
                         },
                         "patch": {
                             "description": "Changes one or more properties of an existing exclusion.",
+                            "flatPath": "v2/billingAccounts/{billingAccountsId}/exclusions/{exclusionsId}",
                             "httpMethod": "PATCH",
                             "id": "logging.billingAccounts.exclusions.patch",
                             "parameterOrder": [
@@ -341,6 +348,7 @@
                     "methods": {
                         "get": {
                             "description": "Gets information about a location.",
+                            "flatPath": "v2/billingAccounts/{billingAccountsId}/locations/{locationsId}",
                             "httpMethod": "GET",
                             "id": "logging.billingAccounts.locations.get",
                             "parameterOrder": [
@@ -368,6 +376,7 @@
                         },
                         "list": {
                             "description": "Lists information about the supported locations for this service.",
+                            "flatPath": "v2/billingAccounts/{billingAccountsId}/locations",
                             "httpMethod": "GET",
                             "id": "logging.billingAccounts.locations.list",
                             "parameterOrder": [
@@ -415,6 +424,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a bucket that can be used to store log entries. Once a bucket has been created, the region cannot be changed.",
+                                    "flatPath": "v2/billingAccounts/{billingAccountsId}/locations/{locationsId}/buckets",
                                     "httpMethod": "POST",
                                     "id": "logging.billingAccounts.locations.buckets.create",
                                     "parameterOrder": [
@@ -448,6 +458,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a bucket. Moves the bucket to the DELETE_REQUESTED state. After 7 days, the bucket will be purged and all logs in the bucket will be permanently deleted.",
+                                    "flatPath": "v2/billingAccounts/{billingAccountsId}/locations/{locationsId}/buckets/{bucketsId}",
                                     "httpMethod": "DELETE",
                                     "id": "logging.billingAccounts.locations.buckets.delete",
                                     "parameterOrder": [
@@ -473,6 +484,7 @@
                                 },
                                 "list": {
                                     "description": "Lists buckets.",
+                                    "flatPath": "v2/billingAccounts/{billingAccountsId}/locations/{locationsId}/buckets",
                                     "httpMethod": "GET",
                                     "id": "logging.billingAccounts.locations.buckets.list",
                                     "parameterOrder": [
@@ -511,6 +523,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates a bucket. This method replaces the following fields in the existing bucket with values from the new bucket: retention_periodIf the retention period is decreased and the bucket is locked, FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of DELETE_REQUESTED, FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is created.",
+                                    "flatPath": "v2/billingAccounts/{billingAccountsId}/locations/{locationsId}/buckets/{bucketsId}",
                                     "httpMethod": "PATCH",
                                     "id": "logging.billingAccounts.locations.buckets.patch",
                                     "parameterOrder": [
@@ -545,6 +558,7 @@
                                 },
                                 "undelete": {
                                     "description": "Undeletes a bucket. A bucket that has been deleted may be undeleted within the grace period of 7 days.",
+                                    "flatPath": "v2/billingAccounts/{billingAccountsId}/locations/{locationsId}/buckets/{bucketsId}:undelete",
                                     "httpMethod": "POST",
                                     "id": "logging.billingAccounts.locations.buckets.undelete",
                                     "parameterOrder": [
@@ -577,6 +591,7 @@
                                     "methods": {
                                         "create": {
                                             "description": "Creates a view over logs in a bucket. A bucket may contain a maximum of 50 views.",
+                                            "flatPath": "v2/billingAccounts/{billingAccountsId}/locations/{locationsId}/buckets/{bucketsId}/views",
                                             "httpMethod": "POST",
                                             "id": "logging.billingAccounts.locations.buckets.views.create",
                                             "parameterOrder": [
@@ -610,6 +625,7 @@
                                         },
                                         "delete": {
                                             "description": "Deletes a view from a bucket.",
+                                            "flatPath": "v2/billingAccounts/{billingAccountsId}/locations/{locationsId}/buckets/{bucketsId}/views/{viewsId}",
                                             "httpMethod": "DELETE",
                                             "id": "logging.billingAccounts.locations.buckets.views.delete",
                                             "parameterOrder": [
@@ -635,6 +651,7 @@
                                         },
                                         "list": {
                                             "description": "Lists views on a bucket.",
+                                            "flatPath": "v2/billingAccounts/{billingAccountsId}/locations/{locationsId}/buckets/{bucketsId}/views",
                                             "httpMethod": "GET",
                                             "id": "logging.billingAccounts.locations.buckets.views.list",
                                             "parameterOrder": [
@@ -673,6 +690,7 @@
                                         },
                                         "patch": {
                                             "description": "Updates a view. This method replaces the following fields in the existing view with values from the new view: filter.",
+                                            "flatPath": "v2/billingAccounts/{billingAccountsId}/locations/{locationsId}/buckets/{bucketsId}/views/{viewsId}",
                                             "httpMethod": "PATCH",
                                             "id": "logging.billingAccounts.locations.buckets.views.patch",
                                             "parameterOrder": [
@@ -715,6 +733,7 @@
                     "methods": {
                         "delete": {
                             "description": "Deletes all the log entries in a log for the _Default Log Bucket. The log reappears if it receives new entries. Log entries written shortly before the delete operation might not be deleted. Entries received after the delete operation with a timestamp before the operation will be deleted.",
+                            "flatPath": "v2/billingAccounts/{billingAccountsId}/logs/{logsId}",
                             "httpMethod": "DELETE",
                             "id": "logging.billingAccounts.logs.delete",
                             "parameterOrder": [
@@ -740,6 +759,7 @@
                         },
                         "list": {
                             "description": "Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have entries are listed.",
+                            "flatPath": "v2/billingAccounts/{billingAccountsId}/logs",
                             "httpMethod": "GET",
                             "id": "logging.billingAccounts.logs.list",
                             "parameterOrder": [
@@ -788,6 +808,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a sink that exports specified log entries to a destination. The export of newly-ingested log entries begins immediately, unless the sink's writer_identity is not permitted to write to the destination. A sink can export log entries only from the resource owning the sink.",
+                            "flatPath": "v2/billingAccounts/{billingAccountsId}/sinks",
                             "httpMethod": "POST",
                             "id": "logging.billingAccounts.sinks.create",
                             "parameterOrder": [
@@ -821,6 +842,7 @@
                         },
                         "delete": {
                             "description": "Deletes a sink. If the sink has a unique writer_identity, then that service account is also deleted.",
+                            "flatPath": "v2/billingAccounts/{billingAccountsId}/sinks/{sinksId}",
                             "httpMethod": "DELETE",
                             "id": "logging.billingAccounts.sinks.delete",
                             "parameterOrder": [
@@ -846,6 +868,7 @@
                         },
                         "get": {
                             "description": "Gets a sink.",
+                            "flatPath": "v2/billingAccounts/{billingAccountsId}/sinks/{sinksId}",
                             "httpMethod": "GET",
                             "id": "logging.billingAccounts.sinks.get",
                             "parameterOrder": [
@@ -873,6 +896,7 @@
                         },
                         "list": {
                             "description": "Lists sinks.",
+                            "flatPath": "v2/billingAccounts/{billingAccountsId}/sinks",
                             "httpMethod": "GET",
                             "id": "logging.billingAccounts.sinks.list",
                             "parameterOrder": [
@@ -911,6 +935,7 @@
                         },
                         "patch": {
                             "description": "Updates a sink. This method replaces the following fields in the existing sink with values from the new sink: destination, and filter.The updated sink might also have a new writer_identity; see the unique_writer_identity field.",
+                            "flatPath": "v2/billingAccounts/{billingAccountsId}/sinks/{sinksId}",
                             "httpMethod": "PATCH",
                             "id": "logging.billingAccounts.sinks.patch",
                             "parameterOrder": [
@@ -950,6 +975,7 @@
                         },
                         "update": {
                             "description": "Updates a sink. This method replaces the following fields in the existing sink with values from the new sink: destination, and filter.The updated sink might also have a new writer_identity; see the unique_writer_identity field.",
+                            "flatPath": "v2/billingAccounts/{billingAccountsId}/sinks/{sinksId}",
                             "httpMethod": "PUT",
                             "id": "logging.billingAccounts.sinks.update",
                             "parameterOrder": [
@@ -995,6 +1021,7 @@
             "methods": {
                 "list": {
                     "description": "Lists log entries. Use this method to retrieve log entries that originated from a project/folder/organization/billing account. For ways to export log entries, see Exporting Logs (https://cloud.google.com/logging/docs/export).",
+                    "flatPath": "v2/entries:list",
                     "httpMethod": "POST",
                     "id": "logging.entries.list",
                     "parameterOrder": [],
@@ -1015,6 +1042,7 @@
                 },
                 "tail": {
                     "description": "Streaming read of log entries as they are ingested. Until the stream is terminated, it will continue reading logs.",
+                    "flatPath": "v2/entries:tail",
                     "httpMethod": "POST",
                     "id": "logging.entries.tail",
                     "parameterOrder": [],
@@ -1035,6 +1063,7 @@
                 },
                 "write": {
                     "description": "Writes log entries to Logging. This API method is the only way to send log entries to Logging. This method is used, directly or indirectly, by the Logging agent (fluentd) and all logging libraries configured to use Logging. A single request may contain log entries for a maximum of 1000 different resources (projects, organizations, billing accounts or folders)",
+                    "flatPath": "v2/entries:write",
                     "httpMethod": "POST",
                     "id": "logging.entries.write",
                     "parameterOrder": [],
@@ -1058,6 +1087,7 @@
             "methods": {
                 "create": {
                     "description": "Creates a new exclusion in a specified parent resource. Only log entries belonging to that resource can be excluded. You can have up to 10 exclusions in a resource.",
+                    "flatPath": "v2/{v2Id}/{v2Id1}/exclusions",
                     "httpMethod": "POST",
                     "id": "logging.exclusions.create",
                     "parameterOrder": [
@@ -1086,6 +1116,7 @@
                 },
                 "delete": {
                     "description": "Deletes an exclusion.",
+                    "flatPath": "v2/{v2Id}/{v2Id1}/exclusions/{exclusionsId}",
                     "httpMethod": "DELETE",
                     "id": "logging.exclusions.delete",
                     "parameterOrder": [
@@ -1111,6 +1142,7 @@
                 },
                 "get": {
                     "description": "Gets the description of an exclusion.",
+                    "flatPath": "v2/{v2Id}/{v2Id1}/exclusions/{exclusionsId}",
                     "httpMethod": "GET",
                     "id": "logging.exclusions.get",
                     "parameterOrder": [
@@ -1138,6 +1170,7 @@
                 },
                 "list": {
                     "description": "Lists all the exclusions in a parent resource.",
+                    "flatPath": "v2/{v2Id}/{v2Id1}/exclusions",
                     "httpMethod": "GET",
                     "id": "logging.exclusions.list",
                     "parameterOrder": [
@@ -1176,6 +1209,7 @@
                 },
                 "patch": {
                     "description": "Changes one or more properties of an existing exclusion.",
+                    "flatPath": "v2/{v2Id}/{v2Id1}/exclusions/{exclusionsId}",
                     "httpMethod": "PATCH",
                     "id": "logging.exclusions.patch",
                     "parameterOrder": [
@@ -1216,6 +1250,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a new exclusion in a specified parent resource. Only log entries belonging to that resource can be excluded. You can have up to 10 exclusions in a resource.",
+                            "flatPath": "v2/folders/{foldersId}/exclusions",
                             "httpMethod": "POST",
                             "id": "logging.folders.exclusions.create",
                             "parameterOrder": [
@@ -1244,6 +1279,7 @@
                         },
                         "delete": {
                             "description": "Deletes an exclusion.",
+                            "flatPath": "v2/folders/{foldersId}/exclusions/{exclusionsId}",
                             "httpMethod": "DELETE",
                             "id": "logging.folders.exclusions.delete",
                             "parameterOrder": [
@@ -1269,6 +1305,7 @@
                         },
                         "get": {
                             "description": "Gets the description of an exclusion.",
+                            "flatPath": "v2/folders/{foldersId}/exclusions/{exclusionsId}",
                             "httpMethod": "GET",
                             "id": "logging.folders.exclusions.get",
                             "parameterOrder": [
@@ -1296,6 +1333,7 @@
                         },
                         "list": {
                             "description": "Lists all the exclusions in a parent resource.",
+                            "flatPath": "v2/folders/{foldersId}/exclusions",
                             "httpMethod": "GET",
                             "id": "logging.folders.exclusions.list",
                             "parameterOrder": [
@@ -1334,6 +1372,7 @@
                         },
                         "patch": {
                             "description": "Changes one or more properties of an existing exclusion.",
+                            "flatPath": "v2/folders/{foldersId}/exclusions/{exclusionsId}",
                             "httpMethod": "PATCH",
                             "id": "logging.folders.exclusions.patch",
                             "parameterOrder": [
@@ -1372,6 +1411,7 @@
                     "methods": {
                         "get": {
                             "description": "Gets information about a location.",
+                            "flatPath": "v2/folders/{foldersId}/locations/{locationsId}",
                             "httpMethod": "GET",
                             "id": "logging.folders.locations.get",
                             "parameterOrder": [
@@ -1399,6 +1439,7 @@
                         },
                         "list": {
                             "description": "Lists information about the supported locations for this service.",
+                            "flatPath": "v2/folders/{foldersId}/locations",
                             "httpMethod": "GET",
                             "id": "logging.folders.locations.list",
                             "parameterOrder": [
@@ -1446,6 +1487,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a bucket that can be used to store log entries. Once a bucket has been created, the region cannot be changed.",
+                                    "flatPath": "v2/folders/{foldersId}/locations/{locationsId}/buckets",
                                     "httpMethod": "POST",
                                     "id": "logging.folders.locations.buckets.create",
                                     "parameterOrder": [
@@ -1479,6 +1521,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a bucket. Moves the bucket to the DELETE_REQUESTED state. After 7 days, the bucket will be purged and all logs in the bucket will be permanently deleted.",
+                                    "flatPath": "v2/folders/{foldersId}/locations/{locationsId}/buckets/{bucketsId}",
                                     "httpMethod": "DELETE",
                                     "id": "logging.folders.locations.buckets.delete",
                                     "parameterOrder": [
@@ -1504,6 +1547,7 @@
                                 },
                                 "get": {
                                     "description": "Gets a bucket.",
+                                    "flatPath": "v2/folders/{foldersId}/locations/{locationsId}/buckets/{bucketsId}",
                                     "httpMethod": "GET",
                                     "id": "logging.folders.locations.buckets.get",
                                     "parameterOrder": [
@@ -1531,6 +1575,7 @@
                                 },
                                 "list": {
                                     "description": "Lists buckets.",
+                                    "flatPath": "v2/folders/{foldersId}/locations/{locationsId}/buckets",
                                     "httpMethod": "GET",
                                     "id": "logging.folders.locations.buckets.list",
                                     "parameterOrder": [
@@ -1569,6 +1614,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates a bucket. This method replaces the following fields in the existing bucket with values from the new bucket: retention_periodIf the retention period is decreased and the bucket is locked, FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of DELETE_REQUESTED, FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is created.",
+                                    "flatPath": "v2/folders/{foldersId}/locations/{locationsId}/buckets/{bucketsId}",
                                     "httpMethod": "PATCH",
                                     "id": "logging.folders.locations.buckets.patch",
                                     "parameterOrder": [
@@ -1603,6 +1649,7 @@
                                 },
                                 "undelete": {
                                     "description": "Undeletes a bucket. A bucket that has been deleted may be undeleted within the grace period of 7 days.",
+                                    "flatPath": "v2/folders/{foldersId}/locations/{locationsId}/buckets/{bucketsId}:undelete",
                                     "httpMethod": "POST",
                                     "id": "logging.folders.locations.buckets.undelete",
                                     "parameterOrder": [
@@ -1635,6 +1682,7 @@
                                     "methods": {
                                         "create": {
                                             "description": "Creates a view over logs in a bucket. A bucket may contain a maximum of 50 views.",
+                                            "flatPath": "v2/folders/{foldersId}/locations/{locationsId}/buckets/{bucketsId}/views",
                                             "httpMethod": "POST",
                                             "id": "logging.folders.locations.buckets.views.create",
                                             "parameterOrder": [
@@ -1668,6 +1716,7 @@
                                         },
                                         "delete": {
                                             "description": "Deletes a view from a bucket.",
+                                            "flatPath": "v2/folders/{foldersId}/locations/{locationsId}/buckets/{bucketsId}/views/{viewsId}",
                                             "httpMethod": "DELETE",
                                             "id": "logging.folders.locations.buckets.views.delete",
                                             "parameterOrder": [
@@ -1693,6 +1742,7 @@
                                         },
                                         "get": {
                                             "description": "Gets a view.",
+                                            "flatPath": "v2/folders/{foldersId}/locations/{locationsId}/buckets/{bucketsId}/views/{viewsId}",
                                             "httpMethod": "GET",
                                             "id": "logging.folders.locations.buckets.views.get",
                                             "parameterOrder": [
@@ -1720,6 +1770,7 @@
                                         },
                                         "list": {
                                             "description": "Lists views on a bucket.",
+                                            "flatPath": "v2/folders/{foldersId}/locations/{locationsId}/buckets/{bucketsId}/views",
                                             "httpMethod": "GET",
                                             "id": "logging.folders.locations.buckets.views.list",
                                             "parameterOrder": [
@@ -1758,6 +1809,7 @@
                                         },
                                         "patch": {
                                             "description": "Updates a view. This method replaces the following fields in the existing view with values from the new view: filter.",
+                                            "flatPath": "v2/folders/{foldersId}/locations/{locationsId}/buckets/{bucketsId}/views/{viewsId}",
                                             "httpMethod": "PATCH",
                                             "id": "logging.folders.locations.buckets.views.patch",
                                             "parameterOrder": [
@@ -1800,6 +1852,7 @@
                     "methods": {
                         "delete": {
                             "description": "Deletes all the log entries in a log for the _Default Log Bucket. The log reappears if it receives new entries. Log entries written shortly before the delete operation might not be deleted. Entries received after the delete operation with a timestamp before the operation will be deleted.",
+                            "flatPath": "v2/folders/{foldersId}/logs/{logsId}",
                             "httpMethod": "DELETE",
                             "id": "logging.folders.logs.delete",
                             "parameterOrder": [
@@ -1825,6 +1878,7 @@
                         },
                         "list": {
                             "description": "Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have entries are listed.",
+                            "flatPath": "v2/folders/{foldersId}/logs",
                             "httpMethod": "GET",
                             "id": "logging.folders.logs.list",
                             "parameterOrder": [
@@ -1873,6 +1927,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a sink that exports specified log entries to a destination. The export of newly-ingested log entries begins immediately, unless the sink's writer_identity is not permitted to write to the destination. A sink can export log entries only from the resource owning the sink.",
+                            "flatPath": "v2/folders/{foldersId}/sinks",
                             "httpMethod": "POST",
                             "id": "logging.folders.sinks.create",
                             "parameterOrder": [
@@ -1906,6 +1961,7 @@
                         },
                         "delete": {
                             "description": "Deletes a sink. If the sink has a unique writer_identity, then that service account is also deleted.",
+                            "flatPath": "v2/folders/{foldersId}/sinks/{sinksId}",
                             "httpMethod": "DELETE",
                             "id": "logging.folders.sinks.delete",
                             "parameterOrder": [
@@ -1931,6 +1987,7 @@
                         },
                         "get": {
                             "description": "Gets a sink.",
+                            "flatPath": "v2/folders/{foldersId}/sinks/{sinksId}",
                             "httpMethod": "GET",
                             "id": "logging.folders.sinks.get",
                             "parameterOrder": [
@@ -1958,6 +2015,7 @@
                         },
                         "list": {
                             "description": "Lists sinks.",
+                            "flatPath": "v2/folders/{foldersId}/sinks",
                             "httpMethod": "GET",
                             "id": "logging.folders.sinks.list",
                             "parameterOrder": [
@@ -1996,6 +2054,7 @@
                         },
                         "patch": {
                             "description": "Updates a sink. This method replaces the following fields in the existing sink with values from the new sink: destination, and filter.The updated sink might also have a new writer_identity; see the unique_writer_identity field.",
+                            "flatPath": "v2/folders/{foldersId}/sinks/{sinksId}",
                             "httpMethod": "PATCH",
                             "id": "logging.folders.sinks.patch",
                             "parameterOrder": [
@@ -2035,6 +2094,7 @@
                         },
                         "update": {
                             "description": "Updates a sink. This method replaces the following fields in the existing sink with values from the new sink: destination, and filter.The updated sink might also have a new writer_identity; see the unique_writer_identity field.",
+                            "flatPath": "v2/folders/{foldersId}/sinks/{sinksId}",
                             "httpMethod": "PUT",
                             "id": "logging.folders.sinks.update",
                             "parameterOrder": [
@@ -2080,6 +2140,7 @@
             "methods": {
                 "get": {
                     "description": "Gets information about a location.",
+                    "flatPath": "v2/{v2Id}/{v2Id1}/locations/{locationsId}",
                     "httpMethod": "GET",
                     "id": "logging.locations.get",
                     "parameterOrder": [
@@ -2107,6 +2168,7 @@
                 },
                 "list": {
                     "description": "Lists information about the supported locations for this service.",
+                    "flatPath": "v2/{v2Id}/{v2Id1}/locations",
                     "httpMethod": "GET",
                     "id": "logging.locations.list",
                     "parameterOrder": [
@@ -2154,6 +2216,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a bucket that can be used to store log entries. Once a bucket has been created, the region cannot be changed.",
+                            "flatPath": "v2/{v2Id}/{v2Id1}/locations/{locationsId}/buckets",
                             "httpMethod": "POST",
                             "id": "logging.locations.buckets.create",
                             "parameterOrder": [
@@ -2187,6 +2250,7 @@
                         },
                         "delete": {
                             "description": "Deletes a bucket. Moves the bucket to the DELETE_REQUESTED state. After 7 days, the bucket will be purged and all logs in the bucket will be permanently deleted.",
+                            "flatPath": "v2/{v2Id}/{v2Id1}/locations/{locationsId}/buckets/{bucketsId}",
                             "httpMethod": "DELETE",
                             "id": "logging.locations.buckets.delete",
                             "parameterOrder": [
@@ -2212,6 +2276,7 @@
                         },
                         "get": {
                             "description": "Gets a bucket.",
+                            "flatPath": "v2/{v2Id}/{v2Id1}/locations/{locationsId}/buckets/{bucketsId}",
                             "httpMethod": "GET",
                             "id": "logging.locations.buckets.get",
                             "parameterOrder": [
@@ -2239,6 +2304,7 @@
                         },
                         "list": {
                             "description": "Lists buckets.",
+                            "flatPath": "v2/{v2Id}/{v2Id1}/locations/{locationsId}/buckets",
                             "httpMethod": "GET",
                             "id": "logging.locations.buckets.list",
                             "parameterOrder": [
@@ -2277,6 +2343,7 @@
                         },
                         "patch": {
                             "description": "Updates a bucket. This method replaces the following fields in the existing bucket with values from the new bucket: retention_periodIf the retention period is decreased and the bucket is locked, FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of DELETE_REQUESTED, FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is created.",
+                            "flatPath": "v2/{v2Id}/{v2Id1}/locations/{locationsId}/buckets/{bucketsId}",
                             "httpMethod": "PATCH",
                             "id": "logging.locations.buckets.patch",
                             "parameterOrder": [
@@ -2311,6 +2378,7 @@
                         },
                         "undelete": {
                             "description": "Undeletes a bucket. A bucket that has been deleted may be undeleted within the grace period of 7 days.",
+                            "flatPath": "v2/{v2Id}/{v2Id1}/locations/{locationsId}/buckets/{bucketsId}:undelete",
                             "httpMethod": "POST",
                             "id": "logging.locations.buckets.undelete",
                             "parameterOrder": [
@@ -2343,6 +2411,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a view over logs in a bucket. A bucket may contain a maximum of 50 views.",
+                                    "flatPath": "v2/{v2Id}/{v2Id1}/locations/{locationsId}/buckets/{bucketsId}/views",
                                     "httpMethod": "POST",
                                     "id": "logging.locations.buckets.views.create",
                                     "parameterOrder": [
@@ -2376,6 +2445,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a view from a bucket.",
+                                    "flatPath": "v2/{v2Id}/{v2Id1}/locations/{locationsId}/buckets/{bucketsId}/views/{viewsId}",
                                     "httpMethod": "DELETE",
                                     "id": "logging.locations.buckets.views.delete",
                                     "parameterOrder": [
@@ -2401,6 +2471,7 @@
                                 },
                                 "get": {
                                     "description": "Gets a view.",
+                                    "flatPath": "v2/{v2Id}/{v2Id1}/locations/{locationsId}/buckets/{bucketsId}/views/{viewsId}",
                                     "httpMethod": "GET",
                                     "id": "logging.locations.buckets.views.get",
                                     "parameterOrder": [
@@ -2428,6 +2499,7 @@
                                 },
                                 "list": {
                                     "description": "Lists views on a bucket.",
+                                    "flatPath": "v2/{v2Id}/{v2Id1}/locations/{locationsId}/buckets/{bucketsId}/views",
                                     "httpMethod": "GET",
                                     "id": "logging.locations.buckets.views.list",
                                     "parameterOrder": [
@@ -2466,6 +2538,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates a view. This method replaces the following fields in the existing view with values from the new view: filter.",
+                                    "flatPath": "v2/{v2Id}/{v2Id1}/locations/{locationsId}/buckets/{bucketsId}/views/{viewsId}",
                                     "httpMethod": "PATCH",
                                     "id": "logging.locations.buckets.views.patch",
                                     "parameterOrder": [
@@ -2508,6 +2581,7 @@
             "methods": {
                 "delete": {
                     "description": "Deletes all the log entries in a log for the _Default Log Bucket. The log reappears if it receives new entries. Log entries written shortly before the delete operation might not be deleted. Entries received after the delete operation with a timestamp before the operation will be deleted.",
+                    "flatPath": "v2/{v2Id}/{v2Id1}/logs/{logsId}",
                     "httpMethod": "DELETE",
                     "id": "logging.logs.delete",
                     "parameterOrder": [
@@ -2533,6 +2607,7 @@
                 },
                 "list": {
                     "description": "Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have entries are listed.",
+                    "flatPath": "v2/{v2Id}/{v2Id1}/logs",
                     "httpMethod": "GET",
                     "id": "logging.logs.list",
                     "parameterOrder": [
@@ -2581,6 +2656,7 @@
             "methods": {
                 "list": {
                     "description": "Lists the descriptors for monitored resource types used by Logging.",
+                    "flatPath": "v2/monitoredResourceDescriptors",
                     "httpMethod": "GET",
                     "id": "logging.monitoredResourceDescriptors.list",
                     "parameterOrder": [],
@@ -2614,6 +2690,7 @@
             "methods": {
                 "getCmekSettings": {
                     "description": "Gets the Logs Router CMEK settings for the given resource.Note: CMEK for the Logs Router can currently only be configured for GCP organizations. Once configured, it applies to all projects and folders in the GCP organization.See Enabling CMEK for Logs Router (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.",
+                    "flatPath": "v2/organizations/{organizationsId}/cmekSettings",
                     "httpMethod": "GET",
                     "id": "logging.organizations.getCmekSettings",
                     "parameterOrder": [
@@ -2641,6 +2718,7 @@
                 },
                 "updateCmekSettings": {
                     "description": "Updates the Logs Router CMEK settings for the given resource.Note: CMEK for the Logs Router can currently only be configured for GCP organizations. Once configured, it applies to all projects and folders in the GCP organization.UpdateCmekSettings will fail if 1) kms_key_name is invalid, or 2) the associated service account does not have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key, or 3) access to the key is disabled.See Enabling CMEK for Logs Router (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.",
+                    "flatPath": "v2/organizations/{organizationsId}/cmekSettings",
                     "httpMethod": "PATCH",
                     "id": "logging.organizations.updateCmekSettings",
                     "parameterOrder": [
@@ -2679,6 +2757,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a new exclusion in a specified parent resource. Only log entries belonging to that resource can be excluded. You can have up to 10 exclusions in a resource.",
+                            "flatPath": "v2/organizations/{organizationsId}/exclusions",
                             "httpMethod": "POST",
                             "id": "logging.organizations.exclusions.create",
                             "parameterOrder": [
@@ -2707,6 +2786,7 @@
                         },
                         "delete": {
                             "description": "Deletes an exclusion.",
+                            "flatPath": "v2/organizations/{organizationsId}/exclusions/{exclusionsId}",
                             "httpMethod": "DELETE",
                             "id": "logging.organizations.exclusions.delete",
                             "parameterOrder": [
@@ -2732,6 +2812,7 @@
                         },
                         "get": {
                             "description": "Gets the description of an exclusion.",
+                            "flatPath": "v2/organizations/{organizationsId}/exclusions/{exclusionsId}",
                             "httpMethod": "GET",
                             "id": "logging.organizations.exclusions.get",
                             "parameterOrder": [
@@ -2759,6 +2840,7 @@
                         },
                         "list": {
                             "description": "Lists all the exclusions in a parent resource.",
+                            "flatPath": "v2/organizations/{organizationsId}/exclusions",
                             "httpMethod": "GET",
                             "id": "logging.organizations.exclusions.list",
                             "parameterOrder": [
@@ -2797,6 +2879,7 @@
                         },
                         "patch": {
                             "description": "Changes one or more properties of an existing exclusion.",
+                            "flatPath": "v2/organizations/{organizationsId}/exclusions/{exclusionsId}",
                             "httpMethod": "PATCH",
                             "id": "logging.organizations.exclusions.patch",
                             "parameterOrder": [
@@ -2835,6 +2918,7 @@
                     "methods": {
                         "get": {
                             "description": "Gets information about a location.",
+                            "flatPath": "v2/organizations/{organizationsId}/locations/{locationsId}",
                             "httpMethod": "GET",
                             "id": "logging.organizations.locations.get",
                             "parameterOrder": [
@@ -2862,6 +2946,7 @@
                         },
                         "list": {
                             "description": "Lists information about the supported locations for this service.",
+                            "flatPath": "v2/organizations/{organizationsId}/locations",
                             "httpMethod": "GET",
                             "id": "logging.organizations.locations.list",
                             "parameterOrder": [
@@ -2909,6 +2994,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a bucket that can be used to store log entries. Once a bucket has been created, the region cannot be changed.",
+                                    "flatPath": "v2/organizations/{organizationsId}/locations/{locationsId}/buckets",
                                     "httpMethod": "POST",
                                     "id": "logging.organizations.locations.buckets.create",
                                     "parameterOrder": [
@@ -2942,6 +3028,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a bucket. Moves the bucket to the DELETE_REQUESTED state. After 7 days, the bucket will be purged and all logs in the bucket will be permanently deleted.",
+                                    "flatPath": "v2/organizations/{organizationsId}/locations/{locationsId}/buckets/{bucketsId}",
                                     "httpMethod": "DELETE",
                                     "id": "logging.organizations.locations.buckets.delete",
                                     "parameterOrder": [
@@ -2967,6 +3054,7 @@
                                 },
                                 "get": {
                                     "description": "Gets a bucket.",
+                                    "flatPath": "v2/organizations/{organizationsId}/locations/{locationsId}/buckets/{bucketsId}",
                                     "httpMethod": "GET",
                                     "id": "logging.organizations.locations.buckets.get",
                                     "parameterOrder": [
@@ -2994,6 +3082,7 @@
                                 },
                                 "list": {
                                     "description": "Lists buckets.",
+                                    "flatPath": "v2/organizations/{organizationsId}/locations/{locationsId}/buckets",
                                     "httpMethod": "GET",
                                     "id": "logging.organizations.locations.buckets.list",
                                     "parameterOrder": [
@@ -3032,6 +3121,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates a bucket. This method replaces the following fields in the existing bucket with values from the new bucket: retention_periodIf the retention period is decreased and the bucket is locked, FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of DELETE_REQUESTED, FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is created.",
+                                    "flatPath": "v2/organizations/{organizationsId}/locations/{locationsId}/buckets/{bucketsId}",
                                     "httpMethod": "PATCH",
                                     "id": "logging.organizations.locations.buckets.patch",
                                     "parameterOrder": [
@@ -3066,6 +3156,7 @@
                                 },
                                 "undelete": {
                                     "description": "Undeletes a bucket. A bucket that has been deleted may be undeleted within the grace period of 7 days.",
+                                    "flatPath": "v2/organizations/{organizationsId}/locations/{locationsId}/buckets/{bucketsId}:undelete",
                                     "httpMethod": "POST",
                                     "id": "logging.organizations.locations.buckets.undelete",
                                     "parameterOrder": [
@@ -3098,6 +3189,7 @@
                                     "methods": {
                                         "create": {
                                             "description": "Creates a view over logs in a bucket. A bucket may contain a maximum of 50 views.",
+                                            "flatPath": "v2/organizations/{organizationsId}/locations/{locationsId}/buckets/{bucketsId}/views",
                                             "httpMethod": "POST",
                                             "id": "logging.organizations.locations.buckets.views.create",
                                             "parameterOrder": [
@@ -3131,6 +3223,7 @@
                                         },
                                         "delete": {
                                             "description": "Deletes a view from a bucket.",
+                                            "flatPath": "v2/organizations/{organizationsId}/locations/{locationsId}/buckets/{bucketsId}/views/{viewsId}",
                                             "httpMethod": "DELETE",
                                             "id": "logging.organizations.locations.buckets.views.delete",
                                             "parameterOrder": [
@@ -3156,6 +3249,7 @@
                                         },
                                         "get": {
                                             "description": "Gets a view.",
+                                            "flatPath": "v2/organizations/{organizationsId}/locations/{locationsId}/buckets/{bucketsId}/views/{viewsId}",
                                             "httpMethod": "GET",
                                             "id": "logging.organizations.locations.buckets.views.get",
                                             "parameterOrder": [
@@ -3183,6 +3277,7 @@
                                         },
                                         "list": {
                                             "description": "Lists views on a bucket.",
+                                            "flatPath": "v2/organizations/{organizationsId}/locations/{locationsId}/buckets/{bucketsId}/views",
                                             "httpMethod": "GET",
                                             "id": "logging.organizations.locations.buckets.views.list",
                                             "parameterOrder": [
@@ -3221,6 +3316,7 @@
                                         },
                                         "patch": {
                                             "description": "Updates a view. This method replaces the following fields in the existing view with values from the new view: filter.",
+                                            "flatPath": "v2/organizations/{organizationsId}/locations/{locationsId}/buckets/{bucketsId}/views/{viewsId}",
                                             "httpMethod": "PATCH",
                                             "id": "logging.organizations.locations.buckets.views.patch",
                                             "parameterOrder": [
@@ -3263,6 +3359,7 @@
                     "methods": {
                         "delete": {
                             "description": "Deletes all the log entries in a log for the _Default Log Bucket. The log reappears if it receives new entries. Log entries written shortly before the delete operation might not be deleted. Entries received after the delete operation with a timestamp before the operation will be deleted.",
+                            "flatPath": "v2/organizations/{organizationsId}/logs/{logsId}",
                             "httpMethod": "DELETE",
                             "id": "logging.organizations.logs.delete",
                             "parameterOrder": [
@@ -3288,6 +3385,7 @@
                         },
                         "list": {
                             "description": "Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have entries are listed.",
+                            "flatPath": "v2/organizations/{organizationsId}/logs",
                             "httpMethod": "GET",
                             "id": "logging.organizations.logs.list",
                             "parameterOrder": [
@@ -3336,6 +3434,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a sink that exports specified log entries to a destination. The export of newly-ingested log entries begins immediately, unless the sink's writer_identity is not permitted to write to the destination. A sink can export log entries only from the resource owning the sink.",
+                            "flatPath": "v2/organizations/{organizationsId}/sinks",
                             "httpMethod": "POST",
                             "id": "logging.organizations.sinks.create",
                             "parameterOrder": [
@@ -3369,6 +3468,7 @@
                         },
                         "delete": {
                             "description": "Deletes a sink. If the sink has a unique writer_identity, then that service account is also deleted.",
+                            "flatPath": "v2/organizations/{organizationsId}/sinks/{sinksId}",
                             "httpMethod": "DELETE",
                             "id": "logging.organizations.sinks.delete",
                             "parameterOrder": [
@@ -3394,6 +3494,7 @@
                         },
                         "get": {
                             "description": "Gets a sink.",
+                            "flatPath": "v2/organizations/{organizationsId}/sinks/{sinksId}",
                             "httpMethod": "GET",
                             "id": "logging.organizations.sinks.get",
                             "parameterOrder": [
@@ -3421,6 +3522,7 @@
                         },
                         "list": {
                             "description": "Lists sinks.",
+                            "flatPath": "v2/organizations/{organizationsId}/sinks",
                             "httpMethod": "GET",
                             "id": "logging.organizations.sinks.list",
                             "parameterOrder": [
@@ -3459,6 +3561,7 @@
                         },
                         "patch": {
                             "description": "Updates a sink. This method replaces the following fields in the existing sink with values from the new sink: destination, and filter.The updated sink might also have a new writer_identity; see the unique_writer_identity field.",
+                            "flatPath": "v2/organizations/{organizationsId}/sinks/{sinksId}",
                             "httpMethod": "PATCH",
                             "id": "logging.organizations.sinks.patch",
                             "parameterOrder": [
@@ -3498,6 +3601,7 @@
                         },
                         "update": {
                             "description": "Updates a sink. This method replaces the following fields in the existing sink with values from the new sink: destination, and filter.The updated sink might also have a new writer_identity; see the unique_writer_identity field.",
+                            "flatPath": "v2/organizations/{organizationsId}/sinks/{sinksId}",
                             "httpMethod": "PUT",
                             "id": "logging.organizations.sinks.update",
                             "parameterOrder": [
@@ -3545,6 +3649,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a new exclusion in a specified parent resource. Only log entries belonging to that resource can be excluded. You can have up to 10 exclusions in a resource.",
+                            "flatPath": "v2/projects/{projectsId}/exclusions",
                             "httpMethod": "POST",
                             "id": "logging.projects.exclusions.create",
                             "parameterOrder": [
@@ -3573,6 +3678,7 @@
                         },
                         "delete": {
                             "description": "Deletes an exclusion.",
+                            "flatPath": "v2/projects/{projectsId}/exclusions/{exclusionsId}",
                             "httpMethod": "DELETE",
                             "id": "logging.projects.exclusions.delete",
                             "parameterOrder": [
@@ -3598,6 +3704,7 @@
                         },
                         "get": {
                             "description": "Gets the description of an exclusion.",
+                            "flatPath": "v2/projects/{projectsId}/exclusions/{exclusionsId}",
                             "httpMethod": "GET",
                             "id": "logging.projects.exclusions.get",
                             "parameterOrder": [
@@ -3625,6 +3732,7 @@
                         },
                         "list": {
                             "description": "Lists all the exclusions in a parent resource.",
+                            "flatPath": "v2/projects/{projectsId}/exclusions",
                             "httpMethod": "GET",
                             "id": "logging.projects.exclusions.list",
                             "parameterOrder": [
@@ -3663,6 +3771,7 @@
                         },
                         "patch": {
                             "description": "Changes one or more properties of an existing exclusion.",
+                            "flatPath": "v2/projects/{projectsId}/exclusions/{exclusionsId}",
                             "httpMethod": "PATCH",
                             "id": "logging.projects.exclusions.patch",
                             "parameterOrder": [
@@ -3701,6 +3810,7 @@
                     "methods": {
                         "get": {
                             "description": "Gets information about a location.",
+                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}",
                             "httpMethod": "GET",
                             "id": "logging.projects.locations.get",
                             "parameterOrder": [
@@ -3728,6 +3838,7 @@
                         },
                         "list": {
                             "description": "Lists information about the supported locations for this service.",
+                            "flatPath": "v2/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "logging.projects.locations.list",
                             "parameterOrder": [
@@ -3775,6 +3886,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a bucket that can be used to store log entries. Once a bucket has been created, the region cannot be changed.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/buckets",
                                     "httpMethod": "POST",
                                     "id": "logging.projects.locations.buckets.create",
                                     "parameterOrder": [
@@ -3808,6 +3920,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a bucket. Moves the bucket to the DELETE_REQUESTED state. After 7 days, the bucket will be purged and all logs in the bucket will be permanently deleted.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/buckets/{bucketsId}",
                                     "httpMethod": "DELETE",
                                     "id": "logging.projects.locations.buckets.delete",
                                     "parameterOrder": [
@@ -3833,6 +3946,7 @@
                                 },
                                 "get": {
                                     "description": "Gets a bucket.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/buckets/{bucketsId}",
                                     "httpMethod": "GET",
                                     "id": "logging.projects.locations.buckets.get",
                                     "parameterOrder": [
@@ -3860,6 +3974,7 @@
                                 },
                                 "list": {
                                     "description": "Lists buckets.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/buckets",
                                     "httpMethod": "GET",
                                     "id": "logging.projects.locations.buckets.list",
                                     "parameterOrder": [
@@ -3898,6 +4013,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates a bucket. This method replaces the following fields in the existing bucket with values from the new bucket: retention_periodIf the retention period is decreased and the bucket is locked, FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of DELETE_REQUESTED, FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is created.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/buckets/{bucketsId}",
                                     "httpMethod": "PATCH",
                                     "id": "logging.projects.locations.buckets.patch",
                                     "parameterOrder": [
@@ -3932,6 +4048,7 @@
                                 },
                                 "undelete": {
                                     "description": "Undeletes a bucket. A bucket that has been deleted may be undeleted within the grace period of 7 days.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/buckets/{bucketsId}:undelete",
                                     "httpMethod": "POST",
                                     "id": "logging.projects.locations.buckets.undelete",
                                     "parameterOrder": [
@@ -3964,6 +4081,7 @@
                                     "methods": {
                                         "create": {
                                             "description": "Creates a view over logs in a bucket. A bucket may contain a maximum of 50 views.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/buckets/{bucketsId}/views",
                                             "httpMethod": "POST",
                                             "id": "logging.projects.locations.buckets.views.create",
                                             "parameterOrder": [
@@ -3997,6 +4115,7 @@
                                         },
                                         "delete": {
                                             "description": "Deletes a view from a bucket.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/buckets/{bucketsId}/views/{viewsId}",
                                             "httpMethod": "DELETE",
                                             "id": "logging.projects.locations.buckets.views.delete",
                                             "parameterOrder": [
@@ -4022,6 +4141,7 @@
                                         },
                                         "get": {
                                             "description": "Gets a view.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/buckets/{bucketsId}/views/{viewsId}",
                                             "httpMethod": "GET",
                                             "id": "logging.projects.locations.buckets.views.get",
                                             "parameterOrder": [
@@ -4049,6 +4169,7 @@
                                         },
                                         "list": {
                                             "description": "Lists views on a bucket.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/buckets/{bucketsId}/views",
                                             "httpMethod": "GET",
                                             "id": "logging.projects.locations.buckets.views.list",
                                             "parameterOrder": [
@@ -4087,6 +4208,7 @@
                                         },
                                         "patch": {
                                             "description": "Updates a view. This method replaces the following fields in the existing view with values from the new view: filter.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/buckets/{bucketsId}/views/{viewsId}",
                                             "httpMethod": "PATCH",
                                             "id": "logging.projects.locations.buckets.views.patch",
                                             "parameterOrder": [
@@ -4129,6 +4251,7 @@
                     "methods": {
                         "delete": {
                             "description": "Deletes all the log entries in a log for the _Default Log Bucket. The log reappears if it receives new entries. Log entries written shortly before the delete operation might not be deleted. Entries received after the delete operation with a timestamp before the operation will be deleted.",
+                            "flatPath": "v2/projects/{projectsId}/logs/{logsId}",
                             "httpMethod": "DELETE",
                             "id": "logging.projects.logs.delete",
                             "parameterOrder": [
@@ -4154,6 +4277,7 @@
                         },
                         "list": {
                             "description": "Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have entries are listed.",
+                            "flatPath": "v2/projects/{projectsId}/logs",
                             "httpMethod": "GET",
                             "id": "logging.projects.logs.list",
                             "parameterOrder": [
@@ -4202,6 +4326,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a logs-based metric.",
+                            "flatPath": "v2/projects/{projectsId}/metrics",
                             "httpMethod": "POST",
                             "id": "logging.projects.metrics.create",
                             "parameterOrder": [
@@ -4231,6 +4356,7 @@
                         },
                         "delete": {
                             "description": "Deletes a logs-based metric.",
+                            "flatPath": "v2/projects/{projectsId}/metrics/{metricsId}",
                             "httpMethod": "DELETE",
                             "id": "logging.projects.metrics.delete",
                             "parameterOrder": [
@@ -4257,6 +4383,7 @@
                         },
                         "get": {
                             "description": "Gets a logs-based metric.",
+                            "flatPath": "v2/projects/{projectsId}/metrics/{metricsId}",
                             "httpMethod": "GET",
                             "id": "logging.projects.metrics.get",
                             "parameterOrder": [
@@ -4284,6 +4411,7 @@
                         },
                         "list": {
                             "description": "Lists logs-based metrics.",
+                            "flatPath": "v2/projects/{projectsId}/metrics",
                             "httpMethod": "GET",
                             "id": "logging.projects.metrics.list",
                             "parameterOrder": [
@@ -4322,6 +4450,7 @@
                         },
                         "update": {
                             "description": "Creates or updates a logs-based metric.",
+                            "flatPath": "v2/projects/{projectsId}/metrics/{metricsId}",
                             "httpMethod": "PUT",
                             "id": "logging.projects.metrics.update",
                             "parameterOrder": [
@@ -4355,6 +4484,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a sink that exports specified log entries to a destination. The export of newly-ingested log entries begins immediately, unless the sink's writer_identity is not permitted to write to the destination. A sink can export log entries only from the resource owning the sink.",
+                            "flatPath": "v2/projects/{projectsId}/sinks",
                             "httpMethod": "POST",
                             "id": "logging.projects.sinks.create",
                             "parameterOrder": [
@@ -4388,6 +4518,7 @@
                         },
                         "delete": {
                             "description": "Deletes a sink. If the sink has a unique writer_identity, then that service account is also deleted.",
+                            "flatPath": "v2/projects/{projectsId}/sinks/{sinksId}",
                             "httpMethod": "DELETE",
                             "id": "logging.projects.sinks.delete",
                             "parameterOrder": [
@@ -4413,6 +4544,7 @@
                         },
                         "get": {
                             "description": "Gets a sink.",
+                            "flatPath": "v2/projects/{projectsId}/sinks/{sinksId}",
                             "httpMethod": "GET",
                             "id": "logging.projects.sinks.get",
                             "parameterOrder": [
@@ -4440,6 +4572,7 @@
                         },
                         "list": {
                             "description": "Lists sinks.",
+                            "flatPath": "v2/projects/{projectsId}/sinks",
                             "httpMethod": "GET",
                             "id": "logging.projects.sinks.list",
                             "parameterOrder": [
@@ -4478,6 +4611,7 @@
                         },
                         "patch": {
                             "description": "Updates a sink. This method replaces the following fields in the existing sink with values from the new sink: destination, and filter.The updated sink might also have a new writer_identity; see the unique_writer_identity field.",
+                            "flatPath": "v2/projects/{projectsId}/sinks/{sinksId}",
                             "httpMethod": "PATCH",
                             "id": "logging.projects.sinks.patch",
                             "parameterOrder": [
@@ -4517,6 +4651,7 @@
                         },
                         "update": {
                             "description": "Updates a sink. This method replaces the following fields in the existing sink with values from the new sink: destination, and filter.The updated sink might also have a new writer_identity; see the unique_writer_identity field.",
+                            "flatPath": "v2/projects/{projectsId}/sinks/{sinksId}",
                             "httpMethod": "PUT",
                             "id": "logging.projects.sinks.update",
                             "parameterOrder": [
@@ -4562,6 +4697,7 @@
             "methods": {
                 "create": {
                     "description": "Creates a sink that exports specified log entries to a destination. The export of newly-ingested log entries begins immediately, unless the sink's writer_identity is not permitted to write to the destination. A sink can export log entries only from the resource owning the sink.",
+                    "flatPath": "v2/{v2Id}/{v2Id1}/sinks",
                     "httpMethod": "POST",
                     "id": "logging.sinks.create",
                     "parameterOrder": [
@@ -4595,6 +4731,7 @@
                 },
                 "delete": {
                     "description": "Deletes a sink. If the sink has a unique writer_identity, then that service account is also deleted.",
+                    "flatPath": "v2/{v2Id}/{v2Id1}/sinks/{sinksId}",
                     "httpMethod": "DELETE",
                     "id": "logging.sinks.delete",
                     "parameterOrder": [
@@ -4620,6 +4757,7 @@
                 },
                 "get": {
                     "description": "Gets a sink.",
+                    "flatPath": "v2/{v2Id}/{v2Id1}/sinks/{sinksId}",
                     "httpMethod": "GET",
                     "id": "logging.sinks.get",
                     "parameterOrder": [
@@ -4647,6 +4785,7 @@
                 },
                 "list": {
                     "description": "Lists sinks.",
+                    "flatPath": "v2/{v2Id}/{v2Id1}/sinks",
                     "httpMethod": "GET",
                     "id": "logging.sinks.list",
                     "parameterOrder": [
@@ -4685,6 +4824,7 @@
                 },
                 "update": {
                     "description": "Updates a sink. This method replaces the following fields in the existing sink with values from the new sink: destination, and filter.The updated sink might also have a new writer_identity; see the unique_writer_identity field.",
+                    "flatPath": "v2/{v2Id}/{v2Id1}/sinks/{sinksId}",
                     "httpMethod": "PUT",
                     "id": "logging.sinks.update",
                     "parameterOrder": [
@@ -4728,6 +4868,7 @@
             "methods": {
                 "getCmekSettings": {
                     "description": "Gets the Logs Router CMEK settings for the given resource.Note: CMEK for the Logs Router can currently only be configured for GCP organizations. Once configured, it applies to all projects and folders in the GCP organization.See Enabling CMEK for Logs Router (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.",
+                    "flatPath": "v2/{v2Id}/{v2Id1}/cmekSettings",
                     "httpMethod": "GET",
                     "id": "logging.getCmekSettings",
                     "parameterOrder": [
@@ -4755,6 +4896,7 @@
                 },
                 "updateCmekSettings": {
                     "description": "Updates the Logs Router CMEK settings for the given resource.Note: CMEK for the Logs Router can currently only be configured for GCP organizations. Once configured, it applies to all projects and folders in the GCP organization.UpdateCmekSettings will fail if 1) kms_key_name is invalid, or 2) the associated service account does not have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key, or 3) access to the key is disabled.See Enabling CMEK for Logs Router (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.",
+                    "flatPath": "v2/{v2Id}/{v2Id1}/cmekSettings",
                     "httpMethod": "PATCH",
                     "id": "logging.updateCmekSettings",
                     "parameterOrder": [
@@ -4790,7 +4932,7 @@
             }
         }
     },
-    "revision": "20210513",
+    "revision": "20210522",
     "rootUrl": "https://logging.googleapis.com/",
     "schemas": {
         "BigQueryOptions": {

@@ -21,6 +21,7 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsFeaturesResource]
 ///     - [ProjectsLocationsMembershipsResource]
 ///     - [ProjectsLocationsOperationsResource]
 library gkehub.v1;
@@ -65,6 +66,8 @@ class ProjectsResource {
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsFeaturesResource get features =>
+      ProjectsLocationsFeaturesResource(_requester);
   ProjectsLocationsMembershipsResource get memberships =>
       ProjectsLocationsMembershipsResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
@@ -156,6 +159,437 @@ class ProjectsLocationsResource {
       queryParams: _queryParams,
     );
     return ListLocationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsFeaturesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsFeaturesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Adds a new Feature.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The parent (project and location) where the Feature will be
+  /// created. Specified in the format `projects / * /locations / * `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [featureId] - The ID of the feature to create.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. The server
+  /// will guarantee that for at least 60 minutes after the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if original operation with the same request ID was
+  /// received, and if so, will ignore the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    Feature request,
+    core.String parent, {
+    core.String? featureId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (featureId != null) 'featureId': [featureId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/features';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Removes a Feature.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The Feature resource name in the format `projects / * /locations
+  /// / * /features / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/features/\[^/\]+$`.
+  ///
+  /// [force] - If set to true, the delete will ignore any outstanding resources
+  /// for this Feature (that is, `FeatureState.has_resources` is set to true).
+  /// These resources will NOT be cleaned up or modified in any way.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. The server
+  /// will guarantee that for at least 60 minutes after the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if original operation with the same request ID was
+  /// received, and if so, will ignore the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.bool? force,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (force != null) 'force': ['${force}'],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single Feature.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The Feature resource name in the format `projects / * /locations
+  /// / * /features / * `
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/features/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Feature].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Feature> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Feature.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/features/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The policy format version to
+  /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
+  /// value will be rejected. Requests for policies with any conditional
+  /// bindings must specify version 3. Policies without any conditional bindings
+  /// may specify any valid value or leave the field unset. To learn which
+  /// resources support conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists Features in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The parent (project and location) where the Features will be
+  /// listed. Specified in the format `projects / * /locations / * `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Lists Features that match the filter expression, following the
+  /// syntax outlined in https://google.aip.dev/160. Examples: - Feature with
+  /// the name "servicemesh" in project "foo-proj": name =
+  /// "projects/foo-proj/locations/global/features/servicemesh" - Features that
+  /// have a label called `foo`: labels.foo:* - Features that have a label
+  /// called `foo` whose value is `bar`: labels.foo = bar
+  ///
+  /// [orderBy] - One or more fields to compare and use to sort the output. See
+  /// https://google.aip.dev/132#ordering.
+  ///
+  /// [pageSize] - When requesting a 'page' of resources, `page_size` specifies
+  /// number of resources to return. If unspecified or set to 0, all resources
+  /// will be returned.
+  ///
+  /// [pageToken] - Token returned by previous call to `ListFeatures` which
+  /// specifies the position in the list from where to continue listing the
+  /// resources.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListFeaturesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListFeaturesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/features';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListFeaturesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an existing Feature.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The Feature resource name in the format `projects / * /locations
+  /// / * /features / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/features/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. The server
+  /// will guarantee that for at least 60 minutes after the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if original operation with the same request ID was
+  /// received, and if so, will ignore the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Mask of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    Feature request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/features/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/features/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1122,6 +1556,968 @@ class CancelOperationRequest {
   core.Map<core.String, core.dynamic> toJson() => {};
 }
 
+/// CommonFeatureSpec contains Hub-wide configuration information
+class CommonFeatureSpec {
+  /// Multicluster Ingress-specific spec.
+  MultiClusterIngressFeatureSpec? multiclusteringress;
+
+  CommonFeatureSpec();
+
+  CommonFeatureSpec.fromJson(core.Map _json) {
+    if (_json.containsKey('multiclusteringress')) {
+      multiclusteringress = MultiClusterIngressFeatureSpec.fromJson(
+          _json['multiclusteringress'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (multiclusteringress != null)
+          'multiclusteringress': multiclusteringress!.toJson(),
+      };
+}
+
+/// CommonFeatureState contains Hub-wide Feature status information.
+class CommonFeatureState {
+  /// The "running state" of the Feature in this Hub.
+  ///
+  /// Output only.
+  FeatureState? state;
+
+  CommonFeatureState();
+
+  CommonFeatureState.fromJson(core.Map _json) {
+    if (_json.containsKey('state')) {
+      state = FeatureState.fromJson(
+          _json['state'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (state != null) 'state': state!.toJson(),
+      };
+}
+
+/// Configuration for Config Sync
+class ConfigManagementConfigSync {
+  /// Git repo configuration for the cluster.
+  ConfigManagementGitConfig? git;
+
+  /// Specifies whether the Config Sync Repo is in “hierarchical” or
+  /// “unstructured” mode.
+  core.String? sourceFormat;
+
+  ConfigManagementConfigSync();
+
+  ConfigManagementConfigSync.fromJson(core.Map _json) {
+    if (_json.containsKey('git')) {
+      git = ConfigManagementGitConfig.fromJson(
+          _json['git'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('sourceFormat')) {
+      sourceFormat = _json['sourceFormat'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (git != null) 'git': git!.toJson(),
+        if (sourceFormat != null) 'sourceFormat': sourceFormat!,
+      };
+}
+
+/// The state of ConfigSync's deployment on a cluster
+class ConfigManagementConfigSyncDeploymentState {
+  /// Deployment state of the git-sync pod
+  /// Possible string values are:
+  /// - "DEPLOYMENT_STATE_UNSPECIFIED" : Deployment's state cannot be determined
+  /// - "NOT_INSTALLED" : Deployment is not installed
+  /// - "INSTALLED" : Deployment is installed
+  /// - "ERROR" : Deployment was attempted to be installed, but has errors
+  core.String? gitSync;
+
+  /// Deployment state of the importer pod
+  /// Possible string values are:
+  /// - "DEPLOYMENT_STATE_UNSPECIFIED" : Deployment's state cannot be determined
+  /// - "NOT_INSTALLED" : Deployment is not installed
+  /// - "INSTALLED" : Deployment is installed
+  /// - "ERROR" : Deployment was attempted to be installed, but has errors
+  core.String? importer;
+
+  /// Deployment state of the monitor pod
+  /// Possible string values are:
+  /// - "DEPLOYMENT_STATE_UNSPECIFIED" : Deployment's state cannot be determined
+  /// - "NOT_INSTALLED" : Deployment is not installed
+  /// - "INSTALLED" : Deployment is installed
+  /// - "ERROR" : Deployment was attempted to be installed, but has errors
+  core.String? monitor;
+
+  /// Deployment state of reconciler-manager pod
+  /// Possible string values are:
+  /// - "DEPLOYMENT_STATE_UNSPECIFIED" : Deployment's state cannot be determined
+  /// - "NOT_INSTALLED" : Deployment is not installed
+  /// - "INSTALLED" : Deployment is installed
+  /// - "ERROR" : Deployment was attempted to be installed, but has errors
+  core.String? reconcilerManager;
+
+  /// Deployment state of root-reconciler
+  /// Possible string values are:
+  /// - "DEPLOYMENT_STATE_UNSPECIFIED" : Deployment's state cannot be determined
+  /// - "NOT_INSTALLED" : Deployment is not installed
+  /// - "INSTALLED" : Deployment is installed
+  /// - "ERROR" : Deployment was attempted to be installed, but has errors
+  core.String? rootReconciler;
+
+  /// Deployment state of the syncer pod
+  /// Possible string values are:
+  /// - "DEPLOYMENT_STATE_UNSPECIFIED" : Deployment's state cannot be determined
+  /// - "NOT_INSTALLED" : Deployment is not installed
+  /// - "INSTALLED" : Deployment is installed
+  /// - "ERROR" : Deployment was attempted to be installed, but has errors
+  core.String? syncer;
+
+  ConfigManagementConfigSyncDeploymentState();
+
+  ConfigManagementConfigSyncDeploymentState.fromJson(core.Map _json) {
+    if (_json.containsKey('gitSync')) {
+      gitSync = _json['gitSync'] as core.String;
+    }
+    if (_json.containsKey('importer')) {
+      importer = _json['importer'] as core.String;
+    }
+    if (_json.containsKey('monitor')) {
+      monitor = _json['monitor'] as core.String;
+    }
+    if (_json.containsKey('reconcilerManager')) {
+      reconcilerManager = _json['reconcilerManager'] as core.String;
+    }
+    if (_json.containsKey('rootReconciler')) {
+      rootReconciler = _json['rootReconciler'] as core.String;
+    }
+    if (_json.containsKey('syncer')) {
+      syncer = _json['syncer'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gitSync != null) 'gitSync': gitSync!,
+        if (importer != null) 'importer': importer!,
+        if (monitor != null) 'monitor': monitor!,
+        if (reconcilerManager != null) 'reconcilerManager': reconcilerManager!,
+        if (rootReconciler != null) 'rootReconciler': rootReconciler!,
+        if (syncer != null) 'syncer': syncer!,
+      };
+}
+
+/// State information for ConfigSync
+class ConfigManagementConfigSyncState {
+  /// Information about the deployment of ConfigSync, including the version of
+  /// the various Pods deployed
+  ConfigManagementConfigSyncDeploymentState? deploymentState;
+
+  /// The state of ConfigSync's process to sync configs to a cluster
+  ConfigManagementSyncState? syncState;
+
+  /// The version of ConfigSync deployed
+  ConfigManagementConfigSyncVersion? version;
+
+  ConfigManagementConfigSyncState();
+
+  ConfigManagementConfigSyncState.fromJson(core.Map _json) {
+    if (_json.containsKey('deploymentState')) {
+      deploymentState = ConfigManagementConfigSyncDeploymentState.fromJson(
+          _json['deploymentState'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('syncState')) {
+      syncState = ConfigManagementSyncState.fromJson(
+          _json['syncState'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('version')) {
+      version = ConfigManagementConfigSyncVersion.fromJson(
+          _json['version'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deploymentState != null)
+          'deploymentState': deploymentState!.toJson(),
+        if (syncState != null) 'syncState': syncState!.toJson(),
+        if (version != null) 'version': version!.toJson(),
+      };
+}
+
+/// Specific versioning information pertaining to ConfigSync's Pods
+class ConfigManagementConfigSyncVersion {
+  /// Version of the deployed git-sync pod
+  core.String? gitSync;
+
+  /// Version of the deployed importer pod
+  core.String? importer;
+
+  /// Version of the deployed monitor pod
+  core.String? monitor;
+
+  /// Version of the deployed reconciler-manager pod
+  core.String? reconcilerManager;
+
+  /// Version of the deployed reconciler container in root-reconciler pod
+  core.String? rootReconciler;
+
+  /// Version of the deployed syncer pod
+  core.String? syncer;
+
+  ConfigManagementConfigSyncVersion();
+
+  ConfigManagementConfigSyncVersion.fromJson(core.Map _json) {
+    if (_json.containsKey('gitSync')) {
+      gitSync = _json['gitSync'] as core.String;
+    }
+    if (_json.containsKey('importer')) {
+      importer = _json['importer'] as core.String;
+    }
+    if (_json.containsKey('monitor')) {
+      monitor = _json['monitor'] as core.String;
+    }
+    if (_json.containsKey('reconcilerManager')) {
+      reconcilerManager = _json['reconcilerManager'] as core.String;
+    }
+    if (_json.containsKey('rootReconciler')) {
+      rootReconciler = _json['rootReconciler'] as core.String;
+    }
+    if (_json.containsKey('syncer')) {
+      syncer = _json['syncer'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gitSync != null) 'gitSync': gitSync!,
+        if (importer != null) 'importer': importer!,
+        if (monitor != null) 'monitor': monitor!,
+        if (reconcilerManager != null) 'reconcilerManager': reconcilerManager!,
+        if (rootReconciler != null) 'rootReconciler': rootReconciler!,
+        if (syncer != null) 'syncer': syncer!,
+      };
+}
+
+/// Model for a config file in the git repo with an associated Sync error
+class ConfigManagementErrorResource {
+  /// Group/version/kind of the resource that is causing an error
+  ConfigManagementGroupVersionKind? resourceGvk;
+
+  /// Metadata name of the resource that is causing an error
+  core.String? resourceName;
+
+  /// Namespace of the resource that is causing an error
+  core.String? resourceNamespace;
+
+  /// Path in the git repo of the erroneous config
+  core.String? sourcePath;
+
+  ConfigManagementErrorResource();
+
+  ConfigManagementErrorResource.fromJson(core.Map _json) {
+    if (_json.containsKey('resourceGvk')) {
+      resourceGvk = ConfigManagementGroupVersionKind.fromJson(
+          _json['resourceGvk'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('resourceName')) {
+      resourceName = _json['resourceName'] as core.String;
+    }
+    if (_json.containsKey('resourceNamespace')) {
+      resourceNamespace = _json['resourceNamespace'] as core.String;
+    }
+    if (_json.containsKey('sourcePath')) {
+      sourcePath = _json['sourcePath'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (resourceGvk != null) 'resourceGvk': resourceGvk!.toJson(),
+        if (resourceName != null) 'resourceName': resourceName!,
+        if (resourceNamespace != null) 'resourceNamespace': resourceNamespace!,
+        if (sourcePath != null) 'sourcePath': sourcePath!,
+      };
+}
+
+/// State of Policy Controller installation.
+class ConfigManagementGatekeeperDeploymentState {
+  /// Status of gatekeeper-audit deployment.
+  /// Possible string values are:
+  /// - "DEPLOYMENT_STATE_UNSPECIFIED" : Deployment's state cannot be determined
+  /// - "NOT_INSTALLED" : Deployment is not installed
+  /// - "INSTALLED" : Deployment is installed
+  /// - "ERROR" : Deployment was attempted to be installed, but has errors
+  core.String? gatekeeperAudit;
+
+  /// Status of gatekeeper-controller-manager pod.
+  /// Possible string values are:
+  /// - "DEPLOYMENT_STATE_UNSPECIFIED" : Deployment's state cannot be determined
+  /// - "NOT_INSTALLED" : Deployment is not installed
+  /// - "INSTALLED" : Deployment is installed
+  /// - "ERROR" : Deployment was attempted to be installed, but has errors
+  core.String? gatekeeperControllerManagerState;
+
+  ConfigManagementGatekeeperDeploymentState();
+
+  ConfigManagementGatekeeperDeploymentState.fromJson(core.Map _json) {
+    if (_json.containsKey('gatekeeperAudit')) {
+      gatekeeperAudit = _json['gatekeeperAudit'] as core.String;
+    }
+    if (_json.containsKey('gatekeeperControllerManagerState')) {
+      gatekeeperControllerManagerState =
+          _json['gatekeeperControllerManagerState'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gatekeeperAudit != null) 'gatekeeperAudit': gatekeeperAudit!,
+        if (gatekeeperControllerManagerState != null)
+          'gatekeeperControllerManagerState': gatekeeperControllerManagerState!,
+      };
+}
+
+/// Git repo configuration for a single cluster.
+class ConfigManagementGitConfig {
+  /// The GCP Service Account Email used for auth when secret_type is
+  /// gcpServiceAccount.
+  core.String? gcpServiceAccountEmail;
+
+  /// URL for the HTTPS proxy to be used when communicating with the Git repo.
+  core.String? httpsProxy;
+
+  /// The path within the Git repository that represents the top level of the
+  /// repo to sync.
+  ///
+  /// Default: the root directory of the repository.
+  core.String? policyDir;
+
+  /// Type of secret configured for access to the Git repo.
+  core.String? secretType;
+
+  /// The branch of the repository to sync from.
+  ///
+  /// Default: master.
+  core.String? syncBranch;
+
+  /// The URL of the Git repository to use as the source of truth.
+  core.String? syncRepo;
+
+  /// Git revision (tag or hash) to check out.
+  ///
+  /// Default HEAD.
+  core.String? syncRev;
+
+  /// Period in seconds between consecutive syncs.
+  ///
+  /// Default: 15.
+  core.String? syncWaitSecs;
+
+  ConfigManagementGitConfig();
+
+  ConfigManagementGitConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('gcpServiceAccountEmail')) {
+      gcpServiceAccountEmail = _json['gcpServiceAccountEmail'] as core.String;
+    }
+    if (_json.containsKey('httpsProxy')) {
+      httpsProxy = _json['httpsProxy'] as core.String;
+    }
+    if (_json.containsKey('policyDir')) {
+      policyDir = _json['policyDir'] as core.String;
+    }
+    if (_json.containsKey('secretType')) {
+      secretType = _json['secretType'] as core.String;
+    }
+    if (_json.containsKey('syncBranch')) {
+      syncBranch = _json['syncBranch'] as core.String;
+    }
+    if (_json.containsKey('syncRepo')) {
+      syncRepo = _json['syncRepo'] as core.String;
+    }
+    if (_json.containsKey('syncRev')) {
+      syncRev = _json['syncRev'] as core.String;
+    }
+    if (_json.containsKey('syncWaitSecs')) {
+      syncWaitSecs = _json['syncWaitSecs'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gcpServiceAccountEmail != null)
+          'gcpServiceAccountEmail': gcpServiceAccountEmail!,
+        if (httpsProxy != null) 'httpsProxy': httpsProxy!,
+        if (policyDir != null) 'policyDir': policyDir!,
+        if (secretType != null) 'secretType': secretType!,
+        if (syncBranch != null) 'syncBranch': syncBranch!,
+        if (syncRepo != null) 'syncRepo': syncRepo!,
+        if (syncRev != null) 'syncRev': syncRev!,
+        if (syncWaitSecs != null) 'syncWaitSecs': syncWaitSecs!,
+      };
+}
+
+/// A Kubernetes object's GVK
+class ConfigManagementGroupVersionKind {
+  /// Kubernetes Group
+  core.String? group;
+
+  /// Kubernetes Kind
+  core.String? kind;
+
+  /// Kubernetes Version
+  core.String? version;
+
+  ConfigManagementGroupVersionKind();
+
+  ConfigManagementGroupVersionKind.fromJson(core.Map _json) {
+    if (_json.containsKey('group')) {
+      group = _json['group'] as core.String;
+    }
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'] as core.String;
+    }
+    if (_json.containsKey('version')) {
+      version = _json['version'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (group != null) 'group': group!,
+        if (kind != null) 'kind': kind!,
+        if (version != null) 'version': version!,
+      };
+}
+
+/// Configuration for Hierarchy Controller
+class ConfigManagementHierarchyControllerConfig {
+  /// Whether hierarchical resource quota is enabled in this cluster.
+  core.bool? enableHierarchicalResourceQuota;
+
+  /// Whether pod tree labels are enabled in this cluster.
+  core.bool? enablePodTreeLabels;
+
+  /// Whether Hierarchy Controller is enabled in this cluster.
+  core.bool? enabled;
+
+  ConfigManagementHierarchyControllerConfig();
+
+  ConfigManagementHierarchyControllerConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('enableHierarchicalResourceQuota')) {
+      enableHierarchicalResourceQuota =
+          _json['enableHierarchicalResourceQuota'] as core.bool;
+    }
+    if (_json.containsKey('enablePodTreeLabels')) {
+      enablePodTreeLabels = _json['enablePodTreeLabels'] as core.bool;
+    }
+    if (_json.containsKey('enabled')) {
+      enabled = _json['enabled'] as core.bool;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableHierarchicalResourceQuota != null)
+          'enableHierarchicalResourceQuota': enableHierarchicalResourceQuota!,
+        if (enablePodTreeLabels != null)
+          'enablePodTreeLabels': enablePodTreeLabels!,
+        if (enabled != null) 'enabled': enabled!,
+      };
+}
+
+/// Deployment state for Hierarchy Controller
+class ConfigManagementHierarchyControllerDeploymentState {
+  /// The deployment state for Hierarchy Controller extension (e.g. v0.7.0-hc.1)
+  /// Possible string values are:
+  /// - "DEPLOYMENT_STATE_UNSPECIFIED" : Deployment's state cannot be determined
+  /// - "NOT_INSTALLED" : Deployment is not installed
+  /// - "INSTALLED" : Deployment is installed
+  /// - "ERROR" : Deployment was attempted to be installed, but has errors
+  core.String? extension;
+
+  /// The deployment state for open source HNC (e.g. v0.7.0-hc.0)
+  /// Possible string values are:
+  /// - "DEPLOYMENT_STATE_UNSPECIFIED" : Deployment's state cannot be determined
+  /// - "NOT_INSTALLED" : Deployment is not installed
+  /// - "INSTALLED" : Deployment is installed
+  /// - "ERROR" : Deployment was attempted to be installed, but has errors
+  core.String? hnc;
+
+  ConfigManagementHierarchyControllerDeploymentState();
+
+  ConfigManagementHierarchyControllerDeploymentState.fromJson(core.Map _json) {
+    if (_json.containsKey('extension')) {
+      extension = _json['extension'] as core.String;
+    }
+    if (_json.containsKey('hnc')) {
+      hnc = _json['hnc'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (extension != null) 'extension': extension!,
+        if (hnc != null) 'hnc': hnc!,
+      };
+}
+
+/// State for Hierarchy Controller
+class ConfigManagementHierarchyControllerState {
+  /// The deployment state for Hierarchy Controller
+  ConfigManagementHierarchyControllerDeploymentState? state;
+
+  /// The version for Hierarchy Controller
+  ConfigManagementHierarchyControllerVersion? version;
+
+  ConfigManagementHierarchyControllerState();
+
+  ConfigManagementHierarchyControllerState.fromJson(core.Map _json) {
+    if (_json.containsKey('state')) {
+      state = ConfigManagementHierarchyControllerDeploymentState.fromJson(
+          _json['state'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('version')) {
+      version = ConfigManagementHierarchyControllerVersion.fromJson(
+          _json['version'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (state != null) 'state': state!.toJson(),
+        if (version != null) 'version': version!.toJson(),
+      };
+}
+
+/// Version for Hierarchy Controller
+class ConfigManagementHierarchyControllerVersion {
+  /// Version for Hierarchy Controller extension
+  core.String? extension;
+
+  /// Version for open source HNC
+  core.String? hnc;
+
+  ConfigManagementHierarchyControllerVersion();
+
+  ConfigManagementHierarchyControllerVersion.fromJson(core.Map _json) {
+    if (_json.containsKey('extension')) {
+      extension = _json['extension'] as core.String;
+    }
+    if (_json.containsKey('hnc')) {
+      hnc = _json['hnc'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (extension != null) 'extension': extension!,
+        if (hnc != null) 'hnc': hnc!,
+      };
+}
+
+/// Errors pertaining to the installation of ACM
+class ConfigManagementInstallError {
+  /// A string representing the user facing error message
+  core.String? errorMessage;
+
+  ConfigManagementInstallError();
+
+  ConfigManagementInstallError.fromJson(core.Map _json) {
+    if (_json.containsKey('errorMessage')) {
+      errorMessage = _json['errorMessage'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (errorMessage != null) 'errorMessage': errorMessage!,
+      };
+}
+
+/// **Anthos Config Management**: Configuration for a single cluster.
+///
+/// Intended to parallel the ConfigManagement CR.
+class ConfigManagementMembershipSpec {
+  /// Config Sync configuration for the cluster.
+  ConfigManagementConfigSync? configSync;
+
+  /// Hierarchy Controller configuration for the cluster.
+  ConfigManagementHierarchyControllerConfig? hierarchyController;
+
+  /// Policy Controller configuration for the cluster.
+  ConfigManagementPolicyController? policyController;
+
+  /// Version of ACM installed.
+  core.String? version;
+
+  ConfigManagementMembershipSpec();
+
+  ConfigManagementMembershipSpec.fromJson(core.Map _json) {
+    if (_json.containsKey('configSync')) {
+      configSync = ConfigManagementConfigSync.fromJson(
+          _json['configSync'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('hierarchyController')) {
+      hierarchyController = ConfigManagementHierarchyControllerConfig.fromJson(
+          _json['hierarchyController'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('policyController')) {
+      policyController = ConfigManagementPolicyController.fromJson(
+          _json['policyController'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('version')) {
+      version = _json['version'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (configSync != null) 'configSync': configSync!.toJson(),
+        if (hierarchyController != null)
+          'hierarchyController': hierarchyController!.toJson(),
+        if (policyController != null)
+          'policyController': policyController!.toJson(),
+        if (version != null) 'version': version!,
+      };
+}
+
+/// **Anthos Config Management**: State for a single cluster.
+class ConfigManagementMembershipState {
+  /// The user-defined name for the cluster used by ClusterSelectors to group
+  /// clusters together.
+  ///
+  /// This should match Membership's membership_name, unless the user installed
+  /// ACM on the cluster manually prior to enabling the ACM hub feature. Unique
+  /// within a Anthos Config Management installation.
+  core.String? clusterName;
+
+  /// Current sync status
+  ConfigManagementConfigSyncState? configSyncState;
+
+  /// Hierarchy Controller status
+  ConfigManagementHierarchyControllerState? hierarchyControllerState;
+
+  /// Membership configuration in the cluster.
+  ///
+  /// This represents the actual state in the cluster, while the MembershipSpec
+  /// in the FeatureSpec represents the intended state
+  ConfigManagementMembershipSpec? membershipSpec;
+
+  /// Current install status of ACM's Operator
+  ConfigManagementOperatorState? operatorState;
+
+  /// PolicyController status
+  ConfigManagementPolicyControllerState? policyControllerState;
+
+  ConfigManagementMembershipState();
+
+  ConfigManagementMembershipState.fromJson(core.Map _json) {
+    if (_json.containsKey('clusterName')) {
+      clusterName = _json['clusterName'] as core.String;
+    }
+    if (_json.containsKey('configSyncState')) {
+      configSyncState = ConfigManagementConfigSyncState.fromJson(
+          _json['configSyncState'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('hierarchyControllerState')) {
+      hierarchyControllerState =
+          ConfigManagementHierarchyControllerState.fromJson(
+              _json['hierarchyControllerState']
+                  as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('membershipSpec')) {
+      membershipSpec = ConfigManagementMembershipSpec.fromJson(
+          _json['membershipSpec'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('operatorState')) {
+      operatorState = ConfigManagementOperatorState.fromJson(
+          _json['operatorState'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('policyControllerState')) {
+      policyControllerState = ConfigManagementPolicyControllerState.fromJson(
+          _json['policyControllerState']
+              as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clusterName != null) 'clusterName': clusterName!,
+        if (configSyncState != null)
+          'configSyncState': configSyncState!.toJson(),
+        if (hierarchyControllerState != null)
+          'hierarchyControllerState': hierarchyControllerState!.toJson(),
+        if (membershipSpec != null) 'membershipSpec': membershipSpec!.toJson(),
+        if (operatorState != null) 'operatorState': operatorState!.toJson(),
+        if (policyControllerState != null)
+          'policyControllerState': policyControllerState!.toJson(),
+      };
+}
+
+/// State information for an ACM's Operator
+class ConfigManagementOperatorState {
+  /// The state of the Operator's deployment
+  /// Possible string values are:
+  /// - "DEPLOYMENT_STATE_UNSPECIFIED" : Deployment's state cannot be determined
+  /// - "NOT_INSTALLED" : Deployment is not installed
+  /// - "INSTALLED" : Deployment is installed
+  /// - "ERROR" : Deployment was attempted to be installed, but has errors
+  core.String? deploymentState;
+
+  /// Install errors.
+  core.List<ConfigManagementInstallError>? errors;
+
+  /// The semenatic version number of the operator
+  core.String? version;
+
+  ConfigManagementOperatorState();
+
+  ConfigManagementOperatorState.fromJson(core.Map _json) {
+    if (_json.containsKey('deploymentState')) {
+      deploymentState = _json['deploymentState'] as core.String;
+    }
+    if (_json.containsKey('errors')) {
+      errors = (_json['errors'] as core.List)
+          .map<ConfigManagementInstallError>((value) =>
+              ConfigManagementInstallError.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('version')) {
+      version = _json['version'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deploymentState != null) 'deploymentState': deploymentState!,
+        if (errors != null)
+          'errors': errors!.map((value) => value.toJson()).toList(),
+        if (version != null) 'version': version!,
+      };
+}
+
+/// Configuration for Policy Controller
+class ConfigManagementPolicyController {
+  /// Sets the interval for Policy Controller Audit Scans (in seconds).
+  ///
+  /// When set to 0, this disables audit functionality altogether.
+  core.String? auditIntervalSeconds;
+
+  /// Enables the installation of Policy Controller.
+  ///
+  /// If false, the rest of PolicyController fields take no effect.
+  core.bool? enabled;
+
+  /// The set of namespaces that are excluded from Policy Controller checks.
+  ///
+  /// Namespaces do not need to currently exist on the cluster.
+  core.List<core.String>? exemptableNamespaces;
+
+  /// Logs all denies and dry run failures.
+  core.bool? logDeniesEnabled;
+
+  /// Enables the ability to use Constraint Templates that reference to objects
+  /// other than the object currently being evaluated.
+  core.bool? referentialRulesEnabled;
+
+  /// Installs the default template library along with Policy Controller.
+  core.bool? templateLibraryInstalled;
+
+  ConfigManagementPolicyController();
+
+  ConfigManagementPolicyController.fromJson(core.Map _json) {
+    if (_json.containsKey('auditIntervalSeconds')) {
+      auditIntervalSeconds = _json['auditIntervalSeconds'] as core.String;
+    }
+    if (_json.containsKey('enabled')) {
+      enabled = _json['enabled'] as core.bool;
+    }
+    if (_json.containsKey('exemptableNamespaces')) {
+      exemptableNamespaces = (_json['exemptableNamespaces'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('logDeniesEnabled')) {
+      logDeniesEnabled = _json['logDeniesEnabled'] as core.bool;
+    }
+    if (_json.containsKey('referentialRulesEnabled')) {
+      referentialRulesEnabled = _json['referentialRulesEnabled'] as core.bool;
+    }
+    if (_json.containsKey('templateLibraryInstalled')) {
+      templateLibraryInstalled = _json['templateLibraryInstalled'] as core.bool;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (auditIntervalSeconds != null)
+          'auditIntervalSeconds': auditIntervalSeconds!,
+        if (enabled != null) 'enabled': enabled!,
+        if (exemptableNamespaces != null)
+          'exemptableNamespaces': exemptableNamespaces!,
+        if (logDeniesEnabled != null) 'logDeniesEnabled': logDeniesEnabled!,
+        if (referentialRulesEnabled != null)
+          'referentialRulesEnabled': referentialRulesEnabled!,
+        if (templateLibraryInstalled != null)
+          'templateLibraryInstalled': templateLibraryInstalled!,
+      };
+}
+
+/// State for PolicyControllerState.
+class ConfigManagementPolicyControllerState {
+  /// The state about the policy controller installation.
+  ConfigManagementGatekeeperDeploymentState? deploymentState;
+
+  /// The version of Gatekeeper Policy Controller deployed.
+  ConfigManagementPolicyControllerVersion? version;
+
+  ConfigManagementPolicyControllerState();
+
+  ConfigManagementPolicyControllerState.fromJson(core.Map _json) {
+    if (_json.containsKey('deploymentState')) {
+      deploymentState = ConfigManagementGatekeeperDeploymentState.fromJson(
+          _json['deploymentState'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('version')) {
+      version = ConfigManagementPolicyControllerVersion.fromJson(
+          _json['version'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deploymentState != null)
+          'deploymentState': deploymentState!.toJson(),
+        if (version != null) 'version': version!.toJson(),
+      };
+}
+
+/// The build version of Gatekeeper Policy Controller is using.
+class ConfigManagementPolicyControllerVersion {
+  /// The gatekeeper image tag that is composed of ACM version, git tag, build
+  /// number.
+  core.String? version;
+
+  ConfigManagementPolicyControllerVersion();
+
+  ConfigManagementPolicyControllerVersion.fromJson(core.Map _json) {
+    if (_json.containsKey('version')) {
+      version = _json['version'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (version != null) 'version': version!,
+      };
+}
+
+/// An ACM created error representing a problem syncing configurations
+class ConfigManagementSyncError {
+  /// An ACM defined error code
+  core.String? code;
+
+  /// A description of the error
+  core.String? errorMessage;
+
+  /// A list of config(s) associated with the error, if any
+  core.List<ConfigManagementErrorResource>? errorResources;
+
+  ConfigManagementSyncError();
+
+  ConfigManagementSyncError.fromJson(core.Map _json) {
+    if (_json.containsKey('code')) {
+      code = _json['code'] as core.String;
+    }
+    if (_json.containsKey('errorMessage')) {
+      errorMessage = _json['errorMessage'] as core.String;
+    }
+    if (_json.containsKey('errorResources')) {
+      errorResources = (_json['errorResources'] as core.List)
+          .map<ConfigManagementErrorResource>((value) =>
+              ConfigManagementErrorResource.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+        if (errorMessage != null) 'errorMessage': errorMessage!,
+        if (errorResources != null)
+          'errorResources':
+              errorResources!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// State indicating an ACM's progress syncing configurations to a cluster
+class ConfigManagementSyncState {
+  /// Sync status code
+  /// Possible string values are:
+  /// - "SYNC_CODE_UNSPECIFIED" : ACM cannot determine a sync code
+  /// - "SYNCED" : ACM successfully synced the git Repo with the cluster
+  /// - "PENDING" : ACM is in the progress of syncing a new change
+  /// - "ERROR" : Indicates an error configuring ACM, and user action is
+  /// required
+  /// - "NOT_CONFIGURED" : ACM has been installed (operator manifest deployed),
+  /// but not configured.
+  /// - "NOT_INSTALLED" : ACM has not been installed (no operator pod found)
+  /// - "UNAUTHORIZED" : Error authorizing with the cluster
+  /// - "UNREACHABLE" : Cluster could not be reached
+  core.String? code;
+
+  /// A list of errors resulting from problematic configs.
+  ///
+  /// This list will be truncated after 100 errors, although it is unlikely for
+  /// that many errors to simultaneously exist.
+  core.List<ConfigManagementSyncError>? errors;
+
+  /// Token indicating the state of the importer.
+  core.String? importToken;
+
+  /// Timestamp of when ACM last successfully synced the repo The time format is
+  /// specified in https://golang.org/pkg/time/#Time.String This field is being
+  /// deprecated.
+  ///
+  /// Use last_sync_time instead. (b/154053616)
+  core.String? lastSync;
+
+  /// Timestamp type of when ACM last successfully synced the repo
+  core.String? lastSyncTime;
+
+  /// Token indicating the state of the repo.
+  core.String? sourceToken;
+
+  /// Token indicating the state of the syncer.
+  core.String? syncToken;
+
+  ConfigManagementSyncState();
+
+  ConfigManagementSyncState.fromJson(core.Map _json) {
+    if (_json.containsKey('code')) {
+      code = _json['code'] as core.String;
+    }
+    if (_json.containsKey('errors')) {
+      errors = (_json['errors'] as core.List)
+          .map<ConfigManagementSyncError>((value) =>
+              ConfigManagementSyncError.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('importToken')) {
+      importToken = _json['importToken'] as core.String;
+    }
+    if (_json.containsKey('lastSync')) {
+      lastSync = _json['lastSync'] as core.String;
+    }
+    if (_json.containsKey('lastSyncTime')) {
+      lastSyncTime = _json['lastSyncTime'] as core.String;
+    }
+    if (_json.containsKey('sourceToken')) {
+      sourceToken = _json['sourceToken'] as core.String;
+    }
+    if (_json.containsKey('syncToken')) {
+      syncToken = _json['syncToken'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+        if (errors != null)
+          'errors': errors!.map((value) => value.toJson()).toList(),
+        if (importToken != null) 'importToken': importToken!,
+        if (lastSync != null) 'lastSync': lastSync!,
+        if (lastSyncTime != null) 'lastSyncTime': lastSyncTime!,
+        if (sourceToken != null) 'sourceToken': sourceToken!,
+        if (syncToken != null) 'syncToken': syncToken!,
+      };
+}
+
 /// ConnectAgentResource represents a Kubernetes resource manifest for Connect
 /// Agent deployment.
 class ConnectAgentResource {
@@ -1232,6 +2628,235 @@ class Expr {
         if (expression != null) 'expression': expression!,
         if (location != null) 'location': location!,
         if (title != null) 'title': title!,
+      };
+}
+
+/// Feature represents the settings and status of any Hub Feature.
+class Feature {
+  /// When the Feature resource was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// When the Feature resource was deleted.
+  ///
+  /// Output only.
+  core.String? deleteTime;
+
+  /// GCP labels for this Feature.
+  core.Map<core.String, core.String>? labels;
+
+  /// Membership-specific configuration for this Feature.
+  ///
+  /// If this Feature does not support any per-Membership configuration, this
+  /// field may be unused. The keys indicate which Membership the configuration
+  /// is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p}
+  /// is the project, {l} is a valid location and {m} is a valid Membership in
+  /// this project at that location. {p} WILL match the Feature's project. {p}
+  /// will always be returned as the project number, but the project ID is also
+  /// accepted during input. If the same Membership is specified in the map
+  /// twice (using the project ID form, and the project number form), exactly
+  /// ONE of the entries will be saved, with no guarantees as to which. For this
+  /// reason, it is recommended the same format be used for all entries when
+  /// mutating a Feature.
+  ///
+  /// Optional.
+  core.Map<core.String, MembershipFeatureSpec>? membershipSpecs;
+
+  /// Membership-specific Feature status.
+  ///
+  /// If this Feature does report any per-Membership status, this field may be
+  /// unused. The keys indicate which Membership the state is for, in the form:
+  /// projects/{p}/locations/{l}/memberships/{m} Where {p} is the project
+  /// number, {l} is a valid location and {m} is a valid Membership in this
+  /// project at that location. {p} MUST match the Feature's project number.
+  ///
+  /// Output only.
+  core.Map<core.String, MembershipFeatureState>? membershipStates;
+
+  /// The full, unique name of this Feature resource in the format `projects / *
+  /// /locations / * /features / * `.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// State of the Feature resource itself.
+  ///
+  /// Output only.
+  FeatureResourceState? resourceState;
+
+  /// Hub-wide Feature configuration.
+  ///
+  /// If this Feature does not support any Hub-wide configuration, this field
+  /// may be unused.
+  ///
+  /// Optional.
+  CommonFeatureSpec? spec;
+
+  /// The Hub-wide Feature state.
+  ///
+  /// Output only.
+  CommonFeatureState? state;
+
+  /// When the Feature resource was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  Feature();
+
+  Feature.fromJson(core.Map _json) {
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'] as core.String;
+    }
+    if (_json.containsKey('deleteTime')) {
+      deleteTime = _json['deleteTime'] as core.String;
+    }
+    if (_json.containsKey('labels')) {
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
+    }
+    if (_json.containsKey('membershipSpecs')) {
+      membershipSpecs =
+          (_json['membershipSpecs'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          MembershipFeatureSpec.fromJson(
+              item as core.Map<core.String, core.dynamic>),
+        ),
+      );
+    }
+    if (_json.containsKey('membershipStates')) {
+      membershipStates =
+          (_json['membershipStates'] as core.Map<core.String, core.dynamic>)
+              .map(
+        (key, item) => core.MapEntry(
+          key,
+          MembershipFeatureState.fromJson(
+              item as core.Map<core.String, core.dynamic>),
+        ),
+      );
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('resourceState')) {
+      resourceState = FeatureResourceState.fromJson(
+          _json['resourceState'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('spec')) {
+      spec = CommonFeatureSpec.fromJson(
+          _json['spec'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('state')) {
+      state = CommonFeatureState.fromJson(
+          _json['state'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (deleteTime != null) 'deleteTime': deleteTime!,
+        if (labels != null) 'labels': labels!,
+        if (membershipSpecs != null)
+          'membershipSpecs': membershipSpecs!
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (membershipStates != null)
+          'membershipStates': membershipStates!
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (name != null) 'name': name!,
+        if (resourceState != null) 'resourceState': resourceState!.toJson(),
+        if (spec != null) 'spec': spec!.toJson(),
+        if (state != null) 'state': state!.toJson(),
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// FeatureResourceState describes the state of a Feature *resource* in the
+/// GkeHub API.
+///
+/// See `FeatureState` for the "running state" of the Feature in the Hub and
+/// across Memberships.
+class FeatureResourceState {
+  /// The current state of the Feature resource in the Hub API.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State is unknown or not set.
+  /// - "ENABLING" : The Feature is being enabled, and the Feature resource is
+  /// being created. Once complete, the corresponding Feature will be enabled in
+  /// this Hub.
+  /// - "ACTIVE" : The Feature is enabled in this Hub, and the Feature resource
+  /// is fully available.
+  /// - "DISABLING" : The Feature is being disabled in this Hub, and the Feature
+  /// resource is being deleted.
+  /// - "UPDATING" : The Feature resource is being updated.
+  /// - "SERVICE_UPDATING" : The Feature resource is being updated by the Hub
+  /// Service.
+  core.String? state;
+
+  FeatureResourceState();
+
+  FeatureResourceState.fromJson(core.Map _json) {
+    if (_json.containsKey('state')) {
+      state = _json['state'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (state != null) 'state': state!,
+      };
+}
+
+/// FeatureState describes the high-level state of a Feature.
+///
+/// It may be used to describe a Feature's state at the environ-level, or
+/// per-membershop, depending on the context.
+class FeatureState {
+  /// The high-level, machine-readable status of this Feature.
+  /// Possible string values are:
+  /// - "CODE_UNSPECIFIED" : Unknown or not set.
+  /// - "OK" : The Feature is operating normally.
+  /// - "WARNING" : The Feature has encountered an issue, and is operating in a
+  /// degraded state. The Feature may need intervention to return to normal
+  /// operation. See the description and any associated Feature-specific details
+  /// for more information.
+  /// - "ERROR" : The Feature is not operating or is in a severely degraded
+  /// state. The Feature may need intervention to return to normal operation.
+  /// See the description and any associated Feature-specific details for more
+  /// information.
+  core.String? code;
+
+  /// A human-readable description of the current status.
+  core.String? description;
+
+  /// The time this status and any related Feature-specific details were
+  /// updated.
+  core.String? updateTime;
+
+  FeatureState();
+
+  FeatureState.fromJson(core.Map _json) {
+    if (_json.containsKey('code')) {
+      code = _json['code'] as core.String;
+    }
+    if (_json.containsKey('description')) {
+      description = _json['description'] as core.String;
+    }
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+        if (description != null) 'description': description!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -1410,6 +3035,39 @@ class KubernetesMetadata {
         if (nodeProviderId != null) 'nodeProviderId': nodeProviderId!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (vcpuCount != null) 'vcpuCount': vcpuCount!,
+      };
+}
+
+/// Response message for the `GkeHub.ListFeatures` method.
+class ListFeaturesResponse {
+  /// A token to request the next page of resources from the `ListFeatures`
+  /// method.
+  ///
+  /// The value of an empty string means that there are no more resources to
+  /// return.
+  core.String? nextPageToken;
+
+  /// The list of matching Features
+  core.List<Feature>? resources;
+
+  ListFeaturesResponse();
+
+  ListFeaturesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+    if (_json.containsKey('resources')) {
+      resources = (_json['resources'] as core.List)
+          .map<Feature>((value) =>
+              Feature.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (resources != null)
+          'resources': resources!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1772,6 +3430,56 @@ class MembershipEndpoint {
       };
 }
 
+/// MembershipFeatureSpec contains configuration information for a single
+/// Membership.
+class MembershipFeatureSpec {
+  /// Config Management-specific spec.
+  ConfigManagementMembershipSpec? configmanagement;
+
+  MembershipFeatureSpec();
+
+  MembershipFeatureSpec.fromJson(core.Map _json) {
+    if (_json.containsKey('configmanagement')) {
+      configmanagement = ConfigManagementMembershipSpec.fromJson(
+          _json['configmanagement'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (configmanagement != null)
+          'configmanagement': configmanagement!.toJson(),
+      };
+}
+
+/// MembershipFeatureState contains Feature status information for a single
+/// Membership.
+class MembershipFeatureState {
+  /// Config Management-specific state.
+  ConfigManagementMembershipState? configmanagement;
+
+  /// The high-level state of this Feature for a single membership.
+  FeatureState? state;
+
+  MembershipFeatureState();
+
+  MembershipFeatureState.fromJson(core.Map _json) {
+    if (_json.containsKey('configmanagement')) {
+      configmanagement = ConfigManagementMembershipState.fromJson(
+          _json['configmanagement'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('state')) {
+      state = FeatureState.fromJson(
+          _json['state'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (configmanagement != null)
+          'configmanagement': configmanagement!.toJson(),
+        if (state != null) 'state': state!.toJson(),
+      };
+}
+
 /// MembershipState describes the state of a Membership resource.
 class MembershipState {
   /// The current state of the Membership resource.
@@ -1796,6 +3504,27 @@ class MembershipState {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
+      };
+}
+
+/// **Multi-cluster Ingress**: The configuration for the MultiClusterIngress
+/// feature.
+class MultiClusterIngressFeatureSpec {
+  /// Fully-qualified Membership name which hosts the MultiClusterIngress CRD.
+  ///
+  /// Example: `projects/foo-proj/locations/global/memberships/bar`
+  core.String? configMembership;
+
+  MultiClusterIngressFeatureSpec();
+
+  MultiClusterIngressFeatureSpec.fromJson(core.Map _json) {
+    if (_json.containsKey('configMembership')) {
+      configMembership = _json['configMembership'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (configMembership != null) 'configMembership': configMembership!,
       };
 }
 

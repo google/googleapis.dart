@@ -602,6 +602,51 @@ class ProjectsLocationsInstancesResource {
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Reschedule maintenance for a given instance in a given project and
+  /// location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Redis instance resource name using the form:
+  /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
+  /// where `location_id` refers to a GCP region.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> rescheduleMaintenance(
+    RescheduleMaintenanceRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/' + core.Uri.encodeFull('$name') + ':rescheduleMaintenance';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Upgrades Redis instance to the newer Redis version specified in the
   /// request.
   ///
@@ -1179,6 +1224,18 @@ class Instance {
   /// Optional.
   core.String? locationId;
 
+  /// The maintenance policy for the instance.
+  ///
+  /// If not provided, maintenance events can be performed at any time.
+  ///
+  /// Optional.
+  MaintenancePolicy? maintenancePolicy;
+
+  /// Date and time of upcoming maintenance events which have been scheduled.
+  ///
+  /// Output only.
+  MaintenanceSchedule? maintenanceSchedule;
+
   /// Redis memory size in GiB.
   ///
   /// Required.
@@ -1334,6 +1391,14 @@ class Instance {
     if (_json.containsKey('locationId')) {
       locationId = _json['locationId'] as core.String;
     }
+    if (_json.containsKey('maintenancePolicy')) {
+      maintenancePolicy = MaintenancePolicy.fromJson(
+          _json['maintenancePolicy'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('maintenanceSchedule')) {
+      maintenanceSchedule = MaintenanceSchedule.fromJson(
+          _json['maintenanceSchedule'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('memorySizeGb')) {
       memorySizeGb = _json['memorySizeGb'] as core.int;
     }
@@ -1393,6 +1458,10 @@ class Instance {
         if (host != null) 'host': host!,
         if (labels != null) 'labels': labels!,
         if (locationId != null) 'locationId': locationId!,
+        if (maintenancePolicy != null)
+          'maintenancePolicy': maintenancePolicy!.toJson(),
+        if (maintenanceSchedule != null)
+          'maintenanceSchedule': maintenanceSchedule!.toJson(),
         if (memorySizeGb != null) 'memorySizeGb': memorySizeGb!,
         if (name != null) 'name': name!,
         if (persistenceIamIdentity != null)
@@ -1610,6 +1679,114 @@ class Location {
       };
 }
 
+/// Maintenance policy for an instance.
+class MaintenancePolicy {
+  /// The time when the policy was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Description of what this policy is for.
+  ///
+  /// Create/Update methods return INVALID_ARGUMENT if the length is greater
+  /// than 512.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The time when the policy was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// Maintenance window that is applied to resources covered by this policy.
+  ///
+  /// Minimum 1. For the current version, the maximum number of weekly_window is
+  /// expected to be one.
+  ///
+  /// Optional.
+  core.List<WeeklyMaintenanceWindow>? weeklyMaintenanceWindow;
+
+  MaintenancePolicy();
+
+  MaintenancePolicy.fromJson(core.Map _json) {
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'] as core.String;
+    }
+    if (_json.containsKey('description')) {
+      description = _json['description'] as core.String;
+    }
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'] as core.String;
+    }
+    if (_json.containsKey('weeklyMaintenanceWindow')) {
+      weeklyMaintenanceWindow = (_json['weeklyMaintenanceWindow'] as core.List)
+          .map<WeeklyMaintenanceWindow>((value) =>
+              WeeklyMaintenanceWindow.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (weeklyMaintenanceWindow != null)
+          'weeklyMaintenanceWindow':
+              weeklyMaintenanceWindow!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// Upcoming maintenance schedule.
+///
+/// If no maintenance is scheduled, fields are not populated.
+class MaintenanceSchedule {
+  /// If the scheduled maintenance can be rescheduled, default is true.
+  core.bool? canReschedule;
+
+  /// The end time of any upcoming scheduled maintenance for this instance.
+  ///
+  /// Output only.
+  core.String? endTime;
+
+  /// The deadline that the maintenance schedule start time can not go beyond,
+  /// including reschedule.
+  ///
+  /// Output only.
+  core.String? scheduleDeadlineTime;
+
+  /// The start time of any upcoming scheduled maintenance for this instance.
+  ///
+  /// Output only.
+  core.String? startTime;
+
+  MaintenanceSchedule();
+
+  MaintenanceSchedule.fromJson(core.Map _json) {
+    if (_json.containsKey('canReschedule')) {
+      canReschedule = _json['canReschedule'] as core.bool;
+    }
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'] as core.String;
+    }
+    if (_json.containsKey('scheduleDeadlineTime')) {
+      scheduleDeadlineTime = _json['scheduleDeadlineTime'] as core.String;
+    }
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (canReschedule != null) 'canReschedule': canReschedule!,
+        if (endTime != null) 'endTime': endTime!,
+        if (scheduleDeadlineTime != null)
+          'scheduleDeadlineTime': scheduleDeadlineTime!,
+        if (startTime != null) 'startTime': startTime!,
+      };
+}
+
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
@@ -1716,6 +1893,45 @@ class OutputConfig {
       };
 }
 
+/// Request for RescheduleMaintenance.
+class RescheduleMaintenanceRequest {
+  /// If reschedule type is SPECIFIC_TIME, must set up schedule_time as well.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "RESCHEDULE_TYPE_UNSPECIFIED" : Not set.
+  /// - "IMMEDIATE" : If the user wants to schedule the maintenance to happen
+  /// now.
+  /// - "NEXT_AVAILABLE_WINDOW" : If the user wants to use the existing
+  /// maintenance policy to find the next available window.
+  /// - "SPECIFIC_TIME" : If the user wants to reschedule the maintenance to a
+  /// specific time.
+  core.String? rescheduleType;
+
+  /// Timestamp when the maintenance shall be rescheduled to if
+  /// reschedule_type=SPECIFIC_TIME, in RFC 3339 format, for example
+  /// `2012-11-15T16:19:00.094Z`.
+  ///
+  /// Optional.
+  core.String? scheduleTime;
+
+  RescheduleMaintenanceRequest();
+
+  RescheduleMaintenanceRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('rescheduleType')) {
+      rescheduleType = _json['rescheduleType'] as core.String;
+    }
+    if (_json.containsKey('scheduleTime')) {
+      scheduleTime = _json['scheduleTime'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (rescheduleType != null) 'rescheduleType': rescheduleType!,
+        if (scheduleTime != null) 'scheduleTime': scheduleTime!,
+      };
+}
+
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
 ///
@@ -1767,6 +1983,59 @@ class Status {
         if (code != null) 'code': code!,
         if (details != null) 'details': details!,
         if (message != null) 'message': message!,
+      };
+}
+
+/// Represents a time of day.
+///
+/// The date and time zone are either not significant or are specified
+/// elsewhere. An API may choose to allow leap seconds. Related types are
+/// google.type.Date and `google.protobuf.Timestamp`.
+class TimeOfDay {
+  /// Hours of day in 24 hour format.
+  ///
+  /// Should be from 0 to 23. An API may choose to allow the value "24:00:00"
+  /// for scenarios like business closing time.
+  core.int? hours;
+
+  /// Minutes of hour of day.
+  ///
+  /// Must be from 0 to 59.
+  core.int? minutes;
+
+  /// Fractions of seconds in nanoseconds.
+  ///
+  /// Must be from 0 to 999,999,999.
+  core.int? nanos;
+
+  /// Seconds of minutes of the time.
+  ///
+  /// Must normally be from 0 to 59. An API may allow the value 60 if it allows
+  /// leap-seconds.
+  core.int? seconds;
+
+  TimeOfDay();
+
+  TimeOfDay.fromJson(core.Map _json) {
+    if (_json.containsKey('hours')) {
+      hours = _json['hours'] as core.int;
+    }
+    if (_json.containsKey('minutes')) {
+      minutes = _json['minutes'] as core.int;
+    }
+    if (_json.containsKey('nanos')) {
+      nanos = _json['nanos'] as core.int;
+    }
+    if (_json.containsKey('seconds')) {
+      seconds = _json['seconds'] as core.int;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (hours != null) 'hours': hours!,
+        if (minutes != null) 'minutes': minutes!,
+        if (nanos != null) 'nanos': nanos!,
+        if (seconds != null) 'seconds': seconds!,
       };
 }
 
@@ -1841,5 +2110,57 @@ class UpgradeInstanceRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (redisVersion != null) 'redisVersion': redisVersion!,
+      };
+}
+
+/// Time window in which disruptive maintenance updates occur.
+///
+/// Non-disruptive updates can occur inside or outside this window.
+class WeeklyMaintenanceWindow {
+  /// The day of week that maintenance updates occur.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "DAY_OF_WEEK_UNSPECIFIED" : The day of the week is unspecified.
+  /// - "MONDAY" : Monday
+  /// - "TUESDAY" : Tuesday
+  /// - "WEDNESDAY" : Wednesday
+  /// - "THURSDAY" : Thursday
+  /// - "FRIDAY" : Friday
+  /// - "SATURDAY" : Saturday
+  /// - "SUNDAY" : Sunday
+  core.String? day;
+
+  /// Duration of the maintenance window.
+  ///
+  /// The current window is fixed at 3 hours.
+  ///
+  /// Output only.
+  core.String? duration;
+
+  /// Start time of the window in UTC time.
+  ///
+  /// Required.
+  TimeOfDay? startTime;
+
+  WeeklyMaintenanceWindow();
+
+  WeeklyMaintenanceWindow.fromJson(core.Map _json) {
+    if (_json.containsKey('day')) {
+      day = _json['day'] as core.String;
+    }
+    if (_json.containsKey('duration')) {
+      duration = _json['duration'] as core.String;
+    }
+    if (_json.containsKey('startTime')) {
+      startTime = TimeOfDay.fromJson(
+          _json['startTime'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (day != null) 'day': day!,
+        if (duration != null) 'duration': duration!,
+        if (startTime != null) 'startTime': startTime!.toJson(),
       };
 }

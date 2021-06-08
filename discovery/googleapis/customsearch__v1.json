@@ -98,6 +98,7 @@
             "methods": {
                 "list": {
                     "description": "Returns metadata about the search performed, metadata about the engine used for the search, and the search results.",
+                    "flatPath": "customsearch/v1",
                     "httpMethod": "GET",
                     "id": "search.cse.list",
                     "parameterOrder": [],
@@ -385,6 +386,7 @@
                     "methods": {
                         "list": {
                             "description": "Returns metadata about the search performed, metadata about the engine used for the search, and the search results. Uses a small set of url patterns.",
+                            "flatPath": "customsearch/v1/siterestrict",
                             "httpMethod": "GET",
                             "id": "search.cse.siterestrict.list",
                             "parameterOrder": [],
@@ -671,7 +673,7 @@
             }
         }
     },
-    "revision": "20210520",
+    "revision": "20210614",
     "rootUrl": "https://customsearch.googleapis.com/",
     "schemas": {
         "Promotion": {

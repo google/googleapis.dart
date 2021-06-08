@@ -111,6 +111,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Create a new environment.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/environments",
                                     "httpMethod": "POST",
                                     "id": "composer.projects.locations.environments.create",
                                     "parameterOrder": [
@@ -138,6 +139,7 @@
                                 },
                                 "delete": {
                                     "description": "Delete an environment.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}",
                                     "httpMethod": "DELETE",
                                     "id": "composer.projects.locations.environments.delete",
                                     "parameterOrder": [
@@ -162,6 +164,7 @@
                                 },
                                 "get": {
                                     "description": "Get an existing environment.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}",
                                     "httpMethod": "GET",
                                     "id": "composer.projects.locations.environments.get",
                                     "parameterOrder": [
@@ -186,6 +189,7 @@
                                 },
                                 "list": {
                                     "description": "List environments.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/environments",
                                     "httpMethod": "GET",
                                     "id": "composer.projects.locations.environments.list",
                                     "parameterOrder": [
@@ -221,6 +225,7 @@
                                 },
                                 "patch": {
                                     "description": "Update an environment.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}",
                                     "httpMethod": "PATCH",
                                     "id": "composer.projects.locations.environments.patch",
                                     "parameterOrder": [
@@ -258,6 +263,7 @@
                             "methods": {
                                 "list": {
                                     "description": "List ImageVersions for provided location.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/imageVersions",
                                     "httpMethod": "GET",
                                     "id": "composer.projects.locations.imageVersions.list",
                                     "parameterOrder": [
@@ -302,6 +308,7 @@
                             "methods": {
                                 "delete": {
                                     "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                                     "httpMethod": "DELETE",
                                     "id": "composer.projects.locations.operations.delete",
                                     "parameterOrder": [
@@ -326,6 +333,7 @@
                                 },
                                 "get": {
                                     "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                                     "httpMethod": "GET",
                                     "id": "composer.projects.locations.operations.get",
                                     "parameterOrder": [
@@ -350,6 +358,7 @@
                                 },
                                 "list": {
                                     "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations",
                                     "httpMethod": "GET",
                                     "id": "composer.projects.locations.operations.list",
                                     "parameterOrder": [
@@ -395,7 +404,7 @@
             }
         }
     },
-    "revision": "20210510",
+    "revision": "20210601",
     "rootUrl": "https://composer.googleapis.com/",
     "schemas": {
         "AllowedIpRange": {
@@ -408,6 +417,38 @@
                 },
                 "value": {
                     "description": "IP address or range, defined using CIDR notation, of requests that this rule applies to. Examples: `192.168.1.1` or `192.168.0.0/16` or `2001:db8::/32` or `2001:0db8:0000:0042:0000:8a2e:0370:7334`. IP range prefixes should be properly truncated. For example, `1.2.3.4/24` should be truncated to `1.2.3.0/24`. Similarly, for IPv6, `2001:db8::1/32` should be truncated to `2001:db8::/32`.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CheckUpgradeResponse": {
+            "description": "Message containing information about the result of an upgrade check operation.",
+            "id": "CheckUpgradeResponse",
+            "properties": {
+                "buildLogUri": {
+                    "description": "Output only. Url for a docker build log of an upgraded image.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "containsPypiModulesConflict": {
+                    "description": "Output only. Whether build has succeeded or failed on modules conflicts.",
+                    "enum": [
+                        "CONFLICT_RESULT_UNSPECIFIED",
+                        "CONFLICT",
+                        "NO_CONFLICT"
+                    ],
+                    "enumDescriptions": [
+                        "It is unknown whether build had conflicts or not.",
+                        "There were python packages conflicts.",
+                        "There were no python packages conflicts."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "pypiConflictBuildLogExtract": {
+                    "description": "Output only. Extract from a docker image build log containing information about pypi modules conflicts.",
+                    "readOnly": true,
                     "type": "string"
                 }
             },

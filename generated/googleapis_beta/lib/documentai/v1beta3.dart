@@ -216,6 +216,52 @@ class ProjectsLocationsOperationsResource {
   ProjectsLocationsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+  /// or other methods to check whether the cancellation succeeded or whether
+  /// the operation completed despite cancellation. On successful cancellation,
+  /// the operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
+  /// `Code.CANCELLED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be cancelled.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> cancelOperation(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1beta3/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets the latest state of a long-running operation.
   ///
   /// Clients can use this method to poll the operation result at intervals as
@@ -253,6 +299,63 @@ class ProjectsLocationsOperationsResource {
       queryParams: _queryParams,
     );
     return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+  /// NOTE: the `name` binding allows API services to override the binding to
+  /// use different resource name schemes, such as `users / * /operations`. To
+  /// override the binding, API services can add a binding such as
+  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
+  /// backwards compatibility, the default name includes the operations
+  /// collection id, however overriding users must ensure the name binding is
+  /// the parent resource, without the operations collection id.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation's parent resource.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/operations$`.
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningListOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningListOperationsResponse> list(
+    core.String name, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1beta3/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningListOperationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -2007,6 +2110,9 @@ class GoogleCloudDocumentaiV1beta1DocumentPage {
   /// A collection of lines that a human would perceive as a paragraph.
   core.List<GoogleCloudDocumentaiV1beta1DocumentPageParagraph>? paragraphs;
 
+  /// The history of this page.
+  GoogleCloudDocumentaiV1beta1DocumentProvenance? provenance;
+
   /// A list of visually detected tables on the page.
   core.List<GoogleCloudDocumentaiV1beta1DocumentPageTable>? tables;
 
@@ -2077,6 +2183,10 @@ class GoogleCloudDocumentaiV1beta1DocumentPage {
                   value as core.Map<core.String, core.dynamic>))
           .toList();
     }
+    if (_json.containsKey('provenance')) {
+      provenance = GoogleCloudDocumentaiV1beta1DocumentProvenance.fromJson(
+          _json['provenance'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('tables')) {
       tables = (_json['tables'] as core.List)
           .map<GoogleCloudDocumentaiV1beta1DocumentPageTable>((value) =>
@@ -2123,6 +2233,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPage {
         if (pageNumber != null) 'pageNumber': pageNumber!,
         if (paragraphs != null)
           'paragraphs': paragraphs!.map((value) => value.toJson()).toList(),
+        if (provenance != null) 'provenance': provenance!.toJson(),
         if (tables != null)
           'tables': tables!.map((value) => value.toJson()).toList(),
         if (tokens != null)
@@ -2196,6 +2307,9 @@ class GoogleCloudDocumentaiV1beta1DocumentPageAnchorPageRef {
 
   /// Index into the Document.pages element, for example using Document.pages to
   /// locate the related page element.
+  ///
+  /// This field is skipped when its value is the default 0. See
+  /// https://developers.google.com/protocol-buffers/docs/proto3#json.
   ///
   /// Required.
   core.String? page;
@@ -2351,6 +2465,9 @@ class GoogleCloudDocumentaiV1beta1DocumentPageFormField {
   core.List<GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage>?
       nameDetectedLanguages;
 
+  /// The history of this annotation.
+  GoogleCloudDocumentaiV1beta1DocumentProvenance? provenance;
+
   /// A list of detected languages for value together with confidence.
   core.List<GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage>?
       valueDetectedLanguages;
@@ -2380,6 +2497,10 @@ class GoogleCloudDocumentaiV1beta1DocumentPageFormField {
                       .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
+    if (_json.containsKey('provenance')) {
+      provenance = GoogleCloudDocumentaiV1beta1DocumentProvenance.fromJson(
+          _json['provenance'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('valueDetectedLanguages')) {
       valueDetectedLanguages = (_json['valueDetectedLanguages'] as core.List)
           .map<GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage>(
@@ -2399,6 +2520,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageFormField {
         if (nameDetectedLanguages != null)
           'nameDetectedLanguages':
               nameDetectedLanguages!.map((value) => value.toJson()).toList(),
+        if (provenance != null) 'provenance': provenance!.toJson(),
         if (valueDetectedLanguages != null)
           'valueDetectedLanguages':
               valueDetectedLanguages!.map((value) => value.toJson()).toList(),
@@ -4135,6 +4257,9 @@ class GoogleCloudDocumentaiV1beta2DocumentPage {
   /// A collection of lines that a human would perceive as a paragraph.
   core.List<GoogleCloudDocumentaiV1beta2DocumentPageParagraph>? paragraphs;
 
+  /// The history of this page.
+  GoogleCloudDocumentaiV1beta2DocumentProvenance? provenance;
+
   /// A list of visually detected tables on the page.
   core.List<GoogleCloudDocumentaiV1beta2DocumentPageTable>? tables;
 
@@ -4205,6 +4330,10 @@ class GoogleCloudDocumentaiV1beta2DocumentPage {
                   value as core.Map<core.String, core.dynamic>))
           .toList();
     }
+    if (_json.containsKey('provenance')) {
+      provenance = GoogleCloudDocumentaiV1beta2DocumentProvenance.fromJson(
+          _json['provenance'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('tables')) {
       tables = (_json['tables'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2DocumentPageTable>((value) =>
@@ -4251,6 +4380,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPage {
         if (pageNumber != null) 'pageNumber': pageNumber!,
         if (paragraphs != null)
           'paragraphs': paragraphs!.map((value) => value.toJson()).toList(),
+        if (provenance != null) 'provenance': provenance!.toJson(),
         if (tables != null)
           'tables': tables!.map((value) => value.toJson()).toList(),
         if (tokens != null)
@@ -4324,6 +4454,9 @@ class GoogleCloudDocumentaiV1beta2DocumentPageAnchorPageRef {
 
   /// Index into the Document.pages element, for example using Document.pages to
   /// locate the related page element.
+  ///
+  /// This field is skipped when its value is the default 0. See
+  /// https://developers.google.com/protocol-buffers/docs/proto3#json.
   ///
   /// Required.
   core.String? page;
@@ -4479,6 +4612,9 @@ class GoogleCloudDocumentaiV1beta2DocumentPageFormField {
   core.List<GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage>?
       nameDetectedLanguages;
 
+  /// The history of this annotation.
+  GoogleCloudDocumentaiV1beta2DocumentProvenance? provenance;
+
   /// A list of detected languages for value together with confidence.
   core.List<GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage>?
       valueDetectedLanguages;
@@ -4508,6 +4644,10 @@ class GoogleCloudDocumentaiV1beta2DocumentPageFormField {
                       .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
+    if (_json.containsKey('provenance')) {
+      provenance = GoogleCloudDocumentaiV1beta2DocumentProvenance.fromJson(
+          _json['provenance'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('valueDetectedLanguages')) {
       valueDetectedLanguages = (_json['valueDetectedLanguages'] as core.List)
           .map<GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage>(
@@ -4527,6 +4667,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageFormField {
         if (nameDetectedLanguages != null)
           'nameDetectedLanguages':
               nameDetectedLanguages!.map((value) => value.toJson()).toList(),
+        if (provenance != null) 'provenance': provenance!.toJson(),
         if (valueDetectedLanguages != null)
           'valueDetectedLanguages':
               valueDetectedLanguages!.map((value) => value.toJson()).toList(),
@@ -6078,11 +6219,65 @@ class GoogleCloudDocumentaiV1beta3CommonOperationMetadata {
       };
 }
 
+/// The long running operation metadata for delete processor method.
+class GoogleCloudDocumentaiV1beta3DeleteProcessorMetadata {
+  /// The basic metadata of the long running operation.
+  GoogleCloudDocumentaiV1beta3CommonOperationMetadata? commonMetadata;
+
+  GoogleCloudDocumentaiV1beta3DeleteProcessorMetadata();
+
+  GoogleCloudDocumentaiV1beta3DeleteProcessorMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey('commonMetadata')) {
+      commonMetadata =
+          GoogleCloudDocumentaiV1beta3CommonOperationMetadata.fromJson(
+              _json['commonMetadata'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
+      };
+}
+
+/// The long running operation metadata for disable processor method.
+class GoogleCloudDocumentaiV1beta3DisableProcessorMetadata {
+  /// The basic metadata of the long running operation.
+  GoogleCloudDocumentaiV1beta3CommonOperationMetadata? commonMetadata;
+
+  GoogleCloudDocumentaiV1beta3DisableProcessorMetadata();
+
+  GoogleCloudDocumentaiV1beta3DisableProcessorMetadata.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('commonMetadata')) {
+      commonMetadata =
+          GoogleCloudDocumentaiV1beta3CommonOperationMetadata.fromJson(
+              _json['commonMetadata'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
+      };
+}
+
 /// Request message for the disable processor method.
 class GoogleCloudDocumentaiV1beta3DisableProcessorRequest {
   GoogleCloudDocumentaiV1beta3DisableProcessorRequest();
 
   GoogleCloudDocumentaiV1beta3DisableProcessorRequest.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
+/// Response message for the disable processor method.
+///
+/// Intentionally empty proto for adding fields in future.
+class GoogleCloudDocumentaiV1beta3DisableProcessorResponse {
+  GoogleCloudDocumentaiV1beta3DisableProcessorResponse();
+
+  GoogleCloudDocumentaiV1beta3DisableProcessorResponse.fromJson(
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
@@ -6585,6 +6780,9 @@ class GoogleCloudDocumentaiV1beta3DocumentPage {
   /// A collection of lines that a human would perceive as a paragraph.
   core.List<GoogleCloudDocumentaiV1beta3DocumentPageParagraph>? paragraphs;
 
+  /// The history of this page.
+  GoogleCloudDocumentaiV1beta3DocumentProvenance? provenance;
+
   /// A list of visually detected tables on the page.
   core.List<GoogleCloudDocumentaiV1beta3DocumentPageTable>? tables;
 
@@ -6655,6 +6853,10 @@ class GoogleCloudDocumentaiV1beta3DocumentPage {
                   value as core.Map<core.String, core.dynamic>))
           .toList();
     }
+    if (_json.containsKey('provenance')) {
+      provenance = GoogleCloudDocumentaiV1beta3DocumentProvenance.fromJson(
+          _json['provenance'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('tables')) {
       tables = (_json['tables'] as core.List)
           .map<GoogleCloudDocumentaiV1beta3DocumentPageTable>((value) =>
@@ -6701,6 +6903,7 @@ class GoogleCloudDocumentaiV1beta3DocumentPage {
         if (pageNumber != null) 'pageNumber': pageNumber!,
         if (paragraphs != null)
           'paragraphs': paragraphs!.map((value) => value.toJson()).toList(),
+        if (provenance != null) 'provenance': provenance!.toJson(),
         if (tables != null)
           'tables': tables!.map((value) => value.toJson()).toList(),
         if (tokens != null)
@@ -6774,6 +6977,9 @@ class GoogleCloudDocumentaiV1beta3DocumentPageAnchorPageRef {
 
   /// Index into the Document.pages element, for example using Document.pages to
   /// locate the related page element.
+  ///
+  /// This field is skipped when its value is the default 0. See
+  /// https://developers.google.com/protocol-buffers/docs/proto3#json.
   ///
   /// Required.
   core.String? page;
@@ -6929,6 +7135,9 @@ class GoogleCloudDocumentaiV1beta3DocumentPageFormField {
   core.List<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>?
       nameDetectedLanguages;
 
+  /// The history of this annotation.
+  GoogleCloudDocumentaiV1beta3DocumentProvenance? provenance;
+
   /// A list of detected languages for value together with confidence.
   core.List<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>?
       valueDetectedLanguages;
@@ -6958,6 +7167,10 @@ class GoogleCloudDocumentaiV1beta3DocumentPageFormField {
                       .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
+    if (_json.containsKey('provenance')) {
+      provenance = GoogleCloudDocumentaiV1beta3DocumentProvenance.fromJson(
+          _json['provenance'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('valueDetectedLanguages')) {
       valueDetectedLanguages = (_json['valueDetectedLanguages'] as core.List)
           .map<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>(
@@ -6977,6 +7190,7 @@ class GoogleCloudDocumentaiV1beta3DocumentPageFormField {
         if (nameDetectedLanguages != null)
           'nameDetectedLanguages':
               nameDetectedLanguages!.map((value) => value.toJson()).toList(),
+        if (provenance != null) 'provenance': provenance!.toJson(),
         if (valueDetectedLanguages != null)
           'valueDetectedLanguages':
               valueDetectedLanguages!.map((value) => value.toJson()).toList(),
@@ -7904,11 +8118,44 @@ class GoogleCloudDocumentaiV1beta3DocumentTextChange {
       };
 }
 
+/// The long running operation metadata for enable processor method.
+class GoogleCloudDocumentaiV1beta3EnableProcessorMetadata {
+  /// The basic metadata of the long running operation.
+  GoogleCloudDocumentaiV1beta3CommonOperationMetadata? commonMetadata;
+
+  GoogleCloudDocumentaiV1beta3EnableProcessorMetadata();
+
+  GoogleCloudDocumentaiV1beta3EnableProcessorMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey('commonMetadata')) {
+      commonMetadata =
+          GoogleCloudDocumentaiV1beta3CommonOperationMetadata.fromJson(
+              _json['commonMetadata'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
+      };
+}
+
 /// Request message for the enable processor method.
 class GoogleCloudDocumentaiV1beta3EnableProcessorRequest {
   GoogleCloudDocumentaiV1beta3EnableProcessorRequest();
 
   GoogleCloudDocumentaiV1beta3EnableProcessorRequest.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
+/// Response message for the enable processor method.
+///
+/// Intentionally empty proto for adding fields in future.
+class GoogleCloudDocumentaiV1beta3EnableProcessorResponse {
+  GoogleCloudDocumentaiV1beta3EnableProcessorResponse();
+
+  GoogleCloudDocumentaiV1beta3EnableProcessorResponse.fromJson(
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
@@ -8494,12 +8741,25 @@ class GoogleCloudDocumentaiV1beta3ReviewDocumentOperationMetadata {
 }
 
 /// Request message for review document method.
+///
+/// Next Id: 6.
 class GoogleCloudDocumentaiV1beta3ReviewDocumentRequest {
   /// The document that needs human review.
   GoogleCloudDocumentaiV1beta3Document? document;
 
+  /// Whether the validation should be performed on the ad-hoc review request.
+  core.bool? enableSchemaValidation;
+
   /// An inline document proto.
   GoogleCloudDocumentaiV1beta3Document? inlineDocument;
+
+  /// The priority of the human review task.
+  /// Possible string values are:
+  /// - "DEFAULT" : The default priority level.
+  /// - "URGENT" : The urgent priority level. The labeling manager should
+  /// allocate labeler resource to the urgent task queue to respect this
+  /// priority level.
+  core.String? priority;
 
   GoogleCloudDocumentaiV1beta3ReviewDocumentRequest();
 
@@ -8508,15 +8768,24 @@ class GoogleCloudDocumentaiV1beta3ReviewDocumentRequest {
       document = GoogleCloudDocumentaiV1beta3Document.fromJson(
           _json['document'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('enableSchemaValidation')) {
+      enableSchemaValidation = _json['enableSchemaValidation'] as core.bool;
+    }
     if (_json.containsKey('inlineDocument')) {
       inlineDocument = GoogleCloudDocumentaiV1beta3Document.fromJson(
           _json['inlineDocument'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('priority')) {
+      priority = _json['priority'] as core.String;
     }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (document != null) 'document': document!.toJson(),
+        if (enableSchemaValidation != null)
+          'enableSchemaValidation': enableSchemaValidation!,
         if (inlineDocument != null) 'inlineDocument': inlineDocument!.toJson(),
+        if (priority != null) 'priority': priority!,
       };
 }
 
@@ -8594,9 +8863,7 @@ class GoogleCloudDocumentaiV1beta3SchemaEntityType {
   /// Description of the entity type.
   core.String? description;
 
-  /// For some entity types there are only a few possible values.
-  ///
-  /// They can be specified here.
+  /// If specified, lists all the possible values for this entity.
   core.List<core.String>? enumValues;
 
   /// Occurrence type limits the number of times an entity type appears in the
@@ -8800,6 +9067,36 @@ class GoogleCloudLocationLocation {
         if (locationId != null) 'locationId': locationId!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
+      };
+}
+
+/// The response message for Operations.ListOperations.
+class GoogleLongrunningListOperationsResponse {
+  /// The standard List next-page token.
+  core.String? nextPageToken;
+
+  /// A list of operations that matches the specified filter in the request.
+  core.List<GoogleLongrunningOperation>? operations;
+
+  GoogleLongrunningListOperationsResponse();
+
+  GoogleLongrunningListOperationsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+    if (_json.containsKey('operations')) {
+      operations = (_json['operations'] as core.List)
+          .map<GoogleLongrunningOperation>((value) =>
+              GoogleLongrunningOperation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (operations != null)
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 

@@ -110,6 +110,7 @@
             "methods": {
                 "get": {
                     "description": "Gets one blog and user info pair by blog id and user id.",
+                    "flatPath": "v3/users/{userId}/blogs/{blogId}",
                     "httpMethod": "GET",
                     "id": "blogger.blogUserInfos.get",
                     "parameterOrder": [
@@ -148,6 +149,7 @@
             "methods": {
                 "get": {
                     "description": "Gets a blog by id.",
+                    "flatPath": "v3/blogs/{blogId}",
                     "httpMethod": "GET",
                     "id": "blogger.blogs.get",
                     "parameterOrder": [
@@ -192,6 +194,7 @@
                 },
                 "getByUrl": {
                     "description": "Gets a blog by url.",
+                    "flatPath": "v3/blogs/byurl",
                     "httpMethod": "GET",
                     "id": "blogger.blogs.getByUrl",
                     "parameterOrder": [
@@ -231,6 +234,7 @@
                 },
                 "listByUser": {
                     "description": "Lists blogs by user.",
+                    "flatPath": "v3/users/{userId}/blogs",
                     "httpMethod": "GET",
                     "id": "blogger.blogs.listByUser",
                     "parameterOrder": [
@@ -310,6 +314,7 @@
             "methods": {
                 "approve": {
                     "description": "Marks a comment as not spam by blog id, post id and comment id.",
+                    "flatPath": "v3/blogs/{blogId}/posts/{postId}/comments/{commentId}/approve",
                     "httpMethod": "POST",
                     "id": "blogger.comments.approve",
                     "parameterOrder": [
@@ -344,6 +349,7 @@
                 },
                 "delete": {
                     "description": "Deletes a comment by blog id, post id and comment id.",
+                    "flatPath": "v3/blogs/{blogId}/posts/{postId}/comments/{commentId}",
                     "httpMethod": "DELETE",
                     "id": "blogger.comments.delete",
                     "parameterOrder": [
@@ -375,6 +381,7 @@
                 },
                 "get": {
                     "description": "Gets a comment by id.",
+                    "flatPath": "v3/blogs/{blogId}/posts/{postId}/comments/{commentId}",
                     "httpMethod": "GET",
                     "id": "blogger.comments.get",
                     "parameterOrder": [
@@ -426,6 +433,7 @@
                 },
                 "list": {
                     "description": "Lists comments.",
+                    "flatPath": "v3/blogs/{blogId}/posts/{postId}/comments",
                     "httpMethod": "GET",
                     "id": "blogger.comments.list",
                     "parameterOrder": [
@@ -508,6 +516,7 @@
                 },
                 "listByBlog": {
                     "description": "Lists comments by blog.",
+                    "flatPath": "v3/blogs/{blogId}/comments",
                     "httpMethod": "GET",
                     "id": "blogger.comments.listByBlog",
                     "parameterOrder": [
@@ -569,6 +578,7 @@
                 },
                 "markAsSpam": {
                     "description": "Marks a comment as spam by blog id, post id and comment id.",
+                    "flatPath": "v3/blogs/{blogId}/posts/{postId}/comments/{commentId}/spam",
                     "httpMethod": "POST",
                     "id": "blogger.comments.markAsSpam",
                     "parameterOrder": [
@@ -603,6 +613,7 @@
                 },
                 "removeContent": {
                     "description": "Removes the content of a comment by blog id, post id and comment id.",
+                    "flatPath": "v3/blogs/{blogId}/posts/{postId}/comments/{commentId}/removecontent",
                     "httpMethod": "POST",
                     "id": "blogger.comments.removeContent",
                     "parameterOrder": [
@@ -641,6 +652,7 @@
             "methods": {
                 "get": {
                     "description": "Gets page views by blog id.",
+                    "flatPath": "v3/blogs/{blogId}/pageviews",
                     "httpMethod": "GET",
                     "id": "blogger.pageViews.get",
                     "parameterOrder": [
@@ -682,6 +694,7 @@
             "methods": {
                 "delete": {
                     "description": "Deletes a page by blog id and page id.",
+                    "flatPath": "v3/blogs/{blogId}/pages/{pageId}",
                     "httpMethod": "DELETE",
                     "id": "blogger.pages.delete",
                     "parameterOrder": [
@@ -707,6 +720,7 @@
                 },
                 "get": {
                     "description": "Gets a page by blog id and page id.",
+                    "flatPath": "v3/blogs/{blogId}/pages/{pageId}",
                     "httpMethod": "GET",
                     "id": "blogger.pages.get",
                     "parameterOrder": [
@@ -752,6 +766,7 @@
                 },
                 "insert": {
                     "description": "Inserts a page.",
+                    "flatPath": "v3/blogs/{blogId}/pages",
                     "httpMethod": "POST",
                     "id": "blogger.pages.insert",
                     "parameterOrder": [
@@ -781,6 +796,7 @@
                 },
                 "list": {
                     "description": "Lists pages.",
+                    "flatPath": "v3/blogs/{blogId}/pages",
                     "httpMethod": "GET",
                     "id": "blogger.pages.list",
                     "parameterOrder": [
@@ -846,6 +862,7 @@
                 },
                 "patch": {
                     "description": "Patches a page.",
+                    "flatPath": "v3/blogs/{blogId}/pages/{pageId}",
                     "httpMethod": "PATCH",
                     "id": "blogger.pages.patch",
                     "parameterOrder": [
@@ -885,6 +902,7 @@
                 },
                 "publish": {
                     "description": "Publishes a page.",
+                    "flatPath": "v3/blogs/{blogId}/pages/{pageId}/publish",
                     "httpMethod": "POST",
                     "id": "blogger.pages.publish",
                     "parameterOrder": [
@@ -913,6 +931,7 @@
                 },
                 "revert": {
                     "description": "Reverts a published or scheduled page to draft state.",
+                    "flatPath": "v3/blogs/{blogId}/pages/{pageId}/revert",
                     "httpMethod": "POST",
                     "id": "blogger.pages.revert",
                     "parameterOrder": [
@@ -941,6 +960,7 @@
                 },
                 "update": {
                     "description": "Updates a page by blog id and page id.",
+                    "flatPath": "v3/blogs/{blogId}/pages/{pageId}",
                     "httpMethod": "PUT",
                     "id": "blogger.pages.update",
                     "parameterOrder": [
@@ -984,6 +1004,7 @@
             "methods": {
                 "get": {
                     "description": "Gets one post and user info pair, by post_id and user_id.",
+                    "flatPath": "v3/users/{userId}/blogs/{blogId}/posts/{postId}",
                     "httpMethod": "GET",
                     "id": "blogger.postUserInfos.get",
                     "parameterOrder": [
@@ -1024,6 +1045,7 @@
                 },
                 "list": {
                     "description": "Lists post and user info pairs.",
+                    "flatPath": "v3/users/{userId}/blogs/{blogId}/posts",
                     "httpMethod": "GET",
                     "id": "blogger.postUserInfos.list",
                     "parameterOrder": [
@@ -1129,6 +1151,7 @@
             "methods": {
                 "delete": {
                     "description": "Deletes a post by blog id and post id.",
+                    "flatPath": "v3/blogs/{blogId}/posts/{postId}",
                     "httpMethod": "DELETE",
                     "id": "blogger.posts.delete",
                     "parameterOrder": [
@@ -1154,6 +1177,7 @@
                 },
                 "get": {
                     "description": "Gets a post by blog id and post id",
+                    "flatPath": "v3/blogs/{blogId}/posts/{postId}",
                     "httpMethod": "GET",
                     "id": "blogger.posts.get",
                     "parameterOrder": [
@@ -1213,6 +1237,7 @@
                 },
                 "getByPath": {
                     "description": "Gets a post by path.",
+                    "flatPath": "v3/blogs/{blogId}/posts/bypath",
                     "httpMethod": "GET",
                     "id": "blogger.posts.getByPath",
                     "parameterOrder": [
@@ -1263,6 +1288,7 @@
                 },
                 "insert": {
                     "description": "Inserts a post.",
+                    "flatPath": "v3/blogs/{blogId}/posts",
                     "httpMethod": "POST",
                     "id": "blogger.posts.insert",
                     "parameterOrder": [
@@ -1301,6 +1327,7 @@
                 },
                 "list": {
                     "description": "Lists posts.",
+                    "flatPath": "v3/blogs/{blogId}/posts",
                     "httpMethod": "GET",
                     "id": "blogger.posts.list",
                     "parameterOrder": [
@@ -1400,6 +1427,7 @@
                 },
                 "patch": {
                     "description": "Patches a post.",
+                    "flatPath": "v3/blogs/{blogId}/posts/{postId}",
                     "httpMethod": "PATCH",
                     "id": "blogger.posts.patch",
                     "parameterOrder": [
@@ -1453,6 +1481,7 @@
                 },
                 "publish": {
                     "description": "Publishes a post.",
+                    "flatPath": "v3/blogs/{blogId}/posts/{postId}/publish",
                     "httpMethod": "POST",
                     "id": "blogger.posts.publish",
                     "parameterOrder": [
@@ -1485,6 +1514,7 @@
                 },
                 "revert": {
                     "description": "Reverts a published or scheduled post to draft state.",
+                    "flatPath": "v3/blogs/{blogId}/posts/{postId}/revert",
                     "httpMethod": "POST",
                     "id": "blogger.posts.revert",
                     "parameterOrder": [
@@ -1513,6 +1543,7 @@
                 },
                 "search": {
                     "description": "Searches for posts matching given query terms in the specified blog.",
+                    "flatPath": "v3/blogs/{blogId}/posts/search",
                     "httpMethod": "GET",
                     "id": "blogger.posts.search",
                     "parameterOrder": [
@@ -1562,6 +1593,7 @@
                 },
                 "update": {
                     "description": "Updates a post by blog id and post id.",
+                    "flatPath": "v3/blogs/{blogId}/posts/{postId}",
                     "httpMethod": "PUT",
                     "id": "blogger.posts.update",
                     "parameterOrder": [
@@ -1619,6 +1651,7 @@
             "methods": {
                 "get": {
                     "description": "Gets one user by user_id.",
+                    "flatPath": "v3/users/{userId}",
                     "httpMethod": "GET",
                     "id": "blogger.users.get",
                     "parameterOrder": [
@@ -1643,7 +1676,7 @@
             }
         }
     },
-    "revision": "20210520",
+    "revision": "20210613",
     "rootUrl": "https://blogger.googleapis.com/",
     "schemas": {
         "Blog": {

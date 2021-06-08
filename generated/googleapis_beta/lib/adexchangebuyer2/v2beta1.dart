@@ -1195,6 +1195,115 @@ class AccountsFinalizedProposalsResource {
     return ListProposalsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
+
+  /// Update given deals to pause serving.
+  ///
+  /// This method will set the
+  /// `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to true for all
+  /// listed deals in the request. Currently, this method only applies to PG and
+  /// PD deals. For PA deals, please call accounts.proposals.pause endpoint. It
+  /// is a no-op to pause already-paused deals. It is an error to call
+  /// PauseProposalDeals for deals which are not part of the proposal of
+  /// proposal_id or which are not finalized or renegotiating.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [proposalId] - The proposal_id of the proposal containing the deals.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Proposal].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Proposal> pause(
+    PauseProposalDealsRequest request,
+    core.String accountId,
+    core.String proposalId, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2beta1/accounts/' +
+        commons.escapeVariable('$accountId') +
+        '/finalizedProposals/' +
+        commons.escapeVariable('$proposalId') +
+        ':pause';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Proposal.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Update given deals to resume serving.
+  ///
+  /// This method will set the
+  /// `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to false for
+  /// all listed deals in the request. Currently, this method only applies to PG
+  /// and PD deals. For PA deals, please call accounts.proposals.resume
+  /// endpoint. It is a no-op to resume running deals or deals paused by the
+  /// other party. It is an error to call ResumeProposalDeals for deals which
+  /// are not part of the proposal of proposal_id or which are not finalized or
+  /// renegotiating.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [proposalId] - The proposal_id of the proposal containing the deals.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Proposal].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Proposal> resume(
+    ResumeProposalDealsRequest request,
+    core.String accountId,
+    core.String proposalId, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2beta1/accounts/' +
+        commons.escapeVariable('$accountId') +
+        '/finalizedProposals/' +
+        commons.escapeVariable('$proposalId') +
+        ':resume';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Proposal.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class AccountsProductsResource {
@@ -6299,6 +6408,8 @@ class FrequencyCap {
   /// - "WEEK" : Week
   /// - "MONTH" : Month
   /// - "LIFETIME" : Lifetime
+  /// - "POD" : Pod
+  /// - "STREAM" : Stream
   core.String? timeUnitType;
 
   FrequencyCap();
@@ -7752,6 +7863,38 @@ class OperatingSystemTargeting {
       };
 }
 
+/// Request message to pause serving for finalized deals.
+class PauseProposalDealsRequest {
+  /// The external_deal_id's of the deals to be paused.
+  ///
+  /// If empty, all the deals in the proposal will be paused.
+  core.List<core.String>? externalDealIds;
+
+  /// The reason why the deals are being paused.
+  ///
+  /// This human readable message will be displayed in the seller's UI. (Max
+  /// length: 1000 unicode code units.)
+  core.String? reason;
+
+  PauseProposalDealsRequest();
+
+  PauseProposalDealsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('externalDealIds')) {
+      externalDealIds = (_json['externalDealIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('reason')) {
+      reason = _json['reason'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (externalDealIds != null) 'externalDealIds': externalDealIds!,
+        if (reason != null) 'reason': reason!,
+      };
+}
+
 /// Request message to pause serving for an already-finalized proposal.
 class PauseProposalRequest {
   /// The reason why the proposal is being paused.
@@ -8622,6 +8765,28 @@ class RemoveDealAssociationRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (association != null) 'association': association!.toJson(),
+      };
+}
+
+/// Request message to resume (unpause) serving for already-finalized deals.
+class ResumeProposalDealsRequest {
+  /// The external_deal_id's of the deals to resume.
+  ///
+  /// If empty, all the deals in the proposal will be resumed.
+  core.List<core.String>? externalDealIds;
+
+  ResumeProposalDealsRequest();
+
+  ResumeProposalDealsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('externalDealIds')) {
+      externalDealIds = (_json['externalDealIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (externalDealIds != null) 'externalDealIds': externalDealIds!,
       };
 }
 

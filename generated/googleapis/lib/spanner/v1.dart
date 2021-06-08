@@ -32,6 +32,7 @@
 ///       - [ProjectsInstancesDatabasesOperationsResource]
 ///       - [ProjectsInstancesDatabasesSessionsResource]
 ///     - [ProjectsInstancesOperationsResource]
+/// - [ScansResource]
 library spanner.v1;
 
 import 'dart:async' as async;
@@ -64,6 +65,7 @@ class SpannerApi {
   final commons.ApiRequester _requester;
 
   ProjectsResource get projects => ProjectsResource(_requester);
+  ScansResource get scans => ScansResource(_requester);
 
   SpannerApi(http.Client client,
       {core.String rootUrl = 'https://spanner.googleapis.com/',
@@ -1646,6 +1648,68 @@ class ProjectsInstancesDatabasesResource {
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Request a specific scan with Database-specific data for Cloud Key
+  /// Visualizer.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The unique name of the scan containing the requested
+  /// information, specific to the Database service implementing this interface.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/databases/\[^/\]+$`.
+  ///
+  /// [endTime] - The upper bound for the time range to retrieve Scan data for.
+  ///
+  /// [startTime] - These fields restrict the Database-specific information
+  /// returned in the `Scan.data` field. If a `View` is provided that does not
+  /// include the `Scan.data` field, these are ignored. This range of time must
+  /// be entirely contained within the defined time range of the targeted scan.
+  /// The lower bound for the time range to retrieve Scan data for.
+  ///
+  /// [view] - Specifies which parts of the Scan should be returned in the
+  /// response. Note, if left unspecified, the FULL view is assumed.
+  /// Possible string values are:
+  /// - "VIEW_UNSPECIFIED" : Not specified, equivalent to SUMMARY.
+  /// - "SUMMARY" : Server responses only include `name`, `details`,
+  /// `start_time` and `end_time`. The default value. Note, the ListScans method
+  /// may only use this view type, others view types are not supported.
+  /// - "FULL" : Full representation of the scan is returned in the server
+  /// response, including `data`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Scan].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Scan> getScans(
+    core.String name, {
+    core.String? endTime,
+    core.String? startTime,
+    core.String? view,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (endTime != null) 'endTime': [endTime],
+      if (startTime != null) 'startTime': [startTime],
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/scans';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Scan.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists Cloud Spanner databases.
   ///
   /// Request parameters:
@@ -3014,6 +3078,77 @@ class ProjectsInstancesOperationsResource {
   }
 }
 
+class ScansResource {
+  final commons.ApiRequester _requester;
+
+  ScansResource(commons.ApiRequester client) : _requester = client;
+
+  /// Return available scans given a Database-specific resource name.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The unique name of the parent resource, specific to
+  /// the Database service implementing this interface.
+  /// Value must have pattern `^scans$`.
+  ///
+  /// [filter] - A filter expression to restrict the results based on
+  /// information present in the available Scan collection. The filter applies
+  /// to all fields within the Scan message except for `data`.
+  ///
+  /// [pageSize] - The maximum number of items to return.
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous List
+  /// request, if any.
+  ///
+  /// [view] - Specifies which parts of the Scan should be returned in the
+  /// response. Note, only the SUMMARY view (the default) is currently supported
+  /// for ListScans.
+  /// Possible string values are:
+  /// - "VIEW_UNSPECIFIED" : Not specified, equivalent to SUMMARY.
+  /// - "SUMMARY" : Server responses only include `name`, `details`,
+  /// `start_time` and `end_time`. The default value. Note, the ListScans method
+  /// may only use this view type, others view types are not supported.
+  /// - "FULL" : Full representation of the scan is returned in the server
+  /// response, including `data`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListScansResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListScansResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? view,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListScansResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
 /// A backup of a Cloud Spanner database.
 class Backup {
   /// The time the CreateBackup request is received.
@@ -3497,9 +3632,9 @@ class CommitStats {
   /// mutations in a transaction and minimize the number of API round trips. You
   /// can also monitor this value to prevent transactions from exceeding the
   /// system
-  /// [limit](http://cloud.google.com/spanner/quotas#limits_for_creating_reading_updating_and_deleting_data).
+  /// [limit](https://cloud.google.com/spanner/quotas#limits_for_creating_reading_updating_and_deleting_data).
   /// If the number of mutations exceeds the limit, the server returns
-  /// [INVALID_ARGUMENT](http://cloud.google.com/spanner/docs/reference/rest/v1/Code#ENUM_VALUES.INVALID_ARGUMENT).
+  /// [INVALID_ARGUMENT](https://cloud.google.com/spanner/docs/reference/rest/v1/Code#ENUM_VALUES.INVALID_ARGUMENT).
   core.String? mutationCount;
 
   CommitStats();
@@ -3512,6 +3647,55 @@ class CommitStats {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (mutationCount != null) 'mutationCount': mutationCount!,
+      };
+}
+
+/// A message representing context for a KeyRangeInfo, including a label, value,
+/// unit, and severity.
+class ContextValue {
+  /// The label for the context value.
+  ///
+  /// e.g. "latency".
+  LocalizedString? label;
+
+  /// The severity of this context.
+  /// Possible string values are:
+  /// - "SEVERITY_UNSPECIFIED" : Required default value.
+  /// - "INFO" : Lowest severity level "Info".
+  /// - "WARNING" : Middle severity level "Warning".
+  /// - "ERROR" : Severity level signaling an error "Error"
+  /// - "FATAL" : Severity level signaling a non recoverable error "Fatal"
+  core.String? severity;
+
+  /// The unit of the context value.
+  core.String? unit;
+
+  /// The value for the context.
+  core.double? value;
+
+  ContextValue();
+
+  ContextValue.fromJson(core.Map _json) {
+    if (_json.containsKey('label')) {
+      label = LocalizedString.fromJson(
+          _json['label'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('severity')) {
+      severity = _json['severity'] as core.String;
+    }
+    if (_json.containsKey('unit')) {
+      unit = _json['unit'] as core.String;
+    }
+    if (_json.containsKey('value')) {
+      value = (_json['value'] as core.num).toDouble();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (label != null) 'label': label!.toJson(),
+        if (severity != null) 'severity': severity!,
+        if (unit != null) 'unit': unit!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -3898,6 +4082,98 @@ class Delete {
   core.Map<core.String, core.dynamic> toJson() => {
         if (keySet != null) 'keySet': keySet!.toJson(),
         if (table != null) 'table': table!,
+      };
+}
+
+/// A message representing a derived metric.
+class DerivedMetric {
+  /// The name of the denominator metric.
+  ///
+  /// e.g. "rows".
+  LocalizedString? denominator;
+
+  /// The name of the numerator metric.
+  ///
+  /// e.g. "latency".
+  LocalizedString? numerator;
+
+  DerivedMetric();
+
+  DerivedMetric.fromJson(core.Map _json) {
+    if (_json.containsKey('denominator')) {
+      denominator = LocalizedString.fromJson(
+          _json['denominator'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('numerator')) {
+      numerator = LocalizedString.fromJson(
+          _json['numerator'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (denominator != null) 'denominator': denominator!.toJson(),
+        if (numerator != null) 'numerator': numerator!.toJson(),
+      };
+}
+
+/// A message representing the key visualizer diagnostic messages.
+class DiagnosticMessage {
+  /// Information about this diagnostic information.
+  LocalizedString? info;
+
+  /// The metric.
+  LocalizedString? metric;
+
+  /// Whether this message is specific only for the current metric.
+  ///
+  /// By default Diagnostics are shown for all metrics, regardless which metric
+  /// is the currently selected metric in the UI. However occasionally a metric
+  /// will generate so many messages that the resulting visual clutter becomes
+  /// overwhelming. In this case setting this to true, will show the diagnostic
+  /// messages for that metric only if it is the currently selected metric.
+  core.bool? metricSpecific;
+
+  /// The severity of the diagnostic message.
+  /// Possible string values are:
+  /// - "SEVERITY_UNSPECIFIED" : Required default value.
+  /// - "INFO" : Lowest severity level "Info".
+  /// - "WARNING" : Middle severity level "Warning".
+  /// - "ERROR" : Severity level signaling an error "Error"
+  /// - "FATAL" : Severity level signaling a non recoverable error "Fatal"
+  core.String? severity;
+
+  /// The short message.
+  LocalizedString? shortMessage;
+
+  DiagnosticMessage();
+
+  DiagnosticMessage.fromJson(core.Map _json) {
+    if (_json.containsKey('info')) {
+      info = LocalizedString.fromJson(
+          _json['info'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('metric')) {
+      metric = LocalizedString.fromJson(
+          _json['metric'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('metricSpecific')) {
+      metricSpecific = _json['metricSpecific'] as core.bool;
+    }
+    if (_json.containsKey('severity')) {
+      severity = _json['severity'] as core.String;
+    }
+    if (_json.containsKey('shortMessage')) {
+      shortMessage = LocalizedString.fromJson(
+          _json['shortMessage'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (info != null) 'info': info!.toJson(),
+        if (metric != null) 'metric': metric!.toJson(),
+        if (metricSpecific != null) 'metricSpecific': metricSpecific!,
+        if (severity != null) 'severity': severity!,
+        if (shortMessage != null) 'shortMessage': shortMessage!.toJson(),
       };
 }
 
@@ -4450,6 +4726,63 @@ class GetPolicyOptions {
       };
 }
 
+/// A message representing a (sparse) collection of hot keys for specific key
+/// buckets.
+class IndexedHotKey {
+  /// A (sparse) mapping from key bucket index to the index of the specific hot
+  /// row key for that key bucket.
+  ///
+  /// The index of the hot row key can be translated to the actual row key via
+  /// the ScanData.VisualizationData.indexed_keys repeated field.
+  core.Map<core.String, core.int>? sparseHotKeys;
+
+  IndexedHotKey();
+
+  IndexedHotKey.fromJson(core.Map _json) {
+    if (_json.containsKey('sparseHotKeys')) {
+      sparseHotKeys =
+          (_json['sparseHotKeys'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.int,
+        ),
+      );
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (sparseHotKeys != null) 'sparseHotKeys': sparseHotKeys!,
+      };
+}
+
+/// A message representing a (sparse) collection of KeyRangeInfos for specific
+/// key buckets.
+class IndexedKeyRangeInfos {
+  /// A (sparse) mapping from key bucket index to the KeyRangeInfos for that key
+  /// bucket.
+  core.Map<core.String, KeyRangeInfos>? keyRangeInfos;
+
+  IndexedKeyRangeInfos();
+
+  IndexedKeyRangeInfos.fromJson(core.Map _json) {
+    if (_json.containsKey('keyRangeInfos')) {
+      keyRangeInfos =
+          (_json['keyRangeInfos'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          KeyRangeInfos.fromJson(item as core.Map<core.String, core.dynamic>),
+        ),
+      );
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (keyRangeInfos != null)
+          'keyRangeInfos': keyRangeInfos!
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+      };
+}
+
 /// An isolated set of Cloud Spanner resources on which databases can be hosted.
 class Instance {
   /// The name of the instance's configuration.
@@ -4510,6 +4843,13 @@ class Instance {
   /// for more information about nodes.
   core.int? nodeCount;
 
+  /// The number of processing units allocated to this instance.
+  ///
+  /// At most one of processing_units or node_count should be present in the
+  /// message. This may be zero in API responses for instances that are not yet
+  /// in state `READY`.
+  core.int? processingUnits;
+
   /// The current instance state.
   ///
   /// For CreateInstance, the state must be either omitted or set to `CREATING`.
@@ -4552,6 +4892,9 @@ class Instance {
     if (_json.containsKey('nodeCount')) {
       nodeCount = _json['nodeCount'] as core.int;
     }
+    if (_json.containsKey('processingUnits')) {
+      processingUnits = _json['processingUnits'] as core.int;
+    }
     if (_json.containsKey('state')) {
       state = _json['state'] as core.String;
     }
@@ -4564,6 +4907,7 @@ class Instance {
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (nodeCount != null) 'nodeCount': nodeCount!,
+        if (processingUnits != null) 'processingUnits': processingUnits!,
         if (state != null) 'state': state!,
       };
 }
@@ -4705,6 +5049,119 @@ class KeyRange {
         if (endOpen != null) 'endOpen': endOpen!,
         if (startClosed != null) 'startClosed': startClosed!,
         if (startOpen != null) 'startOpen': startOpen!,
+      };
+}
+
+/// A message representing information for a key range (possibly one key).
+class KeyRangeInfo {
+  /// The list of context values for this key range.
+  core.List<ContextValue>? contextValues;
+
+  /// The index of the end key in indexed_keys.
+  core.int? endKeyIndex;
+
+  /// Information about this key range, for all metrics.
+  LocalizedString? info;
+
+  /// The number of keys this range covers.
+  core.String? keysCount;
+
+  /// The name of the metric.
+  ///
+  /// e.g. "latency".
+  LocalizedString? metric;
+
+  /// The index of the start key in indexed_keys.
+  core.int? startKeyIndex;
+
+  /// The unit of the metric.
+  ///
+  /// This is an unstructured field and will be mapped as is to the user.
+  LocalizedString? unit;
+
+  /// The value of the metric.
+  core.double? value;
+
+  KeyRangeInfo();
+
+  KeyRangeInfo.fromJson(core.Map _json) {
+    if (_json.containsKey('contextValues')) {
+      contextValues = (_json['contextValues'] as core.List)
+          .map<ContextValue>((value) => ContextValue.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('endKeyIndex')) {
+      endKeyIndex = _json['endKeyIndex'] as core.int;
+    }
+    if (_json.containsKey('info')) {
+      info = LocalizedString.fromJson(
+          _json['info'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('keysCount')) {
+      keysCount = _json['keysCount'] as core.String;
+    }
+    if (_json.containsKey('metric')) {
+      metric = LocalizedString.fromJson(
+          _json['metric'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('startKeyIndex')) {
+      startKeyIndex = _json['startKeyIndex'] as core.int;
+    }
+    if (_json.containsKey('unit')) {
+      unit = LocalizedString.fromJson(
+          _json['unit'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('value')) {
+      value = (_json['value'] as core.num).toDouble();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contextValues != null)
+          'contextValues':
+              contextValues!.map((value) => value.toJson()).toList(),
+        if (endKeyIndex != null) 'endKeyIndex': endKeyIndex!,
+        if (info != null) 'info': info!.toJson(),
+        if (keysCount != null) 'keysCount': keysCount!,
+        if (metric != null) 'metric': metric!.toJson(),
+        if (startKeyIndex != null) 'startKeyIndex': startKeyIndex!,
+        if (unit != null) 'unit': unit!.toJson(),
+        if (value != null) 'value': value!,
+      };
+}
+
+/// A message representing a list of specific information for multiple key
+/// ranges.
+class KeyRangeInfos {
+  /// The list individual KeyRangeInfos.
+  core.List<KeyRangeInfo>? infos;
+
+  /// The total size of the list of all KeyRangeInfos.
+  ///
+  /// This may be larger than the number of repeated messages above. If that is
+  /// the case, this number may be used to determine how many are not being
+  /// shown.
+  core.int? totalSize;
+
+  KeyRangeInfos();
+
+  KeyRangeInfos.fromJson(core.Map _json) {
+    if (_json.containsKey('infos')) {
+      infos = (_json['infos'] as core.List)
+          .map<KeyRangeInfo>((value) => KeyRangeInfo.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('totalSize')) {
+      totalSize = _json['totalSize'] as core.int;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (infos != null)
+          'infos': infos!.map((value) => value.toJson()).toList(),
+        if (totalSize != null) 'totalSize': totalSize!,
       };
 }
 
@@ -5001,6 +5458,36 @@ class ListOperationsResponse {
       };
 }
 
+/// Response method from the ListScans method.
+class ListScansResponse {
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
+  core.String? nextPageToken;
+
+  /// Available scans based on the list query parameters.
+  core.List<Scan>? scans;
+
+  ListScansResponse();
+
+  ListScansResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+    if (_json.containsKey('scans')) {
+      scans = (_json['scans'] as core.List)
+          .map<Scan>((value) =>
+              Scan.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (scans != null)
+          'scans': scans!.map((value) => value.toJson()).toList(),
+      };
+}
+
 /// The response for ListSessions.
 class ListSessionsResponse {
   /// `next_page_token` can be sent in a subsequent ListSessions call to fetch
@@ -5028,6 +5515,224 @@ class ListSessionsResponse {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (sessions != null)
           'sessions': sessions!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// A message representing a user-facing string whose value may need to be
+/// translated before being displayed.
+class LocalizedString {
+  /// A map of arguments used when creating the localized message.
+  ///
+  /// Keys represent parameter names which may be used by the localized version
+  /// when substituting dynamic values.
+  core.Map<core.String, core.String>? args;
+
+  /// The canonical English version of this message.
+  ///
+  /// If no token is provided or the front-end has no message associated with
+  /// the token, this text will be displayed as-is.
+  core.String? message;
+
+  /// The token identifying the message, e.g. 'METRIC_READ_CPU'.
+  ///
+  /// This should be unique within the service.
+  core.String? token;
+
+  LocalizedString();
+
+  LocalizedString.fromJson(core.Map _json) {
+    if (_json.containsKey('args')) {
+      args = (_json['args'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
+    }
+    if (_json.containsKey('message')) {
+      message = _json['message'] as core.String;
+    }
+    if (_json.containsKey('token')) {
+      token = _json['token'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (args != null) 'args': args!,
+        if (message != null) 'message': message!,
+        if (token != null) 'token': token!,
+      };
+}
+
+/// A message representing the actual monitoring data, values for each key
+/// bucket over time, of a metric.
+class Metric {
+  /// The aggregation function used to aggregate each key bucket
+  /// Possible string values are:
+  /// - "AGGREGATION_UNSPECIFIED" : Required default value.
+  /// - "MAX" : Use the maximum of all values.
+  /// - "SUM" : Use the sum of all values.
+  core.String? aggregation;
+
+  /// The category of the metric, e.g. "Activity", "Alerts", "Reads", etc.
+  LocalizedString? category;
+
+  /// The references to numerator and denominator metrics for a derived metric.
+  DerivedMetric? derived;
+
+  /// The displayed label of the metric.
+  LocalizedString? displayLabel;
+
+  /// Whether the metric has any non-zero data.
+  core.bool? hasNonzeroData;
+
+  /// The value that is considered hot for the metric.
+  ///
+  /// On a per metric basis hotness signals high utilization and something that
+  /// might potentially be a cause for concern by the end user. hot_value is
+  /// used to calibrate and scale visual color scales.
+  core.double? hotValue;
+
+  /// The (sparse) mapping from time index to an IndexedHotKey message,
+  /// representing those time intervals for which there are hot keys.
+  core.Map<core.String, IndexedHotKey>? indexedHotKeys;
+
+  /// The (sparse) mapping from time interval index to an IndexedKeyRangeInfos
+  /// message, representing those time intervals for which there are
+  /// informational messages concerning key ranges.
+  core.Map<core.String, IndexedKeyRangeInfos>? indexedKeyRangeInfos;
+
+  /// Information about the metric.
+  LocalizedString? info;
+
+  /// The data for the metric as a matrix.
+  MetricMatrix? matrix;
+
+  /// The unit of the metric.
+  LocalizedString? unit;
+
+  /// Whether the metric is visible to the end user.
+  core.bool? visible;
+
+  Metric();
+
+  Metric.fromJson(core.Map _json) {
+    if (_json.containsKey('aggregation')) {
+      aggregation = _json['aggregation'] as core.String;
+    }
+    if (_json.containsKey('category')) {
+      category = LocalizedString.fromJson(
+          _json['category'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('derived')) {
+      derived = DerivedMetric.fromJson(
+          _json['derived'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('displayLabel')) {
+      displayLabel = LocalizedString.fromJson(
+          _json['displayLabel'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('hasNonzeroData')) {
+      hasNonzeroData = _json['hasNonzeroData'] as core.bool;
+    }
+    if (_json.containsKey('hotValue')) {
+      hotValue = (_json['hotValue'] as core.num).toDouble();
+    }
+    if (_json.containsKey('indexedHotKeys')) {
+      indexedHotKeys =
+          (_json['indexedHotKeys'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          IndexedHotKey.fromJson(item as core.Map<core.String, core.dynamic>),
+        ),
+      );
+    }
+    if (_json.containsKey('indexedKeyRangeInfos')) {
+      indexedKeyRangeInfos =
+          (_json['indexedKeyRangeInfos'] as core.Map<core.String, core.dynamic>)
+              .map(
+        (key, item) => core.MapEntry(
+          key,
+          IndexedKeyRangeInfos.fromJson(
+              item as core.Map<core.String, core.dynamic>),
+        ),
+      );
+    }
+    if (_json.containsKey('info')) {
+      info = LocalizedString.fromJson(
+          _json['info'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('matrix')) {
+      matrix = MetricMatrix.fromJson(
+          _json['matrix'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('unit')) {
+      unit = LocalizedString.fromJson(
+          _json['unit'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('visible')) {
+      visible = _json['visible'] as core.bool;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (aggregation != null) 'aggregation': aggregation!,
+        if (category != null) 'category': category!.toJson(),
+        if (derived != null) 'derived': derived!.toJson(),
+        if (displayLabel != null) 'displayLabel': displayLabel!.toJson(),
+        if (hasNonzeroData != null) 'hasNonzeroData': hasNonzeroData!,
+        if (hotValue != null) 'hotValue': hotValue!,
+        if (indexedHotKeys != null)
+          'indexedHotKeys': indexedHotKeys!
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (indexedKeyRangeInfos != null)
+          'indexedKeyRangeInfos': indexedKeyRangeInfos!
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (info != null) 'info': info!.toJson(),
+        if (matrix != null) 'matrix': matrix!.toJson(),
+        if (unit != null) 'unit': unit!.toJson(),
+        if (visible != null) 'visible': visible!,
+      };
+}
+
+/// A message representing a matrix of floats.
+class MetricMatrix {
+  /// The rows of the matrix.
+  core.List<MetricMatrixRow>? rows;
+
+  MetricMatrix();
+
+  MetricMatrix.fromJson(core.Map _json) {
+    if (_json.containsKey('rows')) {
+      rows = (_json['rows'] as core.List)
+          .map<MetricMatrixRow>((value) => MetricMatrixRow.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// A message representing a row of a matrix of floats.
+class MetricMatrixRow {
+  /// The columns of the row.
+  core.List<core.double>? cols;
+
+  MetricMatrixRow();
+
+  MetricMatrixRow.fromJson(core.Map _json) {
+    if (_json.containsKey('cols')) {
+      cols = (_json['cols'] as core.List)
+          .map<core.double>((value) => (value as core.num).toDouble())
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cols != null) 'cols': cols!,
       };
 }
 
@@ -5845,6 +6550,58 @@ class Policy {
       };
 }
 
+/// A message representing a key prefix node in the key prefix hierarchy.
+///
+/// for eg. Bigtable keyspaces are lexicographically ordered mappings of keys to
+/// values. Keys often have a shared prefix structure where users use the keys
+/// to organize data. Eg ///employee In this case Keysight will possibly use one
+/// node for a company and reuse it for all employees that fall under the
+/// company. Doing so improves legibility in the UI.
+class PrefixNode {
+  /// Whether this corresponds to a data_source name.
+  core.bool? dataSourceNode;
+
+  /// The depth in the prefix hierarchy.
+  core.int? depth;
+
+  /// The index of the end key bucket of the range that this node spans.
+  core.int? endIndex;
+
+  /// The index of the start key bucket of the range that this node spans.
+  core.int? startIndex;
+
+  /// The string represented by the prefix node.
+  core.String? word;
+
+  PrefixNode();
+
+  PrefixNode.fromJson(core.Map _json) {
+    if (_json.containsKey('dataSourceNode')) {
+      dataSourceNode = _json['dataSourceNode'] as core.bool;
+    }
+    if (_json.containsKey('depth')) {
+      depth = _json['depth'] as core.int;
+    }
+    if (_json.containsKey('endIndex')) {
+      endIndex = _json['endIndex'] as core.int;
+    }
+    if (_json.containsKey('startIndex')) {
+      startIndex = _json['startIndex'] as core.int;
+    }
+    if (_json.containsKey('word')) {
+      word = _json['word'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataSourceNode != null) 'dataSourceNode': dataSourceNode!,
+        if (depth != null) 'depth': depth!,
+        if (endIndex != null) 'endIndex': endIndex!,
+        if (startIndex != null) 'startIndex': startIndex!,
+        if (word != null) 'word': word!,
+      };
+}
+
 /// Query optimizer configuration.
 class QueryOptions {
   /// An option to control the selection of optimizer statistics package.
@@ -6622,6 +7379,107 @@ class RollbackRequest {
       };
 }
 
+/// Scan is a structure which describes Cloud Key Visualizer scan information.
+class Scan {
+  /// Additional information provided by the implementer.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object>? details;
+
+  /// The upper bound for when the scan is defined.
+  core.String? endTime;
+
+  /// The unique name of the scan, specific to the Database service implementing
+  /// this interface.
+  core.String? name;
+
+  /// Cloud Key Visualizer scan data.
+  ///
+  /// Note, this field is not available to the ListScans method.
+  ///
+  /// Output only.
+  ScanData? scanData;
+
+  /// A range of time (inclusive) for when the scan is defined.
+  ///
+  /// The lower bound for when the scan is defined.
+  core.String? startTime;
+
+  Scan();
+
+  Scan.fromJson(core.Map _json) {
+    if (_json.containsKey('details')) {
+      details = (_json['details'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
+    }
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('scanData')) {
+      scanData = ScanData.fromJson(
+          _json['scanData'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (details != null) 'details': details!,
+        if (endTime != null) 'endTime': endTime!,
+        if (name != null) 'name': name!,
+        if (scanData != null) 'scanData': scanData!.toJson(),
+        if (startTime != null) 'startTime': startTime!,
+      };
+}
+
+/// ScanData contains Cloud Key Visualizer scan data used by the caller to
+/// construct a visualization.
+class ScanData {
+  /// Cloud Key Visualizer scan data.
+  ///
+  /// The range of time this information covers is captured via the above time
+  /// range fields. Note, this field is not available to the ListScans method.
+  VisualizationData? data;
+
+  /// The upper bound for when the contained data is defined.
+  core.String? endTime;
+
+  /// A range of time (inclusive) for when the contained data is defined.
+  ///
+  /// The lower bound for when the contained data is defined.
+  core.String? startTime;
+
+  ScanData();
+
+  ScanData.fromJson(core.Map _json) {
+    if (_json.containsKey('data')) {
+      data = VisualizationData.fromJson(
+          _json['data'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'] as core.String;
+    }
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (data != null) 'data': data!.toJson(),
+        if (endTime != null) 'endTime': endTime!,
+        if (startTime != null) 'startTime': startTime!,
+      };
+}
+
 /// A session in the Cloud Spanner API.
 class Session {
   /// The approximate timestamp when the session is last used.
@@ -7273,6 +8131,12 @@ class Type {
   /// Scientific notation: `[+-]Digits[.[Digits]][ExponentIndicator[+-]Digits]`
   /// or `+-.Digits[ExponentIndicator[+-]Digits]` (ExponentIndicator is `"e"` or
   /// `"E"`)
+  /// - "JSON" : Encoded as a JSON-formatted 'string' as described in RFC 7159.
+  /// The following rules will be applied when parsing JSON input: - Whitespace
+  /// will be stripped from the document. - If a JSON object has duplicate keys,
+  /// only the first key will be preserved. - Members of a JSON object are not
+  /// guaranteed to have their order preserved. JSON array elements will have
+  /// their order preserved.
   core.String? code;
 
   /// If code == STRUCT, then `struct_type` provides type information for the
@@ -7502,6 +8366,116 @@ class UpdateInstanceRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (fieldMask != null) 'fieldMask': fieldMask!,
         if (instance != null) 'instance': instance!.toJson(),
+      };
+}
+
+class VisualizationData {
+  /// The token signifying the end of a data_source.
+  core.String? dataSourceEndToken;
+
+  /// The token delimiting a datasource name from the rest of a key in a
+  /// data_source.
+  core.String? dataSourceSeparatorToken;
+
+  /// The list of messages (info, alerts, ...)
+  core.List<DiagnosticMessage>? diagnosticMessages;
+
+  /// We discretize the entire keyspace into buckets.
+  ///
+  /// Assuming each bucket has an inclusive keyrange and covers keys from k(i)
+  /// ... k(n). In this case k(n) would be an end key for a given range.
+  /// end_key_string is the collection of all such end keys
+  core.List<core.String>? endKeyStrings;
+
+  /// Whether this scan contains PII.
+  core.bool? hasPii;
+
+  /// Keys of key ranges that contribute significantly to a given metric Can be
+  /// thought of as heavy hitters.
+  core.List<core.String>? indexedKeys;
+
+  /// The token delimiting the key prefixes.
+  core.String? keySeparator;
+
+  /// The unit for the key: e.g. 'key' or 'chunk'.
+  /// Possible string values are:
+  /// - "KEY_UNIT_UNSPECIFIED" : Required default value
+  /// - "KEY" : Each entry corresponds to one key
+  /// - "CHUNK" : Each entry corresponds to a chunk of keys
+  core.String? keyUnit;
+
+  /// The list of data objects for each metric.
+  core.List<Metric>? metrics;
+
+  /// The list of extracted key prefix nodes used in the key prefix hierarchy.
+  core.List<PrefixNode>? prefixNodes;
+
+  VisualizationData();
+
+  VisualizationData.fromJson(core.Map _json) {
+    if (_json.containsKey('dataSourceEndToken')) {
+      dataSourceEndToken = _json['dataSourceEndToken'] as core.String;
+    }
+    if (_json.containsKey('dataSourceSeparatorToken')) {
+      dataSourceSeparatorToken =
+          _json['dataSourceSeparatorToken'] as core.String;
+    }
+    if (_json.containsKey('diagnosticMessages')) {
+      diagnosticMessages = (_json['diagnosticMessages'] as core.List)
+          .map<DiagnosticMessage>((value) => DiagnosticMessage.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('endKeyStrings')) {
+      endKeyStrings = (_json['endKeyStrings'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('hasPii')) {
+      hasPii = _json['hasPii'] as core.bool;
+    }
+    if (_json.containsKey('indexedKeys')) {
+      indexedKeys = (_json['indexedKeys'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('keySeparator')) {
+      keySeparator = _json['keySeparator'] as core.String;
+    }
+    if (_json.containsKey('keyUnit')) {
+      keyUnit = _json['keyUnit'] as core.String;
+    }
+    if (_json.containsKey('metrics')) {
+      metrics = (_json['metrics'] as core.List)
+          .map<Metric>((value) =>
+              Metric.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('prefixNodes')) {
+      prefixNodes = (_json['prefixNodes'] as core.List)
+          .map<PrefixNode>((value) =>
+              PrefixNode.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataSourceEndToken != null)
+          'dataSourceEndToken': dataSourceEndToken!,
+        if (dataSourceSeparatorToken != null)
+          'dataSourceSeparatorToken': dataSourceSeparatorToken!,
+        if (diagnosticMessages != null)
+          'diagnosticMessages':
+              diagnosticMessages!.map((value) => value.toJson()).toList(),
+        if (endKeyStrings != null) 'endKeyStrings': endKeyStrings!,
+        if (hasPii != null) 'hasPii': hasPii!,
+        if (indexedKeys != null) 'indexedKeys': indexedKeys!,
+        if (keySeparator != null) 'keySeparator': keySeparator!,
+        if (keyUnit != null) 'keyUnit': keyUnit!,
+        if (metrics != null)
+          'metrics': metrics!.map((value) => value.toJson()).toList(),
+        if (prefixNodes != null)
+          'prefixNodes': prefixNodes!.map((value) => value.toJson()).toList(),
       };
 }
 

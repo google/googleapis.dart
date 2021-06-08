@@ -3542,8 +3542,7 @@ class ListTagBindingsResponse {
   /// set. Pagination tokens have a limited lifetime.
   core.String? nextPageToken;
 
-  /// A possibly paginated list of TagBindings for the specified TagValue or
-  /// resource.
+  /// A possibly paginated list of TagBindings for the specified resource.
   core.List<TagBinding>? tagBindings;
 
   ListTagBindingsResponse();

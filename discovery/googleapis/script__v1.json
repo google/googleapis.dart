@@ -158,6 +158,7 @@
             "methods": {
                 "list": {
                     "description": "List information about processes made by or on behalf of a user, such as process type and current status.",
+                    "flatPath": "v1/processes",
                     "httpMethod": "GET",
                     "id": "script.processes.list",
                     "parameterOrder": [],
@@ -294,6 +295,7 @@
                 },
                 "listScriptProcesses": {
                     "description": "List information about a script's executed processes, such as process type and current status.",
+                    "flatPath": "v1/processes:listScriptProcesses",
                     "httpMethod": "GET",
                     "id": "script.processes.listScriptProcesses",
                     "parameterOrder": [],
@@ -429,6 +431,7 @@
             "methods": {
                 "create": {
                     "description": "Creates a new, empty script project with no script files and a base manifest file.",
+                    "flatPath": "v1/projects",
                     "httpMethod": "POST",
                     "id": "script.projects.create",
                     "parameterOrder": [],
@@ -446,6 +449,7 @@
                 },
                 "get": {
                     "description": "Gets a script project's metadata.",
+                    "flatPath": "v1/projects/{scriptId}",
                     "httpMethod": "GET",
                     "id": "script.projects.get",
                     "parameterOrder": [
@@ -470,6 +474,7 @@
                 },
                 "getContent": {
                     "description": "Gets the content of the script project, including the code source and metadata for each script file.",
+                    "flatPath": "v1/projects/{scriptId}/content",
                     "httpMethod": "GET",
                     "id": "script.projects.getContent",
                     "parameterOrder": [
@@ -500,6 +505,7 @@
                 },
                 "getMetrics": {
                     "description": "Get metrics data for scripts, such as number of executions and active users.",
+                    "flatPath": "v1/projects/{scriptId}/metrics",
                     "httpMethod": "GET",
                     "id": "script.projects.getMetrics",
                     "parameterOrder": [
@@ -543,6 +549,7 @@
                 },
                 "updateContent": {
                     "description": "Updates the content of the specified script project. This content is stored as the HEAD version, and is used when the script is executed as a trigger, in the script editor, in add-on preview mode, or as a web app or Apps Script API in development mode. This clears all the existing files in the project.",
+                    "flatPath": "v1/projects/{scriptId}/content",
                     "httpMethod": "PUT",
                     "id": "script.projects.updateContent",
                     "parameterOrder": [
@@ -573,6 +580,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a deployment of an Apps Script project.",
+                            "flatPath": "v1/projects/{scriptId}/deployments",
                             "httpMethod": "POST",
                             "id": "script.projects.deployments.create",
                             "parameterOrder": [
@@ -599,6 +607,7 @@
                         },
                         "delete": {
                             "description": "Deletes a deployment of an Apps Script project.",
+                            "flatPath": "v1/projects/{scriptId}/deployments/{deploymentId}",
                             "httpMethod": "DELETE",
                             "id": "script.projects.deployments.delete",
                             "parameterOrder": [
@@ -629,6 +638,7 @@
                         },
                         "get": {
                             "description": "Gets a deployment of an Apps Script project.",
+                            "flatPath": "v1/projects/{scriptId}/deployments/{deploymentId}",
                             "httpMethod": "GET",
                             "id": "script.projects.deployments.get",
                             "parameterOrder": [
@@ -660,6 +670,7 @@
                         },
                         "list": {
                             "description": "Lists the deployments of an Apps Script project.",
+                            "flatPath": "v1/projects/{scriptId}/deployments",
                             "httpMethod": "GET",
                             "id": "script.projects.deployments.list",
                             "parameterOrder": [
@@ -695,6 +706,7 @@
                         },
                         "update": {
                             "description": "Updates a deployment of an Apps Script project.",
+                            "flatPath": "v1/projects/{scriptId}/deployments/{deploymentId}",
                             "httpMethod": "PUT",
                             "id": "script.projects.deployments.update",
                             "parameterOrder": [
@@ -732,6 +744,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a new immutable version using the current code, with a unique version number.",
+                            "flatPath": "v1/projects/{scriptId}/versions",
                             "httpMethod": "POST",
                             "id": "script.projects.versions.create",
                             "parameterOrder": [
@@ -758,6 +771,7 @@
                         },
                         "get": {
                             "description": "Gets a version of a script project.",
+                            "flatPath": "v1/projects/{scriptId}/versions/{versionNumber}",
                             "httpMethod": "GET",
                             "id": "script.projects.versions.get",
                             "parameterOrder": [
@@ -790,6 +804,7 @@
                         },
                         "list": {
                             "description": "List the versions of a script project.",
+                            "flatPath": "v1/projects/{scriptId}/versions",
                             "httpMethod": "GET",
                             "id": "script.projects.versions.list",
                             "parameterOrder": [
@@ -831,6 +846,7 @@
             "methods": {
                 "run": {
                     "description": "Runs a function in an Apps Script project. The script project must be deployed for use with the Apps Script API and the calling application must share the same Cloud Platform project. This method requires authorization with an OAuth 2.0 token that includes at least one of the scopes listed in the [Authorization](#authorization-scopes) section; script projects that do not require authorization cannot be executed through this API. To find the correct scopes to include in the authentication token, open the script project **Overview** page and scroll down to \"Project OAuth Scopes.\" The error `403, PERMISSION_DENIED: The caller does not have permission` indicates that the Cloud Platform project used to authorize the request is not the same as the one used by the script.",
+                    "flatPath": "v1/scripts/{scriptId}:run",
                     "httpMethod": "POST",
                     "id": "script.scripts.run",
                     "parameterOrder": [
@@ -869,7 +885,7 @@
             }
         }
     },
-    "revision": "20210508",
+    "revision": "20210611",
     "rootUrl": "https://script.googleapis.com/",
     "schemas": {
         "Content": {

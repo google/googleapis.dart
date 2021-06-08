@@ -98,6 +98,7 @@
             "methods": {
                 "get": {
                     "description": "Returns detailed information about an asset given its name. PRIVATE assets are returned only if the currently authenticated user (via OAuth token) is the author of the asset.",
+                    "flatPath": "v1/assets/{assetsId}",
                     "httpMethod": "GET",
                     "id": "poly.assets.get",
                     "parameterOrder": [
@@ -119,6 +120,7 @@
                 },
                 "list": {
                     "description": "Lists all public, remixable assets. These are assets with an access level of PUBLIC and published under the CC-By license.",
+                    "flatPath": "v1/assets",
                     "httpMethod": "GET",
                     "id": "poly.assets.list",
                     "parameterOrder": [],
@@ -190,6 +192,7 @@
                     "methods": {
                         "list": {
                             "description": "Lists assets authored by the given user. Only the value 'me', representing the currently-authenticated user, is supported. May include assets with an access level of PRIVATE or UNLISTED and assets which are All Rights Reserved for the currently-authenticated user.",
+                            "flatPath": "v1/users/{usersId}/assets",
                             "httpMethod": "GET",
                             "id": "poly.users.assets.list",
                             "parameterOrder": [
@@ -251,6 +254,7 @@
                     "methods": {
                         "list": {
                             "description": "Lists assets that the user has liked. Only the value 'me', representing the currently-authenticated user, is supported. May include assets with an access level of UNLISTED.",
+                            "flatPath": "v1/users/{usersId}/likedassets",
                             "httpMethod": "GET",
                             "id": "poly.users.likedassets.list",
                             "parameterOrder": [

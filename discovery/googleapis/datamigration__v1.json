@@ -109,6 +109,7 @@
                     "methods": {
                         "get": {
                             "description": "Gets information about a location.",
+                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}",
                             "httpMethod": "GET",
                             "id": "datamigration.projects.locations.get",
                             "parameterOrder": [
@@ -133,6 +134,7 @@
                         },
                         "list": {
                             "description": "Lists information about the supported locations for this service.",
+                            "flatPath": "v1/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "datamigration.projects.locations.list",
                             "parameterOrder": [
@@ -177,6 +179,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a new connection profile in a given project and location.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/connectionProfiles",
                                     "httpMethod": "POST",
                                     "id": "datamigration.projects.locations.connectionProfiles.create",
                                     "parameterOrder": [
@@ -214,6 +217,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a single Database Migration Service connection profile. A connection profile can only be deleted if it is not in use by any active migration jobs.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/connectionProfiles/{connectionProfilesId}",
                                     "httpMethod": "DELETE",
                                     "id": "datamigration.projects.locations.connectionProfiles.delete",
                                     "parameterOrder": [
@@ -248,6 +252,7 @@
                                 },
                                 "get": {
                                     "description": "Gets details of a single connection profile.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/connectionProfiles/{connectionProfilesId}",
                                     "httpMethod": "GET",
                                     "id": "datamigration.projects.locations.connectionProfiles.get",
                                     "parameterOrder": [
@@ -272,6 +277,7 @@
                                 },
                                 "getIamPolicy": {
                                     "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/connectionProfiles/{connectionProfilesId}:getIamPolicy",
                                     "httpMethod": "GET",
                                     "id": "datamigration.projects.locations.connectionProfiles.getIamPolicy",
                                     "parameterOrder": [
@@ -302,6 +308,7 @@
                                 },
                                 "list": {
                                     "description": "Retrieve a list of all connection profiles in a given project and location.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/connectionProfiles",
                                     "httpMethod": "GET",
                                     "id": "datamigration.projects.locations.connectionProfiles.list",
                                     "parameterOrder": [
@@ -347,6 +354,7 @@
                                 },
                                 "patch": {
                                     "description": "Update the configuration of a single connection profile.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/connectionProfiles/{connectionProfilesId}",
                                     "httpMethod": "PATCH",
                                     "id": "datamigration.projects.locations.connectionProfiles.patch",
                                     "parameterOrder": [
@@ -385,6 +393,7 @@
                                 },
                                 "setIamPolicy": {
                                     "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/connectionProfiles/{connectionProfilesId}:setIamPolicy",
                                     "httpMethod": "POST",
                                     "id": "datamigration.projects.locations.connectionProfiles.setIamPolicy",
                                     "parameterOrder": [
@@ -412,6 +421,7 @@
                                 },
                                 "testIamPermissions": {
                                     "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/connectionProfiles/{connectionProfilesId}:testIamPermissions",
                                     "httpMethod": "POST",
                                     "id": "datamigration.projects.locations.connectionProfiles.testIamPermissions",
                                     "parameterOrder": [
@@ -443,6 +453,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a new migration job in a given project and location.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/migrationJobs",
                                     "httpMethod": "POST",
                                     "id": "datamigration.projects.locations.migrationJobs.create",
                                     "parameterOrder": [
@@ -480,6 +491,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a single migration job.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/migrationJobs/{migrationJobsId}",
                                     "httpMethod": "DELETE",
                                     "id": "datamigration.projects.locations.migrationJobs.delete",
                                     "parameterOrder": [
@@ -514,6 +526,7 @@
                                 },
                                 "generateSshScript": {
                                     "description": "Generate a SSH configuration script to configure the reverse SSH connectivity.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/migrationJobs/{migrationJobsId}:generateSshScript",
                                     "httpMethod": "POST",
                                     "id": "datamigration.projects.locations.migrationJobs.generateSshScript",
                                     "parameterOrder": [
@@ -541,6 +554,7 @@
                                 },
                                 "get": {
                                     "description": "Gets details of a single migration job.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/migrationJobs/{migrationJobsId}",
                                     "httpMethod": "GET",
                                     "id": "datamigration.projects.locations.migrationJobs.get",
                                     "parameterOrder": [
@@ -565,6 +579,7 @@
                                 },
                                 "getIamPolicy": {
                                     "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/migrationJobs/{migrationJobsId}:getIamPolicy",
                                     "httpMethod": "GET",
                                     "id": "datamigration.projects.locations.migrationJobs.getIamPolicy",
                                     "parameterOrder": [
@@ -595,6 +610,7 @@
                                 },
                                 "list": {
                                     "description": "Lists migration jobs in a given project and location.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/migrationJobs",
                                     "httpMethod": "GET",
                                     "id": "datamigration.projects.locations.migrationJobs.list",
                                     "parameterOrder": [
@@ -640,6 +656,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates the parameters of a single migration job.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/migrationJobs/{migrationJobsId}",
                                     "httpMethod": "PATCH",
                                     "id": "datamigration.projects.locations.migrationJobs.patch",
                                     "parameterOrder": [
@@ -678,6 +695,7 @@
                                 },
                                 "promote": {
                                     "description": "Promote a migration job, stopping replication to the destination and promoting the destination to be a standalone database.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/migrationJobs/{migrationJobsId}:promote",
                                     "httpMethod": "POST",
                                     "id": "datamigration.projects.locations.migrationJobs.promote",
                                     "parameterOrder": [
@@ -705,6 +723,7 @@
                                 },
                                 "restart": {
                                     "description": "Restart a stopped or failed migration job, resetting the destination instance to its original state and starting the migration process from scratch.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/migrationJobs/{migrationJobsId}:restart",
                                     "httpMethod": "POST",
                                     "id": "datamigration.projects.locations.migrationJobs.restart",
                                     "parameterOrder": [
@@ -732,6 +751,7 @@
                                 },
                                 "resume": {
                                     "description": "Resume a migration job that is currently stopped and is resumable (was stopped during CDC phase).",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/migrationJobs/{migrationJobsId}:resume",
                                     "httpMethod": "POST",
                                     "id": "datamigration.projects.locations.migrationJobs.resume",
                                     "parameterOrder": [
@@ -759,6 +779,7 @@
                                 },
                                 "setIamPolicy": {
                                     "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/migrationJobs/{migrationJobsId}:setIamPolicy",
                                     "httpMethod": "POST",
                                     "id": "datamigration.projects.locations.migrationJobs.setIamPolicy",
                                     "parameterOrder": [
@@ -786,6 +807,7 @@
                                 },
                                 "start": {
                                     "description": "Start an already created migration job.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/migrationJobs/{migrationJobsId}:start",
                                     "httpMethod": "POST",
                                     "id": "datamigration.projects.locations.migrationJobs.start",
                                     "parameterOrder": [
@@ -813,6 +835,7 @@
                                 },
                                 "stop": {
                                     "description": "Stops a running migration job.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/migrationJobs/{migrationJobsId}:stop",
                                     "httpMethod": "POST",
                                     "id": "datamigration.projects.locations.migrationJobs.stop",
                                     "parameterOrder": [
@@ -840,6 +863,7 @@
                                 },
                                 "testIamPermissions": {
                                     "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/migrationJobs/{migrationJobsId}:testIamPermissions",
                                     "httpMethod": "POST",
                                     "id": "datamigration.projects.locations.migrationJobs.testIamPermissions",
                                     "parameterOrder": [
@@ -867,6 +891,7 @@
                                 },
                                 "verify": {
                                     "description": "Verify a migration job, making sure the destination can reach the source and that all configuration and prerequisites are met.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/migrationJobs/{migrationJobsId}:verify",
                                     "httpMethod": "POST",
                                     "id": "datamigration.projects.locations.migrationJobs.verify",
                                     "parameterOrder": [
@@ -898,6 +923,7 @@
                             "methods": {
                                 "cancel": {
                                     "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
                                     "httpMethod": "POST",
                                     "id": "datamigration.projects.locations.operations.cancel",
                                     "parameterOrder": [
@@ -925,6 +951,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                                     "httpMethod": "DELETE",
                                     "id": "datamigration.projects.locations.operations.delete",
                                     "parameterOrder": [
@@ -949,6 +976,7 @@
                                 },
                                 "get": {
                                     "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                                     "httpMethod": "GET",
                                     "id": "datamigration.projects.locations.operations.get",
                                     "parameterOrder": [
@@ -973,6 +1001,7 @@
                                 },
                                 "list": {
                                     "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations",
                                     "httpMethod": "GET",
                                     "id": "datamigration.projects.locations.operations.list",
                                     "parameterOrder": [
@@ -1018,7 +1047,7 @@
             }
         }
     },
-    "revision": "20210513",
+    "revision": "20210527",
     "rootUrl": "https://datamigration.googleapis.com/",
     "schemas": {
         "AuditConfig": {

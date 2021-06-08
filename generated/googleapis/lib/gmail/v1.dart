@@ -4043,6 +4043,8 @@ class ImapSettings {
 
 /// Labels are used to categorize messages and threads within the user's
 /// mailbox.
+///
+/// The maximum number of labels supported for a user's mailbox is 10,000.
 class Label {
   /// The color to assign to the label.
   ///

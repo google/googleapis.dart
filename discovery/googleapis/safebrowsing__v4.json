@@ -98,6 +98,7 @@
             "methods": {
                 "get": {
                     "description": "",
+                    "flatPath": "v4/encodedFullHashes/{encodedRequest}",
                     "httpMethod": "GET",
                     "id": "safebrowsing.encodedFullHashes.get",
                     "parameterOrder": [
@@ -133,6 +134,7 @@
             "methods": {
                 "get": {
                     "description": "",
+                    "flatPath": "v4/encodedUpdates/{encodedRequest}",
                     "httpMethod": "GET",
                     "id": "safebrowsing.encodedUpdates.get",
                     "parameterOrder": [
@@ -168,6 +170,7 @@
             "methods": {
                 "find": {
                     "description": "Finds the full hashes that match the requested hash prefixes.",
+                    "flatPath": "v4/fullHashes:find",
                     "httpMethod": "POST",
                     "id": "safebrowsing.fullHashes.find",
                     "parameterOrder": [],
@@ -186,6 +189,7 @@
             "methods": {
                 "create": {
                     "description": "Reports a Safe Browsing threat list hit to Google. Only projects with TRUSTED_REPORTER visibility can use this method.",
+                    "flatPath": "v4/threatHits",
                     "httpMethod": "POST",
                     "id": "safebrowsing.threatHits.create",
                     "parameterOrder": [],
@@ -204,6 +208,7 @@
             "methods": {
                 "fetch": {
                     "description": "Fetches the most recent threat list updates. A client can request updates for multiple lists at once.",
+                    "flatPath": "v4/threatListUpdates:fetch",
                     "httpMethod": "POST",
                     "id": "safebrowsing.threatListUpdates.fetch",
                     "parameterOrder": [],
@@ -222,6 +227,7 @@
             "methods": {
                 "list": {
                     "description": "Lists the Safe Browsing threat lists available for download.",
+                    "flatPath": "v4/threatLists",
                     "httpMethod": "GET",
                     "id": "safebrowsing.threatLists.list",
                     "parameterOrder": [],
@@ -237,6 +243,7 @@
             "methods": {
                 "find": {
                     "description": "Finds the threat entries that match the Safe Browsing lists.",
+                    "flatPath": "v4/threatMatches:find",
                     "httpMethod": "POST",
                     "id": "safebrowsing.threatMatches.find",
                     "parameterOrder": [],
@@ -252,7 +259,7 @@
             }
         }
     },
-    "revision": "20210520",
+    "revision": "20210614",
     "rootUrl": "https://safebrowsing.googleapis.com/",
     "schemas": {
         "GoogleProtobufEmpty": {
@@ -386,7 +393,8 @@
                         "SUBRESOURCE_FILTER",
                         "SUSPICIOUS",
                         "TRICK_TO_BILL",
-                        "HIGH_CONFIDENCE_ALLOWLIST"
+                        "HIGH_CONFIDENCE_ALLOWLIST",
+                        "ACCURACY_TIPS"
                     ],
                     "enumDescriptions": [
                         "Unknown.",
@@ -405,7 +413,8 @@
                         "Patterns to be used for activating the subresource filter. Interstitial will not be shown for patterns from this list.",
                         "Entities that are suspected to present a threat.",
                         "Trick-to-bill threat list.",
-                        "Safe list to ship hashes of known safe URL expressions."
+                        "Safe list to ship hashes of known safe URL expressions.",
+                        "List from the Jigsaw team to show accuracy tips in Chrome. See go/sb-accuracytips."
                     ],
                     "type": "string"
                 }
@@ -584,7 +593,8 @@
                         "SUBRESOURCE_FILTER",
                         "SUSPICIOUS",
                         "TRICK_TO_BILL",
-                        "HIGH_CONFIDENCE_ALLOWLIST"
+                        "HIGH_CONFIDENCE_ALLOWLIST",
+                        "ACCURACY_TIPS"
                     ],
                     "enumDescriptions": [
                         "Unknown.",
@@ -603,7 +613,8 @@
                         "Patterns to be used for activating the subresource filter. Interstitial will not be shown for patterns from this list.",
                         "Entities that are suspected to present a threat.",
                         "Trick-to-bill threat list.",
-                        "Safe list to ship hashes of known safe URL expressions."
+                        "Safe list to ship hashes of known safe URL expressions.",
+                        "List from the Jigsaw team to show accuracy tips in Chrome. See go/sb-accuracytips."
                     ],
                     "type": "string"
                 }
@@ -912,7 +923,8 @@
                         "SUBRESOURCE_FILTER",
                         "SUSPICIOUS",
                         "TRICK_TO_BILL",
-                        "HIGH_CONFIDENCE_ALLOWLIST"
+                        "HIGH_CONFIDENCE_ALLOWLIST",
+                        "ACCURACY_TIPS"
                     ],
                     "enumDescriptions": [
                         "Unknown.",
@@ -931,7 +943,8 @@
                         "Patterns to be used for activating the subresource filter. Interstitial will not be shown for patterns from this list.",
                         "Entities that are suspected to present a threat.",
                         "Trick-to-bill threat list.",
-                        "Safe list to ship hashes of known safe URL expressions."
+                        "Safe list to ship hashes of known safe URL expressions.",
+                        "List from the Jigsaw team to show accuracy tips in Chrome. See go/sb-accuracytips."
                     ],
                     "type": "string"
                 },
@@ -1080,7 +1093,8 @@
                             "SUBRESOURCE_FILTER",
                             "SUSPICIOUS",
                             "TRICK_TO_BILL",
-                            "HIGH_CONFIDENCE_ALLOWLIST"
+                            "HIGH_CONFIDENCE_ALLOWLIST",
+                            "ACCURACY_TIPS"
                         ],
                         "enumDescriptions": [
                             "Unknown.",
@@ -1099,7 +1113,8 @@
                             "Patterns to be used for activating the subresource filter. Interstitial will not be shown for patterns from this list.",
                             "Entities that are suspected to present a threat.",
                             "Trick-to-bill threat list.",
-                            "Safe list to ship hashes of known safe URL expressions."
+                            "Safe list to ship hashes of known safe URL expressions.",
+                            "List from the Jigsaw team to show accuracy tips in Chrome. See go/sb-accuracytips."
                         ],
                         "type": "string"
                     },
@@ -1179,7 +1194,8 @@
                         "SUBRESOURCE_FILTER",
                         "SUSPICIOUS",
                         "TRICK_TO_BILL",
-                        "HIGH_CONFIDENCE_ALLOWLIST"
+                        "HIGH_CONFIDENCE_ALLOWLIST",
+                        "ACCURACY_TIPS"
                     ],
                     "enumDescriptions": [
                         "Unknown.",
@@ -1198,7 +1214,8 @@
                         "Patterns to be used for activating the subresource filter. Interstitial will not be shown for patterns from this list.",
                         "Entities that are suspected to present a threat.",
                         "Trick-to-bill threat list.",
-                        "Safe list to ship hashes of known safe URL expressions."
+                        "Safe list to ship hashes of known safe URL expressions.",
+                        "List from the Jigsaw team to show accuracy tips in Chrome. See go/sb-accuracytips."
                     ],
                     "type": "string"
                 }
@@ -1289,7 +1306,8 @@
                         "SUBRESOURCE_FILTER",
                         "SUSPICIOUS",
                         "TRICK_TO_BILL",
-                        "HIGH_CONFIDENCE_ALLOWLIST"
+                        "HIGH_CONFIDENCE_ALLOWLIST",
+                        "ACCURACY_TIPS"
                     ],
                     "enumDescriptions": [
                         "Unknown.",
@@ -1308,7 +1326,8 @@
                         "Patterns to be used for activating the subresource filter. Interstitial will not be shown for patterns from this list.",
                         "Entities that are suspected to present a threat.",
                         "Trick-to-bill threat list.",
-                        "Safe list to ship hashes of known safe URL expressions."
+                        "Safe list to ship hashes of known safe URL expressions.",
+                        "List from the Jigsaw team to show accuracy tips in Chrome. See go/sb-accuracytips."
                     ],
                     "type": "string"
                 }

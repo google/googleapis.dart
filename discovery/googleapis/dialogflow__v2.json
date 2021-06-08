@@ -110,6 +110,7 @@
             "methods": {
                 "deleteAgent": {
                     "description": "Deletes the specified agent.",
+                    "flatPath": "v2/projects/{projectsId}/agent",
                     "httpMethod": "DELETE",
                     "id": "dialogflow.projects.deleteAgent",
                     "parameterOrder": [
@@ -135,6 +136,7 @@
                 },
                 "getAgent": {
                     "description": "Retrieves the specified agent.",
+                    "flatPath": "v2/projects/{projectsId}/agent",
                     "httpMethod": "GET",
                     "id": "dialogflow.projects.getAgent",
                     "parameterOrder": [
@@ -160,6 +162,7 @@
                 },
                 "setAgent": {
                     "description": "Creates/updates the specified agent.",
+                    "flatPath": "v2/projects/{projectsId}/agent",
                     "httpMethod": "POST",
                     "id": "dialogflow.projects.setAgent",
                     "parameterOrder": [
@@ -198,6 +201,7 @@
                     "methods": {
                         "export": {
                             "description": "Exports the specified agent to a ZIP file. Operation ",
+                            "flatPath": "v2/projects/{projectsId}/agent:export",
                             "httpMethod": "POST",
                             "id": "dialogflow.projects.agent.export",
                             "parameterOrder": [
@@ -226,6 +230,7 @@
                         },
                         "getFulfillment": {
                             "description": "Retrieves the fulfillment.",
+                            "flatPath": "v2/projects/{projectsId}/agent/fulfillment",
                             "httpMethod": "GET",
                             "id": "dialogflow.projects.agent.getFulfillment",
                             "parameterOrder": [
@@ -251,6 +256,7 @@
                         },
                         "getValidationResult": {
                             "description": "Gets agent validation result. Agent validation is performed during training time and is updated automatically when training is completed.",
+                            "flatPath": "v2/projects/{projectsId}/agent/validationResult",
                             "httpMethod": "GET",
                             "id": "dialogflow.projects.agent.getValidationResult",
                             "parameterOrder": [
@@ -281,6 +287,7 @@
                         },
                         "import": {
                             "description": "Imports the specified agent from a ZIP file. Uploads new intents and entity types without deleting the existing ones. Intents and entity types with the same name are replaced with the new versions from ImportAgentRequest. After the import, the imported draft agent will be trained automatically (unless disabled in agent settings). However, once the import is done, training may not be completed yet. Please call TrainAgent and wait for the operation it returns in order to train explicitly. Operation An operation which tracks when importing is complete. It only tracks when the draft agent is updated not when it is done training.",
+                            "flatPath": "v2/projects/{projectsId}/agent:import",
                             "httpMethod": "POST",
                             "id": "dialogflow.projects.agent.import",
                             "parameterOrder": [
@@ -309,6 +316,7 @@
                         },
                         "restore": {
                             "description": "Restores the specified agent from a ZIP file. Replaces the current agent version with a new one. All the intents and entity types in the older version are deleted. After the restore, the restored draft agent will be trained automatically (unless disabled in agent settings). However, once the restore is done, training may not be completed yet. Please call TrainAgent and wait for the operation it returns in order to train explicitly. Operation An operation which tracks when restoring is complete. It only tracks when the draft agent is updated not when it is done training.",
+                            "flatPath": "v2/projects/{projectsId}/agent:restore",
                             "httpMethod": "POST",
                             "id": "dialogflow.projects.agent.restore",
                             "parameterOrder": [
@@ -337,6 +345,7 @@
                         },
                         "search": {
                             "description": "Returns the list of agents. Since there is at most one conversational agent per project, this method is useful primarily for listing all agents across projects the caller has access to. One can achieve that with a wildcard project collection id \"-\". Refer to [List Sub-Collections](https://cloud.google.com/apis/design/design_patterns#list_sub-collections).",
+                            "flatPath": "v2/projects/{projectsId}/agent:search",
                             "httpMethod": "GET",
                             "id": "dialogflow.projects.agent.search",
                             "parameterOrder": [
@@ -373,6 +382,7 @@
                         },
                         "train": {
                             "description": "Trains the specified agent. Operation ",
+                            "flatPath": "v2/projects/{projectsId}/agent:train",
                             "httpMethod": "POST",
                             "id": "dialogflow.projects.agent.train",
                             "parameterOrder": [
@@ -401,6 +411,7 @@
                         },
                         "updateFulfillment": {
                             "description": "Updates the fulfillment.",
+                            "flatPath": "v2/projects/{projectsId}/agent/fulfillment",
                             "httpMethod": "PATCH",
                             "id": "dialogflow.projects.agent.updateFulfillment",
                             "parameterOrder": [
@@ -439,6 +450,7 @@
                             "methods": {
                                 "batchDelete": {
                                     "description": "Deletes entity types in the specified agent. Operation ",
+                                    "flatPath": "v2/projects/{projectsId}/agent/entityTypes:batchDelete",
                                     "httpMethod": "POST",
                                     "id": "dialogflow.projects.agent.entityTypes.batchDelete",
                                     "parameterOrder": [
@@ -467,6 +479,7 @@
                                 },
                                 "batchUpdate": {
                                     "description": "Updates/Creates multiple entity types in the specified agent. Operation ",
+                                    "flatPath": "v2/projects/{projectsId}/agent/entityTypes:batchUpdate",
                                     "httpMethod": "POST",
                                     "id": "dialogflow.projects.agent.entityTypes.batchUpdate",
                                     "parameterOrder": [
@@ -495,6 +508,7 @@
                                 },
                                 "create": {
                                     "description": "Creates an entity type in the specified agent.",
+                                    "flatPath": "v2/projects/{projectsId}/agent/entityTypes",
                                     "httpMethod": "POST",
                                     "id": "dialogflow.projects.agent.entityTypes.create",
                                     "parameterOrder": [
@@ -528,6 +542,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes the specified entity type.",
+                                    "flatPath": "v2/projects/{projectsId}/agent/entityTypes/{entityTypesId}",
                                     "httpMethod": "DELETE",
                                     "id": "dialogflow.projects.agent.entityTypes.delete",
                                     "parameterOrder": [
@@ -553,6 +568,7 @@
                                 },
                                 "get": {
                                     "description": "Retrieves the specified entity type.",
+                                    "flatPath": "v2/projects/{projectsId}/agent/entityTypes/{entityTypesId}",
                                     "httpMethod": "GET",
                                     "id": "dialogflow.projects.agent.entityTypes.get",
                                     "parameterOrder": [
@@ -583,6 +599,7 @@
                                 },
                                 "list": {
                                     "description": "Returns the list of all entity types in the specified agent.",
+                                    "flatPath": "v2/projects/{projectsId}/agent/entityTypes",
                                     "httpMethod": "GET",
                                     "id": "dialogflow.projects.agent.entityTypes.list",
                                     "parameterOrder": [
@@ -624,6 +641,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates the specified entity type.",
+                                    "flatPath": "v2/projects/{projectsId}/agent/entityTypes/{entityTypesId}",
                                     "httpMethod": "PATCH",
                                     "id": "dialogflow.projects.agent.entityTypes.patch",
                                     "parameterOrder": [
@@ -667,6 +685,7 @@
                                     "methods": {
                                         "batchCreate": {
                                             "description": "Creates multiple new entities in the specified entity type. Operation ",
+                                            "flatPath": "v2/projects/{projectsId}/agent/entityTypes/{entityTypesId}/entities:batchCreate",
                                             "httpMethod": "POST",
                                             "id": "dialogflow.projects.agent.entityTypes.entities.batchCreate",
                                             "parameterOrder": [
@@ -695,6 +714,7 @@
                                         },
                                         "batchDelete": {
                                             "description": "Deletes entities in the specified entity type. Operation ",
+                                            "flatPath": "v2/projects/{projectsId}/agent/entityTypes/{entityTypesId}/entities:batchDelete",
                                             "httpMethod": "POST",
                                             "id": "dialogflow.projects.agent.entityTypes.entities.batchDelete",
                                             "parameterOrder": [
@@ -723,6 +743,7 @@
                                         },
                                         "batchUpdate": {
                                             "description": "Updates or creates multiple entities in the specified entity type. This method does not affect entities in the entity type that aren't explicitly specified in the request. Operation ",
+                                            "flatPath": "v2/projects/{projectsId}/agent/entityTypes/{entityTypesId}/entities:batchUpdate",
                                             "httpMethod": "POST",
                                             "id": "dialogflow.projects.agent.entityTypes.entities.batchUpdate",
                                             "parameterOrder": [
@@ -757,6 +778,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates an agent environment.",
+                                    "flatPath": "v2/projects/{projectsId}/agent/environments",
                                     "httpMethod": "POST",
                                     "id": "dialogflow.projects.agent.environments.create",
                                     "parameterOrder": [
@@ -790,6 +812,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes the specified agent environment.",
+                                    "flatPath": "v2/projects/{projectsId}/agent/environments/{environmentsId}",
                                     "httpMethod": "DELETE",
                                     "id": "dialogflow.projects.agent.environments.delete",
                                     "parameterOrder": [
@@ -815,6 +838,7 @@
                                 },
                                 "get": {
                                     "description": "Retrieves the specified agent environment.",
+                                    "flatPath": "v2/projects/{projectsId}/agent/environments/{environmentsId}",
                                     "httpMethod": "GET",
                                     "id": "dialogflow.projects.agent.environments.get",
                                     "parameterOrder": [
@@ -840,6 +864,7 @@
                                 },
                                 "getHistory": {
                                     "description": "Gets the history of the specified environment.",
+                                    "flatPath": "v2/projects/{projectsId}/agent/environments/{environmentsId}/history",
                                     "httpMethod": "GET",
                                     "id": "dialogflow.projects.agent.environments.getHistory",
                                     "parameterOrder": [
@@ -876,6 +901,7 @@
                                 },
                                 "list": {
                                     "description": "Returns the list of all non-draft environments of the specified agent.",
+                                    "flatPath": "v2/projects/{projectsId}/agent/environments",
                                     "httpMethod": "GET",
                                     "id": "dialogflow.projects.agent.environments.list",
                                     "parameterOrder": [
@@ -912,6 +938,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates the specified agent environment. This method allows you to deploy new agent versions into the environment. When an environment is pointed to a new agent version by setting `environment.agent_version`, the environment is temporarily set to the `LOADING` state. During that time, the environment keeps on serving the previous version of the agent. After the new agent version is done loading, the environment is set back to the `RUNNING` state. You can use \"-\" as Environment ID in environment name to update version in \"draft\" environment. WARNING: this will negate all recent changes to draft and can't be undone. You may want to save the draft to a version before calling this function.",
+                                    "flatPath": "v2/projects/{projectsId}/agent/environments/{environmentsId}",
                                     "httpMethod": "PATCH",
                                     "id": "dialogflow.projects.agent.environments.patch",
                                     "parameterOrder": [
@@ -955,6 +982,7 @@
                                     "methods": {
                                         "list": {
                                             "description": "Returns the list of all intents in the specified agent.",
+                                            "flatPath": "v2/projects/{projectsId}/agent/environments/{environmentsId}/intents",
                                             "httpMethod": "GET",
                                             "id": "dialogflow.projects.agent.environments.intents.list",
                                             "parameterOrder": [
@@ -1015,6 +1043,7 @@
                                             "methods": {
                                                 "deleteContexts": {
                                                     "description": "Deletes all active contexts in the specified session.",
+                                                    "flatPath": "v2/projects/{projectsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/contexts",
                                                     "httpMethod": "DELETE",
                                                     "id": "dialogflow.projects.agent.environments.users.sessions.deleteContexts",
                                                     "parameterOrder": [
@@ -1040,6 +1069,7 @@
                                                 },
                                                 "detectIntent": {
                                                     "description": "Processes a natural language query and returns structured, actionable data as a result. This method is not idempotent, because it may cause contexts and session entity types to be updated, which in turn might affect results of future queries. Note: Always use agent versions for production traffic. See [Versions and environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).",
+                                                    "flatPath": "v2/projects/{projectsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}:detectIntent",
                                                     "httpMethod": "POST",
                                                     "id": "dialogflow.projects.agent.environments.users.sessions.detectIntent",
                                                     "parameterOrder": [
@@ -1072,6 +1102,7 @@
                                                     "methods": {
                                                         "create": {
                                                             "description": "Creates a context. If the specified context already exists, overrides the context.",
+                                                            "flatPath": "v2/projects/{projectsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/contexts",
                                                             "httpMethod": "POST",
                                                             "id": "dialogflow.projects.agent.environments.users.sessions.contexts.create",
                                                             "parameterOrder": [
@@ -1100,6 +1131,7 @@
                                                         },
                                                         "delete": {
                                                             "description": "Deletes the specified context.",
+                                                            "flatPath": "v2/projects/{projectsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/contexts/{contextsId}",
                                                             "httpMethod": "DELETE",
                                                             "id": "dialogflow.projects.agent.environments.users.sessions.contexts.delete",
                                                             "parameterOrder": [
@@ -1125,6 +1157,7 @@
                                                         },
                                                         "get": {
                                                             "description": "Retrieves the specified context.",
+                                                            "flatPath": "v2/projects/{projectsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/contexts/{contextsId}",
                                                             "httpMethod": "GET",
                                                             "id": "dialogflow.projects.agent.environments.users.sessions.contexts.get",
                                                             "parameterOrder": [
@@ -1150,6 +1183,7 @@
                                                         },
                                                         "list": {
                                                             "description": "Returns the list of all contexts in the specified session.",
+                                                            "flatPath": "v2/projects/{projectsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/contexts",
                                                             "httpMethod": "GET",
                                                             "id": "dialogflow.projects.agent.environments.users.sessions.contexts.list",
                                                             "parameterOrder": [
@@ -1186,6 +1220,7 @@
                                                         },
                                                         "patch": {
                                                             "description": "Updates the specified context.",
+                                                            "flatPath": "v2/projects/{projectsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/contexts/{contextsId}",
                                                             "httpMethod": "PATCH",
                                                             "id": "dialogflow.projects.agent.environments.users.sessions.contexts.patch",
                                                             "parameterOrder": [
@@ -1224,6 +1259,7 @@
                                                     "methods": {
                                                         "create": {
                                                             "description": "Creates a session entity type. If the specified session entity type already exists, overrides the session entity type. This method doesn't work with Google Assistant integration. Contact Dialogflow support if you need to use session entities with Google Assistant integration.",
+                                                            "flatPath": "v2/projects/{projectsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/entityTypes",
                                                             "httpMethod": "POST",
                                                             "id": "dialogflow.projects.agent.environments.users.sessions.entityTypes.create",
                                                             "parameterOrder": [
@@ -1252,6 +1288,7 @@
                                                         },
                                                         "delete": {
                                                             "description": "Deletes the specified session entity type. This method doesn't work with Google Assistant integration. Contact Dialogflow support if you need to use session entities with Google Assistant integration.",
+                                                            "flatPath": "v2/projects/{projectsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/entityTypes/{entityTypesId}",
                                                             "httpMethod": "DELETE",
                                                             "id": "dialogflow.projects.agent.environments.users.sessions.entityTypes.delete",
                                                             "parameterOrder": [
@@ -1277,6 +1314,7 @@
                                                         },
                                                         "get": {
                                                             "description": "Retrieves the specified session entity type. This method doesn't work with Google Assistant integration. Contact Dialogflow support if you need to use session entities with Google Assistant integration.",
+                                                            "flatPath": "v2/projects/{projectsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/entityTypes/{entityTypesId}",
                                                             "httpMethod": "GET",
                                                             "id": "dialogflow.projects.agent.environments.users.sessions.entityTypes.get",
                                                             "parameterOrder": [
@@ -1302,6 +1340,7 @@
                                                         },
                                                         "list": {
                                                             "description": "Returns the list of all session entity types in the specified session. This method doesn't work with Google Assistant integration. Contact Dialogflow support if you need to use session entities with Google Assistant integration.",
+                                                            "flatPath": "v2/projects/{projectsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/entityTypes",
                                                             "httpMethod": "GET",
                                                             "id": "dialogflow.projects.agent.environments.users.sessions.entityTypes.list",
                                                             "parameterOrder": [
@@ -1338,6 +1377,7 @@
                                                         },
                                                         "patch": {
                                                             "description": "Updates the specified session entity type. This method doesn't work with Google Assistant integration. Contact Dialogflow support if you need to use session entities with Google Assistant integration.",
+                                                            "flatPath": "v2/projects/{projectsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/entityTypes/{entityTypesId}",
                                                             "httpMethod": "PATCH",
                                                             "id": "dialogflow.projects.agent.environments.users.sessions.entityTypes.patch",
                                                             "parameterOrder": [
@@ -1382,6 +1422,7 @@
                             "methods": {
                                 "batchDelete": {
                                     "description": "Deletes intents in the specified agent. Operation ",
+                                    "flatPath": "v2/projects/{projectsId}/agent/intents:batchDelete",
                                     "httpMethod": "POST",
                                     "id": "dialogflow.projects.agent.intents.batchDelete",
                                     "parameterOrder": [
@@ -1410,6 +1451,7 @@
                                 },
                                 "batchUpdate": {
                                     "description": "Updates/Creates multiple intents in the specified agent. Operation ",
+                                    "flatPath": "v2/projects/{projectsId}/agent/intents:batchUpdate",
                                     "httpMethod": "POST",
                                     "id": "dialogflow.projects.agent.intents.batchUpdate",
                                     "parameterOrder": [
@@ -1438,6 +1480,7 @@
                                 },
                                 "create": {
                                     "description": "Creates an intent in the specified agent.",
+                                    "flatPath": "v2/projects/{projectsId}/agent/intents",
                                     "httpMethod": "POST",
                                     "id": "dialogflow.projects.agent.intents.create",
                                     "parameterOrder": [
@@ -1484,6 +1527,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes the specified intent and its direct or indirect followup intents.",
+                                    "flatPath": "v2/projects/{projectsId}/agent/intents/{intentsId}",
                                     "httpMethod": "DELETE",
                                     "id": "dialogflow.projects.agent.intents.delete",
                                     "parameterOrder": [
@@ -1509,6 +1553,7 @@
                                 },
                                 "get": {
                                     "description": "Retrieves the specified intent.",
+                                    "flatPath": "v2/projects/{projectsId}/agent/intents/{intentsId}",
                                     "httpMethod": "GET",
                                     "id": "dialogflow.projects.agent.intents.get",
                                     "parameterOrder": [
@@ -1552,6 +1597,7 @@
                                 },
                                 "list": {
                                     "description": "Returns the list of all intents in the specified agent.",
+                                    "flatPath": "v2/projects/{projectsId}/agent/intents",
                                     "httpMethod": "GET",
                                     "id": "dialogflow.projects.agent.intents.list",
                                     "parameterOrder": [
@@ -1606,6 +1652,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates the specified intent.",
+                                    "flatPath": "v2/projects/{projectsId}/agent/intents/{intentsId}",
                                     "httpMethod": "PATCH",
                                     "id": "dialogflow.projects.agent.intents.patch",
                                     "parameterOrder": [
@@ -1662,6 +1709,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a knowledge base.",
+                                    "flatPath": "v2/projects/{projectsId}/agent/knowledgeBases",
                                     "httpMethod": "POST",
                                     "id": "dialogflow.projects.agent.knowledgeBases.create",
                                     "parameterOrder": [
@@ -1690,6 +1738,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes the specified knowledge base.",
+                                    "flatPath": "v2/projects/{projectsId}/agent/knowledgeBases/{knowledgeBasesId}",
                                     "httpMethod": "DELETE",
                                     "id": "dialogflow.projects.agent.knowledgeBases.delete",
                                     "parameterOrder": [
@@ -1720,6 +1769,7 @@
                                 },
                                 "get": {
                                     "description": "Retrieves the specified knowledge base.",
+                                    "flatPath": "v2/projects/{projectsId}/agent/knowledgeBases/{knowledgeBasesId}",
                                     "httpMethod": "GET",
                                     "id": "dialogflow.projects.agent.knowledgeBases.get",
                                     "parameterOrder": [
@@ -1745,6 +1795,7 @@
                                 },
                                 "list": {
                                     "description": "Returns the list of all knowledge bases of the specified agent.",
+                                    "flatPath": "v2/projects/{projectsId}/agent/knowledgeBases",
                                     "httpMethod": "GET",
                                     "id": "dialogflow.projects.agent.knowledgeBases.list",
                                     "parameterOrder": [
@@ -1781,6 +1832,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates the specified knowledge base.",
+                                    "flatPath": "v2/projects/{projectsId}/agent/knowledgeBases/{knowledgeBasesId}",
                                     "httpMethod": "PATCH",
                                     "id": "dialogflow.projects.agent.knowledgeBases.patch",
                                     "parameterOrder": [
@@ -1819,6 +1871,7 @@
                                     "methods": {
                                         "create": {
                                             "description": "Creates a new document. Operation ",
+                                            "flatPath": "v2/projects/{projectsId}/agent/knowledgeBases/{knowledgeBasesId}/documents",
                                             "httpMethod": "POST",
                                             "id": "dialogflow.projects.agent.knowledgeBases.documents.create",
                                             "parameterOrder": [
@@ -1847,6 +1900,7 @@
                                         },
                                         "delete": {
                                             "description": "Deletes the specified document. Operation ",
+                                            "flatPath": "v2/projects/{projectsId}/agent/knowledgeBases/{knowledgeBasesId}/documents/{documentsId}",
                                             "httpMethod": "DELETE",
                                             "id": "dialogflow.projects.agent.knowledgeBases.documents.delete",
                                             "parameterOrder": [
@@ -1872,6 +1926,7 @@
                                         },
                                         "get": {
                                             "description": "Retrieves the specified document.",
+                                            "flatPath": "v2/projects/{projectsId}/agent/knowledgeBases/{knowledgeBasesId}/documents/{documentsId}",
                                             "httpMethod": "GET",
                                             "id": "dialogflow.projects.agent.knowledgeBases.documents.get",
                                             "parameterOrder": [
@@ -1897,6 +1952,7 @@
                                         },
                                         "list": {
                                             "description": "Returns the list of all documents of the knowledge base.",
+                                            "flatPath": "v2/projects/{projectsId}/agent/knowledgeBases/{knowledgeBasesId}/documents",
                                             "httpMethod": "GET",
                                             "id": "dialogflow.projects.agent.knowledgeBases.documents.list",
                                             "parameterOrder": [
@@ -1933,6 +1989,7 @@
                                         },
                                         "patch": {
                                             "description": "Updates the specified document. Operation ",
+                                            "flatPath": "v2/projects/{projectsId}/agent/knowledgeBases/{knowledgeBasesId}/documents/{documentsId}",
                                             "httpMethod": "PATCH",
                                             "id": "dialogflow.projects.agent.knowledgeBases.documents.patch",
                                             "parameterOrder": [
@@ -1967,6 +2024,7 @@
                                         },
                                         "reload": {
                                             "description": "Reloads the specified document from its specified source, content_uri or content. The previously loaded content of the document will be deleted. Note: Even when the content of the document has not changed, there still may be side effects because of internal implementation changes. Note: The `projects.agent.knowledgeBases.documents` resource is deprecated; only use `projects.knowledgeBases.documents`. Operation ",
+                                            "flatPath": "v2/projects/{projectsId}/agent/knowledgeBases/{knowledgeBasesId}/documents/{documentsId}:reload",
                                             "httpMethod": "POST",
                                             "id": "dialogflow.projects.agent.knowledgeBases.documents.reload",
                                             "parameterOrder": [
@@ -2001,6 +2059,7 @@
                             "methods": {
                                 "deleteContexts": {
                                     "description": "Deletes all active contexts in the specified session.",
+                                    "flatPath": "v2/projects/{projectsId}/agent/sessions/{sessionsId}/contexts",
                                     "httpMethod": "DELETE",
                                     "id": "dialogflow.projects.agent.sessions.deleteContexts",
                                     "parameterOrder": [
@@ -2026,6 +2085,7 @@
                                 },
                                 "detectIntent": {
                                     "description": "Processes a natural language query and returns structured, actionable data as a result. This method is not idempotent, because it may cause contexts and session entity types to be updated, which in turn might affect results of future queries. Note: Always use agent versions for production traffic. See [Versions and environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).",
+                                    "flatPath": "v2/projects/{projectsId}/agent/sessions/{sessionsId}:detectIntent",
                                     "httpMethod": "POST",
                                     "id": "dialogflow.projects.agent.sessions.detectIntent",
                                     "parameterOrder": [
@@ -2058,6 +2118,7 @@
                                     "methods": {
                                         "create": {
                                             "description": "Creates a context. If the specified context already exists, overrides the context.",
+                                            "flatPath": "v2/projects/{projectsId}/agent/sessions/{sessionsId}/contexts",
                                             "httpMethod": "POST",
                                             "id": "dialogflow.projects.agent.sessions.contexts.create",
                                             "parameterOrder": [
@@ -2086,6 +2147,7 @@
                                         },
                                         "delete": {
                                             "description": "Deletes the specified context.",
+                                            "flatPath": "v2/projects/{projectsId}/agent/sessions/{sessionsId}/contexts/{contextsId}",
                                             "httpMethod": "DELETE",
                                             "id": "dialogflow.projects.agent.sessions.contexts.delete",
                                             "parameterOrder": [
@@ -2111,6 +2173,7 @@
                                         },
                                         "get": {
                                             "description": "Retrieves the specified context.",
+                                            "flatPath": "v2/projects/{projectsId}/agent/sessions/{sessionsId}/contexts/{contextsId}",
                                             "httpMethod": "GET",
                                             "id": "dialogflow.projects.agent.sessions.contexts.get",
                                             "parameterOrder": [
@@ -2136,6 +2199,7 @@
                                         },
                                         "list": {
                                             "description": "Returns the list of all contexts in the specified session.",
+                                            "flatPath": "v2/projects/{projectsId}/agent/sessions/{sessionsId}/contexts",
                                             "httpMethod": "GET",
                                             "id": "dialogflow.projects.agent.sessions.contexts.list",
                                             "parameterOrder": [
@@ -2172,6 +2236,7 @@
                                         },
                                         "patch": {
                                             "description": "Updates the specified context.",
+                                            "flatPath": "v2/projects/{projectsId}/agent/sessions/{sessionsId}/contexts/{contextsId}",
                                             "httpMethod": "PATCH",
                                             "id": "dialogflow.projects.agent.sessions.contexts.patch",
                                             "parameterOrder": [
@@ -2210,6 +2275,7 @@
                                     "methods": {
                                         "create": {
                                             "description": "Creates a session entity type. If the specified session entity type already exists, overrides the session entity type. This method doesn't work with Google Assistant integration. Contact Dialogflow support if you need to use session entities with Google Assistant integration.",
+                                            "flatPath": "v2/projects/{projectsId}/agent/sessions/{sessionsId}/entityTypes",
                                             "httpMethod": "POST",
                                             "id": "dialogflow.projects.agent.sessions.entityTypes.create",
                                             "parameterOrder": [
@@ -2238,6 +2304,7 @@
                                         },
                                         "delete": {
                                             "description": "Deletes the specified session entity type. This method doesn't work with Google Assistant integration. Contact Dialogflow support if you need to use session entities with Google Assistant integration.",
+                                            "flatPath": "v2/projects/{projectsId}/agent/sessions/{sessionsId}/entityTypes/{entityTypesId}",
                                             "httpMethod": "DELETE",
                                             "id": "dialogflow.projects.agent.sessions.entityTypes.delete",
                                             "parameterOrder": [
@@ -2263,6 +2330,7 @@
                                         },
                                         "get": {
                                             "description": "Retrieves the specified session entity type. This method doesn't work with Google Assistant integration. Contact Dialogflow support if you need to use session entities with Google Assistant integration.",
+                                            "flatPath": "v2/projects/{projectsId}/agent/sessions/{sessionsId}/entityTypes/{entityTypesId}",
                                             "httpMethod": "GET",
                                             "id": "dialogflow.projects.agent.sessions.entityTypes.get",
                                             "parameterOrder": [
@@ -2288,6 +2356,7 @@
                                         },
                                         "list": {
                                             "description": "Returns the list of all session entity types in the specified session. This method doesn't work with Google Assistant integration. Contact Dialogflow support if you need to use session entities with Google Assistant integration.",
+                                            "flatPath": "v2/projects/{projectsId}/agent/sessions/{sessionsId}/entityTypes",
                                             "httpMethod": "GET",
                                             "id": "dialogflow.projects.agent.sessions.entityTypes.list",
                                             "parameterOrder": [
@@ -2324,6 +2393,7 @@
                                         },
                                         "patch": {
                                             "description": "Updates the specified session entity type. This method doesn't work with Google Assistant integration. Contact Dialogflow support if you need to use session entities with Google Assistant integration.",
+                                            "flatPath": "v2/projects/{projectsId}/agent/sessions/{sessionsId}/entityTypes/{entityTypesId}",
                                             "httpMethod": "PATCH",
                                             "id": "dialogflow.projects.agent.sessions.entityTypes.patch",
                                             "parameterOrder": [
@@ -2364,6 +2434,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates an agent version. The new version points to the agent instance in the \"default\" environment.",
+                                    "flatPath": "v2/projects/{projectsId}/agent/versions",
                                     "httpMethod": "POST",
                                     "id": "dialogflow.projects.agent.versions.create",
                                     "parameterOrder": [
@@ -2392,6 +2463,7 @@
                                 },
                                 "delete": {
                                     "description": "Delete the specified agent version.",
+                                    "flatPath": "v2/projects/{projectsId}/agent/versions/{versionsId}",
                                     "httpMethod": "DELETE",
                                     "id": "dialogflow.projects.agent.versions.delete",
                                     "parameterOrder": [
@@ -2417,6 +2489,7 @@
                                 },
                                 "get": {
                                     "description": "Retrieves the specified agent version.",
+                                    "flatPath": "v2/projects/{projectsId}/agent/versions/{versionsId}",
                                     "httpMethod": "GET",
                                     "id": "dialogflow.projects.agent.versions.get",
                                     "parameterOrder": [
@@ -2442,6 +2515,7 @@
                                 },
                                 "list": {
                                     "description": "Returns the list of all versions of the specified agent.",
+                                    "flatPath": "v2/projects/{projectsId}/agent/versions",
                                     "httpMethod": "GET",
                                     "id": "dialogflow.projects.agent.versions.list",
                                     "parameterOrder": [
@@ -2478,6 +2552,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates the specified agent version. Note that this method does not allow you to update the state of the agent the given version points to. It allows you to update only mutable properties of the version resource.",
+                                    "flatPath": "v2/projects/{projectsId}/agent/versions/{versionsId}",
                                     "httpMethod": "PATCH",
                                     "id": "dialogflow.projects.agent.versions.patch",
                                     "parameterOrder": [
@@ -2518,6 +2593,7 @@
                     "methods": {
                         "list": {
                             "description": "Returns the list of all answer records in the specified project in reverse chronological order.",
+                            "flatPath": "v2/projects/{projectsId}/answerRecords",
                             "httpMethod": "GET",
                             "id": "dialogflow.projects.answerRecords.list",
                             "parameterOrder": [
@@ -2559,6 +2635,7 @@
                         },
                         "patch": {
                             "description": "Updates the specified answer record.",
+                            "flatPath": "v2/projects/{projectsId}/answerRecords/{answerRecordsId}",
                             "httpMethod": "PATCH",
                             "id": "dialogflow.projects.answerRecords.patch",
                             "parameterOrder": [
@@ -2597,6 +2674,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a conversation profile in the specified project. ConversationProfile.CreateTime and ConversationProfile.UpdateTime aren't populated in the response. You can retrieve them via GetConversationProfile API.",
+                            "flatPath": "v2/projects/{projectsId}/conversationProfiles",
                             "httpMethod": "POST",
                             "id": "dialogflow.projects.conversationProfiles.create",
                             "parameterOrder": [
@@ -2625,6 +2703,7 @@
                         },
                         "delete": {
                             "description": "Deletes the specified conversation profile.",
+                            "flatPath": "v2/projects/{projectsId}/conversationProfiles/{conversationProfilesId}",
                             "httpMethod": "DELETE",
                             "id": "dialogflow.projects.conversationProfiles.delete",
                             "parameterOrder": [
@@ -2650,6 +2729,7 @@
                         },
                         "get": {
                             "description": "Retrieves the specified conversation profile.",
+                            "flatPath": "v2/projects/{projectsId}/conversationProfiles/{conversationProfilesId}",
                             "httpMethod": "GET",
                             "id": "dialogflow.projects.conversationProfiles.get",
                             "parameterOrder": [
@@ -2675,6 +2755,7 @@
                         },
                         "list": {
                             "description": "Returns the list of all conversation profiles in the specified project.",
+                            "flatPath": "v2/projects/{projectsId}/conversationProfiles",
                             "httpMethod": "GET",
                             "id": "dialogflow.projects.conversationProfiles.list",
                             "parameterOrder": [
@@ -2711,6 +2792,7 @@
                         },
                         "patch": {
                             "description": "Updates the specified conversation profile. ConversationProfile.CreateTime and ConversationProfile.UpdateTime aren't populated in the response. You can retrieve them via GetConversationProfile API.",
+                            "flatPath": "v2/projects/{projectsId}/conversationProfiles/{conversationProfilesId}",
                             "httpMethod": "PATCH",
                             "id": "dialogflow.projects.conversationProfiles.patch",
                             "parameterOrder": [
@@ -2749,6 +2831,7 @@
                     "methods": {
                         "complete": {
                             "description": "Completes the specified conversation. Finished conversations are purged from the database after 30 days.",
+                            "flatPath": "v2/projects/{projectsId}/conversations/{conversationsId}:complete",
                             "httpMethod": "POST",
                             "id": "dialogflow.projects.conversations.complete",
                             "parameterOrder": [
@@ -2777,6 +2860,7 @@
                         },
                         "create": {
                             "description": "Creates a new conversation. Conversations are auto-completed after 24 hours. Conversation Lifecycle: There are two stages during a conversation: Automated Agent Stage and Assist Stage. For Automated Agent Stage, there will be a dialogflow agent responding to user queries. For Assist Stage, there's no dialogflow agent responding to user queries. But we will provide suggestions which are generated from conversation. If Conversation.conversation_profile is configured for a dialogflow agent, conversation will start from `Automated Agent Stage`, otherwise, it will start from `Assist Stage`. And during `Automated Agent Stage`, once an Intent with Intent.live_agent_handoff is triggered, conversation will transfer to Assist Stage.",
+                            "flatPath": "v2/projects/{projectsId}/conversations",
                             "httpMethod": "POST",
                             "id": "dialogflow.projects.conversations.create",
                             "parameterOrder": [
@@ -2810,6 +2894,7 @@
                         },
                         "get": {
                             "description": "Retrieves the specific conversation.",
+                            "flatPath": "v2/projects/{projectsId}/conversations/{conversationsId}",
                             "httpMethod": "GET",
                             "id": "dialogflow.projects.conversations.get",
                             "parameterOrder": [
@@ -2835,6 +2920,7 @@
                         },
                         "list": {
                             "description": "Returns the list of all conversations in the specified project.",
+                            "flatPath": "v2/projects/{projectsId}/conversations",
                             "httpMethod": "GET",
                             "id": "dialogflow.projects.conversations.list",
                             "parameterOrder": [
@@ -2880,6 +2966,7 @@
                             "methods": {
                                 "list": {
                                     "description": "Lists messages that belong to a given conversation. `messages` are ordered by `create_time` in descending order. To fetch updates without duplication, send request with filter `create_time_epoch_microseconds > [first item's create_time of previous request]` and empty page_token.",
+                                    "flatPath": "v2/projects/{projectsId}/conversations/{conversationsId}/messages",
                                     "httpMethod": "GET",
                                     "id": "dialogflow.projects.conversations.messages.list",
                                     "parameterOrder": [
@@ -2925,6 +3012,7 @@
                             "methods": {
                                 "analyzeContent": {
                                     "description": "Adds a text (chat, for example), or audio (phone recording, for example) message from a participant into the conversation. Note: Always use agent versions for production traffic sent to virtual agents. See [Versions and environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).",
+                                    "flatPath": "v2/projects/{projectsId}/conversations/{conversationsId}/participants/{participantsId}:analyzeContent",
                                     "httpMethod": "POST",
                                     "id": "dialogflow.projects.conversations.participants.analyzeContent",
                                     "parameterOrder": [
@@ -2953,6 +3041,7 @@
                                 },
                                 "create": {
                                     "description": "Creates a new participant in a conversation.",
+                                    "flatPath": "v2/projects/{projectsId}/conversations/{conversationsId}/participants",
                                     "httpMethod": "POST",
                                     "id": "dialogflow.projects.conversations.participants.create",
                                     "parameterOrder": [
@@ -2981,6 +3070,7 @@
                                 },
                                 "get": {
                                     "description": "Retrieves a conversation participant.",
+                                    "flatPath": "v2/projects/{projectsId}/conversations/{conversationsId}/participants/{participantsId}",
                                     "httpMethod": "GET",
                                     "id": "dialogflow.projects.conversations.participants.get",
                                     "parameterOrder": [
@@ -3006,6 +3096,7 @@
                                 },
                                 "list": {
                                     "description": "Returns the list of all participants in the specified conversation.",
+                                    "flatPath": "v2/projects/{projectsId}/conversations/{conversationsId}/participants",
                                     "httpMethod": "GET",
                                     "id": "dialogflow.projects.conversations.participants.list",
                                     "parameterOrder": [
@@ -3042,6 +3133,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates the specified participant.",
+                                    "flatPath": "v2/projects/{projectsId}/conversations/{conversationsId}/participants/{participantsId}",
                                     "httpMethod": "PATCH",
                                     "id": "dialogflow.projects.conversations.participants.patch",
                                     "parameterOrder": [
@@ -3080,6 +3172,7 @@
                                     "methods": {
                                         "suggestArticles": {
                                             "description": "Gets suggested articles for a participant based on specific historical messages.",
+                                            "flatPath": "v2/projects/{projectsId}/conversations/{conversationsId}/participants/{participantsId}/suggestions:suggestArticles",
                                             "httpMethod": "POST",
                                             "id": "dialogflow.projects.conversations.participants.suggestions.suggestArticles",
                                             "parameterOrder": [
@@ -3108,6 +3201,7 @@
                                         },
                                         "suggestFaqAnswers": {
                                             "description": "Gets suggested faq answers for a participant based on specific historical messages.",
+                                            "flatPath": "v2/projects/{projectsId}/conversations/{conversationsId}/participants/{participantsId}/suggestions:suggestFaqAnswers",
                                             "httpMethod": "POST",
                                             "id": "dialogflow.projects.conversations.participants.suggestions.suggestFaqAnswers",
                                             "parameterOrder": [
@@ -3144,6 +3238,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a knowledge base.",
+                            "flatPath": "v2/projects/{projectsId}/knowledgeBases",
                             "httpMethod": "POST",
                             "id": "dialogflow.projects.knowledgeBases.create",
                             "parameterOrder": [
@@ -3172,6 +3267,7 @@
                         },
                         "delete": {
                             "description": "Deletes the specified knowledge base.",
+                            "flatPath": "v2/projects/{projectsId}/knowledgeBases/{knowledgeBasesId}",
                             "httpMethod": "DELETE",
                             "id": "dialogflow.projects.knowledgeBases.delete",
                             "parameterOrder": [
@@ -3202,6 +3298,7 @@
                         },
                         "get": {
                             "description": "Retrieves the specified knowledge base.",
+                            "flatPath": "v2/projects/{projectsId}/knowledgeBases/{knowledgeBasesId}",
                             "httpMethod": "GET",
                             "id": "dialogflow.projects.knowledgeBases.get",
                             "parameterOrder": [
@@ -3227,6 +3324,7 @@
                         },
                         "list": {
                             "description": "Returns the list of all knowledge bases of the specified agent.",
+                            "flatPath": "v2/projects/{projectsId}/knowledgeBases",
                             "httpMethod": "GET",
                             "id": "dialogflow.projects.knowledgeBases.list",
                             "parameterOrder": [
@@ -3263,6 +3361,7 @@
                         },
                         "patch": {
                             "description": "Updates the specified knowledge base.",
+                            "flatPath": "v2/projects/{projectsId}/knowledgeBases/{knowledgeBasesId}",
                             "httpMethod": "PATCH",
                             "id": "dialogflow.projects.knowledgeBases.patch",
                             "parameterOrder": [
@@ -3301,6 +3400,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a new document. Operation ",
+                                    "flatPath": "v2/projects/{projectsId}/knowledgeBases/{knowledgeBasesId}/documents",
                                     "httpMethod": "POST",
                                     "id": "dialogflow.projects.knowledgeBases.documents.create",
                                     "parameterOrder": [
@@ -3329,6 +3429,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes the specified document. Operation ",
+                                    "flatPath": "v2/projects/{projectsId}/knowledgeBases/{knowledgeBasesId}/documents/{documentsId}",
                                     "httpMethod": "DELETE",
                                     "id": "dialogflow.projects.knowledgeBases.documents.delete",
                                     "parameterOrder": [
@@ -3354,6 +3455,7 @@
                                 },
                                 "get": {
                                     "description": "Retrieves the specified document.",
+                                    "flatPath": "v2/projects/{projectsId}/knowledgeBases/{knowledgeBasesId}/documents/{documentsId}",
                                     "httpMethod": "GET",
                                     "id": "dialogflow.projects.knowledgeBases.documents.get",
                                     "parameterOrder": [
@@ -3379,6 +3481,7 @@
                                 },
                                 "list": {
                                     "description": "Returns the list of all documents of the knowledge base.",
+                                    "flatPath": "v2/projects/{projectsId}/knowledgeBases/{knowledgeBasesId}/documents",
                                     "httpMethod": "GET",
                                     "id": "dialogflow.projects.knowledgeBases.documents.list",
                                     "parameterOrder": [
@@ -3415,6 +3518,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates the specified document. Operation ",
+                                    "flatPath": "v2/projects/{projectsId}/knowledgeBases/{knowledgeBasesId}/documents/{documentsId}",
                                     "httpMethod": "PATCH",
                                     "id": "dialogflow.projects.knowledgeBases.documents.patch",
                                     "parameterOrder": [
@@ -3449,6 +3553,7 @@
                                 },
                                 "reload": {
                                     "description": "Reloads the specified document from its specified source, content_uri or content. The previously loaded content of the document will be deleted. Note: Even when the content of the document has not changed, there still may be side effects because of internal implementation changes. Note: The `projects.agent.knowledgeBases.documents` resource is deprecated; only use `projects.knowledgeBases.documents`. Operation ",
+                                    "flatPath": "v2/projects/{projectsId}/knowledgeBases/{knowledgeBasesId}/documents/{documentsId}:reload",
                                     "httpMethod": "POST",
                                     "id": "dialogflow.projects.knowledgeBases.documents.reload",
                                     "parameterOrder": [
@@ -3483,6 +3588,7 @@
                     "methods": {
                         "deleteAgent": {
                             "description": "Deletes the specified agent.",
+                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent",
                             "httpMethod": "DELETE",
                             "id": "dialogflow.projects.locations.deleteAgent",
                             "parameterOrder": [
@@ -3508,6 +3614,7 @@
                         },
                         "getAgent": {
                             "description": "Retrieves the specified agent.",
+                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent",
                             "httpMethod": "GET",
                             "id": "dialogflow.projects.locations.getAgent",
                             "parameterOrder": [
@@ -3533,6 +3640,7 @@
                         },
                         "setAgent": {
                             "description": "Creates/updates the specified agent.",
+                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent",
                             "httpMethod": "POST",
                             "id": "dialogflow.projects.locations.setAgent",
                             "parameterOrder": [
@@ -3571,6 +3679,7 @@
                             "methods": {
                                 "export": {
                                     "description": "Exports the specified agent to a ZIP file. Operation ",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent:export",
                                     "httpMethod": "POST",
                                     "id": "dialogflow.projects.locations.agent.export",
                                     "parameterOrder": [
@@ -3599,6 +3708,7 @@
                                 },
                                 "getFulfillment": {
                                     "description": "Retrieves the fulfillment.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/fulfillment",
                                     "httpMethod": "GET",
                                     "id": "dialogflow.projects.locations.agent.getFulfillment",
                                     "parameterOrder": [
@@ -3624,6 +3734,7 @@
                                 },
                                 "getValidationResult": {
                                     "description": "Gets agent validation result. Agent validation is performed during training time and is updated automatically when training is completed.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/validationResult",
                                     "httpMethod": "GET",
                                     "id": "dialogflow.projects.locations.agent.getValidationResult",
                                     "parameterOrder": [
@@ -3654,6 +3765,7 @@
                                 },
                                 "import": {
                                     "description": "Imports the specified agent from a ZIP file. Uploads new intents and entity types without deleting the existing ones. Intents and entity types with the same name are replaced with the new versions from ImportAgentRequest. After the import, the imported draft agent will be trained automatically (unless disabled in agent settings). However, once the import is done, training may not be completed yet. Please call TrainAgent and wait for the operation it returns in order to train explicitly. Operation An operation which tracks when importing is complete. It only tracks when the draft agent is updated not when it is done training.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent:import",
                                     "httpMethod": "POST",
                                     "id": "dialogflow.projects.locations.agent.import",
                                     "parameterOrder": [
@@ -3682,6 +3794,7 @@
                                 },
                                 "restore": {
                                     "description": "Restores the specified agent from a ZIP file. Replaces the current agent version with a new one. All the intents and entity types in the older version are deleted. After the restore, the restored draft agent will be trained automatically (unless disabled in agent settings). However, once the restore is done, training may not be completed yet. Please call TrainAgent and wait for the operation it returns in order to train explicitly. Operation An operation which tracks when restoring is complete. It only tracks when the draft agent is updated not when it is done training.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent:restore",
                                     "httpMethod": "POST",
                                     "id": "dialogflow.projects.locations.agent.restore",
                                     "parameterOrder": [
@@ -3710,6 +3823,7 @@
                                 },
                                 "search": {
                                     "description": "Returns the list of agents. Since there is at most one conversational agent per project, this method is useful primarily for listing all agents across projects the caller has access to. One can achieve that with a wildcard project collection id \"-\". Refer to [List Sub-Collections](https://cloud.google.com/apis/design/design_patterns#list_sub-collections).",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent:search",
                                     "httpMethod": "GET",
                                     "id": "dialogflow.projects.locations.agent.search",
                                     "parameterOrder": [
@@ -3746,6 +3860,7 @@
                                 },
                                 "train": {
                                     "description": "Trains the specified agent. Operation ",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent:train",
                                     "httpMethod": "POST",
                                     "id": "dialogflow.projects.locations.agent.train",
                                     "parameterOrder": [
@@ -3774,6 +3889,7 @@
                                 },
                                 "updateFulfillment": {
                                     "description": "Updates the fulfillment.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/fulfillment",
                                     "httpMethod": "PATCH",
                                     "id": "dialogflow.projects.locations.agent.updateFulfillment",
                                     "parameterOrder": [
@@ -3812,6 +3928,7 @@
                                     "methods": {
                                         "batchDelete": {
                                             "description": "Deletes entity types in the specified agent. Operation ",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/entityTypes:batchDelete",
                                             "httpMethod": "POST",
                                             "id": "dialogflow.projects.locations.agent.entityTypes.batchDelete",
                                             "parameterOrder": [
@@ -3840,6 +3957,7 @@
                                         },
                                         "batchUpdate": {
                                             "description": "Updates/Creates multiple entity types in the specified agent. Operation ",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/entityTypes:batchUpdate",
                                             "httpMethod": "POST",
                                             "id": "dialogflow.projects.locations.agent.entityTypes.batchUpdate",
                                             "parameterOrder": [
@@ -3868,6 +3986,7 @@
                                         },
                                         "create": {
                                             "description": "Creates an entity type in the specified agent.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/entityTypes",
                                             "httpMethod": "POST",
                                             "id": "dialogflow.projects.locations.agent.entityTypes.create",
                                             "parameterOrder": [
@@ -3901,6 +4020,7 @@
                                         },
                                         "delete": {
                                             "description": "Deletes the specified entity type.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/entityTypes/{entityTypesId}",
                                             "httpMethod": "DELETE",
                                             "id": "dialogflow.projects.locations.agent.entityTypes.delete",
                                             "parameterOrder": [
@@ -3926,6 +4046,7 @@
                                         },
                                         "get": {
                                             "description": "Retrieves the specified entity type.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/entityTypes/{entityTypesId}",
                                             "httpMethod": "GET",
                                             "id": "dialogflow.projects.locations.agent.entityTypes.get",
                                             "parameterOrder": [
@@ -3956,6 +4077,7 @@
                                         },
                                         "list": {
                                             "description": "Returns the list of all entity types in the specified agent.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/entityTypes",
                                             "httpMethod": "GET",
                                             "id": "dialogflow.projects.locations.agent.entityTypes.list",
                                             "parameterOrder": [
@@ -3997,6 +4119,7 @@
                                         },
                                         "patch": {
                                             "description": "Updates the specified entity type.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/entityTypes/{entityTypesId}",
                                             "httpMethod": "PATCH",
                                             "id": "dialogflow.projects.locations.agent.entityTypes.patch",
                                             "parameterOrder": [
@@ -4040,6 +4163,7 @@
                                             "methods": {
                                                 "batchCreate": {
                                                     "description": "Creates multiple new entities in the specified entity type. Operation ",
+                                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/entityTypes/{entityTypesId}/entities:batchCreate",
                                                     "httpMethod": "POST",
                                                     "id": "dialogflow.projects.locations.agent.entityTypes.entities.batchCreate",
                                                     "parameterOrder": [
@@ -4068,6 +4192,7 @@
                                                 },
                                                 "batchDelete": {
                                                     "description": "Deletes entities in the specified entity type. Operation ",
+                                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/entityTypes/{entityTypesId}/entities:batchDelete",
                                                     "httpMethod": "POST",
                                                     "id": "dialogflow.projects.locations.agent.entityTypes.entities.batchDelete",
                                                     "parameterOrder": [
@@ -4096,6 +4221,7 @@
                                                 },
                                                 "batchUpdate": {
                                                     "description": "Updates or creates multiple entities in the specified entity type. This method does not affect entities in the entity type that aren't explicitly specified in the request. Operation ",
+                                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/entityTypes/{entityTypesId}/entities:batchUpdate",
                                                     "httpMethod": "POST",
                                                     "id": "dialogflow.projects.locations.agent.entityTypes.entities.batchUpdate",
                                                     "parameterOrder": [
@@ -4130,6 +4256,7 @@
                                     "methods": {
                                         "create": {
                                             "description": "Creates an agent environment.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/environments",
                                             "httpMethod": "POST",
                                             "id": "dialogflow.projects.locations.agent.environments.create",
                                             "parameterOrder": [
@@ -4163,6 +4290,7 @@
                                         },
                                         "delete": {
                                             "description": "Deletes the specified agent environment.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}",
                                             "httpMethod": "DELETE",
                                             "id": "dialogflow.projects.locations.agent.environments.delete",
                                             "parameterOrder": [
@@ -4188,6 +4316,7 @@
                                         },
                                         "get": {
                                             "description": "Retrieves the specified agent environment.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}",
                                             "httpMethod": "GET",
                                             "id": "dialogflow.projects.locations.agent.environments.get",
                                             "parameterOrder": [
@@ -4213,6 +4342,7 @@
                                         },
                                         "getHistory": {
                                             "description": "Gets the history of the specified environment.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}/history",
                                             "httpMethod": "GET",
                                             "id": "dialogflow.projects.locations.agent.environments.getHistory",
                                             "parameterOrder": [
@@ -4249,6 +4379,7 @@
                                         },
                                         "list": {
                                             "description": "Returns the list of all non-draft environments of the specified agent.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/environments",
                                             "httpMethod": "GET",
                                             "id": "dialogflow.projects.locations.agent.environments.list",
                                             "parameterOrder": [
@@ -4285,6 +4416,7 @@
                                         },
                                         "patch": {
                                             "description": "Updates the specified agent environment. This method allows you to deploy new agent versions into the environment. When an environment is pointed to a new agent version by setting `environment.agent_version`, the environment is temporarily set to the `LOADING` state. During that time, the environment keeps on serving the previous version of the agent. After the new agent version is done loading, the environment is set back to the `RUNNING` state. You can use \"-\" as Environment ID in environment name to update version in \"draft\" environment. WARNING: this will negate all recent changes to draft and can't be undone. You may want to save the draft to a version before calling this function.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}",
                                             "httpMethod": "PATCH",
                                             "id": "dialogflow.projects.locations.agent.environments.patch",
                                             "parameterOrder": [
@@ -4328,6 +4460,7 @@
                                             "methods": {
                                                 "list": {
                                                     "description": "Returns the list of all intents in the specified agent.",
+                                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}/intents",
                                                     "httpMethod": "GET",
                                                     "id": "dialogflow.projects.locations.agent.environments.intents.list",
                                                     "parameterOrder": [
@@ -4388,6 +4521,7 @@
                                                     "methods": {
                                                         "deleteContexts": {
                                                             "description": "Deletes all active contexts in the specified session.",
+                                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/contexts",
                                                             "httpMethod": "DELETE",
                                                             "id": "dialogflow.projects.locations.agent.environments.users.sessions.deleteContexts",
                                                             "parameterOrder": [
@@ -4413,6 +4547,7 @@
                                                         },
                                                         "detectIntent": {
                                                             "description": "Processes a natural language query and returns structured, actionable data as a result. This method is not idempotent, because it may cause contexts and session entity types to be updated, which in turn might affect results of future queries. Note: Always use agent versions for production traffic. See [Versions and environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).",
+                                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}:detectIntent",
                                                             "httpMethod": "POST",
                                                             "id": "dialogflow.projects.locations.agent.environments.users.sessions.detectIntent",
                                                             "parameterOrder": [
@@ -4445,6 +4580,7 @@
                                                             "methods": {
                                                                 "create": {
                                                                     "description": "Creates a context. If the specified context already exists, overrides the context.",
+                                                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/contexts",
                                                                     "httpMethod": "POST",
                                                                     "id": "dialogflow.projects.locations.agent.environments.users.sessions.contexts.create",
                                                                     "parameterOrder": [
@@ -4473,6 +4609,7 @@
                                                                 },
                                                                 "delete": {
                                                                     "description": "Deletes the specified context.",
+                                                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/contexts/{contextsId}",
                                                                     "httpMethod": "DELETE",
                                                                     "id": "dialogflow.projects.locations.agent.environments.users.sessions.contexts.delete",
                                                                     "parameterOrder": [
@@ -4498,6 +4635,7 @@
                                                                 },
                                                                 "get": {
                                                                     "description": "Retrieves the specified context.",
+                                                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/contexts/{contextsId}",
                                                                     "httpMethod": "GET",
                                                                     "id": "dialogflow.projects.locations.agent.environments.users.sessions.contexts.get",
                                                                     "parameterOrder": [
@@ -4523,6 +4661,7 @@
                                                                 },
                                                                 "list": {
                                                                     "description": "Returns the list of all contexts in the specified session.",
+                                                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/contexts",
                                                                     "httpMethod": "GET",
                                                                     "id": "dialogflow.projects.locations.agent.environments.users.sessions.contexts.list",
                                                                     "parameterOrder": [
@@ -4559,6 +4698,7 @@
                                                                 },
                                                                 "patch": {
                                                                     "description": "Updates the specified context.",
+                                                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/contexts/{contextsId}",
                                                                     "httpMethod": "PATCH",
                                                                     "id": "dialogflow.projects.locations.agent.environments.users.sessions.contexts.patch",
                                                                     "parameterOrder": [
@@ -4597,6 +4737,7 @@
                                                             "methods": {
                                                                 "create": {
                                                                     "description": "Creates a session entity type. If the specified session entity type already exists, overrides the session entity type. This method doesn't work with Google Assistant integration. Contact Dialogflow support if you need to use session entities with Google Assistant integration.",
+                                                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/entityTypes",
                                                                     "httpMethod": "POST",
                                                                     "id": "dialogflow.projects.locations.agent.environments.users.sessions.entityTypes.create",
                                                                     "parameterOrder": [
@@ -4625,6 +4766,7 @@
                                                                 },
                                                                 "delete": {
                                                                     "description": "Deletes the specified session entity type. This method doesn't work with Google Assistant integration. Contact Dialogflow support if you need to use session entities with Google Assistant integration.",
+                                                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/entityTypes/{entityTypesId}",
                                                                     "httpMethod": "DELETE",
                                                                     "id": "dialogflow.projects.locations.agent.environments.users.sessions.entityTypes.delete",
                                                                     "parameterOrder": [
@@ -4650,6 +4792,7 @@
                                                                 },
                                                                 "get": {
                                                                     "description": "Retrieves the specified session entity type. This method doesn't work with Google Assistant integration. Contact Dialogflow support if you need to use session entities with Google Assistant integration.",
+                                                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/entityTypes/{entityTypesId}",
                                                                     "httpMethod": "GET",
                                                                     "id": "dialogflow.projects.locations.agent.environments.users.sessions.entityTypes.get",
                                                                     "parameterOrder": [
@@ -4675,6 +4818,7 @@
                                                                 },
                                                                 "list": {
                                                                     "description": "Returns the list of all session entity types in the specified session. This method doesn't work with Google Assistant integration. Contact Dialogflow support if you need to use session entities with Google Assistant integration.",
+                                                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/entityTypes",
                                                                     "httpMethod": "GET",
                                                                     "id": "dialogflow.projects.locations.agent.environments.users.sessions.entityTypes.list",
                                                                     "parameterOrder": [
@@ -4711,6 +4855,7 @@
                                                                 },
                                                                 "patch": {
                                                                     "description": "Updates the specified session entity type. This method doesn't work with Google Assistant integration. Contact Dialogflow support if you need to use session entities with Google Assistant integration.",
+                                                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/entityTypes/{entityTypesId}",
                                                                     "httpMethod": "PATCH",
                                                                     "id": "dialogflow.projects.locations.agent.environments.users.sessions.entityTypes.patch",
                                                                     "parameterOrder": [
@@ -4755,6 +4900,7 @@
                                     "methods": {
                                         "batchDelete": {
                                             "description": "Deletes intents in the specified agent. Operation ",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/intents:batchDelete",
                                             "httpMethod": "POST",
                                             "id": "dialogflow.projects.locations.agent.intents.batchDelete",
                                             "parameterOrder": [
@@ -4783,6 +4929,7 @@
                                         },
                                         "batchUpdate": {
                                             "description": "Updates/Creates multiple intents in the specified agent. Operation ",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/intents:batchUpdate",
                                             "httpMethod": "POST",
                                             "id": "dialogflow.projects.locations.agent.intents.batchUpdate",
                                             "parameterOrder": [
@@ -4811,6 +4958,7 @@
                                         },
                                         "create": {
                                             "description": "Creates an intent in the specified agent.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/intents",
                                             "httpMethod": "POST",
                                             "id": "dialogflow.projects.locations.agent.intents.create",
                                             "parameterOrder": [
@@ -4857,6 +5005,7 @@
                                         },
                                         "delete": {
                                             "description": "Deletes the specified intent and its direct or indirect followup intents.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/intents/{intentsId}",
                                             "httpMethod": "DELETE",
                                             "id": "dialogflow.projects.locations.agent.intents.delete",
                                             "parameterOrder": [
@@ -4882,6 +5031,7 @@
                                         },
                                         "get": {
                                             "description": "Retrieves the specified intent.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/intents/{intentsId}",
                                             "httpMethod": "GET",
                                             "id": "dialogflow.projects.locations.agent.intents.get",
                                             "parameterOrder": [
@@ -4925,6 +5075,7 @@
                                         },
                                         "list": {
                                             "description": "Returns the list of all intents in the specified agent.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/intents",
                                             "httpMethod": "GET",
                                             "id": "dialogflow.projects.locations.agent.intents.list",
                                             "parameterOrder": [
@@ -4979,6 +5130,7 @@
                                         },
                                         "patch": {
                                             "description": "Updates the specified intent.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/intents/{intentsId}",
                                             "httpMethod": "PATCH",
                                             "id": "dialogflow.projects.locations.agent.intents.patch",
                                             "parameterOrder": [
@@ -5035,6 +5187,7 @@
                                     "methods": {
                                         "deleteContexts": {
                                             "description": "Deletes all active contexts in the specified session.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/sessions/{sessionsId}/contexts",
                                             "httpMethod": "DELETE",
                                             "id": "dialogflow.projects.locations.agent.sessions.deleteContexts",
                                             "parameterOrder": [
@@ -5060,6 +5213,7 @@
                                         },
                                         "detectIntent": {
                                             "description": "Processes a natural language query and returns structured, actionable data as a result. This method is not idempotent, because it may cause contexts and session entity types to be updated, which in turn might affect results of future queries. Note: Always use agent versions for production traffic. See [Versions and environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/sessions/{sessionsId}:detectIntent",
                                             "httpMethod": "POST",
                                             "id": "dialogflow.projects.locations.agent.sessions.detectIntent",
                                             "parameterOrder": [
@@ -5092,6 +5246,7 @@
                                             "methods": {
                                                 "create": {
                                                     "description": "Creates a context. If the specified context already exists, overrides the context.",
+                                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/sessions/{sessionsId}/contexts",
                                                     "httpMethod": "POST",
                                                     "id": "dialogflow.projects.locations.agent.sessions.contexts.create",
                                                     "parameterOrder": [
@@ -5120,6 +5275,7 @@
                                                 },
                                                 "delete": {
                                                     "description": "Deletes the specified context.",
+                                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/sessions/{sessionsId}/contexts/{contextsId}",
                                                     "httpMethod": "DELETE",
                                                     "id": "dialogflow.projects.locations.agent.sessions.contexts.delete",
                                                     "parameterOrder": [
@@ -5145,6 +5301,7 @@
                                                 },
                                                 "get": {
                                                     "description": "Retrieves the specified context.",
+                                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/sessions/{sessionsId}/contexts/{contextsId}",
                                                     "httpMethod": "GET",
                                                     "id": "dialogflow.projects.locations.agent.sessions.contexts.get",
                                                     "parameterOrder": [
@@ -5170,6 +5327,7 @@
                                                 },
                                                 "list": {
                                                     "description": "Returns the list of all contexts in the specified session.",
+                                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/sessions/{sessionsId}/contexts",
                                                     "httpMethod": "GET",
                                                     "id": "dialogflow.projects.locations.agent.sessions.contexts.list",
                                                     "parameterOrder": [
@@ -5206,6 +5364,7 @@
                                                 },
                                                 "patch": {
                                                     "description": "Updates the specified context.",
+                                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/sessions/{sessionsId}/contexts/{contextsId}",
                                                     "httpMethod": "PATCH",
                                                     "id": "dialogflow.projects.locations.agent.sessions.contexts.patch",
                                                     "parameterOrder": [
@@ -5244,6 +5403,7 @@
                                             "methods": {
                                                 "create": {
                                                     "description": "Creates a session entity type. If the specified session entity type already exists, overrides the session entity type. This method doesn't work with Google Assistant integration. Contact Dialogflow support if you need to use session entities with Google Assistant integration.",
+                                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/sessions/{sessionsId}/entityTypes",
                                                     "httpMethod": "POST",
                                                     "id": "dialogflow.projects.locations.agent.sessions.entityTypes.create",
                                                     "parameterOrder": [
@@ -5272,6 +5432,7 @@
                                                 },
                                                 "delete": {
                                                     "description": "Deletes the specified session entity type. This method doesn't work with Google Assistant integration. Contact Dialogflow support if you need to use session entities with Google Assistant integration.",
+                                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/sessions/{sessionsId}/entityTypes/{entityTypesId}",
                                                     "httpMethod": "DELETE",
                                                     "id": "dialogflow.projects.locations.agent.sessions.entityTypes.delete",
                                                     "parameterOrder": [
@@ -5297,6 +5458,7 @@
                                                 },
                                                 "get": {
                                                     "description": "Retrieves the specified session entity type. This method doesn't work with Google Assistant integration. Contact Dialogflow support if you need to use session entities with Google Assistant integration.",
+                                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/sessions/{sessionsId}/entityTypes/{entityTypesId}",
                                                     "httpMethod": "GET",
                                                     "id": "dialogflow.projects.locations.agent.sessions.entityTypes.get",
                                                     "parameterOrder": [
@@ -5322,6 +5484,7 @@
                                                 },
                                                 "list": {
                                                     "description": "Returns the list of all session entity types in the specified session. This method doesn't work with Google Assistant integration. Contact Dialogflow support if you need to use session entities with Google Assistant integration.",
+                                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/sessions/{sessionsId}/entityTypes",
                                                     "httpMethod": "GET",
                                                     "id": "dialogflow.projects.locations.agent.sessions.entityTypes.list",
                                                     "parameterOrder": [
@@ -5358,6 +5521,7 @@
                                                 },
                                                 "patch": {
                                                     "description": "Updates the specified session entity type. This method doesn't work with Google Assistant integration. Contact Dialogflow support if you need to use session entities with Google Assistant integration.",
+                                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/sessions/{sessionsId}/entityTypes/{entityTypesId}",
                                                     "httpMethod": "PATCH",
                                                     "id": "dialogflow.projects.locations.agent.sessions.entityTypes.patch",
                                                     "parameterOrder": [
@@ -5398,6 +5562,7 @@
                                     "methods": {
                                         "create": {
                                             "description": "Creates an agent version. The new version points to the agent instance in the \"default\" environment.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/versions",
                                             "httpMethod": "POST",
                                             "id": "dialogflow.projects.locations.agent.versions.create",
                                             "parameterOrder": [
@@ -5426,6 +5591,7 @@
                                         },
                                         "delete": {
                                             "description": "Delete the specified agent version.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/versions/{versionsId}",
                                             "httpMethod": "DELETE",
                                             "id": "dialogflow.projects.locations.agent.versions.delete",
                                             "parameterOrder": [
@@ -5451,6 +5617,7 @@
                                         },
                                         "get": {
                                             "description": "Retrieves the specified agent version.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/versions/{versionsId}",
                                             "httpMethod": "GET",
                                             "id": "dialogflow.projects.locations.agent.versions.get",
                                             "parameterOrder": [
@@ -5476,6 +5643,7 @@
                                         },
                                         "list": {
                                             "description": "Returns the list of all versions of the specified agent.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/versions",
                                             "httpMethod": "GET",
                                             "id": "dialogflow.projects.locations.agent.versions.list",
                                             "parameterOrder": [
@@ -5512,6 +5680,7 @@
                                         },
                                         "patch": {
                                             "description": "Updates the specified agent version. Note that this method does not allow you to update the state of the agent the given version points to. It allows you to update only mutable properties of the version resource.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/versions/{versionsId}",
                                             "httpMethod": "PATCH",
                                             "id": "dialogflow.projects.locations.agent.versions.patch",
                                             "parameterOrder": [
@@ -5552,6 +5721,7 @@
                             "methods": {
                                 "list": {
                                     "description": "Returns the list of all answer records in the specified project in reverse chronological order.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/answerRecords",
                                     "httpMethod": "GET",
                                     "id": "dialogflow.projects.locations.answerRecords.list",
                                     "parameterOrder": [
@@ -5593,6 +5763,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates the specified answer record.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/answerRecords/{answerRecordsId}",
                                     "httpMethod": "PATCH",
                                     "id": "dialogflow.projects.locations.answerRecords.patch",
                                     "parameterOrder": [
@@ -5631,6 +5802,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a conversation profile in the specified project. ConversationProfile.CreateTime and ConversationProfile.UpdateTime aren't populated in the response. You can retrieve them via GetConversationProfile API.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/conversationProfiles",
                                     "httpMethod": "POST",
                                     "id": "dialogflow.projects.locations.conversationProfiles.create",
                                     "parameterOrder": [
@@ -5659,6 +5831,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes the specified conversation profile.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/conversationProfiles/{conversationProfilesId}",
                                     "httpMethod": "DELETE",
                                     "id": "dialogflow.projects.locations.conversationProfiles.delete",
                                     "parameterOrder": [
@@ -5684,6 +5857,7 @@
                                 },
                                 "get": {
                                     "description": "Retrieves the specified conversation profile.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/conversationProfiles/{conversationProfilesId}",
                                     "httpMethod": "GET",
                                     "id": "dialogflow.projects.locations.conversationProfiles.get",
                                     "parameterOrder": [
@@ -5709,6 +5883,7 @@
                                 },
                                 "list": {
                                     "description": "Returns the list of all conversation profiles in the specified project.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/conversationProfiles",
                                     "httpMethod": "GET",
                                     "id": "dialogflow.projects.locations.conversationProfiles.list",
                                     "parameterOrder": [
@@ -5745,6 +5920,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates the specified conversation profile. ConversationProfile.CreateTime and ConversationProfile.UpdateTime aren't populated in the response. You can retrieve them via GetConversationProfile API.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/conversationProfiles/{conversationProfilesId}",
                                     "httpMethod": "PATCH",
                                     "id": "dialogflow.projects.locations.conversationProfiles.patch",
                                     "parameterOrder": [
@@ -5783,6 +5959,7 @@
                             "methods": {
                                 "complete": {
                                     "description": "Completes the specified conversation. Finished conversations are purged from the database after 30 days.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}:complete",
                                     "httpMethod": "POST",
                                     "id": "dialogflow.projects.locations.conversations.complete",
                                     "parameterOrder": [
@@ -5811,6 +5988,7 @@
                                 },
                                 "create": {
                                     "description": "Creates a new conversation. Conversations are auto-completed after 24 hours. Conversation Lifecycle: There are two stages during a conversation: Automated Agent Stage and Assist Stage. For Automated Agent Stage, there will be a dialogflow agent responding to user queries. For Assist Stage, there's no dialogflow agent responding to user queries. But we will provide suggestions which are generated from conversation. If Conversation.conversation_profile is configured for a dialogflow agent, conversation will start from `Automated Agent Stage`, otherwise, it will start from `Assist Stage`. And during `Automated Agent Stage`, once an Intent with Intent.live_agent_handoff is triggered, conversation will transfer to Assist Stage.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/conversations",
                                     "httpMethod": "POST",
                                     "id": "dialogflow.projects.locations.conversations.create",
                                     "parameterOrder": [
@@ -5844,6 +6022,7 @@
                                 },
                                 "get": {
                                     "description": "Retrieves the specific conversation.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}",
                                     "httpMethod": "GET",
                                     "id": "dialogflow.projects.locations.conversations.get",
                                     "parameterOrder": [
@@ -5869,6 +6048,7 @@
                                 },
                                 "list": {
                                     "description": "Returns the list of all conversations in the specified project.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/conversations",
                                     "httpMethod": "GET",
                                     "id": "dialogflow.projects.locations.conversations.list",
                                     "parameterOrder": [
@@ -5914,6 +6094,7 @@
                                     "methods": {
                                         "list": {
                                             "description": "Lists messages that belong to a given conversation. `messages` are ordered by `create_time` in descending order. To fetch updates without duplication, send request with filter `create_time_epoch_microseconds > [first item's create_time of previous request]` and empty page_token.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/messages",
                                             "httpMethod": "GET",
                                             "id": "dialogflow.projects.locations.conversations.messages.list",
                                             "parameterOrder": [
@@ -5959,6 +6140,7 @@
                                     "methods": {
                                         "analyzeContent": {
                                             "description": "Adds a text (chat, for example), or audio (phone recording, for example) message from a participant into the conversation. Note: Always use agent versions for production traffic sent to virtual agents. See [Versions and environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/participants/{participantsId}:analyzeContent",
                                             "httpMethod": "POST",
                                             "id": "dialogflow.projects.locations.conversations.participants.analyzeContent",
                                             "parameterOrder": [
@@ -5987,6 +6169,7 @@
                                         },
                                         "create": {
                                             "description": "Creates a new participant in a conversation.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/participants",
                                             "httpMethod": "POST",
                                             "id": "dialogflow.projects.locations.conversations.participants.create",
                                             "parameterOrder": [
@@ -6015,6 +6198,7 @@
                                         },
                                         "get": {
                                             "description": "Retrieves a conversation participant.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/participants/{participantsId}",
                                             "httpMethod": "GET",
                                             "id": "dialogflow.projects.locations.conversations.participants.get",
                                             "parameterOrder": [
@@ -6040,6 +6224,7 @@
                                         },
                                         "list": {
                                             "description": "Returns the list of all participants in the specified conversation.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/participants",
                                             "httpMethod": "GET",
                                             "id": "dialogflow.projects.locations.conversations.participants.list",
                                             "parameterOrder": [
@@ -6076,6 +6261,7 @@
                                         },
                                         "patch": {
                                             "description": "Updates the specified participant.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/participants/{participantsId}",
                                             "httpMethod": "PATCH",
                                             "id": "dialogflow.projects.locations.conversations.participants.patch",
                                             "parameterOrder": [
@@ -6114,6 +6300,7 @@
                                             "methods": {
                                                 "suggestArticles": {
                                                     "description": "Gets suggested articles for a participant based on specific historical messages.",
+                                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/participants/{participantsId}/suggestions:suggestArticles",
                                                     "httpMethod": "POST",
                                                     "id": "dialogflow.projects.locations.conversations.participants.suggestions.suggestArticles",
                                                     "parameterOrder": [
@@ -6142,6 +6329,7 @@
                                                 },
                                                 "suggestFaqAnswers": {
                                                     "description": "Gets suggested faq answers for a participant based on specific historical messages.",
+                                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/participants/{participantsId}/suggestions:suggestFaqAnswers",
                                                     "httpMethod": "POST",
                                                     "id": "dialogflow.projects.locations.conversations.participants.suggestions.suggestFaqAnswers",
                                                     "parameterOrder": [
@@ -6178,6 +6366,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a knowledge base.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/knowledgeBases",
                                     "httpMethod": "POST",
                                     "id": "dialogflow.projects.locations.knowledgeBases.create",
                                     "parameterOrder": [
@@ -6206,6 +6395,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes the specified knowledge base.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/knowledgeBases/{knowledgeBasesId}",
                                     "httpMethod": "DELETE",
                                     "id": "dialogflow.projects.locations.knowledgeBases.delete",
                                     "parameterOrder": [
@@ -6236,6 +6426,7 @@
                                 },
                                 "get": {
                                     "description": "Retrieves the specified knowledge base.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/knowledgeBases/{knowledgeBasesId}",
                                     "httpMethod": "GET",
                                     "id": "dialogflow.projects.locations.knowledgeBases.get",
                                     "parameterOrder": [
@@ -6261,6 +6452,7 @@
                                 },
                                 "list": {
                                     "description": "Returns the list of all knowledge bases of the specified agent.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/knowledgeBases",
                                     "httpMethod": "GET",
                                     "id": "dialogflow.projects.locations.knowledgeBases.list",
                                     "parameterOrder": [
@@ -6297,6 +6489,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates the specified knowledge base.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/knowledgeBases/{knowledgeBasesId}",
                                     "httpMethod": "PATCH",
                                     "id": "dialogflow.projects.locations.knowledgeBases.patch",
                                     "parameterOrder": [
@@ -6335,6 +6528,7 @@
                                     "methods": {
                                         "create": {
                                             "description": "Creates a new document. Operation ",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/knowledgeBases/{knowledgeBasesId}/documents",
                                             "httpMethod": "POST",
                                             "id": "dialogflow.projects.locations.knowledgeBases.documents.create",
                                             "parameterOrder": [
@@ -6363,6 +6557,7 @@
                                         },
                                         "delete": {
                                             "description": "Deletes the specified document. Operation ",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/knowledgeBases/{knowledgeBasesId}/documents/{documentsId}",
                                             "httpMethod": "DELETE",
                                             "id": "dialogflow.projects.locations.knowledgeBases.documents.delete",
                                             "parameterOrder": [
@@ -6388,6 +6583,7 @@
                                         },
                                         "get": {
                                             "description": "Retrieves the specified document.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/knowledgeBases/{knowledgeBasesId}/documents/{documentsId}",
                                             "httpMethod": "GET",
                                             "id": "dialogflow.projects.locations.knowledgeBases.documents.get",
                                             "parameterOrder": [
@@ -6413,6 +6609,7 @@
                                         },
                                         "list": {
                                             "description": "Returns the list of all documents of the knowledge base.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/knowledgeBases/{knowledgeBasesId}/documents",
                                             "httpMethod": "GET",
                                             "id": "dialogflow.projects.locations.knowledgeBases.documents.list",
                                             "parameterOrder": [
@@ -6449,6 +6646,7 @@
                                         },
                                         "patch": {
                                             "description": "Updates the specified document. Operation ",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/knowledgeBases/{knowledgeBasesId}/documents/{documentsId}",
                                             "httpMethod": "PATCH",
                                             "id": "dialogflow.projects.locations.knowledgeBases.documents.patch",
                                             "parameterOrder": [
@@ -6483,6 +6681,7 @@
                                         },
                                         "reload": {
                                             "description": "Reloads the specified document from its specified source, content_uri or content. The previously loaded content of the document will be deleted. Note: Even when the content of the document has not changed, there still may be side effects because of internal implementation changes. Note: The `projects.agent.knowledgeBases.documents` resource is deprecated; only use `projects.knowledgeBases.documents`. Operation ",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/knowledgeBases/{knowledgeBasesId}/documents/{documentsId}:reload",
                                             "httpMethod": "POST",
                                             "id": "dialogflow.projects.locations.knowledgeBases.documents.reload",
                                             "parameterOrder": [
@@ -6517,6 +6716,7 @@
                             "methods": {
                                 "cancel": {
                                     "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
                                     "httpMethod": "POST",
                                     "id": "dialogflow.projects.locations.operations.cancel",
                                     "parameterOrder": [
@@ -6542,6 +6742,7 @@
                                 },
                                 "get": {
                                     "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                                     "httpMethod": "GET",
                                     "id": "dialogflow.projects.locations.operations.get",
                                     "parameterOrder": [
@@ -6567,6 +6768,7 @@
                                 },
                                 "list": {
                                     "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/operations",
                                     "httpMethod": "GET",
                                     "id": "dialogflow.projects.locations.operations.list",
                                     "parameterOrder": [
@@ -6614,6 +6816,7 @@
                     "methods": {
                         "cancel": {
                             "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                            "flatPath": "v2/projects/{projectsId}/operations/{operationsId}:cancel",
                             "httpMethod": "POST",
                             "id": "dialogflow.projects.operations.cancel",
                             "parameterOrder": [
@@ -6639,6 +6842,7 @@
                         },
                         "get": {
                             "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                            "flatPath": "v2/projects/{projectsId}/operations/{operationsId}",
                             "httpMethod": "GET",
                             "id": "dialogflow.projects.operations.get",
                             "parameterOrder": [
@@ -6664,6 +6868,7 @@
                         },
                         "list": {
                             "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                            "flatPath": "v2/projects/{projectsId}/operations",
                             "httpMethod": "GET",
                             "id": "dialogflow.projects.operations.list",
                             "parameterOrder": [
@@ -6708,7 +6913,7 @@
             }
         }
     },
-    "revision": "20210517",
+    "revision": "20210611",
     "rootUrl": "https://dialogflow.googleapis.com/",
     "schemas": {
         "GoogleCloudDialogflowCxV3AudioInput": {
@@ -6755,6 +6960,43 @@
             },
             "type": "object"
         },
+        "GoogleCloudDialogflowCxV3ContinuousTestResult": {
+            "description": "Represents a result from running a test case in an agent environment.",
+            "id": "GoogleCloudDialogflowCxV3ContinuousTestResult",
+            "properties": {
+                "name": {
+                    "description": "The resource name for the continuous test result. Format: `projects//locations//agents//environments//continuousTestResults/`.",
+                    "type": "string"
+                },
+                "result": {
+                    "description": "The result of this continuous test run, i.e. whether all the tests in this continuous test run pass or not.",
+                    "enum": [
+                        "AGGREGATED_TEST_RESULT_UNSPECIFIED",
+                        "PASSED",
+                        "FAILED"
+                    ],
+                    "enumDescriptions": [
+                        "Not specified. Should never be used.",
+                        "All the tests passed.",
+                        "At least one test did not pass."
+                    ],
+                    "type": "string"
+                },
+                "runTime": {
+                    "description": "Time when the continuous testing run starts.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "testCaseResults": {
+                    "description": "A list of individual test case results names in this continuous test run.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudDialogflowCxV3ConversationTurn": {
             "description": "One interaction between a human and virtual agent. The human provides some input and the virtual agent provides a response.",
             "id": "GoogleCloudDialogflowCxV3ConversationTurn",
@@ -6774,6 +7016,10 @@
             "description": "The input from the human user.",
             "id": "GoogleCloudDialogflowCxV3ConversationTurnUserInput",
             "properties": {
+                "enableSentimentAnalysis": {
+                    "description": "Whether sentiment analysis is enabled.",
+                    "type": "boolean"
+                },
                 "injectedParameters": {
                     "additionalProperties": {
                         "description": "Properties of the object.",
@@ -7068,6 +7314,10 @@
                         "$ref": "GoogleCloudDialogflowCxV3ResponseMessage"
                     },
                     "type": "array"
+                },
+                "returnPartialResponses": {
+                    "description": "Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.",
+                    "type": "boolean"
                 },
                 "setParameterActions": {
                     "description": "Set parameter values before executing the webhook.",
@@ -7754,6 +8004,31 @@
             },
             "type": "object"
         },
+        "GoogleCloudDialogflowCxV3RunContinuousTestMetadata": {
+            "description": "Metadata returned for the Environments.RunContinuousTest long running operation.",
+            "id": "GoogleCloudDialogflowCxV3RunContinuousTestMetadata",
+            "properties": {
+                "errors": {
+                    "description": "The test errors.",
+                    "items": {
+                        "$ref": "GoogleCloudDialogflowCxV3TestError"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudDialogflowCxV3RunContinuousTestResponse": {
+            "description": "The response message for Environments.RunContinuousTest.",
+            "id": "GoogleCloudDialogflowCxV3RunContinuousTestResponse",
+            "properties": {
+                "continuousTestResult": {
+                    "$ref": "GoogleCloudDialogflowCxV3ContinuousTestResult",
+                    "description": "The result for a continuous test run."
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudDialogflowCxV3RunTestCaseMetadata": {
             "description": "Metadata returned for the TestCases.RunTestCase long running operation.",
             "id": "GoogleCloudDialogflowCxV3RunTestCaseMetadata",
@@ -8256,6 +8531,43 @@
             },
             "type": "object"
         },
+        "GoogleCloudDialogflowCxV3beta1ContinuousTestResult": {
+            "description": "Represents a result from running a test case in an agent environment.",
+            "id": "GoogleCloudDialogflowCxV3beta1ContinuousTestResult",
+            "properties": {
+                "name": {
+                    "description": "The resource name for the continuous test result. Format: `projects//locations//agents//environments//continuousTestResults/`.",
+                    "type": "string"
+                },
+                "result": {
+                    "description": "The result of this continuous test run, i.e. whether all the tests in this continuous test run pass or not.",
+                    "enum": [
+                        "AGGREGATED_TEST_RESULT_UNSPECIFIED",
+                        "PASSED",
+                        "FAILED"
+                    ],
+                    "enumDescriptions": [
+                        "Not specified. Should never be used.",
+                        "All the tests passed.",
+                        "At least one test did not pass."
+                    ],
+                    "type": "string"
+                },
+                "runTime": {
+                    "description": "Time when the continuous testing run starts.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "testCaseResults": {
+                    "description": "A list of individual test case results names in this continuous test run.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudDialogflowCxV3beta1ConversationTurn": {
             "description": "One interaction between a human and virtual agent. The human provides some input and the virtual agent provides a response.",
             "id": "GoogleCloudDialogflowCxV3beta1ConversationTurn",
@@ -8275,6 +8587,10 @@
             "description": "The input from the human user.",
             "id": "GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput",
             "properties": {
+                "enableSentimentAnalysis": {
+                    "description": "Whether sentiment analysis is enabled.",
+                    "type": "boolean"
+                },
                 "injectedParameters": {
                     "additionalProperties": {
                         "description": "Properties of the object.",
@@ -8569,6 +8885,10 @@
                         "$ref": "GoogleCloudDialogflowCxV3beta1ResponseMessage"
                     },
                     "type": "array"
+                },
+                "returnPartialResponses": {
+                    "description": "Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.",
+                    "type": "boolean"
                 },
                 "setParameterActions": {
                     "description": "Set parameter values before executing the webhook.",
@@ -9251,6 +9571,31 @@
                         "type": "string"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudDialogflowCxV3beta1RunContinuousTestMetadata": {
+            "description": "Metadata returned for the Environments.RunContinuousTest long running operation.",
+            "id": "GoogleCloudDialogflowCxV3beta1RunContinuousTestMetadata",
+            "properties": {
+                "errors": {
+                    "description": "The test errors.",
+                    "items": {
+                        "$ref": "GoogleCloudDialogflowCxV3beta1TestError"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudDialogflowCxV3beta1RunContinuousTestResponse": {
+            "description": "The response message for Environments.RunContinuousTest.",
+            "id": "GoogleCloudDialogflowCxV3beta1RunContinuousTestResponse",
+            "properties": {
+                "continuousTestResult": {
+                    "$ref": "GoogleCloudDialogflowCxV3beta1ContinuousTestResult",
+                    "description": "The result for a continuous test run."
                 }
             },
             "type": "object"
@@ -10077,9 +10422,27 @@
             "description": "Represents a response from an automated agent.",
             "id": "GoogleCloudDialogflowV2AutomatedAgentReply",
             "properties": {
+                "allowCancellation": {
+                    "description": "Indicates whether the partial automated agent reply is interruptible when a later reply message arrives. e.g. if the agent specified some music as partial response, it can be cancelled.",
+                    "type": "boolean"
+                },
+                "automatedAgentReplyType": {
+                    "description": "AutomatedAgentReply type.",
+                    "enum": [
+                        "AUTOMATED_AGENT_REPLY_TYPE_UNSPECIFIED",
+                        "PARTIAL",
+                        "FINAL"
+                    ],
+                    "enumDescriptions": [
+                        "Not specified. This should never happen.",
+                        "Partial reply. e.g. Aggregated responses in a `Fulfillment` that enables `return_partial_response` can be returned as partial reply. WARNING: partial reply is not eligible for barge-in.",
+                        "Final reply."
+                    ],
+                    "type": "string"
+                },
                 "detectIntentResponse": {
                     "$ref": "GoogleCloudDialogflowV2DetectIntentResponse",
-                    "description": "Required. Response of the Dialogflow Sessions.DetectIntent call."
+                    "description": "Response of the Dialogflow Sessions.DetectIntent call."
                 }
             },
             "type": "object"
@@ -12820,6 +13183,10 @@
                     "description": "This field is set to: - `false` if the matched intent has required parameters and not all of the required parameter values have been collected. - `true` if all required parameter values have been collected, or if the matched intent doesn't contain any required parameters.",
                     "type": "boolean"
                 },
+                "cancelsSlotFilling": {
+                    "description": "Indicates whether the conversational query triggers a cancellation for slot filling.",
+                    "type": "boolean"
+                },
                 "diagnosticInfo": {
                     "additionalProperties": {
                         "description": "Properties of the object.",
@@ -15181,6 +15548,10 @@
                 },
                 "allRequiredParamsPresent": {
                     "description": "This field is set to: - `false` if the matched intent has required parameters and not all of the required parameter values have been collected. - `true` if all required parameter values have been collected, or if the matched intent doesn't contain any required parameters.",
+                    "type": "boolean"
+                },
+                "cancelsSlotFilling": {
+                    "description": "Indicates whether the conversational query triggers a cancellation for slot filling.",
                     "type": "boolean"
                 },
                 "diagnosticInfo": {

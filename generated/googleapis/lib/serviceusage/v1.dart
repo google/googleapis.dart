@@ -1026,11 +1026,6 @@ class BackendRule {
   /// to the backend.
   core.String? jwtAudience;
 
-  /// Minimum deadline in seconds needed for this method.
-  ///
-  /// Calls having deadline value lower than this will be rejected.
-  core.double? minDeadline;
-
   /// The number of seconds to wait for the completion of a long running
   /// operation.
   ///
@@ -1097,9 +1092,6 @@ class BackendRule {
     if (_json.containsKey('jwtAudience')) {
       jwtAudience = _json['jwtAudience'] as core.String;
     }
-    if (_json.containsKey('minDeadline')) {
-      minDeadline = (_json['minDeadline'] as core.num).toDouble();
-    }
     if (_json.containsKey('operationDeadline')) {
       operationDeadline = (_json['operationDeadline'] as core.num).toDouble();
     }
@@ -1119,7 +1111,6 @@ class BackendRule {
         if (deadline != null) 'deadline': deadline!,
         if (disableAuth != null) 'disableAuth': disableAuth!,
         if (jwtAudience != null) 'jwtAudience': jwtAudience!,
-        if (minDeadline != null) 'minDeadline': minDeadline!,
         if (operationDeadline != null) 'operationDeadline': operationDeadline!,
         if (pathTranslation != null) 'pathTranslation': pathTranslation!,
         if (protocol != null) 'protocol': protocol!,

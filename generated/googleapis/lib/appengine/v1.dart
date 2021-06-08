@@ -5918,6 +5918,16 @@ class Volume {
 
 /// VPC access connector specification.
 class VpcAccessConnector {
+  /// The egress setting for the connector, controlling what traffic is diverted
+  /// through it.
+  /// Possible string values are:
+  /// - "EGRESS_SETTING_UNSPECIFIED"
+  /// - "ALL_TRAFFIC" : Force the use of VPC Access for all egress traffic from
+  /// the function.
+  /// - "PRIVATE_IP_RANGES" : Use the VPC Access Connector for private IP space
+  /// from RFC1918.
+  core.String? egressSetting;
+
   /// Full Serverless VPC Access Connector name e.g.
   /// /projects/my-project/locations/us-central1/connectors/c1.
   core.String? name;
@@ -5925,12 +5935,16 @@ class VpcAccessConnector {
   VpcAccessConnector();
 
   VpcAccessConnector.fromJson(core.Map _json) {
+    if (_json.containsKey('egressSetting')) {
+      egressSetting = _json['egressSetting'] as core.String;
+    }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (egressSetting != null) 'egressSetting': egressSetting!,
         if (name != null) 'name': name!,
       };
 }

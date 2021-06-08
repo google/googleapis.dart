@@ -4960,6 +4960,30 @@ class ExternalDataConfiguration {
   /// Additional properties to set if sourceFormat is set to CSV.
   CsvOptions? csvOptions;
 
+  /// Defines the list of possible SQL data types to which the source decimal
+  /// values are converted.
+  ///
+  /// This list and the precision and the scale parameters of the decimal field
+  /// determine the target type. In the order of NUMERIC, BIGNUMERIC, and
+  /// STRING, a type is picked if it is in the specified list and if it supports
+  /// the precision and the scale. STRING supports all precision and scale
+  /// values. If none of the listed types supports the precision and the scale,
+  /// the type supporting the widest range in the specified list is picked, and
+  /// if a value exceeds the supported range when reading the data, an error
+  /// will be thrown. Example: Suppose the value of this field is \["NUMERIC",
+  /// "BIGNUMERIC"\]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) ->
+  /// BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC
+  /// (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38)
+  /// -> BIGNUMERIC (error if value exeeds supported range). This field cannot
+  /// contain duplicate types. The order of the types in this field is ignored.
+  /// For example, \["BIGNUMERIC", "NUMERIC"\] is the same as \["NUMERIC",
+  /// "BIGNUMERIC"\] and NUMERIC always takes precedence over BIGNUMERIC.
+  /// Defaults to \["NUMERIC", "STRING"\] for ORC and \["NUMERIC"\] for the
+  /// other file formats.
+  ///
+  /// Optional.
+  core.List<core.String>? decimalTargetTypes;
+
   /// Additional options if sourceFormat is set to GOOGLE_SHEETS.
   ///
   /// Optional.
@@ -5051,6 +5075,11 @@ class ExternalDataConfiguration {
       csvOptions = CsvOptions.fromJson(
           _json['csvOptions'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('decimalTargetTypes')) {
+      decimalTargetTypes = (_json['decimalTargetTypes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
     if (_json.containsKey('googleSheetsOptions')) {
       googleSheetsOptions = GoogleSheetsOptions.fromJson(
           _json['googleSheetsOptions'] as core.Map<core.String, core.dynamic>);
@@ -5091,6 +5120,8 @@ class ExternalDataConfiguration {
         if (compression != null) 'compression': compression!,
         if (connectionId != null) 'connectionId': connectionId!,
         if (csvOptions != null) 'csvOptions': csvOptions!.toJson(),
+        if (decimalTargetTypes != null)
+          'decimalTargetTypes': decimalTargetTypes!,
         if (googleSheetsOptions != null)
           'googleSheetsOptions': googleSheetsOptions!.toJson(),
         if (hivePartitioningOptions != null)
@@ -5903,23 +5934,24 @@ class JobConfigurationLoad {
   /// values are converted.
   ///
   /// This list and the precision and the scale parameters of the decimal field
-  /// determine the target type. In the order of NUMERIC, BIGNUMERIC
-  /// (\[Preview\](/products/#product-launch-stages)), and STRING, a type is
-  /// picked if it is in the specified list and if it supports the precision and
-  /// the scale. STRING supports all precision and scale values. If none of the
-  /// listed types supports the precision and the scale, the type supporting the
-  /// widest range in the specified list is picked, and if a value exceeds the
-  /// supported range when reading the data, an error will be thrown. Example:
-  /// Suppose the value of this field is \["NUMERIC", "BIGNUMERIC"\]. If
-  /// (precision,scale) is: * (38,9) -> NUMERIC; * (39,9) -> BIGNUMERIC (NUMERIC
-  /// cannot hold 30 integer digits); * (38,10) -> BIGNUMERIC (NUMERIC cannot
-  /// hold 10 fractional digits); * (76,38) -> BIGNUMERIC; * (77,38) ->
-  /// BIGNUMERIC (error if value exeeds supported range). This field cannot
+  /// determine the target type. In the order of NUMERIC, BIGNUMERIC, and
+  /// STRING, a type is picked if it is in the specified list and if it supports
+  /// the precision and the scale. STRING supports all precision and scale
+  /// values. If none of the listed types supports the precision and the scale,
+  /// the type supporting the widest range in the specified list is picked, and
+  /// if a value exceeds the supported range when reading the data, an error
+  /// will be thrown. Example: Suppose the value of this field is \["NUMERIC",
+  /// "BIGNUMERIC"\]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) ->
+  /// BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC
+  /// (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38)
+  /// -> BIGNUMERIC (error if value exeeds supported range). This field cannot
   /// contain duplicate types. The order of the types in this field is ignored.
   /// For example, \["BIGNUMERIC", "NUMERIC"\] is the same as \["NUMERIC",
   /// "BIGNUMERIC"\] and NUMERIC always takes precedence over BIGNUMERIC.
   /// Defaults to \["NUMERIC", "STRING"\] for ORC and \["NUMERIC"\] for the
   /// other file formats.
+  ///
+  /// Optional.
   core.List<core.String>? decimalTargetTypes;
 
   /// Custom encryption configuration (e.g., Cloud KMS keys).
@@ -6992,7 +7024,7 @@ class JobStatistics {
 
   /// \[Output-only\] \[Alpha\] Information of the multi-statement transaction
   /// if this job is part of one.
-  TransactionInfo? transactionInfoTemplate;
+  TransactionInfo? transactionInfo;
 
   JobStatistics();
 
@@ -7061,10 +7093,9 @@ class JobStatistics {
     if (_json.containsKey('totalSlotMs')) {
       totalSlotMs = _json['totalSlotMs'] as core.String;
     }
-    if (_json.containsKey('transactionInfoTemplate')) {
-      transactionInfoTemplate = TransactionInfo.fromJson(
-          _json['transactionInfoTemplate']
-              as core.Map<core.String, core.dynamic>);
+    if (_json.containsKey('transactionInfo')) {
+      transactionInfo = TransactionInfo.fromJson(
+          _json['transactionInfo'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7092,8 +7123,8 @@ class JobStatistics {
         if (totalBytesProcessed != null)
           'totalBytesProcessed': totalBytesProcessed!,
         if (totalSlotMs != null) 'totalSlotMs': totalSlotMs!,
-        if (transactionInfoTemplate != null)
-          'transactionInfoTemplate': transactionInfoTemplate!.toJson(),
+        if (transactionInfo != null)
+          'transactionInfo': transactionInfo!.toJson(),
       };
 }
 
@@ -7173,6 +7204,13 @@ class JobStatistics2 {
   /// Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES
   /// queries.
   TableReference? ddlTargetTable;
+
+  /// \[Output-only\] Detailed statistics for DML statements Present only for
+  /// DML statements INSERT, UPDATE, DELETE or TRUNCATE.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object? dmlStats;
 
   /// \[Output-only\] The original estimate of bytes processed for the job.
   core.String? estimatedBytesProcessed;
@@ -7299,6 +7337,9 @@ class JobStatistics2 {
       ddlTargetTable = TableReference.fromJson(
           _json['ddlTargetTable'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('dmlStats')) {
+      dmlStats = _json['dmlStats'] as core.Object;
+    }
     if (_json.containsKey('estimatedBytesProcessed')) {
       estimatedBytesProcessed = _json['estimatedBytesProcessed'] as core.String;
     }
@@ -7397,6 +7438,7 @@ class JobStatistics2 {
         if (ddlTargetRowAccessPolicy != null)
           'ddlTargetRowAccessPolicy': ddlTargetRowAccessPolicy!.toJson(),
         if (ddlTargetTable != null) 'ddlTargetTable': ddlTargetTable!.toJson(),
+        if (dmlStats != null) 'dmlStats': dmlStats!,
         if (estimatedBytesProcessed != null)
           'estimatedBytesProcessed': estimatedBytesProcessed!,
         if (modelTraining != null) 'modelTraining': modelTraining!.toJson(),
@@ -8780,6 +8822,13 @@ class QueryResponse {
   /// Whether the query result was fetched from the query cache.
   core.bool? cacheHit;
 
+  /// \[Output-only\] Detailed statistics for DML statements Present only for
+  /// DML statements INSERT, UPDATE, DELETE or TRUNCATE.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object? dmlStats;
+
   /// \[Output-only\] The first errors or warnings encountered during the
   /// running of the job.
   ///
@@ -8845,6 +8894,9 @@ class QueryResponse {
     if (_json.containsKey('cacheHit')) {
       cacheHit = _json['cacheHit'] as core.bool;
     }
+    if (_json.containsKey('dmlStats')) {
+      dmlStats = _json['dmlStats'] as core.Object;
+    }
     if (_json.containsKey('errors')) {
       errors = (_json['errors'] as core.List)
           .map<ErrorProto>((value) =>
@@ -8891,6 +8943,7 @@ class QueryResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cacheHit != null) 'cacheHit': cacheHit!,
+        if (dmlStats != null) 'dmlStats': dmlStats!,
         if (errors != null)
           'errors': errors!.map((value) => value.toJson()).toList(),
         if (jobComplete != null) 'jobComplete': jobComplete!,
@@ -9642,12 +9695,14 @@ class SetIamPolicyRequest {
 }
 
 class SnapshotDefinition {
-  /// Reference describing the ID of the table that is snapshotted.
+  /// Reference describing the ID of the table that was snapshot.
   ///
   /// Required.
   TableReference? baseTableReference;
 
   /// The time at which the base table was snapshot.
+  ///
+  /// This value is reported in the JSON response using RFC3339 format.
   ///
   /// Required.
   core.DateTime? snapshotTime;
@@ -11605,6 +11660,13 @@ class ViewDefinition {
   /// Required.
   core.String? query;
 
+  /// True if the column names are explicitly specified.
+  ///
+  /// For example by using the 'CREATE VIEW v(c1, c2) AS ...' syntax. Can only
+  /// be set using BigQuery's standard SQL:
+  /// https://cloud.google.com/bigquery/sql-reference/
+  core.bool? useExplicitColumnNames;
+
   /// Specifies whether to use BigQuery's legacy SQL for this view.
   ///
   /// The default value is true. If set to false, the view will use BigQuery's
@@ -11621,6 +11683,9 @@ class ViewDefinition {
     if (_json.containsKey('query')) {
       query = _json['query'] as core.String;
     }
+    if (_json.containsKey('useExplicitColumnNames')) {
+      useExplicitColumnNames = _json['useExplicitColumnNames'] as core.bool;
+    }
     if (_json.containsKey('useLegacySql')) {
       useLegacySql = _json['useLegacySql'] as core.bool;
     }
@@ -11636,6 +11701,8 @@ class ViewDefinition {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (query != null) 'query': query!,
+        if (useExplicitColumnNames != null)
+          'useExplicitColumnNames': useExplicitColumnNames!,
         if (useLegacySql != null) 'useLegacySql': useLegacySql!,
         if (userDefinedFunctionResources != null)
           'userDefinedFunctionResources': userDefinedFunctionResources!

@@ -107,6 +107,7 @@
             "methods": {
                 "synthesize": {
                     "description": "Synthesizes speech synchronously: receive results after all text input has been processed.",
+                    "flatPath": "v1/text:synthesize",
                     "httpMethod": "POST",
                     "id": "texttospeech.text.synthesize",
                     "parameterOrder": [],
@@ -128,6 +129,7 @@
             "methods": {
                 "list": {
                     "description": "Returns a list of Voice supported for synthesis.",
+                    "flatPath": "v1/voices",
                     "httpMethod": "GET",
                     "id": "texttospeech.voices.list",
                     "parameterOrder": [],
@@ -149,7 +151,7 @@
             }
         }
     },
-    "revision": "20210507",
+    "revision": "20210603",
     "rootUrl": "https://texttospeech.googleapis.com/",
     "schemas": {
         "AudioConfig": {

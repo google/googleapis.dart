@@ -109,6 +109,7 @@
                     "methods": {
                         "get": {
                             "description": "Gets information about a location.",
+                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}",
                             "httpMethod": "GET",
                             "id": "cloudscheduler.projects.locations.get",
                             "parameterOrder": [
@@ -133,6 +134,7 @@
                         },
                         "list": {
                             "description": "Lists information about the supported locations for this service.",
+                            "flatPath": "v1/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "cloudscheduler.projects.locations.list",
                             "parameterOrder": [
@@ -177,6 +179,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a job.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/jobs",
                                     "httpMethod": "POST",
                                     "id": "cloudscheduler.projects.locations.jobs.create",
                                     "parameterOrder": [
@@ -204,6 +207,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes a job.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}",
                                     "httpMethod": "DELETE",
                                     "id": "cloudscheduler.projects.locations.jobs.delete",
                                     "parameterOrder": [
@@ -228,6 +232,7 @@
                                 },
                                 "get": {
                                     "description": "Gets a job.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}",
                                     "httpMethod": "GET",
                                     "id": "cloudscheduler.projects.locations.jobs.get",
                                     "parameterOrder": [
@@ -252,6 +257,7 @@
                                 },
                                 "list": {
                                     "description": "Lists jobs.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/jobs",
                                     "httpMethod": "GET",
                                     "id": "cloudscheduler.projects.locations.jobs.list",
                                     "parameterOrder": [
@@ -287,6 +293,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates a job. If successful, the updated Job is returned. If the job does not exist, `NOT_FOUND` is returned. If UpdateJob does not successfully return, it is possible for the job to be in an Job.State.UPDATE_FAILED state. A job in this state may not be executed. If this happens, retry the UpdateJob request until a successful response is received.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}",
                                     "httpMethod": "PATCH",
                                     "id": "cloudscheduler.projects.locations.jobs.patch",
                                     "parameterOrder": [
@@ -320,6 +327,7 @@
                                 },
                                 "pause": {
                                     "description": "Pauses a job. If a job is paused then the system will stop executing the job until it is re-enabled via ResumeJob. The state of the job is stored in state; if paused it will be set to Job.State.PAUSED. A job must be in Job.State.ENABLED to be paused.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}:pause",
                                     "httpMethod": "POST",
                                     "id": "cloudscheduler.projects.locations.jobs.pause",
                                     "parameterOrder": [
@@ -347,6 +355,7 @@
                                 },
                                 "resume": {
                                     "description": "Resume a job. This method reenables a job after it has been Job.State.PAUSED. The state of a job is stored in Job.state; after calling this method it will be set to Job.State.ENABLED. A job must be in Job.State.PAUSED to be resumed.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}:resume",
                                     "httpMethod": "POST",
                                     "id": "cloudscheduler.projects.locations.jobs.resume",
                                     "parameterOrder": [
@@ -374,6 +383,7 @@
                                 },
                                 "run": {
                                     "description": "Forces a job to run now. When this method is called, Cloud Scheduler will dispatch the job, even if the job is already running.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}:run",
                                     "httpMethod": "POST",
                                     "id": "cloudscheduler.projects.locations.jobs.run",
                                     "parameterOrder": [
@@ -406,7 +416,7 @@
             }
         }
     },
-    "revision": "20210501",
+    "revision": "20210601",
     "rootUrl": "https://cloudscheduler.googleapis.com/",
     "schemas": {
         "AppEngineHttpTarget": {

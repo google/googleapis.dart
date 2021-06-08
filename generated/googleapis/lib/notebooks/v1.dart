@@ -1314,6 +1314,48 @@ class ProjectsLocationsInstancesResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Update Notebook Instance configurations.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Format:
+  /// `projects/{project_id}/locations/{location}/instances/{instance_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> updateConfig(
+    UpdateInstanceConfigRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':updateConfig';
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Updates the Shielded instance configuration of a single Instance.
   ///
   /// [request] - The metadata request object.
@@ -2671,6 +2713,8 @@ class Execution {
   /// describe the reason for the cancellation.
   /// - "CANCELLED" : The job has been cancelled. `error_message` should
   /// describe the reason for the cancellation.
+  /// - "EXPIRED" : The jobs has become expired (added for uCAIP jobs)
+  /// https://cloud.google.com/vertex-ai/docs/reference/rest/v1/JobState
   core.String? state;
 
   /// Time the Execution was last updated.
@@ -3415,6 +3459,37 @@ class Instance {
           'upgradeHistory':
               upgradeHistory!.map((value) => value.toJson()).toList(),
         if (vmImage != null) 'vmImage': vmImage!.toJson(),
+      };
+}
+
+/// Notebook instance configurations that can be updated.
+class InstanceConfig {
+  /// Verifies core internal services are running.
+  ///
+  /// More info: go/notebooks-health
+  core.bool? enableHealthMonitoring;
+
+  /// Cron expression in UTC timezone, used to schedule instance auto upgrade.
+  ///
+  /// Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
+  core.String? notebookUpgradeSchedule;
+
+  InstanceConfig();
+
+  InstanceConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('enableHealthMonitoring')) {
+      enableHealthMonitoring = _json['enableHealthMonitoring'] as core.bool;
+    }
+    if (_json.containsKey('notebookUpgradeSchedule')) {
+      notebookUpgradeSchedule = _json['notebookUpgradeSchedule'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableHealthMonitoring != null)
+          'enableHealthMonitoring': enableHealthMonitoring!,
+        if (notebookUpgradeSchedule != null)
+          'notebookUpgradeSchedule': notebookUpgradeSchedule!,
       };
 }
 
@@ -4800,8 +4875,8 @@ class Schedule {
 
   /// Display name used for UI purposes.
   ///
-  /// Name can only contain alphanumeric characters, hyphens ‘-’, and
-  /// underscores ‘_’.
+  /// Name can only contain alphanumeric characters, hyphens '-', and
+  /// underscores '_'.
   ///
   /// Output only.
   core.String? displayName;
@@ -5290,6 +5365,25 @@ class TriggerScheduleRequest {
       core.Map _json);
 
   core.Map<core.String, core.dynamic> toJson() => {};
+}
+
+/// Request for updating instance configurations.
+class UpdateInstanceConfigRequest {
+  /// The instance configurations to be updated.
+  InstanceConfig? config;
+
+  UpdateInstanceConfigRequest();
+
+  UpdateInstanceConfigRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('config')) {
+      config = InstanceConfig.fromJson(
+          _json['config'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (config != null) 'config': config!.toJson(),
+      };
 }
 
 /// Request for updating the Shielded Instance config for a notebook instance.

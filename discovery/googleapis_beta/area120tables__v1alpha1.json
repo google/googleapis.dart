@@ -122,6 +122,7 @@
             "methods": {
                 "get": {
                     "description": "Gets a table. Returns NOT_FOUND if the table does not exist.",
+                    "flatPath": "v1alpha1/tables/{tablesId}",
                     "httpMethod": "GET",
                     "id": "area120tables.tables.get",
                     "parameterOrder": [
@@ -151,6 +152,7 @@
                 },
                 "list": {
                     "description": "Lists tables for the user.",
+                    "flatPath": "v1alpha1/tables",
                     "httpMethod": "GET",
                     "id": "area120tables.tables.list",
                     "parameterOrder": [],
@@ -191,6 +193,7 @@
                     "methods": {
                         "batchCreate": {
                             "description": "Creates multiple rows.",
+                            "flatPath": "v1alpha1/tables/{tablesId}/rows:batchCreate",
                             "httpMethod": "POST",
                             "id": "area120tables.tables.rows.batchCreate",
                             "parameterOrder": [
@@ -221,6 +224,7 @@
                         },
                         "batchDelete": {
                             "description": "Deletes multiple rows.",
+                            "flatPath": "v1alpha1/tables/{tablesId}/rows:batchDelete",
                             "httpMethod": "POST",
                             "id": "area120tables.tables.rows.batchDelete",
                             "parameterOrder": [
@@ -251,6 +255,7 @@
                         },
                         "batchUpdate": {
                             "description": "Updates multiple rows.",
+                            "flatPath": "v1alpha1/tables/{tablesId}/rows:batchUpdate",
                             "httpMethod": "POST",
                             "id": "area120tables.tables.rows.batchUpdate",
                             "parameterOrder": [
@@ -281,6 +286,7 @@
                         },
                         "create": {
                             "description": "Creates a row.",
+                            "flatPath": "v1alpha1/tables/{tablesId}/rows",
                             "httpMethod": "POST",
                             "id": "area120tables.tables.rows.create",
                             "parameterOrder": [
@@ -324,6 +330,7 @@
                         },
                         "delete": {
                             "description": "Deletes a row.",
+                            "flatPath": "v1alpha1/tables/{tablesId}/rows/{rowsId}",
                             "httpMethod": "DELETE",
                             "id": "area120tables.tables.rows.delete",
                             "parameterOrder": [
@@ -351,6 +358,7 @@
                         },
                         "get": {
                             "description": "Gets a row. Returns NOT_FOUND if the row does not exist in the table.",
+                            "flatPath": "v1alpha1/tables/{tablesId}/rows/{rowsId}",
                             "httpMethod": "GET",
                             "id": "area120tables.tables.rows.get",
                             "parameterOrder": [
@@ -393,6 +401,7 @@
                         },
                         "list": {
                             "description": "Lists rows in a table. Returns NOT_FOUND if the table does not exist.",
+                            "flatPath": "v1alpha1/tables/{tablesId}/rows",
                             "httpMethod": "GET",
                             "id": "area120tables.tables.rows.list",
                             "parameterOrder": [
@@ -456,6 +465,7 @@
                         },
                         "patch": {
                             "description": "Updates a row.",
+                            "flatPath": "v1alpha1/tables/{tablesId}/rows/{rowsId}",
                             "httpMethod": "PATCH",
                             "id": "area120tables.tables.rows.patch",
                             "parameterOrder": [
@@ -511,6 +521,7 @@
             "methods": {
                 "get": {
                     "description": "Gets a workspace. Returns NOT_FOUND if the workspace does not exist.",
+                    "flatPath": "v1alpha1/workspaces/{workspacesId}",
                     "httpMethod": "GET",
                     "id": "area120tables.workspaces.get",
                     "parameterOrder": [
@@ -540,6 +551,7 @@
                 },
                 "list": {
                     "description": "Lists workspaces for the user.",
+                    "flatPath": "v1alpha1/workspaces",
                     "httpMethod": "GET",
                     "id": "area120tables.workspaces.list",
                     "parameterOrder": [],
@@ -572,7 +584,7 @@
             }
         }
     },
-    "revision": "20210520",
+    "revision": "20210614",
     "rootUrl": "https://area120tables.googleapis.com/",
     "schemas": {
         "BatchCreateRowsRequest": {

@@ -110,6 +110,7 @@
             "methods": {
                 "cancel": {
                     "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                    "flatPath": "v1/operations/{operationsId}:cancel",
                     "httpMethod": "POST",
                     "id": "servicenetworking.operations.cancel",
                     "parameterOrder": [
@@ -138,6 +139,7 @@
                 },
                 "delete": {
                     "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                    "flatPath": "v1/operations/{operationsId}",
                     "httpMethod": "DELETE",
                     "id": "servicenetworking.operations.delete",
                     "parameterOrder": [
@@ -163,6 +165,7 @@
                 },
                 "get": {
                     "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                    "flatPath": "v1/operations/{operationsId}",
                     "httpMethod": "GET",
                     "id": "servicenetworking.operations.get",
                     "parameterOrder": [
@@ -188,6 +191,7 @@
                 },
                 "list": {
                     "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                    "flatPath": "v1/operations",
                     "httpMethod": "GET",
                     "id": "servicenetworking.operations.list",
                     "parameterOrder": [
@@ -233,6 +237,7 @@
             "methods": {
                 "addSubnetwork": {
                     "description": "For service producers, provisions a new subnet in a peered service's shared VPC network in the requested region and with the requested size that's expressed as a CIDR range (number of leading bits of ipV4 network mask). The method checks against the assigned allocated ranges to find a non-conflicting IP address range. The method will reuse a subnet if subsequent calls contain the same subnet name, region, and prefix length. This method will make producer's tenant project to be a shared VPC service project as needed.",
+                    "flatPath": "v1/services/{servicesId}/{servicesId1}/{servicesId2}:addSubnetwork",
                     "httpMethod": "POST",
                     "id": "servicenetworking.services.addSubnetwork",
                     "parameterOrder": [
@@ -261,6 +266,7 @@
                 },
                 "disableVpcServiceControls": {
                     "description": "Disables VPC service controls for a connection.",
+                    "flatPath": "v1/services/{servicesId}:disableVpcServiceControls",
                     "httpMethod": "PATCH",
                     "id": "servicenetworking.services.disableVpcServiceControls",
                     "parameterOrder": [
@@ -289,6 +295,7 @@
                 },
                 "enableVpcServiceControls": {
                     "description": "Enables VPC service controls for a connection.",
+                    "flatPath": "v1/services/{servicesId}:enableVpcServiceControls",
                     "httpMethod": "PATCH",
                     "id": "servicenetworking.services.enableVpcServiceControls",
                     "parameterOrder": [
@@ -317,6 +324,7 @@
                 },
                 "searchRange": {
                     "description": "Service producers can use this method to find a currently unused range within consumer allocated ranges. This returned range is not reserved, and not guaranteed to remain unused. It will validate previously provided allocated ranges, find non-conflicting sub-range of requested size (expressed in number of leading bits of ipv4 network mask, as in CIDR range notation).",
+                    "flatPath": "v1/services/{servicesId}:searchRange",
                     "httpMethod": "POST",
                     "id": "servicenetworking.services.searchRange",
                     "parameterOrder": [
@@ -345,6 +353,7 @@
                 },
                 "validate": {
                     "description": "Service producers use this method to validate if the consumer provided network, project and requested range are valid. This allows them to use a fail-fast mechanism for consumer requests, and not have to wait for AddSubnetwork operation completion to determine if user request is invalid.",
+                    "flatPath": "v1/services/{servicesId}:validate",
                     "httpMethod": "POST",
                     "id": "servicenetworking.services.validate",
                     "parameterOrder": [
@@ -377,6 +386,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a private connection that establishes a VPC Network Peering connection to a VPC network in the service producer's organization. The administrator of the service consumer's VPC network invokes this method. The administrator must assign one or more allocated IP ranges for provisioning subnetworks in the service producer's VPC network. This connection is used for all supported services in the service producer's organization, so it only needs to be invoked once.",
+                            "flatPath": "v1/services/{servicesId}/connections",
                             "httpMethod": "POST",
                             "id": "servicenetworking.services.connections.create",
                             "parameterOrder": [
@@ -405,6 +415,7 @@
                         },
                         "deleteConnection": {
                             "description": "Deletes a private service access connection.",
+                            "flatPath": "v1/services/{servicesId}/connections/{connectionsId}",
                             "httpMethod": "POST",
                             "id": "servicenetworking.services.connections.deleteConnection",
                             "parameterOrder": [
@@ -433,6 +444,7 @@
                         },
                         "list": {
                             "description": "List the private connections that are configured in a service consumer's VPC network.",
+                            "flatPath": "v1/services/{servicesId}/connections",
                             "httpMethod": "GET",
                             "id": "servicenetworking.services.connections.list",
                             "parameterOrder": [
@@ -463,6 +475,7 @@
                         },
                         "patch": {
                             "description": "Updates the allocated ranges that are assigned to a connection.",
+                            "flatPath": "v1/services/{servicesId}/connections/{connectionsId}",
                             "httpMethod": "PATCH",
                             "id": "servicenetworking.services.connections.patch",
                             "parameterOrder": [
@@ -506,6 +519,7 @@
                     "methods": {
                         "add": {
                             "description": "Service producers can use this method to add DNS record sets to private DNS zones in the shared producer host project.",
+                            "flatPath": "v1/services/{servicesId}/dnsRecordSets:add",
                             "httpMethod": "POST",
                             "id": "servicenetworking.services.dnsRecordSets.add",
                             "parameterOrder": [
@@ -534,6 +548,7 @@
                         },
                         "remove": {
                             "description": "Service producers can use this method to remove DNS record sets from private DNS zones in the shared producer host project.",
+                            "flatPath": "v1/services/{servicesId}/dnsRecordSets:remove",
                             "httpMethod": "POST",
                             "id": "servicenetworking.services.dnsRecordSets.remove",
                             "parameterOrder": [
@@ -562,6 +577,7 @@
                         },
                         "update": {
                             "description": "Service producers can use this method to update DNS record sets from private DNS zones in the shared producer host project.",
+                            "flatPath": "v1/services/{servicesId}/dnsRecordSets:update",
                             "httpMethod": "POST",
                             "id": "servicenetworking.services.dnsRecordSets.update",
                             "parameterOrder": [
@@ -594,6 +610,7 @@
                     "methods": {
                         "add": {
                             "description": "Service producers can use this method to add private DNS zones in the shared producer host project and matching peering zones in the consumer project.",
+                            "flatPath": "v1/services/{servicesId}/dnsZones:add",
                             "httpMethod": "POST",
                             "id": "servicenetworking.services.dnsZones.add",
                             "parameterOrder": [
@@ -622,6 +639,7 @@
                         },
                         "remove": {
                             "description": "Service producers can use this method to remove private DNS zones in the shared producer host project and matching peering zones in the consumer project.",
+                            "flatPath": "v1/services/{servicesId}/dnsZones:remove",
                             "httpMethod": "POST",
                             "id": "servicenetworking.services.dnsZones.remove",
                             "parameterOrder": [
@@ -658,6 +676,7 @@
                                     "methods": {
                                         "get": {
                                             "description": "Service producers use this method to get the configuration of their connection including the import/export of custom routes and subnetwork routes with public IP.",
+                                            "flatPath": "v1/services/{servicesId}/projects/{projectsId}/global/networks/{networksId}",
                                             "httpMethod": "GET",
                                             "id": "servicenetworking.services.projects.global.networks.get",
                                             "parameterOrder": [
@@ -683,6 +702,7 @@
                                         },
                                         "updateConsumerConfig": {
                                             "description": "Service producers use this method to update the configuration of their connection including the import/export of custom routes and subnetwork routes with public IP.",
+                                            "flatPath": "v1/services/{servicesId}/projects/{projectsId}/global/networks/{networksId}:updateConsumerConfig",
                                             "httpMethod": "PATCH",
                                             "id": "servicenetworking.services.projects.global.networks.updateConsumerConfig",
                                             "parameterOrder": [
@@ -715,6 +735,7 @@
                                             "methods": {
                                                 "create": {
                                                     "description": "Creates a peered DNS domain which sends requests for records in given namespace originating in the service producer VPC network to the consumer VPC network to be resolved.",
+                                                    "flatPath": "v1/services/{servicesId}/projects/{projectsId}/global/networks/{networksId}/peeredDnsDomains",
                                                     "httpMethod": "POST",
                                                     "id": "servicenetworking.services.projects.global.networks.peeredDnsDomains.create",
                                                     "parameterOrder": [
@@ -743,6 +764,7 @@
                                                 },
                                                 "delete": {
                                                     "description": "Deletes a peered DNS domain.",
+                                                    "flatPath": "v1/services/{servicesId}/projects/{projectsId}/global/networks/{networksId}/peeredDnsDomains/{peeredDnsDomainsId}",
                                                     "httpMethod": "DELETE",
                                                     "id": "servicenetworking.services.projects.global.networks.peeredDnsDomains.delete",
                                                     "parameterOrder": [
@@ -768,6 +790,7 @@
                                                 },
                                                 "list": {
                                                     "description": "Lists peered DNS domains for a connection.",
+                                                    "flatPath": "v1/services/{servicesId}/projects/{projectsId}/global/networks/{networksId}/peeredDnsDomains",
                                                     "httpMethod": "GET",
                                                     "id": "servicenetworking.services.projects.global.networks.peeredDnsDomains.list",
                                                     "parameterOrder": [
@@ -803,6 +826,7 @@
                     "methods": {
                         "add": {
                             "description": "Service producers can use this method to add roles in the shared VPC host project. Each role is bound to the provided member. Each role must be selected from within an allowlisted set of roles. Each role is applied at only the granularity specified in the allowlist.",
+                            "flatPath": "v1/services/{servicesId}/roles:add",
                             "httpMethod": "POST",
                             "id": "servicenetworking.services.roles.add",
                             "parameterOrder": [
@@ -834,7 +858,7 @@
             }
         }
     },
-    "revision": "20210519",
+    "revision": "20210613",
     "rootUrl": "https://servicenetworking.googleapis.com/",
     "schemas": {
         "AddDnsRecordSetMetadata": {
@@ -1179,11 +1203,6 @@
                 "jwtAudience": {
                     "description": "The JWT audience is used when generating a JWT ID token for the backend. This ID token will be added in the HTTP \"authorization\" header, and sent to the backend.",
                     "type": "string"
-                },
-                "minDeadline": {
-                    "description": "Minimum deadline in seconds needed for this method. Calls having deadline value lower than this will be rejected.",
-                    "format": "double",
-                    "type": "number"
                 },
                 "operationDeadline": {
                     "description": "The number of seconds to wait for the completion of a long running operation. The default is no deadline.",

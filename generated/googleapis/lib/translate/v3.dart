@@ -2150,6 +2150,9 @@ class Translation {
   core.String? model;
 
   /// Text translated into the target language.
+  ///
+  /// If an error occurs during translation, this field might be excluded from
+  /// the response.
   core.String? translatedText;
 
   Translation();

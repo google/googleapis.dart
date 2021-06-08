@@ -7272,9 +7272,10 @@ class File {
   /// Not populated for items in shared drives.
   core.List<core.String>? ownerNames;
 
-  /// The owner(s) of this file.
+  /// The owner of this file.
   ///
-  /// Not populated for items in shared drives.
+  /// Only certain legacy files may have more than one owner. This field isn't
+  /// populated for items in shared drives.
   core.List<User>? owners;
 
   /// Collection of parent folders which contain this file.

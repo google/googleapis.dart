@@ -27,14 +27,14 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<core.String> buildUnnamed4497() {
+core.List<core.String> buildUnnamed4905() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed4497(core.List<core.String> o) {
+void checkUnnamed4905(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -53,7 +53,7 @@ api.AdmissionRule buildAdmissionRule() {
   if (buildCounterAdmissionRule < 3) {
     o.enforcementMode = 'foo';
     o.evaluationMode = 'foo';
-    o.requireAttestationsBy = buildUnnamed4497();
+    o.requireAttestationsBy = buildUnnamed4905();
   }
   buildCounterAdmissionRule--;
   return o;
@@ -70,7 +70,7 @@ void checkAdmissionRule(api.AdmissionRule o) {
       o.evaluationMode!,
       unittest.equals('foo'),
     );
-    checkUnnamed4497(o.requireAttestationsBy!);
+    checkUnnamed4905(o.requireAttestationsBy!);
   }
   buildCounterAdmissionRule--;
 }
@@ -97,27 +97,27 @@ void checkAdmissionWhitelistPattern(api.AdmissionWhitelistPattern o) {
   buildCounterAdmissionWhitelistPattern--;
 }
 
-core.List<api.Jwt> buildUnnamed4498() {
+core.List<api.Jwt> buildUnnamed4906() {
   var o = <api.Jwt>[];
   o.add(buildJwt());
   o.add(buildJwt());
   return o;
 }
 
-void checkUnnamed4498(core.List<api.Jwt> o) {
+void checkUnnamed4906(core.List<api.Jwt> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkJwt(o[0] as api.Jwt);
   checkJwt(o[1] as api.Jwt);
 }
 
-core.List<api.Signature> buildUnnamed4499() {
+core.List<api.Signature> buildUnnamed4907() {
   var o = <api.Signature>[];
   o.add(buildSignature());
   o.add(buildSignature());
   return o;
 }
 
-void checkUnnamed4499(core.List<api.Signature> o) {
+void checkUnnamed4907(core.List<api.Signature> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSignature(o[0] as api.Signature);
   checkSignature(o[1] as api.Signature);
@@ -128,9 +128,9 @@ api.AttestationOccurrence buildAttestationOccurrence() {
   var o = api.AttestationOccurrence();
   buildCounterAttestationOccurrence++;
   if (buildCounterAttestationOccurrence < 3) {
-    o.jwts = buildUnnamed4498();
+    o.jwts = buildUnnamed4906();
     o.serializedPayload = 'foo';
-    o.signatures = buildUnnamed4499();
+    o.signatures = buildUnnamed4907();
   }
   buildCounterAttestationOccurrence--;
   return o;
@@ -139,12 +139,12 @@ api.AttestationOccurrence buildAttestationOccurrence() {
 void checkAttestationOccurrence(api.AttestationOccurrence o) {
   buildCounterAttestationOccurrence++;
   if (buildCounterAttestationOccurrence < 3) {
-    checkUnnamed4498(o.jwts!);
+    checkUnnamed4906(o.jwts!);
     unittest.expect(
       o.serializedPayload!,
       unittest.equals('foo'),
     );
-    checkUnnamed4499(o.signatures!);
+    checkUnnamed4907(o.signatures!);
   }
   buildCounterAttestationOccurrence--;
 }
@@ -218,14 +218,14 @@ void checkAttestorPublicKey(api.AttestorPublicKey o) {
   buildCounterAttestorPublicKey--;
 }
 
-core.List<core.String> buildUnnamed4500() {
+core.List<core.String> buildUnnamed4908() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed4500(core.List<core.String> o) {
+void checkUnnamed4908(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -243,7 +243,7 @@ api.Binding buildBinding() {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     o.condition = buildExpr();
-    o.members = buildUnnamed4500();
+    o.members = buildUnnamed4908();
     o.role = 'foo';
   }
   buildCounterBinding--;
@@ -254,7 +254,7 @@ void checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     checkExpr(o.condition! as api.Expr);
-    checkUnnamed4500(o.members!);
+    checkUnnamed4908(o.members!);
     unittest.expect(
       o.role!,
       unittest.equals('foo'),
@@ -315,14 +315,14 @@ void checkExpr(api.Expr o) {
   buildCounterExpr--;
 }
 
-core.List<api.Binding> buildUnnamed4501() {
+core.List<api.Binding> buildUnnamed4909() {
   var o = <api.Binding>[];
   o.add(buildBinding());
   o.add(buildBinding());
   return o;
 }
 
-void checkUnnamed4501(core.List<api.Binding> o) {
+void checkUnnamed4909(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0] as api.Binding);
   checkBinding(o[1] as api.Binding);
@@ -333,7 +333,7 @@ api.IamPolicy buildIamPolicy() {
   var o = api.IamPolicy();
   buildCounterIamPolicy++;
   if (buildCounterIamPolicy < 3) {
-    o.bindings = buildUnnamed4501();
+    o.bindings = buildUnnamed4909();
     o.etag = 'foo';
     o.version = 42;
   }
@@ -344,7 +344,7 @@ api.IamPolicy buildIamPolicy() {
 void checkIamPolicy(api.IamPolicy o) {
   buildCounterIamPolicy++;
   if (buildCounterIamPolicy < 3) {
-    checkUnnamed4501(o.bindings!);
+    checkUnnamed4909(o.bindings!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -379,14 +379,14 @@ void checkJwt(api.Jwt o) {
   buildCounterJwt--;
 }
 
-core.List<api.Attestor> buildUnnamed4502() {
+core.List<api.Attestor> buildUnnamed4910() {
   var o = <api.Attestor>[];
   o.add(buildAttestor());
   o.add(buildAttestor());
   return o;
 }
 
-void checkUnnamed4502(core.List<api.Attestor> o) {
+void checkUnnamed4910(core.List<api.Attestor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAttestor(o[0] as api.Attestor);
   checkAttestor(o[1] as api.Attestor);
@@ -397,7 +397,7 @@ api.ListAttestorsResponse buildListAttestorsResponse() {
   var o = api.ListAttestorsResponse();
   buildCounterListAttestorsResponse++;
   if (buildCounterListAttestorsResponse < 3) {
-    o.attestors = buildUnnamed4502();
+    o.attestors = buildUnnamed4910();
     o.nextPageToken = 'foo';
   }
   buildCounterListAttestorsResponse--;
@@ -407,7 +407,7 @@ api.ListAttestorsResponse buildListAttestorsResponse() {
 void checkListAttestorsResponse(api.ListAttestorsResponse o) {
   buildCounterListAttestorsResponse++;
   if (buildCounterListAttestorsResponse < 3) {
-    checkUnnamed4502(o.attestors!);
+    checkUnnamed4910(o.attestors!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -443,66 +443,66 @@ void checkPkixPublicKey(api.PkixPublicKey o) {
   buildCounterPkixPublicKey--;
 }
 
-core.List<api.AdmissionWhitelistPattern> buildUnnamed4503() {
+core.List<api.AdmissionWhitelistPattern> buildUnnamed4911() {
   var o = <api.AdmissionWhitelistPattern>[];
   o.add(buildAdmissionWhitelistPattern());
   o.add(buildAdmissionWhitelistPattern());
   return o;
 }
 
-void checkUnnamed4503(core.List<api.AdmissionWhitelistPattern> o) {
+void checkUnnamed4911(core.List<api.AdmissionWhitelistPattern> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAdmissionWhitelistPattern(o[0] as api.AdmissionWhitelistPattern);
   checkAdmissionWhitelistPattern(o[1] as api.AdmissionWhitelistPattern);
 }
 
-core.Map<core.String, api.AdmissionRule> buildUnnamed4504() {
+core.Map<core.String, api.AdmissionRule> buildUnnamed4912() {
   var o = <core.String, api.AdmissionRule>{};
   o['x'] = buildAdmissionRule();
   o['y'] = buildAdmissionRule();
   return o;
 }
 
-void checkUnnamed4504(core.Map<core.String, api.AdmissionRule> o) {
+void checkUnnamed4912(core.Map<core.String, api.AdmissionRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAdmissionRule(o['x']! as api.AdmissionRule);
   checkAdmissionRule(o['y']! as api.AdmissionRule);
 }
 
-core.Map<core.String, api.AdmissionRule> buildUnnamed4505() {
+core.Map<core.String, api.AdmissionRule> buildUnnamed4913() {
   var o = <core.String, api.AdmissionRule>{};
   o['x'] = buildAdmissionRule();
   o['y'] = buildAdmissionRule();
   return o;
 }
 
-void checkUnnamed4505(core.Map<core.String, api.AdmissionRule> o) {
+void checkUnnamed4913(core.Map<core.String, api.AdmissionRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAdmissionRule(o['x']! as api.AdmissionRule);
   checkAdmissionRule(o['y']! as api.AdmissionRule);
 }
 
-core.Map<core.String, api.AdmissionRule> buildUnnamed4506() {
+core.Map<core.String, api.AdmissionRule> buildUnnamed4914() {
   var o = <core.String, api.AdmissionRule>{};
   o['x'] = buildAdmissionRule();
   o['y'] = buildAdmissionRule();
   return o;
 }
 
-void checkUnnamed4506(core.Map<core.String, api.AdmissionRule> o) {
+void checkUnnamed4914(core.Map<core.String, api.AdmissionRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAdmissionRule(o['x']! as api.AdmissionRule);
   checkAdmissionRule(o['y']! as api.AdmissionRule);
 }
 
-core.Map<core.String, api.AdmissionRule> buildUnnamed4507() {
+core.Map<core.String, api.AdmissionRule> buildUnnamed4915() {
   var o = <core.String, api.AdmissionRule>{};
   o['x'] = buildAdmissionRule();
   o['y'] = buildAdmissionRule();
   return o;
 }
 
-void checkUnnamed4507(core.Map<core.String, api.AdmissionRule> o) {
+void checkUnnamed4915(core.Map<core.String, api.AdmissionRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAdmissionRule(o['x']! as api.AdmissionRule);
   checkAdmissionRule(o['y']! as api.AdmissionRule);
@@ -513,14 +513,14 @@ api.Policy buildPolicy() {
   var o = api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.admissionWhitelistPatterns = buildUnnamed4503();
-    o.clusterAdmissionRules = buildUnnamed4504();
+    o.admissionWhitelistPatterns = buildUnnamed4911();
+    o.clusterAdmissionRules = buildUnnamed4912();
     o.defaultAdmissionRule = buildAdmissionRule();
     o.description = 'foo';
     o.globalPolicyEvaluationMode = 'foo';
-    o.istioServiceIdentityAdmissionRules = buildUnnamed4505();
-    o.kubernetesNamespaceAdmissionRules = buildUnnamed4506();
-    o.kubernetesServiceAccountAdmissionRules = buildUnnamed4507();
+    o.istioServiceIdentityAdmissionRules = buildUnnamed4913();
+    o.kubernetesNamespaceAdmissionRules = buildUnnamed4914();
+    o.kubernetesServiceAccountAdmissionRules = buildUnnamed4915();
     o.name = 'foo';
     o.updateTime = 'foo';
   }
@@ -531,8 +531,8 @@ api.Policy buildPolicy() {
 void checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed4503(o.admissionWhitelistPatterns!);
-    checkUnnamed4504(o.clusterAdmissionRules!);
+    checkUnnamed4911(o.admissionWhitelistPatterns!);
+    checkUnnamed4912(o.clusterAdmissionRules!);
     checkAdmissionRule(o.defaultAdmissionRule! as api.AdmissionRule);
     unittest.expect(
       o.description!,
@@ -542,9 +542,9 @@ void checkPolicy(api.Policy o) {
       o.globalPolicyEvaluationMode!,
       unittest.equals('foo'),
     );
-    checkUnnamed4505(o.istioServiceIdentityAdmissionRules!);
-    checkUnnamed4506(o.kubernetesNamespaceAdmissionRules!);
-    checkUnnamed4507(o.kubernetesServiceAccountAdmissionRules!);
+    checkUnnamed4913(o.istioServiceIdentityAdmissionRules!);
+    checkUnnamed4914(o.kubernetesNamespaceAdmissionRules!);
+    checkUnnamed4915(o.kubernetesServiceAccountAdmissionRules!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -603,14 +603,14 @@ void checkSignature(api.Signature o) {
   buildCounterSignature--;
 }
 
-core.List<core.String> buildUnnamed4508() {
+core.List<core.String> buildUnnamed4916() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed4508(core.List<core.String> o) {
+void checkUnnamed4916(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -627,7 +627,7 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
   var o = api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed4508();
+    o.permissions = buildUnnamed4916();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -636,19 +636,19 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
 void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed4508(o.permissions!);
+    checkUnnamed4916(o.permissions!);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-core.List<core.String> buildUnnamed4509() {
+core.List<core.String> buildUnnamed4917() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed4509(core.List<core.String> o) {
+void checkUnnamed4917(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -665,7 +665,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
   var o = api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed4509();
+    o.permissions = buildUnnamed4917();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -674,19 +674,19 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
 void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed4509(o.permissions!);
+    checkUnnamed4917(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
 }
 
-core.List<api.AttestorPublicKey> buildUnnamed4510() {
+core.List<api.AttestorPublicKey> buildUnnamed4918() {
   var o = <api.AttestorPublicKey>[];
   o.add(buildAttestorPublicKey());
   o.add(buildAttestorPublicKey());
   return o;
 }
 
-void checkUnnamed4510(core.List<api.AttestorPublicKey> o) {
+void checkUnnamed4918(core.List<api.AttestorPublicKey> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAttestorPublicKey(o[0] as api.AttestorPublicKey);
   checkAttestorPublicKey(o[1] as api.AttestorPublicKey);
@@ -699,7 +699,7 @@ api.UserOwnedGrafeasNote buildUserOwnedGrafeasNote() {
   if (buildCounterUserOwnedGrafeasNote < 3) {
     o.delegationServiceAccountEmail = 'foo';
     o.noteReference = 'foo';
-    o.publicKeys = buildUnnamed4510();
+    o.publicKeys = buildUnnamed4918();
   }
   buildCounterUserOwnedGrafeasNote--;
   return o;
@@ -716,7 +716,7 @@ void checkUserOwnedGrafeasNote(api.UserOwnedGrafeasNote o) {
       o.noteReference!,
       unittest.equals('foo'),
     );
-    checkUnnamed4510(o.publicKeys!);
+    checkUnnamed4918(o.publicKeys!);
   }
   buildCounterUserOwnedGrafeasNote--;
 }

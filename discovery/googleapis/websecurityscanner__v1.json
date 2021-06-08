@@ -109,6 +109,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a new ScanConfig.",
+                            "flatPath": "v1/projects/{projectsId}/scanConfigs",
                             "httpMethod": "POST",
                             "id": "websecurityscanner.projects.scanConfigs.create",
                             "parameterOrder": [
@@ -136,6 +137,7 @@
                         },
                         "delete": {
                             "description": "Deletes an existing ScanConfig and its child resources.",
+                            "flatPath": "v1/projects/{projectsId}/scanConfigs/{scanConfigsId}",
                             "httpMethod": "DELETE",
                             "id": "websecurityscanner.projects.scanConfigs.delete",
                             "parameterOrder": [
@@ -160,6 +162,7 @@
                         },
                         "get": {
                             "description": "Gets a ScanConfig.",
+                            "flatPath": "v1/projects/{projectsId}/scanConfigs/{scanConfigsId}",
                             "httpMethod": "GET",
                             "id": "websecurityscanner.projects.scanConfigs.get",
                             "parameterOrder": [
@@ -184,6 +187,7 @@
                         },
                         "list": {
                             "description": "Lists ScanConfigs under a given project.",
+                            "flatPath": "v1/projects/{projectsId}/scanConfigs",
                             "httpMethod": "GET",
                             "id": "websecurityscanner.projects.scanConfigs.list",
                             "parameterOrder": [
@@ -219,6 +223,7 @@
                         },
                         "patch": {
                             "description": "Updates a ScanConfig. This method support partial update of a ScanConfig.",
+                            "flatPath": "v1/projects/{projectsId}/scanConfigs/{scanConfigsId}",
                             "httpMethod": "PATCH",
                             "id": "websecurityscanner.projects.scanConfigs.patch",
                             "parameterOrder": [
@@ -252,6 +257,7 @@
                         },
                         "start": {
                             "description": "Start a ScanRun according to the given ScanConfig.",
+                            "flatPath": "v1/projects/{projectsId}/scanConfigs/{scanConfigsId}:start",
                             "httpMethod": "POST",
                             "id": "websecurityscanner.projects.scanConfigs.start",
                             "parameterOrder": [
@@ -283,6 +289,7 @@
                             "methods": {
                                 "get": {
                                     "description": "Gets a ScanRun.",
+                                    "flatPath": "v1/projects/{projectsId}/scanConfigs/{scanConfigsId}/scanRuns/{scanRunsId}",
                                     "httpMethod": "GET",
                                     "id": "websecurityscanner.projects.scanConfigs.scanRuns.get",
                                     "parameterOrder": [
@@ -307,6 +314,7 @@
                                 },
                                 "list": {
                                     "description": "Lists ScanRuns under a given ScanConfig, in descending order of ScanRun stop time.",
+                                    "flatPath": "v1/projects/{projectsId}/scanConfigs/{scanConfigsId}/scanRuns",
                                     "httpMethod": "GET",
                                     "id": "websecurityscanner.projects.scanConfigs.scanRuns.list",
                                     "parameterOrder": [
@@ -342,6 +350,7 @@
                                 },
                                 "stop": {
                                     "description": "Stops a ScanRun. The stopped ScanRun is returned.",
+                                    "flatPath": "v1/projects/{projectsId}/scanConfigs/{scanConfigsId}/scanRuns/{scanRunsId}:stop",
                                     "httpMethod": "POST",
                                     "id": "websecurityscanner.projects.scanConfigs.scanRuns.stop",
                                     "parameterOrder": [
@@ -373,6 +382,7 @@
                                     "methods": {
                                         "list": {
                                             "description": "List CrawledUrls under a given ScanRun.",
+                                            "flatPath": "v1/projects/{projectsId}/scanConfigs/{scanConfigsId}/scanRuns/{scanRunsId}/crawledUrls",
                                             "httpMethod": "GET",
                                             "id": "websecurityscanner.projects.scanConfigs.scanRuns.crawledUrls.list",
                                             "parameterOrder": [
@@ -412,6 +422,7 @@
                                     "methods": {
                                         "list": {
                                             "description": "List all FindingTypeStats under a given ScanRun.",
+                                            "flatPath": "v1/projects/{projectsId}/scanConfigs/{scanConfigsId}/scanRuns/{scanRunsId}/findingTypeStats",
                                             "httpMethod": "GET",
                                             "id": "websecurityscanner.projects.scanConfigs.scanRuns.findingTypeStats.list",
                                             "parameterOrder": [
@@ -440,6 +451,7 @@
                                     "methods": {
                                         "get": {
                                             "description": "Gets a Finding.",
+                                            "flatPath": "v1/projects/{projectsId}/scanConfigs/{scanConfigsId}/scanRuns/{scanRunsId}/findings/{findingsId}",
                                             "httpMethod": "GET",
                                             "id": "websecurityscanner.projects.scanConfigs.scanRuns.findings.get",
                                             "parameterOrder": [
@@ -464,6 +476,7 @@
                                         },
                                         "list": {
                                             "description": "List Findings under a given ScanRun.",
+                                            "flatPath": "v1/projects/{projectsId}/scanConfigs/{scanConfigsId}/scanRuns/{scanRunsId}/findings",
                                             "httpMethod": "GET",
                                             "id": "websecurityscanner.projects.scanConfigs.scanRuns.findings.list",
                                             "parameterOrder": [
@@ -511,7 +524,7 @@
             }
         }
     },
-    "revision": "20210514",
+    "revision": "20210604",
     "rootUrl": "https://websecurityscanner.googleapis.com/",
     "schemas": {
         "Authentication": {

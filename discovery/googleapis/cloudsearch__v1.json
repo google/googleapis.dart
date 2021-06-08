@@ -135,6 +135,7 @@
                             "methods": {
                                 "checkAccess": {
                                     "description": "Checks whether an item is accessible by specified principal. **Note:** This API requires an admin account to execute.",
+                                    "flatPath": "v1/debug/datasources/{datasourcesId}/items/{itemsId}:checkAccess",
                                     "httpMethod": "POST",
                                     "id": "cloudsearch.debug.datasources.items.checkAccess",
                                     "parameterOrder": [
@@ -168,6 +169,7 @@
                                 },
                                 "searchByViewUrl": {
                                     "description": "Fetches the item whose viewUrl exactly matches that of the URL provided in the request. **Note:** This API requires an admin account to execute.",
+                                    "flatPath": "v1/debug/datasources/{datasourcesId}/items:searchByViewUrl",
                                     "httpMethod": "POST",
                                     "id": "cloudsearch.debug.datasources.items.searchByViewUrl",
                                     "parameterOrder": [
@@ -200,6 +202,7 @@
                                     "methods": {
                                         "list": {
                                             "description": "List all unmapped identities for a specific item. **Note:** This API requires an admin account to execute.",
+                                            "flatPath": "v1/debug/datasources/{datasourcesId}/items/{itemsId}/unmappedids",
                                             "httpMethod": "GET",
                                             "id": "cloudsearch.debug.datasources.items.unmappedids.list",
                                             "parameterOrder": [
@@ -251,6 +254,7 @@
                             "methods": {
                                 "listForunmappedidentity": {
                                     "description": "Lists names of items associated with an unmapped identity. **Note:** This API requires an admin account to execute.",
+                                    "flatPath": "v1/debug/identitysources/{identitysourcesId}/items:forunmappedidentity",
                                     "httpMethod": "GET",
                                     "id": "cloudsearch.debug.identitysources.items.listForunmappedidentity",
                                     "parameterOrder": [
@@ -304,6 +308,7 @@
                             "methods": {
                                 "list": {
                                     "description": "Lists unmapped user identities for an identity source. **Note:** This API requires an admin account to execute.",
+                                    "flatPath": "v1/debug/identitysources/{identitysourcesId}/unmappedids",
                                     "httpMethod": "GET",
                                     "id": "cloudsearch.debug.identitysources.unmappedids.list",
                                     "parameterOrder": [
@@ -376,6 +381,7 @@
                     "methods": {
                         "deleteSchema": {
                             "description": "Deletes the schema of a data source. **Note:** This API requires an admin or service account to execute.",
+                            "flatPath": "v1/indexing/datasources/{datasourcesId}/schema",
                             "httpMethod": "DELETE",
                             "id": "cloudsearch.indexing.datasources.deleteSchema",
                             "parameterOrder": [
@@ -407,6 +413,7 @@
                         },
                         "getSchema": {
                             "description": "Gets the schema of a data source. **Note:** This API requires an admin or service account to execute.",
+                            "flatPath": "v1/indexing/datasources/{datasourcesId}/schema",
                             "httpMethod": "GET",
                             "id": "cloudsearch.indexing.datasources.getSchema",
                             "parameterOrder": [
@@ -438,6 +445,7 @@
                         },
                         "updateSchema": {
                             "description": "Updates the schema of a data source. This method does not perform incremental updates to the schema. Instead, this method updates the schema by overwriting the entire schema. **Note:** This API requires an admin or service account to execute.",
+                            "flatPath": "v1/indexing/datasources/{datasourcesId}/schema",
                             "httpMethod": "PUT",
                             "id": "cloudsearch.indexing.datasources.updateSchema",
                             "parameterOrder": [
@@ -471,6 +479,7 @@
                             "methods": {
                                 "delete": {
                                     "description": "Deletes Item resource for the specified resource name. This API requires an admin or service account to execute. The service account used is the one whitelisted in the corresponding data source.",
+                                    "flatPath": "v1/indexing/datasources/{datasourcesId}/items/{itemsId}",
                                     "httpMethod": "DELETE",
                                     "id": "cloudsearch.indexing.datasources.items.delete",
                                     "parameterOrder": [
@@ -527,6 +536,7 @@
                                 },
                                 "deleteQueueItems": {
                                     "description": "Deletes all items in a queue. This method is useful for deleting stale items. This API requires an admin or service account to execute. The service account used is the one whitelisted in the corresponding data source.",
+                                    "flatPath": "v1/indexing/datasources/{datasourcesId}/items:deleteQueueItems",
                                     "httpMethod": "POST",
                                     "id": "cloudsearch.indexing.datasources.items.deleteQueueItems",
                                     "parameterOrder": [
@@ -555,6 +565,7 @@
                                 },
                                 "get": {
                                     "description": "Gets Item resource by item name. This API requires an admin or service account to execute. The service account used is the one whitelisted in the corresponding data source.",
+                                    "flatPath": "v1/indexing/datasources/{datasourcesId}/items/{itemsId}",
                                     "httpMethod": "GET",
                                     "id": "cloudsearch.indexing.datasources.items.get",
                                     "parameterOrder": [
@@ -590,6 +601,7 @@
                                 },
                                 "index": {
                                     "description": "Updates Item ACL, metadata, and content. It will insert the Item if it does not exist. This method does not support partial updates. Fields with no provided values are cleared out in the Cloud Search index. This API requires an admin or service account to execute. The service account used is the one whitelisted in the corresponding data source.",
+                                    "flatPath": "v1/indexing/datasources/{datasourcesId}/items/{itemsId}:index",
                                     "httpMethod": "POST",
                                     "id": "cloudsearch.indexing.datasources.items.index",
                                     "parameterOrder": [
@@ -618,6 +630,7 @@
                                 },
                                 "list": {
                                     "description": "Lists all or a subset of Item resources. This API requires an admin or service account to execute. The service account used is the one whitelisted in the corresponding data source.",
+                                    "flatPath": "v1/indexing/datasources/{datasourcesId}/items",
                                     "httpMethod": "GET",
                                     "id": "cloudsearch.indexing.datasources.items.list",
                                     "parameterOrder": [
@@ -669,6 +682,7 @@
                                 },
                                 "poll": {
                                     "description": "Polls for unreserved items from the indexing queue and marks a set as reserved, starting with items that have the oldest timestamp from the highest priority ItemStatus. The priority order is as follows: ERROR MODIFIED NEW_ITEM ACCEPTED Reserving items ensures that polling from other threads cannot create overlapping sets. After handling the reserved items, the client should put items back into the unreserved state, either by calling index, or by calling push with the type REQUEUE. Items automatically become available (unreserved) after 4 hours even if no update or push method is called. This API requires an admin or service account to execute. The service account used is the one whitelisted in the corresponding data source.",
+                                    "flatPath": "v1/indexing/datasources/{datasourcesId}/items:poll",
                                     "httpMethod": "POST",
                                     "id": "cloudsearch.indexing.datasources.items.poll",
                                     "parameterOrder": [
@@ -697,6 +711,7 @@
                                 },
                                 "push": {
                                     "description": "Pushes an item onto a queue for later polling and updating. This API requires an admin or service account to execute. The service account used is the one whitelisted in the corresponding data source.",
+                                    "flatPath": "v1/indexing/datasources/{datasourcesId}/items/{itemsId}:push",
                                     "httpMethod": "POST",
                                     "id": "cloudsearch.indexing.datasources.items.push",
                                     "parameterOrder": [
@@ -725,6 +740,7 @@
                                 },
                                 "unreserve": {
                                     "description": "Unreserves all items from a queue, making them all eligible to be polled. This method is useful for resetting the indexing queue after a connector has been restarted. This API requires an admin or service account to execute. The service account used is the one whitelisted in the corresponding data source.",
+                                    "flatPath": "v1/indexing/datasources/{datasourcesId}/items:unreserve",
                                     "httpMethod": "POST",
                                     "id": "cloudsearch.indexing.datasources.items.unreserve",
                                     "parameterOrder": [
@@ -753,6 +769,7 @@
                                 },
                                 "upload": {
                                     "description": "Creates an upload session for uploading item content. For items smaller than 100 KB, it's easier to embed the content inline within an index request. This API requires an admin or service account to execute. The service account used is the one whitelisted in the corresponding data source.",
+                                    "flatPath": "v1/indexing/datasources/{datasourcesId}/items/{itemsId}:upload",
                                     "httpMethod": "POST",
                                     "id": "cloudsearch.indexing.datasources.items.upload",
                                     "parameterOrder": [
@@ -789,6 +806,7 @@
             "methods": {
                 "upload": {
                     "description": "Uploads media for indexing. The upload endpoint supports direct and resumable upload protocols and is intended for large items that can not be [inlined during index requests](https://developers.google.com/cloud-search/docs/reference/rest/v1/indexing.datasources.items#itemcontent). To index large content: 1. Call indexing.datasources.items.upload with the item name to begin an upload session and retrieve the UploadItemRef. 1. Call media.upload to upload the content, as a streaming request, using the same resource name from the UploadItemRef from step 1. 1. Call indexing.datasources.items.index to index the item. Populate the [ItemContent](/cloud-search/docs/reference/rest/v1/indexing.datasources.items#ItemContent) with the UploadItemRef from step 1. For additional information, see [Create a content connector using the REST API](https://developers.google.com/cloud-search/docs/guides/content-connector#rest). **Note:** This API requires a service account to execute.",
+                    "flatPath": "v1/media/{mediaId}",
                     "httpMethod": "POST",
                     "id": "cloudsearch.media.upload",
                     "mediaUpload": {
@@ -833,6 +851,7 @@
             "methods": {
                 "get": {
                     "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                    "flatPath": "v1/operations/{operationsId}",
                     "httpMethod": "GET",
                     "id": "cloudsearch.operations.get",
                     "parameterOrder": [
@@ -866,6 +885,7 @@
                     "methods": {
                         "list": {
                             "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                            "flatPath": "v1/operations/{operationsId}/lro",
                             "httpMethod": "GET",
                             "id": "cloudsearch.operations.lro.list",
                             "parameterOrder": [
@@ -916,7 +936,8 @@
         "query": {
             "methods": {
                 "search": {
-                    "description": "The Cloud Search Query API provides the search method, which returns the most relevant results from a user query. The results can come from G Suite Apps, such as Gmail or Google Drive, or they can come from data that you have indexed from a third party. **Note:** This API requires a standard end user account to execute. A service account can't perform Query API requests directly; to use a service account to perform queries, set up [G Suite domain-wide delegation of authority](https://developers.google.com/cloud-search/docs/guides/delegation/).",
+                    "description": "The Cloud Search Query API provides the search method, which returns the most relevant results from a user query. The results can come from Google Workspace apps, such as Gmail or Google Drive, or they can come from data that you have indexed from a third party. **Note:** This API requires a standard end user account to execute. A service account can't perform Query API requests directly; to use a service account to perform queries, set up [Google Workspace domain-wide delegation of authority](https://developers.google.com/cloud-search/docs/guides/delegation/).",
+                    "flatPath": "v1/query/search",
                     "httpMethod": "POST",
                     "id": "cloudsearch.query.search",
                     "parameterOrder": [],
@@ -934,7 +955,8 @@
                     ]
                 },
                 "suggest": {
-                    "description": "Provides suggestions for autocompleting the query. **Note:** This API requires a standard end user account to execute. A service account can't perform Query API requests directly; to use a service account to perform queries, set up [G Suite domain-wide delegation of authority](https://developers.google.com/cloud-search/docs/guides/delegation/).",
+                    "description": "Provides suggestions for autocompleting the query. **Note:** This API requires a standard end user account to execute. A service account can't perform Query API requests directly; to use a service account to perform queries, set up [Google Workspace domain-wide delegation of authority](https://developers.google.com/cloud-search/docs/guides/delegation/).",
+                    "flatPath": "v1/query/suggest",
                     "httpMethod": "POST",
                     "id": "cloudsearch.query.suggest",
                     "parameterOrder": [],
@@ -956,7 +978,8 @@
                 "sources": {
                     "methods": {
                         "list": {
-                            "description": "Returns list of sources that user can use for Search and Suggest APIs. **Note:** This API requires a standard end user account to execute. A service account can't perform Query API requests directly; to use a service account to perform queries, set up [G Suite domain-wide delegation of authority](https://developers.google.com/cloud-search/docs/guides/delegation/).",
+                            "description": "Returns list of sources that user can use for Search and Suggest APIs. **Note:** This API requires a standard end user account to execute. A service account can't perform Query API requests directly; to use a service account to perform queries, set up [Google Workspace domain-wide delegation of authority](https://developers.google.com/cloud-search/docs/guides/delegation/).",
+                            "flatPath": "v1/query/sources",
                             "httpMethod": "GET",
                             "id": "cloudsearch.query.sources.list",
                             "parameterOrder": [],
@@ -1004,6 +1027,7 @@
             "methods": {
                 "getCustomer": {
                     "description": "Get customer settings. **Note:** This API requires an admin account to execute.",
+                    "flatPath": "v1/settings/customer",
                     "httpMethod": "GET",
                     "id": "cloudsearch.settings.getCustomer",
                     "parameterOrder": [],
@@ -1020,6 +1044,7 @@
                 },
                 "updateCustomer": {
                     "description": "Update customer settings. **Note:** This API requires an admin account to execute.",
+                    "flatPath": "v1/settings/customer",
                     "httpMethod": "PATCH",
                     "id": "cloudsearch.settings.updateCustomer",
                     "parameterOrder": [],
@@ -1050,6 +1075,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a datasource. **Note:** This API requires an admin account to execute.",
+                            "flatPath": "v1/settings/datasources",
                             "httpMethod": "POST",
                             "id": "cloudsearch.settings.datasources.create",
                             "parameterOrder": [],
@@ -1069,6 +1095,7 @@
                         },
                         "delete": {
                             "description": "Deletes a datasource. **Note:** This API requires an admin account to execute.",
+                            "flatPath": "v1/settings/datasources/{datasourcesId}",
                             "httpMethod": "DELETE",
                             "id": "cloudsearch.settings.datasources.delete",
                             "parameterOrder": [
@@ -1100,6 +1127,7 @@
                         },
                         "get": {
                             "description": "Gets a datasource. **Note:** This API requires an admin account to execute.",
+                            "flatPath": "v1/settings/datasources/{datasourcesId}",
                             "httpMethod": "GET",
                             "id": "cloudsearch.settings.datasources.get",
                             "parameterOrder": [
@@ -1131,6 +1159,7 @@
                         },
                         "list": {
                             "description": "Lists datasources. **Note:** This API requires an admin account to execute.",
+                            "flatPath": "v1/settings/datasources",
                             "httpMethod": "GET",
                             "id": "cloudsearch.settings.datasources.list",
                             "parameterOrder": [],
@@ -1164,6 +1193,7 @@
                         },
                         "update": {
                             "description": "Updates a datasource. **Note:** This API requires an admin account to execute.",
+                            "flatPath": "v1/settings/datasources/{datasourcesId}",
                             "httpMethod": "PUT",
                             "id": "cloudsearch.settings.datasources.update",
                             "parameterOrder": [
@@ -1197,6 +1227,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a search application. **Note:** This API requires an admin account to execute.",
+                            "flatPath": "v1/settings/searchapplications",
                             "httpMethod": "POST",
                             "id": "cloudsearch.settings.searchapplications.create",
                             "parameterOrder": [],
@@ -1216,6 +1247,7 @@
                         },
                         "delete": {
                             "description": "Deletes a search application. **Note:** This API requires an admin account to execute.",
+                            "flatPath": "v1/settings/searchapplications/{searchapplicationsId}",
                             "httpMethod": "DELETE",
                             "id": "cloudsearch.settings.searchapplications.delete",
                             "parameterOrder": [
@@ -1247,6 +1279,7 @@
                         },
                         "get": {
                             "description": "Gets the specified search application. **Note:** This API requires an admin account to execute.",
+                            "flatPath": "v1/settings/searchapplications/{searchapplicationsId}",
                             "httpMethod": "GET",
                             "id": "cloudsearch.settings.searchapplications.get",
                             "parameterOrder": [
@@ -1278,6 +1311,7 @@
                         },
                         "list": {
                             "description": "Lists all search applications. **Note:** This API requires an admin account to execute.",
+                            "flatPath": "v1/settings/searchapplications",
                             "httpMethod": "GET",
                             "id": "cloudsearch.settings.searchapplications.list",
                             "parameterOrder": [],
@@ -1311,6 +1345,7 @@
                         },
                         "reset": {
                             "description": "Resets a search application to default settings. This will return an empty response. **Note:** This API requires an admin account to execute.",
+                            "flatPath": "v1/settings/searchapplications/{searchapplicationsId}:reset",
                             "httpMethod": "POST",
                             "id": "cloudsearch.settings.searchapplications.reset",
                             "parameterOrder": [
@@ -1340,6 +1375,7 @@
                         },
                         "update": {
                             "description": "Updates a search application. **Note:** This API requires an admin account to execute.",
+                            "flatPath": "v1/settings/searchapplications/{searchapplicationsId}",
                             "httpMethod": "PUT",
                             "id": "cloudsearch.settings.searchapplications.update",
                             "parameterOrder": [
@@ -1375,6 +1411,7 @@
             "methods": {
                 "getIndex": {
                     "description": "Gets indexed item statistics aggreggated across all data sources. This API only returns statistics for previous dates; it doesn't return statistics for the current day. **Note:** This API requires a standard end user account to execute.",
+                    "flatPath": "v1/stats/index",
                     "httpMethod": "GET",
                     "id": "cloudsearch.stats.getIndex",
                     "parameterOrder": [],
@@ -1428,6 +1465,7 @@
                 },
                 "getQuery": {
                     "description": "Get the query statistics for customer. **Note:** This API requires a standard end user account to execute.",
+                    "flatPath": "v1/stats/query",
                     "httpMethod": "GET",
                     "id": "cloudsearch.stats.getQuery",
                     "parameterOrder": [],
@@ -1481,6 +1519,7 @@
                 },
                 "getSession": {
                     "description": "Get the # of search sessions, % of successful sessions with a click query statistics for customer. **Note:** This API requires a standard end user account to execute.",
+                    "flatPath": "v1/stats/session",
                     "httpMethod": "GET",
                     "id": "cloudsearch.stats.getSession",
                     "parameterOrder": [],
@@ -1534,6 +1573,7 @@
                 },
                 "getUser": {
                     "description": "Get the users statistics for customer. **Note:** This API requires a standard end user account to execute.",
+                    "flatPath": "v1/stats/user",
                     "httpMethod": "GET",
                     "id": "cloudsearch.stats.getUser",
                     "parameterOrder": [],
@@ -1593,6 +1633,7 @@
                             "methods": {
                                 "get": {
                                     "description": "Gets indexed item statistics for a single data source. **Note:** This API requires a standard end user account to execute.",
+                                    "flatPath": "v1/stats/index/datasources/{datasourcesId}",
                                     "httpMethod": "GET",
                                     "id": "cloudsearch.stats.index.datasources.get",
                                     "parameterOrder": [
@@ -1663,6 +1704,7 @@
                             "methods": {
                                 "get": {
                                     "description": "Get the query statistics for search application. **Note:** This API requires a standard end user account to execute.",
+                                    "flatPath": "v1/stats/query/searchapplications/{searchapplicationsId}",
                                     "httpMethod": "GET",
                                     "id": "cloudsearch.stats.query.searchapplications.get",
                                     "parameterOrder": [
@@ -1733,6 +1775,7 @@
                             "methods": {
                                 "get": {
                                     "description": "Get the # of search sessions, % of successful sessions with a click query statistics for search application. **Note:** This API requires a standard end user account to execute.",
+                                    "flatPath": "v1/stats/session/searchapplications/{searchapplicationsId}",
                                     "httpMethod": "GET",
                                     "id": "cloudsearch.stats.session.searchapplications.get",
                                     "parameterOrder": [
@@ -1803,6 +1846,7 @@
                             "methods": {
                                 "get": {
                                     "description": "Get the users statistics for search application. **Note:** This API requires a standard end user account to execute.",
+                                    "flatPath": "v1/stats/user/searchapplications/{searchapplicationsId}",
                                     "httpMethod": "GET",
                                     "id": "cloudsearch.stats.user.searchapplications.get",
                                     "parameterOrder": [
@@ -1870,7 +1914,7 @@
             }
         }
     },
-    "revision": "20210510",
+    "revision": "20210608",
     "rootUrl": "https://cloudsearch.googleapis.com/",
     "schemas": {
         "AuditLoggingSettings": {

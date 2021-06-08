@@ -562,6 +562,8 @@ class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest
   /// - "TRICK_TO_BILL" : Trick-to-bill threat list.
   /// - "HIGH_CONFIDENCE_ALLOWLIST" : Safe list to ship hashes of known safe URL
   /// expressions.
+  /// - "ACCURACY_TIPS" : List from the Jigsaw team to show accuracy tips in
+  /// Chrome. See go/sb-accuracytips.
   core.String? threatType;
 
   GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest();
@@ -806,6 +808,8 @@ class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateRespon
   /// - "TRICK_TO_BILL" : Trick-to-bill threat list.
   /// - "HIGH_CONFIDENCE_ALLOWLIST" : Safe list to ship hashes of known safe URL
   /// expressions.
+  /// - "ACCURACY_TIPS" : List from the Jigsaw team to show accuracy tips in
+  /// Chrome. See go/sb-accuracytips.
   core.String? threatType;
 
   GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse();
@@ -1382,6 +1386,8 @@ class GoogleSecuritySafebrowsingV4ThreatHit {
   /// - "TRICK_TO_BILL" : Trick-to-bill threat list.
   /// - "HIGH_CONFIDENCE_ALLOWLIST" : Safe list to ship hashes of known safe URL
   /// expressions.
+  /// - "ACCURACY_TIPS" : List from the Jigsaw team to show accuracy tips in
+  /// Chrome. See go/sb-accuracytips.
   core.String? threatType;
 
   /// Details about the user that encountered the threat.
@@ -1619,6 +1625,8 @@ class GoogleSecuritySafebrowsingV4ThreatListDescriptor {
   /// - "TRICK_TO_BILL" : Trick-to-bill threat list.
   /// - "HIGH_CONFIDENCE_ALLOWLIST" : Safe list to ship hashes of known safe URL
   /// expressions.
+  /// - "ACCURACY_TIPS" : List from the Jigsaw team to show accuracy tips in
+  /// Chrome. See go/sb-accuracytips.
   core.String? threatType;
 
   GoogleSecuritySafebrowsingV4ThreatListDescriptor();
@@ -1707,6 +1715,8 @@ class GoogleSecuritySafebrowsingV4ThreatMatch {
   /// - "TRICK_TO_BILL" : Trick-to-bill threat list.
   /// - "HIGH_CONFIDENCE_ALLOWLIST" : Safe list to ship hashes of known safe URL
   /// expressions.
+  /// - "ACCURACY_TIPS" : List from the Jigsaw team to show accuracy tips in
+  /// Chrome. See go/sb-accuracytips.
   core.String? threatType;
 
   GoogleSecuritySafebrowsingV4ThreatMatch();

@@ -109,6 +109,7 @@
                     "methods": {
                         "batchCreate": {
                             "description": "Creates new notes in batch.",
+                            "flatPath": "v1beta1/projects/{projectsId}/notes:batchCreate",
                             "httpMethod": "POST",
                             "id": "containeranalysis.projects.notes.batchCreate",
                             "parameterOrder": [
@@ -136,6 +137,7 @@
                         },
                         "create": {
                             "description": "Creates a new note.",
+                            "flatPath": "v1beta1/projects/{projectsId}/notes",
                             "httpMethod": "POST",
                             "id": "containeranalysis.projects.notes.create",
                             "parameterOrder": [
@@ -168,6 +170,7 @@
                         },
                         "delete": {
                             "description": "Deletes the specified note.",
+                            "flatPath": "v1beta1/projects/{projectsId}/notes/{notesId}",
                             "httpMethod": "DELETE",
                             "id": "containeranalysis.projects.notes.delete",
                             "parameterOrder": [
@@ -192,6 +195,7 @@
                         },
                         "get": {
                             "description": "Gets the specified note.",
+                            "flatPath": "v1beta1/projects/{projectsId}/notes/{notesId}",
                             "httpMethod": "GET",
                             "id": "containeranalysis.projects.notes.get",
                             "parameterOrder": [
@@ -216,6 +220,7 @@
                         },
                         "getIamPolicy": {
                             "description": "Gets the access control policy for a note or an occurrence resource. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a note or occurrence, respectively. The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.",
+                            "flatPath": "v1beta1/projects/{projectsId}/notes/{notesId}:getIamPolicy",
                             "httpMethod": "POST",
                             "id": "containeranalysis.projects.notes.getIamPolicy",
                             "parameterOrder": [
@@ -243,6 +248,7 @@
                         },
                         "list": {
                             "description": "Lists notes for the specified project.",
+                            "flatPath": "v1beta1/projects/{projectsId}/notes",
                             "httpMethod": "GET",
                             "id": "containeranalysis.projects.notes.list",
                             "parameterOrder": [
@@ -283,6 +289,7 @@
                         },
                         "patch": {
                             "description": "Updates the specified note.",
+                            "flatPath": "v1beta1/projects/{projectsId}/notes/{notesId}",
                             "httpMethod": "PATCH",
                             "id": "containeranalysis.projects.notes.patch",
                             "parameterOrder": [
@@ -316,6 +323,7 @@
                         },
                         "setIamPolicy": {
                             "description": "Sets the access control policy on the specified note or occurrence. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a note or an occurrence, respectively. The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.",
+                            "flatPath": "v1beta1/projects/{projectsId}/notes/{notesId}:setIamPolicy",
                             "httpMethod": "POST",
                             "id": "containeranalysis.projects.notes.setIamPolicy",
                             "parameterOrder": [
@@ -343,6 +351,7 @@
                         },
                         "testIamPermissions": {
                             "description": "Returns the permissions that a caller has on the specified note or occurrence. Requires list permission on the project (for example, `containeranalysis.notes.list`). The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.",
+                            "flatPath": "v1beta1/projects/{projectsId}/notes/{notesId}:testIamPermissions",
                             "httpMethod": "POST",
                             "id": "containeranalysis.projects.notes.testIamPermissions",
                             "parameterOrder": [
@@ -374,6 +383,7 @@
                             "methods": {
                                 "list": {
                                     "description": "Lists occurrences referencing the specified note. Provider projects can use this method to get all occurrences across consumer projects referencing the specified note.",
+                                    "flatPath": "v1beta1/projects/{projectsId}/notes/{notesId}/occurrences",
                                     "httpMethod": "GET",
                                     "id": "containeranalysis.projects.notes.occurrences.list",
                                     "parameterOrder": [
@@ -420,6 +430,7 @@
                     "methods": {
                         "batchCreate": {
                             "description": "Creates new occurrences in batch.",
+                            "flatPath": "v1beta1/projects/{projectsId}/occurrences:batchCreate",
                             "httpMethod": "POST",
                             "id": "containeranalysis.projects.occurrences.batchCreate",
                             "parameterOrder": [
@@ -447,6 +458,7 @@
                         },
                         "create": {
                             "description": "Creates a new occurrence.",
+                            "flatPath": "v1beta1/projects/{projectsId}/occurrences",
                             "httpMethod": "POST",
                             "id": "containeranalysis.projects.occurrences.create",
                             "parameterOrder": [
@@ -474,6 +486,7 @@
                         },
                         "delete": {
                             "description": "Deletes the specified occurrence. For example, use this method to delete an occurrence when the occurrence is no longer applicable for the given resource.",
+                            "flatPath": "v1beta1/projects/{projectsId}/occurrences/{occurrencesId}",
                             "httpMethod": "DELETE",
                             "id": "containeranalysis.projects.occurrences.delete",
                             "parameterOrder": [
@@ -498,6 +511,7 @@
                         },
                         "get": {
                             "description": "Gets the specified occurrence.",
+                            "flatPath": "v1beta1/projects/{projectsId}/occurrences/{occurrencesId}",
                             "httpMethod": "GET",
                             "id": "containeranalysis.projects.occurrences.get",
                             "parameterOrder": [
@@ -522,6 +536,7 @@
                         },
                         "getIamPolicy": {
                             "description": "Gets the access control policy for a note or an occurrence resource. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a note or occurrence, respectively. The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.",
+                            "flatPath": "v1beta1/projects/{projectsId}/occurrences/{occurrencesId}:getIamPolicy",
                             "httpMethod": "POST",
                             "id": "containeranalysis.projects.occurrences.getIamPolicy",
                             "parameterOrder": [
@@ -549,6 +564,7 @@
                         },
                         "getNotes": {
                             "description": "Gets the note attached to the specified occurrence. Consumer projects can use this method to get a note that belongs to a provider project.",
+                            "flatPath": "v1beta1/projects/{projectsId}/occurrences/{occurrencesId}/notes",
                             "httpMethod": "GET",
                             "id": "containeranalysis.projects.occurrences.getNotes",
                             "parameterOrder": [
@@ -573,6 +589,7 @@
                         },
                         "getVulnerabilitySummary": {
                             "description": "Gets a summary of the number and severity of occurrences.",
+                            "flatPath": "v1beta1/projects/{projectsId}/occurrences:vulnerabilitySummary",
                             "httpMethod": "GET",
                             "id": "containeranalysis.projects.occurrences.getVulnerabilitySummary",
                             "parameterOrder": [
@@ -602,6 +619,7 @@
                         },
                         "list": {
                             "description": "Lists occurrences for the specified project.",
+                            "flatPath": "v1beta1/projects/{projectsId}/occurrences",
                             "httpMethod": "GET",
                             "id": "containeranalysis.projects.occurrences.list",
                             "parameterOrder": [
@@ -642,6 +660,7 @@
                         },
                         "patch": {
                             "description": "Updates the specified occurrence.",
+                            "flatPath": "v1beta1/projects/{projectsId}/occurrences/{occurrencesId}",
                             "httpMethod": "PATCH",
                             "id": "containeranalysis.projects.occurrences.patch",
                             "parameterOrder": [
@@ -675,6 +694,7 @@
                         },
                         "setIamPolicy": {
                             "description": "Sets the access control policy on the specified note or occurrence. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a note or an occurrence, respectively. The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.",
+                            "flatPath": "v1beta1/projects/{projectsId}/occurrences/{occurrencesId}:setIamPolicy",
                             "httpMethod": "POST",
                             "id": "containeranalysis.projects.occurrences.setIamPolicy",
                             "parameterOrder": [
@@ -702,6 +722,7 @@
                         },
                         "testIamPermissions": {
                             "description": "Returns the permissions that a caller has on the specified note or occurrence. Requires list permission on the project (for example, `containeranalysis.notes.list`). The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.",
+                            "flatPath": "v1beta1/projects/{projectsId}/occurrences/{occurrencesId}:testIamPermissions",
                             "httpMethod": "POST",
                             "id": "containeranalysis.projects.occurrences.testIamPermissions",
                             "parameterOrder": [
@@ -733,6 +754,7 @@
                     "methods": {
                         "get": {
                             "description": "Gets the specified scan configuration.",
+                            "flatPath": "v1beta1/projects/{projectsId}/scanConfigs/{scanConfigsId}",
                             "httpMethod": "GET",
                             "id": "containeranalysis.projects.scanConfigs.get",
                             "parameterOrder": [
@@ -757,6 +779,7 @@
                         },
                         "list": {
                             "description": "Lists scan configurations for the specified project.",
+                            "flatPath": "v1beta1/projects/{projectsId}/scanConfigs",
                             "httpMethod": "GET",
                             "id": "containeranalysis.projects.scanConfigs.list",
                             "parameterOrder": [
@@ -797,6 +820,7 @@
                         },
                         "update": {
                             "description": "Updates the specified scan configuration.",
+                            "flatPath": "v1beta1/projects/{projectsId}/scanConfigs/{scanConfigsId}",
                             "httpMethod": "PUT",
                             "id": "containeranalysis.projects.scanConfigs.update",
                             "parameterOrder": [
@@ -827,7 +851,7 @@
             }
         }
     },
-    "revision": "20210513",
+    "revision": "20210611",
     "rootUrl": "https://containeranalysis.googleapis.com/",
     "schemas": {
         "AliasContext": {

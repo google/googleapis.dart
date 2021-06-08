@@ -116,6 +116,7 @@
             "methods": {
                 "get": {
                     "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                    "flatPath": "v1/operations/{operationsId}",
                     "httpMethod": "GET",
                     "id": "servicemanagement.operations.get",
                     "parameterOrder": [
@@ -141,6 +142,7 @@
                 },
                 "list": {
                     "description": "Lists service operations that match the specified filter in the request.",
+                    "flatPath": "v1/operations",
                     "httpMethod": "GET",
                     "id": "servicemanagement.operations.list",
                     "parameterOrder": [],
@@ -182,6 +184,7 @@
             "methods": {
                 "create": {
                     "description": "Creates a new managed service. A managed service is immutable, and is subject to mandatory 30-day data retention. You cannot move a service or recreate it within 30 days after deletion. One producer project can own no more than 500 services. For security and reliability purposes, a production service should be hosted in a dedicated producer project. Operation",
+                    "flatPath": "v1/services",
                     "httpMethod": "POST",
                     "id": "servicemanagement.services.create",
                     "parameterOrder": [],
@@ -200,6 +203,7 @@
                 },
                 "delete": {
                     "description": "Deletes a managed service. This method will change the service to the `Soft-Delete` state for 30 days. Within this period, service producers may call UndeleteService to restore the service. After 30 days, the service will be permanently deleted. Operation",
+                    "flatPath": "v1/services/{serviceName}",
                     "httpMethod": "DELETE",
                     "id": "servicemanagement.services.delete",
                     "parameterOrder": [
@@ -224,6 +228,7 @@
                 },
                 "generateConfigReport": {
                     "description": "Generates and returns a report (errors, warnings and changes from existing configurations) associated with GenerateConfigReportRequest.new_value If GenerateConfigReportRequest.old_value is specified, GenerateConfigReportRequest will contain a single ChangeReport based on the comparison between GenerateConfigReportRequest.new_value and GenerateConfigReportRequest.old_value. If GenerateConfigReportRequest.old_value is not specified, this method will compare GenerateConfigReportRequest.new_value with the last pushed service configuration.",
+                    "flatPath": "v1/services:generateConfigReport",
                     "httpMethod": "POST",
                     "id": "servicemanagement.services.generateConfigReport",
                     "parameterOrder": [],
@@ -242,6 +247,7 @@
                 },
                 "get": {
                     "description": "Gets a managed service. Authentication is required unless the service is public.",
+                    "flatPath": "v1/services/{serviceName}",
                     "httpMethod": "GET",
                     "id": "servicemanagement.services.get",
                     "parameterOrder": [
@@ -268,6 +274,7 @@
                 },
                 "getConfig": {
                     "description": "Gets a service configuration (version) for a managed service.",
+                    "flatPath": "v1/services/{serviceName}/config",
                     "httpMethod": "GET",
                     "id": "servicemanagement.services.getConfig",
                     "parameterOrder": [
@@ -312,6 +319,7 @@
                 },
                 "getIamPolicy": {
                     "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
+                    "flatPath": "v1/services/{servicesId}:getIamPolicy",
                     "httpMethod": "POST",
                     "id": "servicemanagement.services.getIamPolicy",
                     "parameterOrder": [
@@ -342,6 +350,7 @@
                 },
                 "list": {
                     "description": "Lists managed services. Returns all public services. For authenticated users, also returns all services the calling user has \"servicemanagement.services.get\" permission for.",
+                    "flatPath": "v1/services",
                     "httpMethod": "GET",
                     "id": "servicemanagement.services.list",
                     "parameterOrder": [],
@@ -381,6 +390,7 @@
                 },
                 "setIamPolicy": {
                     "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
+                    "flatPath": "v1/services/{servicesId}:setIamPolicy",
                     "httpMethod": "POST",
                     "id": "servicemanagement.services.setIamPolicy",
                     "parameterOrder": [
@@ -409,6 +419,7 @@
                 },
                 "testIamPermissions": {
                     "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
+                    "flatPath": "v1/services/{servicesId}:testIamPermissions",
                     "httpMethod": "POST",
                     "id": "servicemanagement.services.testIamPermissions",
                     "parameterOrder": [
@@ -439,6 +450,7 @@
                 },
                 "undelete": {
                     "description": "Revives a previously deleted managed service. The method restores the service using the configuration at the time the service was deleted. The target service must exist and must have been deleted within the last 30 days. Operation",
+                    "flatPath": "v1/services/{serviceName}:undelete",
                     "httpMethod": "POST",
                     "id": "servicemanagement.services.undelete",
                     "parameterOrder": [
@@ -467,6 +479,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a new service configuration (version) for a managed service. This method only stores the service configuration. To roll out the service configuration to backend systems please call CreateServiceRollout. Only the 100 most recent service configurations and ones referenced by existing rollouts are kept for each service. The rest will be deleted eventually.",
+                            "flatPath": "v1/services/{serviceName}/configs",
                             "httpMethod": "POST",
                             "id": "servicemanagement.services.configs.create",
                             "parameterOrder": [
@@ -494,6 +507,7 @@
                         },
                         "get": {
                             "description": "Gets a service configuration (version) for a managed service.",
+                            "flatPath": "v1/services/{serviceName}/configs/{configId}",
                             "httpMethod": "GET",
                             "id": "servicemanagement.services.configs.get",
                             "parameterOrder": [
@@ -540,6 +554,7 @@
                         },
                         "list": {
                             "description": "Lists the history of the service configuration for a managed service, from the newest to the oldest.",
+                            "flatPath": "v1/services/{serviceName}/configs",
                             "httpMethod": "GET",
                             "id": "servicemanagement.services.configs.list",
                             "parameterOrder": [
@@ -577,6 +592,7 @@
                         },
                         "submit": {
                             "description": "Creates a new service configuration (version) for a managed service based on user-supplied configuration source files (for example: OpenAPI Specification). This method stores the source configurations as well as the generated service configuration. To rollout the service configuration to other services, please call CreateServiceRollout. Only the 100 most recent configuration sources and ones referenced by existing service configurtions are kept for each service. The rest will be deleted eventually. Operation",
+                            "flatPath": "v1/services/{serviceName}/configs:submit",
                             "httpMethod": "POST",
                             "id": "servicemanagement.services.configs.submit",
                             "parameterOrder": [
@@ -608,6 +624,7 @@
                     "methods": {
                         "getIamPolicy": {
                             "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
+                            "flatPath": "v1/services/{servicesId}/consumers/{consumersId}:getIamPolicy",
                             "httpMethod": "POST",
                             "id": "servicemanagement.services.consumers.getIamPolicy",
                             "parameterOrder": [
@@ -638,6 +655,7 @@
                         },
                         "setIamPolicy": {
                             "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
+                            "flatPath": "v1/services/{servicesId}/consumers/{consumersId}:setIamPolicy",
                             "httpMethod": "POST",
                             "id": "servicemanagement.services.consumers.setIamPolicy",
                             "parameterOrder": [
@@ -666,6 +684,7 @@
                         },
                         "testIamPermissions": {
                             "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
+                            "flatPath": "v1/services/{servicesId}/consumers/{consumersId}:testIamPermissions",
                             "httpMethod": "POST",
                             "id": "servicemanagement.services.consumers.testIamPermissions",
                             "parameterOrder": [
@@ -700,6 +719,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a new service configuration rollout. Based on rollout, the Google Service Management will roll out the service configurations to different backend services. For example, the logging configuration will be pushed to Google Cloud Logging. Please note that any previous pending and running Rollouts and associated Operations will be automatically cancelled so that the latest Rollout will not be blocked by previous Rollouts. Only the 100 most recent (in any state) and the last 10 successful (if not already part of the set of 100 most recent) rollouts are kept for each service. The rest will be deleted eventually. Operation",
+                            "flatPath": "v1/services/{serviceName}/rollouts",
                             "httpMethod": "POST",
                             "id": "servicemanagement.services.rollouts.create",
                             "parameterOrder": [
@@ -727,6 +747,7 @@
                         },
                         "get": {
                             "description": "Gets a service configuration rollout.",
+                            "flatPath": "v1/services/{serviceName}/rollouts/{rolloutId}",
                             "httpMethod": "GET",
                             "id": "servicemanagement.services.rollouts.get",
                             "parameterOrder": [
@@ -760,6 +781,7 @@
                         },
                         "list": {
                             "description": "Lists the history of the service configuration rollouts for a managed service, from the newest to the oldest.",
+                            "flatPath": "v1/services/{serviceName}/rollouts",
                             "httpMethod": "GET",
                             "id": "servicemanagement.services.rollouts.list",
                             "parameterOrder": [
@@ -805,7 +827,7 @@
             }
         }
     },
-    "revision": "20210518",
+    "revision": "20210611",
     "rootUrl": "https://servicemanagement.googleapis.com/",
     "schemas": {
         "Advice": {
@@ -1049,11 +1071,6 @@
                 "jwtAudience": {
                     "description": "The JWT audience is used when generating a JWT ID token for the backend. This ID token will be added in the HTTP \"authorization\" header, and sent to the backend.",
                     "type": "string"
-                },
-                "minDeadline": {
-                    "description": "Minimum deadline in seconds needed for this method. Calls having deadline value lower than this will be rejected.",
-                    "format": "double",
-                    "type": "number"
                 },
                 "operationDeadline": {
                     "description": "The number of seconds to wait for the completion of a long running operation. The default is no deadline.",
@@ -2402,6 +2419,21 @@
                     },
                     "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
                     "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "OperationInfo": {
+            "description": "A message representing the message types used by a long-running operation. Example: rpc Export(ExportRequest) returns (google.longrunning.Operation) { option (google.longrunning.operation_info) = { response_type: \"ExportResponse\" metadata_type: \"ExportMetadata\" }; }",
+            "id": "OperationInfo",
+            "properties": {
+                "metadataType": {
+                    "description": "Required. The message name of the metadata type for this long-running operation. If the response is in a different package from the rpc, a fully-qualified message name must be used (e.g. `google.protobuf.Struct`). Note: Altering this value constitutes a breaking change.",
+                    "type": "string"
+                },
+                "responseType": {
+                    "description": "Required. The message name of the primary return type for this long-running operation. This type will be used to deserialize the LRO's response. If the response is in a different package from the rpc, a fully-qualified message name must be used (e.g. `google.protobuf.Struct`). Note: Altering this value constitutes a breaking change.",
+                    "type": "string"
                 }
             },
             "type": "object"

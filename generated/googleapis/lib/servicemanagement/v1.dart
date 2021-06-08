@@ -1660,11 +1660,6 @@ class BackendRule {
   /// to the backend.
   core.String? jwtAudience;
 
-  /// Minimum deadline in seconds needed for this method.
-  ///
-  /// Calls having deadline value lower than this will be rejected.
-  core.double? minDeadline;
-
   /// The number of seconds to wait for the completion of a long running
   /// operation.
   ///
@@ -1731,9 +1726,6 @@ class BackendRule {
     if (_json.containsKey('jwtAudience')) {
       jwtAudience = _json['jwtAudience'] as core.String;
     }
-    if (_json.containsKey('minDeadline')) {
-      minDeadline = (_json['minDeadline'] as core.num).toDouble();
-    }
     if (_json.containsKey('operationDeadline')) {
       operationDeadline = (_json['operationDeadline'] as core.num).toDouble();
     }
@@ -1753,7 +1745,6 @@ class BackendRule {
         if (deadline != null) 'deadline': deadline!,
         if (disableAuth != null) 'disableAuth': disableAuth!,
         if (jwtAudience != null) 'jwtAudience': jwtAudience!,
-        if (minDeadline != null) 'minDeadline': minDeadline!,
         if (operationDeadline != null) 'operationDeadline': operationDeadline!,
         if (pathTranslation != null) 'pathTranslation': pathTranslation!,
         if (protocol != null) 'protocol': protocol!,
@@ -4549,6 +4540,49 @@ class Operation {
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
+      };
+}
+
+/// A message representing the message types used by a long-running operation.
+///
+/// Example: rpc Export(ExportRequest) returns (google.longrunning.Operation) {
+/// option (google.longrunning.operation_info) = { response_type:
+/// "ExportResponse" metadata_type: "ExportMetadata" }; }
+class OperationInfo {
+  /// The message name of the metadata type for this long-running operation.
+  ///
+  /// If the response is in a different package from the rpc, a fully-qualified
+  /// message name must be used (e.g. `google.protobuf.Struct`). Note: Altering
+  /// this value constitutes a breaking change.
+  ///
+  /// Required.
+  core.String? metadataType;
+
+  /// The message name of the primary return type for this long-running
+  /// operation.
+  ///
+  /// This type will be used to deserialize the LRO's response. If the response
+  /// is in a different package from the rpc, a fully-qualified message name
+  /// must be used (e.g. `google.protobuf.Struct`). Note: Altering this value
+  /// constitutes a breaking change.
+  ///
+  /// Required.
+  core.String? responseType;
+
+  OperationInfo();
+
+  OperationInfo.fromJson(core.Map _json) {
+    if (_json.containsKey('metadataType')) {
+      metadataType = _json['metadataType'] as core.String;
+    }
+    if (_json.containsKey('responseType')) {
+      responseType = _json['responseType'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (metadataType != null) 'metadataType': metadataType!,
+        if (responseType != null) 'responseType': responseType!,
       };
 }
 

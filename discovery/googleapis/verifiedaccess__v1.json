@@ -107,6 +107,7 @@
             "methods": {
                 "create": {
                     "description": "CreateChallenge API",
+                    "flatPath": "v1/challenge",
                     "httpMethod": "POST",
                     "id": "verifiedaccess.challenge.create",
                     "parameterOrder": [],
@@ -124,6 +125,7 @@
                 },
                 "verify": {
                     "description": "VerifyChallengeResponse API",
+                    "flatPath": "v1/challenge:verify",
                     "httpMethod": "POST",
                     "id": "verifiedaccess.challenge.verify",
                     "parameterOrder": [],

@@ -113,6 +113,7 @@
                                     "methods": {
                                         "create": {
                                             "description": "Creates a new subscription.",
+                                            "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/subscriptions",
                                             "httpMethod": "POST",
                                             "id": "pubsublite.admin.projects.locations.subscriptions.create",
                                             "parameterOrder": [
@@ -150,6 +151,7 @@
                                         },
                                         "delete": {
                                             "description": "Deletes the specified subscription.",
+                                            "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/subscriptions/{subscriptionsId}",
                                             "httpMethod": "DELETE",
                                             "id": "pubsublite.admin.projects.locations.subscriptions.delete",
                                             "parameterOrder": [
@@ -174,6 +176,7 @@
                                         },
                                         "get": {
                                             "description": "Returns the subscription configuration.",
+                                            "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/subscriptions/{subscriptionsId}",
                                             "httpMethod": "GET",
                                             "id": "pubsublite.admin.projects.locations.subscriptions.get",
                                             "parameterOrder": [
@@ -198,6 +201,7 @@
                                         },
                                         "list": {
                                             "description": "Returns the list of subscriptions for the given project.",
+                                            "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/subscriptions",
                                             "httpMethod": "GET",
                                             "id": "pubsublite.admin.projects.locations.subscriptions.list",
                                             "parameterOrder": [
@@ -233,6 +237,7 @@
                                         },
                                         "patch": {
                                             "description": "Updates properties of the specified subscription.",
+                                            "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/subscriptions/{subscriptionsId}",
                                             "httpMethod": "PATCH",
                                             "id": "pubsublite.admin.projects.locations.subscriptions.patch",
                                             "parameterOrder": [
@@ -270,6 +275,7 @@
                                     "methods": {
                                         "create": {
                                             "description": "Creates a new topic.",
+                                            "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/topics",
                                             "httpMethod": "POST",
                                             "id": "pubsublite.admin.projects.locations.topics.create",
                                             "parameterOrder": [
@@ -302,6 +308,7 @@
                                         },
                                         "delete": {
                                             "description": "Deletes the specified topic.",
+                                            "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}",
                                             "httpMethod": "DELETE",
                                             "id": "pubsublite.admin.projects.locations.topics.delete",
                                             "parameterOrder": [
@@ -326,6 +333,7 @@
                                         },
                                         "get": {
                                             "description": "Returns the topic configuration.",
+                                            "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}",
                                             "httpMethod": "GET",
                                             "id": "pubsublite.admin.projects.locations.topics.get",
                                             "parameterOrder": [
@@ -350,6 +358,7 @@
                                         },
                                         "getPartitions": {
                                             "description": "Returns the partition information for the requested topic.",
+                                            "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}/partitions",
                                             "httpMethod": "GET",
                                             "id": "pubsublite.admin.projects.locations.topics.getPartitions",
                                             "parameterOrder": [
@@ -374,6 +383,7 @@
                                         },
                                         "list": {
                                             "description": "Returns the list of topics for the given project.",
+                                            "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/topics",
                                             "httpMethod": "GET",
                                             "id": "pubsublite.admin.projects.locations.topics.list",
                                             "parameterOrder": [
@@ -409,6 +419,7 @@
                                         },
                                         "patch": {
                                             "description": "Updates properties of the specified topic.",
+                                            "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}",
                                             "httpMethod": "PATCH",
                                             "id": "pubsublite.admin.projects.locations.topics.patch",
                                             "parameterOrder": [
@@ -446,6 +457,7 @@
                                             "methods": {
                                                 "list": {
                                                     "description": "Lists the subscriptions attached to the specified topic.",
+                                                    "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}/subscriptions",
                                                     "httpMethod": "GET",
                                                     "id": "pubsublite.admin.projects.locations.topics.subscriptions.list",
                                                     "parameterOrder": [
@@ -499,6 +511,7 @@
                                     "methods": {
                                         "commitCursor": {
                                             "description": "Updates the committed cursor.",
+                                            "flatPath": "v1/cursor/projects/{projectsId}/locations/{locationsId}/subscriptions/{subscriptionsId}:commitCursor",
                                             "httpMethod": "POST",
                                             "id": "pubsublite.cursor.projects.locations.subscriptions.commitCursor",
                                             "parameterOrder": [
@@ -530,6 +543,7 @@
                                             "methods": {
                                                 "list": {
                                                     "description": "Returns all committed cursor information for a subscription.",
+                                                    "flatPath": "v1/cursor/projects/{projectsId}/locations/{locationsId}/subscriptions/{subscriptionsId}/cursors",
                                                     "httpMethod": "GET",
                                                     "id": "pubsublite.cursor.projects.locations.subscriptions.cursors.list",
                                                     "parameterOrder": [
@@ -583,6 +597,7 @@
                                     "methods": {
                                         "computeHeadCursor": {
                                             "description": "Compute the head cursor for the partition. The head cursor's offset is guaranteed to be less than or equal to all messages which have not yet been acknowledged as published, and greater than the offset of any message whose publish has already been acknowledged. It is zero if there have never been messages in the partition.",
+                                            "flatPath": "v1/topicStats/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}:computeHeadCursor",
                                             "httpMethod": "POST",
                                             "id": "pubsublite.topicStats.projects.locations.topics.computeHeadCursor",
                                             "parameterOrder": [
@@ -610,6 +625,7 @@
                                         },
                                         "computeMessageStats": {
                                             "description": "Compute statistics about a range of messages in a given topic and partition.",
+                                            "flatPath": "v1/topicStats/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}:computeMessageStats",
                                             "httpMethod": "POST",
                                             "id": "pubsublite.topicStats.projects.locations.topics.computeMessageStats",
                                             "parameterOrder": [
@@ -637,6 +653,7 @@
                                         },
                                         "computeTimeCursor": {
                                             "description": "Compute the corresponding cursor for a publish or event time in a topic partition.",
+                                            "flatPath": "v1/topicStats/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}:computeTimeCursor",
                                             "httpMethod": "POST",
                                             "id": "pubsublite.topicStats.projects.locations.topics.computeTimeCursor",
                                             "parameterOrder": [
@@ -671,7 +688,7 @@
             }
         }
     },
-    "revision": "20210517",
+    "revision": "20210608",
     "rootUrl": "https://pubsublite.googleapis.com/",
     "schemas": {
         "Capacity": {

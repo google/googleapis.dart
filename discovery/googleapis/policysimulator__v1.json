@@ -111,6 +111,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates and starts a Replay using the given ReplayConfig.",
+                                    "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/replays",
                                     "httpMethod": "POST",
                                     "id": "policysimulator.folders.locations.replays.create",
                                     "parameterOrder": [
@@ -138,6 +139,7 @@
                                 },
                                 "get": {
                                     "description": "Gets the specified Replay. Each `Replay` is available for at least 7 days.",
+                                    "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/replays/{replaysId}",
                                     "httpMethod": "GET",
                                     "id": "policysimulator.folders.locations.replays.get",
                                     "parameterOrder": [
@@ -166,6 +168,7 @@
                                     "methods": {
                                         "list": {
                                             "description": "Lists the results of running a Replay.",
+                                            "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/replays/{replaysId}/results",
                                             "httpMethod": "GET",
                                             "id": "policysimulator.folders.locations.replays.results.list",
                                             "parameterOrder": [
@@ -211,6 +214,7 @@
             "methods": {
                 "get": {
                     "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                    "flatPath": "v1/operations/{operationsId}",
                     "httpMethod": "GET",
                     "id": "policysimulator.operations.get",
                     "parameterOrder": [
@@ -235,6 +239,7 @@
                 },
                 "list": {
                     "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                    "flatPath": "v1/operations",
                     "httpMethod": "GET",
                     "id": "policysimulator.operations.list",
                     "parameterOrder": [],
@@ -279,6 +284,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates and starts a Replay using the given ReplayConfig.",
+                                    "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/replays",
                                     "httpMethod": "POST",
                                     "id": "policysimulator.organizations.locations.replays.create",
                                     "parameterOrder": [
@@ -306,6 +312,7 @@
                                 },
                                 "get": {
                                     "description": "Gets the specified Replay. Each `Replay` is available for at least 7 days.",
+                                    "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/replays/{replaysId}",
                                     "httpMethod": "GET",
                                     "id": "policysimulator.organizations.locations.replays.get",
                                     "parameterOrder": [
@@ -334,6 +341,7 @@
                                     "methods": {
                                         "list": {
                                             "description": "Lists the results of running a Replay.",
+                                            "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/replays/{replaysId}/results",
                                             "httpMethod": "GET",
                                             "id": "policysimulator.organizations.locations.replays.results.list",
                                             "parameterOrder": [
@@ -383,6 +391,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates and starts a Replay using the given ReplayConfig.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/replays",
                                     "httpMethod": "POST",
                                     "id": "policysimulator.projects.locations.replays.create",
                                     "parameterOrder": [
@@ -410,6 +419,7 @@
                                 },
                                 "get": {
                                     "description": "Gets the specified Replay. Each `Replay` is available for at least 7 days.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/replays/{replaysId}",
                                     "httpMethod": "GET",
                                     "id": "policysimulator.projects.locations.replays.get",
                                     "parameterOrder": [
@@ -438,6 +448,7 @@
                                     "methods": {
                                         "list": {
                                             "description": "Lists the results of running a Replay.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/replays/{replaysId}/results",
                                             "httpMethod": "GET",
                                             "id": "policysimulator.projects.locations.replays.results.list",
                                             "parameterOrder": [
@@ -480,7 +491,7 @@
             }
         }
     },
-    "revision": "20210514",
+    "revision": "20210604",
     "rootUrl": "https://policysimulator.googleapis.com/",
     "schemas": {
         "GoogleCloudPolicysimulatorV1AccessStateDiff": {

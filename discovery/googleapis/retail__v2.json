@@ -111,6 +111,7 @@
                             "methods": {
                                 "list": {
                                     "description": "Lists all the Catalogs associated with the project.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/catalogs",
                                     "httpMethod": "GET",
                                     "id": "retail.projects.locations.catalogs.list",
                                     "parameterOrder": [
@@ -146,6 +147,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates the Catalogs.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}",
                                     "httpMethod": "PATCH",
                                     "id": "retail.projects.locations.catalogs.patch",
                                     "parameterOrder": [
@@ -185,6 +187,7 @@
                                             "methods": {
                                                 "get": {
                                                     "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/branches/{branchesId}/operations/{operationsId}",
                                                     "httpMethod": "GET",
                                                     "id": "retail.projects.locations.catalogs.branches.operations.get",
                                                     "parameterOrder": [
@@ -213,6 +216,7 @@
                                             "methods": {
                                                 "create": {
                                                     "description": "Creates a Product.",
+                                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/branches/{branchesId}/products",
                                                     "httpMethod": "POST",
                                                     "id": "retail.projects.locations.catalogs.branches.products.create",
                                                     "parameterOrder": [
@@ -245,6 +249,7 @@
                                                 },
                                                 "delete": {
                                                     "description": "Deletes a Product.",
+                                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/branches/{branchesId}/products/{productsId}",
                                                     "httpMethod": "DELETE",
                                                     "id": "retail.projects.locations.catalogs.branches.products.delete",
                                                     "parameterOrder": [
@@ -269,6 +274,7 @@
                                                 },
                                                 "get": {
                                                     "description": "Gets a Product.",
+                                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/branches/{branchesId}/products/{productsId}",
                                                     "httpMethod": "GET",
                                                     "id": "retail.projects.locations.catalogs.branches.products.get",
                                                     "parameterOrder": [
@@ -293,6 +299,7 @@
                                                 },
                                                 "import": {
                                                     "description": "Bulk import of multiple Products. Request processing may be synchronous. No partial updating is supported. Non-existing items are created. Note that it is possible for a subset of the Products to be successfully updated.",
+                                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/branches/{branchesId}/products:import",
                                                     "httpMethod": "POST",
                                                     "id": "retail.projects.locations.catalogs.branches.products.import",
                                                     "parameterOrder": [
@@ -320,6 +327,7 @@
                                                 },
                                                 "patch": {
                                                     "description": "Updates a Product.",
+                                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/branches/{branchesId}/products/{productsId}",
                                                     "httpMethod": "PATCH",
                                                     "id": "retail.projects.locations.catalogs.branches.products.patch",
                                                     "parameterOrder": [
@@ -364,6 +372,7 @@
                                     "methods": {
                                         "get": {
                                             "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/operations/{operationsId}",
                                             "httpMethod": "GET",
                                             "id": "retail.projects.locations.catalogs.operations.get",
                                             "parameterOrder": [
@@ -388,6 +397,7 @@
                                         },
                                         "list": {
                                             "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/operations",
                                             "httpMethod": "GET",
                                             "id": "retail.projects.locations.catalogs.operations.list",
                                             "parameterOrder": [
@@ -432,6 +442,7 @@
                                     "methods": {
                                         "predict": {
                                             "description": "Makes a recommendation prediction.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/placements/{placementsId}:predict",
                                             "httpMethod": "POST",
                                             "id": "retail.projects.locations.catalogs.placements.predict",
                                             "parameterOrder": [
@@ -463,6 +474,7 @@
                                     "methods": {
                                         "collect": {
                                             "description": "Writes a single user event from the browser. This uses a GET request to due to browser restriction of POST-ing to a 3rd party domain. This method is used only by the Retail API JavaScript pixel and Google Tag Manager. Users should not call this method directly.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/userEvents:collect",
                                             "httpMethod": "GET",
                                             "id": "retail.projects.locations.catalogs.userEvents.collect",
                                             "parameterOrder": [
@@ -503,6 +515,7 @@
                                         },
                                         "import": {
                                             "description": "Bulk import of User events. Request processing might be synchronous. Events that already exist are skipped. Use this method for backfilling historical user events. Operation.response is of type ImportResponse. Note that it is possible for a subset of the items to be successfully inserted. Operation.metadata is of type ImportMetadata.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/userEvents:import",
                                             "httpMethod": "POST",
                                             "id": "retail.projects.locations.catalogs.userEvents.import",
                                             "parameterOrder": [
@@ -530,6 +543,7 @@
                                         },
                                         "purge": {
                                             "description": "Deletes permanently all user events specified by the filter provided. Depending on the number of events specified by the filter, this operation could take hours or days to complete. To test a filter, use the list command first.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/userEvents:purge",
                                             "httpMethod": "POST",
                                             "id": "retail.projects.locations.catalogs.userEvents.purge",
                                             "parameterOrder": [
@@ -557,6 +571,7 @@
                                         },
                                         "rejoin": {
                                             "description": "Triggers a user event rejoin operation with latest product catalog. Events will not be annotated with detailed product information if product is missing from the catalog at the time the user event is ingested, and these events are stored as unjoined events with a limited usage on training and serving. This API can be used to trigger a 'join' operation on specified events with latest version of product catalog. It can also be used to correct events joined with wrong product catalog.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/userEvents:rejoin",
                                             "httpMethod": "POST",
                                             "id": "retail.projects.locations.catalogs.userEvents.rejoin",
                                             "parameterOrder": [
@@ -584,6 +599,7 @@
                                         },
                                         "write": {
                                             "description": "Writes a single user event.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/userEvents:write",
                                             "httpMethod": "POST",
                                             "id": "retail.projects.locations.catalogs.userEvents.write",
                                             "parameterOrder": [
@@ -617,6 +633,7 @@
                             "methods": {
                                 "get": {
                                     "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                                     "httpMethod": "GET",
                                     "id": "retail.projects.locations.operations.get",
                                     "parameterOrder": [
@@ -641,6 +658,7 @@
                                 },
                                 "list": {
                                     "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/operations",
                                     "httpMethod": "GET",
                                     "id": "retail.projects.locations.operations.list",
                                     "parameterOrder": [
@@ -686,7 +704,7 @@
             }
         }
     },
-    "revision": "20210514",
+    "revision": "20210608",
     "rootUrl": "https://retail.googleapis.com/",
     "schemas": {
         "GoogleApiHttpBody": {
@@ -1490,7 +1508,7 @@
                     "type": "string"
                 },
                 "eventType": {
-                    "description": "Required. User event type. Allowed values are: * `add-to-cart`: Products being added to cart. * `category-page-view`: Special pages such as sale or promotion pages viewed. * `detail-page-view`: Products detail page viewed. * `home-page-view`: Homepage viewed. * `promotion-offered`: Promotion is offered to a user. * `promotion-not-offered`: Promotion is not offered to a user. * `purchase-complete`: User finishing a purchase. * `search`: Product search. * `shopping-cart-page-view`: User viewing a shopping cart.",
+                    "description": "Required. User event type. Allowed values are: * `add-to-cart`: Products being added to cart. * `category-page-view`: Special pages such as sale or promotion pages viewed. * `completion`: Completion query result showed/clicked. * `detail-page-view`: Products detail page viewed. * `home-page-view`: Homepage viewed. * `promotion-offered`: Promotion is offered to a user. * `promotion-not-offered`: Promotion is not offered to a user. * `purchase-complete`: User finishing a purchase. * `search`: Product search. * `shopping-cart-page-view`: User viewing a shopping cart.",
                     "type": "string"
                 },
                 "experimentIds": {

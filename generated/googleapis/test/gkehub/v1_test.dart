@@ -27,14 +27,14 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<api.AuditLogConfig> buildUnnamed1597() {
+core.List<api.AuditLogConfig> buildUnnamed1599() {
   var o = <api.AuditLogConfig>[];
   o.add(buildAuditLogConfig());
   o.add(buildAuditLogConfig());
   return o;
 }
 
-void checkUnnamed1597(core.List<api.AuditLogConfig> o) {
+void checkUnnamed1599(core.List<api.AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuditLogConfig(o[0] as api.AuditLogConfig);
   checkAuditLogConfig(o[1] as api.AuditLogConfig);
@@ -45,7 +45,7 @@ api.AuditConfig buildAuditConfig() {
   var o = api.AuditConfig();
   buildCounterAuditConfig++;
   if (buildCounterAuditConfig < 3) {
-    o.auditLogConfigs = buildUnnamed1597();
+    o.auditLogConfigs = buildUnnamed1599();
     o.service = 'foo';
   }
   buildCounterAuditConfig--;
@@ -55,7 +55,7 @@ api.AuditConfig buildAuditConfig() {
 void checkAuditConfig(api.AuditConfig o) {
   buildCounterAuditConfig++;
   if (buildCounterAuditConfig < 3) {
-    checkUnnamed1597(o.auditLogConfigs!);
+    checkUnnamed1599(o.auditLogConfigs!);
     unittest.expect(
       o.service!,
       unittest.equals('foo'),
@@ -64,14 +64,14 @@ void checkAuditConfig(api.AuditConfig o) {
   buildCounterAuditConfig--;
 }
 
-core.List<core.String> buildUnnamed1598() {
+core.List<core.String> buildUnnamed1600() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed1598(core.List<core.String> o) {
+void checkUnnamed1600(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -88,7 +88,7 @@ api.AuditLogConfig buildAuditLogConfig() {
   var o = api.AuditLogConfig();
   buildCounterAuditLogConfig++;
   if (buildCounterAuditLogConfig < 3) {
-    o.exemptedMembers = buildUnnamed1598();
+    o.exemptedMembers = buildUnnamed1600();
     o.logType = 'foo';
   }
   buildCounterAuditLogConfig--;
@@ -98,7 +98,7 @@ api.AuditLogConfig buildAuditLogConfig() {
 void checkAuditLogConfig(api.AuditLogConfig o) {
   buildCounterAuditLogConfig++;
   if (buildCounterAuditLogConfig < 3) {
-    checkUnnamed1598(o.exemptedMembers!);
+    checkUnnamed1600(o.exemptedMembers!);
     unittest.expect(
       o.logType!,
       unittest.equals('foo'),
@@ -144,14 +144,14 @@ void checkAuthority(api.Authority o) {
   buildCounterAuthority--;
 }
 
-core.List<core.String> buildUnnamed1599() {
+core.List<core.String> buildUnnamed1601() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed1599(core.List<core.String> o) {
+void checkUnnamed1601(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -169,7 +169,7 @@ api.Binding buildBinding() {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     o.condition = buildExpr();
-    o.members = buildUnnamed1599();
+    o.members = buildUnnamed1601();
     o.role = 'foo';
   }
   buildCounterBinding--;
@@ -180,7 +180,7 @@ void checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     checkExpr(o.condition! as api.Expr);
-    checkUnnamed1599(o.members!);
+    checkUnnamed1601(o.members!);
     unittest.expect(
       o.role!,
       unittest.equals('foo'),
@@ -202,6 +202,794 @@ void checkCancelOperationRequest(api.CancelOperationRequest o) {
   buildCounterCancelOperationRequest++;
   if (buildCounterCancelOperationRequest < 3) {}
   buildCounterCancelOperationRequest--;
+}
+
+core.int buildCounterCommonFeatureSpec = 0;
+api.CommonFeatureSpec buildCommonFeatureSpec() {
+  var o = api.CommonFeatureSpec();
+  buildCounterCommonFeatureSpec++;
+  if (buildCounterCommonFeatureSpec < 3) {
+    o.multiclusteringress = buildMultiClusterIngressFeatureSpec();
+  }
+  buildCounterCommonFeatureSpec--;
+  return o;
+}
+
+void checkCommonFeatureSpec(api.CommonFeatureSpec o) {
+  buildCounterCommonFeatureSpec++;
+  if (buildCounterCommonFeatureSpec < 3) {
+    checkMultiClusterIngressFeatureSpec(
+        o.multiclusteringress! as api.MultiClusterIngressFeatureSpec);
+  }
+  buildCounterCommonFeatureSpec--;
+}
+
+core.int buildCounterCommonFeatureState = 0;
+api.CommonFeatureState buildCommonFeatureState() {
+  var o = api.CommonFeatureState();
+  buildCounterCommonFeatureState++;
+  if (buildCounterCommonFeatureState < 3) {
+    o.state = buildFeatureState();
+  }
+  buildCounterCommonFeatureState--;
+  return o;
+}
+
+void checkCommonFeatureState(api.CommonFeatureState o) {
+  buildCounterCommonFeatureState++;
+  if (buildCounterCommonFeatureState < 3) {
+    checkFeatureState(o.state! as api.FeatureState);
+  }
+  buildCounterCommonFeatureState--;
+}
+
+core.int buildCounterConfigManagementConfigSync = 0;
+api.ConfigManagementConfigSync buildConfigManagementConfigSync() {
+  var o = api.ConfigManagementConfigSync();
+  buildCounterConfigManagementConfigSync++;
+  if (buildCounterConfigManagementConfigSync < 3) {
+    o.git = buildConfigManagementGitConfig();
+    o.sourceFormat = 'foo';
+  }
+  buildCounterConfigManagementConfigSync--;
+  return o;
+}
+
+void checkConfigManagementConfigSync(api.ConfigManagementConfigSync o) {
+  buildCounterConfigManagementConfigSync++;
+  if (buildCounterConfigManagementConfigSync < 3) {
+    checkConfigManagementGitConfig(o.git! as api.ConfigManagementGitConfig);
+    unittest.expect(
+      o.sourceFormat!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterConfigManagementConfigSync--;
+}
+
+core.int buildCounterConfigManagementConfigSyncDeploymentState = 0;
+api.ConfigManagementConfigSyncDeploymentState
+    buildConfigManagementConfigSyncDeploymentState() {
+  var o = api.ConfigManagementConfigSyncDeploymentState();
+  buildCounterConfigManagementConfigSyncDeploymentState++;
+  if (buildCounterConfigManagementConfigSyncDeploymentState < 3) {
+    o.gitSync = 'foo';
+    o.importer = 'foo';
+    o.monitor = 'foo';
+    o.reconcilerManager = 'foo';
+    o.rootReconciler = 'foo';
+    o.syncer = 'foo';
+  }
+  buildCounterConfigManagementConfigSyncDeploymentState--;
+  return o;
+}
+
+void checkConfigManagementConfigSyncDeploymentState(
+    api.ConfigManagementConfigSyncDeploymentState o) {
+  buildCounterConfigManagementConfigSyncDeploymentState++;
+  if (buildCounterConfigManagementConfigSyncDeploymentState < 3) {
+    unittest.expect(
+      o.gitSync!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.importer!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.monitor!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.reconcilerManager!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.rootReconciler!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.syncer!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterConfigManagementConfigSyncDeploymentState--;
+}
+
+core.int buildCounterConfigManagementConfigSyncState = 0;
+api.ConfigManagementConfigSyncState buildConfigManagementConfigSyncState() {
+  var o = api.ConfigManagementConfigSyncState();
+  buildCounterConfigManagementConfigSyncState++;
+  if (buildCounterConfigManagementConfigSyncState < 3) {
+    o.deploymentState = buildConfigManagementConfigSyncDeploymentState();
+    o.syncState = buildConfigManagementSyncState();
+    o.version = buildConfigManagementConfigSyncVersion();
+  }
+  buildCounterConfigManagementConfigSyncState--;
+  return o;
+}
+
+void checkConfigManagementConfigSyncState(
+    api.ConfigManagementConfigSyncState o) {
+  buildCounterConfigManagementConfigSyncState++;
+  if (buildCounterConfigManagementConfigSyncState < 3) {
+    checkConfigManagementConfigSyncDeploymentState(
+        o.deploymentState! as api.ConfigManagementConfigSyncDeploymentState);
+    checkConfigManagementSyncState(
+        o.syncState! as api.ConfigManagementSyncState);
+    checkConfigManagementConfigSyncVersion(
+        o.version! as api.ConfigManagementConfigSyncVersion);
+  }
+  buildCounterConfigManagementConfigSyncState--;
+}
+
+core.int buildCounterConfigManagementConfigSyncVersion = 0;
+api.ConfigManagementConfigSyncVersion buildConfigManagementConfigSyncVersion() {
+  var o = api.ConfigManagementConfigSyncVersion();
+  buildCounterConfigManagementConfigSyncVersion++;
+  if (buildCounterConfigManagementConfigSyncVersion < 3) {
+    o.gitSync = 'foo';
+    o.importer = 'foo';
+    o.monitor = 'foo';
+    o.reconcilerManager = 'foo';
+    o.rootReconciler = 'foo';
+    o.syncer = 'foo';
+  }
+  buildCounterConfigManagementConfigSyncVersion--;
+  return o;
+}
+
+void checkConfigManagementConfigSyncVersion(
+    api.ConfigManagementConfigSyncVersion o) {
+  buildCounterConfigManagementConfigSyncVersion++;
+  if (buildCounterConfigManagementConfigSyncVersion < 3) {
+    unittest.expect(
+      o.gitSync!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.importer!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.monitor!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.reconcilerManager!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.rootReconciler!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.syncer!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterConfigManagementConfigSyncVersion--;
+}
+
+core.int buildCounterConfigManagementErrorResource = 0;
+api.ConfigManagementErrorResource buildConfigManagementErrorResource() {
+  var o = api.ConfigManagementErrorResource();
+  buildCounterConfigManagementErrorResource++;
+  if (buildCounterConfigManagementErrorResource < 3) {
+    o.resourceGvk = buildConfigManagementGroupVersionKind();
+    o.resourceName = 'foo';
+    o.resourceNamespace = 'foo';
+    o.sourcePath = 'foo';
+  }
+  buildCounterConfigManagementErrorResource--;
+  return o;
+}
+
+void checkConfigManagementErrorResource(api.ConfigManagementErrorResource o) {
+  buildCounterConfigManagementErrorResource++;
+  if (buildCounterConfigManagementErrorResource < 3) {
+    checkConfigManagementGroupVersionKind(
+        o.resourceGvk! as api.ConfigManagementGroupVersionKind);
+    unittest.expect(
+      o.resourceName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.resourceNamespace!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sourcePath!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterConfigManagementErrorResource--;
+}
+
+core.int buildCounterConfigManagementGatekeeperDeploymentState = 0;
+api.ConfigManagementGatekeeperDeploymentState
+    buildConfigManagementGatekeeperDeploymentState() {
+  var o = api.ConfigManagementGatekeeperDeploymentState();
+  buildCounterConfigManagementGatekeeperDeploymentState++;
+  if (buildCounterConfigManagementGatekeeperDeploymentState < 3) {
+    o.gatekeeperAudit = 'foo';
+    o.gatekeeperControllerManagerState = 'foo';
+  }
+  buildCounterConfigManagementGatekeeperDeploymentState--;
+  return o;
+}
+
+void checkConfigManagementGatekeeperDeploymentState(
+    api.ConfigManagementGatekeeperDeploymentState o) {
+  buildCounterConfigManagementGatekeeperDeploymentState++;
+  if (buildCounterConfigManagementGatekeeperDeploymentState < 3) {
+    unittest.expect(
+      o.gatekeeperAudit!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.gatekeeperControllerManagerState!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterConfigManagementGatekeeperDeploymentState--;
+}
+
+core.int buildCounterConfigManagementGitConfig = 0;
+api.ConfigManagementGitConfig buildConfigManagementGitConfig() {
+  var o = api.ConfigManagementGitConfig();
+  buildCounterConfigManagementGitConfig++;
+  if (buildCounterConfigManagementGitConfig < 3) {
+    o.gcpServiceAccountEmail = 'foo';
+    o.httpsProxy = 'foo';
+    o.policyDir = 'foo';
+    o.secretType = 'foo';
+    o.syncBranch = 'foo';
+    o.syncRepo = 'foo';
+    o.syncRev = 'foo';
+    o.syncWaitSecs = 'foo';
+  }
+  buildCounterConfigManagementGitConfig--;
+  return o;
+}
+
+void checkConfigManagementGitConfig(api.ConfigManagementGitConfig o) {
+  buildCounterConfigManagementGitConfig++;
+  if (buildCounterConfigManagementGitConfig < 3) {
+    unittest.expect(
+      o.gcpServiceAccountEmail!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.httpsProxy!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.policyDir!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.secretType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.syncBranch!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.syncRepo!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.syncRev!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.syncWaitSecs!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterConfigManagementGitConfig--;
+}
+
+core.int buildCounterConfigManagementGroupVersionKind = 0;
+api.ConfigManagementGroupVersionKind buildConfigManagementGroupVersionKind() {
+  var o = api.ConfigManagementGroupVersionKind();
+  buildCounterConfigManagementGroupVersionKind++;
+  if (buildCounterConfigManagementGroupVersionKind < 3) {
+    o.group = 'foo';
+    o.kind = 'foo';
+    o.version = 'foo';
+  }
+  buildCounterConfigManagementGroupVersionKind--;
+  return o;
+}
+
+void checkConfigManagementGroupVersionKind(
+    api.ConfigManagementGroupVersionKind o) {
+  buildCounterConfigManagementGroupVersionKind++;
+  if (buildCounterConfigManagementGroupVersionKind < 3) {
+    unittest.expect(
+      o.group!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.version!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterConfigManagementGroupVersionKind--;
+}
+
+core.int buildCounterConfigManagementHierarchyControllerConfig = 0;
+api.ConfigManagementHierarchyControllerConfig
+    buildConfigManagementHierarchyControllerConfig() {
+  var o = api.ConfigManagementHierarchyControllerConfig();
+  buildCounterConfigManagementHierarchyControllerConfig++;
+  if (buildCounterConfigManagementHierarchyControllerConfig < 3) {
+    o.enableHierarchicalResourceQuota = true;
+    o.enablePodTreeLabels = true;
+    o.enabled = true;
+  }
+  buildCounterConfigManagementHierarchyControllerConfig--;
+  return o;
+}
+
+void checkConfigManagementHierarchyControllerConfig(
+    api.ConfigManagementHierarchyControllerConfig o) {
+  buildCounterConfigManagementHierarchyControllerConfig++;
+  if (buildCounterConfigManagementHierarchyControllerConfig < 3) {
+    unittest.expect(o.enableHierarchicalResourceQuota!, unittest.isTrue);
+    unittest.expect(o.enablePodTreeLabels!, unittest.isTrue);
+    unittest.expect(o.enabled!, unittest.isTrue);
+  }
+  buildCounterConfigManagementHierarchyControllerConfig--;
+}
+
+core.int buildCounterConfigManagementHierarchyControllerDeploymentState = 0;
+api.ConfigManagementHierarchyControllerDeploymentState
+    buildConfigManagementHierarchyControllerDeploymentState() {
+  var o = api.ConfigManagementHierarchyControllerDeploymentState();
+  buildCounterConfigManagementHierarchyControllerDeploymentState++;
+  if (buildCounterConfigManagementHierarchyControllerDeploymentState < 3) {
+    o.extension = 'foo';
+    o.hnc = 'foo';
+  }
+  buildCounterConfigManagementHierarchyControllerDeploymentState--;
+  return o;
+}
+
+void checkConfigManagementHierarchyControllerDeploymentState(
+    api.ConfigManagementHierarchyControllerDeploymentState o) {
+  buildCounterConfigManagementHierarchyControllerDeploymentState++;
+  if (buildCounterConfigManagementHierarchyControllerDeploymentState < 3) {
+    unittest.expect(
+      o.extension!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.hnc!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterConfigManagementHierarchyControllerDeploymentState--;
+}
+
+core.int buildCounterConfigManagementHierarchyControllerState = 0;
+api.ConfigManagementHierarchyControllerState
+    buildConfigManagementHierarchyControllerState() {
+  var o = api.ConfigManagementHierarchyControllerState();
+  buildCounterConfigManagementHierarchyControllerState++;
+  if (buildCounterConfigManagementHierarchyControllerState < 3) {
+    o.state = buildConfigManagementHierarchyControllerDeploymentState();
+    o.version = buildConfigManagementHierarchyControllerVersion();
+  }
+  buildCounterConfigManagementHierarchyControllerState--;
+  return o;
+}
+
+void checkConfigManagementHierarchyControllerState(
+    api.ConfigManagementHierarchyControllerState o) {
+  buildCounterConfigManagementHierarchyControllerState++;
+  if (buildCounterConfigManagementHierarchyControllerState < 3) {
+    checkConfigManagementHierarchyControllerDeploymentState(
+        o.state! as api.ConfigManagementHierarchyControllerDeploymentState);
+    checkConfigManagementHierarchyControllerVersion(
+        o.version! as api.ConfigManagementHierarchyControllerVersion);
+  }
+  buildCounterConfigManagementHierarchyControllerState--;
+}
+
+core.int buildCounterConfigManagementHierarchyControllerVersion = 0;
+api.ConfigManagementHierarchyControllerVersion
+    buildConfigManagementHierarchyControllerVersion() {
+  var o = api.ConfigManagementHierarchyControllerVersion();
+  buildCounterConfigManagementHierarchyControllerVersion++;
+  if (buildCounterConfigManagementHierarchyControllerVersion < 3) {
+    o.extension = 'foo';
+    o.hnc = 'foo';
+  }
+  buildCounterConfigManagementHierarchyControllerVersion--;
+  return o;
+}
+
+void checkConfigManagementHierarchyControllerVersion(
+    api.ConfigManagementHierarchyControllerVersion o) {
+  buildCounterConfigManagementHierarchyControllerVersion++;
+  if (buildCounterConfigManagementHierarchyControllerVersion < 3) {
+    unittest.expect(
+      o.extension!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.hnc!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterConfigManagementHierarchyControllerVersion--;
+}
+
+core.int buildCounterConfigManagementInstallError = 0;
+api.ConfigManagementInstallError buildConfigManagementInstallError() {
+  var o = api.ConfigManagementInstallError();
+  buildCounterConfigManagementInstallError++;
+  if (buildCounterConfigManagementInstallError < 3) {
+    o.errorMessage = 'foo';
+  }
+  buildCounterConfigManagementInstallError--;
+  return o;
+}
+
+void checkConfigManagementInstallError(api.ConfigManagementInstallError o) {
+  buildCounterConfigManagementInstallError++;
+  if (buildCounterConfigManagementInstallError < 3) {
+    unittest.expect(
+      o.errorMessage!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterConfigManagementInstallError--;
+}
+
+core.int buildCounterConfigManagementMembershipSpec = 0;
+api.ConfigManagementMembershipSpec buildConfigManagementMembershipSpec() {
+  var o = api.ConfigManagementMembershipSpec();
+  buildCounterConfigManagementMembershipSpec++;
+  if (buildCounterConfigManagementMembershipSpec < 3) {
+    o.configSync = buildConfigManagementConfigSync();
+    o.hierarchyController = buildConfigManagementHierarchyControllerConfig();
+    o.policyController = buildConfigManagementPolicyController();
+    o.version = 'foo';
+  }
+  buildCounterConfigManagementMembershipSpec--;
+  return o;
+}
+
+void checkConfigManagementMembershipSpec(api.ConfigManagementMembershipSpec o) {
+  buildCounterConfigManagementMembershipSpec++;
+  if (buildCounterConfigManagementMembershipSpec < 3) {
+    checkConfigManagementConfigSync(
+        o.configSync! as api.ConfigManagementConfigSync);
+    checkConfigManagementHierarchyControllerConfig(o.hierarchyController!
+        as api.ConfigManagementHierarchyControllerConfig);
+    checkConfigManagementPolicyController(
+        o.policyController! as api.ConfigManagementPolicyController);
+    unittest.expect(
+      o.version!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterConfigManagementMembershipSpec--;
+}
+
+core.int buildCounterConfigManagementMembershipState = 0;
+api.ConfigManagementMembershipState buildConfigManagementMembershipState() {
+  var o = api.ConfigManagementMembershipState();
+  buildCounterConfigManagementMembershipState++;
+  if (buildCounterConfigManagementMembershipState < 3) {
+    o.clusterName = 'foo';
+    o.configSyncState = buildConfigManagementConfigSyncState();
+    o.hierarchyControllerState =
+        buildConfigManagementHierarchyControllerState();
+    o.membershipSpec = buildConfigManagementMembershipSpec();
+    o.operatorState = buildConfigManagementOperatorState();
+    o.policyControllerState = buildConfigManagementPolicyControllerState();
+  }
+  buildCounterConfigManagementMembershipState--;
+  return o;
+}
+
+void checkConfigManagementMembershipState(
+    api.ConfigManagementMembershipState o) {
+  buildCounterConfigManagementMembershipState++;
+  if (buildCounterConfigManagementMembershipState < 3) {
+    unittest.expect(
+      o.clusterName!,
+      unittest.equals('foo'),
+    );
+    checkConfigManagementConfigSyncState(
+        o.configSyncState! as api.ConfigManagementConfigSyncState);
+    checkConfigManagementHierarchyControllerState(o.hierarchyControllerState!
+        as api.ConfigManagementHierarchyControllerState);
+    checkConfigManagementMembershipSpec(
+        o.membershipSpec! as api.ConfigManagementMembershipSpec);
+    checkConfigManagementOperatorState(
+        o.operatorState! as api.ConfigManagementOperatorState);
+    checkConfigManagementPolicyControllerState(
+        o.policyControllerState! as api.ConfigManagementPolicyControllerState);
+  }
+  buildCounterConfigManagementMembershipState--;
+}
+
+core.List<api.ConfigManagementInstallError> buildUnnamed1602() {
+  var o = <api.ConfigManagementInstallError>[];
+  o.add(buildConfigManagementInstallError());
+  o.add(buildConfigManagementInstallError());
+  return o;
+}
+
+void checkUnnamed1602(core.List<api.ConfigManagementInstallError> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkConfigManagementInstallError(o[0] as api.ConfigManagementInstallError);
+  checkConfigManagementInstallError(o[1] as api.ConfigManagementInstallError);
+}
+
+core.int buildCounterConfigManagementOperatorState = 0;
+api.ConfigManagementOperatorState buildConfigManagementOperatorState() {
+  var o = api.ConfigManagementOperatorState();
+  buildCounterConfigManagementOperatorState++;
+  if (buildCounterConfigManagementOperatorState < 3) {
+    o.deploymentState = 'foo';
+    o.errors = buildUnnamed1602();
+    o.version = 'foo';
+  }
+  buildCounterConfigManagementOperatorState--;
+  return o;
+}
+
+void checkConfigManagementOperatorState(api.ConfigManagementOperatorState o) {
+  buildCounterConfigManagementOperatorState++;
+  if (buildCounterConfigManagementOperatorState < 3) {
+    unittest.expect(
+      o.deploymentState!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1602(o.errors!);
+    unittest.expect(
+      o.version!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterConfigManagementOperatorState--;
+}
+
+core.List<core.String> buildUnnamed1603() {
+  var o = <core.String>[];
+  o.add('foo');
+  o.add('foo');
+  return o;
+}
+
+void checkUnnamed1603(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterConfigManagementPolicyController = 0;
+api.ConfigManagementPolicyController buildConfigManagementPolicyController() {
+  var o = api.ConfigManagementPolicyController();
+  buildCounterConfigManagementPolicyController++;
+  if (buildCounterConfigManagementPolicyController < 3) {
+    o.auditIntervalSeconds = 'foo';
+    o.enabled = true;
+    o.exemptableNamespaces = buildUnnamed1603();
+    o.logDeniesEnabled = true;
+    o.referentialRulesEnabled = true;
+    o.templateLibraryInstalled = true;
+  }
+  buildCounterConfigManagementPolicyController--;
+  return o;
+}
+
+void checkConfigManagementPolicyController(
+    api.ConfigManagementPolicyController o) {
+  buildCounterConfigManagementPolicyController++;
+  if (buildCounterConfigManagementPolicyController < 3) {
+    unittest.expect(
+      o.auditIntervalSeconds!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.enabled!, unittest.isTrue);
+    checkUnnamed1603(o.exemptableNamespaces!);
+    unittest.expect(o.logDeniesEnabled!, unittest.isTrue);
+    unittest.expect(o.referentialRulesEnabled!, unittest.isTrue);
+    unittest.expect(o.templateLibraryInstalled!, unittest.isTrue);
+  }
+  buildCounterConfigManagementPolicyController--;
+}
+
+core.int buildCounterConfigManagementPolicyControllerState = 0;
+api.ConfigManagementPolicyControllerState
+    buildConfigManagementPolicyControllerState() {
+  var o = api.ConfigManagementPolicyControllerState();
+  buildCounterConfigManagementPolicyControllerState++;
+  if (buildCounterConfigManagementPolicyControllerState < 3) {
+    o.deploymentState = buildConfigManagementGatekeeperDeploymentState();
+    o.version = buildConfigManagementPolicyControllerVersion();
+  }
+  buildCounterConfigManagementPolicyControllerState--;
+  return o;
+}
+
+void checkConfigManagementPolicyControllerState(
+    api.ConfigManagementPolicyControllerState o) {
+  buildCounterConfigManagementPolicyControllerState++;
+  if (buildCounterConfigManagementPolicyControllerState < 3) {
+    checkConfigManagementGatekeeperDeploymentState(
+        o.deploymentState! as api.ConfigManagementGatekeeperDeploymentState);
+    checkConfigManagementPolicyControllerVersion(
+        o.version! as api.ConfigManagementPolicyControllerVersion);
+  }
+  buildCounterConfigManagementPolicyControllerState--;
+}
+
+core.int buildCounterConfigManagementPolicyControllerVersion = 0;
+api.ConfigManagementPolicyControllerVersion
+    buildConfigManagementPolicyControllerVersion() {
+  var o = api.ConfigManagementPolicyControllerVersion();
+  buildCounterConfigManagementPolicyControllerVersion++;
+  if (buildCounterConfigManagementPolicyControllerVersion < 3) {
+    o.version = 'foo';
+  }
+  buildCounterConfigManagementPolicyControllerVersion--;
+  return o;
+}
+
+void checkConfigManagementPolicyControllerVersion(
+    api.ConfigManagementPolicyControllerVersion o) {
+  buildCounterConfigManagementPolicyControllerVersion++;
+  if (buildCounterConfigManagementPolicyControllerVersion < 3) {
+    unittest.expect(
+      o.version!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterConfigManagementPolicyControllerVersion--;
+}
+
+core.List<api.ConfigManagementErrorResource> buildUnnamed1604() {
+  var o = <api.ConfigManagementErrorResource>[];
+  o.add(buildConfigManagementErrorResource());
+  o.add(buildConfigManagementErrorResource());
+  return o;
+}
+
+void checkUnnamed1604(core.List<api.ConfigManagementErrorResource> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkConfigManagementErrorResource(o[0] as api.ConfigManagementErrorResource);
+  checkConfigManagementErrorResource(o[1] as api.ConfigManagementErrorResource);
+}
+
+core.int buildCounterConfigManagementSyncError = 0;
+api.ConfigManagementSyncError buildConfigManagementSyncError() {
+  var o = api.ConfigManagementSyncError();
+  buildCounterConfigManagementSyncError++;
+  if (buildCounterConfigManagementSyncError < 3) {
+    o.code = 'foo';
+    o.errorMessage = 'foo';
+    o.errorResources = buildUnnamed1604();
+  }
+  buildCounterConfigManagementSyncError--;
+  return o;
+}
+
+void checkConfigManagementSyncError(api.ConfigManagementSyncError o) {
+  buildCounterConfigManagementSyncError++;
+  if (buildCounterConfigManagementSyncError < 3) {
+    unittest.expect(
+      o.code!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.errorMessage!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1604(o.errorResources!);
+  }
+  buildCounterConfigManagementSyncError--;
+}
+
+core.List<api.ConfigManagementSyncError> buildUnnamed1605() {
+  var o = <api.ConfigManagementSyncError>[];
+  o.add(buildConfigManagementSyncError());
+  o.add(buildConfigManagementSyncError());
+  return o;
+}
+
+void checkUnnamed1605(core.List<api.ConfigManagementSyncError> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkConfigManagementSyncError(o[0] as api.ConfigManagementSyncError);
+  checkConfigManagementSyncError(o[1] as api.ConfigManagementSyncError);
+}
+
+core.int buildCounterConfigManagementSyncState = 0;
+api.ConfigManagementSyncState buildConfigManagementSyncState() {
+  var o = api.ConfigManagementSyncState();
+  buildCounterConfigManagementSyncState++;
+  if (buildCounterConfigManagementSyncState < 3) {
+    o.code = 'foo';
+    o.errors = buildUnnamed1605();
+    o.importToken = 'foo';
+    o.lastSync = 'foo';
+    o.lastSyncTime = 'foo';
+    o.sourceToken = 'foo';
+    o.syncToken = 'foo';
+  }
+  buildCounterConfigManagementSyncState--;
+  return o;
+}
+
+void checkConfigManagementSyncState(api.ConfigManagementSyncState o) {
+  buildCounterConfigManagementSyncState++;
+  if (buildCounterConfigManagementSyncState < 3) {
+    unittest.expect(
+      o.code!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1605(o.errors!);
+    unittest.expect(
+      o.importToken!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.lastSync!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.lastSyncTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sourceToken!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.syncToken!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterConfigManagementSyncState--;
 }
 
 core.int buildCounterConnectAgentResource = 0;
@@ -280,14 +1068,162 @@ void checkExpr(api.Expr o) {
   buildCounterExpr--;
 }
 
-core.List<api.ConnectAgentResource> buildUnnamed1600() {
+core.Map<core.String, core.String> buildUnnamed1606() {
+  var o = <core.String, core.String>{};
+  o['x'] = 'foo';
+  o['y'] = 'foo';
+  return o;
+}
+
+void checkUnnamed1606(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
+core.Map<core.String, api.MembershipFeatureSpec> buildUnnamed1607() {
+  var o = <core.String, api.MembershipFeatureSpec>{};
+  o['x'] = buildMembershipFeatureSpec();
+  o['y'] = buildMembershipFeatureSpec();
+  return o;
+}
+
+void checkUnnamed1607(core.Map<core.String, api.MembershipFeatureSpec> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMembershipFeatureSpec(o['x']! as api.MembershipFeatureSpec);
+  checkMembershipFeatureSpec(o['y']! as api.MembershipFeatureSpec);
+}
+
+core.Map<core.String, api.MembershipFeatureState> buildUnnamed1608() {
+  var o = <core.String, api.MembershipFeatureState>{};
+  o['x'] = buildMembershipFeatureState();
+  o['y'] = buildMembershipFeatureState();
+  return o;
+}
+
+void checkUnnamed1608(core.Map<core.String, api.MembershipFeatureState> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMembershipFeatureState(o['x']! as api.MembershipFeatureState);
+  checkMembershipFeatureState(o['y']! as api.MembershipFeatureState);
+}
+
+core.int buildCounterFeature = 0;
+api.Feature buildFeature() {
+  var o = api.Feature();
+  buildCounterFeature++;
+  if (buildCounterFeature < 3) {
+    o.createTime = 'foo';
+    o.deleteTime = 'foo';
+    o.labels = buildUnnamed1606();
+    o.membershipSpecs = buildUnnamed1607();
+    o.membershipStates = buildUnnamed1608();
+    o.name = 'foo';
+    o.resourceState = buildFeatureResourceState();
+    o.spec = buildCommonFeatureSpec();
+    o.state = buildCommonFeatureState();
+    o.updateTime = 'foo';
+  }
+  buildCounterFeature--;
+  return o;
+}
+
+void checkFeature(api.Feature o) {
+  buildCounterFeature++;
+  if (buildCounterFeature < 3) {
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.deleteTime!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1606(o.labels!);
+    checkUnnamed1607(o.membershipSpecs!);
+    checkUnnamed1608(o.membershipStates!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkFeatureResourceState(o.resourceState! as api.FeatureResourceState);
+    checkCommonFeatureSpec(o.spec! as api.CommonFeatureSpec);
+    checkCommonFeatureState(o.state! as api.CommonFeatureState);
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterFeature--;
+}
+
+core.int buildCounterFeatureResourceState = 0;
+api.FeatureResourceState buildFeatureResourceState() {
+  var o = api.FeatureResourceState();
+  buildCounterFeatureResourceState++;
+  if (buildCounterFeatureResourceState < 3) {
+    o.state = 'foo';
+  }
+  buildCounterFeatureResourceState--;
+  return o;
+}
+
+void checkFeatureResourceState(api.FeatureResourceState o) {
+  buildCounterFeatureResourceState++;
+  if (buildCounterFeatureResourceState < 3) {
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterFeatureResourceState--;
+}
+
+core.int buildCounterFeatureState = 0;
+api.FeatureState buildFeatureState() {
+  var o = api.FeatureState();
+  buildCounterFeatureState++;
+  if (buildCounterFeatureState < 3) {
+    o.code = 'foo';
+    o.description = 'foo';
+    o.updateTime = 'foo';
+  }
+  buildCounterFeatureState--;
+  return o;
+}
+
+void checkFeatureState(api.FeatureState o) {
+  buildCounterFeatureState++;
+  if (buildCounterFeatureState < 3) {
+    unittest.expect(
+      o.code!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterFeatureState--;
+}
+
+core.List<api.ConnectAgentResource> buildUnnamed1609() {
   var o = <api.ConnectAgentResource>[];
   o.add(buildConnectAgentResource());
   o.add(buildConnectAgentResource());
   return o;
 }
 
-void checkUnnamed1600(core.List<api.ConnectAgentResource> o) {
+void checkUnnamed1609(core.List<api.ConnectAgentResource> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkConnectAgentResource(o[0] as api.ConnectAgentResource);
   checkConnectAgentResource(o[1] as api.ConnectAgentResource);
@@ -298,7 +1234,7 @@ api.GenerateConnectManifestResponse buildGenerateConnectManifestResponse() {
   var o = api.GenerateConnectManifestResponse();
   buildCounterGenerateConnectManifestResponse++;
   if (buildCounterGenerateConnectManifestResponse < 3) {
-    o.manifest = buildUnnamed1600();
+    o.manifest = buildUnnamed1609();
   }
   buildCounterGenerateConnectManifestResponse--;
   return o;
@@ -308,7 +1244,7 @@ void checkGenerateConnectManifestResponse(
     api.GenerateConnectManifestResponse o) {
   buildCounterGenerateConnectManifestResponse++;
   if (buildCounterGenerateConnectManifestResponse < 3) {
-    checkUnnamed1600(o.manifest!);
+    checkUnnamed1609(o.manifest!);
   }
   buildCounterGenerateConnectManifestResponse--;
 }
@@ -335,7 +1271,7 @@ void checkGkeCluster(api.GkeCluster o) {
   buildCounterGkeCluster--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed1601() {
+core.Map<core.String, core.Object> buildUnnamed1610() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -350,7 +1286,7 @@ core.Map<core.String, core.Object> buildUnnamed1601() {
   return o;
 }
 
-void checkUnnamed1601(core.Map<core.String, core.Object> o) {
+void checkUnnamed1610(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -382,17 +1318,17 @@ void checkUnnamed1601(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed1602() {
+core.List<core.Map<core.String, core.Object>> buildUnnamed1611() {
   var o = <core.Map<core.String, core.Object>>[];
-  o.add(buildUnnamed1601());
-  o.add(buildUnnamed1601());
+  o.add(buildUnnamed1610());
+  o.add(buildUnnamed1610());
   return o;
 }
 
-void checkUnnamed1602(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed1611(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed1601(o[0]);
-  checkUnnamed1601(o[1]);
+  checkUnnamed1610(o[0]);
+  checkUnnamed1610(o[1]);
 }
 
 core.int buildCounterGoogleRpcStatus = 0;
@@ -401,7 +1337,7 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed1602();
+    o.details = buildUnnamed1611();
     o.message = 'foo';
   }
   buildCounterGoogleRpcStatus--;
@@ -415,7 +1351,7 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed1602(o.details!);
+    checkUnnamed1611(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -471,14 +1407,51 @@ void checkKubernetesMetadata(api.KubernetesMetadata o) {
   buildCounterKubernetesMetadata--;
 }
 
-core.List<api.Location> buildUnnamed1603() {
+core.List<api.Feature> buildUnnamed1612() {
+  var o = <api.Feature>[];
+  o.add(buildFeature());
+  o.add(buildFeature());
+  return o;
+}
+
+void checkUnnamed1612(core.List<api.Feature> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkFeature(o[0] as api.Feature);
+  checkFeature(o[1] as api.Feature);
+}
+
+core.int buildCounterListFeaturesResponse = 0;
+api.ListFeaturesResponse buildListFeaturesResponse() {
+  var o = api.ListFeaturesResponse();
+  buildCounterListFeaturesResponse++;
+  if (buildCounterListFeaturesResponse < 3) {
+    o.nextPageToken = 'foo';
+    o.resources = buildUnnamed1612();
+  }
+  buildCounterListFeaturesResponse--;
+  return o;
+}
+
+void checkListFeaturesResponse(api.ListFeaturesResponse o) {
+  buildCounterListFeaturesResponse++;
+  if (buildCounterListFeaturesResponse < 3) {
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1612(o.resources!);
+  }
+  buildCounterListFeaturesResponse--;
+}
+
+core.List<api.Location> buildUnnamed1613() {
   var o = <api.Location>[];
   o.add(buildLocation());
   o.add(buildLocation());
   return o;
 }
 
-void checkUnnamed1603(core.List<api.Location> o) {
+void checkUnnamed1613(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocation(o[0] as api.Location);
   checkLocation(o[1] as api.Location);
@@ -489,7 +1462,7 @@ api.ListLocationsResponse buildListLocationsResponse() {
   var o = api.ListLocationsResponse();
   buildCounterListLocationsResponse++;
   if (buildCounterListLocationsResponse < 3) {
-    o.locations = buildUnnamed1603();
+    o.locations = buildUnnamed1613();
     o.nextPageToken = 'foo';
   }
   buildCounterListLocationsResponse--;
@@ -499,7 +1472,7 @@ api.ListLocationsResponse buildListLocationsResponse() {
 void checkListLocationsResponse(api.ListLocationsResponse o) {
   buildCounterListLocationsResponse++;
   if (buildCounterListLocationsResponse < 3) {
-    checkUnnamed1603(o.locations!);
+    checkUnnamed1613(o.locations!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -508,27 +1481,27 @@ void checkListLocationsResponse(api.ListLocationsResponse o) {
   buildCounterListLocationsResponse--;
 }
 
-core.List<api.Membership> buildUnnamed1604() {
+core.List<api.Membership> buildUnnamed1614() {
   var o = <api.Membership>[];
   o.add(buildMembership());
   o.add(buildMembership());
   return o;
 }
 
-void checkUnnamed1604(core.List<api.Membership> o) {
+void checkUnnamed1614(core.List<api.Membership> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMembership(o[0] as api.Membership);
   checkMembership(o[1] as api.Membership);
 }
 
-core.List<core.String> buildUnnamed1605() {
+core.List<core.String> buildUnnamed1615() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed1605(core.List<core.String> o) {
+void checkUnnamed1615(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -546,8 +1519,8 @@ api.ListMembershipsResponse buildListMembershipsResponse() {
   buildCounterListMembershipsResponse++;
   if (buildCounterListMembershipsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.resources = buildUnnamed1604();
-    o.unreachable = buildUnnamed1605();
+    o.resources = buildUnnamed1614();
+    o.unreachable = buildUnnamed1615();
   }
   buildCounterListMembershipsResponse--;
   return o;
@@ -560,20 +1533,20 @@ void checkListMembershipsResponse(api.ListMembershipsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed1604(o.resources!);
-    checkUnnamed1605(o.unreachable!);
+    checkUnnamed1614(o.resources!);
+    checkUnnamed1615(o.unreachable!);
   }
   buildCounterListMembershipsResponse--;
 }
 
-core.List<api.Operation> buildUnnamed1606() {
+core.List<api.Operation> buildUnnamed1616() {
   var o = <api.Operation>[];
   o.add(buildOperation());
   o.add(buildOperation());
   return o;
 }
 
-void checkUnnamed1606(core.List<api.Operation> o) {
+void checkUnnamed1616(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0] as api.Operation);
   checkOperation(o[1] as api.Operation);
@@ -585,7 +1558,7 @@ api.ListOperationsResponse buildListOperationsResponse() {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed1606();
+    o.operations = buildUnnamed1616();
   }
   buildCounterListOperationsResponse--;
   return o;
@@ -598,19 +1571,19 @@ void checkListOperationsResponse(api.ListOperationsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed1606(o.operations!);
+    checkUnnamed1616(o.operations!);
   }
   buildCounterListOperationsResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed1607() {
+core.Map<core.String, core.String> buildUnnamed1617() {
   var o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
 }
 
-void checkUnnamed1607(core.Map<core.String, core.String> o) {
+void checkUnnamed1617(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -622,7 +1595,7 @@ void checkUnnamed1607(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed1608() {
+core.Map<core.String, core.Object> buildUnnamed1618() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -637,7 +1610,7 @@ core.Map<core.String, core.Object> buildUnnamed1608() {
   return o;
 }
 
-void checkUnnamed1608(core.Map<core.String, core.Object> o) {
+void checkUnnamed1618(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -675,9 +1648,9 @@ api.Location buildLocation() {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
     o.displayName = 'foo';
-    o.labels = buildUnnamed1607();
+    o.labels = buildUnnamed1617();
     o.locationId = 'foo';
-    o.metadata = buildUnnamed1608();
+    o.metadata = buildUnnamed1618();
     o.name = 'foo';
   }
   buildCounterLocation--;
@@ -691,12 +1664,12 @@ void checkLocation(api.Location o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed1607(o.labels!);
+    checkUnnamed1617(o.labels!);
     unittest.expect(
       o.locationId!,
       unittest.equals('foo'),
     );
-    checkUnnamed1608(o.metadata!);
+    checkUnnamed1618(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -705,14 +1678,14 @@ void checkLocation(api.Location o) {
   buildCounterLocation--;
 }
 
-core.Map<core.String, core.String> buildUnnamed1609() {
+core.Map<core.String, core.String> buildUnnamed1619() {
   var o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
 }
 
-void checkUnnamed1609(core.Map<core.String, core.String> o) {
+void checkUnnamed1619(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -735,7 +1708,7 @@ api.Membership buildMembership() {
     o.description = 'foo';
     o.endpoint = buildMembershipEndpoint();
     o.externalId = 'foo';
-    o.labels = buildUnnamed1609();
+    o.labels = buildUnnamed1619();
     o.lastConnectionTime = 'foo';
     o.name = 'foo';
     o.state = buildMembershipState();
@@ -767,7 +1740,7 @@ void checkMembership(api.Membership o) {
       o.externalId!,
       unittest.equals('foo'),
     );
-    checkUnnamed1609(o.labels!);
+    checkUnnamed1619(o.labels!);
     unittest.expect(
       o.lastConnectionTime!,
       unittest.equals('foo'),
@@ -810,6 +1783,48 @@ void checkMembershipEndpoint(api.MembershipEndpoint o) {
   buildCounterMembershipEndpoint--;
 }
 
+core.int buildCounterMembershipFeatureSpec = 0;
+api.MembershipFeatureSpec buildMembershipFeatureSpec() {
+  var o = api.MembershipFeatureSpec();
+  buildCounterMembershipFeatureSpec++;
+  if (buildCounterMembershipFeatureSpec < 3) {
+    o.configmanagement = buildConfigManagementMembershipSpec();
+  }
+  buildCounterMembershipFeatureSpec--;
+  return o;
+}
+
+void checkMembershipFeatureSpec(api.MembershipFeatureSpec o) {
+  buildCounterMembershipFeatureSpec++;
+  if (buildCounterMembershipFeatureSpec < 3) {
+    checkConfigManagementMembershipSpec(
+        o.configmanagement! as api.ConfigManagementMembershipSpec);
+  }
+  buildCounterMembershipFeatureSpec--;
+}
+
+core.int buildCounterMembershipFeatureState = 0;
+api.MembershipFeatureState buildMembershipFeatureState() {
+  var o = api.MembershipFeatureState();
+  buildCounterMembershipFeatureState++;
+  if (buildCounterMembershipFeatureState < 3) {
+    o.configmanagement = buildConfigManagementMembershipState();
+    o.state = buildFeatureState();
+  }
+  buildCounterMembershipFeatureState--;
+  return o;
+}
+
+void checkMembershipFeatureState(api.MembershipFeatureState o) {
+  buildCounterMembershipFeatureState++;
+  if (buildCounterMembershipFeatureState < 3) {
+    checkConfigManagementMembershipState(
+        o.configmanagement! as api.ConfigManagementMembershipState);
+    checkFeatureState(o.state! as api.FeatureState);
+  }
+  buildCounterMembershipFeatureState--;
+}
+
 core.int buildCounterMembershipState = 0;
 api.MembershipState buildMembershipState() {
   var o = api.MembershipState();
@@ -832,7 +1847,29 @@ void checkMembershipState(api.MembershipState o) {
   buildCounterMembershipState--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed1610() {
+core.int buildCounterMultiClusterIngressFeatureSpec = 0;
+api.MultiClusterIngressFeatureSpec buildMultiClusterIngressFeatureSpec() {
+  var o = api.MultiClusterIngressFeatureSpec();
+  buildCounterMultiClusterIngressFeatureSpec++;
+  if (buildCounterMultiClusterIngressFeatureSpec < 3) {
+    o.configMembership = 'foo';
+  }
+  buildCounterMultiClusterIngressFeatureSpec--;
+  return o;
+}
+
+void checkMultiClusterIngressFeatureSpec(api.MultiClusterIngressFeatureSpec o) {
+  buildCounterMultiClusterIngressFeatureSpec++;
+  if (buildCounterMultiClusterIngressFeatureSpec < 3) {
+    unittest.expect(
+      o.configMembership!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterMultiClusterIngressFeatureSpec--;
+}
+
+core.Map<core.String, core.Object> buildUnnamed1620() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -847,7 +1884,7 @@ core.Map<core.String, core.Object> buildUnnamed1610() {
   return o;
 }
 
-void checkUnnamed1610(core.Map<core.String, core.Object> o) {
+void checkUnnamed1620(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -879,7 +1916,7 @@ void checkUnnamed1610(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed1611() {
+core.Map<core.String, core.Object> buildUnnamed1621() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -894,7 +1931,7 @@ core.Map<core.String, core.Object> buildUnnamed1611() {
   return o;
 }
 
-void checkUnnamed1611(core.Map<core.String, core.Object> o) {
+void checkUnnamed1621(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -933,9 +1970,9 @@ api.Operation buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildGoogleRpcStatus();
-    o.metadata = buildUnnamed1610();
+    o.metadata = buildUnnamed1620();
     o.name = 'foo';
-    o.response = buildUnnamed1611();
+    o.response = buildUnnamed1621();
   }
   buildCounterOperation--;
   return o;
@@ -946,12 +1983,12 @@ void checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkGoogleRpcStatus(o.error! as api.GoogleRpcStatus);
-    checkUnnamed1610(o.metadata!);
+    checkUnnamed1620(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed1611(o.response!);
+    checkUnnamed1621(o.response!);
   }
   buildCounterOperation--;
 }
@@ -1005,27 +2042,27 @@ void checkOperationMetadata(api.OperationMetadata o) {
   buildCounterOperationMetadata--;
 }
 
-core.List<api.AuditConfig> buildUnnamed1612() {
+core.List<api.AuditConfig> buildUnnamed1622() {
   var o = <api.AuditConfig>[];
   o.add(buildAuditConfig());
   o.add(buildAuditConfig());
   return o;
 }
 
-void checkUnnamed1612(core.List<api.AuditConfig> o) {
+void checkUnnamed1622(core.List<api.AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuditConfig(o[0] as api.AuditConfig);
   checkAuditConfig(o[1] as api.AuditConfig);
 }
 
-core.List<api.Binding> buildUnnamed1613() {
+core.List<api.Binding> buildUnnamed1623() {
   var o = <api.Binding>[];
   o.add(buildBinding());
   o.add(buildBinding());
   return o;
 }
 
-void checkUnnamed1613(core.List<api.Binding> o) {
+void checkUnnamed1623(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0] as api.Binding);
   checkBinding(o[1] as api.Binding);
@@ -1036,8 +2073,8 @@ api.Policy buildPolicy() {
   var o = api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.auditConfigs = buildUnnamed1612();
-    o.bindings = buildUnnamed1613();
+    o.auditConfigs = buildUnnamed1622();
+    o.bindings = buildUnnamed1623();
     o.etag = 'foo';
     o.version = 42;
   }
@@ -1048,8 +2085,8 @@ api.Policy buildPolicy() {
 void checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed1612(o.auditConfigs!);
-    checkUnnamed1613(o.bindings!);
+    checkUnnamed1622(o.auditConfigs!);
+    checkUnnamed1623(o.bindings!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -1086,14 +2123,14 @@ void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest--;
 }
 
-core.List<core.String> buildUnnamed1614() {
+core.List<core.String> buildUnnamed1624() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed1614(core.List<core.String> o) {
+void checkUnnamed1624(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1110,7 +2147,7 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
   var o = api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed1614();
+    o.permissions = buildUnnamed1624();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -1119,19 +2156,19 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
 void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed1614(o.permissions!);
+    checkUnnamed1624(o.permissions!);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-core.List<core.String> buildUnnamed1615() {
+core.List<core.String> buildUnnamed1625() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed1615(core.List<core.String> o) {
+void checkUnnamed1625(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1148,7 +2185,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
   var o = api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed1615();
+    o.permissions = buildUnnamed1625();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -1157,7 +2194,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
 void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed1615(o.permissions!);
+    checkUnnamed1625(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
 }
@@ -1240,6 +2277,253 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-CommonFeatureSpec', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildCommonFeatureSpec();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CommonFeatureSpec.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCommonFeatureSpec(od as api.CommonFeatureSpec);
+    });
+  });
+
+  unittest.group('obj-schema-CommonFeatureState', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildCommonFeatureState();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CommonFeatureState.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCommonFeatureState(od as api.CommonFeatureState);
+    });
+  });
+
+  unittest.group('obj-schema-ConfigManagementConfigSync', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildConfigManagementConfigSync();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ConfigManagementConfigSync.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkConfigManagementConfigSync(od as api.ConfigManagementConfigSync);
+    });
+  });
+
+  unittest.group('obj-schema-ConfigManagementConfigSyncDeploymentState', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildConfigManagementConfigSyncDeploymentState();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ConfigManagementConfigSyncDeploymentState.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkConfigManagementConfigSyncDeploymentState(
+          od as api.ConfigManagementConfigSyncDeploymentState);
+    });
+  });
+
+  unittest.group('obj-schema-ConfigManagementConfigSyncState', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildConfigManagementConfigSyncState();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ConfigManagementConfigSyncState.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkConfigManagementConfigSyncState(
+          od as api.ConfigManagementConfigSyncState);
+    });
+  });
+
+  unittest.group('obj-schema-ConfigManagementConfigSyncVersion', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildConfigManagementConfigSyncVersion();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ConfigManagementConfigSyncVersion.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkConfigManagementConfigSyncVersion(
+          od as api.ConfigManagementConfigSyncVersion);
+    });
+  });
+
+  unittest.group('obj-schema-ConfigManagementErrorResource', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildConfigManagementErrorResource();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ConfigManagementErrorResource.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkConfigManagementErrorResource(
+          od as api.ConfigManagementErrorResource);
+    });
+  });
+
+  unittest.group('obj-schema-ConfigManagementGatekeeperDeploymentState', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildConfigManagementGatekeeperDeploymentState();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ConfigManagementGatekeeperDeploymentState.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkConfigManagementGatekeeperDeploymentState(
+          od as api.ConfigManagementGatekeeperDeploymentState);
+    });
+  });
+
+  unittest.group('obj-schema-ConfigManagementGitConfig', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildConfigManagementGitConfig();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ConfigManagementGitConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkConfigManagementGitConfig(od as api.ConfigManagementGitConfig);
+    });
+  });
+
+  unittest.group('obj-schema-ConfigManagementGroupVersionKind', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildConfigManagementGroupVersionKind();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ConfigManagementGroupVersionKind.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkConfigManagementGroupVersionKind(
+          od as api.ConfigManagementGroupVersionKind);
+    });
+  });
+
+  unittest.group('obj-schema-ConfigManagementHierarchyControllerConfig', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildConfigManagementHierarchyControllerConfig();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ConfigManagementHierarchyControllerConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkConfigManagementHierarchyControllerConfig(
+          od as api.ConfigManagementHierarchyControllerConfig);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-ConfigManagementHierarchyControllerDeploymentState', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildConfigManagementHierarchyControllerDeploymentState();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ConfigManagementHierarchyControllerDeploymentState.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkConfigManagementHierarchyControllerDeploymentState(
+          od as api.ConfigManagementHierarchyControllerDeploymentState);
+    });
+  });
+
+  unittest.group('obj-schema-ConfigManagementHierarchyControllerState', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildConfigManagementHierarchyControllerState();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ConfigManagementHierarchyControllerState.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkConfigManagementHierarchyControllerState(
+          od as api.ConfigManagementHierarchyControllerState);
+    });
+  });
+
+  unittest.group('obj-schema-ConfigManagementHierarchyControllerVersion', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildConfigManagementHierarchyControllerVersion();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ConfigManagementHierarchyControllerVersion.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkConfigManagementHierarchyControllerVersion(
+          od as api.ConfigManagementHierarchyControllerVersion);
+    });
+  });
+
+  unittest.group('obj-schema-ConfigManagementInstallError', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildConfigManagementInstallError();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ConfigManagementInstallError.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkConfigManagementInstallError(od as api.ConfigManagementInstallError);
+    });
+  });
+
+  unittest.group('obj-schema-ConfigManagementMembershipSpec', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildConfigManagementMembershipSpec();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ConfigManagementMembershipSpec.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkConfigManagementMembershipSpec(
+          od as api.ConfigManagementMembershipSpec);
+    });
+  });
+
+  unittest.group('obj-schema-ConfigManagementMembershipState', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildConfigManagementMembershipState();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ConfigManagementMembershipState.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkConfigManagementMembershipState(
+          od as api.ConfigManagementMembershipState);
+    });
+  });
+
+  unittest.group('obj-schema-ConfigManagementOperatorState', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildConfigManagementOperatorState();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ConfigManagementOperatorState.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkConfigManagementOperatorState(
+          od as api.ConfigManagementOperatorState);
+    });
+  });
+
+  unittest.group('obj-schema-ConfigManagementPolicyController', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildConfigManagementPolicyController();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ConfigManagementPolicyController.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkConfigManagementPolicyController(
+          od as api.ConfigManagementPolicyController);
+    });
+  });
+
+  unittest.group('obj-schema-ConfigManagementPolicyControllerState', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildConfigManagementPolicyControllerState();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ConfigManagementPolicyControllerState.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkConfigManagementPolicyControllerState(
+          od as api.ConfigManagementPolicyControllerState);
+    });
+  });
+
+  unittest.group('obj-schema-ConfigManagementPolicyControllerVersion', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildConfigManagementPolicyControllerVersion();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ConfigManagementPolicyControllerVersion.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkConfigManagementPolicyControllerVersion(
+          od as api.ConfigManagementPolicyControllerVersion);
+    });
+  });
+
+  unittest.group('obj-schema-ConfigManagementSyncError', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildConfigManagementSyncError();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ConfigManagementSyncError.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkConfigManagementSyncError(od as api.ConfigManagementSyncError);
+    });
+  });
+
+  unittest.group('obj-schema-ConfigManagementSyncState', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildConfigManagementSyncState();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ConfigManagementSyncState.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkConfigManagementSyncState(od as api.ConfigManagementSyncState);
+    });
+  });
+
   unittest.group('obj-schema-ConnectAgentResource', () {
     unittest.test('to-json--from-json', () async {
       var o = buildConnectAgentResource();
@@ -1265,6 +2549,36 @@ void main() {
       var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.Expr.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkExpr(od as api.Expr);
+    });
+  });
+
+  unittest.group('obj-schema-Feature', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildFeature();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Feature.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkFeature(od as api.Feature);
+    });
+  });
+
+  unittest.group('obj-schema-FeatureResourceState', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildFeatureResourceState();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.FeatureResourceState.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkFeatureResourceState(od as api.FeatureResourceState);
+    });
+  });
+
+  unittest.group('obj-schema-FeatureState', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildFeatureState();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.FeatureState.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkFeatureState(od as api.FeatureState);
     });
   });
 
@@ -1306,6 +2620,16 @@ void main() {
       var od = api.KubernetesMetadata.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkKubernetesMetadata(od as api.KubernetesMetadata);
+    });
+  });
+
+  unittest.group('obj-schema-ListFeaturesResponse', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildListFeaturesResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListFeaturesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkListFeaturesResponse(od as api.ListFeaturesResponse);
     });
   });
 
@@ -1369,6 +2693,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-MembershipFeatureSpec', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildMembershipFeatureSpec();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.MembershipFeatureSpec.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMembershipFeatureSpec(od as api.MembershipFeatureSpec);
+    });
+  });
+
+  unittest.group('obj-schema-MembershipFeatureState', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildMembershipFeatureState();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.MembershipFeatureState.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMembershipFeatureState(od as api.MembershipFeatureState);
+    });
+  });
+
   unittest.group('obj-schema-MembershipState', () {
     unittest.test('to-json--from-json', () async {
       var o = buildMembershipState();
@@ -1376,6 +2720,17 @@ void main() {
       var od = api.MembershipState.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkMembershipState(od as api.MembershipState);
+    });
+  });
+
+  unittest.group('obj-schema-MultiClusterIngressFeatureSpec', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildMultiClusterIngressFeatureSpec();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.MultiClusterIngressFeatureSpec.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMultiClusterIngressFeatureSpec(
+          od as api.MultiClusterIngressFeatureSpec);
     });
   });
 
@@ -1571,6 +2926,516 @@ void main() {
           pageToken: arg_pageToken,
           $fields: arg_$fields);
       checkListLocationsResponse(response as api.ListLocationsResponse);
+    });
+  });
+
+  unittest.group('resource-ProjectsLocationsFeaturesResource', () {
+    unittest.test('method--create', () async {
+      var mock = HttpServerMock();
+      var res = api.GKEHubApi(mock).projects.locations.features;
+      var arg_request = buildFeature();
+      var arg_parent = 'foo';
+      var arg_featureId = 'foo';
+      var arg_requestId = 'foo';
+      var arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj =
+            api.Feature.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkFeature(obj as api.Feature);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap["featureId"]!.first,
+          unittest.equals(arg_featureId),
+        );
+        unittest.expect(
+          queryMap["requestId"]!.first,
+          unittest.equals(arg_requestId),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        var h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        var resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.create(arg_request, arg_parent,
+          featureId: arg_featureId,
+          requestId: arg_requestId,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--delete', () async {
+      var mock = HttpServerMock();
+      var res = api.GKEHubApi(mock).projects.locations.features;
+      var arg_name = 'foo';
+      var arg_force = true;
+      var arg_requestId = 'foo';
+      var arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap["force"]!.first,
+          unittest.equals("$arg_force"),
+        );
+        unittest.expect(
+          queryMap["requestId"]!.first,
+          unittest.equals(arg_requestId),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        var h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        var resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.delete(arg_name,
+          force: arg_force, requestId: arg_requestId, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--get', () async {
+      var mock = HttpServerMock();
+      var res = api.GKEHubApi(mock).projects.locations.features;
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        var h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        var resp = convert.json.encode(buildFeature());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkFeature(response as api.Feature);
+    });
+
+    unittest.test('method--getIamPolicy', () async {
+      var mock = HttpServerMock();
+      var res = api.GKEHubApi(mock).projects.locations.features;
+      var arg_resource = 'foo';
+      var arg_options_requestedPolicyVersion = 42;
+      var arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap["options.requestedPolicyVersion"]!.first),
+          unittest.equals(arg_options_requestedPolicyVersion),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        var h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        var resp = convert.json.encode(buildPolicy());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.getIamPolicy(arg_resource,
+          options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
+    });
+
+    unittest.test('method--list', () async {
+      var mock = HttpServerMock();
+      var res = api.GKEHubApi(mock).projects.locations.features;
+      var arg_parent = 'foo';
+      var arg_filter = 'foo';
+      var arg_orderBy = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
+      var arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap["filter"]!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          queryMap["orderBy"]!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        var h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        var resp = convert.json.encode(buildListFeaturesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListFeaturesResponse(response as api.ListFeaturesResponse);
+    });
+
+    unittest.test('method--patch', () async {
+      var mock = HttpServerMock();
+      var res = api.GKEHubApi(mock).projects.locations.features;
+      var arg_request = buildFeature();
+      var arg_name = 'foo';
+      var arg_requestId = 'foo';
+      var arg_updateMask = 'foo';
+      var arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj =
+            api.Feature.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkFeature(obj as api.Feature);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap["requestId"]!.first,
+          unittest.equals(arg_requestId),
+        );
+        unittest.expect(
+          queryMap["updateMask"]!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        var h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        var resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.patch(arg_request, arg_name,
+          requestId: arg_requestId,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--setIamPolicy', () async {
+      var mock = HttpServerMock();
+      var res = api.GKEHubApi(mock).projects.locations.features;
+      var arg_request = buildSetIamPolicyRequest();
+      var arg_resource = 'foo';
+      var arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = api.SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSetIamPolicyRequest(obj as api.SetIamPolicyRequest);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        var h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        var resp = convert.json.encode(buildPolicy());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
+    });
+
+    unittest.test('method--testIamPermissions', () async {
+      var mock = HttpServerMock();
+      var res = api.GKEHubApi(mock).projects.locations.features;
+      var arg_request = buildTestIamPermissionsRequest();
+      var arg_resource = 'foo';
+      var arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = api.TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTestIamPermissionsRequest(obj as api.TestIamPermissionsRequest);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        var h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        var resp = convert.json.encode(buildTestIamPermissionsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
   });
 

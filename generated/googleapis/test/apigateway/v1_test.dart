@@ -27,14 +27,14 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.Map<core.String, core.String> buildUnnamed5369() {
+core.Map<core.String, core.String> buildUnnamed5786() {
   var o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
 }
 
-void checkUnnamed5369(core.Map<core.String, core.String> o) {
+void checkUnnamed5786(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -53,7 +53,7 @@ api.ApigatewayApi buildApigatewayApi() {
   if (buildCounterApigatewayApi < 3) {
     o.createTime = 'foo';
     o.displayName = 'foo';
-    o.labels = buildUnnamed5369();
+    o.labels = buildUnnamed5786();
     o.managedService = 'foo';
     o.name = 'foo';
     o.state = 'foo';
@@ -74,7 +74,7 @@ void checkApigatewayApi(api.ApigatewayApi o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed5369(o.labels!);
+    checkUnnamed5786(o.labels!);
     unittest.expect(
       o.managedService!,
       unittest.equals('foo'),
@@ -95,14 +95,14 @@ void checkApigatewayApi(api.ApigatewayApi o) {
   buildCounterApigatewayApi--;
 }
 
-core.List<api.ApigatewayApiConfigGrpcServiceDefinition> buildUnnamed5370() {
+core.List<api.ApigatewayApiConfigGrpcServiceDefinition> buildUnnamed5787() {
   var o = <api.ApigatewayApiConfigGrpcServiceDefinition>[];
   o.add(buildApigatewayApiConfigGrpcServiceDefinition());
   o.add(buildApigatewayApiConfigGrpcServiceDefinition());
   return o;
 }
 
-void checkUnnamed5370(
+void checkUnnamed5787(
     core.List<api.ApigatewayApiConfigGrpcServiceDefinition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApigatewayApiConfigGrpcServiceDefinition(
@@ -111,14 +111,14 @@ void checkUnnamed5370(
       o[1] as api.ApigatewayApiConfigGrpcServiceDefinition);
 }
 
-core.Map<core.String, core.String> buildUnnamed5371() {
+core.Map<core.String, core.String> buildUnnamed5788() {
   var o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
 }
 
-void checkUnnamed5371(core.Map<core.String, core.String> o) {
+void checkUnnamed5788(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -130,27 +130,27 @@ void checkUnnamed5371(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<api.ApigatewayApiConfigFile> buildUnnamed5372() {
+core.List<api.ApigatewayApiConfigFile> buildUnnamed5789() {
   var o = <api.ApigatewayApiConfigFile>[];
   o.add(buildApigatewayApiConfigFile());
   o.add(buildApigatewayApiConfigFile());
   return o;
 }
 
-void checkUnnamed5372(core.List<api.ApigatewayApiConfigFile> o) {
+void checkUnnamed5789(core.List<api.ApigatewayApiConfigFile> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApigatewayApiConfigFile(o[0] as api.ApigatewayApiConfigFile);
   checkApigatewayApiConfigFile(o[1] as api.ApigatewayApiConfigFile);
 }
 
-core.List<api.ApigatewayApiConfigOpenApiDocument> buildUnnamed5373() {
+core.List<api.ApigatewayApiConfigOpenApiDocument> buildUnnamed5790() {
   var o = <api.ApigatewayApiConfigOpenApiDocument>[];
   o.add(buildApigatewayApiConfigOpenApiDocument());
   o.add(buildApigatewayApiConfigOpenApiDocument());
   return o;
 }
 
-void checkUnnamed5373(core.List<api.ApigatewayApiConfigOpenApiDocument> o) {
+void checkUnnamed5790(core.List<api.ApigatewayApiConfigOpenApiDocument> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApigatewayApiConfigOpenApiDocument(
       o[0] as api.ApigatewayApiConfigOpenApiDocument);
@@ -166,11 +166,11 @@ api.ApigatewayApiConfig buildApigatewayApiConfig() {
     o.createTime = 'foo';
     o.displayName = 'foo';
     o.gatewayServiceAccount = 'foo';
-    o.grpcServices = buildUnnamed5370();
-    o.labels = buildUnnamed5371();
-    o.managedServiceConfigs = buildUnnamed5372();
+    o.grpcServices = buildUnnamed5787();
+    o.labels = buildUnnamed5788();
+    o.managedServiceConfigs = buildUnnamed5789();
     o.name = 'foo';
-    o.openapiDocuments = buildUnnamed5373();
+    o.openapiDocuments = buildUnnamed5790();
     o.serviceConfigId = 'foo';
     o.state = 'foo';
     o.updateTime = 'foo';
@@ -194,14 +194,14 @@ void checkApigatewayApiConfig(api.ApigatewayApiConfig o) {
       o.gatewayServiceAccount!,
       unittest.equals('foo'),
     );
-    checkUnnamed5370(o.grpcServices!);
-    checkUnnamed5371(o.labels!);
-    checkUnnamed5372(o.managedServiceConfigs!);
+    checkUnnamed5787(o.grpcServices!);
+    checkUnnamed5788(o.labels!);
+    checkUnnamed5789(o.managedServiceConfigs!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed5373(o.openapiDocuments!);
+    checkUnnamed5790(o.openapiDocuments!);
     unittest.expect(
       o.serviceConfigId!,
       unittest.equals('foo'),
@@ -245,14 +245,14 @@ void checkApigatewayApiConfigFile(api.ApigatewayApiConfigFile o) {
   buildCounterApigatewayApiConfigFile--;
 }
 
-core.List<api.ApigatewayApiConfigFile> buildUnnamed5374() {
+core.List<api.ApigatewayApiConfigFile> buildUnnamed5791() {
   var o = <api.ApigatewayApiConfigFile>[];
   o.add(buildApigatewayApiConfigFile());
   o.add(buildApigatewayApiConfigFile());
   return o;
 }
 
-void checkUnnamed5374(core.List<api.ApigatewayApiConfigFile> o) {
+void checkUnnamed5791(core.List<api.ApigatewayApiConfigFile> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApigatewayApiConfigFile(o[0] as api.ApigatewayApiConfigFile);
   checkApigatewayApiConfigFile(o[1] as api.ApigatewayApiConfigFile);
@@ -265,7 +265,7 @@ api.ApigatewayApiConfigGrpcServiceDefinition
   buildCounterApigatewayApiConfigGrpcServiceDefinition++;
   if (buildCounterApigatewayApiConfigGrpcServiceDefinition < 3) {
     o.fileDescriptorSet = buildApigatewayApiConfigFile();
-    o.source = buildUnnamed5374();
+    o.source = buildUnnamed5791();
   }
   buildCounterApigatewayApiConfigGrpcServiceDefinition--;
   return o;
@@ -277,7 +277,7 @@ void checkApigatewayApiConfigGrpcServiceDefinition(
   if (buildCounterApigatewayApiConfigGrpcServiceDefinition < 3) {
     checkApigatewayApiConfigFile(
         o.fileDescriptorSet! as api.ApigatewayApiConfigFile);
-    checkUnnamed5374(o.source!);
+    checkUnnamed5791(o.source!);
   }
   buildCounterApigatewayApiConfigGrpcServiceDefinition--;
 }
@@ -303,14 +303,14 @@ void checkApigatewayApiConfigOpenApiDocument(
   buildCounterApigatewayApiConfigOpenApiDocument--;
 }
 
-core.List<api.ApigatewayAuditLogConfig> buildUnnamed5375() {
+core.List<api.ApigatewayAuditLogConfig> buildUnnamed5792() {
   var o = <api.ApigatewayAuditLogConfig>[];
   o.add(buildApigatewayAuditLogConfig());
   o.add(buildApigatewayAuditLogConfig());
   return o;
 }
 
-void checkUnnamed5375(core.List<api.ApigatewayAuditLogConfig> o) {
+void checkUnnamed5792(core.List<api.ApigatewayAuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApigatewayAuditLogConfig(o[0] as api.ApigatewayAuditLogConfig);
   checkApigatewayAuditLogConfig(o[1] as api.ApigatewayAuditLogConfig);
@@ -321,7 +321,7 @@ api.ApigatewayAuditConfig buildApigatewayAuditConfig() {
   var o = api.ApigatewayAuditConfig();
   buildCounterApigatewayAuditConfig++;
   if (buildCounterApigatewayAuditConfig < 3) {
-    o.auditLogConfigs = buildUnnamed5375();
+    o.auditLogConfigs = buildUnnamed5792();
     o.service = 'foo';
   }
   buildCounterApigatewayAuditConfig--;
@@ -331,7 +331,7 @@ api.ApigatewayAuditConfig buildApigatewayAuditConfig() {
 void checkApigatewayAuditConfig(api.ApigatewayAuditConfig o) {
   buildCounterApigatewayAuditConfig++;
   if (buildCounterApigatewayAuditConfig < 3) {
-    checkUnnamed5375(o.auditLogConfigs!);
+    checkUnnamed5792(o.auditLogConfigs!);
     unittest.expect(
       o.service!,
       unittest.equals('foo'),
@@ -340,14 +340,14 @@ void checkApigatewayAuditConfig(api.ApigatewayAuditConfig o) {
   buildCounterApigatewayAuditConfig--;
 }
 
-core.List<core.String> buildUnnamed5376() {
+core.List<core.String> buildUnnamed5793() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed5376(core.List<core.String> o) {
+void checkUnnamed5793(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -364,7 +364,7 @@ api.ApigatewayAuditLogConfig buildApigatewayAuditLogConfig() {
   var o = api.ApigatewayAuditLogConfig();
   buildCounterApigatewayAuditLogConfig++;
   if (buildCounterApigatewayAuditLogConfig < 3) {
-    o.exemptedMembers = buildUnnamed5376();
+    o.exemptedMembers = buildUnnamed5793();
     o.logType = 'foo';
   }
   buildCounterApigatewayAuditLogConfig--;
@@ -374,7 +374,7 @@ api.ApigatewayAuditLogConfig buildApigatewayAuditLogConfig() {
 void checkApigatewayAuditLogConfig(api.ApigatewayAuditLogConfig o) {
   buildCounterApigatewayAuditLogConfig++;
   if (buildCounterApigatewayAuditLogConfig < 3) {
-    checkUnnamed5376(o.exemptedMembers!);
+    checkUnnamed5793(o.exemptedMembers!);
     unittest.expect(
       o.logType!,
       unittest.equals('foo'),
@@ -383,14 +383,14 @@ void checkApigatewayAuditLogConfig(api.ApigatewayAuditLogConfig o) {
   buildCounterApigatewayAuditLogConfig--;
 }
 
-core.List<core.String> buildUnnamed5377() {
+core.List<core.String> buildUnnamed5794() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed5377(core.List<core.String> o) {
+void checkUnnamed5794(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -408,7 +408,7 @@ api.ApigatewayBinding buildApigatewayBinding() {
   buildCounterApigatewayBinding++;
   if (buildCounterApigatewayBinding < 3) {
     o.condition = buildApigatewayExpr();
-    o.members = buildUnnamed5377();
+    o.members = buildUnnamed5794();
     o.role = 'foo';
   }
   buildCounterApigatewayBinding--;
@@ -419,7 +419,7 @@ void checkApigatewayBinding(api.ApigatewayBinding o) {
   buildCounterApigatewayBinding++;
   if (buildCounterApigatewayBinding < 3) {
     checkApigatewayExpr(o.condition! as api.ApigatewayExpr);
-    checkUnnamed5377(o.members!);
+    checkUnnamed5794(o.members!);
     unittest.expect(
       o.role!,
       unittest.equals('foo'),
@@ -481,14 +481,14 @@ void checkApigatewayExpr(api.ApigatewayExpr o) {
   buildCounterApigatewayExpr--;
 }
 
-core.Map<core.String, core.String> buildUnnamed5378() {
+core.Map<core.String, core.String> buildUnnamed5795() {
   var o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
 }
 
-void checkUnnamed5378(core.Map<core.String, core.String> o) {
+void checkUnnamed5795(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -509,7 +509,7 @@ api.ApigatewayGateway buildApigatewayGateway() {
     o.createTime = 'foo';
     o.defaultHostname = 'foo';
     o.displayName = 'foo';
-    o.labels = buildUnnamed5378();
+    o.labels = buildUnnamed5795();
     o.name = 'foo';
     o.state = 'foo';
     o.updateTime = 'foo';
@@ -537,7 +537,7 @@ void checkApigatewayGateway(api.ApigatewayGateway o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed5378(o.labels!);
+    checkUnnamed5795(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -554,27 +554,27 @@ void checkApigatewayGateway(api.ApigatewayGateway o) {
   buildCounterApigatewayGateway--;
 }
 
-core.List<api.ApigatewayApiConfig> buildUnnamed5379() {
+core.List<api.ApigatewayApiConfig> buildUnnamed5796() {
   var o = <api.ApigatewayApiConfig>[];
   o.add(buildApigatewayApiConfig());
   o.add(buildApigatewayApiConfig());
   return o;
 }
 
-void checkUnnamed5379(core.List<api.ApigatewayApiConfig> o) {
+void checkUnnamed5796(core.List<api.ApigatewayApiConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApigatewayApiConfig(o[0] as api.ApigatewayApiConfig);
   checkApigatewayApiConfig(o[1] as api.ApigatewayApiConfig);
 }
 
-core.List<core.String> buildUnnamed5380() {
+core.List<core.String> buildUnnamed5797() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed5380(core.List<core.String> o) {
+void checkUnnamed5797(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -591,9 +591,9 @@ api.ApigatewayListApiConfigsResponse buildApigatewayListApiConfigsResponse() {
   var o = api.ApigatewayListApiConfigsResponse();
   buildCounterApigatewayListApiConfigsResponse++;
   if (buildCounterApigatewayListApiConfigsResponse < 3) {
-    o.apiConfigs = buildUnnamed5379();
+    o.apiConfigs = buildUnnamed5796();
     o.nextPageToken = 'foo';
-    o.unreachableLocations = buildUnnamed5380();
+    o.unreachableLocations = buildUnnamed5797();
   }
   buildCounterApigatewayListApiConfigsResponse--;
   return o;
@@ -603,37 +603,37 @@ void checkApigatewayListApiConfigsResponse(
     api.ApigatewayListApiConfigsResponse o) {
   buildCounterApigatewayListApiConfigsResponse++;
   if (buildCounterApigatewayListApiConfigsResponse < 3) {
-    checkUnnamed5379(o.apiConfigs!);
+    checkUnnamed5796(o.apiConfigs!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed5380(o.unreachableLocations!);
+    checkUnnamed5797(o.unreachableLocations!);
   }
   buildCounterApigatewayListApiConfigsResponse--;
 }
 
-core.List<api.ApigatewayApi> buildUnnamed5381() {
+core.List<api.ApigatewayApi> buildUnnamed5798() {
   var o = <api.ApigatewayApi>[];
   o.add(buildApigatewayApi());
   o.add(buildApigatewayApi());
   return o;
 }
 
-void checkUnnamed5381(core.List<api.ApigatewayApi> o) {
+void checkUnnamed5798(core.List<api.ApigatewayApi> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApigatewayApi(o[0] as api.ApigatewayApi);
   checkApigatewayApi(o[1] as api.ApigatewayApi);
 }
 
-core.List<core.String> buildUnnamed5382() {
+core.List<core.String> buildUnnamed5799() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed5382(core.List<core.String> o) {
+void checkUnnamed5799(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -650,9 +650,9 @@ api.ApigatewayListApisResponse buildApigatewayListApisResponse() {
   var o = api.ApigatewayListApisResponse();
   buildCounterApigatewayListApisResponse++;
   if (buildCounterApigatewayListApisResponse < 3) {
-    o.apis = buildUnnamed5381();
+    o.apis = buildUnnamed5798();
     o.nextPageToken = 'foo';
-    o.unreachableLocations = buildUnnamed5382();
+    o.unreachableLocations = buildUnnamed5799();
   }
   buildCounterApigatewayListApisResponse--;
   return o;
@@ -661,37 +661,37 @@ api.ApigatewayListApisResponse buildApigatewayListApisResponse() {
 void checkApigatewayListApisResponse(api.ApigatewayListApisResponse o) {
   buildCounterApigatewayListApisResponse++;
   if (buildCounterApigatewayListApisResponse < 3) {
-    checkUnnamed5381(o.apis!);
+    checkUnnamed5798(o.apis!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed5382(o.unreachableLocations!);
+    checkUnnamed5799(o.unreachableLocations!);
   }
   buildCounterApigatewayListApisResponse--;
 }
 
-core.List<api.ApigatewayGateway> buildUnnamed5383() {
+core.List<api.ApigatewayGateway> buildUnnamed5800() {
   var o = <api.ApigatewayGateway>[];
   o.add(buildApigatewayGateway());
   o.add(buildApigatewayGateway());
   return o;
 }
 
-void checkUnnamed5383(core.List<api.ApigatewayGateway> o) {
+void checkUnnamed5800(core.List<api.ApigatewayGateway> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApigatewayGateway(o[0] as api.ApigatewayGateway);
   checkApigatewayGateway(o[1] as api.ApigatewayGateway);
 }
 
-core.List<core.String> buildUnnamed5384() {
+core.List<core.String> buildUnnamed5801() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed5384(core.List<core.String> o) {
+void checkUnnamed5801(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -708,9 +708,9 @@ api.ApigatewayListGatewaysResponse buildApigatewayListGatewaysResponse() {
   var o = api.ApigatewayListGatewaysResponse();
   buildCounterApigatewayListGatewaysResponse++;
   if (buildCounterApigatewayListGatewaysResponse < 3) {
-    o.gateways = buildUnnamed5383();
+    o.gateways = buildUnnamed5800();
     o.nextPageToken = 'foo';
-    o.unreachableLocations = buildUnnamed5384();
+    o.unreachableLocations = buildUnnamed5801();
   }
   buildCounterApigatewayListGatewaysResponse--;
   return o;
@@ -719,24 +719,24 @@ api.ApigatewayListGatewaysResponse buildApigatewayListGatewaysResponse() {
 void checkApigatewayListGatewaysResponse(api.ApigatewayListGatewaysResponse o) {
   buildCounterApigatewayListGatewaysResponse++;
   if (buildCounterApigatewayListGatewaysResponse < 3) {
-    checkUnnamed5383(o.gateways!);
+    checkUnnamed5800(o.gateways!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed5384(o.unreachableLocations!);
+    checkUnnamed5801(o.unreachableLocations!);
   }
   buildCounterApigatewayListGatewaysResponse--;
 }
 
-core.List<api.ApigatewayLocation> buildUnnamed5385() {
+core.List<api.ApigatewayLocation> buildUnnamed5802() {
   var o = <api.ApigatewayLocation>[];
   o.add(buildApigatewayLocation());
   o.add(buildApigatewayLocation());
   return o;
 }
 
-void checkUnnamed5385(core.List<api.ApigatewayLocation> o) {
+void checkUnnamed5802(core.List<api.ApigatewayLocation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApigatewayLocation(o[0] as api.ApigatewayLocation);
   checkApigatewayLocation(o[1] as api.ApigatewayLocation);
@@ -747,7 +747,7 @@ api.ApigatewayListLocationsResponse buildApigatewayListLocationsResponse() {
   var o = api.ApigatewayListLocationsResponse();
   buildCounterApigatewayListLocationsResponse++;
   if (buildCounterApigatewayListLocationsResponse < 3) {
-    o.locations = buildUnnamed5385();
+    o.locations = buildUnnamed5802();
     o.nextPageToken = 'foo';
   }
   buildCounterApigatewayListLocationsResponse--;
@@ -758,7 +758,7 @@ void checkApigatewayListLocationsResponse(
     api.ApigatewayListLocationsResponse o) {
   buildCounterApigatewayListLocationsResponse++;
   if (buildCounterApigatewayListLocationsResponse < 3) {
-    checkUnnamed5385(o.locations!);
+    checkUnnamed5802(o.locations!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -767,14 +767,14 @@ void checkApigatewayListLocationsResponse(
   buildCounterApigatewayListLocationsResponse--;
 }
 
-core.List<api.ApigatewayOperation> buildUnnamed5386() {
+core.List<api.ApigatewayOperation> buildUnnamed5803() {
   var o = <api.ApigatewayOperation>[];
   o.add(buildApigatewayOperation());
   o.add(buildApigatewayOperation());
   return o;
 }
 
-void checkUnnamed5386(core.List<api.ApigatewayOperation> o) {
+void checkUnnamed5803(core.List<api.ApigatewayOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApigatewayOperation(o[0] as api.ApigatewayOperation);
   checkApigatewayOperation(o[1] as api.ApigatewayOperation);
@@ -786,7 +786,7 @@ api.ApigatewayListOperationsResponse buildApigatewayListOperationsResponse() {
   buildCounterApigatewayListOperationsResponse++;
   if (buildCounterApigatewayListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed5386();
+    o.operations = buildUnnamed5803();
   }
   buildCounterApigatewayListOperationsResponse--;
   return o;
@@ -800,19 +800,19 @@ void checkApigatewayListOperationsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed5386(o.operations!);
+    checkUnnamed5803(o.operations!);
   }
   buildCounterApigatewayListOperationsResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed5387() {
+core.Map<core.String, core.String> buildUnnamed5804() {
   var o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
 }
 
-void checkUnnamed5387(core.Map<core.String, core.String> o) {
+void checkUnnamed5804(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -824,7 +824,7 @@ void checkUnnamed5387(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed5388() {
+core.Map<core.String, core.Object> buildUnnamed5805() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -839,7 +839,7 @@ core.Map<core.String, core.Object> buildUnnamed5388() {
   return o;
 }
 
-void checkUnnamed5388(core.Map<core.String, core.Object> o) {
+void checkUnnamed5805(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -877,9 +877,9 @@ api.ApigatewayLocation buildApigatewayLocation() {
   buildCounterApigatewayLocation++;
   if (buildCounterApigatewayLocation < 3) {
     o.displayName = 'foo';
-    o.labels = buildUnnamed5387();
+    o.labels = buildUnnamed5804();
     o.locationId = 'foo';
-    o.metadata = buildUnnamed5388();
+    o.metadata = buildUnnamed5805();
     o.name = 'foo';
   }
   buildCounterApigatewayLocation--;
@@ -893,12 +893,12 @@ void checkApigatewayLocation(api.ApigatewayLocation o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed5387(o.labels!);
+    checkUnnamed5804(o.labels!);
     unittest.expect(
       o.locationId!,
       unittest.equals('foo'),
     );
-    checkUnnamed5388(o.metadata!);
+    checkUnnamed5805(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -907,7 +907,7 @@ void checkApigatewayLocation(api.ApigatewayLocation o) {
   buildCounterApigatewayLocation--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed5389() {
+core.Map<core.String, core.Object> buildUnnamed5806() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -922,7 +922,7 @@ core.Map<core.String, core.Object> buildUnnamed5389() {
   return o;
 }
 
-void checkUnnamed5389(core.Map<core.String, core.Object> o) {
+void checkUnnamed5806(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -954,7 +954,7 @@ void checkUnnamed5389(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed5390() {
+core.Map<core.String, core.Object> buildUnnamed5807() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -969,7 +969,7 @@ core.Map<core.String, core.Object> buildUnnamed5390() {
   return o;
 }
 
-void checkUnnamed5390(core.Map<core.String, core.Object> o) {
+void checkUnnamed5807(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -1008,9 +1008,9 @@ api.ApigatewayOperation buildApigatewayOperation() {
   if (buildCounterApigatewayOperation < 3) {
     o.done = true;
     o.error = buildApigatewayStatus();
-    o.metadata = buildUnnamed5389();
+    o.metadata = buildUnnamed5806();
     o.name = 'foo';
-    o.response = buildUnnamed5390();
+    o.response = buildUnnamed5807();
   }
   buildCounterApigatewayOperation--;
   return o;
@@ -1021,24 +1021,24 @@ void checkApigatewayOperation(api.ApigatewayOperation o) {
   if (buildCounterApigatewayOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkApigatewayStatus(o.error! as api.ApigatewayStatus);
-    checkUnnamed5389(o.metadata!);
+    checkUnnamed5806(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed5390(o.response!);
+    checkUnnamed5807(o.response!);
   }
   buildCounterApigatewayOperation--;
 }
 
-core.List<api.ApigatewayOperationMetadataDiagnostic> buildUnnamed5391() {
+core.List<api.ApigatewayOperationMetadataDiagnostic> buildUnnamed5808() {
   var o = <api.ApigatewayOperationMetadataDiagnostic>[];
   o.add(buildApigatewayOperationMetadataDiagnostic());
   o.add(buildApigatewayOperationMetadataDiagnostic());
   return o;
 }
 
-void checkUnnamed5391(core.List<api.ApigatewayOperationMetadataDiagnostic> o) {
+void checkUnnamed5808(core.List<api.ApigatewayOperationMetadataDiagnostic> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApigatewayOperationMetadataDiagnostic(
       o[0] as api.ApigatewayOperationMetadataDiagnostic);
@@ -1053,7 +1053,7 @@ api.ApigatewayOperationMetadata buildApigatewayOperationMetadata() {
   if (buildCounterApigatewayOperationMetadata < 3) {
     o.apiVersion = 'foo';
     o.createTime = 'foo';
-    o.diagnostics = buildUnnamed5391();
+    o.diagnostics = buildUnnamed5808();
     o.endTime = 'foo';
     o.requestedCancellation = true;
     o.statusMessage = 'foo';
@@ -1075,7 +1075,7 @@ void checkApigatewayOperationMetadata(api.ApigatewayOperationMetadata o) {
       o.createTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed5391(o.diagnostics!);
+    checkUnnamed5808(o.diagnostics!);
     unittest.expect(
       o.endTime!,
       unittest.equals('foo'),
@@ -1126,27 +1126,27 @@ void checkApigatewayOperationMetadataDiagnostic(
   buildCounterApigatewayOperationMetadataDiagnostic--;
 }
 
-core.List<api.ApigatewayAuditConfig> buildUnnamed5392() {
+core.List<api.ApigatewayAuditConfig> buildUnnamed5809() {
   var o = <api.ApigatewayAuditConfig>[];
   o.add(buildApigatewayAuditConfig());
   o.add(buildApigatewayAuditConfig());
   return o;
 }
 
-void checkUnnamed5392(core.List<api.ApigatewayAuditConfig> o) {
+void checkUnnamed5809(core.List<api.ApigatewayAuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApigatewayAuditConfig(o[0] as api.ApigatewayAuditConfig);
   checkApigatewayAuditConfig(o[1] as api.ApigatewayAuditConfig);
 }
 
-core.List<api.ApigatewayBinding> buildUnnamed5393() {
+core.List<api.ApigatewayBinding> buildUnnamed5810() {
   var o = <api.ApigatewayBinding>[];
   o.add(buildApigatewayBinding());
   o.add(buildApigatewayBinding());
   return o;
 }
 
-void checkUnnamed5393(core.List<api.ApigatewayBinding> o) {
+void checkUnnamed5810(core.List<api.ApigatewayBinding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApigatewayBinding(o[0] as api.ApigatewayBinding);
   checkApigatewayBinding(o[1] as api.ApigatewayBinding);
@@ -1157,8 +1157,8 @@ api.ApigatewayPolicy buildApigatewayPolicy() {
   var o = api.ApigatewayPolicy();
   buildCounterApigatewayPolicy++;
   if (buildCounterApigatewayPolicy < 3) {
-    o.auditConfigs = buildUnnamed5392();
-    o.bindings = buildUnnamed5393();
+    o.auditConfigs = buildUnnamed5809();
+    o.bindings = buildUnnamed5810();
     o.etag = 'foo';
     o.version = 42;
   }
@@ -1169,8 +1169,8 @@ api.ApigatewayPolicy buildApigatewayPolicy() {
 void checkApigatewayPolicy(api.ApigatewayPolicy o) {
   buildCounterApigatewayPolicy++;
   if (buildCounterApigatewayPolicy < 3) {
-    checkUnnamed5392(o.auditConfigs!);
-    checkUnnamed5393(o.bindings!);
+    checkUnnamed5809(o.auditConfigs!);
+    checkUnnamed5810(o.bindings!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -1207,7 +1207,7 @@ void checkApigatewaySetIamPolicyRequest(api.ApigatewaySetIamPolicyRequest o) {
   buildCounterApigatewaySetIamPolicyRequest--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed5394() {
+core.Map<core.String, core.Object> buildUnnamed5811() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -1222,7 +1222,7 @@ core.Map<core.String, core.Object> buildUnnamed5394() {
   return o;
 }
 
-void checkUnnamed5394(core.Map<core.String, core.Object> o) {
+void checkUnnamed5811(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -1254,17 +1254,17 @@ void checkUnnamed5394(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed5395() {
+core.List<core.Map<core.String, core.Object>> buildUnnamed5812() {
   var o = <core.Map<core.String, core.Object>>[];
-  o.add(buildUnnamed5394());
-  o.add(buildUnnamed5394());
+  o.add(buildUnnamed5811());
+  o.add(buildUnnamed5811());
   return o;
 }
 
-void checkUnnamed5395(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed5812(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed5394(o[0]);
-  checkUnnamed5394(o[1]);
+  checkUnnamed5811(o[0]);
+  checkUnnamed5811(o[1]);
 }
 
 core.int buildCounterApigatewayStatus = 0;
@@ -1273,7 +1273,7 @@ api.ApigatewayStatus buildApigatewayStatus() {
   buildCounterApigatewayStatus++;
   if (buildCounterApigatewayStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed5395();
+    o.details = buildUnnamed5812();
     o.message = 'foo';
   }
   buildCounterApigatewayStatus--;
@@ -1287,7 +1287,7 @@ void checkApigatewayStatus(api.ApigatewayStatus o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed5395(o.details!);
+    checkUnnamed5812(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -1296,14 +1296,14 @@ void checkApigatewayStatus(api.ApigatewayStatus o) {
   buildCounterApigatewayStatus--;
 }
 
-core.List<core.String> buildUnnamed5396() {
+core.List<core.String> buildUnnamed5813() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed5396(core.List<core.String> o) {
+void checkUnnamed5813(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1321,7 +1321,7 @@ api.ApigatewayTestIamPermissionsRequest
   var o = api.ApigatewayTestIamPermissionsRequest();
   buildCounterApigatewayTestIamPermissionsRequest++;
   if (buildCounterApigatewayTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed5396();
+    o.permissions = buildUnnamed5813();
   }
   buildCounterApigatewayTestIamPermissionsRequest--;
   return o;
@@ -1331,19 +1331,19 @@ void checkApigatewayTestIamPermissionsRequest(
     api.ApigatewayTestIamPermissionsRequest o) {
   buildCounterApigatewayTestIamPermissionsRequest++;
   if (buildCounterApigatewayTestIamPermissionsRequest < 3) {
-    checkUnnamed5396(o.permissions!);
+    checkUnnamed5813(o.permissions!);
   }
   buildCounterApigatewayTestIamPermissionsRequest--;
 }
 
-core.List<core.String> buildUnnamed5397() {
+core.List<core.String> buildUnnamed5814() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed5397(core.List<core.String> o) {
+void checkUnnamed5814(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1361,7 +1361,7 @@ api.ApigatewayTestIamPermissionsResponse
   var o = api.ApigatewayTestIamPermissionsResponse();
   buildCounterApigatewayTestIamPermissionsResponse++;
   if (buildCounterApigatewayTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed5397();
+    o.permissions = buildUnnamed5814();
   }
   buildCounterApigatewayTestIamPermissionsResponse--;
   return o;
@@ -1371,7 +1371,7 @@ void checkApigatewayTestIamPermissionsResponse(
     api.ApigatewayTestIamPermissionsResponse o) {
   buildCounterApigatewayTestIamPermissionsResponse++;
   if (buildCounterApigatewayTestIamPermissionsResponse < 3) {
-    checkUnnamed5397(o.permissions!);
+    checkUnnamed5814(o.permissions!);
   }
   buildCounterApigatewayTestIamPermissionsResponse--;
 }

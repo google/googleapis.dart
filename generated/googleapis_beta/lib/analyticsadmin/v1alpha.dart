@@ -4976,6 +4976,17 @@ class GoogleAnalyticsAdminV1alphaConversionEvent {
   /// Output only.
   core.String? createTime;
 
+  /// If set to true, this conversion event refers to a custom event.
+  ///
+  /// If set to false, this conversion event refers to a default event in GA.
+  /// Default events typically have special meaning in GA. Default events are
+  /// usually created for you by the GA system, but in some cases can be created
+  /// by property admins. Custom events count towards the maximum number of
+  /// custom conversion events that may be created per property.
+  ///
+  /// Output only.
+  core.bool? custom;
+
   /// The event name for this conversion event.
   ///
   /// Examples: 'click', 'purchase'
@@ -5001,6 +5012,9 @@ class GoogleAnalyticsAdminV1alphaConversionEvent {
     if (_json.containsKey('createTime')) {
       createTime = _json['createTime'] as core.String;
     }
+    if (_json.containsKey('custom')) {
+      custom = _json['custom'] as core.bool;
+    }
     if (_json.containsKey('eventName')) {
       eventName = _json['eventName'] as core.String;
     }
@@ -5014,6 +5028,7 @@ class GoogleAnalyticsAdminV1alphaConversionEvent {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
+        if (custom != null) 'custom': custom!,
         if (eventName != null) 'eventName': eventName!,
         if (isDeletable != null) 'isDeletable': isDeletable!,
         if (name != null) 'name': name!,
@@ -5481,19 +5496,6 @@ class GoogleAnalyticsAdminV1alphaFirebaseLink {
   /// Output only.
   core.String? createTime;
 
-  /// Maximum user access to the GA4 property allowed to admins of the linked
-  /// Firebase project.
-  /// Possible string values are:
-  /// - "MAXIMUM_USER_ACCESS_UNSPECIFIED" : Unspecified maximum user access.
-  /// - "NO_ACCESS" : Firebase users have no access to the Analytics property.
-  /// - "READ_AND_ANALYZE" : Firebase users have Read & Analyze access to the
-  /// Analytics property.
-  /// - "EDITOR_WITHOUT_LINK_MANAGEMENT" : Firebase users have edit access to
-  /// the Analytics property, but may not manage the Firebase link.
-  /// - "EDITOR_INCLUDING_LINK_MANAGEMENT" : Firebase users have edit access to
-  /// the Analytics property and may manage the Firebase link.
-  core.String? maximumUserAccess;
-
   /// Example format: properties/1234/firebaseLinks/5678
   ///
   /// Output only.
@@ -5516,9 +5518,6 @@ class GoogleAnalyticsAdminV1alphaFirebaseLink {
     if (_json.containsKey('createTime')) {
       createTime = _json['createTime'] as core.String;
     }
-    if (_json.containsKey('maximumUserAccess')) {
-      maximumUserAccess = _json['maximumUserAccess'] as core.String;
-    }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
@@ -5529,7 +5528,6 @@ class GoogleAnalyticsAdminV1alphaFirebaseLink {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
-        if (maximumUserAccess != null) 'maximumUserAccess': maximumUserAccess!,
         if (name != null) 'name': name!,
         if (project != null) 'project': project!,
       };
@@ -5587,17 +5585,17 @@ class GoogleAnalyticsAdminV1alphaGoogleAdsLink {
   /// Output only.
   core.String? createTime;
 
-  /// Google Ads customer ID.
-  ///
-  /// Immutable.
-  core.String? customerId;
-
   /// Email address of the user that created the link.
   ///
   /// An empty string will be returned if the email address can't be retrieved.
   ///
   /// Output only.
-  core.String? emailAddress;
+  core.String? creatorEmailAddress;
+
+  /// Google Ads customer ID.
+  ///
+  /// Immutable.
+  core.String? customerId;
 
   /// Format: properties/{propertyId}/googleAdsLinks/{googleAdsLinkId} Note:
   /// googleAdsLinkId is not the Google Ads customer ID.
@@ -5623,11 +5621,11 @@ class GoogleAnalyticsAdminV1alphaGoogleAdsLink {
     if (_json.containsKey('createTime')) {
       createTime = _json['createTime'] as core.String;
     }
+    if (_json.containsKey('creatorEmailAddress')) {
+      creatorEmailAddress = _json['creatorEmailAddress'] as core.String;
+    }
     if (_json.containsKey('customerId')) {
       customerId = _json['customerId'] as core.String;
-    }
-    if (_json.containsKey('emailAddress')) {
-      emailAddress = _json['emailAddress'] as core.String;
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -5642,8 +5640,9 @@ class GoogleAnalyticsAdminV1alphaGoogleAdsLink {
           'adsPersonalizationEnabled': adsPersonalizationEnabled!,
         if (canManageClients != null) 'canManageClients': canManageClients!,
         if (createTime != null) 'createTime': createTime!,
+        if (creatorEmailAddress != null)
+          'creatorEmailAddress': creatorEmailAddress!,
         if (customerId != null) 'customerId': customerId!,
-        if (emailAddress != null) 'emailAddress': emailAddress!,
         if (name != null) 'name': name!,
         if (updateTime != null) 'updateTime': updateTime!,
       };

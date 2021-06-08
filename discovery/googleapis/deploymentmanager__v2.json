@@ -116,6 +116,7 @@
             "methods": {
                 "cancelPreview": {
                     "description": "Cancels and removes the preview currently associated with the deployment.",
+                    "flatPath": "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/cancelPreview",
                     "httpMethod": "POST",
                     "id": "deploymentmanager.deployments.cancelPreview",
                     "parameterOrder": [
@@ -152,6 +153,7 @@
                 },
                 "delete": {
                     "description": "Deletes a deployment and all of the resources in the deployment.",
+                    "flatPath": "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}",
                     "httpMethod": "DELETE",
                     "id": "deploymentmanager.deployments.delete",
                     "parameterOrder": [
@@ -198,6 +200,7 @@
                 },
                 "get": {
                     "description": "Gets information about a specific deployment.",
+                    "flatPath": "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}",
                     "httpMethod": "GET",
                     "id": "deploymentmanager.deployments.get",
                     "parameterOrder": [
@@ -233,6 +236,7 @@
                 },
                 "getIamPolicy": {
                     "description": "Gets the access control policy for a resource. May be empty if no such policy or resource exists.",
+                    "flatPath": "deploymentmanager/v2/projects/{project}/global/deployments/{resource}/getIamPolicy",
                     "httpMethod": "GET",
                     "id": "deploymentmanager.deployments.getIamPolicy",
                     "parameterOrder": [
@@ -272,6 +276,7 @@
                 },
                 "insert": {
                     "description": "Creates a deployment and all of the resources described by the deployment manifest.",
+                    "flatPath": "deploymentmanager/v2/projects/{project}/global/deployments",
                     "httpMethod": "POST",
                     "id": "deploymentmanager.deployments.insert",
                     "parameterOrder": [
@@ -319,6 +324,7 @@
                 },
                 "list": {
                     "description": "Lists all deployments for a given project.",
+                    "flatPath": "deploymentmanager/v2/projects/{project}/global/deployments",
                     "httpMethod": "GET",
                     "id": "deploymentmanager.deployments.list",
                     "parameterOrder": [
@@ -369,6 +375,7 @@
                 },
                 "patch": {
                     "description": "Patches a deployment and all of the resources described by the deployment manifest.",
+                    "flatPath": "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}",
                     "httpMethod": "PATCH",
                     "id": "deploymentmanager.deployments.patch",
                     "parameterOrder": [
@@ -439,6 +446,7 @@
                 },
                 "setIamPolicy": {
                     "description": "Sets the access control policy on the specified resource. Replaces any existing policy.",
+                    "flatPath": "deploymentmanager/v2/projects/{project}/global/deployments/{resource}/setIamPolicy",
                     "httpMethod": "POST",
                     "id": "deploymentmanager.deployments.setIamPolicy",
                     "parameterOrder": [
@@ -475,6 +483,7 @@
                 },
                 "stop": {
                     "description": "Stops an ongoing operation. This does not roll back any work that has already been completed, but prevents any new work from being started.",
+                    "flatPath": "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/stop",
                     "httpMethod": "POST",
                     "id": "deploymentmanager.deployments.stop",
                     "parameterOrder": [
@@ -511,6 +520,7 @@
                 },
                 "testIamPermissions": {
                     "description": "Returns permissions that a caller has on the specified resource.",
+                    "flatPath": "deploymentmanager/v2/projects/{project}/global/deployments/{resource}/testIamPermissions",
                     "httpMethod": "POST",
                     "id": "deploymentmanager.deployments.testIamPermissions",
                     "parameterOrder": [
@@ -547,6 +557,7 @@
                 },
                 "update": {
                     "description": "Updates a deployment and all of the resources described by the deployment manifest.",
+                    "flatPath": "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}",
                     "httpMethod": "PUT",
                     "id": "deploymentmanager.deployments.update",
                     "parameterOrder": [
@@ -621,6 +632,7 @@
             "methods": {
                 "get": {
                     "description": "Gets information about a specific manifest.",
+                    "flatPath": "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/manifests/{manifest}",
                     "httpMethod": "GET",
                     "id": "deploymentmanager.manifests.get",
                     "parameterOrder": [
@@ -664,6 +676,7 @@
                 },
                 "list": {
                     "description": "Lists all manifests for a given deployment.",
+                    "flatPath": "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/manifests",
                     "httpMethod": "GET",
                     "id": "deploymentmanager.manifests.list",
                     "parameterOrder": [
@@ -726,6 +739,7 @@
             "methods": {
                 "get": {
                     "description": "Gets information about a specific operation.",
+                    "flatPath": "deploymentmanager/v2/projects/{project}/global/operations/{operation}",
                     "httpMethod": "GET",
                     "id": "deploymentmanager.operations.get",
                     "parameterOrder": [
@@ -760,6 +774,7 @@
                 },
                 "list": {
                     "description": "Lists all operations for a project.",
+                    "flatPath": "deploymentmanager/v2/projects/{project}/global/operations",
                     "httpMethod": "GET",
                     "id": "deploymentmanager.operations.list",
                     "parameterOrder": [
@@ -814,6 +829,7 @@
             "methods": {
                 "get": {
                     "description": "Gets information about a single resource.",
+                    "flatPath": "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/resources/{resource}",
                     "httpMethod": "GET",
                     "id": "deploymentmanager.resources.get",
                     "parameterOrder": [
@@ -856,6 +872,7 @@
                 },
                 "list": {
                     "description": "Lists all resources in a given deployment.",
+                    "flatPath": "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/resources",
                     "httpMethod": "GET",
                     "id": "deploymentmanager.resources.list",
                     "parameterOrder": [
@@ -918,6 +935,7 @@
             "methods": {
                 "list": {
                     "description": "Lists all resource types for Deployment Manager.",
+                    "flatPath": "deploymentmanager/v2/projects/{project}/global/types",
                     "httpMethod": "GET",
                     "id": "deploymentmanager.types.list",
                     "parameterOrder": [
@@ -969,7 +987,7 @@
             }
         }
     },
-    "revision": "20210513",
+    "revision": "20210607",
     "rootUrl": "https://deploymentmanager.googleapis.com/",
     "schemas": {
         "AuditConfig": {

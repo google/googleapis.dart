@@ -108,6 +108,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a new custom app.",
+                            "flatPath": "playcustomapp/v1/accounts/{account}/customApps",
                             "httpMethod": "POST",
                             "id": "playcustomapp.accounts.customApps.create",
                             "mediaUpload": {
@@ -155,7 +156,7 @@
             }
         }
     },
-    "revision": "20210519",
+    "revision": "20210613",
     "rootUrl": "https://playcustomapp.googleapis.com/",
     "schemas": {
         "CustomApp": {

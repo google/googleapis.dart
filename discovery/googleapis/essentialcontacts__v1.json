@@ -109,6 +109,7 @@
                     "methods": {
                         "compute": {
                             "description": "Lists all contacts for the resource that are subscribed to the specified notification categories, including contacts inherited from any parent resources.",
+                            "flatPath": "v1/folders/{foldersId}/contacts:compute",
                             "httpMethod": "GET",
                             "id": "essentialcontacts.folders.contacts.compute",
                             "parameterOrder": [
@@ -172,6 +173,7 @@
                         },
                         "create": {
                             "description": "Adds a new contact for a resource.",
+                            "flatPath": "v1/folders/{foldersId}/contacts",
                             "httpMethod": "POST",
                             "id": "essentialcontacts.folders.contacts.create",
                             "parameterOrder": [
@@ -199,6 +201,7 @@
                         },
                         "delete": {
                             "description": "Deletes a contact.",
+                            "flatPath": "v1/folders/{foldersId}/contacts/{contactsId}",
                             "httpMethod": "DELETE",
                             "id": "essentialcontacts.folders.contacts.delete",
                             "parameterOrder": [
@@ -223,6 +226,7 @@
                         },
                         "get": {
                             "description": "Gets a single contact.",
+                            "flatPath": "v1/folders/{foldersId}/contacts/{contactsId}",
                             "httpMethod": "GET",
                             "id": "essentialcontacts.folders.contacts.get",
                             "parameterOrder": [
@@ -247,6 +251,7 @@
                         },
                         "list": {
                             "description": "Lists the contacts that have been set on a resource.",
+                            "flatPath": "v1/folders/{foldersId}/contacts",
                             "httpMethod": "GET",
                             "id": "essentialcontacts.folders.contacts.list",
                             "parameterOrder": [
@@ -282,6 +287,7 @@
                         },
                         "patch": {
                             "description": "Updates a contact. Note: A contact's email address cannot be changed.",
+                            "flatPath": "v1/folders/{foldersId}/contacts/{contactsId}",
                             "httpMethod": "PATCH",
                             "id": "essentialcontacts.folders.contacts.patch",
                             "parameterOrder": [
@@ -315,6 +321,7 @@
                         },
                         "sendTestMessage": {
                             "description": "Allows a contact admin to send a test message to contact to verify that it has been configured correctly.",
+                            "flatPath": "v1/folders/{foldersId}/contacts:sendTestMessage",
                             "httpMethod": "POST",
                             "id": "essentialcontacts.folders.contacts.sendTestMessage",
                             "parameterOrder": [
@@ -350,6 +357,7 @@
                     "methods": {
                         "compute": {
                             "description": "Lists all contacts for the resource that are subscribed to the specified notification categories, including contacts inherited from any parent resources.",
+                            "flatPath": "v1/organizations/{organizationsId}/contacts:compute",
                             "httpMethod": "GET",
                             "id": "essentialcontacts.organizations.contacts.compute",
                             "parameterOrder": [
@@ -413,6 +421,7 @@
                         },
                         "create": {
                             "description": "Adds a new contact for a resource.",
+                            "flatPath": "v1/organizations/{organizationsId}/contacts",
                             "httpMethod": "POST",
                             "id": "essentialcontacts.organizations.contacts.create",
                             "parameterOrder": [
@@ -440,6 +449,7 @@
                         },
                         "delete": {
                             "description": "Deletes a contact.",
+                            "flatPath": "v1/organizations/{organizationsId}/contacts/{contactsId}",
                             "httpMethod": "DELETE",
                             "id": "essentialcontacts.organizations.contacts.delete",
                             "parameterOrder": [
@@ -464,6 +474,7 @@
                         },
                         "get": {
                             "description": "Gets a single contact.",
+                            "flatPath": "v1/organizations/{organizationsId}/contacts/{contactsId}",
                             "httpMethod": "GET",
                             "id": "essentialcontacts.organizations.contacts.get",
                             "parameterOrder": [
@@ -488,6 +499,7 @@
                         },
                         "list": {
                             "description": "Lists the contacts that have been set on a resource.",
+                            "flatPath": "v1/organizations/{organizationsId}/contacts",
                             "httpMethod": "GET",
                             "id": "essentialcontacts.organizations.contacts.list",
                             "parameterOrder": [
@@ -523,6 +535,7 @@
                         },
                         "patch": {
                             "description": "Updates a contact. Note: A contact's email address cannot be changed.",
+                            "flatPath": "v1/organizations/{organizationsId}/contacts/{contactsId}",
                             "httpMethod": "PATCH",
                             "id": "essentialcontacts.organizations.contacts.patch",
                             "parameterOrder": [
@@ -556,6 +569,7 @@
                         },
                         "sendTestMessage": {
                             "description": "Allows a contact admin to send a test message to contact to verify that it has been configured correctly.",
+                            "flatPath": "v1/organizations/{organizationsId}/contacts:sendTestMessage",
                             "httpMethod": "POST",
                             "id": "essentialcontacts.organizations.contacts.sendTestMessage",
                             "parameterOrder": [
@@ -591,6 +605,7 @@
                     "methods": {
                         "compute": {
                             "description": "Lists all contacts for the resource that are subscribed to the specified notification categories, including contacts inherited from any parent resources.",
+                            "flatPath": "v1/projects/{projectsId}/contacts:compute",
                             "httpMethod": "GET",
                             "id": "essentialcontacts.projects.contacts.compute",
                             "parameterOrder": [
@@ -654,6 +669,7 @@
                         },
                         "create": {
                             "description": "Adds a new contact for a resource.",
+                            "flatPath": "v1/projects/{projectsId}/contacts",
                             "httpMethod": "POST",
                             "id": "essentialcontacts.projects.contacts.create",
                             "parameterOrder": [
@@ -681,6 +697,7 @@
                         },
                         "delete": {
                             "description": "Deletes a contact.",
+                            "flatPath": "v1/projects/{projectsId}/contacts/{contactsId}",
                             "httpMethod": "DELETE",
                             "id": "essentialcontacts.projects.contacts.delete",
                             "parameterOrder": [
@@ -705,6 +722,7 @@
                         },
                         "get": {
                             "description": "Gets a single contact.",
+                            "flatPath": "v1/projects/{projectsId}/contacts/{contactsId}",
                             "httpMethod": "GET",
                             "id": "essentialcontacts.projects.contacts.get",
                             "parameterOrder": [
@@ -729,6 +747,7 @@
                         },
                         "list": {
                             "description": "Lists the contacts that have been set on a resource.",
+                            "flatPath": "v1/projects/{projectsId}/contacts",
                             "httpMethod": "GET",
                             "id": "essentialcontacts.projects.contacts.list",
                             "parameterOrder": [
@@ -764,6 +783,7 @@
                         },
                         "patch": {
                             "description": "Updates a contact. Note: A contact's email address cannot be changed.",
+                            "flatPath": "v1/projects/{projectsId}/contacts/{contactsId}",
                             "httpMethod": "PATCH",
                             "id": "essentialcontacts.projects.contacts.patch",
                             "parameterOrder": [
@@ -797,6 +817,7 @@
                         },
                         "sendTestMessage": {
                             "description": "Allows a contact admin to send a test message to contact to verify that it has been configured correctly.",
+                            "flatPath": "v1/projects/{projectsId}/contacts:sendTestMessage",
                             "httpMethod": "POST",
                             "id": "essentialcontacts.projects.contacts.sendTestMessage",
                             "parameterOrder": [
@@ -827,7 +848,7 @@
             }
         }
     },
-    "revision": "20210520",
+    "revision": "20210614",
     "rootUrl": "https://essentialcontacts.googleapis.com/",
     "schemas": {
         "GoogleCloudEssentialcontactsV1ComputeContactsResponse": {

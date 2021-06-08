@@ -113,6 +113,7 @@
                                     "methods": {
                                         "cancel": {
                                             "description": "Cancels an execution of the given name.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/workflows/{workflowsId}/executions/{executionsId}:cancel",
                                             "httpMethod": "POST",
                                             "id": "workflowexecutions.projects.locations.workflows.executions.cancel",
                                             "parameterOrder": [
@@ -140,6 +141,7 @@
                                         },
                                         "create": {
                                             "description": "Creates a new execution using the latest revision of the given workflow.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/workflows/{workflowsId}/executions",
                                             "httpMethod": "POST",
                                             "id": "workflowexecutions.projects.locations.workflows.executions.create",
                                             "parameterOrder": [
@@ -167,6 +169,7 @@
                                         },
                                         "get": {
                                             "description": "Returns an execution of the given name.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/workflows/{workflowsId}/executions/{executionsId}",
                                             "httpMethod": "GET",
                                             "id": "workflowexecutions.projects.locations.workflows.executions.get",
                                             "parameterOrder": [
@@ -206,6 +209,7 @@
                                         },
                                         "list": {
                                             "description": "Returns a list of executions which belong to the workflow with the given name. The method returns executions of all workflow revisions. Returned executions are ordered by their start time (newest first).",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/workflows/{workflowsId}/executions",
                                             "httpMethod": "GET",
                                             "id": "workflowexecutions.projects.locations.workflows.executions.list",
                                             "parameterOrder": [
@@ -263,7 +267,7 @@
             }
         }
     },
-    "revision": "20210511",
+    "revision": "20210601",
     "rootUrl": "https://workflowexecutions.googleapis.com/",
     "schemas": {
         "CancelExecutionRequest": {

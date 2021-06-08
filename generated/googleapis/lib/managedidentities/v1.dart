@@ -27,6 +27,7 @@
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsGlobalResource]
 ///       - [ProjectsLocationsGlobalDomainsResource]
+///         - [ProjectsLocationsGlobalDomainsSqlIntegrationsResource]
 ///       - [ProjectsLocationsGlobalOperationsResource]
 library managedidentities.v1;
 
@@ -125,7 +126,7 @@ class ProjectsLocationsResource {
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
   ///
   /// [pageSize] - The maximum number of results to return. If not set, the
-  /// service will select a default.
+  /// service selects a default.
   ///
   /// [pageToken] - A page token received from the `next_page_token` field in
   /// the response. Send that page token to receive the subsequent page.
@@ -180,6 +181,9 @@ class ProjectsLocationsGlobalResource {
 
 class ProjectsLocationsGlobalDomainsResource {
   final commons.ApiRequester _requester;
+
+  ProjectsLocationsGlobalDomainsSqlIntegrationsResource get sqlIntegrations =>
+      ProjectsLocationsGlobalDomainsSqlIntegrationsResource(_requester);
 
   ProjectsLocationsGlobalDomainsResource(commons.ApiRequester client)
       : _requester = client;
@@ -782,6 +786,113 @@ class ProjectsLocationsGlobalDomainsResource {
       queryParams: _queryParams,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsGlobalDomainsSqlIntegrationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGlobalDomainsSqlIntegrationsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets details of a single sqlIntegration.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. SQLIntegration resource name using the form:
+  /// `projects/{project_id}/locations/global/domains/{domain}/sqlIntegrations/{name}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/domains/\[^/\]+/sqlIntegrations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SqlIntegration].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SqlIntegration> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return SqlIntegration.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists SqlIntegrations in a given domain.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the SqlIntegrations using the
+  /// form: `projects/{project_id}/locations/global/domains / * `
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/domains/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter specifying constraints of a list operation.
+  /// For example, `SqlIntegration.name="sql"`.
+  ///
+  /// [orderBy] - Optional. Specifies the ordering of results following syntax
+  /// at https://cloud.google.com/apis/design/design_patterns#sorting_order.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return. If not
+  /// specified, a default value of 1000 will be used by the service. Regardless
+  /// of the page_size value, the response may include a partial list and a
+  /// caller should only rely on response'ANIZATIONs next_page_token to
+  /// determine if there are more instances left to be queried.
+  ///
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// List request, if any.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSqlIntegrationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSqlIntegrationsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/sqlIntegrations';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListSqlIntegrationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1741,7 +1852,9 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
   /// Unique name of the resource.
   ///
   /// It uses the form:
-  /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
+  /// `projects/{project_id|project_number}/locations/{location_id}/instances/{instance_id}`
+  /// Note: Either project_id or project_number can be used, but keep it
+  /// consistent with other APIs (e.g. RescheduleUpdate)
   core.String? name;
 
   /// Custom string attributes used primarily to expose producer-specific
@@ -2275,14 +2388,6 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion {
 /// SloMetadata contains resources required for proper SLO classification of the
 /// instance.
 class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
-  /// Global per-instance SLI eligibility which applies to all defined SLIs.
-  ///
-  /// Exactly one of 'eligibility' and 'per_sli_eligibility' fields must be
-  /// used.
-  ///
-  /// Optional.
-  GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility? eligibility;
-
   /// List of SLO exclusion windows.
   ///
   /// When multiple entries in the list match (matching the exclusion
@@ -2311,9 +2416,6 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
 
   /// Multiple per-instance SLI eligibilities which apply for individual SLIs.
   ///
-  /// Exactly one of 'eligibility' and 'per_sli_eligibility' fields must be
-  /// used.
-  ///
   /// Optional.
   GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility?
       perSliEligibility;
@@ -2328,12 +2430,6 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
 
   GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata.fromJson(
       core.Map _json) {
-    if (_json.containsKey('eligibility')) {
-      eligibility =
-          GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility
-              .fromJson(
-                  _json['eligibility'] as core.Map<core.String, core.dynamic>);
-    }
     if (_json.containsKey('exclusions')) {
       exclusions = (_json['exclusions'] as core.List)
           .map<GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>(
@@ -2362,7 +2458,6 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (eligibility != null) 'eligibility': eligibility!.toJson(),
         if (exclusions != null)
           'exclusions': exclusions!.map((value) => value.toJson()).toList(),
         if (nodes != null)
@@ -2467,6 +2562,47 @@ class ListOperationsResponse {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
           'operations': operations!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// ListSqlIntegrationsResponse is the response message for ListSqlIntegrations
+/// method.
+class ListSqlIntegrationsResponse {
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
+  core.String? nextPageToken;
+
+  /// A list of SQLIntegrations of a domain.
+  core.List<SqlIntegration>? sqlIntegrations;
+
+  /// A list of locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListSqlIntegrationsResponse();
+
+  ListSqlIntegrationsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+    if (_json.containsKey('sqlIntegrations')) {
+      sqlIntegrations = (_json['sqlIntegrations'] as core.List)
+          .map<SqlIntegration>((value) => SqlIntegration.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('unreachable')) {
+      unreachable = (_json['unreachable'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (sqlIntegrations != null)
+          'sqlIntegrations':
+              sqlIntegrations!.map((value) => value.toJson()).toList(),
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -3053,6 +3189,68 @@ class SetIamPolicyRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (policy != null) 'policy': policy!.toJson(),
+      };
+}
+
+/// Represents the Sql instance integrated with AD.
+class SqlIntegration {
+  /// The time sql integration was created.
+  ///
+  /// Synthetic field is populated automatically by CCFE.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The unique name of the sql integration in the form of
+  /// `projects/{project_id}/locations/global/domains/{domain_name}/sqlIntegrations/{sql_integration}`
+  core.String? name;
+
+  /// The full resource name of an integrated sql instance
+  core.String? sqlInstance;
+
+  /// The current state of the sql integration.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Not Set
+  /// - "CREATING" : The sqlIntegration is being created.
+  /// - "DELETING" : The sqlIntegration is being deleted.
+  /// - "READY" : The sqlIntegration is ready.
+  core.String? state;
+
+  /// The time sql integration was updated.
+  ///
+  /// Synthetic field is populated automatically by CCFE.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  SqlIntegration();
+
+  SqlIntegration.fromJson(core.Map _json) {
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('sqlInstance')) {
+      sqlInstance = _json['sqlInstance'] as core.String;
+    }
+    if (_json.containsKey('state')) {
+      state = _json['state'] as core.String;
+    }
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (name != null) 'name': name!,
+        if (sqlInstance != null) 'sqlInstance': sqlInstance!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 

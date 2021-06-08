@@ -110,6 +110,7 @@
             "methods": {
                 "batchRunPivotReports": {
                     "description": "Returns multiple pivot reports in a batch. All reports must be for the same GA4 Property.",
+                    "flatPath": "v1beta/properties/{propertiesId}:batchRunPivotReports",
                     "httpMethod": "POST",
                     "id": "analyticsdata.properties.batchRunPivotReports",
                     "parameterOrder": [
@@ -138,6 +139,7 @@
                 },
                 "batchRunReports": {
                     "description": "Returns multiple reports in a batch. All reports must be for the same GA4 Property.",
+                    "flatPath": "v1beta/properties/{propertiesId}:batchRunReports",
                     "httpMethod": "POST",
                     "id": "analyticsdata.properties.batchRunReports",
                     "parameterOrder": [
@@ -166,6 +168,7 @@
                 },
                 "getMetadata": {
                     "description": "Returns metadata for dimensions and metrics available in reporting methods. Used to explore the dimensions and metrics. In this method, a Google Analytics GA4 Property Identifier is specified in the request, and the metadata response includes Custom dimensions and metrics as well as Universal metadata. For example if a custom metric with parameter name `levels_unlocked` is registered to a property, the Metadata response will contain `customEvent:levels_unlocked`. Universal metadata are dimensions and metrics applicable to any property such as `country` and `totalUsers`.",
+                    "flatPath": "v1beta/properties/{propertiesId}/metadata",
                     "httpMethod": "GET",
                     "id": "analyticsdata.properties.getMetadata",
                     "parameterOrder": [
@@ -191,6 +194,7 @@
                 },
                 "runPivotReport": {
                     "description": "Returns a customized pivot report of your Google Analytics event data. Pivot reports are more advanced and expressive formats than regular reports. In a pivot report, dimensions are only visible if they are included in a pivot. Multiple pivots can be specified to further dissect your data.",
+                    "flatPath": "v1beta/properties/{propertiesId}:runPivotReport",
                     "httpMethod": "POST",
                     "id": "analyticsdata.properties.runPivotReport",
                     "parameterOrder": [
@@ -219,6 +223,7 @@
                 },
                 "runRealtimeReport": {
                     "description": "The Google Analytics Realtime API returns a customized report of realtime event data for your property. These reports show events and usage from the last 30 minutes.",
+                    "flatPath": "v1beta/properties/{propertiesId}:runRealtimeReport",
                     "httpMethod": "POST",
                     "id": "analyticsdata.properties.runRealtimeReport",
                     "parameterOrder": [
@@ -247,6 +252,7 @@
                 },
                 "runReport": {
                     "description": "Returns a customized report of your Google Analytics event data. Reports contain statistics derived from data collected by the Google Analytics tracking code. The data returned from the API is as a table with columns for the requested dimensions and metrics. Metrics are individual measurements of user activity on your property, such as active users or event count. Dimensions break down metrics across some common criteria, such as country or event name.",
+                    "flatPath": "v1beta/properties/{propertiesId}:runReport",
                     "httpMethod": "POST",
                     "id": "analyticsdata.properties.runReport",
                     "parameterOrder": [
@@ -276,7 +282,7 @@
             }
         }
     },
-    "revision": "20210519",
+    "revision": "20210613",
     "rootUrl": "https://analyticsdata.googleapis.com/",
     "schemas": {
         "BatchRunPivotReportsRequest": {

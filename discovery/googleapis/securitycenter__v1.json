@@ -109,6 +109,7 @@
                     "methods": {
                         "group": {
                             "description": "Filters an organization's assets and groups them by their specified properties.",
+                            "flatPath": "v1/folders/{foldersId}/assets:group",
                             "httpMethod": "POST",
                             "id": "securitycenter.folders.assets.group",
                             "parameterOrder": [
@@ -136,6 +137,7 @@
                         },
                         "list": {
                             "description": "Lists an organization's assets.",
+                            "flatPath": "v1/folders/{foldersId}/assets",
                             "httpMethod": "GET",
                             "id": "securitycenter.folders.assets.list",
                             "parameterOrder": [
@@ -199,6 +201,7 @@
                         },
                         "updateSecurityMarks": {
                             "description": "Updates security marks.",
+                            "flatPath": "v1/folders/{foldersId}/assets/{assetsId}/securityMarks",
                             "httpMethod": "PATCH",
                             "id": "securitycenter.folders.assets.updateSecurityMarks",
                             "parameterOrder": [
@@ -242,6 +245,7 @@
                     "methods": {
                         "list": {
                             "description": "Lists all sources belonging to an organization.",
+                            "flatPath": "v1/folders/{foldersId}/sources",
                             "httpMethod": "GET",
                             "id": "securitycenter.folders.sources.list",
                             "parameterOrder": [
@@ -281,6 +285,7 @@
                             "methods": {
                                 "group": {
                                     "description": "Filters an organization or source's findings and groups them by their specified properties. To group across all sources provide a `-` as the source id. Example: /v1/organizations/{organization_id}/sources/-/findings, /v1/folders/{folder_id}/sources/-/findings, /v1/projects/{project_id}/sources/-/findings",
+                                    "flatPath": "v1/folders/{foldersId}/sources/{sourcesId}/findings:group",
                                     "httpMethod": "POST",
                                     "id": "securitycenter.folders.sources.findings.group",
                                     "parameterOrder": [
@@ -308,6 +313,7 @@
                                 },
                                 "list": {
                                     "description": "Lists an organization or source's findings. To list across all sources provide a `-` as the source id. Example: /v1/organizations/{organization_id}/sources/-/findings",
+                                    "flatPath": "v1/folders/{foldersId}/sources/{sourcesId}/findings",
                                     "httpMethod": "GET",
                                     "id": "securitycenter.folders.sources.findings.list",
                                     "parameterOrder": [
@@ -327,7 +333,7 @@
                                             "type": "string"
                                         },
                                         "filter": {
-                                            "description": "Expression that defines the filter to apply across findings. The expression is a list of one or more restrictions combined via logical operators `AND` and `OR`. Parentheses are supported, and `OR` has higher precedence than `AND`. Restrictions have the form ` ` and may have a `-` character in front of them to indicate negation. Examples include: * name * source_properties.a_property * security_marks.marks.marka The supported operators are: * `=` for all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning substring matching, for strings. The supported value types are: * string literals in quotes. * integer literals without quotes. * boolean literals `true` and `false` without quotes. The following field and operator combinations are supported: * name: `=` * parent: `=`, `:` * resource_name: `=`, `:` * state: `=`, `:` * category: `=`, `:` * external_uri: `=`, `:` * event_time: `=`, `>`, `<`, `>=`, `<=` * severity: `=`, `:` Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: `event_time = \"2019-06-10T16:07:18-07:00\"` `event_time = 1560208038000` security_marks.marks: `=`, `:` source_properties: `=`, `:`, `>`, `<`, `>=`, `<=` For example, `source_properties.size = 100` is a valid filter string. Use a partial match on the empty string to filter based on a property existing: `source_properties.my_property : \"\"` Use a negated partial match on the empty string to filter based on a property not existing: `-source_properties.my_property : \"\"`",
+                                            "description": "Expression that defines the filter to apply across findings. The expression is a list of one or more restrictions combined via logical operators `AND` and `OR`. Parentheses are supported, and `OR` has higher precedence than `AND`. Restrictions have the form ` ` and may have a `-` character in front of them to indicate negation. Examples include: * name * source_properties.a_property * security_marks.marks.marka The supported operators are: * `=` for all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning substring matching, for strings. The supported value types are: * string literals in quotes. * integer literals without quotes. * boolean literals `true` and `false` without quotes. The following field and operator combinations are supported: * name: `=` * parent: `=`, `:` * resource_name: `=`, `:` * state: `=`, `:` * category: `=`, `:` * external_uri: `=`, `:` * event_time: `=`, `>`, `<`, `>=`, `<=` Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: `event_time = \"2019-06-10T16:07:18-07:00\"` `event_time = 1560208038000` * severity: `=`, `:` * workflow_state: `=`, `:` * security_marks.marks: `=`, `:` * source_properties: `=`, `:`, `>`, `<`, `>=`, `<=` For example, `source_properties.size = 100` is a valid filter string. Use a partial match on the empty string to filter based on a property existing: `source_properties.my_property : \"\"` Use a negated partial match on the empty string to filter based on a property not existing: `-source_properties.my_property : \"\"` * resource: * resource.name: `=`, `:` * resource.parent_name: `=`, `:` * resource.parent_display_name: `=`, `:` * resource.project_name: `=`, `:` * resource.project_display_name: `=`, `:` * resource.type: `=`, `:` * resource.folders.resource_folder: `=`, `:`",
                                             "location": "query",
                                             "type": "string"
                                         },
@@ -371,6 +377,7 @@
                                 },
                                 "patch": {
                                     "description": "Creates or updates a finding. The corresponding source must exist for a finding creation to succeed.",
+                                    "flatPath": "v1/folders/{foldersId}/sources/{sourcesId}/findings/{findingsId}",
                                     "httpMethod": "PATCH",
                                     "id": "securitycenter.folders.sources.findings.patch",
                                     "parameterOrder": [
@@ -404,6 +411,7 @@
                                 },
                                 "setState": {
                                     "description": "Updates the state of a finding.",
+                                    "flatPath": "v1/folders/{foldersId}/sources/{sourcesId}/findings/{findingsId}:setState",
                                     "httpMethod": "POST",
                                     "id": "securitycenter.folders.sources.findings.setState",
                                     "parameterOrder": [
@@ -431,6 +439,7 @@
                                 },
                                 "updateSecurityMarks": {
                                     "description": "Updates security marks.",
+                                    "flatPath": "v1/folders/{foldersId}/sources/{sourcesId}/findings/{findingsId}/securityMarks",
                                     "httpMethod": "PATCH",
                                     "id": "securitycenter.folders.sources.findings.updateSecurityMarks",
                                     "parameterOrder": [
@@ -478,6 +487,7 @@
             "methods": {
                 "getOrganizationSettings": {
                     "description": "Gets the settings for an organization.",
+                    "flatPath": "v1/organizations/{organizationsId}/organizationSettings",
                     "httpMethod": "GET",
                     "id": "securitycenter.organizations.getOrganizationSettings",
                     "parameterOrder": [
@@ -502,6 +512,7 @@
                 },
                 "updateOrganizationSettings": {
                     "description": "Updates an organization's settings.",
+                    "flatPath": "v1/organizations/{organizationsId}/organizationSettings",
                     "httpMethod": "PATCH",
                     "id": "securitycenter.organizations.updateOrganizationSettings",
                     "parameterOrder": [
@@ -539,6 +550,7 @@
                     "methods": {
                         "group": {
                             "description": "Filters an organization's assets and groups them by their specified properties.",
+                            "flatPath": "v1/organizations/{organizationsId}/assets:group",
                             "httpMethod": "POST",
                             "id": "securitycenter.organizations.assets.group",
                             "parameterOrder": [
@@ -566,6 +578,7 @@
                         },
                         "list": {
                             "description": "Lists an organization's assets.",
+                            "flatPath": "v1/organizations/{organizationsId}/assets",
                             "httpMethod": "GET",
                             "id": "securitycenter.organizations.assets.list",
                             "parameterOrder": [
@@ -629,6 +642,7 @@
                         },
                         "runDiscovery": {
                             "description": "Runs asset discovery. The discovery is tracked with a long-running operation. This API can only be called with limited frequency for an organization. If it is called too frequently the caller will receive a TOO_MANY_REQUESTS error.",
+                            "flatPath": "v1/organizations/{organizationsId}/assets:runDiscovery",
                             "httpMethod": "POST",
                             "id": "securitycenter.organizations.assets.runDiscovery",
                             "parameterOrder": [
@@ -656,6 +670,7 @@
                         },
                         "updateSecurityMarks": {
                             "description": "Updates security marks.",
+                            "flatPath": "v1/organizations/{organizationsId}/assets/{assetsId}/securityMarks",
                             "httpMethod": "PATCH",
                             "id": "securitycenter.organizations.assets.updateSecurityMarks",
                             "parameterOrder": [
@@ -699,6 +714,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a notification config.",
+                            "flatPath": "v1/organizations/{organizationsId}/notificationConfigs",
                             "httpMethod": "POST",
                             "id": "securitycenter.organizations.notificationConfigs.create",
                             "parameterOrder": [
@@ -731,6 +747,7 @@
                         },
                         "delete": {
                             "description": "Deletes a notification config.",
+                            "flatPath": "v1/organizations/{organizationsId}/notificationConfigs/{notificationConfigsId}",
                             "httpMethod": "DELETE",
                             "id": "securitycenter.organizations.notificationConfigs.delete",
                             "parameterOrder": [
@@ -755,6 +772,7 @@
                         },
                         "get": {
                             "description": "Gets a notification config.",
+                            "flatPath": "v1/organizations/{organizationsId}/notificationConfigs/{notificationConfigsId}",
                             "httpMethod": "GET",
                             "id": "securitycenter.organizations.notificationConfigs.get",
                             "parameterOrder": [
@@ -779,6 +797,7 @@
                         },
                         "list": {
                             "description": "Lists notification configs.",
+                            "flatPath": "v1/organizations/{organizationsId}/notificationConfigs",
                             "httpMethod": "GET",
                             "id": "securitycenter.organizations.notificationConfigs.list",
                             "parameterOrder": [
@@ -814,6 +833,7 @@
                         },
                         "patch": {
                             "description": " Updates a notification config. The following update fields are allowed: description, pubsub_topic, streaming_config.filter",
+                            "flatPath": "v1/organizations/{organizationsId}/notificationConfigs/{notificationConfigsId}",
                             "httpMethod": "PATCH",
                             "id": "securitycenter.organizations.notificationConfigs.patch",
                             "parameterOrder": [
@@ -851,6 +871,7 @@
                     "methods": {
                         "cancel": {
                             "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                            "flatPath": "v1/organizations/{organizationsId}/operations/{operationsId}:cancel",
                             "httpMethod": "POST",
                             "id": "securitycenter.organizations.operations.cancel",
                             "parameterOrder": [
@@ -875,6 +896,7 @@
                         },
                         "delete": {
                             "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                            "flatPath": "v1/organizations/{organizationsId}/operations/{operationsId}",
                             "httpMethod": "DELETE",
                             "id": "securitycenter.organizations.operations.delete",
                             "parameterOrder": [
@@ -899,6 +921,7 @@
                         },
                         "get": {
                             "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                            "flatPath": "v1/organizations/{organizationsId}/operations/{operationsId}",
                             "httpMethod": "GET",
                             "id": "securitycenter.organizations.operations.get",
                             "parameterOrder": [
@@ -923,6 +946,7 @@
                         },
                         "list": {
                             "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                            "flatPath": "v1/organizations/{organizationsId}/operations",
                             "httpMethod": "GET",
                             "id": "securitycenter.organizations.operations.list",
                             "parameterOrder": [
@@ -967,6 +991,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a source.",
+                            "flatPath": "v1/organizations/{organizationsId}/sources",
                             "httpMethod": "POST",
                             "id": "securitycenter.organizations.sources.create",
                             "parameterOrder": [
@@ -994,6 +1019,7 @@
                         },
                         "get": {
                             "description": "Gets a source.",
+                            "flatPath": "v1/organizations/{organizationsId}/sources/{sourcesId}",
                             "httpMethod": "GET",
                             "id": "securitycenter.organizations.sources.get",
                             "parameterOrder": [
@@ -1018,6 +1044,7 @@
                         },
                         "getIamPolicy": {
                             "description": "Gets the access control policy on the specified Source.",
+                            "flatPath": "v1/organizations/{organizationsId}/sources/{sourcesId}:getIamPolicy",
                             "httpMethod": "POST",
                             "id": "securitycenter.organizations.sources.getIamPolicy",
                             "parameterOrder": [
@@ -1045,6 +1072,7 @@
                         },
                         "list": {
                             "description": "Lists all sources belonging to an organization.",
+                            "flatPath": "v1/organizations/{organizationsId}/sources",
                             "httpMethod": "GET",
                             "id": "securitycenter.organizations.sources.list",
                             "parameterOrder": [
@@ -1080,6 +1108,7 @@
                         },
                         "patch": {
                             "description": "Updates a source.",
+                            "flatPath": "v1/organizations/{organizationsId}/sources/{sourcesId}",
                             "httpMethod": "PATCH",
                             "id": "securitycenter.organizations.sources.patch",
                             "parameterOrder": [
@@ -1113,6 +1142,7 @@
                         },
                         "setIamPolicy": {
                             "description": "Sets the access control policy on the specified Source.",
+                            "flatPath": "v1/organizations/{organizationsId}/sources/{sourcesId}:setIamPolicy",
                             "httpMethod": "POST",
                             "id": "securitycenter.organizations.sources.setIamPolicy",
                             "parameterOrder": [
@@ -1140,6 +1170,7 @@
                         },
                         "testIamPermissions": {
                             "description": "Returns the permissions that a caller has on the specified source.",
+                            "flatPath": "v1/organizations/{organizationsId}/sources/{sourcesId}:testIamPermissions",
                             "httpMethod": "POST",
                             "id": "securitycenter.organizations.sources.testIamPermissions",
                             "parameterOrder": [
@@ -1171,6 +1202,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a finding. The corresponding source must exist for finding creation to succeed.",
+                                    "flatPath": "v1/organizations/{organizationsId}/sources/{sourcesId}/findings",
                                     "httpMethod": "POST",
                                     "id": "securitycenter.organizations.sources.findings.create",
                                     "parameterOrder": [
@@ -1203,6 +1235,7 @@
                                 },
                                 "group": {
                                     "description": "Filters an organization or source's findings and groups them by their specified properties. To group across all sources provide a `-` as the source id. Example: /v1/organizations/{organization_id}/sources/-/findings, /v1/folders/{folder_id}/sources/-/findings, /v1/projects/{project_id}/sources/-/findings",
+                                    "flatPath": "v1/organizations/{organizationsId}/sources/{sourcesId}/findings:group",
                                     "httpMethod": "POST",
                                     "id": "securitycenter.organizations.sources.findings.group",
                                     "parameterOrder": [
@@ -1230,6 +1263,7 @@
                                 },
                                 "list": {
                                     "description": "Lists an organization or source's findings. To list across all sources provide a `-` as the source id. Example: /v1/organizations/{organization_id}/sources/-/findings",
+                                    "flatPath": "v1/organizations/{organizationsId}/sources/{sourcesId}/findings",
                                     "httpMethod": "GET",
                                     "id": "securitycenter.organizations.sources.findings.list",
                                     "parameterOrder": [
@@ -1249,7 +1283,7 @@
                                             "type": "string"
                                         },
                                         "filter": {
-                                            "description": "Expression that defines the filter to apply across findings. The expression is a list of one or more restrictions combined via logical operators `AND` and `OR`. Parentheses are supported, and `OR` has higher precedence than `AND`. Restrictions have the form ` ` and may have a `-` character in front of them to indicate negation. Examples include: * name * source_properties.a_property * security_marks.marks.marka The supported operators are: * `=` for all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning substring matching, for strings. The supported value types are: * string literals in quotes. * integer literals without quotes. * boolean literals `true` and `false` without quotes. The following field and operator combinations are supported: * name: `=` * parent: `=`, `:` * resource_name: `=`, `:` * state: `=`, `:` * category: `=`, `:` * external_uri: `=`, `:` * event_time: `=`, `>`, `<`, `>=`, `<=` * severity: `=`, `:` Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: `event_time = \"2019-06-10T16:07:18-07:00\"` `event_time = 1560208038000` security_marks.marks: `=`, `:` source_properties: `=`, `:`, `>`, `<`, `>=`, `<=` For example, `source_properties.size = 100` is a valid filter string. Use a partial match on the empty string to filter based on a property existing: `source_properties.my_property : \"\"` Use a negated partial match on the empty string to filter based on a property not existing: `-source_properties.my_property : \"\"`",
+                                            "description": "Expression that defines the filter to apply across findings. The expression is a list of one or more restrictions combined via logical operators `AND` and `OR`. Parentheses are supported, and `OR` has higher precedence than `AND`. Restrictions have the form ` ` and may have a `-` character in front of them to indicate negation. Examples include: * name * source_properties.a_property * security_marks.marks.marka The supported operators are: * `=` for all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning substring matching, for strings. The supported value types are: * string literals in quotes. * integer literals without quotes. * boolean literals `true` and `false` without quotes. The following field and operator combinations are supported: * name: `=` * parent: `=`, `:` * resource_name: `=`, `:` * state: `=`, `:` * category: `=`, `:` * external_uri: `=`, `:` * event_time: `=`, `>`, `<`, `>=`, `<=` Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: `event_time = \"2019-06-10T16:07:18-07:00\"` `event_time = 1560208038000` * severity: `=`, `:` * workflow_state: `=`, `:` * security_marks.marks: `=`, `:` * source_properties: `=`, `:`, `>`, `<`, `>=`, `<=` For example, `source_properties.size = 100` is a valid filter string. Use a partial match on the empty string to filter based on a property existing: `source_properties.my_property : \"\"` Use a negated partial match on the empty string to filter based on a property not existing: `-source_properties.my_property : \"\"` * resource: * resource.name: `=`, `:` * resource.parent_name: `=`, `:` * resource.parent_display_name: `=`, `:` * resource.project_name: `=`, `:` * resource.project_display_name: `=`, `:` * resource.type: `=`, `:` * resource.folders.resource_folder: `=`, `:`",
                                             "location": "query",
                                             "type": "string"
                                         },
@@ -1293,6 +1327,7 @@
                                 },
                                 "patch": {
                                     "description": "Creates or updates a finding. The corresponding source must exist for a finding creation to succeed.",
+                                    "flatPath": "v1/organizations/{organizationsId}/sources/{sourcesId}/findings/{findingsId}",
                                     "httpMethod": "PATCH",
                                     "id": "securitycenter.organizations.sources.findings.patch",
                                     "parameterOrder": [
@@ -1326,6 +1361,7 @@
                                 },
                                 "setState": {
                                     "description": "Updates the state of a finding.",
+                                    "flatPath": "v1/organizations/{organizationsId}/sources/{sourcesId}/findings/{findingsId}:setState",
                                     "httpMethod": "POST",
                                     "id": "securitycenter.organizations.sources.findings.setState",
                                     "parameterOrder": [
@@ -1353,6 +1389,7 @@
                                 },
                                 "updateSecurityMarks": {
                                     "description": "Updates security marks.",
+                                    "flatPath": "v1/organizations/{organizationsId}/sources/{sourcesId}/findings/{findingsId}/securityMarks",
                                     "httpMethod": "PATCH",
                                     "id": "securitycenter.organizations.sources.findings.updateSecurityMarks",
                                     "parameterOrder": [
@@ -1402,6 +1439,7 @@
                     "methods": {
                         "group": {
                             "description": "Filters an organization's assets and groups them by their specified properties.",
+                            "flatPath": "v1/projects/{projectsId}/assets:group",
                             "httpMethod": "POST",
                             "id": "securitycenter.projects.assets.group",
                             "parameterOrder": [
@@ -1429,6 +1467,7 @@
                         },
                         "list": {
                             "description": "Lists an organization's assets.",
+                            "flatPath": "v1/projects/{projectsId}/assets",
                             "httpMethod": "GET",
                             "id": "securitycenter.projects.assets.list",
                             "parameterOrder": [
@@ -1492,6 +1531,7 @@
                         },
                         "updateSecurityMarks": {
                             "description": "Updates security marks.",
+                            "flatPath": "v1/projects/{projectsId}/assets/{assetsId}/securityMarks",
                             "httpMethod": "PATCH",
                             "id": "securitycenter.projects.assets.updateSecurityMarks",
                             "parameterOrder": [
@@ -1535,6 +1575,7 @@
                     "methods": {
                         "list": {
                             "description": "Lists all sources belonging to an organization.",
+                            "flatPath": "v1/projects/{projectsId}/sources",
                             "httpMethod": "GET",
                             "id": "securitycenter.projects.sources.list",
                             "parameterOrder": [
@@ -1574,6 +1615,7 @@
                             "methods": {
                                 "group": {
                                     "description": "Filters an organization or source's findings and groups them by their specified properties. To group across all sources provide a `-` as the source id. Example: /v1/organizations/{organization_id}/sources/-/findings, /v1/folders/{folder_id}/sources/-/findings, /v1/projects/{project_id}/sources/-/findings",
+                                    "flatPath": "v1/projects/{projectsId}/sources/{sourcesId}/findings:group",
                                     "httpMethod": "POST",
                                     "id": "securitycenter.projects.sources.findings.group",
                                     "parameterOrder": [
@@ -1601,6 +1643,7 @@
                                 },
                                 "list": {
                                     "description": "Lists an organization or source's findings. To list across all sources provide a `-` as the source id. Example: /v1/organizations/{organization_id}/sources/-/findings",
+                                    "flatPath": "v1/projects/{projectsId}/sources/{sourcesId}/findings",
                                     "httpMethod": "GET",
                                     "id": "securitycenter.projects.sources.findings.list",
                                     "parameterOrder": [
@@ -1620,7 +1663,7 @@
                                             "type": "string"
                                         },
                                         "filter": {
-                                            "description": "Expression that defines the filter to apply across findings. The expression is a list of one or more restrictions combined via logical operators `AND` and `OR`. Parentheses are supported, and `OR` has higher precedence than `AND`. Restrictions have the form ` ` and may have a `-` character in front of them to indicate negation. Examples include: * name * source_properties.a_property * security_marks.marks.marka The supported operators are: * `=` for all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning substring matching, for strings. The supported value types are: * string literals in quotes. * integer literals without quotes. * boolean literals `true` and `false` without quotes. The following field and operator combinations are supported: * name: `=` * parent: `=`, `:` * resource_name: `=`, `:` * state: `=`, `:` * category: `=`, `:` * external_uri: `=`, `:` * event_time: `=`, `>`, `<`, `>=`, `<=` * severity: `=`, `:` Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: `event_time = \"2019-06-10T16:07:18-07:00\"` `event_time = 1560208038000` security_marks.marks: `=`, `:` source_properties: `=`, `:`, `>`, `<`, `>=`, `<=` For example, `source_properties.size = 100` is a valid filter string. Use a partial match on the empty string to filter based on a property existing: `source_properties.my_property : \"\"` Use a negated partial match on the empty string to filter based on a property not existing: `-source_properties.my_property : \"\"`",
+                                            "description": "Expression that defines the filter to apply across findings. The expression is a list of one or more restrictions combined via logical operators `AND` and `OR`. Parentheses are supported, and `OR` has higher precedence than `AND`. Restrictions have the form ` ` and may have a `-` character in front of them to indicate negation. Examples include: * name * source_properties.a_property * security_marks.marks.marka The supported operators are: * `=` for all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning substring matching, for strings. The supported value types are: * string literals in quotes. * integer literals without quotes. * boolean literals `true` and `false` without quotes. The following field and operator combinations are supported: * name: `=` * parent: `=`, `:` * resource_name: `=`, `:` * state: `=`, `:` * category: `=`, `:` * external_uri: `=`, `:` * event_time: `=`, `>`, `<`, `>=`, `<=` Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: `event_time = \"2019-06-10T16:07:18-07:00\"` `event_time = 1560208038000` * severity: `=`, `:` * workflow_state: `=`, `:` * security_marks.marks: `=`, `:` * source_properties: `=`, `:`, `>`, `<`, `>=`, `<=` For example, `source_properties.size = 100` is a valid filter string. Use a partial match on the empty string to filter based on a property existing: `source_properties.my_property : \"\"` Use a negated partial match on the empty string to filter based on a property not existing: `-source_properties.my_property : \"\"` * resource: * resource.name: `=`, `:` * resource.parent_name: `=`, `:` * resource.parent_display_name: `=`, `:` * resource.project_name: `=`, `:` * resource.project_display_name: `=`, `:` * resource.type: `=`, `:` * resource.folders.resource_folder: `=`, `:`",
                                             "location": "query",
                                             "type": "string"
                                         },
@@ -1664,6 +1707,7 @@
                                 },
                                 "patch": {
                                     "description": "Creates or updates a finding. The corresponding source must exist for a finding creation to succeed.",
+                                    "flatPath": "v1/projects/{projectsId}/sources/{sourcesId}/findings/{findingsId}",
                                     "httpMethod": "PATCH",
                                     "id": "securitycenter.projects.sources.findings.patch",
                                     "parameterOrder": [
@@ -1697,6 +1741,7 @@
                                 },
                                 "setState": {
                                     "description": "Updates the state of a finding.",
+                                    "flatPath": "v1/projects/{projectsId}/sources/{sourcesId}/findings/{findingsId}:setState",
                                     "httpMethod": "POST",
                                     "id": "securitycenter.projects.sources.findings.setState",
                                     "parameterOrder": [
@@ -1724,6 +1769,7 @@
                                 },
                                 "updateSecurityMarks": {
                                     "description": "Updates security marks.",
+                                    "flatPath": "v1/projects/{projectsId}/sources/{sourcesId}/findings/{findingsId}/securityMarks",
                                     "httpMethod": "PATCH",
                                     "id": "securitycenter.projects.sources.findings.updateSecurityMarks",
                                     "parameterOrder": [
@@ -1768,7 +1814,7 @@
             }
         }
     },
-    "revision": "20210514",
+    "revision": "20210611",
     "rootUrl": "https://securitycenter.googleapis.com/",
     "schemas": {
         "Asset": {
@@ -2458,7 +2504,7 @@
                     "type": "string"
                 },
                 "filter": {
-                    "description": "Expression that defines the filter to apply across findings. The expression is a list of one or more restrictions combined via logical operators `AND` and `OR`. Parentheses are supported, and `OR` has higher precedence than `AND`. Restrictions have the form ` ` and may have a `-` character in front of them to indicate negation. Examples include: * name * source_properties.a_property * security_marks.marks.marka The supported operators are: * `=` for all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning substring matching, for strings. The supported value types are: * string literals in quotes. * integer literals without quotes. * boolean literals `true` and `false` without quotes. The following field and operator combinations are supported: * name: `=` * parent: `=`, `:` * resource_name: `=`, `:` * state: `=`, `:` * category: `=`, `:` * external_uri: `=`, `:` * event_time: `=`, `>`, `<`, `>=`, `<=` * severity: `=`, `:` Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: `event_time = \"2019-06-10T16:07:18-07:00\"` `event_time = 1560208038000` * security_marks.marks: `=`, `:` * source_properties: `=`, `:`, `>`, `<`, `>=`, `<=` For example, `source_properties.size = 100` is a valid filter string. Use a partial match on the empty string to filter based on a property existing: `source_properties.my_property : \"\"` Use a negated partial match on the empty string to filter based on a property not existing: `-source_properties.my_property : \"\"`",
+                    "description": "Expression that defines the filter to apply across findings. The expression is a list of one or more restrictions combined via logical operators `AND` and `OR`. Parentheses are supported, and `OR` has higher precedence than `AND`. Restrictions have the form ` ` and may have a `-` character in front of them to indicate negation. Examples include: * name * source_properties.a_property * security_marks.marks.marka The supported operators are: * `=` for all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning substring matching, for strings. The supported value types are: * string literals in quotes. * integer literals without quotes. * boolean literals `true` and `false` without quotes. The following field and operator combinations are supported: * name: `=` * parent: `=`, `:` * resource_name: `=`, `:` * state: `=`, `:` * category: `=`, `:` * external_uri: `=`, `:` * event_time: `=`, `>`, `<`, `>=`, `<=` Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: `event_time = \"2019-06-10T16:07:18-07:00\"` `event_time = 1560208038000` * severity: `=`, `:` * workflow_state: `=`, `:` * security_marks.marks: `=`, `:` * source_properties: `=`, `:`, `>`, `<`, `>=`, `<=` For example, `source_properties.size = 100` is a valid filter string. Use a partial match on the empty string to filter based on a property existing: `source_properties.my_property : \"\"` Use a negated partial match on the empty string to filter based on a property not existing: `-source_properties.my_property : \"\"` * resource: * resource.name: `=`, `:` * resource.parent_name: `=`, `:` * resource.parent_display_name: `=`, `:` * resource.project_name: `=`, `:` * resource.project_display_name: `=`, `:` * resource.type: `=`, `:`",
                     "type": "string"
                 },
                 "groupBy": {

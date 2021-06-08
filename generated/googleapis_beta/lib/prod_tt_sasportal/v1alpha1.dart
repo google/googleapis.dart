@@ -4756,6 +4756,12 @@ class SasPortalPolicy {
 
 /// Request message for `SetPolicy` method.
 class SasPortalSetPolicyRequest {
+  /// Set the field as true when we would like to disable the onboarding
+  /// notification.
+  ///
+  /// Optional.
+  core.bool? disableNotification;
+
   /// The policy to be applied to the `resource`.
   ///
   /// Required.
@@ -4771,6 +4777,9 @@ class SasPortalSetPolicyRequest {
   SasPortalSetPolicyRequest();
 
   SasPortalSetPolicyRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('disableNotification')) {
+      disableNotification = _json['disableNotification'] as core.bool;
+    }
     if (_json.containsKey('policy')) {
       policy = SasPortalPolicy.fromJson(
           _json['policy'] as core.Map<core.String, core.dynamic>);
@@ -4781,6 +4790,8 @@ class SasPortalSetPolicyRequest {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (disableNotification != null)
+          'disableNotification': disableNotification!,
         if (policy != null) 'policy': policy!.toJson(),
         if (resource != null) 'resource': resource!,
       };

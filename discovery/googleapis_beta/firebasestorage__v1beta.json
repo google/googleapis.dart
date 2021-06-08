@@ -112,6 +112,7 @@
                     "methods": {
                         "addFirebase": {
                             "description": "Links a Google Cloud Storage bucket to a Firebase project.",
+                            "flatPath": "v1beta/projects/{projectsId}/buckets/{bucketsId}:addFirebase",
                             "httpMethod": "POST",
                             "id": "firebasestorage.projects.buckets.addFirebase",
                             "parameterOrder": [
@@ -140,6 +141,7 @@
                         },
                         "get": {
                             "description": "Gets a single linked storage bucket.",
+                            "flatPath": "v1beta/projects/{projectsId}/buckets/{bucketsId}",
                             "httpMethod": "GET",
                             "id": "firebasestorage.projects.buckets.get",
                             "parameterOrder": [
@@ -165,6 +167,7 @@
                         },
                         "list": {
                             "description": "Lists the linked storage buckets for a project.",
+                            "flatPath": "v1beta/projects/{projectsId}/buckets",
                             "httpMethod": "GET",
                             "id": "firebasestorage.projects.buckets.list",
                             "parameterOrder": [
@@ -201,6 +204,7 @@
                         },
                         "removeFirebase": {
                             "description": "Unlinks a linked Google Cloud Storage bucket from a Firebase project.",
+                            "flatPath": "v1beta/projects/{projectsId}/buckets/{bucketsId}:removeFirebase",
                             "httpMethod": "POST",
                             "id": "firebasestorage.projects.buckets.removeFirebase",
                             "parameterOrder": [
@@ -232,7 +236,7 @@
             }
         }
     },
-    "revision": "20210517",
+    "revision": "20210521",
     "rootUrl": "https://firebasestorage.googleapis.com/",
     "schemas": {
         "AddFirebaseRequest": {

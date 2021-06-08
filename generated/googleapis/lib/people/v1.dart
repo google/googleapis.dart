@@ -124,7 +124,7 @@ class ContactGroupsResource {
   /// for each group. Defaults to 0 if not set, which will return zero members.
   ///
   /// [resourceNames] - Required. The resource names of the contact groups to
-  /// get.
+  /// get. There is a maximum of 200 resource names.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -524,8 +524,12 @@ class OtherContactsResource {
   /// [syncToken] - Optional. A sync token, received from a previous
   /// `ListOtherContacts` call. Provide this to retrieve only the resources
   /// changed since the last request. Sync requests that specify `sync_token`
-  /// have an additional rate limit. When syncing, all other parameters provided
-  /// to `ListOtherContacts` must match the call that provided the sync token.
+  /// have an additional rate limit. When the `syncToken` is specified,
+  /// resources deleted since the last sync will be returned as a person with
+  /// \[`PersonMetadata.deleted`\](/people/api/rest/v1/people#Person.PersonMetadata.FIELDS.deleted)
+  /// set to true. When the `syncToken` is specified, all other parameters
+  /// provided to `ListOtherContacts` must match the call that provided the sync
+  /// token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -570,6 +574,9 @@ class OtherContactsResource {
   ///
   /// The query matches on a contact's `names`, `emailAddresses`, and
   /// `phoneNumbers` fields that are from the OTHER_CONTACT source.
+  /// **IMPORTANT**: Before searching, clients should send a warmup request with
+  /// an empty query to update the cache. See
+  /// https://developers.google.com/people/v1/other-contacts#search_the_users_other_contacts
   ///
   /// Request parameters:
   ///
@@ -993,7 +1000,7 @@ class PeopleResource {
   /// a contact, specify the resource name that identifies the contact as
   /// returned by
   /// \[`people.connections.list`\](/people/api/rest/v1/people.connections/list).
-  /// You can include up to 200 resource names in one request.
+  /// There is a maximum of 200 resource names.
   ///
   /// [sources] - Optional. A mask of what source types to return. Defaults to
   /// READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set.
@@ -1121,7 +1128,9 @@ class PeopleResource {
   ///
   /// The query matches on a contact's `names`, `nickNames`, `emailAddresses`,
   /// `phoneNumbers`, and `organizations` fields that are from the CONTACT"
-  /// source.
+  /// source. **IMPORTANT**: Before searching, clients should send a warmup
+  /// request with an empty query to update the cache. See
+  /// https://developers.google.com/people/v1/contacts#search_the_users_contacts
   ///
   /// Request parameters:
   ///
@@ -1447,7 +1456,10 @@ class PeopleConnectionsResource {
   ///
   /// [syncToken] - Optional. A sync token, received from a previous
   /// `ListConnections` call. Provide this to retrieve only the resources
-  /// changed since the last request. When syncing, all other parameters
+  /// changed since the last request. When the `syncToken` is specified,
+  /// resources deleted since the last sync will be returned as a person with
+  /// \[`PersonMetadata.deleted`\](/people/api/rest/v1/people#Person.PersonMetadata.FIELDS.deleted)
+  /// set to true. When the `syncToken` is specified, all other parameters
   /// provided to `ListConnections` except `page_size` and `page_token` must
   /// match the initial call that provided the sync token. Sync tokens expire
   /// after seven days, after which a full sync request without a `sync_token`
@@ -2478,9 +2490,9 @@ class DeleteContactPhotoResponse {
       };
 }
 
-/// A G Suite Domain membership.
+/// A Google Workspace Domain membership.
 class DomainMembership {
-  /// True if the person is in the viewer's G Suite domain.
+  /// True if the person is in the viewer's Google Workspace domain.
   core.bool? inViewerDomain;
 
   DomainMembership();
@@ -4179,8 +4191,9 @@ class PersonMetadata {
   /// True if the person resource has been deleted.
   ///
   /// Populated only for
-  /// \[`connections.list`\](/people/api/rest/v1/people.connections/list)
-  /// requests that include a sync token.
+  /// \[`connections.list`\](/people/api/rest/v1/people.connections/list) and
+  /// \[`otherContacts.list`\](/people/api/rest/v1/otherContacts/list) requests
+  /// that include a sync token.
   ///
   /// Output only.
   core.bool? deleted;
@@ -4198,7 +4211,8 @@ class PersonMetadata {
   /// Possible string values are:
   /// - "OBJECT_TYPE_UNSPECIFIED" : Unspecified.
   /// - "PERSON" : Person.
-  /// - "PAGE" : [Currents Page.](https://gsuite.google.com/products/currents/)
+  /// - "PAGE" :
+  /// [Currents Page.](https://workspace.google.com/products/currents/)
   core.String? objectType;
 
   /// Any former resource names this person has had.
@@ -4410,7 +4424,8 @@ class ProfileMetadata {
   /// Possible string values are:
   /// - "OBJECT_TYPE_UNSPECIFIED" : Unspecified.
   /// - "PERSON" : Person.
-  /// - "PAGE" : [Currents Page.](https://gsuite.google.com/products/currents/)
+  /// - "PAGE" :
+  /// [Currents Page.](https://workspace.google.com/products/currents/)
   core.String? objectType;
 
   /// The user types.
@@ -4784,7 +4799,7 @@ class Source {
   /// \[https://profiles.google.com/\](https://profiles.google.com/){id}, where
   /// {id} is the source id.
   /// - "DOMAIN_PROFILE" :
-  /// [G Suite domain profile](https://support.google.com/a/answer/1628008).
+  /// [Google Workspace domain profile](https://support.google.com/a/answer/1628008).
   /// - "CONTACT" : [Google contact](https://contacts.google.com). You can view
   /// the contact at
   /// \[https://contact.google.com/\](https://contact.google.com/){id}, where
@@ -4792,7 +4807,7 @@ class Source {
   /// - "OTHER_CONTACT" : \[Google "Other
   /// contact"\](https://contacts.google.com/other).
   /// - "DOMAIN_CONTACT" :
-  /// [G Suite domain shared contact](https://support.google.com/a/answer/9281635).
+  /// [Google Workspace domain shared contact](https://support.google.com/a/answer/9281635).
   core.String? type;
 
   /// **Only populated in `person.metadata.sources`.** Last update timestamp of

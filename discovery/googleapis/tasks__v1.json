@@ -17,7 +17,7 @@
     "canonicalName": "Tasks",
     "description": "The Google Tasks API lets you manage your tasks and task lists.",
     "discoveryVersion": "v1",
-    "documentationLink": "",
+    "documentationLink": "https://developers.google.com/tasks",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -110,6 +110,7 @@
             "methods": {
                 "delete": {
                     "description": "Deletes the authenticated user's specified task list.",
+                    "flatPath": "tasks/v1/users/@me/lists/{tasklist}",
                     "httpMethod": "DELETE",
                     "id": "tasks.tasklists.delete",
                     "parameterOrder": [
@@ -130,6 +131,7 @@
                 },
                 "get": {
                     "description": "Returns the authenticated user's specified task list.",
+                    "flatPath": "tasks/v1/users/@me/lists/{tasklist}",
                     "httpMethod": "GET",
                     "id": "tasks.tasklists.get",
                     "parameterOrder": [
@@ -154,6 +156,7 @@
                 },
                 "insert": {
                     "description": "Creates a new task list and adds it to the authenticated user's task lists.",
+                    "flatPath": "tasks/v1/users/@me/lists",
                     "httpMethod": "POST",
                     "id": "tasks.tasklists.insert",
                     "parameterOrder": [],
@@ -171,6 +174,7 @@
                 },
                 "list": {
                     "description": "Returns all the authenticated user's task lists.",
+                    "flatPath": "tasks/v1/users/@me/lists",
                     "httpMethod": "GET",
                     "id": "tasks.tasklists.list",
                     "parameterOrder": [],
@@ -198,6 +202,7 @@
                 },
                 "patch": {
                     "description": "Updates the authenticated user's specified task list. This method supports patch semantics.",
+                    "flatPath": "tasks/v1/users/@me/lists/{tasklist}",
                     "httpMethod": "PATCH",
                     "id": "tasks.tasklists.patch",
                     "parameterOrder": [
@@ -224,6 +229,7 @@
                 },
                 "update": {
                     "description": "Updates the authenticated user's specified task list.",
+                    "flatPath": "tasks/v1/users/@me/lists/{tasklist}",
                     "httpMethod": "PUT",
                     "id": "tasks.tasklists.update",
                     "parameterOrder": [
@@ -254,6 +260,7 @@
             "methods": {
                 "clear": {
                     "description": "Clears all completed tasks from the specified task list. The affected tasks will be marked as 'hidden' and no longer be returned by default when retrieving all tasks for a task list.",
+                    "flatPath": "tasks/v1/lists/{tasklist}/clear",
                     "httpMethod": "POST",
                     "id": "tasks.tasks.clear",
                     "parameterOrder": [
@@ -274,6 +281,7 @@
                 },
                 "delete": {
                     "description": "Deletes the specified task from the task list.",
+                    "flatPath": "tasks/v1/lists/{tasklist}/tasks/{task}",
                     "httpMethod": "DELETE",
                     "id": "tasks.tasks.delete",
                     "parameterOrder": [
@@ -301,6 +309,7 @@
                 },
                 "get": {
                     "description": "Returns the specified task.",
+                    "flatPath": "tasks/v1/lists/{tasklist}/tasks/{task}",
                     "httpMethod": "GET",
                     "id": "tasks.tasks.get",
                     "parameterOrder": [
@@ -332,6 +341,7 @@
                 },
                 "insert": {
                     "description": "Creates a new task on the specified task list.",
+                    "flatPath": "tasks/v1/lists/{tasklist}/tasks",
                     "httpMethod": "POST",
                     "id": "tasks.tasks.insert",
                     "parameterOrder": [
@@ -368,6 +378,7 @@
                 },
                 "list": {
                     "description": "Returns all tasks in the specified task list.",
+                    "flatPath": "tasks/v1/lists/{tasklist}/tasks",
                     "httpMethod": "GET",
                     "id": "tasks.tasks.list",
                     "parameterOrder": [
@@ -443,6 +454,7 @@
                 },
                 "move": {
                     "description": "Moves the specified task to another position in the task list. This can include putting it as a child task under a new parent and/or move it to a different position among its sibling tasks.",
+                    "flatPath": "tasks/v1/lists/{tasklist}/tasks/{task}/move",
                     "httpMethod": "POST",
                     "id": "tasks.tasks.move",
                     "parameterOrder": [
@@ -483,6 +495,7 @@
                 },
                 "patch": {
                     "description": "Updates the specified task. This method supports patch semantics.",
+                    "flatPath": "tasks/v1/lists/{tasklist}/tasks/{task}",
                     "httpMethod": "PATCH",
                     "id": "tasks.tasks.patch",
                     "parameterOrder": [
@@ -516,6 +529,7 @@
                 },
                 "update": {
                     "description": "Updates the specified task.",
+                    "flatPath": "tasks/v1/lists/{tasklist}/tasks/{task}",
                     "httpMethod": "PUT",
                     "id": "tasks.tasks.update",
                     "parameterOrder": [
@@ -550,7 +564,7 @@
             }
         }
     },
-    "revision": "20210517",
+    "revision": "20210613",
     "rootUrl": "https://tasks.googleapis.com/",
     "schemas": {
         "Task": {

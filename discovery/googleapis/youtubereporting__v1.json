@@ -110,6 +110,7 @@
             "methods": {
                 "create": {
                     "description": "Creates a job and returns it.",
+                    "flatPath": "v1/jobs",
                     "httpMethod": "POST",
                     "id": "youtubereporting.jobs.create",
                     "parameterOrder": [],
@@ -134,6 +135,7 @@
                 },
                 "delete": {
                     "description": "Deletes a job.",
+                    "flatPath": "v1/jobs/{jobId}",
                     "httpMethod": "DELETE",
                     "id": "youtubereporting.jobs.delete",
                     "parameterOrder": [
@@ -163,6 +165,7 @@
                 },
                 "get": {
                     "description": "Gets a job.",
+                    "flatPath": "v1/jobs/{jobId}",
                     "httpMethod": "GET",
                     "id": "youtubereporting.jobs.get",
                     "parameterOrder": [
@@ -192,6 +195,7 @@
                 },
                 "list": {
                     "description": "Lists jobs.",
+                    "flatPath": "v1/jobs",
                     "httpMethod": "GET",
                     "id": "youtubereporting.jobs.list",
                     "parameterOrder": [],
@@ -233,6 +237,7 @@
                     "methods": {
                         "get": {
                             "description": "Gets the metadata of a specific report.",
+                            "flatPath": "v1/jobs/{jobId}/reports/{reportId}",
                             "httpMethod": "GET",
                             "id": "youtubereporting.jobs.reports.get",
                             "parameterOrder": [
@@ -269,6 +274,7 @@
                         },
                         "list": {
                             "description": "Lists reports created by a specific job. Returns NOT_FOUND if the job does not exist.",
+                            "flatPath": "v1/jobs/{jobId}/reports",
                             "httpMethod": "GET",
                             "id": "youtubereporting.jobs.reports.list",
                             "parameterOrder": [
@@ -333,6 +339,7 @@
             "methods": {
                 "download": {
                     "description": "Method for media download. Download is supported on the URI `/v1/media/{+name}?alt=media`.",
+                    "flatPath": "v1/media/{mediaId}",
                     "httpMethod": "GET",
                     "id": "youtubereporting.media.download",
                     "parameterOrder": [
@@ -364,6 +371,7 @@
             "methods": {
                 "list": {
                     "description": "Lists report types.",
+                    "flatPath": "v1/reportTypes",
                     "httpMethod": "GET",
                     "id": "youtubereporting.reportTypes.list",
                     "parameterOrder": [],
@@ -402,7 +410,7 @@
             }
         }
     },
-    "revision": "20210519",
+    "revision": "20210614",
     "rootUrl": "https://youtubereporting.googleapis.com/",
     "schemas": {
         "Empty": {

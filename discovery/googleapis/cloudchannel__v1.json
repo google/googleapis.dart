@@ -107,6 +107,7 @@
             "methods": {
                 "checkCloudIdentityAccountsExist": {
                     "description": "Confirms the existence of Cloud Identity accounts based on the domain and if the Cloud Identity accounts are owned by the reseller. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * INVALID_VALUE: Invalid domain value in the request. Return value: A list of CloudIdentityCustomerAccount resources for the domain (may be empty) Note: in the v1alpha1 version of the API, a NOT_FOUND error returns if no CloudIdentityCustomerAccount resources match the domain.",
+                    "flatPath": "v1/accounts/{accountsId}:checkCloudIdentityAccountsExist",
                     "httpMethod": "POST",
                     "id": "cloudchannel.accounts.checkCloudIdentityAccountsExist",
                     "parameterOrder": [
@@ -134,6 +135,7 @@
                 },
                 "listSubscribers": {
                     "description": "Lists service accounts with subscriber privileges on the Cloud Pub/Sub topic created for this Channel Services account. Possible error codes: * PERMISSION_DENIED: The reseller account making the request and the provided reseller account are different, or the impersonated user is not a super admin. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The topic resource doesn't exist. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: A list of service email addresses.",
+                    "flatPath": "v1/accounts/{accountsId}:listSubscribers",
                     "httpMethod": "GET",
                     "id": "cloudchannel.accounts.listSubscribers",
                     "parameterOrder": [
@@ -169,6 +171,7 @@
                 },
                 "listTransferableOffers": {
                     "description": "List TransferableOffers of a customer based on Cloud Identity ID or Customer Name in the request. Use this method when a reseller gets the entitlement information of an unowned customer. The reseller should provide the customer's Cloud Identity ID or Customer Name. Possible error codes: * PERMISSION_DENIED: * The customer doesn't belong to the reseller and has no auth token. * The supplied auth token is invalid. * The reseller account making the request is different from the reseller account in the query. * INVALID_ARGUMENT: Required request parameters are missing or invalid. Return value: List of TransferableOffer for the given customer and SKU.",
+                    "flatPath": "v1/accounts/{accountsId}:listTransferableOffers",
                     "httpMethod": "POST",
                     "id": "cloudchannel.accounts.listTransferableOffers",
                     "parameterOrder": [
@@ -196,6 +199,7 @@
                 },
                 "listTransferableSkus": {
                     "description": "List TransferableSkus of a customer based on the Cloud Identity ID or Customer Name in the request. Use this method to list the entitlements information of an unowned customer. You should provide the customer's Cloud Identity ID or Customer Name. Possible error codes: * PERMISSION_DENIED: * The customer doesn't belong to the reseller and has no auth token. * The supplied auth token is invalid. * The reseller account making the request is different from the reseller account in the query. * INVALID_ARGUMENT: Required request parameters are missing or invalid. Return value: A list of the customer's TransferableSku.",
+                    "flatPath": "v1/accounts/{accountsId}:listTransferableSkus",
                     "httpMethod": "POST",
                     "id": "cloudchannel.accounts.listTransferableSkus",
                     "parameterOrder": [
@@ -223,6 +227,7 @@
                 },
                 "register": {
                     "description": "Registers a service account with subscriber privileges on the Cloud Pub/Sub topic for this Channel Services account. After you create a subscriber, you get the events through SubscriberEvent Possible error codes: * PERMISSION_DENIED: The reseller account making the request and the provided reseller account are different, or the impersonated user is not a super admin. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The topic name with the registered service email address.",
+                    "flatPath": "v1/accounts/{accountsId}:register",
                     "httpMethod": "POST",
                     "id": "cloudchannel.accounts.register",
                     "parameterOrder": [
@@ -250,6 +255,7 @@
                 },
                 "unregister": {
                     "description": "Unregisters a service account with subscriber privileges on the Cloud Pub/Sub topic created for this Channel Services account. If there are no service accounts left with subscriber privileges, this deletes the topic. You can call ListSubscribers to check for these accounts. Possible error codes: * PERMISSION_DENIED: The reseller account making the request and the provided reseller account are different, or the impersonated user is not a super admin. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The topic resource doesn't exist. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The topic name that unregistered the service email address. Returns a success response if the service email address wasn't registered with the topic.",
+                    "flatPath": "v1/accounts/{accountsId}:unregister",
                     "httpMethod": "POST",
                     "id": "cloudchannel.accounts.unregister",
                     "parameterOrder": [
@@ -281,6 +287,7 @@
                     "methods": {
                         "create": {
                             "description": "Initiates a channel partner link between a distributor and a reseller, or between resellers in an n-tier reseller channel. Invited partners need to follow the invite_link_uri provided in the response to accept. After accepting the invitation, a link is set up between the two parties. You must be a distributor to call this method. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * ALREADY_EXISTS: The ChannelPartnerLink sent in the request already exists. * NOT_FOUND: No Cloud Identity customer exists for provided domain. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The new ChannelPartnerLink resource.",
+                            "flatPath": "v1/accounts/{accountsId}/channelPartnerLinks",
                             "httpMethod": "POST",
                             "id": "cloudchannel.accounts.channelPartnerLinks.create",
                             "parameterOrder": [
@@ -308,6 +315,7 @@
                         },
                         "get": {
                             "description": "Returns the requested ChannelPartnerLink resource. You must be a distributor to call this method. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: ChannelPartnerLink resource not found because of an invalid channel partner link name. Return value: The ChannelPartnerLink resource.",
+                            "flatPath": "v1/accounts/{accountsId}/channelPartnerLinks/{channelPartnerLinksId}",
                             "httpMethod": "GET",
                             "id": "cloudchannel.accounts.channelPartnerLinks.get",
                             "parameterOrder": [
@@ -347,6 +355,7 @@
                         },
                         "list": {
                             "description": "List ChannelPartnerLinks belonging to a distributor. You must be a distributor to call this method. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. Return value: The list of the distributor account's ChannelPartnerLink resources.",
+                            "flatPath": "v1/accounts/{accountsId}/channelPartnerLinks",
                             "httpMethod": "GET",
                             "id": "cloudchannel.accounts.channelPartnerLinks.list",
                             "parameterOrder": [
@@ -397,6 +406,7 @@
                         },
                         "patch": {
                             "description": "Updates a channel partner link. Distributors call this method to change a link's status. For example, to suspend a partner link. You must be a distributor to call this method. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: * Required request parameters are missing or invalid. * Link state cannot change from invited to active or suspended. * Cannot send reseller_cloud_identity_id, invite_url, or name in update mask. * NOT_FOUND: ChannelPartnerLink resource not found. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The updated ChannelPartnerLink resource.",
+                            "flatPath": "v1/accounts/{accountsId}/channelPartnerLinks/{channelPartnerLinksId}",
                             "httpMethod": "PATCH",
                             "id": "cloudchannel.accounts.channelPartnerLinks.patch",
                             "parameterOrder": [
@@ -428,6 +438,7 @@
                             "methods": {
                                 "create": {
                                     "description": "Creates a new Customer resource under the reseller or distributor account. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: * Required request parameters are missing or invalid. * Domain field value doesn't match the primary email domain. Return value: The newly created Customer resource.",
+                                    "flatPath": "v1/accounts/{accountsId}/channelPartnerLinks/{channelPartnerLinksId}/customers",
                                     "httpMethod": "POST",
                                     "id": "cloudchannel.accounts.channelPartnerLinks.customers.create",
                                     "parameterOrder": [
@@ -455,6 +466,7 @@
                                 },
                                 "delete": {
                                     "description": "Deletes the given Customer permanently. Possible error codes: * PERMISSION_DENIED: The account making the request does not own this customer. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * FAILED_PRECONDITION: The customer has existing entitlements. * NOT_FOUND: No Customer resource found for the name in the request.",
+                                    "flatPath": "v1/accounts/{accountsId}/channelPartnerLinks/{channelPartnerLinksId}/customers/{customersId}",
                                     "httpMethod": "DELETE",
                                     "id": "cloudchannel.accounts.channelPartnerLinks.customers.delete",
                                     "parameterOrder": [
@@ -479,6 +491,7 @@
                                 },
                                 "get": {
                                     "description": "Returns the requested Customer resource. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The customer resource doesn't exist. Usually the result of an invalid name parameter. Return value: The Customer resource.",
+                                    "flatPath": "v1/accounts/{accountsId}/channelPartnerLinks/{channelPartnerLinksId}/customers/{customersId}",
                                     "httpMethod": "GET",
                                     "id": "cloudchannel.accounts.channelPartnerLinks.customers.get",
                                     "parameterOrder": [
@@ -503,6 +516,7 @@
                                 },
                                 "list": {
                                     "description": "List Customers. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. Return value: List of Customers, or an empty list if there are no customers.",
+                                    "flatPath": "v1/accounts/{accountsId}/channelPartnerLinks/{channelPartnerLinksId}/customers",
                                     "httpMethod": "GET",
                                     "id": "cloudchannel.accounts.channelPartnerLinks.customers.list",
                                     "parameterOrder": [
@@ -538,6 +552,7 @@
                                 },
                                 "patch": {
                                     "description": "Updates an existing Customer resource for the reseller or distributor. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: No Customer resource found for the name in the request. Return value: The updated Customer resource.",
+                                    "flatPath": "v1/accounts/{accountsId}/channelPartnerLinks/{channelPartnerLinksId}/customers/{customersId}",
                                     "httpMethod": "PATCH",
                                     "id": "cloudchannel.accounts.channelPartnerLinks.customers.patch",
                                     "parameterOrder": [
@@ -577,6 +592,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a new Customer resource under the reseller or distributor account. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: * Required request parameters are missing or invalid. * Domain field value doesn't match the primary email domain. Return value: The newly created Customer resource.",
+                            "flatPath": "v1/accounts/{accountsId}/customers",
                             "httpMethod": "POST",
                             "id": "cloudchannel.accounts.customers.create",
                             "parameterOrder": [
@@ -604,6 +620,7 @@
                         },
                         "delete": {
                             "description": "Deletes the given Customer permanently. Possible error codes: * PERMISSION_DENIED: The account making the request does not own this customer. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * FAILED_PRECONDITION: The customer has existing entitlements. * NOT_FOUND: No Customer resource found for the name in the request.",
+                            "flatPath": "v1/accounts/{accountsId}/customers/{customersId}",
                             "httpMethod": "DELETE",
                             "id": "cloudchannel.accounts.customers.delete",
                             "parameterOrder": [
@@ -628,6 +645,7 @@
                         },
                         "get": {
                             "description": "Returns the requested Customer resource. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The customer resource doesn't exist. Usually the result of an invalid name parameter. Return value: The Customer resource.",
+                            "flatPath": "v1/accounts/{accountsId}/customers/{customersId}",
                             "httpMethod": "GET",
                             "id": "cloudchannel.accounts.customers.get",
                             "parameterOrder": [
@@ -652,6 +670,7 @@
                         },
                         "list": {
                             "description": "List Customers. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. Return value: List of Customers, or an empty list if there are no customers.",
+                            "flatPath": "v1/accounts/{accountsId}/customers",
                             "httpMethod": "GET",
                             "id": "cloudchannel.accounts.customers.list",
                             "parameterOrder": [
@@ -687,6 +706,7 @@
                         },
                         "listPurchasableOffers": {
                             "description": "Lists the following: * Offers that you can purchase for a customer. * Offers that you can change for an entitlement. Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller * INVALID_ARGUMENT: Required request parameters are missing or invalid.",
+                            "flatPath": "v1/accounts/{accountsId}/customers/{customersId}:listPurchasableOffers",
                             "httpMethod": "GET",
                             "id": "cloudchannel.accounts.customers.listPurchasableOffers",
                             "parameterOrder": [
@@ -742,6 +762,7 @@
                         },
                         "listPurchasableSkus": {
                             "description": "Lists the following: * SKUs that you can purchase for a customer * SKUs that you can upgrade or downgrade for an entitlement. Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or invalid.",
+                            "flatPath": "v1/accounts/{accountsId}/customers/{customersId}:listPurchasableSkus",
                             "httpMethod": "GET",
                             "id": "cloudchannel.accounts.customers.listPurchasableSkus",
                             "parameterOrder": [
@@ -807,6 +828,7 @@
                         },
                         "patch": {
                             "description": "Updates an existing Customer resource for the reseller or distributor. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: No Customer resource found for the name in the request. Return value: The updated Customer resource.",
+                            "flatPath": "v1/accounts/{accountsId}/customers/{customersId}",
                             "httpMethod": "PATCH",
                             "id": "cloudchannel.accounts.customers.patch",
                             "parameterOrder": [
@@ -840,6 +862,7 @@
                         },
                         "provisionCloudIdentity": {
                             "description": "Creates a Cloud Identity for the given customer using the customer's information, or the information provided here. Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The customer was not found. * ALREADY_EXISTS: The customer's primary email already exists. Retry after changing the customer's primary contact email. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The ID of a long-running operation. To get the results of the operation, call the GetOperation method of CloudChannelOperationsService. The Operation metadata contains an instance of OperationMetadata.",
+                            "flatPath": "v1/accounts/{accountsId}/customers/{customersId}:provisionCloudIdentity",
                             "httpMethod": "POST",
                             "id": "cloudchannel.accounts.customers.provisionCloudIdentity",
                             "parameterOrder": [
@@ -867,6 +890,7 @@
                         },
                         "transferEntitlements": {
                             "description": "Transfers customer entitlements to new reseller. Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The customer or offer resource was not found. * ALREADY_EXISTS: The SKU was already transferred for the customer. * CONDITION_NOT_MET or FAILED_PRECONDITION: * The SKU requires domain verification to transfer, but the domain is not verified. * An Add-On SKU (example, Vault or Drive) is missing the pre-requisite SKU (example, G Suite Basic). * (Developer accounts only) Reseller and resold domain must meet the following naming requirements: * Domain names must start with goog-test. * Domain names must include the reseller domain. * Specify all transferring entitlements. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The ID of a long-running operation. To get the results of the operation, call the GetOperation method of CloudChannelOperationsService. The Operation metadata will contain an instance of OperationMetadata.",
+                            "flatPath": "v1/accounts/{accountsId}/customers/{customersId}:transferEntitlements",
                             "httpMethod": "POST",
                             "id": "cloudchannel.accounts.customers.transferEntitlements",
                             "parameterOrder": [
@@ -894,6 +918,7 @@
                         },
                         "transferEntitlementsToGoogle": {
                             "description": "Transfers customer entitlements from their current reseller to Google. Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The customer or offer resource was not found. * ALREADY_EXISTS: The SKU was already transferred for the customer. * CONDITION_NOT_MET or FAILED_PRECONDITION: * The SKU requires domain verification to transfer, but the domain is not verified. * An Add-On SKU (example, Vault or Drive) is missing the pre-requisite SKU (example, G Suite Basic). * (Developer accounts only) Reseller and resold domain must meet the following naming requirements: * Domain names must start with goog-test. * Domain names must include the reseller domain. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The ID of a long-running operation. To get the results of the operation, call the GetOperation method of CloudChannelOperationsService. The response will contain google.protobuf.Empty on success. The Operation metadata will contain an instance of OperationMetadata.",
+                            "flatPath": "v1/accounts/{accountsId}/customers/{customersId}:transferEntitlementsToGoogle",
                             "httpMethod": "POST",
                             "id": "cloudchannel.accounts.customers.transferEntitlementsToGoogle",
                             "parameterOrder": [
@@ -925,6 +950,7 @@
                             "methods": {
                                 "activate": {
                                     "description": "Activates a previously suspended entitlement. Entitlements suspended for pending ToS acceptance can't be activated using this method. An entitlement activation is a long-running operation and it updates the state of the customer entitlement. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: Entitlement resource not found. * SUSPENSION_NOT_RESELLER_INITIATED: Can only activate reseller-initiated suspensions and entitlements that have accepted the TOS. * NOT_SUSPENDED: Can only activate suspended entitlements not in an ACTIVE state. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The ID of a long-running operation. To get the results of the operation, call the GetOperation method of CloudChannelOperationsService. The Operation metadata will contain an instance of OperationMetadata.",
+                                    "flatPath": "v1/accounts/{accountsId}/customers/{customersId}/entitlements/{entitlementsId}:activate",
                                     "httpMethod": "POST",
                                     "id": "cloudchannel.accounts.customers.entitlements.activate",
                                     "parameterOrder": [
@@ -952,6 +978,7 @@
                                 },
                                 "cancel": {
                                     "description": "Cancels a previously fulfilled entitlement. An entitlement cancellation is a long-running operation. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * FAILED_PRECONDITION: There are Google Cloud projects linked to the Google Cloud entitlement's Cloud Billing subaccount. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: Entitlement resource not found. * DELETION_TYPE_NOT_ALLOWED: Cancel is only allowed for Google Workspace add-ons, or entitlements for Google Cloud's development platform. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The ID of a long-running operation. To get the results of the operation, call the GetOperation method of CloudChannelOperationsService. The response will contain google.protobuf.Empty on success. The Operation metadata will contain an instance of OperationMetadata.",
+                                    "flatPath": "v1/accounts/{accountsId}/customers/{customersId}/entitlements/{entitlementsId}:cancel",
                                     "httpMethod": "POST",
                                     "id": "cloudchannel.accounts.customers.entitlements.cancel",
                                     "parameterOrder": [
@@ -979,6 +1006,7 @@
                                 },
                                 "changeOffer": {
                                     "description": "Updates the Offer for an existing customer entitlement. An entitlement update is a long-running operation and it updates the entitlement as a result of fulfillment. Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: Offer or Entitlement resource not found. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The ID of a long-running operation. To get the results of the operation, call the GetOperation method of CloudChannelOperationsService. The Operation metadata will contain an instance of OperationMetadata.",
+                                    "flatPath": "v1/accounts/{accountsId}/customers/{customersId}/entitlements/{entitlementsId}:changeOffer",
                                     "httpMethod": "POST",
                                     "id": "cloudchannel.accounts.customers.entitlements.changeOffer",
                                     "parameterOrder": [
@@ -1006,6 +1034,7 @@
                                 },
                                 "changeParameters": {
                                     "description": "Change parameters of the entitlement. An entitlement update is a long-running operation and it updates the entitlement as a result of fulfillment. Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or invalid. For example, the number of seats being changed is greater than the allowed number of max seats, or decreasing seats for a commitment based plan. * NOT_FOUND: Entitlement resource not found. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The ID of a long-running operation. To get the results of the operation, call the GetOperation method of CloudChannelOperationsService. The Operation metadata will contain an instance of OperationMetadata.",
+                                    "flatPath": "v1/accounts/{accountsId}/customers/{customersId}/entitlements/{entitlementsId}:changeParameters",
                                     "httpMethod": "POST",
                                     "id": "cloudchannel.accounts.customers.entitlements.changeParameters",
                                     "parameterOrder": [
@@ -1033,6 +1062,7 @@
                                 },
                                 "changeRenewalSettings": {
                                     "description": "Updates the renewal settings for an existing customer entitlement. An entitlement update is a long-running operation and it updates the entitlement as a result of fulfillment. Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: Entitlement resource not found. * NOT_COMMITMENT_PLAN: Renewal Settings are only applicable for a commitment plan. Can't enable or disable renewals for non-commitment plans. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The ID of a long-running operation. To get the results of the operation, call the GetOperation method of CloudChannelOperationsService. The Operation metadata will contain an instance of OperationMetadata.",
+                                    "flatPath": "v1/accounts/{accountsId}/customers/{customersId}/entitlements/{entitlementsId}:changeRenewalSettings",
                                     "httpMethod": "POST",
                                     "id": "cloudchannel.accounts.customers.entitlements.changeRenewalSettings",
                                     "parameterOrder": [
@@ -1060,6 +1090,7 @@
                                 },
                                 "create": {
                                     "description": "Creates an entitlement for a customer. Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller. * INVALID_ARGUMENT: * Required request parameters are missing or invalid. * There is already a customer entitlement for a SKU from the same product family. * INVALID_VALUE: Make sure the OfferId is valid. If it is, contact Google Channel support for further troubleshooting. * NOT_FOUND: The customer or offer resource was not found. * ALREADY_EXISTS: * The SKU was already purchased for the customer. * The customer's primary email already exists. Retry after changing the customer's primary contact email. * CONDITION_NOT_MET or FAILED_PRECONDITION: * The domain required for purchasing a SKU has not been verified. * A pre-requisite SKU required to purchase an Add-On SKU is missing. For example, Google Workspace Business Starter is required to purchase Vault or Drive. * (Developer accounts only) Reseller and resold domain must meet the following naming requirements: * Domain names must start with goog-test. * Domain names must include the reseller domain. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The ID of a long-running operation. To get the results of the operation, call the GetOperation method of CloudChannelOperationsService. The Operation metadata will contain an instance of OperationMetadata.",
+                                    "flatPath": "v1/accounts/{accountsId}/customers/{customersId}/entitlements",
                                     "httpMethod": "POST",
                                     "id": "cloudchannel.accounts.customers.entitlements.create",
                                     "parameterOrder": [
@@ -1087,6 +1118,7 @@
                                 },
                                 "get": {
                                     "description": "Returns the requested Entitlement resource. Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The customer entitlement was not found. Return value: The requested Entitlement resource.",
+                                    "flatPath": "v1/accounts/{accountsId}/customers/{customersId}/entitlements/{entitlementsId}",
                                     "httpMethod": "GET",
                                     "id": "cloudchannel.accounts.customers.entitlements.get",
                                     "parameterOrder": [
@@ -1111,6 +1143,7 @@
                                 },
                                 "list": {
                                     "description": "Lists Entitlements belonging to a customer. Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or invalid. Return value: A list of the customer's Entitlements.",
+                                    "flatPath": "v1/accounts/{accountsId}/customers/{customersId}/entitlements",
                                     "httpMethod": "GET",
                                     "id": "cloudchannel.accounts.customers.entitlements.list",
                                     "parameterOrder": [
@@ -1146,6 +1179,7 @@
                                 },
                                 "lookupOffer": {
                                     "description": "Returns the requested Offer resource. Possible error codes: * PERMISSION_DENIED: The entitlement doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: Entitlement or offer was not found. Return value: The Offer resource.",
+                                    "flatPath": "v1/accounts/{accountsId}/customers/{customersId}/entitlements/{entitlementsId}:lookupOffer",
                                     "httpMethod": "GET",
                                     "id": "cloudchannel.accounts.customers.entitlements.lookupOffer",
                                     "parameterOrder": [
@@ -1170,6 +1204,7 @@
                                 },
                                 "startPaidService": {
                                     "description": "Starts paid service for a trial entitlement. Starts paid service for a trial entitlement immediately. This method is only applicable if a plan is set up for a trial entitlement but has some trial days remaining. Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: Entitlement resource not found. * FAILED_PRECONDITION/NOT_IN_TRIAL: This method only works for entitlement on trial plans. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The ID of a long-running operation. To get the results of the operation, call the GetOperation method of CloudChannelOperationsService. The Operation metadata will contain an instance of OperationMetadata.",
+                                    "flatPath": "v1/accounts/{accountsId}/customers/{customersId}/entitlements/{entitlementsId}:startPaidService",
                                     "httpMethod": "POST",
                                     "id": "cloudchannel.accounts.customers.entitlements.startPaidService",
                                     "parameterOrder": [
@@ -1197,6 +1232,7 @@
                                 },
                                 "suspend": {
                                     "description": "Suspends a previously fulfilled entitlement. An entitlement suspension is a long-running operation. Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: Entitlement resource not found. * NOT_ACTIVE: Entitlement is not active. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The ID of a long-running operation. To get the results of the operation, call the GetOperation method of CloudChannelOperationsService. The Operation metadata will contain an instance of OperationMetadata.",
+                                    "flatPath": "v1/accounts/{accountsId}/customers/{customersId}/entitlements/{entitlementsId}:suspend",
                                     "httpMethod": "POST",
                                     "id": "cloudchannel.accounts.customers.entitlements.suspend",
                                     "parameterOrder": [
@@ -1230,6 +1266,7 @@
                     "methods": {
                         "list": {
                             "description": "Lists the Offers the reseller can sell. Possible error codes: * INVALID_ARGUMENT: Required request parameters are missing or invalid.",
+                            "flatPath": "v1/accounts/{accountsId}/offers",
                             "httpMethod": "GET",
                             "id": "cloudchannel.accounts.offers.list",
                             "parameterOrder": [
@@ -1281,6 +1318,7 @@
             "methods": {
                 "cancel": {
                     "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                    "flatPath": "v1/operations/{operationsId}:cancel",
                     "httpMethod": "POST",
                     "id": "cloudchannel.operations.cancel",
                     "parameterOrder": [
@@ -1308,6 +1346,7 @@
                 },
                 "delete": {
                     "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                    "flatPath": "v1/operations/{operationsId}",
                     "httpMethod": "DELETE",
                     "id": "cloudchannel.operations.delete",
                     "parameterOrder": [
@@ -1332,6 +1371,7 @@
                 },
                 "get": {
                     "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                    "flatPath": "v1/operations/{operationsId}",
                     "httpMethod": "GET",
                     "id": "cloudchannel.operations.get",
                     "parameterOrder": [
@@ -1356,6 +1396,7 @@
                 },
                 "list": {
                     "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                    "flatPath": "v1/operations",
                     "httpMethod": "GET",
                     "id": "cloudchannel.operations.list",
                     "parameterOrder": [
@@ -1400,6 +1441,7 @@
             "methods": {
                 "list": {
                     "description": "Lists the Products the reseller is authorized to sell. Possible error codes: * INVALID_ARGUMENT: Required request parameters are missing or invalid.",
+                    "flatPath": "v1/products",
                     "httpMethod": "GET",
                     "id": "cloudchannel.products.list",
                     "parameterOrder": [],
@@ -1440,6 +1482,7 @@
                     "methods": {
                         "list": {
                             "description": "Lists the SKUs for a product the reseller is authorized to sell. Possible error codes: * INVALID_ARGUMENT: Required request parameters are missing or invalid.",
+                            "flatPath": "v1/products/{productsId}/skus",
                             "httpMethod": "GET",
                             "id": "cloudchannel.products.skus.list",
                             "parameterOrder": [
@@ -1488,7 +1531,7 @@
             }
         }
     },
-    "revision": "20210514",
+    "revision": "20210613",
     "rootUrl": "https://cloudchannel.googleapis.com/",
     "schemas": {
         "GoogleCloudChannelV1ActivateEntitlementRequest": {

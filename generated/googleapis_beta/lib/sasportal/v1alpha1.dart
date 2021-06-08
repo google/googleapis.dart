@@ -3644,6 +3644,11 @@ class SasPortalDeployment {
   /// The deployment's display name.
   core.String? displayName;
 
+  /// The FRNs copied from its direct parent.
+  ///
+  /// Output only.
+  core.List<core.String>? frns;
+
   /// Resource name.
   ///
   /// Output only.
@@ -3668,6 +3673,11 @@ class SasPortalDeployment {
     if (_json.containsKey('displayName')) {
       displayName = _json['displayName'] as core.String;
     }
+    if (_json.containsKey('frns')) {
+      frns = (_json['frns'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
@@ -3684,6 +3694,7 @@ class SasPortalDeployment {
         if (defaultBillingMode != null)
           'defaultBillingMode': defaultBillingMode!,
         if (displayName != null) 'displayName': displayName!,
+        if (frns != null) 'frns': frns!,
         if (name != null) 'name': name!,
         if (sasUserIds != null) 'sasUserIds': sasUserIds!,
       };
@@ -4745,6 +4756,12 @@ class SasPortalPolicy {
 
 /// Request message for `SetPolicy` method.
 class SasPortalSetPolicyRequest {
+  /// Set the field as true when we would like to disable the onboarding
+  /// notification.
+  ///
+  /// Optional.
+  core.bool? disableNotification;
+
   /// The policy to be applied to the `resource`.
   ///
   /// Required.
@@ -4760,6 +4777,9 @@ class SasPortalSetPolicyRequest {
   SasPortalSetPolicyRequest();
 
   SasPortalSetPolicyRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('disableNotification')) {
+      disableNotification = _json['disableNotification'] as core.bool;
+    }
     if (_json.containsKey('policy')) {
       policy = SasPortalPolicy.fromJson(
           _json['policy'] as core.Map<core.String, core.dynamic>);
@@ -4770,6 +4790,8 @@ class SasPortalSetPolicyRequest {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (disableNotification != null)
+          'disableNotification': disableNotification!,
         if (policy != null) 'policy': policy!.toJson(),
         if (resource != null) 'resource': resource!,
       };

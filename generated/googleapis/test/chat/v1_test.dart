@@ -211,27 +211,27 @@ void checkButton(api.Button o) {
   buildCounterButton--;
 }
 
-core.List<api.CardAction> buildUnnamed3725() {
+core.List<api.CardAction> buildUnnamed4124() {
   var o = <api.CardAction>[];
   o.add(buildCardAction());
   o.add(buildCardAction());
   return o;
 }
 
-void checkUnnamed3725(core.List<api.CardAction> o) {
+void checkUnnamed4124(core.List<api.CardAction> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCardAction(o[0] as api.CardAction);
   checkCardAction(o[1] as api.CardAction);
 }
 
-core.List<api.Section> buildUnnamed3726() {
+core.List<api.Section> buildUnnamed4125() {
   var o = <api.Section>[];
   o.add(buildSection());
   o.add(buildSection());
   return o;
 }
 
-void checkUnnamed3726(core.List<api.Section> o) {
+void checkUnnamed4125(core.List<api.Section> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSection(o[0] as api.Section);
   checkSection(o[1] as api.Section);
@@ -242,10 +242,10 @@ api.Card buildCard() {
   var o = api.Card();
   buildCounterCard++;
   if (buildCounterCard < 3) {
-    o.cardActions = buildUnnamed3725();
+    o.cardActions = buildUnnamed4124();
     o.header = buildCardHeader();
     o.name = 'foo';
-    o.sections = buildUnnamed3726();
+    o.sections = buildUnnamed4125();
   }
   buildCounterCard--;
   return o;
@@ -254,13 +254,13 @@ api.Card buildCard() {
 void checkCard(api.Card o) {
   buildCounterCard++;
   if (buildCounterCard < 3) {
-    checkUnnamed3725(o.cardActions!);
+    checkUnnamed4124(o.cardActions!);
     checkCardHeader(o.header! as api.CardHeader);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed3726(o.sections!);
+    checkUnnamed4125(o.sections!);
   }
   buildCounterCard--;
 }
@@ -324,6 +324,67 @@ void checkCardHeader(api.CardHeader o) {
     );
   }
   buildCounterCardHeader--;
+}
+
+core.int buildCounterCardWithId = 0;
+api.CardWithId buildCardWithId() {
+  var o = api.CardWithId();
+  buildCounterCardWithId++;
+  if (buildCounterCardWithId < 3) {
+    o.card = buildGoogleAppsCardV1Card();
+    o.cardId = 'foo';
+  }
+  buildCounterCardWithId--;
+  return o;
+}
+
+void checkCardWithId(api.CardWithId o) {
+  buildCounterCardWithId++;
+  if (buildCounterCardWithId < 3) {
+    checkGoogleAppsCardV1Card(o.card! as api.GoogleAppsCardV1Card);
+    unittest.expect(
+      o.cardId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterCardWithId--;
+}
+
+core.int buildCounterColor = 0;
+api.Color buildColor() {
+  var o = api.Color();
+  buildCounterColor++;
+  if (buildCounterColor < 3) {
+    o.alpha = 42.0;
+    o.blue = 42.0;
+    o.green = 42.0;
+    o.red = 42.0;
+  }
+  buildCounterColor--;
+  return o;
+}
+
+void checkColor(api.Color o) {
+  buildCounterColor++;
+  if (buildCounterColor < 3) {
+    unittest.expect(
+      o.alpha!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.blue!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.green!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.red!,
+      unittest.equals(42.0),
+    );
+  }
+  buildCounterColor--;
 }
 
 core.int buildCounterDeprecatedEvent = 0;
@@ -413,14 +474,14 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-core.List<api.ActionParameter> buildUnnamed3727() {
+core.List<api.ActionParameter> buildUnnamed4126() {
   var o = <api.ActionParameter>[];
   o.add(buildActionParameter());
   o.add(buildActionParameter());
   return o;
 }
 
-void checkUnnamed3727(core.List<api.ActionParameter> o) {
+void checkUnnamed4126(core.List<api.ActionParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkActionParameter(o[0] as api.ActionParameter);
   checkActionParameter(o[1] as api.ActionParameter);
@@ -432,7 +493,7 @@ api.FormAction buildFormAction() {
   buildCounterFormAction++;
   if (buildCounterFormAction < 3) {
     o.actionMethodName = 'foo';
-    o.parameters = buildUnnamed3727();
+    o.parameters = buildUnnamed4126();
   }
   buildCounterFormAction--;
   return o;
@@ -445,9 +506,1052 @@ void checkFormAction(api.FormAction o) {
       o.actionMethodName!,
       unittest.equals('foo'),
     );
-    checkUnnamed3727(o.parameters!);
+    checkUnnamed4126(o.parameters!);
   }
   buildCounterFormAction--;
+}
+
+core.List<api.GoogleAppsCardV1ActionParameter> buildUnnamed4127() {
+  var o = <api.GoogleAppsCardV1ActionParameter>[];
+  o.add(buildGoogleAppsCardV1ActionParameter());
+  o.add(buildGoogleAppsCardV1ActionParameter());
+  return o;
+}
+
+void checkUnnamed4127(core.List<api.GoogleAppsCardV1ActionParameter> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleAppsCardV1ActionParameter(
+      o[0] as api.GoogleAppsCardV1ActionParameter);
+  checkGoogleAppsCardV1ActionParameter(
+      o[1] as api.GoogleAppsCardV1ActionParameter);
+}
+
+core.int buildCounterGoogleAppsCardV1Action = 0;
+api.GoogleAppsCardV1Action buildGoogleAppsCardV1Action() {
+  var o = api.GoogleAppsCardV1Action();
+  buildCounterGoogleAppsCardV1Action++;
+  if (buildCounterGoogleAppsCardV1Action < 3) {
+    o.function = 'foo';
+    o.loadIndicator = 'foo';
+    o.parameters = buildUnnamed4127();
+    o.persistValues = true;
+  }
+  buildCounterGoogleAppsCardV1Action--;
+  return o;
+}
+
+void checkGoogleAppsCardV1Action(api.GoogleAppsCardV1Action o) {
+  buildCounterGoogleAppsCardV1Action++;
+  if (buildCounterGoogleAppsCardV1Action < 3) {
+    unittest.expect(
+      o.function!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.loadIndicator!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4127(o.parameters!);
+    unittest.expect(o.persistValues!, unittest.isTrue);
+  }
+  buildCounterGoogleAppsCardV1Action--;
+}
+
+core.int buildCounterGoogleAppsCardV1ActionParameter = 0;
+api.GoogleAppsCardV1ActionParameter buildGoogleAppsCardV1ActionParameter() {
+  var o = api.GoogleAppsCardV1ActionParameter();
+  buildCounterGoogleAppsCardV1ActionParameter++;
+  if (buildCounterGoogleAppsCardV1ActionParameter < 3) {
+    o.key = 'foo';
+    o.value = 'foo';
+  }
+  buildCounterGoogleAppsCardV1ActionParameter--;
+  return o;
+}
+
+void checkGoogleAppsCardV1ActionParameter(
+    api.GoogleAppsCardV1ActionParameter o) {
+  buildCounterGoogleAppsCardV1ActionParameter++;
+  if (buildCounterGoogleAppsCardV1ActionParameter < 3) {
+    unittest.expect(
+      o.key!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.value!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleAppsCardV1ActionParameter--;
+}
+
+core.int buildCounterGoogleAppsCardV1BorderStyle = 0;
+api.GoogleAppsCardV1BorderStyle buildGoogleAppsCardV1BorderStyle() {
+  var o = api.GoogleAppsCardV1BorderStyle();
+  buildCounterGoogleAppsCardV1BorderStyle++;
+  if (buildCounterGoogleAppsCardV1BorderStyle < 3) {
+    o.cornerRadius = 42;
+    o.strokeColor = buildColor();
+    o.type = 'foo';
+  }
+  buildCounterGoogleAppsCardV1BorderStyle--;
+  return o;
+}
+
+void checkGoogleAppsCardV1BorderStyle(api.GoogleAppsCardV1BorderStyle o) {
+  buildCounterGoogleAppsCardV1BorderStyle++;
+  if (buildCounterGoogleAppsCardV1BorderStyle < 3) {
+    unittest.expect(
+      o.cornerRadius!,
+      unittest.equals(42),
+    );
+    checkColor(o.strokeColor! as api.Color);
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleAppsCardV1BorderStyle--;
+}
+
+core.int buildCounterGoogleAppsCardV1Button = 0;
+api.GoogleAppsCardV1Button buildGoogleAppsCardV1Button() {
+  var o = api.GoogleAppsCardV1Button();
+  buildCounterGoogleAppsCardV1Button++;
+  if (buildCounterGoogleAppsCardV1Button < 3) {
+    o.altText = 'foo';
+    o.color = buildColor();
+    o.disabled = true;
+    o.icon = buildGoogleAppsCardV1Icon();
+    o.onClick = buildGoogleAppsCardV1OnClick();
+    o.text = 'foo';
+  }
+  buildCounterGoogleAppsCardV1Button--;
+  return o;
+}
+
+void checkGoogleAppsCardV1Button(api.GoogleAppsCardV1Button o) {
+  buildCounterGoogleAppsCardV1Button++;
+  if (buildCounterGoogleAppsCardV1Button < 3) {
+    unittest.expect(
+      o.altText!,
+      unittest.equals('foo'),
+    );
+    checkColor(o.color! as api.Color);
+    unittest.expect(o.disabled!, unittest.isTrue);
+    checkGoogleAppsCardV1Icon(o.icon! as api.GoogleAppsCardV1Icon);
+    checkGoogleAppsCardV1OnClick(o.onClick! as api.GoogleAppsCardV1OnClick);
+    unittest.expect(
+      o.text!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleAppsCardV1Button--;
+}
+
+core.List<api.GoogleAppsCardV1Button> buildUnnamed4128() {
+  var o = <api.GoogleAppsCardV1Button>[];
+  o.add(buildGoogleAppsCardV1Button());
+  o.add(buildGoogleAppsCardV1Button());
+  return o;
+}
+
+void checkUnnamed4128(core.List<api.GoogleAppsCardV1Button> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleAppsCardV1Button(o[0] as api.GoogleAppsCardV1Button);
+  checkGoogleAppsCardV1Button(o[1] as api.GoogleAppsCardV1Button);
+}
+
+core.int buildCounterGoogleAppsCardV1ButtonList = 0;
+api.GoogleAppsCardV1ButtonList buildGoogleAppsCardV1ButtonList() {
+  var o = api.GoogleAppsCardV1ButtonList();
+  buildCounterGoogleAppsCardV1ButtonList++;
+  if (buildCounterGoogleAppsCardV1ButtonList < 3) {
+    o.buttons = buildUnnamed4128();
+  }
+  buildCounterGoogleAppsCardV1ButtonList--;
+  return o;
+}
+
+void checkGoogleAppsCardV1ButtonList(api.GoogleAppsCardV1ButtonList o) {
+  buildCounterGoogleAppsCardV1ButtonList++;
+  if (buildCounterGoogleAppsCardV1ButtonList < 3) {
+    checkUnnamed4128(o.buttons!);
+  }
+  buildCounterGoogleAppsCardV1ButtonList--;
+}
+
+core.List<api.GoogleAppsCardV1CardAction> buildUnnamed4129() {
+  var o = <api.GoogleAppsCardV1CardAction>[];
+  o.add(buildGoogleAppsCardV1CardAction());
+  o.add(buildGoogleAppsCardV1CardAction());
+  return o;
+}
+
+void checkUnnamed4129(core.List<api.GoogleAppsCardV1CardAction> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleAppsCardV1CardAction(o[0] as api.GoogleAppsCardV1CardAction);
+  checkGoogleAppsCardV1CardAction(o[1] as api.GoogleAppsCardV1CardAction);
+}
+
+core.List<api.GoogleAppsCardV1Section> buildUnnamed4130() {
+  var o = <api.GoogleAppsCardV1Section>[];
+  o.add(buildGoogleAppsCardV1Section());
+  o.add(buildGoogleAppsCardV1Section());
+  return o;
+}
+
+void checkUnnamed4130(core.List<api.GoogleAppsCardV1Section> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleAppsCardV1Section(o[0] as api.GoogleAppsCardV1Section);
+  checkGoogleAppsCardV1Section(o[1] as api.GoogleAppsCardV1Section);
+}
+
+core.int buildCounterGoogleAppsCardV1Card = 0;
+api.GoogleAppsCardV1Card buildGoogleAppsCardV1Card() {
+  var o = api.GoogleAppsCardV1Card();
+  buildCounterGoogleAppsCardV1Card++;
+  if (buildCounterGoogleAppsCardV1Card < 3) {
+    o.cardActions = buildUnnamed4129();
+    o.displayStyle = 'foo';
+    o.fixedFooter = buildGoogleAppsCardV1CardFixedFooter();
+    o.header = buildGoogleAppsCardV1CardHeader();
+    o.name = 'foo';
+    o.peekCardHeader = buildGoogleAppsCardV1CardHeader();
+    o.sections = buildUnnamed4130();
+  }
+  buildCounterGoogleAppsCardV1Card--;
+  return o;
+}
+
+void checkGoogleAppsCardV1Card(api.GoogleAppsCardV1Card o) {
+  buildCounterGoogleAppsCardV1Card++;
+  if (buildCounterGoogleAppsCardV1Card < 3) {
+    checkUnnamed4129(o.cardActions!);
+    unittest.expect(
+      o.displayStyle!,
+      unittest.equals('foo'),
+    );
+    checkGoogleAppsCardV1CardFixedFooter(
+        o.fixedFooter! as api.GoogleAppsCardV1CardFixedFooter);
+    checkGoogleAppsCardV1CardHeader(
+        o.header! as api.GoogleAppsCardV1CardHeader);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkGoogleAppsCardV1CardHeader(
+        o.peekCardHeader! as api.GoogleAppsCardV1CardHeader);
+    checkUnnamed4130(o.sections!);
+  }
+  buildCounterGoogleAppsCardV1Card--;
+}
+
+core.int buildCounterGoogleAppsCardV1CardAction = 0;
+api.GoogleAppsCardV1CardAction buildGoogleAppsCardV1CardAction() {
+  var o = api.GoogleAppsCardV1CardAction();
+  buildCounterGoogleAppsCardV1CardAction++;
+  if (buildCounterGoogleAppsCardV1CardAction < 3) {
+    o.actionLabel = 'foo';
+    o.onClick = buildGoogleAppsCardV1OnClick();
+  }
+  buildCounterGoogleAppsCardV1CardAction--;
+  return o;
+}
+
+void checkGoogleAppsCardV1CardAction(api.GoogleAppsCardV1CardAction o) {
+  buildCounterGoogleAppsCardV1CardAction++;
+  if (buildCounterGoogleAppsCardV1CardAction < 3) {
+    unittest.expect(
+      o.actionLabel!,
+      unittest.equals('foo'),
+    );
+    checkGoogleAppsCardV1OnClick(o.onClick! as api.GoogleAppsCardV1OnClick);
+  }
+  buildCounterGoogleAppsCardV1CardAction--;
+}
+
+core.int buildCounterGoogleAppsCardV1CardFixedFooter = 0;
+api.GoogleAppsCardV1CardFixedFooter buildGoogleAppsCardV1CardFixedFooter() {
+  var o = api.GoogleAppsCardV1CardFixedFooter();
+  buildCounterGoogleAppsCardV1CardFixedFooter++;
+  if (buildCounterGoogleAppsCardV1CardFixedFooter < 3) {
+    o.primaryButton = buildGoogleAppsCardV1Button();
+    o.secondaryButton = buildGoogleAppsCardV1Button();
+  }
+  buildCounterGoogleAppsCardV1CardFixedFooter--;
+  return o;
+}
+
+void checkGoogleAppsCardV1CardFixedFooter(
+    api.GoogleAppsCardV1CardFixedFooter o) {
+  buildCounterGoogleAppsCardV1CardFixedFooter++;
+  if (buildCounterGoogleAppsCardV1CardFixedFooter < 3) {
+    checkGoogleAppsCardV1Button(o.primaryButton! as api.GoogleAppsCardV1Button);
+    checkGoogleAppsCardV1Button(
+        o.secondaryButton! as api.GoogleAppsCardV1Button);
+  }
+  buildCounterGoogleAppsCardV1CardFixedFooter--;
+}
+
+core.int buildCounterGoogleAppsCardV1CardHeader = 0;
+api.GoogleAppsCardV1CardHeader buildGoogleAppsCardV1CardHeader() {
+  var o = api.GoogleAppsCardV1CardHeader();
+  buildCounterGoogleAppsCardV1CardHeader++;
+  if (buildCounterGoogleAppsCardV1CardHeader < 3) {
+    o.imageAltText = 'foo';
+    o.imageType = 'foo';
+    o.imageUrl = 'foo';
+    o.subtitle = 'foo';
+    o.title = 'foo';
+  }
+  buildCounterGoogleAppsCardV1CardHeader--;
+  return o;
+}
+
+void checkGoogleAppsCardV1CardHeader(api.GoogleAppsCardV1CardHeader o) {
+  buildCounterGoogleAppsCardV1CardHeader++;
+  if (buildCounterGoogleAppsCardV1CardHeader < 3) {
+    unittest.expect(
+      o.imageAltText!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.imageType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.imageUrl!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.subtitle!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.title!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleAppsCardV1CardHeader--;
+}
+
+core.int buildCounterGoogleAppsCardV1DateTimePicker = 0;
+api.GoogleAppsCardV1DateTimePicker buildGoogleAppsCardV1DateTimePicker() {
+  var o = api.GoogleAppsCardV1DateTimePicker();
+  buildCounterGoogleAppsCardV1DateTimePicker++;
+  if (buildCounterGoogleAppsCardV1DateTimePicker < 3) {
+    o.label = 'foo';
+    o.name = 'foo';
+    o.onChangeAction = buildGoogleAppsCardV1Action();
+    o.timezoneOffsetDate = 42;
+    o.type = 'foo';
+    o.valueMsEpoch = 'foo';
+  }
+  buildCounterGoogleAppsCardV1DateTimePicker--;
+  return o;
+}
+
+void checkGoogleAppsCardV1DateTimePicker(api.GoogleAppsCardV1DateTimePicker o) {
+  buildCounterGoogleAppsCardV1DateTimePicker++;
+  if (buildCounterGoogleAppsCardV1DateTimePicker < 3) {
+    unittest.expect(
+      o.label!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkGoogleAppsCardV1Action(
+        o.onChangeAction! as api.GoogleAppsCardV1Action);
+    unittest.expect(
+      o.timezoneOffsetDate!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.valueMsEpoch!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleAppsCardV1DateTimePicker--;
+}
+
+core.int buildCounterGoogleAppsCardV1DecoratedText = 0;
+api.GoogleAppsCardV1DecoratedText buildGoogleAppsCardV1DecoratedText() {
+  var o = api.GoogleAppsCardV1DecoratedText();
+  buildCounterGoogleAppsCardV1DecoratedText++;
+  if (buildCounterGoogleAppsCardV1DecoratedText < 3) {
+    o.bottomLabel = 'foo';
+    o.button = buildGoogleAppsCardV1Button();
+    o.endIcon = buildGoogleAppsCardV1Icon();
+    o.icon = buildGoogleAppsCardV1Icon();
+    o.onClick = buildGoogleAppsCardV1OnClick();
+    o.startIcon = buildGoogleAppsCardV1Icon();
+    o.switchControl = buildGoogleAppsCardV1SwitchControl();
+    o.text = 'foo';
+    o.topLabel = 'foo';
+    o.wrapText = true;
+  }
+  buildCounterGoogleAppsCardV1DecoratedText--;
+  return o;
+}
+
+void checkGoogleAppsCardV1DecoratedText(api.GoogleAppsCardV1DecoratedText o) {
+  buildCounterGoogleAppsCardV1DecoratedText++;
+  if (buildCounterGoogleAppsCardV1DecoratedText < 3) {
+    unittest.expect(
+      o.bottomLabel!,
+      unittest.equals('foo'),
+    );
+    checkGoogleAppsCardV1Button(o.button! as api.GoogleAppsCardV1Button);
+    checkGoogleAppsCardV1Icon(o.endIcon! as api.GoogleAppsCardV1Icon);
+    checkGoogleAppsCardV1Icon(o.icon! as api.GoogleAppsCardV1Icon);
+    checkGoogleAppsCardV1OnClick(o.onClick! as api.GoogleAppsCardV1OnClick);
+    checkGoogleAppsCardV1Icon(o.startIcon! as api.GoogleAppsCardV1Icon);
+    checkGoogleAppsCardV1SwitchControl(
+        o.switchControl! as api.GoogleAppsCardV1SwitchControl);
+    unittest.expect(
+      o.text!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.topLabel!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.wrapText!, unittest.isTrue);
+  }
+  buildCounterGoogleAppsCardV1DecoratedText--;
+}
+
+core.int buildCounterGoogleAppsCardV1Divider = 0;
+api.GoogleAppsCardV1Divider buildGoogleAppsCardV1Divider() {
+  var o = api.GoogleAppsCardV1Divider();
+  buildCounterGoogleAppsCardV1Divider++;
+  if (buildCounterGoogleAppsCardV1Divider < 3) {}
+  buildCounterGoogleAppsCardV1Divider--;
+  return o;
+}
+
+void checkGoogleAppsCardV1Divider(api.GoogleAppsCardV1Divider o) {
+  buildCounterGoogleAppsCardV1Divider++;
+  if (buildCounterGoogleAppsCardV1Divider < 3) {}
+  buildCounterGoogleAppsCardV1Divider--;
+}
+
+core.List<api.GoogleAppsCardV1GridItem> buildUnnamed4131() {
+  var o = <api.GoogleAppsCardV1GridItem>[];
+  o.add(buildGoogleAppsCardV1GridItem());
+  o.add(buildGoogleAppsCardV1GridItem());
+  return o;
+}
+
+void checkUnnamed4131(core.List<api.GoogleAppsCardV1GridItem> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleAppsCardV1GridItem(o[0] as api.GoogleAppsCardV1GridItem);
+  checkGoogleAppsCardV1GridItem(o[1] as api.GoogleAppsCardV1GridItem);
+}
+
+core.int buildCounterGoogleAppsCardV1Grid = 0;
+api.GoogleAppsCardV1Grid buildGoogleAppsCardV1Grid() {
+  var o = api.GoogleAppsCardV1Grid();
+  buildCounterGoogleAppsCardV1Grid++;
+  if (buildCounterGoogleAppsCardV1Grid < 3) {
+    o.borderStyle = buildGoogleAppsCardV1BorderStyle();
+    o.columnCount = 42;
+    o.items = buildUnnamed4131();
+    o.onClick = buildGoogleAppsCardV1OnClick();
+    o.title = 'foo';
+  }
+  buildCounterGoogleAppsCardV1Grid--;
+  return o;
+}
+
+void checkGoogleAppsCardV1Grid(api.GoogleAppsCardV1Grid o) {
+  buildCounterGoogleAppsCardV1Grid++;
+  if (buildCounterGoogleAppsCardV1Grid < 3) {
+    checkGoogleAppsCardV1BorderStyle(
+        o.borderStyle! as api.GoogleAppsCardV1BorderStyle);
+    unittest.expect(
+      o.columnCount!,
+      unittest.equals(42),
+    );
+    checkUnnamed4131(o.items!);
+    checkGoogleAppsCardV1OnClick(o.onClick! as api.GoogleAppsCardV1OnClick);
+    unittest.expect(
+      o.title!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleAppsCardV1Grid--;
+}
+
+core.int buildCounterGoogleAppsCardV1GridItem = 0;
+api.GoogleAppsCardV1GridItem buildGoogleAppsCardV1GridItem() {
+  var o = api.GoogleAppsCardV1GridItem();
+  buildCounterGoogleAppsCardV1GridItem++;
+  if (buildCounterGoogleAppsCardV1GridItem < 3) {
+    o.id = 'foo';
+    o.image = buildGoogleAppsCardV1ImageComponent();
+    o.layout = 'foo';
+    o.subtitle = 'foo';
+    o.textAlignment = 'foo';
+    o.title = 'foo';
+  }
+  buildCounterGoogleAppsCardV1GridItem--;
+  return o;
+}
+
+void checkGoogleAppsCardV1GridItem(api.GoogleAppsCardV1GridItem o) {
+  buildCounterGoogleAppsCardV1GridItem++;
+  if (buildCounterGoogleAppsCardV1GridItem < 3) {
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    checkGoogleAppsCardV1ImageComponent(
+        o.image! as api.GoogleAppsCardV1ImageComponent);
+    unittest.expect(
+      o.layout!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.subtitle!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.textAlignment!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.title!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleAppsCardV1GridItem--;
+}
+
+core.int buildCounterGoogleAppsCardV1Icon = 0;
+api.GoogleAppsCardV1Icon buildGoogleAppsCardV1Icon() {
+  var o = api.GoogleAppsCardV1Icon();
+  buildCounterGoogleAppsCardV1Icon++;
+  if (buildCounterGoogleAppsCardV1Icon < 3) {
+    o.altText = 'foo';
+    o.iconUrl = 'foo';
+    o.imageType = 'foo';
+    o.knownIcon = 'foo';
+  }
+  buildCounterGoogleAppsCardV1Icon--;
+  return o;
+}
+
+void checkGoogleAppsCardV1Icon(api.GoogleAppsCardV1Icon o) {
+  buildCounterGoogleAppsCardV1Icon++;
+  if (buildCounterGoogleAppsCardV1Icon < 3) {
+    unittest.expect(
+      o.altText!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.iconUrl!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.imageType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.knownIcon!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleAppsCardV1Icon--;
+}
+
+core.int buildCounterGoogleAppsCardV1Image = 0;
+api.GoogleAppsCardV1Image buildGoogleAppsCardV1Image() {
+  var o = api.GoogleAppsCardV1Image();
+  buildCounterGoogleAppsCardV1Image++;
+  if (buildCounterGoogleAppsCardV1Image < 3) {
+    o.altText = 'foo';
+    o.imageUrl = 'foo';
+    o.onClick = buildGoogleAppsCardV1OnClick();
+  }
+  buildCounterGoogleAppsCardV1Image--;
+  return o;
+}
+
+void checkGoogleAppsCardV1Image(api.GoogleAppsCardV1Image o) {
+  buildCounterGoogleAppsCardV1Image++;
+  if (buildCounterGoogleAppsCardV1Image < 3) {
+    unittest.expect(
+      o.altText!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.imageUrl!,
+      unittest.equals('foo'),
+    );
+    checkGoogleAppsCardV1OnClick(o.onClick! as api.GoogleAppsCardV1OnClick);
+  }
+  buildCounterGoogleAppsCardV1Image--;
+}
+
+core.int buildCounterGoogleAppsCardV1ImageComponent = 0;
+api.GoogleAppsCardV1ImageComponent buildGoogleAppsCardV1ImageComponent() {
+  var o = api.GoogleAppsCardV1ImageComponent();
+  buildCounterGoogleAppsCardV1ImageComponent++;
+  if (buildCounterGoogleAppsCardV1ImageComponent < 3) {
+    o.altText = 'foo';
+    o.borderStyle = buildGoogleAppsCardV1BorderStyle();
+    o.cropStyle = buildGoogleAppsCardV1ImageCropStyle();
+    o.imageUri = 'foo';
+  }
+  buildCounterGoogleAppsCardV1ImageComponent--;
+  return o;
+}
+
+void checkGoogleAppsCardV1ImageComponent(api.GoogleAppsCardV1ImageComponent o) {
+  buildCounterGoogleAppsCardV1ImageComponent++;
+  if (buildCounterGoogleAppsCardV1ImageComponent < 3) {
+    unittest.expect(
+      o.altText!,
+      unittest.equals('foo'),
+    );
+    checkGoogleAppsCardV1BorderStyle(
+        o.borderStyle! as api.GoogleAppsCardV1BorderStyle);
+    checkGoogleAppsCardV1ImageCropStyle(
+        o.cropStyle! as api.GoogleAppsCardV1ImageCropStyle);
+    unittest.expect(
+      o.imageUri!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleAppsCardV1ImageComponent--;
+}
+
+core.int buildCounterGoogleAppsCardV1ImageCropStyle = 0;
+api.GoogleAppsCardV1ImageCropStyle buildGoogleAppsCardV1ImageCropStyle() {
+  var o = api.GoogleAppsCardV1ImageCropStyle();
+  buildCounterGoogleAppsCardV1ImageCropStyle++;
+  if (buildCounterGoogleAppsCardV1ImageCropStyle < 3) {
+    o.aspectRatio = 42.0;
+    o.type = 'foo';
+  }
+  buildCounterGoogleAppsCardV1ImageCropStyle--;
+  return o;
+}
+
+void checkGoogleAppsCardV1ImageCropStyle(api.GoogleAppsCardV1ImageCropStyle o) {
+  buildCounterGoogleAppsCardV1ImageCropStyle++;
+  if (buildCounterGoogleAppsCardV1ImageCropStyle < 3) {
+    unittest.expect(
+      o.aspectRatio!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleAppsCardV1ImageCropStyle--;
+}
+
+core.int buildCounterGoogleAppsCardV1OnClick = 0;
+api.GoogleAppsCardV1OnClick buildGoogleAppsCardV1OnClick() {
+  var o = api.GoogleAppsCardV1OnClick();
+  buildCounterGoogleAppsCardV1OnClick++;
+  if (buildCounterGoogleAppsCardV1OnClick < 3) {
+    o.action = buildGoogleAppsCardV1Action();
+    o.card = buildGoogleAppsCardV1Card();
+    o.openDynamicLinkAction = buildGoogleAppsCardV1Action();
+    o.openLink = buildGoogleAppsCardV1OpenLink();
+  }
+  buildCounterGoogleAppsCardV1OnClick--;
+  return o;
+}
+
+void checkGoogleAppsCardV1OnClick(api.GoogleAppsCardV1OnClick o) {
+  buildCounterGoogleAppsCardV1OnClick++;
+  if (buildCounterGoogleAppsCardV1OnClick < 3) {
+    checkGoogleAppsCardV1Action(o.action! as api.GoogleAppsCardV1Action);
+    checkGoogleAppsCardV1Card(o.card! as api.GoogleAppsCardV1Card);
+    checkGoogleAppsCardV1Action(
+        o.openDynamicLinkAction! as api.GoogleAppsCardV1Action);
+    checkGoogleAppsCardV1OpenLink(o.openLink! as api.GoogleAppsCardV1OpenLink);
+  }
+  buildCounterGoogleAppsCardV1OnClick--;
+}
+
+core.int buildCounterGoogleAppsCardV1OpenLink = 0;
+api.GoogleAppsCardV1OpenLink buildGoogleAppsCardV1OpenLink() {
+  var o = api.GoogleAppsCardV1OpenLink();
+  buildCounterGoogleAppsCardV1OpenLink++;
+  if (buildCounterGoogleAppsCardV1OpenLink < 3) {
+    o.onClose = 'foo';
+    o.openAs = 'foo';
+    o.url = 'foo';
+  }
+  buildCounterGoogleAppsCardV1OpenLink--;
+  return o;
+}
+
+void checkGoogleAppsCardV1OpenLink(api.GoogleAppsCardV1OpenLink o) {
+  buildCounterGoogleAppsCardV1OpenLink++;
+  if (buildCounterGoogleAppsCardV1OpenLink < 3) {
+    unittest.expect(
+      o.onClose!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.openAs!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.url!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleAppsCardV1OpenLink--;
+}
+
+core.List<api.GoogleAppsCardV1Widget> buildUnnamed4132() {
+  var o = <api.GoogleAppsCardV1Widget>[];
+  o.add(buildGoogleAppsCardV1Widget());
+  o.add(buildGoogleAppsCardV1Widget());
+  return o;
+}
+
+void checkUnnamed4132(core.List<api.GoogleAppsCardV1Widget> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleAppsCardV1Widget(o[0] as api.GoogleAppsCardV1Widget);
+  checkGoogleAppsCardV1Widget(o[1] as api.GoogleAppsCardV1Widget);
+}
+
+core.int buildCounterGoogleAppsCardV1Section = 0;
+api.GoogleAppsCardV1Section buildGoogleAppsCardV1Section() {
+  var o = api.GoogleAppsCardV1Section();
+  buildCounterGoogleAppsCardV1Section++;
+  if (buildCounterGoogleAppsCardV1Section < 3) {
+    o.collapsible = true;
+    o.header = 'foo';
+    o.uncollapsibleWidgetsCount = 42;
+    o.widgets = buildUnnamed4132();
+  }
+  buildCounterGoogleAppsCardV1Section--;
+  return o;
+}
+
+void checkGoogleAppsCardV1Section(api.GoogleAppsCardV1Section o) {
+  buildCounterGoogleAppsCardV1Section++;
+  if (buildCounterGoogleAppsCardV1Section < 3) {
+    unittest.expect(o.collapsible!, unittest.isTrue);
+    unittest.expect(
+      o.header!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.uncollapsibleWidgetsCount!,
+      unittest.equals(42),
+    );
+    checkUnnamed4132(o.widgets!);
+  }
+  buildCounterGoogleAppsCardV1Section--;
+}
+
+core.List<api.GoogleAppsCardV1SelectionItem> buildUnnamed4133() {
+  var o = <api.GoogleAppsCardV1SelectionItem>[];
+  o.add(buildGoogleAppsCardV1SelectionItem());
+  o.add(buildGoogleAppsCardV1SelectionItem());
+  return o;
+}
+
+void checkUnnamed4133(core.List<api.GoogleAppsCardV1SelectionItem> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleAppsCardV1SelectionItem(o[0] as api.GoogleAppsCardV1SelectionItem);
+  checkGoogleAppsCardV1SelectionItem(o[1] as api.GoogleAppsCardV1SelectionItem);
+}
+
+core.int buildCounterGoogleAppsCardV1SelectionInput = 0;
+api.GoogleAppsCardV1SelectionInput buildGoogleAppsCardV1SelectionInput() {
+  var o = api.GoogleAppsCardV1SelectionInput();
+  buildCounterGoogleAppsCardV1SelectionInput++;
+  if (buildCounterGoogleAppsCardV1SelectionInput < 3) {
+    o.items = buildUnnamed4133();
+    o.label = 'foo';
+    o.name = 'foo';
+    o.onChangeAction = buildGoogleAppsCardV1Action();
+    o.type = 'foo';
+  }
+  buildCounterGoogleAppsCardV1SelectionInput--;
+  return o;
+}
+
+void checkGoogleAppsCardV1SelectionInput(api.GoogleAppsCardV1SelectionInput o) {
+  buildCounterGoogleAppsCardV1SelectionInput++;
+  if (buildCounterGoogleAppsCardV1SelectionInput < 3) {
+    checkUnnamed4133(o.items!);
+    unittest.expect(
+      o.label!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkGoogleAppsCardV1Action(
+        o.onChangeAction! as api.GoogleAppsCardV1Action);
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleAppsCardV1SelectionInput--;
+}
+
+core.int buildCounterGoogleAppsCardV1SelectionItem = 0;
+api.GoogleAppsCardV1SelectionItem buildGoogleAppsCardV1SelectionItem() {
+  var o = api.GoogleAppsCardV1SelectionItem();
+  buildCounterGoogleAppsCardV1SelectionItem++;
+  if (buildCounterGoogleAppsCardV1SelectionItem < 3) {
+    o.selected = true;
+    o.text = 'foo';
+    o.value = 'foo';
+  }
+  buildCounterGoogleAppsCardV1SelectionItem--;
+  return o;
+}
+
+void checkGoogleAppsCardV1SelectionItem(api.GoogleAppsCardV1SelectionItem o) {
+  buildCounterGoogleAppsCardV1SelectionItem++;
+  if (buildCounterGoogleAppsCardV1SelectionItem < 3) {
+    unittest.expect(o.selected!, unittest.isTrue);
+    unittest.expect(
+      o.text!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.value!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleAppsCardV1SelectionItem--;
+}
+
+core.int buildCounterGoogleAppsCardV1SuggestionItem = 0;
+api.GoogleAppsCardV1SuggestionItem buildGoogleAppsCardV1SuggestionItem() {
+  var o = api.GoogleAppsCardV1SuggestionItem();
+  buildCounterGoogleAppsCardV1SuggestionItem++;
+  if (buildCounterGoogleAppsCardV1SuggestionItem < 3) {
+    o.text = 'foo';
+  }
+  buildCounterGoogleAppsCardV1SuggestionItem--;
+  return o;
+}
+
+void checkGoogleAppsCardV1SuggestionItem(api.GoogleAppsCardV1SuggestionItem o) {
+  buildCounterGoogleAppsCardV1SuggestionItem++;
+  if (buildCounterGoogleAppsCardV1SuggestionItem < 3) {
+    unittest.expect(
+      o.text!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleAppsCardV1SuggestionItem--;
+}
+
+core.List<api.GoogleAppsCardV1SuggestionItem> buildUnnamed4134() {
+  var o = <api.GoogleAppsCardV1SuggestionItem>[];
+  o.add(buildGoogleAppsCardV1SuggestionItem());
+  o.add(buildGoogleAppsCardV1SuggestionItem());
+  return o;
+}
+
+void checkUnnamed4134(core.List<api.GoogleAppsCardV1SuggestionItem> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleAppsCardV1SuggestionItem(
+      o[0] as api.GoogleAppsCardV1SuggestionItem);
+  checkGoogleAppsCardV1SuggestionItem(
+      o[1] as api.GoogleAppsCardV1SuggestionItem);
+}
+
+core.int buildCounterGoogleAppsCardV1Suggestions = 0;
+api.GoogleAppsCardV1Suggestions buildGoogleAppsCardV1Suggestions() {
+  var o = api.GoogleAppsCardV1Suggestions();
+  buildCounterGoogleAppsCardV1Suggestions++;
+  if (buildCounterGoogleAppsCardV1Suggestions < 3) {
+    o.items = buildUnnamed4134();
+  }
+  buildCounterGoogleAppsCardV1Suggestions--;
+  return o;
+}
+
+void checkGoogleAppsCardV1Suggestions(api.GoogleAppsCardV1Suggestions o) {
+  buildCounterGoogleAppsCardV1Suggestions++;
+  if (buildCounterGoogleAppsCardV1Suggestions < 3) {
+    checkUnnamed4134(o.items!);
+  }
+  buildCounterGoogleAppsCardV1Suggestions--;
+}
+
+core.int buildCounterGoogleAppsCardV1SwitchControl = 0;
+api.GoogleAppsCardV1SwitchControl buildGoogleAppsCardV1SwitchControl() {
+  var o = api.GoogleAppsCardV1SwitchControl();
+  buildCounterGoogleAppsCardV1SwitchControl++;
+  if (buildCounterGoogleAppsCardV1SwitchControl < 3) {
+    o.controlType = 'foo';
+    o.name = 'foo';
+    o.onChangeAction = buildGoogleAppsCardV1Action();
+    o.selected = true;
+    o.value = 'foo';
+  }
+  buildCounterGoogleAppsCardV1SwitchControl--;
+  return o;
+}
+
+void checkGoogleAppsCardV1SwitchControl(api.GoogleAppsCardV1SwitchControl o) {
+  buildCounterGoogleAppsCardV1SwitchControl++;
+  if (buildCounterGoogleAppsCardV1SwitchControl < 3) {
+    unittest.expect(
+      o.controlType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkGoogleAppsCardV1Action(
+        o.onChangeAction! as api.GoogleAppsCardV1Action);
+    unittest.expect(o.selected!, unittest.isTrue);
+    unittest.expect(
+      o.value!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleAppsCardV1SwitchControl--;
+}
+
+core.int buildCounterGoogleAppsCardV1TextInput = 0;
+api.GoogleAppsCardV1TextInput buildGoogleAppsCardV1TextInput() {
+  var o = api.GoogleAppsCardV1TextInput();
+  buildCounterGoogleAppsCardV1TextInput++;
+  if (buildCounterGoogleAppsCardV1TextInput < 3) {
+    o.autoCompleteAction = buildGoogleAppsCardV1Action();
+    o.hintText = 'foo';
+    o.initialSuggestions = buildGoogleAppsCardV1Suggestions();
+    o.label = 'foo';
+    o.name = 'foo';
+    o.onChangeAction = buildGoogleAppsCardV1Action();
+    o.type = 'foo';
+    o.value = 'foo';
+  }
+  buildCounterGoogleAppsCardV1TextInput--;
+  return o;
+}
+
+void checkGoogleAppsCardV1TextInput(api.GoogleAppsCardV1TextInput o) {
+  buildCounterGoogleAppsCardV1TextInput++;
+  if (buildCounterGoogleAppsCardV1TextInput < 3) {
+    checkGoogleAppsCardV1Action(
+        o.autoCompleteAction! as api.GoogleAppsCardV1Action);
+    unittest.expect(
+      o.hintText!,
+      unittest.equals('foo'),
+    );
+    checkGoogleAppsCardV1Suggestions(
+        o.initialSuggestions! as api.GoogleAppsCardV1Suggestions);
+    unittest.expect(
+      o.label!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkGoogleAppsCardV1Action(
+        o.onChangeAction! as api.GoogleAppsCardV1Action);
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.value!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleAppsCardV1TextInput--;
+}
+
+core.int buildCounterGoogleAppsCardV1TextParagraph = 0;
+api.GoogleAppsCardV1TextParagraph buildGoogleAppsCardV1TextParagraph() {
+  var o = api.GoogleAppsCardV1TextParagraph();
+  buildCounterGoogleAppsCardV1TextParagraph++;
+  if (buildCounterGoogleAppsCardV1TextParagraph < 3) {
+    o.text = 'foo';
+  }
+  buildCounterGoogleAppsCardV1TextParagraph--;
+  return o;
+}
+
+void checkGoogleAppsCardV1TextParagraph(api.GoogleAppsCardV1TextParagraph o) {
+  buildCounterGoogleAppsCardV1TextParagraph++;
+  if (buildCounterGoogleAppsCardV1TextParagraph < 3) {
+    unittest.expect(
+      o.text!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleAppsCardV1TextParagraph--;
+}
+
+core.int buildCounterGoogleAppsCardV1Widget = 0;
+api.GoogleAppsCardV1Widget buildGoogleAppsCardV1Widget() {
+  var o = api.GoogleAppsCardV1Widget();
+  buildCounterGoogleAppsCardV1Widget++;
+  if (buildCounterGoogleAppsCardV1Widget < 3) {
+    o.buttonList = buildGoogleAppsCardV1ButtonList();
+    o.dateTimePicker = buildGoogleAppsCardV1DateTimePicker();
+    o.decoratedText = buildGoogleAppsCardV1DecoratedText();
+    o.divider = buildGoogleAppsCardV1Divider();
+    o.grid = buildGoogleAppsCardV1Grid();
+    o.horizontalAlignment = 'foo';
+    o.image = buildGoogleAppsCardV1Image();
+    o.selectionInput = buildGoogleAppsCardV1SelectionInput();
+    o.textInput = buildGoogleAppsCardV1TextInput();
+    o.textParagraph = buildGoogleAppsCardV1TextParagraph();
+  }
+  buildCounterGoogleAppsCardV1Widget--;
+  return o;
+}
+
+void checkGoogleAppsCardV1Widget(api.GoogleAppsCardV1Widget o) {
+  buildCounterGoogleAppsCardV1Widget++;
+  if (buildCounterGoogleAppsCardV1Widget < 3) {
+    checkGoogleAppsCardV1ButtonList(
+        o.buttonList! as api.GoogleAppsCardV1ButtonList);
+    checkGoogleAppsCardV1DateTimePicker(
+        o.dateTimePicker! as api.GoogleAppsCardV1DateTimePicker);
+    checkGoogleAppsCardV1DecoratedText(
+        o.decoratedText! as api.GoogleAppsCardV1DecoratedText);
+    checkGoogleAppsCardV1Divider(o.divider! as api.GoogleAppsCardV1Divider);
+    checkGoogleAppsCardV1Grid(o.grid! as api.GoogleAppsCardV1Grid);
+    unittest.expect(
+      o.horizontalAlignment!,
+      unittest.equals('foo'),
+    );
+    checkGoogleAppsCardV1Image(o.image! as api.GoogleAppsCardV1Image);
+    checkGoogleAppsCardV1SelectionInput(
+        o.selectionInput! as api.GoogleAppsCardV1SelectionInput);
+    checkGoogleAppsCardV1TextInput(
+        o.textInput! as api.GoogleAppsCardV1TextInput);
+    checkGoogleAppsCardV1TextParagraph(
+        o.textParagraph! as api.GoogleAppsCardV1TextParagraph);
+  }
+  buildCounterGoogleAppsCardV1Widget--;
 }
 
 core.int buildCounterImage = 0;
@@ -561,14 +1665,14 @@ void checkKeyValue(api.KeyValue o) {
   buildCounterKeyValue--;
 }
 
-core.List<api.Membership> buildUnnamed3728() {
+core.List<api.Membership> buildUnnamed4135() {
   var o = <api.Membership>[];
   o.add(buildMembership());
   o.add(buildMembership());
   return o;
 }
 
-void checkUnnamed3728(core.List<api.Membership> o) {
+void checkUnnamed4135(core.List<api.Membership> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMembership(o[0] as api.Membership);
   checkMembership(o[1] as api.Membership);
@@ -579,7 +1683,7 @@ api.ListMembershipsResponse buildListMembershipsResponse() {
   var o = api.ListMembershipsResponse();
   buildCounterListMembershipsResponse++;
   if (buildCounterListMembershipsResponse < 3) {
-    o.memberships = buildUnnamed3728();
+    o.memberships = buildUnnamed4135();
     o.nextPageToken = 'foo';
   }
   buildCounterListMembershipsResponse--;
@@ -589,7 +1693,7 @@ api.ListMembershipsResponse buildListMembershipsResponse() {
 void checkListMembershipsResponse(api.ListMembershipsResponse o) {
   buildCounterListMembershipsResponse++;
   if (buildCounterListMembershipsResponse < 3) {
-    checkUnnamed3728(o.memberships!);
+    checkUnnamed4135(o.memberships!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -598,14 +1702,14 @@ void checkListMembershipsResponse(api.ListMembershipsResponse o) {
   buildCounterListMembershipsResponse--;
 }
 
-core.List<api.Space> buildUnnamed3729() {
+core.List<api.Space> buildUnnamed4136() {
   var o = <api.Space>[];
   o.add(buildSpace());
   o.add(buildSpace());
   return o;
 }
 
-void checkUnnamed3729(core.List<api.Space> o) {
+void checkUnnamed4136(core.List<api.Space> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSpace(o[0] as api.Space);
   checkSpace(o[1] as api.Space);
@@ -617,7 +1721,7 @@ api.ListSpacesResponse buildListSpacesResponse() {
   buildCounterListSpacesResponse++;
   if (buildCounterListSpacesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.spaces = buildUnnamed3729();
+    o.spaces = buildUnnamed4136();
   }
   buildCounterListSpacesResponse--;
   return o;
@@ -630,7 +1734,7 @@ void checkListSpacesResponse(api.ListSpacesResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed3729(o.spaces!);
+    checkUnnamed4136(o.spaces!);
   }
   buildCounterListSpacesResponse--;
 }
@@ -691,43 +1795,56 @@ void checkMembership(api.Membership o) {
   buildCounterMembership--;
 }
 
-core.List<api.Annotation> buildUnnamed3730() {
+core.List<api.Annotation> buildUnnamed4137() {
   var o = <api.Annotation>[];
   o.add(buildAnnotation());
   o.add(buildAnnotation());
   return o;
 }
 
-void checkUnnamed3730(core.List<api.Annotation> o) {
+void checkUnnamed4137(core.List<api.Annotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAnnotation(o[0] as api.Annotation);
   checkAnnotation(o[1] as api.Annotation);
 }
 
-core.List<api.Attachment> buildUnnamed3731() {
+core.List<api.Attachment> buildUnnamed4138() {
   var o = <api.Attachment>[];
   o.add(buildAttachment());
   o.add(buildAttachment());
   return o;
 }
 
-void checkUnnamed3731(core.List<api.Attachment> o) {
+void checkUnnamed4138(core.List<api.Attachment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAttachment(o[0] as api.Attachment);
   checkAttachment(o[1] as api.Attachment);
 }
 
-core.List<api.Card> buildUnnamed3732() {
+core.List<api.Card> buildUnnamed4139() {
   var o = <api.Card>[];
   o.add(buildCard());
   o.add(buildCard());
   return o;
 }
 
-void checkUnnamed3732(core.List<api.Card> o) {
+void checkUnnamed4139(core.List<api.Card> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCard(o[0] as api.Card);
   checkCard(o[1] as api.Card);
+}
+
+core.List<api.CardWithId> buildUnnamed4140() {
+  var o = <api.CardWithId>[];
+  o.add(buildCardWithId());
+  o.add(buildCardWithId());
+  return o;
+}
+
+void checkUnnamed4140(core.List<api.CardWithId> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkCardWithId(o[0] as api.CardWithId);
+  checkCardWithId(o[1] as api.CardWithId);
 }
 
 core.int buildCounterMessage = 0;
@@ -736,10 +1853,11 @@ api.Message buildMessage() {
   buildCounterMessage++;
   if (buildCounterMessage < 3) {
     o.actionResponse = buildActionResponse();
-    o.annotations = buildUnnamed3730();
+    o.annotations = buildUnnamed4137();
     o.argumentText = 'foo';
-    o.attachment = buildUnnamed3731();
-    o.cards = buildUnnamed3732();
+    o.attachment = buildUnnamed4138();
+    o.cards = buildUnnamed4139();
+    o.cardsV2 = buildUnnamed4140();
     o.createTime = 'foo';
     o.fallbackText = 'foo';
     o.name = 'foo';
@@ -758,13 +1876,14 @@ void checkMessage(api.Message o) {
   buildCounterMessage++;
   if (buildCounterMessage < 3) {
     checkActionResponse(o.actionResponse! as api.ActionResponse);
-    checkUnnamed3730(o.annotations!);
+    checkUnnamed4137(o.annotations!);
     unittest.expect(
       o.argumentText!,
       unittest.equals('foo'),
     );
-    checkUnnamed3731(o.attachment!);
-    checkUnnamed3732(o.cards!);
+    checkUnnamed4138(o.attachment!);
+    checkUnnamed4139(o.cards!);
+    checkUnnamed4140(o.cardsV2!);
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),
@@ -836,14 +1955,14 @@ void checkOpenLink(api.OpenLink o) {
   buildCounterOpenLink--;
 }
 
-core.List<api.WidgetMarkup> buildUnnamed3733() {
+core.List<api.WidgetMarkup> buildUnnamed4141() {
   var o = <api.WidgetMarkup>[];
   o.add(buildWidgetMarkup());
   o.add(buildWidgetMarkup());
   return o;
 }
 
-void checkUnnamed3733(core.List<api.WidgetMarkup> o) {
+void checkUnnamed4141(core.List<api.WidgetMarkup> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWidgetMarkup(o[0] as api.WidgetMarkup);
   checkWidgetMarkup(o[1] as api.WidgetMarkup);
@@ -855,7 +1974,7 @@ api.Section buildSection() {
   buildCounterSection++;
   if (buildCounterSection < 3) {
     o.header = 'foo';
-    o.widgets = buildUnnamed3733();
+    o.widgets = buildUnnamed4141();
   }
   buildCounterSection--;
   return o;
@@ -868,7 +1987,7 @@ void checkSection(api.Section o) {
       o.header!,
       unittest.equals('foo'),
     );
-    checkUnnamed3733(o.widgets!);
+    checkUnnamed4141(o.widgets!);
   }
   buildCounterSection--;
 }
@@ -1098,14 +2217,14 @@ void checkUserMentionMetadata(api.UserMentionMetadata o) {
   buildCounterUserMentionMetadata--;
 }
 
-core.List<api.Button> buildUnnamed3734() {
+core.List<api.Button> buildUnnamed4142() {
   var o = <api.Button>[];
   o.add(buildButton());
   o.add(buildButton());
   return o;
 }
 
-void checkUnnamed3734(core.List<api.Button> o) {
+void checkUnnamed4142(core.List<api.Button> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkButton(o[0] as api.Button);
   checkButton(o[1] as api.Button);
@@ -1116,7 +2235,7 @@ api.WidgetMarkup buildWidgetMarkup() {
   var o = api.WidgetMarkup();
   buildCounterWidgetMarkup++;
   if (buildCounterWidgetMarkup < 3) {
-    o.buttons = buildUnnamed3734();
+    o.buttons = buildUnnamed4142();
     o.image = buildImage();
     o.keyValue = buildKeyValue();
     o.textParagraph = buildTextParagraph();
@@ -1128,7 +2247,7 @@ api.WidgetMarkup buildWidgetMarkup() {
 void checkWidgetMarkup(api.WidgetMarkup o) {
   buildCounterWidgetMarkup++;
   if (buildCounterWidgetMarkup < 3) {
-    checkUnnamed3734(o.buttons!);
+    checkUnnamed4142(o.buttons!);
     checkImage(o.image! as api.Image);
     checkKeyValue(o.keyValue! as api.KeyValue);
     checkTextParagraph(o.textParagraph! as api.TextParagraph);
@@ -1226,6 +2345,25 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-CardWithId', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildCardWithId();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.CardWithId.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkCardWithId(od as api.CardWithId);
+    });
+  });
+
+  unittest.group('obj-schema-Color', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildColor();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Color.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkColor(od as api.Color);
+    });
+  });
+
   unittest.group('obj-schema-DeprecatedEvent', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDeprecatedEvent();
@@ -1262,6 +2400,307 @@ void main() {
       var od =
           api.FormAction.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkFormAction(od as api.FormAction);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleAppsCardV1Action', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildGoogleAppsCardV1Action();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAppsCardV1Action.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAppsCardV1Action(od as api.GoogleAppsCardV1Action);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleAppsCardV1ActionParameter', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildGoogleAppsCardV1ActionParameter();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAppsCardV1ActionParameter.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAppsCardV1ActionParameter(
+          od as api.GoogleAppsCardV1ActionParameter);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleAppsCardV1BorderStyle', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildGoogleAppsCardV1BorderStyle();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAppsCardV1BorderStyle.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAppsCardV1BorderStyle(od as api.GoogleAppsCardV1BorderStyle);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleAppsCardV1Button', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildGoogleAppsCardV1Button();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAppsCardV1Button.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAppsCardV1Button(od as api.GoogleAppsCardV1Button);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleAppsCardV1ButtonList', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildGoogleAppsCardV1ButtonList();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAppsCardV1ButtonList.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAppsCardV1ButtonList(od as api.GoogleAppsCardV1ButtonList);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleAppsCardV1Card', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildGoogleAppsCardV1Card();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAppsCardV1Card.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAppsCardV1Card(od as api.GoogleAppsCardV1Card);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleAppsCardV1CardAction', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildGoogleAppsCardV1CardAction();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAppsCardV1CardAction.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAppsCardV1CardAction(od as api.GoogleAppsCardV1CardAction);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleAppsCardV1CardFixedFooter', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildGoogleAppsCardV1CardFixedFooter();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAppsCardV1CardFixedFooter.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAppsCardV1CardFixedFooter(
+          od as api.GoogleAppsCardV1CardFixedFooter);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleAppsCardV1CardHeader', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildGoogleAppsCardV1CardHeader();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAppsCardV1CardHeader.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAppsCardV1CardHeader(od as api.GoogleAppsCardV1CardHeader);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleAppsCardV1DateTimePicker', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildGoogleAppsCardV1DateTimePicker();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAppsCardV1DateTimePicker.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAppsCardV1DateTimePicker(
+          od as api.GoogleAppsCardV1DateTimePicker);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleAppsCardV1DecoratedText', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildGoogleAppsCardV1DecoratedText();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAppsCardV1DecoratedText.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAppsCardV1DecoratedText(
+          od as api.GoogleAppsCardV1DecoratedText);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleAppsCardV1Divider', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildGoogleAppsCardV1Divider();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAppsCardV1Divider.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAppsCardV1Divider(od as api.GoogleAppsCardV1Divider);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleAppsCardV1Grid', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildGoogleAppsCardV1Grid();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAppsCardV1Grid.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAppsCardV1Grid(od as api.GoogleAppsCardV1Grid);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleAppsCardV1GridItem', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildGoogleAppsCardV1GridItem();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAppsCardV1GridItem.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAppsCardV1GridItem(od as api.GoogleAppsCardV1GridItem);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleAppsCardV1Icon', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildGoogleAppsCardV1Icon();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAppsCardV1Icon.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAppsCardV1Icon(od as api.GoogleAppsCardV1Icon);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleAppsCardV1Image', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildGoogleAppsCardV1Image();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAppsCardV1Image.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAppsCardV1Image(od as api.GoogleAppsCardV1Image);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleAppsCardV1ImageComponent', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildGoogleAppsCardV1ImageComponent();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAppsCardV1ImageComponent.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAppsCardV1ImageComponent(
+          od as api.GoogleAppsCardV1ImageComponent);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleAppsCardV1ImageCropStyle', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildGoogleAppsCardV1ImageCropStyle();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAppsCardV1ImageCropStyle.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAppsCardV1ImageCropStyle(
+          od as api.GoogleAppsCardV1ImageCropStyle);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleAppsCardV1OnClick', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildGoogleAppsCardV1OnClick();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAppsCardV1OnClick.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAppsCardV1OnClick(od as api.GoogleAppsCardV1OnClick);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleAppsCardV1OpenLink', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildGoogleAppsCardV1OpenLink();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAppsCardV1OpenLink.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAppsCardV1OpenLink(od as api.GoogleAppsCardV1OpenLink);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleAppsCardV1Section', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildGoogleAppsCardV1Section();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAppsCardV1Section.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAppsCardV1Section(od as api.GoogleAppsCardV1Section);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleAppsCardV1SelectionInput', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildGoogleAppsCardV1SelectionInput();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAppsCardV1SelectionInput.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAppsCardV1SelectionInput(
+          od as api.GoogleAppsCardV1SelectionInput);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleAppsCardV1SelectionItem', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildGoogleAppsCardV1SelectionItem();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAppsCardV1SelectionItem.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAppsCardV1SelectionItem(
+          od as api.GoogleAppsCardV1SelectionItem);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleAppsCardV1SuggestionItem', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildGoogleAppsCardV1SuggestionItem();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAppsCardV1SuggestionItem.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAppsCardV1SuggestionItem(
+          od as api.GoogleAppsCardV1SuggestionItem);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleAppsCardV1Suggestions', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildGoogleAppsCardV1Suggestions();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAppsCardV1Suggestions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAppsCardV1Suggestions(od as api.GoogleAppsCardV1Suggestions);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleAppsCardV1SwitchControl', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildGoogleAppsCardV1SwitchControl();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAppsCardV1SwitchControl.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAppsCardV1SwitchControl(
+          od as api.GoogleAppsCardV1SwitchControl);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleAppsCardV1TextInput', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildGoogleAppsCardV1TextInput();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAppsCardV1TextInput.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAppsCardV1TextInput(od as api.GoogleAppsCardV1TextInput);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleAppsCardV1TextParagraph', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildGoogleAppsCardV1TextParagraph();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAppsCardV1TextParagraph.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAppsCardV1TextParagraph(
+          od as api.GoogleAppsCardV1TextParagraph);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleAppsCardV1Widget', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildGoogleAppsCardV1Widget();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAppsCardV1Widget.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAppsCardV1Widget(od as api.GoogleAppsCardV1Widget);
     });
   });
 

@@ -97,6 +97,7 @@
             "methods": {
                 "search": {
                     "description": "Searches Knowledge Graph for entities that match the constraints. A list of matched entities will be returned in response, which will be in JSON-LD format and compatible with http://schema.org",
+                    "flatPath": "v1/entities:search",
                     "httpMethod": "GET",
                     "id": "kgsearch.entities.search",
                     "parameterOrder": [],
@@ -149,7 +150,7 @@
             }
         }
     },
-    "revision": "20210224",
+    "revision": "20210610",
     "rootUrl": "https://kgsearch.googleapis.com/",
     "schemas": {
         "SearchResponse": {

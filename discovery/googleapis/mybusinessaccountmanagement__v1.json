@@ -98,6 +98,7 @@
             "methods": {
                 "create": {
                     "description": "Creates an account with the specified name and type under the given parent. - Personal accounts and Organizations cannot be created. - User Groups cannot be created with a Personal account as primary owner. - Location Groups cannot be created with a primary owner of a Personal account if the Personal account is in an Organization. - Location Groups cannot own Location Groups.",
+                    "flatPath": "v1/accounts",
                     "httpMethod": "POST",
                     "id": "mybusinessaccountmanagement.accounts.create",
                     "parameterOrder": [],
@@ -112,6 +113,7 @@
                 },
                 "get": {
                     "description": "Gets the specified account. Returns `NOT_FOUND` if the account does not exist or if the caller does not have access rights to it.",
+                    "flatPath": "v1/accounts/{accountsId}",
                     "httpMethod": "GET",
                     "id": "mybusinessaccountmanagement.accounts.get",
                     "parameterOrder": [
@@ -133,6 +135,7 @@
                 },
                 "list": {
                     "description": "Lists all of the accounts for the authenticated user. This includes all accounts that the user owns, as well as any accounts for which the user has management rights.",
+                    "flatPath": "v1/accounts",
                     "httpMethod": "GET",
                     "id": "mybusinessaccountmanagement.accounts.list",
                     "parameterOrder": [],
@@ -166,6 +169,7 @@
                 },
                 "patch": {
                     "description": "Updates the specified business account. Personal accounts cannot be updated using this method.",
+                    "flatPath": "v1/accounts/{accountsId}",
                     "httpMethod": "PATCH",
                     "id": "mybusinessaccountmanagement.accounts.patch",
                     "parameterOrder": [
@@ -205,6 +209,7 @@
                     "methods": {
                         "create": {
                             "description": "Invites the specified user to become an administrator for the specified account. The invitee must accept the invitation in order to be granted access to the account. See AcceptInvitation to programmatically accept an invitation.",
+                            "flatPath": "v1/accounts/{accountsId}/admins",
                             "httpMethod": "POST",
                             "id": "mybusinessaccountmanagement.accounts.admins.create",
                             "parameterOrder": [
@@ -229,6 +234,7 @@
                         },
                         "delete": {
                             "description": "Removes the specified admin from the specified account.",
+                            "flatPath": "v1/accounts/{accountsId}/admins/{adminsId}",
                             "httpMethod": "DELETE",
                             "id": "mybusinessaccountmanagement.accounts.admins.delete",
                             "parameterOrder": [
@@ -250,6 +256,7 @@
                         },
                         "list": {
                             "description": "Lists the admins for the specified account.",
+                            "flatPath": "v1/accounts/{accountsId}/admins",
                             "httpMethod": "GET",
                             "id": "mybusinessaccountmanagement.accounts.admins.list",
                             "parameterOrder": [
@@ -271,6 +278,7 @@
                         },
                         "patch": {
                             "description": "Updates the Admin for the specified Account Admin.",
+                            "flatPath": "v1/accounts/{accountsId}/admins/{adminsId}",
                             "httpMethod": "PATCH",
                             "id": "mybusinessaccountmanagement.accounts.admins.patch",
                             "parameterOrder": [
@@ -305,6 +313,7 @@
                     "methods": {
                         "accept": {
                             "description": "Accepts the specified invitation.",
+                            "flatPath": "v1/accounts/{accountsId}/invitations/{invitationsId}:accept",
                             "httpMethod": "POST",
                             "id": "mybusinessaccountmanagement.accounts.invitations.accept",
                             "parameterOrder": [
@@ -329,6 +338,7 @@
                         },
                         "decline": {
                             "description": "Declines the specified invitation.",
+                            "flatPath": "v1/accounts/{accountsId}/invitations/{invitationsId}:decline",
                             "httpMethod": "POST",
                             "id": "mybusinessaccountmanagement.accounts.invitations.decline",
                             "parameterOrder": [
@@ -353,6 +363,7 @@
                         },
                         "list": {
                             "description": "Lists pending invitations for the specified account.",
+                            "flatPath": "v1/accounts/{accountsId}/invitations",
                             "httpMethod": "GET",
                             "id": "mybusinessaccountmanagement.accounts.invitations.list",
                             "parameterOrder": [
@@ -385,6 +396,7 @@
             "methods": {
                 "transfer": {
                     "description": "Moves a location from an account that the user owns to another account that the same user administers. The user must be an owner of the account the location is currently associated with and must also be at least a manager of the destination account.",
+                    "flatPath": "v1/locations/{locationsId}:transfer",
                     "httpMethod": "POST",
                     "id": "mybusinessaccountmanagement.locations.transfer",
                     "parameterOrder": [
@@ -413,6 +425,7 @@
                     "methods": {
                         "create": {
                             "description": "Invites the specified user to become an administrator for the specified location. The invitee must accept the invitation in order to be granted access to the location. See AcceptInvitation to programmatically accept an invitation.",
+                            "flatPath": "v1/locations/{locationsId}/admins",
                             "httpMethod": "POST",
                             "id": "mybusinessaccountmanagement.locations.admins.create",
                             "parameterOrder": [
@@ -437,6 +450,7 @@
                         },
                         "delete": {
                             "description": "Removes the specified admin as a manager of the specified location.",
+                            "flatPath": "v1/locations/{locationsId}/admins/{adminsId}",
                             "httpMethod": "DELETE",
                             "id": "mybusinessaccountmanagement.locations.admins.delete",
                             "parameterOrder": [
@@ -458,6 +472,7 @@
                         },
                         "list": {
                             "description": "Lists all of the admins for the specified location.",
+                            "flatPath": "v1/locations/{locationsId}/admins",
                             "httpMethod": "GET",
                             "id": "mybusinessaccountmanagement.locations.admins.list",
                             "parameterOrder": [
@@ -479,6 +494,7 @@
                         },
                         "patch": {
                             "description": "Updates the Admin for the specified location. Only the AdminRole of the Admin can be updated.",
+                            "flatPath": "v1/locations/{locationsId}/admins/{adminsId}",
                             "httpMethod": "PATCH",
                             "id": "mybusinessaccountmanagement.locations.admins.patch",
                             "parameterOrder": [
@@ -512,7 +528,7 @@
             }
         }
     },
-    "revision": "20210518",
+    "revision": "20210614",
     "rootUrl": "https://mybusinessaccountmanagement.googleapis.com/",
     "schemas": {
         "AcceptInvitationRequest": {

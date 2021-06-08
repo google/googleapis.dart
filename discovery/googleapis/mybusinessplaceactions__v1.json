@@ -100,6 +100,7 @@
                     "methods": {
                         "create": {
                             "description": "Creates a place action link associated with the specified location, and returns it. The request is considered duplicate if the `parent`, `place_action_link.uri` and `place_action_link.place_action_type` are the same as a previous request.",
+                            "flatPath": "v1/locations/{locationsId}/placeActionLinks",
                             "httpMethod": "POST",
                             "id": "mybusinessplaceactions.locations.placeActionLinks.create",
                             "parameterOrder": [
@@ -124,6 +125,7 @@
                         },
                         "delete": {
                             "description": "Deletes a place action link from the specified location.",
+                            "flatPath": "v1/locations/{locationsId}/placeActionLinks/{placeActionLinksId}",
                             "httpMethod": "DELETE",
                             "id": "mybusinessplaceactions.locations.placeActionLinks.delete",
                             "parameterOrder": [
@@ -145,6 +147,7 @@
                         },
                         "get": {
                             "description": "Gets the specified place action link.",
+                            "flatPath": "v1/locations/{locationsId}/placeActionLinks/{placeActionLinksId}",
                             "httpMethod": "GET",
                             "id": "mybusinessplaceactions.locations.placeActionLinks.get",
                             "parameterOrder": [
@@ -166,6 +169,7 @@
                         },
                         "list": {
                             "description": "Lists the place action links for the specified location.",
+                            "flatPath": "v1/locations/{locationsId}/placeActionLinks",
                             "httpMethod": "GET",
                             "id": "mybusinessplaceactions.locations.placeActionLinks.list",
                             "parameterOrder": [
@@ -203,6 +207,7 @@
                         },
                         "patch": {
                             "description": "Updates the specified place action link and returns it.",
+                            "flatPath": "v1/locations/{locationsId}/placeActionLinks/{placeActionLinksId}",
                             "httpMethod": "PATCH",
                             "id": "mybusinessplaceactions.locations.placeActionLinks.patch",
                             "parameterOrder": [
@@ -239,6 +244,7 @@
             "methods": {
                 "list": {
                     "description": "Returns the list of available place action types for a location or country.",
+                    "flatPath": "v1/placeActionTypeMetadata",
                     "httpMethod": "GET",
                     "id": "mybusinessplaceactions.placeActionTypeMetadata.list",
                     "parameterOrder": [],
@@ -273,7 +279,7 @@
             }
         }
     },
-    "revision": "20210518",
+    "revision": "20210614",
     "rootUrl": "https://mybusinessplaceactions.googleapis.com/",
     "schemas": {
         "Empty": {

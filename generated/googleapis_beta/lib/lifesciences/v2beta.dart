@@ -2037,6 +2037,12 @@ class VirtualMachine {
   /// If true, allocate a preemptible VM.
   core.bool? preemptible;
 
+  /// If specified, the VM will only be allocated inside the matching
+  /// reservation.
+  ///
+  /// It will fail if the VM parameters don't match the reservation.
+  core.String? reservation;
+
   /// The service account to install on the VM.
   ///
   /// This account does not need any permissions other than those required by
@@ -2102,6 +2108,9 @@ class VirtualMachine {
     if (_json.containsKey('preemptible')) {
       preemptible = _json['preemptible'] as core.bool;
     }
+    if (_json.containsKey('reservation')) {
+      reservation = _json['reservation'] as core.String;
+    }
     if (_json.containsKey('serviceAccount')) {
       serviceAccount = ServiceAccount.fromJson(
           _json['serviceAccount'] as core.Map<core.String, core.dynamic>);
@@ -2131,6 +2140,7 @@ class VirtualMachine {
         if (nvidiaDriverVersion != null)
           'nvidiaDriverVersion': nvidiaDriverVersion!,
         if (preemptible != null) 'preemptible': preemptible!,
+        if (reservation != null) 'reservation': reservation!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!.toJson(),
         if (volumes != null)
           'volumes': volumes!.map((value) => value.toJson()).toList(),

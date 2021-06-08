@@ -107,6 +107,7 @@
             "methods": {
                 "get": {
                     "description": "Retrieves a list of conversions from a DoubleClick Search engine account.",
+                    "flatPath": "doubleclicksearch/v2/agency/{agencyId}/advertiser/{advertiserId}/engine/{engineAccountId}/conversion",
                     "httpMethod": "GET",
                     "id": "doubleclicksearch.conversion.get",
                     "parameterOrder": [
@@ -209,6 +210,7 @@
                 },
                 "insert": {
                     "description": "Inserts a batch of new conversions into DoubleClick Search.",
+                    "flatPath": "doubleclicksearch/v2/conversion",
                     "httpMethod": "POST",
                     "id": "doubleclicksearch.conversion.insert",
                     "parameterOrder": [],
@@ -226,6 +228,7 @@
                 },
                 "update": {
                     "description": "Updates a batch of conversions in DoubleClick Search.",
+                    "flatPath": "doubleclicksearch/v2/conversion",
                     "httpMethod": "PUT",
                     "id": "doubleclicksearch.conversion.update",
                     "parameterOrder": [],
@@ -243,6 +246,7 @@
                 },
                 "updateAvailability": {
                     "description": "Updates the availabilities of a batch of floodlight activities in DoubleClick Search.",
+                    "flatPath": "doubleclicksearch/v2/conversion/updateAvailability",
                     "httpMethod": "POST",
                     "id": "doubleclicksearch.conversion.updateAvailability",
                     "parameterOrder": [],
@@ -264,6 +268,7 @@
             "methods": {
                 "generate": {
                     "description": "Generates and returns a report immediately.",
+                    "flatPath": "doubleclicksearch/v2/reports/generate",
                     "httpMethod": "POST",
                     "id": "doubleclicksearch.reports.generate",
                     "parameterOrder": [],
@@ -281,6 +286,7 @@
                 },
                 "get": {
                     "description": "Polls for the status of a report request.",
+                    "flatPath": "doubleclicksearch/v2/reports/{reportId}",
                     "httpMethod": "GET",
                     "id": "doubleclicksearch.reports.get",
                     "parameterOrder": [
@@ -304,6 +310,7 @@
                 },
                 "getFile": {
                     "description": "Downloads a report file encoded in UTF-8.",
+                    "flatPath": "doubleclicksearch/v2/reports/{reportId}/files/{reportFragment}",
                     "httpMethod": "GET",
                     "id": "doubleclicksearch.reports.getFile",
                     "parameterOrder": [
@@ -335,6 +342,7 @@
                 },
                 "request": {
                     "description": "Inserts a report request into the reporting system.",
+                    "flatPath": "doubleclicksearch/v2/reports",
                     "httpMethod": "POST",
                     "id": "doubleclicksearch.reports.request",
                     "parameterOrder": [],
@@ -356,6 +364,7 @@
             "methods": {
                 "list": {
                     "description": "Retrieve the list of saved columns for a specified advertiser.",
+                    "flatPath": "doubleclicksearch/v2/agency/{agencyId}/advertiser/{advertiserId}/savedcolumns",
                     "httpMethod": "GET",
                     "id": "doubleclicksearch.savedColumns.list",
                     "parameterOrder": [
@@ -389,7 +398,7 @@
             }
         }
     },
-    "revision": "20210511",
+    "revision": "20210608",
     "rootUrl": "https://doubleclicksearch.googleapis.com/",
     "schemas": {
         "Availability": {

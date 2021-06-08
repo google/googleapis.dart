@@ -107,6 +107,7 @@
             "methods": {
                 "cancel": {
                     "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                    "flatPath": "v1/operations/{operationsId}:cancel",
                     "httpMethod": "POST",
                     "id": "cloudshell.operations.cancel",
                     "parameterOrder": [
@@ -134,6 +135,7 @@
                 },
                 "delete": {
                     "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                    "flatPath": "v1/operations/{operationsId}",
                     "httpMethod": "DELETE",
                     "id": "cloudshell.operations.delete",
                     "parameterOrder": [
@@ -158,6 +160,7 @@
                 },
                 "get": {
                     "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                    "flatPath": "v1/operations/{operationsId}",
                     "httpMethod": "GET",
                     "id": "cloudshell.operations.get",
                     "parameterOrder": [
@@ -182,6 +185,7 @@
                 },
                 "list": {
                     "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                    "flatPath": "v1/operations",
                     "httpMethod": "GET",
                     "id": "cloudshell.operations.list",
                     "parameterOrder": [
@@ -228,6 +232,7 @@
                     "methods": {
                         "addPublicKey": {
                             "description": "Adds a public SSH key to an environment, allowing clients with the corresponding private key to connect to that environment via SSH. If a key with the same content already exists, this will error with ALREADY_EXISTS.",
+                            "flatPath": "v1/users/{usersId}/environments/{environmentsId}:addPublicKey",
                             "httpMethod": "POST",
                             "id": "cloudshell.users.environments.addPublicKey",
                             "parameterOrder": [
@@ -255,6 +260,7 @@
                         },
                         "authorize": {
                             "description": "Sends OAuth credentials to a running environment on behalf of a user. When this completes, the environment will be authorized to run various Google Cloud command line tools without requiring the user to manually authenticate.",
+                            "flatPath": "v1/users/{usersId}/environments/{environmentsId}:authorize",
                             "httpMethod": "POST",
                             "id": "cloudshell.users.environments.authorize",
                             "parameterOrder": [
@@ -282,6 +288,7 @@
                         },
                         "get": {
                             "description": "Gets an environment. Returns NOT_FOUND if the environment does not exist.",
+                            "flatPath": "v1/users/{usersId}/environments/{environmentsId}",
                             "httpMethod": "GET",
                             "id": "cloudshell.users.environments.get",
                             "parameterOrder": [
@@ -306,6 +313,7 @@
                         },
                         "removePublicKey": {
                             "description": "Removes a public SSH key from an environment. Clients will no longer be able to connect to the environment using the corresponding private key. If a key with the same content is not present, this will error with NOT_FOUND.",
+                            "flatPath": "v1/users/{usersId}/environments/{environmentsId}:removePublicKey",
                             "httpMethod": "POST",
                             "id": "cloudshell.users.environments.removePublicKey",
                             "parameterOrder": [
@@ -333,6 +341,7 @@
                         },
                         "start": {
                             "description": "Starts an existing environment, allowing clients to connect to it. The returned operation will contain an instance of StartEnvironmentMetadata in its metadata field. Users can wait for the environment to start by polling this operation via GetOperation. Once the environment has finished starting and is ready to accept connections, the operation will contain a StartEnvironmentResponse in its response field.",
+                            "flatPath": "v1/users/{usersId}/environments/{environmentsId}:start",
                             "httpMethod": "POST",
                             "id": "cloudshell.users.environments.start",
                             "parameterOrder": [
@@ -363,7 +372,7 @@
             }
         }
     },
-    "revision": "20210517",
+    "revision": "20210613",
     "rootUrl": "https://cloudshell.googleapis.com/",
     "schemas": {
         "AddPublicKeyMetadata": {

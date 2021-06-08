@@ -110,6 +110,7 @@
             "methods": {
                 "query": {
                     "description": "Query your data with filters and parameters that you define. Returns zero or more rows grouped by the row keys that you define. You must define a date range of one or more days. When date is one of the group by values, any days without data are omitted from the result list. If you need to know which days have data, issue a broad date range query grouped by date for any metric, and see which day rows are returned.",
+                    "flatPath": "webmasters/v3/sites/{siteUrl}/searchAnalytics/query",
                     "httpMethod": "POST",
                     "id": "webmasters.searchanalytics.query",
                     "parameterOrder": [
@@ -141,6 +142,7 @@
             "methods": {
                 "delete": {
                     "description": "Deletes a sitemap from this site.",
+                    "flatPath": "webmasters/v3/sites/{siteUrl}/sitemaps/{feedpath}",
                     "httpMethod": "DELETE",
                     "id": "webmasters.sitemaps.delete",
                     "parameterOrder": [
@@ -168,6 +170,7 @@
                 },
                 "get": {
                     "description": "Retrieves information about a specific sitemap.",
+                    "flatPath": "webmasters/v3/sites/{siteUrl}/sitemaps/{feedpath}",
                     "httpMethod": "GET",
                     "id": "webmasters.sitemaps.get",
                     "parameterOrder": [
@@ -199,6 +202,7 @@
                 },
                 "list": {
                     "description": " Lists the [sitemaps-entries](/webmaster-tools/v3/sitemaps) submitted for this site, or included in the sitemap index file (if `sitemapIndex` is specified in the request).",
+                    "flatPath": "webmasters/v3/sites/{siteUrl}/sitemaps",
                     "httpMethod": "GET",
                     "id": "webmasters.sitemaps.list",
                     "parameterOrder": [
@@ -228,6 +232,7 @@
                 },
                 "submit": {
                     "description": "Submits a sitemap for a site.",
+                    "flatPath": "webmasters/v3/sites/{siteUrl}/sitemaps/{feedpath}",
                     "httpMethod": "PUT",
                     "id": "webmasters.sitemaps.submit",
                     "parameterOrder": [
@@ -259,6 +264,7 @@
             "methods": {
                 "add": {
                     "description": " Adds a site to the set of the user's sites in Search Console.",
+                    "flatPath": "webmasters/v3/sites/{siteUrl}",
                     "httpMethod": "PUT",
                     "id": "webmasters.sites.add",
                     "parameterOrder": [
@@ -279,6 +285,7 @@
                 },
                 "delete": {
                     "description": " Removes a site from the set of the user's Search Console sites.",
+                    "flatPath": "webmasters/v3/sites/{siteUrl}",
                     "httpMethod": "DELETE",
                     "id": "webmasters.sites.delete",
                     "parameterOrder": [
@@ -299,6 +306,7 @@
                 },
                 "get": {
                     "description": " Retrieves information about specific site.",
+                    "flatPath": "webmasters/v3/sites/{siteUrl}",
                     "httpMethod": "GET",
                     "id": "webmasters.sites.get",
                     "parameterOrder": [
@@ -323,6 +331,7 @@
                 },
                 "list": {
                     "description": " Lists the user's Search Console sites.",
+                    "flatPath": "webmasters/v3/sites",
                     "httpMethod": "GET",
                     "id": "webmasters.sites.list",
                     "parameterOrder": [],
@@ -344,6 +353,7 @@
                     "methods": {
                         "run": {
                             "description": "Runs Mobile-Friendly Test for a given URL.",
+                            "flatPath": "v1/urlTestingTools/mobileFriendlyTest:run",
                             "httpMethod": "POST",
                             "id": "searchconsole.urlTestingTools.mobileFriendlyTest.run",
                             "parameterOrder": [],
@@ -361,7 +371,7 @@
             }
         }
     },
-    "revision": "20210519",
+    "revision": "20210613",
     "rootUrl": "https://searchconsole.googleapis.com/",
     "schemas": {
         "ApiDataRow": {
