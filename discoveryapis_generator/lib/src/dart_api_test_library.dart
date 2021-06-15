@@ -59,7 +59,7 @@ class DartApiTestLibrary extends TestHelper {
     }
 
     // Build up [schemaTests] and [resourceTests].
-    final db = apiLibrary.schemaDB!;
+    final db = apiLibrary.schemaDB;
     handleType(db.integerType);
     handleType(db.doubleType);
     handleType(db.booleanType);
@@ -68,9 +68,9 @@ class DartApiTestLibrary extends TestHelper {
     handleType(db.dateTimeType);
     handleType(db.anyType);
 
-    apiLibrary.schemaDB!.dartTypes.forEach(handleType);
+    apiLibrary.schemaDB.dartTypes.forEach(handleType);
 
-    traverseResource(apiLibrary.apiClass!, null, null);
+    traverseResource(apiLibrary.apiClass, null, null);
   }
 
   String get librarySource {
@@ -209,10 +209,10 @@ class ResourceTest extends TestHelper {
     final sb = StringBuffer();
 
     final rootPath = StringPart(
-        apiLibrary.imports, Uri.parse(apiLibrary.apiClass!.rootUrl!).path);
+        apiLibrary.imports, Uri.parse(apiLibrary.apiClass.rootUrl!).path);
 
     final basePath =
-        StringPart(apiLibrary.imports, apiLibrary.apiClass!.servicePath);
+        StringPart(apiLibrary.imports, apiLibrary.apiClass.servicePath);
 
     withTestGroup(2, sb, 'resource-${resource.className}', () {
       for (var method in resource.methods) {
@@ -405,7 +405,7 @@ class MethodArgsTest extends TestHelper {
               '(path.substring(pathOffset));');
           ln('pathOffset = path.length;');
         }
-        final name = parameterValues[_findMethodParameter(part.templateVar)];
+        final name = parameterValues[_findMethodParameter(part.templateVar!)];
         ln(expectEqual('subPart', "'\$$name'"));
       } else if (part is PathVariableExpression) {
         if (!isLast) {
@@ -413,7 +413,7 @@ class MethodArgsTest extends TestHelper {
             'path variable expansions are only supported at the end',
           );
         }
-        final name = parameterValues[_findMethodParameter(part.templateVar)];
+        final name = parameterValues[_findMethodParameter(part.templateVar!)];
         ln("var parts = path.substring(pathOffset).split('/')"
             '.map(core.Uri.decodeQueryComponent).where((p) => p.length > 0)'
             '.toList();');
@@ -506,7 +506,7 @@ core.bool parseBool(n) {
     );
   }
 
-  MethodParameter _findMethodParameter(String? varname) {
+  MethodParameter _findMethodParameter(String varname) {
     final parameters = parameterValues.keys
         .where((parameter) => parameter.jsonName == varname)
         .toList();

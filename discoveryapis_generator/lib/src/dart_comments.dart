@@ -130,7 +130,7 @@ class Comment {
       start = endOfFirstSentence + 1;
     }
 
-    final lines = <String?>[];
+    final lines = <String>[];
 
     if (endOfFirstSentence < 1) {
       lines.add(raw);
@@ -179,7 +179,7 @@ class Comment {
       final buffer = StringBuffer();
 
       for (var part in urlSplit(line)) {
-        if ((buffer.length + part!.length + 1) > maxCommentLine) {
+        if ((buffer.length + part.length + 1) > maxCommentLine) {
           // If we have already data, we'll write a new line.
           if (buffer.length > 0) {
             split.add(buffer.toString());
@@ -207,11 +207,11 @@ class Comment {
   }
 }
 
-List<String?> urlSplit(String input) {
-  final result = <String?>[];
+List<String> urlSplit(String input) {
+  final result = <String>[];
 
   input.splitMapJoin(_validLinkRegexp, onMatch: (match) {
-    result.add(match[0]);
+    result.add(match[0]!);
     // no-op - not using the result
     return '';
   }, onNonMatch: (value) {

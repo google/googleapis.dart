@@ -19,7 +19,7 @@ export 'src/utils.dart' show GenerateResult;
 
 List<GenerateResult> generateApiPackage(
   List<RestDescription> descriptions,
-  String? outputDirectory,
+  String outputDirectory,
   Pubspec pubspec, {
   bool deleteExisting = true,
 }) {
@@ -35,7 +35,7 @@ List<GenerateResult> generateApiPackage(
 
 List<GenerateResult> generateAllLibraries(
   String inputDirectory,
-  String? outputDirectory,
+  String outputDirectory,
   Pubspec pubspec, {
   bool deleteExisting = true,
 }) {
@@ -56,7 +56,7 @@ List<GenerateResult> generateAllLibraries(
 }
 
 List<GenerateResult> generateApiFiles(
-    String inputDirectory, String? outputDirectory,
+    String inputDirectory, String outputDirectory,
     {bool updatePubspec = false, bool? useCorePrefixes = true}) {
   final descriptions = <DescriptionImportPair>[];
   Directory(inputDirectory)

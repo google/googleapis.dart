@@ -70,7 +70,7 @@ class DartResourceMethod {
   /// [requestParameter] may be [:null:].
   final MethodParameter? requestParameter;
 
-  /// [returnType] may be [:null:].
+  /// [returnType] may be `null`.
   final DartSchemaType? returnType;
 
   final Comment comment;
@@ -81,7 +81,7 @@ class DartResourceMethod {
   final List<MethodParameter> parameters;
   final List<MethodParameter> namedParameters;
   final String jsonName;
-  final String? httpMethod;
+  final String httpMethod;
   final bool mediaUpload;
   final bool mediaUploadResumable;
   final bool mediaDownload;
@@ -734,7 +734,7 @@ DartResourceMethod _parseMethod(
     dartResponseType,
     jsonName,
     UriTemplate.parse(imports, restPath),
-    method.httpMethod,
+    method.httpMethod!,
     makeBoolean(method.supportsMediaUpload),
     mediaUploadResumable,
     makeBoolean(method.supportsMediaDownload),

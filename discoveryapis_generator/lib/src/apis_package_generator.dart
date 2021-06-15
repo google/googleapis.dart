@@ -26,7 +26,7 @@ import 'utils.dart';
 ///   |- test/$API/... (for all APIs to generate)
 class ApisPackageGenerator {
   final List<RestDescription> descriptions;
-  final String? packageFolderPath;
+  final String packageFolderPath;
   final Pubspec pubspec;
   final bool deleteExisting;
 
@@ -55,7 +55,7 @@ class ApisPackageGenerator {
     final gitIgnorePath = '$packageFolderPath/.gitignore';
 
     // Clean contents of directory (except for .git folder)
-    final packageDirectory = Directory(packageFolderPath!);
+    final packageDirectory = Directory(packageFolderPath);
     if (packageDirectory.existsSync()) {
       if (deleteExisting) {
         print('Emptying folder before library generation.');

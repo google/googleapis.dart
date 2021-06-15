@@ -26,7 +26,7 @@ class DescriptionImportPair {
 /// Generates one or more API files based on the given descriptions.
 class ApisFilesGenerator {
   final List<DescriptionImportPair> descriptions;
-  final String? clientFolderPath;
+  final String clientFolderPath;
   final bool updatePubspec;
   final bool? useCorePrefixes;
   String? packageRoot;
@@ -38,7 +38,7 @@ class ApisFilesGenerator {
   ApisFilesGenerator(this.descriptions, this.clientFolderPath,
       {this.updatePubspec = false, this.useCorePrefixes = true}) {
     // Create the output directory.
-    final clientDirectory = Directory(clientFolderPath!);
+    final clientDirectory = Directory(clientFolderPath);
     packageRoot = findPackageRoot(path.absolute(clientDirectory.path));
     if (packageRoot == null) {
       throw Exception(
@@ -68,7 +68,7 @@ class ApisFilesGenerator {
           RestDescription.fromJson(json.decode(diPair.apiDescription) as Map);
       final name = description.name!.toLowerCase();
       final version = description.version!.toLowerCase();
-      final apiFile = path.join(clientFolderPath!, '$name.dart');
+      final apiFile = path.join(clientFolderPath, '$name.dart');
       try {
         BaseApiLibrary lib;
         if (diPair.importMap == null) {
@@ -89,7 +89,7 @@ class ApisFilesGenerator {
           );
         }
         writeDartSource(apiFile, lib.librarySource);
-        final result = GenerateResult(name, version, clientFolderPath!);
+        final result = GenerateResult(name, version, clientFolderPath);
         results.add(result);
         processPubspec = true;
       } catch (error, stack) {
@@ -100,7 +100,7 @@ class ApisFilesGenerator {
           errorMessage = '$error\nstack: $stack';
         }
         results.add(
-          GenerateResult.error(name, version, clientFolderPath!, errorMessage),
+          GenerateResult.error(name, version, clientFolderPath, errorMessage),
         );
       }
     }

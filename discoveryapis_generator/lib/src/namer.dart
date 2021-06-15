@@ -206,12 +206,12 @@ class Scope {
 /// does not collide.
 class IdentifierNamer {
   final IdentifierNamer? parentNamer;
-  final Set<String?> allocatedNames;
+  final Set<String> allocatedNames;
 
   /// If [parentNamer] is given, this namer will only allocated names which are
   ///   - not taken by [parentNamer]
   ///   - not in [allocatedNames]
-  IdentifierNamer({this.parentNamer}) : allocatedNames = <String?>{};
+  IdentifierNamer({this.parentNamer}) : allocatedNames = <String>{};
 
   /// Reserves all given [allocatedNames] by default.
   IdentifierNamer.fromNameSet(this.allocatedNames) : parentNamer = null;
@@ -219,7 +219,7 @@ class IdentifierNamer {
   /// Gives [Identifier] a unique name amongst all previously named identifiers
   /// and amongst all identifiers of [parentNamer].
   void nameIdentifier(Identifier identifier) {
-    final preferredName = identifier.preferredName;
+    final preferredName = identifier.preferredName!;
 
     var i = 0;
     var currentName = preferredName;
@@ -231,7 +231,7 @@ class IdentifierNamer {
     allocatedNames.add(currentName);
   }
 
-  bool _contains(String? name) {
+  bool _contains(String name) {
     if (allocatedNames.contains(name)) return true;
     if (parentNamer != null) {
       if (parentNamer!._contains(name)) return true;
@@ -245,7 +245,7 @@ const _resourceApiName = 'Resource';
 /// Helper class for allocating unique names for generating an API library.
 class ApiLibraryNamer {
   final String apiClassSuffix;
-  Scope? _libraryScope;
+  late final Scope _libraryScope;
 
   /// NOTE: Only exposed for testing.
   final Scope importScope = Scope();
@@ -275,7 +275,7 @@ class ApiLibraryNamer {
       importScope.newIdentifier(name, removeUnderscores: false);
 
   Identifier apiClass(String name) =>
-      _libraryScope!.newIdentifier('${Scope.capitalize(name)}$apiClassSuffix');
+      _libraryScope.newIdentifier('${Scope.capitalize(name)}$apiClassSuffix');
 
   Identifier resourceClass(String name, {String? parent}) {
     name = Scope.capitalize(name);
@@ -291,7 +291,7 @@ class ApiLibraryNamer {
       name = '$parent$name';
     }
 
-    return _libraryScope!
+    return _libraryScope
         .newIdentifier('${Scope.capitalize(name)}$_resourceApiName');
   }
 
@@ -303,9 +303,9 @@ class ApiLibraryNamer {
   }
 
   Identifier schemaClass(String name) =>
-      _libraryScope!.newIdentifier(Scope.capitalize(name));
+      _libraryScope.newIdentifier(Scope.capitalize(name));
 
-  Scope newClassScope() => _libraryScope!.newChildScope();
+  Scope newClassScope() => _libraryScope.newChildScope();
 
   void nameAllIdentifiers() {
     //
@@ -336,7 +336,7 @@ class ApiLibraryNamer {
     //      [e.g. if a method parameter is named 'core' we will rename the
     //            import to: import 'dart:core' as core_1;
 
-    final allAllocatedNames = <String?>{};
+    final allAllocatedNames = <String>{};
 
     void nameScope(Scope scope, IdentifierNamer parentResolver) {
       final resolver = IdentifierNamer(parentNamer: parentResolver);
@@ -352,7 +352,7 @@ class ApiLibraryNamer {
 
     // Name library scope identifiers and down. the passed [IdentifierNamer] is
     // an empty root namer.
-    nameScope(_libraryScope!, IdentifierNamer());
+    nameScope(_libraryScope, IdentifierNamer());
 
     // Name all import identifiers. In case we have clashes with any of the
     // other names already assigned, we'll rename the prefixed imports.

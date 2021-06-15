@@ -103,7 +103,7 @@ void main(List<String> arguments) {
       );
       printResults(generateAllLibraries(
         commandOptions['input-dir'] as String,
-        commandOptions['output-dir'] as String?,
+        commandOptions['output-dir'] as String,
         pubspec,
       ));
       break;
@@ -114,7 +114,7 @@ void main(List<String> arguments) {
           .trim();
       printResults(generateApiFiles(
         commandOptions['input-dir'] as String,
-        commandOptions['output-dir'] as String?,
+        commandOptions['output-dir'] as String,
         updatePubspec: updatePubspec == 'true',
         useCorePrefixes: commandOptions['core-prefixes'] as bool?,
       ));
