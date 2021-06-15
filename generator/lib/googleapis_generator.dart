@@ -169,7 +169,10 @@ Future downloadFromConfiguration(String configFile) async {
 
   // Generate the packages.
   final configFileUri = Uri.file(configFile);
-  await configuration.download(configFileUri.resolve('discovery').path, items);
+  await configuration.download(
+    discoveryPathFromConfigFileUri(configFileUri),
+    items,
+  );
 
   // Print warnings for APIs not mentioned.
   if (configuration.missingApis.isNotEmpty) {
@@ -207,8 +210,11 @@ void generateFromConfiguration(
   // Generate the packages.
   final configFileUri = Uri.file(configFile);
   return configuration.generate(
-    configFileUri.resolve('discovery').path,
+    discoveryPathFromConfigFileUri(configFileUri),
     configFileUri.resolve('generated').path,
     deleteExisting,
   );
 }
+
+String discoveryPathFromConfigFileUri(Uri configFileUri) =>
+    configFileUri.resolve('discovery').path;
