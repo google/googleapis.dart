@@ -60,7 +60,7 @@ Never dieWithUsage([String? message]) {
   exit(1);
 }
 
-void main(List<String> arguments) {
+Future<void> main(List<String> arguments) async {
   final parser = globalArgParser();
   final options = parseArguments(parser, arguments);
   final commandOptions = options.command!;
@@ -74,7 +74,7 @@ void main(List<String> arguments) {
 
   switch (commandOptions.name) {
     case 'download':
-      downloadDiscoveryDocuments(commandOptions['output-dir'] as String);
+      await downloadDiscoveryDocuments(commandOptions['output-dir'] as String);
       break;
     case 'run_config':
       if (commandOptions.command == null ||
@@ -83,15 +83,16 @@ void main(List<String> arguments) {
             '`download` and `generate`.');
       }
 
-      final configFile = commandOptions['config-file'] as String?;
+      final configFile = commandOptions['config-file'] as String;
       final deleteExisting = commandOptions['delete-existing'] as bool;
       switch (commandOptions.command!.name) {
         case 'download':
-          downloadFromConfiguration(configFile!).then((_) => print('Done!'));
+          await downloadFromConfiguration(configFile);
+          print('Done!');
           break;
         case 'generate':
           generateFromConfiguration(
-            configFile!,
+            configFile,
             deleteExisting,
           );
           print('Done');
