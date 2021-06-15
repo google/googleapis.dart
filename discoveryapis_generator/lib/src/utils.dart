@@ -51,7 +51,7 @@ String escapeComment(String comment) =>
 
 void orderedForEach<K extends Comparable<K>, V>(
   Map<K, V> map,
-  void Function(K, V) fun,
+  void Function(K, V?) fun,
 ) {
   final keys = List<K>.from(map.keys)..sort();
   for (var key in keys) {
@@ -81,10 +81,7 @@ void writeFile(String path, void Function(StringSink sink) writer) {
   sink.flush().then((value) => sink.close());
 }
 
-String findPackageRoot(String path) {
-  if (path == null) {
-    return null;
-  }
+String? findPackageRoot(String path) {
   if (path.startsWith('file:')) {
     path = fromUri(path);
   }
@@ -105,19 +102,17 @@ pubspec.lock
 ''';
 
 class GenerateResult {
-  final String apiName;
-  final String apiVersion;
-  final String message;
-  final String packagePath;
+  final String? apiName;
+  final String? apiVersion;
+  final String? message;
+  final String? packagePath;
   bool success = false;
   bool info = false;
 
-  GenerateResult(this.apiName, this.apiVersion, this.packagePath)
+  GenerateResult(
+      String this.apiName, String this.apiVersion, String this.packagePath)
       : success = true,
-        message = null,
-        assert(apiName != null),
-        assert(apiVersion != null),
-        assert(packagePath != null);
+        message = null;
 
   GenerateResult.fromMessage(this.message)
       : info = true,
@@ -125,13 +120,9 @@ class GenerateResult {
         apiVersion = null,
         packagePath = null;
 
-  GenerateResult.error(
-      this.apiName, this.apiVersion, this.packagePath, this.message)
-      : success = false,
-        assert(apiName != null),
-        assert(apiVersion != null),
-        assert(packagePath != null),
-        assert(message != null);
+  GenerateResult.error(String this.apiName, String this.apiVersion,
+      String this.packagePath, String this.message)
+      : success = false;
 
   String get shortName =>
       cleanName('${apiName}_${apiVersion}_api').toLowerCase();
@@ -140,19 +131,19 @@ class GenerateResult {
   String toString() {
     if (info) {
       assert(message != null);
-      return message;
+      return message!;
     } else {
       assert(apiName != null && apiVersion != null && packagePath != null);
       final flag = success ? '[SUCCESS]' : '[FAIL]';
-      final msg = message != null && message.isNotEmpty ? ':\n$message' : '';
+      final msg = message != null && message!.isNotEmpty ? ':\n$message' : '';
       return '$flag $apiName $apiVersion @ $packagePath $msg';
     }
   }
 }
 
 class GeneratorError implements Exception {
-  final String api;
-  final String version;
+  final String? api;
+  final String? version;
   final String message;
 
   GeneratorError(this.api, this.version, this.message);

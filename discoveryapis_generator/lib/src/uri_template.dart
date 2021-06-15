@@ -11,24 +11,24 @@ import 'utils.dart';
 /// Generates code for expanding a URI template.
 abstract class Part {
   final DartApiImports imports;
-  final String templateVar;
+  final String? templateVar;
 
   Part(this.imports, this.templateVar);
 
   /// Generates a dart expression by expanding this part using [variable] as
   /// the contests of a template variable.
-  String stringExpression(Identifier variable);
+  String stringExpression(Identifier? variable);
 }
 
 /// Represents a URI Template literal.
 class StringPart extends Part {
-  final String staticString;
+  final String? staticString;
 
   StringPart(DartApiImports imports, this.staticString) : super(imports, null);
 
   @override
-  String stringExpression(Identifier variable) =>
-      "'${escapeString(staticString)}'";
+  String stringExpression(Identifier? variable) =>
+      "'${escapeString(staticString!)}'";
 }
 
 /// Represents a URI Template variable expression of the form {var}
@@ -37,7 +37,7 @@ class VariableExpression extends Part {
       : super(imports, templateVar);
 
   @override
-  String stringExpression(Identifier variable) =>
+  String stringExpression(Identifier? variable) =>
       "${imports.commons.ref()}escapeVariable('\$$variable')";
 }
 
@@ -47,7 +47,7 @@ class PathVariableExpression extends Part {
       : super(imports, templateVar);
 
   @override
-  String stringExpression(Identifier variable) =>
+  String stringExpression(Identifier? variable) =>
       "'/' + ($variable).map((item) => "
       "${imports.commons.ref()}escapeVariable(item)).join('/')";
 }
@@ -58,7 +58,7 @@ class ReservedExpansionExpression extends Part {
       : super(imports, templateVar);
 
   @override
-  String stringExpression(Identifier variable) =>
+  String stringExpression(Identifier? variable) =>
       "${imports.core.ref()}Uri.encodeFull('\$$variable')";
 }
 
@@ -75,7 +75,7 @@ class UriTemplate {
 
   String variableDeclaration(
     String varName,
-    Map<String, Identifier> identifiers,
+    Map<String?, Identifier> identifiers,
   ) {
     final canBeConst = parts.every((element) => element.templateVar == null);
 
@@ -88,7 +88,7 @@ class UriTemplate {
   ///
   /// The key in [identifiers] are template variable names and the values are
   /// the dart [Identifier]s which contain the dart value.
-  String stringExpression(Map<String, Identifier> identifiers) =>
+  String stringExpression(Map<String?, Identifier> identifiers) =>
       parts.map((Part part) {
         if (part.templateVar == null) {
           return part.stringExpression(null);

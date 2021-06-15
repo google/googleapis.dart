@@ -2,7 +2,7 @@ name: googleapis_generator_dependency
 publish_to: none
 
 environment:
-  sdk: '>=2.11.99 <3.0.0'
+  sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
   discoveryapis_generator: any

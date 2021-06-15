@@ -20,18 +20,18 @@ import 'client_schemas.dart' as client;
 /// as the server API. It will use the existing definitions of the API message
 /// classes instead of generating new client message classes.
 class ClientApiLibrary extends BaseApiLibrary {
-  DartSchemaTypeDB schemaDB;
-  DartApiClass apiClass;
-  bool exposeMedia;
-  String schemaImports;
-  String libraryName;
+  DartSchemaTypeDB? schemaDB;
+  late DartApiClass apiClass;
+  late bool exposeMedia;
+  String? schemaImports;
+  String? libraryName;
   String packageName;
-  String packageRoot;
+  String? packageRoot;
 
   /// Generates a API library for [description].
   ClientApiLibrary.build(
     RestDescription description,
-    Map<String, String> importMap,
+    Map<String, String>? importMap,
     this.packageName,
     this.packageRoot, {
     bool useCorePrefixes = true,
@@ -44,12 +44,12 @@ class ClientApiLibrary extends BaseApiLibrary {
     namer.nameAllIdentifiers();
   }
 
-  List<String> _parseImports(Map<String, String> importsMap) {
+  List<String> _parseImports(Map<String, String>? importsMap) {
     // Remove duplicate imports.
     final imports = <String>{};
-    for (var schema in schemaDB.dartClassTypes) {
-      assert(importsMap.containsKey(schema.className.preferredName));
-      final path = importsMap[schema.className.preferredName];
+    for (var schema in schemaDB!.dartClassTypes) {
+      assert(importsMap!.containsKey(schema.className!.preferredName));
+      final path = importsMap![schema.className!.preferredName!]!;
       if (path.startsWith('dart:')) {
         continue;
       }
@@ -60,7 +60,7 @@ class ClientApiLibrary extends BaseApiLibrary {
     final parsedImports = <String>[];
     for (var importPath in imports) {
       if (!importPath.startsWith('package:$packageName')) {
-        final pathPrefix = '${path.toUri(packageRoot)}/lib';
+        final pathPrefix = '${path.toUri(packageRoot!)}/lib';
         if (!importPath.startsWith(pathPrefix)) {
           throw GeneratorError(
               description.name,
@@ -79,7 +79,7 @@ class ClientApiLibrary extends BaseApiLibrary {
   @override
   String get librarySource {
     final sink = StringBuffer();
-    final schemas = generateSchemas(schemaDB);
+    final schemas = generateSchemas(schemaDB!);
     final resources = generateResources(apiClass);
     sink.write(libraryHeader());
     if (resources.isNotEmpty) {

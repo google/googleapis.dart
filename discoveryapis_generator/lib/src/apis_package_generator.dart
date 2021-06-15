@@ -26,7 +26,7 @@ import 'utils.dart';
 ///   |- test/$API/... (for all APIs to generate)
 class ApisPackageGenerator {
   final List<RestDescription> descriptions;
-  final String packageFolderPath;
+  final String? packageFolderPath;
   final Pubspec pubspec;
   final bool deleteExisting;
 
@@ -55,7 +55,7 @@ class ApisPackageGenerator {
     final gitIgnorePath = '$packageFolderPath/.gitignore';
 
     // Clean contents of directory (except for .git folder)
-    final packageDirectory = Directory(packageFolderPath);
+    final packageDirectory = Directory(packageFolderPath!);
     if (packageDirectory.existsSync()) {
       if (deleteExisting) {
         print('Emptying folder before library generation.');
@@ -91,8 +91,8 @@ ${requestHeadersField(pubspec.version)}
 
     final results = <GenerateResult>[];
     for (var description in descriptions) {
-      final name = description.name.toLowerCase();
-      final version = description.version
+      final name = description.name!.toLowerCase();
+      final version = description.version!
           .toLowerCase()
           .replaceAll('.', '_')
           .replaceAll('-', '_');
@@ -149,20 +149,24 @@ ${requestHeadersField(pubspec.version)}
 
   void _writePubspec(StringSink sink) {
     void writeDependencies(Map<String, dynamic> dependencies) {
-      orderedForEach(dependencies, (String lib, Object value) {
-        if (value is String) {
-          if (lib.startsWith('_discoveryapis_commons')) {
-            sink.writeln('  # This is a private package dependency used by the '
-                'generated client stubs.');
+      orderedForEach<String, dynamic>(
+        dependencies,
+        (String lib, Object? value) {
+          if (value is String) {
+            if (lib.startsWith('_discoveryapis_commons')) {
+              sink.writeln(
+                  '  # This is a private package dependency used by the '
+                  'generated client stubs.');
+            }
+            sink.writeln('  $lib: $value');
+          } else if (value is Map) {
+            sink.writeln('  $lib:');
+            value.forEach((k, v) {
+              sink.writeln('    $k: $v');
+            });
           }
-          sink.writeln('  $lib: $value');
-        } else if (value is Map) {
-          sink.writeln('  $lib:');
-          value.forEach((k, v) {
-            sink.writeln('    $k: $v');
-          });
-        }
-      });
+        },
+      );
     }
 
     sink.writeln('name: ${pubspec.name}');

@@ -4,8 +4,6 @@
 
 library discoveryapis_generator.dart_api_library;
 
-import 'package:meta/meta.dart';
-
 import 'dart_comments.dart';
 import 'dart_resources.dart';
 import 'dart_schemas.dart';
@@ -63,8 +61,7 @@ abstract class BaseApiLibrary {
   final ApiLibraryNamer namer;
   final RestDescription description;
 
-  /* late final */
-  DartApiImports imports;
+  late final DartApiImports imports;
 
   BaseApiLibrary(this.description, String apiClassSuffix,
       {bool useCorePrefixes = true})
@@ -76,30 +73,30 @@ abstract class BaseApiLibrary {
 /// Generates a API library based on a [RestDescription].
 class DartApiLibrary extends BaseApiLibrary {
   final bool isPackage;
-  DartSchemaTypeDB schemaDB;
-  DartApiClass apiClass;
-  bool exposeMedia;
-  String libraryName;
+  DartSchemaTypeDB? schemaDB;
+  DartApiClass? apiClass;
+  late bool exposeMedia;
+  String? libraryName;
 
   /// Generates a API library for [description].
   DartApiLibrary.build(
     RestDescription description, {
-    @required this.isPackage,
+    required this.isPackage,
     bool useCorePrefixes = true,
   }) : super(description, 'Api', useCorePrefixes: useCorePrefixes) {
     libraryName =
         ApiLibraryNamer.libraryName(description.name, description.version);
     schemaDB = parseSchemas(imports, description);
     apiClass = parseResources(imports, schemaDB, description);
-    exposeMedia = parseMediaUse(apiClass);
+    exposeMedia = parseMediaUse(apiClass!);
     namer.nameAllIdentifiers();
   }
 
   @override
   String get librarySource {
     final sink = StringBuffer();
-    final schemas = generateSchemas(schemaDB);
-    final resources = generateResources(apiClass);
+    final schemas = generateSchemas(schemaDB!);
+    final resources = generateResources(apiClass!);
     sink.write(_libraryHeader());
     if (resources.isNotEmpty) {
       sink.write('$resources\n$schemas');
@@ -152,7 +149,7 @@ const userAgentDartFilePath = 'src/user_agent.dart';
 
 Comment _commentFromRestDescription(
   RestDescription description,
-  DartApiClass apiClass,
+  DartApiClass? apiClass,
 ) {
   final lines = [
     _descriptionTitle(description),
@@ -162,9 +159,9 @@ Comment _commentFromRestDescription(
   ];
 
   final hierarchy = <String>[];
-  void addLines(DartResourceClass resourceClass, int depth) {
+  void addLines(DartResourceClass? resourceClass, int depth) {
     if (depth == 0) {
-      if (resourceClass.subResources.isEmpty) {
+      if (resourceClass!.subResources.isEmpty) {
         return;
       }
       hierarchy.addAll([
@@ -174,7 +171,7 @@ Comment _commentFromRestDescription(
       ]);
     } else {
       hierarchy.add(
-        '${'  ' * (depth - 1)}- [${resourceClass.className.name}]',
+        '${'  ' * (depth - 1)}- [${resourceClass!.className.name}]',
       );
     }
     for (var child in resourceClass.subResources) {
@@ -192,7 +189,7 @@ Comment _commentFromRestDescription(
       .join('\n\n'));
 }
 
-String _descriptionTitle(RestDescription description) {
+String? _descriptionTitle(RestDescription description) {
   var title = description.title;
   if (title == null) {
     return null;

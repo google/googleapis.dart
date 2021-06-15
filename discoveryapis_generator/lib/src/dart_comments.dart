@@ -14,7 +14,7 @@ String markdownEscape(String input) {
     input = input.replaceAllMapped(
       pattern,
       (match) {
-        final slashes = match[1];
+        final slashes = match[1]!;
         final char = match[2];
 
         return '$slashes${slashes.length.isEven ? '\\' : ''}$char';
@@ -42,7 +42,7 @@ final _validLinkRegexp = RegExp(
   ,
 );
 
-String bracketClean(String input) {
+String? bracketClean(String? input) {
   if (input == null || input.isEmpty) {
     return input;
   }
@@ -78,24 +78,24 @@ class Comment {
   static final empty = Comment('');
   final String rawComment;
 
-  Comment(String raw)
+  Comment(String? raw)
       : rawComment = (raw != null && raw.isNotEmpty) ? raw.trimRight() : '';
 
-  factory Comment.header(String raw, bool clean) {
+  factory Comment.header(String? raw, bool clean) {
     if (raw == null) return Comment(raw);
 
     final prefixes = <String>{};
-    Match match;
+    Match? match;
     do {
       for (var prefix in _docPrefixes) {
         // prefixes usually show up as `Prefix. Rest of thing...`
         // but sometimes they show up as `[Prefix] Rest of thing...`
         // So we cover both cases, but normalize to the first.
-        match = '$prefix. '.toLowerCase().matchAsPrefix(raw.toLowerCase()) ??
+        match = '$prefix. '.toLowerCase().matchAsPrefix(raw!.toLowerCase()) ??
             '[$prefix] '.toLowerCase().matchAsPrefix(raw.toLowerCase());
         if (match != null) {
           prefixes.add('$prefix. ');
-          raw = raw.substring(match.group(0).length);
+          raw = raw.substring(match.group(0)!.length);
           break;
         }
       }
@@ -113,7 +113,7 @@ class Comment {
     var start = 0;
     int endOfFirstSentence;
     for (;;) {
-      endOfFirstSentence = raw.indexOf(
+      endOfFirstSentence = raw!.indexOf(
         '. ',
         start,
       );
@@ -130,7 +130,7 @@ class Comment {
       start = endOfFirstSentence + 1;
     }
 
-    final lines = <String>[];
+    final lines = <String?>[];
 
     if (endOfFirstSentence < 1) {
       lines.add(raw);
@@ -142,7 +142,7 @@ class Comment {
     }
 
     if (prefixes.isNotEmpty) {
-      lines.add(prefixes.join('').trim());
+      lines.add(prefixes.join().trim());
     }
 
     return Comment(lines.join('\n\n'));
@@ -179,7 +179,7 @@ class Comment {
       final buffer = StringBuffer();
 
       for (var part in urlSplit(line)) {
-        if ((buffer.length + part.length + 1) > maxCommentLine) {
+        if ((buffer.length + part!.length + 1) > maxCommentLine) {
           // If we have already data, we'll write a new line.
           if (buffer.length > 0) {
             split.add(buffer.toString());
@@ -207,8 +207,8 @@ class Comment {
   }
 }
 
-List<String> urlSplit(String input) {
-  final result = <String>[];
+List<String?> urlSplit(String input) {
+  final result = <String?>[];
 
   input.splitMapJoin(_validLinkRegexp, onMatch: (match) {
     result.add(match[0]);

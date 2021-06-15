@@ -65,11 +65,11 @@ Iterable<Configuration> _configs(String version, String path) sync* {
   stderr.writeln('file: $version');
   final fileContents = File(path).readAsStringSync();
   final yaml = loadYaml(fileContents, sourceUrl: Uri.parse(path)) as YamlMap;
-  final packages = yaml['packages'] as YamlList;
+  final packages = yaml['packages'] as YamlList?;
 
   for (var name in _names) {
     stderr.writeln('  api: $name');
-    final entry = packages.singleWhere(
+    final entry = packages!.singleWhere(
         (element) => element is Map && element.containsKey(name)) as YamlMap;
 
     final data = entry[name] as YamlMap;

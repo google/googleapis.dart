@@ -34,11 +34,10 @@ ArgResults parseArguments(ArgParser parser, List<String> arguments) {
     return parser.parse(arguments);
   } on FormatException catch (e) {
     dieWithUsage('Error parsing arguments:\n${e.message}\n');
-    return null;
   }
 }
 
-void dieWithUsage([String message]) {
+Never dieWithUsage([String? message]) {
   if (message != null) {
     print(message);
   }
@@ -64,13 +63,12 @@ void dieWithUsage([String message]) {
 void main(List<String> arguments) {
   final parser = globalArgParser();
   final options = parseArguments(parser, arguments);
-  final commandOptions = options.command;
+  final commandOptions = options.command!;
   final subCommands = ['download', 'generate', 'run_config'];
 
   if (options['help'] as bool) {
     dieWithUsage();
-  } else if (commandOptions == null ||
-      !subCommands.contains(commandOptions.name)) {
+  } else if (!subCommands.contains(commandOptions.name)) {
     dieWithUsage('Invalid command');
   }
 
@@ -80,20 +78,20 @@ void main(List<String> arguments) {
       break;
     case 'run_config':
       if (commandOptions.command == null ||
-          !['download', 'generate'].contains(commandOptions.command.name)) {
+          !['download', 'generate'].contains(commandOptions.command!.name)) {
         dieWithUsage('The `run_config` command has only the two subcommands: '
             '`download` and `generate`.');
       }
 
-      final configFile = commandOptions['config-file'] as String;
-      final deleteExisting = commandOptions['delete-existing'] as bool;
-      switch (commandOptions.command.name) {
+      final configFile = commandOptions['config-file'] as String?;
+      final deleteExisting = commandOptions['delete-existing'] as bool?;
+      switch (commandOptions.command!.name) {
         case 'download':
-          downloadFromConfiguration(configFile).then((_) => print('Done!'));
+          downloadFromConfiguration(configFile!).then((_) => print('Done!'));
           break;
         case 'generate':
           generateFromConfiguration(
-            configFile,
+            configFile!,
             deleteExisting,
           );
           print('Done');
