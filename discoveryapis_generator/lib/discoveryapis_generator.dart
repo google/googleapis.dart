@@ -56,8 +56,11 @@ List<GenerateResult> generateAllLibraries(
 }
 
 List<GenerateResult> generateApiFiles(
-    String inputDirectory, String outputDirectory,
-    {bool updatePubspec = false, bool? useCorePrefixes = true}) {
+  String inputDirectory,
+  String outputDirectory, {
+  bool updatePubspec = false,
+  bool? useCorePrefixes = true,
+}) {
   final descriptions = <DescriptionImportPair>[];
   Directory(inputDirectory)
       .listSync()
@@ -67,7 +70,11 @@ List<GenerateResult> generateApiFiles(
         DescriptionImportPair((entity as File).readAsStringSync(), null);
     descriptions.add(diPair);
   });
-  final clientFileGenerator = ApisFilesGenerator(descriptions, outputDirectory,
-      updatePubspec: updatePubspec, useCorePrefixes: useCorePrefixes);
+  final clientFileGenerator = ApisFilesGenerator(
+    descriptions,
+    outputDirectory,
+    updatePubspec: updatePubspec,
+    useCorePrefixes: useCorePrefixes,
+  );
   return clientFileGenerator.generate();
 }

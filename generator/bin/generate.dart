@@ -84,7 +84,7 @@ void main(List<String> arguments) {
       }
 
       final configFile = commandOptions['config-file'] as String?;
-      final deleteExisting = commandOptions['delete-existing'] as bool?;
+      final deleteExisting = commandOptions['delete-existing'] as bool;
       switch (commandOptions.command!.name) {
         case 'download':
           downloadFromConfiguration(configFile!).then((_) => print('Done!'));

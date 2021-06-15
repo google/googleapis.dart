@@ -200,7 +200,7 @@ Future downloadFromConfiguration(String configFile) async {
 
 void generateFromConfiguration(
   String configFile,
-  bool? deleteExisting,
+  bool deleteExisting,
 ) {
   final configuration = DiscoveryPackagesConfiguration(configFile);
 

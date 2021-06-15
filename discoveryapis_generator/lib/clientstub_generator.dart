@@ -16,9 +16,14 @@ export 'src/utils.dart' show GenerateResult, findPackageRoot;
 /// This is used to generate client stubs inside the same package as the server
 /// API and uses the same message classes as used on the server side.
 List<GenerateResult> generateClientStubs(
-    List<DescriptionImportPair> descriptions, String outputDirectory,
-    {bool updatePubspec = false}) {
-  final clientGenerator = ApisFilesGenerator(descriptions, outputDirectory,
-      updatePubspec: updatePubspec);
+  List<DescriptionImportPair> descriptions,
+  String outputDirectory, {
+  bool updatePubspec = false,
+}) {
+  final clientGenerator = ApisFilesGenerator(
+    descriptions,
+    outputDirectory,
+    updatePubspec: updatePubspec,
+  );
   return clientGenerator.generate();
 }
