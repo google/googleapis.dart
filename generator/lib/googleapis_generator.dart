@@ -16,7 +16,7 @@ import 'package:pool/pool.dart';
 import 'src/package_configuration.dart';
 import 'src/utils.dart';
 
-Future<List<DirectoryListItems>> _listAllApis() async {
+Future<List<DirectoryListItems>?> _listAllApis() async {
   final client = IOClient();
   try {
     final result = await DiscoveryApi(client).apis.list();
@@ -26,7 +26,7 @@ Future<List<DirectoryListItems>> _listAllApis() async {
   }
 }
 
-Future<List<RestDescription>> downloadDiscoveryDocuments(
+Future<List<RestDescription?>> downloadDiscoveryDocuments(
   String outputDir,
 ) async {
   final apis = await fetchDiscoveryDocuments();
@@ -36,7 +36,7 @@ Future<List<RestDescription>> downloadDiscoveryDocuments(
 
 void writeDiscoveryDocuments(
   String outputDir,
-  Iterable<RestDescription> apis,
+  Iterable<RestDescription?> apis,
 ) {
   final directory = Directory(outputDir);
   if (directory.existsSync()) {
@@ -46,7 +46,7 @@ void writeDiscoveryDocuments(
   directory.createSync(recursive: true);
 
   for (var description in apis) {
-    final name = '$outputDir/${description.name}__${description.version}.json';
+    final name = '$outputDir/${description!.name}__${description.version}.json';
     final file = File(name);
     const encoder = JsonEncoder.withIndent('    ');
     file.writeAsStringSync(encoder.convert(description.toJson()));
@@ -54,15 +54,15 @@ void writeDiscoveryDocuments(
   }
 }
 
-Future<List<RestDescription>> fetchDiscoveryDocuments({
-  Map<String, String> existingRevisions,
+Future<List<RestDescription?>> fetchDiscoveryDocuments({
+  Map<String, String>? existingRevisions,
 }) async {
   final client = IOClient();
 
-  Future<RestDescription> download(DirectoryListItems item) async {
+  Future<RestDescription?> download(DirectoryListItems item) async {
     try {
       final result = await client.get(
-        Uri.parse(item.discoveryRestUrl),
+        Uri.parse(item.discoveryRestUrl!),
         headers: requestHeaders,
       );
 
@@ -102,23 +102,23 @@ $stack
     try {
       var count = 0;
       return await pool
-          .forEach(list.items, (DirectoryListItems item) async {
+          .forEach(list.items!, (DirectoryListItems item) async {
             print(ansi.darkGray.wrap(
-              'Requesting ${++count} of ${list.items.length} - ${item.id}',
+              'Requesting ${++count} of ${list.items!.length} - ${item.id}',
             ));
 
-            RestDescription description;
+            RestDescription? description;
             for (var i = 1; i <= 10; i++) {
               description = await download(item);
               if (i > 1) {
                 print('  ${item.id} try #$i');
               }
 
-              final existingRevision = existingRevisions[description?.id];
+              final existingRevision = existingRevisions![description?.id!];
               if (existingRevision != null &&
-                  existingRevision != description.revision) {
+                  existingRevision != description!.revision) {
                 final compare =
-                    existingRevision.compareTo(description.revision);
+                    existingRevision.compareTo(description.revision!);
 
                 if (compare.isNegative) {
                   print(
@@ -185,12 +185,12 @@ Future downloadFromConfiguration(String configFile) async {
     }
   }
 
-  void prettyNotNull(String header, Map<String, String> value) {
+  void prettyNotNull(String header, Map<String?, String>? value) {
     if (value == null || value.isEmpty) return;
 
     print(header);
     for (var entry in value.entries) {
-      print('  ${entry.key.padRight(30)} ${entry.value}');
+      print('  ${entry.key!.padRight(30)} ${entry.value}');
     }
   }
 
@@ -200,7 +200,7 @@ Future downloadFromConfiguration(String configFile) async {
 
 void generateFromConfiguration(
   String configFile,
-  bool deleteExisting,
+  bool? deleteExisting,
 ) {
   final configuration = DiscoveryPackagesConfiguration(configFile);
 

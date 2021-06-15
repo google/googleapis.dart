@@ -184,7 +184,7 @@ void main() {
         final id = Identifier.noPrefix();
         expect(id.ref(), '');
         // Test that toString() doesn't throw.
-        expect(id.toString(), null);
+        expect(id.toString(), '** NOT DEFINED **');
       });
     });
 
@@ -197,7 +197,7 @@ void main() {
       test('scope-tree', () {
         final namer = ApiLibraryNamer();
         final rootScope = namer.importScope;
-        final libScope = namer.libraryScope;
+        final libScope = namer.libraryScope!;
         final classScope = namer.newClassScope();
 
         expect(rootScope.parentScope, isNull);
@@ -207,7 +207,7 @@ void main() {
 
       test('schema-class', () {
         final namer = ApiLibraryNamer();
-        final libraryScope = namer.libraryScope;
+        final libraryScope = namer.libraryScope!;
 
         // Naming classes is split into two parts:
         // - getting a preffered name with [namer.schemaClassName]
@@ -263,7 +263,7 @@ void main() {
         expect(iscope.identifiers[2].name, equals('BookApi_2'));
         expect(iscope.identifiers[3].name, equals('FooBarResource_1'));
 
-        final lscope = namer.libraryScope;
+        final lscope = namer.libraryScope!;
         expect(lscope.identifiers[0].name, equals('BookApi'));
         expect(lscope.identifiers[1].name, equals('Book'));
         expect(lscope.identifiers[2].name, equals('Chapter'));

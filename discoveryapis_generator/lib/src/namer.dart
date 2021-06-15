@@ -8,12 +8,12 @@ import 'utils.dart';
 
 /// Represents an identifier that can be given a name.
 class Identifier {
-  String _name;
+  String? _name;
   bool _sealed = false;
   int _callCount = 0;
 
   /// The preferred name for this [Identifier].
-  final String preferredName;
+  final String? preferredName;
 
   /// Used for naming prefix imports which will not get a name.
   Identifier.noPrefix() : preferredName = null {
@@ -28,10 +28,10 @@ class Identifier {
 
   /// The allocated name for this [Identifier]. This will be [:null:] until
   /// [sealWithName] was called.
-  String get name => _name;
+  String? get name => _name;
 
   /// Seals this [Identifier] and gives it the name [name].
-  void sealWithName(String name) {
+  void sealWithName(String? name) {
     if (_sealed) {
       throw StateError('This Identifier(preferredName: $preferredName) '
           'has already been sealed.');
@@ -57,7 +57,7 @@ class Identifier {
       throw StateError('This Identifier(preferredName: $preferredName) '
           'has not been sealed yet.');
     }
-    return _name;
+    return _name ?? '** NOT DEFINED **';
   }
 }
 
@@ -66,11 +66,11 @@ class Scope {
   static final RegExp _startsWithDigit = RegExp('^[0-9]');
   static final RegExp _nonAscii = RegExp('[^a-zA-z0-9]');
 
-  final Scope parentScope;
+  final Scope? parentScope;
   final List<Scope> childScopes = <Scope>[];
   final List<Identifier> identifiers = <Identifier>[];
 
-  Scope({Scope parent}) : parentScope = parent;
+  Scope({Scope? parent}) : parentScope = parent;
 
   /// Returns a valid identifier based on [preferredName] but different from all
   /// other names previously returned by this method.
@@ -96,18 +96,18 @@ class Scope {
 
   /// Converts [preferredName] to a valid identifier.
   static String toValidIdentifier(
-    String preferredName, {
+    String? preferredName, {
     bool removeUnderscores = true,
     bool global = false,
   }) {
     // Replace all abc_xyz with abcXyz.
     if (removeUnderscores) {
       preferredName =
-          Scope.capitalizeAtChar(preferredName, '_', keepEnding: true);
+          Scope.capitalizeAtChar(preferredName!, '_', keepEnding: true);
     }
 
-    preferredName = preferredName.replaceAllMapped(
-        _dashStringRegExp, (match) => match[1].toUpperCase());
+    preferredName = preferredName!.replaceAllMapped(
+        _dashStringRegExp, (match) => match[1]!.toUpperCase());
 
     preferredName =
         preferredName.replaceAll('-', '_').replaceAll(_nonAscii, '_');
@@ -205,7 +205,7 @@ class Scope {
 /// preferred name, and keeps appending _N where N is an integer until a name
 /// does not collide.
 class IdentifierNamer {
-  final IdentifierNamer parentNamer;
+  final IdentifierNamer? parentNamer;
   final Set<String> allocatedNames;
 
   /// If [parentNamer] is given, this namer will only allocated names which are
@@ -219,7 +219,7 @@ class IdentifierNamer {
   /// Gives [Identifier] a unique name amongst all previously named identifiers
   /// and amongst all identifiers of [parentNamer].
   void nameIdentifier(Identifier identifier) {
-    final preferredName = identifier.preferredName;
+    final preferredName = identifier.preferredName!;
 
     var i = 0;
     var currentName = preferredName;
@@ -234,7 +234,7 @@ class IdentifierNamer {
   bool _contains(String name) {
     if (allocatedNames.contains(name)) return true;
     if (parentNamer != null) {
-      if (parentNamer._contains(name)) return true;
+      if (parentNamer!._contains(name)) return true;
     }
     return false;
   }
@@ -245,7 +245,7 @@ const _resourceApiName = 'Resource';
 /// Helper class for allocating unique names for generating an API library.
 class ApiLibraryNamer {
   final String apiClassSuffix;
-  Scope _libraryScope;
+  late final Scope _libraryScope;
 
   /// NOTE: Only exposed for testing.
   final Scope importScope = Scope();
@@ -255,15 +255,15 @@ class ApiLibraryNamer {
   }
 
   /// NOTE: Only exposed for testing.
-  Scope get libraryScope => _libraryScope;
+  Scope? get libraryScope => _libraryScope;
 
-  static String libraryName(String api, String version) {
+  static String libraryName(String? api, String? version) {
     api = Scope.toValidIdentifier(api, removeUnderscores: false);
     version = Scope.toValidIdentifier(version, removeUnderscores: false);
     return '$api.$version';
   }
 
-  String clientLibraryName(String package, String api) {
+  String clientLibraryName(String package, String? api) {
     package = Scope.toValidIdentifier(package, removeUnderscores: false);
     api = Scope.toValidIdentifier(api, removeUnderscores: false);
     return '$package.$api.client';
@@ -277,7 +277,7 @@ class ApiLibraryNamer {
   Identifier apiClass(String name) =>
       _libraryScope.newIdentifier('${Scope.capitalize(name)}$apiClassSuffix');
 
-  Identifier resourceClass(String name, {String parent}) {
+  Identifier resourceClass(String name, {String? parent}) {
     name = Scope.capitalize(name);
 
     if (parent != null && parent.isNotEmpty) {
@@ -295,7 +295,7 @@ class ApiLibraryNamer {
         .newIdentifier('${Scope.capitalize(name)}$_resourceApiName');
   }
 
-  String schemaClassName(String name, {String parent}) {
+  String schemaClassName(String name, {String? parent}) {
     if (parent != null) {
       name = '$parent${Scope.capitalize(name)}';
     }

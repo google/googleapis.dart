@@ -56,7 +56,7 @@ ArgResults parseArguments(ArgParser parser, List<String> arguments) {
   }
 }
 
-void dieWithUsage([String message]) {
+Never dieWithUsage([String? message]) {
   if (message != null) {
     print(message);
   }
@@ -83,24 +83,23 @@ void dieWithUsage([String message]) {
 void main(List<String> arguments) {
   final parser = globalArgParser();
   final options = parseArguments(parser, arguments);
-  final commandOptions = options.command;
+  final commandOptions = options.command!;
   final subCommands = ['package', 'files'];
 
   if (options['help'] as bool) {
     dieWithUsage();
-  } else if (commandOptions == null ||
-      !subCommands.contains(commandOptions.name)) {
+  } else if (!subCommands.contains(commandOptions.name)) {
     dieWithUsage('Invalid command');
   }
 
   switch (commandOptions.name) {
     case 'package':
       final pubspec = Pubspec(
-        commandOptions['package-name'] as String,
-        commandOptions['package-version'] as String,
-        commandOptions['package-description'] as String,
-        author: commandOptions['package-author'] as String,
-        repository: commandOptions['package-repository'] as String,
+        commandOptions['package-name'] as String?,
+        commandOptions['package-version'] as String?,
+        commandOptions['package-description'] as String?,
+        author: commandOptions['package-author'] as String?,
+        repository: commandOptions['package-repository'] as String?,
       );
       printResults(generateAllLibraries(
         commandOptions['input-dir'] as String,
@@ -117,7 +116,7 @@ void main(List<String> arguments) {
         commandOptions['input-dir'] as String,
         commandOptions['output-dir'] as String,
         updatePubspec: updatePubspec == 'true',
-        useCorePrefixes: commandOptions['core-prefixes'] as bool,
+        useCorePrefixes: commandOptions['core-prefixes'] as bool?,
       ));
       break;
   }

@@ -4,8 +4,6 @@
 
 library discoveryapis_generator.dart_api_library;
 
-import 'package:meta/meta.dart';
-
 import 'dart_comments.dart';
 import 'dart_resources.dart';
 import 'dart_schemas.dart';
@@ -63,8 +61,7 @@ abstract class BaseApiLibrary {
   final ApiLibraryNamer namer;
   final RestDescription description;
 
-  /* late final */
-  DartApiImports imports;
+  late final DartApiImports imports;
 
   BaseApiLibrary(this.description, String apiClassSuffix,
       {bool useCorePrefixes = true})
@@ -76,15 +73,15 @@ abstract class BaseApiLibrary {
 /// Generates a API library based on a [RestDescription].
 class DartApiLibrary extends BaseApiLibrary {
   final bool isPackage;
-  DartSchemaTypeDB schemaDB;
-  DartApiClass apiClass;
-  bool exposeMedia;
-  String libraryName;
+  late final DartSchemaTypeDB schemaDB;
+  late final DartApiClass apiClass;
+  late final bool exposeMedia;
+  late final String libraryName;
 
   /// Generates a API library for [description].
   DartApiLibrary.build(
     RestDescription description, {
-    @required this.isPackage,
+    required this.isPackage,
     bool useCorePrefixes = true,
   }) : super(description, 'Api', useCorePrefixes: useCorePrefixes) {
     libraryName =
@@ -192,7 +189,7 @@ Comment _commentFromRestDescription(
       .join('\n\n'));
 }
 
-String _descriptionTitle(RestDescription description) {
+String? _descriptionTitle(RestDescription description) {
   var title = description.title;
   if (title == null) {
     return null;

@@ -22,8 +22,8 @@ class Package {
   final String readme;
   final String license;
   final String changelog;
-  final String example;
-  final String monoPkg;
+  final String? example;
+  final String? monoPkg;
 
   Package(
     this.name,
@@ -41,14 +41,14 @@ class Package {
 /// a Discovery Service.
 class DiscoveryPackagesConfiguration {
   String configFile;
-  Map yaml;
-  Map<String, Package> packages;
+  Map? yaml;
+  late Map<String, Package> packages;
 
-  Set<String> excessApis;
-  List<String> missingApis;
+  late Set<String> excessApis;
+  late List<String?> missingApis;
   final existingApiRevisions = <String, String>{};
-  Map<String, String> newRevisions;
-  Map<String, String> oldRevisions;
+  Map<String?, String>? newRevisions;
+  Map<String?, String>? oldRevisions;
 
   /// Create a new discovery packages configuration.
   ///
@@ -83,7 +83,7 @@ class DiscoveryPackagesConfiguration {
   /// The file names for the content of readme and license files are resolved
   /// relative to the configuration file.
   DiscoveryPackagesConfiguration(this.configFile) {
-    yaml = loadYaml(File(configFile).readAsStringSync()) as Map;
+    yaml = loadYaml(File(configFile).readAsStringSync()) as Map?;
   }
 
   /// Downloads discovery documents from the configuration.
@@ -92,7 +92,7 @@ class DiscoveryPackagesConfiguration {
   /// documents are stored.
   Future<void> download(
     String discoveryDocsDir,
-    List<DirectoryListItems> items,
+    List<DirectoryListItems>? items,
   ) async {
     // Delete all downloaded discovery documents.
     final dir = Directory(discoveryDocsDir);
@@ -102,12 +102,7 @@ class DiscoveryPackagesConfiguration {
         final json =
             jsonDecode(file.readAsStringSync()) as Map<String, dynamic>;
         final id = json['id'] as String;
-        assert(id != null, 'id should not be null for ${file.path}');
         final revision = json['revision'] as String;
-        assert(
-          revision != null,
-          'revision should not be null for ${file.path}',
-        );
         assert(!existingApiRevisions.containsKey(id));
         existingApiRevisions[id] = revision;
       }
@@ -130,7 +125,7 @@ class DiscoveryPackagesConfiguration {
       writeDiscoveryDocuments(
         '$discoveryDocsDir/${entry.key}',
         entry.value.apis.map(
-          (e) => allApis.singleWhere((element) => element.id == e, orElse: () {
+          (e) => allApis.singleWhere((element) => element!.id == e, orElse: () {
             throw StateError('  !!! Colud not find an element for `$e`!');
           }),
         ),
@@ -148,7 +143,7 @@ class DiscoveryPackagesConfiguration {
   void generate(
     String discoveryDocsDir,
     String generatedApisDir,
-    bool deleteExisting,
+    bool? deleteExisting,
   ) {
     // Delete all downloaded discovery documents.
     final dir = Directory(discoveryDocsDir);
@@ -159,7 +154,7 @@ class DiscoveryPackagesConfiguration {
 
     // Load discovery documents from disc & initialize this object.
     final allApis = <RestDescription>[];
-    for (var package in yaml['packages'] as List) {
+    for (var package in yaml!['packages'] as List) {
       (package as Map).forEach((name, _) {
         allApis.addAll(loadDiscoveryDocuments('$discoveryDocsDir/$name'));
       });
@@ -172,7 +167,7 @@ class DiscoveryPackagesConfiguration {
         '$discoveryDocsDir/$name',
         '$generatedApisDir/$name',
         package.pubspec,
-        deleteExisting: deleteExisting,
+        deleteExisting: deleteExisting!,
       );
       for (final result in results) {
         if (!result.success) {
@@ -182,43 +177,39 @@ class DiscoveryPackagesConfiguration {
 
       File('$generatedApisDir/$name/README.md')
           .writeAsStringSync(package.readme);
-      if (package.license != null) {
-        File('$generatedApisDir/$name/LICENSE')
-            .writeAsStringSync(package.license);
-      }
-      if (package.changelog != null) {
-        File('$generatedApisDir/$name/CHANGELOG.md')
-            .writeAsStringSync(package.changelog);
-      }
+      File('$generatedApisDir/$name/LICENSE')
+          .writeAsStringSync(package.license);
+      File('$generatedApisDir/$name/CHANGELOG.md')
+          .writeAsStringSync(package.changelog);
       if (package.monoPkg != null) {
         File('$generatedApisDir/$name/mono_pkg.yaml')
-            .writeAsStringSync(package.monoPkg);
+            .writeAsStringSync(package.monoPkg!);
       }
       if (package.example != null) {
         Directory('$generatedApisDir/$name/example').createSync();
         File('$generatedApisDir/$name/example/main.dart')
-            .writeAsStringSync(package.example);
+            .writeAsStringSync(package.example!);
       }
     });
   }
 
   /// Initializes the missingApis/excessApis/packages properties from a list
   /// of [RestDescription]s.
-  void _initialize(List<RestDescription> allApis) {
+  void _initialize(List<RestDescription?> allApis) {
     packages =
-        _packagesFromYaml(yaml['packages'] as YamlList, configFile, allApis);
+        _packagesFromYaml(yaml!['packages'] as YamlList, configFile, allApis);
     final knownApis = _calculateKnownApis(
       packages,
-      _listFromYaml(yaml['skipped_apis'] as YamlList),
+      _listFromYaml(yaml!['skipped_apis'] as YamlList?),
     );
     missingApis = _calculateMissingApis(knownApis, allApis);
     excessApis = _calculateExcessApis(knownApis, allApis);
 
     if (existingApiRevisions.isNotEmpty) {
       for (var api in allApis) {
-        final existingRevision = existingApiRevisions[api.id];
+        final existingRevision = existingApiRevisions[api!.id!];
         if (existingRevision != null) {
-          final compare = api.revision.compareTo(existingRevision);
+          final compare = api.revision!.compareTo(existingRevision);
           if (compare == 0) {
             continue;
           }
@@ -235,13 +226,13 @@ class DiscoveryPackagesConfiguration {
   }
 
   // Return empty list for YAML null value.
-  static List _listFromYaml(List value) => value ?? [];
+  static List _listFromYaml(List? value) => value ?? [];
 
   static String _generateReadme(
-    String readmeFile,
+    String? readmeFile,
     String packageName,
     String packageVersion,
-    List<RestDescription> items,
+    List<RestDescription?> items,
   ) {
     final sb = StringBuffer();
     if (readmeFile != null) {
@@ -260,15 +251,15 @@ package.
 
     for (var item in items) {
       sb.write('#### ');
-      if (item.icons != null &&
-          item.icons.x16 != null &&
-          item.icons.x16.startsWith('https://')) {
-        sb.write('![Logo](${item.icons.x16}) ');
+      if (item!.icons != null &&
+          item.icons!.x16 != null &&
+          item.icons!.x16!.startsWith('https://')) {
+        sb.write('![Logo](${item.icons!.x16}) ');
       }
       final libraryName = ApiLibraryNamer.libraryName(item.name, item.version);
       sb..writeln('${item.title} - `$libraryName`')..writeln();
 
-      if (item.description != null && item.description.isNotEmpty) {
+      if (item.description != null && item.description!.isNotEmpty) {
         sb..writeln(item.description)..writeln();
       }
 
@@ -284,13 +275,13 @@ package.
   static Map<String, Package> _packagesFromYaml(
     YamlList configPackages,
     String configFile,
-    List<RestDescription> allApis,
+    List<RestDescription?> allApis,
   ) {
     final packages = <String, Package>{};
     for (var package in configPackages) {
       (package as Map).forEach((name, values) {
         packages[name as String] = _packageFromYaml(
-          name as String,
+          name,
           values as YamlMap,
           configFile,
           allApis,
@@ -305,14 +296,14 @@ package.
     String name,
     YamlMap values,
     String configFile,
-    List<RestDescription> allApis,
+    List<RestDescription?> allApis,
   ) {
-    final apis = _listFromYaml(values['apis'] as List).cast<String>();
-    final version = values['version'] as String ?? '0.1.0-dev';
-    final author = values['author'] as String;
-    final repository = values['repository'] as String;
+    final apis = _listFromYaml(values['apis'] as List?).cast<String>();
+    final version = values['version'] as String? ?? '0.1.0-dev';
+    final author = values['author'] as String?;
+    final repository = values['repository'] as String?;
 
-    Map<String, String> extraDevDependencies;
+    Map<String, String>? extraDevDependencies;
     if (values.containsKey('extraDevDependencies')) {
       extraDevDependencies =
           (values['extraDevDependencies'] as YamlMap).cast<String, String>();
@@ -320,42 +311,42 @@ package.
 
     final configUri = Uri.file(configFile);
 
-    allApis.sort((RestDescription a, RestDescription b) {
-      final result = a.name.compareTo(b.name);
+    allApis.sort((RestDescription? a, RestDescription? b) {
+      final result = a!.name!.compareTo(b!.name!);
       if (result != 0) return result;
-      return a.version.compareTo(b.version);
+      return a.version!.compareTo(b.version!);
     });
 
-    String readmeFile;
+    String? readmeFile;
     if (values['readme'] != null) {
       readmeFile = configUri.resolve(values['readme'] as String).path;
     }
-    String licenseFile;
+    late String licenseFile;
     if (values['license'] != null) {
       licenseFile = configUri.resolve(values['license'] as String).path;
     }
-    String changelogFile;
+    late String changelogFile;
     if (values['changelog'] != null) {
       changelogFile = configUri.resolve(values['changelog'] as String).path;
     }
-    String example;
+    String? example;
     if (values['example'] != null) {
       final exampleFile = configUri.resolve(values['example'] as String).path;
       example = File(exampleFile).readAsStringSync();
     }
 
-    String monoPkg;
+    String? monoPkg;
     if (values['mono_pkg'] != null) {
       final monoPkgFile = configUri.resolve(values['mono_pkg'] as String).path;
       monoPkg = File(monoPkgFile).readAsStringSync();
     }
 
     // Generate package description.
-    final apiDescriptions = <RestDescription>[];
+    final apiDescriptions = <RestDescription?>[];
     const description = 'Auto-generated client libraries for accessing Google '
         'APIs described through the API discovery service.';
     for (var apiDescription in allApis) {
-      if (apis.contains(apiDescription.id)) {
+      if (apis.contains(apiDescription!.id)) {
         apiDescriptions.add(apiDescription);
       }
     }
@@ -403,20 +394,20 @@ package.
 
   /// The missing APIs are the APIs returned from the Discovery Service
   /// but not mentioned in the configuration.
-  static List<String> _calculateMissingApis(
+  static List<String?> _calculateMissingApis(
     Iterable<String> knownApis,
-    List<RestDescription> allApis,
+    List<RestDescription?> allApis,
   ) =>
       allApis
-          .where((item) => !knownApis.contains(item.id))
-          .map((item) => item.id)
+          .where((item) => !knownApis.contains(item!.id))
+          .map((item) => item!.id)
           .toList();
 
   /// The excess APIs are the APIs mentioned in the configuration but not
   /// returned from the Discovery Service.
   static Set<String> _calculateExcessApis(
     Iterable<String> knownApis,
-    List<RestDescription> allApis,
+    List<RestDescription?> allApis,
   ) =>
-      Set<String>.from(knownApis)..removeAll(allApis.map((e) => e.id));
+      Set<String>.from(knownApis)..removeAll(allApis.map((e) => e!.id));
 }

@@ -18,7 +18,7 @@ import 'utils.dart';
 
 class DescriptionImportPair {
   final String apiDescription;
-  final Map<String, String> importMap;
+  final Map<String, String>? importMap;
 
   DescriptionImportPair(this.apiDescription, this.importMap);
 }
@@ -28,9 +28,9 @@ class ApisFilesGenerator {
   final List<DescriptionImportPair> descriptions;
   final String clientFolderPath;
   final bool updatePubspec;
-  final bool useCorePrefixes;
-  String packageRoot;
-  File pubspecFile;
+  final bool? useCorePrefixes;
+  String? packageRoot;
+  late File pubspecFile;
 
   /// [descriptions] is a list of API descriptions we want to generate code for.
   /// [clientFolderPath] is the output directory for the generated client stub
@@ -47,15 +47,15 @@ class ApisFilesGenerator {
     if (!clientDirectory.existsSync()) {
       clientDirectory.createSync(recursive: true);
     }
-    pubspecFile = File(path.join(packageRoot, 'pubspec.yaml'));
+    pubspecFile = File(path.join(packageRoot!, 'pubspec.yaml'));
     assert(pubspecFile.existsSync());
   }
 
   /// Generates the client stub code with all the APIs given in the constructor.
   List<GenerateResult> generate() {
     // Get the package name.
-    final pubspec = loadYaml(pubspecFile.readAsStringSync()) as YamlMap;
-    final packageName = (pubspec != null ? pubspec['name'] : null) as String;
+    final pubspec = loadYaml(pubspecFile.readAsStringSync()) as YamlMap?;
+    final packageName = (pubspec != null ? pubspec['name'] : null) as String?;
     if (packageName == null) {
       throw Exception('Invalid pubspec.yaml for package $packageRoot');
     }
@@ -66,8 +66,8 @@ class ApisFilesGenerator {
     for (var diPair in descriptions) {
       final description =
           RestDescription.fromJson(json.decode(diPair.apiDescription) as Map);
-      final name = description.name.toLowerCase();
-      final version = description.version.toLowerCase();
+      final name = description.name!.toLowerCase();
+      final version = description.version!.toLowerCase();
       final apiFile = path.join(clientFolderPath, '$name.dart');
       try {
         BaseApiLibrary lib;
@@ -76,7 +76,7 @@ class ApisFilesGenerator {
           // classes.
           lib = DartApiLibrary.build(
             description,
-            useCorePrefixes: useCorePrefixes,
+            useCorePrefixes: useCorePrefixes!,
             isPackage: false,
           );
         } else {
@@ -117,7 +117,7 @@ class ApisFilesGenerator {
   String _processPubspec() {
     void writeValue(StringSink sink, String key, dynamic value, String indent) {
       if (value is String) {
-        final val = value as String;
+        final val = value;
         // Encapsulate constraints with ''
         if (val.contains(RegExp('<|>')) && !val.startsWith(RegExp('\''))) {
           value = '\'$value\'';
@@ -152,18 +152,18 @@ class ApisFilesGenerator {
     // Process pubspec and either print the dependencies that has to be added
     // or if the updatePubspec flag is set add the required dependencies to the
     // existing pubspec.yaml file.
-    final pubspec = loadYaml(pubspecFile.readAsStringSync()) as YamlMap;
+    final pubspec = loadYaml(pubspecFile.readAsStringSync()) as YamlMap?;
     if (updatePubspec) {
       final sink = StringBuffer();
       for (var key in pubspecKeys) {
-        Map value;
+        Map? value;
         if (key == 'dependencies') {
           // patch up dependencies.
-          value = pubspec[key] as Map;
+          value = pubspec![key] as Map?;
           value = value != null ? value = Map.from(value) : {};
           value.addAll(_computeNewDependencies(value));
         } else {
-          value = pubspec[key] as Map;
+          value = pubspec![key] as Map?;
         }
         writeValue(sink, key, value, '');
       }
@@ -171,7 +171,7 @@ class ApisFilesGenerator {
       return 'Updated pubspec.yaml file with required dependencies.';
     } else {
       final newDeps =
-          _computeNewDependencies(pubspec['dependencies'] as YamlMap);
+          _computeNewDependencies(pubspec!['dependencies'] as YamlMap?);
       final sink = StringBuffer();
       if (newDeps.isNotEmpty) {
         sink.writeln('Please update your pubspec.yaml file with the following '
@@ -182,7 +182,7 @@ class ApisFilesGenerator {
     }
   }
 
-  Map<String, dynamic> _computeNewDependencies(Map current) {
+  Map<String, dynamic> _computeNewDependencies(Map? current) {
     final result = <String, dynamic>{};
     Pubspec.dependencies.forEach((String k, Object v) {
       if (current == null || !current.containsKey(k)) {

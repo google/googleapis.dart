@@ -12,7 +12,7 @@ import 'package:path/path.dart' as p;
 import 'package:test/test.dart';
 
 void main() {
-  Directory tmpDir;
+  late Directory tmpDir;
 
   setUpAll(() {
     tmpDir = Directory.systemTemp.createTempSync();
@@ -23,7 +23,7 @@ void main() {
   });
 
   // Common path to the necessary test data.
-  final dataPath = p.normalize(p.join(findPackageRoot('.'), '..', '_test'));
+  final dataPath = p.normalize(p.join(findPackageRoot('.')!, '..', '_test'));
 
   group('files', () {
     test('non-identical-messages', () {

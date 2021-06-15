@@ -4,11 +4,11 @@
 
 /// Specification of the pubspec.yaml for a generated package.
 class Pubspec {
-  final String name;
-  final String version;
-  final String description;
-  final String author;
-  final String repository;
+  final String? name;
+  final String? version;
+  final String? description;
+  final String? author;
+  final String? repository;
 
   final Map<String, String> devDependencies;
 
@@ -18,7 +18,7 @@ class Pubspec {
     this.description, {
     this.author,
     this.repository,
-    Map<String, String> extraDevDependencies,
+    Map<String, String>? extraDevDependencies,
   }) : devDependencies = {
           ..._defaultDevDependencies,
           if (extraDevDependencies != null) ...extraDevDependencies,

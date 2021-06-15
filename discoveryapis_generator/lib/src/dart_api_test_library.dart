@@ -17,23 +17,23 @@ import 'utils.dart';
 class DartApiTestLibrary extends TestHelper {
   final DartApiLibrary apiLibrary;
   final String apiImportPath;
-  final String packageName;
+  final String? packageName;
 
-  final Map<DartSchemaType, SchemaTest> schemaTests = {};
+  final Map<DartSchemaType?, SchemaTest> schemaTests = {};
   final List<ResourceTest> resourceTests = [];
   final Map<ResourceTest, ResourceTest> parentResourceTests = {};
 
   /// Generates a API test library for [apiLibrary].
   DartApiTestLibrary.build(
       this.apiLibrary, this.apiImportPath, this.packageName) {
-    void handleType(DartSchemaType schema) {
+    void handleType(DartSchemaType? schema) {
       schemaTests.putIfAbsent(schema, () => testFromSchema(this, schema));
     }
 
     void traverseResource(
       DartResourceClass resource,
-      ResourceTest parent,
-      Identifier nameInParent,
+      ResourceTest? parent,
+      Identifier? nameInParent,
     ) {
       // Method parameters might have more types we need to register
       // (e.g. List<String>):
@@ -78,8 +78,7 @@ class DartApiTestLibrary extends TestHelper {
     sink.writeln(libraryHeader);
 
     // Build functions for creating schema objects and for validating them.
-    schemaTests.forEach((DartSchemaType schema, SchemaTest test) {
-      if (test == null) print('${schema.runtimeType}');
+    schemaTests.forEach((DartSchemaType? schema, SchemaTest test) {
       sink.write(test.buildSchemaFunction);
       sink.write(test.checkSchemaFunction);
     });
@@ -87,7 +86,7 @@ class DartApiTestLibrary extends TestHelper {
     sink.writeln();
 
     withFunc(0, sink, 'void main', '', () {
-      schemaTests.forEach((DartSchemaType schema, SchemaTest test) {
+      schemaTests.forEach((DartSchemaType? schema, SchemaTest test) {
         sink.write(test.schemaTest);
       });
       for (var test in resourceTests) {
@@ -189,9 +188,9 @@ http.StreamedResponse stringResponse(
 class ResourceTest extends TestHelper {
   final DartApiTestLibrary apiTestLibrary;
   final DartResourceClass resource;
-  DartApiLibrary apiLibrary;
-  final ResourceTest parent;
-  final Identifier nameInParent;
+  late DartApiLibrary apiLibrary;
+  final ResourceTest? parent;
+  final Identifier? nameInParent;
 
   ResourceTest(
       this.apiTestLibrary, this.resource, this.parent, this.nameInParent) {
@@ -202,7 +201,7 @@ class ResourceTest extends TestHelper {
     if (parent == null) {
       return 'api.${resource.className.name}($clientName)';
     } else {
-      return '${parent.apiConstruction(clientName)}.${nameInParent.name}';
+      return '${parent!.apiConstruction(clientName)}.${nameInParent!.name}';
     }
   }
 
@@ -210,7 +209,7 @@ class ResourceTest extends TestHelper {
     final sb = StringBuffer();
 
     final rootPath = StringPart(
-        apiLibrary.imports, Uri.parse(apiLibrary.apiClass.rootUrl).path);
+        apiLibrary.imports, Uri.parse(apiLibrary.apiClass.rootUrl!).path);
 
     final basePath =
         StringPart(apiLibrary.imports, apiLibrary.apiClass.servicePath);
@@ -224,10 +223,10 @@ class ResourceTest extends TestHelper {
                 '(http.BaseRequest req, json) {');
             if (method.requestParameter != null) {
               final t =
-                  apiTestLibrary.schemaTests[method.requestParameter.type];
+                  apiTestLibrary.schemaTests[method.requestParameter!.type]!;
               sb.writeln(
                 'var obj = '
-                'api.${method.requestParameter.type.jsonDecode('json')};',
+                'api.${method.requestParameter!.type.jsonDecode('json')};',
               );
               sb.writeln('        ${t.checkSchemaStatement('obj')}');
               sb.writeln();
@@ -248,10 +247,10 @@ class ResourceTest extends TestHelper {
               final t = apiTestLibrary.schemaTests[method.returnType];
               if (method.enableDataWrapper) {
                 sb.writeln('        var resp = '
-                    'convert.json.encode({\'data\': ${t.newSchemaExpr}});');
+                    'convert.json.encode({\'data\': ${t!.newSchemaExpr}});');
               } else {
                 sb.writeln('        var resp = '
-                    'convert.json.encode(${t.newSchemaExpr});');
+                    'convert.json.encode(${t!.newSchemaExpr});');
               }
             }
             sb.writeln('        return async.Future.value('
@@ -263,14 +262,14 @@ class ResourceTest extends TestHelper {
             final parameterValues = <MethodParameter, String>{};
 
             void newParameter(MethodParameter p) {
-              final schemaTest = apiTestLibrary.schemaTests[p.type];
+              final schemaTest = apiTestLibrary.schemaTests[p.type]!;
               final name = 'arg_${p.name}';
               sb.writeln('      var $name = ${schemaTest.newSchemaExpr};');
               parameterValues[p] = name;
             }
 
             if (method.requestParameter != null) {
-              newParameter(method.requestParameter);
+              newParameter(method.requestParameter!);
             }
             method.parameters.forEach(newParameter);
             method.namedParameters.forEach(newParameter);
@@ -304,8 +303,8 @@ class ResourceTest extends TestHelper {
           }
 
           if (method.requestParameter != null) {
-            addArg(
-                method.requestParameter, paramValues[method.requestParameter]);
+            addArg(method.requestParameter!,
+                paramValues[method.requestParameter!]);
           }
           for (var p in method.parameters) {
             addArg(p, paramValues[p]);
@@ -322,7 +321,7 @@ class ResourceTest extends TestHelper {
               'final response = await res.${method.name}(${args.join(', ')});',
             );
 
-            final t = apiTestLibrary.schemaTests[method.returnType];
+            final t = apiTestLibrary.schemaTests[method.returnType]!;
             sb.writeln(t.checkSchemaStatement('response'));
           }
         });
@@ -365,9 +364,9 @@ class MethodArgsTest extends TestHelper {
     final parts = <Part>[rootUrl];
     final firstPart = method.urlPattern.parts.first;
     // First part absolute/relative is handled specially.
-    if (firstPart is StringPart && firstPart.staticString.startsWith('/')) {
+    if (firstPart is StringPart && firstPart.staticString!.startsWith('/')) {
       parts.add(
-          StringPart(firstPart.imports, firstPart.staticString.substring(1)));
+          StringPart(firstPart.imports, firstPart.staticString!.substring(1)));
       parts.addAll(method.urlPattern.parts.skip(1));
     } else if (firstPart is StringPart) {
       parts.add(basePath);
@@ -378,7 +377,7 @@ class MethodArgsTest extends TestHelper {
       final part = parts[i];
       final isLast = i == (parts.length - 1);
       if (part is StringPart) {
-        final str = part.staticString;
+        final str = part.staticString!;
         // NOTE: Sometimes there are empty strings, we do not assert for them.
         if (str.isNotEmpty) {
           ln(expectEqual(
@@ -394,9 +393,9 @@ class MethodArgsTest extends TestHelper {
               'two variable expansions in a row not supported',
             );
           }
-          final stringPart = nextPart as StringPart;
+          final stringPart = nextPart;
           ln('index = path.indexOf('
-              "'${escapeString(stringPart.staticString)}', pathOffset);");
+              "'${escapeString(stringPart.staticString!)}', pathOffset);");
           ln(expectIsTrue('index >= 0'));
           ln('subPart = core.Uri.decodeQueryComponent'
               '(path.substring(pathOffset, index));');
@@ -406,7 +405,7 @@ class MethodArgsTest extends TestHelper {
               '(path.substring(pathOffset));');
           ln('pathOffset = path.length;');
         }
-        final name = parameterValues[_findMethodParameter(part.templateVar)];
+        final name = parameterValues[_findMethodParameter(part.templateVar!)];
         ln(expectEqual('subPart', "'\$$name'"));
       } else if (part is PathVariableExpression) {
         if (!isLast) {
@@ -414,7 +413,7 @@ class MethodArgsTest extends TestHelper {
             'path variable expansions are only supported at the end',
           );
         }
-        final name = parameterValues[_findMethodParameter(part.templateVar)];
+        final name = parameterValues[_findMethodParameter(part.templateVar!)];
         ln("var parts = path.substring(pathOffset).split('/')"
             '.map(core.Uri.decodeQueryComponent).where((p) => p.length > 0)'
             '.toList();');
@@ -464,9 +463,9 @@ core.bool parseBool(n) {
     void checkParameter(MethodParameter p) {
       final name = parameterValues[p];
       final type = p.type;
-      final queryMapValue = 'queryMap["${escapeString(p.jsonName)}"]!';
+      final queryMapValue = 'queryMap["${escapeString(p.jsonName!)}"]!';
 
-      if (!p.encodedInPath) {
+      if (!p.encodedInPath!) {
         if (type is IntegerType || type is StringIntegerType) {
           ln(expectEqual(intParse('$queryMapValue.first'), name));
         } else if (p.type is UnnamedArrayType) {
@@ -522,7 +521,7 @@ core.bool parseBool(n) {
 
 SchemaTest testFromSchema(
   DartApiTestLibrary apiTestLibrary,
-  DartSchemaType schema,
+  DartSchemaType? schema,
 ) {
   if (schema is ObjectType) {
     return ObjectSchemaTest(apiTestLibrary, schema);
@@ -563,7 +562,7 @@ SchemaTest testFromSchema(
 abstract class SchemaTest<T> extends TestHelper {
   final DartApiTestLibrary apiTestLibrary;
   final T schema;
-  DartApiLibrary apiLibrary;
+  DartApiLibrary? apiLibrary;
 
   SchemaTest(this.apiTestLibrary, this.schema) {
     apiLibrary = apiTestLibrary.apiLibrary;
@@ -726,19 +725,19 @@ class UnnamedMapTest extends UnnamedSchemaTest<UnnamedMapType> {
 
   @override
   String get declaration {
-    final toType = apiTestLibrary.schemaTests[schema.toType].declaration;
+    final toType = apiTestLibrary.schemaTests[schema.toType]!.declaration;
     return 'core.Map<core.String, $toType>';
   }
 
   @override
   String get buildSchemaFunction {
     final innerTest = apiTestLibrary.schemaTests[schema.toType];
-    final toType = apiTestLibrary.schemaTests[schema.toType].declaration;
+    final toType = apiTestLibrary.schemaTests[schema.toType]!.declaration;
 
     final sb = StringBuffer();
     withFunc(0, sb, '$declaration buildUnnamed$_id', '', () {
       sb.writeln('  var o = <core.String, $toType>{};');
-      sb.writeln("  o['x'] = ${innerTest.newSchemaExpr};");
+      sb.writeln("  o['x'] = ${innerTest!.newSchemaExpr};");
       sb.writeln("  o['y'] = ${innerTest.newSchemaExpr};");
       sb.writeln('  return o;');
     });
@@ -752,7 +751,7 @@ class UnnamedMapTest extends UnnamedSchemaTest<UnnamedMapType> {
     final sb = StringBuffer();
     withFunc(0, sb, 'void checkUnnamed$_id', '$declaration o', () {
       sb.writeln('  ${expectHasLength('o', '2')}');
-      sb.writeln('  ${innerTest.checkSchemaStatement("o['x']!")}');
+      sb.writeln('  ${innerTest!.checkSchemaStatement("o['x']!")}');
       sb.writeln('  ${innerTest.checkSchemaStatement("o['y']!")}');
     });
     return '$sb';
@@ -765,13 +764,13 @@ class UnnamedArrayTest<T> extends UnnamedSchemaTest<UnnamedArrayType> {
 
   @override
   String get declaration {
-    final innerType = apiTestLibrary.schemaTests[schema.innerType].declaration;
+    final innerType = apiTestLibrary.schemaTests[schema.innerType]!.declaration;
     return 'core.List<$innerType>';
   }
 
   @override
   String get buildSchemaFunction {
-    final innerTest = apiTestLibrary.schemaTests[schema.innerType];
+    final innerTest = apiTestLibrary.schemaTests[schema.innerType]!;
 
     final sb = StringBuffer();
     withFunc(
@@ -796,7 +795,7 @@ class UnnamedArrayTest<T> extends UnnamedSchemaTest<UnnamedArrayType> {
     final sb = StringBuffer();
     withFunc(0, sb, 'void checkUnnamed$_id', '$declaration o', () {
       sb.writeln('  ${expectHasLength('o', '2')}');
-      sb.writeln('  ${innerTest.checkSchemaStatement('o[0]')}');
+      sb.writeln('  ${innerTest!.checkSchemaStatement('o[0]')}');
       sb.writeln('  ${innerTest.checkSchemaStatement('o[1]')}');
     });
     return '$sb';
@@ -818,7 +817,7 @@ abstract class NamedSchemaTest<T extends ComplexDartSchemaType>
       withTest(4, sb, 'to-json--from-json', () {
         sb.writeln('var o = $newSchemaExpr;');
         sb.writeln('var oJson = convert.jsonDecode(convert.jsonEncode(o));');
-        sb.writeln('var od = api.${schema.className.name}'
+        sb.writeln('var od = api.${schema.className!.name}'
             '.fromJson(oJson as ${schema.jsonType.baseDeclaration});');
         sb.writeln(checkSchemaStatement('od'));
       });
@@ -827,18 +826,18 @@ abstract class NamedSchemaTest<T extends ComplexDartSchemaType>
   }
 
   @override
-  String get newSchemaExpr => 'build${schema.className.name}()';
+  String get newSchemaExpr => 'build${schema.className!.name}()';
 
   @override
   String checkSchemaStatement(String o) =>
-      'check${schema.className.name}($o as api.${schema.className.name});';
+      'check${schema.className!.name}($o as api.${schema.className!.name});';
 }
 
 class ObjectSchemaTest extends NamedSchemaTest<ObjectType> {
   ObjectSchemaTest(DartApiTestLibrary apiTestLibrary, ObjectType schema)
       : super(apiTestLibrary, schema);
 
-  String get counterName => 'buildCounter${schema.className.name}';
+  String get counterName => 'buildCounter${schema.className!.name}';
 
   @override
   String get buildSchemaFunction {
@@ -850,13 +849,13 @@ class ObjectSchemaTest extends NamedSchemaTest<ObjectType> {
     // Assumption: Every cycle will contain normal object schemas.
     sb.writeln('core.int $counterName = 0;');
 
-    withFunc(0, sb, '$declaration build${schema.className.name}', '', () {
+    withFunc(0, sb, '$declaration build${schema.className!.name}', '', () {
       sb.writeln('  var o = $declaration();');
       sb.writeln('  $counterName++;');
       sb.writeln('  if ($counterName < 3) {');
       for (var prop in schema.properties) {
         if (!schema.isVariantDiscriminator(prop)) {
-          final propertyTest = apiTestLibrary.schemaTests[prop.type];
+          final propertyTest = apiTestLibrary.schemaTests[prop.type]!;
           sb.writeln('    o.${prop.name.name} = '
               '${propertyTest.newSchemaExpr};');
         }
@@ -871,12 +870,13 @@ class ObjectSchemaTest extends NamedSchemaTest<ObjectType> {
   @override
   String get checkSchemaFunction {
     final sb = StringBuffer();
-    withFunc(0, sb, 'void check${schema.className.name}', '$declaration o', () {
+    withFunc(0, sb, 'void check${schema.className!.name}', '$declaration o',
+        () {
       sb.writeln('  $counterName++;');
       sb.writeln('  if ($counterName < 3) {');
       for (var prop in schema.properties) {
         if (!schema.isVariantDiscriminator(prop)) {
-          final propertyTest = apiTestLibrary.schemaTests[prop.type];
+          final propertyTest = apiTestLibrary.schemaTests[prop.type]!;
           final name = prop.name.name;
           sb.writeln('    ${propertyTest.checkSchemaStatement('o.$name!')}');
         }
@@ -897,9 +897,9 @@ class NamedArraySchemaTest extends NamedSchemaTest<NamedArrayType> {
     final innerTest = apiTestLibrary.schemaTests[schema.innerType];
 
     final sb = StringBuffer();
-    withFunc(0, sb, '$declaration build${schema.className.name}', '', () {
+    withFunc(0, sb, '$declaration build${schema.className!.name}', '', () {
       sb.writeln('  var o = $declaration();');
-      sb.writeln('  o.add(${innerTest.newSchemaExpr});');
+      sb.writeln('  o.add(${innerTest!.newSchemaExpr});');
       sb.writeln('  o.add(${innerTest.newSchemaExpr});');
       sb.writeln('  return o;');
     });
@@ -911,9 +911,10 @@ class NamedArraySchemaTest extends NamedSchemaTest<NamedArrayType> {
     final innerTest = apiTestLibrary.schemaTests[schema.innerType];
 
     final sb = StringBuffer();
-    withFunc(0, sb, 'void check${schema.className.name}', '$declaration o', () {
+    withFunc(0, sb, 'void check${schema.className!.name}', '$declaration o',
+        () {
       sb.writeln('  ${expectHasLength('o', '2')}');
-      sb.writeln('  ${innerTest.checkSchemaStatement('o[0]')}');
+      sb.writeln('  ${innerTest!.checkSchemaStatement('o[0]')}');
       sb.writeln('  ${innerTest.checkSchemaStatement('o[1]')}');
     });
     return '$sb';
@@ -929,9 +930,9 @@ class NamedMapSchemaTest extends NamedSchemaTest<NamedMapType> {
     final innerTest = apiTestLibrary.schemaTests[schema.toType];
 
     final sb = StringBuffer();
-    withFunc(0, sb, '$declaration build${schema.className.name}', '', () {
+    withFunc(0, sb, '$declaration build${schema.className!.name}', '', () {
       sb.writeln('  var o = $declaration();');
-      sb.writeln('  o["a"] = ${innerTest.newSchemaExpr};');
+      sb.writeln('  o["a"] = ${innerTest!.newSchemaExpr};');
       sb.writeln('  o["b"] = ${innerTest.newSchemaExpr};');
       sb.writeln('  return o;');
     });
@@ -943,9 +944,10 @@ class NamedMapSchemaTest extends NamedSchemaTest<NamedMapType> {
     final innerTest = apiTestLibrary.schemaTests[schema.toType];
 
     final sb = StringBuffer();
-    withFunc(0, sb, 'void check${schema.className.name}', '$declaration o', () {
+    withFunc(0, sb, 'void check${schema.className!.name}', '$declaration o',
+        () {
       sb.writeln('  ${expectHasLength('o', '2')}');
-      sb.writeln('  ${innerTest.checkSchemaStatement('o["a"]!')}');
+      sb.writeln('  ${innerTest!.checkSchemaStatement('o["a"]!')}');
       sb.writeln('  ${innerTest.checkSchemaStatement('o["b"]!')}');
     });
     return '$sb';
@@ -953,8 +955,8 @@ class NamedMapSchemaTest extends NamedSchemaTest<NamedMapType> {
 }
 
 class AbstractVariantSchemaTest extends NamedSchemaTest<AbstractVariantType> {
-  DartSchemaType subSchema;
-  SchemaTest subSchemaTest;
+  DartSchemaType? subSchema;
+  SchemaTest? subSchemaTest;
 
   AbstractVariantSchemaTest(
     DartApiTestLibrary apiTestLibrary,
@@ -974,8 +976,8 @@ class AbstractVariantSchemaTest extends NamedSchemaTest<AbstractVariantType> {
     _init();
 
     final sb = StringBuffer();
-    withFunc(0, sb, 'build${schema.className.name}', '', () {
-      sb.writeln('  return ${subSchemaTest.newSchemaExpr};');
+    withFunc(0, sb, 'build${schema.className!.name}', '', () {
+      sb.writeln('  return ${subSchemaTest!.newSchemaExpr};');
     });
     return '$sb';
   }
@@ -985,8 +987,9 @@ class AbstractVariantSchemaTest extends NamedSchemaTest<AbstractVariantType> {
     _init();
 
     final sb = StringBuffer();
-    withFunc(0, sb, 'void check${schema.className.name}', '$declaration o', () {
-      sb.writeln('  ${subSchemaTest.checkSchemaFunction}(o);');
+    withFunc(0, sb, 'void check${schema.className!.name}', '$declaration o',
+        () {
+      sb.writeln('  ${subSchemaTest!.checkSchemaFunction}(o);');
     });
     return '$sb';
   }
@@ -1071,7 +1074,7 @@ class TestHelper {
     buffer.writeln('});');
   }
 
-  String expectEqual(String a, Object b) =>
+  String expectEqual(String a, Object? b) =>
       'unittest.expect($a, unittest.equals($b),);';
 
   String expectIsTrue(String a) => 'unittest.expect($a, unittest.isTrue);';

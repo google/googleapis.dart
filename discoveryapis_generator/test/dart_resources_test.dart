@@ -70,7 +70,7 @@ void main() {
   };
 
   withParsedDB(schema, (DartSchemaTypeDB db) {
-    Map<String, dynamic> buildApi(String i, {Map methods, Map resources}) {
+    Map<String, dynamic> buildApi(String i, {Map? methods, Map? resources}) {
       final api = <String, dynamic>{
         'name': 'apiname$i',
         'version': 'apiversion$i',
@@ -120,7 +120,7 @@ void main() {
         },
       };
       for (var reserved in reservedMethodParameterNames) {
-        (map['foo$i']['parameters'] as Map<String, dynamic>)[reserved] = {
+        (map['foo$i']!['parameters'] as Map<String, dynamic>)[reserved] = {
           'type': 'string',
           'required': true,
           'location': 'path',
@@ -180,7 +180,7 @@ void main() {
       }
     }
 
-    Map buildResources(String i, {int level = 0}) {
+    Map? buildResources(String i, {int level = 0}) {
       if (level > 3) {
         return null;
       } else {
@@ -196,8 +196,8 @@ void main() {
           },
         };
         if (subResources != null) {
-          resources['resA$i']['resources'] = subResources;
-          resources['resB$i']['resources'] = subResources;
+          resources['resA$i']!['resources'] = subResources;
+          resources['resB$i']!['resources'] = subResources;
         }
         return resources;
       }

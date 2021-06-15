@@ -1,5 +1,3 @@
-// @dart=2.12
-
 // This is a generated file (see the discoveryapis_generator project).
 
 // ignore_for_file: camel_case_types

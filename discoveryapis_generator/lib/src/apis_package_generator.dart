@@ -91,8 +91,8 @@ ${requestHeadersField(pubspec.version)}
 
     final results = <GenerateResult>[];
     for (var description in descriptions) {
-      final name = description.name.toLowerCase();
-      final version = description.version
+      final name = description.name!.toLowerCase();
+      final version = description.version!
           .toLowerCase()
           .replaceAll('.', '_')
           .replaceAll('-', '_');
@@ -149,20 +149,24 @@ ${requestHeadersField(pubspec.version)}
 
   void _writePubspec(StringSink sink) {
     void writeDependencies(Map<String, dynamic> dependencies) {
-      orderedForEach(dependencies, (String lib, Object value) {
-        if (value is String) {
-          if (lib.startsWith('_discoveryapis_commons')) {
-            sink.writeln('  # This is a private package dependency used by the '
-                'generated client stubs.');
+      orderedForEach<String, dynamic>(
+        dependencies,
+        (String lib, Object? value) {
+          if (value is String) {
+            if (lib.startsWith('_discoveryapis_commons')) {
+              sink.writeln(
+                  '  # This is a private package dependency used by the '
+                  'generated client stubs.');
+            }
+            sink.writeln('  $lib: $value');
+          } else if (value is Map) {
+            sink.writeln('  $lib:');
+            value.forEach((k, v) {
+              sink.writeln('    $k: $v');
+            });
           }
-          sink.writeln('  $lib: $value');
-        } else if (value is Map) {
-          sink.writeln('  $lib:');
-          value.forEach((k, v) {
-            sink.writeln('    $k: $v');
-          });
-        }
-      });
+        },
+      );
     }
 
     sink.writeln('name: ${pubspec.name}');

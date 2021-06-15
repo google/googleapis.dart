@@ -9,29 +9,29 @@ import 'package:discoveryapis_generator/discoveryapis_generator.dart';
 extension RestDescriptionExtension on RestDescription {
   void sort() {
     if (auth != null) {
-      if (auth.oauth2 != null) {
-        auth.oauth2.scopes = _sortMap(auth.oauth2.scopes);
+      if (auth!.oauth2 != null) {
+        auth!.oauth2!.scopes = _sortMap(auth!.oauth2!.scopes);
       }
     }
 
-    for (var schema in schemas.values) {
+    for (var schema in schemas!.values) {
       schema.properties = _sortProperties(schema.properties);
     }
 
-    schemas = SplayTreeMap.of(schemas);
+    schemas = SplayTreeMap.of(schemas!);
 
     resources = _sortResources(resources);
     methods = _sortMethods(methods);
     parameters = _sortMap(parameters);
   }
 
-  static Map<String, T> _sortMap<T>(Map<String, T> map) {
+  static Map<String, T>? _sortMap<T>(Map<String, T>? map) {
     if (map == null) return null;
     return SplayTreeMap.of(map);
   }
 
-  static Map<String, RestMethod> _sortMethods(
-    Map<String, RestMethod> theMethods,
+  static Map<String, RestMethod>? _sortMethods(
+    Map<String, RestMethod>? theMethods,
   ) {
     if (theMethods == null) return null;
 
@@ -42,8 +42,8 @@ extension RestDescriptionExtension on RestDescription {
     return SplayTreeMap.of(theMethods);
   }
 
-  static Map<String, RestResource> _sortResources(
-    Map<String, RestResource> theResources,
+  static Map<String, RestResource>? _sortResources(
+    Map<String, RestResource>? theResources,
   ) {
     if (theResources == null) return null;
 
@@ -55,8 +55,8 @@ extension RestDescriptionExtension on RestDescription {
     return SplayTreeMap.of(theResources);
   }
 
-  static Map<String, JsonSchema> _sortProperties(
-    Map<String, JsonSchema> theMethods,
+  static Map<String, JsonSchema>? _sortProperties(
+    Map<String, JsonSchema>? theMethods,
   ) {
     if (theMethods == null) return null;
 
@@ -69,7 +69,7 @@ extension RestDescriptionExtension on RestDescription {
 
   static void _sortSchema(JsonSchema schema) {
     if (schema.items != null) {
-      _sortSchema(schema.items);
+      _sortSchema(schema.items!);
     }
 
     schema.properties = _sortProperties(schema.properties);

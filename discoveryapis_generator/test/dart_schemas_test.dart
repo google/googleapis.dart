@@ -99,7 +99,7 @@ void main() {
 
         // Do tests on `task`.
         expect(task is ObjectType, isTrue);
-        expect(task.className.name, equals('Task'));
+        expect(task.className!.name, equals('Task'));
         expect(task.superVariantType, isNull);
 
         // Do tests on `task.properties`.
@@ -118,7 +118,7 @@ void main() {
         expect(icon, isNotNull);
         expect(icon.name.name, equals('icon'));
         expect(icon.type, equals(db.stringType));
-        expect(icon.byteArrayAccessor.name, equals('iconAsBytes'));
+        expect(icon.byteArrayAccessor!.name, equals('iconAsBytes'));
 
         final isMale = task.properties[3];
         expect(isMale, isNotNull);
@@ -229,17 +229,17 @@ void main() {
         expect(indirectPolyGeo.forwardRefName, equals('PolygonGeometry'));
 
         // Check variant map
-        expect(geo.className.name, equals('Geometry'));
+        expect(geo.className!.name, equals('Geometry'));
         expect(geo.discriminant, equals('my_type'));
         expect(geo.map, contains('my_line_type'));
         expect(geo.map['my_line_type'], equals(lineGeo));
         expect(geo.map, contains('my_polygon_type'));
         expect(geo.map['my_polygon_type'], equals(polyGeo));
 
-        expect(lineGeo.className.name, equals('LineGeometry'));
+        expect(lineGeo.className!.name, equals('LineGeometry'));
         expect(lineGeo.properties.first.name.name, equals('label'));
         expect(lineGeo.properties.first.type, equals(db.stringType));
-        expect(polyGeo.className.name, equals('PolygonGeometry'));
+        expect(polyGeo.className!.name, equals('PolygonGeometry'));
         expect(polyGeo.properties.first.name.name, equals('points'));
         expect(polyGeo.properties.first.type, equals(db.integerType));
       });
@@ -305,10 +305,10 @@ void main() {
         // Naming happens on the scope tree level-by-level, so it depends on
         // the order of insertion into the scope.
         expect(db.dartClassTypes, hasLength(4));
-        expect(db.dartClassTypes[0].className.name, equals('OverlapObject'));
-        expect(db.dartClassTypes[1].className.name, equals('Overlap'));
-        expect(db.dartClassTypes[2].className.name, equals('OverlapArray'));
-        expect(db.dartClassTypes[3].className.name, equals('OverlapObject_1'));
+        expect(db.dartClassTypes[0].className!.name, equals('OverlapObject'));
+        expect(db.dartClassTypes[1].className!.name, equals('Overlap'));
+        expect(db.dartClassTypes[2].className!.name, equals('OverlapArray'));
+        expect(db.dartClassTypes[3].className!.name, equals('OverlapObject_1'));
 
         expect(db.dartClassTypes[1], equals(db.namedSchemaTypes['Overlap']));
         expect(
@@ -335,7 +335,7 @@ void main() {
 
         expect(db.namedSchemaTypes, contains('Properties'));
         final properties = db.dartClassTypes.first as NamedMapType;
-        expect(properties.className.name, equals('Properties'));
+        expect(properties.className!.name, equals('Properties'));
         expect(properties.fromType, equals(db.stringType));
         expect(properties.toType, equals(db.integerType));
       });
@@ -358,7 +358,7 @@ void main() {
 
         expect(db.namedSchemaTypes, contains('NamedArray'));
         final properties = db.dartClassTypes.first as NamedArrayType;
-        expect(properties.className.name, equals('NamedArray'));
+        expect(properties.className!.name, equals('NamedArray'));
         expect(properties.innerType, equals(db.stringType));
       });
     });
@@ -467,11 +467,11 @@ void main() {
           expect(db.anyType.needsJsonDecoding, true);
 
           // Named complex types
-          final namedArraySimple = db.namedSchemaTypes['NamedArraySimple'];
-          final namedArrayComplex = db.namedSchemaTypes['NamedArrayComplex'];
-          final namedMapSimple = db.namedSchemaTypes['NamedMapSimple'];
-          final namedMapComplex = db.namedSchemaTypes['NamedMapComplex'];
-          final namedObject = db.namedSchemaTypes['NamedObject'];
+          final namedArraySimple = db.namedSchemaTypes['NamedArraySimple']!;
+          final namedArrayComplex = db.namedSchemaTypes['NamedArrayComplex']!;
+          final namedMapSimple = db.namedSchemaTypes['NamedMapSimple']!;
+          final namedMapComplex = db.namedSchemaTypes['NamedMapComplex']!;
+          final namedObject = db.namedSchemaTypes['NamedObject']!;
 
           // Array simple/complex
           expect(namedArraySimple.needsJsonEncoding, false);
@@ -490,20 +490,20 @@ void main() {
           expect(namedObject.needsJsonDecoding, true);
 
           // Unnamed complex types
-          final C = db.namedSchemaTypes['C'] as ObjectType;
-          DartSchemaType findPropertyType(String name) {
-            for (var property in C.properties) {
+          final C = db.namedSchemaTypes['C'] as ObjectType?;
+          DartSchemaType? findPropertyType(String name) {
+            for (var property in C!.properties) {
               if (property.name.preferredName == name) return property.type;
             }
             throw StateError('not found');
           }
 
           // Unnamed complex types
-          final unNamedArraySimple = findPropertyType('pArraySimple');
-          final unNamedArrayComplex = findPropertyType('pArrayComplex');
-          final unNamedMapSimple = findPropertyType('pMapSimple');
-          final unNamedMapComplex = findPropertyType('pMapComplex');
-          final unNamedObject = findPropertyType('pObject');
+          final unNamedArraySimple = findPropertyType('pArraySimple')!;
+          final unNamedArrayComplex = findPropertyType('pArrayComplex')!;
+          final unNamedMapSimple = findPropertyType('pMapSimple')!;
+          final unNamedMapComplex = findPropertyType('pMapComplex')!;
+          final unNamedObject = findPropertyType('pObject')!;
 
           // Array simple/complex
           expect(unNamedArraySimple.needsJsonEncoding, false);
