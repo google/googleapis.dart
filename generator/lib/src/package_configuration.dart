@@ -143,7 +143,7 @@ class DiscoveryPackagesConfiguration {
   void generate(
     String discoveryDocsDir,
     String generatedApisDir,
-    bool? deleteExisting,
+    bool deleteExisting,
   ) {
     // Delete all downloaded discovery documents.
     final dir = Directory(discoveryDocsDir);
@@ -167,7 +167,7 @@ class DiscoveryPackagesConfiguration {
         '$discoveryDocsDir/$name',
         '$generatedApisDir/$name',
         package.pubspec,
-        deleteExisting: deleteExisting!,
+        deleteExisting: deleteExisting,
       );
       for (final result in results) {
         if (!result.success) {

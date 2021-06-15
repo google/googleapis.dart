@@ -4,9 +4,9 @@
 
 /// Specification of the pubspec.yaml for a generated package.
 class Pubspec {
-  final String? name;
-  final String? version;
-  final String? description;
+  final String name;
+  final String version;
+  final String description;
   final String? author;
   final String? repository;
 

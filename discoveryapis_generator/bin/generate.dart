@@ -95,9 +95,9 @@ void main(List<String> arguments) {
   switch (commandOptions.name) {
     case 'package':
       final pubspec = Pubspec(
-        commandOptions['package-name'] as String?,
-        commandOptions['package-version'] as String?,
-        commandOptions['package-description'] as String?,
+        commandOptions['package-name'] as String,
+        commandOptions['package-version'] as String,
+        commandOptions['package-description'] as String,
         author: commandOptions['package-author'] as String?,
         repository: commandOptions['package-repository'] as String?,
       );
