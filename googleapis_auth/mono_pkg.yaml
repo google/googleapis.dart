@@ -6,8 +6,8 @@ dart:
 stages:
 - analyze_and_format:
   - group:
-    - dartfmt
-    - dartanalyzer: --fatal-infos .
+    - format
+    - analyze: --fatal-infos .
 - unittest:
   - test: -p vm
   - test: -p chrome

@@ -1,4 +1,4 @@
-# Created with package:mono_repo v4.1.0
+# Created with package:mono_repo v5.0.0
 name: Dart CI
 on:
   push:
@@ -33,7 +33,7 @@ jobs:
       - id: checkout
         uses: actions/checkout@v2.3.4
       - name: mono_repo self validate
-        run: dart pub global activate mono_repo 4.1.0
+        run: dart pub global activate mono_repo 5.0.0
       - name: mono_repo self validate
         run: dart pub global run mono_repo generate --validate
   job_002:
@@ -44,7 +44,7 @@ jobs:
         uses: actions/cache@v2.1.6
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;dart:2.12.0;packages:_test-_test_package-discoveryapis_commons-discoveryapis_generator-generated/googleapis-generated/googleapis_beta-generator-googleapis_auth-test_integration;commands:dartfmt-dartanalyzer"
+          key: "os:ubuntu-latest;pub-cache-hosted;dart:2.12.0;packages:_test-_test_package-discoveryapis_commons-discoveryapis_generator-generated/googleapis-generated/googleapis_beta-generator-googleapis_auth-test_integration;commands:format-analyze"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;dart:2.12.0;packages:_test-_test_package-discoveryapis_commons-discoveryapis_generator-generated/googleapis-generated/googleapis_beta-generator-googleapis_auth-test_integration
             os:ubuntu-latest;pub-cache-hosted;dart:2.12.0
@@ -56,10 +56,10 @@ jobs:
       - id: checkout
         uses: actions/checkout@v2.3.4
       - id: _test_pub_upgrade
-        name: _test; pub upgrade
+        name: _test; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: _test
-        run: pub upgrade
+        run: dart pub upgrade
       - name: "_test; dart format --output=none --set-exit-if-changed ."
         if: "always() && steps._test_pub_upgrade.conclusion == 'success'"
         working-directory: _test
@@ -69,10 +69,10 @@ jobs:
         working-directory: _test
         run: dart analyze --fatal-infos .
       - id: _test_package_pub_upgrade
-        name: _test_package; pub upgrade
+        name: _test_package; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: _test_package
-        run: pub upgrade
+        run: dart pub upgrade
       - name: "_test_package; dart format --output=none --set-exit-if-changed ."
         if: "always() && steps._test_package_pub_upgrade.conclusion == 'success'"
         working-directory: _test_package
@@ -82,10 +82,10 @@ jobs:
         working-directory: _test_package
         run: dart analyze --fatal-infos .
       - id: discoveryapis_commons_pub_upgrade
-        name: discoveryapis_commons; pub upgrade
+        name: discoveryapis_commons; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: discoveryapis_commons
-        run: pub upgrade
+        run: dart pub upgrade
       - name: "discoveryapis_commons; dart format --output=none --set-exit-if-changed ."
         if: "always() && steps.discoveryapis_commons_pub_upgrade.conclusion == 'success'"
         working-directory: discoveryapis_commons
@@ -95,10 +95,10 @@ jobs:
         working-directory: discoveryapis_commons
         run: dart analyze --fatal-infos .
       - id: discoveryapis_generator_pub_upgrade
-        name: discoveryapis_generator; pub upgrade
+        name: discoveryapis_generator; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: discoveryapis_generator
-        run: pub upgrade
+        run: dart pub upgrade
       - name: "discoveryapis_generator; dart format --output=none --set-exit-if-changed ."
         if: "always() && steps.discoveryapis_generator_pub_upgrade.conclusion == 'success'"
         working-directory: discoveryapis_generator
@@ -108,10 +108,10 @@ jobs:
         working-directory: discoveryapis_generator
         run: dart analyze --fatal-infos .
       - id: generated_googleapis_pub_upgrade
-        name: generated/googleapis; pub upgrade
+        name: generated/googleapis; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: generated/googleapis
-        run: pub upgrade
+        run: dart pub upgrade
       - name: "generated/googleapis; dart format --output=none --set-exit-if-changed ."
         if: "always() && steps.generated_googleapis_pub_upgrade.conclusion == 'success'"
         working-directory: generated/googleapis
@@ -121,10 +121,10 @@ jobs:
         working-directory: generated/googleapis
         run: dart analyze --fatal-infos .
       - id: generated_googleapis_beta_pub_upgrade
-        name: generated/googleapis_beta; pub upgrade
+        name: generated/googleapis_beta; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: generated/googleapis_beta
-        run: pub upgrade
+        run: dart pub upgrade
       - name: "generated/googleapis_beta; dart format --output=none --set-exit-if-changed ."
         if: "always() && steps.generated_googleapis_beta_pub_upgrade.conclusion == 'success'"
         working-directory: generated/googleapis_beta
@@ -134,10 +134,10 @@ jobs:
         working-directory: generated/googleapis_beta
         run: dart analyze --fatal-infos .
       - id: generator_pub_upgrade
-        name: generator; pub upgrade
+        name: generator; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: generator
-        run: pub upgrade
+        run: dart pub upgrade
       - name: "generator; dart format --output=none --set-exit-if-changed ."
         if: "always() && steps.generator_pub_upgrade.conclusion == 'success'"
         working-directory: generator
@@ -147,10 +147,10 @@ jobs:
         working-directory: generator
         run: dart analyze --fatal-infos .
       - id: googleapis_auth_pub_upgrade
-        name: googleapis_auth; pub upgrade
+        name: googleapis_auth; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: googleapis_auth
-        run: pub upgrade
+        run: dart pub upgrade
       - name: "googleapis_auth; dart format --output=none --set-exit-if-changed ."
         if: "always() && steps.googleapis_auth_pub_upgrade.conclusion == 'success'"
         working-directory: googleapis_auth
@@ -160,10 +160,10 @@ jobs:
         working-directory: googleapis_auth
         run: dart analyze --fatal-infos .
       - id: test_integration_pub_upgrade
-        name: test_integration; pub upgrade
+        name: test_integration; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: test_integration
-        run: pub upgrade
+        run: dart pub upgrade
       - name: "test_integration; dart format --output=none --set-exit-if-changed ."
         if: "always() && steps.test_integration_pub_upgrade.conclusion == 'success'"
         working-directory: test_integration
@@ -180,7 +180,7 @@ jobs:
         uses: actions/cache@v2.1.6
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;dart:dev;packages:_test-_test_package-discoveryapis_commons-discoveryapis_generator-generated/googleapis-generated/googleapis_beta-generator-googleapis_auth-test_integration;commands:dartfmt-dartanalyzer"
+          key: "os:ubuntu-latest;pub-cache-hosted;dart:dev;packages:_test-_test_package-discoveryapis_commons-discoveryapis_generator-generated/googleapis-generated/googleapis_beta-generator-googleapis_auth-test_integration;commands:format-analyze"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;dart:dev;packages:_test-_test_package-discoveryapis_commons-discoveryapis_generator-generated/googleapis-generated/googleapis_beta-generator-googleapis_auth-test_integration
             os:ubuntu-latest;pub-cache-hosted;dart:dev
@@ -192,10 +192,10 @@ jobs:
       - id: checkout
         uses: actions/checkout@v2.3.4
       - id: _test_pub_upgrade
-        name: _test; pub upgrade
+        name: _test; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: _test
-        run: pub upgrade
+        run: dart pub upgrade
       - name: "_test; dart format --output=none --set-exit-if-changed ."
         if: "always() && steps._test_pub_upgrade.conclusion == 'success'"
         working-directory: _test
@@ -205,10 +205,10 @@ jobs:
         working-directory: _test
         run: dart analyze --fatal-infos .
       - id: _test_package_pub_upgrade
-        name: _test_package; pub upgrade
+        name: _test_package; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: _test_package
-        run: pub upgrade
+        run: dart pub upgrade
       - name: "_test_package; dart format --output=none --set-exit-if-changed ."
         if: "always() && steps._test_package_pub_upgrade.conclusion == 'success'"
         working-directory: _test_package
@@ -218,10 +218,10 @@ jobs:
         working-directory: _test_package
         run: dart analyze --fatal-infos .
       - id: discoveryapis_commons_pub_upgrade
-        name: discoveryapis_commons; pub upgrade
+        name: discoveryapis_commons; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: discoveryapis_commons
-        run: pub upgrade
+        run: dart pub upgrade
       - name: "discoveryapis_commons; dart format --output=none --set-exit-if-changed ."
         if: "always() && steps.discoveryapis_commons_pub_upgrade.conclusion == 'success'"
         working-directory: discoveryapis_commons
@@ -231,10 +231,10 @@ jobs:
         working-directory: discoveryapis_commons
         run: dart analyze --fatal-infos .
       - id: discoveryapis_generator_pub_upgrade
-        name: discoveryapis_generator; pub upgrade
+        name: discoveryapis_generator; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: discoveryapis_generator
-        run: pub upgrade
+        run: dart pub upgrade
       - name: "discoveryapis_generator; dart format --output=none --set-exit-if-changed ."
         if: "always() && steps.discoveryapis_generator_pub_upgrade.conclusion == 'success'"
         working-directory: discoveryapis_generator
@@ -244,10 +244,10 @@ jobs:
         working-directory: discoveryapis_generator
         run: dart analyze --fatal-infos .
       - id: generated_googleapis_pub_upgrade
-        name: generated/googleapis; pub upgrade
+        name: generated/googleapis; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: generated/googleapis
-        run: pub upgrade
+        run: dart pub upgrade
       - name: "generated/googleapis; dart format --output=none --set-exit-if-changed ."
         if: "always() && steps.generated_googleapis_pub_upgrade.conclusion == 'success'"
         working-directory: generated/googleapis
@@ -257,10 +257,10 @@ jobs:
         working-directory: generated/googleapis
         run: dart analyze --fatal-infos .
       - id: generated_googleapis_beta_pub_upgrade
-        name: generated/googleapis_beta; pub upgrade
+        name: generated/googleapis_beta; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: generated/googleapis_beta
-        run: pub upgrade
+        run: dart pub upgrade
       - name: "generated/googleapis_beta; dart format --output=none --set-exit-if-changed ."
         if: "always() && steps.generated_googleapis_beta_pub_upgrade.conclusion == 'success'"
         working-directory: generated/googleapis_beta
@@ -270,10 +270,10 @@ jobs:
         working-directory: generated/googleapis_beta
         run: dart analyze --fatal-infos .
       - id: generator_pub_upgrade
-        name: generator; pub upgrade
+        name: generator; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: generator
-        run: pub upgrade
+        run: dart pub upgrade
       - name: "generator; dart format --output=none --set-exit-if-changed ."
         if: "always() && steps.generator_pub_upgrade.conclusion == 'success'"
         working-directory: generator
@@ -283,10 +283,10 @@ jobs:
         working-directory: generator
         run: dart analyze --fatal-infos .
       - id: googleapis_auth_pub_upgrade
-        name: googleapis_auth; pub upgrade
+        name: googleapis_auth; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: googleapis_auth
-        run: pub upgrade
+        run: dart pub upgrade
       - name: "googleapis_auth; dart format --output=none --set-exit-if-changed ."
         if: "always() && steps.googleapis_auth_pub_upgrade.conclusion == 'success'"
         working-directory: googleapis_auth
@@ -296,10 +296,10 @@ jobs:
         working-directory: googleapis_auth
         run: dart analyze --fatal-infos .
       - id: test_integration_pub_upgrade
-        name: test_integration; pub upgrade
+        name: test_integration; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: test_integration
-        run: pub upgrade
+        run: dart pub upgrade
       - name: "test_integration; dart format --output=none --set-exit-if-changed ."
         if: "always() && steps.test_integration_pub_upgrade.conclusion == 'success'"
         working-directory: test_integration
@@ -328,10 +328,10 @@ jobs:
       - id: checkout
         uses: actions/checkout@v2.3.4
       - id: _test_package_pub_upgrade
-        name: _test_package; pub upgrade
+        name: _test_package; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: _test_package
-        run: pub upgrade
+        run: dart pub upgrade
       - name: _test_package; dart test
         if: "always() && steps._test_package_pub_upgrade.conclusion == 'success'"
         working-directory: _test_package
@@ -360,10 +360,10 @@ jobs:
       - id: checkout
         uses: actions/checkout@v2.3.4
       - id: discoveryapis_commons_pub_upgrade
-        name: discoveryapis_commons; pub upgrade
+        name: discoveryapis_commons; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: discoveryapis_commons
-        run: pub upgrade
+        run: dart pub upgrade
       - name: discoveryapis_commons; dart test
         if: "always() && steps.discoveryapis_commons_pub_upgrade.conclusion == 'success'"
         working-directory: discoveryapis_commons
@@ -392,10 +392,10 @@ jobs:
       - id: checkout
         uses: actions/checkout@v2.3.4
       - id: discoveryapis_generator_pub_upgrade
-        name: discoveryapis_generator; pub upgrade
+        name: discoveryapis_generator; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: discoveryapis_generator
-        run: pub upgrade
+        run: dart pub upgrade
       - name: discoveryapis_generator; dart test
         if: "always() && steps.discoveryapis_generator_pub_upgrade.conclusion == 'success'"
         working-directory: discoveryapis_generator
@@ -424,10 +424,10 @@ jobs:
       - id: checkout
         uses: actions/checkout@v2.3.4
       - id: generated_googleapis_pub_upgrade
-        name: generated/googleapis; pub upgrade
+        name: generated/googleapis; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: generated/googleapis
-        run: pub upgrade
+        run: dart pub upgrade
       - name: generated/googleapis; dart test
         if: "always() && steps.generated_googleapis_pub_upgrade.conclusion == 'success'"
         working-directory: generated/googleapis
@@ -456,10 +456,10 @@ jobs:
       - id: checkout
         uses: actions/checkout@v2.3.4
       - id: generated_googleapis_beta_pub_upgrade
-        name: generated/googleapis_beta; pub upgrade
+        name: generated/googleapis_beta; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: generated/googleapis_beta
-        run: pub upgrade
+        run: dart pub upgrade
       - name: generated/googleapis_beta; dart test
         if: "always() && steps.generated_googleapis_beta_pub_upgrade.conclusion == 'success'"
         working-directory: generated/googleapis_beta
@@ -488,10 +488,10 @@ jobs:
       - id: checkout
         uses: actions/checkout@v2.3.4
       - id: googleapis_auth_pub_upgrade
-        name: googleapis_auth; pub upgrade
+        name: googleapis_auth; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: googleapis_auth
-        run: pub upgrade
+        run: dart pub upgrade
       - name: "googleapis_auth; dart test -p chrome"
         if: "always() && steps.googleapis_auth_pub_upgrade.conclusion == 'success'"
         working-directory: googleapis_auth
@@ -520,10 +520,10 @@ jobs:
       - id: checkout
         uses: actions/checkout@v2.3.4
       - id: googleapis_auth_pub_upgrade
-        name: googleapis_auth; pub upgrade
+        name: googleapis_auth; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: googleapis_auth
-        run: pub upgrade
+        run: dart pub upgrade
       - name: "googleapis_auth; dart test -p vm"
         if: "always() && steps.googleapis_auth_pub_upgrade.conclusion == 'success'"
         working-directory: googleapis_auth
@@ -552,10 +552,10 @@ jobs:
       - id: checkout
         uses: actions/checkout@v2.3.4
       - id: _test_package_pub_upgrade
-        name: _test_package; pub upgrade
+        name: _test_package; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: _test_package
-        run: pub upgrade
+        run: dart pub upgrade
       - name: _test_package; dart test
         if: "always() && steps._test_package_pub_upgrade.conclusion == 'success'"
         working-directory: _test_package
@@ -584,10 +584,10 @@ jobs:
       - id: checkout
         uses: actions/checkout@v2.3.4
       - id: discoveryapis_commons_pub_upgrade
-        name: discoveryapis_commons; pub upgrade
+        name: discoveryapis_commons; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: discoveryapis_commons
-        run: pub upgrade
+        run: dart pub upgrade
       - name: discoveryapis_commons; dart test
         if: "always() && steps.discoveryapis_commons_pub_upgrade.conclusion == 'success'"
         working-directory: discoveryapis_commons
@@ -616,10 +616,10 @@ jobs:
       - id: checkout
         uses: actions/checkout@v2.3.4
       - id: discoveryapis_generator_pub_upgrade
-        name: discoveryapis_generator; pub upgrade
+        name: discoveryapis_generator; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: discoveryapis_generator
-        run: pub upgrade
+        run: dart pub upgrade
       - name: discoveryapis_generator; dart test
         if: "always() && steps.discoveryapis_generator_pub_upgrade.conclusion == 'success'"
         working-directory: discoveryapis_generator
@@ -648,10 +648,10 @@ jobs:
       - id: checkout
         uses: actions/checkout@v2.3.4
       - id: generated_googleapis_pub_upgrade
-        name: generated/googleapis; pub upgrade
+        name: generated/googleapis; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: generated/googleapis
-        run: pub upgrade
+        run: dart pub upgrade
       - name: generated/googleapis; dart test
         if: "always() && steps.generated_googleapis_pub_upgrade.conclusion == 'success'"
         working-directory: generated/googleapis
@@ -680,10 +680,10 @@ jobs:
       - id: checkout
         uses: actions/checkout@v2.3.4
       - id: generated_googleapis_beta_pub_upgrade
-        name: generated/googleapis_beta; pub upgrade
+        name: generated/googleapis_beta; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: generated/googleapis_beta
-        run: pub upgrade
+        run: dart pub upgrade
       - name: generated/googleapis_beta; dart test
         if: "always() && steps.generated_googleapis_beta_pub_upgrade.conclusion == 'success'"
         working-directory: generated/googleapis_beta
@@ -712,10 +712,10 @@ jobs:
       - id: checkout
         uses: actions/checkout@v2.3.4
       - id: googleapis_auth_pub_upgrade
-        name: googleapis_auth; pub upgrade
+        name: googleapis_auth; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: googleapis_auth
-        run: pub upgrade
+        run: dart pub upgrade
       - name: "googleapis_auth; dart test -p chrome"
         if: "always() && steps.googleapis_auth_pub_upgrade.conclusion == 'success'"
         working-directory: googleapis_auth
@@ -744,10 +744,10 @@ jobs:
       - id: checkout
         uses: actions/checkout@v2.3.4
       - id: googleapis_auth_pub_upgrade
-        name: googleapis_auth; pub upgrade
+        name: googleapis_auth; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: googleapis_auth
-        run: pub upgrade
+        run: dart pub upgrade
       - name: "googleapis_auth; dart test -p vm"
         if: "always() && steps.googleapis_auth_pub_upgrade.conclusion == 'success'"
         working-directory: googleapis_auth
