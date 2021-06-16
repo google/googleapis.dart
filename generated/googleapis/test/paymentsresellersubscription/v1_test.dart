@@ -601,6 +601,8 @@ api.GoogleCloudPaymentsResellerSubscriptionV1Subscription
         buildGoogleCloudPaymentsResellerSubscriptionV1Location();
     o.state = 'foo';
     o.updateTime = 'foo';
+    o.upgradeDowngradeDetails =
+        buildGoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails();
   }
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1Subscription--;
   return o;
@@ -650,6 +652,9 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1Subscription(
       o.updateTime!,
       unittest.equals('foo'),
     );
+    checkGoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails(
+        o.upgradeDowngradeDetails! as api
+            .GoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails);
   }
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1Subscription--;
 }
@@ -682,6 +687,41 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1SubscriptionCancellationDetai
     );
   }
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1SubscriptionCancellationDetails--;
+}
+
+core.int
+    buildCounterGoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails =
+    0;
+api.GoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails
+    buildGoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails() {
+  var o = api
+      .GoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails();
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails++;
+  if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails <
+      3) {
+    o.billingCycleSpec = 'foo';
+    o.previousSubscriptionId = 'foo';
+  }
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails--;
+  return o;
+}
+
+void checkGoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails(
+    api.GoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails
+        o) {
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails++;
+  if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails <
+      3) {
+    unittest.expect(
+      o.billingCycleSpec!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.previousSubscriptionId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails--;
 }
 
 core.int
@@ -976,6 +1016,22 @@ void main() {
       checkGoogleCloudPaymentsResellerSubscriptionV1SubscriptionCancellationDetails(
           od as api
               .GoogleCloudPaymentsResellerSubscriptionV1SubscriptionCancellationDetails);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails',
+      () {
+    unittest.test('to-json--from-json', () async {
+      var o =
+          buildGoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.GoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails(
+          od as api
+              .GoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails);
     });
   });
 

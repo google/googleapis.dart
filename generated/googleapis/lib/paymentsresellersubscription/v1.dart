@@ -1138,6 +1138,16 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
   /// Output only.
   core.String? updateTime;
 
+  /// Details about the previous subscription that this new subscription
+  /// upgrades/downgrades from.
+  ///
+  /// Only populated if this subscription is an upgrade/downgrade from another
+  /// subscription.
+  ///
+  /// Optional.
+  GoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails?
+      upgradeDowngradeDetails;
+
   GoogleCloudPaymentsResellerSubscriptionV1Subscription();
 
   GoogleCloudPaymentsResellerSubscriptionV1Subscription.fromJson(
@@ -1190,6 +1200,12 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
     if (_json.containsKey('updateTime')) {
       updateTime = _json['updateTime'] as core.String;
     }
+    if (_json.containsKey('upgradeDowngradeDetails')) {
+      upgradeDowngradeDetails =
+          GoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails
+              .fromJson(_json['upgradeDowngradeDetails']
+                  as core.Map<core.String, core.dynamic>);
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1208,6 +1224,8 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
           'serviceLocation': serviceLocation!.toJson(),
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
+        if (upgradeDowngradeDetails != null)
+          'upgradeDowngradeDetails': upgradeDowngradeDetails!.toJson(),
       };
 }
 
@@ -1237,6 +1255,48 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionCancellationDetails {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (reason != null) 'reason': reason!,
+      };
+}
+
+/// Details about the previous subscription that this new subscription
+/// upgrades/downgrades from.
+class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails {
+  /// Specifies the billing cycle spec for the new upgraded/downgraded
+  /// subscription.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "BILLING_CYCLE_SPEC_UNSPECIFIED" : Billing cycle spec is not specified.
+  /// - "BILLING_CYCLE_SPEC_ALIGN_WITH_PREVIOUS_SUBSCRIPTION" : The billing
+  /// cycle of the new subscription aligns with the previous subscription it
+  /// upgrades or downgrades from.
+  /// - "BILLING_CYCLE_SPEC_START_IMMEDIATELY" : The billing cycle of the new
+  /// subscription starts immediately.
+  core.String? billingCycleSpec;
+
+  /// The previous subscription id to be replaced.
+  ///
+  /// This is not the full resource name, use the subscription_id segment only.
+  ///
+  /// Required.
+  core.String? previousSubscriptionId;
+
+  GoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails();
+
+  GoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('billingCycleSpec')) {
+      billingCycleSpec = _json['billingCycleSpec'] as core.String;
+    }
+    if (_json.containsKey('previousSubscriptionId')) {
+      previousSubscriptionId = _json['previousSubscriptionId'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (billingCycleSpec != null) 'billingCycleSpec': billingCycleSpec!,
+        if (previousSubscriptionId != null)
+          'previousSubscriptionId': previousSubscriptionId!,
       };
 }
 

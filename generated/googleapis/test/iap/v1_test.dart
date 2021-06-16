@@ -33,6 +33,7 @@ api.AccessDeniedPageSettings buildAccessDeniedPageSettings() {
   buildCounterAccessDeniedPageSettings++;
   if (buildCounterAccessDeniedPageSettings < 3) {
     o.accessDeniedPageUri = 'foo';
+    o.generateTroubleshootingUri = true;
   }
   buildCounterAccessDeniedPageSettings--;
   return o;
@@ -45,6 +46,7 @@ void checkAccessDeniedPageSettings(api.AccessDeniedPageSettings o) {
       o.accessDeniedPageUri!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.generateTroubleshootingUri!, unittest.isTrue);
   }
   buildCounterAccessDeniedPageSettings--;
 }

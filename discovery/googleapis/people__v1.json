@@ -1153,7 +1153,7 @@
             }
         }
     },
-    "revision": "20210613",
+    "revision": "20210615",
     "rootUrl": "https://people.googleapis.com/",
     "schemas": {
         "Address": {

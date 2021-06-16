@@ -2794,7 +2794,7 @@
             }
         }
     },
-    "revision": "20210614",
+    "revision": "20210615",
     "rootUrl": "https://analyticsadmin.googleapis.com/",
     "schemas": {
         "GoogleAnalyticsAdminV1alphaAccount": {

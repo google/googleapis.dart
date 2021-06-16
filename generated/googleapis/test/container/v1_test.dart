@@ -769,6 +769,7 @@ api.ClusterUpdate buildClusterUpdate() {
     o.desiredDefaultSnatStatus = buildDefaultSnatStatus();
     o.desiredImageType = 'foo';
     o.desiredIntraNodeVisibilityConfig = buildIntraNodeVisibilityConfig();
+    o.desiredL4ilbSubsettingConfig = buildILBSubsettingConfig();
     o.desiredLocations = buildUnnamed2197();
     o.desiredLoggingService = 'foo';
     o.desiredMasterAuthorizedNetworksConfig =
@@ -814,6 +815,8 @@ void checkClusterUpdate(api.ClusterUpdate o) {
     );
     checkIntraNodeVisibilityConfig(
         o.desiredIntraNodeVisibilityConfig! as api.IntraNodeVisibilityConfig);
+    checkILBSubsettingConfig(
+        o.desiredL4ilbSubsettingConfig! as api.ILBSubsettingConfig);
     checkUnnamed2197(o.desiredLocations!);
     unittest.expect(
       o.desiredLoggingService!,
@@ -1391,6 +1394,25 @@ void checkHttpLoadBalancing(api.HttpLoadBalancing o) {
     unittest.expect(o.disabled!, unittest.isTrue);
   }
   buildCounterHttpLoadBalancing--;
+}
+
+core.int buildCounterILBSubsettingConfig = 0;
+api.ILBSubsettingConfig buildILBSubsettingConfig() {
+  var o = api.ILBSubsettingConfig();
+  buildCounterILBSubsettingConfig++;
+  if (buildCounterILBSubsettingConfig < 3) {
+    o.enabled = true;
+  }
+  buildCounterILBSubsettingConfig--;
+  return o;
+}
+
+void checkILBSubsettingConfig(api.ILBSubsettingConfig o) {
+  buildCounterILBSubsettingConfig++;
+  if (buildCounterILBSubsettingConfig < 3) {
+    unittest.expect(o.enabled!, unittest.isTrue);
+  }
+  buildCounterILBSubsettingConfig--;
 }
 
 core.int buildCounterIPAllocationPolicy = 0;
@@ -2005,6 +2027,7 @@ api.NetworkConfig buildNetworkConfig() {
     o.datapathProvider = 'foo';
     o.defaultSnatStatus = buildDefaultSnatStatus();
     o.enableIntraNodeVisibility = true;
+    o.enableL4ilbSubsetting = true;
     o.network = 'foo';
     o.privateIpv6GoogleAccess = 'foo';
     o.subnetwork = 'foo';
@@ -2022,6 +2045,7 @@ void checkNetworkConfig(api.NetworkConfig o) {
     );
     checkDefaultSnatStatus(o.defaultSnatStatus! as api.DefaultSnatStatus);
     unittest.expect(o.enableIntraNodeVisibility!, unittest.isTrue);
+    unittest.expect(o.enableL4ilbSubsetting!, unittest.isTrue);
     unittest.expect(
       o.network!,
       unittest.equals('foo'),
@@ -4652,6 +4676,16 @@ void main() {
       var od = api.HttpLoadBalancing.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkHttpLoadBalancing(od as api.HttpLoadBalancing);
+    });
+  });
+
+  unittest.group('obj-schema-ILBSubsettingConfig', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildILBSubsettingConfig();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ILBSubsettingConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkILBSubsettingConfig(od as api.ILBSubsettingConfig);
     });
   });
 

@@ -485,7 +485,7 @@
             }
         }
     },
-    "revision": "20210513",
+    "revision": "20210611",
     "rootUrl": "https://iap.googleapis.com/",
     "schemas": {
         "AccessDeniedPageSettings": {
@@ -495,6 +495,10 @@
                 "accessDeniedPageUri": {
                     "description": "The URI to be redirected to when access is denied.",
                     "type": "string"
+                },
+                "generateTroubleshootingUri": {
+                    "description": "Whether to generate a troubleshooting URL on access denied events to this application.",
+                    "type": "boolean"
                 }
             },
             "type": "object"

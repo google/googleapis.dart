@@ -162,13 +162,15 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The container resource on which to execute the
-  /// request. Acceptable formats: 1.
+  /// request. Acceptable formats: *
   /// `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
-  /// 2.
+  /// *
+  /// `projects/[PROJECT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
+  /// *
   /// `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
-  /// 3.
+  /// *
   /// `folders/[FOLDER_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
-  /// 4.
+  /// *
   /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
   /// LOCATION here refers to GCP Locations:
   /// https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers to
@@ -345,13 +347,14 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The container resource on which to execute the
-  /// request. Acceptable formats: 1.
+  /// request. Acceptable formats: *
   /// `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
-  /// 2.
+  /// *
+  /// `projects/[PROJECT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
+  /// *
   /// `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
-  /// 3.
-  /// `folders/[FOLDER_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
-  /// 4.
+  /// * `folders/[FOLDER_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
+  /// *
   /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
   /// LOCATION here refers to GCP Locations:
   /// https://cloud.google.com/about/locations/ RECOMMENDER_ID refers to
@@ -647,13 +650,15 @@ class FoldersLocationsInsightTypesInsightsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The container resource on which to execute the
-  /// request. Acceptable formats: 1.
+  /// request. Acceptable formats: *
   /// `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
-  /// 2.
+  /// *
+  /// `projects/[PROJECT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
+  /// *
   /// `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
-  /// 3.
+  /// *
   /// `folders/[FOLDER_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
-  /// 4.
+  /// *
   /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
   /// LOCATION here refers to GCP Locations:
   /// https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers to
@@ -828,13 +833,14 @@ class FoldersLocationsRecommendersRecommendationsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The container resource on which to execute the
-  /// request. Acceptable formats: 1.
+  /// request. Acceptable formats: *
   /// `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
-  /// 2.
+  /// *
+  /// `projects/[PROJECT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
+  /// *
   /// `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
-  /// 3.
-  /// `folders/[FOLDER_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
-  /// 4.
+  /// * `folders/[FOLDER_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
+  /// *
   /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
   /// LOCATION here refers to GCP Locations:
   /// https://cloud.google.com/about/locations/ RECOMMENDER_ID refers to
@@ -1132,13 +1138,15 @@ class OrganizationsLocationsInsightTypesInsightsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The container resource on which to execute the
-  /// request. Acceptable formats: 1.
+  /// request. Acceptable formats: *
   /// `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
-  /// 2.
+  /// *
+  /// `projects/[PROJECT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
+  /// *
   /// `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
-  /// 3.
+  /// *
   /// `folders/[FOLDER_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
-  /// 4.
+  /// *
   /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
   /// LOCATION here refers to GCP Locations:
   /// https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers to
@@ -1314,13 +1322,14 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The container resource on which to execute the
-  /// request. Acceptable formats: 1.
+  /// request. Acceptable formats: *
   /// `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
-  /// 2.
+  /// *
+  /// `projects/[PROJECT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
+  /// *
   /// `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
-  /// 3.
-  /// `folders/[FOLDER_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
-  /// 4.
+  /// * `folders/[FOLDER_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
+  /// *
   /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
   /// LOCATION here refers to GCP Locations:
   /// https://cloud.google.com/about/locations/ RECOMMENDER_ID refers to
@@ -1616,13 +1625,15 @@ class ProjectsLocationsInsightTypesInsightsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The container resource on which to execute the
-  /// request. Acceptable formats: 1.
+  /// request. Acceptable formats: *
   /// `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
-  /// 2.
+  /// *
+  /// `projects/[PROJECT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
+  /// *
   /// `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
-  /// 3.
+  /// *
   /// `folders/[FOLDER_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
-  /// 4.
+  /// *
   /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
   /// LOCATION here refers to GCP Locations:
   /// https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers to
@@ -1797,13 +1808,14 @@ class ProjectsLocationsRecommendersRecommendationsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The container resource on which to execute the
-  /// request. Acceptable formats: 1.
+  /// request. Acceptable formats: *
   /// `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
-  /// 2.
+  /// *
+  /// `projects/[PROJECT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
+  /// *
   /// `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
-  /// 3.
-  /// `folders/[FOLDER_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
-  /// 4.
+  /// * `folders/[FOLDER_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
+  /// *
   /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
   /// LOCATION here refers to GCP Locations:
   /// https://cloud.google.com/about/locations/ RECOMMENDER_ID refers to

@@ -4007,6 +4007,10 @@ class FileCapabilities {
   /// restriction of this file.
   core.bool? canChangeCopyRequiresWriterPermission;
 
+  /// Whether the current user can change the securityUpdateEnabled field on
+  /// link share metadata.
+  core.bool? canChangeSecurityUpdateEnabled;
+
   /// Deprecated
   core.bool? canChangeViewersCanCopyContent;
 
@@ -4158,6 +4162,10 @@ class FileCapabilities {
       canChangeCopyRequiresWriterPermission =
           _json['canChangeCopyRequiresWriterPermission'] as core.bool;
     }
+    if (_json.containsKey('canChangeSecurityUpdateEnabled')) {
+      canChangeSecurityUpdateEnabled =
+          _json['canChangeSecurityUpdateEnabled'] as core.bool;
+    }
     if (_json.containsKey('canChangeViewersCanCopyContent')) {
       canChangeViewersCanCopyContent =
           _json['canChangeViewersCanCopyContent'] as core.bool;
@@ -4267,6 +4275,8 @@ class FileCapabilities {
         if (canChangeCopyRequiresWriterPermission != null)
           'canChangeCopyRequiresWriterPermission':
               canChangeCopyRequiresWriterPermission!,
+        if (canChangeSecurityUpdateEnabled != null)
+          'canChangeSecurityUpdateEnabled': canChangeSecurityUpdateEnabled!,
         if (canChangeViewersCanCopyContent != null)
           'canChangeViewersCanCopyContent': canChangeViewersCanCopyContent!,
         if (canComment != null) 'canComment': canComment!,
@@ -4572,6 +4582,34 @@ class FileImageMediaMetadata {
       };
 }
 
+/// Contains details about the link URLs that clients are using to refer to this
+/// item.
+class FileLinkShareMetadata {
+  /// Whether the file is eligible for security update.
+  core.bool? securityUpdateEligible;
+
+  /// Whether the security update is enabled for this file.
+  core.bool? securityUpdateEnabled;
+
+  FileLinkShareMetadata();
+
+  FileLinkShareMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey('securityUpdateEligible')) {
+      securityUpdateEligible = _json['securityUpdateEligible'] as core.bool;
+    }
+    if (_json.containsKey('securityUpdateEnabled')) {
+      securityUpdateEnabled = _json['securityUpdateEnabled'] as core.bool;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (securityUpdateEligible != null)
+          'securityUpdateEligible': securityUpdateEligible!,
+        if (securityUpdateEnabled != null)
+          'securityUpdateEnabled': securityUpdateEnabled!,
+      };
+}
+
 /// Shortcut file details.
 ///
 /// Only populated for shortcut files, which have the mimeType field set to
@@ -4586,6 +4624,9 @@ class FileShortcutDetails {
   /// when the shortcut is created.
   core.String? targetMimeType;
 
+  /// The ResourceKey for the target file.
+  core.String? targetResourceKey;
+
   FileShortcutDetails();
 
   FileShortcutDetails.fromJson(core.Map _json) {
@@ -4595,11 +4636,15 @@ class FileShortcutDetails {
     if (_json.containsKey('targetMimeType')) {
       targetMimeType = _json['targetMimeType'] as core.String;
     }
+    if (_json.containsKey('targetResourceKey')) {
+      targetResourceKey = _json['targetResourceKey'] as core.String;
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (targetId != null) 'targetId': targetId!,
         if (targetMimeType != null) 'targetMimeType': targetMimeType!,
+        if (targetResourceKey != null) 'targetResourceKey': targetResourceKey!,
       };
 }
 
@@ -4744,6 +4789,10 @@ class File {
   /// The last user to modify the file.
   User? lastModifyingUser;
 
+  /// Contains details about the link URLs that clients are using to refer to
+  /// this item.
+  FileLinkShareMetadata? linkShareMetadata;
+
   /// The MD5 checksum for the content of the file.
   ///
   /// This is only applicable to files with binary content in Google Drive.
@@ -4821,6 +4870,9 @@ class File {
   /// This includes the head revision as well as previous revisions with
   /// keepForever enabled.
   core.String? quotaBytesUsed;
+
+  /// A key needed to access the item via a shared link.
+  core.String? resourceKey;
 
   /// Whether the file has been shared.
   ///
@@ -5011,6 +5063,10 @@ class File {
       lastModifyingUser = User.fromJson(
           _json['lastModifyingUser'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('linkShareMetadata')) {
+      linkShareMetadata = FileLinkShareMetadata.fromJson(
+          _json['linkShareMetadata'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('md5Checksum')) {
       md5Checksum = _json['md5Checksum'] as core.String;
     }
@@ -5069,6 +5125,9 @@ class File {
     }
     if (_json.containsKey('quotaBytesUsed')) {
       quotaBytesUsed = _json['quotaBytesUsed'] as core.String;
+    }
+    if (_json.containsKey('resourceKey')) {
+      resourceKey = _json['resourceKey'] as core.String;
     }
     if (_json.containsKey('shared')) {
       shared = _json['shared'] as core.bool;
@@ -5172,6 +5231,8 @@ class File {
         if (kind != null) 'kind': kind!,
         if (lastModifyingUser != null)
           'lastModifyingUser': lastModifyingUser!.toJson(),
+        if (linkShareMetadata != null)
+          'linkShareMetadata': linkShareMetadata!.toJson(),
         if (md5Checksum != null) 'md5Checksum': md5Checksum!,
         if (mimeType != null) 'mimeType': mimeType!,
         if (modifiedByMe != null) 'modifiedByMe': modifiedByMe!,
@@ -5190,6 +5251,7 @@ class File {
           'permissions': permissions!.map((value) => value.toJson()).toList(),
         if (properties != null) 'properties': properties!,
         if (quotaBytesUsed != null) 'quotaBytesUsed': quotaBytesUsed!,
+        if (resourceKey != null) 'resourceKey': resourceKey!,
         if (shared != null) 'shared': shared!,
         if (sharedWithMeTime != null)
           'sharedWithMeTime': sharedWithMeTime!.toIso8601String(),
