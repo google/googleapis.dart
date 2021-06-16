@@ -4719,6 +4719,9 @@ class ClusterUpdate {
   /// The desired config of Intra-node visibility.
   IntraNodeVisibilityConfig? desiredIntraNodeVisibilityConfig;
 
+  /// The desired L4 Internal Load Balancer Subsetting configuration.
+  ILBSubsettingConfig? desiredL4ilbSubsettingConfig;
+
   /// The desired list of Google Compute Engine
   /// [zones](https://cloud.google.com/compute/docs/zones#available) in which
   /// the cluster's nodes should be located.
@@ -4862,6 +4865,11 @@ class ClusterUpdate {
           _json['desiredIntraNodeVisibilityConfig']
               as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('desiredL4ilbSubsettingConfig')) {
+      desiredL4ilbSubsettingConfig = ILBSubsettingConfig.fromJson(
+          _json['desiredL4ilbSubsettingConfig']
+              as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('desiredLocations')) {
       desiredLocations = (_json['desiredLocations'] as core.List)
           .map<core.String>((value) => value as core.String)
@@ -4953,6 +4961,9 @@ class ClusterUpdate {
         if (desiredIntraNodeVisibilityConfig != null)
           'desiredIntraNodeVisibilityConfig':
               desiredIntraNodeVisibilityConfig!.toJson(),
+        if (desiredL4ilbSubsettingConfig != null)
+          'desiredL4ilbSubsettingConfig':
+              desiredL4ilbSubsettingConfig!.toJson(),
         if (desiredLocations != null) 'desiredLocations': desiredLocations!,
         if (desiredLoggingService != null)
           'desiredLoggingService': desiredLoggingService!,
@@ -5559,6 +5570,25 @@ class HttpLoadBalancing {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (disabled != null) 'disabled': disabled!,
+      };
+}
+
+/// ILBSubsettingConfig contains the desired config of L4 Internal LoadBalancer
+/// subsetting on this cluster.
+class ILBSubsettingConfig {
+  /// Enables l4 ILB subsetting for this cluster.
+  core.bool? enabled;
+
+  ILBSubsettingConfig();
+
+  ILBSubsettingConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('enabled')) {
+      enabled = _json['enabled'] as core.bool;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
       };
 }
 
@@ -6301,6 +6331,9 @@ class NetworkConfig {
   /// This makes same node pod to pod traffic visible for VPC network.
   core.bool? enableIntraNodeVisibility;
 
+  /// Whether L4ILB Subsetting is enabled for this cluster.
+  core.bool? enableL4ilbSubsetting;
+
   /// The relative name of the Google Compute Engine
   /// network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks)
   /// to which the cluster is connected.
@@ -6348,6 +6381,9 @@ class NetworkConfig {
       enableIntraNodeVisibility =
           _json['enableIntraNodeVisibility'] as core.bool;
     }
+    if (_json.containsKey('enableL4ilbSubsetting')) {
+      enableL4ilbSubsetting = _json['enableL4ilbSubsetting'] as core.bool;
+    }
     if (_json.containsKey('network')) {
       network = _json['network'] as core.String;
     }
@@ -6365,6 +6401,8 @@ class NetworkConfig {
           'defaultSnatStatus': defaultSnatStatus!.toJson(),
         if (enableIntraNodeVisibility != null)
           'enableIntraNodeVisibility': enableIntraNodeVisibility!,
+        if (enableL4ilbSubsetting != null)
+          'enableL4ilbSubsetting': enableL4ilbSubsetting!,
         if (network != null) 'network': network!,
         if (privateIpv6GoogleAccess != null)
           'privateIpv6GoogleAccess': privateIpv6GoogleAccess!,

@@ -675,17 +675,27 @@ class AccessDeniedPageSettings {
   /// The URI to be redirected to when access is denied.
   core.String? accessDeniedPageUri;
 
+  /// Whether to generate a troubleshooting URL on access denied events to this
+  /// application.
+  core.bool? generateTroubleshootingUri;
+
   AccessDeniedPageSettings();
 
   AccessDeniedPageSettings.fromJson(core.Map _json) {
     if (_json.containsKey('accessDeniedPageUri')) {
       accessDeniedPageUri = _json['accessDeniedPageUri'] as core.String;
     }
+    if (_json.containsKey('generateTroubleshootingUri')) {
+      generateTroubleshootingUri =
+          _json['generateTroubleshootingUri'] as core.bool;
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessDeniedPageUri != null)
           'accessDeniedPageUri': accessDeniedPageUri!,
+        if (generateTroubleshootingUri != null)
+          'generateTroubleshootingUri': generateTroubleshootingUri!,
       };
 }
 

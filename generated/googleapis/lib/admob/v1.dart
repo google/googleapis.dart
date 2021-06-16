@@ -1067,6 +1067,21 @@ class MediationReportSpecDimensionFilter {
   /// ad delivery dimension.
   /// - "PLATFORM" : Mobile OS platform of the app (for example, "Android" or
   /// "iOS").
+  /// - "MOBILE_OS_VERSION" : Mobile operating system version, e.g. "iOS
+  /// 13.5.1". **Warning:** The dimension is incompatible with
+  /// \[ESTIMATED_EARNINGS\](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS),
+  /// \[OBSERVED_ECPM\](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics.
+  /// - "GMA_SDK_VERSION" : GMA SDK version, e.g. "iOS 7.62.0". **Warning:** The
+  /// dimension is incompatible with
+  /// \[ESTIMATED_EARNINGS\](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS),
+  /// \[OBSERVED_ECPM\](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics.
+  /// - "APP_VERSION_NAME" : For Android, the app version name can be found in
+  /// versionName in PackageInfo. For iOS, the app version name can be found in
+  /// CFBundleShortVersionString. **Warning:** The dimension is incompatible
+  /// with \[ESTIMATED_EARNINGS\](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS),
+  /// \[OBSERVED_ECPM\](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics.
+  /// - "SERVING_RESTRICTION" : Restriction mode for ads serving (e.g.
+  /// "Non-personalized ads").
   core.String? dimension;
 
   /// Matches a row if its value for the specified dimension is in one of the
@@ -1121,6 +1136,21 @@ class MediationReportSpecSortCondition {
   /// ad delivery dimension.
   /// - "PLATFORM" : Mobile OS platform of the app (for example, "Android" or
   /// "iOS").
+  /// - "MOBILE_OS_VERSION" : Mobile operating system version, e.g. "iOS
+  /// 13.5.1". **Warning:** The dimension is incompatible with
+  /// \[ESTIMATED_EARNINGS\](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS),
+  /// \[OBSERVED_ECPM\](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics.
+  /// - "GMA_SDK_VERSION" : GMA SDK version, e.g. "iOS 7.62.0". **Warning:** The
+  /// dimension is incompatible with
+  /// \[ESTIMATED_EARNINGS\](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS),
+  /// \[OBSERVED_ECPM\](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics.
+  /// - "APP_VERSION_NAME" : For Android, the app version name can be found in
+  /// versionName in PackageInfo. For iOS, the app version name can be found in
+  /// CFBundleShortVersionString. **Warning:** The dimension is incompatible
+  /// with \[ESTIMATED_EARNINGS\](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS),
+  /// \[OBSERVED_ECPM\](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics.
+  /// - "SERVING_RESTRICTION" : Restriction mode for ads serving (e.g.
+  /// "Non-personalized ads").
   core.String? dimension;
 
   /// Sort by the specified metric.
@@ -1329,6 +1359,14 @@ class NetworkReportSpecDimensionFilter {
   /// ad delivery dimension.
   /// - "PLATFORM" : Mobile OS platform of the app (for example, "Android" or
   /// "iOS").
+  /// - "MOBILE_OS_VERSION" : Mobile operating system version, e.g. "iOS
+  /// 13.5.1".
+  /// - "GMA_SDK_VERSION" : GMA SDK version, e.g. "iOS 7.62.0".
+  /// - "APP_VERSION_NAME" : For Android, the app version name can be found in
+  /// versionName in PackageInfo. For iOS, the app version name can be found in
+  /// CFBundleShortVersionString.
+  /// - "SERVING_RESTRICTION" : Restriction mode for ads serving (e.g.
+  /// "Non-personalized ads").
   core.String? dimension;
 
   /// Matches a row if its value for the specified dimension is in one of the
@@ -1381,6 +1419,14 @@ class NetworkReportSpecSortCondition {
   /// ad delivery dimension.
   /// - "PLATFORM" : Mobile OS platform of the app (for example, "Android" or
   /// "iOS").
+  /// - "MOBILE_OS_VERSION" : Mobile operating system version, e.g. "iOS
+  /// 13.5.1".
+  /// - "GMA_SDK_VERSION" : GMA SDK version, e.g. "iOS 7.62.0".
+  /// - "APP_VERSION_NAME" : For Android, the app version name can be found in
+  /// versionName in PackageInfo. For iOS, the app version name can be found in
+  /// CFBundleShortVersionString.
+  /// - "SERVING_RESTRICTION" : Restriction mode for ads serving (e.g.
+  /// "Non-personalized ads").
   core.String? dimension;
 
   /// Sort by the specified metric.

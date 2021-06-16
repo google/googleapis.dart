@@ -1047,6 +1047,13 @@ Perform common functions that are available on the Channel Services console at s
 - [Documentation](https://developers.google.com/google-apps/reseller/)
 - [API details](https://pub.dev/documentation/googleapis/4.0.0-dev/reseller.v1/reseller.v1-library.html)
 
+#### Resource Settings API - `resourcesettings.v1`
+
+The Resource Settings API allows users to control and modify the behavior of their GCP resources (e.g., VM, firewall, Project, etc.) across the Cloud Resource Hierarchy.
+
+- [Documentation](https://cloud.google.com/resource-manager/docs/resource-settings/overview)
+- [API details](https://pub.dev/documentation/googleapis/4.0.0-dev/resourcesettings.v1/resourcesettings.v1-library.html)
+
 #### Retail API - `retail.v2`
 
 Cloud Retail service enables customers to build end-to-end personalized recommendation systems without requiring a high level of expertise in machine learning, recommendation system, or Google Cloud.

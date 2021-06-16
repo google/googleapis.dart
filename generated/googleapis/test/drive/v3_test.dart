@@ -920,6 +920,7 @@ api.FileCapabilities buildFileCapabilities() {
     o.canAddFolderFromAnotherDrive = true;
     o.canAddMyDriveParent = true;
     o.canChangeCopyRequiresWriterPermission = true;
+    o.canChangeSecurityUpdateEnabled = true;
     o.canChangeViewersCanCopyContent = true;
     o.canComment = true;
     o.canCopy = true;
@@ -962,6 +963,7 @@ void checkFileCapabilities(api.FileCapabilities o) {
     unittest.expect(o.canAddFolderFromAnotherDrive!, unittest.isTrue);
     unittest.expect(o.canAddMyDriveParent!, unittest.isTrue);
     unittest.expect(o.canChangeCopyRequiresWriterPermission!, unittest.isTrue);
+    unittest.expect(o.canChangeSecurityUpdateEnabled!, unittest.isTrue);
     unittest.expect(o.canChangeViewersCanCopyContent!, unittest.isTrue);
     unittest.expect(o.canComment!, unittest.isTrue);
     unittest.expect(o.canCopy!, unittest.isTrue);
@@ -1229,6 +1231,27 @@ void checkFileImageMediaMetadata(api.FileImageMediaMetadata o) {
   buildCounterFileImageMediaMetadata--;
 }
 
+core.int buildCounterFileLinkShareMetadata = 0;
+api.FileLinkShareMetadata buildFileLinkShareMetadata() {
+  var o = api.FileLinkShareMetadata();
+  buildCounterFileLinkShareMetadata++;
+  if (buildCounterFileLinkShareMetadata < 3) {
+    o.securityUpdateEligible = true;
+    o.securityUpdateEnabled = true;
+  }
+  buildCounterFileLinkShareMetadata--;
+  return o;
+}
+
+void checkFileLinkShareMetadata(api.FileLinkShareMetadata o) {
+  buildCounterFileLinkShareMetadata++;
+  if (buildCounterFileLinkShareMetadata < 3) {
+    unittest.expect(o.securityUpdateEligible!, unittest.isTrue);
+    unittest.expect(o.securityUpdateEnabled!, unittest.isTrue);
+  }
+  buildCounterFileLinkShareMetadata--;
+}
+
 core.List<api.User> buildUnnamed3439() {
   var o = <api.User>[];
   o.add(buildUser());
@@ -1319,6 +1342,7 @@ api.FileShortcutDetails buildFileShortcutDetails() {
   if (buildCounterFileShortcutDetails < 3) {
     o.targetId = 'foo';
     o.targetMimeType = 'foo';
+    o.targetResourceKey = 'foo';
   }
   buildCounterFileShortcutDetails--;
   return o;
@@ -1333,6 +1357,10 @@ void checkFileShortcutDetails(api.FileShortcutDetails o) {
     );
     unittest.expect(
       o.targetMimeType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.targetResourceKey!,
       unittest.equals('foo'),
     );
   }
@@ -1417,6 +1445,7 @@ api.File buildFile() {
     o.isAppAuthorized = true;
     o.kind = 'foo';
     o.lastModifyingUser = buildUser();
+    o.linkShareMetadata = buildFileLinkShareMetadata();
     o.md5Checksum = 'foo';
     o.mimeType = 'foo';
     o.modifiedByMe = true;
@@ -1431,6 +1460,7 @@ api.File buildFile() {
     o.permissions = buildUnnamed3442();
     o.properties = buildUnnamed3443();
     o.quotaBytesUsed = 'foo';
+    o.resourceKey = 'foo';
     o.shared = true;
     o.sharedWithMeTime = core.DateTime.parse("2002-02-27T14:01:02");
     o.sharingUser = buildUser();
@@ -1513,6 +1543,8 @@ void checkFile(api.File o) {
       unittest.equals('foo'),
     );
     checkUser(o.lastModifyingUser! as api.User);
+    checkFileLinkShareMetadata(
+        o.linkShareMetadata! as api.FileLinkShareMetadata);
     unittest.expect(
       o.md5Checksum!,
       unittest.equals('foo'),
@@ -1546,6 +1578,10 @@ void checkFile(api.File o) {
     checkUnnamed3443(o.properties!);
     unittest.expect(
       o.quotaBytesUsed!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.resourceKey!,
       unittest.equals('foo'),
     );
     unittest.expect(o.shared!, unittest.isTrue);
@@ -2636,6 +2672,16 @@ void main() {
       var od = api.FileImageMediaMetadata.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkFileImageMediaMetadata(od as api.FileImageMediaMetadata);
+    });
+  });
+
+  unittest.group('obj-schema-FileLinkShareMetadata', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildFileLinkShareMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.FileLinkShareMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkFileLinkShareMetadata(od as api.FileLinkShareMetadata);
     });
   });
 

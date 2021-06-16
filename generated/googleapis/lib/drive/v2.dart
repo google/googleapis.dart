@@ -6391,6 +6391,10 @@ class FileCapabilities {
   /// Deprecated
   core.bool? canChangeRestrictedDownload;
 
+  /// Whether the current user can change the securityUpdateEnabled field on
+  /// link share metadata.
+  core.bool? canChangeSecurityUpdateEnabled;
+
   /// Whether the current user can comment on this file.
   core.bool? canComment;
 
@@ -6543,6 +6547,10 @@ class FileCapabilities {
       canChangeRestrictedDownload =
           _json['canChangeRestrictedDownload'] as core.bool;
     }
+    if (_json.containsKey('canChangeSecurityUpdateEnabled')) {
+      canChangeSecurityUpdateEnabled =
+          _json['canChangeSecurityUpdateEnabled'] as core.bool;
+    }
     if (_json.containsKey('canComment')) {
       canComment = _json['canComment'] as core.bool;
     }
@@ -6650,6 +6658,8 @@ class FileCapabilities {
               canChangeCopyRequiresWriterPermission!,
         if (canChangeRestrictedDownload != null)
           'canChangeRestrictedDownload': canChangeRestrictedDownload!,
+        if (canChangeSecurityUpdateEnabled != null)
+          'canChangeSecurityUpdateEnabled': canChangeSecurityUpdateEnabled!,
         if (canComment != null) 'canComment': canComment!,
         if (canCopy != null) 'canCopy': canCopy!,
         if (canDelete != null) 'canDelete': canDelete!,
@@ -6968,6 +6978,34 @@ class FileLabels {
       };
 }
 
+/// Contains details about the link URLs that clients are using to refer to this
+/// item.
+class FileLinkShareMetadata {
+  /// Whether the file is eligible for security update.
+  core.bool? securityUpdateEligible;
+
+  /// Whether the security update is enabled for this file.
+  core.bool? securityUpdateEnabled;
+
+  FileLinkShareMetadata();
+
+  FileLinkShareMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey('securityUpdateEligible')) {
+      securityUpdateEligible = _json['securityUpdateEligible'] as core.bool;
+    }
+    if (_json.containsKey('securityUpdateEnabled')) {
+      securityUpdateEnabled = _json['securityUpdateEnabled'] as core.bool;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (securityUpdateEligible != null)
+          'securityUpdateEligible': securityUpdateEligible!,
+        if (securityUpdateEnabled != null)
+          'securityUpdateEnabled': securityUpdateEnabled!,
+      };
+}
+
 /// Shortcut file details.
 ///
 /// Only populated for shortcut files, which have the mimeType field set to
@@ -6982,6 +7020,9 @@ class FileShortcutDetails {
   /// when the shortcut is created.
   core.String? targetMimeType;
 
+  /// The ResourceKey for the target file.
+  core.String? targetResourceKey;
+
   FileShortcutDetails();
 
   FileShortcutDetails.fromJson(core.Map _json) {
@@ -6991,11 +7032,15 @@ class FileShortcutDetails {
     if (_json.containsKey('targetMimeType')) {
       targetMimeType = _json['targetMimeType'] as core.String;
     }
+    if (_json.containsKey('targetResourceKey')) {
+      targetResourceKey = _json['targetResourceKey'] as core.String;
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (targetId != null) 'targetId': targetId!,
         if (targetMimeType != null) 'targetMimeType': targetMimeType!,
+        if (targetResourceKey != null) 'targetResourceKey': targetResourceKey!,
       };
 }
 
@@ -7222,6 +7267,10 @@ class File {
   /// Last time this file was viewed by the user (formatted RFC 3339 timestamp).
   core.DateTime? lastViewedByMeDate;
 
+  /// Contains details about the link URLs that clients are using to refer to
+  /// this item.
+  FileLinkShareMetadata? linkShareMetadata;
+
   /// Deprecated.
   core.DateTime? markedViewedByMeDate;
 
@@ -7300,6 +7349,9 @@ class File {
 
   /// The number of quota bytes used by this file.
   core.String? quotaBytesUsed;
+
+  /// A key needed to access the item via a shared link.
+  core.String? resourceKey;
 
   /// A link back to this file.
   core.String? selfLink;
@@ -7520,6 +7572,10 @@ class File {
       lastViewedByMeDate =
           core.DateTime.parse(_json['lastViewedByMeDate'] as core.String);
     }
+    if (_json.containsKey('linkShareMetadata')) {
+      linkShareMetadata = FileLinkShareMetadata.fromJson(
+          _json['linkShareMetadata'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('markedViewedByMeDate')) {
       markedViewedByMeDate =
           core.DateTime.parse(_json['markedViewedByMeDate'] as core.String);
@@ -7588,6 +7644,9 @@ class File {
     }
     if (_json.containsKey('quotaBytesUsed')) {
       quotaBytesUsed = _json['quotaBytesUsed'] as core.String;
+    }
+    if (_json.containsKey('resourceKey')) {
+      resourceKey = _json['resourceKey'] as core.String;
     }
     if (_json.containsKey('selfLink')) {
       selfLink = _json['selfLink'] as core.String;
@@ -7705,6 +7764,8 @@ class File {
           'lastModifyingUserName': lastModifyingUserName!,
         if (lastViewedByMeDate != null)
           'lastViewedByMeDate': lastViewedByMeDate!.toIso8601String(),
+        if (linkShareMetadata != null)
+          'linkShareMetadata': linkShareMetadata!.toJson(),
         if (markedViewedByMeDate != null)
           'markedViewedByMeDate': markedViewedByMeDate!.toIso8601String(),
         if (md5Checksum != null) 'md5Checksum': md5Checksum!,
@@ -7727,6 +7788,7 @@ class File {
         if (properties != null)
           'properties': properties!.map((value) => value.toJson()).toList(),
         if (quotaBytesUsed != null) 'quotaBytesUsed': quotaBytesUsed!,
+        if (resourceKey != null) 'resourceKey': resourceKey!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (shareable != null) 'shareable': shareable!,
         if (shared != null) 'shared': shared!,

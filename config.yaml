@@ -164,6 +164,7 @@ packages:
     - recommender:v1
     - redis:v1 # https://cloud.google.com/memorystore/docs/redis/
     - reseller:v1 # https://developers.google.com/admin-sdk/reseller/
+    - resourcesettings:v1
     - retail:v2
     - run:v1
     - runtimeconfig:v1 # https://cloud.google.com/deployment-manager/runtime-configurator/
