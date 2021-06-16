@@ -2,6 +2,9 @@
   "ignorePatterns": [
     {
       "pattern": "^http://localhost"
+    },
+    {
+      "pattern": "^https://pub.dev/documentation/googleapis.+\\-dev/"
     }
   ]
 }
