@@ -8093,6 +8093,45 @@ class NotificationChannelDescriptor {
       };
 }
 
+/// Contains metadata for longrunning operation for the edit Metrics Scope
+/// endpoints.
+class OperationMetadata {
+  /// The time when the batch request was received.
+  core.String? createTime;
+
+  /// Current state of the batch operation.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Invalid.
+  /// - "CREATED" : Request has been received.
+  /// - "RUNNING" : Request is actively being processed.
+  /// - "DONE" : The batch processing is done.
+  /// - "CANCELLED" : The batch processing was cancelled.
+  core.String? state;
+
+  /// The time when the operation result was last updated.
+  core.String? updateTime;
+
+  OperationMetadata();
+
+  OperationMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'] as core.String;
+    }
+    if (_json.containsKey('state')) {
+      state = _json['state'] as core.String;
+    }
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
 /// A protocol buffer option, which can be attached to a message, field,
 /// enumeration, etc.
 class Option {
@@ -8487,6 +8526,15 @@ class Service {
   /// Configuration for how to query telemetry on a Service.
   Telemetry? telemetry;
 
+  /// Labels which have been used to annotate the service.
+  ///
+  /// Label keys must start with a letter. Label keys and values may contain
+  /// lowercase letters, numbers, underscores, and dashes. Label keys and values
+  /// have a maximum length of 63 characters, and must be less than 128 bytes in
+  /// size. Up to 64 label entries may be stored. For labels which do not have a
+  /// semantic value, the empty string may be supplied for the label value.
+  core.Map<core.String, core.String>? userLabels;
+
   Service();
 
   Service.fromJson(core.Map _json) {
@@ -8525,6 +8573,15 @@ class Service {
       telemetry = Telemetry.fromJson(
           _json['telemetry'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('userLabels')) {
+      userLabels =
+          (_json['userLabels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8538,6 +8595,7 @@ class Service {
         if (meshIstio != null) 'meshIstio': meshIstio!.toJson(),
         if (name != null) 'name': name!,
         if (telemetry != null) 'telemetry': telemetry!.toJson(),
+        if (userLabels != null) 'userLabels': userLabels!,
       };
 }
 
@@ -8641,6 +8699,15 @@ class ServiceLevelObjective {
   /// quality.
   ServiceLevelIndicator? serviceLevelIndicator;
 
+  /// Labels which have been used to annotate the service-level objective.
+  ///
+  /// Label keys must start with a letter. Label keys and values may contain
+  /// lowercase letters, numbers, underscores, and dashes. Label keys and values
+  /// have a maximum length of 63 characters, and must be less than 128 bytes in
+  /// size. Up to 64 label entries may be stored. For labels which do not have a
+  /// semantic value, the empty string may be supplied for the label value.
+  core.Map<core.String, core.String>? userLabels;
+
   ServiceLevelObjective();
 
   ServiceLevelObjective.fromJson(core.Map _json) {
@@ -8664,6 +8731,15 @@ class ServiceLevelObjective {
           _json['serviceLevelIndicator']
               as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('userLabels')) {
+      userLabels =
+          (_json['userLabels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8674,6 +8750,7 @@ class ServiceLevelObjective {
         if (rollingPeriod != null) 'rollingPeriod': rollingPeriod!,
         if (serviceLevelIndicator != null)
           'serviceLevelIndicator': serviceLevelIndicator!.toJson(),
+        if (userLabels != null) 'userLabels': userLabels!,
       };
 }
 

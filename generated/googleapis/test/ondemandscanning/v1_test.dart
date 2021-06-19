@@ -1362,6 +1362,7 @@ api.PackageData buildPackageData() {
     o.os = 'foo';
     o.osVersion = 'foo';
     o.package = 'foo';
+    o.packageType = 'foo';
     o.unused = 'foo';
     o.version = 'foo';
   }
@@ -1386,6 +1387,10 @@ void checkPackageData(api.PackageData o) {
     );
     unittest.expect(
       o.package!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.packageType!,
       unittest.equals('foo'),
     );
     unittest.expect(

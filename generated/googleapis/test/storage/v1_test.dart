@@ -27,14 +27,14 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<api.BucketAccessControl> buildUnnamed5283() {
+core.List<api.BucketAccessControl> buildUnnamed5287() {
   var o = <api.BucketAccessControl>[];
   o.add(buildBucketAccessControl());
   o.add(buildBucketAccessControl());
   return o;
 }
 
-void checkUnnamed5283(core.List<api.BucketAccessControl> o) {
+void checkUnnamed5287(core.List<api.BucketAccessControl> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBucketAccessControl(o[0] as api.BucketAccessControl);
   checkBucketAccessControl(o[1] as api.BucketAccessControl);
@@ -59,14 +59,14 @@ void checkBucketBilling(api.BucketBilling o) {
   buildCounterBucketBilling--;
 }
 
-core.List<core.String> buildUnnamed5284() {
+core.List<core.String> buildUnnamed5288() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed5284(core.List<core.String> o) {
+void checkUnnamed5288(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -78,14 +78,14 @@ void checkUnnamed5284(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed5285() {
+core.List<core.String> buildUnnamed5289() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed5285(core.List<core.String> o) {
+void checkUnnamed5289(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -97,14 +97,14 @@ void checkUnnamed5285(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed5286() {
+core.List<core.String> buildUnnamed5290() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed5286(core.List<core.String> o) {
+void checkUnnamed5290(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -122,9 +122,9 @@ api.BucketCors buildBucketCors() {
   buildCounterBucketCors++;
   if (buildCounterBucketCors < 3) {
     o.maxAgeSeconds = 42;
-    o.method = buildUnnamed5284();
-    o.origin = buildUnnamed5285();
-    o.responseHeader = buildUnnamed5286();
+    o.method = buildUnnamed5288();
+    o.origin = buildUnnamed5289();
+    o.responseHeader = buildUnnamed5290();
   }
   buildCounterBucketCors--;
   return o;
@@ -137,34 +137,34 @@ void checkBucketCors(api.BucketCors o) {
       o.maxAgeSeconds!,
       unittest.equals(42),
     );
-    checkUnnamed5284(o.method!);
-    checkUnnamed5285(o.origin!);
-    checkUnnamed5286(o.responseHeader!);
+    checkUnnamed5288(o.method!);
+    checkUnnamed5289(o.origin!);
+    checkUnnamed5290(o.responseHeader!);
   }
   buildCounterBucketCors--;
 }
 
-core.List<api.BucketCors> buildUnnamed5287() {
+core.List<api.BucketCors> buildUnnamed5291() {
   var o = <api.BucketCors>[];
   o.add(buildBucketCors());
   o.add(buildBucketCors());
   return o;
 }
 
-void checkUnnamed5287(core.List<api.BucketCors> o) {
+void checkUnnamed5291(core.List<api.BucketCors> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBucketCors(o[0] as api.BucketCors);
   checkBucketCors(o[1] as api.BucketCors);
 }
 
-core.List<api.ObjectAccessControl> buildUnnamed5288() {
+core.List<api.ObjectAccessControl> buildUnnamed5292() {
   var o = <api.ObjectAccessControl>[];
   o.add(buildObjectAccessControl());
   o.add(buildObjectAccessControl());
   return o;
 }
 
-void checkUnnamed5288(core.List<api.ObjectAccessControl> o) {
+void checkUnnamed5292(core.List<api.ObjectAccessControl> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkObjectAccessControl(o[0] as api.ObjectAccessControl);
   checkObjectAccessControl(o[1] as api.ObjectAccessControl);
@@ -274,14 +274,14 @@ void checkBucketIamConfiguration(api.BucketIamConfiguration o) {
   buildCounterBucketIamConfiguration--;
 }
 
-core.Map<core.String, core.String> buildUnnamed5289() {
+core.Map<core.String, core.String> buildUnnamed5293() {
   var o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
 }
 
-void checkUnnamed5289(core.Map<core.String, core.String> o) {
+void checkUnnamed5293(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -320,14 +320,14 @@ void checkBucketLifecycleRuleAction(api.BucketLifecycleRuleAction o) {
   buildCounterBucketLifecycleRuleAction--;
 }
 
-core.List<core.String> buildUnnamed5290() {
+core.List<core.String> buildUnnamed5294() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed5290(core.List<core.String> o) {
+void checkUnnamed5294(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -351,7 +351,7 @@ api.BucketLifecycleRuleCondition buildBucketLifecycleRuleCondition() {
     o.daysSinceNoncurrentTime = 42;
     o.isLive = true;
     o.matchesPattern = 'foo';
-    o.matchesStorageClass = buildUnnamed5290();
+    o.matchesStorageClass = buildUnnamed5294();
     o.noncurrentTimeBefore = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.numNewerVersions = 42;
   }
@@ -387,7 +387,7 @@ void checkBucketLifecycleRuleCondition(api.BucketLifecycleRuleCondition o) {
       o.matchesPattern!,
       unittest.equals('foo'),
     );
-    checkUnnamed5290(o.matchesStorageClass!);
+    checkUnnamed5294(o.matchesStorageClass!);
     unittest.expect(
       o.noncurrentTimeBefore!,
       unittest.equals(core.DateTime.parse("2002-02-27T00:00:00")),
@@ -422,14 +422,14 @@ void checkBucketLifecycleRule(api.BucketLifecycleRule o) {
   buildCounterBucketLifecycleRule--;
 }
 
-core.List<api.BucketLifecycleRule> buildUnnamed5291() {
+core.List<api.BucketLifecycleRule> buildUnnamed5295() {
   var o = <api.BucketLifecycleRule>[];
   o.add(buildBucketLifecycleRule());
   o.add(buildBucketLifecycleRule());
   return o;
 }
 
-void checkUnnamed5291(core.List<api.BucketLifecycleRule> o) {
+void checkUnnamed5295(core.List<api.BucketLifecycleRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBucketLifecycleRule(o[0] as api.BucketLifecycleRule);
   checkBucketLifecycleRule(o[1] as api.BucketLifecycleRule);
@@ -440,7 +440,7 @@ api.BucketLifecycle buildBucketLifecycle() {
   var o = api.BucketLifecycle();
   buildCounterBucketLifecycle++;
   if (buildCounterBucketLifecycle < 3) {
-    o.rule = buildUnnamed5291();
+    o.rule = buildUnnamed5295();
   }
   buildCounterBucketLifecycle--;
   return o;
@@ -449,7 +449,7 @@ api.BucketLifecycle buildBucketLifecycle() {
 void checkBucketLifecycle(api.BucketLifecycle o) {
   buildCounterBucketLifecycle++;
   if (buildCounterBucketLifecycle < 3) {
-    checkUnnamed5291(o.rule!);
+    checkUnnamed5295(o.rule!);
   }
   buildCounterBucketLifecycle--;
 }
@@ -583,14 +583,14 @@ void checkBucketWebsite(api.BucketWebsite o) {
   buildCounterBucketWebsite--;
 }
 
-core.List<core.String> buildUnnamed5292() {
+core.List<core.String> buildUnnamed5296() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed5292(core.List<core.String> o) {
+void checkUnnamed5296(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -607,17 +607,17 @@ api.Bucket buildBucket() {
   var o = api.Bucket();
   buildCounterBucket++;
   if (buildCounterBucket < 3) {
-    o.acl = buildUnnamed5283();
+    o.acl = buildUnnamed5287();
     o.billing = buildBucketBilling();
-    o.cors = buildUnnamed5287();
+    o.cors = buildUnnamed5291();
     o.defaultEventBasedHold = true;
-    o.defaultObjectAcl = buildUnnamed5288();
+    o.defaultObjectAcl = buildUnnamed5292();
     o.encryption = buildBucketEncryption();
     o.etag = 'foo';
     o.iamConfiguration = buildBucketIamConfiguration();
     o.id = 'foo';
     o.kind = 'foo';
-    o.labels = buildUnnamed5289();
+    o.labels = buildUnnamed5293();
     o.lifecycle = buildBucketLifecycle();
     o.location = 'foo';
     o.locationType = 'foo';
@@ -634,7 +634,7 @@ api.Bucket buildBucket() {
     o.updated = core.DateTime.parse("2002-02-27T14:01:02");
     o.versioning = buildBucketVersioning();
     o.website = buildBucketWebsite();
-    o.zoneAffinity = buildUnnamed5292();
+    o.zoneAffinity = buildUnnamed5296();
   }
   buildCounterBucket--;
   return o;
@@ -643,11 +643,11 @@ api.Bucket buildBucket() {
 void checkBucket(api.Bucket o) {
   buildCounterBucket++;
   if (buildCounterBucket < 3) {
-    checkUnnamed5283(o.acl!);
+    checkUnnamed5287(o.acl!);
     checkBucketBilling(o.billing! as api.BucketBilling);
-    checkUnnamed5287(o.cors!);
+    checkUnnamed5291(o.cors!);
     unittest.expect(o.defaultEventBasedHold!, unittest.isTrue);
-    checkUnnamed5288(o.defaultObjectAcl!);
+    checkUnnamed5292(o.defaultObjectAcl!);
     checkBucketEncryption(o.encryption! as api.BucketEncryption);
     unittest.expect(
       o.etag!,
@@ -663,7 +663,7 @@ void checkBucket(api.Bucket o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed5289(o.labels!);
+    checkUnnamed5293(o.labels!);
     checkBucketLifecycle(o.lifecycle! as api.BucketLifecycle);
     unittest.expect(
       o.location!,
@@ -707,7 +707,7 @@ void checkBucket(api.Bucket o) {
     );
     checkBucketVersioning(o.versioning! as api.BucketVersioning);
     checkBucketWebsite(o.website! as api.BucketWebsite);
-    checkUnnamed5292(o.zoneAffinity!);
+    checkUnnamed5296(o.zoneAffinity!);
   }
   buildCounterBucket--;
 }
@@ -809,14 +809,14 @@ void checkBucketAccessControl(api.BucketAccessControl o) {
   buildCounterBucketAccessControl--;
 }
 
-core.List<api.BucketAccessControl> buildUnnamed5293() {
+core.List<api.BucketAccessControl> buildUnnamed5297() {
   var o = <api.BucketAccessControl>[];
   o.add(buildBucketAccessControl());
   o.add(buildBucketAccessControl());
   return o;
 }
 
-void checkUnnamed5293(core.List<api.BucketAccessControl> o) {
+void checkUnnamed5297(core.List<api.BucketAccessControl> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBucketAccessControl(o[0] as api.BucketAccessControl);
   checkBucketAccessControl(o[1] as api.BucketAccessControl);
@@ -827,7 +827,7 @@ api.BucketAccessControls buildBucketAccessControls() {
   var o = api.BucketAccessControls();
   buildCounterBucketAccessControls++;
   if (buildCounterBucketAccessControls < 3) {
-    o.items = buildUnnamed5293();
+    o.items = buildUnnamed5297();
     o.kind = 'foo';
   }
   buildCounterBucketAccessControls--;
@@ -837,7 +837,7 @@ api.BucketAccessControls buildBucketAccessControls() {
 void checkBucketAccessControls(api.BucketAccessControls o) {
   buildCounterBucketAccessControls++;
   if (buildCounterBucketAccessControls < 3) {
-    checkUnnamed5293(o.items!);
+    checkUnnamed5297(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -846,14 +846,14 @@ void checkBucketAccessControls(api.BucketAccessControls o) {
   buildCounterBucketAccessControls--;
 }
 
-core.List<api.Bucket> buildUnnamed5294() {
+core.List<api.Bucket> buildUnnamed5298() {
   var o = <api.Bucket>[];
   o.add(buildBucket());
   o.add(buildBucket());
   return o;
 }
 
-void checkUnnamed5294(core.List<api.Bucket> o) {
+void checkUnnamed5298(core.List<api.Bucket> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBucket(o[0] as api.Bucket);
   checkBucket(o[1] as api.Bucket);
@@ -864,7 +864,7 @@ api.Buckets buildBuckets() {
   var o = api.Buckets();
   buildCounterBuckets++;
   if (buildCounterBuckets < 3) {
-    o.items = buildUnnamed5294();
+    o.items = buildUnnamed5298();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -875,7 +875,7 @@ api.Buckets buildBuckets() {
 void checkBuckets(api.Buckets o) {
   buildCounterBuckets++;
   if (buildCounterBuckets < 3) {
-    checkUnnamed5294(o.items!);
+    checkUnnamed5298(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -888,14 +888,14 @@ void checkBuckets(api.Buckets o) {
   buildCounterBuckets--;
 }
 
-core.Map<core.String, core.String> buildUnnamed5295() {
+core.Map<core.String, core.String> buildUnnamed5299() {
   var o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
 }
 
-void checkUnnamed5295(core.Map<core.String, core.String> o) {
+void checkUnnamed5299(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -916,7 +916,7 @@ api.Channel buildChannel() {
     o.expiration = 'foo';
     o.id = 'foo';
     o.kind = 'foo';
-    o.params = buildUnnamed5295();
+    o.params = buildUnnamed5299();
     o.payload = true;
     o.resourceId = 'foo';
     o.resourceUri = 'foo';
@@ -946,7 +946,7 @@ void checkChannel(api.Channel o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed5295(o.params!);
+    checkUnnamed5299(o.params!);
     unittest.expect(o.payload!, unittest.isTrue);
     unittest.expect(
       o.resourceId!,
@@ -1023,14 +1023,14 @@ void checkComposeRequestSourceObjects(api.ComposeRequestSourceObjects o) {
   buildCounterComposeRequestSourceObjects--;
 }
 
-core.List<api.ComposeRequestSourceObjects> buildUnnamed5296() {
+core.List<api.ComposeRequestSourceObjects> buildUnnamed5300() {
   var o = <api.ComposeRequestSourceObjects>[];
   o.add(buildComposeRequestSourceObjects());
   o.add(buildComposeRequestSourceObjects());
   return o;
 }
 
-void checkUnnamed5296(core.List<api.ComposeRequestSourceObjects> o) {
+void checkUnnamed5300(core.List<api.ComposeRequestSourceObjects> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkComposeRequestSourceObjects(o[0] as api.ComposeRequestSourceObjects);
   checkComposeRequestSourceObjects(o[1] as api.ComposeRequestSourceObjects);
@@ -1043,7 +1043,7 @@ api.ComposeRequest buildComposeRequest() {
   if (buildCounterComposeRequest < 3) {
     o.destination = buildObject();
     o.kind = 'foo';
-    o.sourceObjects = buildUnnamed5296();
+    o.sourceObjects = buildUnnamed5300();
   }
   buildCounterComposeRequest--;
   return o;
@@ -1057,7 +1057,7 @@ void checkComposeRequest(api.ComposeRequest o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed5296(o.sourceObjects!);
+    checkUnnamed5300(o.sourceObjects!);
   }
   buildCounterComposeRequest--;
 }
@@ -1195,14 +1195,14 @@ void checkHmacKeyMetadata(api.HmacKeyMetadata o) {
   buildCounterHmacKeyMetadata--;
 }
 
-core.List<api.HmacKeyMetadata> buildUnnamed5297() {
+core.List<api.HmacKeyMetadata> buildUnnamed5301() {
   var o = <api.HmacKeyMetadata>[];
   o.add(buildHmacKeyMetadata());
   o.add(buildHmacKeyMetadata());
   return o;
 }
 
-void checkUnnamed5297(core.List<api.HmacKeyMetadata> o) {
+void checkUnnamed5301(core.List<api.HmacKeyMetadata> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHmacKeyMetadata(o[0] as api.HmacKeyMetadata);
   checkHmacKeyMetadata(o[1] as api.HmacKeyMetadata);
@@ -1213,7 +1213,7 @@ api.HmacKeysMetadata buildHmacKeysMetadata() {
   var o = api.HmacKeysMetadata();
   buildCounterHmacKeysMetadata++;
   if (buildCounterHmacKeysMetadata < 3) {
-    o.items = buildUnnamed5297();
+    o.items = buildUnnamed5301();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -1224,7 +1224,7 @@ api.HmacKeysMetadata buildHmacKeysMetadata() {
 void checkHmacKeysMetadata(api.HmacKeysMetadata o) {
   buildCounterHmacKeysMetadata++;
   if (buildCounterHmacKeysMetadata < 3) {
-    checkUnnamed5297(o.items!);
+    checkUnnamed5301(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -1237,14 +1237,14 @@ void checkHmacKeysMetadata(api.HmacKeysMetadata o) {
   buildCounterHmacKeysMetadata--;
 }
 
-core.Map<core.String, core.String> buildUnnamed5298() {
+core.Map<core.String, core.String> buildUnnamed5302() {
   var o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
 }
 
-void checkUnnamed5298(core.Map<core.String, core.String> o) {
+void checkUnnamed5302(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1256,14 +1256,14 @@ void checkUnnamed5298(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed5299() {
+core.List<core.String> buildUnnamed5303() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed5299(core.List<core.String> o) {
+void checkUnnamed5303(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1280,9 +1280,9 @@ api.Notification buildNotification() {
   var o = api.Notification();
   buildCounterNotification++;
   if (buildCounterNotification < 3) {
-    o.customAttributes = buildUnnamed5298();
+    o.customAttributes = buildUnnamed5302();
     o.etag = 'foo';
-    o.eventTypes = buildUnnamed5299();
+    o.eventTypes = buildUnnamed5303();
     o.id = 'foo';
     o.kind = 'foo';
     o.objectNamePrefix = 'foo';
@@ -1297,12 +1297,12 @@ api.Notification buildNotification() {
 void checkNotification(api.Notification o) {
   buildCounterNotification++;
   if (buildCounterNotification < 3) {
-    checkUnnamed5298(o.customAttributes!);
+    checkUnnamed5302(o.customAttributes!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed5299(o.eventTypes!);
+    checkUnnamed5303(o.eventTypes!);
     unittest.expect(
       o.id!,
       unittest.equals('foo'),
@@ -1331,14 +1331,14 @@ void checkNotification(api.Notification o) {
   buildCounterNotification--;
 }
 
-core.List<api.Notification> buildUnnamed5300() {
+core.List<api.Notification> buildUnnamed5304() {
   var o = <api.Notification>[];
   o.add(buildNotification());
   o.add(buildNotification());
   return o;
 }
 
-void checkUnnamed5300(core.List<api.Notification> o) {
+void checkUnnamed5304(core.List<api.Notification> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNotification(o[0] as api.Notification);
   checkNotification(o[1] as api.Notification);
@@ -1349,7 +1349,7 @@ api.Notifications buildNotifications() {
   var o = api.Notifications();
   buildCounterNotifications++;
   if (buildCounterNotifications < 3) {
-    o.items = buildUnnamed5300();
+    o.items = buildUnnamed5304();
     o.kind = 'foo';
   }
   buildCounterNotifications--;
@@ -1359,7 +1359,7 @@ api.Notifications buildNotifications() {
 void checkNotifications(api.Notifications o) {
   buildCounterNotifications++;
   if (buildCounterNotifications < 3) {
-    checkUnnamed5300(o.items!);
+    checkUnnamed5304(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -1368,14 +1368,14 @@ void checkNotifications(api.Notifications o) {
   buildCounterNotifications--;
 }
 
-core.List<api.ObjectAccessControl> buildUnnamed5301() {
+core.List<api.ObjectAccessControl> buildUnnamed5305() {
   var o = <api.ObjectAccessControl>[];
   o.add(buildObjectAccessControl());
   o.add(buildObjectAccessControl());
   return o;
 }
 
-void checkUnnamed5301(core.List<api.ObjectAccessControl> o) {
+void checkUnnamed5305(core.List<api.ObjectAccessControl> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkObjectAccessControl(o[0] as api.ObjectAccessControl);
   checkObjectAccessControl(o[1] as api.ObjectAccessControl);
@@ -1408,14 +1408,14 @@ void checkObjectCustomerEncryption(api.ObjectCustomerEncryption o) {
   buildCounterObjectCustomerEncryption--;
 }
 
-core.Map<core.String, core.String> buildUnnamed5302() {
+core.Map<core.String, core.String> buildUnnamed5306() {
   var o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
 }
 
-void checkUnnamed5302(core.Map<core.String, core.String> o) {
+void checkUnnamed5306(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1459,7 +1459,7 @@ api.Object buildObject() {
   var o = api.Object();
   buildCounterObject++;
   if (buildCounterObject < 3) {
-    o.acl = buildUnnamed5301();
+    o.acl = buildUnnamed5305();
     o.bucket = 'foo';
     o.cacheControl = 'foo';
     o.componentCount = 42;
@@ -1478,7 +1478,7 @@ api.Object buildObject() {
     o.kmsKeyName = 'foo';
     o.md5Hash = 'foo';
     o.mediaLink = 'foo';
-    o.metadata = buildUnnamed5302();
+    o.metadata = buildUnnamed5306();
     o.metageneration = 'foo';
     o.name = 'foo';
     o.owner = buildObjectOwner();
@@ -1499,7 +1499,7 @@ api.Object buildObject() {
 void checkObject(api.Object o) {
   buildCounterObject++;
   if (buildCounterObject < 3) {
-    checkUnnamed5301(o.acl!);
+    checkUnnamed5305(o.acl!);
     unittest.expect(
       o.bucket!,
       unittest.equals('foo'),
@@ -1567,7 +1567,7 @@ void checkObject(api.Object o) {
       o.mediaLink!,
       unittest.equals('foo'),
     );
-    checkUnnamed5302(o.metadata!);
+    checkUnnamed5306(o.metadata!);
     unittest.expect(
       o.metageneration!,
       unittest.equals('foo'),
@@ -1721,14 +1721,14 @@ void checkObjectAccessControl(api.ObjectAccessControl o) {
   buildCounterObjectAccessControl--;
 }
 
-core.List<api.ObjectAccessControl> buildUnnamed5303() {
+core.List<api.ObjectAccessControl> buildUnnamed5307() {
   var o = <api.ObjectAccessControl>[];
   o.add(buildObjectAccessControl());
   o.add(buildObjectAccessControl());
   return o;
 }
 
-void checkUnnamed5303(core.List<api.ObjectAccessControl> o) {
+void checkUnnamed5307(core.List<api.ObjectAccessControl> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkObjectAccessControl(o[0] as api.ObjectAccessControl);
   checkObjectAccessControl(o[1] as api.ObjectAccessControl);
@@ -1739,7 +1739,7 @@ api.ObjectAccessControls buildObjectAccessControls() {
   var o = api.ObjectAccessControls();
   buildCounterObjectAccessControls++;
   if (buildCounterObjectAccessControls < 3) {
-    o.items = buildUnnamed5303();
+    o.items = buildUnnamed5307();
     o.kind = 'foo';
   }
   buildCounterObjectAccessControls--;
@@ -1749,7 +1749,7 @@ api.ObjectAccessControls buildObjectAccessControls() {
 void checkObjectAccessControls(api.ObjectAccessControls o) {
   buildCounterObjectAccessControls++;
   if (buildCounterObjectAccessControls < 3) {
-    checkUnnamed5303(o.items!);
+    checkUnnamed5307(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -1758,27 +1758,27 @@ void checkObjectAccessControls(api.ObjectAccessControls o) {
   buildCounterObjectAccessControls--;
 }
 
-core.List<api.Object> buildUnnamed5304() {
+core.List<api.Object> buildUnnamed5308() {
   var o = <api.Object>[];
   o.add(buildObject());
   o.add(buildObject());
   return o;
 }
 
-void checkUnnamed5304(core.List<api.Object> o) {
+void checkUnnamed5308(core.List<api.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkObject(o[0] as api.Object);
   checkObject(o[1] as api.Object);
 }
 
-core.List<core.String> buildUnnamed5305() {
+core.List<core.String> buildUnnamed5309() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed5305(core.List<core.String> o) {
+void checkUnnamed5309(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1795,10 +1795,10 @@ api.Objects buildObjects() {
   var o = api.Objects();
   buildCounterObjects++;
   if (buildCounterObjects < 3) {
-    o.items = buildUnnamed5304();
+    o.items = buildUnnamed5308();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
-    o.prefixes = buildUnnamed5305();
+    o.prefixes = buildUnnamed5309();
   }
   buildCounterObjects--;
   return o;
@@ -1807,7 +1807,7 @@ api.Objects buildObjects() {
 void checkObjects(api.Objects o) {
   buildCounterObjects++;
   if (buildCounterObjects < 3) {
-    checkUnnamed5304(o.items!);
+    checkUnnamed5308(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -1816,19 +1816,19 @@ void checkObjects(api.Objects o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed5305(o.prefixes!);
+    checkUnnamed5309(o.prefixes!);
   }
   buildCounterObjects--;
 }
 
-core.List<core.String> buildUnnamed5306() {
+core.List<core.String> buildUnnamed5310() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed5306(core.List<core.String> o) {
+void checkUnnamed5310(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1846,7 +1846,7 @@ api.PolicyBindings buildPolicyBindings() {
   buildCounterPolicyBindings++;
   if (buildCounterPolicyBindings < 3) {
     o.condition = buildExpr();
-    o.members = buildUnnamed5306();
+    o.members = buildUnnamed5310();
     o.role = 'foo';
   }
   buildCounterPolicyBindings--;
@@ -1857,7 +1857,7 @@ void checkPolicyBindings(api.PolicyBindings o) {
   buildCounterPolicyBindings++;
   if (buildCounterPolicyBindings < 3) {
     checkExpr(o.condition! as api.Expr);
-    checkUnnamed5306(o.members!);
+    checkUnnamed5310(o.members!);
     unittest.expect(
       o.role!,
       unittest.equals('foo'),
@@ -1866,14 +1866,14 @@ void checkPolicyBindings(api.PolicyBindings o) {
   buildCounterPolicyBindings--;
 }
 
-core.List<api.PolicyBindings> buildUnnamed5307() {
+core.List<api.PolicyBindings> buildUnnamed5311() {
   var o = <api.PolicyBindings>[];
   o.add(buildPolicyBindings());
   o.add(buildPolicyBindings());
   return o;
 }
 
-void checkUnnamed5307(core.List<api.PolicyBindings> o) {
+void checkUnnamed5311(core.List<api.PolicyBindings> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPolicyBindings(o[0] as api.PolicyBindings);
   checkPolicyBindings(o[1] as api.PolicyBindings);
@@ -1884,7 +1884,7 @@ api.Policy buildPolicy() {
   var o = api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.bindings = buildUnnamed5307();
+    o.bindings = buildUnnamed5311();
     o.etag = 'foo';
     o.kind = 'foo';
     o.resourceId = 'foo';
@@ -1897,7 +1897,7 @@ api.Policy buildPolicy() {
 void checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed5307(o.bindings!);
+    checkUnnamed5311(o.bindings!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -1986,14 +1986,14 @@ void checkServiceAccount(api.ServiceAccount o) {
   buildCounterServiceAccount--;
 }
 
-core.List<core.String> buildUnnamed5308() {
+core.List<core.String> buildUnnamed5312() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed5308(core.List<core.String> o) {
+void checkUnnamed5312(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2011,7 +2011,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
     o.kind = 'foo';
-    o.permissions = buildUnnamed5308();
+    o.permissions = buildUnnamed5312();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -2024,19 +2024,19 @@ void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed5308(o.permissions!);
+    checkUnnamed5312(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
 }
 
-core.List<core.String> buildUnnamed5309() {
+core.List<core.String> buildUnnamed5313() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed5309(core.List<core.String> o) {
+void checkUnnamed5313(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2048,14 +2048,14 @@ void checkUnnamed5309(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed5310() {
+core.List<core.String> buildUnnamed5314() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed5310(core.List<core.String> o) {
+void checkUnnamed5314(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3789,7 +3789,7 @@ void main() {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).buckets;
       var arg_bucket = 'foo';
-      var arg_permissions = buildUnnamed5309();
+      var arg_permissions = buildUnnamed5313();
       var arg_provisionalUserProject = 'foo';
       var arg_userProject = 'foo';
       var arg_$fields = 'foo';
@@ -7045,7 +7045,7 @@ void main() {
       var res = api.StorageApi(mock).objects;
       var arg_bucket = 'foo';
       var arg_object = 'foo';
-      var arg_permissions = buildUnnamed5310();
+      var arg_permissions = buildUnnamed5314();
       var arg_generation = 'foo';
       var arg_provisionalUserProject = 'foo';
       var arg_userProject = 'foo';

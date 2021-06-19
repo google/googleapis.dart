@@ -337,7 +337,7 @@
             }
         }
     },
-    "revision": "20210524",
+    "revision": "20210613",
     "rootUrl": "https://ondemandscanning.googleapis.com/",
     "schemas": {
         "AliasContext": {
@@ -1051,7 +1051,8 @@
                         "DEPLOYMENT",
                         "DISCOVERY",
                         "ATTESTATION",
-                        "UPGRADE"
+                        "UPGRADE",
+                        "COMPLIANCE"
                     ],
                     "enumDescriptions": [
                         "Default value. This value is unused.",
@@ -1062,7 +1063,8 @@
                         "The note and occurrence track deployment events.",
                         "The note and occurrence track the initial discovery status of a resource.",
                         "This represents a logical \"role\" that can attest to artifacts.",
-                        "This represents an available package upgrade."
+                        "This represents an available package upgrade.",
+                        "This represents a Compliance Note"
                     ],
                     "type": "string"
                 },
@@ -1154,6 +1156,22 @@
                 },
                 "package": {
                     "description": "The package being analysed for vulnerabilities",
+                    "type": "string"
+                },
+                "packageType": {
+                    "description": "The type of package: os, maven, go, etc.",
+                    "enum": [
+                        "PACKAGE_TYPE_UNSPECIFIED",
+                        "OS",
+                        "MAVEN",
+                        "GO"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "Operating System",
+                        "",
+                        ""
+                    ],
                     "type": "string"
                 },
                 "unused": {

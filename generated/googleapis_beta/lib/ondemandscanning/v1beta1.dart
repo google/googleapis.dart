@@ -1640,6 +1640,7 @@ class Occurrence {
   /// - "ATTESTATION" : This represents a logical "role" that can attest to
   /// artifacts.
   /// - "UPGRADE" : This represents an available package upgrade.
+  /// - "COMPLIANCE" : This represents a Compliance Note
   core.String? kind;
 
   /// The name of the occurrence in the form of
@@ -1863,6 +1864,14 @@ class PackageData {
 
   /// The package being analysed for vulnerabilities
   core.String? package;
+
+  /// The type of package: os, maven, go, etc.
+  /// Possible string values are:
+  /// - "PACKAGE_TYPE_UNSPECIFIED"
+  /// - "OS" : Operating System
+  /// - "MAVEN"
+  /// - "GO"
+  core.String? packageType;
   core.String? unused;
 
   /// The version of the package being analysed
@@ -1883,6 +1892,9 @@ class PackageData {
     if (_json.containsKey('package')) {
       package = _json['package'] as core.String;
     }
+    if (_json.containsKey('packageType')) {
+      packageType = _json['packageType'] as core.String;
+    }
     if (_json.containsKey('unused')) {
       unused = _json['unused'] as core.String;
     }
@@ -1896,6 +1908,7 @@ class PackageData {
         if (os != null) 'os': os!,
         if (osVersion != null) 'osVersion': osVersion!,
         if (package != null) 'package': package!,
+        if (packageType != null) 'packageType': packageType!,
         if (unused != null) 'unused': unused!,
         if (version != null) 'version': version!,
       };

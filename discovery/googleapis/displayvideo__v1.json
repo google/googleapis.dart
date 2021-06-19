@@ -7201,7 +7201,7 @@
             }
         }
     },
-    "revision": "20210611",
+    "revision": "20210618",
     "rootUrl": "https://displayvideo.googleapis.com/",
     "schemas": {
         "ActivateManualTriggerRequest": {

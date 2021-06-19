@@ -1,11 +1,11 @@
 ## 4.0.0-dev
 
-baremetalsolution             	old:	{v1}      	new:	null
-dfareporting                  	old:	{v3.4}    	new:	{v3.4, v3.5}
-keep                          	old:	null      	new:	{v1}
-paymentsresellersubscription  	old:	null      	new:	{v1}
-privateca                     	old:	null      	new:	{v1}
-remotebuildexecution          	old:	null      	new:	{v2}
+- `baremetalsolution` - **REMOVED**
+- `dfareporting` - added v3.5
+- `keep` - `v1` - new!
+- `paymentsresellersubscription` - new!
+- `privateca` - new!
+- `resourcesettings` - new!
 
 ## 3.0.0
 

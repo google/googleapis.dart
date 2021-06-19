@@ -15,7 +15,8 @@
 /// Cloud Run Admin API - v1
 ///
 /// Deploy and manage user provided container images that scale automatically
-/// based on HTTP traffic.
+/// based on incoming requets. The Cloud Run Admin API follows the Knative
+/// Serving API specification.
 ///
 /// For more information, see <https://cloud.google.com/run/>
 ///
@@ -52,7 +53,9 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// Deploy and manage user provided container images that scale automatically
-/// based on HTTP traffic.
+/// based on incoming requets.
+///
+/// The Cloud Run Admin API follows the Knative Serving API specification.
 class CloudRunApi {
   /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
@@ -2501,9 +2504,8 @@ class Binding {
       };
 }
 
-/// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
-/// ConfigMapEnvSource selects a ConfigMap to populate the environment variables
-/// with.
+/// Not supported by Cloud Run ConfigMapEnvSource selects a ConfigMap to
+/// populate the environment variables with.
 ///
 /// The contents of the target ConfigMap's Data field will represent the
 /// key-value pairs as environment variables.
@@ -2514,12 +2516,10 @@ class ConfigMapEnvSource {
   /// Use the "name" field instead.
   LocalObjectReference? localObjectReference;
 
-  /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The
-  /// ConfigMap to select from.
+  /// The ConfigMap to select from.
   core.String? name;
 
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Specify whether the ConfigMap must be defined
+  /// (Optional) Specify whether the ConfigMap must be defined
   core.bool? optional;
 
   ConfigMapEnvSource();
@@ -2545,11 +2545,9 @@ class ConfigMapEnvSource {
       };
 }
 
-/// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
-/// Selects a key from a ConfigMap.
+/// Not supported by Cloud Run Selects a key from a ConfigMap.
 class ConfigMapKeySelector {
-  /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The
-  /// key to select.
+  /// The key to select.
   core.String? key;
 
   /// This field should not be used directly as it is meant to be inlined
@@ -2558,12 +2556,10 @@ class ConfigMapKeySelector {
   /// Use the "name" field instead.
   LocalObjectReference? localObjectReference;
 
-  /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The
-  /// ConfigMap to select from.
+  /// The ConfigMap to select from.
   core.String? name;
 
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Specify whether the ConfigMap or its key must be defined
+  /// (Optional) Specify whether the ConfigMap or its key must be defined
   core.bool? optional;
 
   ConfigMapKeySelector();
@@ -2593,15 +2589,13 @@ class ConfigMapKeySelector {
       };
 }
 
-/// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
-/// Adapts a ConfigMap into a volume.
+/// Not supported by Cloud Run Adapts a ConfigMap into a volume.
 ///
 /// The contents of the target ConfigMap's Data field will be presented in a
 /// volume as files using the keys in the Data field as the file names, unless
 /// the items element is populated with specific mappings of keys to paths.
 class ConfigMapVolumeSource {
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Mode bits to use on created files by default.
+  /// (Optional) Mode bits to use on created files by default.
   ///
   /// Must be a value between 0 and 0777. Defaults to 0644. Directories within
   /// the path are not affected by this setting. This might be in conflict with
@@ -2609,8 +2603,7 @@ class ConfigMapVolumeSource {
   /// be other mode bits set.
   core.int? defaultMode;
 
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported If unspecified, each key-value pair in the Data field of the
+  /// (Optional) If unspecified, each key-value pair in the Data field of the
   /// referenced Secret will be projected into the volume as a file whose name
   /// is the key and content is the value.
   ///
@@ -2620,12 +2613,10 @@ class ConfigMapVolumeSource {
   /// optional.
   core.List<KeyToPath>? items;
 
-  /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
   /// Name of the config.
   core.String? name;
 
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Specify whether the Secret or its keys must be defined.
+  /// (Optional) Specify whether the Secret or its keys must be defined.
   core.bool? optional;
 
   ConfigMapVolumeSource();
@@ -2803,8 +2794,7 @@ class ConfigurationStatus {
 /// container and the arguments to supply to it. Note that additional arguments
 /// may be supplied by the system to the container at runtime.
 class Container {
-  /// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos:
-  /// supported Arguments to the entrypoint.
+  /// (Optional) Arguments to the entrypoint.
   ///
   /// The docker image's CMD is used if this is not provided. Variable
   /// references $(VAR_NAME) are expanded using the container's environment. If
@@ -2816,12 +2806,10 @@ class Container {
   core.List<core.String>? args;
   core.List<core.String>? command;
 
-  /// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos:
-  /// supported List of environment variables to set in the container.
+  /// (Optional) List of environment variables to set in the container.
   core.List<EnvVar>? env;
 
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported List of sources to populate environment variables in the
+  /// (Optional) List of sources to populate environment variables in the
   /// container.
   ///
   /// The keys defined within a source must be a C_IDENTIFIER. All invalid keys
@@ -2831,22 +2819,20 @@ class Container {
   /// precedence. Cannot be updated.
   core.List<EnvFromSource>? envFrom;
 
-  /// Cloud Run fully managed: only supports containers from Google Container
-  /// Registry Cloud Run for Anthos: supported URL of the Container image.
+  /// Only supports containers from Google Container Registry or Artifact
+  /// Registry URL of the Container image.
   ///
   /// More info: https://kubernetes.io/docs/concepts/containers/images
   core.String? image;
 
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Image pull policy.
+  /// (Optional) Image pull policy.
   ///
   /// One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is
   /// specified, or IfNotPresent otherwise. More info:
   /// https://kubernetes.io/docs/concepts/containers/images#updating-images
   core.String? imagePullPolicy;
 
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Periodic probe of container liveness.
+  /// (Optional) Periodic probe of container liveness.
   ///
   /// Container will be restarted if the probe fails. More info:
   /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
@@ -2866,31 +2852,27 @@ class Container {
   /// the PORT environment variable for the container to listen on.
   core.List<ContainerPort>? ports;
 
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Periodic probe of container service readiness.
+  /// (Optional) Periodic probe of container service readiness.
   ///
   /// Container will be removed from service endpoints if the probe fails. More
   /// info:
   /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
   Probe? readinessProbe;
 
-  /// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos:
-  /// supported Compute Resources required by this container.
+  /// (Optional) Compute Resources required by this container.
   ///
   /// More info:
   /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
   ResourceRequirements? resources;
 
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Security options the pod should run with.
+  /// (Optional) Security options the pod should run with.
   ///
   /// More info: https://kubernetes.io/docs/concepts/policy/security-context/
   /// More info:
   /// https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
   SecurityContext? securityContext;
 
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// not supported Startup probe of application within the container.
+  /// (Optional) Startup probe of application within the container.
   ///
   /// All other probes are disabled if a startup probe is provided, until it
   /// succeeds. Container will not be added to service endpoints if the probe
@@ -2898,8 +2880,7 @@ class Container {
   /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
   Probe? startupProbe;
 
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Path at which the file to which the container's termination
+  /// (Optional) Path at which the file to which the container's termination
   /// message will be written is mounted into the container's filesystem.
   ///
   /// Message written is intended to be brief final status, such as an assertion
@@ -2908,8 +2889,7 @@ class Container {
   /// Defaults to /dev/termination-log.
   core.String? terminationMessagePath;
 
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Indicate how the termination message should be populated.
+  /// (Optional) Indicate how the termination message should be populated.
   ///
   /// File will use the contents of terminationMessagePath to populate the
   /// container status message on both success and failure.
@@ -2919,15 +2899,13 @@ class Container {
   /// smaller. Defaults to File. Cannot be updated.
   core.String? terminationMessagePolicy;
 
-  /// (Optional) Cloud Run fully managed: supported Volume to mount into the
-  /// container's filesystem.
+  /// (Optional) Volume to mount into the container's filesystem.
   ///
-  /// Only supports SecretVolumeSources. Cloud Run for Anthos: supported Pod
-  /// volumes to mount into the container's filesystem.
+  /// Only supports SecretVolumeSources. Pod volumes to mount into the
+  /// container's filesystem.
   core.List<VolumeMount>? volumeMounts;
 
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Container's working directory.
+  /// (Optional) Container's working directory.
   ///
   /// If not specified, the container runtime's default will be used, which
   /// might be configured in the container image.
@@ -3050,8 +3028,7 @@ class ContainerPort {
   /// Allowed values are "http1" and "h2c".
   core.String? name;
 
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Protocol for port.
+  /// (Optional) Protocol for port.
   ///
   /// Must be "TCP". Defaults to "TCP".
   core.String? protocol;
@@ -3241,21 +3218,18 @@ class DomainMappingStatus {
       };
 }
 
-/// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
-/// EnvFromSource represents the source of a set of ConfigMaps
+/// Not supported by Cloud Run EnvFromSource represents the source of a set of
+/// ConfigMaps
 class EnvFromSource {
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported The ConfigMap to select from
+  /// (Optional) The ConfigMap to select from
   ConfigMapEnvSource? configMapRef;
 
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported An optional identifier to prepend to each key in the ConfigMap.
+  /// (Optional) An optional identifier to prepend to each key in the ConfigMap.
   ///
   /// Must be a C_IDENTIFIER.
   core.String? prefix;
 
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported The Secret to select from
+  /// (Optional) The Secret to select from
   SecretEnvSource? secretRef;
 
   EnvFromSource();
@@ -3298,11 +3272,10 @@ class EnvVar {
   /// whether the variable exists or not. Defaults to "".
   core.String? value;
 
-  /// (Optional) Cloud Run fully managed: supported Source for the environment
-  /// variable's value.
+  /// (Optional) Source for the environment variable's value.
   ///
-  /// Only supports secret_key_ref. Cloud Run for Anthos: supported Source for
-  /// the environment variable's value. Cannot be used if value is not empty.
+  /// Only supports secret_key_ref. Source for the environment variable's value.
+  /// Cannot be used if value is not empty.
   EnvVarSource? valueFrom;
 
   EnvVar();
@@ -3327,17 +3300,12 @@ class EnvVar {
       };
 }
 
-/// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
 /// EnvVarSource represents a source for the value of an EnvVar.
 class EnvVarSource {
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Selects a key of a ConfigMap.
+  /// (Optional) Not supported by Cloud Run Selects a key of a ConfigMap.
   ConfigMapKeySelector? configMapKeyRef;
 
-  /// (Optional) Cloud Run fully managed: supported.
-  ///
-  /// Selects a key (version) of a secret in Secret Manager. Cloud Run for
-  /// Anthos: supported. Selects a key of a secret in the pod's namespace.
+  /// (Optional) Selects a key (version) of a secret in Secret Manager.
   SecretKeySelector? secretKeyRef;
 
   EnvVarSource();
@@ -3360,12 +3328,10 @@ class EnvVarSource {
       };
 }
 
-/// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
-/// ExecAction describes a "run in container" action.
+/// Not supported by Cloud Run ExecAction describes a "run in container" action.
 class ExecAction {
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Command is the command line to execute inside the container, the
-  /// working directory for the command is root ('/') in the container's
+  /// (Optional) Command is the command line to execute inside the container,
+  /// the working directory for the command is root ('/') in the container's
   /// filesystem.
   ///
   /// The command is simply exec'd, it is not run inside a shell, so traditional
@@ -3525,27 +3491,23 @@ class GoogleCloudRunV1Condition {
       };
 }
 
-/// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
-/// HTTPGetAction describes an action based on HTTP Get requests.
+/// Not supported by Cloud Run HTTPGetAction describes an action based on HTTP
+/// Get requests.
 class HTTPGetAction {
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Host name to connect to, defaults to the pod IP.
+  /// (Optional) Host name to connect to, defaults to the pod IP.
   ///
   /// You probably want to set "Host" in httpHeaders instead.
   core.String? host;
 
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Custom headers to set in the request.
+  /// (Optional) Custom headers to set in the request.
   ///
   /// HTTP allows repeated headers.
   core.List<HTTPHeader>? httpHeaders;
 
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Path to access on the HTTP server.
+  /// (Optional) Path to access on the HTTP server.
   core.String? path;
 
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Scheme to use for connecting to the host.
+  /// (Optional) Scheme to use for connecting to the host.
   ///
   /// Defaults to HTTP.
   core.String? scheme;
@@ -3579,15 +3541,13 @@ class HTTPGetAction {
       };
 }
 
-/// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
-/// HTTPHeader describes a custom header to be used in HTTP probes
+/// Not supported by Cloud Run HTTPHeader describes a custom header to be used
+/// in HTTP probes
 class HTTPHeader {
-  /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The
-  /// header field name
+  /// The header field name
   core.String? name;
 
-  /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The
-  /// header field value
+  /// The header field value
   core.String? value;
 
   HTTPHeader();
@@ -3607,18 +3567,15 @@ class HTTPHeader {
       };
 }
 
-/// Cloud Run fully managed: supported Cloud Run for Anthos: supported Maps a
-/// string key to a path within a volume.
+/// Maps a string key to a path within a volume.
 class KeyToPath {
-  /// Cloud Run fully managed: supported The Cloud Secret Manager secret
-  /// version.
+  /// The Cloud Secret Manager secret version.
   ///
   /// Can be 'latest' for the latest value or an integer for a specific version.
-  /// Cloud Run for Anthos: supported The key to project.
+  /// The key to project.
   core.String? key;
 
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Mode bits to use on this file, must be a value between 0000 and
+  /// (Optional) Mode bits to use on this file, must be a value between 0000 and
   /// 0777.
   ///
   /// If not specified, the volume defaultMode will be used. This might be in
@@ -3626,8 +3583,7 @@ class KeyToPath {
   /// the result can be other mode bits set.
   core.int? mode;
 
-  /// Cloud Run fully managed: supported Cloud Run for Anthos: supported The
-  /// relative path of the file to map the key to.
+  /// The relative path of the file to map the key to.
   ///
   /// May not be an absolute path. May not contain the path element '..'. May
   /// not start with the string '..'.
@@ -4028,12 +3984,10 @@ class ListServicesResponse {
       };
 }
 
-/// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
-/// LocalObjectReference contains enough information to let you locate the
-/// referenced object inside the same namespace.
+/// Not supported by Cloud Run LocalObjectReference contains enough information
+/// to let you locate the referenced object inside the same namespace.
 class LocalObjectReference {
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Name of the referent.
+  /// (Optional) Name of the referent.
   ///
   /// More info:
   /// https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
@@ -4132,8 +4086,8 @@ class ObjectMeta {
   /// More info: http://kubernetes.io/docs/user-guide/annotations
   core.Map<core.String, core.String>? annotations;
 
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported The name of the cluster which the object belongs to.
+  /// (Optional) Not supported by Cloud Run The name of the cluster which the
+  /// object belongs to.
   ///
   /// This is used to distinguish resources with same name and namespace in
   /// different clusters. This field is not set anywhere right now and apiserver
@@ -4150,17 +4104,15 @@ class ObjectMeta {
   /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
   core.String? creationTimestamp;
 
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Number of seconds allowed for this object to gracefully
-  /// terminate before it will be removed from the system.
+  /// (Optional) Not supported by Cloud Run Number of seconds allowed for this
+  /// object to gracefully terminate before it will be removed from the system.
   ///
   /// Only set when deletionTimestamp is also set. May only be shortened.
   /// Read-only.
   core.int? deletionGracePeriodSeconds;
 
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported DeletionTimestamp is RFC 3339 date and time at which this
-  /// resource will be deleted.
+  /// (Optional) Not supported by Cloud Run DeletionTimestamp is RFC 3339 date
+  /// and time at which this resource will be deleted.
   ///
   /// This field is set by the server when a graceful deletion is requested by
   /// the user, and is not directly settable by a client. The resource is
@@ -4182,17 +4134,17 @@ class ObjectMeta {
   /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
   core.String? deletionTimestamp;
 
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Must be empty before the object is deleted from the registry.
+  /// (Optional) Not supported by Cloud Run Must be empty before the object is
+  /// deleted from the registry.
   ///
   /// Each entry is an identifier for the responsible component that will remove
   /// the entry from the list. If the deletionTimestamp of the object is
   /// non-nil, entries in this list can only be removed. +patchStrategy=merge
   core.List<core.String>? finalizers;
 
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported GenerateName is an optional prefix, used by the server, to
-  /// generate a unique name ONLY IF the Name field has not been provided.
+  /// (Optional) Not supported by Cloud Run GenerateName is an optional prefix,
+  /// used by the server, to generate a unique name ONLY IF the Name field has
+  /// not been provided.
   ///
   /// If this field is used, the name returned to the client will be different
   /// than the name passed. This value will also be combined with a unique
@@ -4237,8 +4189,8 @@ class ObjectMeta {
   /// project number.
   core.String? namespace;
 
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported List of objects that own this object.
+  /// (Optional) Not supported by Cloud Run List of objects that own this
+  /// object.
   ///
   /// If ALL objects in the list have been deleted, this object will be garbage
   /// collected.
@@ -4548,59 +4500,51 @@ class Policy {
       };
 }
 
-/// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Probe
-/// describes a health check to be performed against a container to determine
-/// whether it is alive or ready to receive traffic.
+/// Not supported by Cloud Run Probe describes a health check to be performed
+/// against a container to determine whether it is alive or ready to receive
+/// traffic.
 class Probe {
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported One and only one of the following should be specified.
+  /// (Optional) One and only one of the following should be specified.
   ///
   /// Exec specifies the action to take. A field inlined from the Handler
   /// message.
   ExecAction? exec;
 
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Minimum consecutive failures for the probe to be considered
+  /// (Optional) Minimum consecutive failures for the probe to be considered
   /// failed after having succeeded.
   ///
   /// Defaults to 3. Minimum value is 1.
   core.int? failureThreshold;
 
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported HTTPGet specifies the http request to perform.
+  /// (Optional) HTTPGet specifies the http request to perform.
   ///
   /// A field inlined from the Handler message.
   HTTPGetAction? httpGet;
 
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Number of seconds after the container has started before
+  /// (Optional) Number of seconds after the container has started before
   /// liveness probes are initiated.
   ///
   /// More info:
   /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
   core.int? initialDelaySeconds;
 
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported How often (in seconds) to perform the probe.
+  /// (Optional) How often (in seconds) to perform the probe.
   ///
   /// Default to 10 seconds. Minimum value is 1.
   core.int? periodSeconds;
 
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Minimum consecutive successes for the probe to be considered
+  /// (Optional) Minimum consecutive successes for the probe to be considered
   /// successful after having failed.
   ///
   /// Defaults to 1. Must be 1 for liveness. Minimum value is 1.
   core.int? successThreshold;
 
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported TCPSocket specifies an action involving a TCP port.
+  /// (Optional) TCPSocket specifies an action involving a TCP port.
   ///
   /// TCP hooks not yet supported A field inlined from the Handler message.
   TCPSocketAction? tcpSocket;
 
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Number of seconds after which the probe times out.
+  /// (Optional) Number of seconds after which the probe times out.
   ///
   /// Defaults to 1 second. Minimum value is 1. More info:
   /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
@@ -4697,23 +4641,22 @@ class ResourceRecord {
 
 /// ResourceRequirements describes the compute resource requirements.
 class ResourceRequirements {
-  /// (Optional) Cloud Run fully managed: Only memory and CPU are supported.
+  /// (Optional) Only memory and CPU are supported.
   ///
   /// Note: The only supported values for CPU are '1', '2', and '4'. Setting 4
-  /// CPU requires at least 2Gi of memory. Cloud Run for Anthos: supported
-  /// Limits describes the maximum amount of compute resources allowed. The
-  /// values of the map is string form of the 'quantity' k8s type:
+  /// CPU requires at least 2Gi of memory. Limits describes the maximum amount
+  /// of compute resources allowed. The values of the map is string form of the
+  /// 'quantity' k8s type:
   /// https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
   core.Map<core.String, core.String>? limits;
 
-  /// (Optional) Cloud Run fully managed: Only memory and CPU are supported.
+  /// (Optional) Only memory and CPU are supported.
   ///
-  /// Note: The only supported values for CPU are '1' and '2'. Cloud Run for
-  /// Anthos: supported Requests describes the minimum amount of compute
-  /// resources required. If Requests is omitted for a container, it defaults to
-  /// Limits if that is explicitly specified, otherwise to an
-  /// implementation-defined value. The values of the map is string form of the
-  /// 'quantity' k8s type:
+  /// Note: The only supported values for CPU are '1' and '2'. Requests
+  /// describes the minimum amount of compute resources required. If Requests is
+  /// omitted for a container, it defaults to Limits if that is explicitly
+  /// specified, otherwise to an implementation-defined value. The values of the
+  /// map is string form of the 'quantity' k8s type:
   /// https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
   core.Map<core.String, core.String>? requests;
 
@@ -5155,8 +5098,8 @@ class RouteStatus {
       };
 }
 
-/// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
-/// SecretEnvSource selects a Secret to populate the environment variables with.
+/// Not supported by Cloud Run SecretEnvSource selects a Secret to populate the
+/// environment variables with.
 ///
 /// The contents of the target Secret's Data field will represent the key-value
 /// pairs as environment variables.
@@ -5167,12 +5110,10 @@ class SecretEnvSource {
   /// Use the "name" field instead.
   LocalObjectReference? localObjectReference;
 
-  /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The
-  /// Secret to select from.
+  /// The Secret to select from.
   core.String? name;
 
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Specify whether the Secret must be defined
+  /// (Optional) Specify whether the Secret must be defined
   core.bool? optional;
 
   SecretEnvSource();
@@ -5198,14 +5139,12 @@ class SecretEnvSource {
       };
 }
 
-/// Cloud Run fully managed: supported Cloud Run for Anthos: supported
 /// SecretKeySelector selects a key of a Secret.
 class SecretKeySelector {
-  /// Cloud Run fully managed: supported A Cloud Secret Manager secret version.
+  /// A Cloud Secret Manager secret version.
   ///
   /// Must be 'latest' for the latest version or an integer for a specific
-  /// version. Cloud Run for Anthos: supported The key of the secret to select
-  /// from. Must be a valid secret key.
+  /// version. The key of the secret to select from. Must be a valid secret key.
   core.String? key;
 
   /// This field should not be used directly as it is meant to be inlined
@@ -5214,19 +5153,17 @@ class SecretKeySelector {
   /// Use the "name" field instead.
   LocalObjectReference? localObjectReference;
 
-  /// Cloud Run fully managed: supported The name of the secret in Cloud Secret
-  /// Manager.
+  /// The name of the secret in Cloud Secret Manager.
   ///
   /// By default, the secret is assumed to be in the same project. If the secret
   /// is in another project, you must define an alias. An alias definition has
   /// the form: :projects//secrets/. If multiple alias definitions are needed,
   /// they must be separated by commas. The alias definitions must be set on the
-  /// run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported The
-  /// name of the secret in the pod's namespace to select from.
+  /// run.googleapis.com/secrets annotation. The name of the secret in the pod's
+  /// namespace to select from.
   core.String? name;
 
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Specify whether the Secret or its key must be defined
+  /// (Optional) Specify whether the Secret or its key must be defined
   core.bool? optional;
 
   SecretKeySelector();
@@ -5256,16 +5193,14 @@ class SecretKeySelector {
       };
 }
 
-/// Cloud Run fully managed: supported The secret's value will be presented as
-/// the content of a file whose name is defined in the item path.
+/// The secret's value will be presented as the content of a file whose name is
+/// defined in the item path.
 ///
-/// If no items are defined, the name of the file is the secret_name. Cloud Run
-/// for Anthos: supported The contents of the target Secret's Data field will be
-/// presented in a volume as files using the keys in the Data field as the file
-/// names.
+/// If no items are defined, the name of the file is the secret_name. The
+/// contents of the target Secret's Data field will be presented in a volume as
+/// files using the keys in the Data field as the file names.
 class SecretVolumeSource {
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Mode bits to use on created files by default.
+  /// (Optional) Mode bits to use on created files by default.
   ///
   /// Must be a value between 0000 and 0777. Defaults to 0644. Directories
   /// within the path are not affected by this setting. This might be in
@@ -5276,33 +5211,31 @@ class SecretVolumeSource {
   /// the integer value 777.
   core.int? defaultMode;
 
-  /// (Optional) Cloud Run fully managed: supported If unspecified, the volume
-  /// will expose a file whose name is the secret_name.
+  /// (Optional) If unspecified, the volume will expose a file whose name is the
+  /// secret_name.
   ///
   /// If specified, the key will be used as the version to fetch from Cloud
   /// Secret Manager and the path will be the name of the file exposed in the
-  /// volume. When items are defined, they must specify a key and a path. Cloud
-  /// Run for Anthos: supported If unspecified, each key-value pair in the Data
-  /// field of the referenced Secret will be projected into the volume as a file
-  /// whose name is the key and content is the value. If specified, the listed
-  /// keys will be projected into the specified paths, and unlisted keys will
-  /// not be present. If a key is specified that is not present in the Secret,
-  /// the volume setup will error unless it is marked optional.
+  /// volume. When items are defined, they must specify a key and a path. If
+  /// unspecified, each key-value pair in the Data field of the referenced
+  /// Secret will be projected into the volume as a file whose name is the key
+  /// and content is the value. If specified, the listed keys will be projected
+  /// into the specified paths, and unlisted keys will not be present. If a key
+  /// is specified that is not present in the Secret, the volume setup will
+  /// error unless it is marked optional.
   core.List<KeyToPath>? items;
 
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Specify whether the Secret or its keys must be defined.
+  /// (Optional) Specify whether the Secret or its keys must be defined.
   core.bool? optional;
 
-  /// Cloud Run fully managed: supported The name of the secret in Cloud Secret
-  /// Manager.
+  /// The name of the secret in Cloud Secret Manager.
   ///
   /// By default, the secret is assumed to be in the same project. If the secret
   /// is in another project, you must define an alias. An alias definition has
   /// the form: :projects//secrets/. If multiple alias definitions are needed,
   /// they must be separated by commas. The alias definitions must be set on the
-  /// run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported
-  /// Name of the secret in the container's namespace to use.
+  /// run.googleapis.com/secrets annotation. Name of the secret in the
+  /// container's namespace to use.
   core.String? secretName;
 
   SecretVolumeSource();
@@ -5334,15 +5267,13 @@ class SecretVolumeSource {
       };
 }
 
-/// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
-/// SecurityContext holds security configuration that will be applied to a
-/// container.
+/// Not supported by Cloud Run SecurityContext holds security configuration that
+/// will be applied to a container.
 ///
 /// Some fields are present in both SecurityContext and PodSecurityContext. When
 /// both are set, the values in SecurityContext take precedence.
 class SecurityContext {
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported The UID to run the entrypoint of the container process.
+  /// (Optional) The UID to run the entrypoint of the container process.
   ///
   /// Defaults to user specified in image metadata if unspecified. May also be
   /// set in PodSecurityContext. If set in both SecurityContext and
@@ -5813,14 +5744,12 @@ class StatusDetails {
       };
 }
 
-/// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
-/// TCPSocketAction describes an action based on opening a socket
+/// Not supported by Cloud Run TCPSocketAction describes an action based on
+/// opening a socket
 class TCPSocketAction {
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Optional: Host name to connect to, defaults to the pod IP.
+  /// (Optional) Optional: Host name to connect to, defaults to the pod IP.
   core.String? host;
 
-  /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
   /// Number or name of the port to access on the container.
   ///
   /// Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
@@ -5972,17 +5901,12 @@ class TrafficTarget {
       };
 }
 
-/// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
-/// Volume represents a named volume in a container.
+/// Not supported by Cloud Run Volume represents a named volume in a container.
 class Volume {
-  /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
   ConfigMapVolumeSource? configMap;
 
-  /// Cloud Run fully managed: supported Cloud Run for Anthos: supported
   /// Volume's name.
   core.String? name;
-
-  /// Cloud Run fully managed: supported Cloud Run for Anthos: supported
   SecretVolumeSource? secret;
 
   Volume();
@@ -6008,27 +5932,23 @@ class Volume {
       };
 }
 
-/// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
-/// VolumeMount describes a mounting of a Volume within a container.
+/// Not supported by Cloud Run VolumeMount describes a mounting of a Volume
+/// within a container.
 class VolumeMount {
-  /// Cloud Run fully managed: supported Cloud Run for Anthos: supported Path
-  /// within the container at which the volume should be mounted.
+  /// Path within the container at which the volume should be mounted.
   ///
   /// Must not contain ':'.
   core.String? mountPath;
 
-  /// Cloud Run fully managed: supported Cloud Run for Anthos: supported This
-  /// must match the Name of a Volume.
+  /// This must match the Name of a Volume.
   core.String? name;
 
-  /// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos:
-  /// supported Only true is accepted.
+  /// (Optional) Only true is accepted.
   ///
   /// Defaults to true.
   core.bool? readOnly;
 
-  /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Path within the volume from which the container's volume should
+  /// (Optional) Path within the volume from which the container's volume should
   /// be mounted.
   ///
   /// Defaults to "" (volume's root).

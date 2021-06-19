@@ -56,6 +56,45 @@ class V1Resource {
 
   V1Resource(commons.ApiRequester client) : _requester = client;
 
+  /// Gets information about a Google OAuth 2.0 access token issued by the
+  /// Google Cloud
+  /// [Security Token Service API](https://cloud.google.com/iam/docs/reference/sts/rest).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIdentityStsV1IntrospectTokenResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIdentityStsV1IntrospectTokenResponse> introspect(
+    GoogleIdentityStsV1IntrospectTokenRequest request, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const _url = 'v1/introspect';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleIdentityStsV1IntrospectTokenResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Exchanges a credential for a Google OAuth 2.0 access token.
   ///
   /// The token asserts an external identity within a workload identity pool, or
@@ -310,5 +349,116 @@ class GoogleIdentityStsV1ExchangeTokenResponse {
         if (expiresIn != null) 'expires_in': expiresIn!,
         if (issuedTokenType != null) 'issued_token_type': issuedTokenType!,
         if (tokenType != null) 'token_type': tokenType!,
+      };
+}
+
+/// Request message for IntrospectToken.
+class GoogleIdentityStsV1IntrospectTokenRequest {
+  /// The OAuth 2.0 security token issued by the Security Token Service API.
+  ///
+  /// Required.
+  core.String? token;
+
+  /// The type of the given token.
+  ///
+  /// Supported values are `urn:ietf:params:oauth:token-type:access_token` and
+  /// `access_token`.
+  ///
+  /// Optional.
+  core.String? tokenTypeHint;
+
+  GoogleIdentityStsV1IntrospectTokenRequest();
+
+  GoogleIdentityStsV1IntrospectTokenRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('token')) {
+      token = _json['token'] as core.String;
+    }
+    if (_json.containsKey('tokenTypeHint')) {
+      tokenTypeHint = _json['tokenTypeHint'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (token != null) 'token': token!,
+        if (tokenTypeHint != null) 'tokenTypeHint': tokenTypeHint!,
+      };
+}
+
+/// Response message for IntrospectToken.
+class GoogleIdentityStsV1IntrospectTokenResponse {
+  /// A boolean value that indicates whether the provided access token is
+  /// currently active.
+  core.bool? active;
+
+  /// The client identifier for the OAuth 2.0 client that requested the provided
+  /// token.
+  core.String? clientId;
+
+  /// The expiration timestamp, measured in the number of seconds since January
+  /// 1 1970 UTC, indicating when this token will expire.
+  core.String? exp;
+
+  /// The issued timestamp, measured in the number of seconds since January 1
+  /// 1970 UTC, indicating when this token was originally issued.
+  core.String? iat;
+
+  /// The issuer of the provided token.
+  core.String? iss;
+
+  /// A list of scopes associated with the provided token.
+  core.String? scope;
+
+  /// The unique user ID associated with the provided token.
+  ///
+  /// For Google Accounts, this value is based on the Google Account's user ID.
+  /// For federated identities, this value is based on the identity pool ID and
+  /// the value of the mapped `google.subject` attribute.
+  core.String? sub;
+
+  /// The human-readable identifier for the token principal subject.
+  ///
+  /// For example, if the provided token is associated with a workload identity
+  /// pool, this field contains a value in the following format:
+  /// `principal://iam.googleapis.com/projects//locations//workloadIdentityPools//subject/`
+  core.String? username;
+
+  GoogleIdentityStsV1IntrospectTokenResponse();
+
+  GoogleIdentityStsV1IntrospectTokenResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('active')) {
+      active = _json['active'] as core.bool;
+    }
+    if (_json.containsKey('client_id')) {
+      clientId = _json['client_id'] as core.String;
+    }
+    if (_json.containsKey('exp')) {
+      exp = _json['exp'] as core.String;
+    }
+    if (_json.containsKey('iat')) {
+      iat = _json['iat'] as core.String;
+    }
+    if (_json.containsKey('iss')) {
+      iss = _json['iss'] as core.String;
+    }
+    if (_json.containsKey('scope')) {
+      scope = _json['scope'] as core.String;
+    }
+    if (_json.containsKey('sub')) {
+      sub = _json['sub'] as core.String;
+    }
+    if (_json.containsKey('username')) {
+      username = _json['username'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (active != null) 'active': active!,
+        if (clientId != null) 'client_id': clientId!,
+        if (exp != null) 'exp': exp!,
+        if (iat != null) 'iat': iat!,
+        if (iss != null) 'iss': iss!,
+        if (scope != null) 'scope': scope!,
+        if (sub != null) 'sub': sub!,
+        if (username != null) 'username': username!,
       };
 }

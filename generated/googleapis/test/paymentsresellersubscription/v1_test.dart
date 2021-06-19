@@ -260,14 +260,14 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1Extension(
 }
 
 core.List<api.GoogleCloudPaymentsResellerSubscriptionV1Product>
-    buildUnnamed5654() {
+    buildUnnamed5658() {
   var o = <api.GoogleCloudPaymentsResellerSubscriptionV1Product>[];
   o.add(buildGoogleCloudPaymentsResellerSubscriptionV1Product());
   o.add(buildGoogleCloudPaymentsResellerSubscriptionV1Product());
   return o;
 }
 
-void checkUnnamed5654(
+void checkUnnamed5658(
     core.List<api.GoogleCloudPaymentsResellerSubscriptionV1Product> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudPaymentsResellerSubscriptionV1Product(
@@ -286,7 +286,7 @@ api.GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse
   if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse <
       3) {
     o.nextPageToken = 'foo';
-    o.products = buildUnnamed5654();
+    o.products = buildUnnamed5658();
   }
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse--;
   return o;
@@ -301,20 +301,20 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed5654(o.products!);
+    checkUnnamed5658(o.products!);
   }
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse--;
 }
 
 core.List<api.GoogleCloudPaymentsResellerSubscriptionV1Promotion>
-    buildUnnamed5655() {
+    buildUnnamed5659() {
   var o = <api.GoogleCloudPaymentsResellerSubscriptionV1Promotion>[];
   o.add(buildGoogleCloudPaymentsResellerSubscriptionV1Promotion());
   o.add(buildGoogleCloudPaymentsResellerSubscriptionV1Promotion());
   return o;
 }
 
-void checkUnnamed5655(
+void checkUnnamed5659(
     core.List<api.GoogleCloudPaymentsResellerSubscriptionV1Promotion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudPaymentsResellerSubscriptionV1Promotion(
@@ -333,7 +333,7 @@ api.GoogleCloudPaymentsResellerSubscriptionV1ListPromotionsResponse
   if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1ListPromotionsResponse <
       3) {
     o.nextPageToken = 'foo';
-    o.promotions = buildUnnamed5655();
+    o.promotions = buildUnnamed5659();
   }
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1ListPromotionsResponse--;
   return o;
@@ -348,7 +348,7 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1ListPromotionsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed5655(o.promotions!);
+    checkUnnamed5659(o.promotions!);
   }
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1ListPromotionsResponse--;
 }
@@ -382,14 +382,14 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1Location(
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1Location--;
 }
 
-core.List<core.String> buildUnnamed5656() {
+core.List<core.String> buildUnnamed5660() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed5656(core.List<core.String> o) {
+void checkUnnamed5660(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -401,14 +401,14 @@ void checkUnnamed5656(core.List<core.String> o) {
   );
 }
 
-core.List<api.GoogleTypeLocalizedText> buildUnnamed5657() {
+core.List<api.GoogleTypeLocalizedText> buildUnnamed5661() {
   var o = <api.GoogleTypeLocalizedText>[];
   o.add(buildGoogleTypeLocalizedText());
   o.add(buildGoogleTypeLocalizedText());
   return o;
 }
 
-void checkUnnamed5657(core.List<api.GoogleTypeLocalizedText> o) {
+void checkUnnamed5661(core.List<api.GoogleTypeLocalizedText> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleTypeLocalizedText(o[0] as api.GoogleTypeLocalizedText);
   checkGoogleTypeLocalizedText(o[1] as api.GoogleTypeLocalizedText);
@@ -421,10 +421,10 @@ api.GoogleCloudPaymentsResellerSubscriptionV1Product
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1Product++;
   if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1Product < 3) {
     o.name = 'foo';
-    o.regionCodes = buildUnnamed5656();
+    o.regionCodes = buildUnnamed5660();
     o.subscriptionBillingCycleDuration =
         buildGoogleCloudPaymentsResellerSubscriptionV1Duration();
-    o.titles = buildUnnamed5657();
+    o.titles = buildUnnamed5661();
   }
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1Product--;
   return o;
@@ -438,23 +438,23 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1Product(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed5656(o.regionCodes!);
+    checkUnnamed5660(o.regionCodes!);
     checkGoogleCloudPaymentsResellerSubscriptionV1Duration(
         o.subscriptionBillingCycleDuration!
             as api.GoogleCloudPaymentsResellerSubscriptionV1Duration);
-    checkUnnamed5657(o.titles!);
+    checkUnnamed5661(o.titles!);
   }
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1Product--;
 }
 
-core.List<core.String> buildUnnamed5658() {
+core.List<core.String> buildUnnamed5662() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed5658(core.List<core.String> o) {
+void checkUnnamed5662(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -466,14 +466,14 @@ void checkUnnamed5658(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed5659() {
+core.List<core.String> buildUnnamed5663() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed5659(core.List<core.String> o) {
+void checkUnnamed5663(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -485,14 +485,14 @@ void checkUnnamed5659(core.List<core.String> o) {
   );
 }
 
-core.List<api.GoogleTypeLocalizedText> buildUnnamed5660() {
+core.List<api.GoogleTypeLocalizedText> buildUnnamed5664() {
   var o = <api.GoogleTypeLocalizedText>[];
   o.add(buildGoogleTypeLocalizedText());
   o.add(buildGoogleTypeLocalizedText());
   return o;
 }
 
-void checkUnnamed5660(core.List<api.GoogleTypeLocalizedText> o) {
+void checkUnnamed5664(core.List<api.GoogleTypeLocalizedText> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleTypeLocalizedText(o[0] as api.GoogleTypeLocalizedText);
   checkGoogleTypeLocalizedText(o[1] as api.GoogleTypeLocalizedText);
@@ -504,14 +504,14 @@ api.GoogleCloudPaymentsResellerSubscriptionV1Promotion
   var o = api.GoogleCloudPaymentsResellerSubscriptionV1Promotion();
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1Promotion++;
   if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1Promotion < 3) {
-    o.applicableProducts = buildUnnamed5658();
+    o.applicableProducts = buildUnnamed5662();
     o.endTime = 'foo';
     o.freeTrialDuration =
         buildGoogleCloudPaymentsResellerSubscriptionV1Duration();
     o.name = 'foo';
-    o.regionCodes = buildUnnamed5659();
+    o.regionCodes = buildUnnamed5663();
     o.startTime = 'foo';
-    o.titles = buildUnnamed5660();
+    o.titles = buildUnnamed5664();
   }
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1Promotion--;
   return o;
@@ -521,7 +521,7 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1Promotion(
     api.GoogleCloudPaymentsResellerSubscriptionV1Promotion o) {
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1Promotion++;
   if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1Promotion < 3) {
-    checkUnnamed5658(o.applicableProducts!);
+    checkUnnamed5662(o.applicableProducts!);
     unittest.expect(
       o.endTime!,
       unittest.equals('foo'),
@@ -532,24 +532,24 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1Promotion(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed5659(o.regionCodes!);
+    checkUnnamed5663(o.regionCodes!);
     unittest.expect(
       o.startTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed5660(o.titles!);
+    checkUnnamed5664(o.titles!);
   }
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1Promotion--;
 }
 
-core.List<core.String> buildUnnamed5661() {
+core.List<core.String> buildUnnamed5665() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed5661(core.List<core.String> o) {
+void checkUnnamed5665(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -561,14 +561,14 @@ void checkUnnamed5661(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed5662() {
+core.List<core.String> buildUnnamed5666() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed5662(core.List<core.String> o) {
+void checkUnnamed5666(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -594,8 +594,8 @@ api.GoogleCloudPaymentsResellerSubscriptionV1Subscription
     o.freeTrialEndTime = 'foo';
     o.name = 'foo';
     o.partnerUserToken = 'foo';
-    o.products = buildUnnamed5661();
-    o.promotions = buildUnnamed5662();
+    o.products = buildUnnamed5665();
+    o.promotions = buildUnnamed5666();
     o.redirectUri = 'foo';
     o.serviceLocation =
         buildGoogleCloudPaymentsResellerSubscriptionV1Location();
@@ -636,8 +636,8 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1Subscription(
       o.partnerUserToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed5661(o.products!);
-    checkUnnamed5662(o.promotions!);
+    checkUnnamed5665(o.products!);
+    checkUnnamed5666(o.promotions!);
     unittest.expect(
       o.redirectUri!,
       unittest.equals('foo'),

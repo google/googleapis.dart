@@ -27,14 +27,14 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<api.GoogleCloudResourcesettingsV1Setting> buildUnnamed5991() {
+core.List<api.GoogleCloudResourcesettingsV1Setting> buildUnnamed5995() {
   var o = <api.GoogleCloudResourcesettingsV1Setting>[];
   o.add(buildGoogleCloudResourcesettingsV1Setting());
   o.add(buildGoogleCloudResourcesettingsV1Setting());
   return o;
 }
 
-void checkUnnamed5991(core.List<api.GoogleCloudResourcesettingsV1Setting> o) {
+void checkUnnamed5995(core.List<api.GoogleCloudResourcesettingsV1Setting> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudResourcesettingsV1Setting(
       o[0] as api.GoogleCloudResourcesettingsV1Setting);
@@ -49,7 +49,7 @@ api.GoogleCloudResourcesettingsV1ListSettingsResponse
   buildCounterGoogleCloudResourcesettingsV1ListSettingsResponse++;
   if (buildCounterGoogleCloudResourcesettingsV1ListSettingsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.settings = buildUnnamed5991();
+    o.settings = buildUnnamed5995();
   }
   buildCounterGoogleCloudResourcesettingsV1ListSettingsResponse--;
   return o;
@@ -63,7 +63,7 @@ void checkGoogleCloudResourcesettingsV1ListSettingsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed5991(o.settings!);
+    checkUnnamed5995(o.settings!);
   }
   buildCounterGoogleCloudResourcesettingsV1ListSettingsResponse--;
 }
@@ -209,14 +209,14 @@ void checkGoogleCloudResourcesettingsV1ValueEnumValue(
   buildCounterGoogleCloudResourcesettingsV1ValueEnumValue--;
 }
 
-core.Map<core.String, core.String> buildUnnamed5992() {
+core.Map<core.String, core.String> buildUnnamed5996() {
   var o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
 }
 
-void checkUnnamed5992(core.Map<core.String, core.String> o) {
+void checkUnnamed5996(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -234,7 +234,7 @@ api.GoogleCloudResourcesettingsV1ValueStringMap
   var o = api.GoogleCloudResourcesettingsV1ValueStringMap();
   buildCounterGoogleCloudResourcesettingsV1ValueStringMap++;
   if (buildCounterGoogleCloudResourcesettingsV1ValueStringMap < 3) {
-    o.mappings = buildUnnamed5992();
+    o.mappings = buildUnnamed5996();
   }
   buildCounterGoogleCloudResourcesettingsV1ValueStringMap--;
   return o;
@@ -244,19 +244,19 @@ void checkGoogleCloudResourcesettingsV1ValueStringMap(
     api.GoogleCloudResourcesettingsV1ValueStringMap o) {
   buildCounterGoogleCloudResourcesettingsV1ValueStringMap++;
   if (buildCounterGoogleCloudResourcesettingsV1ValueStringMap < 3) {
-    checkUnnamed5992(o.mappings!);
+    checkUnnamed5996(o.mappings!);
   }
   buildCounterGoogleCloudResourcesettingsV1ValueStringMap--;
 }
 
-core.List<core.String> buildUnnamed5993() {
+core.List<core.String> buildUnnamed5997() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed5993(core.List<core.String> o) {
+void checkUnnamed5997(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -274,7 +274,7 @@ api.GoogleCloudResourcesettingsV1ValueStringSet
   var o = api.GoogleCloudResourcesettingsV1ValueStringSet();
   buildCounterGoogleCloudResourcesettingsV1ValueStringSet++;
   if (buildCounterGoogleCloudResourcesettingsV1ValueStringSet < 3) {
-    o.values = buildUnnamed5993();
+    o.values = buildUnnamed5997();
   }
   buildCounterGoogleCloudResourcesettingsV1ValueStringSet--;
   return o;
@@ -284,7 +284,7 @@ void checkGoogleCloudResourcesettingsV1ValueStringSet(
     api.GoogleCloudResourcesettingsV1ValueStringSet o) {
   buildCounterGoogleCloudResourcesettingsV1ValueStringSet++;
   if (buildCounterGoogleCloudResourcesettingsV1ValueStringSet < 3) {
-    checkUnnamed5993(o.values!);
+    checkUnnamed5997(o.values!);
   }
   buildCounterGoogleCloudResourcesettingsV1ValueStringSet--;
 }

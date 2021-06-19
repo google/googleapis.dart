@@ -765,9 +765,11 @@ api.BuildTrigger buildBuildTrigger() {
     o.includedFiles = buildUnnamed2102();
     o.name = 'foo';
     o.pubsubConfig = buildPubsubConfig();
+    o.resourceName = 'foo';
     o.substitutions = buildUnnamed2103();
     o.tags = buildUnnamed2104();
     o.triggerTemplate = buildRepoSource();
+    o.webhookConfig = buildWebhookConfig();
   }
   buildCounterBuildTrigger--;
   return o;
@@ -806,9 +808,14 @@ void checkBuildTrigger(api.BuildTrigger o) {
       unittest.equals('foo'),
     );
     checkPubsubConfig(o.pubsubConfig! as api.PubsubConfig);
+    unittest.expect(
+      o.resourceName!,
+      unittest.equals('foo'),
+    );
     checkUnnamed2103(o.substitutions!);
     checkUnnamed2104(o.tags!);
     checkRepoSource(o.triggerTemplate! as api.RepoSource);
+    checkWebhookConfig(o.webhookConfig! as api.WebhookConfig);
   }
   buildCounterBuildTrigger--;
 }
@@ -1867,6 +1874,35 @@ void checkRetryBuildRequest(api.RetryBuildRequest o) {
   buildCounterRetryBuildRequest--;
 }
 
+core.int buildCounterRunBuildTriggerRequest = 0;
+api.RunBuildTriggerRequest buildRunBuildTriggerRequest() {
+  var o = api.RunBuildTriggerRequest();
+  buildCounterRunBuildTriggerRequest++;
+  if (buildCounterRunBuildTriggerRequest < 3) {
+    o.projectId = 'foo';
+    o.source = buildRepoSource();
+    o.triggerId = 'foo';
+  }
+  buildCounterRunBuildTriggerRequest--;
+  return o;
+}
+
+void checkRunBuildTriggerRequest(api.RunBuildTriggerRequest o) {
+  buildCounterRunBuildTriggerRequest++;
+  if (buildCounterRunBuildTriggerRequest < 3) {
+    unittest.expect(
+      o.projectId!,
+      unittest.equals('foo'),
+    );
+    checkRepoSource(o.source! as api.RepoSource);
+    unittest.expect(
+      o.triggerId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterRunBuildTriggerRequest--;
+}
+
 core.List<core.String> buildUnnamed2119() {
   var o = <core.String>[];
   o.add('foo');
@@ -2360,6 +2396,33 @@ void checkWarning(api.Warning o) {
   buildCounterWarning--;
 }
 
+core.int buildCounterWebhookConfig = 0;
+api.WebhookConfig buildWebhookConfig() {
+  var o = api.WebhookConfig();
+  buildCounterWebhookConfig++;
+  if (buildCounterWebhookConfig < 3) {
+    o.secret = 'foo';
+    o.state = 'foo';
+  }
+  buildCounterWebhookConfig--;
+  return o;
+}
+
+void checkWebhookConfig(api.WebhookConfig o) {
+  buildCounterWebhookConfig++;
+  if (buildCounterWebhookConfig < 3) {
+    unittest.expect(
+      o.secret!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterWebhookConfig--;
+}
+
 void main() {
   unittest.group('obj-schema-ArtifactObjects', () {
     unittest.test('to-json--from-json', () async {
@@ -2699,6 +2762,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-RunBuildTriggerRequest', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildRunBuildTriggerRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.RunBuildTriggerRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRunBuildTriggerRequest(od as api.RunBuildTriggerRequest);
+    });
+  });
+
   unittest.group('obj-schema-SMTPDelivery', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSMTPDelivery();
@@ -2826,6 +2899,16 @@ void main() {
       var od =
           api.Warning.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkWarning(od as api.Warning);
+    });
+  });
+
+  unittest.group('obj-schema-WebhookConfig', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildWebhookConfig();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.WebhookConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkWebhookConfig(od as api.WebhookConfig);
     });
   });
 
@@ -3792,12 +3875,484 @@ void main() {
     });
   });
 
+  unittest.group('resource-ProjectsLocationsTriggersResource', () {
+    unittest.test('method--create', () async {
+      var mock = HttpServerMock();
+      var res = api.CloudBuildApi(mock).projects.locations.triggers;
+      var arg_request = buildBuildTrigger();
+      var arg_parent = 'foo';
+      var arg_projectId = 'foo';
+      var arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = api.BuildTrigger.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBuildTrigger(obj as api.BuildTrigger);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap["projectId"]!.first,
+          unittest.equals(arg_projectId),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        var h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        var resp = convert.json.encode(buildBuildTrigger());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.create(arg_request, arg_parent,
+          projectId: arg_projectId, $fields: arg_$fields);
+      checkBuildTrigger(response as api.BuildTrigger);
+    });
+
+    unittest.test('method--delete', () async {
+      var mock = HttpServerMock();
+      var res = api.CloudBuildApi(mock).projects.locations.triggers;
+      var arg_name = 'foo';
+      var arg_projectId = 'foo';
+      var arg_triggerId = 'foo';
+      var arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap["projectId"]!.first,
+          unittest.equals(arg_projectId),
+        );
+        unittest.expect(
+          queryMap["triggerId"]!.first,
+          unittest.equals(arg_triggerId),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        var h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        var resp = convert.json.encode(buildEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.delete(arg_name,
+          projectId: arg_projectId,
+          triggerId: arg_triggerId,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
+    });
+
+    unittest.test('method--get', () async {
+      var mock = HttpServerMock();
+      var res = api.CloudBuildApi(mock).projects.locations.triggers;
+      var arg_name = 'foo';
+      var arg_projectId = 'foo';
+      var arg_triggerId = 'foo';
+      var arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap["projectId"]!.first,
+          unittest.equals(arg_projectId),
+        );
+        unittest.expect(
+          queryMap["triggerId"]!.first,
+          unittest.equals(arg_triggerId),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        var h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        var resp = convert.json.encode(buildBuildTrigger());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name,
+          projectId: arg_projectId,
+          triggerId: arg_triggerId,
+          $fields: arg_$fields);
+      checkBuildTrigger(response as api.BuildTrigger);
+    });
+
+    unittest.test('method--list', () async {
+      var mock = HttpServerMock();
+      var res = api.CloudBuildApi(mock).projects.locations.triggers;
+      var arg_parent = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
+      var arg_projectId = 'foo';
+      var arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["projectId"]!.first,
+          unittest.equals(arg_projectId),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        var h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        var resp = convert.json.encode(buildListBuildTriggersResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          projectId: arg_projectId,
+          $fields: arg_$fields);
+      checkListBuildTriggersResponse(response as api.ListBuildTriggersResponse);
+    });
+
+    unittest.test('method--patch', () async {
+      var mock = HttpServerMock();
+      var res = api.CloudBuildApi(mock).projects.locations.triggers;
+      var arg_request = buildBuildTrigger();
+      var arg_resourceName = 'foo';
+      var arg_projectId = 'foo';
+      var arg_triggerId = 'foo';
+      var arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = api.BuildTrigger.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBuildTrigger(obj as api.BuildTrigger);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap["projectId"]!.first,
+          unittest.equals(arg_projectId),
+        );
+        unittest.expect(
+          queryMap["triggerId"]!.first,
+          unittest.equals(arg_triggerId),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        var h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        var resp = convert.json.encode(buildBuildTrigger());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.patch(arg_request, arg_resourceName,
+          projectId: arg_projectId,
+          triggerId: arg_triggerId,
+          $fields: arg_$fields);
+      checkBuildTrigger(response as api.BuildTrigger);
+    });
+
+    unittest.test('method--run', () async {
+      var mock = HttpServerMock();
+      var res = api.CloudBuildApi(mock).projects.locations.triggers;
+      var arg_request = buildRunBuildTriggerRequest();
+      var arg_name = 'foo';
+      var arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = api.RunBuildTriggerRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkRunBuildTriggerRequest(obj as api.RunBuildTriggerRequest);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        var h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        var resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.run(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--webhook', () async {
+      var mock = HttpServerMock();
+      var res = api.CloudBuildApi(mock).projects.locations.triggers;
+      var arg_request = buildHttpBody();
+      var arg_name = 'foo';
+      var arg_projectId = 'foo';
+      var arg_secret = 'foo';
+      var arg_trigger = 'foo';
+      var arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj =
+            api.HttpBody.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkHttpBody(obj as api.HttpBody);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap["projectId"]!.first,
+          unittest.equals(arg_projectId),
+        );
+        unittest.expect(
+          queryMap["secret"]!.first,
+          unittest.equals(arg_secret),
+        );
+        unittest.expect(
+          queryMap["trigger"]!.first,
+          unittest.equals(arg_trigger),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        var h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        var resp = convert.json.encode(buildReceiveTriggerWebhookResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.webhook(arg_request, arg_name,
+          projectId: arg_projectId,
+          secret: arg_secret,
+          trigger: arg_trigger,
+          $fields: arg_$fields);
+      checkReceiveTriggerWebhookResponse(
+          response as api.ReceiveTriggerWebhookResponse);
+    });
+  });
+
   unittest.group('resource-ProjectsTriggersResource', () {
     unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudBuildApi(mock).projects.triggers;
       var arg_request = buildBuildTrigger();
       var arg_projectId = 'foo';
+      var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.BuildTrigger.fromJson(
@@ -3849,6 +4404,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap["parent"]!.first,
+          unittest.equals(arg_parent),
+        );
+        unittest.expect(
           queryMap["fields"]!.first,
           unittest.equals(arg_$fields),
         );
@@ -3859,8 +4418,8 @@ void main() {
         var resp = convert.json.encode(buildBuildTrigger());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response =
-          await res.create(arg_request, arg_projectId, $fields: arg_$fields);
+      final response = await res.create(arg_request, arg_projectId,
+          parent: arg_parent, $fields: arg_$fields);
       checkBuildTrigger(response as api.BuildTrigger);
     });
 
@@ -3869,6 +4428,7 @@ void main() {
       var res = api.CloudBuildApi(mock).projects.triggers;
       var arg_projectId = 'foo';
       var arg_triggerId = 'foo';
+      var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3921,6 +4481,10 @@ void main() {
             );
           }
         }
+        unittest.expect(
+          queryMap["name"]!.first,
+          unittest.equals(arg_name),
+        );
         unittest.expect(
           queryMap["fields"]!.first,
           unittest.equals(arg_$fields),
@@ -3932,8 +4496,8 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response =
-          await res.delete(arg_projectId, arg_triggerId, $fields: arg_$fields);
+      final response = await res.delete(arg_projectId, arg_triggerId,
+          name: arg_name, $fields: arg_$fields);
       checkEmpty(response as api.Empty);
     });
 
@@ -3942,6 +4506,7 @@ void main() {
       var res = api.CloudBuildApi(mock).projects.triggers;
       var arg_projectId = 'foo';
       var arg_triggerId = 'foo';
+      var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3995,6 +4560,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap["name"]!.first,
+          unittest.equals(arg_name),
+        );
+        unittest.expect(
           queryMap["fields"]!.first,
           unittest.equals(arg_$fields),
         );
@@ -4005,8 +4574,8 @@ void main() {
         var resp = convert.json.encode(buildBuildTrigger());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response =
-          await res.get(arg_projectId, arg_triggerId, $fields: arg_$fields);
+      final response = await res.get(arg_projectId, arg_triggerId,
+          name: arg_name, $fields: arg_$fields);
       checkBuildTrigger(response as api.BuildTrigger);
     });
 
@@ -4016,6 +4585,7 @@ void main() {
       var arg_projectId = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
+      var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -4071,6 +4641,10 @@ void main() {
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
+          queryMap["parent"]!.first,
+          unittest.equals(arg_parent),
+        );
+        unittest.expect(
           queryMap["fields"]!.first,
           unittest.equals(arg_$fields),
         );
@@ -4084,6 +4658,7 @@ void main() {
       final response = await res.list(arg_projectId,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
+          parent: arg_parent,
           $fields: arg_$fields);
       checkListBuildTriggersResponse(response as api.ListBuildTriggersResponse);
     });
@@ -4173,6 +4748,7 @@ void main() {
       var arg_request = buildRepoSource();
       var arg_projectId = 'foo';
       var arg_triggerId = 'foo';
+      var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.RepoSource.fromJson(
@@ -4238,6 +4814,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap["name"]!.first,
+          unittest.equals(arg_name),
+        );
+        unittest.expect(
           queryMap["fields"]!.first,
           unittest.equals(arg_$fields),
         );
@@ -4249,7 +4829,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.run(arg_request, arg_projectId, arg_triggerId,
-          $fields: arg_$fields);
+          name: arg_name, $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });
 
@@ -4259,6 +4839,7 @@ void main() {
       var arg_request = buildHttpBody();
       var arg_projectId = 'foo';
       var arg_trigger = 'foo';
+      var arg_name = 'foo';
       var arg_secret = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4325,6 +4906,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap["name"]!.first,
+          unittest.equals(arg_name),
+        );
+        unittest.expect(
           queryMap["secret"]!.first,
           unittest.equals(arg_secret),
         );
@@ -4341,7 +4926,7 @@ void main() {
       }), true);
       final response = await res.webhook(
           arg_request, arg_projectId, arg_trigger,
-          secret: arg_secret, $fields: arg_$fields);
+          name: arg_name, secret: arg_secret, $fields: arg_$fields);
       checkReceiveTriggerWebhookResponse(
           response as api.ReceiveTriggerWebhookResponse);
     });

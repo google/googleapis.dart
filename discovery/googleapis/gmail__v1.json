@@ -383,7 +383,7 @@
                                 },
                                 "maxResults": {
                                     "default": "100",
-                                    "description": "Maximum number of drafts to return.",
+                                    "description": "Maximum number of drafts to return. This field defaults to 100. The maximum allowed value for this field is 500.",
                                     "format": "uint32",
                                     "location": "query",
                                     "type": "integer"
@@ -558,7 +558,7 @@
                                 },
                                 "maxResults": {
                                     "default": "100",
-                                    "description": "The maximum number of history records to return.",
+                                    "description": "Maximum number of history records to return. This field defaults to 100. The maximum allowed value for this field is 500.",
                                     "format": "uint32",
                                     "location": "query",
                                     "type": "integer"
@@ -1112,7 +1112,7 @@
                                 },
                                 "maxResults": {
                                     "default": "100",
-                                    "description": "Maximum number of messages to return.",
+                                    "description": "Maximum number of messages to return. This field defaults to 100. The maximum allowed value for this field is 500.",
                                     "format": "uint32",
                                     "location": "query",
                                     "type": "integer"
@@ -2540,7 +2540,7 @@
                                 },
                                 "maxResults": {
                                     "default": "100",
-                                    "description": "Maximum number of threads to return.",
+                                    "description": "Maximum number of threads to return. This field defaults to 100. The maximum allowed value for this field is 500.",
                                     "format": "uint32",
                                     "location": "query",
                                     "type": "integer"
@@ -2681,7 +2681,7 @@
             }
         }
     },
-    "revision": "20210607",
+    "revision": "20210614",
     "rootUrl": "https://gmail.googleapis.com/",
     "schemas": {
         "AutoForwarding": {
