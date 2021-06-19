@@ -452,6 +452,44 @@ class ProjectsLocationsGlobalDomainsResource {
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Gets the domain ldaps settings.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The domain resource name using the form:
+  /// `projects/{project_id}/locations/global/domains/{domain_name}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/domains/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LDAPSSettings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LDAPSSettings> getLdapssettings(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/ldapssettings';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return LDAPSSettings.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists domains in a project.
   ///
   /// Request parameters:
@@ -527,7 +565,7 @@ class ProjectsLocationsGlobalDomainsResource {
   /// [updateMask] - Required. Mask of fields to update. At least one path must
   /// be supplied in this field. The elements of the repeated paths field may
   /// only include fields from Domain: * `labels` * `locations` *
-  /// `authorized_networks`
+  /// `authorized_networks` * `audit_logs_enabled`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -742,6 +780,54 @@ class ProjectsLocationsGlobalDomainsResource {
     );
     return TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Patches a single ldaps settings.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the LDAPS settings. Uses the form:
+  /// `projects/{project}/locations/{location}/domains/{domain}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/domains/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. Mask of fields to update. At least one path must
+  /// be supplied in this field. For the `FieldMask` definition, see
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> updateLdapssettings(
+    LDAPSSettings request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/ldapssettings';
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Validates a trust state, that the target domain is reachable, and that the
@@ -1192,6 +1278,57 @@ class CancelOperationRequest {
       core.Map _json);
 
   core.Map<core.String, core.dynamic> toJson() => {};
+}
+
+/// Certificate used to configure LDAPS.
+class Certificate {
+  /// The certificate expire time.
+  core.String? expireTime;
+
+  /// The issuer of this certificate.
+  Certificate? issuingCertificate;
+
+  /// The certificate subject.
+  core.String? subject;
+
+  /// The additional hostnames for the domain.
+  core.List<core.String>? subjectAlternativeName;
+
+  /// The certificate thumbprint which uniquely identifies the certificate.
+  core.String? thumbprint;
+
+  Certificate();
+
+  Certificate.fromJson(core.Map _json) {
+    if (_json.containsKey('expireTime')) {
+      expireTime = _json['expireTime'] as core.String;
+    }
+    if (_json.containsKey('issuingCertificate')) {
+      issuingCertificate = Certificate.fromJson(
+          _json['issuingCertificate'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('subject')) {
+      subject = _json['subject'] as core.String;
+    }
+    if (_json.containsKey('subjectAlternativeName')) {
+      subjectAlternativeName = (_json['subjectAlternativeName'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('thumbprint')) {
+      thumbprint = _json['thumbprint'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (issuingCertificate != null)
+          'issuingCertificate': issuingCertificate!.toJson(),
+        if (subject != null) 'subject': subject!,
+        if (subjectAlternativeName != null)
+          'subjectAlternativeName': subjectAlternativeName!,
+        if (thumbprint != null) 'thumbprint': thumbprint!,
+      };
 }
 
 /// Time window specified for daily operations.
@@ -2465,6 +2602,109 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
         if (perSliEligibility != null)
           'perSliEligibility': perSliEligibility!.toJson(),
         if (tier != null) 'tier': tier!,
+      };
+}
+
+/// LDAPSSettings represents the ldaps settings for domain resource.
+///
+/// LDAP is the Lightweight Directory Access Protocol, defined in
+/// https://tools.ietf.org/html/rfc4511. The settings object configures LDAP
+/// over SSL/TLS, whether it is over port 636 or the StartTLS operation. If
+/// LDAPSSettings is being changed, it will be placed into the UPDATING state,
+/// which indicates that the resource is being reconciled. At this point, Get
+/// will reflect an intermediate state.
+class LDAPSSettings {
+  /// The certificate used to configure LDAPS.
+  ///
+  /// Certificates can be chained with a maximum length of 15.
+  ///
+  /// Output only.
+  Certificate? certificate;
+
+  /// Input only.
+  ///
+  /// The password used to encrypt the uploaded pfx certificate.
+  core.String? certificatePassword;
+
+  /// Input only.
+  ///
+  /// The uploaded PKCS12-formatted certificate to configure LDAPS with. It will
+  /// enable the domain controllers in this domain to accept LDAPS connections
+  /// (either LDAP over SSL/TLS or the StartTLS operation). A valid certificate
+  /// chain must form a valid x.509 certificate chain (or be comprised of a
+  /// single self-signed certificate. It must be encrypted with either: 1) PBES2
+  /// + PBKDF2 + AES256 encryption and SHA256 PRF; or 2)
+  /// pbeWithSHA1And3-KeyTripleDES-CBC Private key must be included for the leaf
+  /// / single self-signed certificate. Note: For a fqdn
+  /// your-example-domain.com, the wildcard fqdn is *.your-example-domain.com.
+  /// Specifically the leaf certificate must have: - Either a blank subject or a
+  /// subject with CN matching the wildcard fqdn. - Exactly two SANs - the fqdn
+  /// and wildcard fqdn. - Encipherment and digital key signature key usages. -
+  /// Server authentication extended key usage (OID=1.3.6.1.5.5.7.3.1) - Private
+  /// key must be in one of the following formats: RSA, ECDSA, ED25519. -
+  /// Private key must have appropriate key length: 2048 for RSA, 256 for ECDSA
+  /// - Signature algorithm of the leaf certificate cannot be MD2, MD5 or SHA1.
+  core.String? certificatePfx;
+  core.List<core.int> get certificatePfxAsBytes =>
+      convert.base64.decode(certificatePfx!);
+
+  set certificatePfxAsBytes(core.List<core.int> _bytes) {
+    certificatePfx =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// The resource name of the LDAPS settings.
+  ///
+  /// Uses the form: `projects/{project}/locations/{location}/domains/{domain}`.
+  core.String? name;
+
+  /// The current state of this LDAPS settings.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Not Set
+  /// - "UPDATING" : The LDAPS setting is being updated.
+  /// - "ACTIVE" : The LDAPS setting is ready.
+  /// - "FAILED" : The LDAPS setting is not applied correctly.
+  core.String? state;
+
+  /// Last update time.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  LDAPSSettings();
+
+  LDAPSSettings.fromJson(core.Map _json) {
+    if (_json.containsKey('certificate')) {
+      certificate = Certificate.fromJson(
+          _json['certificate'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('certificatePassword')) {
+      certificatePassword = _json['certificatePassword'] as core.String;
+    }
+    if (_json.containsKey('certificatePfx')) {
+      certificatePfx = _json['certificatePfx'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('state')) {
+      state = _json['state'] as core.String;
+    }
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (certificate != null) 'certificate': certificate!.toJson(),
+        if (certificatePassword != null)
+          'certificatePassword': certificatePassword!,
+        if (certificatePfx != null) 'certificatePfx': certificatePfx!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 

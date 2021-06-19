@@ -180,7 +180,8 @@ class AppsResource {
   /// [appsId] - Part of `name`. Name of the Application resource to update.
   /// Example: apps/myapp.
   ///
-  /// [updateMask] - Standard field mask for the set of fields to be updated.
+  /// [updateMask] - Required. Standard field mask for the set of fields to be
+  /// updated.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -790,7 +791,8 @@ class AppsDomainMappingsResource {
   ///
   /// [domainMappingsId] - Part of `name`. See documentation of `appsId`.
   ///
-  /// [updateMask] - Standard field mask for the set of fields to be updated.
+  /// [updateMask] - Required. Standard field mask for the set of fields to be
+  /// updated.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1485,7 +1487,8 @@ class AppsServicesResource {
   /// Splitting Traffic
   /// (https://cloud.google.com/appengine/docs/admin-api/migrating-splitting-traffic).
   ///
-  /// [updateMask] - Standard field mask for the set of fields to be updated.
+  /// [updateMask] - Required. Standard field mask for the set of fields to be
+  /// updated.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

@@ -423,7 +423,8 @@ class UsersDraftsResource {
   /// [includeSpamTrash] - Include drafts from `SPAM` and `TRASH` in the
   /// results.
   ///
-  /// [maxResults] - Maximum number of drafts to return.
+  /// [maxResults] - Maximum number of drafts to return. This field defaults to
+  /// 100. The maximum allowed value for this field is 500.
   ///
   /// [pageToken] - Page token to retrieve a specific page of results in the
   /// list.
@@ -623,7 +624,8 @@ class UsersHistoryResource {
   ///
   /// [labelId] - Only return messages with a label matching the ID.
   ///
-  /// [maxResults] - The maximum number of history records to return.
+  /// [maxResults] - Maximum number of history records to return. This field
+  /// defaults to 100. The maximum allowed value for this field is 500.
   ///
   /// [pageToken] - Page token to retrieve a specific page of results in the
   /// list.
@@ -1321,7 +1323,8 @@ class UsersMessagesResource {
   /// [labelIds] - Only return messages with labels that match all of the
   /// specified label IDs.
   ///
-  /// [maxResults] - Maximum number of messages to return.
+  /// [maxResults] - Maximum number of messages to return. This field defaults
+  /// to 100. The maximum allowed value for this field is 500.
   ///
   /// [pageToken] - Page token to retrieve a specific page of results in the
   /// list.
@@ -3274,7 +3277,8 @@ class UsersThreadsResource {
   /// [labelIds] - Only return threads with labels that match all of the
   /// specified label IDs.
   ///
-  /// [maxResults] - Maximum number of threads to return.
+  /// [maxResults] - Maximum number of threads to return. This field defaults to
+  /// 100. The maximum allowed value for this field is 500.
   ///
   /// [pageToken] - Page token to retrieve a specific page of results in the
   /// list.

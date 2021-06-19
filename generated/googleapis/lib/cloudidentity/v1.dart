@@ -1264,11 +1264,11 @@ class GroupsResource {
   /// the Identity Source's requirements. Must be unique within a `namespace`.
   ///
   /// [groupKey_namespace] - The namespace in which the entity exists. If not
-  /// specified, the \`EntityKey\` represents a Google-managed entity such as a
-  /// Google user or a Google Group. If specified, the \`EntityKey\` represents
-  /// an external-identity-mapped group. The namespace must correspond to an
+  /// specified, the `EntityKey` represents a Google-managed entity such as a
+  /// Google user or a Google Group. If specified, the `EntityKey` represents an
+  /// external-identity-mapped group. The namespace must correspond to an
   /// identity source created in Admin Console and must be in the form of
-  /// \`identitysources/{identity_source_id}.
+  /// `identitysources/{identity_source_id}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1315,7 +1315,8 @@ class GroupsResource {
   /// Value must have pattern `^groups/\[^/\]+$`.
   ///
   /// [updateMask] - Required. The fully-qualified names of fields to update.
-  /// May only contain the following fields: `display_name`, `description`.
+  /// May only contain the following fields: `display_name`, `description`,
+  /// `labels`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1736,11 +1737,11 @@ class GroupsMembershipsResource {
   /// the Identity Source's requirements. Must be unique within a `namespace`.
   ///
   /// [memberKey_namespace] - The namespace in which the entity exists. If not
-  /// specified, the \`EntityKey\` represents a Google-managed entity such as a
-  /// Google user or a Google Group. If specified, the \`EntityKey\` represents
-  /// an external-identity-mapped group. The namespace must correspond to an
+  /// specified, the `EntityKey` represents a Google-managed entity such as a
+  /// Google user or a Google Group. If specified, the `EntityKey` represents an
+  /// external-identity-mapped group. The namespace must correspond to an
   /// identity source created in Admin Console and must be in the form of
-  /// \`identitysources/{identity_source_id}.
+  /// `identitysources/{identity_source_id}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2090,11 +2091,11 @@ class EntityKey {
 
   /// The namespace in which the entity exists.
   ///
-  /// If not specified, the \`EntityKey\` represents a Google-managed entity
-  /// such as a Google user or a Google Group. If specified, the \`EntityKey\`
+  /// If not specified, the `EntityKey` represents a Google-managed entity such
+  /// as a Google user or a Google Group. If specified, the `EntityKey`
   /// represents an external-identity-mapped group. The namespace must
   /// correspond to an identity source created in Admin Console and must be in
-  /// the form of \`identitysources/{identity_source_id}.
+  /// the form of `identitysources/{identity_source_id}`.
   core.String? namespace;
 
   EntityKey();

@@ -406,8 +406,6 @@ class DatabaseInstance {
 
   /// The fully qualified resource name of the database instance, in the form:
   /// `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
-  ///
-  /// Currently the only supported location is 'us-central1'.
   core.String? name;
 
   /// The resource name of the project this instance belongs to.

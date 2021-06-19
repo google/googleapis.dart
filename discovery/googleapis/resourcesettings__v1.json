@@ -497,7 +497,7 @@
             }
         }
     },
-    "revision": "20210615",
+    "revision": "20210617",
     "rootUrl": "https://resourcesettings.googleapis.com/",
     "schemas": {
         "GoogleCloudResourcesettingsV1ListSettingsResponse": {

@@ -1,7 +1,7 @@
 ## 4.0.0-dev
 
-firebaseappcheck              	old:	null      	new:	{v1beta}
-osconfig                      	old:	null      	new:	{v1alpha}
+- `firebaseappcheck` - new!
+- `osconfig` – new!
 
 ## 3.0.0
 

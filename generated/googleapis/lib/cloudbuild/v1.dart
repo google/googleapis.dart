@@ -26,6 +26,7 @@
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsBuildsResource]
 ///     - [ProjectsLocationsOperationsResource]
+///     - [ProjectsLocationsTriggersResource]
 ///   - [ProjectsTriggersResource]
 library cloudbuild.v1;
 
@@ -442,6 +443,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsBuildsResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
+  ProjectsLocationsTriggersResource get triggers =>
+      ProjectsLocationsTriggersResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 }
@@ -807,10 +810,11 @@ class ProjectsLocationsOperationsResource {
   }
 }
 
-class ProjectsTriggersResource {
+class ProjectsLocationsTriggersResource {
   final commons.ApiRequester _requester;
 
-  ProjectsTriggersResource(commons.ApiRequester client) : _requester = client;
+  ProjectsLocationsTriggersResource(commons.ApiRequester client)
+      : _requester = client;
 
   /// Creates a new `BuildTrigger`.
   ///
@@ -819,6 +823,10 @@ class ProjectsTriggersResource {
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
+  ///
+  /// [parent] - The parent resource where this trigger will be created. Format:
+  /// `projects/{project}/locations/{location}`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [projectId] - Required. ID of the project for which to configure automatic
   /// builds.
@@ -835,11 +843,367 @@ class ProjectsTriggersResource {
   /// this method will complete with the same error.
   async.Future<BuildTrigger> create(
     BuildTrigger request,
-    core.String projectId, {
+    core.String parent, {
+    core.String? projectId,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
+      if (projectId != null) 'projectId': [projectId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/triggers';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return BuildTrigger.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a `BuildTrigger` by its project ID and trigger ID.
+  ///
+  /// This API is experimental.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the `Trigger` to delete. Format:
+  /// `projects/{project}/locations/{location}/triggers/{trigger}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/triggers/\[^/\]+$`.
+  ///
+  /// [projectId] - Required. ID of the project that owns the trigger.
+  ///
+  /// [triggerId] - Required. ID of the `BuildTrigger` to delete.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? projectId,
+    core.String? triggerId,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (projectId != null) 'projectId': [projectId],
+      if (triggerId != null) 'triggerId': [triggerId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns information about a `BuildTrigger`.
+  ///
+  /// This API is experimental.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the `Trigger` to retrieve. Format:
+  /// `projects/{project}/locations/{location}/triggers/{trigger}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/triggers/\[^/\]+$`.
+  ///
+  /// [projectId] - Required. ID of the project that owns the trigger.
+  ///
+  /// [triggerId] - Required. Identifier (`id` or `name`) of the `BuildTrigger`
+  /// to get.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BuildTrigger].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BuildTrigger> get(
+    core.String name, {
+    core.String? projectId,
+    core.String? triggerId,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (projectId != null) 'projectId': [projectId],
+      if (triggerId != null) 'triggerId': [triggerId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return BuildTrigger.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists existing `BuildTrigger`s.
+  ///
+  /// This API is experimental.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The parent of the collection of `Triggers`. Format:
+  /// `projects/{project}/locations/{location}`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Number of results to return in the list.
+  ///
+  /// [pageToken] - Token to provide to skip to a particular spot in the list.
+  ///
+  /// [projectId] - Required. ID of the project for which to list BuildTriggers.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBuildTriggersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBuildTriggersResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? projectId,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (projectId != null) 'projectId': [projectId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/triggers';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListBuildTriggersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a `BuildTrigger` by its project ID and trigger ID.
+  ///
+  /// This API is experimental.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resourceName] - The `Trigger` name with format:
+  /// `projects/{project}/locations/{location}/triggers/{trigger}`, where
+  /// {trigger} is a unique identifier generated by the service.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/triggers/\[^/\]+$`.
+  ///
+  /// [projectId] - Required. ID of the project that owns the trigger.
+  ///
+  /// [triggerId] - Required. ID of the `BuildTrigger` to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BuildTrigger].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BuildTrigger> patch(
+    BuildTrigger request,
+    core.String resourceName, {
+    core.String? projectId,
+    core.String? triggerId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (projectId != null) 'projectId': [projectId],
+      if (triggerId != null) 'triggerId': [triggerId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$resourceName');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return BuildTrigger.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Runs a `BuildTrigger` at a particular source revision.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the `Trigger` to run. Format:
+  /// `projects/{project}/locations/{location}/triggers/{trigger}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/triggers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> run(
+    RunBuildTriggerRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':run';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// ReceiveTriggerWebhook \[Experimental\] is called when the API receives a
+  /// webhook request targeted at a specific trigger.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the `ReceiveTriggerWebhook` to retrieve. Format:
+  /// `projects/{project}/locations/{location}/triggers/{trigger}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/triggers/\[^/\]+$`.
+  ///
+  /// [projectId] - Project in which the specified trigger lives
+  ///
+  /// [secret] - Secret token used for authorization if an OAuth token isn't
+  /// provided.
+  ///
+  /// [trigger] - Name of the trigger to run the payload against
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ReceiveTriggerWebhookResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ReceiveTriggerWebhookResponse> webhook(
+    HttpBody request,
+    core.String name, {
+    core.String? projectId,
+    core.String? secret,
+    core.String? trigger,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (projectId != null) 'projectId': [projectId],
+      if (secret != null) 'secret': [secret],
+      if (trigger != null) 'trigger': [trigger],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':webhook';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return ReceiveTriggerWebhookResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsTriggersResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsTriggersResource(commons.ApiRequester client) : _requester = client;
+
+  /// Creates a new `BuildTrigger`.
+  ///
+  /// This API is experimental.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Required. ID of the project for which to configure automatic
+  /// builds.
+  ///
+  /// [parent] - The parent resource where this trigger will be created. Format:
+  /// `projects/{project}/locations/{location}`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BuildTrigger].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BuildTrigger> create(
+    BuildTrigger request,
+    core.String projectId, {
+    core.String? parent,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (parent != null) 'parent': [parent],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -866,6 +1230,9 @@ class ProjectsTriggersResource {
   ///
   /// [triggerId] - Required. ID of the `BuildTrigger` to delete.
   ///
+  /// [name] - The name of the `Trigger` to delete. Format:
+  /// `projects/{project}/locations/{location}/triggers/{trigger}`
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -879,9 +1246,11 @@ class ProjectsTriggersResource {
   async.Future<Empty> delete(
     core.String projectId,
     core.String triggerId, {
+    core.String? name,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
+      if (name != null) 'name': [name],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -909,6 +1278,9 @@ class ProjectsTriggersResource {
   /// [triggerId] - Required. Identifier (`id` or `name`) of the `BuildTrigger`
   /// to get.
   ///
+  /// [name] - The name of the `Trigger` to retrieve. Format:
+  /// `projects/{project}/locations/{location}/triggers/{trigger}`
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -922,9 +1294,11 @@ class ProjectsTriggersResource {
   async.Future<BuildTrigger> get(
     core.String projectId,
     core.String triggerId, {
+    core.String? name,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
+      if (name != null) 'name': [name],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -954,6 +1328,9 @@ class ProjectsTriggersResource {
   ///
   /// [pageToken] - Token to provide to skip to a particular spot in the list.
   ///
+  /// [parent] - The parent of the collection of `Triggers`. Format:
+  /// `projects/{project}/locations/{location}`
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -968,11 +1345,13 @@ class ProjectsTriggersResource {
     core.String projectId, {
     core.int? pageSize,
     core.String? pageToken,
+    core.String? parent,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (parent != null) 'parent': [parent],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1046,6 +1425,9 @@ class ProjectsTriggersResource {
   ///
   /// [triggerId] - Required. ID of the trigger.
   ///
+  /// [name] - The name of the `Trigger` to run. Format:
+  /// `projects/{project}/locations/{location}/triggers/{trigger}`
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1060,10 +1442,12 @@ class ProjectsTriggersResource {
     RepoSource request,
     core.String projectId,
     core.String triggerId, {
+    core.String? name,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
+      if (name != null) 'name': [name],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1093,6 +1477,9 @@ class ProjectsTriggersResource {
   ///
   /// [trigger] - Name of the trigger to run the payload against
   ///
+  /// [name] - The name of the `ReceiveTriggerWebhook` to retrieve. Format:
+  /// `projects/{project}/locations/{location}/triggers/{trigger}`
+  ///
   /// [secret] - Secret token used for authorization if an OAuth token isn't
   /// provided.
   ///
@@ -1110,11 +1497,13 @@ class ProjectsTriggersResource {
     HttpBody request,
     core.String projectId,
     core.String trigger, {
+    core.String? name,
     core.String? secret,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
+      if (name != null) 'name': [name],
       if (secret != null) 'secret': [secret],
       if ($fields != null) 'fields': [$fields],
     };
@@ -2033,9 +2422,12 @@ class BuildTrigger {
 
   /// PubsubConfig describes the configuration of a trigger that creates a build
   /// whenever a Pub/Sub message is published.
-  ///
-  /// Optional.
   PubsubConfig? pubsubConfig;
+
+  /// The `Trigger` name with format:
+  /// `projects/{project}/locations/{location}/triggers/{trigger}`, where
+  /// {trigger} is a unique identifier generated by the service.
+  core.String? resourceName;
 
   /// Substitutions for Build resource.
   ///
@@ -2051,6 +2443,10 @@ class BuildTrigger {
   /// expressions. Any branch or tag change that matches that regular expression
   /// will trigger a build. Mutually exclusive with `github`.
   RepoSource? triggerTemplate;
+
+  /// WebhookConfig describes the configuration of a trigger that creates a
+  /// build whenever a webhook is sent to a trigger's webhook URL.
+  WebhookConfig? webhookConfig;
 
   BuildTrigger();
 
@@ -2098,6 +2494,9 @@ class BuildTrigger {
       pubsubConfig = PubsubConfig.fromJson(
           _json['pubsubConfig'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('resourceName')) {
+      resourceName = _json['resourceName'] as core.String;
+    }
     if (_json.containsKey('substitutions')) {
       substitutions =
           (_json['substitutions'] as core.Map<core.String, core.dynamic>).map(
@@ -2116,6 +2515,10 @@ class BuildTrigger {
       triggerTemplate = RepoSource.fromJson(
           _json['triggerTemplate'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('webhookConfig')) {
+      webhookConfig = WebhookConfig.fromJson(
+          _json['webhookConfig'] as core.Map<core.String, core.dynamic>);
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2131,10 +2534,12 @@ class BuildTrigger {
         if (includedFiles != null) 'includedFiles': includedFiles!,
         if (name != null) 'name': name!,
         if (pubsubConfig != null) 'pubsubConfig': pubsubConfig!.toJson(),
+        if (resourceName != null) 'resourceName': resourceName!,
         if (substitutions != null) 'substitutions': substitutions!,
         if (tags != null) 'tags': tags!,
         if (triggerTemplate != null)
           'triggerTemplate': triggerTemplate!.toJson(),
+        if (webhookConfig != null) 'webhookConfig': webhookConfig!.toJson(),
       };
 }
 
@@ -3190,6 +3595,43 @@ class RetryBuildRequest {
       };
 }
 
+/// Specifies a build trigger to run and the source to use.
+class RunBuildTriggerRequest {
+  /// ID of the project.
+  ///
+  /// Required.
+  core.String? projectId;
+
+  /// Source to build against this trigger.
+  RepoSource? source;
+
+  /// ID of the trigger.
+  ///
+  /// Required.
+  core.String? triggerId;
+
+  RunBuildTriggerRequest();
+
+  RunBuildTriggerRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('projectId')) {
+      projectId = _json['projectId'] as core.String;
+    }
+    if (_json.containsKey('source')) {
+      source = RepoSource.fromJson(
+          _json['source'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('triggerId')) {
+      triggerId = _json['triggerId'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (projectId != null) 'projectId': projectId!,
+        if (source != null) 'source': source!.toJson(),
+        if (triggerId != null) 'triggerId': triggerId!,
+      };
+}
+
 /// SMTPDelivery is the delivery configuration for an SMTP (email) notification.
 class SMTPDelivery {
   /// This is the SMTP account/email that appears in the `From:` of the email.
@@ -3711,5 +4153,39 @@ class Warning {
   core.Map<core.String, core.dynamic> toJson() => {
         if (priority != null) 'priority': priority!,
         if (text != null) 'text': text!,
+      };
+}
+
+/// WebhookConfig describes the configuration of a trigger that creates a build
+/// whenever a webhook is sent to a trigger's webhook URL.
+class WebhookConfig {
+  /// Resource name for the secret required as a URL parameter.
+  ///
+  /// Required.
+  core.String? secret;
+
+  /// Potential issues with the underlying Pub/Sub subscription configuration.
+  ///
+  /// Only populated on get requests.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The webhook auth configuration not been checked.
+  /// - "OK" : The auth configuration is properly setup.
+  /// - "SECRET_DELETED" : The secret provided in auth_method has been deleted.
+  core.String? state;
+
+  WebhookConfig();
+
+  WebhookConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('secret')) {
+      secret = _json['secret'] as core.String;
+    }
+    if (_json.containsKey('state')) {
+      state = _json['state'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (secret != null) 'secret': secret!,
+        if (state != null) 'state': state!,
       };
 }

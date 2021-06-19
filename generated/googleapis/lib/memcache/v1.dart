@@ -1580,14 +1580,6 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion {
 /// SloMetadata contains resources required for proper SLO classification of the
 /// instance.
 class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
-  /// Global per-instance SLI eligibility which applies to all defined SLIs.
-  ///
-  /// Exactly one of 'eligibility' and 'per_sli_eligibility' fields must be
-  /// used.
-  ///
-  /// Optional.
-  GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility? eligibility;
-
   /// List of SLO exclusion windows.
   ///
   /// When multiple entries in the list match (matching the exclusion
@@ -1616,9 +1608,6 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
 
   /// Multiple per-instance SLI eligibilities which apply for individual SLIs.
   ///
-  /// Exactly one of 'eligibility' and 'per_sli_eligibility' fields must be
-  /// used.
-  ///
   /// Optional.
   GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility?
       perSliEligibility;
@@ -1633,12 +1622,6 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
 
   GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata.fromJson(
       core.Map _json) {
-    if (_json.containsKey('eligibility')) {
-      eligibility =
-          GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility
-              .fromJson(
-                  _json['eligibility'] as core.Map<core.String, core.dynamic>);
-    }
     if (_json.containsKey('exclusions')) {
       exclusions = (_json['exclusions'] as core.List)
           .map<GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>(
@@ -1667,7 +1650,6 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (eligibility != null) 'eligibility': eligibility!.toJson(),
         if (exclusions != null)
           'exclusions': exclusions!.map((value) => value.toJson()).toList(),
         if (nodes != null)

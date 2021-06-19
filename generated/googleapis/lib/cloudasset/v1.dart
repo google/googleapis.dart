@@ -878,6 +878,27 @@ class V1Resource {
   /// organizations/{ORGANIZATION_NUMBER} (e.g., "organizations/123456")
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
+  /// [assetTypes] - Optional. A list of asset types that the IAM policies are
+  /// attached to. If empty, it will search the IAM policies that are attached
+  /// to all the
+  /// [searchable asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types).
+  /// Regular expressions are also supported. For example: *
+  /// "compute.googleapis.com.*" snapshots IAM policies attached to asset type
+  /// starts with "compute.googleapis.com". * ".*Instance" snapshots IAM
+  /// policies attached to asset type ends with "Instance". * ".*Instance.*"
+  /// snapshots IAM policies attached to asset type contains "Instance". See
+  /// [RE2](https://github.com/google/re2/wiki/Syntax) for all supported regular
+  /// expression syntax. If the regular expression does not match any supported
+  /// asset type, an INVALID_ARGUMENT error will be returned.
+  ///
+  /// [orderBy] - Optional. A comma-separated list of fields specifying the
+  /// sorting order of the results. The default order is ascending. Add " DESC"
+  /// after the field name to indicate descending order. Redundant space
+  /// characters are ignored. Example: "assetType DESC, resource". Only singular
+  /// primitive fields in the response are sortable: * resource * assetType *
+  /// project All the other fields such as repeated fields (e.g., `folders`) and
+  /// non-primitive fields (e.g., `policy`) are not supported.
+  ///
   /// [pageSize] - Optional. The page size for search result pagination. Page
   /// size is capped at 500 even if a larger value is given. If set to zero,
   /// server will pick an appropriate default. Returned results may be fewer
@@ -919,7 +940,9 @@ class V1Resource {
   /// in any of the searchable fields (except for the included permissions). *
   /// `resource:(instance1 OR instance2) policy:amy` to find IAM policy bindings
   /// that are set on resources "instance1" or "instance2" and also specify user
-  /// "amy".
+  /// "amy". * `roles:roles/compute.admin` to find IAM policy bindings that
+  /// specify the Compute Admin role. * `memberTypes:user` to find IAM policy
+  /// bindings that contain the "user" member type.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -933,12 +956,16 @@ class V1Resource {
   /// this method will complete with the same error.
   async.Future<SearchAllIamPoliciesResponse> searchAllIamPolicies(
     core.String scope, {
+    core.List<core.String>? assetTypes,
+    core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
     core.String? query,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
+      if (assetTypes != null) 'assetTypes': assetTypes,
+      if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (query != null) 'query': [query],
@@ -4532,11 +4559,35 @@ class IamPolicyAnalysisState {
 
 /// A result of IAM Policy search, containing information of an IAM policy.
 class IamPolicySearchResult {
+  /// The type of the resource associated with this IAM policy.
+  ///
+  /// Example: `compute.googleapis.com/Disk`. To search against the
+  /// `asset_type`: * specify the `asset_types` field in your search request.
+  core.String? assetType;
+
   /// Explanation about the IAM policy search result.
   ///
   /// It contains additional information to explain why the search result
   /// matches the query.
   Explanation? explanation;
+
+  /// The folder(s) that the IAM policy belongs to, in the form of
+  /// folders/{FOLDER_NUMBER}.
+  ///
+  /// This field is available when the IAM policy belongs to one or more
+  /// folders. To search against `folders`: * use a field query. Example:
+  /// `folders:(123 OR 456)` * use a free text query. Example: `123` * specify
+  /// the `scope` field as this folder in your search request.
+  core.List<core.String>? folders;
+
+  /// The organization that the IAM policy belongs to, in the form of
+  /// organizations/{ORGANIZATION_NUMBER}.
+  ///
+  /// This field is available when the IAM policy belongs to an organization. To
+  /// search against `organization`: * use a field query. Example:
+  /// `organization:123` * use a free text query. Example: `123` * specify the
+  /// `scope` field as this organization in your search request.
+  core.String? organization;
 
   /// The IAM policy directly set on the given resource.
   ///
@@ -4574,9 +4625,20 @@ class IamPolicySearchResult {
   IamPolicySearchResult();
 
   IamPolicySearchResult.fromJson(core.Map _json) {
+    if (_json.containsKey('assetType')) {
+      assetType = _json['assetType'] as core.String;
+    }
     if (_json.containsKey('explanation')) {
       explanation = Explanation.fromJson(
           _json['explanation'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('folders')) {
+      folders = (_json['folders'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('organization')) {
+      organization = _json['organization'] as core.String;
     }
     if (_json.containsKey('policy')) {
       policy = Policy.fromJson(
@@ -4591,7 +4653,10 @@ class IamPolicySearchResult {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (assetType != null) 'assetType': assetType!,
         if (explanation != null) 'explanation': explanation!.toJson(),
+        if (folders != null) 'folders': folders!,
+        if (organization != null) 'organization': organization!,
         if (policy != null) 'policy': policy!.toJson(),
         if (project != null) 'project': project!,
         if (resource != null) 'resource': resource!,

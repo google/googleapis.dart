@@ -513,7 +513,8 @@ class OtherContactsResource {
   ///
   /// [readMask] - Required. A field mask to restrict which fields on each
   /// person are returned. Multiple fields can be specified by separating them
-  /// with commas. Valid values are: * emailAddresses * names * phoneNumbers
+  /// with commas. Valid values are: * emailAddresses * metadata * names *
+  /// phoneNumbers
   ///
   /// [requestSyncToken] - Optional. Whether the response should include
   /// `next_sync_token`, which can be used to get all changes since the last
@@ -591,7 +592,8 @@ class OtherContactsResource {
   ///
   /// [readMask] - Required. A field mask to restrict which fields on each
   /// person are returned. Multiple fields can be specified by separating them
-  /// with commas. Valid values are: * emailAddresses * names * phoneNumbers
+  /// with commas. Valid values are: * emailAddresses * metadata * names *
+  /// phoneNumbers
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3775,6 +3777,13 @@ class Person {
   core.List<CoverPhoto>? coverPhotos;
 
   /// The person's email addresses.
+  ///
+  /// For \[`connections.list`\](/people/api/rest/v1/people.connections/list),
+  /// \[`otherContacts.list`\](/people/api/rest/v1/otherContacts/list), and
+  /// \[`people.listDirectoryPeople`\](/people/api/rest/v1/people/listDirectoryPeople)
+  /// the number of email addresses is limited to 100. If a Person has more
+  /// email addresses the entire set can be obtained by calling
+  /// \['people.get'\](/people/api/rest/v1/people/get).
   core.List<EmailAddress>? emailAddresses;
 
   /// The [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the
@@ -3835,6 +3844,13 @@ class Person {
   core.List<Organization>? organizations;
 
   /// The person's phone numbers.
+  ///
+  /// For \[`connections.list`\](/people/api/rest/v1/people.connections/list),
+  /// \[`otherContacts.list`\](/people/api/rest/v1/otherContacts/list), and
+  /// \[`people.listDirectoryPeople`\](/people/api/rest/v1/people/listDirectoryPeople)
+  /// the number of phone numbers is limited to 100. If a Person has more phone
+  /// numbers the entire set can be obtained by calling
+  /// \['people.get'\](/people/api/rest/v1/people/get).
   core.List<PhoneNumber>? phoneNumbers;
 
   /// The person's photos.
