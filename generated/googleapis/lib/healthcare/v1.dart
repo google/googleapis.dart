@@ -1018,7 +1018,10 @@ class ProjectsLocationsDatasetsConsentStoresResource {
   /// consent store and writes them to a specified destination.
   ///
   /// The returned Operation includes a progress counter for the number of User
-  /// data mappings processed. Errors are logged to Cloud Logging (see
+  /// data mappings processed. If the request is successful, a detailed response
+  /// is returned of type QueryAccessibleDataResponse, contained in the response
+  /// field when the operation finishes. The metadata field type is
+  /// OperationMetadata. Errors are logged to Cloud Logging (see
   /// [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
   /// For example, the following sample log entry shows a `failed to evaluate
   /// consent policy` error that occurred during a QueryAccessibleData call to
@@ -10546,13 +10549,23 @@ class QueryAccessibleDataRequest {
 ///
 /// This structure is included in the response upon operation completion.
 class QueryAccessibleDataResponse {
+  /// List of files, each of which contains a list of data_id(s) that are
+  /// consented for a specified use in the request.
+  core.List<core.String>? gcsUris;
+
   QueryAccessibleDataResponse();
 
-  QueryAccessibleDataResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
+  QueryAccessibleDataResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('gcsUris')) {
+      gcsUris = (_json['gcsUris'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+  }
 
-  core.Map<core.String, core.dynamic> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gcsUris != null) 'gcsUris': gcsUris!,
+      };
 }
 
 /// Define how to redact sensitive values.

@@ -2692,13 +2692,12 @@ class OSPolicyResourceExecResourceExec {
   /// Required.
   /// Possible string values are:
   /// - "INTERPRETER_UNSPECIFIED" : Defaults to NONE.
-  /// - "NONE" : If no interpreter is specified the source will be executed
-  /// directly, which will likely only succeed for executables and scripts with
-  /// shebang lines.
-  /// [Wikipedia shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)).
-  /// - "SHELL" : Indicates that the script will be run with /bin/sh on Linux
-  /// and cmd.exe on windows.
-  /// - "POWERSHELL" : Indicates that the script will be run with powershell.
+  /// - "NONE" : If an interpreter is not specified, the source is executed
+  /// directly. This execution, without an interpreter, only succeeds for
+  /// executables and scripts that have shebang lines.
+  /// - "SHELL" : Indicates that the script runs with `/bin/sh` on Linux and
+  /// `cmd.exe` on Windows.
+  /// - "POWERSHELL" : Indicates that the script runs with PowerShell.
   core.String? interpreter;
 
   /// Only recorded for enforce Exec.

@@ -3645,6 +3645,12 @@ class GoogleCloudMlV1HyperparameterOutput {
   /// The trial id for these results.
   core.String? trialId;
 
+  /// The web URIs for the training job.
+  ///
+  /// Currently for debug terminal access to the job. Only set for in-progress
+  /// hyperparameter tuning trials with web access enabled.
+  core.Map<core.String, core.String>? webAccessUris;
+
   GoogleCloudMlV1HyperparameterOutput();
 
   GoogleCloudMlV1HyperparameterOutput.fromJson(core.Map _json) {
@@ -3689,6 +3695,15 @@ class GoogleCloudMlV1HyperparameterOutput {
     if (_json.containsKey('trialId')) {
       trialId = _json['trialId'] as core.String;
     }
+    if (_json.containsKey('webAccessUris')) {
+      webAccessUris =
+          (_json['webAccessUris'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3704,6 +3719,7 @@ class GoogleCloudMlV1HyperparameterOutput {
         if (startTime != null) 'startTime': startTime!,
         if (state != null) 'state': state!,
         if (trialId != null) 'trialId': trialId!,
+        if (webAccessUris != null) 'webAccessUris': webAccessUris!,
       };
 }
 
@@ -5503,6 +5519,11 @@ class GoogleCloudMlV1TrainingInput {
   /// Optional.
   core.List<core.String>? args;
 
+  /// Whether to enable web access for the training job.
+  ///
+  /// Optional.
+  core.bool? enableWebAccess;
+
   /// Options for using customer-managed encryption keys (CMEK) to protect
   /// resources created by a training job, instead of using Google's default
   /// encryption.
@@ -5804,6 +5825,9 @@ class GoogleCloudMlV1TrainingInput {
           .map<core.String>((value) => value as core.String)
           .toList();
     }
+    if (_json.containsKey('enableWebAccess')) {
+      enableWebAccess = _json['enableWebAccess'] as core.bool;
+    }
     if (_json.containsKey('encryptionConfig')) {
       encryptionConfig = GoogleCloudMlV1EncryptionConfig.fromJson(
           _json['encryptionConfig'] as core.Map<core.String, core.dynamic>);
@@ -5890,6 +5914,7 @@ class GoogleCloudMlV1TrainingInput {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (args != null) 'args': args!,
+        if (enableWebAccess != null) 'enableWebAccess': enableWebAccess!,
         if (encryptionConfig != null)
           'encryptionConfig': encryptionConfig!.toJson(),
         if (evaluatorConfig != null)
@@ -5960,6 +5985,13 @@ class GoogleCloudMlV1TrainingOutput {
   /// Only set for hyperparameter tuning jobs.
   core.List<GoogleCloudMlV1HyperparameterOutput>? trials;
 
+  /// The web URIs for the training job.
+  ///
+  /// Currently for debug terminal access to the job.
+  ///
+  /// Output only.
+  core.Map<core.String, core.String>? webAccessUris;
+
   GoogleCloudMlV1TrainingOutput();
 
   GoogleCloudMlV1TrainingOutput.fromJson(core.Map _json) {
@@ -5991,6 +6023,15 @@ class GoogleCloudMlV1TrainingOutput {
                   value as core.Map<core.String, core.dynamic>))
           .toList();
     }
+    if (_json.containsKey('webAccessUris')) {
+      webAccessUris =
+          (_json['webAccessUris'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6007,6 +6048,7 @@ class GoogleCloudMlV1TrainingOutput {
           'isHyperparameterTuningJob': isHyperparameterTuningJob!,
         if (trials != null)
           'trials': trials!.map((value) => value.toJson()).toList(),
+        if (webAccessUris != null) 'webAccessUris': webAccessUris!,
       };
 }
 

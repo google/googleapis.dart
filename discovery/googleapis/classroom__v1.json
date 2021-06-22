@@ -2398,7 +2398,7 @@
             }
         }
     },
-    "revision": "20210615",
+    "revision": "20210618",
     "rootUrl": "https://classroom.googleapis.com/",
     "schemas": {
         "Announcement": {

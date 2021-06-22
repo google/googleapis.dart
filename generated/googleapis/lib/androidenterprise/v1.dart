@@ -5835,11 +5835,15 @@ class Permission {
 
 /// The device policy for a given managed device.
 class Policy {
-  /// The auto-update policy for apps installed on the device.
+  /// Use autoUpdateMode instead.
   ///
-  /// "choiceToTheUser" allows the device's user to configure the app update
-  /// policy. "always" enables auto updates. "never" disables auto updates.
-  /// "wifiOnly" enables auto updates only when the device is connected to wifi.
+  /// When autoUpdateMode is set to AUTO_UPDATE_POSTPONED or
+  /// AUTO_UPDATE_HIGH_PRIORITY, this field has no effect. "choiceToTheUser"
+  /// allows the device's user to configure the app update policy. "always"
+  /// enables auto updates. "never" disables auto updates. "wifiOnly" enables
+  /// auto updates only when the device is connected to wifi.
+  ///
+  /// Deprecated.
   /// Possible string values are:
   /// - "autoUpdatePolicyUnspecified" : The auto update policy is not set.
   /// - "choiceToTheUser" : The user can control auto-updates.
@@ -6322,11 +6326,10 @@ class ProductPolicy {
   /// - "autoUpdateDefault" : The app is automatically updated with low priority
   /// to minimize the impact on the user. The app is updated when the following
   /// constraints are met: * The device is not actively used * The device is
-  /// connected to a Wi-Fi network. * The device is charging * If the system
-  /// update policy is set to `WINDOWED`: the local time of the device is within
-  /// the daily maintenance window The device is notified about a new update
-  /// within 24 hours after it is published by the developer, after which the
-  /// app is updated the next time the constraints above are met.
+  /// connected to an unmetered network * The device is charging The device is
+  /// notified about a new update within 24 hours after it is published by the
+  /// developer, after which the app is updated the next time the constraints
+  /// above are met.
   /// - "autoUpdatePostponed" : The app is not automatically updated for a
   /// maximum of 90 days after the app becomes out of date. 90 days after the
   /// app becomes out of date, the latest available version is installed

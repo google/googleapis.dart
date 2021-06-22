@@ -394,7 +394,7 @@ Creates and manages jobs run on a regular recurring schedule.
 
 #### Cloud Search API - `cloudsearch.v1`
 
-Cloud Search provides cloud-based search capabilities over G Suite data. The Cloud Search API allows indexing of non-G Suite data into Cloud Search.
+Cloud Search provides cloud-based search capabilities over Google Workspace data. The Cloud Search API allows indexing of non-Google Workspace data into Cloud Search.
 
 - [Documentation](https://developers.google.com/cloud-search/docs/guides/)
 - [API details](https://pub.dev/documentation/googleapis/4.0.0-dev/cloudsearch.v1/cloudsearch.v1-library.html)
@@ -797,7 +797,7 @@ Cloud Talent Solution provides the capability to create, read, update, and delet
 
 #### Google Keep API - `keep.v1`
 
-Allows clients to create, read, and write their Google Keep Notes.
+This API is an enterprise-only API used to create and manage the Keep notes within your domain, including resolving issues identified by CASB software.
 
 - [Documentation](https://support.google.com/keep)
 - [API details](https://pub.dev/documentation/googleapis/4.0.0-dev/keep.v1/keep.v1-library.html)

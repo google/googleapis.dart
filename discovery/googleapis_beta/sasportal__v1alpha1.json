@@ -2481,7 +2481,7 @@
             }
         }
     },
-    "revision": "20210613",
+    "revision": "20210618",
     "rootUrl": "https://sasportal.googleapis.com/",
     "schemas": {
         "SasPortalAssignment": {

@@ -27,25 +27,6 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<core.String> buildUnnamed6845() {
-  var o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
-
-void checkUnnamed6845(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
 core.List<core.String> buildUnnamed6846() {
   var o = <core.String>[];
   o.add('foo');
@@ -65,14 +46,33 @@ void checkUnnamed6846(core.List<core.String> o) {
   );
 }
 
+core.List<core.String> buildUnnamed6847() {
+  var o = <core.String>[];
+  o.add('foo');
+  o.add('foo');
+  return o;
+}
+
+void checkUnnamed6847(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterGenerateAccessTokenRequest = 0;
 api.GenerateAccessTokenRequest buildGenerateAccessTokenRequest() {
   var o = api.GenerateAccessTokenRequest();
   buildCounterGenerateAccessTokenRequest++;
   if (buildCounterGenerateAccessTokenRequest < 3) {
-    o.delegates = buildUnnamed6845();
+    o.delegates = buildUnnamed6846();
     o.lifetime = 'foo';
-    o.scope = buildUnnamed6846();
+    o.scope = buildUnnamed6847();
   }
   buildCounterGenerateAccessTokenRequest--;
   return o;
@@ -81,12 +81,12 @@ api.GenerateAccessTokenRequest buildGenerateAccessTokenRequest() {
 void checkGenerateAccessTokenRequest(api.GenerateAccessTokenRequest o) {
   buildCounterGenerateAccessTokenRequest++;
   if (buildCounterGenerateAccessTokenRequest < 3) {
-    checkUnnamed6845(o.delegates!);
+    checkUnnamed6846(o.delegates!);
     unittest.expect(
       o.lifetime!,
       unittest.equals('foo'),
     );
-    checkUnnamed6846(o.scope!);
+    checkUnnamed6847(o.scope!);
   }
   buildCounterGenerateAccessTokenRequest--;
 }
@@ -118,14 +118,14 @@ void checkGenerateAccessTokenResponse(api.GenerateAccessTokenResponse o) {
   buildCounterGenerateAccessTokenResponse--;
 }
 
-core.List<core.String> buildUnnamed6847() {
+core.List<core.String> buildUnnamed6848() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6847(core.List<core.String> o) {
+void checkUnnamed6848(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -143,7 +143,7 @@ api.GenerateIdTokenRequest buildGenerateIdTokenRequest() {
   buildCounterGenerateIdTokenRequest++;
   if (buildCounterGenerateIdTokenRequest < 3) {
     o.audience = 'foo';
-    o.delegates = buildUnnamed6847();
+    o.delegates = buildUnnamed6848();
     o.includeEmail = true;
   }
   buildCounterGenerateIdTokenRequest--;
@@ -157,7 +157,7 @@ void checkGenerateIdTokenRequest(api.GenerateIdTokenRequest o) {
       o.audience!,
       unittest.equals('foo'),
     );
-    checkUnnamed6847(o.delegates!);
+    checkUnnamed6848(o.delegates!);
     unittest.expect(o.includeEmail!, unittest.isTrue);
   }
   buildCounterGenerateIdTokenRequest--;
@@ -185,14 +185,14 @@ void checkGenerateIdTokenResponse(api.GenerateIdTokenResponse o) {
   buildCounterGenerateIdTokenResponse--;
 }
 
-core.List<core.String> buildUnnamed6848() {
+core.List<core.String> buildUnnamed6849() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6848(core.List<core.String> o) {
+void checkUnnamed6849(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -209,7 +209,7 @@ api.SignBlobRequest buildSignBlobRequest() {
   var o = api.SignBlobRequest();
   buildCounterSignBlobRequest++;
   if (buildCounterSignBlobRequest < 3) {
-    o.delegates = buildUnnamed6848();
+    o.delegates = buildUnnamed6849();
     o.payload = 'foo';
   }
   buildCounterSignBlobRequest--;
@@ -219,7 +219,7 @@ api.SignBlobRequest buildSignBlobRequest() {
 void checkSignBlobRequest(api.SignBlobRequest o) {
   buildCounterSignBlobRequest++;
   if (buildCounterSignBlobRequest < 3) {
-    checkUnnamed6848(o.delegates!);
+    checkUnnamed6849(o.delegates!);
     unittest.expect(
       o.payload!,
       unittest.equals('foo'),
@@ -255,14 +255,14 @@ void checkSignBlobResponse(api.SignBlobResponse o) {
   buildCounterSignBlobResponse--;
 }
 
-core.List<core.String> buildUnnamed6849() {
+core.List<core.String> buildUnnamed6850() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6849(core.List<core.String> o) {
+void checkUnnamed6850(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -279,7 +279,7 @@ api.SignJwtRequest buildSignJwtRequest() {
   var o = api.SignJwtRequest();
   buildCounterSignJwtRequest++;
   if (buildCounterSignJwtRequest < 3) {
-    o.delegates = buildUnnamed6849();
+    o.delegates = buildUnnamed6850();
     o.payload = 'foo';
   }
   buildCounterSignJwtRequest--;
@@ -289,7 +289,7 @@ api.SignJwtRequest buildSignJwtRequest() {
 void checkSignJwtRequest(api.SignJwtRequest o) {
   buildCounterSignJwtRequest++;
   if (buildCounterSignJwtRequest < 3) {
-    checkUnnamed6849(o.delegates!);
+    checkUnnamed6850(o.delegates!);
     unittest.expect(
       o.payload!,
       unittest.equals('foo'),

@@ -346,7 +346,7 @@
             }
         }
     },
-    "revision": "20210527",
+    "revision": "20210615",
     "rootUrl": "https://artifactregistry.googleapis.com/",
     "schemas": {
         "CancelOperationRequest": {

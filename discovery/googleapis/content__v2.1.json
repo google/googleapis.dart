@@ -5483,7 +5483,7 @@
             }
         }
     },
-    "revision": "20210611",
+    "revision": "20210616",
     "rootUrl": "https://shoppingcontent.googleapis.com/",
     "schemas": {
         "Account": {

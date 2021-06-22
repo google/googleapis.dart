@@ -214,14 +214,14 @@ void checkAssignment(api.Assignment o) {
   buildCounterAssignment--;
 }
 
-core.List<api.User> buildUnnamed5203() {
+core.List<api.User> buildUnnamed5204() {
   var o = <api.User>[];
   o.add(buildUser());
   o.add(buildUser());
   return o;
 }
 
-void checkUnnamed5203(core.List<api.User> o) {
+void checkUnnamed5204(core.List<api.User> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUser(o[0] as api.User);
   checkUser(o[1] as api.User);
@@ -233,7 +233,7 @@ api.Comment buildComment() {
   buildCounterComment++;
   if (buildCounterComment < 3) {
     o.assignment = buildAssignment();
-    o.mentionedUsers = buildUnnamed5203();
+    o.mentionedUsers = buildUnnamed5204();
     o.post = buildPost();
     o.suggestion = buildSuggestion();
   }
@@ -245,7 +245,7 @@ void checkComment(api.Comment o) {
   buildCounterComment++;
   if (buildCounterComment < 3) {
     checkAssignment(o.assignment! as api.Assignment);
-    checkUnnamed5203(o.mentionedUsers!);
+    checkUnnamed5204(o.mentionedUsers!);
     checkPost(o.post! as api.Post);
     checkSuggestion(o.suggestion! as api.Suggestion);
   }
@@ -430,40 +430,40 @@ void checkDrive(api.Drive o) {
   buildCounterDrive--;
 }
 
-core.List<api.Action> buildUnnamed5204() {
+core.List<api.Action> buildUnnamed5205() {
   var o = <api.Action>[];
   o.add(buildAction());
   o.add(buildAction());
   return o;
 }
 
-void checkUnnamed5204(core.List<api.Action> o) {
+void checkUnnamed5205(core.List<api.Action> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAction(o[0] as api.Action);
   checkAction(o[1] as api.Action);
 }
 
-core.List<api.Actor> buildUnnamed5205() {
+core.List<api.Actor> buildUnnamed5206() {
   var o = <api.Actor>[];
   o.add(buildActor());
   o.add(buildActor());
   return o;
 }
 
-void checkUnnamed5205(core.List<api.Actor> o) {
+void checkUnnamed5206(core.List<api.Actor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkActor(o[0] as api.Actor);
   checkActor(o[1] as api.Actor);
 }
 
-core.List<api.Target> buildUnnamed5206() {
+core.List<api.Target> buildUnnamed5207() {
   var o = <api.Target>[];
   o.add(buildTarget());
   o.add(buildTarget());
   return o;
 }
 
-void checkUnnamed5206(core.List<api.Target> o) {
+void checkUnnamed5207(core.List<api.Target> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTarget(o[0] as api.Target);
   checkTarget(o[1] as api.Target);
@@ -474,10 +474,10 @@ api.DriveActivity buildDriveActivity() {
   var o = api.DriveActivity();
   buildCounterDriveActivity++;
   if (buildCounterDriveActivity < 3) {
-    o.actions = buildUnnamed5204();
-    o.actors = buildUnnamed5205();
+    o.actions = buildUnnamed5205();
+    o.actors = buildUnnamed5206();
     o.primaryActionDetail = buildActionDetail();
-    o.targets = buildUnnamed5206();
+    o.targets = buildUnnamed5207();
     o.timeRange = buildTimeRange();
     o.timestamp = 'foo';
   }
@@ -488,10 +488,10 @@ api.DriveActivity buildDriveActivity() {
 void checkDriveActivity(api.DriveActivity o) {
   buildCounterDriveActivity++;
   if (buildCounterDriveActivity < 3) {
-    checkUnnamed5204(o.actions!);
-    checkUnnamed5205(o.actors!);
+    checkUnnamed5205(o.actions!);
+    checkUnnamed5206(o.actors!);
     checkActionDetail(o.primaryActionDetail! as api.ActionDetail);
-    checkUnnamed5206(o.targets!);
+    checkUnnamed5207(o.targets!);
     checkTimeRange(o.timeRange! as api.TimeRange);
     unittest.expect(
       o.timestamp!,
@@ -813,19 +813,6 @@ void checkLegacy(api.Legacy o) {
   buildCounterLegacy--;
 }
 
-core.List<api.TargetReference> buildUnnamed5207() {
-  var o = <api.TargetReference>[];
-  o.add(buildTargetReference());
-  o.add(buildTargetReference());
-  return o;
-}
-
-void checkUnnamed5207(core.List<api.TargetReference> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkTargetReference(o[0] as api.TargetReference);
-  checkTargetReference(o[1] as api.TargetReference);
-}
-
 core.List<api.TargetReference> buildUnnamed5208() {
   var o = <api.TargetReference>[];
   o.add(buildTargetReference());
@@ -839,13 +826,26 @@ void checkUnnamed5208(core.List<api.TargetReference> o) {
   checkTargetReference(o[1] as api.TargetReference);
 }
 
+core.List<api.TargetReference> buildUnnamed5209() {
+  var o = <api.TargetReference>[];
+  o.add(buildTargetReference());
+  o.add(buildTargetReference());
+  return o;
+}
+
+void checkUnnamed5209(core.List<api.TargetReference> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkTargetReference(o[0] as api.TargetReference);
+  checkTargetReference(o[1] as api.TargetReference);
+}
+
 core.int buildCounterMove = 0;
 api.Move buildMove() {
   var o = api.Move();
   buildCounterMove++;
   if (buildCounterMove < 3) {
-    o.addedParents = buildUnnamed5207();
-    o.removedParents = buildUnnamed5208();
+    o.addedParents = buildUnnamed5208();
+    o.removedParents = buildUnnamed5209();
   }
   buildCounterMove--;
   return o;
@@ -854,8 +854,8 @@ api.Move buildMove() {
 void checkMove(api.Move o) {
   buildCounterMove++;
   if (buildCounterMove < 3) {
-    checkUnnamed5207(o.addedParents!);
-    checkUnnamed5208(o.removedParents!);
+    checkUnnamed5208(o.addedParents!);
+    checkUnnamed5209(o.removedParents!);
   }
   buildCounterMove--;
 }
@@ -947,19 +947,6 @@ void checkPermission(api.Permission o) {
   buildCounterPermission--;
 }
 
-core.List<api.Permission> buildUnnamed5209() {
-  var o = <api.Permission>[];
-  o.add(buildPermission());
-  o.add(buildPermission());
-  return o;
-}
-
-void checkUnnamed5209(core.List<api.Permission> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkPermission(o[0] as api.Permission);
-  checkPermission(o[1] as api.Permission);
-}
-
 core.List<api.Permission> buildUnnamed5210() {
   var o = <api.Permission>[];
   o.add(buildPermission());
@@ -973,13 +960,26 @@ void checkUnnamed5210(core.List<api.Permission> o) {
   checkPermission(o[1] as api.Permission);
 }
 
+core.List<api.Permission> buildUnnamed5211() {
+  var o = <api.Permission>[];
+  o.add(buildPermission());
+  o.add(buildPermission());
+  return o;
+}
+
+void checkUnnamed5211(core.List<api.Permission> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkPermission(o[0] as api.Permission);
+  checkPermission(o[1] as api.Permission);
+}
+
 core.int buildCounterPermissionChange = 0;
 api.PermissionChange buildPermissionChange() {
   var o = api.PermissionChange();
   buildCounterPermissionChange++;
   if (buildCounterPermissionChange < 3) {
-    o.addedPermissions = buildUnnamed5209();
-    o.removedPermissions = buildUnnamed5210();
+    o.addedPermissions = buildUnnamed5210();
+    o.removedPermissions = buildUnnamed5211();
   }
   buildCounterPermissionChange--;
   return o;
@@ -988,8 +988,8 @@ api.PermissionChange buildPermissionChange() {
 void checkPermissionChange(api.PermissionChange o) {
   buildCounterPermissionChange++;
   if (buildCounterPermissionChange < 3) {
-    checkUnnamed5209(o.addedPermissions!);
-    checkUnnamed5210(o.removedPermissions!);
+    checkUnnamed5210(o.addedPermissions!);
+    checkUnnamed5211(o.removedPermissions!);
   }
   buildCounterPermissionChange--;
 }
@@ -1061,14 +1061,14 @@ void checkQueryDriveActivityRequest(api.QueryDriveActivityRequest o) {
   buildCounterQueryDriveActivityRequest--;
 }
 
-core.List<api.DriveActivity> buildUnnamed5211() {
+core.List<api.DriveActivity> buildUnnamed5212() {
   var o = <api.DriveActivity>[];
   o.add(buildDriveActivity());
   o.add(buildDriveActivity());
   return o;
 }
 
-void checkUnnamed5211(core.List<api.DriveActivity> o) {
+void checkUnnamed5212(core.List<api.DriveActivity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDriveActivity(o[0] as api.DriveActivity);
   checkDriveActivity(o[1] as api.DriveActivity);
@@ -1079,7 +1079,7 @@ api.QueryDriveActivityResponse buildQueryDriveActivityResponse() {
   var o = api.QueryDriveActivityResponse();
   buildCounterQueryDriveActivityResponse++;
   if (buildCounterQueryDriveActivityResponse < 3) {
-    o.activities = buildUnnamed5211();
+    o.activities = buildUnnamed5212();
     o.nextPageToken = 'foo';
   }
   buildCounterQueryDriveActivityResponse--;
@@ -1089,7 +1089,7 @@ api.QueryDriveActivityResponse buildQueryDriveActivityResponse() {
 void checkQueryDriveActivityResponse(api.QueryDriveActivityResponse o) {
   buildCounterQueryDriveActivityResponse++;
   if (buildCounterQueryDriveActivityResponse < 3) {
-    checkUnnamed5211(o.activities!);
+    checkUnnamed5212(o.activities!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1174,14 +1174,14 @@ void checkRestrictionChange(api.RestrictionChange o) {
   buildCounterRestrictionChange--;
 }
 
-core.List<api.RestrictionChange> buildUnnamed5212() {
+core.List<api.RestrictionChange> buildUnnamed5213() {
   var o = <api.RestrictionChange>[];
   o.add(buildRestrictionChange());
   o.add(buildRestrictionChange());
   return o;
 }
 
-void checkUnnamed5212(core.List<api.RestrictionChange> o) {
+void checkUnnamed5213(core.List<api.RestrictionChange> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRestrictionChange(o[0] as api.RestrictionChange);
   checkRestrictionChange(o[1] as api.RestrictionChange);
@@ -1192,7 +1192,7 @@ api.SettingsChange buildSettingsChange() {
   var o = api.SettingsChange();
   buildCounterSettingsChange++;
   if (buildCounterSettingsChange < 3) {
-    o.restrictionChanges = buildUnnamed5212();
+    o.restrictionChanges = buildUnnamed5213();
   }
   buildCounterSettingsChange--;
   return o;
@@ -1201,7 +1201,7 @@ api.SettingsChange buildSettingsChange() {
 void checkSettingsChange(api.SettingsChange o) {
   buildCounterSettingsChange++;
   if (buildCounterSettingsChange < 3) {
-    checkUnnamed5212(o.restrictionChanges!);
+    checkUnnamed5213(o.restrictionChanges!);
   }
   buildCounterSettingsChange--;
 }

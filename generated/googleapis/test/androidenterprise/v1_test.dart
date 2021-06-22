@@ -71,14 +71,14 @@ void checkAdministratorWebToken(api.AdministratorWebToken o) {
   buildCounterAdministratorWebToken--;
 }
 
-core.List<core.String> buildUnnamed4798() {
+core.List<core.String> buildUnnamed4799() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed4798(core.List<core.String> o) {
+void checkUnnamed4799(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -98,7 +98,7 @@ api.AdministratorWebTokenSpec buildAdministratorWebTokenSpec() {
     o.managedConfigurations =
         buildAdministratorWebTokenSpecManagedConfigurations();
     o.parent = 'foo';
-    o.permission = buildUnnamed4798();
+    o.permission = buildUnnamed4799();
     o.playSearch = buildAdministratorWebTokenSpecPlaySearch();
     o.privateApps = buildAdministratorWebTokenSpecPrivateApps();
     o.storeBuilder = buildAdministratorWebTokenSpecStoreBuilder();
@@ -118,7 +118,7 @@ void checkAdministratorWebTokenSpec(api.AdministratorWebTokenSpec o) {
       o.parent!,
       unittest.equals('foo'),
     );
-    checkUnnamed4798(o.permission!);
+    checkUnnamed4799(o.permission!);
     checkAdministratorWebTokenSpecPlaySearch(
         o.playSearch! as api.AdministratorWebTokenSpecPlaySearch);
     checkAdministratorWebTokenSpecPrivateApps(
@@ -260,14 +260,14 @@ void checkAdministratorWebTokenSpecZeroTouch(
   buildCounterAdministratorWebTokenSpecZeroTouch--;
 }
 
-core.List<api.AppRestrictionsSchemaRestriction> buildUnnamed4799() {
+core.List<api.AppRestrictionsSchemaRestriction> buildUnnamed4800() {
   var o = <api.AppRestrictionsSchemaRestriction>[];
   o.add(buildAppRestrictionsSchemaRestriction());
   o.add(buildAppRestrictionsSchemaRestriction());
   return o;
 }
 
-void checkUnnamed4799(core.List<api.AppRestrictionsSchemaRestriction> o) {
+void checkUnnamed4800(core.List<api.AppRestrictionsSchemaRestriction> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAppRestrictionsSchemaRestriction(
       o[0] as api.AppRestrictionsSchemaRestriction);
@@ -281,7 +281,7 @@ api.AppRestrictionsSchema buildAppRestrictionsSchema() {
   buildCounterAppRestrictionsSchema++;
   if (buildCounterAppRestrictionsSchema < 3) {
     o.kind = 'foo';
-    o.restrictions = buildUnnamed4799();
+    o.restrictions = buildUnnamed4800();
   }
   buildCounterAppRestrictionsSchema--;
   return o;
@@ -294,7 +294,7 @@ void checkAppRestrictionsSchema(api.AppRestrictionsSchema o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed4799(o.restrictions!);
+    checkUnnamed4800(o.restrictions!);
   }
   buildCounterAppRestrictionsSchema--;
 }
@@ -322,25 +322,6 @@ void checkAppRestrictionsSchemaChangeEvent(
   buildCounterAppRestrictionsSchemaChangeEvent--;
 }
 
-core.List<core.String> buildUnnamed4800() {
-  var o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
-
-void checkUnnamed4800(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
 core.List<core.String> buildUnnamed4801() {
   var o = <core.String>[];
   o.add('foo');
@@ -360,14 +341,33 @@ void checkUnnamed4801(core.List<core.String> o) {
   );
 }
 
-core.List<api.AppRestrictionsSchemaRestriction> buildUnnamed4802() {
+core.List<core.String> buildUnnamed4802() {
+  var o = <core.String>[];
+  o.add('foo');
+  o.add('foo');
+  return o;
+}
+
+void checkUnnamed4802(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<api.AppRestrictionsSchemaRestriction> buildUnnamed4803() {
   var o = <api.AppRestrictionsSchemaRestriction>[];
   o.add(buildAppRestrictionsSchemaRestriction());
   o.add(buildAppRestrictionsSchemaRestriction());
   return o;
 }
 
-void checkUnnamed4802(core.List<api.AppRestrictionsSchemaRestriction> o) {
+void checkUnnamed4803(core.List<api.AppRestrictionsSchemaRestriction> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAppRestrictionsSchemaRestriction(
       o[0] as api.AppRestrictionsSchemaRestriction);
@@ -382,10 +382,10 @@ api.AppRestrictionsSchemaRestriction buildAppRestrictionsSchemaRestriction() {
   if (buildCounterAppRestrictionsSchemaRestriction < 3) {
     o.defaultValue = buildAppRestrictionsSchemaRestrictionRestrictionValue();
     o.description = 'foo';
-    o.entry = buildUnnamed4800();
-    o.entryValue = buildUnnamed4801();
+    o.entry = buildUnnamed4801();
+    o.entryValue = buildUnnamed4802();
     o.key = 'foo';
-    o.nestedRestriction = buildUnnamed4802();
+    o.nestedRestriction = buildUnnamed4803();
     o.restrictionType = 'foo';
     o.title = 'foo';
   }
@@ -403,13 +403,13 @@ void checkAppRestrictionsSchemaRestriction(
       o.description!,
       unittest.equals('foo'),
     );
-    checkUnnamed4800(o.entry!);
-    checkUnnamed4801(o.entryValue!);
+    checkUnnamed4801(o.entry!);
+    checkUnnamed4802(o.entryValue!);
     unittest.expect(
       o.key!,
       unittest.equals('foo'),
     );
-    checkUnnamed4802(o.nestedRestriction!);
+    checkUnnamed4803(o.nestedRestriction!);
     unittest.expect(
       o.restrictionType!,
       unittest.equals('foo'),
@@ -422,14 +422,14 @@ void checkAppRestrictionsSchemaRestriction(
   buildCounterAppRestrictionsSchemaRestriction--;
 }
 
-core.List<core.String> buildUnnamed4803() {
+core.List<core.String> buildUnnamed4804() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed4803(core.List<core.String> o) {
+void checkUnnamed4804(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -450,7 +450,7 @@ api.AppRestrictionsSchemaRestrictionRestrictionValue
     o.type = 'foo';
     o.valueBool = true;
     o.valueInteger = 42;
-    o.valueMultiselect = buildUnnamed4803();
+    o.valueMultiselect = buildUnnamed4804();
     o.valueString = 'foo';
   }
   buildCounterAppRestrictionsSchemaRestrictionRestrictionValue--;
@@ -470,7 +470,7 @@ void checkAppRestrictionsSchemaRestrictionRestrictionValue(
       o.valueInteger!,
       unittest.equals(42),
     );
-    checkUnnamed4803(o.valueMultiselect!);
+    checkUnnamed4804(o.valueMultiselect!);
     unittest.expect(
       o.valueString!,
       unittest.equals('foo'),
@@ -479,14 +479,14 @@ void checkAppRestrictionsSchemaRestrictionRestrictionValue(
   buildCounterAppRestrictionsSchemaRestrictionRestrictionValue--;
 }
 
-core.List<api.KeyedAppState> buildUnnamed4804() {
+core.List<api.KeyedAppState> buildUnnamed4805() {
   var o = <api.KeyedAppState>[];
   o.add(buildKeyedAppState());
   o.add(buildKeyedAppState());
   return o;
 }
 
-void checkUnnamed4804(core.List<api.KeyedAppState> o) {
+void checkUnnamed4805(core.List<api.KeyedAppState> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkKeyedAppState(o[0] as api.KeyedAppState);
   checkKeyedAppState(o[1] as api.KeyedAppState);
@@ -497,7 +497,7 @@ api.AppState buildAppState() {
   var o = api.AppState();
   buildCounterAppState++;
   if (buildCounterAppState < 3) {
-    o.keyedAppState = buildUnnamed4804();
+    o.keyedAppState = buildUnnamed4805();
     o.packageName = 'foo';
   }
   buildCounterAppState--;
@@ -507,7 +507,7 @@ api.AppState buildAppState() {
 void checkAppState(api.AppState o) {
   buildCounterAppState++;
   if (buildCounterAppState < 3) {
-    checkUnnamed4804(o.keyedAppState!);
+    checkUnnamed4805(o.keyedAppState!);
     unittest.expect(
       o.packageName!,
       unittest.equals('foo'),
@@ -538,14 +538,14 @@ void checkAppUpdateEvent(api.AppUpdateEvent o) {
   buildCounterAppUpdateEvent--;
 }
 
-core.List<core.String> buildUnnamed4805() {
+core.List<core.String> buildUnnamed4806() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed4805(core.List<core.String> o) {
+void checkUnnamed4806(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -564,7 +564,7 @@ api.AppVersion buildAppVersion() {
   if (buildCounterAppVersion < 3) {
     o.isProduction = true;
     o.track = 'foo';
-    o.trackId = buildUnnamed4805();
+    o.trackId = buildUnnamed4806();
     o.versionCode = 42;
     o.versionString = 'foo';
   }
@@ -580,7 +580,7 @@ void checkAppVersion(api.AppVersion o) {
       o.track!,
       unittest.equals('foo'),
     );
-    checkUnnamed4805(o.trackId!);
+    checkUnnamed4806(o.trackId!);
     unittest.expect(
       o.versionCode!,
       unittest.equals(42),
@@ -669,14 +669,14 @@ void checkAutoInstallConstraint(api.AutoInstallConstraint o) {
   buildCounterAutoInstallConstraint--;
 }
 
-core.List<api.AutoInstallConstraint> buildUnnamed4806() {
+core.List<api.AutoInstallConstraint> buildUnnamed4807() {
   var o = <api.AutoInstallConstraint>[];
   o.add(buildAutoInstallConstraint());
   o.add(buildAutoInstallConstraint());
   return o;
 }
 
-void checkUnnamed4806(core.List<api.AutoInstallConstraint> o) {
+void checkUnnamed4807(core.List<api.AutoInstallConstraint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAutoInstallConstraint(o[0] as api.AutoInstallConstraint);
   checkAutoInstallConstraint(o[1] as api.AutoInstallConstraint);
@@ -687,7 +687,7 @@ api.AutoInstallPolicy buildAutoInstallPolicy() {
   var o = api.AutoInstallPolicy();
   buildCounterAutoInstallPolicy++;
   if (buildCounterAutoInstallPolicy < 3) {
-    o.autoInstallConstraint = buildUnnamed4806();
+    o.autoInstallConstraint = buildUnnamed4807();
     o.autoInstallMode = 'foo';
     o.autoInstallPriority = 42;
     o.minimumVersionCode = 42;
@@ -699,7 +699,7 @@ api.AutoInstallPolicy buildAutoInstallPolicy() {
 void checkAutoInstallPolicy(api.AutoInstallPolicy o) {
   buildCounterAutoInstallPolicy++;
   if (buildCounterAutoInstallPolicy < 3) {
-    checkUnnamed4806(o.autoInstallConstraint!);
+    checkUnnamed4807(o.autoInstallConstraint!);
     unittest.expect(
       o.autoInstallMode!,
       unittest.equals('foo'),
@@ -716,14 +716,14 @@ void checkAutoInstallPolicy(api.AutoInstallPolicy o) {
   buildCounterAutoInstallPolicy--;
 }
 
-core.List<api.VariableSet> buildUnnamed4807() {
+core.List<api.VariableSet> buildUnnamed4808() {
   var o = <api.VariableSet>[];
   o.add(buildVariableSet());
   o.add(buildVariableSet());
   return o;
 }
 
-void checkUnnamed4807(core.List<api.VariableSet> o) {
+void checkUnnamed4808(core.List<api.VariableSet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVariableSet(o[0] as api.VariableSet);
   checkVariableSet(o[1] as api.VariableSet);
@@ -735,7 +735,7 @@ api.ConfigurationVariables buildConfigurationVariables() {
   buildCounterConfigurationVariables++;
   if (buildCounterConfigurationVariables < 3) {
     o.mcmId = 'foo';
-    o.variableSet = buildUnnamed4807();
+    o.variableSet = buildUnnamed4808();
   }
   buildCounterConfigurationVariables--;
   return o;
@@ -748,7 +748,7 @@ void checkConfigurationVariables(api.ConfigurationVariables o) {
       o.mcmId!,
       unittest.equals('foo'),
     );
-    checkUnnamed4807(o.variableSet!);
+    checkUnnamed4808(o.variableSet!);
   }
   buildCounterConfigurationVariables--;
 }
@@ -784,14 +784,14 @@ void checkDevice(api.Device o) {
   buildCounterDevice--;
 }
 
-core.List<api.AppState> buildUnnamed4808() {
+core.List<api.AppState> buildUnnamed4809() {
   var o = <api.AppState>[];
   o.add(buildAppState());
   o.add(buildAppState());
   return o;
 }
 
-void checkUnnamed4808(core.List<api.AppState> o) {
+void checkUnnamed4809(core.List<api.AppState> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAppState(o[0] as api.AppState);
   checkAppState(o[1] as api.AppState);
@@ -802,7 +802,7 @@ api.DeviceReport buildDeviceReport() {
   var o = api.DeviceReport();
   buildCounterDeviceReport++;
   if (buildCounterDeviceReport < 3) {
-    o.appState = buildUnnamed4808();
+    o.appState = buildUnnamed4809();
     o.lastUpdatedTimestampMillis = 'foo';
   }
   buildCounterDeviceReport--;
@@ -812,7 +812,7 @@ api.DeviceReport buildDeviceReport() {
 void checkDeviceReport(api.DeviceReport o) {
   buildCounterDeviceReport++;
   if (buildCounterDeviceReport < 3) {
-    checkUnnamed4808(o.appState!);
+    checkUnnamed4809(o.appState!);
     unittest.expect(
       o.lastUpdatedTimestampMillis!,
       unittest.equals('foo'),
@@ -872,14 +872,14 @@ void checkDeviceState(api.DeviceState o) {
   buildCounterDeviceState--;
 }
 
-core.List<api.Device> buildUnnamed4809() {
+core.List<api.Device> buildUnnamed4810() {
   var o = <api.Device>[];
   o.add(buildDevice());
   o.add(buildDevice());
   return o;
 }
 
-void checkUnnamed4809(core.List<api.Device> o) {
+void checkUnnamed4810(core.List<api.Device> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDevice(o[0] as api.Device);
   checkDevice(o[1] as api.Device);
@@ -890,7 +890,7 @@ api.DevicesListResponse buildDevicesListResponse() {
   var o = api.DevicesListResponse();
   buildCounterDevicesListResponse++;
   if (buildCounterDevicesListResponse < 3) {
-    o.device = buildUnnamed4809();
+    o.device = buildUnnamed4810();
   }
   buildCounterDevicesListResponse--;
   return o;
@@ -899,19 +899,19 @@ api.DevicesListResponse buildDevicesListResponse() {
 void checkDevicesListResponse(api.DevicesListResponse o) {
   buildCounterDevicesListResponse++;
   if (buildCounterDevicesListResponse < 3) {
-    checkUnnamed4809(o.device!);
+    checkUnnamed4810(o.device!);
   }
   buildCounterDevicesListResponse--;
 }
 
-core.List<api.Administrator> buildUnnamed4810() {
+core.List<api.Administrator> buildUnnamed4811() {
   var o = <api.Administrator>[];
   o.add(buildAdministrator());
   o.add(buildAdministrator());
   return o;
 }
 
-void checkUnnamed4810(core.List<api.Administrator> o) {
+void checkUnnamed4811(core.List<api.Administrator> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAdministrator(o[0] as api.Administrator);
   checkAdministrator(o[1] as api.Administrator);
@@ -922,7 +922,7 @@ api.Enterprise buildEnterprise() {
   var o = api.Enterprise();
   buildCounterEnterprise++;
   if (buildCounterEnterprise < 3) {
-    o.administrator = buildUnnamed4810();
+    o.administrator = buildUnnamed4811();
     o.id = 'foo';
     o.name = 'foo';
     o.primaryDomain = 'foo';
@@ -934,7 +934,7 @@ api.Enterprise buildEnterprise() {
 void checkEnterprise(api.Enterprise o) {
   buildCounterEnterprise++;
   if (buildCounterEnterprise < 3) {
-    checkUnnamed4810(o.administrator!);
+    checkUnnamed4811(o.administrator!);
     unittest.expect(
       o.id!,
       unittest.equals('foo'),
@@ -973,14 +973,14 @@ void checkEnterpriseAccount(api.EnterpriseAccount o) {
   buildCounterEnterpriseAccount--;
 }
 
-core.List<api.Enterprise> buildUnnamed4811() {
+core.List<api.Enterprise> buildUnnamed4812() {
   var o = <api.Enterprise>[];
   o.add(buildEnterprise());
   o.add(buildEnterprise());
   return o;
 }
 
-void checkUnnamed4811(core.List<api.Enterprise> o) {
+void checkUnnamed4812(core.List<api.Enterprise> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnterprise(o[0] as api.Enterprise);
   checkEnterprise(o[1] as api.Enterprise);
@@ -991,7 +991,7 @@ api.EnterprisesListResponse buildEnterprisesListResponse() {
   var o = api.EnterprisesListResponse();
   buildCounterEnterprisesListResponse++;
   if (buildCounterEnterprisesListResponse < 3) {
-    o.enterprise = buildUnnamed4811();
+    o.enterprise = buildUnnamed4812();
   }
   buildCounterEnterprisesListResponse--;
   return o;
@@ -1000,7 +1000,7 @@ api.EnterprisesListResponse buildEnterprisesListResponse() {
 void checkEnterprisesListResponse(api.EnterprisesListResponse o) {
   buildCounterEnterprisesListResponse++;
   if (buildCounterEnterprisesListResponse < 3) {
-    checkUnnamed4811(o.enterprise!);
+    checkUnnamed4812(o.enterprise!);
   }
   buildCounterEnterprisesListResponse--;
 }
@@ -1061,14 +1061,14 @@ void checkEntitlement(api.Entitlement o) {
   buildCounterEntitlement--;
 }
 
-core.List<api.Entitlement> buildUnnamed4812() {
+core.List<api.Entitlement> buildUnnamed4813() {
   var o = <api.Entitlement>[];
   o.add(buildEntitlement());
   o.add(buildEntitlement());
   return o;
 }
 
-void checkUnnamed4812(core.List<api.Entitlement> o) {
+void checkUnnamed4813(core.List<api.Entitlement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEntitlement(o[0] as api.Entitlement);
   checkEntitlement(o[1] as api.Entitlement);
@@ -1079,7 +1079,7 @@ api.EntitlementsListResponse buildEntitlementsListResponse() {
   var o = api.EntitlementsListResponse();
   buildCounterEntitlementsListResponse++;
   if (buildCounterEntitlementsListResponse < 3) {
-    o.entitlement = buildUnnamed4812();
+    o.entitlement = buildUnnamed4813();
   }
   buildCounterEntitlementsListResponse--;
   return o;
@@ -1088,7 +1088,7 @@ api.EntitlementsListResponse buildEntitlementsListResponse() {
 void checkEntitlementsListResponse(api.EntitlementsListResponse o) {
   buildCounterEntitlementsListResponse++;
   if (buildCounterEntitlementsListResponse < 3) {
-    checkUnnamed4812(o.entitlement!);
+    checkUnnamed4813(o.entitlement!);
   }
   buildCounterEntitlementsListResponse--;
 }
@@ -1140,14 +1140,14 @@ void checkGroupLicense(api.GroupLicense o) {
   buildCounterGroupLicense--;
 }
 
-core.List<api.User> buildUnnamed4813() {
+core.List<api.User> buildUnnamed4814() {
   var o = <api.User>[];
   o.add(buildUser());
   o.add(buildUser());
   return o;
 }
 
-void checkUnnamed4813(core.List<api.User> o) {
+void checkUnnamed4814(core.List<api.User> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUser(o[0] as api.User);
   checkUser(o[1] as api.User);
@@ -1158,7 +1158,7 @@ api.GroupLicenseUsersListResponse buildGroupLicenseUsersListResponse() {
   var o = api.GroupLicenseUsersListResponse();
   buildCounterGroupLicenseUsersListResponse++;
   if (buildCounterGroupLicenseUsersListResponse < 3) {
-    o.user = buildUnnamed4813();
+    o.user = buildUnnamed4814();
   }
   buildCounterGroupLicenseUsersListResponse--;
   return o;
@@ -1167,19 +1167,19 @@ api.GroupLicenseUsersListResponse buildGroupLicenseUsersListResponse() {
 void checkGroupLicenseUsersListResponse(api.GroupLicenseUsersListResponse o) {
   buildCounterGroupLicenseUsersListResponse++;
   if (buildCounterGroupLicenseUsersListResponse < 3) {
-    checkUnnamed4813(o.user!);
+    checkUnnamed4814(o.user!);
   }
   buildCounterGroupLicenseUsersListResponse--;
 }
 
-core.List<api.GroupLicense> buildUnnamed4814() {
+core.List<api.GroupLicense> buildUnnamed4815() {
   var o = <api.GroupLicense>[];
   o.add(buildGroupLicense());
   o.add(buildGroupLicense());
   return o;
 }
 
-void checkUnnamed4814(core.List<api.GroupLicense> o) {
+void checkUnnamed4815(core.List<api.GroupLicense> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGroupLicense(o[0] as api.GroupLicense);
   checkGroupLicense(o[1] as api.GroupLicense);
@@ -1190,7 +1190,7 @@ api.GroupLicensesListResponse buildGroupLicensesListResponse() {
   var o = api.GroupLicensesListResponse();
   buildCounterGroupLicensesListResponse++;
   if (buildCounterGroupLicensesListResponse < 3) {
-    o.groupLicense = buildUnnamed4814();
+    o.groupLicense = buildUnnamed4815();
   }
   buildCounterGroupLicensesListResponse--;
   return o;
@@ -1199,7 +1199,7 @@ api.GroupLicensesListResponse buildGroupLicensesListResponse() {
 void checkGroupLicensesListResponse(api.GroupLicensesListResponse o) {
   buildCounterGroupLicensesListResponse++;
   if (buildCounterGroupLicensesListResponse < 3) {
-    checkUnnamed4814(o.groupLicense!);
+    checkUnnamed4815(o.groupLicense!);
   }
   buildCounterGroupLicensesListResponse--;
 }
@@ -1278,14 +1278,14 @@ void checkInstallFailureEvent(api.InstallFailureEvent o) {
   buildCounterInstallFailureEvent--;
 }
 
-core.List<api.Install> buildUnnamed4815() {
+core.List<api.Install> buildUnnamed4816() {
   var o = <api.Install>[];
   o.add(buildInstall());
   o.add(buildInstall());
   return o;
 }
 
-void checkUnnamed4815(core.List<api.Install> o) {
+void checkUnnamed4816(core.List<api.Install> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInstall(o[0] as api.Install);
   checkInstall(o[1] as api.Install);
@@ -1296,7 +1296,7 @@ api.InstallsListResponse buildInstallsListResponse() {
   var o = api.InstallsListResponse();
   buildCounterInstallsListResponse++;
   if (buildCounterInstallsListResponse < 3) {
-    o.install = buildUnnamed4815();
+    o.install = buildUnnamed4816();
   }
   buildCounterInstallsListResponse--;
   return o;
@@ -1305,7 +1305,7 @@ api.InstallsListResponse buildInstallsListResponse() {
 void checkInstallsListResponse(api.InstallsListResponse o) {
   buildCounterInstallsListResponse++;
   if (buildCounterInstallsListResponse < 3) {
-    checkUnnamed4815(o.install!);
+    checkUnnamed4816(o.install!);
   }
   buildCounterInstallsListResponse--;
 }
@@ -1406,14 +1406,14 @@ void checkMaintenanceWindow(api.MaintenanceWindow o) {
   buildCounterMaintenanceWindow--;
 }
 
-core.List<api.ManagedProperty> buildUnnamed4816() {
+core.List<api.ManagedProperty> buildUnnamed4817() {
   var o = <api.ManagedProperty>[];
   o.add(buildManagedProperty());
   o.add(buildManagedProperty());
   return o;
 }
 
-void checkUnnamed4816(core.List<api.ManagedProperty> o) {
+void checkUnnamed4817(core.List<api.ManagedProperty> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkManagedProperty(o[0] as api.ManagedProperty);
   checkManagedProperty(o[1] as api.ManagedProperty);
@@ -1426,7 +1426,7 @@ api.ManagedConfiguration buildManagedConfiguration() {
   if (buildCounterManagedConfiguration < 3) {
     o.configurationVariables = buildConfigurationVariables();
     o.kind = 'foo';
-    o.managedProperty = buildUnnamed4816();
+    o.managedProperty = buildUnnamed4817();
     o.productId = 'foo';
   }
   buildCounterManagedConfiguration--;
@@ -1442,47 +1442,13 @@ void checkManagedConfiguration(api.ManagedConfiguration o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed4816(o.managedProperty!);
+    checkUnnamed4817(o.managedProperty!);
     unittest.expect(
       o.productId!,
       unittest.equals('foo'),
     );
   }
   buildCounterManagedConfiguration--;
-}
-
-core.List<api.ManagedConfiguration> buildUnnamed4817() {
-  var o = <api.ManagedConfiguration>[];
-  o.add(buildManagedConfiguration());
-  o.add(buildManagedConfiguration());
-  return o;
-}
-
-void checkUnnamed4817(core.List<api.ManagedConfiguration> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkManagedConfiguration(o[0] as api.ManagedConfiguration);
-  checkManagedConfiguration(o[1] as api.ManagedConfiguration);
-}
-
-core.int buildCounterManagedConfigurationsForDeviceListResponse = 0;
-api.ManagedConfigurationsForDeviceListResponse
-    buildManagedConfigurationsForDeviceListResponse() {
-  var o = api.ManagedConfigurationsForDeviceListResponse();
-  buildCounterManagedConfigurationsForDeviceListResponse++;
-  if (buildCounterManagedConfigurationsForDeviceListResponse < 3) {
-    o.managedConfigurationForDevice = buildUnnamed4817();
-  }
-  buildCounterManagedConfigurationsForDeviceListResponse--;
-  return o;
-}
-
-void checkManagedConfigurationsForDeviceListResponse(
-    api.ManagedConfigurationsForDeviceListResponse o) {
-  buildCounterManagedConfigurationsForDeviceListResponse++;
-  if (buildCounterManagedConfigurationsForDeviceListResponse < 3) {
-    checkUnnamed4817(o.managedConfigurationForDevice!);
-  }
-  buildCounterManagedConfigurationsForDeviceListResponse--;
 }
 
 core.List<api.ManagedConfiguration> buildUnnamed4818() {
@@ -1498,13 +1464,47 @@ void checkUnnamed4818(core.List<api.ManagedConfiguration> o) {
   checkManagedConfiguration(o[1] as api.ManagedConfiguration);
 }
 
+core.int buildCounterManagedConfigurationsForDeviceListResponse = 0;
+api.ManagedConfigurationsForDeviceListResponse
+    buildManagedConfigurationsForDeviceListResponse() {
+  var o = api.ManagedConfigurationsForDeviceListResponse();
+  buildCounterManagedConfigurationsForDeviceListResponse++;
+  if (buildCounterManagedConfigurationsForDeviceListResponse < 3) {
+    o.managedConfigurationForDevice = buildUnnamed4818();
+  }
+  buildCounterManagedConfigurationsForDeviceListResponse--;
+  return o;
+}
+
+void checkManagedConfigurationsForDeviceListResponse(
+    api.ManagedConfigurationsForDeviceListResponse o) {
+  buildCounterManagedConfigurationsForDeviceListResponse++;
+  if (buildCounterManagedConfigurationsForDeviceListResponse < 3) {
+    checkUnnamed4818(o.managedConfigurationForDevice!);
+  }
+  buildCounterManagedConfigurationsForDeviceListResponse--;
+}
+
+core.List<api.ManagedConfiguration> buildUnnamed4819() {
+  var o = <api.ManagedConfiguration>[];
+  o.add(buildManagedConfiguration());
+  o.add(buildManagedConfiguration());
+  return o;
+}
+
+void checkUnnamed4819(core.List<api.ManagedConfiguration> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkManagedConfiguration(o[0] as api.ManagedConfiguration);
+  checkManagedConfiguration(o[1] as api.ManagedConfiguration);
+}
+
 core.int buildCounterManagedConfigurationsForUserListResponse = 0;
 api.ManagedConfigurationsForUserListResponse
     buildManagedConfigurationsForUserListResponse() {
   var o = api.ManagedConfigurationsForUserListResponse();
   buildCounterManagedConfigurationsForUserListResponse++;
   if (buildCounterManagedConfigurationsForUserListResponse < 3) {
-    o.managedConfigurationForUser = buildUnnamed4818();
+    o.managedConfigurationForUser = buildUnnamed4819();
   }
   buildCounterManagedConfigurationsForUserListResponse--;
   return o;
@@ -1514,7 +1514,7 @@ void checkManagedConfigurationsForUserListResponse(
     api.ManagedConfigurationsForUserListResponse o) {
   buildCounterManagedConfigurationsForUserListResponse++;
   if (buildCounterManagedConfigurationsForUserListResponse < 3) {
-    checkUnnamed4818(o.managedConfigurationForUser!);
+    checkUnnamed4819(o.managedConfigurationForUser!);
   }
   buildCounterManagedConfigurationsForUserListResponse--;
 }
@@ -1551,14 +1551,14 @@ void checkManagedConfigurationsSettings(api.ManagedConfigurationsSettings o) {
   buildCounterManagedConfigurationsSettings--;
 }
 
-core.List<api.ManagedConfigurationsSettings> buildUnnamed4819() {
+core.List<api.ManagedConfigurationsSettings> buildUnnamed4820() {
   var o = <api.ManagedConfigurationsSettings>[];
   o.add(buildManagedConfigurationsSettings());
   o.add(buildManagedConfigurationsSettings());
   return o;
 }
 
-void checkUnnamed4819(core.List<api.ManagedConfigurationsSettings> o) {
+void checkUnnamed4820(core.List<api.ManagedConfigurationsSettings> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkManagedConfigurationsSettings(o[0] as api.ManagedConfigurationsSettings);
   checkManagedConfigurationsSettings(o[1] as api.ManagedConfigurationsSettings);
@@ -1570,7 +1570,7 @@ api.ManagedConfigurationsSettingsListResponse
   var o = api.ManagedConfigurationsSettingsListResponse();
   buildCounterManagedConfigurationsSettingsListResponse++;
   if (buildCounterManagedConfigurationsSettingsListResponse < 3) {
-    o.managedConfigurationsSettings = buildUnnamed4819();
+    o.managedConfigurationsSettings = buildUnnamed4820();
   }
   buildCounterManagedConfigurationsSettingsListResponse--;
   return o;
@@ -1580,32 +1580,32 @@ void checkManagedConfigurationsSettingsListResponse(
     api.ManagedConfigurationsSettingsListResponse o) {
   buildCounterManagedConfigurationsSettingsListResponse++;
   if (buildCounterManagedConfigurationsSettingsListResponse < 3) {
-    checkUnnamed4819(o.managedConfigurationsSettings!);
+    checkUnnamed4820(o.managedConfigurationsSettings!);
   }
   buildCounterManagedConfigurationsSettingsListResponse--;
 }
 
-core.List<api.ManagedPropertyBundle> buildUnnamed4820() {
+core.List<api.ManagedPropertyBundle> buildUnnamed4821() {
   var o = <api.ManagedPropertyBundle>[];
   o.add(buildManagedPropertyBundle());
   o.add(buildManagedPropertyBundle());
   return o;
 }
 
-void checkUnnamed4820(core.List<api.ManagedPropertyBundle> o) {
+void checkUnnamed4821(core.List<api.ManagedPropertyBundle> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkManagedPropertyBundle(o[0] as api.ManagedPropertyBundle);
   checkManagedPropertyBundle(o[1] as api.ManagedPropertyBundle);
 }
 
-core.List<core.String> buildUnnamed4821() {
+core.List<core.String> buildUnnamed4822() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed4821(core.List<core.String> o) {
+void checkUnnamed4822(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1625,10 +1625,10 @@ api.ManagedProperty buildManagedProperty() {
     o.key = 'foo';
     o.valueBool = true;
     o.valueBundle = buildManagedPropertyBundle();
-    o.valueBundleArray = buildUnnamed4820();
+    o.valueBundleArray = buildUnnamed4821();
     o.valueInteger = 42;
     o.valueString = 'foo';
-    o.valueStringArray = buildUnnamed4821();
+    o.valueStringArray = buildUnnamed4822();
   }
   buildCounterManagedProperty--;
   return o;
@@ -1643,7 +1643,7 @@ void checkManagedProperty(api.ManagedProperty o) {
     );
     unittest.expect(o.valueBool!, unittest.isTrue);
     checkManagedPropertyBundle(o.valueBundle! as api.ManagedPropertyBundle);
-    checkUnnamed4820(o.valueBundleArray!);
+    checkUnnamed4821(o.valueBundleArray!);
     unittest.expect(
       o.valueInteger!,
       unittest.equals(42),
@@ -1652,19 +1652,19 @@ void checkManagedProperty(api.ManagedProperty o) {
       o.valueString!,
       unittest.equals('foo'),
     );
-    checkUnnamed4821(o.valueStringArray!);
+    checkUnnamed4822(o.valueStringArray!);
   }
   buildCounterManagedProperty--;
 }
 
-core.List<api.ManagedProperty> buildUnnamed4822() {
+core.List<api.ManagedProperty> buildUnnamed4823() {
   var o = <api.ManagedProperty>[];
   o.add(buildManagedProperty());
   o.add(buildManagedProperty());
   return o;
 }
 
-void checkUnnamed4822(core.List<api.ManagedProperty> o) {
+void checkUnnamed4823(core.List<api.ManagedProperty> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkManagedProperty(o[0] as api.ManagedProperty);
   checkManagedProperty(o[1] as api.ManagedProperty);
@@ -1675,7 +1675,7 @@ api.ManagedPropertyBundle buildManagedPropertyBundle() {
   var o = api.ManagedPropertyBundle();
   buildCounterManagedPropertyBundle++;
   if (buildCounterManagedPropertyBundle < 3) {
-    o.managedProperty = buildUnnamed4822();
+    o.managedProperty = buildUnnamed4823();
   }
   buildCounterManagedPropertyBundle--;
   return o;
@@ -1684,7 +1684,7 @@ api.ManagedPropertyBundle buildManagedPropertyBundle() {
 void checkManagedPropertyBundle(api.ManagedPropertyBundle o) {
   buildCounterManagedPropertyBundle++;
   if (buildCounterManagedPropertyBundle < 3) {
-    checkUnnamed4822(o.managedProperty!);
+    checkUnnamed4823(o.managedProperty!);
   }
   buildCounterManagedPropertyBundle--;
 }
@@ -1726,25 +1726,6 @@ void checkNewDeviceEvent(api.NewDeviceEvent o) {
   buildCounterNewDeviceEvent--;
 }
 
-core.List<core.String> buildUnnamed4823() {
-  var o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
-
-void checkUnnamed4823(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
 core.List<core.String> buildUnnamed4824() {
   var o = <core.String>[];
   o.add('foo');
@@ -1764,14 +1745,33 @@ void checkUnnamed4824(core.List<core.String> o) {
   );
 }
 
+core.List<core.String> buildUnnamed4825() {
+  var o = <core.String>[];
+  o.add('foo');
+  o.add('foo');
+  return o;
+}
+
+void checkUnnamed4825(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterNewPermissionsEvent = 0;
 api.NewPermissionsEvent buildNewPermissionsEvent() {
   var o = api.NewPermissionsEvent();
   buildCounterNewPermissionsEvent++;
   if (buildCounterNewPermissionsEvent < 3) {
-    o.approvedPermissions = buildUnnamed4823();
+    o.approvedPermissions = buildUnnamed4824();
     o.productId = 'foo';
-    o.requestedPermissions = buildUnnamed4824();
+    o.requestedPermissions = buildUnnamed4825();
   }
   buildCounterNewPermissionsEvent--;
   return o;
@@ -1780,12 +1780,12 @@ api.NewPermissionsEvent buildNewPermissionsEvent() {
 void checkNewPermissionsEvent(api.NewPermissionsEvent o) {
   buildCounterNewPermissionsEvent++;
   if (buildCounterNewPermissionsEvent < 3) {
-    checkUnnamed4823(o.approvedPermissions!);
+    checkUnnamed4824(o.approvedPermissions!);
     unittest.expect(
       o.productId!,
       unittest.equals('foo'),
     );
-    checkUnnamed4824(o.requestedPermissions!);
+    checkUnnamed4825(o.requestedPermissions!);
   }
   buildCounterNewPermissionsEvent--;
 }
@@ -1843,14 +1843,14 @@ void checkNotification(api.Notification o) {
   buildCounterNotification--;
 }
 
-core.List<api.Notification> buildUnnamed4825() {
+core.List<api.Notification> buildUnnamed4826() {
   var o = <api.Notification>[];
   o.add(buildNotification());
   o.add(buildNotification());
   return o;
 }
 
-void checkUnnamed4825(core.List<api.Notification> o) {
+void checkUnnamed4826(core.List<api.Notification> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNotification(o[0] as api.Notification);
   checkNotification(o[1] as api.Notification);
@@ -1861,7 +1861,7 @@ api.NotificationSet buildNotificationSet() {
   var o = api.NotificationSet();
   buildCounterNotificationSet++;
   if (buildCounterNotificationSet < 3) {
-    o.notification = buildUnnamed4825();
+    o.notification = buildUnnamed4826();
     o.notificationSetId = 'foo';
   }
   buildCounterNotificationSet--;
@@ -1871,7 +1871,7 @@ api.NotificationSet buildNotificationSet() {
 void checkNotificationSet(api.NotificationSet o) {
   buildCounterNotificationSet++;
   if (buildCounterNotificationSet < 3) {
-    checkUnnamed4825(o.notification!);
+    checkUnnamed4826(o.notification!);
     unittest.expect(
       o.notificationSetId!,
       unittest.equals('foo'),
@@ -1944,14 +1944,14 @@ void checkPermission(api.Permission o) {
   buildCounterPermission--;
 }
 
-core.List<api.ProductPolicy> buildUnnamed4826() {
+core.List<api.ProductPolicy> buildUnnamed4827() {
   var o = <api.ProductPolicy>[];
   o.add(buildProductPolicy());
   o.add(buildProductPolicy());
   return o;
 }
 
-void checkUnnamed4826(core.List<api.ProductPolicy> o) {
+void checkUnnamed4827(core.List<api.ProductPolicy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProductPolicy(o[0] as api.ProductPolicy);
   checkProductPolicy(o[1] as api.ProductPolicy);
@@ -1966,7 +1966,7 @@ api.Policy buildPolicy() {
     o.deviceReportPolicy = 'foo';
     o.maintenanceWindow = buildMaintenanceWindow();
     o.productAvailabilityPolicy = 'foo';
-    o.productPolicy = buildUnnamed4826();
+    o.productPolicy = buildUnnamed4827();
   }
   buildCounterPolicy--;
   return o;
@@ -1988,54 +1988,35 @@ void checkPolicy(api.Policy o) {
       o.productAvailabilityPolicy!,
       unittest.equals('foo'),
     );
-    checkUnnamed4826(o.productPolicy!);
+    checkUnnamed4827(o.productPolicy!);
   }
   buildCounterPolicy--;
 }
 
-core.List<api.TrackInfo> buildUnnamed4827() {
+core.List<api.TrackInfo> buildUnnamed4828() {
   var o = <api.TrackInfo>[];
   o.add(buildTrackInfo());
   o.add(buildTrackInfo());
   return o;
 }
 
-void checkUnnamed4827(core.List<api.TrackInfo> o) {
+void checkUnnamed4828(core.List<api.TrackInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTrackInfo(o[0] as api.TrackInfo);
   checkTrackInfo(o[1] as api.TrackInfo);
 }
 
-core.List<api.AppVersion> buildUnnamed4828() {
+core.List<api.AppVersion> buildUnnamed4829() {
   var o = <api.AppVersion>[];
   o.add(buildAppVersion());
   o.add(buildAppVersion());
   return o;
 }
 
-void checkUnnamed4828(core.List<api.AppVersion> o) {
+void checkUnnamed4829(core.List<api.AppVersion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAppVersion(o[0] as api.AppVersion);
   checkAppVersion(o[1] as api.AppVersion);
-}
-
-core.List<core.String> buildUnnamed4829() {
-  var o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
-
-void checkUnnamed4829(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
 }
 
 core.List<core.String> buildUnnamed4830() {
@@ -2076,27 +2057,46 @@ void checkUnnamed4831(core.List<core.String> o) {
   );
 }
 
-core.List<api.ProductPermission> buildUnnamed4832() {
-  var o = <api.ProductPermission>[];
-  o.add(buildProductPermission());
-  o.add(buildProductPermission());
-  return o;
-}
-
-void checkUnnamed4832(core.List<api.ProductPermission> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkProductPermission(o[0] as api.ProductPermission);
-  checkProductPermission(o[1] as api.ProductPermission);
-}
-
-core.List<core.String> buildUnnamed4833() {
+core.List<core.String> buildUnnamed4832() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed4833(core.List<core.String> o) {
+void checkUnnamed4832(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<api.ProductPermission> buildUnnamed4833() {
+  var o = <api.ProductPermission>[];
+  o.add(buildProductPermission());
+  o.add(buildProductPermission());
+  return o;
+}
+
+void checkUnnamed4833(core.List<api.ProductPermission> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkProductPermission(o[0] as api.ProductPermission);
+  checkProductPermission(o[1] as api.ProductPermission);
+}
+
+core.List<core.String> buildUnnamed4834() {
+  var o = <core.String>[];
+  o.add('foo');
+  o.add('foo');
+  return o;
+}
+
+void checkUnnamed4834(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2113,26 +2113,26 @@ api.Product buildProduct() {
   var o = api.Product();
   buildCounterProduct++;
   if (buildCounterProduct < 3) {
-    o.appTracks = buildUnnamed4827();
-    o.appVersion = buildUnnamed4828();
+    o.appTracks = buildUnnamed4828();
+    o.appVersion = buildUnnamed4829();
     o.authorName = 'foo';
-    o.availableCountries = buildUnnamed4829();
-    o.availableTracks = buildUnnamed4830();
+    o.availableCountries = buildUnnamed4830();
+    o.availableTracks = buildUnnamed4831();
     o.category = 'foo';
     o.contentRating = 'foo';
     o.description = 'foo';
     o.detailsUrl = 'foo';
     o.distributionChannel = 'foo';
-    o.features = buildUnnamed4831();
+    o.features = buildUnnamed4832();
     o.iconUrl = 'foo';
     o.lastUpdatedTimestampMillis = 'foo';
     o.minAndroidSdkVersion = 42;
-    o.permissions = buildUnnamed4832();
+    o.permissions = buildUnnamed4833();
     o.productId = 'foo';
     o.productPricing = 'foo';
     o.recentChanges = 'foo';
     o.requiresContainerApp = true;
-    o.screenshotUrls = buildUnnamed4833();
+    o.screenshotUrls = buildUnnamed4834();
     o.signingCertificate = buildProductSigningCertificate();
     o.smallIconUrl = 'foo';
     o.title = 'foo';
@@ -2145,14 +2145,14 @@ api.Product buildProduct() {
 void checkProduct(api.Product o) {
   buildCounterProduct++;
   if (buildCounterProduct < 3) {
-    checkUnnamed4827(o.appTracks!);
-    checkUnnamed4828(o.appVersion!);
+    checkUnnamed4828(o.appTracks!);
+    checkUnnamed4829(o.appVersion!);
     unittest.expect(
       o.authorName!,
       unittest.equals('foo'),
     );
-    checkUnnamed4829(o.availableCountries!);
-    checkUnnamed4830(o.availableTracks!);
+    checkUnnamed4830(o.availableCountries!);
+    checkUnnamed4831(o.availableTracks!);
     unittest.expect(
       o.category!,
       unittest.equals('foo'),
@@ -2173,7 +2173,7 @@ void checkProduct(api.Product o) {
       o.distributionChannel!,
       unittest.equals('foo'),
     );
-    checkUnnamed4831(o.features!);
+    checkUnnamed4832(o.features!);
     unittest.expect(
       o.iconUrl!,
       unittest.equals('foo'),
@@ -2186,7 +2186,7 @@ void checkProduct(api.Product o) {
       o.minAndroidSdkVersion!,
       unittest.equals(42),
     );
-    checkUnnamed4832(o.permissions!);
+    checkUnnamed4833(o.permissions!);
     unittest.expect(
       o.productId!,
       unittest.equals('foo'),
@@ -2200,7 +2200,7 @@ void checkProduct(api.Product o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.requiresContainerApp!, unittest.isTrue);
-    checkUnnamed4833(o.screenshotUrls!);
+    checkUnnamed4834(o.screenshotUrls!);
     checkProductSigningCertificate(
         o.signingCertificate! as api.ProductSigningCertificate);
     unittest.expect(
@@ -2300,14 +2300,14 @@ void checkProductPermission(api.ProductPermission o) {
   buildCounterProductPermission--;
 }
 
-core.List<api.ProductPermission> buildUnnamed4834() {
+core.List<api.ProductPermission> buildUnnamed4835() {
   var o = <api.ProductPermission>[];
   o.add(buildProductPermission());
   o.add(buildProductPermission());
   return o;
 }
 
-void checkUnnamed4834(core.List<api.ProductPermission> o) {
+void checkUnnamed4835(core.List<api.ProductPermission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProductPermission(o[0] as api.ProductPermission);
   checkProductPermission(o[1] as api.ProductPermission);
@@ -2318,7 +2318,7 @@ api.ProductPermissions buildProductPermissions() {
   var o = api.ProductPermissions();
   buildCounterProductPermissions++;
   if (buildCounterProductPermissions < 3) {
-    o.permission = buildUnnamed4834();
+    o.permission = buildUnnamed4835();
     o.productId = 'foo';
   }
   buildCounterProductPermissions--;
@@ -2328,32 +2328,13 @@ api.ProductPermissions buildProductPermissions() {
 void checkProductPermissions(api.ProductPermissions o) {
   buildCounterProductPermissions++;
   if (buildCounterProductPermissions < 3) {
-    checkUnnamed4834(o.permission!);
+    checkUnnamed4835(o.permission!);
     unittest.expect(
       o.productId!,
       unittest.equals('foo'),
     );
   }
   buildCounterProductPermissions--;
-}
-
-core.List<core.String> buildUnnamed4835() {
-  var o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
-
-void checkUnnamed4835(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
 }
 
 core.List<core.String> buildUnnamed4836() {
@@ -2375,42 +2356,6 @@ void checkUnnamed4836(core.List<core.String> o) {
   );
 }
 
-core.int buildCounterProductPolicy = 0;
-api.ProductPolicy buildProductPolicy() {
-  var o = api.ProductPolicy();
-  buildCounterProductPolicy++;
-  if (buildCounterProductPolicy < 3) {
-    o.autoInstallPolicy = buildAutoInstallPolicy();
-    o.autoUpdateMode = 'foo';
-    o.managedConfiguration = buildManagedConfiguration();
-    o.productId = 'foo';
-    o.trackIds = buildUnnamed4835();
-    o.tracks = buildUnnamed4836();
-  }
-  buildCounterProductPolicy--;
-  return o;
-}
-
-void checkProductPolicy(api.ProductPolicy o) {
-  buildCounterProductPolicy++;
-  if (buildCounterProductPolicy < 3) {
-    checkAutoInstallPolicy(o.autoInstallPolicy! as api.AutoInstallPolicy);
-    unittest.expect(
-      o.autoUpdateMode!,
-      unittest.equals('foo'),
-    );
-    checkManagedConfiguration(
-        o.managedConfiguration! as api.ManagedConfiguration);
-    unittest.expect(
-      o.productId!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed4835(o.trackIds!);
-    checkUnnamed4836(o.tracks!);
-  }
-  buildCounterProductPolicy--;
-}
-
 core.List<core.String> buildUnnamed4837() {
   var o = <core.String>[];
   o.add('foo');
@@ -2430,14 +2375,69 @@ void checkUnnamed4837(core.List<core.String> o) {
   );
 }
 
-core.List<api.ProductVisibility> buildUnnamed4838() {
+core.int buildCounterProductPolicy = 0;
+api.ProductPolicy buildProductPolicy() {
+  var o = api.ProductPolicy();
+  buildCounterProductPolicy++;
+  if (buildCounterProductPolicy < 3) {
+    o.autoInstallPolicy = buildAutoInstallPolicy();
+    o.autoUpdateMode = 'foo';
+    o.managedConfiguration = buildManagedConfiguration();
+    o.productId = 'foo';
+    o.trackIds = buildUnnamed4836();
+    o.tracks = buildUnnamed4837();
+  }
+  buildCounterProductPolicy--;
+  return o;
+}
+
+void checkProductPolicy(api.ProductPolicy o) {
+  buildCounterProductPolicy++;
+  if (buildCounterProductPolicy < 3) {
+    checkAutoInstallPolicy(o.autoInstallPolicy! as api.AutoInstallPolicy);
+    unittest.expect(
+      o.autoUpdateMode!,
+      unittest.equals('foo'),
+    );
+    checkManagedConfiguration(
+        o.managedConfiguration! as api.ManagedConfiguration);
+    unittest.expect(
+      o.productId!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4836(o.trackIds!);
+    checkUnnamed4837(o.tracks!);
+  }
+  buildCounterProductPolicy--;
+}
+
+core.List<core.String> buildUnnamed4838() {
+  var o = <core.String>[];
+  o.add('foo');
+  o.add('foo');
+  return o;
+}
+
+void checkUnnamed4838(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<api.ProductVisibility> buildUnnamed4839() {
   var o = <api.ProductVisibility>[];
   o.add(buildProductVisibility());
   o.add(buildProductVisibility());
   return o;
 }
 
-void checkUnnamed4838(core.List<api.ProductVisibility> o) {
+void checkUnnamed4839(core.List<api.ProductVisibility> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProductVisibility(o[0] as api.ProductVisibility);
   checkProductVisibility(o[1] as api.ProductVisibility);
@@ -2448,9 +2448,9 @@ api.ProductSet buildProductSet() {
   var o = api.ProductSet();
   buildCounterProductSet++;
   if (buildCounterProductSet < 3) {
-    o.productId = buildUnnamed4837();
+    o.productId = buildUnnamed4838();
     o.productSetBehavior = 'foo';
-    o.productVisibility = buildUnnamed4838();
+    o.productVisibility = buildUnnamed4839();
   }
   buildCounterProductSet--;
   return o;
@@ -2459,12 +2459,12 @@ api.ProductSet buildProductSet() {
 void checkProductSet(api.ProductSet o) {
   buildCounterProductSet++;
   if (buildCounterProductSet < 3) {
-    checkUnnamed4837(o.productId!);
+    checkUnnamed4838(o.productId!);
     unittest.expect(
       o.productSetBehavior!,
       unittest.equals('foo'),
     );
-    checkUnnamed4838(o.productVisibility!);
+    checkUnnamed4839(o.productVisibility!);
   }
   buildCounterProductSet--;
 }
@@ -2496,25 +2496,6 @@ void checkProductSigningCertificate(api.ProductSigningCertificate o) {
   buildCounterProductSigningCertificate--;
 }
 
-core.List<core.String> buildUnnamed4839() {
-  var o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
-
-void checkUnnamed4839(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
 core.List<core.String> buildUnnamed4840() {
   var o = <core.String>[];
   o.add('foo');
@@ -2534,14 +2515,33 @@ void checkUnnamed4840(core.List<core.String> o) {
   );
 }
 
+core.List<core.String> buildUnnamed4841() {
+  var o = <core.String>[];
+  o.add('foo');
+  o.add('foo');
+  return o;
+}
+
+void checkUnnamed4841(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterProductVisibility = 0;
 api.ProductVisibility buildProductVisibility() {
   var o = api.ProductVisibility();
   buildCounterProductVisibility++;
   if (buildCounterProductVisibility < 3) {
     o.productId = 'foo';
-    o.trackIds = buildUnnamed4839();
-    o.tracks = buildUnnamed4840();
+    o.trackIds = buildUnnamed4840();
+    o.tracks = buildUnnamed4841();
   }
   buildCounterProductVisibility--;
   return o;
@@ -2554,8 +2554,8 @@ void checkProductVisibility(api.ProductVisibility o) {
       o.productId!,
       unittest.equals('foo'),
     );
-    checkUnnamed4839(o.trackIds!);
-    checkUnnamed4840(o.tracks!);
+    checkUnnamed4840(o.trackIds!);
+    checkUnnamed4841(o.tracks!);
   }
   buildCounterProductVisibility--;
 }
@@ -2608,14 +2608,14 @@ void checkProductsGenerateApprovalUrlResponse(
   buildCounterProductsGenerateApprovalUrlResponse--;
 }
 
-core.List<api.Product> buildUnnamed4841() {
+core.List<api.Product> buildUnnamed4842() {
   var o = <api.Product>[];
   o.add(buildProduct());
   o.add(buildProduct());
   return o;
 }
 
-void checkUnnamed4841(core.List<api.Product> o) {
+void checkUnnamed4842(core.List<api.Product> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProduct(o[0] as api.Product);
   checkProduct(o[1] as api.Product);
@@ -2627,7 +2627,7 @@ api.ProductsListResponse buildProductsListResponse() {
   buildCounterProductsListResponse++;
   if (buildCounterProductsListResponse < 3) {
     o.pageInfo = buildPageInfo();
-    o.product = buildUnnamed4841();
+    o.product = buildUnnamed4842();
     o.tokenPagination = buildTokenPagination();
   }
   buildCounterProductsListResponse--;
@@ -2638,7 +2638,7 @@ void checkProductsListResponse(api.ProductsListResponse o) {
   buildCounterProductsListResponse++;
   if (buildCounterProductsListResponse < 3) {
     checkPageInfo(o.pageInfo! as api.PageInfo);
-    checkUnnamed4841(o.product!);
+    checkUnnamed4842(o.product!);
     checkTokenPagination(o.tokenPagination! as api.TokenPagination);
   }
   buildCounterProductsListResponse--;
@@ -2705,14 +2705,14 @@ void checkServiceAccountKey(api.ServiceAccountKey o) {
   buildCounterServiceAccountKey--;
 }
 
-core.List<api.ServiceAccountKey> buildUnnamed4842() {
+core.List<api.ServiceAccountKey> buildUnnamed4843() {
   var o = <api.ServiceAccountKey>[];
   o.add(buildServiceAccountKey());
   o.add(buildServiceAccountKey());
   return o;
 }
 
-void checkUnnamed4842(core.List<api.ServiceAccountKey> o) {
+void checkUnnamed4843(core.List<api.ServiceAccountKey> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkServiceAccountKey(o[0] as api.ServiceAccountKey);
   checkServiceAccountKey(o[1] as api.ServiceAccountKey);
@@ -2723,7 +2723,7 @@ api.ServiceAccountKeysListResponse buildServiceAccountKeysListResponse() {
   var o = api.ServiceAccountKeysListResponse();
   buildCounterServiceAccountKeysListResponse++;
   if (buildCounterServiceAccountKeysListResponse < 3) {
-    o.serviceAccountKey = buildUnnamed4842();
+    o.serviceAccountKey = buildUnnamed4843();
   }
   buildCounterServiceAccountKeysListResponse--;
   return o;
@@ -2732,7 +2732,7 @@ api.ServiceAccountKeysListResponse buildServiceAccountKeysListResponse() {
 void checkServiceAccountKeysListResponse(api.ServiceAccountKeysListResponse o) {
   buildCounterServiceAccountKeysListResponse++;
   if (buildCounterServiceAccountKeysListResponse < 3) {
-    checkUnnamed4842(o.serviceAccountKey!);
+    checkUnnamed4843(o.serviceAccountKey!);
   }
   buildCounterServiceAccountKeysListResponse--;
 }
@@ -2769,27 +2769,27 @@ void checkSignupInfo(api.SignupInfo o) {
   buildCounterSignupInfo--;
 }
 
-core.List<api.LocalizedText> buildUnnamed4843() {
+core.List<api.LocalizedText> buildUnnamed4844() {
   var o = <api.LocalizedText>[];
   o.add(buildLocalizedText());
   o.add(buildLocalizedText());
   return o;
 }
 
-void checkUnnamed4843(core.List<api.LocalizedText> o) {
+void checkUnnamed4844(core.List<api.LocalizedText> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocalizedText(o[0] as api.LocalizedText);
   checkLocalizedText(o[1] as api.LocalizedText);
 }
 
-core.List<core.String> buildUnnamed4844() {
+core.List<core.String> buildUnnamed4845() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed4844(core.List<core.String> o) {
+void checkUnnamed4845(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2807,9 +2807,9 @@ api.StoreCluster buildStoreCluster() {
   buildCounterStoreCluster++;
   if (buildCounterStoreCluster < 3) {
     o.id = 'foo';
-    o.name = buildUnnamed4843();
+    o.name = buildUnnamed4844();
     o.orderInPage = 'foo';
-    o.productId = buildUnnamed4844();
+    o.productId = buildUnnamed4845();
   }
   buildCounterStoreCluster--;
   return o;
@@ -2822,12 +2822,12 @@ void checkStoreCluster(api.StoreCluster o) {
       o.id!,
       unittest.equals('foo'),
     );
-    checkUnnamed4843(o.name!);
+    checkUnnamed4844(o.name!);
     unittest.expect(
       o.orderInPage!,
       unittest.equals('foo'),
     );
-    checkUnnamed4844(o.productId!);
+    checkUnnamed4845(o.productId!);
   }
   buildCounterStoreCluster--;
 }
@@ -2859,14 +2859,14 @@ void checkStoreLayout(api.StoreLayout o) {
   buildCounterStoreLayout--;
 }
 
-core.List<api.StoreCluster> buildUnnamed4845() {
+core.List<api.StoreCluster> buildUnnamed4846() {
   var o = <api.StoreCluster>[];
   o.add(buildStoreCluster());
   o.add(buildStoreCluster());
   return o;
 }
 
-void checkUnnamed4845(core.List<api.StoreCluster> o) {
+void checkUnnamed4846(core.List<api.StoreCluster> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStoreCluster(o[0] as api.StoreCluster);
   checkStoreCluster(o[1] as api.StoreCluster);
@@ -2877,7 +2877,7 @@ api.StoreLayoutClustersListResponse buildStoreLayoutClustersListResponse() {
   var o = api.StoreLayoutClustersListResponse();
   buildCounterStoreLayoutClustersListResponse++;
   if (buildCounterStoreLayoutClustersListResponse < 3) {
-    o.cluster = buildUnnamed4845();
+    o.cluster = buildUnnamed4846();
   }
   buildCounterStoreLayoutClustersListResponse--;
   return o;
@@ -2887,19 +2887,19 @@ void checkStoreLayoutClustersListResponse(
     api.StoreLayoutClustersListResponse o) {
   buildCounterStoreLayoutClustersListResponse++;
   if (buildCounterStoreLayoutClustersListResponse < 3) {
-    checkUnnamed4845(o.cluster!);
+    checkUnnamed4846(o.cluster!);
   }
   buildCounterStoreLayoutClustersListResponse--;
 }
 
-core.List<api.StorePage> buildUnnamed4846() {
+core.List<api.StorePage> buildUnnamed4847() {
   var o = <api.StorePage>[];
   o.add(buildStorePage());
   o.add(buildStorePage());
   return o;
 }
 
-void checkUnnamed4846(core.List<api.StorePage> o) {
+void checkUnnamed4847(core.List<api.StorePage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStorePage(o[0] as api.StorePage);
   checkStorePage(o[1] as api.StorePage);
@@ -2910,7 +2910,7 @@ api.StoreLayoutPagesListResponse buildStoreLayoutPagesListResponse() {
   var o = api.StoreLayoutPagesListResponse();
   buildCounterStoreLayoutPagesListResponse++;
   if (buildCounterStoreLayoutPagesListResponse < 3) {
-    o.page = buildUnnamed4846();
+    o.page = buildUnnamed4847();
   }
   buildCounterStoreLayoutPagesListResponse--;
   return o;
@@ -2919,19 +2919,19 @@ api.StoreLayoutPagesListResponse buildStoreLayoutPagesListResponse() {
 void checkStoreLayoutPagesListResponse(api.StoreLayoutPagesListResponse o) {
   buildCounterStoreLayoutPagesListResponse++;
   if (buildCounterStoreLayoutPagesListResponse < 3) {
-    checkUnnamed4846(o.page!);
+    checkUnnamed4847(o.page!);
   }
   buildCounterStoreLayoutPagesListResponse--;
 }
 
-core.List<core.String> buildUnnamed4847() {
+core.List<core.String> buildUnnamed4848() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed4847(core.List<core.String> o) {
+void checkUnnamed4848(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2943,14 +2943,14 @@ void checkUnnamed4847(core.List<core.String> o) {
   );
 }
 
-core.List<api.LocalizedText> buildUnnamed4848() {
+core.List<api.LocalizedText> buildUnnamed4849() {
   var o = <api.LocalizedText>[];
   o.add(buildLocalizedText());
   o.add(buildLocalizedText());
   return o;
 }
 
-void checkUnnamed4848(core.List<api.LocalizedText> o) {
+void checkUnnamed4849(core.List<api.LocalizedText> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocalizedText(o[0] as api.LocalizedText);
   checkLocalizedText(o[1] as api.LocalizedText);
@@ -2962,8 +2962,8 @@ api.StorePage buildStorePage() {
   buildCounterStorePage++;
   if (buildCounterStorePage < 3) {
     o.id = 'foo';
-    o.link = buildUnnamed4847();
-    o.name = buildUnnamed4848();
+    o.link = buildUnnamed4848();
+    o.name = buildUnnamed4849();
   }
   buildCounterStorePage--;
   return o;
@@ -2976,8 +2976,8 @@ void checkStorePage(api.StorePage o) {
       o.id!,
       unittest.equals('foo'),
     );
-    checkUnnamed4847(o.link!);
-    checkUnnamed4848(o.name!);
+    checkUnnamed4848(o.link!);
+    checkUnnamed4849(o.name!);
   }
   buildCounterStorePage--;
 }
@@ -3083,14 +3083,14 @@ void checkUser(api.User o) {
   buildCounterUser--;
 }
 
-core.List<api.User> buildUnnamed4849() {
+core.List<api.User> buildUnnamed4850() {
   var o = <api.User>[];
   o.add(buildUser());
   o.add(buildUser());
   return o;
 }
 
-void checkUnnamed4849(core.List<api.User> o) {
+void checkUnnamed4850(core.List<api.User> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUser(o[0] as api.User);
   checkUser(o[1] as api.User);
@@ -3101,7 +3101,7 @@ api.UsersListResponse buildUsersListResponse() {
   var o = api.UsersListResponse();
   buildCounterUsersListResponse++;
   if (buildCounterUsersListResponse < 3) {
-    o.user = buildUnnamed4849();
+    o.user = buildUnnamed4850();
   }
   buildCounterUsersListResponse--;
   return o;
@@ -3110,7 +3110,7 @@ api.UsersListResponse buildUsersListResponse() {
 void checkUsersListResponse(api.UsersListResponse o) {
   buildCounterUsersListResponse++;
   if (buildCounterUsersListResponse < 3) {
-    checkUnnamed4849(o.user!);
+    checkUnnamed4850(o.user!);
   }
   buildCounterUsersListResponse--;
 }
@@ -3142,14 +3142,14 @@ void checkVariableSet(api.VariableSet o) {
   buildCounterVariableSet--;
 }
 
-core.List<api.WebAppIcon> buildUnnamed4850() {
+core.List<api.WebAppIcon> buildUnnamed4851() {
   var o = <api.WebAppIcon>[];
   o.add(buildWebAppIcon());
   o.add(buildWebAppIcon());
   return o;
 }
 
-void checkUnnamed4850(core.List<api.WebAppIcon> o) {
+void checkUnnamed4851(core.List<api.WebAppIcon> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWebAppIcon(o[0] as api.WebAppIcon);
   checkWebAppIcon(o[1] as api.WebAppIcon);
@@ -3161,7 +3161,7 @@ api.WebApp buildWebApp() {
   buildCounterWebApp++;
   if (buildCounterWebApp < 3) {
     o.displayMode = 'foo';
-    o.icons = buildUnnamed4850();
+    o.icons = buildUnnamed4851();
     o.isPublished = true;
     o.startUrl = 'foo';
     o.title = 'foo';
@@ -3179,7 +3179,7 @@ void checkWebApp(api.WebApp o) {
       o.displayMode!,
       unittest.equals('foo'),
     );
-    checkUnnamed4850(o.icons!);
+    checkUnnamed4851(o.icons!);
     unittest.expect(o.isPublished!, unittest.isTrue);
     unittest.expect(
       o.startUrl!,
@@ -3223,14 +3223,14 @@ void checkWebAppIcon(api.WebAppIcon o) {
   buildCounterWebAppIcon--;
 }
 
-core.List<api.WebApp> buildUnnamed4851() {
+core.List<api.WebApp> buildUnnamed4852() {
   var o = <api.WebApp>[];
   o.add(buildWebApp());
   o.add(buildWebApp());
   return o;
 }
 
-void checkUnnamed4851(core.List<api.WebApp> o) {
+void checkUnnamed4852(core.List<api.WebApp> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWebApp(o[0] as api.WebApp);
   checkWebApp(o[1] as api.WebApp);
@@ -3241,7 +3241,7 @@ api.WebAppsListResponse buildWebAppsListResponse() {
   var o = api.WebAppsListResponse();
   buildCounterWebAppsListResponse++;
   if (buildCounterWebAppsListResponse < 3) {
-    o.webApp = buildUnnamed4851();
+    o.webApp = buildUnnamed4852();
   }
   buildCounterWebAppsListResponse--;
   return o;
@@ -3250,7 +3250,7 @@ api.WebAppsListResponse buildWebAppsListResponse() {
 void checkWebAppsListResponse(api.WebAppsListResponse o) {
   buildCounterWebAppsListResponse++;
   if (buildCounterWebAppsListResponse < 3) {
-    checkUnnamed4851(o.webApp!);
+    checkUnnamed4852(o.webApp!);
   }
   buildCounterWebAppsListResponse--;
 }

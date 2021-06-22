@@ -2472,54 +2472,6 @@ class PropertiesFirebaseLinksResource {
     return GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
-
-  /// Updates a FirebaseLink on a property
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Output only. Example format: properties/1234/firebaseLinks/5678
-  /// Value must have pattern `^properties/\[^/\]+/firebaseLinks/\[^/\]+$`.
-  ///
-  /// [updateMask] - Required. The list of fields to be updated. Field names
-  /// must be in snake case (e.g., "field_to_update"). Omitted fields will not
-  /// be updated. To replace the entire entity, use one path with the string "*"
-  /// to match all fields.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleAnalyticsAdminV1alphaFirebaseLink].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleAnalyticsAdminV1alphaFirebaseLink> patch(
-    GoogleAnalyticsAdminV1alphaFirebaseLink request,
-    core.String name, {
-    core.String? updateMask,
-    core.String? $fields,
-  }) async {
-    final _body = convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
-
-    final _response = await _requester.request(
-      _url,
-      'PATCH',
-      body: _body,
-      queryParams: _queryParams,
-    );
-    return GoogleAnalyticsAdminV1alphaFirebaseLink.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
 }
 
 class PropertiesGoogleAdsLinksResource {
@@ -4987,17 +4939,17 @@ class GoogleAnalyticsAdminV1alphaConversionEvent {
   /// Output only.
   core.bool? custom;
 
+  /// If set, this event can currently be deleted via DeleteConversionEvent.
+  ///
+  /// Output only.
+  core.bool? deletable;
+
   /// The event name for this conversion event.
   ///
   /// Examples: 'click', 'purchase'
   ///
   /// Immutable.
   core.String? eventName;
-
-  /// If set, this event can currently be deleted via DeleteConversionEvent.
-  ///
-  /// Output only.
-  core.bool? isDeletable;
 
   /// Resource name of this conversion event.
   ///
@@ -5015,11 +4967,11 @@ class GoogleAnalyticsAdminV1alphaConversionEvent {
     if (_json.containsKey('custom')) {
       custom = _json['custom'] as core.bool;
     }
+    if (_json.containsKey('deletable')) {
+      deletable = _json['deletable'] as core.bool;
+    }
     if (_json.containsKey('eventName')) {
       eventName = _json['eventName'] as core.String;
-    }
-    if (_json.containsKey('isDeletable')) {
-      isDeletable = _json['isDeletable'] as core.bool;
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -5029,8 +4981,8 @@ class GoogleAnalyticsAdminV1alphaConversionEvent {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (custom != null) 'custom': custom!,
+        if (deletable != null) 'deletable': deletable!,
         if (eventName != null) 'eventName': eventName!,
-        if (isDeletable != null) 'isDeletable': isDeletable!,
         if (name != null) 'name': name!,
       };
 }

@@ -398,7 +398,7 @@
             }
         }
     },
-    "revision": "20210614",
+    "revision": "20210619",
     "rootUrl": "https://licensing.googleapis.com/",
     "schemas": {
         "Empty": {

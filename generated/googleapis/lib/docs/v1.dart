@@ -4973,6 +4973,7 @@ class PositionedObjectPositioning {
   /// - "BREAK_LEFT_RIGHT" : Breaks text such that there is no text on the left
   /// or right of the positioned object.
   /// - "IN_FRONT_OF_TEXT" : The positioned object is in front of the text.
+  /// - "BEHIND_TEXT" : The positioned object is behind the text.
   core.String? layout;
 
   /// The offset of the left edge of the positioned object relative to the
