@@ -2410,6 +2410,11 @@ class MetadataImport {
   /// The description of the metadata import.
   core.String? description;
 
+  /// The time when the metadata import finished.
+  ///
+  /// Output only.
+  core.String? endTime;
+
   /// The relative resource name of the metadata import, of the
   /// form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
   ///
@@ -2446,6 +2451,9 @@ class MetadataImport {
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
     }
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'] as core.String;
+    }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
@@ -2461,6 +2469,7 @@ class MetadataImport {
         if (createTime != null) 'createTime': createTime!,
         if (databaseDump != null) 'databaseDump': databaseDump!.toJson(),
         if (description != null) 'description': description!,
+        if (endTime != null) 'endTime': endTime!,
         if (name != null) 'name': name!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,

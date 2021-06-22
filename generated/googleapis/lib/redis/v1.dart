@@ -2133,7 +2133,7 @@ class WeeklyMaintenanceWindow {
 
   /// Duration of the maintenance window.
   ///
-  /// The current window is fixed at 3 hours.
+  /// The current window is fixed at 1 hour.
   ///
   /// Output only.
   core.String? duration;

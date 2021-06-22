@@ -162,6 +162,10 @@ class ContactGroupsResource {
 
   /// Create a new contact group owned by the authenticated user.
   ///
+  /// Created contact group names must be unique to the users contact groups.
+  /// Attempting to create a group with a duplicate name will return a HTTP 409
+  /// error.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -349,6 +353,10 @@ class ContactGroupsResource {
 
   /// Update the name of an existing contact group owned by the authenticated
   /// user.
+  ///
+  /// Updated contact group names must be unique to the users contact groups.
+  /// Attempting to create a group with a duplicate name will return a HTTP 409
+  /// error.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2117,6 +2125,11 @@ class ContactGroup {
 
   /// The contact group name set by the group owner or a system provided name
   /// for system groups.
+  ///
+  /// For \[`contactGroups.create`\](/people/api/rest/v1/contactGroups/create)
+  /// or \[`contactGroups.update`\](/people/api/rest/v1/contactGroups/update)
+  /// the name must be unique to the users contact groups. Attempting to create
+  /// a group with a duplicate name will return a HTTP 409 error.
   core.String? name;
 
   /// The resource name for the contact group, assigned by the server.

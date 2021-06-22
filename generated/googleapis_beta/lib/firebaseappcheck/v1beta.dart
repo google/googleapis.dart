@@ -155,6 +155,104 @@ class ProjectsAppsResource {
 
   ProjectsAppsResource(commons.ApiRequester client) : _requester = client;
 
+  /// Accepts a AppAttest Artifact and Assertion, and uses the developer's
+  /// preconfigured auth token to verify the token with Apple.
+  ///
+  /// Returns an AttestationToken with the App ID as specified by the `app`
+  /// field included as attested claims.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [app] - Required. The full resource name to the iOS App. Format:
+  /// "projects/{project_id}/apps/{app_id}"
+  /// Value must have pattern `^projects/\[^/\]+/apps/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirebaseAppcheckV1betaAttestationTokenResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1betaAttestationTokenResponse>
+      exchangeAppAttestAssertion(
+    GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest request,
+    core.String app, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1beta/' + core.Uri.encodeFull('$app') + ':exchangeAppAttestAssertion';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleFirebaseAppcheckV1betaAttestationTokenResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Accepts a AppAttest CBOR Attestation, and uses the developer's
+  /// preconfigured team and bundle IDs to verify the token with Apple.
+  ///
+  /// Returns an Attestation Artifact that can later be exchanged for an
+  /// AttestationToken in ExchangeAppAttestAssertion.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [app] - Required. The full resource name to the iOS App. Format:
+  /// "projects/{project_id}/apps/{app_id}"
+  /// Value must have pattern `^projects/\[^/\]+/apps/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse>
+      exchangeAppAttestAttestation(
+    GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest request,
+    core.String app, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1beta/' +
+        core.Uri.encodeFull('$app') +
+        ':exchangeAppAttestAttestation';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Validates a custom token signed using your project's Admin SDK service
   /// account credentials.
   ///
@@ -409,6 +507,51 @@ class ProjectsAppsResource {
       queryParams: _queryParams,
     );
     return GoogleFirebaseAppcheckV1betaAttestationTokenResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Initiates the App Attest flow by generating a challenge which will be used
+  /// as a type of nonce for this attestation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [app] - Required. The full resource name to the iOS App. Format:
+  /// "projects/{project_id}/apps/{app_id}"
+  /// Value must have pattern `^projects/\[^/\]+/apps/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirebaseAppcheckV1betaAppAttestChallengeResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1betaAppAttestChallengeResponse>
+      generateAppAttestChallenge(
+    GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeRequest request,
+    core.String app, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1beta/' + core.Uri.encodeFull('$app') + ':generateAppAttestChallenge';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleFirebaseAppcheckV1betaAppAttestChallengeResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1171,6 +1314,44 @@ class ProjectsServicesResource {
   }
 }
 
+/// Response object for GenerateAppAttestChallenge
+class GoogleFirebaseAppcheckV1betaAppAttestChallengeResponse {
+  /// A one time use challenge for the client to pass to Apple's App Attest API.
+  core.String? challenge;
+  core.List<core.int> get challengeAsBytes => convert.base64.decode(challenge!);
+
+  set challengeAsBytes(core.List<core.int> _bytes) {
+    challenge =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// The duration from the time this challenge is minted until it is expired.
+  ///
+  /// This field is intended to ease client-side token management, since the
+  /// device may have clock skew, but is still able to accurately measure a
+  /// duration. This expiration is intended to minimize the replay window within
+  /// which a single challenge may be reused. See AIP 142 for naming of this
+  /// field.
+  core.String? ttl;
+
+  GoogleFirebaseAppcheckV1betaAppAttestChallengeResponse();
+
+  GoogleFirebaseAppcheckV1betaAppAttestChallengeResponse.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('challenge')) {
+      challenge = _json['challenge'] as core.String;
+    }
+    if (_json.containsKey('ttl')) {
+      ttl = _json['ttl'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (challenge != null) 'challenge': challenge!,
+        if (ttl != null) 'ttl': ttl!,
+      };
+}
+
 /// Encapsulates an *App Check token*, which are used to access Firebase
 /// services protected by App Check.
 class GoogleFirebaseAppcheckV1betaAttestationTokenResponse {
@@ -1424,6 +1605,149 @@ class GoogleFirebaseAppcheckV1betaDeviceCheckConfig {
       };
 }
 
+/// Request message for ExchangeAppAttestAssertion
+class GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest {
+  /// The artifact previously returned by ExchangeAppAttestAttestation.
+  core.String? artifact;
+  core.List<core.int> get artifactAsBytes => convert.base64.decode(artifact!);
+
+  set artifactAsBytes(core.List<core.int> _bytes) {
+    artifact =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// The CBOR encoded assertion provided by the Apple App Attest SDK.
+  core.String? assertion;
+  core.List<core.int> get assertionAsBytes => convert.base64.decode(assertion!);
+
+  set assertionAsBytes(core.List<core.int> _bytes) {
+    assertion =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// A one time challenge returned by GenerateAppAttestChallenge.
+  core.String? challenge;
+  core.List<core.int> get challengeAsBytes => convert.base64.decode(challenge!);
+
+  set challengeAsBytes(core.List<core.int> _bytes) {
+    challenge =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest();
+
+  GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('artifact')) {
+      artifact = _json['artifact'] as core.String;
+    }
+    if (_json.containsKey('assertion')) {
+      assertion = _json['assertion'] as core.String;
+    }
+    if (_json.containsKey('challenge')) {
+      challenge = _json['challenge'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (artifact != null) 'artifact': artifact!,
+        if (assertion != null) 'assertion': assertion!,
+        if (challenge != null) 'challenge': challenge!,
+      };
+}
+
+/// Request message for ExchangeAppAttestAttestation
+class GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest {
+  /// The App Attest statement as returned by Apple's client-side App Attest
+  /// API.
+  ///
+  /// This is the CBOR object returned by Apple, which will be Base64 encoded in
+  /// the JSON API.
+  core.String? attestationStatement;
+  core.List<core.int> get attestationStatementAsBytes =>
+      convert.base64.decode(attestationStatement!);
+
+  set attestationStatementAsBytes(core.List<core.int> _bytes) {
+    attestationStatement =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// The challenge previously generated by the FAC backend.
+  core.String? challenge;
+  core.List<core.int> get challengeAsBytes => convert.base64.decode(challenge!);
+
+  set challengeAsBytes(core.List<core.int> _bytes) {
+    challenge =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// The key ID generated by App Attest for the client app.
+  core.String? keyId;
+  core.List<core.int> get keyIdAsBytes => convert.base64.decode(keyId!);
+
+  set keyIdAsBytes(core.List<core.int> _bytes) {
+    keyId =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest();
+
+  GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('attestationStatement')) {
+      attestationStatement = _json['attestationStatement'] as core.String;
+    }
+    if (_json.containsKey('challenge')) {
+      challenge = _json['challenge'] as core.String;
+    }
+    if (_json.containsKey('keyId')) {
+      keyId = _json['keyId'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attestationStatement != null)
+          'attestationStatement': attestationStatement!,
+        if (challenge != null) 'challenge': challenge!,
+        if (keyId != null) 'keyId': keyId!,
+      };
+}
+
+/// Response message for ExchangeAppAttestAttestation
+class GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse {
+  /// An artifact that should be passed back during the Assertion flow.
+  core.String? artifact;
+  core.List<core.int> get artifactAsBytes => convert.base64.decode(artifact!);
+
+  set artifactAsBytes(core.List<core.int> _bytes) {
+    artifact =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// An attestation token which can be used to access Firebase APIs.
+  GoogleFirebaseAppcheckV1betaAttestationTokenResponse? attestationToken;
+
+  GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse();
+
+  GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('artifact')) {
+      artifact = _json['artifact'] as core.String;
+    }
+    if (_json.containsKey('attestationToken')) {
+      attestationToken =
+          GoogleFirebaseAppcheckV1betaAttestationTokenResponse.fromJson(
+              _json['attestationToken'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (artifact != null) 'artifact': artifact!,
+        if (attestationToken != null)
+          'attestationToken': attestationToken!.toJson(),
+      };
+}
+
 /// Request message for the ExchangeCustomToken method.
 class GoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest {
   /// A custom token signed using your project's Admin SDK service account
@@ -1527,6 +1851,17 @@ class GoogleFirebaseAppcheckV1betaExchangeSafetyNetTokenRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (safetyNetToken != null) 'safetyNetToken': safetyNetToken!,
       };
+}
+
+/// Request message for GenerateAppAttestChallenge
+class GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeRequest {
+  GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeRequest();
+
+  GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeRequest.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Response message for the ListDebugTokens method.

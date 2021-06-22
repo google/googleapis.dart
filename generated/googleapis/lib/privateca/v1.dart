@@ -3472,7 +3472,7 @@ class CertificateIdentityConstraints {
   /// and/or Subject Alternative Name before a certificate is signed.
   ///
   /// To see the full allowed syntax and some examples, see
-  /// https://cloud.google.com/certificate-authority-service/docs/cel-guide
+  /// https://cloud.google.com/certificate-authority-service/docs/using-cel
   ///
   /// Optional.
   Expr? celExpression;
@@ -5615,11 +5615,13 @@ class SubjectDescription {
   core.String? hexSerialNumber;
 
   /// For convenience, the actual lifetime of an issued certificate.
-  ///
-  /// Corresponds to 'not_after_time' - 'not_before_time'.
   core.String? lifetime;
 
-  /// The time at which the certificate expires.
+  /// The time after which the certificate is expired.
+  ///
+  /// Per RFC 5280, the validity period for a certificate is the period of time
+  /// from not_before_time through not_after_time, inclusive. Corresponds to
+  /// 'not_before_time' + 'lifetime' - 1 second.
   core.String? notAfterTime;
 
   /// The time at which the certificate becomes valid.

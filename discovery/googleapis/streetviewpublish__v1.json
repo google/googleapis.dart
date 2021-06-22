@@ -373,7 +373,7 @@
             }
         }
     },
-    "revision": "20210616",
+    "revision": "20210621",
     "rootUrl": "https://streetviewpublish.googleapis.com/",
     "schemas": {
         "BatchDeletePhotosRequest": {

@@ -78,9 +78,8 @@ class ProjectsBucketsResource {
   /// Request parameters:
   ///
   /// [bucket] - Required. Resource name of the bucket, mirrors the ID of the
-  /// underlying Google Cloud Storage bucket. Because bucket resource names are
-  /// unique across projects, you may omit the project number,
-  /// `projects/-/buckets/{bucket_id}`.
+  /// underlying Google Cloud Storage bucket,
+  /// `projects/{project_number}/buckets/{bucket_id}`.
   /// Value must have pattern `^projects/\[^/\]+/buckets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -119,9 +118,8 @@ class ProjectsBucketsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Resource name of the bucket, mirrors the ID of the
-  /// underlying Google Cloud Storage bucket. Because bucket resource names are
-  /// unique across projects, you may omit the project number,
-  /// `projects/-/buckets/{bucket_id}`.
+  /// underlying Google Cloud Storage bucket,
+  /// `projects/{project_number}/buckets/{bucket_id}`.
   /// Value must have pattern `^projects/\[^/\]+/buckets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -208,9 +206,8 @@ class ProjectsBucketsResource {
   /// Request parameters:
   ///
   /// [bucket] - Required. Resource name of the bucket, mirrors the ID of the
-  /// underlying Google Cloud Storage bucket. Because bucket resource names are
-  /// unique across projects, you may omit the project number,
-  /// `projects/-/buckets/{bucket_id}`.
+  /// underlying Google Cloud Storage bucket,
+  /// `projects/{project_number}/buckets/{bucket_id}`.
   /// Value must have pattern `^projects/\[^/\]+/buckets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -259,6 +256,11 @@ class AddFirebaseRequest {
 
 /// A storage bucket and its relation to a parent Firebase project.
 class Bucket {
+  /// Location of the storage bucket.
+  ///
+  /// Output only.
+  core.String? location;
+
   /// Resource name of the bucket.
   core.String? name;
 
@@ -271,6 +273,9 @@ class Bucket {
   Bucket();
 
   Bucket.fromJson(core.Map _json) {
+    if (_json.containsKey('location')) {
+      location = _json['location'] as core.String;
+    }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
@@ -280,6 +285,7 @@ class Bucket {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (location != null) 'location': location!,
         if (name != null) 'name': name!,
         if (reconciling != null) 'reconciling': reconciling!,
       };

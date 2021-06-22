@@ -14,7 +14,8 @@
 
 /// Google Keep API - v1
 ///
-/// Allows clients to create, read, and write their Google Keep Notes.
+/// This API is an enterprise-only API used to create and manage the Keep notes
+/// within your domain, including resolving issues identified by CASB software.
 ///
 /// For more information, see <https://support.google.com/keep>
 ///
@@ -45,7 +46,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
         PartialDownloadOptions,
         ByteRange;
 
-/// Allows clients to create, read, and write their Google Keep Notes.
+/// This API is an enterprise-only API used to create and manage the Keep notes
+/// within your domain, including resolving issues identified by CASB software.
 class KeepApi {
   /// See, edit, create and permanently delete all your Google Keep data
   static const keepScope = 'https://www.googleapis.com/auth/keep';
@@ -261,9 +263,9 @@ class NotesResource {
   /// Request parameters:
   ///
   /// [filter] - Filter for list results. If no filter is supplied, the
-  /// "-trashed" filter is applied by default. Valid fields to filter by are: -
-  /// `create_time` - `update_time` - `trash_time` - `trashed` Filter syntax
-  /// follows the Google AIP filtering spec: https://aip.dev/160
+  /// `trashed` filter is applied by default. Valid fields to filter by are:
+  /// `create_time`, `update_time`, `trash_time`, and `trashed`. Filter syntax
+  /// follows the [Google AIP filtering spec](https://aip.dev/160).
   ///
   /// [pageSize] - The maximum number of results to return.
   ///
@@ -309,7 +311,7 @@ class NotesPermissionsResource {
 
   NotesPermissionsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates one or more permission on the note.
+  /// Creates one or more permissions on the note.
   ///
   /// Only permissions with the `WRITER` role may be created. If adding any
   /// permission fails, then the entire request fails and no changes are made.
@@ -656,7 +658,7 @@ class ListItem {
       };
 }
 
-/// The response when listing a page of notes (see KeepService documentation).
+/// The response when listing a page of notes.
 class ListNotesResponse {
   /// Next page's `page_token` field.
   core.String? nextPageToken;
@@ -719,17 +721,17 @@ class Note {
   /// Length must be less than 1,000 characters.
   core.String? title;
 
-  /// If this note has been trashed, when that happened.
+  /// When this note was trashed.
   ///
-  /// If trashed, the note will eventually be deleted. If the note is not
-  /// trashed, this is not set (and the trashed field is false).
+  /// If `trashed`, the note is eventually deleted. If the note is not trashed,
+  /// this field is not set (and the trashed field is `false`).
   ///
   /// Output only.
   core.String? trashTime;
 
-  /// True if this note has been trashed.
+  /// `true` if this note has been trashed.
   ///
-  /// If trashed, the note will eventually be deleted.
+  /// If trashed, the note is eventually deleted.
   ///
   /// Output only.
   core.bool? trashed;
@@ -807,9 +809,9 @@ class Permission {
 
   /// The email associated with the member.
   ///
-  /// If set on create, the email field in the User or Group message must either
-  /// be empty or match this field. On read, may be unset if the member does not
-  /// have an associated email.
+  /// If set on create, the `email` field in the `User` or `Group` message must
+  /// either be empty or match this field. On read, may be unset if the member
+  /// does not have an associated email.
   core.String? email;
 
   /// The Google Family to which this role applies.

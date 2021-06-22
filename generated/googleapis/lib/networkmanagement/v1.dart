@@ -3077,8 +3077,8 @@ class TestIamPermissionsResponse {
 /// |---------------------Trace----------------------| Step1(State) Step2(State)
 /// --- StepN(State(final)) ```
 class Trace {
-  /// Derived from the source and destination endpoints definition, and
-  /// validated by the data plane model.
+  /// Derived from the source and destination endpoints definition specified by
+  /// user request, and validated by the data plane model.
   ///
   /// If there are multiple traces starting from different source locations,
   /// then the endpoint_info may be different between traces.
