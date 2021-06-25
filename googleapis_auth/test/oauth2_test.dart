@@ -336,8 +336,7 @@ void main() {
                     expect(request.headers['foo'], equals('bar'));
                     return Future.value(Response('', 200));
                   }
-                }, count: 2),
-                expectClose: false));
+                }, count: 2)));
         expect(client.credentials, equals(credentials));
 
         var executed = false;
