@@ -50,7 +50,7 @@ void main() {
             return Response('hello world', 200);
           }
           return Response('bad', 404);
-        }, expectClose: false),
+        }),
       );
       expect(c.credentials.accessToken.data, equals('atoken'));
 
@@ -104,7 +104,7 @@ void main() {
             return Response('hello world', 200);
           }
           return Response('bad', 404);
-        }, expectClose: false),
+        }),
       );
       expect(c.credentials.accessToken.data, equals('atoken'));
 
