@@ -325,19 +325,17 @@ void main() {
         final client = autoRefreshingClient(
             clientId,
             credentials,
-            mockClient(
-                expectAsync1((request) {
-                  if (serverInvocation++ == 0) {
-                    // This should be a refresh request.
-                    expect(request.headers['foo'], isNull);
-                    return successfulRefresh(request);
-                  } else {
-                    // This is the real request.
-                    expect(request.headers['foo'], equals('bar'));
-                    return Future.value(Response('', 200));
-                  }
-                }, count: 2),
-                expectClose: false));
+            mockClient(expectAsync1((request) {
+              if (serverInvocation++ == 0) {
+                // This should be a refresh request.
+                expect(request.headers['foo'], isNull);
+                return successfulRefresh(request);
+              } else {
+                // This is the real request.
+                expect(request.headers['foo'], equals('bar'));
+                return Future.value(Response('', 200));
+              }
+            }, count: 2)));
         expect(client.credentials, equals(credentials));
 
         var executed = false;

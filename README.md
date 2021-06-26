@@ -476,6 +476,19 @@ Here's a convenient list of the resources you might need:
 The following notes for those who are contributing to this package.
 If you are only using this package, you can skip this section.
 
+If you are only making changes to `googleapis_auth`, then you only need to run
+tests for that package and can skip the remainder of this section. Specifically,
+before submitting a pull request:
+
+  ```console
+  $ pushd googleapis_auth
+  $ pub get
+  $ pub run test
+  $ dart format . --fix
+  $ popd
+  ```
+Otherwise...
+
 * Clone this package and run `pub upgrade` from the `generator` directory.
 
   ```console
@@ -544,5 +557,3 @@ only available through a Limited Preview program:
   <a href="http://developers.google.com/products/">developers' products page</a>.
   Find the product you're interested in on that page and follow the link.
   Be sure to look the API reference docs for Dart as some of the Dart APIs have quirks.
-
-

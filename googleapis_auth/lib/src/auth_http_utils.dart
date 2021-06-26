@@ -90,7 +90,7 @@ class AutoRefreshingClient extends AutoRefreshDelegatingClient {
     Client client,
     this.clientId,
     this.credentials, {
-    bool closeUnderlyingClient = false,
+    bool closeUnderlyingClient = true,
     this.quotaProject,
   })  : assert(credentials.accessToken.type == 'Bearer'),
         assert(credentials.refreshToken != null),
