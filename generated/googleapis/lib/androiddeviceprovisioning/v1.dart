@@ -1401,6 +1401,21 @@ class Company {
   /// Required.
   core.String? companyName;
 
+  /// Input only.
+  ///
+  /// The preferred locale of the customer represented as a BCP47 language code.
+  /// This field is validated on input and requests containing unsupported
+  /// language codes will be rejected. Supported language codes: Arabic (ar)
+  /// Chinese (Hong Kong) (zh-HK) Chinese (Simplified) (zh-CN) Chinese
+  /// (Traditional) (zh-TW) Czech (cs) Danish (da) Dutch (nl) English (UK)
+  /// (en-GB) English (US) (en-US) Filipino (fil) Finnish (fi) French (fr)
+  /// German (de) Hebrew (iw) Hindi (hi) Hungarian (hu) Indonesian (id) Italian
+  /// (it) Japanese (ja) Korean (ko) Norwegian (Bokmal) (no) Polish (pl)
+  /// Portuguese (Brazil) (pt-BR) Portuguese (Portugal) (pt-PT) Russian (ru)
+  /// Spanish (es) Spanish (Latin America) (es-419) Swedish (sv) Thai (th)
+  /// Turkish (tr) Ukrainian (uk) Vietnamese (vi)
+  core.String? languageCode;
+
   /// The API resource name of the company.
   ///
   /// The resource name is one of the following formats: *
@@ -1415,12 +1430,20 @@ class Company {
   /// Input only.
   ///
   /// Email address of customer's users in the owner role. At least one
-  /// `owner_email` is required. Each email address must be associated with a
-  /// Google Account. Owners share the same access as admins but can also add,
-  /// delete, and edit your organization's portal users.
+  /// `owner_email` is required. Owners share the same access as admins but can
+  /// also add, delete, and edit your organization's portal users.
   ///
   /// Required.
   core.List<core.String>? ownerEmails;
+
+  /// Input only.
+  ///
+  /// If set to true, welcome email will not be sent to the customer. It is
+  /// recommended to skip the welcome email if devices will be claimed with
+  /// additional DEVICE_PROTECTION service, as the customer will receive
+  /// separate emails at device claim time. This field is ignored if this is not
+  /// a Zero-touch customer.
+  core.bool? skipWelcomeEmail;
 
   /// Whether any user from the company has accepted the latest Terms of Service
   /// (ToS).
@@ -1453,6 +1476,9 @@ class Company {
     if (_json.containsKey('companyName')) {
       companyName = _json['companyName'] as core.String;
     }
+    if (_json.containsKey('languageCode')) {
+      languageCode = _json['languageCode'] as core.String;
+    }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
@@ -1460,6 +1486,9 @@ class Company {
       ownerEmails = (_json['ownerEmails'] as core.List)
           .map<core.String>((value) => value as core.String)
           .toList();
+    }
+    if (_json.containsKey('skipWelcomeEmail')) {
+      skipWelcomeEmail = _json['skipWelcomeEmail'] as core.bool;
     }
     if (_json.containsKey('termsStatus')) {
       termsStatus = _json['termsStatus'] as core.String;
@@ -1470,8 +1499,10 @@ class Company {
         if (adminEmails != null) 'adminEmails': adminEmails!,
         if (companyId != null) 'companyId': companyId!,
         if (companyName != null) 'companyName': companyName!,
+        if (languageCode != null) 'languageCode': languageCode!,
         if (name != null) 'name': name!,
         if (ownerEmails != null) 'ownerEmails': ownerEmails!,
+        if (skipWelcomeEmail != null) 'skipWelcomeEmail': skipWelcomeEmail!,
         if (termsStatus != null) 'termsStatus': termsStatus!,
       };
 }

@@ -27,6 +27,7 @@
 ///     - [ProjectsLocationsBuildsResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsTriggersResource]
+///     - [ProjectsLocationsWorkerPoolsResource]
 ///   - [ProjectsTriggersResource]
 library cloudbuild.v1;
 
@@ -445,6 +446,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsOperationsResource(_requester);
   ProjectsLocationsTriggersResource get triggers =>
       ProjectsLocationsTriggersResource(_requester);
+  ProjectsLocationsWorkerPoolsResource get workerPools =>
+      ProjectsLocationsWorkerPoolsResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 }
@@ -1163,6 +1166,257 @@ class ProjectsLocationsTriggersResource {
     );
     return ReceiveTriggerWebhookResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsWorkerPoolsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsWorkerPoolsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a `WorkerPool`.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this worker pool will be
+  /// created. Format: `projects/{project}/locations/{location}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [validateOnly] - If set, validate the request and preview the response,
+  /// but do not actually post it.
+  ///
+  /// [workerPoolId] - Required. Immutable. The ID to use for the `WorkerPool`,
+  /// which will become the final component of the resource name. This value
+  /// should be 1-63 characters, and valid characters are /a-z-/.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    WorkerPool request,
+    core.String parent, {
+    core.bool? validateOnly,
+    core.String? workerPoolId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if (workerPoolId != null) 'workerPoolId': [workerPoolId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/workerPools';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a `WorkerPool`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the `WorkerPool` to delete. Format:
+  /// `projects/{project}/locations/{workerPool}/workerPools/{workerPool}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workerPools/\[^/\]+$`.
+  ///
+  /// [allowMissing] - If set to true, and the `WorkerPool` is not found, the
+  /// request will succeed but no action will be taken on the server.
+  ///
+  /// [etag] - Optional. If this is provided, it must match the server's etag on
+  /// the workerpool for the request to be processed.
+  ///
+  /// [validateOnly] - If set, validate the request and preview the response,
+  /// but do not actually post it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.bool? allowMissing,
+    core.String? etag,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
+      if (etag != null) 'etag': [etag],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns details of a `WorkerPool`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the `WorkerPool` to retrieve. Format:
+  /// `projects/{project}/locations/{location}/workerPools/{workerPool}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workerPools/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WorkerPool].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WorkerPool> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return WorkerPool.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists `WorkerPool`s.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent of the collection of `WorkerPools`.
+  /// Format: `projects/{project}/locations/location`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of `WorkerPool`s to return. The service
+  /// may return fewer than this value. If omitted, the server will use a
+  /// sensible default.
+  ///
+  /// [pageToken] - A page token, received from a previous `ListWorkerPools`
+  /// call. Provide this to retrieve the subsequent page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListWorkerPoolsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListWorkerPoolsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/workerPools';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListWorkerPoolsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a `WorkerPool`.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The resource name of the `WorkerPool`, with format
+  /// `projects/{project}/locations/{location}/workerPools/{worker_pool}`. The
+  /// value of `{worker_pool}` is provided by `worker_pool_id` in
+  /// `CreateWorkerPool` request and the value of `{location}` is determined by
+  /// the endpoint accessed.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workerPools/\[^/\]+$`.
+  ///
+  /// [updateMask] - A mask specifying which fields in `worker_pool` to update.
+  ///
+  /// [validateOnly] - If set, validate the request and preview the response,
+  /// but do not actually post it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    WorkerPool request,
+    core.String name, {
+    core.String? updateMask,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2053,6 +2307,15 @@ class BuildOptions {
   /// - "E2_HIGHCPU_32" : Highcpu e2 machine with 32 CPUs.
   core.String? machineType;
 
+  /// Specification for execution on a `WorkerPool`.
+  ///
+  /// See
+  /// [running builds in a custom worker pool](https://cloud.google.com/build/docs/custom-workers/run-builds-in-custom-worker-pool)
+  /// for more information.
+  ///
+  /// Optional.
+  PoolOption? pool;
+
   /// Requested verifiability options.
   /// Possible string values are:
   /// - "NOT_VERIFIED" : Not a verifiable build. (default)
@@ -2090,10 +2353,7 @@ class BuildOptions {
   /// configuration.
   core.List<Volume>? volumes;
 
-  /// Option to specify a `WorkerPool` for the build.
-  ///
-  /// Format: projects/{project}/locations/{location}/workerPools/{workerPool}
-  /// This field is in beta and is available only to restricted users.
+  /// This field deprecated; please use `pool.name` instead.
   core.String? workerPool;
 
   BuildOptions();
@@ -2118,6 +2378,10 @@ class BuildOptions {
     }
     if (_json.containsKey('machineType')) {
       machineType = _json['machineType'] as core.String;
+    }
+    if (_json.containsKey('pool')) {
+      pool = PoolOption.fromJson(
+          _json['pool'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('requestedVerifyOption')) {
       requestedVerifyOption = _json['requestedVerifyOption'] as core.String;
@@ -2155,6 +2419,7 @@ class BuildOptions {
           'logStreamingOption': logStreamingOption!,
         if (logging != null) 'logging': logging!,
         if (machineType != null) 'machineType': machineType!,
+        if (pool != null) 'pool': pool!.toJson(),
         if (requestedVerifyOption != null)
           'requestedVerifyOption': requestedVerifyOption!,
         if (secretEnv != null) 'secretEnv': secretEnv!,
@@ -2357,6 +2622,13 @@ class BuildStep {
 /// Configuration for an automated build in response to source repository
 /// changes.
 class BuildTrigger {
+  /// Autodetect build configuration.
+  ///
+  /// The following precedence is used (case insensitive): 1. cloudbuild.yaml 2.
+  /// cloudbuild.yml 3. cloudbuild.json 4. Dockerfile Currently only available
+  /// for GitHub App Triggers.
+  core.bool? autodetect;
+
   /// Contents of the build template.
   Build? build;
 
@@ -2451,6 +2723,9 @@ class BuildTrigger {
   BuildTrigger();
 
   BuildTrigger.fromJson(core.Map _json) {
+    if (_json.containsKey('autodetect')) {
+      autodetect = _json['autodetect'] as core.bool;
+    }
     if (_json.containsKey('build')) {
       build =
           Build.fromJson(_json['build'] as core.Map<core.String, core.dynamic>);
@@ -2522,6 +2797,7 @@ class BuildTrigger {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (autodetect != null) 'autodetect': autodetect!,
         if (build != null) 'build': build!.toJson(),
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
@@ -2626,6 +2902,76 @@ class CancelOperationRequest {
       core.Map _json);
 
   core.Map<core.String, core.dynamic> toJson() => {};
+}
+
+/// Metadata for the `CreateWorkerPool` operation.
+class CreateWorkerPoolOperationMetadata {
+  /// Time the operation was completed.
+  core.String? completeTime;
+
+  /// Time the operation was created.
+  core.String? createTime;
+
+  /// The resource name of the `WorkerPool` to create.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/workerPools/{worker_pool}`.
+  core.String? workerPool;
+
+  CreateWorkerPoolOperationMetadata();
+
+  CreateWorkerPoolOperationMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey('completeTime')) {
+      completeTime = _json['completeTime'] as core.String;
+    }
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'] as core.String;
+    }
+    if (_json.containsKey('workerPool')) {
+      workerPool = _json['workerPool'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (completeTime != null) 'completeTime': completeTime!,
+        if (createTime != null) 'createTime': createTime!,
+        if (workerPool != null) 'workerPool': workerPool!,
+      };
+}
+
+/// Metadata for the `DeleteWorkerPool` operation.
+class DeleteWorkerPoolOperationMetadata {
+  /// Time the operation was completed.
+  core.String? completeTime;
+
+  /// Time the operation was created.
+  core.String? createTime;
+
+  /// The resource name of the `WorkerPool` being deleted.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/workerPools/{worker_pool}`.
+  core.String? workerPool;
+
+  DeleteWorkerPoolOperationMetadata();
+
+  DeleteWorkerPoolOperationMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey('completeTime')) {
+      completeTime = _json['completeTime'] as core.String;
+    }
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'] as core.String;
+    }
+    if (_json.containsKey('workerPool')) {
+      workerPool = _json['workerPool'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (completeTime != null) 'completeTime': completeTime!,
+        if (createTime != null) 'createTime': createTime!,
+        if (workerPool != null) 'workerPool': workerPool!,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -2946,6 +3292,79 @@ class ListBuildsResponse {
       };
 }
 
+/// Response containing existing `WorkerPools`.
+class ListWorkerPoolsResponse {
+  /// Continuation token used to page through large result sets.
+  ///
+  /// Provide this value in a subsequent ListWorkerPoolsRequest to return the
+  /// next page of results.
+  core.String? nextPageToken;
+
+  /// `WorkerPools` for the specified project.
+  core.List<WorkerPool>? workerPools;
+
+  ListWorkerPoolsResponse();
+
+  ListWorkerPoolsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+    if (_json.containsKey('workerPools')) {
+      workerPools = (_json['workerPools'] as core.List)
+          .map<WorkerPool>((value) =>
+              WorkerPool.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (workerPools != null)
+          'workerPools': workerPools!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// Defines the network configuration for the pool.
+class NetworkConfig {
+  /// Option to configure network egress for the workers.
+  /// Possible string values are:
+  /// - "EGRESS_OPTION_UNSPECIFIED" : If set, defaults to PUBLIC_EGRESS.
+  /// - "NO_PUBLIC_EGRESS" : If set, workers are created without any public
+  /// address, which prevents network egress to public IPs unless a network
+  /// proxy is configured.
+  /// - "PUBLIC_EGRESS" : If set, workers are created with a public address
+  /// which allows for public internet egress.
+  core.String? egressOption;
+
+  /// The network definition that the workers are peered to.
+  ///
+  /// If this section is left empty, the workers will be peered to
+  /// `WorkerPool.project_id` on the service producer network. Must be in the
+  /// format `projects/{project}/global/networks/{network}`, where `{project}`
+  /// is a project number, such as `12345`, and `{network}` is the name of a VPC
+  /// network in the project. See
+  /// [Understanding network configuration options](https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
+  ///
+  /// Required. Immutable.
+  core.String? peeredNetwork;
+
+  NetworkConfig();
+
+  NetworkConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('egressOption')) {
+      egressOption = _json['egressOption'] as core.String;
+    }
+    if (_json.containsKey('peeredNetwork')) {
+      peeredNetwork = _json['peeredNetwork'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (egressOption != null) 'egressOption': egressOption!,
+        if (peeredNetwork != null) 'peeredNetwork': peeredNetwork!,
+      };
+}
+
 /// Notification is the container which holds the data that is relevant to this
 /// particular notification.
 class Notification {
@@ -3242,6 +3661,59 @@ class Operation {
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
+      };
+}
+
+/// Details about how a build should be executed on a `WorkerPool`.
+///
+/// See
+/// [running builds in a custom worker pool](https://cloud.google.com/build/docs/custom-workers/run-builds-in-custom-worker-pool)
+/// for more information.
+class PoolOption {
+  /// The `WorkerPool` resource to execute the build on.
+  ///
+  /// You must have `cloudbuild.workerpools.use` on the project hosting the
+  /// WorkerPool. Format
+  /// projects/{project}/locations/{location}/workerPools/{workerPoolId}
+  core.String? name;
+
+  PoolOption();
+
+  PoolOption.fromJson(core.Map _json) {
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+      };
+}
+
+/// Configuration for a V1 `PrivatePool`.
+class PrivatePoolV1Config {
+  /// Network configuration for the pool.
+  NetworkConfig? networkConfig;
+
+  /// Machine configuration for the workers in the pool.
+  WorkerConfig? workerConfig;
+
+  PrivatePoolV1Config();
+
+  PrivatePoolV1Config.fromJson(core.Map _json) {
+    if (_json.containsKey('networkConfig')) {
+      networkConfig = NetworkConfig.fromJson(
+          _json['networkConfig'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('workerConfig')) {
+      workerConfig = WorkerConfig.fromJson(
+          _json['workerConfig'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (networkConfig != null) 'networkConfig': networkConfig!.toJson(),
+        if (workerConfig != null) 'workerConfig': workerConfig!.toJson(),
       };
 }
 
@@ -3833,7 +4305,8 @@ class Source {
 
   /// If provided, get the source from this manifest in Google Cloud Storage.
   ///
-  /// This feature is in Preview.
+  /// This feature is in Preview; see description
+  /// [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
   StorageSourceManifest? storageSourceManifest;
 
   Source();
@@ -4030,7 +4503,8 @@ class StorageSource {
 
 /// Location of the source manifest in Google Cloud Storage.
 ///
-/// This feature is in Preview.
+/// This feature is in Preview; see description
+/// [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
 class StorageSourceManifest {
   /// Google Cloud Storage bucket containing the source manifest (see
   /// [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
@@ -4089,6 +4563,41 @@ class TimeSpan {
   core.Map<core.String, core.dynamic> toJson() => {
         if (endTime != null) 'endTime': endTime!,
         if (startTime != null) 'startTime': startTime!,
+      };
+}
+
+/// Metadata for the `UpdateWorkerPool` operation.
+class UpdateWorkerPoolOperationMetadata {
+  /// Time the operation was completed.
+  core.String? completeTime;
+
+  /// Time the operation was created.
+  core.String? createTime;
+
+  /// The resource name of the `WorkerPool` being updated.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/workerPools/{worker_pool}`.
+  core.String? workerPool;
+
+  UpdateWorkerPoolOperationMetadata();
+
+  UpdateWorkerPoolOperationMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey('completeTime')) {
+      completeTime = _json['completeTime'] as core.String;
+    }
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'] as core.String;
+    }
+    if (_json.containsKey('workerPool')) {
+      workerPool = _json['workerPool'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (completeTime != null) 'completeTime': completeTime!,
+        if (createTime != null) 'createTime': createTime!,
+        if (workerPool != null) 'workerPool': workerPool!,
       };
 }
 
@@ -4187,5 +4696,171 @@ class WebhookConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (secret != null) 'secret': secret!,
         if (state != null) 'state': state!,
+      };
+}
+
+/// Defines the configuration to be used for creating workers in the pool.
+class WorkerConfig {
+  /// Size of the disk attached to the worker, in GB.
+  ///
+  /// See
+  /// [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file).
+  /// Specify a value of up to 1000. If `0` is specified, Cloud Build will use a
+  /// standard disk size.
+  core.String? diskSizeGb;
+
+  /// Machine type of a worker, such as `e2-medium`.
+  ///
+  /// See
+  /// [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file).
+  /// If left blank, Cloud Build will use a sensible default.
+  core.String? machineType;
+
+  WorkerConfig();
+
+  WorkerConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('diskSizeGb')) {
+      diskSizeGb = _json['diskSizeGb'] as core.String;
+    }
+    if (_json.containsKey('machineType')) {
+      machineType = _json['machineType'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
+        if (machineType != null) 'machineType': machineType!,
+      };
+}
+
+/// Configuration for a `WorkerPool`.
+///
+/// Cloud Build owns and maintains a pool of workers for general use and have no
+/// access to a project's private network. By default, builds submitted to Cloud
+/// Build will use a worker from this pool. If your build needs access to
+/// resources on a private network, create and use a `WorkerPool` to run your
+/// builds. Private `WorkerPool`s give your builds access to any single VPC
+/// network that you administer, including any on-prem resources connected to
+/// that VPC network. For an overview of custom worker pools, see
+/// [Custom workers overview](https://cloud.google.com/cloud-build/docs/custom-workers/custom-workers-overview).
+class WorkerPool {
+  /// User specified annotations.
+  ///
+  /// See https://google.aip.dev/128#annotations for more details such as format
+  /// and size limitations.
+  core.Map<core.String, core.String>? annotations;
+
+  /// Time at which the request to create the `WorkerPool` was received.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Time at which the request to delete the `WorkerPool` was received.
+  ///
+  /// Output only.
+  core.String? deleteTime;
+
+  /// A user-specified, human-readable name for the `WorkerPool`.
+  ///
+  /// If provided, this value must be 1-63 characters.
+  core.String? displayName;
+
+  /// Checksum computed by the server.
+  ///
+  /// May be sent on update and delete requests to ensure that the client has an
+  /// up-to-date value before proceeding.
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// The resource name of the `WorkerPool`, with format
+  /// `projects/{project}/locations/{location}/workerPools/{worker_pool}`.
+  ///
+  /// The value of `{worker_pool}` is provided by `worker_pool_id` in
+  /// `CreateWorkerPool` request and the value of `{location}` is determined by
+  /// the endpoint accessed.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Private Pool using a v1 configuration.
+  PrivatePoolV1Config? privatePoolV1Config;
+
+  /// `WorkerPool` state.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State of the `WorkerPool` is unknown.
+  /// - "CREATING" : `WorkerPool` is being created.
+  /// - "RUNNING" : `WorkerPool` is running.
+  /// - "DELETING" : `WorkerPool` is being deleted: cancelling builds and
+  /// draining workers.
+  /// - "DELETED" : `WorkerPool` is deleted.
+  core.String? state;
+
+  /// A unique identifier for the `WorkerPool`.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// Time at which the request to update the `WorkerPool` was received.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  WorkerPool();
+
+  WorkerPool.fromJson(core.Map _json) {
+    if (_json.containsKey('annotations')) {
+      annotations =
+          (_json['annotations'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
+    }
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'] as core.String;
+    }
+    if (_json.containsKey('deleteTime')) {
+      deleteTime = _json['deleteTime'] as core.String;
+    }
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'] as core.String;
+    }
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('privatePoolV1Config')) {
+      privatePoolV1Config = PrivatePoolV1Config.fromJson(
+          _json['privatePoolV1Config'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('state')) {
+      state = _json['state'] as core.String;
+    }
+    if (_json.containsKey('uid')) {
+      uid = _json['uid'] as core.String;
+    }
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (annotations != null) 'annotations': annotations!,
+        if (createTime != null) 'createTime': createTime!,
+        if (deleteTime != null) 'deleteTime': deleteTime!,
+        if (displayName != null) 'displayName': displayName!,
+        if (etag != null) 'etag': etag!,
+        if (name != null) 'name': name!,
+        if (privatePoolV1Config != null)
+          'privatePoolV1Config': privatePoolV1Config!.toJson(),
+        if (state != null) 'state': state!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }

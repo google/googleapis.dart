@@ -27,14 +27,14 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<core.String> buildUnnamed2404() {
+core.List<core.String> buildUnnamed2405() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed2404(core.List<core.String> o) {
+void checkUnnamed2405(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -51,7 +51,7 @@ api.Attachment buildAttachment() {
   var o = api.Attachment();
   buildCounterAttachment++;
   if (buildCounterAttachment < 3) {
-    o.mimeType = buildUnnamed2404();
+    o.mimeType = buildUnnamed2405();
     o.name = 'foo';
   }
   buildCounterAttachment--;
@@ -61,7 +61,7 @@ api.Attachment buildAttachment() {
 void checkAttachment(api.Attachment o) {
   buildCounterAttachment++;
   if (buildCounterAttachment < 3) {
-    checkUnnamed2404(o.mimeType!);
+    checkUnnamed2405(o.mimeType!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -70,14 +70,14 @@ void checkAttachment(api.Attachment o) {
   buildCounterAttachment--;
 }
 
-core.List<api.CreatePermissionRequest> buildUnnamed2405() {
+core.List<api.CreatePermissionRequest> buildUnnamed2406() {
   var o = <api.CreatePermissionRequest>[];
   o.add(buildCreatePermissionRequest());
   o.add(buildCreatePermissionRequest());
   return o;
 }
 
-void checkUnnamed2405(core.List<api.CreatePermissionRequest> o) {
+void checkUnnamed2406(core.List<api.CreatePermissionRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCreatePermissionRequest(o[0] as api.CreatePermissionRequest);
   checkCreatePermissionRequest(o[1] as api.CreatePermissionRequest);
@@ -88,7 +88,7 @@ api.BatchCreatePermissionsRequest buildBatchCreatePermissionsRequest() {
   var o = api.BatchCreatePermissionsRequest();
   buildCounterBatchCreatePermissionsRequest++;
   if (buildCounterBatchCreatePermissionsRequest < 3) {
-    o.requests = buildUnnamed2405();
+    o.requests = buildUnnamed2406();
   }
   buildCounterBatchCreatePermissionsRequest--;
   return o;
@@ -97,19 +97,19 @@ api.BatchCreatePermissionsRequest buildBatchCreatePermissionsRequest() {
 void checkBatchCreatePermissionsRequest(api.BatchCreatePermissionsRequest o) {
   buildCounterBatchCreatePermissionsRequest++;
   if (buildCounterBatchCreatePermissionsRequest < 3) {
-    checkUnnamed2405(o.requests!);
+    checkUnnamed2406(o.requests!);
   }
   buildCounterBatchCreatePermissionsRequest--;
 }
 
-core.List<api.Permission> buildUnnamed2406() {
+core.List<api.Permission> buildUnnamed2407() {
   var o = <api.Permission>[];
   o.add(buildPermission());
   o.add(buildPermission());
   return o;
 }
 
-void checkUnnamed2406(core.List<api.Permission> o) {
+void checkUnnamed2407(core.List<api.Permission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPermission(o[0] as api.Permission);
   checkPermission(o[1] as api.Permission);
@@ -120,7 +120,7 @@ api.BatchCreatePermissionsResponse buildBatchCreatePermissionsResponse() {
   var o = api.BatchCreatePermissionsResponse();
   buildCounterBatchCreatePermissionsResponse++;
   if (buildCounterBatchCreatePermissionsResponse < 3) {
-    o.permissions = buildUnnamed2406();
+    o.permissions = buildUnnamed2407();
   }
   buildCounterBatchCreatePermissionsResponse--;
   return o;
@@ -129,19 +129,19 @@ api.BatchCreatePermissionsResponse buildBatchCreatePermissionsResponse() {
 void checkBatchCreatePermissionsResponse(api.BatchCreatePermissionsResponse o) {
   buildCounterBatchCreatePermissionsResponse++;
   if (buildCounterBatchCreatePermissionsResponse < 3) {
-    checkUnnamed2406(o.permissions!);
+    checkUnnamed2407(o.permissions!);
   }
   buildCounterBatchCreatePermissionsResponse--;
 }
 
-core.List<core.String> buildUnnamed2407() {
+core.List<core.String> buildUnnamed2408() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed2407(core.List<core.String> o) {
+void checkUnnamed2408(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -158,7 +158,7 @@ api.BatchDeletePermissionsRequest buildBatchDeletePermissionsRequest() {
   var o = api.BatchDeletePermissionsRequest();
   buildCounterBatchDeletePermissionsRequest++;
   if (buildCounterBatchDeletePermissionsRequest < 3) {
-    o.names = buildUnnamed2407();
+    o.names = buildUnnamed2408();
   }
   buildCounterBatchDeletePermissionsRequest--;
   return o;
@@ -167,7 +167,7 @@ api.BatchDeletePermissionsRequest buildBatchDeletePermissionsRequest() {
 void checkBatchDeletePermissionsRequest(api.BatchDeletePermissionsRequest o) {
   buildCounterBatchDeletePermissionsRequest++;
   if (buildCounterBatchDeletePermissionsRequest < 3) {
-    checkUnnamed2407(o.names!);
+    checkUnnamed2408(o.names!);
   }
   buildCounterBatchDeletePermissionsRequest--;
 }
@@ -248,38 +248,6 @@ void checkGroup(api.Group o) {
   buildCounterGroup--;
 }
 
-core.List<api.ListItem> buildUnnamed2408() {
-  var o = <api.ListItem>[];
-  o.add(buildListItem());
-  o.add(buildListItem());
-  return o;
-}
-
-void checkUnnamed2408(core.List<api.ListItem> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkListItem(o[0] as api.ListItem);
-  checkListItem(o[1] as api.ListItem);
-}
-
-core.int buildCounterListContent = 0;
-api.ListContent buildListContent() {
-  var o = api.ListContent();
-  buildCounterListContent++;
-  if (buildCounterListContent < 3) {
-    o.listItems = buildUnnamed2408();
-  }
-  buildCounterListContent--;
-  return o;
-}
-
-void checkListContent(api.ListContent o) {
-  buildCounterListContent++;
-  if (buildCounterListContent < 3) {
-    checkUnnamed2408(o.listItems!);
-  }
-  buildCounterListContent--;
-}
-
 core.List<api.ListItem> buildUnnamed2409() {
   var o = <api.ListItem>[];
   o.add(buildListItem());
@@ -293,13 +261,45 @@ void checkUnnamed2409(core.List<api.ListItem> o) {
   checkListItem(o[1] as api.ListItem);
 }
 
+core.int buildCounterListContent = 0;
+api.ListContent buildListContent() {
+  var o = api.ListContent();
+  buildCounterListContent++;
+  if (buildCounterListContent < 3) {
+    o.listItems = buildUnnamed2409();
+  }
+  buildCounterListContent--;
+  return o;
+}
+
+void checkListContent(api.ListContent o) {
+  buildCounterListContent++;
+  if (buildCounterListContent < 3) {
+    checkUnnamed2409(o.listItems!);
+  }
+  buildCounterListContent--;
+}
+
+core.List<api.ListItem> buildUnnamed2410() {
+  var o = <api.ListItem>[];
+  o.add(buildListItem());
+  o.add(buildListItem());
+  return o;
+}
+
+void checkUnnamed2410(core.List<api.ListItem> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkListItem(o[0] as api.ListItem);
+  checkListItem(o[1] as api.ListItem);
+}
+
 core.int buildCounterListItem = 0;
 api.ListItem buildListItem() {
   var o = api.ListItem();
   buildCounterListItem++;
   if (buildCounterListItem < 3) {
     o.checked = true;
-    o.childListItems = buildUnnamed2409();
+    o.childListItems = buildUnnamed2410();
     o.text = buildTextContent();
   }
   buildCounterListItem--;
@@ -310,20 +310,20 @@ void checkListItem(api.ListItem o) {
   buildCounterListItem++;
   if (buildCounterListItem < 3) {
     unittest.expect(o.checked!, unittest.isTrue);
-    checkUnnamed2409(o.childListItems!);
+    checkUnnamed2410(o.childListItems!);
     checkTextContent(o.text! as api.TextContent);
   }
   buildCounterListItem--;
 }
 
-core.List<api.Note> buildUnnamed2410() {
+core.List<api.Note> buildUnnamed2411() {
   var o = <api.Note>[];
   o.add(buildNote());
   o.add(buildNote());
   return o;
 }
 
-void checkUnnamed2410(core.List<api.Note> o) {
+void checkUnnamed2411(core.List<api.Note> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNote(o[0] as api.Note);
   checkNote(o[1] as api.Note);
@@ -335,7 +335,7 @@ api.ListNotesResponse buildListNotesResponse() {
   buildCounterListNotesResponse++;
   if (buildCounterListNotesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.notes = buildUnnamed2410();
+    o.notes = buildUnnamed2411();
   }
   buildCounterListNotesResponse--;
   return o;
@@ -348,32 +348,32 @@ void checkListNotesResponse(api.ListNotesResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed2410(o.notes!);
+    checkUnnamed2411(o.notes!);
   }
   buildCounterListNotesResponse--;
 }
 
-core.List<api.Attachment> buildUnnamed2411() {
+core.List<api.Attachment> buildUnnamed2412() {
   var o = <api.Attachment>[];
   o.add(buildAttachment());
   o.add(buildAttachment());
   return o;
 }
 
-void checkUnnamed2411(core.List<api.Attachment> o) {
+void checkUnnamed2412(core.List<api.Attachment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAttachment(o[0] as api.Attachment);
   checkAttachment(o[1] as api.Attachment);
 }
 
-core.List<api.Permission> buildUnnamed2412() {
+core.List<api.Permission> buildUnnamed2413() {
   var o = <api.Permission>[];
   o.add(buildPermission());
   o.add(buildPermission());
   return o;
 }
 
-void checkUnnamed2412(core.List<api.Permission> o) {
+void checkUnnamed2413(core.List<api.Permission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPermission(o[0] as api.Permission);
   checkPermission(o[1] as api.Permission);
@@ -384,11 +384,11 @@ api.Note buildNote() {
   var o = api.Note();
   buildCounterNote++;
   if (buildCounterNote < 3) {
-    o.attachments = buildUnnamed2411();
+    o.attachments = buildUnnamed2412();
     o.body = buildSection();
     o.createTime = 'foo';
     o.name = 'foo';
-    o.permissions = buildUnnamed2412();
+    o.permissions = buildUnnamed2413();
     o.title = 'foo';
     o.trashTime = 'foo';
     o.trashed = true;
@@ -401,7 +401,7 @@ api.Note buildNote() {
 void checkNote(api.Note o) {
   buildCounterNote++;
   if (buildCounterNote < 3) {
-    checkUnnamed2411(o.attachments!);
+    checkUnnamed2412(o.attachments!);
     checkSection(o.body! as api.Section);
     unittest.expect(
       o.createTime!,
@@ -411,7 +411,7 @@ void checkNote(api.Note o) {
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed2412(o.permissions!);
+    checkUnnamed2413(o.permissions!);
     unittest.expect(
       o.title!,
       unittest.equals('foo'),

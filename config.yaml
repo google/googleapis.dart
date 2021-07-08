@@ -38,6 +38,7 @@ packages:
     - appengine:v1 # https://cloud.google.com/appengine/docs/admin-api/
     - artifactregistry:v1
     - assuredworkloads:v1
+    - baremetalsolution:v1
     - bigquery:v2 # https://developers.google.com/bigquery/
     - bigquerydatatransfer:v1 # https://cloud.google.com/bigquery/transfer/
     - bigqueryreservation:v1
@@ -76,6 +77,7 @@ packages:
     - container:v1 # https://cloud.google.com/container-engine/
     - content:v2.1 # https://developers.google.com/shopping-content/
     - customsearch:v1 # https://developers.google.com/custom-search/
+    - datacatalog:v1
     - datafusion:v1
     - datamigration:v1
     - dataproc:v1 # https://cloud.google.com/dataproc/
@@ -156,9 +158,9 @@ packages:
     - policysimulator:v1
     - policytroubleshooter:v1
     - poly:v1 # https://devsite.googleplex.com/poly/
+    - privateca:v1
     - pubsub:v1 # https://cloud.google.com/pubsub/
     - pubsublite:v1
-    - privateca:v1
     - realtimebidding:v1
     - recaptchaenterprise:v1
     - recommender:v1
@@ -243,6 +245,7 @@ packages:
     - lifesciences:v2beta
     - metastore:v1beta
     - networkconnectivity:v1alpha1
+    - networksecurity:v1beta1
     - ondemandscanning:v1beta1
     - osconfig:v1alpha
     - policysimulator:v1beta1
@@ -355,6 +358,7 @@ skipped_apis:
 - serviceusage:v1beta1 # v1 included
 - speech:v1p1beta1 # v1 included
 - speech:v2beta1 # v1 included
+- sqladmin:v1 # empty!
 - sts:v1beta #v1 included
 - texttospeech:v1beta1 # v1 included
 - tpu:v1alpha1 # v1 included

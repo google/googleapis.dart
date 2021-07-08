@@ -3124,13 +3124,18 @@ class GoogleCloudChannelV1ContactInfo {
   /// The customer account's contact email.
   ///
   /// Required for entitlements that create admin.google.com accounts, and
-  /// serves as the customer's username for those accounts.
+  /// serves as the customer's username for those accounts. Use this email to
+  /// invite Team customers.
   core.String? email;
 
   /// The customer account contact's first name.
+  ///
+  /// Optional for Team customers.
   core.String? firstName;
 
   /// The customer account contact's last name.
+  ///
+  /// Optional for Team customers.
   core.String? lastName;
 
   /// The customer account's contact phone number.
@@ -3219,7 +3224,8 @@ class GoogleCloudChannelV1Customer {
   /// You need to provide an alternate email to create different domains if a
   /// primary contact email already exists. Users will receive a notification
   /// with credentials when you create an admin.google.com account. Secondary
-  /// emails are also recovery email addresses.
+  /// emails are also recovery email addresses. Alternate emails are optional
+  /// when you create Team customers.
   core.String? alternateEmail;
 
   /// Cloud Identity ID of the customer's channel partner.

@@ -2037,11 +2037,6 @@
                         "orgUnitPath"
                     ],
                     "parameters": {
-                        "allowPlus": {
-                            "description": "Parses org unit path without url decode to allow for plus in ou name",
-                            "location": "query",
-                            "type": "boolean"
-                        },
                         "customerId": {
                             "description": "The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users resource](/admin-sdk/directory/v1/reference/users).",
                             "location": "path",
@@ -2071,11 +2066,6 @@
                         "orgUnitPath"
                     ],
                     "parameters": {
-                        "allowPlus": {
-                            "description": "Parses org unit path without url decode to allow for plus in ou name",
-                            "location": "query",
-                            "type": "boolean"
-                        },
                         "customerId": {
                             "description": "The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users resource](/admin-sdk/directory/v1/reference/users).",
                             "location": "path",
@@ -2180,11 +2170,6 @@
                         "orgUnitPath"
                     ],
                     "parameters": {
-                        "allowPlus": {
-                            "description": "Parses org unit path without url decode to allow for plus in ou name",
-                            "location": "query",
-                            "type": "boolean"
-                        },
                         "customerId": {
                             "description": "The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users resource](/admin-sdk/directory/v1/reference/users).",
                             "location": "path",
@@ -2220,11 +2205,6 @@
                         "orgUnitPath"
                     ],
                     "parameters": {
-                        "allowPlus": {
-                            "description": "Parses org unit path without url decode to allow for plus in ou name",
-                            "location": "query",
-                            "type": "boolean"
-                        },
                         "customerId": {
                             "description": "The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users resource](/admin-sdk/directory/v1/reference/users).",
                             "location": "path",
@@ -4415,7 +4395,7 @@
             }
         }
     },
-    "revision": "20210615",
+    "revision": "20210706",
     "rootUrl": "https://admin.googleapis.com/",
     "schemas": {
         "Alias": {

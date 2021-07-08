@@ -2823,6 +2823,65 @@ class AuditLogConfig {
       };
 }
 
+class BiEngineReason {
+  /// \[Output-only\] High-level BI Engine reason for partial or disabled
+  /// acceleration.
+  core.String? code;
+
+  /// \[Output-only\] Free form human-readable reason for partial or disabled
+  /// acceleration.
+  core.String? message;
+
+  BiEngineReason();
+
+  BiEngineReason.fromJson(core.Map _json) {
+    if (_json.containsKey('code')) {
+      code = _json['code'] as core.String;
+    }
+    if (_json.containsKey('message')) {
+      message = _json['message'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+        if (message != null) 'message': message!,
+      };
+}
+
+class BiEngineStatistics {
+  /// \[Output-only\] Specifies which mode of BI Engine acceleration was
+  /// performed (if any).
+  core.String? biEngineMode;
+
+  /// In case of DISABLED or PARTIAL bi_engine_mode, these contain the
+  /// explanatory reasons as to why BI Engine could not accelerate.
+  ///
+  /// In case the full query was accelerated, this field is not populated.
+  core.List<BiEngineReason>? biEngineReasons;
+
+  BiEngineStatistics();
+
+  BiEngineStatistics.fromJson(core.Map _json) {
+    if (_json.containsKey('biEngineMode')) {
+      biEngineMode = _json['biEngineMode'] as core.String;
+    }
+    if (_json.containsKey('biEngineReasons')) {
+      biEngineReasons = (_json['biEngineReasons'] as core.List)
+          .map<BiEngineReason>((value) => BiEngineReason.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (biEngineMode != null) 'biEngineMode': biEngineMode!,
+        if (biEngineReasons != null)
+          'biEngineReasons':
+              biEngineReasons!.map((value) => value.toJson()).toList(),
+      };
+}
+
 class BigQueryModelTraining {
   /// \[Output-only, Beta\] Index of current ML training iteration.
   ///
@@ -4415,6 +4474,43 @@ class DestinationTableProperties {
       };
 }
 
+class DmlStatistics {
+  /// Number of deleted Rows.
+  ///
+  /// populated by DML DELETE, MERGE and TRUNCATE statements.
+  core.String? deletedRowCount;
+
+  /// Number of inserted Rows.
+  ///
+  /// Populated by DML INSERT and MERGE statements.
+  core.String? insertedRowCount;
+
+  /// Number of updated Rows.
+  ///
+  /// Populated by DML UPDATE and MERGE statements.
+  core.String? updatedRowCount;
+
+  DmlStatistics();
+
+  DmlStatistics.fromJson(core.Map _json) {
+    if (_json.containsKey('deletedRowCount')) {
+      deletedRowCount = _json['deletedRowCount'] as core.String;
+    }
+    if (_json.containsKey('insertedRowCount')) {
+      insertedRowCount = _json['insertedRowCount'] as core.String;
+    }
+    if (_json.containsKey('updatedRowCount')) {
+      updatedRowCount = _json['updatedRowCount'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deletedRowCount != null) 'deletedRowCount': deletedRowCount!,
+        if (insertedRowCount != null) 'insertedRowCount': insertedRowCount!,
+        if (updatedRowCount != null) 'updatedRowCount': updatedRowCount!,
+      };
+}
+
 class EncryptionConfiguration {
   /// Describes the Cloud KMS encryption key that will be used to protect
   /// destination BigQuery table.
@@ -4834,34 +4930,6 @@ class ExplainQueryStep {
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (substeps != null) 'substeps': substeps!,
-      };
-}
-
-/// Explanation for a single feature.
-class Explanation {
-  /// Attribution of feature.
-  core.double? attribution;
-
-  /// Full name of the feature.
-  ///
-  /// For non-numerical features, will be formatted like .. Overall size of
-  /// feature name will always be truncated to first 120 characters.
-  core.String? featureName;
-
-  Explanation();
-
-  Explanation.fromJson(core.Map _json) {
-    if (_json.containsKey('attribution')) {
-      attribution = (_json['attribution'] as core.num).toDouble();
-    }
-    if (_json.containsKey('featureName')) {
-      featureName = _json['featureName'] as core.String;
-    }
-  }
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (attribution != null) 'attribution': attribution!,
-        if (featureName != null) 'featureName': featureName!,
       };
 }
 
@@ -5371,41 +5439,6 @@ class GetServiceAccountResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,
         if (kind != null) 'kind': kind!,
-      };
-}
-
-/// Global explanations containing the top most important features after
-/// training.
-class GlobalExplanation {
-  /// Class label for this set of global explanations.
-  ///
-  /// Will be empty/null for binary logistic and linear regression models.
-  /// Sorted alphabetically in descending order.
-  core.String? classLabel;
-
-  /// A list of the top global explanations.
-  ///
-  /// Sorted by absolute value of attribution in descending order.
-  core.List<Explanation>? explanations;
-
-  GlobalExplanation();
-
-  GlobalExplanation.fromJson(core.Map _json) {
-    if (_json.containsKey('classLabel')) {
-      classLabel = _json['classLabel'] as core.String;
-    }
-    if (_json.containsKey('explanations')) {
-      explanations = (_json['explanations'] as core.List)
-          .map<Explanation>((value) => Explanation.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (classLabel != null) 'classLabel': classLabel!,
-        if (explanations != null)
-          'explanations': explanations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -7007,7 +7040,7 @@ class JobStatistics {
 
   /// \[Output-only\] \[Preview\] Information of the session if this job is part
   /// of one.
-  SessionInfo? sessionInfoTemplate;
+  SessionInfo? sessionInfo;
 
   /// \[Output-only\] Start time of this job, in milliseconds since the epoch.
   ///
@@ -7080,9 +7113,9 @@ class JobStatistics {
       scriptStatistics = ScriptStatistics.fromJson(
           _json['scriptStatistics'] as core.Map<core.String, core.dynamic>);
     }
-    if (_json.containsKey('sessionInfoTemplate')) {
-      sessionInfoTemplate = SessionInfo.fromJson(
-          _json['sessionInfoTemplate'] as core.Map<core.String, core.dynamic>);
+    if (_json.containsKey('sessionInfo')) {
+      sessionInfo = SessionInfo.fromJson(
+          _json['sessionInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('startTime')) {
       startTime = _json['startTime'] as core.String;
@@ -7117,8 +7150,7 @@ class JobStatistics {
           'rowLevelSecurityStatistics': rowLevelSecurityStatistics!.toJson(),
         if (scriptStatistics != null)
           'scriptStatistics': scriptStatistics!.toJson(),
-        if (sessionInfoTemplate != null)
-          'sessionInfoTemplate': sessionInfoTemplate!.toJson(),
+        if (sessionInfo != null) 'sessionInfo': sessionInfo!.toJson(),
         if (startTime != null) 'startTime': startTime!,
         if (totalBytesProcessed != null)
           'totalBytesProcessed': totalBytesProcessed!,
@@ -7154,6 +7186,11 @@ class JobStatistics2ReservationUsage {
 }
 
 class JobStatistics2 {
+  /// BI Engine specific Statistics.
+  ///
+  /// \[Output-only\] BI Engine specific Statistics.
+  BiEngineStatistics? biEngineStatistics;
+
   /// \[Output-only\] Billing tier for the job.
   core.int? billingTier;
 
@@ -7207,10 +7244,7 @@ class JobStatistics2 {
 
   /// \[Output-only\] Detailed statistics for DML statements Present only for
   /// DML statements INSERT, UPDATE, DELETE or TRUNCATE.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object? dmlStats;
+  DmlStatistics? dmlStats;
 
   /// \[Output-only\] The original estimate of bytes processed for the job.
   core.String? estimatedBytesProcessed;
@@ -7303,6 +7337,10 @@ class JobStatistics2 {
   JobStatistics2();
 
   JobStatistics2.fromJson(core.Map _json) {
+    if (_json.containsKey('biEngineStatistics')) {
+      biEngineStatistics = BiEngineStatistics.fromJson(
+          _json['biEngineStatistics'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('billingTier')) {
       billingTier = _json['billingTier'] as core.int;
     }
@@ -7338,7 +7376,8 @@ class JobStatistics2 {
           _json['ddlTargetTable'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dmlStats')) {
-      dmlStats = _json['dmlStats'] as core.Object;
+      dmlStats = DmlStatistics.fromJson(
+          _json['dmlStats'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('estimatedBytesProcessed')) {
       estimatedBytesProcessed = _json['estimatedBytesProcessed'] as core.String;
@@ -7423,6 +7462,8 @@ class JobStatistics2 {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (biEngineStatistics != null)
+          'biEngineStatistics': biEngineStatistics!.toJson(),
         if (billingTier != null) 'billingTier': billingTier!,
         if (cacheHit != null) 'cacheHit': cacheHit!,
         if (ddlAffectedRowAccessPolicyCount != null)
@@ -7438,7 +7479,7 @@ class JobStatistics2 {
         if (ddlTargetRowAccessPolicy != null)
           'ddlTargetRowAccessPolicy': ddlTargetRowAccessPolicy!.toJson(),
         if (ddlTargetTable != null) 'ddlTargetTable': ddlTargetTable!.toJson(),
-        if (dmlStats != null) 'dmlStats': dmlStats!,
+        if (dmlStats != null) 'dmlStats': dmlStats!.toJson(),
         if (estimatedBytesProcessed != null)
           'estimatedBytesProcessed': estimatedBytesProcessed!,
         if (modelTraining != null) 'modelTraining': modelTraining!.toJson(),
@@ -8824,10 +8865,7 @@ class QueryResponse {
 
   /// \[Output-only\] Detailed statistics for DML statements Present only for
   /// DML statements INSERT, UPDATE, DELETE or TRUNCATE.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object? dmlStats;
+  DmlStatistics? dmlStats;
 
   /// \[Output-only\] The first errors or warnings encountered during the
   /// running of the job.
@@ -8895,7 +8933,8 @@ class QueryResponse {
       cacheHit = _json['cacheHit'] as core.bool;
     }
     if (_json.containsKey('dmlStats')) {
-      dmlStats = _json['dmlStats'] as core.Object;
+      dmlStats = DmlStatistics.fromJson(
+          _json['dmlStats'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('errors')) {
       errors = (_json['errors'] as core.List)
@@ -8943,7 +8982,7 @@ class QueryResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cacheHit != null) 'cacheHit': cacheHit!,
-        if (dmlStats != null) 'dmlStats': dmlStats!,
+        if (dmlStats != null) 'dmlStats': dmlStats!.toJson(),
         if (errors != null)
           'errors': errors!.map((value) => value.toJson()).toList(),
         if (jobComplete != null) 'jobComplete': jobComplete!,
@@ -11537,12 +11576,6 @@ class TrainingRun {
   /// end of training.
   EvaluationMetrics? evaluationMetrics;
 
-  /// Global explanations for important features of the model.
-  ///
-  /// For multi-class models, there is one entry for each label class. For other
-  /// models, there is only one entry in the list.
-  core.List<GlobalExplanation>? globalExplanations;
-
   /// Output of each iteration run, results.size() <= max_iterations.
   core.List<IterationResult>? results;
 
@@ -11564,12 +11597,6 @@ class TrainingRun {
       evaluationMetrics = EvaluationMetrics.fromJson(
           _json['evaluationMetrics'] as core.Map<core.String, core.dynamic>);
     }
-    if (_json.containsKey('globalExplanations')) {
-      globalExplanations = (_json['globalExplanations'] as core.List)
-          .map<GlobalExplanation>((value) => GlobalExplanation.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
     if (_json.containsKey('results')) {
       results = (_json['results'] as core.List)
           .map<IterationResult>((value) => IterationResult.fromJson(
@@ -11590,9 +11617,6 @@ class TrainingRun {
           'dataSplitResult': dataSplitResult!.toJson(),
         if (evaluationMetrics != null)
           'evaluationMetrics': evaluationMetrics!.toJson(),
-        if (globalExplanations != null)
-          'globalExplanations':
-              globalExplanations!.map((value) => value.toJson()).toList(),
         if (results != null)
           'results': results!.map((value) => value.toJson()).toList(),
         if (startTime != null) 'startTime': startTime!,

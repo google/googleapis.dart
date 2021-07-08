@@ -8556,7 +8556,8 @@ class AccountsCustomBatchRequestEntryLinkRequest {
 
   /// Type of the link between the two accounts.
   ///
-  /// Acceptable values are: - "`channelPartner`" - "`eCommercePlatform`"
+  /// Acceptable values are: - "`channelPartner`" - "`eCommercePlatform`" -
+  /// "`paymentServiceProvider`"
   core.String? linkType;
 
   /// The ID of the linked account.
@@ -8566,6 +8567,7 @@ class AccountsCustomBatchRequestEntryLinkRequest {
   ///
   /// Acceptable values are: - "`shoppingAdsProductManagement`" -
   /// "`shoppingActionsProductManagement`" - "`shoppingActionsOrderManagement`"
+  /// - "`paymentProcessing`"
   core.List<core.String>? services;
 
   AccountsCustomBatchRequestEntryLinkRequest();

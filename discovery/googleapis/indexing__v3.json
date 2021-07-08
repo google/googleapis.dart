@@ -147,7 +147,7 @@
             }
         }
     },
-    "revision": "20210608",
+    "revision": "20210624",
     "rootUrl": "https://indexing.googleapis.com/",
     "schemas": {
         "PublishUrlNotificationResponse": {

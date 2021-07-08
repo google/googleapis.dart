@@ -1177,7 +1177,8 @@ class FailureDetail {
 class Image {
   /// Target image opacity.
   ///
-  /// Valid values: `1.0` (solid, default) to `0.0` (transparent).
+  /// Valid values are from `1.0` (solid, default) to `0.0` (transparent),
+  /// exclusive. Set this to a value greater than `0.0`.
   core.double? alpha;
 
   /// Normalized image resolution, based on output video resolution.

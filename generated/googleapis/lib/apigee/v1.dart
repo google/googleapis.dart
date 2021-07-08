@@ -403,6 +403,43 @@ class OrganizationsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Get runtime config for an organization.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the runtime config for the organization in the
+  /// following format: 'organizations/{org}/runtimeConfig'.
+  /// Value must have pattern `^organizations/\[^/\]+/runtimeConfig$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1RuntimeConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1RuntimeConfig> getRuntimeConfig(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudApigeeV1RuntimeConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists the service accounts with the permissions required to allow the
   /// Synchronizer to download environment data from the control plane.
   ///
@@ -18439,6 +18476,57 @@ class GoogleCloudApigeeV1RoutingRule {
         if (environment != null) 'environment': environment!,
         if (receiver != null) 'receiver': receiver!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Runtime configuration for the organization.
+///
+/// Response for GetRuntimeConfig.
+class GoogleCloudApigeeV1RuntimeConfig {
+  /// Cloud Storage bucket used for uploading Analytics records.
+  core.String? analyticsBucket;
+
+  /// Name of the resource in the following format:
+  /// `organizations/{org}/runtimeConfig`.
+  core.String? name;
+
+  /// Tenant project ID associated with the Apigee organization.
+  ///
+  /// The tenant project is used to host Google-managed resources that are
+  /// dedicated to this Apigee organization. Clients have limited access to
+  /// resources within the tenant project used to support Apigee runtime
+  /// instances. Access to the tenant project is managed using
+  /// SetSyncAuthorization. It can be empty if the tenant project hasn't been
+  /// created yet.
+  ///
+  /// Output only.
+  core.String? tenantProjectId;
+
+  /// Cloud Storage bucket used for uploading Trace records.
+  core.String? traceBucket;
+
+  GoogleCloudApigeeV1RuntimeConfig();
+
+  GoogleCloudApigeeV1RuntimeConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('analyticsBucket')) {
+      analyticsBucket = _json['analyticsBucket'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('tenantProjectId')) {
+      tenantProjectId = _json['tenantProjectId'] as core.String;
+    }
+    if (_json.containsKey('traceBucket')) {
+      traceBucket = _json['traceBucket'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (analyticsBucket != null) 'analyticsBucket': analyticsBucket!,
+        if (name != null) 'name': name!,
+        if (tenantProjectId != null) 'tenantProjectId': tenantProjectId!,
+        if (traceBucket != null) 'traceBucket': traceBucket!,
       };
 }
 

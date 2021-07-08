@@ -1593,7 +1593,7 @@
             }
         }
     },
-    "revision": "20210613",
+    "revision": "20210705",
     "rootUrl": "https://appengine.googleapis.com/",
     "schemas": {
         "ApiConfigHandler": {

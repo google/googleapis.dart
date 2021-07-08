@@ -17,7 +17,7 @@
 /// This API is an enterprise-only API used to create and manage the Keep notes
 /// within your domain, including resolving issues identified by CASB software.
 ///
-/// For more information, see <https://support.google.com/keep>
+/// For more information, see <https://developers.google.com/keep/api>
 ///
 /// Create an instance of [KeepApi] to access these resources:
 ///
@@ -51,6 +51,10 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 class KeepApi {
   /// See, edit, create and permanently delete all your Google Keep data
   static const keepScope = 'https://www.googleapis.com/auth/keep';
+
+  /// View all your Google Keep data
+  static const keepReadonlyScope =
+      'https://www.googleapis.com/auth/keep.readonly';
 
   final commons.ApiRequester _requester;
 

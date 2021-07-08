@@ -1215,6 +1215,38 @@ class GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionResponse {
       };
 }
 
+/// Metadata message associated with the ExportProcessorVersion operation.
+class GoogleCloudDocumentaiUiv1beta3ExportProcessorVersionMetadata {
+  /// The common metadata about the operation.
+  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata? commonMetadata;
+
+  GoogleCloudDocumentaiUiv1beta3ExportProcessorVersionMetadata();
+
+  GoogleCloudDocumentaiUiv1beta3ExportProcessorVersionMetadata.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('commonMetadata')) {
+      commonMetadata =
+          GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata.fromJson(
+              _json['commonMetadata'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
+      };
+}
+
+/// Response message associated with the ExportProcessorVersion operation.
+class GoogleCloudDocumentaiUiv1beta3ExportProcessorVersionResponse {
+  GoogleCloudDocumentaiUiv1beta3ExportProcessorVersionResponse();
+
+  GoogleCloudDocumentaiUiv1beta3ExportProcessorVersionResponse.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
 /// The long running operation metadata for set default processor version
 /// method.
 class GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionMetadata {

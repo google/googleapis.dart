@@ -1,6 +1,7 @@
 ## 4.0.0-dev
 
 - `firebaseappcheck` - new!
+- `networksecurity` - new!
 - `osconfig` – new!
 
 ## 3.0.0

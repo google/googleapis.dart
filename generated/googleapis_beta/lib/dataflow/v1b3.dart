@@ -2909,8 +2909,7 @@ class AutoscalingEvent {
   /// num_workers value.
   core.String? time;
 
-  /// A short and friendly name for the worker pool this event refers to,
-  /// populated from the value of PoolStageRelation::user_pool_name.
+  /// A short and friendly name for the worker pool this event refers to.
   core.String? workerPool;
 
   AutoscalingEvent();
@@ -8049,7 +8048,7 @@ class SdkVersion {
   /// - "STALE" : A newer version of the SDK family exists, and an update is
   /// recommended.
   /// - "DEPRECATED" : This version of the SDK is deprecated and will eventually
-  /// be no longer supported.
+  /// be unsupported.
   /// - "UNSUPPORTED" : Support for this SDK version has ended and it should no
   /// longer be used.
   core.String? sdkSupportStatus;

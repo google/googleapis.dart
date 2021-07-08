@@ -15,7 +15,7 @@
 /// Cloud Run Admin API - v1
 ///
 /// Deploy and manage user provided container images that scale automatically
-/// based on incoming requets. The Cloud Run Admin API follows the Knative
+/// based on incoming requests. The Cloud Run Admin API follows the Knative
 /// Serving API specification.
 ///
 /// For more information, see <https://cloud.google.com/run/>
@@ -53,7 +53,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// Deploy and manage user provided container images that scale automatically
-/// based on incoming requets.
+/// based on incoming requests.
 ///
 /// The Cloud Run Admin API follows the Knative Serving API specification.
 class CloudRunApi {

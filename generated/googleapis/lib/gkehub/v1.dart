@@ -2460,11 +2460,10 @@ class ConfigManagementSyncState {
   /// Token indicating the state of the importer.
   core.String? importToken;
 
-  /// Timestamp of when ACM last successfully synced the repo The time format is
-  /// specified in https://golang.org/pkg/time/#Time.String This field is being
-  /// deprecated.
+  /// Deprecated: use last_sync_time instead.
   ///
-  /// Use last_sync_time instead. (b/154053616)
+  /// Timestamp of when ACM last successfully synced the repo The time format is
+  /// specified in https://golang.org/pkg/time/#Time.String
   core.String? lastSync;
 
   /// Timestamp type of when ACM last successfully synced the repo

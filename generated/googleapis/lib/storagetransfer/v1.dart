@@ -641,6 +641,14 @@ class AwsS3Data {
   /// with a '/'.
   core.String? path;
 
+  /// Input only.
+  ///
+  /// Role arn to support temporary credentials via AssumeRoleWithWebIdentity.
+  /// When role arn is provided, transfer service will fetch temporary
+  /// credentials for the session using AssumeRoleWithWebIdentity call for the
+  /// provided role using the \[GoogleServiceAccount\] for this project.
+  core.String? roleArn;
+
   AwsS3Data();
 
   AwsS3Data.fromJson(core.Map _json) {
@@ -654,12 +662,16 @@ class AwsS3Data {
     if (_json.containsKey('path')) {
       path = _json['path'] as core.String;
     }
+    if (_json.containsKey('roleArn')) {
+      roleArn = _json['roleArn'] as core.String;
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (awsAccessKey != null) 'awsAccessKey': awsAccessKey!.toJson(),
         if (bucketName != null) 'bucketName': bucketName!,
         if (path != null) 'path': path!,
+        if (roleArn != null) 'roleArn': roleArn!,
       };
 }
 
@@ -728,11 +740,14 @@ class AzureBlobStorageData {
 /// credentials, see \[User
 /// credentials\](/storage-transfer/docs/data-retention#user-credentials).
 class AzureCredentials {
-  /// Azure shared access signature.
+  /// Azure shared access signature (SAS).
   ///
-  /// (see \[Grant limited access to Azure Storage resources using shared access
-  /// signatures
-  /// (SAS)\](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)).
+  /// *Note:*Copying data from Azure Data Lake Storage (ADLS) Gen 2 is in
+  /// \[Preview\](/products/#product-launch-stages). During Preview, if you are
+  /// copying data from ADLS Gen 2, you must use an account SAS. For more
+  /// information about SAS, see \[Grant limited access to Azure Storage
+  /// resources using shared access signatures
+  /// (SAS)\](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
   ///
   /// Required.
   core.String? sasToken;
@@ -983,8 +998,9 @@ class ErrorSummary {
 /// of Cloud Storage objects, which changes when the content or the metadata of
 /// the object is updated.
 class GcsData {
-  /// Cloud Storage bucket name (see
-  /// [Bucket Name Requirements](https://cloud.google.com/storage/docs/naming#requirements)).
+  /// Cloud Storage bucket name.
+  ///
+  /// Must meet \[Bucket Name Requirements\](/storage/docs/naming#requirements).
   ///
   /// Required.
   core.String? bucketName;
@@ -993,8 +1009,8 @@ class GcsData {
   ///
   /// Must be an empty string or full path name that ends with a '/'. This field
   /// is treated as an object prefix. As such, it should generally not begin
-  /// with a '/'. (must meet Object Name
-  /// Requirements\](https://cloud.google.com/storage/docs/naming#objectnames)).
+  /// with a '/'. The root path value must meet \[Object Name
+  /// Requirements\](/storage/docs/naming#objectnames).
   core.String? path;
 
   GcsData();
@@ -1019,16 +1035,23 @@ class GoogleServiceAccount {
   /// Email address of the service account.
   core.String? accountEmail;
 
+  /// Unique identifier for the service account.
+  core.String? subjectId;
+
   GoogleServiceAccount();
 
   GoogleServiceAccount.fromJson(core.Map _json) {
     if (_json.containsKey('accountEmail')) {
       accountEmail = _json['accountEmail'] as core.String;
     }
+    if (_json.containsKey('subjectId')) {
+      subjectId = _json['subjectId'] as core.String;
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountEmail != null) 'accountEmail': accountEmail!,
+        if (subjectId != null) 'subjectId': subjectId!,
       };
 }
 
@@ -1051,12 +1074,12 @@ class GoogleServiceAccount {
 /// fetched, the object will not be transferred. * If the specified MD5 does not
 /// match the MD5 computed from the transferred bytes, the object transfer will
 /// fail. * Ensure that each URL you specify is publicly accessible. For
-/// example, in Cloud Storage you can
-/// [share an object publicly](https://cloud.google.com/storage/docs/cloud-console#_sharingdata)
-/// and get a link to it. * Storage Transfer Service obeys `robots.txt` rules
-/// and requires the source HTTP server to support `Range` requests and to
-/// return a `Content-Length` header in each response. * ObjectConditions have
-/// no effect when filtering objects to transfer.
+/// example, in Cloud Storage you can \[share an object publicly\]
+/// (/storage/docs/cloud-console#_sharingdata) and get a link to it. * Storage
+/// Transfer Service obeys `robots.txt` rules and requires the source HTTP
+/// server to support `Range` requests and to return a `Content-Length` header
+/// in each response. * ObjectConditions have no effect when filtering objects
+/// to transfer.
 class HttpData {
   /// The URL that points to the file that stores the object list entries.
   ///
@@ -2171,7 +2194,7 @@ class UpdateTransferJobRequest {
   /// `transferJob` is expected to specify only four fields: description,
   /// transfer_spec, notification_config, and status. An
   /// `UpdateTransferJobRequest` that specifies other fields are rejected with
-  /// the error INVALID_ARGUMENT. Updating a job satus to DELETED requires
+  /// the error INVALID_ARGUMENT. Updating a job status to DELETED requires
   /// `storagetransfer.jobs.delete` permissions.
   ///
   /// Required.

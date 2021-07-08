@@ -1291,7 +1291,7 @@ class DrivesResource {
   ///
   /// Request parameters:
   ///
-  /// [maxResults] - Maximum number of shared drives to return.
+  /// [maxResults] - Maximum number of shared drives to return per page.
   /// Value must be between "1" and "100".
   ///
   /// [pageToken] - Page token for shared drives.

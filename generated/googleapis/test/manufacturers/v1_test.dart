@@ -27,27 +27,27 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<api.Image> buildUnnamed2173() {
+core.List<api.Image> buildUnnamed2174() {
   var o = <api.Image>[];
   o.add(buildImage());
   o.add(buildImage());
   return o;
 }
 
-void checkUnnamed2173(core.List<api.Image> o) {
+void checkUnnamed2174(core.List<api.Image> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkImage(o[0] as api.Image);
   checkImage(o[1] as api.Image);
 }
 
-core.List<core.String> buildUnnamed2174() {
+core.List<core.String> buildUnnamed2175() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed2174(core.List<core.String> o) {
+void checkUnnamed2175(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -59,36 +59,17 @@ void checkUnnamed2174(core.List<core.String> o) {
   );
 }
 
-core.List<api.FeatureDescription> buildUnnamed2175() {
+core.List<api.FeatureDescription> buildUnnamed2176() {
   var o = <api.FeatureDescription>[];
   o.add(buildFeatureDescription());
   o.add(buildFeatureDescription());
   return o;
 }
 
-void checkUnnamed2175(core.List<api.FeatureDescription> o) {
+void checkUnnamed2176(core.List<api.FeatureDescription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFeatureDescription(o[0] as api.FeatureDescription);
   checkFeatureDescription(o[1] as api.FeatureDescription);
-}
-
-core.List<core.String> buildUnnamed2176() {
-  var o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
-
-void checkUnnamed2176(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
 }
 
 core.List<core.String> buildUnnamed2177() {
@@ -110,27 +91,14 @@ void checkUnnamed2177(core.List<core.String> o) {
   );
 }
 
-core.List<api.ProductDetail> buildUnnamed2178() {
-  var o = <api.ProductDetail>[];
-  o.add(buildProductDetail());
-  o.add(buildProductDetail());
-  return o;
-}
-
-void checkUnnamed2178(core.List<api.ProductDetail> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkProductDetail(o[0] as api.ProductDetail);
-  checkProductDetail(o[1] as api.ProductDetail);
-}
-
-core.List<core.String> buildUnnamed2179() {
+core.List<core.String> buildUnnamed2178() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed2179(core.List<core.String> o) {
+void checkUnnamed2178(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -140,6 +108,19 @@ void checkUnnamed2179(core.List<core.String> o) {
     o[1],
     unittest.equals('foo'),
   );
+}
+
+core.List<api.ProductDetail> buildUnnamed2179() {
+  var o = <api.ProductDetail>[];
+  o.add(buildProductDetail());
+  o.add(buildProductDetail());
+  return o;
+}
+
+void checkUnnamed2179(core.List<api.ProductDetail> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkProductDetail(o[0] as api.ProductDetail);
+  checkProductDetail(o[1] as api.ProductDetail);
 }
 
 core.List<core.String> buildUnnamed2180() {
@@ -218,12 +199,31 @@ void checkUnnamed2183(core.List<core.String> o) {
   );
 }
 
+core.List<core.String> buildUnnamed2184() {
+  var o = <core.String>[];
+  o.add('foo');
+  o.add('foo');
+  return o;
+}
+
+void checkUnnamed2184(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterAttributes = 0;
 api.Attributes buildAttributes() {
   var o = api.Attributes();
   buildCounterAttributes++;
   if (buildCounterAttributes < 3) {
-    o.additionalImageLink = buildUnnamed2173();
+    o.additionalImageLink = buildUnnamed2174();
     o.ageGroup = 'foo';
     o.brand = 'foo';
     o.capacity = buildCapacity();
@@ -231,35 +231,35 @@ api.Attributes buildAttributes() {
     o.count = buildCount();
     o.description = 'foo';
     o.disclosureDate = 'foo';
-    o.excludedDestination = buildUnnamed2174();
-    o.featureDescription = buildUnnamed2175();
+    o.excludedDestination = buildUnnamed2175();
+    o.featureDescription = buildUnnamed2176();
     o.flavor = 'foo';
     o.format = 'foo';
     o.gender = 'foo';
-    o.gtin = buildUnnamed2176();
+    o.gtin = buildUnnamed2177();
     o.imageLink = buildImage();
-    o.includedDestination = buildUnnamed2177();
+    o.includedDestination = buildUnnamed2178();
     o.itemGroupId = 'foo';
     o.material = 'foo';
     o.mpn = 'foo';
     o.pattern = 'foo';
-    o.productDetail = buildUnnamed2178();
-    o.productHighlight = buildUnnamed2179();
+    o.productDetail = buildUnnamed2179();
+    o.productHighlight = buildUnnamed2180();
     o.productLine = 'foo';
     o.productName = 'foo';
     o.productPageUrl = 'foo';
-    o.productType = buildUnnamed2180();
+    o.productType = buildUnnamed2181();
     o.releaseDate = 'foo';
-    o.richProductContent = buildUnnamed2181();
+    o.richProductContent = buildUnnamed2182();
     o.scent = 'foo';
     o.size = 'foo';
     o.sizeSystem = 'foo';
-    o.sizeType = buildUnnamed2182();
+    o.sizeType = buildUnnamed2183();
     o.suggestedRetailPrice = buildPrice();
     o.targetClientId = 'foo';
     o.theme = 'foo';
     o.title = 'foo';
-    o.videoLink = buildUnnamed2183();
+    o.videoLink = buildUnnamed2184();
   }
   buildCounterAttributes--;
   return o;
@@ -268,7 +268,7 @@ api.Attributes buildAttributes() {
 void checkAttributes(api.Attributes o) {
   buildCounterAttributes++;
   if (buildCounterAttributes < 3) {
-    checkUnnamed2173(o.additionalImageLink!);
+    checkUnnamed2174(o.additionalImageLink!);
     unittest.expect(
       o.ageGroup!,
       unittest.equals('foo'),
@@ -291,8 +291,8 @@ void checkAttributes(api.Attributes o) {
       o.disclosureDate!,
       unittest.equals('foo'),
     );
-    checkUnnamed2174(o.excludedDestination!);
-    checkUnnamed2175(o.featureDescription!);
+    checkUnnamed2175(o.excludedDestination!);
+    checkUnnamed2176(o.featureDescription!);
     unittest.expect(
       o.flavor!,
       unittest.equals('foo'),
@@ -305,9 +305,9 @@ void checkAttributes(api.Attributes o) {
       o.gender!,
       unittest.equals('foo'),
     );
-    checkUnnamed2176(o.gtin!);
+    checkUnnamed2177(o.gtin!);
     checkImage(o.imageLink! as api.Image);
-    checkUnnamed2177(o.includedDestination!);
+    checkUnnamed2178(o.includedDestination!);
     unittest.expect(
       o.itemGroupId!,
       unittest.equals('foo'),
@@ -324,8 +324,8 @@ void checkAttributes(api.Attributes o) {
       o.pattern!,
       unittest.equals('foo'),
     );
-    checkUnnamed2178(o.productDetail!);
-    checkUnnamed2179(o.productHighlight!);
+    checkUnnamed2179(o.productDetail!);
+    checkUnnamed2180(o.productHighlight!);
     unittest.expect(
       o.productLine!,
       unittest.equals('foo'),
@@ -338,12 +338,12 @@ void checkAttributes(api.Attributes o) {
       o.productPageUrl!,
       unittest.equals('foo'),
     );
-    checkUnnamed2180(o.productType!);
+    checkUnnamed2181(o.productType!);
     unittest.expect(
       o.releaseDate!,
       unittest.equals('foo'),
     );
-    checkUnnamed2181(o.richProductContent!);
+    checkUnnamed2182(o.richProductContent!);
     unittest.expect(
       o.scent!,
       unittest.equals('foo'),
@@ -356,7 +356,7 @@ void checkAttributes(api.Attributes o) {
       o.sizeSystem!,
       unittest.equals('foo'),
     );
-    checkUnnamed2182(o.sizeType!);
+    checkUnnamed2183(o.sizeType!);
     checkPrice(o.suggestedRetailPrice! as api.Price);
     unittest.expect(
       o.targetClientId!,
@@ -370,7 +370,7 @@ void checkAttributes(api.Attributes o) {
       o.title!,
       unittest.equals('foo'),
     );
-    checkUnnamed2183(o.videoLink!);
+    checkUnnamed2184(o.videoLink!);
   }
   buildCounterAttributes--;
 }
@@ -589,14 +589,14 @@ void checkIssue(api.Issue o) {
   buildCounterIssue--;
 }
 
-core.List<api.Product> buildUnnamed2184() {
+core.List<api.Product> buildUnnamed2185() {
   var o = <api.Product>[];
   o.add(buildProduct());
   o.add(buildProduct());
   return o;
 }
 
-void checkUnnamed2184(core.List<api.Product> o) {
+void checkUnnamed2185(core.List<api.Product> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProduct(o[0] as api.Product);
   checkProduct(o[1] as api.Product);
@@ -608,7 +608,7 @@ api.ListProductsResponse buildListProductsResponse() {
   buildCounterListProductsResponse++;
   if (buildCounterListProductsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.products = buildUnnamed2184();
+    o.products = buildUnnamed2185();
   }
   buildCounterListProductsResponse--;
   return o;
@@ -621,7 +621,7 @@ void checkListProductsResponse(api.ListProductsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed2184(o.products!);
+    checkUnnamed2185(o.products!);
   }
   buildCounterListProductsResponse--;
 }
@@ -653,27 +653,27 @@ void checkPrice(api.Price o) {
   buildCounterPrice--;
 }
 
-core.List<api.DestinationStatus> buildUnnamed2185() {
+core.List<api.DestinationStatus> buildUnnamed2186() {
   var o = <api.DestinationStatus>[];
   o.add(buildDestinationStatus());
   o.add(buildDestinationStatus());
   return o;
 }
 
-void checkUnnamed2185(core.List<api.DestinationStatus> o) {
+void checkUnnamed2186(core.List<api.DestinationStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDestinationStatus(o[0] as api.DestinationStatus);
   checkDestinationStatus(o[1] as api.DestinationStatus);
 }
 
-core.List<api.Issue> buildUnnamed2186() {
+core.List<api.Issue> buildUnnamed2187() {
   var o = <api.Issue>[];
   o.add(buildIssue());
   o.add(buildIssue());
   return o;
 }
 
-void checkUnnamed2186(core.List<api.Issue> o) {
+void checkUnnamed2187(core.List<api.Issue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkIssue(o[0] as api.Issue);
   checkIssue(o[1] as api.Issue);
@@ -686,8 +686,8 @@ api.Product buildProduct() {
   if (buildCounterProduct < 3) {
     o.attributes = buildAttributes();
     o.contentLanguage = 'foo';
-    o.destinationStatuses = buildUnnamed2185();
-    o.issues = buildUnnamed2186();
+    o.destinationStatuses = buildUnnamed2186();
+    o.issues = buildUnnamed2187();
     o.name = 'foo';
     o.parent = 'foo';
     o.productId = 'foo';
@@ -705,8 +705,8 @@ void checkProduct(api.Product o) {
       o.contentLanguage!,
       unittest.equals('foo'),
     );
-    checkUnnamed2185(o.destinationStatuses!);
-    checkUnnamed2186(o.issues!);
+    checkUnnamed2186(o.destinationStatuses!);
+    checkUnnamed2187(o.issues!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -759,14 +759,14 @@ void checkProductDetail(api.ProductDetail o) {
   buildCounterProductDetail--;
 }
 
-core.List<core.String> buildUnnamed2187() {
+core.List<core.String> buildUnnamed2188() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed2187(core.List<core.String> o) {
+void checkUnnamed2188(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -778,14 +778,14 @@ void checkUnnamed2187(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed2188() {
+core.List<core.String> buildUnnamed2189() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed2188(core.List<core.String> o) {
+void checkUnnamed2189(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -973,7 +973,7 @@ void main() {
       var res = api.ManufacturerCenterApi(mock).accounts.products;
       var arg_parent = 'foo';
       var arg_name = 'foo';
-      var arg_include = buildUnnamed2187();
+      var arg_include = buildUnnamed2188();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1031,7 +1031,7 @@ void main() {
       var mock = HttpServerMock();
       var res = api.ManufacturerCenterApi(mock).accounts.products;
       var arg_parent = 'foo';
-      var arg_include = buildUnnamed2188();
+      var arg_include = buildUnnamed2189();
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';

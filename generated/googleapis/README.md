@@ -191,6 +191,13 @@ Store and manage build artifacts in a scalable and integrated service built on G
 - [Documentation](https://cloud.google.com)
 - [API details](https://pub.dev/documentation/googleapis/4.0.0-dev/assuredworkloads.v1/assuredworkloads.v1-library.html)
 
+#### Bare Metal Solution API - `baremetalsolution.v1`
+
+Provides ways to manage Bare Metal Solution hardware installed in a regional extension located near a Google Cloud data center.
+
+- [Documentation](https://cloud.google.com/bare-metal)
+- [API details](https://pub.dev/documentation/googleapis/4.0.0-dev/baremetalsolution.v1/baremetalsolution.v1-library.html)
+
 #### ![Logo](https://www.google.com/images/icons/product/search-16.gif) BigQuery API - `bigquery.v2`
 
 A data platform for customers to create, manage, share and query data.
@@ -454,6 +461,13 @@ Searches over a website or collection of websites
 
 - [Documentation](https://developers.google.com/custom-search/v1/introduction)
 - [API details](https://pub.dev/documentation/googleapis/4.0.0-dev/customsearch.v1/customsearch.v1-library.html)
+
+#### Google Cloud Data Catalog API - `datacatalog.v1`
+
+A fully managed and highly scalable data discovery and metadata management service. 
+
+- [Documentation](https://cloud.google.com/data-catalog/docs/)
+- [API details](https://pub.dev/documentation/googleapis/4.0.0-dev/datacatalog.v1/datacatalog.v1-library.html)
 
 #### Cloud Data Fusion API - `datafusion.v1`
 
@@ -799,7 +813,7 @@ Cloud Talent Solution provides the capability to create, read, update, and delet
 
 This API is an enterprise-only API used to create and manage the Keep notes within your domain, including resolving issues identified by CASB software.
 
-- [Documentation](https://support.google.com/keep)
+- [Documentation](https://developers.google.com/keep/api)
 - [API details](https://pub.dev/documentation/googleapis/4.0.0-dev/keep.v1/keep.v1-library.html)
 
 #### Knowledge Graph Search API - `kgsearch.v1`
@@ -1063,7 +1077,7 @@ Cloud Retail service enables customers to build end-to-end personalized recommen
 
 #### Cloud Run Admin API - `run.v1`
 
-Deploy and manage user provided container images that scale automatically based on incoming requets. The Cloud Run Admin API follows the Knative Serving API specification.
+Deploy and manage user provided container images that scale automatically based on incoming requests. The Cloud Run Admin API follows the Knative Serving API specification.
 
 - [Documentation](https://cloud.google.com/run/)
 - [API details](https://pub.dev/documentation/googleapis/4.0.0-dev/run.v1/run.v1-library.html)
@@ -1292,7 +1306,7 @@ Integrates text translation into your website or application.
 
 #### G Suite Vault API - `vault.v1`
 
-Retention and eDiscovery for Google Workspace. To work with Vault resources, the account must have the [required Vault privileges] (https://support.google.com/vault/answer/2799699) and access to the matter. To access a matter, the account must have created the matter, have the matter shared with them, or have the **View All Matters** privilege. For example, to download an export, an account needs the **Manage Exports** privilege and the matter shared with them. 
+Retention and eDiscovery for Google Workspace. To work with Vault resources, the account must have the [required Vault privileges](https://support.google.com/vault/answer/2799699) and access to the matter. To access a matter, the account must have created the matter, have the matter shared with them, or have the **View All Matters** privilege. For example, to download an export, an account needs the **Manage Exports** privilege and the matter shared with them. 
 
 - [Documentation](https://developers.google.com/vault)
 - [API details](https://pub.dev/documentation/googleapis/4.0.0-dev/vault.v1/vault.v1-library.html)

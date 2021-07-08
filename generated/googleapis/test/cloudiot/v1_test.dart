@@ -69,14 +69,14 @@ void checkBindDeviceToGatewayResponse(api.BindDeviceToGatewayResponse o) {
   buildCounterBindDeviceToGatewayResponse--;
 }
 
-core.List<core.String> buildUnnamed3248() {
+core.List<core.String> buildUnnamed3256() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed3248(core.List<core.String> o) {
+void checkUnnamed3256(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -94,7 +94,7 @@ api.Binding buildBinding() {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     o.condition = buildExpr();
-    o.members = buildUnnamed3248();
+    o.members = buildUnnamed3256();
     o.role = 'foo';
   }
   buildCounterBinding--;
@@ -105,7 +105,7 @@ void checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     checkExpr(o.condition! as api.Expr);
-    checkUnnamed3248(o.members!);
+    checkUnnamed3256(o.members!);
     unittest.expect(
       o.role!,
       unittest.equals('foo'),
@@ -114,27 +114,27 @@ void checkBinding(api.Binding o) {
   buildCounterBinding--;
 }
 
-core.List<api.DeviceCredential> buildUnnamed3249() {
+core.List<api.DeviceCredential> buildUnnamed3257() {
   var o = <api.DeviceCredential>[];
   o.add(buildDeviceCredential());
   o.add(buildDeviceCredential());
   return o;
 }
 
-void checkUnnamed3249(core.List<api.DeviceCredential> o) {
+void checkUnnamed3257(core.List<api.DeviceCredential> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDeviceCredential(o[0] as api.DeviceCredential);
   checkDeviceCredential(o[1] as api.DeviceCredential);
 }
 
-core.Map<core.String, core.String> buildUnnamed3250() {
+core.Map<core.String, core.String> buildUnnamed3258() {
   var o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
 }
 
-void checkUnnamed3250(core.Map<core.String, core.String> o) {
+void checkUnnamed3258(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -153,7 +153,7 @@ api.Device buildDevice() {
   if (buildCounterDevice < 3) {
     o.blocked = true;
     o.config = buildDeviceConfig();
-    o.credentials = buildUnnamed3249();
+    o.credentials = buildUnnamed3257();
     o.gatewayConfig = buildGatewayConfig();
     o.id = 'foo';
     o.lastConfigAckTime = 'foo';
@@ -164,7 +164,7 @@ api.Device buildDevice() {
     o.lastHeartbeatTime = 'foo';
     o.lastStateTime = 'foo';
     o.logLevel = 'foo';
-    o.metadata = buildUnnamed3250();
+    o.metadata = buildUnnamed3258();
     o.name = 'foo';
     o.numId = 'foo';
     o.state = buildDeviceState();
@@ -178,7 +178,7 @@ void checkDevice(api.Device o) {
   if (buildCounterDevice < 3) {
     unittest.expect(o.blocked!, unittest.isTrue);
     checkDeviceConfig(o.config! as api.DeviceConfig);
-    checkUnnamed3249(o.credentials!);
+    checkUnnamed3257(o.credentials!);
     checkGatewayConfig(o.gatewayConfig! as api.GatewayConfig);
     unittest.expect(
       o.id!,
@@ -213,7 +213,7 @@ void checkDevice(api.Device o) {
       o.logLevel!,
       unittest.equals('foo'),
     );
-    checkUnnamed3250(o.metadata!);
+    checkUnnamed3258(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -288,27 +288,27 @@ void checkDeviceCredential(api.DeviceCredential o) {
   buildCounterDeviceCredential--;
 }
 
-core.List<api.RegistryCredential> buildUnnamed3251() {
+core.List<api.RegistryCredential> buildUnnamed3259() {
   var o = <api.RegistryCredential>[];
   o.add(buildRegistryCredential());
   o.add(buildRegistryCredential());
   return o;
 }
 
-void checkUnnamed3251(core.List<api.RegistryCredential> o) {
+void checkUnnamed3259(core.List<api.RegistryCredential> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRegistryCredential(o[0] as api.RegistryCredential);
   checkRegistryCredential(o[1] as api.RegistryCredential);
 }
 
-core.List<api.EventNotificationConfig> buildUnnamed3252() {
+core.List<api.EventNotificationConfig> buildUnnamed3260() {
   var o = <api.EventNotificationConfig>[];
   o.add(buildEventNotificationConfig());
   o.add(buildEventNotificationConfig());
   return o;
 }
 
-void checkUnnamed3252(core.List<api.EventNotificationConfig> o) {
+void checkUnnamed3260(core.List<api.EventNotificationConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEventNotificationConfig(o[0] as api.EventNotificationConfig);
   checkEventNotificationConfig(o[1] as api.EventNotificationConfig);
@@ -319,8 +319,8 @@ api.DeviceRegistry buildDeviceRegistry() {
   var o = api.DeviceRegistry();
   buildCounterDeviceRegistry++;
   if (buildCounterDeviceRegistry < 3) {
-    o.credentials = buildUnnamed3251();
-    o.eventNotificationConfigs = buildUnnamed3252();
+    o.credentials = buildUnnamed3259();
+    o.eventNotificationConfigs = buildUnnamed3260();
     o.httpConfig = buildHttpConfig();
     o.id = 'foo';
     o.logLevel = 'foo';
@@ -335,8 +335,8 @@ api.DeviceRegistry buildDeviceRegistry() {
 void checkDeviceRegistry(api.DeviceRegistry o) {
   buildCounterDeviceRegistry++;
   if (buildCounterDeviceRegistry < 3) {
-    checkUnnamed3251(o.credentials!);
-    checkUnnamed3252(o.eventNotificationConfigs!);
+    checkUnnamed3259(o.credentials!);
+    checkUnnamed3260(o.eventNotificationConfigs!);
     checkHttpConfig(o.httpConfig! as api.HttpConfig);
     unittest.expect(
       o.id!,
@@ -563,14 +563,14 @@ void checkHttpConfig(api.HttpConfig o) {
   buildCounterHttpConfig--;
 }
 
-core.List<api.DeviceConfig> buildUnnamed3253() {
+core.List<api.DeviceConfig> buildUnnamed3261() {
   var o = <api.DeviceConfig>[];
   o.add(buildDeviceConfig());
   o.add(buildDeviceConfig());
   return o;
 }
 
-void checkUnnamed3253(core.List<api.DeviceConfig> o) {
+void checkUnnamed3261(core.List<api.DeviceConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDeviceConfig(o[0] as api.DeviceConfig);
   checkDeviceConfig(o[1] as api.DeviceConfig);
@@ -581,7 +581,7 @@ api.ListDeviceConfigVersionsResponse buildListDeviceConfigVersionsResponse() {
   var o = api.ListDeviceConfigVersionsResponse();
   buildCounterListDeviceConfigVersionsResponse++;
   if (buildCounterListDeviceConfigVersionsResponse < 3) {
-    o.deviceConfigs = buildUnnamed3253();
+    o.deviceConfigs = buildUnnamed3261();
   }
   buildCounterListDeviceConfigVersionsResponse--;
   return o;
@@ -591,19 +591,19 @@ void checkListDeviceConfigVersionsResponse(
     api.ListDeviceConfigVersionsResponse o) {
   buildCounterListDeviceConfigVersionsResponse++;
   if (buildCounterListDeviceConfigVersionsResponse < 3) {
-    checkUnnamed3253(o.deviceConfigs!);
+    checkUnnamed3261(o.deviceConfigs!);
   }
   buildCounterListDeviceConfigVersionsResponse--;
 }
 
-core.List<api.DeviceRegistry> buildUnnamed3254() {
+core.List<api.DeviceRegistry> buildUnnamed3262() {
   var o = <api.DeviceRegistry>[];
   o.add(buildDeviceRegistry());
   o.add(buildDeviceRegistry());
   return o;
 }
 
-void checkUnnamed3254(core.List<api.DeviceRegistry> o) {
+void checkUnnamed3262(core.List<api.DeviceRegistry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDeviceRegistry(o[0] as api.DeviceRegistry);
   checkDeviceRegistry(o[1] as api.DeviceRegistry);
@@ -614,7 +614,7 @@ api.ListDeviceRegistriesResponse buildListDeviceRegistriesResponse() {
   var o = api.ListDeviceRegistriesResponse();
   buildCounterListDeviceRegistriesResponse++;
   if (buildCounterListDeviceRegistriesResponse < 3) {
-    o.deviceRegistries = buildUnnamed3254();
+    o.deviceRegistries = buildUnnamed3262();
     o.nextPageToken = 'foo';
   }
   buildCounterListDeviceRegistriesResponse--;
@@ -624,7 +624,7 @@ api.ListDeviceRegistriesResponse buildListDeviceRegistriesResponse() {
 void checkListDeviceRegistriesResponse(api.ListDeviceRegistriesResponse o) {
   buildCounterListDeviceRegistriesResponse++;
   if (buildCounterListDeviceRegistriesResponse < 3) {
-    checkUnnamed3254(o.deviceRegistries!);
+    checkUnnamed3262(o.deviceRegistries!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -633,14 +633,14 @@ void checkListDeviceRegistriesResponse(api.ListDeviceRegistriesResponse o) {
   buildCounterListDeviceRegistriesResponse--;
 }
 
-core.List<api.DeviceState> buildUnnamed3255() {
+core.List<api.DeviceState> buildUnnamed3263() {
   var o = <api.DeviceState>[];
   o.add(buildDeviceState());
   o.add(buildDeviceState());
   return o;
 }
 
-void checkUnnamed3255(core.List<api.DeviceState> o) {
+void checkUnnamed3263(core.List<api.DeviceState> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDeviceState(o[0] as api.DeviceState);
   checkDeviceState(o[1] as api.DeviceState);
@@ -651,7 +651,7 @@ api.ListDeviceStatesResponse buildListDeviceStatesResponse() {
   var o = api.ListDeviceStatesResponse();
   buildCounterListDeviceStatesResponse++;
   if (buildCounterListDeviceStatesResponse < 3) {
-    o.deviceStates = buildUnnamed3255();
+    o.deviceStates = buildUnnamed3263();
   }
   buildCounterListDeviceStatesResponse--;
   return o;
@@ -660,19 +660,19 @@ api.ListDeviceStatesResponse buildListDeviceStatesResponse() {
 void checkListDeviceStatesResponse(api.ListDeviceStatesResponse o) {
   buildCounterListDeviceStatesResponse++;
   if (buildCounterListDeviceStatesResponse < 3) {
-    checkUnnamed3255(o.deviceStates!);
+    checkUnnamed3263(o.deviceStates!);
   }
   buildCounterListDeviceStatesResponse--;
 }
 
-core.List<api.Device> buildUnnamed3256() {
+core.List<api.Device> buildUnnamed3264() {
   var o = <api.Device>[];
   o.add(buildDevice());
   o.add(buildDevice());
   return o;
 }
 
-void checkUnnamed3256(core.List<api.Device> o) {
+void checkUnnamed3264(core.List<api.Device> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDevice(o[0] as api.Device);
   checkDevice(o[1] as api.Device);
@@ -683,7 +683,7 @@ api.ListDevicesResponse buildListDevicesResponse() {
   var o = api.ListDevicesResponse();
   buildCounterListDevicesResponse++;
   if (buildCounterListDevicesResponse < 3) {
-    o.devices = buildUnnamed3256();
+    o.devices = buildUnnamed3264();
     o.nextPageToken = 'foo';
   }
   buildCounterListDevicesResponse--;
@@ -693,7 +693,7 @@ api.ListDevicesResponse buildListDevicesResponse() {
 void checkListDevicesResponse(api.ListDevicesResponse o) {
   buildCounterListDevicesResponse++;
   if (buildCounterListDevicesResponse < 3) {
-    checkUnnamed3256(o.devices!);
+    checkUnnamed3264(o.devices!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -752,14 +752,14 @@ void checkMqttConfig(api.MqttConfig o) {
   buildCounterMqttConfig--;
 }
 
-core.List<api.Binding> buildUnnamed3257() {
+core.List<api.Binding> buildUnnamed3265() {
   var o = <api.Binding>[];
   o.add(buildBinding());
   o.add(buildBinding());
   return o;
 }
 
-void checkUnnamed3257(core.List<api.Binding> o) {
+void checkUnnamed3265(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0] as api.Binding);
   checkBinding(o[1] as api.Binding);
@@ -770,7 +770,7 @@ api.Policy buildPolicy() {
   var o = api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.bindings = buildUnnamed3257();
+    o.bindings = buildUnnamed3265();
     o.etag = 'foo';
     o.version = 42;
   }
@@ -781,7 +781,7 @@ api.Policy buildPolicy() {
 void checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed3257(o.bindings!);
+    checkUnnamed3265(o.bindings!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -953,7 +953,7 @@ void checkStateNotificationConfig(api.StateNotificationConfig o) {
   buildCounterStateNotificationConfig--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed3258() {
+core.Map<core.String, core.Object> buildUnnamed3266() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -968,7 +968,7 @@ core.Map<core.String, core.Object> buildUnnamed3258() {
   return o;
 }
 
-void checkUnnamed3258(core.Map<core.String, core.Object> o) {
+void checkUnnamed3266(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -1000,17 +1000,17 @@ void checkUnnamed3258(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed3259() {
+core.List<core.Map<core.String, core.Object>> buildUnnamed3267() {
   var o = <core.Map<core.String, core.Object>>[];
-  o.add(buildUnnamed3258());
-  o.add(buildUnnamed3258());
+  o.add(buildUnnamed3266());
+  o.add(buildUnnamed3266());
   return o;
 }
 
-void checkUnnamed3259(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed3267(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed3258(o[0]);
-  checkUnnamed3258(o[1]);
+  checkUnnamed3266(o[0]);
+  checkUnnamed3266(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -1019,7 +1019,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed3259();
+    o.details = buildUnnamed3267();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -1033,7 +1033,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed3259(o.details!);
+    checkUnnamed3267(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -1042,14 +1042,14 @@ void checkStatus(api.Status o) {
   buildCounterStatus--;
 }
 
-core.List<core.String> buildUnnamed3260() {
+core.List<core.String> buildUnnamed3268() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed3260(core.List<core.String> o) {
+void checkUnnamed3268(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1066,7 +1066,7 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
   var o = api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed3260();
+    o.permissions = buildUnnamed3268();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -1075,19 +1075,19 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
 void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed3260(o.permissions!);
+    checkUnnamed3268(o.permissions!);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-core.List<core.String> buildUnnamed3261() {
+core.List<core.String> buildUnnamed3269() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed3261(core.List<core.String> o) {
+void checkUnnamed3269(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1104,7 +1104,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
   var o = api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed3261();
+    o.permissions = buildUnnamed3269();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -1113,7 +1113,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
 void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed3261(o.permissions!);
+    checkUnnamed3269(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
 }
@@ -1208,14 +1208,14 @@ void checkX509CertificateDetails(api.X509CertificateDetails o) {
   buildCounterX509CertificateDetails--;
 }
 
-core.List<core.String> buildUnnamed3262() {
+core.List<core.String> buildUnnamed3270() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed3262(core.List<core.String> o) {
+void checkUnnamed3270(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1227,14 +1227,14 @@ void checkUnnamed3262(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed3263() {
+core.List<core.String> buildUnnamed3271() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed3263(core.List<core.String> o) {
+void checkUnnamed3271(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1246,14 +1246,14 @@ void checkUnnamed3263(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed3264() {
+core.List<core.String> buildUnnamed3272() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed3264(core.List<core.String> o) {
+void checkUnnamed3272(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1265,14 +1265,14 @@ void checkUnnamed3264(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed3265() {
+core.List<core.String> buildUnnamed3273() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed3265(core.List<core.String> o) {
+void checkUnnamed3273(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2398,8 +2398,8 @@ void main() {
       var mock = HttpServerMock();
       var res = api.CloudIotApi(mock).projects.locations.registries.devices;
       var arg_parent = 'foo';
-      var arg_deviceIds = buildUnnamed3262();
-      var arg_deviceNumIds = buildUnnamed3263();
+      var arg_deviceIds = buildUnnamed3270();
+      var arg_deviceNumIds = buildUnnamed3271();
       var arg_fieldMask = 'foo';
       var arg_gatewayListOptions_associationsDeviceId = 'foo';
       var arg_gatewayListOptions_associationsGatewayId = 'foo';
@@ -2993,8 +2993,8 @@ void main() {
       var res =
           api.CloudIotApi(mock).projects.locations.registries.groups.devices;
       var arg_parent = 'foo';
-      var arg_deviceIds = buildUnnamed3264();
-      var arg_deviceNumIds = buildUnnamed3265();
+      var arg_deviceIds = buildUnnamed3272();
+      var arg_deviceNumIds = buildUnnamed3273();
       var arg_fieldMask = 'foo';
       var arg_gatewayListOptions_associationsDeviceId = 'foo';
       var arg_gatewayListOptions_associationsGatewayId = 'foo';

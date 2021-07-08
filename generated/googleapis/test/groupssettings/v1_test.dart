@@ -40,6 +40,7 @@ api.Groups buildGroups() {
     o.customReplyTo = 'foo';
     o.customRolesEnabledForSettingsToBeMerged = 'foo';
     o.defaultMessageDenyNotificationText = 'foo';
+    o.defaultSender = 'foo';
     o.description = 'foo';
     o.email = 'foo';
     o.enableCollaborativeInbox = 'foo';
@@ -131,6 +132,10 @@ void checkGroups(api.Groups o) {
     );
     unittest.expect(
       o.defaultMessageDenyNotificationText!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.defaultSender!,
       unittest.equals('foo'),
     );
     unittest.expect(

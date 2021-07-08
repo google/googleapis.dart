@@ -140,7 +140,7 @@ class ProjectsLocationsResource {
   /// locations which are not yet revealed.
   ///
   /// [pageSize] - The maximum number of results to return. If not set, the
-  /// service will select a default.
+  /// service selects a default.
   ///
   /// [pageToken] - A page token received from the `next_page_token` field in
   /// the response. Send that page token to receive the subsequent page.
@@ -874,6 +874,9 @@ class Accelerator {
   /// - "HEALTHCARE" : Cloud Healthcare accelerator for CDF. This accelerator is
   /// to enable Cloud Healthcare specific CDF plugins developed by Healthcare
   /// team.
+  /// - "CCAI_INSIGHTS" : Contact Center AI Insights This accelerator is used to
+  /// enable import and export pipelines custom built to streamline CCAI
+  /// Insights processing.
   core.String? acceleratorType;
 
   /// The state of the accelerator
@@ -1077,6 +1080,29 @@ class CancelOperationRequest {
   core.Map<core.String, core.dynamic> toJson() => {};
 }
 
+/// The crypto key configuration.
+///
+/// This field is used by the Customer-managed encryption keys (CMEK) feature.
+class CryptoKeyConfig {
+  /// The name of the key which is used to encrypt/decrypt customer data.
+  ///
+  /// For key in Cloud KMS, the key should be in the format of `projects / *
+  /// /locations / * /keyRings / * /cryptoKeys / * `.
+  core.String? keyReference;
+
+  CryptoKeyConfig();
+
+  CryptoKeyConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('keyReference')) {
+      keyReference = _json['keyReference'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (keyReference != null) 'keyReference': keyReference!,
+      };
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -1182,6 +1208,11 @@ class Instance {
   /// Output only.
   core.String? createTime;
 
+  /// The crypto key configuration.
+  ///
+  /// This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+  CryptoKeyConfig? cryptoKeyConfig;
+
   /// User-managed service account to set on Dataproc when Cloud Data Fusion
   /// creates Dataproc to run data processing pipelines.
   ///
@@ -1210,7 +1241,7 @@ class Instance {
   core.String? gcsBucket;
 
   /// The resource labels for instance to use to annotate any related underlying
-  /// resources such as GCE VMs.
+  /// resources such as Compute Engine VMs.
   ///
   /// The character '=' is not allowed to be used within the labels.
   core.Map<core.String, core.String>? labels;
@@ -1333,6 +1364,10 @@ class Instance {
     if (_json.containsKey('createTime')) {
       createTime = _json['createTime'] as core.String;
     }
+    if (_json.containsKey('cryptoKeyConfig')) {
+      cryptoKeyConfig = CryptoKeyConfig.fromJson(
+          _json['cryptoKeyConfig'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('dataprocServiceAccount')) {
       dataprocServiceAccount = _json['dataprocServiceAccount'] as core.String;
     }
@@ -1421,6 +1456,8 @@ class Instance {
           'availableVersion':
               availableVersion!.map((value) => value.toJson()).toList(),
         if (createTime != null) 'createTime': createTime!,
+        if (cryptoKeyConfig != null)
+          'cryptoKeyConfig': cryptoKeyConfig!.toJson(),
         if (dataprocServiceAccount != null)
           'dataprocServiceAccount': dataprocServiceAccount!,
         if (description != null) 'description': description!,
@@ -1772,7 +1809,7 @@ class Operation {
 
 /// Represents the metadata of a long-running operation.
 class OperationMetadata {
-  /// Map to hold any additonal status info for the operation If there is an
+  /// Map to hold any additional status info for the operation If there is an
   /// accelerator being enabled/disabled/deleted, this will be populated with
   /// accelerator name as key and status as ENABLING, DISABLING or DELETING
   core.Map<core.String, core.String>? additionalStatus;

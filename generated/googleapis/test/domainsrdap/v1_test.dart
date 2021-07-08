@@ -27,7 +27,7 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.Map<core.String, core.Object> buildUnnamed1877() {
+core.Map<core.String, core.Object> buildUnnamed1876() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -42,7 +42,7 @@ core.Map<core.String, core.Object> buildUnnamed1877() {
   return o;
 }
 
-void checkUnnamed1877(core.Map<core.String, core.Object> o) {
+void checkUnnamed1876(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -74,17 +74,17 @@ void checkUnnamed1877(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed1878() {
+core.List<core.Map<core.String, core.Object>> buildUnnamed1877() {
   var o = <core.Map<core.String, core.Object>>[];
-  o.add(buildUnnamed1877());
-  o.add(buildUnnamed1877());
+  o.add(buildUnnamed1876());
+  o.add(buildUnnamed1876());
   return o;
 }
 
-void checkUnnamed1878(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed1877(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed1877(o[0]);
-  checkUnnamed1877(o[1]);
+  checkUnnamed1876(o[0]);
+  checkUnnamed1876(o[1]);
 }
 
 core.int buildCounterHttpBody = 0;
@@ -94,7 +94,7 @@ api.HttpBody buildHttpBody() {
   if (buildCounterHttpBody < 3) {
     o.contentType = 'foo';
     o.data = 'foo';
-    o.extensions = buildUnnamed1878();
+    o.extensions = buildUnnamed1877();
   }
   buildCounterHttpBody--;
   return o;
@@ -111,7 +111,7 @@ void checkHttpBody(api.HttpBody o) {
       o.data!,
       unittest.equals('foo'),
     );
-    checkUnnamed1878(o.extensions!);
+    checkUnnamed1877(o.extensions!);
   }
   buildCounterHttpBody--;
 }
@@ -168,14 +168,14 @@ void checkLink(api.Link o) {
   buildCounterLink--;
 }
 
-core.List<core.String> buildUnnamed1879() {
+core.List<core.String> buildUnnamed1878() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed1879(core.List<core.String> o) {
+void checkUnnamed1878(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -187,14 +187,14 @@ void checkUnnamed1879(core.List<core.String> o) {
   );
 }
 
-core.List<api.Link> buildUnnamed1880() {
+core.List<api.Link> buildUnnamed1879() {
   var o = <api.Link>[];
   o.add(buildLink());
   o.add(buildLink());
   return o;
 }
 
-void checkUnnamed1880(core.List<api.Link> o) {
+void checkUnnamed1879(core.List<api.Link> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLink(o[0] as api.Link);
   checkLink(o[1] as api.Link);
@@ -205,8 +205,8 @@ api.Notice buildNotice() {
   var o = api.Notice();
   buildCounterNotice++;
   if (buildCounterNotice < 3) {
-    o.description = buildUnnamed1879();
-    o.links = buildUnnamed1880();
+    o.description = buildUnnamed1878();
+    o.links = buildUnnamed1879();
     o.title = 'foo';
     o.type = 'foo';
   }
@@ -217,8 +217,8 @@ api.Notice buildNotice() {
 void checkNotice(api.Notice o) {
   buildCounterNotice++;
   if (buildCounterNotice < 3) {
-    checkUnnamed1879(o.description!);
-    checkUnnamed1880(o.links!);
+    checkUnnamed1878(o.description!);
+    checkUnnamed1879(o.links!);
     unittest.expect(
       o.title!,
       unittest.equals('foo'),
@@ -231,14 +231,14 @@ void checkNotice(api.Notice o) {
   buildCounterNotice--;
 }
 
-core.List<core.String> buildUnnamed1881() {
+core.List<core.String> buildUnnamed1880() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed1881(core.List<core.String> o) {
+void checkUnnamed1880(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -250,27 +250,27 @@ void checkUnnamed1881(core.List<core.String> o) {
   );
 }
 
-core.List<api.Notice> buildUnnamed1882() {
+core.List<api.Notice> buildUnnamed1881() {
   var o = <api.Notice>[];
   o.add(buildNotice());
   o.add(buildNotice());
   return o;
 }
 
-void checkUnnamed1882(core.List<api.Notice> o) {
+void checkUnnamed1881(core.List<api.Notice> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNotice(o[0] as api.Notice);
   checkNotice(o[1] as api.Notice);
 }
 
-core.List<core.String> buildUnnamed1883() {
+core.List<core.String> buildUnnamed1882() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed1883(core.List<core.String> o) {
+void checkUnnamed1882(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -287,12 +287,12 @@ api.RdapResponse buildRdapResponse() {
   var o = api.RdapResponse();
   buildCounterRdapResponse++;
   if (buildCounterRdapResponse < 3) {
-    o.description = buildUnnamed1881();
+    o.description = buildUnnamed1880();
     o.errorCode = 42;
     o.jsonResponse = buildHttpBody();
     o.lang = 'foo';
-    o.notices = buildUnnamed1882();
-    o.rdapConformance = buildUnnamed1883();
+    o.notices = buildUnnamed1881();
+    o.rdapConformance = buildUnnamed1882();
     o.title = 'foo';
   }
   buildCounterRdapResponse--;
@@ -302,7 +302,7 @@ api.RdapResponse buildRdapResponse() {
 void checkRdapResponse(api.RdapResponse o) {
   buildCounterRdapResponse++;
   if (buildCounterRdapResponse < 3) {
-    checkUnnamed1881(o.description!);
+    checkUnnamed1880(o.description!);
     unittest.expect(
       o.errorCode!,
       unittest.equals(42),
@@ -312,8 +312,8 @@ void checkRdapResponse(api.RdapResponse o) {
       o.lang!,
       unittest.equals('foo'),
     );
-    checkUnnamed1882(o.notices!);
-    checkUnnamed1883(o.rdapConformance!);
+    checkUnnamed1881(o.notices!);
+    checkUnnamed1882(o.rdapConformance!);
     unittest.expect(
       o.title!,
       unittest.equals('foo'),

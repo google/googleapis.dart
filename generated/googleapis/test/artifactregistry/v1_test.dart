@@ -27,6 +27,53 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
+core.int buildCounterAptArtifact = 0;
+api.AptArtifact buildAptArtifact() {
+  var o = api.AptArtifact();
+  buildCounterAptArtifact++;
+  if (buildCounterAptArtifact < 3) {
+    o.architecture = 'foo';
+    o.component = 'foo';
+    o.controlFile = 'foo';
+    o.name = 'foo';
+    o.packageName = 'foo';
+    o.packageType = 'foo';
+  }
+  buildCounterAptArtifact--;
+  return o;
+}
+
+void checkAptArtifact(api.AptArtifact o) {
+  buildCounterAptArtifact++;
+  if (buildCounterAptArtifact < 3) {
+    unittest.expect(
+      o.architecture!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.component!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.controlFile!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.packageName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.packageType!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAptArtifact--;
+}
+
 core.int buildCounterCancelOperationRequest = 0;
 api.CancelOperationRequest buildCancelOperationRequest() {
   var o = api.CancelOperationRequest();
@@ -42,14 +89,14 @@ void checkCancelOperationRequest(api.CancelOperationRequest o) {
   buildCounterCancelOperationRequest--;
 }
 
-core.List<core.String> buildUnnamed4955() {
+core.List<core.String> buildUnnamed4998() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed4955(core.List<core.String> o) {
+void checkUnnamed4998(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -70,7 +117,7 @@ api.DockerImage buildDockerImage() {
     o.imageSizeBytes = 'foo';
     o.mediaType = 'foo';
     o.name = 'foo';
-    o.tags = buildUnnamed4955();
+    o.tags = buildUnnamed4998();
     o.uploadTime = 'foo';
     o.uri = 'foo';
   }
@@ -97,7 +144,7 @@ void checkDockerImage(api.DockerImage o) {
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed4955(o.tags!);
+    checkUnnamed4998(o.tags!);
     unittest.expect(
       o.uploadTime!,
       unittest.equals('foo'),
@@ -125,14 +172,232 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-core.List<api.DockerImage> buildUnnamed4956() {
+core.int buildCounterImportAptArtifactsErrorInfo = 0;
+api.ImportAptArtifactsErrorInfo buildImportAptArtifactsErrorInfo() {
+  var o = api.ImportAptArtifactsErrorInfo();
+  buildCounterImportAptArtifactsErrorInfo++;
+  if (buildCounterImportAptArtifactsErrorInfo < 3) {
+    o.error = buildStatus();
+    o.gcsSource = buildImportAptArtifactsGcsSource();
+  }
+  buildCounterImportAptArtifactsErrorInfo--;
+  return o;
+}
+
+void checkImportAptArtifactsErrorInfo(api.ImportAptArtifactsErrorInfo o) {
+  buildCounterImportAptArtifactsErrorInfo++;
+  if (buildCounterImportAptArtifactsErrorInfo < 3) {
+    checkStatus(o.error! as api.Status);
+    checkImportAptArtifactsGcsSource(
+        o.gcsSource! as api.ImportAptArtifactsGcsSource);
+  }
+  buildCounterImportAptArtifactsErrorInfo--;
+}
+
+core.List<core.String> buildUnnamed4999() {
+  var o = <core.String>[];
+  o.add('foo');
+  o.add('foo');
+  return o;
+}
+
+void checkUnnamed4999(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterImportAptArtifactsGcsSource = 0;
+api.ImportAptArtifactsGcsSource buildImportAptArtifactsGcsSource() {
+  var o = api.ImportAptArtifactsGcsSource();
+  buildCounterImportAptArtifactsGcsSource++;
+  if (buildCounterImportAptArtifactsGcsSource < 3) {
+    o.uris = buildUnnamed4999();
+    o.useWildcards = true;
+  }
+  buildCounterImportAptArtifactsGcsSource--;
+  return o;
+}
+
+void checkImportAptArtifactsGcsSource(api.ImportAptArtifactsGcsSource o) {
+  buildCounterImportAptArtifactsGcsSource++;
+  if (buildCounterImportAptArtifactsGcsSource < 3) {
+    checkUnnamed4999(o.uris!);
+    unittest.expect(o.useWildcards!, unittest.isTrue);
+  }
+  buildCounterImportAptArtifactsGcsSource--;
+}
+
+core.List<api.AptArtifact> buildUnnamed5000() {
+  var o = <api.AptArtifact>[];
+  o.add(buildAptArtifact());
+  o.add(buildAptArtifact());
+  return o;
+}
+
+void checkUnnamed5000(core.List<api.AptArtifact> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkAptArtifact(o[0] as api.AptArtifact);
+  checkAptArtifact(o[1] as api.AptArtifact);
+}
+
+core.List<api.ImportAptArtifactsErrorInfo> buildUnnamed5001() {
+  var o = <api.ImportAptArtifactsErrorInfo>[];
+  o.add(buildImportAptArtifactsErrorInfo());
+  o.add(buildImportAptArtifactsErrorInfo());
+  return o;
+}
+
+void checkUnnamed5001(core.List<api.ImportAptArtifactsErrorInfo> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkImportAptArtifactsErrorInfo(o[0] as api.ImportAptArtifactsErrorInfo);
+  checkImportAptArtifactsErrorInfo(o[1] as api.ImportAptArtifactsErrorInfo);
+}
+
+core.int buildCounterImportAptArtifactsResponse = 0;
+api.ImportAptArtifactsResponse buildImportAptArtifactsResponse() {
+  var o = api.ImportAptArtifactsResponse();
+  buildCounterImportAptArtifactsResponse++;
+  if (buildCounterImportAptArtifactsResponse < 3) {
+    o.aptArtifacts = buildUnnamed5000();
+    o.errors = buildUnnamed5001();
+  }
+  buildCounterImportAptArtifactsResponse--;
+  return o;
+}
+
+void checkImportAptArtifactsResponse(api.ImportAptArtifactsResponse o) {
+  buildCounterImportAptArtifactsResponse++;
+  if (buildCounterImportAptArtifactsResponse < 3) {
+    checkUnnamed5000(o.aptArtifacts!);
+    checkUnnamed5001(o.errors!);
+  }
+  buildCounterImportAptArtifactsResponse--;
+}
+
+core.int buildCounterImportYumArtifactsErrorInfo = 0;
+api.ImportYumArtifactsErrorInfo buildImportYumArtifactsErrorInfo() {
+  var o = api.ImportYumArtifactsErrorInfo();
+  buildCounterImportYumArtifactsErrorInfo++;
+  if (buildCounterImportYumArtifactsErrorInfo < 3) {
+    o.error = buildStatus();
+    o.gcsSource = buildImportYumArtifactsGcsSource();
+  }
+  buildCounterImportYumArtifactsErrorInfo--;
+  return o;
+}
+
+void checkImportYumArtifactsErrorInfo(api.ImportYumArtifactsErrorInfo o) {
+  buildCounterImportYumArtifactsErrorInfo++;
+  if (buildCounterImportYumArtifactsErrorInfo < 3) {
+    checkStatus(o.error! as api.Status);
+    checkImportYumArtifactsGcsSource(
+        o.gcsSource! as api.ImportYumArtifactsGcsSource);
+  }
+  buildCounterImportYumArtifactsErrorInfo--;
+}
+
+core.List<core.String> buildUnnamed5002() {
+  var o = <core.String>[];
+  o.add('foo');
+  o.add('foo');
+  return o;
+}
+
+void checkUnnamed5002(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterImportYumArtifactsGcsSource = 0;
+api.ImportYumArtifactsGcsSource buildImportYumArtifactsGcsSource() {
+  var o = api.ImportYumArtifactsGcsSource();
+  buildCounterImportYumArtifactsGcsSource++;
+  if (buildCounterImportYumArtifactsGcsSource < 3) {
+    o.uris = buildUnnamed5002();
+    o.useWildcards = true;
+  }
+  buildCounterImportYumArtifactsGcsSource--;
+  return o;
+}
+
+void checkImportYumArtifactsGcsSource(api.ImportYumArtifactsGcsSource o) {
+  buildCounterImportYumArtifactsGcsSource++;
+  if (buildCounterImportYumArtifactsGcsSource < 3) {
+    checkUnnamed5002(o.uris!);
+    unittest.expect(o.useWildcards!, unittest.isTrue);
+  }
+  buildCounterImportYumArtifactsGcsSource--;
+}
+
+core.List<api.ImportYumArtifactsErrorInfo> buildUnnamed5003() {
+  var o = <api.ImportYumArtifactsErrorInfo>[];
+  o.add(buildImportYumArtifactsErrorInfo());
+  o.add(buildImportYumArtifactsErrorInfo());
+  return o;
+}
+
+void checkUnnamed5003(core.List<api.ImportYumArtifactsErrorInfo> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkImportYumArtifactsErrorInfo(o[0] as api.ImportYumArtifactsErrorInfo);
+  checkImportYumArtifactsErrorInfo(o[1] as api.ImportYumArtifactsErrorInfo);
+}
+
+core.List<api.YumArtifact> buildUnnamed5004() {
+  var o = <api.YumArtifact>[];
+  o.add(buildYumArtifact());
+  o.add(buildYumArtifact());
+  return o;
+}
+
+void checkUnnamed5004(core.List<api.YumArtifact> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkYumArtifact(o[0] as api.YumArtifact);
+  checkYumArtifact(o[1] as api.YumArtifact);
+}
+
+core.int buildCounterImportYumArtifactsResponse = 0;
+api.ImportYumArtifactsResponse buildImportYumArtifactsResponse() {
+  var o = api.ImportYumArtifactsResponse();
+  buildCounterImportYumArtifactsResponse++;
+  if (buildCounterImportYumArtifactsResponse < 3) {
+    o.errors = buildUnnamed5003();
+    o.yumArtifacts = buildUnnamed5004();
+  }
+  buildCounterImportYumArtifactsResponse--;
+  return o;
+}
+
+void checkImportYumArtifactsResponse(api.ImportYumArtifactsResponse o) {
+  buildCounterImportYumArtifactsResponse++;
+  if (buildCounterImportYumArtifactsResponse < 3) {
+    checkUnnamed5003(o.errors!);
+    checkUnnamed5004(o.yumArtifacts!);
+  }
+  buildCounterImportYumArtifactsResponse--;
+}
+
+core.List<api.DockerImage> buildUnnamed5005() {
   var o = <api.DockerImage>[];
   o.add(buildDockerImage());
   o.add(buildDockerImage());
   return o;
 }
 
-void checkUnnamed4956(core.List<api.DockerImage> o) {
+void checkUnnamed5005(core.List<api.DockerImage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDockerImage(o[0] as api.DockerImage);
   checkDockerImage(o[1] as api.DockerImage);
@@ -143,7 +408,7 @@ api.ListDockerImagesResponse buildListDockerImagesResponse() {
   var o = api.ListDockerImagesResponse();
   buildCounterListDockerImagesResponse++;
   if (buildCounterListDockerImagesResponse < 3) {
-    o.dockerImages = buildUnnamed4956();
+    o.dockerImages = buildUnnamed5005();
     o.nextPageToken = 'foo';
   }
   buildCounterListDockerImagesResponse--;
@@ -153,7 +418,7 @@ api.ListDockerImagesResponse buildListDockerImagesResponse() {
 void checkListDockerImagesResponse(api.ListDockerImagesResponse o) {
   buildCounterListDockerImagesResponse++;
   if (buildCounterListDockerImagesResponse < 3) {
-    checkUnnamed4956(o.dockerImages!);
+    checkUnnamed5005(o.dockerImages!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -162,14 +427,14 @@ void checkListDockerImagesResponse(api.ListDockerImagesResponse o) {
   buildCounterListDockerImagesResponse--;
 }
 
-core.List<api.Operation> buildUnnamed4957() {
+core.List<api.Operation> buildUnnamed5006() {
   var o = <api.Operation>[];
   o.add(buildOperation());
   o.add(buildOperation());
   return o;
 }
 
-void checkUnnamed4957(core.List<api.Operation> o) {
+void checkUnnamed5006(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0] as api.Operation);
   checkOperation(o[1] as api.Operation);
@@ -181,7 +446,7 @@ api.ListOperationsResponse buildListOperationsResponse() {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed4957();
+    o.operations = buildUnnamed5006();
   }
   buildCounterListOperationsResponse--;
   return o;
@@ -194,19 +459,19 @@ void checkListOperationsResponse(api.ListOperationsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed4957(o.operations!);
+    checkUnnamed5006(o.operations!);
   }
   buildCounterListOperationsResponse--;
 }
 
-core.List<api.Repository> buildUnnamed4958() {
+core.List<api.Repository> buildUnnamed5007() {
   var o = <api.Repository>[];
   o.add(buildRepository());
   o.add(buildRepository());
   return o;
 }
 
-void checkUnnamed4958(core.List<api.Repository> o) {
+void checkUnnamed5007(core.List<api.Repository> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRepository(o[0] as api.Repository);
   checkRepository(o[1] as api.Repository);
@@ -218,7 +483,7 @@ api.ListRepositoriesResponse buildListRepositoriesResponse() {
   buildCounterListRepositoriesResponse++;
   if (buildCounterListRepositoriesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.repositories = buildUnnamed4958();
+    o.repositories = buildUnnamed5007();
   }
   buildCounterListRepositoriesResponse--;
   return o;
@@ -231,12 +496,12 @@ void checkListRepositoriesResponse(api.ListRepositoriesResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed4958(o.repositories!);
+    checkUnnamed5007(o.repositories!);
   }
   buildCounterListRepositoriesResponse--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed4959() {
+core.Map<core.String, core.Object> buildUnnamed5008() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -251,7 +516,7 @@ core.Map<core.String, core.Object> buildUnnamed4959() {
   return o;
 }
 
-void checkUnnamed4959(core.Map<core.String, core.Object> o) {
+void checkUnnamed5008(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -283,7 +548,7 @@ void checkUnnamed4959(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed4960() {
+core.Map<core.String, core.Object> buildUnnamed5009() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -298,7 +563,7 @@ core.Map<core.String, core.Object> buildUnnamed4960() {
   return o;
 }
 
-void checkUnnamed4960(core.Map<core.String, core.Object> o) {
+void checkUnnamed5009(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -337,9 +602,9 @@ api.Operation buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed4959();
+    o.metadata = buildUnnamed5008();
     o.name = 'foo';
-    o.response = buildUnnamed4960();
+    o.response = buildUnnamed5009();
   }
   buildCounterOperation--;
   return o;
@@ -350,24 +615,24 @@ void checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkStatus(o.error! as api.Status);
-    checkUnnamed4959(o.metadata!);
+    checkUnnamed5008(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed4960(o.response!);
+    checkUnnamed5009(o.response!);
   }
   buildCounterOperation--;
 }
 
-core.Map<core.String, core.String> buildUnnamed4961() {
+core.Map<core.String, core.String> buildUnnamed5010() {
   var o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
 }
 
-void checkUnnamed4961(core.Map<core.String, core.String> o) {
+void checkUnnamed5010(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -388,7 +653,7 @@ api.Repository buildRepository() {
     o.description = 'foo';
     o.format = 'foo';
     o.kmsKeyName = 'foo';
-    o.labels = buildUnnamed4961();
+    o.labels = buildUnnamed5010();
     o.name = 'foo';
     o.updateTime = 'foo';
   }
@@ -415,7 +680,7 @@ void checkRepository(api.Repository o) {
       o.kmsKeyName!,
       unittest.equals('foo'),
     );
-    checkUnnamed4961(o.labels!);
+    checkUnnamed5010(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -428,7 +693,7 @@ void checkRepository(api.Repository o) {
   buildCounterRepository--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed4962() {
+core.Map<core.String, core.Object> buildUnnamed5011() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -443,7 +708,7 @@ core.Map<core.String, core.Object> buildUnnamed4962() {
   return o;
 }
 
-void checkUnnamed4962(core.Map<core.String, core.Object> o) {
+void checkUnnamed5011(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -475,17 +740,17 @@ void checkUnnamed4962(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed4963() {
+core.List<core.Map<core.String, core.Object>> buildUnnamed5012() {
   var o = <core.Map<core.String, core.Object>>[];
-  o.add(buildUnnamed4962());
-  o.add(buildUnnamed4962());
+  o.add(buildUnnamed5011());
+  o.add(buildUnnamed5011());
   return o;
 }
 
-void checkUnnamed4963(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed5012(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed4962(o[0]);
-  checkUnnamed4962(o[1]);
+  checkUnnamed5011(o[0]);
+  checkUnnamed5011(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -494,7 +759,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed4963();
+    o.details = buildUnnamed5012();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -508,7 +773,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed4963(o.details!);
+    checkUnnamed5012(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -517,7 +782,156 @@ void checkStatus(api.Status o) {
   buildCounterStatus--;
 }
 
+core.int buildCounterUploadAptArtifactMediaResponse = 0;
+api.UploadAptArtifactMediaResponse buildUploadAptArtifactMediaResponse() {
+  var o = api.UploadAptArtifactMediaResponse();
+  buildCounterUploadAptArtifactMediaResponse++;
+  if (buildCounterUploadAptArtifactMediaResponse < 3) {
+    o.operation = buildOperation();
+  }
+  buildCounterUploadAptArtifactMediaResponse--;
+  return o;
+}
+
+void checkUploadAptArtifactMediaResponse(api.UploadAptArtifactMediaResponse o) {
+  buildCounterUploadAptArtifactMediaResponse++;
+  if (buildCounterUploadAptArtifactMediaResponse < 3) {
+    checkOperation(o.operation! as api.Operation);
+  }
+  buildCounterUploadAptArtifactMediaResponse--;
+}
+
+core.List<api.AptArtifact> buildUnnamed5013() {
+  var o = <api.AptArtifact>[];
+  o.add(buildAptArtifact());
+  o.add(buildAptArtifact());
+  return o;
+}
+
+void checkUnnamed5013(core.List<api.AptArtifact> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkAptArtifact(o[0] as api.AptArtifact);
+  checkAptArtifact(o[1] as api.AptArtifact);
+}
+
+core.int buildCounterUploadAptArtifactResponse = 0;
+api.UploadAptArtifactResponse buildUploadAptArtifactResponse() {
+  var o = api.UploadAptArtifactResponse();
+  buildCounterUploadAptArtifactResponse++;
+  if (buildCounterUploadAptArtifactResponse < 3) {
+    o.aptArtifacts = buildUnnamed5013();
+  }
+  buildCounterUploadAptArtifactResponse--;
+  return o;
+}
+
+void checkUploadAptArtifactResponse(api.UploadAptArtifactResponse o) {
+  buildCounterUploadAptArtifactResponse++;
+  if (buildCounterUploadAptArtifactResponse < 3) {
+    checkUnnamed5013(o.aptArtifacts!);
+  }
+  buildCounterUploadAptArtifactResponse--;
+}
+
+core.int buildCounterUploadYumArtifactMediaResponse = 0;
+api.UploadYumArtifactMediaResponse buildUploadYumArtifactMediaResponse() {
+  var o = api.UploadYumArtifactMediaResponse();
+  buildCounterUploadYumArtifactMediaResponse++;
+  if (buildCounterUploadYumArtifactMediaResponse < 3) {
+    o.operation = buildOperation();
+  }
+  buildCounterUploadYumArtifactMediaResponse--;
+  return o;
+}
+
+void checkUploadYumArtifactMediaResponse(api.UploadYumArtifactMediaResponse o) {
+  buildCounterUploadYumArtifactMediaResponse++;
+  if (buildCounterUploadYumArtifactMediaResponse < 3) {
+    checkOperation(o.operation! as api.Operation);
+  }
+  buildCounterUploadYumArtifactMediaResponse--;
+}
+
+core.List<api.YumArtifact> buildUnnamed5014() {
+  var o = <api.YumArtifact>[];
+  o.add(buildYumArtifact());
+  o.add(buildYumArtifact());
+  return o;
+}
+
+void checkUnnamed5014(core.List<api.YumArtifact> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkYumArtifact(o[0] as api.YumArtifact);
+  checkYumArtifact(o[1] as api.YumArtifact);
+}
+
+core.int buildCounterUploadYumArtifactResponse = 0;
+api.UploadYumArtifactResponse buildUploadYumArtifactResponse() {
+  var o = api.UploadYumArtifactResponse();
+  buildCounterUploadYumArtifactResponse++;
+  if (buildCounterUploadYumArtifactResponse < 3) {
+    o.yumArtifacts = buildUnnamed5014();
+  }
+  buildCounterUploadYumArtifactResponse--;
+  return o;
+}
+
+void checkUploadYumArtifactResponse(api.UploadYumArtifactResponse o) {
+  buildCounterUploadYumArtifactResponse++;
+  if (buildCounterUploadYumArtifactResponse < 3) {
+    checkUnnamed5014(o.yumArtifacts!);
+  }
+  buildCounterUploadYumArtifactResponse--;
+}
+
+core.int buildCounterYumArtifact = 0;
+api.YumArtifact buildYumArtifact() {
+  var o = api.YumArtifact();
+  buildCounterYumArtifact++;
+  if (buildCounterYumArtifact < 3) {
+    o.architecture = 'foo';
+    o.name = 'foo';
+    o.packageName = 'foo';
+    o.packageType = 'foo';
+  }
+  buildCounterYumArtifact--;
+  return o;
+}
+
+void checkYumArtifact(api.YumArtifact o) {
+  buildCounterYumArtifact++;
+  if (buildCounterYumArtifact < 3) {
+    unittest.expect(
+      o.architecture!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.packageName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.packageType!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterYumArtifact--;
+}
+
 void main() {
+  unittest.group('obj-schema-AptArtifact', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildAptArtifact();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AptArtifact.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAptArtifact(od as api.AptArtifact);
+    });
+  });
+
   unittest.group('obj-schema-CancelOperationRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCancelOperationRequest();
@@ -544,6 +958,66 @@ void main() {
       var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkEmpty(od as api.Empty);
+    });
+  });
+
+  unittest.group('obj-schema-ImportAptArtifactsErrorInfo', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildImportAptArtifactsErrorInfo();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ImportAptArtifactsErrorInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkImportAptArtifactsErrorInfo(od as api.ImportAptArtifactsErrorInfo);
+    });
+  });
+
+  unittest.group('obj-schema-ImportAptArtifactsGcsSource', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildImportAptArtifactsGcsSource();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ImportAptArtifactsGcsSource.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkImportAptArtifactsGcsSource(od as api.ImportAptArtifactsGcsSource);
+    });
+  });
+
+  unittest.group('obj-schema-ImportAptArtifactsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildImportAptArtifactsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ImportAptArtifactsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkImportAptArtifactsResponse(od as api.ImportAptArtifactsResponse);
+    });
+  });
+
+  unittest.group('obj-schema-ImportYumArtifactsErrorInfo', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildImportYumArtifactsErrorInfo();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ImportYumArtifactsErrorInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkImportYumArtifactsErrorInfo(od as api.ImportYumArtifactsErrorInfo);
+    });
+  });
+
+  unittest.group('obj-schema-ImportYumArtifactsGcsSource', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildImportYumArtifactsGcsSource();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ImportYumArtifactsGcsSource.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkImportYumArtifactsGcsSource(od as api.ImportYumArtifactsGcsSource);
+    });
+  });
+
+  unittest.group('obj-schema-ImportYumArtifactsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildImportYumArtifactsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ImportYumArtifactsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkImportYumArtifactsResponse(od as api.ImportYumArtifactsResponse);
     });
   });
 
@@ -604,6 +1078,58 @@ void main() {
       var od =
           api.Status.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkStatus(od as api.Status);
+    });
+  });
+
+  unittest.group('obj-schema-UploadAptArtifactMediaResponse', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildUploadAptArtifactMediaResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.UploadAptArtifactMediaResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkUploadAptArtifactMediaResponse(
+          od as api.UploadAptArtifactMediaResponse);
+    });
+  });
+
+  unittest.group('obj-schema-UploadAptArtifactResponse', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildUploadAptArtifactResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.UploadAptArtifactResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkUploadAptArtifactResponse(od as api.UploadAptArtifactResponse);
+    });
+  });
+
+  unittest.group('obj-schema-UploadYumArtifactMediaResponse', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildUploadYumArtifactMediaResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.UploadYumArtifactMediaResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkUploadYumArtifactMediaResponse(
+          od as api.UploadYumArtifactMediaResponse);
+    });
+  });
+
+  unittest.group('obj-schema-UploadYumArtifactResponse', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildUploadYumArtifactResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.UploadYumArtifactResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkUploadYumArtifactResponse(od as api.UploadYumArtifactResponse);
+    });
+  });
+
+  unittest.group('obj-schema-YumArtifact', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildYumArtifact();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.YumArtifact.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkYumArtifact(od as api.YumArtifact);
     });
   });
 

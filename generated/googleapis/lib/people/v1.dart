@@ -522,7 +522,7 @@ class OtherContactsResource {
   /// [readMask] - Required. A field mask to restrict which fields on each
   /// person are returned. Multiple fields can be specified by separating them
   /// with commas. Valid values are: * emailAddresses * metadata * names *
-  /// phoneNumbers
+  /// phoneNumbers * photos
   ///
   /// [requestSyncToken] - Optional. Whether the response should include
   /// `next_sync_token`, which can be used to get all changes since the last
@@ -590,8 +590,8 @@ class OtherContactsResource {
   /// Request parameters:
   ///
   /// [pageSize] - Optional. The number of results to return. Defaults to 10 if
-  /// field is not set, or set to 0. Values greater than 10 will be capped to
-  /// 10.
+  /// field is not set, or set to 0. Values greater than 30 will be capped to
+  /// 30.
   ///
   /// [query] - Required. The plain-text query for the request. The query is
   /// used to match prefix phrases of the fields on a person. For example, a
@@ -1145,8 +1145,8 @@ class PeopleResource {
   /// Request parameters:
   ///
   /// [pageSize] - Optional. The number of results to return. Defaults to 10 if
-  /// field is not set, or set to 0. Values greater than 10 will be capped to
-  /// 10.
+  /// field is not set, or set to 0. Values greater than 30 will be capped to
+  /// 30.
   ///
   /// [query] - Required. The plain-text query for the request. The query is
   /// used to match prefix phrases of the fields on a person. For example, a

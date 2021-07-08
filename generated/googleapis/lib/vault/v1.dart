@@ -16,7 +16,7 @@
 ///
 /// Retention and eDiscovery for Google Workspace. To work with Vault resources,
 /// the account must have the
-/// [required Vault privileges] (https://support.google.com/vault/answer/2799699)
+/// [required Vault privileges](https://support.google.com/vault/answer/2799699)
 /// and access to the matter. To access a matter, the account must have created
 /// the matter, have the matter shared with them, or have the **View All
 /// Matters** privilege. For example, to download an export, an account needs
@@ -49,7 +49,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Retention and eDiscovery for Google Workspace.
 ///
 /// To work with Vault resources, the account must have the
-/// [required Vault privileges] (https://support.google.com/vault/answer/2799699)
+/// [required Vault privileges](https://support.google.com/vault/answer/2799699)
 /// and access to the matter. To access a matter, the account must have created
 /// the matter, have the matter shared with them, or have the **View All
 /// Matters** privilege. For example, to download an export, an account needs
@@ -127,7 +127,7 @@ class MattersResource {
 
   /// Closes the specified matter.
   ///
-  /// Returns matter with updated state.
+  /// Returns the matter with updated state.
   ///
   /// [request] - The metadata request object.
   ///
@@ -167,8 +167,7 @@ class MattersResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Counts the artifacts within the context of a matter and returns a detailed
-  /// breakdown of metrics.
+  /// Counts the accounts processed by the specified query.
   ///
   /// [request] - The metadata request object.
   ///
@@ -207,7 +206,7 @@ class MattersResource {
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Creates a new matter with the given name and description.
+  /// Creates a matter with the given name and description.
   ///
   /// The initial state is open, and the owner is the method caller. Returns the
   /// created matter with default view.
@@ -248,7 +247,7 @@ class MattersResource {
 
   /// Deletes the specified matter.
   ///
-  /// Returns matter with updated state.
+  /// Returns the matter with updated state.
   ///
   /// Request parameters:
   ///
@@ -288,13 +287,16 @@ class MattersResource {
   ///
   /// [matterId] - The matter ID.
   ///
-  /// [view] - Specifies which parts of the Matter to return in the response.
+  /// [view] - Specifies how much information about the matter to return in the
+  /// response.
   /// Possible string values are:
-  /// - "VIEW_UNSPECIFIED" : There is no specified view.
-  /// - "BASIC" : Response includes the matter_id, name, description, and state.
-  /// Default choice.
-  /// - "FULL" : Full representation of matter is returned. Everything above and
-  /// including MatterPermissions list.
+  /// - "VIEW_UNSPECIFIED" : The amount of detail is unspecified. Same as
+  /// **BASIC**.
+  /// - "BASIC" : Returns the matter ID, name, description, and state. Default
+  /// choice.
+  /// - "FULL" : Returns the basic details and a list of matter owners and
+  /// collaborators (see
+  /// [MatterPermissions](https://developers.google.com/vault/reference/rest/v1/matters#matterpermission)).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -326,7 +328,7 @@ class MattersResource {
     return Matter.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists matters the user has access to.
+  /// Lists matters the requestor has access to.
   ///
   /// Request parameters:
   ///
@@ -335,21 +337,24 @@ class MattersResource {
   ///
   /// [pageToken] - The pagination token as returned in the response.
   ///
-  /// [state] - If set, list only matters with that specific state. The default
-  /// is listing matters of all states.
+  /// [state] - If set, lists only matters with the specified state. The default
+  /// lists matters of all states.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : The matter has no specified state.
-  /// - "OPEN" : This matter is open.
-  /// - "CLOSED" : This matter is closed.
-  /// - "DELETED" : This matter is deleted.
+  /// - "OPEN" : The matter is open.
+  /// - "CLOSED" : The matter is closed.
+  /// - "DELETED" : The matter is deleted.
   ///
-  /// [view] - Specifies which parts of the matter to return in response.
+  /// [view] - Specifies how much information about the matter to return in
+  /// response.
   /// Possible string values are:
-  /// - "VIEW_UNSPECIFIED" : There is no specified view.
-  /// - "BASIC" : Response includes the matter_id, name, description, and state.
-  /// Default choice.
-  /// - "FULL" : Full representation of matter is returned. Everything above and
-  /// including MatterPermissions list.
+  /// - "VIEW_UNSPECIFIED" : The amount of detail is unspecified. Same as
+  /// **BASIC**.
+  /// - "BASIC" : Returns the matter ID, name, description, and state. Default
+  /// choice.
+  /// - "FULL" : Returns the basic details and a list of matter owners and
+  /// collaborators (see
+  /// [MatterPermissions](https://developers.google.com/vault/reference/rest/v1/matters#matterpermission)).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -430,7 +435,7 @@ class MattersResource {
 
   /// Reopens the specified matter.
   ///
-  /// Returns matter with updated state.
+  /// Returns the matter with updated state.
   ///
   /// [request] - The metadata request object.
   ///
@@ -473,7 +478,7 @@ class MattersResource {
 
   /// Undeletes the specified matter.
   ///
-  /// Returns matter with updated state.
+  /// Returns the matter with updated state.
   ///
   /// [request] - The metadata request object.
   ///
@@ -562,7 +567,7 @@ class MattersExportsResource {
 
   MattersExportsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates an Export.
+  /// Creates an export.
   ///
   /// [request] - The metadata request object.
   ///
@@ -602,7 +607,7 @@ class MattersExportsResource {
     return Export.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes an Export.
+  /// Deletes an export.
   ///
   /// Request parameters:
   ///
@@ -642,7 +647,7 @@ class MattersExportsResource {
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets an Export.
+  /// Gets an export.
   ///
   /// Request parameters:
   ///
@@ -682,7 +687,7 @@ class MattersExportsResource {
     return Export.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists Exports.
+  /// Lists details about the exports in the specified matter.
   ///
   /// Request parameters:
   ///
@@ -735,10 +740,10 @@ class MattersHoldsResource {
 
   MattersHoldsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Adds HeldAccounts to a hold.
+  /// Adds accounts to a hold.
   ///
   /// Returns a list of accounts that have been successfully added. Accounts can
-  /// only be added to an existing account-based hold.
+  /// be added only to an existing account-based hold.
   ///
   /// [request] - The metadata request object.
   ///
@@ -785,7 +790,7 @@ class MattersHoldsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Creates a hold in the given matter.
+  /// Creates a hold in the specified matter.
   ///
   /// [request] - The metadata request object.
   ///
@@ -824,9 +829,11 @@ class MattersHoldsResource {
     return Hold.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Removes a hold by ID.
+  /// Removes the specified hold and releases the accounts or organizational
+  /// unit covered by the hold.
   ///
-  /// This will release any HeldAccounts on this Hold.
+  /// If the data is not preserved by another hold or retention rule, it might
+  /// be purged.
   ///
   /// Request parameters:
   ///
@@ -866,7 +873,7 @@ class MattersHoldsResource {
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a hold by ID.
+  /// Gets the specified hold.
   ///
   /// Request parameters:
   ///
@@ -874,15 +881,13 @@ class MattersHoldsResource {
   ///
   /// [holdId] - The hold ID.
   ///
-  /// [view] - Specifies which parts of the Hold to return.
+  /// [view] - The amount of detail to return for a hold.
   /// Possible string values are:
-  /// - "HOLD_VIEW_UNSPECIFIED" : There is no specified view. Defaults to
-  /// FULL_HOLD.
-  /// - "BASIC_HOLD" : Response includes the id, name, update time, corpus, and
+  /// - "HOLD_VIEW_UNSPECIFIED" : Not specified. Defaults to **FULL_HOLD**.
+  /// - "BASIC_HOLD" : Returns the hold ID, name, update time, service, and
   /// query.
-  /// - "FULL_HOLD" : Full representation of a Hold. Response includes all
-  /// fields of 'BASIC' and the entities the Hold applies to, such as accounts,
-  /// or OU.
+  /// - "FULL_HOLD" : Returns all details of **BASIC_HOLD** and the entities the
+  /// hold applies to, such as accounts or organizational unit.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -918,30 +923,26 @@ class MattersHoldsResource {
     return Hold.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists holds within a matter.
-  ///
-  /// An empty page token in ListHoldsResponse denotes no more holds to list.
+  /// Lists the holds in a matter.
   ///
   /// Request parameters:
   ///
   /// [matterId] - The matter ID.
   ///
   /// [pageSize] - The number of holds to return in the response, between 0 and
-  /// 100 inclusive. Leaving this empty, or as 0, is the same as page_size =
+  /// 100 inclusive. Leaving this empty, or as 0, is the same as **page_size** =
   /// 100.
   ///
   /// [pageToken] - The pagination token as returned in the response. An empty
   /// token means start from the beginning.
   ///
-  /// [view] - Specifies which parts of the Hold to return.
+  /// [view] - The amount of detail to return for a hold.
   /// Possible string values are:
-  /// - "HOLD_VIEW_UNSPECIFIED" : There is no specified view. Defaults to
-  /// FULL_HOLD.
-  /// - "BASIC_HOLD" : Response includes the id, name, update time, corpus, and
+  /// - "HOLD_VIEW_UNSPECIFIED" : Not specified. Defaults to **FULL_HOLD**.
+  /// - "BASIC_HOLD" : Returns the hold ID, name, update time, service, and
   /// query.
-  /// - "FULL_HOLD" : Full representation of a Hold. Response includes all
-  /// fields of 'BASIC' and the entities the Hold applies to, such as accounts,
-  /// or OU.
+  /// - "FULL_HOLD" : Returns all details of **BASIC_HOLD** and the entities the
+  /// hold applies to, such as accounts or organizational unit.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -978,11 +979,9 @@ class MattersHoldsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Removes HeldAccounts from a hold.
+  /// Removes the specified accounts from a hold.
   ///
-  /// Returns a list of statuses in the same order as the request. If this
-  /// request leaves the hold with no held accounts, the hold will not apply to
-  /// any accounts.
+  /// Returns a list of statuses in the same order as the request.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1029,11 +1028,12 @@ class MattersHoldsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates the OU and/or query parameters of a hold.
+  /// Updates the scope (organizational unit or accounts) and query parameters
+  /// of a hold.
   ///
-  /// You cannot add accounts to a hold that covers an OU, nor can you add OUs
-  /// to a hold that covers individual accounts. Accounts listed in the hold
-  /// will be ignored.
+  /// You cannot add accounts to a hold that covers an organizational unit, nor
+  /// can you add organizational units to a hold that covers individual
+  /// accounts. If you try, the unsupported values are ignored.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1085,10 +1085,11 @@ class MattersHoldsAccountsResource {
   MattersHoldsAccountsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Adds a HeldAccount to a hold.
+  /// Adds an account to a hold.
   ///
-  /// Accounts can only be added to a hold that has no held_org_unit set.
-  /// Attempting to add an account to an OU-based hold will result in an error.
+  /// Accounts can be added only to a hold that does not have an organizational
+  /// unit set. If you try to add an account to an organizational unit-based
+  /// hold, an error is returned.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1135,10 +1136,7 @@ class MattersHoldsAccountsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Removes a HeldAccount from a hold.
-  ///
-  /// If this request leaves the hold with no held accounts, the hold will not
-  /// apply to any accounts.
+  /// Removes an account from a hold.
   ///
   /// Request parameters:
   ///
@@ -1183,10 +1181,12 @@ class MattersHoldsAccountsResource {
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists HeldAccounts for a hold.
+  /// Lists the accounts covered by a hold.
   ///
-  /// This will only list individually specified held accounts. If the hold is
-  /// on an OU, then use Admin SDK to enumerate its members.
+  /// This can list only individually-specified accounts covered by the hold. If
+  /// the hold covers an organizational unit, use the
+  /// [Admin SDK](https://developers.google.com/admin-sdk/). to list the members
+  /// of the organizational unit on hold.
   ///
   /// Request parameters:
   ///
@@ -1241,8 +1241,7 @@ class MattersSavedQueriesResource {
   ///
   /// Request parameters:
   ///
-  /// [matterId] - The matter ID of the parent matter for which the saved query
-  /// is to be created.
+  /// [matterId] - The ID of the matter to create the saved query in.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1277,14 +1276,13 @@ class MattersSavedQueriesResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a saved query by Id.
+  /// Deletes the specified saved query.
   ///
   /// Request parameters:
   ///
-  /// [matterId] - The matter ID of the parent matter for which the saved query
-  /// is to be deleted.
+  /// [matterId] - The ID of the matter to delete the saved query from.
   ///
-  /// [savedQueryId] - ID of the saved query to be deleted.
+  /// [savedQueryId] - ID of the saved query to delete.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1318,14 +1316,13 @@ class MattersSavedQueriesResource {
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Retrieves a saved query by Id.
+  /// Retrieves the specified saved query.
   ///
   /// Request parameters:
   ///
-  /// [matterId] - The matter ID of the parent matter for which the saved query
-  /// is to be retrieved.
+  /// [matterId] - The ID of the matter to get the saved query from.
   ///
-  /// [savedQueryId] - ID of the saved query to be retrieved.
+  /// [savedQueryId] - ID of the saved query to retrieve.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1360,15 +1357,11 @@ class MattersSavedQueriesResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists saved queries within a matter.
-  ///
-  /// An empty page token in ListSavedQueriesResponse denotes no more saved
-  /// queries to list.
+  /// Lists the saved queries in a matter.
   ///
   /// Request parameters:
   ///
-  /// [matterId] - The matter ID of the parent matter for which the saved
-  /// queries are to be retrieved.
+  /// [matterId] - The ID of the matter to get the saved queries for.
   ///
   /// [pageSize] - The maximum number of saved queries to return.
   ///
@@ -1599,12 +1592,12 @@ class OperationsResource {
   }
 }
 
-/// Count number for each account.
+/// The results count for each account.
 class AccountCount {
   /// Account owner.
   UserInfo? account;
 
-  /// The number of artifacts found for this account.
+  /// The number of results (messages or files) found for this account.
   core.String? count;
 
   AccountCount();
@@ -1660,7 +1653,7 @@ class AccountCountError {
       };
 }
 
-/// Accounts to search
+/// The accounts to search
 class AccountInfo {
   /// A set of accounts to search.
   core.List<core.String>? emails;
@@ -1680,15 +1673,14 @@ class AccountInfo {
       };
 }
 
-/// A status detailing the status of each account creation, and the HeldAccount,
-/// if successful.
+/// The status of each account creation, and the **HeldAccount**, if successful.
 class AddHeldAccountResult {
-  /// If present, this account was successfully created.
+  /// Returned when the account was successfully created.
   HeldAccount? account;
 
-  /// This represents the success status.
+  /// Reports the request status.
   ///
-  /// If failed, check message.
+  /// If it failed, returns an error message.
   Status? status;
 
   AddHeldAccountResult();
@@ -1712,14 +1704,15 @@ class AddHeldAccountResult {
 
 /// Add a list of accounts to a hold.
 class AddHeldAccountsRequest {
-  /// Account IDs to identify which accounts to add.
+  /// A comma-separated list of the account IDs of the accounts to add to the
+  /// hold.
   ///
-  /// Only account_ids or only emails should be specified, but not both.
+  /// Specify either **emails** or **account_ids**, but not both.
   core.List<core.String>? accountIds;
 
-  /// Emails to identify which accounts to add.
+  /// A comma-separated list of the emails of the accounts to add to the hold.
   ///
-  /// Only emails or only account_ids should be specified, but not both.
+  /// Specify either **emails** or **account_ids**, but not both.
   core.List<core.String>? emails;
 
   AddHeldAccountsRequest();
@@ -1767,20 +1760,21 @@ class AddHeldAccountsResponse {
 
 /// Add an account with the permission specified.
 ///
-/// The role cannot be owner. If an account already has a role in the matter, it
-/// will be overwritten.
+/// The role cannot be owner. If an account already has a role in the matter,
+/// the existing role is overwritten.
 class AddMatterPermissionsRequest {
-  /// Only relevant if send_emails is true.
+  /// Only relevant if **sendEmails** is **true**.
   ///
-  /// True to CC requestor in the email message. False to not CC requestor.
+  /// To CC the requestor in the email message, set to **true**. To not CC
+  /// requestor, set to **false**.
   core.bool? ccMe;
 
-  /// The MatterPermission to add.
+  /// The account and its role to add.
   MatterPermission? matterPermission;
 
-  /// True to send notification email to the added account.
+  /// To send a notification email to the added account, set to **true**.
   ///
-  /// False to not send notification email.
+  /// To not send a notification email, set to **false**.
   core.bool? sendEmails;
 
   AddMatterPermissionsRequest();
@@ -1830,7 +1824,7 @@ class CloseMatterRequest {
 
 /// Response to a CloseMatterRequest.
 class CloseMatterResponse {
-  /// The updated matter, with state CLOSED.
+  /// The updated matter, with state **CLOSED**.
   Matter? matter;
 
   CloseMatterResponse();
@@ -1847,23 +1841,27 @@ class CloseMatterResponse {
       };
 }
 
-/// An export file on cloud storage
+/// The export file in Cloud Storage
 class CloudStorageFile {
-  /// The cloud storage bucket name of this export file.
+  /// The name of the Cloud Storage bucket for the export file.
   ///
-  /// Can be used in cloud storage JSON/XML API, but not to list the bucket
-  /// contents. Instead, you can get individual export files by object name.
+  /// You can use this value in the
+  /// [Cloud Storage JSON or XML APIs](https://cloud.google.com/storage/docs/apis),
+  /// but not to list the bucket contents. Instead, you can
+  /// [get individual export files](https://cloud.google.com/storage/docs/json_api/v1/objects/get)
+  /// by object name.
   core.String? bucketName;
 
   /// The md5 hash of the file.
   core.String? md5Hash;
 
-  /// The cloud storage object name of this export file.
+  /// The name of the Cloud Storage object for the export file.
   ///
-  /// Can be used in cloud storage JSON/XML API.
+  /// You can use this value in the
+  /// [Cloud Storage JSON or XML APIs](https://cloud.google.com/storage/docs/apis).
   core.String? objectName;
 
-  /// The size of the export file.
+  /// The export file size.
   core.String? size;
 
   CloudStorageFile();
@@ -1891,9 +1889,9 @@ class CloudStorageFile {
       };
 }
 
-/// Export sink for cloud storage files.
+/// Export sink for Cloud Storage files.
 class CloudStorageSink {
-  /// The exported files on cloud storage.
+  /// The exported files in Cloud Storage.
   ///
   /// Output only.
   core.List<CloudStorageFile>? files;
@@ -1915,31 +1913,31 @@ class CloudStorageSink {
       };
 }
 
-/// Corpus specific queries.
+/// Service-specific options for holds.
 class CorpusQuery {
-  /// Details pertaining to Drive holds.
+  /// Service-specific options for Drive holds.
   ///
-  /// If set, corpus must be Drive.
+  /// If set, **CorpusType** must be **DRIVE**.
   HeldDriveQuery? driveQuery;
 
-  /// Details pertaining to Groups holds.
+  /// Service-specific options for Groups holds.
   ///
-  /// If set, corpus must be Groups.
+  /// If set, **CorpusType** must be **GROUPS**.
   HeldGroupsQuery? groupsQuery;
 
-  /// Details pertaining to Hangouts Chat holds.
+  /// Service-specific options for Chat holds.
   ///
-  /// If set, corpus must be Hangouts Chat.
+  /// If set, **CorpusType** must be **HANGOUTS_CHAT**.
   HeldHangoutsChatQuery? hangoutsChatQuery;
 
-  /// Details pertaining to mail holds.
+  /// Service-specific options for Gmail holds.
   ///
-  /// If set, corpus must be mail.
+  /// If set, **CorpusType** must be **MAIL**.
   HeldMailQuery? mailQuery;
 
-  /// Details pertaining to Voice holds.
+  /// Service-specific options for Voice holds.
   ///
-  /// If set, corpus must be Voice.
+  /// If set, **CorpusType** must be **VOICE**.
   HeldVoiceQuery? voiceQuery;
 
   CorpusQuery();
@@ -2024,13 +2022,14 @@ class CountArtifactsRequest {
   /// The search query.
   Query? query;
 
-  /// Specifies the granularity of the count result returned in response.
+  /// Sets the granularity of the count results.
   /// Possible string values are:
-  /// - "COUNT_RESULT_VIEW_UNSPECIFIED" : Default. It works the same as
-  /// TOTAL_COUNT.
-  /// - "TOTAL_COUNT" : Response includes: total count, queried accounts count,
-  /// matching accounts count, non-queryable accounts, queried account errors.
-  /// - "ALL" : Response includes additional breakdown of account count.
+  /// - "COUNT_RESULT_VIEW_UNSPECIFIED" : Default. Same as **TOTAL_COUNT**.
+  /// - "TOTAL_COUNT" : Response includes counts of the total accounts, queried
+  /// accounts, matching accounts, non-queryable accounts, and queried account
+  /// errors.
+  /// - "ALL" : Response includes the same details as **TOTAL_COUNT**, plus
+  /// additional account breakdown.
   core.String? view;
 
   CountArtifactsRequest();
@@ -2053,15 +2052,13 @@ class CountArtifactsRequest {
 
 /// Definition of the response for method CountArtifacts.
 class CountArtifactsResponse {
-  /// Count metrics of Groups.
+  /// Count metrics for Groups.
   GroupsCountResult? groupsCountResult;
 
-  /// Count metrics of Mail.
+  /// Count metrics for Gmail and classic Hangouts.
   MailCountResult? mailCountResult;
 
-  /// Total count of artifacts.
-  ///
-  /// For mail and groups, artifacts refers to messages.
+  /// Total count of messages.
   core.String? totalCount;
 
   CountArtifactsResponse();
@@ -2089,10 +2086,11 @@ class CountArtifactsResponse {
       };
 }
 
-/// The options for Drive export.
+/// Options for Drive exports.
 class DriveExportOptions {
-  /// Set to true to include access level information for users with indirect
-  /// access to files.
+  /// To include access level information for users with
+  /// [indirect access](https://support.google.com/vault/answer/6099459#metadata)
+  /// to files, set to **true**.
   core.bool? includeAccessInfo;
 
   DriveExportOptions();
@@ -2108,17 +2106,18 @@ class DriveExportOptions {
       };
 }
 
-/// Drive search advanced options
+/// Additional options for Drive search
 class DriveOptions {
-  /// Set to true to include shared drive.
+  /// Set to **true** to include shared drives.
   core.bool? includeSharedDrives;
 
   /// Set to true to include Team Drive.
   core.bool? includeTeamDrives;
 
-  /// Search the versions of the Drive file as of the reference date.
+  /// Search the current version of the Drive file, but export the contents of
+  /// the last version saved before 12:00 AM UTC on the specified date.
   ///
-  /// These timestamps are in GMT and rounded down to the given date.
+  /// Enter the date in UTC.
   core.String? versionDate;
 
   DriveOptions();
@@ -2160,14 +2159,15 @@ class Empty {
   core.Map<core.String, core.dynamic> toJson() => {};
 }
 
-/// An export To work with Vault resources, the account must have the
-/// [required Vault privileges](https://support.google.com/vault/answer/2799699)
-/// and access to the matter.
+/// An export.
 ///
-/// To access a matter, the account must have created the matter, have the
-/// matter shared with them, or have the **View All Matters** privilege.
+/// To work with Vault resources, the account must have the
+/// [required Vault privileges](https://support.google.com/vault/answer/2799699)
+/// and access to the matter. To access a matter, the account must have created
+/// the matter, have the matter shared with them, or have the **View All
+/// Matters** privilege.
 class Export {
-  /// Export sink for cloud storage files.
+  /// The sink for export files in Cloud Storage.
   ///
   /// Output only.
   CloudStorageSink? cloudStorageSink;
@@ -2177,7 +2177,7 @@ class Export {
   /// Output only.
   core.String? createTime;
 
-  /// Advanced options of the export.
+  /// Additional export options.
   ExportOptions? exportOptions;
 
   /// The generated export ID.
@@ -2193,7 +2193,7 @@ class Export {
   /// The export name.
   core.String? name;
 
-  /// The search query being exported.
+  /// The query parameters used to create the export.
   Query? query;
 
   /// The requester of the export.
@@ -2201,19 +2201,19 @@ class Export {
   /// Output only.
   UserInfo? requester;
 
-  /// Export statistics.
+  /// Details about the export progress and size.
   ///
   /// Output only.
   ExportStats? stats;
 
-  /// The export status.
+  /// The status of the export.
   ///
   /// Output only.
   /// Possible string values are:
   /// - "EXPORT_STATUS_UNSPECIFIED" : The status is unspecified.
   /// - "COMPLETED" : The export completed.
   /// - "FAILED" : The export failed.
-  /// - "IN_PROGRESS" : The export is still being executed.
+  /// - "IN_PROGRESS" : The export is in progress.
   core.String? status;
 
   Export();
@@ -2271,30 +2271,30 @@ class Export {
       };
 }
 
-/// Export advanced options
+/// Additional options for exports
 class ExportOptions {
-  /// Option available for Drive export.
+  /// Options for Drive exports.
   DriveExportOptions? driveOptions;
 
-  /// Option available for groups export.
+  /// Options for Groups exports.
   GroupsExportOptions? groupsOptions;
 
-  /// Option available for hangouts chat export.
+  /// Options for Chat exports.
   HangoutsChatExportOptions? hangoutsChatOptions;
 
-  /// Option available for mail export.
+  /// Options for Gmail exports.
   MailExportOptions? mailOptions;
 
-  /// The requested export location.
+  /// The requested data region for the export.
   /// Possible string values are:
-  /// - "EXPORT_REGION_UNSPECIFIED" : The region is unspecified. Will be treated
-  /// the same as ANY.
+  /// - "EXPORT_REGION_UNSPECIFIED" : The region is unspecified. Defaults to
+  /// ANY.
   /// - "ANY" : Any region.
-  /// - "US" : US region.
+  /// - "US" : United States region.
   /// - "EUROPE" : Europe region.
   core.String? region;
 
-  /// Option available for voice export.
+  /// Options for Voice exports.
   VoiceExportOptions? voiceOptions;
 
   ExportOptions();
@@ -2336,15 +2336,15 @@ class ExportOptions {
       };
 }
 
-/// Stats of an export.
+/// Progress information for an export.
 class ExportStats {
-  /// The number of documents already processed by the export.
+  /// The number of messages or files already processed for export.
   core.String? exportedArtifactCount;
 
   /// The size of export in bytes.
   core.String? sizeInBytes;
 
-  /// The number of documents to be exported.
+  /// The number of messages or files to be exported.
   core.String? totalArtifactCount;
 
   ExportStats();
@@ -2382,8 +2382,8 @@ class GroupsCountResult {
   /// messages.
   core.String? matchingAccountsCount;
 
-  /// When data scope is HELD_DATA in the request Query, these accounts in the
-  /// request are not queried because they are not on hold.
+  /// When **DataScope** is **HELD_DATA**, these accounts in the request are not
+  /// queried because they are not on hold.
   ///
   /// For other data scope, this field is not set.
   core.List<core.String>? nonQueryableAccounts;
@@ -2435,13 +2435,13 @@ class GroupsCountResult {
       };
 }
 
-/// The options for groups export.
+/// Options for Groups exports.
 class GroupsExportOptions {
-  /// The export format for groups export.
+  /// The file format for exported messages.
   /// Possible string values are:
   /// - "EXPORT_FORMAT_UNSPECIFIED" : No export format specified.
-  /// - "MBOX" : MBOX as export format.
-  /// - "PST" : PST as export format
+  /// - "MBOX" : Export as MBOX.
+  /// - "PST" : Export as PST.
   core.String? exportFormat;
 
   GroupsExportOptions();
@@ -2457,13 +2457,13 @@ class GroupsExportOptions {
       };
 }
 
-/// The options for hangouts chat export.
+/// Options for Chat exports.
 class HangoutsChatExportOptions {
-  /// The export format for hangouts chat export.
+  /// The file format for exported messages.
   /// Possible string values are:
   /// - "EXPORT_FORMAT_UNSPECIFIED" : No export format specified.
-  /// - "MBOX" : MBOX as export format.
-  /// - "PST" : PST as export format
+  /// - "MBOX" : Export as MBOX.
+  /// - "PST" : Export as PST.
   core.String? exportFormat;
 
   HangoutsChatExportOptions();
@@ -2479,9 +2479,10 @@ class HangoutsChatExportOptions {
       };
 }
 
-/// Accounts to search
+/// The Chat spaces to search
 class HangoutsChatInfo {
-  /// A set of rooms to search.
+  /// A list of Chat spaces IDs, as provided by the
+  /// [Chat API](https://developers.google.com/hangouts/chat).
   core.List<core.String>? roomId;
 
   HangoutsChatInfo();
@@ -2499,9 +2500,10 @@ class HangoutsChatInfo {
       };
 }
 
-/// Hangouts chat search advanced options
+/// Additional options for Google Chat search
 class HangoutsChatOptions {
-  /// Set to true to include rooms.
+  /// For searches by account or organizational unit, set to **true** to include
+  /// rooms.
   core.bool? includeRooms;
 
   HangoutsChatOptions();
@@ -2517,22 +2519,23 @@ class HangoutsChatOptions {
       };
 }
 
-/// An account being held in a particular hold.
+/// An account covered by a hold.
 ///
-/// This structure is immutable. This can be either a single user or a google
-/// group, depending on the corpus. To work with Vault resources, the account
+/// This structure is immutable. It can be an individual account or a Google
+/// Group, depending on the service. To work with Vault resources, the account
 /// must have the
 /// [required Vault privileges](https://support.google.com/vault/answer/2799699)
 /// and access to the matter. To access a matter, the account must have created
 /// the matter, have the matter shared with them, or have the **View All
 /// Matters** privilege.
 class HeldAccount {
-  /// The account's ID as provided by the Admin SDK.
+  /// The account ID, as provided by the
+  /// [Admin SDK](https://developers.google.com/admin-sdk/).
   core.String? accountId;
 
   /// The primary email address of the account.
   ///
-  /// If used as an input, this takes precedence over account ID.
+  /// If used as an input, this takes precedence over **accountId**.
   core.String? email;
 
   /// The first name of the account holder.
@@ -2579,12 +2582,12 @@ class HeldAccount {
       };
 }
 
-/// Query options for Drive holds.
+/// Options for Drive holds.
 class HeldDriveQuery {
-  /// If true, include files in shared drives in the hold.
+  /// To include files in shared drives in the hold, set to **true**.
   core.bool? includeSharedDriveFiles;
 
-  /// If true, include files in Team Drives in the hold.
+  /// To include files in Team Drives in the hold, set to **true**.
   core.bool? includeTeamDriveFiles;
 
   HeldDriveQuery();
@@ -2608,19 +2611,18 @@ class HeldDriveQuery {
 
 /// Query options for group holds.
 class HeldGroupsQuery {
-  /// The end time range for the search query.
+  /// The end time for the query.
   ///
-  /// These timestamps are in GMT and rounded down to the start of the given
-  /// date.
+  /// Specify in GMT. The value is rounded to 12 AM on the specified date.
   core.String? endTime;
 
-  /// The start time range for the search query.
+  /// The start time for the query.
   ///
-  /// These timestamps are in GMT and rounded down to the start of the given
-  /// date.
+  /// Specify in GMT. The value is rounded to 12 AM on the specified date.
   core.String? startTime;
 
-  /// The search terms for the hold.
+  /// The [search operators](https://support.google.com/vault/answer/2474474)
+  /// used to refine the messages covered by the hold.
   core.String? terms;
 
   HeldGroupsQuery();
@@ -2644,9 +2646,10 @@ class HeldGroupsQuery {
       };
 }
 
-/// Query options for hangouts chat holds.
+/// Options for Chat holds.
 class HeldHangoutsChatQuery {
-  /// If true, include rooms the user has participated in.
+  /// To include messages in Chat spaces the user was a member of, set to
+  /// **true**.
   core.bool? includeRooms;
 
   HeldHangoutsChatQuery();
@@ -2662,21 +2665,20 @@ class HeldHangoutsChatQuery {
       };
 }
 
-/// Query options for mail holds.
+/// Query options for Gmail holds.
 class HeldMailQuery {
-  /// The end time range for the search query.
+  /// The end time for the query.
   ///
-  /// These timestamps are in GMT and rounded down to the start of the given
-  /// date.
+  /// Specify in GMT. The value is rounded to 12 AM on the specified date.
   core.String? endTime;
 
-  /// The start time range for the search query.
+  /// The start time for the query.
   ///
-  /// These timestamps are in GMT and rounded down to the start of the given
-  /// date.
+  /// Specify in GMT. The value is rounded to 12 AM on the specified date.
   core.String? startTime;
 
-  /// The search terms for the hold.
+  /// The [search operators](https://support.google.com/vault/answer/2474474)
+  /// used to refine the messages covered by the hold.
   core.String? terms;
 
   HeldMailQuery();
@@ -2700,16 +2702,17 @@ class HeldMailQuery {
       };
 }
 
-/// A organizational unit being held in a particular hold.
+/// The organizational unit covered by a hold.
 ///
 /// This structure is immutable.
 class HeldOrgUnit {
-  /// When the org unit was put on hold.
+  /// When the organizational unit was put on hold.
   ///
   /// This property is immutable.
   core.String? holdTime;
 
-  /// The org unit's immutable ID as provided by the Admin SDK.
+  /// The organizational unit's immutable ID as provided by the
+  /// [Admin SDK](https://developers.google.com/admin-sdk/).
   core.String? orgUnitId;
 
   HeldOrgUnit();
@@ -2729,11 +2732,11 @@ class HeldOrgUnit {
       };
 }
 
-/// Query options for Voice holds.
+/// Options for Voice holds.
 class HeldVoiceQuery {
-  /// Data covered by this rule.
+  /// A list of data types covered by the hold.
   ///
-  /// Should be non-empty. Order does not matter and duplicates will be ignored.
+  /// Should be non-empty. Order does not matter and duplicates are ignored.
   core.List<core.String>? coveredData;
 
   HeldVoiceQuery();
@@ -2751,29 +2754,28 @@ class HeldVoiceQuery {
       };
 }
 
-/// Represents a hold within Vault.
+/// A hold.
 ///
-/// A hold restricts purging of artifacts based on the combination of the query
-/// and accounts restrictions. A hold can be configured to either apply to an
-/// explicitly configured set of accounts, or can be applied to all members of
-/// an organizational unit. To work with Vault resources, the account must have
-/// the
+/// A hold prevents the specified Google Workspace service from purging data for
+/// specific accounts or all members of an organizational unit. To work with
+/// Vault resources, the account must have the
 /// [required Vault privileges](https://support.google.com/vault/answer/2799699)
 /// and access to the matter. To access a matter, the account must have created
 /// the matter, have the matter shared with them, or have the **View All
 /// Matters** privilege.
 class Hold {
-  /// If set, the hold applies to the enumerated accounts and org_unit must be
+  /// If set, the hold applies to the specified accounts and **orgUnit** must be
   /// empty.
   core.List<HeldAccount>? accounts;
 
-  /// The corpus to be searched.
+  /// The service to be searched.
   /// Possible string values are:
-  /// - "CORPUS_TYPE_UNSPECIFIED" : No corpus specified.
-  /// - "DRIVE" : Drive.
-  /// - "MAIL" : Mail.
+  /// - "CORPUS_TYPE_UNSPECIFIED" : No service specified.
+  /// - "DRIVE" : Drive, including Meet and Sites.
+  /// - "MAIL" : For search, Gmail and classic Hangouts. For holds, Gmail only.
   /// - "GROUPS" : Groups.
-  /// - "HANGOUTS_CHAT" : Hangouts Chat.
+  /// - "HANGOUTS_CHAT" : For search, Google Chat only. For holds, Google Chat
+  /// and classic Hangouts.
   /// - "VOICE" : Google Voice.
   core.String? corpus;
 
@@ -2786,14 +2788,14 @@ class Hold {
   core.String? name;
 
   /// If set, the hold applies to all members of the organizational unit and
-  /// accounts must be empty.
+  /// **accounts** must be empty.
   ///
-  /// This property is mutable. For groups holds, set the accounts field.
+  /// This property is mutable. For Groups holds, set **accounts**.
   HeldOrgUnit? orgUnit;
 
-  /// The corpus-specific query.
+  /// Service-specific options.
   ///
-  /// If set, the corpusQuery must match corpus type.
+  /// If set, **CorpusQuery** must match **CorpusType**.
   CorpusQuery? query;
 
   /// The last time this hold was modified.
@@ -2842,7 +2844,7 @@ class Hold {
       };
 }
 
-/// The holds for a matter.
+/// The exports for a matter.
 class ListExportsResponse {
   /// The list of exports.
   core.List<Export>? exports;
@@ -2871,7 +2873,7 @@ class ListExportsResponse {
       };
 }
 
-/// Returns a list of held accounts for a hold.
+/// Returns a list of the accounts covered by a hold.
 class ListHeldAccountsResponse {
   /// The held accounts on a hold.
   core.List<HeldAccount>? accounts;
@@ -2989,7 +2991,7 @@ class ListSavedQueriesResponse {
   /// If this is empty, then there are no more saved queries to list.
   core.String? nextPageToken;
 
-  /// List of output saved queries.
+  /// List of saved queries.
   core.List<SavedQuery>? savedQueries;
 
   ListSavedQueriesResponse();
@@ -3013,9 +3015,9 @@ class ListSavedQueriesResponse {
       };
 }
 
-/// Mail specific count metrics.
+/// Gmail and classic Hangouts-specific count metrics.
 class MailCountResult {
-  /// Error occurred when querying these accounts.
+  /// Errors occurred when querying these accounts.
   core.List<AccountCountError>? accountCountErrors;
 
   /// Subtotal count per matching account that have more than zero messages.
@@ -3025,10 +3027,10 @@ class MailCountResult {
   /// messages.
   core.String? matchingAccountsCount;
 
-  /// When data scope is HELD_DATA in the request Query, these accounts in the
-  /// request are not queried because they are not on hold.
+  /// When **DataScope** is **HELD_DATA**, the number of accounts in the request
+  /// that are not queried because they are not on hold.
   ///
-  /// For other data scope, this field is not set.
+  /// For other data scopes, this field is not set.
   core.List<core.String>? nonQueryableAccounts;
 
   /// Total number of accounts involved in this count operation.
@@ -3078,16 +3080,16 @@ class MailCountResult {
       };
 }
 
-/// The options for mail export.
+/// Options for Gmail exports.
 class MailExportOptions {
-  /// The export file format.
+  /// The file format for exported messages.
   /// Possible string values are:
   /// - "EXPORT_FORMAT_UNSPECIFIED" : No export format specified.
-  /// - "MBOX" : MBOX as export format.
-  /// - "PST" : PST as export format
+  /// - "MBOX" : Export as MBOX.
+  /// - "PST" : Export as PST.
   core.String? exportFormat;
 
-  /// Set to true to export confidential mode content.
+  /// To export confidential mode content, set to **true**.
   core.bool? showConfidentialModeContent;
 
   MailExportOptions();
@@ -3109,9 +3111,9 @@ class MailExportOptions {
       };
 }
 
-/// Mail search advanced options
+/// Additional options for Gmail search
 class MailOptions {
-  /// Set to true to exclude drafts.
+  /// Set to **true** to exclude drafts.
   core.bool? excludeDrafts;
 
   MailOptions();
@@ -3135,15 +3137,15 @@ class MailOptions {
 /// the matter, have the matter shared with them, or have the **View All
 /// Matters** privilege.
 class Matter {
-  /// The description of the matter.
+  /// An optional description for the matter.
   core.String? description;
 
-  /// The matter ID which is generated by the server.
+  /// The matter ID, which is generated by the server.
   ///
-  /// Should be blank when creating a new matter.
+  /// Leave blank when creating a matter.
   core.String? matterId;
 
-  /// List of users and access to the matter.
+  /// Lists the users and their permission for the matter.
   ///
   /// Currently there is no programmer defined limit on the number of
   /// permissions a matter can have.
@@ -3155,9 +3157,9 @@ class Matter {
   /// The state of the matter.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : The matter has no specified state.
-  /// - "OPEN" : This matter is open.
-  /// - "CLOSED" : This matter is closed.
-  /// - "DELETED" : This matter is deleted.
+  /// - "OPEN" : The matter is open.
+  /// - "CLOSED" : The matter is closed.
+  /// - "DELETED" : The matter is deleted.
   core.String? state;
 
   Matter();
@@ -3194,18 +3196,20 @@ class Matter {
       };
 }
 
-/// Currently each matter only has one owner, and all others are collaborators.
+/// Users can be matter owners or collaborators.
 ///
-/// When an account is purged, its corresponding MatterPermission resources
-/// cease to exist.
+/// Each matter has only one owner. All others users who can access the matter
+/// are collaborators. When an account is purged, its corresponding
+/// MatterPermission resources cease to exist.
 class MatterPermission {
-  /// The account ID, as provided by Admin SDK.
+  /// The account ID, as provided by the
+  /// [Admin SDK](https://developers.google.com/admin-sdk/).
   core.String? accountId;
 
-  /// The user's role in this matter.
+  /// The user's role for the matter.
   /// Possible string values are:
   /// - "ROLE_UNSPECIFIED" : No role assigned.
-  /// - "COLLABORATOR" : A collaborator to the matter.
+  /// - "COLLABORATOR" : A collaborator on the matter.
   /// - "OWNER" : The owner of the matter.
   core.String? role;
 
@@ -3309,9 +3313,10 @@ class Operation {
       };
 }
 
-/// Org Unit to search
+/// The organizational unit to search
 class OrgUnitInfo {
-  /// Org unit to search, as provided by the Admin SDK Directory API.
+  /// The name of the organizational unit to search, as provided by the
+  /// [Admin SDK Directory API](https://developers.google.com/admin-sdk/directory/).
   core.String? orgUnitId;
 
   OrgUnitInfo();
@@ -3327,122 +3332,125 @@ class OrgUnitInfo {
       };
 }
 
-/// A query definition relevant for search & export.
+/// The query definition used for search and export.
 class Query {
-  /// When 'ACCOUNT' is chosen as search method, account_info needs to be
-  /// specified.
+  /// Required when **SearchMethod** is **ACCOUNT**.
   AccountInfo? accountInfo;
 
-  /// The corpus to search.
+  /// The Google Workspace service to search.
   /// Possible string values are:
-  /// - "CORPUS_TYPE_UNSPECIFIED" : No corpus specified.
-  /// - "DRIVE" : Drive.
-  /// - "MAIL" : Mail.
+  /// - "CORPUS_TYPE_UNSPECIFIED" : No service specified.
+  /// - "DRIVE" : Drive, including Meet and Sites.
+  /// - "MAIL" : For search, Gmail and classic Hangouts. For holds, Gmail only.
   /// - "GROUPS" : Groups.
-  /// - "HANGOUTS_CHAT" : Hangouts Chat.
+  /// - "HANGOUTS_CHAT" : For search, Google Chat only. For holds, Google Chat
+  /// and classic Hangouts.
   /// - "VOICE" : Google Voice.
   core.String? corpus;
 
-  /// The data source to search from.
+  /// The data source to search.
   /// Possible string values are:
-  /// - "DATA_SCOPE_UNSPECIFIED" : No data scope specified.
+  /// - "DATA_SCOPE_UNSPECIFIED" : No data source specified.
   /// - "ALL_DATA" : All available data.
-  /// - "HELD_DATA" : Data on hold.
-  /// - "UNPROCESSED_DATA" : Data not processed.
+  /// - "HELD_DATA" : Only data on hold.
+  /// - "UNPROCESSED_DATA" : Only data not yet processed by Vault. (Gmail and
+  /// Groups only)
   core.String? dataScope;
 
-  /// For Drive search, specify more options in this field.
+  /// Set Drive search-specific options.
   DriveOptions? driveOptions;
 
-  /// The end time range for the search query.
+  /// The end time for the search query.
   ///
-  /// These timestamps are in GMT and rounded down to the start of the given
-  /// date.
+  /// Specify in GMT. The value is rounded to 12 AM on the specified date.
   core.String? endTime;
 
-  /// When 'ROOM' is chosen as search method, hangout_chats_info needs to be
-  /// specified.
+  /// Required when **SearchMethod** is **ROOM**.
   ///
   /// (read-only)
   HangoutsChatInfo? hangoutsChatInfo;
 
-  /// For hangouts chat search, specify more options in this field.
+  /// Set Chat search-specific options.
   ///
   /// (read-only)
   HangoutsChatOptions? hangoutsChatOptions;
 
-  /// For mail search, specify more options in this field.
+  /// Set Gmail search-specific options.
   MailOptions? mailOptions;
 
-  /// The search method to use.
+  /// The entity to search.
   ///
-  /// This field is similar to the search_method field but is introduced to
-  /// support shared drives. It supports all search method types. In case the
-  /// search_method is TEAM_DRIVE the response of this field will be
-  /// SHARED_DRIVE only.
+  /// This field replaces **searchMethod** to support shared drives. When
+  /// **searchMethod** is **TEAM_DRIVE**, the response of this field is
+  /// **SHARED_DRIVE**.
   /// Possible string values are:
-  /// - "SEARCH_METHOD_UNSPECIFIED" : A search method must be specified. If a
-  /// request does not specify a search method, it will be rejected.
-  /// - "ACCOUNT" : Will search all accounts provided in account_info.
-  /// - "ORG_UNIT" : Will search all accounts in the OU specified in
-  /// org_unit_info.
-  /// - "TEAM_DRIVE" : Will search for all accounts in the Team Drive specified
-  /// in team_drive_info.
-  /// - "ENTIRE_ORG" : Will search for all accounts in the organization. No need
-  /// to set account_info or org_unit_info. Not all CORPUS_TYPE support this
-  /// scope. Supported by MAIL.
-  /// - "ROOM" : Will search in the Room specified in hangout_chats_info.
-  /// (read-only)
-  /// - "SHARED_DRIVE" : Will search for all accounts in the shared drive
-  /// specified in shared_drive_info.
+  /// - "SEARCH_METHOD_UNSPECIFIED" : A search method must be specified or else
+  /// it is rejected.
+  /// - "ACCOUNT" : Search the data of the accounts specified in
+  /// [AccountInfo](https://developers.google.com/vault/reference/rest/v1/Query#accountinfo).
+  /// - "ORG_UNIT" : Search the data of all accounts in the organizational unit
+  /// specified in
+  /// [OrgUnitInfo](https://developers.google.com/vault/reference/rest/v1/Query#orgunitinfo).
+  /// - "TEAM_DRIVE" : Search the data in the Team Drive specified in
+  /// **team_drive_info**.
+  /// - "ENTIRE_ORG" : Search the data of all accounts in the organization.
+  /// Supported only for Gmail. When specified, you don't need to specify
+  /// **AccountInfo** or **OrgUnitInfo**.
+  /// - "ROOM" : Search messages in the Chat spaces specified in
+  /// [HangoutsChatInfo](https://developers.google.com/vault/reference/rest/v1/Query#hangoutschatinfo).
+  /// - "SHARED_DRIVE" : Search the files in the shared drives specified in
+  /// [SharedDriveInfo](https://developers.devsite.corp.google.com/vault/reference/rest/v1/Query#shareddriveinfo).
   core.String? method;
 
-  /// When 'ORG_UNIT' is chosen as as search method, org_unit_info needs to be
-  /// specified.
+  /// Required when **SearchMethod** is **ORG_UNIT**.
   OrgUnitInfo? orgUnitInfo;
 
   /// The search method to use.
   /// Possible string values are:
-  /// - "SEARCH_METHOD_UNSPECIFIED" : A search method must be specified. If a
-  /// request does not specify a search method, it will be rejected.
-  /// - "ACCOUNT" : Will search all accounts provided in account_info.
-  /// - "ORG_UNIT" : Will search all accounts in the OU specified in
-  /// org_unit_info.
-  /// - "TEAM_DRIVE" : Will search for all accounts in the Team Drive specified
-  /// in team_drive_info.
-  /// - "ENTIRE_ORG" : Will search for all accounts in the organization. No need
-  /// to set account_info or org_unit_info. Not all CORPUS_TYPE support this
-  /// scope. Supported by MAIL.
-  /// - "ROOM" : Will search in the Room specified in hangout_chats_info.
-  /// (read-only)
-  /// - "SHARED_DRIVE" : Will search for all accounts in the shared drive
-  /// specified in shared_drive_info.
+  /// - "SEARCH_METHOD_UNSPECIFIED" : A search method must be specified or else
+  /// it is rejected.
+  /// - "ACCOUNT" : Search the data of the accounts specified in
+  /// [AccountInfo](https://developers.google.com/vault/reference/rest/v1/Query#accountinfo).
+  /// - "ORG_UNIT" : Search the data of all accounts in the organizational unit
+  /// specified in
+  /// [OrgUnitInfo](https://developers.google.com/vault/reference/rest/v1/Query#orgunitinfo).
+  /// - "TEAM_DRIVE" : Search the data in the Team Drive specified in
+  /// **team_drive_info**.
+  /// - "ENTIRE_ORG" : Search the data of all accounts in the organization.
+  /// Supported only for Gmail. When specified, you don't need to specify
+  /// **AccountInfo** or **OrgUnitInfo**.
+  /// - "ROOM" : Search messages in the Chat spaces specified in
+  /// [HangoutsChatInfo](https://developers.google.com/vault/reference/rest/v1/Query#hangoutschatinfo).
+  /// - "SHARED_DRIVE" : Search the files in the shared drives specified in
+  /// [SharedDriveInfo](https://developers.devsite.corp.google.com/vault/reference/rest/v1/Query#shareddriveinfo).
   core.String? searchMethod;
 
-  /// When 'SHARED_DRIVE' is chosen as search method, shared_drive_info needs to
-  /// be specified.
+  /// Required when **SearchMethod** is **SHARED_DRIVE**.
   SharedDriveInfo? sharedDriveInfo;
 
-  /// The start time range for the search query.
+  /// The start time for the search query.
   ///
-  /// These timestamps are in GMT and rounded down to the start of the given
-  /// date.
+  /// Specify in GMT. The value is rounded to 12 AM on the specified date.
   core.String? startTime;
 
-  /// When 'TEAM_DRIVE' is chosen as search method, team_drive_info needs to be
-  /// specified.
+  /// Required when **SearchMethod** is **TEAM_DRIVE**.
   TeamDriveInfo? teamDriveInfo;
 
-  /// The corpus-specific search operators used to generate search results.
+  /// Service-specific
+  /// [search operators](https://support.google.com/vault/answer/2474474) to
+  /// filter search results.
   core.String? terms;
 
   /// The time zone name.
   ///
-  /// It should be an IANA TZ name, such as "America/Los_Angeles". For more
-  /// information, see Time Zone.
+  /// It should be an IANA TZ name, such as "America/Los_Angeles". For a list of
+  /// time zone names, see
+  /// [Time Zone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+  /// For more information about how Vault uses time zones, see
+  /// [the Vault help center](https://support.google.com/vault/answer/6092995#time).
   core.String? timeZone;
 
-  /// For voice search, specify more options in this field.
+  /// Set Voice search-specific options.
   VoiceOptions? voiceOptions;
 
   Query();
@@ -3536,7 +3544,7 @@ class Query {
 
 /// Remove a list of accounts from a hold.
 class RemoveHeldAccountsRequest {
-  /// Account IDs to identify HeldAccounts to remove.
+  /// The account IDs of the accounts to remove from the hold.
   core.List<core.String>? accountIds;
 
   RemoveHeldAccountsRequest();
@@ -3556,7 +3564,7 @@ class RemoveHeldAccountsRequest {
 
 /// Response for batch delete held accounts.
 class RemoveHeldAccountsResponse {
-  /// A list of statuses for deleted accounts.
+  /// A list of statuses for the deleted accounts.
   ///
   /// Results have the same order as the request.
   core.List<Status>? statuses;
@@ -3609,7 +3617,7 @@ class ReopenMatterRequest {
 
 /// Response to a ReopenMatterRequest.
 class ReopenMatterResponse {
-  /// The updated matter, with state OPEN.
+  /// The updated matter, with state **OPEN**.
   Matter? matter;
 
   ReopenMatterResponse();
@@ -3626,7 +3634,7 @@ class ReopenMatterResponse {
       };
 }
 
-/// Definition of the saved query.
+/// The definition of a saved query.
 ///
 /// To work with Vault resources, the account must have the
 /// [required Vault privileges](https://support.google.com/vault/answer/2799699)
@@ -3634,24 +3642,23 @@ class ReopenMatterResponse {
 /// the matter, have the matter shared with them, or have the **View All
 /// Matters** privilege.
 class SavedQuery {
-  /// The server generated timestamp at which saved query was created.
+  /// The server-generated timestamp when the saved query was created.
   ///
   /// Output only.
   core.String? createTime;
 
-  /// Name of the saved query.
+  /// The name of the saved query.
   core.String? displayName;
 
-  /// The matter ID of the associated matter.
+  /// The matter ID of the matter the saved query is saved in.
   ///
-  /// The server does not look at this field during create and always uses
-  /// matter id in the URL.
+  /// The server does not use this field during create and always uses matter ID
+  /// in the URL.
   ///
   /// Output only.
   core.String? matterId;
 
-  /// The underlying Query object which contains all the information of the
-  /// saved query.
+  /// The search parameters of the saved query.
   Query? query;
 
   /// A unique identifier for the saved query.
@@ -3687,9 +3694,10 @@ class SavedQuery {
       };
 }
 
-/// Shared drives to search
+/// The shared drives to search
 class SharedDriveInfo {
-  /// List of Shared drive IDs, as provided by Drive API.
+  /// A list of shared drive IDs, as provided by the
+  /// [Drive API](https://developers.google.com/drive).
   core.List<core.String>? sharedDriveIds;
 
   SharedDriveInfo();
@@ -3763,7 +3771,8 @@ class Status {
 
 /// Team Drives to search
 class TeamDriveInfo {
-  /// List of Team Drive IDs, as provided by Drive API.
+  /// List of Team Drive IDs, as provided by the
+  /// [Drive API](https://developers.google.com/drive).
   core.List<core.String>? teamDriveIds;
 
   TeamDriveInfo();
@@ -3817,13 +3826,13 @@ class UserInfo {
       };
 }
 
-/// The options for voice export.
+/// The options for Voice exports.
 class VoiceExportOptions {
-  /// The export format for voice export.
+  /// The file format for exported text messages.
   /// Possible string values are:
   /// - "EXPORT_FORMAT_UNSPECIFIED" : No export format specified.
-  /// - "MBOX" : MBOX as export format.
-  /// - "PST" : PST as export format
+  /// - "MBOX" : Export as MBOX.
+  /// - "PST" : Export as PST.
   core.String? exportFormat;
 
   VoiceExportOptions();
@@ -3839,7 +3848,7 @@ class VoiceExportOptions {
       };
 }
 
-/// Voice search options
+/// Additional options for Voice search
 class VoiceOptions {
   /// Datatypes to search
   core.List<core.String>? coveredData;

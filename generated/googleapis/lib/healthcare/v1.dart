@@ -8089,7 +8089,9 @@ class ExportResourcesRequest {
   ///
   /// The Cloud Healthcare Service Agent requires two IAM roles on the BigQuery
   /// location: `roles/bigquery.dataEditor` and `roles/bigquery.jobUser`. The
-  /// output is one BigQuery table per resource type.
+  /// output is one BigQuery table per resource type. Note that unlike in
+  /// FhirStore.StreamConfig.BigQueryDestination, BigQuery views will not be
+  /// created by ExportResources.
   GoogleCloudHealthcareV1FhirBigQueryDestination? bigqueryDestination;
 
   /// The Cloud Storage output destination.

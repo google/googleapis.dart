@@ -615,11 +615,18 @@ class CheckUpgradeResponse {
   /// - "NO_CONFLICT" : There were no python packages conflicts.
   core.String? containsPypiModulesConflict;
 
+  /// Composer image for which the build was happening.
+  core.String? imageVersion;
+
   /// Extract from a docker image build log containing information about pypi
   /// modules conflicts.
   ///
   /// Output only.
   core.String? pypiConflictBuildLogExtract;
+
+  /// Pypi dependencies specified in the environment configuration, at the time
+  /// when the build was triggered.
+  core.Map<core.String, core.String>? pypiDependencies;
 
   CheckUpgradeResponse();
 
@@ -631,9 +638,22 @@ class CheckUpgradeResponse {
       containsPypiModulesConflict =
           _json['containsPypiModulesConflict'] as core.String;
     }
+    if (_json.containsKey('imageVersion')) {
+      imageVersion = _json['imageVersion'] as core.String;
+    }
     if (_json.containsKey('pypiConflictBuildLogExtract')) {
       pypiConflictBuildLogExtract =
           _json['pypiConflictBuildLogExtract'] as core.String;
+    }
+    if (_json.containsKey('pypiDependencies')) {
+      pypiDependencies =
+          (_json['pypiDependencies'] as core.Map<core.String, core.dynamic>)
+              .map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
   }
 
@@ -641,8 +661,10 @@ class CheckUpgradeResponse {
         if (buildLogUri != null) 'buildLogUri': buildLogUri!,
         if (containsPypiModulesConflict != null)
           'containsPypiModulesConflict': containsPypiModulesConflict!,
+        if (imageVersion != null) 'imageVersion': imageVersion!,
         if (pypiConflictBuildLogExtract != null)
           'pypiConflictBuildLogExtract': pypiConflictBuildLogExtract!,
+        if (pypiDependencies != null) 'pypiDependencies': pypiDependencies!,
       };
 }
 

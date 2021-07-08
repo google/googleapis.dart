@@ -50,6 +50,8 @@
 /// - [VideoCategoriesResource]
 /// - [VideosResource]
 /// - [WatermarksResource]
+/// - [YoutubeResource]
+///   - [YoutubeV3Resource]
 library youtube.v3;
 
 import 'dart:async' as async;
@@ -147,6 +149,7 @@ class YouTubeApi {
       VideoCategoriesResource(_requester);
   VideosResource get videos => VideosResource(_requester);
   WatermarksResource get watermarks => WatermarksResource(_requester);
+  YoutubeResource get youtube => YoutubeResource(_requester);
 
   YouTubeApi(http.Client client,
       {core.String rootUrl = 'https://youtube.googleapis.com/',
@@ -1359,53 +1362,6 @@ class CommentThreadsResource {
       queryParams: _queryParams,
     );
     return CommentThreadListResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Updates an existing resource.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [part] - The *part* parameter specifies a comma-separated list of
-  /// commentThread resource properties that the API response will include. You
-  /// must at least include the snippet part in the parameter value since that
-  /// part contains all of the properties that the API request can update.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [CommentThread].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<CommentThread> update(
-    CommentThread request,
-    core.List<core.String> part, {
-    core.String? $fields,
-  }) async {
-    final _body = convert.json.encode(request.toJson());
-    if (part.isEmpty) {
-      throw core.ArgumentError('Parameter part cannot be empty.');
-    }
-    final _queryParams = <core.String, core.List<core.String>>{
-      'part': part,
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    const _url = 'youtube/v3/commentThreads';
-
-    final _response = await _requester.request(
-      _url,
-      'PUT',
-      body: _body,
-      queryParams: _queryParams,
-    );
-    return CommentThread.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -4238,7 +4194,8 @@ class SuperChatEventsResource {
   /// Request parameters:
   ///
   /// [part] - The *part* parameter specifies the superChatEvent resource parts
-  /// that the API response will include. Supported values are id and snippet.
+  /// that the API response will include. This parameter is currently not
+  /// supported.
   ///
   /// [hl] - Return rendered funding amounts in specified language.
   ///
@@ -5355,6 +5312,64 @@ class WatermarksResource {
       queryParams: _queryParams,
       downloadOptions: null,
     );
+  }
+}
+
+class YoutubeResource {
+  final commons.ApiRequester _requester;
+
+  YoutubeV3Resource get v3 => YoutubeV3Resource(_requester);
+
+  YoutubeResource(commons.ApiRequester client) : _requester = client;
+}
+
+class YoutubeV3Resource {
+  final commons.ApiRequester _requester;
+
+  YoutubeV3Resource(commons.ApiRequester client) : _requester = client;
+
+  /// Updates an existing resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [part] - The *part* parameter specifies a comma-separated list of
+  /// commentThread resource properties that the API response will include. You
+  /// must at least include the snippet part in the parameter value since that
+  /// part contains all of the properties that the API request can update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CommentThread].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CommentThread> updateCommentThreads(
+    CommentThread request, {
+    core.List<core.String>? part,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (part != null) 'part': part,
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const _url = 'youtube/v3/commentThreads';
+
+    final _response = await _requester.request(
+      _url,
+      'PUT',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return CommentThread.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
