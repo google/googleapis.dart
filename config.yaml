@@ -189,7 +189,6 @@ packages:
     - sourcerepo:v1 # https://cloud.google.com/eap/cloud-repositories/cloud-sourcerepo-api
     - spanner:v1 # https://cloud.google.com/spanner/docs/
     - speech:v1 # https://cloud.google.com/speech/
-    - sqladmin:v1
     - storage:v1 # https://developers.google.com/storage/
     - storagetransfer:v1 # https://cloud.google.com/storage/transfer/
     - streetviewpublish:v1 # https://developers.google.com/streetview/publish/
@@ -359,6 +358,7 @@ skipped_apis:
 - serviceusage:v1beta1 # v1 included
 - speech:v1p1beta1 # v1 included
 - speech:v2beta1 # v1 included
+- sqladmin:v1 # empty!
 - sts:v1beta #v1 included
 - texttospeech:v1beta1 # v1 included
 - tpu:v1alpha1 # v1 included

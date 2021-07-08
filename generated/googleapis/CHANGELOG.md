@@ -6,7 +6,6 @@
 - `paymentsresellersubscription` - new!
 - `privateca` - new!
 - `resourcesettings` - new!
-- `sqladmin` - new!
 
 ## 3.0.0
 

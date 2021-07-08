@@ -1222,13 +1222,6 @@ Converts audio to text by applying powerful neural network models.
 - [Documentation](https://cloud.google.com/speech-to-text/docs/quickstart-protocol)
 - [API details](https://pub.dev/documentation/googleapis/4.0.0-dev/speech.v1/speech.v1-library.html)
 
-#### Cloud SQL Admin API - `sqladmin.v1`
-
-API for Cloud SQL database instance management
-
-- [Documentation](https://developers.google.com/cloud-sql/)
-- [API details](https://pub.dev/documentation/googleapis/4.0.0-dev/sqladmin.v1/sqladmin.v1-library.html)
-
 #### ![Logo](https://www.google.com/images/icons/product/cloud_storage-16.png) Cloud Storage JSON API - `storage.v1`
 
 Stores and retrieves potentially large, immutable data objects.
